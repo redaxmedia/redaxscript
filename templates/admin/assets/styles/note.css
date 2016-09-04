@@ -68,11 +68,10 @@
 	font: bold 1em var(--rs-admin-font-secondary);
 	line-height: 2.5em;
 	padding: 0 2em;
-	transition: background 0.1s, color 0.1s;
 
 	&:hover
 	{
-		color: gray(255);
+		box-shadow: 0 0 0 0.125em gray(0, 0.2) inset;
 	}
 }
 
@@ -94,11 +93,6 @@
 	{
 		@extend %rs-admin-icon-check-circle;
 	}
-
-	&.rs-admin-button-note:hover
-	{
-		background: var(--rs-admin-color-success-dark);
-	}
 }
 
 /* @section 1.2 warning */
@@ -118,11 +112,6 @@
 	&.rs-admin-box-note:before
 	{
 		@extend %rs-admin-icon-warning;
-	}
-
-	&.rs-admin-button-note:hover
-	{
-		background: var(--rs-admin-color-warning-dark);
 	}
 }
 
@@ -144,11 +133,6 @@
 	{
 		@extend %rs-admin-icon-error;
 	}
-
-	&.rs-admin-button-note:hover
-	{
-		background: var(--rs-admin-color-error-dark);
-	}
 }
 
 /* @section 1.4 info */
@@ -168,10 +152,5 @@
 	&.rs-admin-box-note:before
 	{
 		@extend %rs-admin-icon-info;
-	}
-
-	&.rs-admin-button-note:hover
-	{
-		background: var(--rs-admin-color-info-dark);
 	}
 }

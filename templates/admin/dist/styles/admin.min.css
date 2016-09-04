@@ -1587,13 +1587,12 @@
 	display: inline-block;
 	font: bold 1em arial, sans-serif;
 	line-height: 2.5em;
-	padding: 0 2em;
-	transition: background 0.1s, color 0.1s
+	padding: 0 2em
 }
 
 .rs-admin-button-note:hover
 {
-	color: rgb(255, 255, 255)
+	box-shadow: 0 0 0 0.125em rgba(0, 0, 0, 0.2) inset
 }
 
 /* @section 1.1 success */
@@ -1608,11 +1607,6 @@
 	background: #77b01e
 }
 
-.rs-admin-is-success.rs-admin-button-note:hover
-{
-	background: rgb(65, 103, 4)
-}
-
 /* @section 1.2 warning */
 
 .rs-admin-is-warning
@@ -1623,11 +1617,6 @@
 .rs-admin-is-warning.rs-admin-box-note, .rs-admin-is-warning.rs-admin-button-note, .rs-admin-is-warning.rs-admin-field-note, .rs-admin-is-warning.rs-admin-field-note option
 {
 	background: #ffa52d
-}
-
-.rs-admin-is-warning.rs-admin-button-note:hover
-{
-	background: rgb(139, 83, 9)
 }
 
 /* @section 1.3 error */
@@ -1642,11 +1631,6 @@
 	background: #c81e19
 }
 
-.rs-admin-is-error.rs-admin-button-note:hover
-{
-	background: rgb(112, 4, 0)
-}
-
 /* @section 1.4 info */
 
 .rs-admin-is-info
@@ -1657,9 +1641,4 @@
 .rs-admin-is-info.rs-admin-box-note, .rs-admin-is-info.rs-admin-button-note, .rs-admin-is-info.rs-admin-field-note, .rs-admin-is-info.rs-admin-field-note option
 {
 	background: #2db4fa
-}
-
-.rs-admin-is-info.rs-admin-button-note:hover
-{
-	background: rgb(9, 96, 139)
 }
