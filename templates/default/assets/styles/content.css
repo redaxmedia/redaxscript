@@ -130,7 +130,7 @@
 	.rs-box-quote:before
 	{
 		content: '\201d';
-		font: 7em/1em georgia, times, serif;
+		font: 7em/1em var(--rs-font-quote);
 		left: -0.5em;
 		opacity: 0.15;
 		position: absolute;
@@ -140,7 +140,7 @@
 
 .rs-link-readmore
 {
-	background: var(--rs-gradient-quaternary);
+	background: var(--rs-color-quaternary);
 	border-radius: 0.125em;
 	box-shadow: 0 -0.125em 0 0 gray(0, 0.2) inset, 0 0.125em 0.125em gray(0, 0.2);
 	box-sizing: border-box;
@@ -165,7 +165,7 @@
 
 .rs-link-readmore:hover
 {
-	background: var(--rs-gradient-quaternary-light);
+	background: var(--rs-color-quaternary-light);
 }
 
 .rs-link-readmore:active

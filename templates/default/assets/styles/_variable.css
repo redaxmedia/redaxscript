@@ -27,7 +27,7 @@
 	--rs-color-primary-light: color(var(--rs-color-primary) l(50%));
 	--rs-color-primary-dark: color(var(--rs-color-primary) l(40%));
 	--rs-color-secondary-light: color(var(--rs-color-secondary) l(50%));
-	--rs-color-quaternary-light: color(var(--rs-color-quaternary) l(50%));
+	--rs-color-quaternary-light: color(var(--rs-color-quaternary) l(60%));
 
 	/* @section 1.2 note color */
 
@@ -44,10 +44,8 @@
 
 	--rs-gradient-primary: linear-gradient(var(--rs-color-primary-light), var(--rs-color-primary));
 	--rs-gradient-secondary: linear-gradient(var(--rs-color-secondary-light), var(--rs-color-secondary));
-	--rs-gradient-quaternary: linear-gradient(var(--rs-color-quaternary-light), var(--rs-color-quaternary));
 	--rs-gradient-primary-light: linear-gradient(color(var(--rs-color-primary-light) l(55%)), color(var(--rs-color-primary) l(55%)));
 	--rs-gradient-secondary-light: linear-gradient(color(var(--rs-color-secondary-light) l(55%)), color(var(--rs-color-secondary) l(55%)));
-	--rs-gradient-quaternary-light: linear-gradient(color(var(--rs-color-quaternary-light) l(55%)), color(var(--rs-color-quaternary) l(55%)));
 
 	/* @section 1.4 url */
 
@@ -60,5 +58,6 @@
 
 	--rs-font-primary: 'open sans condensed', arial, sans-serif;
 	--rs-font-code: monospace, arial, sans-serif;
+	--rs-font-quote: georgia, times, serif;
 	--rs-font-icon: 'icon default';
 }

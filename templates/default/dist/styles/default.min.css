@@ -689,7 +689,7 @@ a
 
 .rs-link-readmore
 {
-	background: linear-gradient(rgb(196, 114, 59), #c77a46);
+	background: #c77a46;
 	border-radius: 0.125em;
 	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset, 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
 	box-sizing: border-box;
@@ -713,7 +713,7 @@ a
 
 .rs-link-readmore:hover
 {
-	background: linear-gradient(rgb(202, 128, 78), rgb(202, 128, 78));
+	background: rgb(208, 142, 98);
 }
 
 .rs-link-readmore:active
