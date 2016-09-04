@@ -12,6 +12,20 @@
  * @author Henry Ruhs
  */
 
+/**
+ * @tableofcontents
+ *
+ * 1. field
+ * 2. textarea
+ * 3. query
+ *    3.1 medium-min
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 /* @section 1. field */
 
 .rs-admin-field-default,
@@ -19,10 +33,11 @@
 .rs-admin-field-textarea
 {
 	background: gray(240);
-	border: 2px solid gray(210);
+	border: 2px solid gray(215);
 	border-radius: 0.125em;
 	box-sizing: border-box;
-	color: gray(106);
+	color: gray(100);
+	display: block;
 	font: 0.875em/2.25em var(--rs-admin-font-secondary);
 	padding: 0 0.5em;
 	transition: background 0.2s, border 0.2s;
@@ -30,13 +45,13 @@
 
 	&:hover
 	{
-		border-color: gray(173);
+		border-color: gray(170);
 	}
 
 	&:focus
 	{
 		background: gray(255);
-		border-color: gray(171);
+		border-color: gray(185);
 	}
 
 	&[disabled],

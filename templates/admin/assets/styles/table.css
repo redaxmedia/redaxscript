@@ -19,7 +19,7 @@
 .rs-admin-table-default
 {
 	@extend %table-default;
-	color: gray(71);
+	color: gray(70);
 	font: 1.25rem var(--rs-admin-font-primary);
 
 	& caption,
@@ -35,8 +35,8 @@
 	& thead tr,
 	& tfoot tr
 	{
-		background: gray(32);
-		color: gray(204);
+		background: gray(30);
+		color: gray(200);
 	}
 
 	/* @section 1.2 body */
@@ -47,14 +47,14 @@
 
 		&:nth-child(odd) tr
 		{
-			background: gray(226);
+			background: gray(230);
 		}
 
 		/* even look */
 
 		&:nth-child(even) tr
 		{
-			background: gray(218);
+			background: gray(215);
 		}
 
 		& tr.rs-admin-row-group
@@ -86,7 +86,7 @@
 	& .rs-admin-button-moveup,
 	& .rs-admin-button-movedown
 	{
-		color: gray(71);
+		color: gray(70);
 		display: block;
 		min-height: 2.5em;
 		position: relative;

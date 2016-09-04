@@ -150,7 +150,7 @@
 	src: url('templates/admin/assets/fonts/icon.woff2') format('woff2'), url('templates/admin/assets/fonts/icon.woff') format('woff');
 }
 
-.rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-success:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-success:before, .rs-admin-is-success.rs-admin-box-note:before
+.rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-success:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-success:before
 {
 	content: '\2714';
 	font-family: 'icon admin';
@@ -171,7 +171,7 @@
 	font-weight: normal;
 }
 
-.rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-info:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-info:before, .rs-admin-is-info.rs-admin-box-note:before
+.rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-info:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-info:before
 {
 	content: '\69';
 	font-family: 'icon admin';
@@ -199,14 +199,14 @@
 	font-weight: normal;
 }
 
-.rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-error:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-error:before, .rs-admin-is-error.rs-admin-box-note:before
+.rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-error:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-error:before
 {
 	content: '\274c';
 	font-family: 'icon admin';
 	font-weight: normal;
 }
 
-.rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-warning:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-warning:before, .rs-admin-is-warning.rs-admin-box-note:before
+.rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-warning:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-warning:before
 {
 	content: '\21';
 	font-family: 'icon admin';
@@ -319,7 +319,7 @@
 
 .rs-admin-link-default
 {
-	color: rgb(102, 102, 102);
+	color: rgb(100, 100, 100);
 	text-decoration: underline;
 }
 
@@ -327,7 +327,7 @@
 
 .rs-admin-title-content
 {
-	color: rgb(32, 32, 32);
+	color: rgb(30, 30, 30);
 	font-size: 2em;
 	margin: 1em 0;
 
@@ -362,9 +362,9 @@
 
 .rs-admin-title-accordion
 {
-	background: linear-gradient(rgb(226, 226, 226), rgb(218, 218, 218));
+	background: linear-gradient(rgb(230, 230, 230), rgb(215, 215, 215));
 	box-sizing: border-box;
-	color: rgb(68, 68, 68);
+	color: rgb(70, 70, 70);
 	font-size: 1em;
 	font-weight: bold;
 	line-height: 2.5em;
@@ -381,7 +381,7 @@
 
 .rs-admin-box-accordion
 {
-	background: linear-gradient(rgb(226, 226, 226), rgb(218, 218, 218));
+	background: linear-gradient(rgb(230, 230, 230), rgb(215, 215, 215));
 	padding: 0.5em 1em;
 }
 
@@ -409,8 +409,8 @@
 
 .rs-is-js .rs-admin-title-accordion.rs-admin-title-active
 {
-	background: rgb(32, 32, 32);
-	color: rgb(204, 204, 204);
+	background: rgb(30, 30, 30);
+	color: rgb(200, 200, 200);
 	pointer-events: none
 }
 
@@ -424,6 +424,7 @@
  * 1. button admin
  *    1.1 hover effect
  *    1.2 active effect
+ *    1.3 icons
  * 2. disabled and readonly
  * 3. space between elements
  * 3. small min
@@ -438,7 +439,7 @@
 
 .rs-admin-button-default
 {
-	background: linear-gradient(rgb(60, 60, 60), rgb(48, 48, 48));
+	background: linear-gradient(rgb(70, 70, 70), rgb(50, 50, 50));
 	border-radius: 0.125em;
 	box-sizing: border-box;
 	cursor: pointer;
@@ -470,7 +471,7 @@
 
 .rs-admin-button-default:hover
 {
-	background: rgb(48, 48, 48);
+	background: rgb(50, 50, 50);
 }
 
 .rs-admin-button-create:hover
@@ -502,8 +503,8 @@
 
 .rs-admin-button-default[disabled]
 {
-	background: rgb(204, 204, 204);
-	color: rgb(158, 158, 158);
+	background: rgb(200, 200, 200);
+	color: rgb(150, 150, 150);
 	pointer-events: none;
 }
 
@@ -574,9 +575,9 @@
 
 .rs-admin-list-control a, .rs-admin-list-control span
 {
-	background: linear-gradient(rgb(195, 195, 195), rgb(190, 190, 190));
+	background: linear-gradient(rgb(200, 200, 200), rgb(185, 185, 185));
 	border-radius: 0.25em;
-	color: rgb(102, 102, 102);
+	color: rgb(100, 100, 100);
 	display: inline-block;
 	line-height: 2em;
 	padding: 0 0.75em;
@@ -591,7 +592,7 @@
 
 .rs-admin-list-control span
 {
-	color: rgb(153, 153, 153);
+	color: rgb(150, 150, 150);
 }
 
 /* delete and uninstall */
@@ -669,8 +670,8 @@
 
 .rs-admin-title-dialog
 {
-	background: rgb(32, 32, 32);
-	color: rgb(204, 204, 204);
+	background: rgb(30, 30, 30);
+	color: rgb(200, 200, 200);
 	font-size: 1em;
 	font-weight: bold;
 	line-height: 2.5em;
@@ -681,7 +682,7 @@
 
 .rs-admin-box-dialog
 {
-	background: linear-gradient(rgb(226, 226, 226), rgb(218, 218, 218));
+	background: linear-gradient(rgb(230, 230, 230), rgb(215, 215, 215));
 	padding: 1em;
 }
 /**
@@ -700,7 +701,7 @@
 
 .rs-admin-box-dock
 {
-	background: rgb(32, 32, 32);
+	background: rgb(30, 30, 30);
 	font-size: 0.875rem;
 	margin-top: 1em;
 }
@@ -771,29 +772,16 @@
 	text-indent: 0;
 	top: 0;
 }
-/**
- * @tableofcontents
- *
- * 1. field
- * 2. textarea
- * 3. query
- *    3.1 medium-min
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
 /* @section 1. field */
 
 .rs-admin-field-default, .rs-admin-field-select, .rs-admin-field-textarea
 {
 	background: rgb(240, 240, 240);
-	border: 2px solid rgb(210, 210, 210);
+	border: 2px solid rgb(215, 215, 215);
 	border-radius: 0.125em;
 	box-sizing: border-box;
-	color: rgb(106, 106, 106);
+	color: rgb(100, 100, 100);
+	display: block;
 	font: 0.875em/2.25em arial, sans-serif;
 	padding: 0 0.5em;
 	transition: background 0.2s, border 0.2s;
@@ -802,13 +790,13 @@
 
 .rs-admin-field-default:hover, .rs-admin-field-select:hover, .rs-admin-field-textarea:hover
 {
-	border-color: rgb(173, 173, 173)
+	border-color: rgb(170, 170, 170)
 }
 
 .rs-admin-field-default:focus, .rs-admin-field-select:focus, .rs-admin-field-textarea:focus
 {
 	background: rgb(255, 255, 255);
-	border-color: rgb(171, 171, 171)
+	border-color: rgb(185, 185, 185)
 }
 
 .rs-admin-field-default[disabled], .rs-admin-field-default[readonly], .rs-admin-field-select[disabled], .rs-admin-field-select[readonly], .rs-admin-field-textarea[disabled], .rs-admin-field-textarea[readonly]
@@ -819,7 +807,7 @@
 
 .rs-admin-field-select
 {
-	height: 2.5em
+	height: 2.25em
 }
 
 .rs-admin-field-select[multiple]
@@ -937,7 +925,7 @@
 
 .rs-admin-component-panel
 {
-	background: rgb(32, 32, 32);
+	background: rgb(30, 30, 30);
 	position: relative;
 	z-index: 900
 }
@@ -1062,7 +1050,7 @@
 
 .rs-admin-list-panel li:hover .rs-admin-list-panel-children
 {
-	background: rgb(32, 32, 32);
+	background: rgb(30, 30, 30);
 }
 
 .rs-admin-item-panel:not(.rs-admin-item-notification) .rs-admin-list-panel-children
@@ -1090,7 +1078,7 @@
 {
 	.rs-admin-list-panel-children
 	{
-		background: rgb(32, 32, 32);
+		background: rgb(30, 30, 30);
 		position: absolute;
 		width: 100%
 	}
@@ -1154,9 +1142,9 @@
 
 .rs-admin-text-notification-counter
 {
-	border: 0.25em solid rgb(32, 32, 32);
+	border: 0.25em solid rgb(30, 30, 30);
 	border-radius: 50%;
-	color: rgb(32, 32, 32);
+	color: rgb(30, 30, 30);
 	font-size: 0.625em;
 	height: 1.5em;
 	left: 2.25em;
@@ -1222,9 +1210,9 @@
 	color: #2db4fa
 }
 
-.rs-admin-item-panel .rs-admin-list-panel-children-notification .rs-admin-text-panel:hover:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification .rs-admin-link-panel:hover:before
+.rs-admin-item-panel .rs-admin-list-panel-children-notification li:hover .rs-admin-text-panel
 {
-	color: rgb(32, 32, 32);
+	color: rgb(30, 30, 30);
 }
 
 @media (min-width: 50em) and (max-width: 79.999em)
@@ -1301,8 +1289,8 @@
 
 .rs-admin-list-tab > li
 {
-	background: rgb(32, 32, 32);
-	color: rgb(204, 204, 204);
+	background: rgb(30, 30, 30);
+	color: rgb(200, 200, 200);
 	cursor: pointer;
 	display: inline-block;
 	font-weight: bold;
@@ -1322,9 +1310,9 @@
 
 .rs-admin-list-tab .rs-admin-item-active
 {
-	background: rgb(226, 226, 226);
+	background: rgb(230, 230, 230);
 	border-radius: 0.125em 0.125em 0 0;
-	color: rgb(68, 68, 68);
+	color: rgb(70, 70, 70);
 	padding: 0.75em 1em;
 	pointer-events: none
 }
@@ -1333,7 +1321,7 @@
 
 .rs-admin-set-tab
 {
-	background: linear-gradient(rgb(226, 226, 226), rgb(218, 218, 218));
+	background: linear-gradient(rgb(230, 230, 230), rgb(215, 215, 215));
 	color: rgb(0, 0, 0);
 	padding: 0.75em 1em;
 }
@@ -1382,7 +1370,7 @@
 
 .rs-admin-table-default
 {
-	color: rgb(71, 71, 71);
+	color: rgb(70, 70, 70);
 	font: 1.25rem 'open sans condensed', arial, sans-serif
 
 	/* @section 1.1 head and foot */
@@ -1401,8 +1389,8 @@
 
 .rs-admin-table-default caption, .rs-admin-table-default thead tr, .rs-admin-table-default tfoot tr
 {
-	background: rgb(32, 32, 32);
-	color: rgb(204, 204, 204)
+	background: rgb(30, 30, 30);
+	color: rgb(200, 200, 200)
 }
 
 .rs-admin-table-default tbody
@@ -1411,12 +1399,12 @@
 
 .rs-admin-table-default tbody:nth-child(odd) tr
 {
-	background: rgb(226, 226, 226)
+	background: rgb(230, 230, 230)
 }
 
 .rs-admin-table-default tbody:nth-child(even) tr
 {
-	background: rgb(218, 218, 218)
+	background: rgb(215, 215, 215)
 }
 
 .rs-admin-table-default tbody tr.rs-admin-row-group
@@ -1444,7 +1432,7 @@
 
 .rs-admin-table-default .rs-admin-button-moveup, .rs-admin-table-default .rs-admin-button-movedown
 {
-	color: rgb(71, 71, 71);
+	color: rgb(70, 70, 70);
 	display: block;
 	min-height: 2.5em;
 	position: relative;
@@ -1543,8 +1531,8 @@
 .rs-admin-box-note:before
 {
 	float: left;
-	font-size: 1.25em;
-	width: 1.5em
+	text-align: center;
+	width: 2em
 }
 
 .rs-admin-box-note a
@@ -1588,6 +1576,11 @@
 	background: #77b01e
 }
 
+.rs-admin-is-success.rs-admin-box-note:before
+{
+	content: '\2714'
+}
+
 /* @section 1.2 warning */
 
 .rs-admin-is-warning
@@ -1598,6 +1591,11 @@
 .rs-admin-is-warning.rs-admin-box-note, .rs-admin-is-warning.rs-admin-button-note, .rs-admin-is-warning.rs-admin-field-note, .rs-admin-is-warning.rs-admin-field-note option
 {
 	background: #ffa52d
+}
+
+.rs-admin-is-warning.rs-admin-box-note:before
+{
+	content: '\21'
 }
 
 /* @section 1.3 error */
@@ -1612,6 +1610,11 @@
 	background: #c81e19
 }
 
+.rs-admin-is-error.rs-admin-box-note:before
+{
+	content: '\d7'
+}
+
 /* @section 1.4 info */
 
 .rs-admin-is-info
@@ -1622,4 +1625,9 @@
 .rs-admin-is-info.rs-admin-box-note, .rs-admin-is-info.rs-admin-button-note, .rs-admin-is-info.rs-admin-field-note, .rs-admin-is-info.rs-admin-field-note option
 {
 	background: #2db4fa
+}
+
+.rs-admin-is-info.rs-admin-box-note:before
+{
+	content: '\69'
 }

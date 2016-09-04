@@ -27,8 +27,8 @@
 
 	& > li
 	{
-		background: gray(32);
-		color: gray(204);
+		background: gray(30);
+		color: gray(200);
 		cursor: pointer;
 		display: inline-block;
 		font-weight: bold;
@@ -48,9 +48,9 @@
 
 	& .rs-admin-item-active
 	{
-		background: gray(226);
+		background: gray(230);
 		border-radius: 0.125em 0.125em 0 0;
-		color: gray(68);
+		color: gray(70);
 		padding: 0.75em 1em;
 		pointer-events: none;
 	}

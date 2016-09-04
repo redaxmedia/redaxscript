@@ -24,7 +24,7 @@
 
 .rs-admin-component-panel
 {
-	background: gray(32);
+	background: gray(30);
 	position: relative;
 	z-index: 900;
 
@@ -193,7 +193,7 @@
 
 .rs-admin-list-panel li:hover .rs-admin-list-panel-children
 {
-	background: gray(32);
+	background: gray(30);
 }
 
 .rs-admin-item-panel:not(.rs-admin-item-notification) .rs-admin-list-panel-children
@@ -222,7 +222,7 @@
 {
 	.rs-admin-list-panel-children
 	{
-		background: gray(32);
+		background: gray(30);
 		position: absolute;
 		width: 100%;
 
@@ -285,9 +285,9 @@
 
 .rs-admin-text-notification-counter
 {
-	border: 0.25em solid gray(32);
+	border: 0.25em solid gray(30);
 	border-radius: 50%;
-	color: gray(32);
+	color: gray(30);
 	font-size: 0.625em;
 	height: 1.5em;
 	left: 2.25em;
@@ -361,7 +361,7 @@
 .rs-admin-item-panel .rs-admin-list-panel-children-notification .rs-admin-text-panel:hover:before,
 .rs-admin-item-panel .rs-admin-list-panel-children-notification .rs-admin-link-panel:hover:before
 {
-	color: gray(32);
+	color: gray(30);
 }
 
 @media (--media-medium-min) and (--media-large-max)

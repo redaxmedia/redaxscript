@@ -14,7 +14,7 @@
 
 .rs-admin-link-default
 {
-	color: gray(102);
+	color: gray(100);
 	text-decoration: underline;
 }
 
@@ -22,7 +22,7 @@
 
 .rs-admin-title-content
 {
-	color: gray(32);
+	color: gray(30);
 	font-size: 2em;
 	margin: 1em 0;
 

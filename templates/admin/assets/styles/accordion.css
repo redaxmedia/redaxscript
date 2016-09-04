@@ -25,7 +25,7 @@
 {
 	background: var(--rs-admin-gradient-quaternary);
 	box-sizing: border-box;
-	color: gray(68);
+	color: gray(70);
 	font-size: 1em;
 	font-weight: bold;
 	line-height: 2.5em;
@@ -68,8 +68,8 @@
 
 		&.rs-admin-title-active
 		{
-			background: gray(32);
-			color: gray(204);
+			background: gray(30);
+			color: gray(200);
 			pointer-events: none;
 
 			&:after
