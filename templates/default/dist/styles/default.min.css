@@ -2,6 +2,99 @@
  * @tableofcontents
  *
  * 1. query
+ * 1. clearfix
+ * 1. dialog
+ *    1.1 overlay
+ *    1.2 component
+ * 1. dropdown
+ * 1. redirect
+ *    1.1 overlay
+ * 1. table
+ * 2. wrapper table
+ * 1. icon
+ * 1. variable
+ *    1.1 base color
+ *    1.2 note color
+ *    1.3 gradient
+ *    1.4 url
+ *    1.5 font
+ * 1. tag styling
+ * 1. accordion
+ *    1.1 title
+ *    1.2 box
+ *    1.3 javascript enabled
+ * 1. list breadcrumb
+ * 1. button default
+ * 3. button large and full
+ * 4. space between elements
+ * 5. disabled and reset
+ * 6. query
+ *    6.1 medium max
+ *    6.2 medium min
+ * 3.4 title sub
+ * 6. content
+ * 1. overlay dialog
+ * 2. component dialog
+ * 1. field
+ * 2. textarea
+ * 3. query
+ *    3.1 medium-min
+ * 1. form default
+ *    3.5 title website
+ * 5. header
+ * 4. text website
+ *    7.2 medium min
+ * 1. clearfix
+ * 1. dropdown
+ * 2. redirect
+ * 1. general
+ * 2. wrapper
+ * 3. query
+ *    3.1 medium max
+ *    3.2 medium min
+ *    3.3 print
+ * 1. list default
+ * 1. media
+ * 1. general
+ * 2. query
+ *    2.1 max width 50rem
+ *       2.1.1 navigation toggle
+ *       2.1.2 navigation icon
+ *       2.1.3 navigation
+ *       2.1.4 navigation layer
+ *    2.2 min width 50rem
+ * 1. query
+ *    1.1 medium max
+ * 1. pagination
+ * 2. query
+ *    2.1 large max
+ * 1. result
+ * 1. search
+ *    1.1 form
+ *    1.2 field
+ *    1.3 button
+ * 1. sidebar
+ * 2. query
+ *    2.1 medium min
+ * 1. tab
+ *    1.1 list
+ *    1.2 set
+ *    1.3 javascript enabled
+ * 1. table default
+ *    1.1 head and foot
+ *    1.2 body
+ * 2. wrapper table
+ * 1. teaser
+ * 2. title teaser
+ * 3. query
+ *    3.1 medium
+ *    3.2 large
+ *    3.3 ultra
+ * 1. note
+ *    1.1 success
+ *    1.2 warning
+ *    1.3 error
+ *    1.4 info
  *
  * @since 3.0.0
  *
@@ -195,6 +288,17 @@
 {
 	width: 100%
 }
+/**
+ * @tableofcontents
+ *
+ * 1. icon
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 /* @section 1. icon */
 
 @font-face
@@ -1500,14 +1604,85 @@ ul.rs-list-default li:before
 		visibility: visible;
 	}
 }
-/* TODO: add example to preview */
+/**
+ * @tableofcontents
+ *
+ * 1. pagination
+ * 2. query
+ *    2.1 large min
+ *    2.2 large max
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
 
-/* TODO: styling is missing */
+/* @section 1. pagination */
+
+.rs-list-pagination
+{
+	text-align: center
+}
 
 .rs-list-pagination li
 {
 	display: inline-block;
+	margin: 0.25em
 }
+
+.rs-list-pagination a, .rs-list-pagination span
+{
+	border-radius: 0.125em;
+	display: block;
+	padding: 0.5em 1em
+}
+
+.rs-list-pagination a
+{
+	background: #323e4c;
+	color: rgb(255, 255, 255);
+	transition: background 0.2s
+}
+
+.rs-list-pagination a:hover
+{
+	background: #3873b5
+}
+
+.rs-list-pagination span
+{
+	background: rgb(230, 230, 230);
+	color: rgb(70, 70, 70)
+}
+
+.rs-list-pagination .rs-item-first, .rs-list-pagination .rs-item-previous, .rs-list-pagination .rs-item-next, .rs-list-pagination .rs-item-last
+{
+	min-width: 6em
+}
+
+/* @section 2. query */
+
+/* @section 2.1 large max */
+
+@media (max-width: 79.999em)
+{
+	.rs-list-pagination .rs-item-number
+	{
+		display: none;
+	}
+}
+/**
+ * @tableofcontents
+ *
+ * 1. result
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 /* @section 1. result */
 
 .rs-list-result

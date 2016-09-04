@@ -515,7 +515,7 @@ function pagination($sub_active, $sub_maximum, $route)
 		$next_route = $route . '/' . ($sub_active + 1);
 		$last_route = $route . '/' . $sub_maximum;
 		$output .= '<li class="rs-item-next"><a href="' . Redaxscript\Registry::get('parameterRoute') . $next_route . '" rel="next">' . Redaxscript\Language::get('next') . '</a></li>';
-		$output .= '<li class="rs-item-next"><a href="' . Redaxscript\Registry::get('parameterRoute') . $last_route . '">' . Redaxscript\Language::get('last') . '</a></li>';
+		$output .= '<li class="rs-item-last"><a href="' . Redaxscript\Registry::get('parameterRoute') . $last_route . '">' . Redaxscript\Language::get('last') . '</a></li>';
 	}
 	$output .= '</ul>';
 	$output .= Redaxscript\Hook::trigger('paginationEnd');

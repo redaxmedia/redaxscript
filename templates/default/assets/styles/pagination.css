@@ -1,8 +1,71 @@
-/* TODO: add example to preview */
+/**
+ * @tableofcontents
+ *
+ * 1. pagination
+ * 2. query
+ *    2.1 large max
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
 
-/* TODO: styling is missing */
+/* @section 1. pagination */
 
-.rs-list-pagination li
+.rs-list-pagination
 {
-	display: inline-block;
+	text-align: center;
+
+	& li
+	{
+		display: inline-block;
+		margin: 0.25em;
+	}
+
+	& a,
+	& span
+	{
+		border-radius: 0.125em;
+		display: block;
+		padding: 0.5em 1em;
+	}
+
+	& a
+	{
+		background: var(--rs-color-tertiary);
+		color: gray(255);
+		transition: background 0.2s;
+
+		&:hover
+		{
+			background: var(--rs-color-primary);
+		}
+	}
+
+	& span
+	{
+		background: gray(230);
+		color: gray(70);
+	}
+
+	& .rs-item-first,
+	& .rs-item-previous,
+	& .rs-item-next,
+	& .rs-item-last
+	{
+		min-width: 6em;
+	}
+}
+
+/* @section 2. query */
+
+/* @section 2.1 large max */
+
+@media (--media-large-max)
+{
+	.rs-list-pagination .rs-item-number
+	{
+		display: none;
+	}
 }
