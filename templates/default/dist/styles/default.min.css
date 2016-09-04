@@ -1508,22 +1508,17 @@ ul.rs-list-default li:before
 {
 	display: inline-block;
 }
-/* TODO: add example to preview */
+/* @section 1. result */
 
 .rs-list-result
 {
-	counter-reset: result;
+	counter-reset: result
 }
 
 .rs-list-result li
 {
 	padding-left: 3em;
-	position: relative;
-}
-
-.rs-list-result li + li
-{
-	margin-top: 1em;
+	position: relative
 }
 
 .rs-list-result li:before
@@ -1533,25 +1528,38 @@ ul.rs-list-default li:before
 	color: rgb(255, 255, 255);
 	content: counter(result, decimal);
 	counter-increment: result;
-	height: 2em;
 	left: 0;
 	line-height: 2em;
 	position: absolute;
 	text-align: center;
-	top: 0.625em;
-	width: 2em;
+	top: 1em;
+	transition: background 0.2s;
+	width: 2em
 }
 
 .rs-list-result li:hover:before
 {
-	background: #3873b5;
-	transition: background 0.4s;
+	background: #3873b5
+}
+
+.rs-list-result li + li
+{
+	margin-top: 1em
+}
+
+.rs-title-result
+{
+	border-left: 0.125em solid rgba(0, 0, 0, 0.2);
+	font-size: 2.5em;
+	margin-bottom: 0.75em;
+	margin-top: 1em;
+	padding-left: 0.25em;
 }
 
 .rs-link-result
 {
 	color: #323e4c;
-	font-size: 1.5em;
+	font-size: 1.75em;
 }
 
 .rs-text-result-date

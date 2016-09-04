@@ -10,7 +10,7 @@ use Redaxscript\Tests\TestCaseAbstract;
 use Redaxscript\View;
 
 /**
- * SearchListTest
+ * ResultListTest
  *
  * @since 3.0.0
  *
@@ -20,7 +20,7 @@ use Redaxscript\View;
  * @author Balázs Szilágyi
  */
 
-class SearchListTest extends TestCaseAbstract
+class ResultListTest extends TestCaseAbstract
 {
 	/**
 	 * instance of the registry class
@@ -127,7 +127,7 @@ class SearchListTest extends TestCaseAbstract
 
 	public function providerRender()
 	{
-		return $this->getProvider('tests/provider/View/search_list_render.json');
+		return $this->getProvider('tests/provider/View/result_list_render.json');
 	}
 
 	/**
@@ -145,7 +145,7 @@ class SearchListTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$searchList = new View\SearchList($this->_registry, $this->_language);
+		$resultList = new View\ResultList($this->_registry, $this->_language);
 		$controllerSearch = new Controller\Search($this->_registry, $this->_language, $this->_request);
 		$resultArray = $this->callMethod($controllerSearch, '_search',
 		[
@@ -154,7 +154,7 @@ class SearchListTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actualArray = $searchList->render($resultArray);
+		$actualArray = $resultList->render($resultArray);
 
 		/* compare */
 

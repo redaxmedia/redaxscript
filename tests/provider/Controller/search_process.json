@@ -21,7 +21,7 @@
 			"secondParameter": "test",
 			"thirdParameter": null
 		},
-		"<h2 class=\"rs-title-content rs-title-result\">Articles</h2><ol class=\"rs-list-result\"><li><a class=\"rs-link-result\" href=\"home/test-one\">test</a><span class=\"rs-text-result-date\">01.01.2016</span></li><li><a class=\"rs-link-result\" href=\"home/test-two\">test</a><span class=\"rs-text-result-date\">01.01.2016</span></li></ol><h2 class=\"rs-title-content rs-title-result\">Comments</h2><ol class=\"rs-list-result\"><li><a class=\"rs-link-result\" href=\"home/welcome#comment-1\">test</a><span class=\"rs-text-result-date\">01.01.2016</span></li></ol>"
+		"<h2 class=\"rs-title-result\">Articles</h2><ol class=\"rs-list-result\"><li><a class=\"rs-link-result\" href=\"home/test-one\">test</a><span class=\"rs-text-result-date\">01.01.2016</span></li><li><a class=\"rs-link-result\" href=\"home/test-two\">test</a><span class=\"rs-text-result-date\">01.01.2016</span></li></ol><h2 class=\"rs-title-result\">Comments</h2><ol class=\"rs-list-result\"><li><a class=\"rs-link-result\" href=\"home/welcome#comment-1\">test</a><span class=\"rs-text-result-date\">01.01.2016</span></li></ol>"
 	],
 	[
 		{
@@ -37,6 +37,6 @@
 			"secondParameter": "comments",
 			"thirdParameter": "test"
 		},
-		"<h2 class=\"rs-title-content rs-title-result\">Comments</h2><ol class=\"rs-list-result\"><li><a class=\"rs-link-result\" href=\"home/welcome#comment-1\">test</a><span class=\"rs-text-result-date\">01.01.2016</span></li></ol>"
+		"<h2 class=\"rs-title-result\">Comments</h2><ol class=\"rs-list-result\"><li><a class=\"rs-link-result\" href=\"home/welcome#comment-1\">test</a><span class=\"rs-text-result-date\">01.01.2016</span></li></ol>"
 	]
 ]

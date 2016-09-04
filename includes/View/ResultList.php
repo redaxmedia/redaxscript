@@ -7,7 +7,7 @@ use Redaxscript\Hook;
 use Redaxscript\Validator;
 
 /**
- * children class to create the search list
+ * children class to create the result list
  *
  * @since 3.0.0
  *
@@ -17,7 +17,7 @@ use Redaxscript\Validator;
  * @author Balázs Szilágyi
  */
 
-class SearchList extends ViewAbstract
+class ResultList extends ViewAbstract
 {
 	/**
 	 * render the view
@@ -31,7 +31,7 @@ class SearchList extends ViewAbstract
 
 	public function render($resultArray = [])
 	{
-		$output = Hook::trigger('searchListStart');
+		$output = Hook::trigger('resultListStart');
 		$accessValidator = new Validator\Access();
 
 		/* html elements */
@@ -39,7 +39,7 @@ class SearchList extends ViewAbstract
 		$titleElement = new Html\Element();
 		$titleElement->init('h2',
 		[
-			'class' => 'rs-title-content rs-title-result'
+			'class' => 'rs-title-result'
 		]);
 		$listElement = new Html\Element();
 		$listElement->init('ol',
@@ -91,7 +91,7 @@ class SearchList extends ViewAbstract
 				}
 			}
 		}
-		$output .= Hook::trigger('searchListEnd');
+		$output .= Hook::trigger('resultListEnd');
 		return $output;
 	}
 }

@@ -91,7 +91,7 @@ class Search extends ControllerAbstract
 
 		/* handle result */
 
-		$output = $this->_result($resultArray);
+		$output = $this->_renderResult($resultArray);
 		if ($output)
 		{
 			return $output;
@@ -103,7 +103,7 @@ class Search extends ControllerAbstract
 	}
 
 	/**
-	 * show the result
+	 * render the result
 	 *
 	 * @since 3.0.0
 	 *
@@ -112,10 +112,10 @@ class Search extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _result($resultArray = [])
+	protected function _renderResult($resultArray = [])
 	{
-		$listSearch = new View\SearchList($this->_registry, $this->_language);
-		return $listSearch->render($resultArray);
+		$searchList = new View\ResultList($this->_registry, $this->_language);
+		return $searchList->render($resultArray);
 	}
 
 	/**

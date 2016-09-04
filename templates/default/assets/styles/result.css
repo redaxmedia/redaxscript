@@ -1,47 +1,55 @@
-/* TODO: add example to preview */
+/* @section 1. result */
 
 .rs-list-result
 {
 	counter-reset: result;
+
+	& li
+	{
+		padding-left: 3em;
+		position: relative;
+
+		&:before
+		{
+			background: var(--rs-color-tertiary);
+			border-radius: 0.125em;
+			color: gray(255);
+			content: counter(result, decimal);
+			counter-increment: result;
+			left: 0;
+			line-height: 2em;
+			position: absolute;
+			text-align: center;
+			top: 1em;
+			transition: background 0.2s;
+			width: 2em;
+		}
+
+		&:hover:before
+		{
+			background: var(--rs-color-primary);
+		}
+
+		& + li
+		{
+			margin-top: 1em;
+		}
+	}
 }
 
-.rs-list-result li
+.rs-title-result
 {
-	padding-left: 3em;
-	position: relative;
-}
-
-.rs-list-result li + li
-{
+	border-left: 0.125em solid gray(0, 0.2);
+	font-size: 2.5em;
+	margin-bottom: 0.75em;
 	margin-top: 1em;
-}
-
-.rs-list-result li:before
-{
-	background: var(--rs-color-tertiary);
-	border-radius: 0.125em;
-	color: gray(255);
-	content: counter(result, decimal);
-	counter-increment: result;
-	height: 2em;
-	left: 0;
-	line-height: 2em;
-	position: absolute;
-	text-align: center;
-	top: 0.625em;
-	width: 2em;
-}
-
-.rs-list-result li:hover:before
-{
-	background: var(--rs-color-primary);
-	transition: background 0.4s;
+	padding-left: 0.25em;
 }
 
 .rs-link-result
 {
 	color: var(--rs-color-tertiary);
-	font-size: 1.5em;
+	font-size: 1.75em;
 }
 
 .rs-text-result-date
