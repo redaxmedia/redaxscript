@@ -17,3 +17,16 @@
 	border-radius: 0.25em;
 	width: 100%;
 }
+
+.rs-image-placeholder
+{
+	& rect
+	{
+		fill: gray(0, 0.1);
+	}
+
+	& path
+	{
+		fill: gray(255, 1);
+	}
+}
