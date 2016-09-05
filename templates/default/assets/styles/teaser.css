@@ -2,11 +2,15 @@
  * @tableofcontents
  *
  * 1. teaser
- * 2. title teaser
- * 3. query
- *    3.1 medium
- *    3.2 large
- *    3.3 ultra
+ *    1.1 component
+ *    1.2 title
+ * 2. query
+ *    2.1 medium min
+ *    2.2 medium min or retina
+ *    2.3 large min
+ *    2.4 xlarge min
+ *    2.5 large min or medium min and retina
+ *    2.6 large min and retina
  *
  * @since 3.0.0
  *
@@ -16,16 +20,18 @@
 
 /* @section 1. teaser */
 
+/* @section 1.1 component */
+
 .rs-component-teaser
 {
-	background: var(--rs-url-teaser-small) no-repeat center top / cover;
+	background: var(--rs-url-teaser-small) center top / cover;
 	box-sizing: border-box;
 	overflow: hidden;
 	padding: 5em 0;
 	padding: 10vw 0;
 }
 
-/* @section 2. title teaser */
+/* @section 1.2 title */
 
 .rs-title-teaser
 {
@@ -40,21 +46,21 @@
 	line-height: 1.25em;
 	opacity: 0;
 	padding: 0.375em 0.75em;
+
+	&::selection
+	{
+		background: var(--rs-color-quaternary);
+	}
+
+	& strong
+	{
+		font-weight: bold;
+	}
 }
 
-.rs-title-teaser::selection
-{
-	background: var(--rs-color-quaternary);
-}
+/* @section 2. query */
 
-.rs-title-teaser strong
-{
-	font-weight: bold;
-}
-
-/* @section 3. query */
-
-/* @section 3.1 medium */
+/* @section 2.1 medium min */
 
 @media (--media-medium-min)
 {
@@ -71,6 +77,8 @@
 	}
 }
 
+/* @section 2.2 medium min or retina */
+
 @media (--media-medium-min), (--media-retina)
 {
 	.rs-component-teaser
@@ -79,7 +87,7 @@
 	}
 }
 
-/* @section 3.2 large */
+/* @section 2.3 large min */
 
 @media (--media-large-min)
 {
@@ -89,6 +97,8 @@
 	}
 }
 
+/* @section 2.4 xlarge min */
+
 @media (--media-xlarge-min)
 {
 	.rs-component-teaser
@@ -96,6 +106,8 @@
 		padding: 10em 0;
 	}
 }
+
+/* @section 2.5 large min or medium min and retina */
 
 @media (--media-large-min), (--media-medium-min) and (--media-retina)
 {
@@ -105,7 +117,7 @@
 	}
 }
 
-/* @section 3.3 ultra */
+/* @section 2.6 large min and retina */
 
 @media (--media-large-min) and (--media-retina)
 {

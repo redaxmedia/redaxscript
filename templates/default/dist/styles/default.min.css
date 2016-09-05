@@ -1612,6 +1612,9 @@ ul.rs-list-default li:before
  * @tableofcontents
  *
  * 1. result
+ *    1.1 list
+ *    1.2 title
+ *    1.3 text
  *
  * @since 3.0.0
  *
@@ -1620,6 +1623,8 @@ ul.rs-list-default li:before
  */
 
 /* @section 1. result */
+
+/* @section 1.1 list */
 
 .rs-list-result
 {
@@ -1658,6 +1663,8 @@ ul.rs-list-default li:before
 	margin-top: 1em
 }
 
+/* @section 1.2 title */
+
 .rs-title-result
 {
 	border-left: 0.125em solid rgba(0, 0, 0, 0.2);
@@ -1666,6 +1673,8 @@ ul.rs-list-default li:before
 	margin-top: 1em;
 	padding-left: 0.25em;
 }
+
+/* @section 1.3 text */
 
 .rs-link-result
 {
@@ -1969,11 +1978,15 @@ ul.rs-list-default li:before
  * @tableofcontents
  *
  * 1. teaser
- * 2. title teaser
- * 3. query
- *    3.1 medium
- *    3.2 large
- *    3.3 ultra
+ *    1.1 component
+ *    1.2 title
+ * 2. query
+ *    2.1 medium min
+ *    2.2 medium min or retina
+ *    2.3 large min
+ *    2.4 xlarge min
+ *    2.5 large min or medium min and retina
+ *    2.6 large min and retina
  *
  * @since 3.0.0
  *
@@ -1983,16 +1996,18 @@ ul.rs-list-default li:before
 
 /* @section 1. teaser */
 
+/* @section 1.1 component */
+
 .rs-component-teaser
 {
-	background: url('//cdn.redaxscript.com/unsplash/817/625x250.jpg') no-repeat center top / cover;
+	background: url('//cdn.redaxscript.com/unsplash/817/625x250.jpg') center top / cover;
 	box-sizing: border-box;
 	overflow: hidden;
 	padding: 5em 0;
 	padding: 10vw 0;
 }
 
-/* @section 2. title teaser */
+/* @section 1.2 title */
 
 .rs-title-teaser
 {
@@ -2006,27 +2021,27 @@ ul.rs-list-default li:before
 	font-weight: 300;
 	line-height: 1.25em;
 	opacity: 0;
-	padding: 0.375em 0.75em;
+	padding: 0.375em 0.75em
 }
 
 .rs-title-teaser::-moz-selection
 {
-	background: #c77a46;
+	background: #c77a46
 }
 
 .rs-title-teaser::selection
 {
-	background: #c77a46;
+	background: #c77a46
 }
 
 .rs-title-teaser strong
 {
-	font-weight: bold;
+	font-weight: bold
 }
 
-/* @section 3. query */
+/* @section 2. query */
 
-/* @section 3.1 medium */
+/* @section 2.1 medium min */
 
 @media (min-width: 50em)
 {
@@ -2043,6 +2058,8 @@ ul.rs-list-default li:before
 	}
 }
 
+/* @section 2.2 medium min or retina */
+
 @media (min-width: 50em), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
 {
 	.rs-component-teaser
@@ -2051,7 +2068,7 @@ ul.rs-list-default li:before
 	}
 }
 
-/* @section 3.2 large */
+/* @section 2.3 large min */
 
 @media (min-width: 80em)
 {
@@ -2061,6 +2078,8 @@ ul.rs-list-default li:before
 	}
 }
 
+/* @section 2.4 xlarge min */
+
 @media (min-width: 100em)
 {
 	.rs-component-teaser
@@ -2068,6 +2087,8 @@ ul.rs-list-default li:before
 		padding: 10em 0;
 	}
 }
+
+/* @section 2.5 large min or medium min and retina */
 
 @media (min-width: 80em), (min-width: 50em) and (-webkit-min-device-pixel-ratio: 2), (min-width: 50em) and (min-resolution: 192dpi)
 {
@@ -2077,7 +2098,7 @@ ul.rs-list-default li:before
 	}
 }
 
-/* @section 3.3 ultra */
+/* @section 2.6 large min and retina */
 
 @media (min-width: 80em) and (-webkit-min-device-pixel-ratio: 2), (min-width: 80em) and (min-resolution: 192dpi)
 {
