@@ -11,6 +11,7 @@
  *
  * @package Redaxscript
  * @author Henry Ruhs
+ * @todo: icons are missing
  * @todo: hover for button is missing
  */
 
@@ -81,6 +82,11 @@
 		background: var(--rs-color-success);
 	}
 
+	&.rs-field-note
+	{
+		border-color: var(--rs-color-success-dark);
+	}
+
 	&.rs-box-note:before
 	{
 		content: '\2714';
@@ -99,6 +105,11 @@
 	&.rs-field-note option
 	{
 		background: var(--rs-color-warning);
+	}
+
+	&.rs-field-note
+	{
+		border-color: var(--rs-color-warning-dark);
 	}
 
 	&.rs-box-note:before
@@ -121,6 +132,11 @@
 		background: var(--rs-color-error);
 	}
 
+	&.rs-field-note
+	{
+		border-color: var(--rs-color-error-dark);
+	}
+
 	&.rs-box-note:before
 	{
 		content: '\d7';
@@ -139,6 +155,11 @@
 	&.rs-field-note option
 	{
 		background: var(--rs-color-info);
+	}
+
+	&.rs-field-note
+	{
+		border-color: var(--rs-color-info-dark);
 	}
 
 	&.rs-box-note:before
