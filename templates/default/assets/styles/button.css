@@ -32,12 +32,6 @@
 		pointer-events: none;
 	}
 
-	&.rs-button-reset
-	{
-		background: gray(200);
-		color: gray(170);
-	}
-
 	&.rs-is-large
 	{
 		font-size: 1.125em;

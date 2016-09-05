@@ -542,12 +542,6 @@ a
 	pointer-events: none
 }
 
-.rs-button-default.rs-button-reset
-{
-	background: rgb(200, 200, 200);
-	color: rgb(170, 170, 170)
-}
-
 .rs-button-default.rs-is-large
 {
 	font-size: 1.125em
