@@ -57,11 +57,12 @@ table
 button, input, select, textarea
 {
 	box-sizing: border-box;
+	font: inherit;
 }
 
-input, select, textarea
+button
 {
-	font: inherit;
+	cursor: pointer;
 }
 
 button::-moz-focus-inner, input[type="button"]::-moz-focus-inner, input[type="reset"]::-moz-focus-inner, input[type="submit"]::-moz-focus-inner

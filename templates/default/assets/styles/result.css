@@ -36,7 +36,7 @@
 			line-height: 2em;
 			position: absolute;
 			text-align: center;
-			top: 1em;
+			top: 0.25em;
 			transition: background 0.2s;
 			width: 2em;
 		}

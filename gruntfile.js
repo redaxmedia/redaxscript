@@ -523,7 +523,11 @@ module.exports = function (grunt)
 			{
 				src:
 				[
+					'node_modules/material-design-icons/action/svg/production/ic_check_circle_24px.svg',
+					'node_modules/material-design-icons/action/svg/production/ic_info_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_search_24px.svg',
+					'node_modules/material-design-icons/alert/svg/production/ic_error_24px.svg',
+					'node_modules/material-design-icons/alert/svg/production/ic_warning_24px.svg',
 					'node_modules/material-design-icons/navigation/svg/production/ic_chevron_right_24px.svg',
 					'node_modules/material-design-icons/communication/svg/production/ic_chat_bubble_24px.svg',
 					'node_modules/material-design-icons/content/svg/production/ic_add_24px.svg',

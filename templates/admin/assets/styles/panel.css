@@ -118,7 +118,7 @@
 	font-size: 1.75em;
 	line-height: 1.25em;
 	position: absolute;
-	right: 0.75em;
+	right: 0.25em;
 	top: 0.125em;
 }
 
@@ -210,10 +210,14 @@
 {
 	.rs-admin-list-panel-children li
 	{
-		& > .rs-admin-link-panel,
+		& > .rs-admin-link-panel
+		{
+			padding-left: 3.5em;
+		}
+
 		& > .rs-admin-wrapper-panel-link
 		{
-			padding-left: 3.75em;
+			padding-left: 2.75em;
 		}
 	}
 }
@@ -240,12 +244,12 @@
 {
 	display: flex;
 	justify-content: space-between;
-	padding: 0 0.75em;
 }
 
 .rs-admin-wrapper-panel-link .rs-admin-link-view
 {
 	flex: 1 1 0;
+	padding-left: 0.75em;
 }
 
 .rs-admin-list-panel .rs-admin-link-new
@@ -268,14 +272,6 @@
 	text-indent: 0;
 	text-transform: none;
 	top: 50%;
-}
-
-@media (--media-medium-min)
-{
-	.rs-admin-list-panel .rs-admin-link-new:after
-	{
-		text-align: right;
-	}
 }
 
 /* TODO: use .rs-admin-item-panel, .rs-admin-item-panel li over rs-admin-list-panel for the general styling and hover effects */

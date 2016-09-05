@@ -37,6 +37,7 @@
 	&:before
 	{
 		float: left;
+		font-size: 1.25em;
 		width: 1.5em;
 	}
 
@@ -89,7 +90,7 @@
 
 	&.rs-box-note:before
 	{
-		content: '\2714';
+		@extend %rs-icon-check-circle;
 	}
 }
 
@@ -114,7 +115,7 @@
 
 	&.rs-box-note:before
 	{
-		content: '\21';
+		@extend %rs-icon-warning;
 	}
 }
 
@@ -139,7 +140,7 @@
 
 	&.rs-box-note:before
 	{
-		content: '\d7';
+		@extend %rs-icon-error;
 	}
 }
 
@@ -164,6 +165,6 @@
 
 	&.rs-box-note:before
 	{
-		content: '\69';
+		@extend %rs-icon-info;
 	}
 }

@@ -271,17 +271,6 @@
 		width: 100%;
 	}
 }
-/**
- * @tableofcontents
- *
- * 1. icon
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
 /* @section 1. icon */
 
 @font-face
@@ -290,9 +279,37 @@
 	src: url('templates/default/assets/fonts/icon.woff2') format('woff2'), url('templates/default/assets/fonts/icon.woff') format('woff');
 }
 
+.rs-is-success.rs-box-note:before
+{
+	content: '\2714';
+	font-family: 'icon default';
+	font-weight: normal;
+}
+
+.rs-is-info.rs-box-note:before
+{
+	content: '\69';
+	font-family: 'icon default';
+	font-weight: normal;
+}
+
 .rs-form-search .rs-button-search:after
 {
 	content: '\2315';
+	font-family: 'icon default';
+	font-weight: normal;
+}
+
+.rs-is-error.rs-box-note:before
+{
+	content: '\274c';
+	font-family: 'icon default';
+	font-weight: normal;
+}
+
+.rs-is-warning.rs-box-note:before
+{
+	content: '\21';
 	font-family: 'icon default';
 	font-weight: normal;
 }
@@ -809,8 +826,8 @@ a
 	border-radius: 0.125em;
 	box-sizing: border-box;
 	font-size: 1em;
-	line-height: 1.25em;
-	padding: 0.375em 0.5em;
+	line-height: 1.5em;
+	padding: 0.25em 0.5em;
 	transition: background 0.2s, border 0.2s;
 	width: 100%
 }
@@ -1648,7 +1665,7 @@ ul.rs-list-default li:before
 	line-height: 2em;
 	position: absolute;
 	text-align: center;
-	top: 1em;
+	top: 0.25em;
 	transition: background 0.2s;
 	width: 2em
 }
@@ -2192,11 +2209,6 @@ ul.rs-list-default li:before
 	border-color: rgb(40, 119, 40)
 }
 
-.rs-is-success.rs-box-note:before
-{
-	content: '\2714'
-}
-
 /* @section 1.2 warning */
 
 .rs-is-warning
@@ -2212,11 +2224,6 @@ ul.rs-list-default li:before
 .rs-is-warning.rs-field-note
 {
 	border-color: rgb(143, 83, 0)
-}
-
-.rs-is-warning.rs-box-note:before
-{
-	content: '\21'
 }
 
 /* @section 1.3 error */
@@ -2236,11 +2243,6 @@ ul.rs-list-default li:before
 	border-color: rgb(130, 37, 33)
 }
 
-.rs-is-error.rs-box-note:before
-{
-	content: '\d7'
-}
-
 /* @section 1.4 info */
 
 .rs-is-info
@@ -2256,9 +2258,4 @@ ul.rs-list-default li:before
 .rs-is-info.rs-field-note
 {
 	border-color: rgb(33, 107, 130)
-}
-
-.rs-is-info.rs-box-note:before
-{
-	content: '\69'
 }
