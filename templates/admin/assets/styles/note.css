@@ -63,11 +63,7 @@
 
 .rs-admin-button-note
 {
-	border-radius: 0.125em;
-	display: inline-block;
-	font: bold 1em var(--rs-admin-font-secondary);
-	line-height: 2.5em;
-	padding: 0 2em;
+	@extend %rs-admin-button;
 
 	&:hover
 	{

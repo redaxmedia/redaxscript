@@ -1,0 +1,37 @@
+/**
+ * @tableofcontents
+ *
+ * 1. button
+ * 2. query
+ *    2.1 medium max
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. button */
+
+%rs-admin-button
+{
+	border-radius: 0.125em;
+	box-sizing: border-box;
+	display: inline-block;
+	font: bold 1em var(--rs-admin-font-secondary);
+	line-height: 2.5em;
+	padding: 0 1em;
+}
+
+/* @section 2. query */
+
+/* @section 2.1 medium max */
+
+@media (--media-medium-max)
+{
+	%rs-admin-button
+	{
+		text-align: center;
+		width: 100%;
+	}
+}

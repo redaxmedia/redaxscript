@@ -1,0 +1,9 @@
+<?php
+namespace Redaxscript;
+
+$registry = Registry::getInstance();
+if ($registry->get('loggedIn') === $registry->get('token'))
+{
+	$admin = true;
+	include('button.phtml');
+}

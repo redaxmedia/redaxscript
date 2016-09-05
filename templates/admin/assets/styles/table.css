@@ -61,7 +61,6 @@
 		{
 			background: gray(200);
 			font-weight: bold;
-			text-transform: uppercase;
 		}
 
 		& tr:not(:last-child)

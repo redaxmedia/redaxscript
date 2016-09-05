@@ -1,0 +1,29 @@
+<?php
+namespace Redaxscript;
+
+$language = Language::getInstance();
+$linkElement = new Html\Element();
+$linkElement
+	->init('a',
+	[
+		'class' => $admin ? 'rs-admin-button-default' : 'rs-button-default'
+	])
+	->text($language->get('preview', '_preview'));
+?>
+
+<!-- button -->
+
+<?php echo $linkElement; ?>
+
+<!-- button disabled -->
+
+<?php echo $linkElement
+	->copy()
+	->attr('disabled', 'disabled'); ?>
+
+<!-- button large -->
+
+<?php echo $linkElement
+	->copy()
+	->addClass($admin ? 'rs-admin-is-large' : 'rs-is-large'); ?>
+

@@ -2,12 +2,8 @@
  * @tableofcontents
  *
  * 1. button default
- * 3. button large and full
- * 4. space between elements
- * 5. disabled and reset
- * 6. query
- *    6.1 medium max
- *    6.2 medium min
+ * 2. query
+ *    2.1 medium min
  *
  * @since 3.0.0
  *
@@ -19,97 +15,55 @@
 
 .rs-button-default
 {
+	@extend %rs-button;
 	background: var(--rs-gradient-secondary);
-	border-radius: 0.125em;
-	box-shadow: 0 -0.125em 0 0 gray(0, 0.2) inset, 0 0.125em 0.125em gray(0, 0.2);
-	box-sizing: border-box;
-	cursor: pointer;
-	display: block;
-	font: bold 1em/1.25em var(--rs-font-primary);
-	padding: 0.375em 2em;
-	text-align: center;
-	text-decoration: none;
-}
-
-.rs-button-default,
-a.rs-button-default
-{
 	color: gray(255);
-	transition: transform 0.1s, box-shadow 0.1s;
-}
+	font-size: 0.875em;
 
-.rs-button-default:hover
-{
-	background: var(--rs-gradient-secondary-light);
-}
+	&:hover
+	{
+		background: var(--rs-gradient-secondary-light);
+	}
 
-.rs-button-default:active
-{
-	box-shadow: 0 -0.125em 0 0 gray(0, 0.2) inset;
-	transform: translateY(2px);
-}
+	&[disabled]
+	{
+		opacity: 0.5;
+		pointer-events: none;
+	}
 
-/* @section 3. button large and full */
+	&.rs-button-reset
+	{
+		background: gray(200);
+		color: gray(170);
+	}
 
-.rs-button-large
-{
-	font-size: 1.5em;
-	padding: 0.5em 1em;
-}
+	&.rs-is-large
+	{
+		font-size: 1.125em;
+	}
 
-.rs-button-full
-{
-	width: 100%;
-}
-
-/* @section 4. space between elements */
-
-.rs-form-default .rs-button-default
-{
-	margin-top: 1em;
-}
-
-/* @section 5. disabled and reset */
-
-.rs-button-default[disabled]
-{
-	opacity: 0.5;
-	pointer-events: none;
-}
-
-.rs-button-reset
-{
-	background: gray(200);
-	color: gray(190);
-}
-
-.rs-button-reset:hover
-{
-	background: gray(200);
-}
-
-/* @section 6. query */
-
-/* @section 6.1 medium max */
-
-@media (--media-medium-max)
-{
-	.rs-button-default
+	&.rs-is-full
 	{
 		width: 100%;
 	}
 }
 
-/* @section 6.2 medium min */
+/* @section 2. query */
+
+/* @section 2.1 medium max */
+
+@media (--media-medium-max)
+{
+	.rs-button-default + .rs-button-default
+	{
+		margin-top: 1em;
+	}
+}
+
+/* @section 2.2 medium min */
 
 @media (--media-medium-min)
 {
-	.rs-button-default
-	{
-		display: inline-block;
-		vertical-align: middle;
-	}
-
 	.rs-button-default + .rs-button-default
 	{
 		margin-left: 1em;

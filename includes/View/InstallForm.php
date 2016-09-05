@@ -50,7 +50,7 @@ class InstallForm extends ViewAbstract
 			[
 				'submit' =>
 				[
-					'class' => 'rs-js-submit rs-button-default rs-button-large rs-button-full',
+					'class' => 'rs-js-submit rs-button-default rs-is-large rs-is-full',
 					'name' => get_class()
 				]
 			]

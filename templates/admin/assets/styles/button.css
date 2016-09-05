@@ -1,12 +1,9 @@
 /**
  * @tableofcontents
  *
- * 1. button admin
- *    1.1 hover effect
- *    1.2 active effect
- * 2. disabled and readonly
- * 3. space between elements
- * 3. small min
+ * 1. button default
+ * 2. query
+ *    2.1 medium min
  *
  * @since 3.0.0
  *
@@ -14,87 +11,56 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. button admin */
+/* @section 1. button default */
 
 .rs-admin-button-default
 {
+	@extend %rs-admin-button;
 	background: var(--rs-admin-gradient-senary);
-	border-radius: 0.125em;
-	box-sizing: border-box;
-	cursor: pointer;
-	display: inline-block;
-	font: bold 0.875rem/2.5em var(--rs-admin-font-secondary);
-	padding: 0 1em;
-	text-align: center;
-	text-decoration: none;
-	text-transform: uppercase;
-}
-
-.rs-admin-button-default,
-a.rs-admin-button-default
-{
 	color: gray(255);
-}
+	font-size: 0.875em;
 
-.rs-admin-button-create
-{
-	background: var(--rs-admin-gradient-tertiary);
-}
+	&:hover
+	{
+		background: gray(50);
+	}
 
-.rs-admin-button-delete,
-:root .rs-admin-button-delete
-{
-	background: var(--rs-admin-gradient-secondary);
-	color: gray(255);
-}
+	&:active
+	{
+		background: var(--rs-admin-gradient-primary);
+	}
 
-/* @section 1.1 hover effect */
+	&[disabled]
+	{
+		background: gray(200);
+		color: gray(150);
+		pointer-events: none;
+	}
 
-.rs-admin-button-default:hover
-{
-	background: gray(50);
-}
+	&.rs-admin-button-create
+	{
+		background: var(--rs-admin-gradient-tertiary);
 
-.rs-admin-button-create:hover
-{
-	background: var(--rs-admin-color-success);
-}
+		&:hover
+		{
+			background: var(--rs-admin-color-success);
+		}
+	}
 
-.rs-admin-button-delete:hover,
-:root .rs-admin-button-delete:hover
-{
-	background: var(--rs-admin-color-error);
-}
+	&.rs-admin-button-delete
+	{
+		background: var(--rs-admin-gradient-secondary);
 
-/* @section 1.2 active effect */
+		&:hover
+		{
+			background: var(--rs-admin-color-error);
+		}
+	}
 
-.rs-admin-button-default:active
-{
-	background: var(--rs-admin-gradient-primary);
-	color: gray(255);
-}
-
-/* large */
-
-.rs-admin-button-large
-{
-	font-size: 1rem;
-}
-
-/* @section 2. disabled and readonly */
-
-.rs-admin-button-default[disabled]
-{
-	background: gray(200);
-	color: gray(150);
-	pointer-events: none;
-}
-
-/* @section 3. space between elements */
-
-.rs-admin-form-default .rs-admin-button-default
-{
-	margin-top: 1em;
+	&.rs-admin-is-large
+	{
+		font-size: 1.125em;
+	}
 }
 
 .rs-admin-wrapper-button
@@ -102,37 +68,24 @@ a.rs-admin-button-default
 	margin-bottom: 1em;
 }
 
-@media (--media-small-max)
-{
-	.rs-admin-button-default
-	{
-		width: 100%;
-	}
+/* @section 2. query */
 
+/* @section 2.1 medium max */
+
+@media (--media-medium-max)
+{
 	.rs-admin-button-default + .rs-admin-button-default
 	{
-		margin-top: 0.75em;
+		margin-top: 1em;
 	}
 }
 
-/* @section 3. small min */
+/* @section 2.2 medium min */
 
-@media (--media-small-min)
+@media (--media-medium-min)
 {
 	.rs-admin-button-default + .rs-admin-button-default
 	{
-		margin-left: 0.5em;
-	}
-
-	.rs-admin-form-default .rs-admin-button-cancel,
-	.rs-admin-form-default .rs-admin-button-delete
-	{
-		float: left;
-	}
-
-	.rs-admin-form-default .rs-admin-button-save,
-	.rs-admin-form-default .rs-admin-button-create
-	{
-		float: right;
+		margin-left: 1em;
 	}
 }

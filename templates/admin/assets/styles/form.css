@@ -36,4 +36,31 @@
 	{
 		content: ':\00a0' attr(data-message);
 	}
+
+	& .rs-admin-button-default
+	{
+		margin-top: 1em;
+	}
+}
+
+/* @section 2. query */
+
+/* @section 2.1 small min */
+
+@media (--media-small-min)
+{
+	.rs-admin-form-default
+	{
+		& .rs-admin-button-cancel,
+		& .rs-admin-button-delete
+		{
+			float: left;
+		}
+
+		& .rs-admin-button-save,
+		& .rs-admin-button-create
+		{
+			float: right;
+		}
+	}
 }

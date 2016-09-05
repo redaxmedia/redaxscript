@@ -2,6 +2,8 @@
  * @tableofcontents
  *
  * 1. form default
+ * 2. query
+ *    2.1 small min
  *
  * @since 3.0.0
  *
@@ -34,5 +36,10 @@
 	& .rs-label-message:after
 	{
 		content: ':\00a0' attr(data-message);
+	}
+
+	& .rs-button-default
+	{
+		margin-top: 1em;
 	}
 }

@@ -63,20 +63,8 @@
 
 .rs-button-note
 {
-	border-radius: 0.125em;
-	box-shadow: 0 -0.125em 0 0 gray(0, 0.2) inset, 0 0.125em 0.125em gray(0, 0.2);
-	display: inline-block;
+	@extend %rs-button;
 	font-size: 1.25em;
-	font-weight: bold;
-	line-height: 2.25em;
-	padding: 0 2em;
-	transition: transform 0.1s, box-shadow 0.1s;
-
-	&:active
-	{
-		box-shadow: 0 -0.125em 0 0 gray(0, 0.2) inset;
-		transform: translateY(2px);
-	}
 }
 
 /* @section 1.1 success */
