@@ -811,8 +811,8 @@ a
 	border-radius: 0.125em;
 	box-sizing: border-box;
 	font-size: 1em;
-	line-height: 2em;
-	padding: 0 0.5em;
+	line-height: 1.25em;
+	padding: 0.375em 0.5em;
 	transition: background 0.2s, border 0.2s;
 	width: 100%
 }
@@ -843,8 +843,6 @@ a
 .rs-field-textarea
 {
 	min-height: 10em;
-	padding-left: 0.5em;
-	padding-right: 0.5em;
 	resize: vertical;
 }
 

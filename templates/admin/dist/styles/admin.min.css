@@ -820,8 +820,8 @@
 	box-sizing: border-box;
 	color: rgb(100, 100, 100);
 	display: block;
-	font: 0.875em/2.25em arial, sans-serif;
-	padding: 0 0.5em;
+	font: 0.875em/1.25em arial, sans-serif;
+	padding: 0.5em;
 	transition: background 0.2s, border 0.2s;
 	width: 100%
 }
@@ -860,8 +860,6 @@
 .rs-admin-field-textarea
 {
 	min-height: 10em;
-	padding-left: 0.5em;
-	padding-right: 0.5em;
 	resize: vertical;
 }
 
