@@ -1,8 +1,14 @@
 /**
  * @tableofcontents
  *
- *    3.4 title sub
- * 6. content
+ * 1. content
+ *    1.1 title
+ *    1.2 box
+ * 2. comment
+ *    2.1 title
+ *    2.2 box
+ * 3. quote
+ * 4. code
  *
  * @since 3.0.0
  *
@@ -10,109 +16,85 @@
  * @author Henry Ruhs
  */
 
+/* @section 1. content */
+
+.rs-content
+{
+	word-wrap: break-word;
+}
+
+/* @section 1.1 title */
+
 .rs-title-content
 {
 	border-left: 0.125em solid gray(0, 0.2);
+	color: var(--rs-color-tertiary);
 	font-size: 2.5em;
 	margin-bottom: 0.75em;
 	margin-top: 1em;
 	padding-left: 0.25em;
 }
 
-.rs-title-content a
-{
-	color: var(--rs-color-tertiary);
-}
-
-/* @section 3.4 title sub */
-
 .rs-title-content-sub
 {
-	font-size: 1.25em;
+	font-size: 1.5em;
 	margin-bottom: 0.5em;
 	margin-top: 1em;
 }
 
-.rs-box-content a
-{
-	color: var(--rs-color-tertiary);
-	transition: color 0.2s;
-}
-
-.rs-content strong
-{
-	font-weight: bold;
-}
-
-/* @section 6. content */
+/* @section 1.2 box */
 
 .rs-box-content
 {
 	font-size: 1.25em;
-}
 
-.rs-box-content p
-{
-	line-height: 1.75em;
-	margin: 0.5em 0;
-}
+	& a
+	{
+		color: var(--rs-color-tertiary);
+		transition: color 0.2s;
+	}
 
-.rs-box-code
-{
-	background: gray(200);
-	border: 0.25em solid gray(170);
-	display: block;
-	font: 0.75em/1.25em var(--rs-font-code);
-	padding: 1em;
-	white-space: pre-wrap;
-}
-
-.rs-box-comment,
-.rs-box-content,
-.rs-box-extra
-{
-	word-wrap: break-word;
+	& p
+	{
+		line-height: 1.75em;
+		margin: 0.5em 0;
+	}
 }
 
 .rs-box-byline
 {
-	font-size: 0.875em;
 	font-style: italic;
 	margin-top: 1em;
 }
 
-.rs-box-line
-{
-	background: var(--rs-color-tertiary);
-	height: 0.125em;
-	margin: 3em 0;
-}
+/* @section 2. comment */
+
+/* @section 2.1 title */
 
 .rs-title-comment
 {
-	font-size: 1.5em;
-	font-weight: bold;
+	font-size: 2em;
+	margin-bottom: 0.75em;
 	margin-top: 1em;
+
+	&:after
+	{
+		@extend %rs-icon-chat-bubble;
+		color: gray(0, 0.1);
+		font-size: 0.875em;
+		margin-left: 0.25em;
+		vertical-align: top;
+	}
 }
 
-.rs-title-comment:after
-{
-	@extend %rs-icon-chat-bubble;
-	display: inline-block;
-	margin-left: 0.25em;
-	vertical-align: top;
-}
-
-.rs-title-comment a
-{
-	color: var(--rs-color-tertiary);
-}
+/* @section 2.2 box */
 
 .rs-box-comment
 {
-	margin-bottom: 3em;
-	margin-top: 1em;
+	font-size: 1.25em;
 }
+
+/* @section 3. quote */
 
 .rs-box-quote
 {
@@ -129,54 +111,23 @@
 
 	.rs-box-quote:before
 	{
+		color: gray(0, 0.1);
 		content: '\201d';
 		font: 7em/1em var(--rs-font-quote);
 		left: -0.5em;
-		opacity: 0.15;
 		position: absolute;
 		top: -0.125em;
 	}
 }
 
-.rs-link-readmore
+/* @section 4. code */
+
+.rs-box-code
 {
-	background: var(--rs-color-quaternary);
-	border-radius: 0.125em;
-	box-shadow: 0 -0.125em 0 0 gray(0, 0.2) inset, 0 0.125em 0.125em gray(0, 0.2);
-	box-sizing: border-box;
-	color: gray(255);
-	cursor: pointer;
+	background: gray(200);
+	border: 0.25em solid gray(170);
 	display: block;
-	font: 1em/1.25em var(--rs-font-primary);
-	margin: 1em 0;
-	padding: 0.5em 0.75em;
-	text-align: center;
-	transition: transform 0.2s;
-}
-
-.rs-link-readmore:after
-{
-	@extend %rs-icon-chevron-right;
-	font-size: 1.125em;
-	margin-left: 0.125em;
-}
-
-.rs-link-readmore:hover
-{
-	background: var(--rs-color-quaternary-light);
-}
-
-.rs-link-readmore:active
-{
-	box-shadow: 0 -0.125em 0 0 gray(0, 0.2) inset;
-	transform: translateY(2px);
-}
-
-@media (--media-medium-min)
-{
-	.rs-link-readmore
-	{
-		display: inline-block;
-		vertical-align: middle;
-	}
+	font: 0.75em/1.25em var(--rs-font-code);
+	padding: 1em;
+	white-space: pre-wrap;
 }

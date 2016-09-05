@@ -19,6 +19,7 @@
 	box-sizing: border-box;
 	color: gray(200);
 	padding: 1em;
+	word-wrap: break-word;
 
 	& .rs-title-extra
 	{

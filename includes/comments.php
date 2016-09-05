@@ -68,7 +68,6 @@ function comments($article, $route)
 	else if ($result)
 	{
 		$accessValidator = new Redaxscript\Validator\Access();
-		$output .= '<div class="rs-box-line"></div>';
 		foreach ($result as $r)
 		{
 			$access = $r['access'];
@@ -100,8 +99,9 @@ function comments($article, $route)
 
 				/* collect box output */
 
+				$output .= '<div class="rs-box-comment">' . $text . '</div>';
 				$output .= byline('comments', $id, $author, $date);
-				$output .= '<div class="rs-box-comment">' . $text . '</div>' . Redaxscript\Hook::trigger('commentFragmentEnd', $r);
+				$output .= Redaxscript\Hook::trigger('commentFragmentEnd', $r);
 
 				/* admin dock */
 

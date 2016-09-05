@@ -17,7 +17,8 @@ a
 	text-decoration: none;
 }
 
-.rs-link-default
+.rs-link-default,
+.rs-link-readmore
 {
 	border-bottom: 2px solid color(var(--rs-color-tertiary) a(30%));
 	color: var(--rs-color-tertiary);

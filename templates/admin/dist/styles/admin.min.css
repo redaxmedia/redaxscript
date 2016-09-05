@@ -188,6 +188,7 @@
 {
 	border-radius: 0.125em;
 	box-sizing: border-box;
+	cursor: pointer;
 	display: inline-block;
 	font: bold 1em arial, sans-serif;
 	line-height: 2.5em;

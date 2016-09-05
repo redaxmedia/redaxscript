@@ -60,11 +60,6 @@ button, input, select, textarea
 	font: inherit;
 }
 
-button
-{
-	cursor: pointer;
-}
-
 button::-moz-focus-inner,
 input[type="button"]::-moz-focus-inner,
 input[type="reset"]::-moz-focus-inner,

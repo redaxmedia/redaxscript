@@ -15,6 +15,7 @@
 
 .rs-list-pagination
 {
+	font-weight: bold;
 	text-align: center;
 
 	& li

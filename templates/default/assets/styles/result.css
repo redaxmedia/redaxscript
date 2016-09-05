@@ -32,11 +32,13 @@
 			color: gray(255);
 			content: counter(result, decimal);
 			counter-increment: result;
+			font-weight: bold;
 			left: 0;
 			line-height: 2em;
 			position: absolute;
 			text-align: center;
-			top: 0.25em;
+			top: 50%;
+			transform: translateY(-50%);
 			transition: background 0.2s;
 			width: 2em;
 		}

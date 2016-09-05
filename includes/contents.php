@@ -171,21 +171,18 @@ function contents()
 
 				/* collect box output */
 
-				$output .= '<div class="rs-box-content">' . $parser->getOutput();
-				$output .= '</div>' . Redaxscript\Hook::trigger('contentFragmentEnd', $r);
+				$output .= '<div class="rs-box-content">' . $parser->getOutput() . '</div>';
+				if ($byline == 1)
+				{
+					$output .= byline('articles', $id, $author, $date);
+				}
+				$output .= Redaxscript\Hook::trigger('contentFragmentEnd', $r);
 
-				/* prepend admin dock */
+				/* admin dock */
 
 				if (Redaxscript\Registry::get('loggedIn') == Redaxscript\Registry::get('token') && $firstParameter != 'logout')
 				{
 					$output .= admin_dock('articles', $id);
-				}
-
-				/* byline */
-
-				if ($byline == 1)
-				{
-					$output .= byline('articles', $id, $author, $date);
 				}
 			}
 			else

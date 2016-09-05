@@ -246,6 +246,7 @@
 	border-radius: 0.125em;
 	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset, 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
 	box-sizing: border-box;
+	cursor: pointer;
 	display: inline-block;
 	font-weight: bold;
 	line-height: 2.5em;
@@ -314,7 +315,7 @@
 	font-weight: normal;
 }
 
-.rs-list-breadcrumb .rs-item-divider:before, .rs-link-readmore:after, ul.rs-list-default li:before
+.rs-list-breadcrumb .rs-item-divider:before, ul.rs-list-default li:before
 {
 	content: '\3009';
 	font-family: 'icon default';
@@ -361,14 +362,14 @@ a
 	text-decoration: none;
 }
 
-.rs-link-default
+.rs-link-default, .rs-link-readmore
 {
 	border-bottom: 2px solid rgba(50, 62, 76, 0.3);
 	color: #323e4c;
 	transition: border-color 0.3s
 }
 
-.rs-link-default:hover
+.rs-link-default:hover, .rs-link-readmore:hover
 {
 	border-color: #699b3c
 }
@@ -581,8 +582,14 @@ a
 /**
  * @tableofcontents
  *
- *    3.4 title sub
- * 6. content
+ * 1. content
+ *    1.1 title
+ *    1.2 box
+ * 2. comment
+ *    2.1 title
+ *    2.2 box
+ * 3. quote
+ * 4. code
  *
  * @since 3.0.0
  *
@@ -590,106 +597,84 @@ a
  * @author Henry Ruhs
  */
 
+/* @section 1. content */
+
+.rs-content
+{
+	word-wrap: break-word;
+}
+
+/* @section 1.1 title */
+
 .rs-title-content
 {
 	border-left: 0.125em solid rgba(0, 0, 0, 0.2);
+	color: #323e4c;
 	font-size: 2.5em;
 	margin-bottom: 0.75em;
 	margin-top: 1em;
 	padding-left: 0.25em;
 }
 
-.rs-title-content a
-{
-	color: #323e4c;
-}
-
-/* @section 3.4 title sub */
-
 .rs-title-content-sub
 {
-	font-size: 1.25em;
+	font-size: 1.5em;
 	margin-bottom: 0.5em;
 	margin-top: 1em;
+}
+
+/* @section 1.2 box */
+
+.rs-box-content
+{
+	font-size: 1.25em
 }
 
 .rs-box-content a
 {
 	color: #323e4c;
-	transition: color 0.2s;
-}
-
-.rs-content strong
-{
-	font-weight: bold;
-}
-
-/* @section 6. content */
-
-.rs-box-content
-{
-	font-size: 1.25em;
+	transition: color 0.2s
 }
 
 .rs-box-content p
 {
 	line-height: 1.75em;
-	margin: 0.5em 0;
-}
-
-.rs-box-code
-{
-	background: rgb(200, 200, 200);
-	border: 0.25em solid rgb(170, 170, 170);
-	display: block;
-	font: 0.75em/1.25em monospace, arial, sans-serif;
-	padding: 1em;
-	white-space: pre-wrap;
-}
-
-.rs-box-comment, .rs-box-content, .rs-box-extra
-{
-	word-wrap: break-word;
+	margin: 0.5em 0
 }
 
 .rs-box-byline
 {
-	font-size: 0.875em;
 	font-style: italic;
 	margin-top: 1em;
 }
 
-.rs-box-line
-{
-	background: #323e4c;
-	height: 0.125em;
-	margin: 3em 0;
-}
+/* @section 2. comment */
+
+/* @section 2.1 title */
 
 .rs-title-comment
 {
-	font-size: 1.5em;
-	font-weight: bold;
-	margin-top: 1em;
+	font-size: 2em;
+	margin-bottom: 0.75em;
+	margin-top: 1em
 }
 
 .rs-title-comment:after
 {
-	display: inline-block;
+	color: rgba(0, 0, 0, 0.1);
+	font-size: 0.875em;
 	margin-left: 0.25em;
-	vertical-align: top;
+	vertical-align: top
 }
 
-.rs-title-comment a
-{
-	color: #323e4c;
-}
+/* @section 2.2 box */
 
 .rs-box-comment
 {
-	margin-bottom: 3em;
-	margin-top: 1em;
+	font-size: 1.25em;
 }
+
+/* @section 3. quote */
 
 .rs-box-quote
 {
@@ -706,57 +691,26 @@ a
 
 	.rs-box-quote:before
 	{
+		color: rgba(0, 0, 0, 0.1);
 		content: '\201d';
 		font: 7em/1em georgia, times, serif;
 		left: -0.5em;
-		opacity: 0.15;
 		position: absolute;
 		top: -0.125em;
 	}
 }
 
-.rs-link-readmore
+/* @section 4. code */
+
+.rs-box-code
 {
-	background: #c77a46;
-	border-radius: 0.125em;
-	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset, 0 0.125em 0.125em rgba(0, 0, 0, 0.2);
-	box-sizing: border-box;
-	color: rgb(255, 255, 255);
-	cursor: pointer;
+	background: rgb(200, 200, 200);
+	border: 0.25em solid rgb(170, 170, 170);
 	display: block;
-	font: 1em/1.25em 'open sans condensed', arial, sans-serif;
-	margin: 1em 0;
-	padding: 0.5em 0.75em;
-	text-align: center;
-	transition: transform 0.2s;
+	font: 0.75em/1.25em monospace, arial, sans-serif;
+	padding: 1em;
+	white-space: pre-wrap;
 }
-
-.rs-link-readmore:after
-{
-	font-size: 1.125em;
-	margin-left: 0.125em;
-}
-
-.rs-link-readmore:hover
-{
-	background: rgb(208, 142, 98);
-}
-
-.rs-link-readmore:active
-{
-	box-shadow: 0 -0.125em 0 0 rgba(0, 0, 0, 0.2) inset;
-	transform: translateY(2px);
-}
-
-@media (min-width: 50em)
-{
-	.rs-link-readmore
-	{
-		display: inline-block;
-		vertical-align: middle;
-	}
-}
-
 /**
  * @tableofcontents
  *
@@ -826,8 +780,8 @@ a
 	border-radius: 0.125em;
 	box-sizing: border-box;
 	font-size: 1em;
-	line-height: 1.5em;
-	padding: 0.25em 0.5em;
+	line-height: 1.25em;
+	padding: 0.375em 0.5em;
 	transition: background 0.2s, border 0.2s;
 	width: 100%
 }
@@ -1575,6 +1529,7 @@ ul.rs-list-default li:before
 
 .rs-list-pagination
 {
+	font-weight: bold;
 	text-align: center
 }
 
@@ -1661,11 +1616,13 @@ ul.rs-list-default li:before
 	color: rgb(255, 255, 255);
 	content: counter(result, decimal);
 	counter-increment: result;
+	font-weight: bold;
 	left: 0;
 	line-height: 2em;
 	position: absolute;
 	text-align: center;
-	top: 0.25em;
+	top: 50%;
+	transform: translateY(-50%);
 	transition: background 0.2s;
 	width: 2em
 }
@@ -1803,7 +1760,8 @@ ul.rs-list-default li:before
 	background: #323e4c;
 	box-sizing: border-box;
 	color: rgb(200, 200, 200);
-	padding: 1em
+	padding: 1em;
+	word-wrap: break-word
 }
 
 .rs-sidebar .rs-title-extra
@@ -2164,6 +2122,7 @@ ul.rs-list-default li:before
 .rs-box-note:before
 {
 	float: left;
+	font-size: 1.25em;
 	width: 1.5em
 }
 
