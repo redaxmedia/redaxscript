@@ -773,9 +773,7 @@ a
 	border: 2px solid rgb(200, 200, 200);
 	border-radius: 0.125em;
 	box-sizing: border-box;
-	font-size: 1em;
-	line-height: 1.25em;
-	padding: 0.375em 0.5em;
+	padding: 0.25em 0.5em;
 	transition: background 0.2s, border 0.2s;
 	width: 100%
 }
@@ -796,7 +794,7 @@ a
 	pointer-events: none
 }
 
-.rs-field-select
+.rs-field-default, .rs-field-select
 {
 	height: 2.25em;
 }
@@ -944,7 +942,6 @@ a
 
 .rs-component-website
 {
-	font-size: 1em;
 	max-width: 70%;
 	min-height: 2em;
 	overflow: hidden;
@@ -1681,8 +1678,7 @@ ul.rs-list-default li:before
 	border-radius: 0.125em;
 	display: -ms-flexbox;
 	display: flex;
-	font-size: 1.25em;
-	overflow: hidden
+	font-size: 1.25em
 
 	/* @section 1.2 field */
 
@@ -1691,15 +1687,10 @@ ul.rs-list-default li:before
 
 .rs-form-search .rs-field-search
 {
-	box-sizing: border-box;
-	display: inline-block;
 	-ms-flex-positive: 1;
 	flex-grow: 1;
-	font-size: 1em;
-	line-height: 2em;
 	min-width: 0;
-	padding: 0 0.5em;
-	vertical-align: middle
+	padding: 0 0.5em
 }
 
 .rs-form-search .rs-button-search
@@ -1707,17 +1698,14 @@ ul.rs-list-default li:before
 	background: transparent;
 	color: #323e4c;
 	cursor: pointer;
-	display: inline-block;
 	-ms-flex-preferred-size: 2em;
 	flex-basis: 2em;
 	-ms-flex-negative: 0;
 	flex-shrink: 0;
-	font-size: 1em;
-	line-height: 2em;
+	height: 2em;
 	position: relative;
 	text-indent: -999em;
-	transition: color 0.2s;
-	vertical-align: middle
+	transition: color 0.2s
 }
 
 .rs-form-search .rs-button-search:hover
