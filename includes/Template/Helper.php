@@ -197,7 +197,7 @@ class Helper
 		}
 		else
 		{
-			$robots = Db::forTablePrefix($lastTable)->whereNull('groups')->findOne()->robots;
+			$robots = Db::forTablePrefix($lastTable)->whereNull('access')->findOne()->robots;
 		}
 
 		/* handle robots */
