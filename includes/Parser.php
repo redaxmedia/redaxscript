@@ -206,8 +206,7 @@ class Parser
 		$linkElement = new Html\Element();
 		$linkElement->init('a',
 		[
-			'class' => $this->_optionArray['className']['readmore'],
-			'title' => $this->_language->get('readmore')
+			'class' => $this->_optionArray['className']['readmore']
 		]);
 
 		/* collect output */

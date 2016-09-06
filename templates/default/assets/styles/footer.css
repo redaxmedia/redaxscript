@@ -43,12 +43,6 @@
 	& .rs-link-login
 	{
 		float: right;
-
-		&:before
-		{
-			@extend %rs-icon-exit-to-app;
-			margin-right: 0.5em;
-		}
 	}
 }
 

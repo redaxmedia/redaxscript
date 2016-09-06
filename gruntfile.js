@@ -524,7 +524,6 @@ module.exports = function (grunt)
 				src:
 				[
 					'node_modules/material-design-icons/action/svg/production/ic_check_circle_24px.svg',
-					'node_modules/material-design-icons/action/svg/production/ic_exit_to_app_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_info_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_search_24px.svg',
 					'node_modules/material-design-icons/alert/svg/production/ic_error_24px.svg',
