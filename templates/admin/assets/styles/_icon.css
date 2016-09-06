@@ -20,13 +20,6 @@
 	font-weight: normal;
 }
 
-%rs-admin-icon-exit-to-app
-{
-	content: '\2192';
-	font-family: var(--rs-admin-font-icon);
-	font-weight: normal;
-}
-
 %rs-admin-icon-info
 {
 	content: '\69';
@@ -37,6 +30,13 @@
 %rs-admin-icon-lock
 {
 	content: '\1f511';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: normal;
+}
+
+%rs-admin-icon-power-settings-new
+{
+	content: '\2bbe';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }

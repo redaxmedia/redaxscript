@@ -287,6 +287,13 @@
 	font-weight: normal;
 }
 
+.rs-footer .rs-link-login:before
+{
+	content: '\2192';
+	font-family: 'icon default';
+	font-weight: normal;
+}
+
 .rs-is-info.rs-box-note:before
 {
 	content: '\69';

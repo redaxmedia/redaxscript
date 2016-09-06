@@ -107,7 +107,7 @@
 
 .rs-admin-link-logout:before
 {
-	@extend %rs-admin-icon-exit-to-app;
+	@extend %rs-admin-icon-power-settings-new;
 }
 
 /* @section 2.3 icons after */

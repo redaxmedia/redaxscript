@@ -13,6 +13,13 @@
 	font-weight: normal;
 }
 
+%rs-icon-exit-to-app
+{
+	content: '\2192';
+	font-family: var(--rs-font-icon);
+	font-weight: normal;
+}
+
 %rs-icon-info
 {
 	content: '\69';

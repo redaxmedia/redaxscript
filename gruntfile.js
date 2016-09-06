@@ -493,9 +493,9 @@ module.exports = function (grunt)
 				[
 					'node_modules/material-design-icons/action/svg/production/ic_check_circle_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_delete_24px.svg',
-					'node_modules/material-design-icons/action/svg/production/ic_exit_to_app_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_info_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_lock_24px.svg',
+					'node_modules/material-design-icons/action/svg/production/ic_power_settings_new_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_settings_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_visibility_off_24px.svg',
 					'node_modules/material-design-icons/alert/svg/production/ic_error_24px.svg',
@@ -524,6 +524,7 @@ module.exports = function (grunt)
 				src:
 				[
 					'node_modules/material-design-icons/action/svg/production/ic_check_circle_24px.svg',
+					'node_modules/material-design-icons/action/svg/production/ic_exit_to_app_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_info_24px.svg',
 					'node_modules/material-design-icons/action/svg/production/ic_search_24px.svg',
 					'node_modules/material-design-icons/alert/svg/production/ic_error_24px.svg',
@@ -568,6 +569,7 @@ module.exports = function (grunt)
 					'lock': 0x1F511,
 					'notifications': 0x1F514,
 					'person': 0x26C4,
+					'power-settings-new': 0x2BBE,
 					'remove': 0x2d,
 					'settings': 0x2731,
 					'visibility-off': 0x2298,

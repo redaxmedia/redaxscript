@@ -229,13 +229,6 @@
 	font-weight: normal;
 }
 
-.rs-admin-link-logout:before
-{
-	content: '\2192';
-	font-family: 'icon admin';
-	font-weight: normal;
-}
-
 .rs-admin-item-panel .rs-admin-list-panel-children-notification a.rs-admin-is-info:before, .rs-admin-item-panel .rs-admin-list-panel-children-notification span.rs-admin-is-info:before, .rs-admin-is-info.rs-admin-box-note:before
 {
 	content: '\69';
@@ -246,6 +239,13 @@
 .rs-admin-text-access:before
 {
 	content: '\1f511';
+	font-family: 'icon admin';
+	font-weight: normal;
+}
+
+.rs-admin-link-logout:before
+{
+	content: '\2bbe';
 	font-family: 'icon admin';
 	font-weight: normal;
 }
