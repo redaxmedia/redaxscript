@@ -18,12 +18,14 @@ rs.modules.tinymce =
 	options:
 	{
 		selector: 'form textarea.rs-admin-js-editor-textarea',
-		plugins: 'autolink code fullscreen image imagetools link media table visualblocks',
+		plugins: 'autolink code fullscreen image imagetools link media pagebreak table visualblocks',
 		body_class: 'rs-body',
 		content_css: rs.baseURL + 'templates/' + rs.registry.template + '/dist/styles/' + rs.registry.template + '.min.css',
 		skin_url: rs.baseURL + 'modules/Tinymce/dist/styles',
 		images_upload_url: rs.registry.parameterRoute + 'tinymce/upload/' + rs.registry.token,
 		custom_elements: 'codequote, language, module, readmore, registry, template',
-		forced_root_block: false
+		forced_root_block: false,
+		pagebreak_separator: '<break>',
+		pagebreak_split_block: true
 	}
 };

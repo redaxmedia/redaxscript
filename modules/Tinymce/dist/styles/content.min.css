@@ -50,3 +50,11 @@ codequote, language, module, readmore, registry, template
 {
 	display: none;
 }
+
+.mce-pagebreak
+{
+	border-top: 0.125em dashed rgb(170, 170, 170);
+	display: block;
+	height: 0;
+	width: 100%;
+}
