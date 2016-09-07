@@ -207,6 +207,17 @@
 		width: 100%;
 	}
 }
+/**
+ * @tableofcontents
+ *
+ * 1. icon
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 /* @section 1. icon */
 
 @font-face
@@ -313,14 +324,14 @@
 	font-weight: normal;
 }
 
-.rs-admin-table-default .rs-admin-button-moveup:before, .rs-admin-table-default thead .rs-admin-col-rank:after, .rs-admin-table-default tfoot .rs-admin-col-rank:after
+.rs-admin-table-default .rs-admin-button-moveup:before
 {
 	content: '\2227';
 	font-family: 'icon admin';
 	font-weight: normal;
 }
 
-.rs-admin-item-panel.rs-admin-item-active > span:after, .rs-admin-table-default .rs-admin-button-movedown:before, .rs-admin-table-default thead .rs-admin-col-rank:before, .rs-admin-table-default tfoot .rs-admin-col-rank:before
+.rs-admin-item-panel.rs-admin-item-active > span:after, .rs-admin-table-default .rs-admin-button-movedown:before
 {
 	content: '\2228';
 	font-family: 'icon admin';
@@ -550,7 +561,7 @@
 /**
  * @tableofcontents
  *
- * 1. list control admin
+ * 1. control
  *
  * @since 3.0.0
  *
@@ -558,68 +569,44 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. list control admin */
+/* @section 1. control */
 
-.rs-admin-item-control
+.rs-admin-list-control
+{
+	font: 1rem 'open sans condensed', arial, sans-serif;
+	margin-left: -0.25em;
+	margin-top: 1em
+}
+
+.rs-admin-list-control li
 {
 	display: inline-block;
-	font-size: 1rem;
-	margin-bottom: 0.5em;
-	margin-right: 0.5em;
+	margin: 0.25em
 }
 
 .rs-admin-list-control a, .rs-admin-list-control span
 {
 	background: linear-gradient(rgb(200, 200, 200), rgb(185, 185, 185));
-	border-radius: 0.25em;
+	border-radius: 0.125em;
 	color: rgb(100, 100, 100);
-	display: inline-block;
+	display: block;
 	line-height: 2em;
 	padding: 0 0.75em;
-	text-decoration: none;
+	text-align: center;
+	white-space: nowrap
 }
 
 .rs-admin-list-control a:hover
 {
 	background: linear-gradient(#2db4fa, rgb(6, 168, 249));
-	color: rgb(255, 255, 255);
+	color: rgb(255, 255, 255)
 }
 
-.rs-admin-list-control span
+.rs-admin-list-control .rs-admin-item-delete a:hover, .rs-admin-list-control .rs-admin-item-uninstall a:hover
 {
-	color: rgb(150, 150, 150);
+	background: linear-gradient(rgb(182, 28, 22), #c81e19)
 }
 
-/* delete and uninstall */
-
-.rs-admin-item-delete a:hover, .rs-admin-item-uninstall a:hover
-{
-	background: linear-gradient(rgb(182, 28, 22), #c81e19);
-	color: rgb(255, 255, 255);
-}
-
-/* space */
-
-.rs-admin-table-default .rs-admin-list-control
-{
-	margin-top: 0.5em;
-}
-
-@media (max-width: 29.999em)
-{
-	.rs-admin-item-control.rs-admin-item-enable, .rs-admin-item-control.rs-admin-item-disable, .rs-admin-item-control.rs-admin-item-publish, .rs-admin-item-control.rs-admin-item-unpublish
-	{
-		display: none;
-	}
-}
-
-@media (max-width: 49.999em)
-{
-	.rs-admin-item-control.rs-admin-item-future-posting
-	{
-		display: none;
-	}
-}
 /**
  * @tableofcontents
  *
@@ -1397,7 +1384,6 @@
  *    1.1 head and foot
  *    1.2 body
  *    1.3 moveup and movedown
- *    1.4 rank
  * 2. wrapper table
  *
  * @since 3.0.0
@@ -1418,8 +1404,6 @@
 	/* @section 1.2 body */
 
 	/* @section 1.3 moveup and movedown */
-
-	/* @section 1.4 rank */
 }
 
 .rs-admin-table-default caption, .rs-admin-table-default th, .rs-admin-table-default td
@@ -1469,12 +1453,17 @@
 	text-decoration: line-through
 }
 
+.rs-admin-table-default .rs-admin-col-rank
+{
+	position: relative
+}
+
 .rs-admin-table-default .rs-admin-button-moveup, .rs-admin-table-default .rs-admin-button-movedown
 {
 	color: rgb(70, 70, 70);
-	display: block;
-	min-height: 2.5em;
-	position: relative;
+	position: absolute;
+	text-align: left;
+	text-indent: -999em;
 	transition: color 0.2s
 }
 
@@ -1491,43 +1480,30 @@
 
 .rs-admin-table-default .rs-admin-button-moveup:before, .rs-admin-table-default .rs-admin-button-movedown:before
 {
-	display: block;
-	font-size: 2.25rem;
+	font-size: 2em;
 	position: absolute;
 	right: 0;
 	text-indent: 0
 }
 
-.rs-admin-table-default tr th.rs-admin-col-rank, .rs-admin-table-default tr td.rs-admin-col-rank
+.rs-admin-table-default .rs-admin-button-moveup
 {
-	direction: ltr;
-	text-align: left;
-	text-indent: -999em
+	top: 10%
 }
 
-.rs-admin-table-default thead .rs-admin-col-rank, .rs-admin-table-default tfoot .rs-admin-col-rank
+.rs-admin-table-default .rs-admin-button-moveup:before
 {
-	display: block;
-	position: relative
+	top: 0
 }
 
-.rs-admin-table-default thead .rs-admin-col-rank:after, .rs-admin-table-default thead .rs-admin-col-rank:before, .rs-admin-table-default tfoot .rs-admin-col-rank:after, .rs-admin-table-default tfoot .rs-admin-col-rank:before
+.rs-admin-table-default .rs-admin-button-movedown
 {
-	font: 1em/2.375em 'icon admin';
-	position: absolute;
-	right: 1.375em;
-	text-indent: 0;
-	text-transform: lowercase
+	bottom: 10%
 }
 
-.rs-admin-table-default thead .rs-admin-col-rank:after, .rs-admin-table-default tfoot .rs-admin-col-rank:after
+.rs-admin-table-default .rs-admin-button-movedown:before
 {
-	top: -0.25em
-}
-
-.rs-admin-table-default thead .rs-admin-col-rank:before, .rs-admin-table-default tfoot .rs-admin-col-rank:before
-{
-	bottom: -0.25em
+	bottom: 0
 }
 
 /* @section 2. wrapper table */
