@@ -121,7 +121,7 @@ class Parser
 		'className' =>
 		[
 			'readmore' => 'rs-link-readmore',
-			'codequote' => 'rs-js-code-quote rs-code-quote'
+			'codequote' => 'rs-js-codequote rs-codequote'
 		],
 		'delimiter' => '@@@'
 	];
