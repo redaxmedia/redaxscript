@@ -161,7 +161,7 @@
 		& a,
 		& span
 		{
-			line-height: 3.625em;
+			line-height: 3.25em;
 		}
 
 		& > li
@@ -257,6 +257,11 @@
 	position: relative;
 	text-indent: -999em;
 	width: 2.75em;
+
+	&:hover
+	{
+		background: gray(0, 0.2);
+	}
 }
 
 .rs-admin-list-panel .rs-admin-link-new:after

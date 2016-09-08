@@ -1021,7 +1021,7 @@
 	}
 	.rs-admin-list-panel a, .rs-admin-list-panel span
 {
-		line-height: 3.625em
+		line-height: 3.25em
 	}
 	.rs-admin-list-panel > li
 {
@@ -1113,7 +1113,12 @@
 {
 	position: relative;
 	text-indent: -999em;
-	width: 2.75em;
+	width: 2.75em
+}
+
+.rs-admin-list-panel .rs-admin-link-new:hover
+{
+	background: rgba(0, 0, 0, 0.2)
 }
 
 .rs-admin-list-panel .rs-admin-link-new:after
