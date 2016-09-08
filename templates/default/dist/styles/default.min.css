@@ -705,6 +705,16 @@ a
 	padding: 1em;
 	white-space: pre-wrap;
 }
+
+/* @section 5. admin */
+
+@media (min-width: 50em)
+{
+	.rs-admin-link-dock
+	{
+		max-width: 12em;
+	}
+}
 /**
  * @tableofcontents
  *
@@ -2050,7 +2060,6 @@ ul.rs-list-default li:before
  *
  * @package Redaxscript
  * @author Henry Ruhs
- * @todo: icons are missing
  * @todo: hover for button is missing
  */
 

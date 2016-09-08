@@ -131,3 +131,13 @@
 	padding: 1em;
 	white-space: pre-wrap;
 }
+
+/* @section 5. admin */
+
+@media (--media-medium-min)
+{
+	.rs-admin-link-dock
+	{
+		max-width: 12em;
+	}
+}
