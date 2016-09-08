@@ -32,29 +32,3 @@
 		font-size: 1.25em;
 	}
 }
-
-/* @section 2. query */
-
-/* @section 2.1 medium min */
-
-@media (--media-medium-min)
-{
-	.rs-sidebar
-	{
-		& .rs-admin-box-dock
-		{
-			display: flex;
-			justify-content: space-between;
-		}
-
-		& .rs-admin-link-dock
-		{
-			flex: 1 1 0;
-		}
-
-		& .rs-admin-text-dock
-		{
-			display: none;
-		}
-	}
-}

@@ -287,12 +287,12 @@ function admin_dock($table, $id)
 		$output .= '<div class="rs-admin-wrapper-dock"><div class="rs-admin-js-dock rs-admin-box-dock rs-admin-fn-clearfix">';
 		if ($edit == 1)
 		{
-			$output .= '<a title="'. Redaxscript\Language::get('unpublish') . '" href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/unpublish/' . $table . '/' . $id . '/' . Redaxscript\Registry::get('token') . '" class="rs-admin-js-link-dock rs-admin-link-dock rs-admin-link-unpublish">' . Redaxscript\Language::get('unpublish') . '</a>';
-			$output .= '<a title="'. Redaxscript\Language::get('edit') . '" href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/edit/' . $table . '/' . $id . '" class="rs-admin-js-link-dock rs-admin-link-dock rs-admin-link-edit">' . Redaxscript\Language::get('edit') . '</a>';
+			$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/unpublish/' . $table . '/' . $id . '/' . Redaxscript\Registry::get('token') . '" class="rs-admin-link-dock rs-admin-link-unpublish" data-description="'. Redaxscript\Language::get('unpublish') . '">' . Redaxscript\Language::get('unpublish') . '</a>';
+			$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/edit/' . $table . '/' . $id . '" class="rs-admin-link-dock rs-admin-link-edit" data-description="'. Redaxscript\Language::get('edit') . '">' . Redaxscript\Language::get('edit') . '</a>';
 		}
 		if ($delete == 1)
 		{
-			$output .= '<a title="'. Redaxscript\Language::get('delete') . '" href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/delete/' . $table . '/' . $id . '/' . Redaxscript\Registry::get('token') . '" class="rs-admin-js-confirm rs-admin-js-link-dock rs-admin-link-dock rs-admin-link-delete">' . Redaxscript\Language::get('delete') . '</a>';
+			$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/delete/' . $table . '/' . $id . '/' . Redaxscript\Registry::get('token') . '" class="rs-admin-js-confirm rs-admin-link-dock rs-admin-link-delete" data-description="'. Redaxscript\Language::get('delete') . '">' . Redaxscript\Language::get('delete') . '</a>';
 		}
 		$output .= '</div></div>';
 	}

@@ -272,17 +272,6 @@
 		width: 100%;
 	}
 }
-/**
- * @tableofcontents
- *
- * 1. icon
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
 /* @section 1. icon */
 
 @font-face
@@ -1766,33 +1755,6 @@ ul.rs-list-default li:before
 .rs-sidebar .rs-box-extra
 {
 	font-size: 1.25em
-}
-
-/* @section 2. query */
-
-/* @section 2.1 medium min */
-
-@media (min-width: 50em)
-{
-	.rs-sidebar
-	{
-	}
-	.rs-sidebar .rs-admin-box-dock
-{
-		display: -ms-flexbox;
-		display: flex;
-		-ms-flex-pack: justify;
-		justify-content: space-between
-	}
-	.rs-sidebar .rs-admin-link-dock
-{
-		-ms-flex: 1 1 0;
-		flex: 1 1 0
-	}
-	.rs-sidebar .rs-admin-text-dock
-{
-		display: none
-	}
 }
 /**
  * @tableofcontents

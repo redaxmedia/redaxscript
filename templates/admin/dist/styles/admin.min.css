@@ -207,17 +207,6 @@
 		width: 100%;
 	}
 }
-/**
- * @tableofcontents
- *
- * 1. icon
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
 /* @section 1. icon */
 
 @font-face
@@ -233,7 +222,7 @@
 	font-weight: normal;
 }
 
-.rs-admin-link-dock.rs-admin-link-delete:before
+.rs-admin-link-dock:not(:hover).rs-admin-link-delete:before
 {
 	content: '\2297';
 	font-family: 'icon admin';
@@ -268,7 +257,7 @@
 	font-weight: normal;
 }
 
-.rs-admin-link-dock.rs-admin-link-unpublish:before
+.rs-admin-link-dock:not(:hover).rs-admin-link-unpublish:before
 {
 	content: '\2298';
 	font-family: 'icon admin';
@@ -303,7 +292,7 @@
 	font-weight: normal;
 }
 
-.rs-admin-link-dock.rs-admin-link-edit:before
+.rs-admin-link-dock:not(:hover).rs-admin-link-edit:before
 {
 	content: '\270e';
 	font-family: 'icon admin';
@@ -670,10 +659,9 @@
 /**
  * @tableofcontents
  *
- *    1.1 description dock admin
- *    1.2 footer grid fix
- * 1. link dock admin
- *    1.1 icons
+ * 1. dock
+ *    1.1 box
+ *    1.2 link
  *
  * @since 3.0.0
  *
@@ -681,78 +669,58 @@
  * @author Henry Ruhs
  */
 
+/* @section 1. dock */
+
+/* @section 1.1 box */
+
 .rs-admin-box-dock
 {
 	background: rgb(30, 30, 30);
-	font-size: 0.875rem;
-	margin-top: 1em;
-}
-
-.rs-admin-box-dock, .rs-admin-box-dock a
-{
 	color: rgb(185, 185, 185);
+	font: bold 1rem/3.5em 'open sans condensed', arial, sans-serif;
 }
 
-/* @section 1.1 description dock admin */
-
-.rs-admin-text-dock
-{
-	float: right;
-	font: bold 1rem/2.625rem 'open sans condensed', arial, sans-serif;
-	margin-left: 0.5em;
-	margin-right: 0.5em;
-	max-width: 10em;
-	overflow: hidden;
-	text-align: right;
-	text-overflow: ellipsis;
-	text-transform: uppercase;
-	white-space: nowrap;
-}
-
-/* @section 1.2 footer grid fix */
-
-.rs-admin-footer .rs-admin-box-dock
-{
-	margin-left: 0.75rem;
-	margin-right: 0.75rem;
-}
-
-/* @section 1. link dock admin */
+/* @section 1.2 link */
 
 .rs-admin-link-dock
 {
+	box-sizing: border-box;
 	float: left;
-	height: 3.125em;
+	overflow: hidden;
+	padding: 0 0.5em;
 	position: relative;
-	text-indent: -999em;
-	width: 3.5em;
+	text-align: center;
+	text-overflow: ellipsis;
+	text-transform: uppercase;
+	white-space: nowrap;
+	width: 33.33%
 }
 
 .rs-admin-link-dock:hover
 {
 	background: linear-gradient(#2db4fa, rgb(6, 168, 249));
-	color: rgb(0, 0, 0);
+	color: rgb(0, 0, 0)
 }
-
-/* link delete */
 
 .rs-admin-link-dock.rs-admin-link-delete:hover
 {
-	background: linear-gradient(rgb(182, 28, 22), #c81e19);
+	background: linear-gradient(rgb(182, 28, 22), #c81e19)
 }
 
-/* @section 1.1 icons */
-
-.rs-admin-link-dock:before
+.rs-admin-link-dock:not(:hover)
 {
-	font-size: 1.5rem;
+	text-indent: -999em
+}
+
+.rs-admin-link-dock:not(:hover):before
+{
+	font-size: 1.75em;
 	left: 0;
-	line-height: 2.75rem;
 	position: absolute;
 	right: 0;
 	text-align: center;
 	text-indent: 0;
-	top: 0;
+	top: 0
 }
 /**
  * @tableofcontents
