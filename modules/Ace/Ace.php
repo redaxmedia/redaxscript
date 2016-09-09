@@ -2,6 +2,7 @@
 namespace Redaxscript\Modules\Ace;
 
 use Redaxscript\Module;
+use Redaxscript\Head;
 use Redaxscript\Registry;
 
 /**
@@ -55,8 +56,9 @@ class Ace extends Module
 	{
 		if (Registry::get('loggedIn') === Registry::get('token'))
 		{
-			$output = '<script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js"></script>';
-			echo $output;
+			$script = Head\Script::getInstance();
+			$script->append(['src' => '//cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js']);
+			echo $script;
 		}
 	}
 }

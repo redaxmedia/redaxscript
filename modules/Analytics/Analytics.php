@@ -2,6 +2,7 @@
 namespace Redaxscript\Modules\Analytics;
 
 use Redaxscript\Module;
+use Redaxscript\Head;
 use Redaxscript\Registry;
 
 /**
@@ -57,8 +58,9 @@ class Analytics extends Module
 	{
 		if (Registry::get('loggedIn') !== Registry::get('token'))
 		{
-			$output = '<script src="//google-analytics.com/analytics.js"></script>';
-			echo $output;
+			$script = Head\Script::getInstance();
+			$script->append(['src' => '//google-analytics.com/analytics.js']);
+			echo $script;
 		}
 	}
 }

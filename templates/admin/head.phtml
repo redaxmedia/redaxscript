@@ -1,5 +1,9 @@
 <?php namespace Redaxscript\Admin\Template; ?>
 
-<?php if (Tag::registry('loggedIn') === Tag::registry('token') && Tag::registry('firstParameter') !== 'logout'): ?>
-	<link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=<?php echo Helper::getSubset(); ?>" rel="stylesheet" />
-<?php endif; ?>
+<?php
+if (Tag::registry('loggedIn') === Tag::registry('token') && Tag::registry('firstParameter') !== 'logout')
+{
+	Tag::link()->append(['href' => '//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset(), 'rel' => 'stylesheet']);
+	echo Tag::link();
+}
+?>

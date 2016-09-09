@@ -142,7 +142,15 @@ class Helper
 	public static function getDescription()
 	{
 		$lastTable = Registry::get('lastTable');
-		$description = Registry::get('metaDescription') ? Registry::get('metaDescription') : Db::forTablePrefix($lastTable)->findOne()->description;
+
+		if (Registry::get('metaDescription'))
+		{
+			$description = Registry::get('metaDescription');
+		}
+		else if ($lastTable)
+		{
+			$description = Db::forTablePrefix($lastTable)->findOne()->description;
+		}
 
 		/* handle description */
 
@@ -195,7 +203,7 @@ class Helper
 		{
 			$robots = 'none';
 		}
-		else
+		else if ($lastTable)
 		{
 			$robots = Db::forTablePrefix($lastTable)->whereNull('access')->findOne()->robots;
 		}
@@ -204,9 +212,12 @@ class Helper
 
 		if ($robots)
 		{
-			return $robots;
+			return 'all';
 		}
-		return Db::getSetting('robots');
+		else
+		{
+			return 'none';
+		}
 	}
 
 	/**

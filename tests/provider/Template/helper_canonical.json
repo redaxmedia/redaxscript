@@ -1,0 +1,19 @@
+[
+	[
+		{
+			"firsTable": "categories",
+			"lastTable": "articles",
+			"root": "http://localhost"
+		},
+		"http://localhost/"
+	],
+	[
+		{
+			"root": "http://localhost",
+			"firsTable": "categories",
+			"lastTable": "articles",
+			"firstParameter": "test"
+		},
+		"http://localhost/"
+	]
+]

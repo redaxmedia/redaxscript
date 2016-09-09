@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Tests\Template;
 
+use Redaxscript\Db;
 use Redaxscript\Registry;
 use Redaxscript\Template;
 use Redaxscript\Tests\TestCaseAbstract;
@@ -13,6 +14,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ * @author Balázs Szilágyi
  */
 
 class HelperTest extends TestCaseAbstract
@@ -34,6 +36,29 @@ class HelperTest extends TestCaseAbstract
 	public function setUp()
 	{
 		$this->_registry = Registry::getInstance();
+	}
+
+	/**
+	 * setUpBeforeClass
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function setUpBeforeClass()
+	{
+		/*Db::forTablePrefix('categories')
+			->create()
+			->set(
+				[
+					'title' => 'test',
+					'alias' => 'test-one',
+					'author' => 'test',
+					'text' => 'test',
+					'category' => 1,
+					'date' => '2016-01-01 00:00:00'
+				])
+			->save();
+		*/
 	}
 
 	/**
@@ -73,6 +98,45 @@ class HelperTest extends TestCaseAbstract
 	public function providerGetClass()
 	{
 		return $this->getProvider('tests/provider/Template/helper_get_class.json');
+	}
+
+	/**
+	 * providerCanonical
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerCanonical()
+	{
+		return $this->getProvider('tests/provider/Template/helper_canonical.json');
+	}
+
+	/**
+	 * providerKeywords
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerKeywords()
+	{
+		return $this->getProvider('tests/provider/Template/helper_keywords.json');
+	}
+
+	/**
+	 * providerRobots
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerRobots()
+	{
+		return $this->getProvider('tests/provider/Template/helper_robots.json');
 	}
 
 	/**
@@ -147,6 +211,84 @@ class HelperTest extends TestCaseAbstract
 		/* actual */
 
 		$actual = Template\Helper::getClass();
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testCanonical
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $registryArray
+	 * @param string $expect
+	 *
+	 * @dataProvider providerCanonical
+	 */
+
+	public function testCanonical($registryArray = [], $expect = null)
+	{
+		/* setup */
+		//TODO: more test case
+//		$this->_registry->init($registryArray);
+
+		/* actual */
+
+//		$actual = Template\Helper::getCanonical();
+
+		/* compare */
+
+//		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testKeywords
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $registryArray
+	 * @param string $expect
+	 *
+	 * @dataProvider providerKeywords
+	 */
+
+	public function testKeywords($registryArray = [], $expect = null)
+	{
+		/* setup */
+		//TODO: more test case
+		$this->_registry->init($registryArray);
+
+		/* actual */
+
+		$actual = Template\Helper::getKeywords();
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testRobots
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $registryArray
+	 * @param string $expect
+	 *
+	 * @dataProvider providerRobots
+	 */
+
+	public function testRobots($registryArray = [], $expect = null)
+	{
+		/* setup */
+		//TODO: more test case
+		$this->_registry->init($registryArray);
+
+		/* actual */
+
+		$actual = Template\Helper::getRobots();
 
 		/* compare */
 

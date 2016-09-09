@@ -10,20 +10,32 @@
 
 <!-- meta -->
 
-<?php echo Tag::meta(); ?>
-<meta name="viewport" content="width=device-width" />
-<meta name="theme-color" content="#323e4c" />
-<meta name="msapplication-navbutton-color" content="#323e4c" />
-<meta name="apple-mobile-web-app-status-bar-stylecontent" content="#323e4c" />
+<?php
+Tag::meta()->append(['charset' => Tag::setting('charset')]);
+
+Tag::meta()->append(['name' => 'author', 'content' => Tag::setting('author')]);
+Tag::meta()->append(['name' => 'generator', 'content' => Tag::language('name', '_package') . ' ' . Tag::language('version', '_package')]);
+Tag::meta()->append(['name' => 'description', 'content' => Helper::getDescription()]);
+Tag::meta()->append(['name' => 'robots', 'content' => Helper::getRobots()]);
+
+Tag::meta()->append(['name' => 'viewport', 'content' => 'width=device-width']);
+Tag::meta()->append(['name' => 'theme-color', 'content' => '#323e4c']);
+Tag::meta()->append(['name' => 'msapplication-navbutton-color', 'content' => '#323e4c']);
+Tag::meta()->append(['name' => 'apple-mobile-web-app-status-bar-stylecontent', 'content' => '#323e4c']);
+echo Tag::meta();
+?>
 
 <!-- link -->
 
-<?php echo Tag::link(); ?>
-<link href="templates/default/assets/images/favicon.ico" rel="shortcut icon" />
-<link href="templates/default/assets/images/favicon.png" rel="apple-touch-icon" />
-<link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=<?php echo Helper::getSubset(); ?>" rel="stylesheet" />
+<?php
+Tag::link()->append(['href' => Tag::registry('root') . '/' . Helper::getCanonical()]);
+Tag::link()->append(['href' => 'templates/default/assets/images/favicon.ico', 'rel' => 'shortcut icon']);
+Tag::link()->append(['href' => 'templates/default/assets/images/favicon.png', 'rel' => 'apple-touch-icon']);
+Tag::link()->append(['href' => '//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset(), 'rel' => 'stylesheet']);
+echo Tag::link();
+?>
 
 <!-- style and script -->
 
 <?php echo Tag::style(); ?>
-<?php echo Tag::script('init'); ?>
+<?php echo Tag::scriptTmp('init'); ?>

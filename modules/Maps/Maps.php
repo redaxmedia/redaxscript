@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\Maps;
 
+use Redaxscript\Head;
 use Redaxscript\Html;
 use Redaxscript\Registry;
 
@@ -58,8 +59,9 @@ class Maps extends Config
 	{
 		if (!Registry::get('adminParameter'))
 		{
-			$output = '<script src="' . self::$_configArray['apiUrl'] . '?key=' . self::$_configArray['apiKey'] . '&amp;sensor=' . self::$_configArray['sensor'] . '"></script>';
-			echo $output;
+			$script = Head\Script::getInstance();
+			$script->append(['src' => self::$_configArray['apiUrl'] . '?key=' . self::$_configArray['apiKey'] . '&amp;sensor=' . self::$_configArray['sensor']]);
+			echo $script;
 		}
 	}
 

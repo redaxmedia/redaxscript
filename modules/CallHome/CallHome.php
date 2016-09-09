@@ -3,6 +3,7 @@ namespace Redaxscript\Modules\CallHome;
 
 use Redaxscript\Filter;
 use Redaxscript\Language;
+use Redaxscript\Head;
 use Redaxscript\Module;
 use Redaxscript\Reader;
 use Redaxscript\Registry;
@@ -60,8 +61,9 @@ class CallHome extends Module
 	{
 		if (Registry::get('loggedIn') === Registry::get('token') && Registry::get('firstParameter') === 'admin')
 		{
-			$output = '<script src="//google-analytics.com/analytics.js"></script>';
-			echo $output;
+			$script = Head\Script::getInstance();
+			$script->append(['src' => '//google-analytics.com/analytics.js']);
+			echo $script;
 		}
 	}
 

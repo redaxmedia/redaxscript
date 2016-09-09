@@ -5,6 +5,7 @@ use Redaxscript\Db;
 use Redaxscript\Config;
 use Redaxscript\Console;
 use Redaxscript\Breadcrumb;
+use Redaxscript\Head;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 use Redaxscript\Language;
@@ -240,19 +241,15 @@ class Tag
 	/**
 	 * base
 	 *
-	 * @since 2.3.0
+	 * @since 3.0.0
 	 *
 	 * @return string
 	 */
 
 	public static function base()
 	{
-		// @codeCoverageIgnoreStart
-		return self::_migrate('head',
-		[
-			'base'
-		]);
-		// @codeCoverageIgnoreEnd
+		$base = new Head\Base(Registry::getInstance());
+		return $base->render();
 	}
 
 	/**
@@ -265,48 +262,34 @@ class Tag
 
 	public static function title()
 	{
-		// @codeCoverageIgnoreStart
-		return self::_migrate('head',
-		[
-			'title'
-		]);
-		// @codeCoverageIgnoreEnd
+		$title = new Head\Title(Registry::getInstance());
+		return $title->render();
 	}
 
 	/**
 	 * link
 	 *
-	 * @since 2.3.0
+	 * @since 3.0.0
 	 *
 	 * @return string
 	 */
 
 	public static function link()
 	{
-		// @codeCoverageIgnoreStart
-		return self::_migrate('head',
-		[
-			'link'
-		]);
-		// @codeCoverageIgnoreEnd
+		return Head\Link::getInstance();
 	}
 
 	/**
 	 * meta
 	 *
-	 * @since 2.3.0
+	 * @since 3.0.0
 	 *
 	 * @return string
 	 */
 
 	public static function meta()
 	{
-		// @codeCoverageIgnoreStart
-		return self::_migrate('head',
-		[
-			'meta'
-		]);
-		// @codeCoverageIgnoreEnd
+		return Head\Meta::getInstance();
 	}
 
 	/**
@@ -327,6 +310,19 @@ class Tag
 	/**
 	 * script
 	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public static function script()
+	{
+		return Head\Script::getInstance();
+	}
+
+	/**
+	 * temporary script tag
+	 *
 	 * @since 2.3.0
 	 *
 	 * @param string $mode
@@ -334,7 +330,7 @@ class Tag
 	 * @return string
 	 */
 
-	public static function script($mode = null)
+	public static function scriptTmp($mode = null)
 	{
 		// @codeCoverageIgnoreStart
 		return self::_migrate('scripts',

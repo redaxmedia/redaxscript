@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\Tinymce;
 
+use Redaxscript\Head;
 use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
@@ -56,8 +57,9 @@ class Tinymce extends Config
 	{
 		if (Registry::get('loggedIn') === Registry::get('token'))
 		{
-			$output = '<script src="//cdnjs.cloudflare.com/ajax/libs/tinymce/4.4.1/tinymce.min.js"></script>';
-			echo $output;
+			$script = Head\Script::getInstance();
+			$script->append(['src' => '//cdnjs.cloudflare.com/ajax/libs/tinymce/4.4.1/tinymce.min.js']);
+			echo $script;
 		}
 	}
 

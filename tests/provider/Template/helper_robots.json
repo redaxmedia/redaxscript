@@ -1,0 +1,11 @@
+[
+	[
+		{
+			"root": "http://localhost",
+			"firsTable": "categories",
+			"lastTable": "articles",
+			"firstParameter": "test"
+		},
+		"all"
+	]
+]

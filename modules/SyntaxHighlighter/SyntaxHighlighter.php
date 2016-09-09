@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\SyntaxHighlighter;
 
+use Redaxscript\Head;
 use Redaxscript\Module;
 
 /**
@@ -51,8 +52,9 @@ class SyntaxHighlighter extends Module
 
 	public static function linkEnd()
 	{
-		$output = '<link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/github.min.css" rel="stylesheet" />';
-		echo $output;
+		$link = Head\Link::getInstance();
+		$link->append(['href' => '//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/github.min.css', 'rel' => 'stylesheet']);
+		echo $link;
 	}
 
 	/**
@@ -63,7 +65,8 @@ class SyntaxHighlighter extends Module
 
 	public static function scriptEnd()
 	{
-		$output = '<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>';
-		echo $output;
+		$script = Head\Script::getInstance();
+		$script->append(['src' => '//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js']);
+		echo $script;
 	}
 }
