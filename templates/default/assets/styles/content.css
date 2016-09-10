@@ -9,7 +9,6 @@
  *    2.2 box
  * 3. quote
  * 4. code
- * 5. admin
  *
  * @since 3.0.0
  *
@@ -131,14 +130,4 @@
 	font: 0.75em/1.25em var(--rs-font-code);
 	padding: 1em;
 	white-space: pre-wrap;
-}
-
-/* @section 5. admin */
-
-@media (--media-medium-min)
-{
-	.rs-admin-link-dock
-	{
-		max-width: 12em;
-	}
 }

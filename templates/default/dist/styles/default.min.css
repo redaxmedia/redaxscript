@@ -717,16 +717,6 @@ a
 	padding: 1em;
 	white-space: pre-wrap;
 }
-
-/* @section 5. admin */
-
-@media (min-width: 50em)
-{
-	.rs-admin-link-dock
-	{
-		max-width: 12em;
-	}
-}
 /**
  * @tableofcontents
  *
