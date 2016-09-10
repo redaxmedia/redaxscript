@@ -258,9 +258,9 @@
 	text-indent: -999em;
 	width: 2.75em;
 
-	&:hover
+	&:hover:after
 	{
-		background: gray(0, 0.2);
+		animation: rotate-right 0.5s;
 	}
 }
 

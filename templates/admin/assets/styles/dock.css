@@ -19,7 +19,7 @@
 {
 	background: gray(30);
 	color: gray(185);
-	font: bold 0.75rem/3.5em var(--rs-admin-font-primary);
+	font: bold 0.875rem/3.5em var(--rs-admin-font-primary);
 }
 
 /* @section 1.2 link */

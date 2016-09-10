@@ -677,7 +677,7 @@
 {
 	background: rgb(30, 30, 30);
 	color: rgb(185, 185, 185);
-	font: bold 0.75rem/3.5em 'open sans condensed', arial, sans-serif;
+	font: bold 0.875rem/3.5em 'open sans condensed', arial, sans-serif;
 }
 
 /* @section 1.2 link */
@@ -1116,9 +1116,9 @@
 	width: 2.75em
 }
 
-.rs-admin-list-panel .rs-admin-link-new:hover
+.rs-admin-list-panel .rs-admin-link-new:hover:after
 {
-	background: rgba(0, 0, 0, 0.2)
+	animation: rotate-right 0.5s
 }
 
 .rs-admin-list-panel .rs-admin-link-new:after
