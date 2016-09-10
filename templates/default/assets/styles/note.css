@@ -3,15 +3,14 @@
  *
  * 1. note
  *    1.1 success
- *    1.2 warning
- *    1.3 error
- *    1.4 info
+ *    1.2 info
+ *    1.3 warning
+ *    1.4 error
  *
  * @since 3.0.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
- * @todo: hover for button is missing
  */
 
 /* @section 1. note */
@@ -93,7 +92,32 @@
 	}
 }
 
-/* @section 1.2 warning */
+/* @section 1.2 info */
+
+.rs-is-info
+{
+	color: var(--rs-color-info-dark);
+
+	&.rs-box-note,
+	&.rs-button-note,
+	&.rs-field-note,
+	&.rs-field-note option
+	{
+		background: var(--rs-color-info);
+	}
+
+	&.rs-field-note
+	{
+		border-color: var(--rs-color-info-dark);
+	}
+
+	&.rs-box-note:before
+	{
+		@extend %rs-icon-info;
+	}
+}
+
+/* @section 1.3 warning */
 
 .rs-is-warning
 {
@@ -118,7 +142,7 @@
 	}
 }
 
-/* @section 1.3 error */
+/* @section 1.4 error */
 
 .rs-is-error
 {
@@ -140,30 +164,5 @@
 	&.rs-box-note:before
 	{
 		@extend %rs-icon-error;
-	}
-}
-
-/* @section 1.4 info */
-
-.rs-is-info
-{
-	color: var(--rs-color-info-dark);
-
-	&.rs-box-note,
-	&.rs-button-note,
-	&.rs-field-note,
-	&.rs-field-note option
-	{
-		background: var(--rs-color-info);
-	}
-
-	&.rs-field-note
-	{
-		border-color: var(--rs-color-info-dark);
-	}
-
-	&.rs-box-note:before
-	{
-		@extend %rs-icon-info;
 	}
 }

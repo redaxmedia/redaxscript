@@ -19,7 +19,7 @@
 {
 	background: gray(30);
 	color: gray(185);
-	font: bold 0.875rem/3.5em var(--rs-admin-font-primary);
+	font: bold 0.875rem var(--rs-admin-font-primary);
 }
 
 /* @section 1.2 link */
@@ -28,8 +28,9 @@
 {
 	box-sizing: border-box;
 	float: left;
+	line-height: 3.5em;
 	overflow: hidden;
-	padding: 0 0.5em;
+	padding: 0 1em;
 	position: relative;
 	text-align: center;
 	text-overflow: ellipsis;

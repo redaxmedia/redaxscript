@@ -1,7 +1,5 @@
 <?php namespace Redaxscript\Admin\Template; ?>
 
 <?php if (Tag::registry('loggedIn') === Tag::registry('token') && Tag::registry('firstParameter') !== 'logout'): ?>
-	<nav id="admin-panel" class="rs-admin-component-panel rs-admin-fn-clearfix">
-		<?php echo Tag::panel(); ?>
-	</nav>
+	<?php echo Tag::panel(); ?>
 <?php endif; ?>
