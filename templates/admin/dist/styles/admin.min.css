@@ -469,7 +469,7 @@
 
 .rs-admin-button-default:active
 {
-	background: linear-gradient(#2db4fa, rgb(6, 168, 249))
+	background: linear-gradient(#2db4fa, rgb(31, 177, 249))
 }
 
 .rs-admin-button-default[disabled]
@@ -481,22 +481,22 @@
 
 .rs-admin-button-default.rs-admin-button-create
 {
-	background: linear-gradient(rgb(119, 176, 30), #77b01e)
+	background: linear-gradient(rgb(134, 196, 33), #77b01e)
 }
 
 .rs-admin-button-default.rs-admin-button-create:hover
 {
-	background: #77b01e
+	background: #85c11f
 }
 
 .rs-admin-button-default.rs-admin-button-delete
 {
-	background: linear-gradient(rgb(182, 28, 22), #c81e19)
+	background: linear-gradient(rgb(204, 31, 25), #c81e19)
 }
 
 .rs-admin-button-default.rs-admin-button-delete:hover
 {
-	background: #c81e19
+	background: #da3725
 }
 
 .rs-admin-button-default.rs-admin-is-large
@@ -570,13 +570,13 @@
 
 .rs-admin-list-control a:hover
 {
-	background: linear-gradient(#2db4fa, rgb(6, 168, 249));
+	background: linear-gradient(#2db4fa, rgb(31, 177, 249));
 	color: rgb(255, 255, 255)
 }
 
 .rs-admin-list-control .rs-admin-item-delete a:hover, .rs-admin-list-control .rs-admin-item-uninstall a:hover
 {
-	background: linear-gradient(rgb(182, 28, 22), #c81e19)
+	background: linear-gradient(rgb(204, 31, 25), #c81e19)
 }
 
 /**
@@ -682,13 +682,13 @@
 
 .rs-admin-link-dock:hover
 {
-	background: linear-gradient(#2db4fa, rgb(6, 168, 249));
+	background: linear-gradient(#2db4fa, rgb(31, 177, 249));
 	color: rgb(0, 0, 0)
 }
 
 .rs-admin-link-dock.rs-admin-link-delete:hover
 {
-	background: linear-gradient(rgb(182, 28, 22), #c81e19)
+	background: linear-gradient(rgb(204, 31, 25), #c81e19)
 }
 
 .rs-admin-link-dock:not(:hover)
@@ -927,13 +927,13 @@
 
 .rs-admin-list-panel .rs-admin-item-panel .rs-admin-text-panel:hover, .rs-admin-list-panel .rs-admin-item-panel .rs-admin-link-panel:hover, .rs-admin-list-panel .rs-admin-text-panel-group:hover > .rs-admin-link-panel
 {
-	background: linear-gradient(#2db4fa, rgb(6, 168, 249));
+	background: linear-gradient(#2db4fa, rgb(31, 177, 249));
 	color: rgb(0, 0, 0)
 }
 
 .rs-admin-list-panel .rs-admin-item-logout > .rs-admin-link-panel:hover
 {
-	background: linear-gradient(rgb(182, 28, 22), #c81e19)
+	background: linear-gradient(rgb(204, 31, 25), #c81e19)
 }
 
 .rs-admin-list-panel .rs-admin-text-content:before, .rs-admin-list-panel .rs-admin-text-access:before, .rs-admin-list-panel .rs-admin-text-system:before, .rs-admin-list-panel .rs-admin-link-profile:before, .rs-admin-list-panel .rs-admin-text-notification:before, .rs-admin-list-panel .rs-admin-link-logout:before
@@ -1014,12 +1014,12 @@
 
 .rs-admin-has-success .rs-admin-text-notification-counter
 {
-	background: #77b01e;
+	background: #85c11f;
 }
 
 .rs-admin-has-info .rs-admin-text-notification-counter
 {
-	background: #2db4fa;
+	background: #46bafa;
 }
 
 .rs-admin-has-warning .rs-admin-text-notification-counter
@@ -1029,7 +1029,7 @@
 
 .rs-admin-has-error .rs-admin-text-notification-counter
 {
-	background: #c81e19;
+	background: #da3725;
 }
 
 /* @section 1.2.2 list */
@@ -1043,20 +1043,17 @@
 .rs-admin-list-panel-notification .rs-admin-item-panel-notification
 {
 	margin: 0.5em;
-	padding: 1em
+	padding: 0.5em 0.75em
 }
 
 .rs-admin-list-panel-notification .rs-admin-title-panel-notification
 {
-	font-size: 1.25em;
-	margin-bottom: 0.5em;
 	text-transform: uppercase
 }
 
 .rs-admin-list-panel-notification .rs-admin-link-panel-notification, .rs-admin-list-panel-notification .rs-admin-text-panel-notification
 {
-	display: block;
-	line-height: 1.75em
+	display: block
 }
 
 .rs-admin-list-panel-notification .rs-admin-link-panel-notification
@@ -1455,34 +1452,34 @@
 
 .rs-admin-is-success
 {
-	color: rgb(65, 103, 4)
+	color: rgb(67, 103, 4)
 }
 
 .rs-admin-is-success.rs-admin-box-note, .rs-admin-is-success.rs-admin-button-note, .rs-admin-is-success.rs-admin-field-note, .rs-admin-is-success.rs-admin-field-note option, .rs-admin-is-success.rs-admin-item-note
 {
-	background: #77b01e
+	background: #85c11f
 }
 
 .rs-admin-is-success.rs-admin-field-note
 {
-	border-color: rgb(65, 103, 4)
+	border-color: rgb(67, 103, 4)
 }
 
 /* @section 1.2 info */
 
 .rs-admin-is-info
 {
-	color: rgb(9, 96, 139)
+	color: rgb(27, 105, 147)
 }
 
 .rs-admin-is-info.rs-admin-box-note, .rs-admin-is-info.rs-admin-button-note, .rs-admin-is-info.rs-admin-field-note, .rs-admin-is-info.rs-admin-field-note option, .rs-admin-is-info.rs-admin-item-note
 {
-	background: #2db4fa
+	background: #46bafa
 }
 
 .rs-admin-is-info.rs-admin-field-note
 {
-	border-color: rgb(9, 96, 139)
+	border-color: rgb(27, 105, 147)
 }
 
 /* @section 1.3 warning */
@@ -1506,15 +1503,15 @@
 
 .rs-admin-is-error
 {
-	color: rgb(112, 4, 0)
+	color: rgb(121, 18, 6)
 }
 
 .rs-admin-is-error.rs-admin-box-note, .rs-admin-is-error.rs-admin-button-note, .rs-admin-is-error.rs-admin-field-note, .rs-admin-is-error.rs-admin-field-note option, .rs-admin-is-error.rs-admin-item-note
 {
-	background: #c81e19
+	background: #da3725
 }
 
 .rs-admin-is-error.rs-admin-field-note
 {
-	border-color: rgb(112, 4, 0)
+	border-color: rgb(121, 18, 6)
 }

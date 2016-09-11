@@ -22,16 +22,16 @@
 	--rs-admin-color-primary: #2db4fa;
 	--rs-admin-color-secondary: #c81e19;
 	--rs-admin-color-tertiary: #77b01e;
-	--rs-admin-color-primary-light: color(var(--rs-admin-color-primary) l(50%));
-	--rs-admin-color-secondary-dark: color(var(--rs-admin-color-secondary) l(40%));
-	--rs-admin-color-tertiary-dark: color(var(--rs-admin-color-tertiary) l(40%));
+	--rs-admin-color-primary-light: color(var(--rs-admin-color-primary) l(55%));
+	--rs-admin-color-secondary-dark: color(var(--rs-admin-color-secondary) l(45%));
+	--rs-admin-color-tertiary-dark: color(var(--rs-admin-color-tertiary) l(45%));
 
 	/* @section 1.2 note color */
 
-	--rs-admin-color-success: #77b01e;
+	--rs-admin-color-success: #85c11f;
 	--rs-admin-color-warning: #ffa52d;
-	--rs-admin-color-error: #c81e19;
-	--rs-admin-color-info: #2db4fa;
+	--rs-admin-color-error: #da3725;
+	--rs-admin-color-info: #46bafa;
 	--rs-admin-color-success-dark: color(var(--rs-admin-color-success) b(70%) saturation(+50%));
 	--rs-admin-color-warning-dark: color(var(--rs-admin-color-warning) b(60%) saturation(+50%));
 	--rs-admin-color-error-dark: color(var(--rs-admin-color-error) b(65%) saturation(+50%));

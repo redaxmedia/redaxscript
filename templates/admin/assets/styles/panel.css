@@ -199,13 +199,11 @@
 	& .rs-admin-item-panel-notification
 	{
 		margin: 0.5em;
-		padding: 1em;
+		padding: 0.5em 0.75em;
 	}
 
 	& .rs-admin-title-panel-notification
 	{
-		font-size: 1.25em;
-		margin-bottom: 0.5em;
 		text-transform: uppercase;
 	}
 
@@ -213,7 +211,6 @@
 	& .rs-admin-text-panel-notification
 	{
 		display: block;
-		line-height: 1.75em;
 	}
 
 	& .rs-admin-link-panel-notification
