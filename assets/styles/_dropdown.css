@@ -22,12 +22,11 @@
 
 			&:hover > ul
 			{
-				left: 0;
 				opacity: 1;
 				transform: translateY(0);
 			}
 
-			&:last-child:hover > ul
+			&:last-child > ul
 			{
 				left: auto;
 				right: 0;
@@ -36,12 +35,12 @@
 
 		& ul
 		{
-			left: -999em;
+			left: 0;
 			opacity: 0;
 			position: absolute;
 			top: 100%;
-			transform: translateY(-50%);
-			transition: opacity 0.4s, transform 0.2s;
+			transform: translateY(-100%);
+			transition: opacity 0.2s, transform 0.2s;
 			z-index: 1;
 
 			& ul
