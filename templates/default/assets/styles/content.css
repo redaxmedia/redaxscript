@@ -48,12 +48,6 @@
 {
 	font-size: 1.25em;
 
-	& a
-	{
-		color: var(--rs-color-tertiary);
-		transition: color 0.2s;
-	}
-
 	& p
 	{
 		line-height: 1.75em;

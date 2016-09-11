@@ -17,15 +17,35 @@ a
 	text-decoration: none;
 }
 
-.rs-link-default,
-.rs-link-readmore
+/* @section 2. link default */
+
+.rs-link-default
 {
 	border-bottom: 2px solid color(var(--rs-color-tertiary) a(30%));
 	color: var(--rs-color-tertiary);
-	transition: border-color 0.3s;
+	transition: border-color 0.2s;
 
 	&:hover
 	{
 		border-color: var(--rs-color-secondary);
+	}
+}
+
+/* @section 3. link read more */
+
+.rs-link-readmore
+{
+	background: var(--rs-color-tertiary);
+	border-radius: 0.125em;
+	box-shadow: 0 -0.125em 0 0 gray(0, 0.2) inset;
+	color: gray(255);
+	display: inline-block;
+	margin-top: 0.5em;
+	padding: 0.5em 0.75em;
+	transition: background 0.2s;
+
+	&:hover
+	{
+		background: var(--rs-color-tertiary-light);
 	}
 }
