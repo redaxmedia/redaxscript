@@ -80,8 +80,19 @@
 
 		& .rs-admin-has-language:after
 		{
-			content: '(' attr(data-language) ')';
+			background: var(--rs-admin-color-primary);
+			border-radius: 50%;
+			color: gray(255);
+			content: attr(data-language);
+			display: inline-block;
+			font-size: 0.625em;
+			font-weight: bold;
+			height: 1.75em;
+			line-height: 1.75em;
 			margin-left: 0.5em;
+			text-align: center;
+			text-transform: uppercase;
+			width: 1.75em;
 		}
 	}
 
