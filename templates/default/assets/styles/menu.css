@@ -261,16 +261,16 @@
 	.rs-list-menu-children
 	{
 		font-size: 0.875em;
-
-		& a
-		{
-			padding: 0 1em;
-		}
 	}
 
 	.rs-list-menu > li:hover .rs-list-menu-children
 	{
 		border-top: 0.5em solid transparent;
+	}
+
+	.rs-list-menu > li:hover .rs-list-menu-children a
+	{
+		padding: 0 1em;
 	}
 
 	.rs-list-menu > li:hover .rs-list-menu-children li
