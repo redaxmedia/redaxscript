@@ -80,8 +80,8 @@
 
 		& .rs-admin-has-language:after
 		{
-			 content: '(' attr(data-language) ')';
-			 margin-left: 0.5em;
+			content: '(' attr(data-language) ')';
+			margin-left: 0.5em;
 		}
 	}
 
