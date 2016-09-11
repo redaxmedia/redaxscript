@@ -1,22 +1,20 @@
 <?php namespace Redaxscript\Template; ?>
 
-<!-- navigation status -->
+<!-- menu status -->
 
-<input id="rs-navigation" class="rs-fn-status-navigation" type="checkbox"/>
+<input id="menu" class="rs-fn-status-menu" type="checkbox"/>
 
 <!-- header -->
 
-<header id="header" class="rs-header rs-has-navigation">
+<header id="header" class="rs-header rs-has-menu">
 	<section class="rs-wrapper rs-fn-clearfix">
 
-		<!-- website -->
-
-		<div class="rs-component-website rs-fn-clearfix">
+		<div class="rs-box-header rs-fn-clearfix">
 
 			<!-- title -->
 
 			<?php if (Tag::setting('title')): ?>
-				<h1 class="rs-title-website">
+				<h1 class="rs-title-header">
 					<a href="<?php echo Tag::registry('root'); ?>">
 						<?php echo Tag::setting('title'); ?>
 					</a>
@@ -26,40 +24,40 @@
 			<!-- description -->
 
 			<?php if (Tag::setting('description')): ?>
-				<span class="rs-text-website" title="<?php echo Tag::setting('description'); ?>"><?php echo Tag::setting('description'); ?></span>
+				<span class="rs-text-header" title="<?php echo Tag::setting('description'); ?>"><?php echo Tag::setting('description'); ?></span>
 			<?php endif; ?>
 		</div>
 
-		<!-- navigation toggle -->
+		<!-- menu toggle -->
 
-		<label class="rs-fn-toggle-navigation" for="rs-navigation">Menu</label>
+		<label class="rs-fn-toggle-menu" for="menu">Menu</label>
 
-		<!-- navigation -->
+		<!-- menu -->
 
-		<div class="rs-box-navigation">
-			<ul class="rs-fn-dropdown rs-fn-navigation rs-list-header">
+		<div class="rs-box-menu">
+			<ul class="rs-fn-dropdown rs-fn-menu rs-list-menu">
 				<li>
 					<span><?php echo Tag::language('categories'); ?></span>
 					<?php echo Tag::navigation('categories',
 					[
 						'children' => 1,
-						'class' => 'rs-list-header-children',
+						'class' => 'rs-list-menu-children',
 						'limit' => 5
 					]); ?>
 				</li><li>
 					<span><?php echo Tag::language('articles'); ?></span>
 					<?php echo Tag::navigation('articles',
 					[
-						'class' => 'rs-list-header-children',
+						'class' => 'rs-list-menu-children',
 						'limit' => 5
 					]); ?>
 				</li>
 			</ul>
 		</div>
 
-		<!-- navigation close -->
+		<!-- menu close -->
 
-		<label class="rs-fn-close-navigation" for="rs-navigation"></label>
+		<label class="rs-fn-close-menu" for="menu"></label>
 
 	</section>
 </header>

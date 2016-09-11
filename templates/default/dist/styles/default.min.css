@@ -272,17 +272,6 @@
 		width: 100%;
 	}
 }
-/**
- * @tableofcontents
- *
- * 1. icon
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
 /* @section 1. icon */
 
 @font-face
@@ -595,7 +584,6 @@ a
  *    2.2 box
  * 3. quote
  * 4. code
- * 5. admin
  *
  * @since 3.0.0
  *
@@ -939,10 +927,12 @@ a
 /**
  * @tableofcontents
  *
- *    3.5 title website
- * 5. header
- * 4. text website
- *    7.2 medium min
+ * 1. header
+ *    1.1 box
+ *    1.2 title
+ *    1.3 title
+ * 2. query
+ *    2.1 medium min
  *
  * @since 3.0.0
  *
@@ -950,61 +940,7 @@ a
  * @author Henry Ruhs
  */
 
-/* @section 3.5 title website */
-
-.rs-component-website
-{
-	max-width: 70%;
-	min-height: 2em;
-	overflow: hidden;
-	white-space: nowrap;
-}
-
-.rs-component-website a::-moz-selection, .rs-component-website span::-moz-selection
-{
-	background: #323e4c;
-	color: rgb(255, 255, 255);
-}
-
-.rs-component-website a::selection, .rs-component-website span::selection
-{
-	background: #323e4c;
-	color: rgb(255, 255, 255);
-}
-
-.rs-title-website
-{
-	font-size: 3.25em;
-	font-weight: normal;
-	line-height: 1em;
-	position: relative;
-	text-transform: uppercase;
-}
-
-.rs-text-website
-{
-	color: rgb(170, 170, 170);
-	display: none;
-	font-weight: bold;
-	margin-left: 0.125em;
-}
-
-@media (min-width: 50em)
-{
-	.rs-component-website
-	{
-		float: left;
-		font-size: 1.25em;
-		max-width: 60%;
-	}
-
-	.rs-text-website
-	{
-		display: block;
-	}
-}
-
-/* @section 5. header */
+/* @section 1. header */
 
 .rs-header
 {
@@ -1013,148 +949,58 @@ a
 	position: relative;
 }
 
-.rs-header, .rs-header a
-{
-	color: rgb(255, 255, 255);
-}
+/* @section 1.1 box */
 
-.rs-header .rs-title-website a
+.rs-box-header
 {
 	color: rgb(200, 200, 200);
-	transition: color 0.2s;
+	max-width: 70%;
+	min-height: 2em;
+	overflow: hidden;
+	white-space: nowrap
 }
 
-.rs-header .rs-title-website:hover a
+.rs-box-header a:hover
 {
-	color: rgb(255, 255, 255);
+	color: rgb(255, 255, 255)
 }
 
-/* @section 4. text website */
+/* @section 1.2 title */
 
-/* list */
-
-.rs-list-header
+.rs-title-header
 {
-	font-size: 1.25em;
+	font-size: 3.25em;
+	font-weight: normal;
+	line-height: 1em;
+	text-transform: uppercase;
 }
 
-.rs-list-header li
+/* @section 1.3 title */
+
+.rs-text-header
 {
-	box-sizing: border-box;
-	color: rgb(255, 255, 255);
-	display: block;
-	font: 1em/2.25em arial, sans-serif;
-	text-decoration: none;
+	color: rgb(170, 170, 170);
+	display: none;
+	font-weight: bold;
+	margin-left: 0.125em;
 }
 
-@media (max-width: 49.999em)
-{
-	.rs-list-header
-	{
-		background: #3873b5;
-	}
+/* @section 2. query */
 
-	.rs-list-header > li > span
-	{
-		background: rgb(48, 98, 156);
-	}
-
-	.rs-list-header a, .rs-list-header span
-	{
-		display: block;
-		font-size: 0.875em;
-		padding: 0 1em;
-		transition: background 0.2s;
-	}
-
-	.rs-list-header a:hover
-	{
-		background: rgb(60, 123, 195);
-	}
-}
-
-/* @section 7.2 medium min */
+/* @section 2.1 medium min */
 
 @media (min-width: 50em)
 {
-	.rs-list-header li
+	.rs-box-header
 	{
-		font: 1.125em/2em 'open sans condensed', arial, sans-serif;
+		float: left;
+		font-size: 1.25em;
+		max-width: 60%;
 	}
 
-	.rs-list-header > li
+	.rs-text-header
 	{
-		background: linear-gradient(rgb(60, 123, 195), #3873b5);
-		border-radius: 0.125em;
-		box-shadow: inset 0 -0.125em 0 0 rgba(0, 0, 0, 0.2);
-		display: inline-block;
-		margin: 1em 0;
-		padding: 0.25em 1em;
-	}
-
-	.rs-list-header > li:hover
-	{
-		background: linear-gradient(rgb(79, 136, 201), rgb(79, 136, 201));
-		color: rgb(0, 0, 0);
-		cursor: pointer;
-	}
-
-	.rs-list-header > li + li
-	{
-		margin-left: 1em;
-	}
-
-	/* children */
-
-	.rs-list-header-children
-	{
-		font-size: 0.875em;
-	}
-
-	.rs-list-header > li:hover .rs-list-header-children
-	{
-		border-top: 0.5em solid transparent;
-	}
-
-	.rs-list-header > li:hover .rs-list-header-children a
-	{
-		padding: 0 1em;
-	}
-
-	.rs-list-header > li:hover .rs-list-header-children li
-	{
-		background: #3873b5;
-	}
-
-	.rs-list-header > li:hover .rs-list-header-children li:hover
-	{
-		background: rgb(60, 123, 195);
-	}
-
-	.rs-list-header-children li:first-child
-	{
-		border-top-left-radius: 0.125em;
-		border-top-right-radius: 0.125em;
-	}
-
-	.rs-list-header-children li:last-child
-	{
-		border-bottom-left-radius: 0.125em;
-		border-bottom-right-radius: 0.125em;
-		box-shadow: inset 0 -0.125em 0 0 rgba(0, 0, 0, 0.2);
-	}
-
-	.rs-list-header-children:after
-	{
-		border-radius: 0.25em;
-		bottom: 0;
-		box-shadow: 0 0.1em 0.2em rgba(0, 0, 0, 0.5);
-		content: '';
-		left: 0;
-		position: absolute;
-		right: 0;
-		top: 0;
-		z-index: -1;
+		display: block;
 	}
 }
 /**
@@ -1330,31 +1176,9 @@ ul.rs-list-default li:before
 {
 	fill: rgb(255, 255, 255)
 }
-/**
- * @tableofcontents
- *
- * 1. general
- * 2. query
- *    2.1 max width 50rem
- *       2.1.1 navigation toggle
- *       2.1.2 navigation icon
- *       2.1.3 navigation
- *       2.1.4 navigation layer
- *    2.2 min width 50rem
- * 1. query
- *    1.1 medium max
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @todo: Use 3DX without border for the hamburger menu: https://jonsuh.com/hamburgers */
-
 /* @section 1. general */
 
-.rs-fn-status-navigation
+.rs-fn-status-menu
 {
 	display: none;
 }
@@ -1367,7 +1191,7 @@ ul.rs-list-default li:before
 {
 	/* @section 2.1.1 navigation toggle */
 
-	.rs-fn-toggle-navigation
+	.rs-fn-toggle-menu
 	{
 		cursor: pointer;
 		position: relative;
@@ -1378,7 +1202,7 @@ ul.rs-list-default li:before
 		z-index: 100;
 	}
 
-	.rs-fn-toggle-navigation:after, .rs-fn-toggle-navigation:before
+	.rs-fn-toggle-menu:after, .rs-fn-toggle-menu:before
 	{
 		bottom: 2.5em;
 		content: '';
@@ -1392,19 +1216,19 @@ ul.rs-list-default li:before
 
 	/* @section 2.1.2 navigation icon */
 
-	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation:after
+	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-fn-toggle-menu:after
 	{
 		transform: rotate(-45deg);
 	}
 
-	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation:before
+	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-fn-toggle-menu:before
 	{
 		transform: rotate(45deg);
 	}
 
 	/* @section 2.1.3 navigation */
 
-	.rs-fn-navigation
+	.rs-fn-menu
 	{
 		bottom: 0;
 		left: 0;
@@ -1414,7 +1238,7 @@ ul.rs-list-default li:before
 		z-index: 20;
 	}
 
-	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-navigation
+	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-fn-menu
 	{
 		transform: translateX(0);
 		transition: transform 0.2s;
@@ -1422,7 +1246,7 @@ ul.rs-list-default li:before
 
 	/* @section 2.1.4 navigation layer */
 
-	.rs-fn-status-navigation ~ .rs-has-navigation:after
+	.rs-fn-status-menu ~ .rs-has-menu:after
 	{
 		bottom: 0;
 		content: '';
@@ -1434,7 +1258,7 @@ ul.rs-list-default li:before
 		z-index: 1;
 	}
 
-	.rs-fn-status-navigation:checked ~ .rs-has-navigation:after
+	.rs-fn-status-menu:checked ~ .rs-has-menu:after
 	{
 		right: 0;
 		z-index: 5;
@@ -1445,12 +1269,12 @@ ul.rs-list-default li:before
 
 @media (min-width: 50em)
 {
-	.rs-box-navigation
+	.rs-box-menu
 	{
 		float: right;
 	}
 
-	.rs-fn-toggle-navigation
+	.rs-fn-toggle-menu
 	{
 		display: none;
 	}
@@ -1462,7 +1286,7 @@ ul.rs-list-default li:before
 
 @media (max-width: 49.999em)
 {
-	.rs-fn-navigation
+	.rs-fn-menu
 	{
 		max-width: 25em;
 		width: 75%;
@@ -1470,7 +1294,7 @@ ul.rs-list-default li:before
 
 	/* toggle and status */
 
-	.rs-fn-toggle-navigation
+	.rs-fn-toggle-menu
 	{
 		color: rgb(200, 200, 200);
 		font: 1rem arial;
@@ -1480,22 +1304,22 @@ ul.rs-list-default li:before
 		top: 1rem;
 	}
 
-	.rs-fn-toggle-navigation:after, .rs-fn-toggle-navigation:before
+	.rs-fn-toggle-menu:after, .rs-fn-toggle-menu:before
 	{
 		background: #3873b5;
 	}
 
-	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-toggle-navigation
+	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-fn-toggle-menu
 	{
 		position: fixed;
 	}
 
-	.rs-fn-status-navigation:not(:checked) ~ .rs-has-navigation .rs-fn-toggle-navigation:after
+	.rs-fn-status-menu:not(:checked) ~ .rs-has-menu .rs-fn-toggle-menu:after
 	{
 		box-shadow: 0 -0.5em 0 #3873b5, 0 0.5em 0 #3873b5;
 	}
 
-	.rs-fn-close-navigation
+	.rs-fn-close-menu
 	{
 		background: rgba(0, 0, 0, 0.8);
 		bottom: 0;
@@ -1509,10 +1333,137 @@ ul.rs-list-default li:before
 		z-index: 10;
 	}
 
-	.rs-fn-status-navigation:checked ~ .rs-has-navigation .rs-fn-close-navigation
+	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-fn-close-menu
 	{
 		opacity: 1;
 		visibility: visible;
+	}
+}
+
+/* list menu */
+
+.rs-list-menu
+{
+	font-size: 1.25em;
+}
+
+.rs-list-menu li
+{
+	box-sizing: border-box;
+	color: rgb(255, 255, 255);
+	display: block;
+	font: 1em/2.25em arial, sans-serif;
+	text-decoration: none;
+}
+
+@media (max-width: 49.999em)
+{
+	.rs-list-menu
+	{
+		background: #3873b5;
+	}
+
+	.rs-list-menu > li > span
+	{
+		background: rgb(48, 98, 156);
+	}
+
+	.rs-list-menu a, .rs-list-menu span
+	{
+		display: block;
+		font-size: 0.875em;
+		padding: 0 1em;
+		transition: background 0.2s;
+	}
+
+	.rs-list-menu a:hover
+	{
+		background: rgb(60, 123, 195);
+	}
+}
+
+/* @section 7.2 medium min */
+
+@media (min-width: 50em)
+{
+	.rs-list-menu li
+	{
+		font: 1.125em/2em 'open sans condensed', arial, sans-serif;
+	}
+
+	.rs-list-menu > li
+	{
+		background: linear-gradient(rgb(60, 123, 195), #3873b5);
+		border-radius: 0.125em;
+		box-shadow: inset 0 -0.125em 0 0 rgba(0, 0, 0, 0.2);
+		display: inline-block;
+		margin: 1em 0;
+		padding: 0.25em 1em;
+	}
+
+	.rs-list-menu > li:hover
+	{
+		background: linear-gradient(rgb(79, 136, 201), rgb(79, 136, 201));
+		color: rgb(0, 0, 0);
+		cursor: pointer;
+	}
+
+	.rs-list-menu > li + li
+	{
+		margin-left: 1em;
+	}
+
+	/* children */
+
+	.rs-list-menu-children
+	{
+		font-size: 0.875em;
+	}
+
+	.rs-list-menu > li:hover .rs-list-menu-children
+	{
+		border-top: 0.5em solid transparent;
+	}
+
+	.rs-list-menu > li:hover .rs-list-menu-children a
+	{
+		padding: 0 1em;
+	}
+
+	.rs-list-menu > li:hover .rs-list-menu-children li
+	{
+		background: #3873b5;
+	}
+
+	.rs-list-menu > li:hover .rs-list-menu-children li:hover
+	{
+		background: rgb(60, 123, 195);
+	}
+
+	.rs-list-menu-children li:first-child
+	{
+		border-top-left-radius: 0.125em;
+		border-top-right-radius: 0.125em;
+	}
+
+	.rs-list-menu-children li:last-child
+	{
+		border-bottom-left-radius: 0.125em;
+		border-bottom-right-radius: 0.125em;
+		box-shadow: inset 0 -0.125em 0 0 rgba(0, 0, 0, 0.2);
+	}
+
+	.rs-list-menu-children:after
+	{
+		border-radius: 0.25em;
+		bottom: 0;
+		box-shadow: 0 0.1em 0.2em rgba(0, 0, 0, 0.5);
+		content: '';
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: -1;
 	}
 }
 /**
@@ -1962,16 +1913,6 @@ ul.rs-list-default li:before
 	line-height: 1.25em;
 	opacity: 0;
 	padding: 0.375em 0.75em
-}
-
-.rs-title-teaser::-moz-selection
-{
-	background: #c77a46
-}
-
-.rs-title-teaser::selection
-{
-	background: #c77a46
 }
 
 .rs-title-teaser strong

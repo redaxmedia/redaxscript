@@ -47,11 +47,6 @@
 	opacity: 0;
 	padding: 0.375em 0.75em;
 
-	&::selection
-	{
-		background: var(--rs-color-quaternary);
-	}
-
 	& strong
 	{
 		font-weight: bold;
