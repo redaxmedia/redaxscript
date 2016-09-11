@@ -110,7 +110,7 @@
 
 		& .rs-admin-link-view
 		{
-			flex: 1 1 0;
+			flex-grow: 1;
 		}
 
 		& .rs-admin-link-new

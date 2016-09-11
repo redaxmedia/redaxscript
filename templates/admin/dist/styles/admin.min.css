@@ -955,8 +955,8 @@
 
 .rs-admin-list-panel .rs-admin-text-panel-group .rs-admin-link-view
 {
-	-ms-flex: 1 1 0;
-	flex: 1 1 0
+	-ms-flex-positive: 1;
+	flex-grow: 1
 }
 
 .rs-admin-list-panel .rs-admin-text-panel-group .rs-admin-link-new
@@ -1324,8 +1324,19 @@
 
 .rs-admin-table-default tbody .rs-admin-has-language:after
 {
-	content: '(' attr(data-language) ')';
-	margin-left: 0.5em
+	background: #2db4fa;
+	border-radius: 50%;
+	color: rgb(255, 255, 255);
+	content: attr(data-language);
+	display: inline-block;
+	font-size: 0.625em;
+	font-weight: bold;
+	height: 1.75em;
+	line-height: 1.75em;
+	margin-left: 0.5em;
+	text-align: center;
+	text-transform: uppercase;
+	width: 1.75em
 }
 
 .rs-admin-table-default .rs-admin-col-rank
