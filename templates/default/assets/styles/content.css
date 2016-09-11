@@ -116,7 +116,7 @@
 
 /* @section 4. code */
 
-.rs-box-code
+.rs-box-codequote
 {
 	background: gray(200);
 	border: 0.25em solid gray(170);
@@ -124,4 +124,23 @@
 	font: 0.75em/1.25em var(--rs-font-code);
 	padding: 1em;
 	white-space: pre-wrap;
+}
+
+/* @section 5. readmore */
+
+.rs-link-readmore
+{
+	background: var(--rs-color-tertiary);
+	border-radius: 0.125em;
+	color: gray(255);
+	display: inline-block;
+	line-height: 2.5em;
+	margin-top: 0.5em;
+	padding: 0 1em;
+	transition: background 0.2s;
+
+	&:hover
+	{
+		background: var(--rs-color-tertiary-light);
+	}
 }

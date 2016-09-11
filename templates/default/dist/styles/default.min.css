@@ -362,17 +362,20 @@ a
 	text-decoration: none;
 }
 
-.rs-link-default, .rs-link-readmore
+/* @section 2. link default */
+
+.rs-link-default
 {
 	border-bottom: 2px solid rgba(50, 62, 76, 0.3);
 	color: #323e4c;
-	transition: border-color 0.3s
+	transition: border-color 0.2s
 }
 
-.rs-link-default:hover, .rs-link-readmore:hover
+.rs-link-default:hover
 {
 	border-color: #699b3c
 }
+
 /**
  * @tableofcontents
  *
@@ -624,12 +627,6 @@ a
 	font-size: 1.25em
 }
 
-.rs-box-content a
-{
-	color: #323e4c;
-	transition: color 0.2s
-}
-
 .rs-box-content p
 {
 	line-height: 1.75em;
@@ -696,7 +693,7 @@ a
 
 /* @section 4. code */
 
-.rs-box-code
+.rs-box-codequote
 {
 	background: rgb(200, 200, 200);
 	border: 0.25em solid rgb(170, 170, 170);
@@ -704,6 +701,25 @@ a
 	font: 0.75em/1.25em monospace, arial, sans-serif;
 	padding: 1em;
 	white-space: pre-wrap;
+}
+
+/* @section 5. readmore */
+
+.rs-link-readmore
+{
+	background: #323e4c;
+	border-radius: 0.125em;
+	color: rgb(255, 255, 255);
+	display: inline-block;
+	line-height: 2.5em;
+	margin-top: 0.5em;
+	padding: 0 1em;
+	transition: background 0.2s
+}
+
+.rs-link-readmore:hover
+{
+	background: rgb(81, 101, 123)
 }
 /**
  * @tableofcontents
@@ -1933,7 +1949,7 @@ ul.rs-list-default li:before
 	font-weight: 300;
 	line-height: 1.25em;
 	opacity: 0;
-	padding: 0.375em 0.75em
+	padding: 0.5em 0.75em
 }
 
 .rs-title-teaser strong
