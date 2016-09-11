@@ -30,34 +30,31 @@
 
 		<!-- menu toggle -->
 
-		<label class="rs-fn-toggle-menu" for="menu">Menu</label>
+		<label class="rs-fn-toggle-menu rs-label-menu" for="menu">Menu</label>
 
 		<!-- menu -->
 
-		<div class="rs-box-menu">
-			<ul class="rs-fn-dropdown rs-fn-menu rs-list-menu">
-				<li>
-					<span><?php echo Tag::language('categories'); ?></span>
-					<?php echo Tag::navigation('categories',
-					[
-						'children' => 1,
-						'class' => 'rs-list-menu-children',
-						'limit' => 5
-					]); ?>
-				</li><li>
-					<span><?php echo Tag::language('articles'); ?></span>
-					<?php echo Tag::navigation('articles',
-					[
-						'class' => 'rs-list-menu-children',
-						'limit' => 5
-					]); ?>
-				</li>
-			</ul>
-		</div>
+		<ul class="rs-fn-dropdown rs-fn-menu rs-list-menu">
+			<li>
+				<span><?php echo Tag::language('categories'); ?></span>
+				<?php echo Tag::navigation('categories',
+				[
+					'children' => 1,
+					'class' => 'rs-list-menu-children',
+					'limit' => 5
+				]); ?>
+			</li><li>
+				<span><?php echo Tag::language('articles'); ?></span>
+				<?php echo Tag::navigation('articles',
+				[
+					'class' => 'rs-list-menu-children',
+					'limit' => 5
+				]); ?>
+			</li>
+		</ul>
 
-		<!-- menu close -->
+		<!-- menu overlay -->
 
 		<label class="rs-fn-close-menu" for="menu"></label>
-
 	</section>
 </header>
