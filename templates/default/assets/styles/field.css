@@ -45,7 +45,7 @@
 }
 
 .rs-field-default,
-.rs-field-select
+.rs-field-select:not([multiple])
 {
 	height: 2.25em;
 }

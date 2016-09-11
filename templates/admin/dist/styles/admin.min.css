@@ -337,8 +337,7 @@
 /**
  * @tableofcontents
  *
- * 1. link
- * 2. title
+ * 1. title
  *
  * @since 3.0.0
  *
@@ -346,15 +345,7 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. link */
-
-.rs-admin-link-default
-{
-	color: rgb(100, 100, 100);
-	text-decoration: underline;
-}
-
-/* @section 2. title */
+/* @section 1. title */
 
 .rs-admin-title-content
 {
@@ -367,7 +358,6 @@
 		color: inherit;
 	}
 }
-
 /**
  * @tableofcontents
  *
@@ -777,14 +767,9 @@
 	pointer-events: none
 }
 
-.rs-admin-field-default, .rs-admin-field-select
+.rs-admin-field-default, .rs-admin-field-select:not([multiple])
 {
 	height: 2.5em;
-}
-
-.rs-admin-field-select[multiple]
-{
-	height: 3.5em;
 }
 
 /* @section 2. textarea */
@@ -1337,6 +1322,12 @@
 {
 	color: rgb(185, 185, 185);
 	text-decoration: line-through
+}
+
+.rs-admin-table-default tbody .rs-admin-has-language:after
+{
+	content: '(' attr(data-language) ')';
+	margin-left: 0.5em
 }
 
 .rs-admin-table-default .rs-admin-col-rank

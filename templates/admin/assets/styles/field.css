@@ -63,14 +63,9 @@
 }
 
 .rs-admin-field-default,
-.rs-admin-field-select
+.rs-admin-field-select:not([multiple])
 {
 	height: 2.5em;
-}
-
-.rs-admin-field-select[multiple]
-{
-	height: 3.5em;
 }
 
 /* @section 2. textarea */

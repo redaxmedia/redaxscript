@@ -794,7 +794,7 @@ a
 	pointer-events: none
 }
 
-.rs-field-default, .rs-field-select
+.rs-field-default, .rs-field-select:not([multiple])
 {
 	height: 2.25em;
 }
@@ -1176,6 +1176,27 @@ ul.rs-list-default li:before
 {
 	fill: rgb(255, 255, 255)
 }
+/**
+ * @tableofcontents
+ *
+ * 1. general
+ * 2. query
+ *    2.1 max width 50rem
+ *       2.1.1 navigation toggle
+ *       2.1.2 navigation icon
+ *       2.1.3 navigation
+ *       2.1.4 navigation layer
+ *    2.2 min width 50rem
+ * 1. query
+ *    1.1 medium max
+ *    7.2 medium min
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 /* @section 1. general */
 
 .rs-fn-status-menu

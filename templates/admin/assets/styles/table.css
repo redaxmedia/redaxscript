@@ -77,6 +77,12 @@
 			color: gray(185);
 			text-decoration: line-through;
 		}
+
+		& .rs-admin-has-language:after
+		{
+			 content: '(' attr(data-language) ')';
+			 margin-left: 0.5em;
+		}
 	}
 
 	/* @section 1.3 moveup and movedown */
