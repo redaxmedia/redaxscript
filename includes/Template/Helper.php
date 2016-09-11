@@ -172,7 +172,15 @@ class Helper
 	public static function getKeywords()
 	{
 		$lastTable = Registry::get('lastTable');
-		$keywords = Registry::get('metaKeywords') ? Registry::get('metaKeywords') : Db::forTablePrefix($lastTable)->findOne()->keywords;
+
+		if (Registry::get('metaKeywords'))
+		{
+			$keywords = Registry::get('metaKeywords');
+		}
+		else if ($lastTable)
+		{
+			$keywords = Db::forTablePrefix($lastTable)->findOne()->description;
+		}
 
 		/* handle keywords */
 

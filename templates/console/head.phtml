@@ -1,14 +1,12 @@
 <?php namespace Redaxscript\Template; ?>
 
 <title>Console</title>
-<?php
-Tag::meta()->append(['name' => 'viewport', 'content' => 'width=device-width']);
-echo Tag::meta();
-?>
-<?php
-Tag::link()->append(['href' => Tag::registry('root') . '/templates/console/dist/styles/console.min.css', 'rel' => 'stylesheet']);
-Tag::link()->append(['href' => 'templates/default/assets/images/favicon.ico', 'rel' => 'shortcut icon']);
-Tag::link()->append(['href' => 'templates/default/assets/images/favicon.png', 'rel' => 'apple-touch-icon']);
-Tag::link()->append(['href' => '//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset(), 'rel' => 'stylesheet']);
-echo Tag::link();
-?>
+
+<?php Tag::meta()->append(['name' => 'viewport', 'content' => 'width=device-width']); ?>
+<?php echo Tag::meta(); ?>
+
+<?php Tag::link()->append(['href' => Tag::registry('root') . '/templates/console/dist/styles/console.min.css', 'rel' => 'stylesheet']); ?>
+<?php Tag::link()->append(['href' => 'templates/default/assets/images/favicon.ico', 'rel' => 'shortcut icon']); ?>
+<?php Tag::link()->append(['href' => 'templates/default/assets/images/favicon.png', 'rel' => 'apple-touch-icon']); ?>
+<?php Tag::link()->append(['href' => '//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset(), 'rel' => 'stylesheet']); ?>
+<?php echo Tag::link(); ?>

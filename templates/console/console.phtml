@@ -21,15 +21,12 @@
 
 		<!-- footer -->
 
-		<?php
-		Tag::script()->append(['src' => '//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js']);
-		Tag::script()->append(['src' => '//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js']);
-		Tag::script()->append(['src' => '//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js']);
-		Tag::script()->append(['src' => '//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js']);
-		?>
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-		<script src="assets/scripts/init.js"></script>
-		<script src="templates/console/assets/scripts/init.js"></script>
-		<script src="templates/console/assets/scripts/console.js"></script>
+
+		<?php Tag::script()->append(['src' => '//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js']); ?>
+		<?php Tag::script()->append(['src' => 'assets/scripts/init.js']); ?>
+		<?php Tag::script()->append(['src' => 'templates/console/assets/scripts/init.js']); ?>
+		<?php Tag::script()->append(['src' => 'templates/console/assets/scripts/console.js']); ?>
+		<?php echo Tag::script(); ?>
+
 	</body>
 </html>
