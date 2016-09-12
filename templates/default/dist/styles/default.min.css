@@ -137,6 +137,74 @@
 /**
  * @tableofcontents
  *
+ * 1. menu
+ *    1.1 medium min
+ *    1.2 medium max
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. menu */
+
+.rs-fn-status-menu
+{
+	display: none;
+}
+
+/* @section 1.1 medium min */
+
+@media (min-width: 50em)
+{
+	.rs-fn-toggle-menu, .rs-fn-close-menu
+	{
+		display: none;
+	}
+}
+
+/* @section 1.2 medium max */
+
+@media (max-width: 49.999em)
+{
+	.rs-fn-menu
+	{
+		bottom: 0;
+		left: 0;
+		position: fixed;
+		top: 0;
+		transform: translateX(-100%);
+		z-index: 1000;
+	}
+
+	.rs-fn-status-menu:checked ~ .rs-fn-menu
+	{
+		transform: translateX(0);
+	}
+
+	.rs-fn-close-menu
+	{
+		bottom: 0;
+		left: 0;
+		opacity: 0;
+		pointer-events: none;
+		position: fixed;
+		right: 0;
+		top: 0;
+		z-index: 900;
+	}
+
+	.rs-fn-status-menu:checked ~ .rs-fn-close-menu
+	{
+		opacity: 1;
+		pointer-events: all;
+	}
+}
+
+/**
+ * @tableofcontents
+ *
  * 1. redirect
  *    1.1 overlay
  *
@@ -278,6 +346,17 @@
 		width: 100%;
 	}
 }
+/**
+ * @tableofcontents
+ *
+ * 1. icon
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 /* @section 1. icon */
 
 @font-face
@@ -1030,8 +1109,9 @@ a
  * @tableofcontents
  *
  * 1. clearfix
- * 1. dropdown
- * 2. redirect
+ * 2. dropdown
+ * 3. menu
+ * 4. redirect
  *
  * @since 3.0.0
  *
@@ -1041,9 +1121,11 @@ a
 
 /* @section 1. clearfix */
 
-/* @section 1. dropdown */
+/* @section 2. dropdown */
 
-/* @section 2. redirect */
+/* @section 3. menu */
+
+/* @section 4. redirect */
 /**
  * @tableofcontents
  *
@@ -1207,9 +1289,6 @@ ul.rs-list-default li:before
  * 2. query
  *    2.1 medium min
  *    2.2 medium max
- * 3. logic
- *    3.1 medium min
- *    3.2 medium max
  *
  * @since 3.0.0
  *
@@ -1318,9 +1397,14 @@ ul.rs-list-default li:before
 		background: rgb(60, 123, 195)
 	}
 
+	.rs-fn-status-menu:checked ~ .rs-list-menu
+	{
+		transition: transform 0.2s;
+	}
+
 	/* hamburger */
 
-	.rs-label-menu
+	.rs-label-toggle-menu
 	{
 		bottom: 0;
 		color: rgb(200, 200, 200);
@@ -1336,7 +1420,7 @@ ul.rs-list-default li:before
 		z-index: 1000
 	}
 
-	.rs-label-menu:before, .rs-label-menu:after
+	.rs-label-toggle-menu:before, .rs-label-toggle-menu:after
 {
 		background: #3873b5;
 		bottom: 4em;
@@ -1347,85 +1431,39 @@ ul.rs-list-default li:before
 		right: 25%
 	}
 
-	.rs-fn-status-menu:not(:checked) ~ .rs-has-menu .rs-fn-toggle-menu:after
+	.rs-fn-status-menu:not(:checked) ~ .rs-label-toggle-menu:after
 	{
 		box-shadow: 0 -0.5em 0 #3873b5, 0 0.5em 0 #3873b5;
 	}
 
-	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-label-menu
+	.rs-fn-status-menu:checked ~ .rs-label-toggle-menu
 	{
 	}
 
-	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-label-menu:before, .rs-fn-status-menu:checked ~ .rs-has-menu .rs-label-menu:after
+	.rs-fn-status-menu:checked ~ .rs-label-toggle-menu:before, .rs-fn-status-menu:checked ~ .rs-label-toggle-menu:after
 {
 		transition: transform 0.2s
 	}
 
-	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-label-menu:before
+	.rs-fn-status-menu:checked ~ .rs-label-toggle-menu:before
 {
 		transform: rotate(45deg)
 	}
 
-	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-label-menu:after
+	.rs-fn-status-menu:checked ~ .rs-label-toggle-menu:after
 {
 		transform: rotate(-45deg)
 	}
-}
 
-/* @section 3. logic */
+	/* close */
 
-.rs-fn-status-menu
-{
-	display: none;
-}
-
-/* @section 3.1 medium min */
-
-@media (min-width: 50em)
-{
-	.rs-fn-toggle-menu, .rs-fn-close-menu
-	{
-		display: none;
-	}
-}
-
-/* @section 3.2 medium max */
-
-@media (max-width: 49.999em)
-{
-	.rs-fn-menu
-	{
-		bottom: 0;
-		left: 0;
-		position: fixed;
-		top: 0;
-		transform: translateX(-100%);
-		z-index: 1000;
-	}
-
-	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-fn-menu
-	{
-		transform: translateX(0);
-		transition: transform 0.2s;
-	}
-
-	.rs-fn-close-menu
+	.rs-label-close-menu
 	{
 		background: rgba(0, 0, 0, 0.8);
-		bottom: 0;
-		left: 0;
-		opacity: 0;
-		pointer-events: none;
-		position: fixed;
-		right: 0;
-		top: 0;
-		z-index: 900;
 	}
 
-	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-fn-close-menu
+	.rs-fn-status-menu:checked ~ .rs-label-close-menu
 	{
-		opacity: 1;
-		pointer-events: all;
 		transition: opacity 0.2s;
 	}
 }

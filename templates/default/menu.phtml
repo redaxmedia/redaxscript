@@ -1,0 +1,28 @@
+<?php namespace Redaxscript\Template; ?>
+
+<!-- logic -->
+
+<input id="menu" class="rs-fn-status-menu" type="checkbox"/>
+<label class="rs-fn-toggle-menu rs-label-toggle-menu" for="menu">Menu</label>
+<label class="rs-fn-close-menu rs-label-close-menu" for="menu"></label>
+
+<!-- list -->
+
+<ul class="rs-fn-dropdown rs-fn-menu rs-list-menu">
+	<li>
+		<span><?php echo Tag::language('categories'); ?></span>
+		<?php echo Tag::navigation('categories',
+		[
+			'children' => 1,
+			'class' => 'rs-list-menu-children',
+			'limit' => 5
+		]); ?>
+	</li><li>
+		<span><?php echo Tag::language('articles'); ?></span>
+		<?php echo Tag::navigation('articles',
+		[
+			'class' => 'rs-list-menu-children',
+			'limit' => 5
+		]); ?>
+	</li>
+</ul>

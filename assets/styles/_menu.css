@@ -1,0 +1,68 @@
+/**
+ * @tableofcontents
+ *
+ * 1. menu
+ *    1.1 medium min
+ *    1.2 medium max
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. menu */
+
+%fn-status-menu
+{
+	display: none;
+}
+
+/* @section 1.1 medium min */
+
+@media (--media-medium-min)
+{
+	%fn-toggle-menu,
+	%fn-close-menu
+	{
+		display: none;
+	}
+}
+
+/* @section 1.2 medium max */
+
+@media (--media-medium-max)
+{
+	%fn-menu
+	{
+		bottom: 0;
+		left: 0;
+		position: fixed;
+		top: 0;
+		transform: translateX(-100%);
+		z-index: 1000;
+	}
+
+	%fn-checked-menu
+	{
+		transform: translateX(0);
+	}
+
+	%fn-close-menu
+	{
+		bottom: 0;
+		left: 0;
+		opacity: 0;
+		pointer-events: none;
+		position: fixed;
+		right: 0;
+		top: 0;
+		z-index: 900;
+	}
+
+	%fn-checked-close-menu
+	{
+		opacity: 1;
+		pointer-events: all;
+	}
+}

@@ -6,9 +6,6 @@
  * 2. query
  *    2.1 medium min
  *    2.2 medium max
- * 3. logic
- *    3.1 medium min
- *    3.2 medium max
  *
  * @since 3.0.0
  *
@@ -128,9 +125,14 @@
 		}
 	}
 
-	/* hamburger */
+	.rs-fn-status-menu:checked ~ .rs-list-menu
+	{
+		transition: transform 0.2s;
+	}
 
-	.rs-label-menu
+	/* toggle */
+
+	.rs-label-toggle-menu
 	{
 		bottom: 0;
 		color: gray(200);
@@ -158,12 +160,12 @@
 		}
 	}
 
-	.rs-fn-status-menu:not(:checked) ~ .rs-has-menu .rs-fn-toggle-menu:after
+	.rs-fn-status-menu:not(:checked) ~ .rs-label-toggle-menu:after
 	{
 		box-shadow: 0 -0.5em 0 var(--rs-color-primary), 0 0.5em 0 var(--rs-color-primary);
 	}
 
-	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-label-menu
+	.rs-fn-status-menu:checked ~ .rs-label-toggle-menu
 	{
 		&:before,
 		&:after
@@ -181,63 +183,16 @@
 			transform: rotate(-45deg);
 		}
 	}
-}
 
-/* @section 3. logic */
+	/* close */
 
-.rs-fn-status-menu
-{
-	display: none;
-}
-
-/* @section 3.1 medium min */
-
-@media (--media-medium-min)
-{
-	.rs-fn-toggle-menu,
-	.rs-fn-close-menu
-	{
-		display: none;
-	}
-}
-
-/* @section 3.2 medium max */
-
-@media (--media-medium-max)
-{
-	.rs-fn-menu
-	{
-		bottom: 0;
-		left: 0;
-		position: fixed;
-		top: 0;
-		transform: translateX(-100%);
-		z-index: 1000;
-	}
-
-	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-fn-menu
-	{
-		transform: translateX(0);
-		transition: transform 0.2s;
-	}
-
-	.rs-fn-close-menu
+	.rs-label-close-menu
 	{
 		background: gray(0, 0.8);
-		bottom: 0;
-		left: 0;
-		opacity: 0;
-		pointer-events: none;
-		position: fixed;
-		right: 0;
-		top: 0;
-		z-index: 900;
 	}
 
-	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-fn-close-menu
+	.rs-fn-status-menu:checked ~ .rs-label-close-menu
 	{
-		opacity: 1;
-		pointer-events: all;
 		transition: opacity 0.2s;
 	}
 }

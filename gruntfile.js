@@ -306,6 +306,7 @@ module.exports = function (grunt)
 					'assets/styles/_clearfix.css',
 					'assets/styles/_dialog.css',
 					'assets/styles/_dropdown.css',
+					'assets/styles/_menu.css',
 					'assets/styles/_redirect.css',
 					'assets/styles/_table.css',
 					'templates/default/assets/styles/_variable.css',
