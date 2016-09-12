@@ -142,21 +142,19 @@
 		right: 0;
 		text-align: center;
 		top: 0;
-		vertical-align: bottom;
 		width: 25%;
 		z-index: 1000;
 
-		&:after,
-		&:before
+		&:before,
+		&:after
 		{
 			background: var(--rs-color-primary);
 			bottom: 4em;
 			content: '';
 			height: 0.25em;
-			left: 1.25em;
+			left: 25%;
 			position: absolute;
-			right: 1.25em;
-			transition: transform 0.2s;
+			right: 25%;
 		}
 	}
 
@@ -165,14 +163,23 @@
 		box-shadow: 0 -0.5em 0 var(--rs-color-primary), 0 0.5em 0 var(--rs-color-primary);
 	}
 
-	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-label-menu:after
+	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-label-menu
 	{
-		transform: rotate(-45deg);
-	}
+		&:before,
+		&:after
+		{
+			transition: transform 0.2s;
+		}
 
-	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-label-menu:before
-	{
-		transform: rotate(45deg);
+		&:before
+		{
+			transform: rotate(45deg);
+		}
+
+		&:after
+		{
+			transform: rotate(-45deg);
+		}
 	}
 }
 
@@ -220,6 +227,7 @@
 		bottom: 0;
 		left: 0;
 		opacity: 0;
+		pointer-events: none;
 		position: fixed;
 		right: 0;
 		top: 0;
@@ -229,6 +237,7 @@
 	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-fn-close-menu
 	{
 		opacity: 1;
+		pointer-events: all;
 		transition: opacity 0.2s;
 	}
 }

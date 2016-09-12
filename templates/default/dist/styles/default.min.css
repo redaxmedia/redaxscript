@@ -1332,21 +1332,19 @@ ul.rs-list-default li:before
 		right: 0;
 		text-align: center;
 		top: 0;
-		vertical-align: bottom;
 		width: 25%;
 		z-index: 1000
 	}
 
-	.rs-label-menu:after, .rs-label-menu:before
+	.rs-label-menu:before, .rs-label-menu:after
 {
 		background: #3873b5;
 		bottom: 4em;
 		content: '';
 		height: 0.25em;
-		left: 1.25em;
+		left: 25%;
 		position: absolute;
-		right: 1.25em;
-		transition: transform 0.2s
+		right: 25%
 	}
 
 	.rs-fn-status-menu:not(:checked) ~ .rs-has-menu .rs-fn-toggle-menu:after
@@ -1354,14 +1352,23 @@ ul.rs-list-default li:before
 		box-shadow: 0 -0.5em 0 #3873b5, 0 0.5em 0 #3873b5;
 	}
 
-	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-label-menu:after
+	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-label-menu
 	{
-		transform: rotate(-45deg);
+	}
+
+	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-label-menu:before, .rs-fn-status-menu:checked ~ .rs-has-menu .rs-label-menu:after
+{
+		transition: transform 0.2s
 	}
 
 	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-label-menu:before
-	{
-		transform: rotate(45deg);
+{
+		transform: rotate(45deg)
+	}
+
+	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-label-menu:after
+{
+		transform: rotate(-45deg)
 	}
 }
 
@@ -1408,6 +1415,7 @@ ul.rs-list-default li:before
 		bottom: 0;
 		left: 0;
 		opacity: 0;
+		pointer-events: none;
 		position: fixed;
 		right: 0;
 		top: 0;
@@ -1417,6 +1425,7 @@ ul.rs-list-default li:before
 	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-fn-close-menu
 	{
 		opacity: 1;
+		pointer-events: all;
 		transition: opacity 0.2s;
 	}
 }
