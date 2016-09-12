@@ -271,7 +271,7 @@ class Tag
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return mixed
 	 */
 
 	public static function link()
@@ -284,7 +284,7 @@ class Tag
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return mixed
 	 */
 
 	public static function meta()
@@ -295,16 +295,14 @@ class Tag
 	/**
 	 * style
 	 *
-	 * @since 2.3.0
+	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return mixed
 	 */
 
 	public static function style()
 	{
-		// @codeCoverageIgnoreStart
-		return self::_migrate('styles');
-		// @codeCoverageIgnoreEnd
+		//return Head\Style::getInstance();
 	}
 
 	/**
@@ -312,32 +310,12 @@ class Tag
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return mixed
 	 */
 
 	public static function script()
 	{
 		return Head\Script::getInstance();
-	}
-
-	/**
-	 * temporary script tag
-	 *
-	 * @since 2.3.0
-	 *
-	 * @param string $mode
-	 *
-	 * @return string
-	 */
-
-	public static function scriptTmp($mode = null)
-	{
-		// @codeCoverageIgnoreStart
-		return self::_migrate('scripts',
-		[
-			$mode
-		]);
-		// @codeCoverageIgnoreEnd
 	}
 
 	/**

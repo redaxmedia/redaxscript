@@ -2,6 +2,7 @@
 namespace Redaxscript\Head;
 
 use Redaxscript\Html;
+use Redaxscript\Hook;
 
 /**
  * children class to create the link tag
@@ -32,7 +33,11 @@ class Link extends HeadAbstract
 
 	public function appendFile($reference = null)
 	{
-		$this->append('href', $reference);
+		$this->append(
+		[
+			'href' => $reference,
+			'rel' => 'stylesheet'
+		]);
 		return $this;
 	}
 
@@ -48,7 +53,11 @@ class Link extends HeadAbstract
 
 	public function prependFile($reference = null)
 	{
-		$this->prepend('href', $reference);
+		$this->prepend(
+		[
+			'href' => $reference,
+			'rel' => 'stylesheet'
+		]);
 		return $this;
 	}
 

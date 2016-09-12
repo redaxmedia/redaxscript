@@ -33,7 +33,12 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 
 	public function __toString()
 	{
-		return $this->render();
+		$render = $this->render();
+		if ($render)
+		{
+			return $render;
+		}
+		return '<!-- ' . get_called_class() . ' === null -->';
 	}
 
 	/**
@@ -98,6 +103,8 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 
 	public function clear()
 	{
+		/*@todo: this is clearing all collections and therefore needs refactoring
+		/*@todo: maybe a namespaced collection or correct use of self::$_collectionArray vs. static::$_collectionArray */
 		self::$_collectionArray = [];
 		return $this;
 	}

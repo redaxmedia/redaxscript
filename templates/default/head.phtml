@@ -26,10 +26,26 @@
 <?php Tag::link()->append(['href' => Tag::registry('root') . '/' . Helper::getCanonical()]); ?>
 <?php Tag::link()->append(['href' => 'templates/default/assets/images/favicon.ico', 'rel' => 'shortcut icon']); ?>
 <?php Tag::link()->append(['href' => 'templates/default/assets/images/favicon.png', 'rel' => 'apple-touch-icon']); ?>
-<?php Tag::link()->append(['href' => '//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset(), 'rel' => 'stylesheet']); ?>
+<?php Tag::link()->appendFile('//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset()); ?>
+<?php Tag::link()->appendFile('dist/styles/base.min.css'); ?>
+<?php Tag::link()->appendFile('templates/default/dist/styles/default.min.css'); ?>
 <?php echo Tag::link(); ?>
 
-<!-- style and script -->
+<!-- @todo: rewrite ALL templates to Tag::meta and Tag::link to the fluent interface:
 
-<?php echo Tag::style(); ?>
-<?php echo Tag::scriptTmp('init'); ?>
+<php echo Tag::meta()
+		->append(
+		[
+			// put the [ on a new line
+		])
+		->append();
+?>
+-->
+
+<!-- top script -->
+
+<?php echo Tag::script()
+	->appendFile('assets/scripts/init.js')
+	->appendFile('templates/default/assets/scripts/init.js')
+	->appendInline(Helper::getTransport());
+?>

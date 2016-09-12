@@ -41,4 +41,11 @@
 <!-- footer -->
 
 <?php echo Tag::partial('templates/default/footer.phtml'); ?>
-<?php echo Tag::scriptTmp(); ?>
+
+<!-- bottom script -->
+
+<?php echo Tag::script()
+	->appendFile('//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js');
+?>
+
+<!--@todo: extend the Tag::script to load all the scripts from .loader - delete the file after that !-->

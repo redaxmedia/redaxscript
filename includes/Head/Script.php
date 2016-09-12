@@ -19,7 +19,7 @@ use Redaxscript\Html;
 class Script extends HeadAbstract
 {
 	/**
-	 * store inline scripts
+	 * inline scripts
 	 *
 	 * @var string
 	 */
@@ -91,21 +91,6 @@ class Script extends HeadAbstract
 	}
 
 	/**
-	 * clear the script
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return Script
-	 */
-
-	public function clear()
-	{
-		parent::clear();
-		$this->_inline = null;
-		return $this;
-	}
-
-	/**
 	 * render the script
 	 *
 	 * @since 3.0.0
@@ -137,14 +122,30 @@ class Script extends HeadAbstract
 			}
 		}
 
+		/* handle inline */
+
 		if ($this->_inline)
 		{
 			$output .= $scriptElement
 				->copy()
 				->text($this->_inline);
 		}
-
 		$this->clear();
 		return $output;
+	}
+
+	/**
+	 * clear the script
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return Script
+	 */
+
+	public function clear()
+	{
+		parent::clear();
+		$this->_inline = null;
+		return $this;
 	}
 }

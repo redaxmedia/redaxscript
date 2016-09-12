@@ -33,32 +33,38 @@ class Ace extends Module
 	];
 
 	/**
-	 * loaderStart
+	 * linkStart
 	 *
-	 * @since 2.6.0
+	 * @since 3.0.0
 	 */
 
-	public static function loaderStart()
+	public static function linkStart()
 	{
-		global $loader_modules_styles, $loader_modules_scripts;
-		$loader_modules_styles[] = 'modules/Ace/assets/styles/ace.css';
-		$loader_modules_scripts[] = 'modules/Ace/assets/scripts/init.js';
-		$loader_modules_scripts[] = 'modules/Ace/assets/scripts/ace.js';
+		if (Registry::get('loggedIn') === Registry::get('token'))
+		{
+			$link = Head\Link::getInstance();
+			$link->appendFile('modules/Ace/assets/styles/ace.css');
+		}
 	}
 
 	/**
-	 * scriptEnd
+	 * scriptStart
 	 *
-	 * @since 2.6.0
+	 * @since 3.0.0
 	 */
 
-	public static function scriptEnd()
+	public static function scriptStart()
 	{
 		if (Registry::get('loggedIn') === Registry::get('token'))
 		{
 			$script = Head\Script::getInstance();
-			$script->append(['src' => '//cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js']);
-			echo $script;
+			$script->appendFile('modules/Ace/assets/scripts/init.js');
+			$script->appendFile('modules/Ace/assets/scripts/ace.js');
+			$script->appendFile('//cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js');
 		}
 	}
 }
+
+/*@todo: refactor ALL modules that using scriptStart() and linkStart() hooks - remove the global variables and loaderStart hook
+/*@todo: do not echo here - we just do the collecting - echo is job of the template */
+/*@todo: i did not implement the hooks because it is hard to find the right position - maybe we need additional init() methods or template helper for it */
