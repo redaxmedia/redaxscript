@@ -78,21 +78,18 @@
 			text-decoration: line-through;
 		}
 
-		& .rs-admin-has-language:after
+		& .rs-admin-has-language:before
 		{
 			background: var(--rs-admin-color-primary);
-			border-radius: 50%;
+			border-radius: 0.125em;
 			color: gray(255);
 			content: attr(data-language);
 			display: inline-block;
-			font-size: 0.625em;
-			font-weight: bold;
-			height: 1.75em;
-			line-height: 1.75em;
-			margin-left: 0.5em;
+			font: 0.75em/2.5em var(--rs-admin-font-secondary);
+			margin-right: 0.5em;
 			text-align: center;
 			text-transform: uppercase;
-			width: 1.75em;
+			width: 2.5em;
 		}
 	}
 

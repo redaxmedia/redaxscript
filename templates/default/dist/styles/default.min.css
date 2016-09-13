@@ -1402,7 +1402,7 @@ ul.rs-list-default li:before
 		transition: transform 0.2s;
 	}
 
-	/* hamburger */
+	/* toggle */
 
 	.rs-label-toggle-menu
 	{
