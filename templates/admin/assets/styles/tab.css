@@ -62,7 +62,7 @@
 {
 	background: var(--rs-admin-gradient-quaternary);
 	color: gray(0);
-	padding: 0.75em 1em;
+	padding: 0.5em 1em;
 }
 
 @media (--media-medium-max)

@@ -1,0 +1,198 @@
+/**
+ * @tableofcontents
+ *
+ * 1. menu
+ *    1.1 list
+ * 2. query
+ *    2.1 medium min
+ *    2.2 medium max
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. menu */
+
+/* @section 1.1 list */
+
+.rs-list-menu
+{
+	color: gray(255);
+	font: 1.5em/2em var(--rs-font-primary);
+
+	& a,
+	& span
+	{
+		display: block;
+		padding: 0 1em;
+		transition: background 0.2s;
+	}
+}
+
+/* @section 2. query */
+
+/* @section 2.1 medium min */
+
+@media (--media-medium-min)
+{
+	.rs-list-menu
+	{
+		float: right;
+		margin: 0.875em 0;
+
+		& > li
+		{
+			display: inline-block;
+
+			& span
+			{
+				border-radius: 0.125em;
+				box-shadow: inset 0 -0.125em 0 0 gray(0, 0.2);
+				line-height: 2.5em;
+			}
+
+			&:hover .rs-list-menu-children
+			{
+				transform: translateY(0);
+				transition: opacity 0.4s, transform 0.2s;
+			}
+		}
+
+		& > li + li
+		{
+			margin-left: 1em;
+		}
+
+		& a,
+		& span
+	  	{
+			background: var(--rs-color-primary);
+			cursor: pointer;
+
+			&:hover
+			{
+				background: var(--rs-color-primary-light);
+			}
+		}
+	}
+
+	/* children */
+
+	.rs-list-menu-children
+	{
+		border-top: 0.5em solid transparent;
+		transform: translateY(-0.25em);
+
+		& li:first-child a
+		{
+			border-top-left-radius: 0.125em;
+			border-top-right-radius: 0.125em;
+		}
+
+		& li:last-child a
+		{
+			border-bottom-left-radius: 0.125em;
+			border-bottom-right-radius: 0.125em;
+		}
+	}
+}
+
+/* @section 2.2 medium max */
+
+@media (--media-medium-max)
+{
+	.rs-list-menu
+	{
+		background: var(--rs-color-primary);
+		max-width: 25em;
+		width: 75%;
+
+		& li
+		{
+			display: block;
+		}
+
+		& > li > span
+		{
+			background: var(--rs-color-primary-dark);
+		}
+
+		& a:hover
+		{
+			background: var(--rs-color-primary-light);
+		}
+	}
+
+	.rs-fn-status-menu:checked ~ .rs-list-menu
+	{
+		transition: transform 0.2s;
+	}
+
+	/* toggle */
+
+	.rs-label-toggle-menu
+	{
+		bottom: 0;
+		color: gray(200);
+		cursor: pointer;
+		font: 1em arial;
+		max-width: 5em;
+		padding-top: 3.75em;
+		position: absolute;
+		right: 0;
+		text-align: center;
+		top: 0;
+		width: 25%;
+		z-index: 1000;
+
+		&:before,
+		&:after
+		{
+			background: var(--rs-color-primary);
+			bottom: 4em;
+			content: '';
+			height: 0.25em;
+			left: 25%;
+			position: absolute;
+			right: 25%;
+		}
+	}
+
+	.rs-fn-status-menu:not(:checked) ~ .rs-label-toggle-menu:after
+	{
+		box-shadow: 0 -0.5em 0 var(--rs-color-primary), 0 0.5em 0 var(--rs-color-primary);
+	}
+
+	.rs-fn-status-menu:checked ~ .rs-label-toggle-menu
+	{
+		&:before,
+		&:after
+		{
+			transition: transform 0.2s;
+		}
+
+		&:before
+		{
+			transform: rotate(45deg);
+		}
+
+		&:after
+		{
+			transform: rotate(-45deg);
+		}
+	}
+
+	/* close */
+
+	.rs-label-close-menu
+	{
+		background: gray(0, 0.8);
+	}
+
+	.rs-fn-status-menu:checked ~ .rs-label-close-menu
+	{
+		transition: opacity 0.2s;
+	}
+}

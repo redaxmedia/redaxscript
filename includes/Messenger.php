@@ -53,9 +53,9 @@ class Messenger
 			'notes' =>
 			[
 				'success' => 'rs-is-success',
+				'info' => 'rs-is-info',
 				'warning' => 'rs-is-warning',
-				'error' => 'rs-is-error',
-				'info' => 'rs-is-info'
+				'error' => 'rs-is-error'
 			]
 		]
 	];
@@ -169,6 +169,22 @@ class Messenger
 	}
 
 	/**
+	 * info message
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param mixed $message message of the info
+	 * @param string $title title of the info
+	 *
+	 * @return string
+	 */
+
+	public function info($message = null, $title = null)
+	{
+		return $this->render('info', $message, $title);
+	}
+
+	/**
 	 * warning message
 	 *
 	 * @since 3.0.0
@@ -198,22 +214,6 @@ class Messenger
 	public function error($message = null, $title = null)
 	{
 		return $this->render('error', $message, $title);
-	}
-
-	/**
-	 * info message
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param mixed $message message of the info
-	 * @param string $title title of the info
-	 *
-	 * @return string
-	 */
-
-	public function info($message = null, $title = null)
-	{
-		return $this->render('info', $message, $title);
 	}
 
 	/**

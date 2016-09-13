@@ -163,12 +163,9 @@ class Breadcrumb
 
 				if ($route)
 				{
-					$outputItem .= $linkElement->attr(
-					[
-						'href' => $this->_registry->get('parameterRoute') . $route,
-						'title' => $title
-					])
-					->text($title);
+					$outputItem .= $linkElement
+						->attr('href', $this->_registry->get('parameterRoute') . $route)
+						->text($title);
 				}
 
 				/* else plain text */

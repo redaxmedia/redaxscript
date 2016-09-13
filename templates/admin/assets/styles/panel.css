@@ -2,17 +2,14 @@
  * @tableofcontents
  *
  * 1. panel
- * 2. item panel
- *    2.1 link panel
- *    2.2 icons before
- *    2.3 icons after
- * 3. list panel
- *    3.1 general
- *    3.2 panel children
- *    3.3 panel children link
- *    3.4 list notification
- * 5. query
- *    5.1 medium min
+ *    1.1 list
+ *    1.2 notification
+ *       1.2.1 counter
+ *       1.2.2 list
+ * 2. query
+ *    2.1 medium min
+ *    2.2 medium min and large max
+ *    2.3 medium max
  *
  * @since 3.0.0
  *
@@ -22,183 +19,123 @@
 
 /* @section 1. panel */
 
-.rs-admin-component-panel
+/* @section 1.1 list */
+
+.rs-admin-list-panel
 {
-	background: gray(30);
+	color: gray(185);
+	font: bold 1rem var(--rs-admin-font-primary);
 	position: relative;
-	z-index: 900;
+	z-index: 1000;
 
-	& a,
-	& a:hover
+	& .rs-admin-link-panel,
+	& .rs-admin-text-panel
 	{
-		text-decoration: none;
-	}
-}
-
-/* @section 2. item panel */
-
-.rs-admin-item-panel
-{
-	position: relative;
-
-	& > a,
-	& > span
-	{
+		background: gray(30);
+		cursor: pointer;
+		display: block;
+		line-height: 3.5em;
 		overflow: hidden;
-		padding: 0 0.75em;
+		padding: 0 1em;
 		text-overflow: ellipsis;
 		text-transform: uppercase;
 		white-space: nowrap;
 	}
-}
 
-/* link logout */
-
-.rs-admin-item-panel.rs-admin-item-logout a:hover
-{
-	background: var(--rs-admin-gradient-secondary);
-}
-
-/* @section 2.1 link panel */
-
-.rs-admin-list-panel-children > li > .rs-admin-link-panel
-{
-	padding: 0 0.75em;
-}
-
-/* @section 2.2 icons before */
-
-.rs-admin-item-panel > a:before,
-.rs-admin-item-panel > span:before
-{
-	display: inline-block;
-	font-size: 1.75em;
-	line-height: 1em;
-	margin-right: 0.5em;
-	margin-top: -0.125em;
-	text-transform: lowercase;
-	vertical-align: middle;
-}
-
-.rs-admin-text-content:before
-{
-	@extend %rs-admin-icon-import-contacts;
-}
-
-.rs-admin-text-access:before
-{
-	@extend %rs-admin-icon-lock;
-}
-
-.rs-admin-text-system:before
-{
-	@extend %rs-admin-icon-settings;
-}
-
-.rs-admin-link-profile:before
-{
-	@extend %rs-admin-icon-person;
-}
-
-.rs-admin-text-notification:before
-{
-	@extend %rs-admin-icon-notifications;
-}
-
-.rs-admin-link-logout:before
-{
-	@extend %rs-admin-icon-exit-to-app;
-}
-
-/* @section 2.3 icons after */
-
-.rs-admin-item-panel > span:after
-{
-	@extend %rs-admin-icon-chevron-right;
-	font-size: 1.75em;
-	line-height: 1.25em;
-	position: absolute;
-	right: 0.25em;
-	top: 0.125em;
-}
-
-.rs-admin-item-panel.rs-admin-item-active > span:after
-{
-	@extend %rs-admin-icon-expand-more;
-}
-
-@media (--media-medium-min)
-{
-	.rs-admin-list-panel .rs-admin-item-panel > span:after
+	& .rs-admin-item-panel .rs-admin-text-panel:hover,
+	& .rs-admin-item-panel .rs-admin-link-panel:hover,
+	& .rs-admin-text-panel-group:hover > .rs-admin-link-panel
 	{
-		content: '';
+		background: var(--rs-admin-gradient-primary);
+		color: gray(0);
 	}
-}
 
-/* @section 3. list panel */
-
-/* @section 3.1 general */
-
-.rs-admin-list-panel
-{
-	font-size: 0.875rem;
-
-	& a,
-	& span
+	& .rs-admin-item-logout > .rs-admin-link-panel:hover
 	{
-		box-sizing: border-box;
-		color: gray(185);
-		cursor: pointer;
-		display: block;
-		font: bold 1rem/2.75rem var(--rs-admin-font-primary);
+		background: var(--rs-admin-gradient-secondary);
 	}
-}
 
-@media (--media-medium-min)
-{
-	.rs-admin-list-panel
+	/* icons */
+
+	& .rs-admin-text-content:before,
+	& .rs-admin-text-access:before,
+	& .rs-admin-text-system:before,
+	& .rs-admin-link-profile:before,
+	& .rs-admin-text-notification:before,
+	& .rs-admin-link-logout:before
 	{
-		& a,
-		& span
+		display: inline-block;
+		font-size: 1.75em;
+		margin-right: 0.5em;
+		margin-top: -0.125em;
+		vertical-align: middle;
+	}
+
+	& .rs-admin-text-content:before
+	{
+		@extend %rs-admin-icon-import-contacts;
+	}
+
+	& .rs-admin-text-access:before
+	{
+		@extend %rs-admin-icon-lock;
+	}
+
+	& .rs-admin-text-system:before
+	{
+		@extend %rs-admin-icon-settings;
+	}
+
+	& .rs-admin-link-profile:before
+	{
+		@extend %rs-admin-icon-person;
+	}
+
+	& .rs-admin-text-notification:before
+	{
+		@extend %rs-admin-icon-notifications;
+	}
+
+	& .rs-admin-link-logout:before
+	{
+		@extend %rs-admin-icon-power-settings-new;
+	}
+
+	/* link group */
+
+	& .rs-admin-text-panel-group
+	{
+		display: flex;
+		justify-content: space-between;
+
+		& .rs-admin-link-view
 		{
-			line-height: 3.625em;
+			flex-grow: 1;
 		}
 
-		& > li
+		& .rs-admin-link-new
 		{
-			float: left;
 			position: relative;
+			text-indent: -999em;
+			width: 1.5em;
+
+			&:hover:after
+			{
+				animation: rotate-right 0.5s;
+			}
+
+			&:after
+			{
+				@extend %rs-admin-icon-add;
+				font-size: 1.5em;
+				left: 0;
+				position: absolute;
+				right: 0;
+				text-align: center;
+				text-indent: 0;
+			}
 		}
 	}
-}
-
-.rs-admin-list-panel a:hover,
-.rs-admin-list-panel span:hover,
-.rs-admin-list-panel span:hover a
-{
-	background: var(--rs-admin-gradient-primary);
-	color: gray(0);
-}
-
-/* @section 3.2 panel children */
-
-.rs-admin-title-panel
-{
-	color: gray(185);
-	font: bold 1rem/1.5rem var(--rs-admin-font-primary);
-	margin-top: 1em;
-	padding: 0 0.5em;
-	text-transform: uppercase;
-}
-
-.rs-admin-list-panel li:hover .rs-admin-list-panel-children
-{
-	background: gray(30);
-}
-
-.rs-admin-item-panel:not(.rs-admin-item-notification) .rs-admin-list-panel-children
-{
-	text-transform: uppercase;
 }
 
 .rs-admin-list-panel-children
@@ -206,97 +143,40 @@
 	display: none;
 }
 
-@media (--media-medium-max)
-{
-	.rs-admin-list-panel-children li
-	{
-		& > .rs-admin-link-panel
-		{
-			padding-left: 3.5em;
-		}
+/* @section 1.2 notification */
 
-		& > .rs-admin-wrapper-panel-link
-		{
-			padding-left: 2.75em;
-		}
-	}
-}
+/* @section 1.2.1 counter */
 
-@media (--media-medium-min)
-{
-	.rs-admin-list-panel-children
-	{
-		background: gray(30);
-		position: absolute;
-		width: 100%;
-
-		& ul
-		{
-			left: 100%;
-			top: 0;
-		}
-	}
-}
-
-/* @section 3.3 panel children link */
-
-.rs-admin-list-panel .rs-admin-wrapper-panel-link
-{
-	display: flex;
-	justify-content: space-between;
-}
-
-.rs-admin-wrapper-panel-link .rs-admin-link-view
-{
-	flex: 1 1 0;
-	padding-left: 0.75em;
-}
-
-.rs-admin-list-panel .rs-admin-link-new
+.rs-admin-text-notification
 {
 	position: relative;
-	text-indent: -999em;
-	width: 2.75em;
 }
-
-.rs-admin-list-panel .rs-admin-link-new:after
-{
-	@extend %rs-admin-icon-add;
-	font-size: 1.5em;
-	left: 0;
-	line-height: 1em;
-	margin-top: -0.5em;
-	position: absolute;
-	right: 0;
-	text-align: center;
-	text-indent: 0;
-	text-transform: none;
-	top: 50%;
-}
-
-/* TODO: use .rs-admin-item-panel, .rs-admin-item-panel li over rs-admin-list-panel for the general styling and hover effects */
-/* TODO: this way you can exclude the notification by using .rs-admin-item-panel:not(...) */
-
-/* @section 3.4 list notification */
 
 .rs-admin-text-notification-counter
 {
-	border: 0.25em solid gray(30);
+	border: 0.25em solid;
 	border-radius: 50%;
 	color: gray(30);
 	font-size: 0.625em;
 	height: 1.5em;
-	left: 2.25em;
+	left: 2.5em;
 	line-height: 1.5em;
 	position: absolute;
 	text-align: center;
-	top: 1.125em;
+	top: 1em;
 	width: 1.5em;
 }
+
+/* colors */
 
 .rs-admin-has-success .rs-admin-text-notification-counter
 {
 	background: var(--rs-admin-color-success);
+}
+
+.rs-admin-has-info .rs-admin-text-notification-counter
+{
+	background: var(--rs-admin-color-info);
 }
 
 .rs-admin-has-warning .rs-admin-text-notification-counter
@@ -309,98 +189,132 @@
 	background: var(--rs-admin-color-error);
 }
 
-.rs-admin-has-info .rs-admin-text-notification-counter
+/* @section 1.2.2 list */
+
+.rs-admin-list-panel-notification
 {
-	background: var(--rs-admin-color-info);
+	background: gray(30);
+	overflow: hidden;
+
+	& .rs-admin-item-panel-notification
+	{
+		margin: 0.5em;
+		padding: 0.5em;
+	}
+
+	& .rs-admin-title-panel-notification
+	{
+		margin-bottom: 0.25em;
+		text-transform: uppercase;
+	}
+
+	& .rs-admin-link-panel-notification,
+	& .rs-admin-text-panel-notification
+	{
+		display: block;
+	}
+
+	& .rs-admin-link-panel-notification
+	{
+		text-decoration: underline;
+	}
 }
 
-.rs-admin-item-panel .rs-admin-list-panel-children-notification a,
-.rs-admin-item-panel .rs-admin-list-panel-children-notification span
-{
-	line-height: 1.75em;
-	padding: 0.5em 0.75em 0.5em 3em;
-	position: relative;
+/* @section 2. query */
 
-	&:before
+/* @section 2.1 medium min */
+
+@media (--media-medium-min)
+{
+	.rs-admin-list-panel
 	{
-		font-size: 2em;
-		left: 0.25em;
+		& > .rs-admin-item-panel
+		{
+			float: left;
+			position: relative;
+		}
+
+		&.rs-admin-has-column1 > .rs-admin-item-panel
+		{
+			width: 100%;
+		}
+
+		&.rs-admin-has-column2 > .rs-admin-item-panel
+		{
+			width: 50%;
+		}
+
+		&.rs-admin-has-column3 > .rs-admin-item-panel
+		{
+			width: 33.33%;
+		}
+
+		&.rs-admin-has-column4 > .rs-admin-item-panel
+		{
+			width: 25%;
+		}
+
+		&.rs-admin-has-column5 > .rs-admin-item-panel
+		{
+			width: 20%;
+		}
+
+		&.rs-admin-has-column6 > .rs-admin-item-panel
+		{
+			width: 16.66%;
+		}
+	}
+
+	.rs-admin-list-panel-children
+	{
+		left: 0;
 		position: absolute;
-		top: 0.25em;
-	}
+		width: 100%;
 
-	&.rs-admin-is-success:before
-	{
-		@extend %rs-admin-icon-check-circle;
-		color: var(--rs-admin-color-success);
-	}
-
-	&.rs-admin-is-warning:before
-	{
-		@extend %rs-admin-icon-warning;
-		color: var(--rs-admin-color-warning);
-	}
-
-	&.rs-admin-is-error:before
-	{
-		@extend %rs-admin-icon-error;
-		color: var(--rs-admin-color-error);
-	}
-
-	&.rs-admin-is-info:before
-	{
-		@extend %rs-admin-icon-info;
-		color: var(--rs-admin-color-info);
+		& ul
+		{
+			left: 100%;
+			top: 0;
+		}
 	}
 }
 
-.rs-admin-item-panel .rs-admin-list-panel-children-notification .rs-admin-text-panel:hover:before,
-.rs-admin-item-panel .rs-admin-list-panel-children-notification .rs-admin-link-panel:hover:before
-{
-	color: gray(30);
-}
+/* @section 2.2 medium min and large max */
 
 @media (--media-medium-min) and (--media-large-max)
 {
-	.rs-admin-list-panel-children-notification
+	.rs-admin-list-panel-notification
 	{
 		width: 200%;
 	}
 }
 
-/* @section 5. query */
+/* @section 2.3 medium max */
 
-/* @section 5.1 medium min */
-
-@media (--media-medium-min)
+@media (--media-medium-max)
 {
-	.rs-admin-list-panel.rs-admin-has-column1 > li
+	.rs-admin-item-panel
 	{
-		width: 100%;
+		& > .rs-admin-text-panel:after
+		{
+			@extend %rs-admin-icon-chevron-right;
+			font-size: 1.75em;
+			position: absolute;
+			right: 0;
+			text-align: center;
+			width: 2em;
+		}
+
+		&.rs-admin-item-active > .rs-admin-text-panel:after
+		{
+			@extend %rs-admin-icon-expand-more;
+		}
 	}
 
-	.rs-admin-list-panel.rs-admin-has-column2 > li
+	.rs-admin-item-active .rs-admin-list-panel-children .rs-admin-link-panel,
+	.rs-admin-item-active .rs-admin-list-panel-children .rs-admin-text-panel,
+	.rs-admin-item-active .rs-admin-list-panel-notification
 	{
-		width: 50%;
-	}
-
-	.rs-admin-list-panel.rs-admin-has-column3 > li
-	{
-		width: 33.33%;
-	}
-
-	.rs-admin-list-panel.rs-admin-has-column4 > li
-	{
-		width: 25%;
-	}
-
-	.rs-admin-list-panel.rs-admin-has-column5 > li
-	{
-		width: 20%;
-	}
-
-	.rs-admin-list-panel.rs-admin-has-column6 > li
-	{
-		width: 16.66%;
+		background: gray(40);
 	}
 }

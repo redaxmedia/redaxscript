@@ -38,7 +38,7 @@
 	box-sizing: border-box;
 	color: gray(100);
 	display: block;
-	font: 0.875em/1.25em var(--rs-admin-font-secondary);
+	font: 0.875em var(--rs-admin-font-secondary);
 	padding: 0.5em;
 	transition: background 0.2s, border 0.2s;
 	width: 100%;
@@ -62,16 +62,10 @@
 	}
 }
 
-.rs-admin-field-select
+.rs-admin-field-default,
+.rs-admin-field-select:not([multiple])
 {
 	height: 2.5em;
-
-	&[multiple]
-	{
-		height: 3.5em;
-		padding-bottom: 0.5em;
-		padding-top: 0.5em;
-	}
 }
 
 /* @section 2. textarea */

@@ -29,21 +29,45 @@
 	/* @section 1.5 font */
 }
 
-/* TODO: improve styling and icon for the pseudo tag */
-
-codequote, language, module, readmore, registry, template
+codequote, language, module, registry, template
 {
-	border: 0.25em solid rgba(0, 0, 0, 0.2);
-	border-radius: 50%;
-	color: rgba(0, 0, 0, 0.4);
-	display: inline-block;
-	height: 3em;
-	margin: 0.5em;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	width: 3em;
+	color: rgba(0, 0, 0, 0.5);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+readmore
+{
+	border-top: 0.125em dashed rgba(0, 0, 0, 0.5);
+	display: block;
+	margin: 1em 0;
+}
+
+codequote:before
+{
+	content: '<codequote>...</codequote>'
+}
+
+language:before
+{
+	content: '<language>...</language>'
+}
+
+module:before
+{
+	content: '<module>...</module>'
+}
+
+registry:before
+{
+	content: '<registry>...</registry>'
+}
+
+template:before
+{
+	content: '<template>...</template>'
 }
 
 [_moz_editor_bogus_node]

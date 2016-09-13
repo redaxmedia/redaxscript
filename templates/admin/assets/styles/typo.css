@@ -1,8 +1,7 @@
 /**
  * @tableofcontents
  *
- * 1. link
- * 2. title
+ * 1. title
  *
  * @since 3.0.0
  *
@@ -10,15 +9,7 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. link */
-
-.rs-admin-link-default
-{
-	color: gray(100);
-	text-decoration: underline;
-}
-
-/* @section 2. title */
+/* @section 1. title */
 
 .rs-admin-title-content
 {

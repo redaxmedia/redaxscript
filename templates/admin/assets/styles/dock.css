@@ -1,10 +1,9 @@
 /**
  * @tableofcontents
  *
- *    1.1 description dock admin
- *    1.2 footer grid fix
- * 1. link dock admin
- *    1.1 icons
+ * 1. dock
+ *    1.1 box
+ *    1.2 link
  *
  * @since 3.0.0
  *
@@ -12,92 +11,72 @@
  * @author Henry Ruhs
  */
 
+/* @section 1. dock */
+
+/* @section 1.1 box */
+
 .rs-admin-box-dock
 {
 	background: gray(30);
-	font-size: 0.875rem;
-	margin-top: 1em;
-}
-
-.rs-admin-box-dock,
-.rs-admin-box-dock a
-{
 	color: gray(185);
+	font: bold 0.875rem var(--rs-admin-font-primary);
 }
 
-/* @section 1.1 description dock admin */
-
-.rs-admin-text-dock
-{
-	float: right;
-	font: bold 1rem/2.625rem var(--rs-admin-font-primary);
-	margin-left: 0.5em;
-	margin-right: 0.5em;
-	max-width: 10em;
-	overflow: hidden;
-	text-align: right;
-	text-overflow: ellipsis;
-	text-transform: uppercase;
-	white-space: nowrap;
-}
-
-/* @section 1.2 footer grid fix */
-
-.rs-admin-footer .rs-admin-box-dock
-{
-	margin-left: 0.75rem;
-	margin-right: 0.75rem;
-}
-
-/* @section 1. link dock admin */
+/* @section 1.2 link */
 
 .rs-admin-link-dock
 {
+	box-sizing: border-box;
 	float: left;
-	height: 3.125em;
+	line-height: 3.5em;
+	overflow: hidden;
+	padding: 0 1em;
 	position: relative;
-	text-indent: -999em;
-	width: 3.5em;
-}
-
-.rs-admin-link-dock:hover
-{
-	background: var(--rs-admin-gradient-primary);
-	color: gray(0);
-}
-
-/* link delete */
-
-.rs-admin-link-dock.rs-admin-link-delete:hover
-{
-	background: var(--rs-admin-gradient-secondary);
-}
-
-/* @section 1.1 icons */
-
-.rs-admin-link-dock:before
-{
-	font-size: 1.5rem;
-	left: 0;
-	line-height: 2.75rem;
-	position: absolute;
-	right: 0;
 	text-align: center;
-	text-indent: 0;
-	top: 0;
-}
+	text-overflow: ellipsis;
+	text-transform: uppercase;
+	white-space: nowrap;
+	width: 33.33%;
 
-.rs-admin-link-dock.rs-admin-link-unpublish:before
-{
-	@extend %rs-admin-icon-visibility-off;
-}
+	&:hover
+	{
+		background: var(--rs-admin-gradient-primary);
+		color: gray(0);
+	}
 
-.rs-admin-link-dock.rs-admin-link-edit:before
-{
-	@extend %rs-admin-icon-create;
-}
+	&.rs-admin-link-delete:hover
+	{
+		background: var(--rs-admin-gradient-secondary);
+	}
 
-.rs-admin-link-dock.rs-admin-link-delete:before
-{
-	@extend %rs-admin-icon-delete;
+	&:not(:hover)
+	{
+		text-indent: -999em;
+
+		&:before
+		{
+			font-size: 1.75em;
+			left: 0;
+			position: absolute;
+			right: 0;
+			text-align: center;
+			text-indent: 0;
+			top: 0;
+		}
+
+		&.rs-admin-link-unpublish:before
+		{
+			@extend %rs-admin-icon-visibility-off;
+		}
+
+		&.rs-admin-link-edit:before
+		{
+			@extend %rs-admin-icon-create;
+		}
+
+		&.rs-admin-link-delete:before
+		{
+			@extend %rs-admin-icon-delete;
+		}
+	}
 }

@@ -2,6 +2,7 @@
  * @tableofcontents
  *
  * 1. tag styling
+ * 2. link default
  *
  * @since 3.0.0
  *
@@ -17,12 +18,13 @@ a
 	text-decoration: none;
 }
 
-.rs-link-default,
-.rs-link-readmore
+/* @section 2. link default */
+
+.rs-link-default
 {
 	border-bottom: 2px solid color(var(--rs-color-tertiary) a(30%));
 	color: var(--rs-color-tertiary);
-	transition: border-color 0.3s;
+	transition: border-color 0.2s;
 
 	&:hover
 	{

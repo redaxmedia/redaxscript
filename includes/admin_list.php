@@ -61,11 +61,11 @@ function admin_contents_list()
 	$output .= '<div class="rs-admin-wrapper-button">';
 	if ($table_new == 1)
 	{
-		$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/new/' . Redaxscript\Registry::get('tableParameter') . '" class="rs-admin-button-default rs-admin-button-create rs-admin-is-large">' . Redaxscript\Language::get($wording_single . '_new') . '</a>';
+		$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/new/' . Redaxscript\Registry::get('tableParameter') . '" class="rs-admin-button-default rs-admin-button-create">' . Redaxscript\Language::get($wording_single . '_new') . '</a>';
 	}
 	if (Redaxscript\Registry::get('tableEdit') == 1 && $num_rows)
 	{
-		$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/sort/' . Redaxscript\Registry::get('tableParameter') . '/' . Redaxscript\Registry::get('token') . '" class="rs-admin-button-default rs-admin-is-large">' . Redaxscript\Language::get('sort') . '</a>';
+		$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/sort/' . Redaxscript\Registry::get('tableParameter') . '/' . Redaxscript\Registry::get('token') . '" class="rs-admin-button-default">' . Redaxscript\Language::get('sort') . '</a>';
 	}
 	$output .= '</div><div class="rs-admin-wrapper-table"><table class="rs-admin-table-default rs-admin-table-' . $wording_single . '">';
 
@@ -233,13 +233,15 @@ function admin_contents_list()
 					$output .= ' class="' . $class_status . '"';
 				}
 				$output .= '><td>';
-				if ($language)
-				{
-					$output .= '<img class="rs-admin-image-flag rs-admin-is-' . $language . '" title="' . Redaxscript\Language::get($language) . '" />';
-				}
+
 				if ($status == 1)
 				{
-					$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . $route . '" class="rs-admin-link-default">' . $name . '</a>';
+					$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . $route . '" class="rs-admin-link-view';
+					if ($language)
+					{
+						$output .= ' rs-admin-has-language" data-language="' . $language;
+					}
+					$output .= '">' . $name . '</a>';
 				}
 				else
 				{
@@ -273,7 +275,7 @@ function admin_contents_list()
 						if ($parent)
 						{
 							$parent_title = Redaxscript\Db::forTablePrefix('categories')->where('id', $parent)->findOne()->title;
-							$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/edit/categories/' . $parent . '" class="rs-admin-link-default">' . $parent_title . '</a>';
+							$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/edit/categories/' . $parent . '" class="rs-admin-link-parent">' . $parent_title . '</a>';
 						}
 						else
 						{
@@ -285,7 +287,7 @@ function admin_contents_list()
 						if ($category)
 						{
 							$category_title = Redaxscript\Db::forTablePrefix('categories')->where('id', $category)->findOne()->title;
-							$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/edit/categories/' . $category . '" class="rs-admin-link-default">' . $category_title . '</a>';
+							$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/edit/categories/' . $category . '" class="rs-admin-link-parent">' . $category_title . '</a>';
 						}
 						else
 						{
@@ -297,7 +299,7 @@ function admin_contents_list()
 						if ($article)
 						{
 							$article_title = Redaxscript\Db::forTablePrefix('articles')->where('id', $article)->findOne()->title;
-							$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/edit/articles/' . $article . '" class="rs-admin-link-default">' . $article_title . '</a>';
+							$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/edit/articles/' . $article . '" class="rs-admin-link-parent">' . $article_title . '</a>';
 						}
 						else
 						{
@@ -555,9 +557,13 @@ function admin_users_list()
 			$output .= '><td>';
 			if ($language)
 			{
-				$output .= '<img class="rs-admin-image-flag rs-admin-is-' . $language . '" title="' . Redaxscript\Language::get($language) . '" />';
+				$output .= '<span class="rs-admin-has-language" data-language="' . $language . '">';
 			}
 			$output .= $name;
+			if ($language)
+			{
+				$output .= '</span>';
+			}
 
 			/* collect control output */
 
@@ -577,7 +583,7 @@ function admin_users_list()
 					if ($group_alias)
 					{
 						$group_name = Redaxscript\Db::forTablePrefix('groups')->where('id', $value)->findOne()->name;
-						$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/edit/groups/' . $value . '" class="rs-admin-link-default">' . $group_name . '</a>';
+						$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/edit/groups/' . $value . '" class="rs-admin-link-parent">' . $group_name . '</a>';
 						if ($groups_array_last != $key)
 						{
 							$output .= ', ';

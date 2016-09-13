@@ -121,7 +121,7 @@ class Parser
 		'className' =>
 		[
 			'readmore' => 'rs-link-readmore',
-			'codequote' => 'rs-js-code-quote rs-code-quote'
+			'codequote' => 'rs-js-codequote rs-box-codequote'
 		],
 		'delimiter' => '@@@'
 	];
@@ -206,8 +206,7 @@ class Parser
 		$linkElement = new Html\Element();
 		$linkElement->init('a',
 		[
-			'class' => $this->_optionArray['className']['readmore'],
-			'title' => $this->_language->get('readmore')
+			'class' => $this->_optionArray['className']['readmore']
 		]);
 
 		/* collect output */

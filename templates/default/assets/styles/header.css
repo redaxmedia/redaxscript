@@ -1,10 +1,12 @@
 /**
  * @tableofcontents
  *
- *    3.5 title website
- * 5. header
- * 4. text website
- *    7.2 medium min
+ * 1. header
+ *    1.1 box
+ *    1.2 title
+ *    1.3 title
+ * 2. query
+ *    2.1 medium min
  *
  * @since 3.0.0
  *
@@ -12,57 +14,7 @@
  * @author Henry Ruhs
  */
 
-/* @section 3.5 title website */
-
-.rs-component-website
-{
-	font-size: 1em;
-	max-width: 70%;
-	min-height: 2em;
-	overflow: hidden;
-	white-space: nowrap;
-}
-
-.rs-component-website a::selection,
-.rs-component-website span::selection
-{
-	background: var(--rs-color-tertiary);
-	color: gray(255);
-}
-
-.rs-title-website
-{
-	font-size: 3.25em;
-	font-weight: normal;
-	line-height: 1em;
-	position: relative;
-	text-transform: uppercase;
-}
-
-.rs-text-website
-{
-	color: gray(170);
-	display: none;
-	font-weight: bold;
-	margin-left: 0.125em;
-}
-
-@media (--media-medium-min)
-{
-	.rs-component-website
-	{
-		float: left;
-		font-size: 1.25em;
-		max-width: 60%;
-	}
-
-	.rs-text-website
-	{
-		display: block;
-	}
-}
-
-/* @section 5. header */
+/* @section 1. header */
 
 .rs-header
 {
@@ -71,149 +23,57 @@
 	position: relative;
 }
 
-.rs-header,
-.rs-header a
-{
-	color: gray(255);
-}
+/* @section 1.1 box */
 
-.rs-header .rs-title-website a
+.rs-box-header
 {
 	color: gray(200);
-	transition: color 0.2s;
-}
+	max-width: 70%;
+	min-height: 2em;
+	overflow: hidden;
+	white-space: nowrap;
 
-.rs-header .rs-title-website:hover a
-{
-	color: gray(255);
-}
-
-/* @section 4. text website */
-
-/* list */
-
-.rs-list-header
-{
-	font-size: 1.25em;
-}
-
-.rs-list-header li
-{
-	box-sizing: border-box;
-	color: gray(255);
-	display: block;
-	font: 1em/2.25em arial, sans-serif;
-	text-decoration: none;
-}
-
-@media (--media-medium-max)
-{
-	.rs-list-header
+	& a:hover
 	{
-		background: var(--rs-color-primary);
-	}
-
-	.rs-list-header > li > span
-	{
-		background: var(--rs-color-primary-dark);
-	}
-
-	.rs-list-header a,
-	.rs-list-header span
-	{
-		display: block;
-		font-size: 0.875em;
-		padding: 0 1em;
-		transition: background 0.2s;
-	}
-
-	.rs-list-header a:hover
-	{
-		background: var(--rs-color-primary-light);
+		color: gray(255);
 	}
 }
 
-/* @section 7.2 medium min */
+/* @section 1.2 title */
+
+.rs-title-header
+{
+	font-size: 3.25em;
+	font-weight: normal;
+	line-height: 1em;
+	text-transform: uppercase;
+}
+
+/* @section 1.3 title */
+
+.rs-text-header
+{
+	color: gray(170);
+	display: none;
+	font-weight: bold;
+	margin-left: 0.125em;
+}
+
+/* @section 2. query */
+
+/* @section 2.1 medium min */
 
 @media (--media-medium-min)
 {
-	.rs-list-header li
+	.rs-box-header
 	{
-		font: 1.125em/2em var(--rs-font-primary);
+		float: left;
+		font-size: 1.25em;
+		max-width: 60%;
 	}
 
-	.rs-list-header > li
+	.rs-text-header
 	{
-		background: var(--rs-gradient-primary);
-		border-radius: 0.125em;
-		box-shadow: inset 0 -0.125em 0 0 gray(0, 0.2);
-		display: inline-block;
-		margin: 1em 0;
-		padding: 0.25em 1em;
-	}
-
-	.rs-list-header > li:hover
-	{
-		background: var(--rs-gradient-primary-light);
-		color: gray(0);
-		cursor: pointer;
-	}
-
-	.rs-list-header > li + li
-	{
-		margin-left: 1em;
-	}
-
-	/* children */
-
-	.rs-list-header-children
-	{
-		font-size: 0.875em;
-	}
-
-	.rs-list-header > li:hover .rs-list-header-children
-	{
-		border-top: 0.5em solid transparent;
-	}
-
-	.rs-list-header > li:hover .rs-list-header-children a
-	{
-		padding: 0 1em;
-	}
-
-	.rs-list-header > li:hover .rs-list-header-children li
-	{
-		background: var(--rs-color-primary);
-	}
-
-	.rs-list-header > li:hover .rs-list-header-children li:hover
-	{
-		background: var(--rs-color-primary-light);
-	}
-
-	.rs-list-header-children li:first-child
-	{
-		border-top-left-radius: 0.125em;
-		border-top-right-radius: 0.125em;
-	}
-
-	.rs-list-header-children li:last-child
-	{
-		border-bottom-left-radius: 0.125em;
-		border-bottom-right-radius: 0.125em;
-		box-shadow: inset 0 -0.125em 0 0 gray(0, 0.2);
-	}
-
-	.rs-list-header-children:after
-	{
-		border-radius: 0.25em;
-		bottom: 0;
-		box-shadow: 0 0.1em 0.2em gray(0, 0.5);
-		content: '';
-		left: 0;
-		position: absolute;
-		right: 0;
-		top: 0;
-		z-index: -1;
+		display: block;
 	}
 }

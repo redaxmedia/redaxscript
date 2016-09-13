@@ -49,6 +49,19 @@ class MessengerTest extends TestCaseAbstract
 	}
 
 	/**
+	 * providerInfo
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerInfo()
+	{
+		return $this->getProvider('tests/provider/messenger_info.json');
+	}
+
+	/**
 	 * providerWarning
 	 *
 	 * @since 3.0.0
@@ -72,19 +85,6 @@ class MessengerTest extends TestCaseAbstract
 	public function providerError()
 	{
 		return $this->getProvider('tests/provider/messenger_error.json');
-	}
-
-	/**
-	 * providerInfo
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerInfo()
-	{
-		return $this->getProvider('tests/provider/messenger_info.json');
 	}
 
 	/**
@@ -122,6 +122,34 @@ class MessengerTest extends TestCaseAbstract
 		/* actual */
 
 		$actual = $messenger->success($success['message'], $success['title']);
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testInfo
+	 *
+	 * @since 3.0.0
+	 *
+	 * @dataProvider providerInfo
+	 *
+	 * @param array $info
+	 * @param array $actionArray
+	 * @param string $expect
+	 */
+
+	public function testInfo($info = null, $actionArray = [], $expect = null)
+	{
+		/* setup */
+
+		$messenger = new Messenger($this->_registry);
+		$messenger->setRoute($actionArray['text'], $actionArray['route']);
+
+		/* actual */
+
+		$actual = $messenger->info($info['message'], $info['title']);
 
 		/* compare */
 
@@ -178,34 +206,6 @@ class MessengerTest extends TestCaseAbstract
 		/* actual */
 
 		$actual = $messenger->error($error['message'], $error['title']);
-
-		/* compare */
-
-		$this->assertEquals($expect, $actual);
-	}
-
-	/**
-	 * testInfo
-	 *
-	 * @since 3.0.0
-	 *
-	 * @dataProvider providerInfo
-	 *
-	 * @param array $info
-	 * @param array $actionArray
-	 * @param string $expect
-	 */
-
-	public function testInfo($info = null, $actionArray = [], $expect = null)
-	{
-		/* setup */
-
-		$messenger = new Messenger($this->_registry);
-		$messenger->setRoute($actionArray['text'], $actionArray['route']);
-
-		/* actual */
-
-		$actual = $messenger->info($info['message'], $info['title']);
 
 		/* compare */
 
