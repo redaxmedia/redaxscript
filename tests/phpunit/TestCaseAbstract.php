@@ -56,22 +56,6 @@ abstract class TestCaseAbstract extends PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * skipOnWindows
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function skipOnWindows()
-	{
-		if (strlowercase(php_uname('s')) === 'win')
-		{
-			$this->markTestIncomplete(
-				'skip on windows'
-			);
-		}
-	}
-
-	/**
 	 * assertString
 	 *
 	 * @since 3.0.0
