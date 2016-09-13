@@ -13,7 +13,7 @@ use Redaxscript\Singleton;
  * @author Henry Ruhs
  */
 
-class extends Singleton implements HeadInterface
+class Style extends Singleton implements HeadInterface
 {
 	//@todo: this class basicly collects inline css with appendInline(), prependInline(), render() and clear()
 	//@todo: it does not use the HeadAbstract because there is no append() and prepend() allowed
