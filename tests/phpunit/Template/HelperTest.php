@@ -46,6 +46,7 @@ class HelperTest extends TestCaseAbstract
 
 	public static function setUpBeforeClass()
 	{
+		//@todo: enable this method once the reason for disabling has been resolved
 		/*Db::forTablePrefix('categories')
 			->create()
 			->set(
