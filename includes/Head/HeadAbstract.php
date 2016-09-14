@@ -16,12 +16,41 @@ use Redaxscript\Singleton;
 abstract class HeadAbstract extends Singleton implements HeadInterface
 {
 	/**
+	 * collection namespace
+	 *
+	 * @var string
+	 */
+
+	protected static $_namespace = null;
+
+	/**
 	 * collection of the head
 	 *
 	 * @var array
 	 */
 
 	protected static $_collectionArray = [];
+
+	/**
+	 * init the class
+	 *
+	 * @param string $namespace collection sub namespace
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return HeadAbstract
+	 */
+
+	public function init($namespace = null)
+	{
+		self::$_namespace = get_called_class();
+		if ($namespace)
+		{
+			self::$_namespace .= '\\' . ucfirst($namespace);
+		}
+		return $this;
+	}
+	/*@todo: we need to find a fallback if someone did not use the init method */
 
 	/**
 	 * stringify the collection
@@ -38,7 +67,7 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 		{
 			return $render;
 		}
-		return '<!-- ' . get_called_class() . ' === null -->';
+		return '<!-- ' . self::$_namespace . ' === null -->';
 	}
 
 	/**
@@ -56,11 +85,11 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	{
 		if (is_array($attribute))
 		{
-			self::$_collectionArray[] = array_map('trim', $attribute);
+			self::$_collectionArray[self::$_namespace][] = array_map('trim', $attribute);
 		}
 		else if (strlen($attribute) && strlen($value))
 		{
-			self::$_collectionArray[] =
+			self::$_collectionArray[self::$_namespace][] =
 			[
 				trim($attribute) => trim($value)
 			];
@@ -83,11 +112,11 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	{
 		if (is_array($attribute))
 		{
-			array_unshift(self::$_collectionArray, array_map('trim', $attribute));
+			array_unshift(self::$_collectionArray[self::$_namespace], array_map('trim', $attribute));
 		}
 		else if (strlen($attribute) && strlen($value))
 		{
-			array_unshift(self::$_collectionArray,
+			array_unshift(self::$_collectionArray[self::$_namespace],
 			[
 				trim($attribute) => trim($value)
 			]);
@@ -103,9 +132,7 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 
 	public function clear()
 	{
-		/*@todo: this is clearing all collections and therefore needs refactoring
-		/*@todo: maybe a namespaced collection or correct use of self::$_collectionArray vs. static::$_collectionArray */
-		self::$_collectionArray = [];
+		self::$_collectionArray[self::$_namespace] = [];
 		return $this;
 	}
 }

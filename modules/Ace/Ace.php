@@ -38,21 +38,23 @@ class Ace extends Module
 	 * @since 3.0.0
 	 */
 
-	public static function renderStart()
+	public function renderStart()
 	{
 		if (Registry::get('loggedIn') === Registry::get('token'))
 		{
 			/* link */
 
 			$link = Head\Link::getInstance();
+			$link->init();
 			$link->appendFile('modules/Ace/assets/styles/ace.css');
 
 			/* script */
 
 			$script = Head\Script::getInstance();
+			$script->init('bottom');
+			$script->appendFile('//cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js');
 			$script->appendFile('modules/Ace/assets/scripts/init.js');
 			$script->appendFile('modules/Ace/assets/scripts/ace.js');
-			$script->appendFile('//cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js');
 		}
 	}
 }

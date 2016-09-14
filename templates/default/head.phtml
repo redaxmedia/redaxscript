@@ -10,6 +10,7 @@
 
 <!-- meta -->
 
+<?php Tag::meta()->init(); ?>
 <?php Tag::meta()->append(['charset' => Tag::setting('charset')]); ?>
 <?php Tag::meta()->append(['name' => 'author', 'content' => Tag::setting('author')]); ?>
 <?php Tag::meta()->append(['name' => 'generator', 'content' => Tag::language('name', '_package') . ' ' . Tag::language('version', '_package')]); ?>
@@ -23,6 +24,7 @@
 
 <!-- link -->
 
+<?php Tag::link()->init(); ?>
 <?php Tag::link()->append(['href' => Tag::registry('root') . '/' . Helper::getCanonical()]); ?>
 <?php Tag::link()->append(['href' => 'templates/default/assets/images/favicon.ico', 'rel' => 'shortcut icon']); ?>
 <?php Tag::link()->append(['href' => 'templates/default/assets/images/favicon.png', 'rel' => 'apple-touch-icon']); ?>
@@ -31,21 +33,20 @@
 <?php Tag::link()->appendFile('templates/default/dist/styles/default.min.css'); ?>
 <?php echo Tag::link(); ?>
 
-<!-- @todo: rewrite ALL templates to Tag::meta and Tag::link to the fluent interface:
-
-<php echo Tag::meta()
-		->append(
-		[
-			// put the [ on a new line
-		])
-		->append();
-?>
--->
-
 <!-- top script -->
 
 <?php echo Tag::script()
+	->init('top')
 	->appendFile('assets/scripts/init.js')
 	->appendFile('templates/default/assets/scripts/init.js')
 	->appendInline(Helper::getTransport());
 ?>
+
+<!-- todo: i tried prependFile to ensuce that the base init script are always on very first position but it did not work at all
+
+echo Tag::script()
+	->init('top')
+	->prependFile('templates/default/assets/scripts/init.js')
+	->prependFile('assets/scripts/init.js')
+	->appendInline(Helper::getTransport());
+-->

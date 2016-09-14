@@ -346,23 +346,12 @@
 		width: 100%;
 	}
 }
-/**
- * @tableofcontents
- *
- * 1. icon
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
 /* @section 1. icon */
 
 @font-face
 {
 	font-family: 'icon default';
-	src: url('templates/default/assets/fonts/icon.woff2') format('woff2'), url('templates/default/assets/fonts/icon.woff') format('woff');
+	src: url('../../assets/fonts/icon.woff2') format('woff2'), url('../../assets/fonts/icon.woff') format('woff');
 }
 
 .rs-is-success.rs-box-note:before
