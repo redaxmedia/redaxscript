@@ -33,30 +33,22 @@ class Ace extends Module
 	];
 
 	/**
-	 * linkStart
+	 * renderStart
 	 *
 	 * @since 3.0.0
 	 */
 
-	public static function linkStart()
+	public static function renderStart()
 	{
 		if (Registry::get('loggedIn') === Registry::get('token'))
 		{
+			/* link */
+
 			$link = Head\Link::getInstance();
 			$link->appendFile('modules/Ace/assets/styles/ace.css');
-		}
-	}
 
-	/**
-	 * scriptStart
-	 *
-	 * @since 3.0.0
-	 */
+			/* script */
 
-	public static function scriptStart()
-	{
-		if (Registry::get('loggedIn') === Registry::get('token'))
-		{
 			$script = Head\Script::getInstance();
 			$script->appendFile('modules/Ace/assets/scripts/init.js');
 			$script->appendFile('modules/Ace/assets/scripts/ace.js');
@@ -65,6 +57,5 @@ class Ace extends Module
 	}
 }
 
-/*@todo: refactor ALL modules that using scriptStart() and linkStart() hooks - remove the global variables and loaderStart hook
+/*@todo: refactor ALL modules that using renderStart() hooks - remove the global variables and loaderStart hook
 /*@todo: do not echo here - we just do the collecting - echo is job of the template */
-/*@todo: i did not implement the hooks because it is hard to find the right position - maybe we need additional init() methods or template helper for it */
