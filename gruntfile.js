@@ -395,8 +395,13 @@ module.exports = function (grunt)
 						require('postcss-color-function'),
 						require('autoprefixer')(
 						{
-							browsers: 'last 2 versions',
-							cascade: false
+							browsers: 'last 2 versions'
+						}),
+						require('cssnano')(
+						{
+							'autoprefixer': false,
+							'colormin': false,
+							'zindex': false
 						})
 					]
 				}
@@ -421,8 +426,13 @@ module.exports = function (grunt)
 						require('postcss-color-function'),
 						require('autoprefixer')(
 						{
-							browsers: 'last 2 versions',
-							cascade: false
+							browsers: 'last 2 versions'
+						}),
+						require('cssnano')(
+						{
+							'autoprefixer': false,
+							'colormin': false,
+							'zindex': false
 						})
 					]
 				}
