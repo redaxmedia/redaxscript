@@ -6,7 +6,10 @@
 		->appendFile('//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset())
 		->appendFile('templates/admin/dist/styles/admin.min.css');
 	?>
+
+	<?php Tag::script()
+		->init('head')
+		->appendFile('templates/admin/assets/scripts/init.js');
+	?>
 <?php endif; ?>
 
-<!--@todo: do not echo the tags here, we just extend the collection !-->
-<!--@todo add a Tag::script after the Tag::link block and load all the scripts from .loader - delete the file after porting !-->

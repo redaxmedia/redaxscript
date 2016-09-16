@@ -1,12 +1,38 @@
 <?php namespace Redaxscript\Template; ?>
 
+<!-- base -->
+
+<?php echo Tag::base(); ?>
+
+<!-- title -->
+
 <title>Console</title>
 
+<!-- meta -->
+
+<?php Tag::meta()->init(); ?>
+<?php Tag::meta()->append(['charset' => 'utf-8']); ?>
 <?php Tag::meta()->append(['name' => 'viewport', 'content' => 'width=device-width']); ?>
+<?php Tag::meta()->append(['name' => 'theme-color', 'content' => '#300a24']); ?>
+<?php Tag::meta()->append(['name' => 'msapplication-navbutton-color', 'content' => '#300a24']); ?>
+<?php Tag::meta()->append(['name' => 'apple-mobile-web-app-status-bar-stylecontent', 'content' => '#300a24']); ?>
 <?php echo Tag::meta(); ?>
 
-<?php Tag::link()->append(['href' => Tag::registry('root') . '/templates/console/dist/styles/console.min.css', 'rel' => 'stylesheet']); ?>
+<!-- link -->
+
+<?php Tag::link()->init(); ?>
 <?php Tag::link()->append(['href' => 'templates/default/assets/images/favicon.ico', 'rel' => 'shortcut icon']); ?>
 <?php Tag::link()->append(['href' => 'templates/default/assets/images/favicon.png', 'rel' => 'apple-touch-icon']); ?>
-<?php Tag::link()->append(['href' => '//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset(), 'rel' => 'stylesheet']); ?>
+<?php Tag::link()->appendFile('//fonts.googleapis.com/css?family=Ubuntu+Mono:400&amp;subset=' . Helper::getSubset()) ?>
+<?php Tag::link()->appendFile('templates/console/dist/styles/console.min.css'); ?>
 <?php echo Tag::link(); ?>
+
+<!-- head script -->
+
+<?php echo Tag::script()
+	->init('head')
+	->appendFile('assets/scripts/init.js')
+	->appendFile('templates/console/assets/scripts/init.js')
+	->appendInline(Helper::getTransport());
+?>
+

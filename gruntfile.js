@@ -400,8 +400,7 @@ module.exports = function (grunt)
 						require('cssnano')(
 						{
 							'autoprefixer': false,
-							'colormin': false,
-							'zindex': false
+							'discardUnused': false
 						})
 					]
 				}

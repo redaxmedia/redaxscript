@@ -42,11 +42,25 @@
 
 <?php echo Tag::partial('templates/default/footer.phtml'); ?>
 
-<!-- bottom script -->
+<!-- foot script -->
 
-<?php echo Tag::script()
-	->init('bottom')
-	->prependFile('//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js');
+<?php Tag::script()
+	->init('foot')
+	->prependFile('assets/scripts/fallback.js')
+	->prependFile('//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js')
+	->appendFile('assets/scripts/dialog.js')
+	->appendFile('assets/scripts/form.js')
+	->appendFile('assets/scripts/interface.js')
+	->appendFile('assets/scripts/misc.js');
 ?>
 
-<!--@todo: extend the Tag::script to load all the scripts from .loader - delete the file after that !-->
+<?php if (Tag::registry('loggedIn') === Tag::registry('token') && Tag::registry('firstParameter') !== 'logout'): ?>
+	<?php Tag::script()
+		->init('foot')
+		->appendFile('templates/admin/assets/scripts/alias.js')
+		->appendFile('templates/admin/assets/scripts/keyword.js')
+		->appendFile('templates/admin/assets/scripts/panel.js');
+	?>
+<?php endif; ?>
+
+<?php echo Tag::script()->init('foot'); ?>

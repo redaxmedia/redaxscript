@@ -1,29 +1,40 @@
 <?php namespace Redaxscript\Template; ?>
 
+<!-- base -->
+
+<?php echo Tag::base(); ?>
+
 <!-- title -->
 
 <title><?php echo Tag::language('installation'); ?></title>
 
 <!-- meta -->
 
-<?php
-Tag::meta()->append(['name' => 'viewport', 'content' => 'width=device-width']);
-Tag::meta()->append(['name' => 'theme-color', 'content' => '#323e4c']);
-Tag::meta()->append(['name' => 'msapplication-navbutton-color', 'content' => '#323e4c']);
-Tag::meta()->append(['name' => 'apple-mobile-web-app-status-bar-stylecontent', 'content' => '#323e4c']);
-echo Tag::meta();
-?>
+<?php Tag::meta()->init(); ?>
+<?php Tag::meta()->append(['charset' => 'utf-8']); ?>
+<?php Tag::meta()->append(['name' => 'viewport', 'content' => 'width=device-width']); ?>
+<?php Tag::meta()->append(['name' => 'theme-color', 'content' => '#323e4c']); ?>
+<?php Tag::meta()->append(['name' => 'msapplication-navbutton-color', 'content' => '#323e4c']); ?>
+<?php Tag::meta()->append(['name' => 'apple-mobile-web-app-status-bar-stylecontent', 'content' => '#323e4c']); ?>
+<?php echo Tag::meta(); ?>
 
 <!-- link -->
 
-<?php
-Tag::link()->append(['href' => 'templates/default/assets/images/favicon.ico', 'rel' => 'shortcut icon']);
-Tag::link()->append(['href' => 'templates/default/assets/images/favicon.png', 'rel' => 'apple-touch-icon']);
-Tag::link()->append(['href' => '//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset(), 'rel' => 'stylesheet']);
-echo Tag::link();
+<?php Tag::link()->init(); ?>
+<?php Tag::link()->append(['href' => 'templates/default/assets/images/favicon.ico', 'rel' => 'shortcut icon']); ?>
+<?php Tag::link()->append(['href' => 'templates/default/assets/images/favicon.png', 'rel' => 'apple-touch-icon']); ?>
+<?php Tag::link()->appendFile('//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset()); ?>
+<?php Tag::link()->appendFile('dist/styles/base.min.css'); ?>
+<?php Tag::link()->appendFile('templates/default/dist/styles/default.min.css'); ?>
+<?php Tag::link()->appendFile('templates/install/dist/styles/install.min.css'); ?>
+<?php echo Tag::link(); ?>
+
+<!-- head script -->
+
+<?php echo Tag::script()
+	->init('head')
+	->appendFile('assets/scripts/init.js')
+	->appendFile('templates/install/assets/scripts/init.js')
+	->appendInline(Helper::getTransport());
 ?>
 
-<!-- style and script -->
-
-<?php echo Tag::style(); ?>
-<?php echo Tag::scriptTmp('init'); ?>

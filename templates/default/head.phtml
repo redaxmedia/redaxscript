@@ -33,20 +33,13 @@
 <?php Tag::link()->appendFile('templates/default/dist/styles/default.min.css'); ?>
 <?php echo Tag::link(); ?>
 
-<!-- top script -->
+<!-- head script -->
 
 <?php echo Tag::script()
-	->init('top')
-	->appendFile('assets/scripts/init.js')
-	->appendFile('templates/default/assets/scripts/init.js')
+	->init('head')
+	->prependFile('templates/default/assets/scripts/init.js')
+	->prependFile('assets/scripts/init.js')
+	->prependFile('assets/scripts/support.js')
 	->appendInline(Helper::getTransport());
 ?>
 
-<!-- todo: i tried prependFile to ensuce that the base init script are always on very first position but it did not work at all
-
-echo Tag::script()
-	->init('top')
-	->prependFile('templates/default/assets/scripts/init.js')
-	->prependFile('assets/scripts/init.js')
-	->appendInline(Helper::getTransport());
--->

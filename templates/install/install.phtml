@@ -20,8 +20,15 @@
 			<?php echo Tag::partial('templates/install/content.phtml'); ?>
 		</main>
 
-		<!-- footer -->
+		<!-- bottom script -->
 
-		<?php echo Tag::scriptTmp(); ?>
+		<?php echo Tag::script()
+			->init('bottom')
+			->appendFile('//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js')
+			->appendFile('assets/scripts/fallback.js')
+			->appendFile('assets/scripts/form.js')
+			->appendFile('assets/scripts/interface.js')
+			->appendFile('templates/install/assets/scripts/install.js');
+		?>
 	</body>
 </html>
