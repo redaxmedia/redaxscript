@@ -664,7 +664,7 @@ module.exports = function (grunt)
 			},
 			batchZwamp:
 			{
-				command: 'echo "start zwamp.exe & start vdrive/.sys/papercut/Papercut.Service.exe" > ../redaxscript-zwamp/zwamp/start.bat'
+				command: 'echo "zwamp.exe & start /b /wait explorer http://localhost & start /b /wait vdrive/.sys/papercut/Papercut.Service.exe" > ../redaxscript-zwamp/zwamp/start.bat'
 			},
 			zipZwamp:
 			{
