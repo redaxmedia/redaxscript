@@ -2,9 +2,6 @@ module.exports = function (grunt)
 {
 	'use strict';
 
-	/* polyfill */
-
-	require('babel-polyfill');
 	grunt.path = require('path');
 
 	/* config grunt */
