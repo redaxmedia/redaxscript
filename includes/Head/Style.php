@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Head;
 
+use Redaxscript\Html;
 use Redaxscript\Singleton;
 
 /**
@@ -15,16 +16,13 @@ use Redaxscript\Singleton;
 
 class Style extends Singleton implements HeadInterface
 {
-	//@todo: this class basicly collects inline css with appendInline(), prependInline(), render() and clear()
-	//@todo: it does not use the HeadAbstract because there is no append() and prepend() allowed
-
 	/**
-	 * collection of the style
+	 * inline style
 	 *
-	 * @var array
+	 * @var string
 	 */
 
-	protected static $_collectionArray = [];
+	protected $_inline = null;
 
 	/**
 	 * stringify the collection
@@ -40,6 +38,38 @@ class Style extends Singleton implements HeadInterface
 	}
 
 	/**
+	 * append inline style
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $inline
+	 *
+	 * @return Style
+	 */
+
+	public function appendInline($inline = null)
+	{
+		$this->_inline .= $inline;
+		return $this;
+	}
+
+	/**
+	 * prepend inline style
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $inline
+	 *
+	 * @return Style
+	 */
+
+	public function prependInline($inline = null)
+	{
+		$this->_inline = $inline . $this->_inline;
+		return $this;
+	}
+
+	/**
 	 * render the style
 	 *
 	 * @since 3.0.0
@@ -49,5 +79,33 @@ class Style extends Singleton implements HeadInterface
 
 	public function render()
 	{
+		$output = null;
+
+		/* html elements */
+
+		$styleElement = new Html\Element();
+		$styleElement->init('style');
+
+		$output .= $styleElement
+			->copy()
+			->text($this->_inline);
+		$output .= PHP_EOL;
+
+		$this->clear();
+		return $output;
+	}
+
+	/**
+	 * clear the style
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return Script
+	 */
+
+	public function clear()
+	{
+		$this->_inline = null;
+		return $this;
 	}
 }

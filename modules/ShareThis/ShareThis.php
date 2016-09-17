@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\ShareThis;
 
+use Redaxscript\Head;
 use Redaxscript\Html;
 use Redaxscript\Registry;
 
@@ -32,20 +33,6 @@ class ShareThis extends Config
 	];
 
 	/**
-	 * loaderStart
-	 *
-	 * @since 2.2.0
-	 */
-
-	public static function loaderStart()
-	{
-		global $loader_modules_styles, $loader_modules_scripts;
-		$loader_modules_styles[] = 'modules/ShareThis/assets/styles/share_this.css';
-		$loader_modules_scripts[] = 'modules/ShareThis/assets/scripts/init.js';
-		$loader_modules_scripts[] = 'modules/ShareThis/assets/scripts/share_this.js';
-	}
-
-	/**
 	 * contentFragmentEnd
 	 *
 	 * @since 3.0.0
@@ -58,6 +45,30 @@ class ShareThis extends Config
 			$url = Registry::get('root') . Registry::get('parameterRoute') . Registry::get('fullRoute');
 			return self::render($url);
 		}
+	}
+
+	/**
+	 * renderStart
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function renderStart()
+	{
+		/* link */
+
+		$link = Head\Link::getInstance();
+		$link
+			->init()
+			->appendFile('modules/ShareThis/assets/styles/share_this.css');
+
+		/* script */
+
+		$script = Head\Script::getInstance();
+		$script
+			->init('foot')
+			->appendFile('modules/ShareThis/assets/scripts/init.js')
+			->appendFile('modules/ShareThis/assets/scripts/share_this.js');
 	}
 
 	/**

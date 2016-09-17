@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\LazyLoad;
 
+use Redaxscript\Head;
 use Redaxscript\Html;
 use Redaxscript\Language;
 use Redaxscript\Registry;
@@ -33,20 +34,6 @@ class LazyLoad extends Config
 	];
 
 	/**
-	 * loaderStart
-	 *
-	 * @since 2.2.0
-	 */
-
-	public static function loaderStart()
-	{
-		global $loader_modules_styles, $loader_modules_scripts;
-		$loader_modules_styles[] = 'modules/LazyLoad/assets/styles/lazy_load.css';
-		$loader_modules_scripts[] = 'modules/LazyLoad/assets/scripts/init.js';
-		$loader_modules_scripts[] = 'modules/LazyLoad/assets/scripts/lazy_load.js';
-	}
-
-	/**
 	 * adminPanelNotification
 	 *
 	 * @since 3.0.0
@@ -57,6 +44,30 @@ class LazyLoad extends Config
 	public static function adminPanelNotification()
 	{
 		return self::getNotification();
+	}
+
+	/**
+	 * renderStart
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function renderStart()
+	{
+		/* link */
+
+		$link = Head\Link::getInstance();
+		$link
+			->init()
+			->appendFile('modules/LazyLoad/assets/styles/lazy_load.css');
+
+		/* script */
+
+		$script = Head\Script::getInstance();
+		$script
+			->init('foot')
+			->appendFile('modules/LazyLoad/assets/scripts/init.js')
+			->appendFile('modules/LazyLoad/assets/scripts/lazy_load.js');
 	}
 
 	/**

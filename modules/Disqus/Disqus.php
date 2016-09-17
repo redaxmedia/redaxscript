@@ -33,21 +33,6 @@ class Disqus extends Config
 	];
 
 	/**
-	 * loaderStart
-	 *
-	 * @since 2.2.0
-	 */
-
-	public static function loaderStart()
-	{
-		if (Registry::get('articleId'))
-		{
-			global $loader_modules_scripts;
-			$loader_modules_scripts[] = 'modules/Disqus/assets/scripts/init.js';
-		}
-	}
-
-	/**
 	 * renderStart
 	 *
 	 * @since 2.2.0

@@ -32,41 +32,27 @@ class SyntaxHighlighter extends Module
 	];
 
 	/**
-	 * loaderStart
+	 * renderStart
 	 *
-	 * @since 2.6.0
+	 * @since 3.0.0
 	 */
 
-	public static function loaderStart()
+	public function renderStart()
 	{
-		global $loader_modules_scripts;
-		$loader_modules_scripts[] = 'modules/SyntaxHighlighter/assets/scripts/init.js';
-		$loader_modules_scripts[] = 'modules/SyntaxHighlighter/assets/scripts/syntax_highlighter.js';
-	}
+		/* link */
 
-	/**
-	 * linkEnd
-	 *
-	 * @since 2.6.0
-	 */
-
-	public static function linkEnd()
-	{
 		$link = Head\Link::getInstance();
-		$link->append(['href' => '//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/github.min.css', 'rel' => 'stylesheet']);
-		echo $link;
-	}
+		$link
+			->init()
+			->appendFile('//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/github.min.css');
 
-	/**
-	 * scriptEnd
-	 *
-	 * @since 2.6.0
-	 */
+		/* script */
 
-	public static function scriptEnd()
-	{
 		$script = Head\Script::getInstance();
-		$script->append(['src' => '//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js']);
-		echo $script;
+		$script
+			->init('foot')
+			->appendFile('//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js')
+			->appendFile('modules/SyntaxHighlighter/assets/scripts/init.js')
+			->appendFile('modules/SyntaxHighlighter/assets/scripts/syntax_highlighter.js');
 	}
 }

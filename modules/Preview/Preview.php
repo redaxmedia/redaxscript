@@ -2,6 +2,7 @@
 namespace Redaxscript\Modules\Preview;
 
 use Redaxscript\Directory;
+use Redaxscript\Head;
 use Redaxscript\Html;
 use Redaxscript\Language;
 use Redaxscript\Module;
@@ -36,21 +37,6 @@ class Preview extends Module
 	];
 
 	/**
-	 * loaderStart
-	 *
-	 * @since 2.2.0
-	 */
-
-	public static function loaderStart()
-	{
-		if (Registry::get('firstParameter') === 'preview')
-		{
-			global $loader_modules_styles;
-			$loader_modules_styles[] = 'modules/Preview/dist/styles/preview.min.css';
-		}
-	}
-
-	/**
 	 * renderStart
 	 *
 	 * @since 2.2.0
@@ -63,6 +49,13 @@ class Preview extends Module
 			Registry::set('metaTitle', Language::get('preview', '_preview'));
 			Registry::set('metaDescription', Language::get('description', '_preview'));
 			Registry::set('routerBreak', true);
+
+			/* link */
+
+			$link = Head\Link::getInstance();
+			$link
+				->init()
+				->appendFile('modules/Preview/dist/styles/preview.min.css');
 		}
 	}
 

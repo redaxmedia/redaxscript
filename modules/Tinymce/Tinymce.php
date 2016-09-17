@@ -35,19 +35,6 @@ class Tinymce extends Config
 	];
 
 	/**
-	 * loaderStart
-	 *
-	 * @since 3.0.0
-	 */
-
-	public static function loaderStart()
-	{
-		global $loader_modules_scripts;
-		$loader_modules_scripts[] = 'modules/Tinymce/assets/scripts/init.js';
-		$loader_modules_scripts[] = 'modules/Tinymce/assets/scripts/tinymce.js';
-	}
-
-	/**
 	 * scriptEnd
 	 *
 	 * @since 3.0.0
@@ -58,8 +45,11 @@ class Tinymce extends Config
 		if (Registry::get('loggedIn') === Registry::get('token'))
 		{
 			$script = Head\Script::getInstance();
-			$script->append(['src' => '//cdnjs.cloudflare.com/ajax/libs/tinymce/4.4.1/tinymce.min.js']);
-			echo $script;
+			$script
+				->init('foot')
+				->appendFile(['src' => '//cdnjs.cloudflare.com/ajax/libs/tinymce/4.4.1/tinymce.min.js'])
+				->appendFile(['src' => 'modules/Tinymce/assets/scripts/init.js'])
+				->appendFile(['src' => 'modules/Tinymce/assets/scripts/tinymce.js']);
 		}
 	}
 

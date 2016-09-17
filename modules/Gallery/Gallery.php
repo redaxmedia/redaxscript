@@ -3,6 +3,7 @@ namespace Redaxscript\Modules\Gallery;
 
 use Redaxscript\Db;
 use Redaxscript\Directory;
+use Redaxscript\Head;
 use Redaxscript\Html;
 use Redaxscript\Language;
 
@@ -34,20 +35,6 @@ class Gallery extends Config
 	];
 
 	/**
-	 * loaderStart
-	 *
-	 * @since 2.6.0
-	 */
-
-	public static function loaderStart()
-	{
-		global $loader_modules_styles, $loader_modules_scripts;
-		$loader_modules_styles[] = 'modules/Gallery/assets/styles/gallery.css';
-		$loader_modules_scripts[] = 'modules/Gallery/assets/scripts/init.js';
-		$loader_modules_scripts[] = 'modules/Gallery/assets/scripts/gallery.js';
-	}
-
-	/**
 	 * adminPanelNotification
 	 *
 	 * @since 3.0.0
@@ -58,6 +45,30 @@ class Gallery extends Config
 	public static function adminPanelNotification()
 	{
 		return self::getNotification();
+	}
+
+	/**
+	 * renderStart
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function renderStart()
+	{
+		/* link */
+
+		$link = Head\Link::getInstance();
+		$link
+			->init()
+			->appendFile('modules/Gallery/assets/styles/gallery.css');
+
+		/* script */
+
+		$script = Head\Script::getInstance();
+		$script
+			->init('foot')
+			->appendFile('modules/Gallery/assets/scripts/init.js')
+			->appendFile('modules/Gallery/assets/scripts/gallery.js');
 	}
 
 	/**

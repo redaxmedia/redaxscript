@@ -302,7 +302,7 @@ class Tag
 
 	public static function style()
 	{
-		//return Head\Style::getInstance();
+		return Head\Style::getInstance();
 	}
 
 	/**
