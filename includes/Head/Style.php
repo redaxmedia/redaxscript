@@ -86,11 +86,14 @@ class Style extends Singleton implements HeadInterface
 		$styleElement = new Html\Element();
 		$styleElement->init('style');
 
-		$output .= $styleElement
-			->copy()
-			->text($this->_inline);
-		$output .= PHP_EOL;
+		/* collect inline */
 
+		if ($this->_inline)
+		{
+			$output .= $styleElement
+				->copy()
+				->text($this->_inline);
+		}
 		$this->clear();
 		return $output;
 	}
@@ -100,7 +103,7 @@ class Style extends Singleton implements HeadInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return Script
+	 * @return Style
 	 */
 
 	public function clear()

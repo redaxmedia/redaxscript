@@ -44,15 +44,15 @@ class LinkTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$linkHead = Head\Link::getInstance();
+		$link= Head\Link::getInstance();
 		foreach ($linkArray as $key => $value)
 		{
-			$linkHead->append($value);
+			$link->append($value);
 		}
 
 		/* actual */
 
-		$actual = $linkHead->render();
+		$actual = $link->render();
 
 		/* compare */
 

@@ -65,11 +65,11 @@ class TitleTest extends TestCaseAbstract
 		/* setup */
 
 		$this->_registry->init($registryArray);
-		$titleHead = new Head\Title($this->_registry);
+		$title = new Head\Title($this->_registry);
 
 		/* actual */
 
-		$actual = $titleHead->render();
+		$actual = $title->render();
 
 		/* compare */
 

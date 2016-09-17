@@ -203,12 +203,6 @@
 			<file>tests/phpunit/MessengerTest.php</file>
 		</testsuite>
 
-		<!-- minifier -->
-
-		<testsuite name="minifier">
-			<file>tests/phpunit/MinifierTest.php</file>
-		</testsuite>
-
 		<!-- module -->
 
 		<testsuite name="module">

@@ -110,26 +110,20 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 
 	public function prepend($attribute = null, $value = null)
 	{
+		if(!self::$_collectionArray[self::$_namespace])
+		{
+			self::$_collectionArray[self::$_namespace] = [];
+		}
 		if (is_array($attribute))
 		{
 			array_unshift(self::$_collectionArray[self::$_namespace], array_map('trim', $attribute));
 		}
 		else if (strlen($attribute) && strlen($value))
 		{
-			if(!self::$_collectionArray[self::$_namespace])
-			{
-				self::$_collectionArray[self::$_namespace][] =
-				[
-					trim($attribute) => trim($value)
-				];
-			}
-			else
-			{
-				array_unshift(self::$_collectionArray[self::$_namespace],
-				[
-					trim($attribute) => trim($value)
-				]);
-			}
+			array_unshift(self::$_collectionArray[self::$_namespace],
+			[
+				trim($attribute) => trim($value)
+			]);
 		}
 		return $this;
 	}

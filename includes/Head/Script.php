@@ -19,7 +19,7 @@ use Redaxscript\Html;
 class Script extends HeadAbstract
 {
 	/**
-	 * inline scripts
+	 * inline script
 	 *
 	 * @var string
 	 */
@@ -123,7 +123,7 @@ class Script extends HeadAbstract
 			}
 		}
 
-		/* handle inline */
+		/* collect inline */
 
 		if ($this->_inline)
 		{

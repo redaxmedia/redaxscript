@@ -14,6 +14,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @author Henry Ruhs
  * @author Balázs Szilágyi
  */
+
 class MetaTest extends TestCaseAbstract
 {
 	/**
@@ -44,19 +45,18 @@ class MetaTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		//$metaHead = Head\Meta::getInstance();
-		//foreach ($metaArray as $key => $value)
-		//{
-			//$metaHead->append($value);
-		//}
+		$metaHead = Head\Meta::getInstance();
+		foreach ($metaArray as $value)
+		{
+			$metaHead->append($value);
+		}
 
 		/* actual */
 
-		//$actual = $metaHead->render();
+		$actual = $metaHead->render();
 
 		/* compare */
 
-		/*@todo: enable this once clear() in HeadAbstract was refactored */
-		//$this->assertEquals($expect, $actual);
+		$this->assertEquals($expect, $actual);
 	}
 }

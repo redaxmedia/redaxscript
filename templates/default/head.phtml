@@ -39,8 +39,8 @@
 
 <?php echo Tag::script()
 	->init('head')
-	->prependFile('assets/scripts/support.js')
-	->prependFile('assets/scripts/init.js')
 	->prependFile('templates/default/assets/scripts/init.js')
+	->prependFile('assets/scripts/init.js')
+	->prependFile('assets/scripts/support.js')
 	->appendInline(Helper::getTransport());
 ?>
