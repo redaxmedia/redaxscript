@@ -11,9 +11,6 @@ matrix:
  allow_failures:
  - php: nightly
 
-env:
- - TRAVIS_NODE_VERSION="4"
-
 services:
 - mysql
 - postgresql
