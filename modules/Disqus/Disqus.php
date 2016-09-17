@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\Disqus;
 
+use Redaxscript\Head;
 use Redaxscript\Html;
 use Redaxscript\Registry;
 
@@ -57,6 +58,14 @@ class Disqus extends Config
 		if (Registry::get('articleId'))
 		{
 			Registry::set('commentReplace', true);
+
+			/* script */
+
+			$script = Head\Script::getInstance();
+			$script
+				->init('foot')
+				->appendFile(self::$_configArray['url'])
+				->appendFile('modules/Disqus/assets/scripts/init.js');
 		}
 	}
 
@@ -73,15 +82,10 @@ class Disqus extends Config
 		[
 			'id' => self::$_configArray['id']
 		]);
-		$scriptElement = new Html\Element();
-		$scriptElement->init('script',
-		[
-			'src' => self::$_configArray['url']
-		]);
 
 		/* collect output */
 
-		$output = $boxElement . $scriptElement;
+		$output = $boxElement;
 		echo $output;
 	}
 }

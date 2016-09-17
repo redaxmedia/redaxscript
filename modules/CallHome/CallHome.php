@@ -2,8 +2,8 @@
 namespace Redaxscript\Modules\CallHome;
 
 use Redaxscript\Filter;
-use Redaxscript\Language;
 use Redaxscript\Head;
+use Redaxscript\Language;
 use Redaxscript\Module;
 use Redaxscript\Reader;
 use Redaxscript\Registry;
@@ -36,25 +36,9 @@ class CallHome extends Module
 	];
 
 	/**
-	 * loaderStart
+	 * renderStart
 	 *
-	 * @since 2.2.0
-	 */
-
-	public static function loaderStart()
-	{
-		if (Registry::get('loggedIn') === Registry::get('token') && Registry::get('firstParameter') === 'admin')
-		{
-			global $loader_modules_scripts;
-			$loader_modules_scripts[] = 'modules/CallHome/assets/scripts/init.js';
-			$loader_modules_scripts[] = 'modules/CallHome/assets/scripts/call_home.js';
-		}
-	}
-
-	/**
-	 * scriptStart
-	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 */
 
 	public static function scriptStart()
@@ -62,8 +46,11 @@ class CallHome extends Module
 		if (Registry::get('loggedIn') === Registry::get('token') && Registry::get('firstParameter') === 'admin')
 		{
 			$script = Head\Script::getInstance();
-			$script->append(['src' => '//google-analytics.com/analytics.js']);
-			echo $script;
+			$script
+				->init('foot')
+				->appendFile('//google-analytics.com/analytics.js')
+				->appendFile('modules/CallHome/assets/scripts/init.js')
+				->appendFile('modules/CallHome/assets/scripts/call_home.js');
 		}
 	}
 

@@ -33,25 +33,9 @@ class Analytics extends Module
 	];
 
 	/**
-	 * loaderStart
+	 * renderStart
 	 *
-	 * @since 2.2.0
-	 */
-
-	public static function loaderStart()
-	{
-		if (Registry::get('loggedIn') !== Registry::get('token'))
-		{
-			global $loader_modules_scripts;
-			$loader_modules_scripts[] = 'modules/Analytics/assets/scripts/init.js';
-			$loader_modules_scripts[] = 'modules/Analytics/assets/scripts/analytics.js';
-		}
-	}
-
-	/**
-	 * scriptStart
-	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 */
 
 	public static function scriptStart()
@@ -59,8 +43,11 @@ class Analytics extends Module
 		if (Registry::get('loggedIn') !== Registry::get('token'))
 		{
 			$script = Head\Script::getInstance();
-			$script->append(['src' => '//google-analytics.com/analytics.js']);
-			echo $script;
+			$script
+				->init('foot')
+				->appendFile('//google-analytics.com/analytics.js')
+				->appendFile('modules/Analytics/assets/scripts/init.js')
+				->appendFile('modules/Analytics/assets/scripts/analytics.js');
 		}
 	}
 }

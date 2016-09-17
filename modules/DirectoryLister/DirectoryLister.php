@@ -4,6 +4,7 @@ namespace Redaxscript\Modules\DirectoryLister;
 use Redaxscript\Db;
 use Redaxscript\Directory;
 use Redaxscript\Filter;
+use Redaxscript\Head;
 use Redaxscript\Html;
 use Redaxscript\Language;
 use Redaxscript\Registry;
@@ -37,15 +38,18 @@ class DirectoryLister extends Config
 	];
 
 	/**
-	 * loaderStart
+	 * renderStart
 	 *
-	 * @since 2.6.0
+	 * @since 3.0.0
 	 */
 
-	public static function loaderStart()
+	public function renderStart()
 	{
-		global $loader_modules_styles;
-		$loader_modules_styles[] = 'modules/DirectoryLister/assets/styles/directory_lister.css';
+		$link = Head\Link::getInstance();
+		$link
+			->init()
+			->appendFile('modules/DirectoryLister/assets/styles/directory_lister.css');
+
 	}
 
 	/**

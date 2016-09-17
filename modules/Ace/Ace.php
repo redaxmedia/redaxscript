@@ -45,19 +45,18 @@ class Ace extends Module
 			/* link */
 
 			$link = Head\Link::getInstance();
-			$link->init();
-			$link->appendFile('modules/Ace/assets/styles/ace.css');
+			$link
+				->init()
+				->appendFile('modules/Ace/assets/styles/ace.css');
 
 			/* script */
 
 			$script = Head\Script::getInstance();
-			$script->init('foot');
-			$script->appendFile('//cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/ace.js');
-			$script->appendFile('modules/Ace/assets/scripts/init.js');
-			$script->appendFile('modules/Ace/assets/scripts/ace.js');
+			$script
+				->init('foot')
+				->appendFile('//cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/ace.js')
+				->appendFile('modules/Ace/assets/scripts/init.js')
+				->appendFile('modules/Ace/assets/scripts/ace.js');
 		}
 	}
 }
-
-/*@todo: refactor ALL modules to this pattern - remove the global variables and loaderStart hooks */
-/*@todo: do not echo here - we just do the collecting - echo is job of the template */
