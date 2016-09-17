@@ -24,9 +24,8 @@ install:
 - composer install
 - gem install mime-types -v 2.6.2
 - gem install mailcatcher
-- npm install --global ied@1.1.1
 - npm install --global grunt-cli
-- ied install
+- npm install
 
 before_script:
 - echo sendmail_path=/usr/bin/env catchmail --smtp-ip 127.0.0.1 --smtp-port 1025 -f test@test.com >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
@@ -36,7 +35,7 @@ before_script:
 - psql -U postgres -c 'alter user postgres with password '\'test\'
 
 script:
-- grunt
+- grunt --verbose
 - mailcatcher
 - mkdir build
 - DB_URL=mysql://root:test@127.0.0.1/test grunt phpunit --coverage-clover=build/mysql.xml
