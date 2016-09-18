@@ -18,13 +18,13 @@ services:
 before_install:
 - if [ ${TRAVIS_PHP_VERSION:0:3} == "5.4" ] || [ ${TRAVIS_PHP_VERSION:0:3} == "5.5" ]; then composer require phpunit/phpunit 4.8.27 phpunit/phpcov 2.0.2 --dev --no-update; fi
 - composer global require hirak/prestissimo
-- nvm install 6
 
 install:
 - composer self-update
 - composer install
 - gem install mime-types -v 2.6.2
 - gem install mailcatcher
+- nvm install 6
 - npm install --global ied
 - npm install --global grunt-cli
 - ied install
