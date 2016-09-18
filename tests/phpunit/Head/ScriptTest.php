@@ -89,7 +89,7 @@ class ScriptTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect, $actual);
+		$this->assertEquals($this->normalizeEOL($expect), $actual);
 	}
 
 	/**
@@ -125,7 +125,7 @@ class ScriptTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect, $actual);
+		$this->assertEquals($this->normalizeEOL($expect), $actual);
 	}
 
 	/**

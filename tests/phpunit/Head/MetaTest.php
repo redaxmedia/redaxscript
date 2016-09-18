@@ -57,6 +57,6 @@ class MetaTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect, $actual);
+		$this->assertEquals($this->normalizeEOL($expect), $actual);
 	}
 }
