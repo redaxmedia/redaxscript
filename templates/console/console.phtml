@@ -21,11 +21,11 @@
 
 		<!-- foot script -->
 
-		<?php Tag::script()->init('foot'); ?>
-		<?php Tag::script()->appendFile('//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js'); ?>
-		<?php Tag::script()->appendFile('assets/scripts/fallback.js'); ?>
-		<?php Tag::script()->appendFile('templates/console/assets/scripts/console.js'); ?>
-		<?php echo Tag::script(); ?>
+		<?php echo Tag::script()
+			->init('foot')
+			->appendFile('//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js')
+			->appendFile('assets/scripts/fallback.js')
+			->appendFile('templates/console/assets/scripts/console.js'); ?>
 
 	</body>
 </html>

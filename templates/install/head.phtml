@@ -10,23 +10,25 @@
 
 <!-- meta -->
 
-<?php Tag::meta()->init(); ?>
-<?php Tag::meta()->append(['charset' => 'utf-8']); ?>
-<?php Tag::meta()->append(['name' => 'viewport', 'content' => 'width=device-width']); ?>
-<?php Tag::meta()->append(['name' => 'theme-color', 'content' => '#323e4c']); ?>
-<?php Tag::meta()->append(['name' => 'msapplication-navbutton-color', 'content' => '#323e4c']); ?>
-<?php Tag::meta()->append(['name' => 'apple-mobile-web-app-status-bar-stylecontent', 'content' => '#323e4c']); ?>
+<?php Tag::meta()
+	->init()
+	->append(['charset' => 'utf-8'])
+	->append(['name' => 'viewport', 'content' => 'width=device-width'])
+	->append(['name' => 'theme-color', 'content' => '#323e4c'])
+	->append(['name' => 'msapplication-navbutton-color', 'content' => '#323e4c'])
+	->append(['name' => 'apple-mobile-web-app-status-bar-stylecontent', 'content' => '#323e4c']); ?>
 <?php echo Tag::meta(); ?>
 
 <!-- link -->
 
-<?php Tag::link()->init(); ?>
-<?php Tag::link()->append(['href' => 'templates/default/assets/images/favicon.ico', 'rel' => 'shortcut icon']); ?>
-<?php Tag::link()->append(['href' => 'templates/default/assets/images/favicon.png', 'rel' => 'apple-touch-icon']); ?>
-<?php Tag::link()->appendFile('//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset()); ?>
-<?php Tag::link()->appendFile('dist/styles/base.min.css'); ?>
-<?php Tag::link()->appendFile('templates/default/dist/styles/default.min.css'); ?>
-<?php Tag::link()->appendFile('templates/install/dist/styles/install.min.css'); ?>
+<?php Tag::link()
+	->init()
+	->append(['href' => 'templates/default/assets/images/favicon.ico', 'rel' => 'shortcut icon'])
+	->append(['href' => 'templates/default/assets/images/favicon.png', 'rel' => 'apple-touch-icon'])
+	->appendFile('//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset())
+	->appendFile('dist/styles/base.min.css')
+	->appendFile('templates/default/dist/styles/default.min.css')
+	->appendFile('templates/install/dist/styles/install.min.css'); ?>
 <?php echo Tag::link(); ?>
 
 <!-- head script -->
