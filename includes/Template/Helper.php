@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Template;
 
+use Redaxscript\Db;
 use Redaxscript\Registry;
 
 /**
@@ -87,6 +88,159 @@ class Helper
 		'tablet' => 'myTablet',
 		'desktop' => 'myDesktop'
 	];
+
+	/**
+	 * get the canonical
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public static function getCanonical()
+	{
+		$firstTable = Registry::get('firstTable');
+		$secondTable = Registry::get('secondTable');
+		$lastTable = Registry::get('lastTable');
+		$firstParameter = Registry::get('firstParameter');
+		$secondParameter = Registry::get('secondParameter');
+		$fullRoute = Registry::get('fullRoute');
+
+		/* query current */
+
+		if ($firstTable === 'categories' && $lastTable === 'articles')
+		{
+			$categoryId = Db::forTablePrefix($firstTable)->where('alias', $secondTable === 'categories' ? $secondParameter : $firstParameter)->findOne()->id;
+			$articlesTotal = Db::forTablePrefix('articles')->where('category', $categoryId)->count();
+			if ($articlesTotal === 1)
+			{
+				$route = $firstParameter;
+				if ($secondTable === 'categories')
+				{
+					$route .= '/' . $secondParameter;
+				}
+			}
+		}
+
+		/* handle route  */
+
+		if ($route)
+		{
+			return Registry::get('root') . '/' . Registry::get('parameterRoute') . $route;
+		}
+		return $fullRoute;
+	}
+
+	/**
+	 * get the description
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public static function getDescription()
+	{
+		$lastTable = Registry::get('lastTable');
+
+		if (Registry::get('metaDescription'))
+		{
+			$description = Registry::get('metaDescription');
+		}
+		else if ($lastTable)
+		{
+			$description = Db::forTablePrefix($lastTable)->findOne()->description;
+		}
+
+		/* handle description */
+
+		if ($description)
+		{
+			return $description;
+		}
+		return Db::getSetting('description');
+	}
+
+	/**
+	 * get the keywords
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public static function getKeywords()
+	{
+		$lastTable = Registry::get('lastTable');
+
+		if (Registry::get('metaKeywords'))
+		{
+			$keywords = Registry::get('metaKeywords');
+		}
+		else if ($lastTable)
+		{
+			$keywords = Db::forTablePrefix($lastTable)->findOne()->description;
+		}
+
+		/* handle keywords */
+
+		if ($keywords)
+		{
+			return $keywords;
+		}
+		return Db::getSetting('keywords');
+	}
+
+	/**
+	 * get the keywords
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public static function getRobots()
+	{
+		$lastTable = Registry::get('lastTable');
+		$contentError = Registry::get('contentError');
+		if (Registry::get('metaRobots'))
+		{
+			$robots = Registry::get('metaRobots');
+		}
+		else if ($contentError)
+		{
+			$robots = 'none';
+		}
+		else if ($lastTable)
+		{
+			$robots = Db::forTablePrefix($lastTable)->whereNull('access')->findOne()->robots;
+		}
+
+		/* handle robots */
+
+		if ($robots)
+		{
+			return 'all';
+		}
+		else
+		{
+			return 'none';
+		}
+	}
+
+	/**
+	 * get the transport
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public static function getTransport()
+	{
+		//tempoary solution that should work with script->appendInline(string) - final version should work with script->varTransport(array)
+		return call_user_func('scripts_transport');
+	}
 
 	/**
 	 * get the subset

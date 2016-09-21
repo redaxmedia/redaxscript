@@ -38,6 +38,7 @@ use PDOException;
  * @method whereLike(string $column, string $value)
  * @method whereLt(string $column, string $value)
  * @method whereNotEqual(string $column, string $value)
+ * @method whereNull(string $column)
  * @method whereRaw(string $clause, array $parameterArray = [])
  */
 

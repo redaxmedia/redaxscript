@@ -19,7 +19,7 @@ use Redaxscript\Html;
 class Script extends HeadAbstract
 {
 	/**
-	 * store inline scripts
+	 * inline script
 	 *
 	 * @var string
 	 */
@@ -59,6 +59,22 @@ class Script extends HeadAbstract
 	}
 
 	/**
+	 * remove script file
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $source
+	 *
+	 * @return Link
+	 */
+
+	public function removeFile($source = null)
+	{
+		$this->remove('src', $source);
+		return $this;
+	}
+
+	/**
 	 * append inline script
 	 *
 	 * @since 3.0.0
@@ -91,21 +107,6 @@ class Script extends HeadAbstract
 	}
 
 	/**
-	 * clear the script
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return Script
-	 */
-
-	public function clear()
-	{
-		parent::clear();
-		$this->_inline = null;
-		return $this;
-	}
-
-	/**
 	 * render the script
 	 *
 	 * @since 3.0.0
@@ -121,12 +122,13 @@ class Script extends HeadAbstract
 
 		$scriptElement = new Html\Element();
 		$scriptElement->init('script');
-		$collectionKeys = array_keys(self::$_collectionArray);
+		$collectionArray = self::$_collectionArray[self::$_namespace];
+		$collectionKeys = array_keys($collectionArray);
 		$lastKey = end($collectionKeys);
 
 		/* process collection */
 
-		foreach (self::$_collectionArray as $key => $value)
+		foreach ($collectionArray as $key => $value)
 		{
 			$output .= $scriptElement
 				->copy()
@@ -137,14 +139,30 @@ class Script extends HeadAbstract
 			}
 		}
 
+		/* collect inline */
+
 		if ($this->_inline)
 		{
 			$output .= $scriptElement
 				->copy()
 				->text($this->_inline);
 		}
-
 		$this->clear();
 		return $output;
+	}
+
+	/**
+	 * clear the script
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return Script
+	 */
+
+	public function clear()
+	{
+		parent::clear();
+		$this->_inline = null;
+		return $this;
 	}
 }

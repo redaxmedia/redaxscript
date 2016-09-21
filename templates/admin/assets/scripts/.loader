@@ -1,7 +1,0 @@
-[admin_init]
-1 = templates/admin/assets/scripts/init.js
-
-[admin]
-1 = templates/admin/assets/scripts/alias.js
-2 = templates/admin/assets/scripts/keyword.js
-3 = templates/admin/assets/scripts/panel.js

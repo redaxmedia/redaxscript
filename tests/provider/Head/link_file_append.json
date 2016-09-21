@@ -1,0 +1,16 @@
+[
+	[
+		[
+			"http://localhost/",
+			"templates/default/assets/images/favicon.ico"
+		],
+		"<link href=\"http://localhost/\" rel=\"stylesheet\" />\n<link href=\"templates/default/assets/images/favicon.ico\" rel=\"stylesheet\" />"
+	],
+	[
+		[
+			"style.css",
+			"test.css"
+		],
+		"<link href=\"style.css\" rel=\"stylesheet\" />\n<link href=\"test.css\" rel=\"stylesheet\" />"
+	]
+]

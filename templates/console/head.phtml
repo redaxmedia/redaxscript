@@ -1,8 +1,38 @@
 <?php namespace Redaxscript\Template; ?>
 
+<!-- base -->
+
+<?php echo Tag::base(); ?>
+
+<!-- title -->
+
 <title>Console</title>
-<meta name="viewport" content="width=device-width" />
-<link href="<?echo Tag::registry('root'); ?>/templates/console/dist/styles/console.min.css" rel="stylesheet" />
-<link href="templates/default/assets/images/favicon.ico" rel="shortcut icon" />
-<link href="templates/default/assets/images/favicon.png" rel="apple-touch-icon" />
-<link href="//fonts.googleapis.com/css?family=Ubuntu+Mono:400&amp;subset=<?php echo Helper::getSubset(); ?>" rel="stylesheet" />
+
+<!-- meta -->
+
+<?php echo Tag::meta()
+	->init()
+	->append(['charset' => 'utf-8'])
+	->append(['name' => 'viewport', 'content' => 'width=device-width'])
+	->append(['name' => 'theme-color', 'content' => '#300a24'])
+	->append(['name' => 'msapplication-navbutton-color', 'content' => '#300a24'])
+	->append(['name' => 'apple-mobile-web-app-status-bar-stylecontent', 'content' => '#300a24']); ?>
+
+<!-- link -->
+
+<?php echo Tag::link()
+	->init()
+	->append(['href' => 'templates/default/assets/images/favicon.ico', 'rel' => 'shortcut icon'])
+	->append(['href' => 'templates/default/assets/images/favicon.png', 'rel' => 'apple-touch-icon'])
+	->appendFile('//fonts.googleapis.com/css?family=Ubuntu+Mono:400&amp;subset=' . Helper::getSubset())
+	->appendFile('templates/console/dist/styles/console.min.css'); ?>
+
+<!-- head script -->
+
+<?php echo Tag::script()
+	->init('head')
+	->appendFile('assets/scripts/init.js')
+	->appendFile('templates/console/assets/scripts/init.js')
+	->appendInline(Helper::getTransport());
+?>
+

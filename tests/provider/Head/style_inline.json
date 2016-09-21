@@ -1,0 +1,12 @@
+[
+	[
+		"body { width: 400px; }",
+		"html { background: white; }",
+		"<style>html { background: white; }body { width: 400px; }</style>"
+	],
+	[
+		"html { background: white; }",
+		"body { width: 400px; }",
+		"<style>body { width: 400px; }html { background: white; }</style>"
+	]
+]

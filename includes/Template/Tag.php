@@ -5,6 +5,7 @@ use Redaxscript\Db;
 use Redaxscript\Config;
 use Redaxscript\Console;
 use Redaxscript\Breadcrumb;
+use Redaxscript\Head;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 use Redaxscript\Language;
@@ -240,108 +241,81 @@ class Tag
 	/**
 	 * base
 	 *
-	 * @since 2.3.0
+	 * @since 3.0.0
 	 *
 	 * @return string
 	 */
 
 	public static function base()
 	{
-		// @codeCoverageIgnoreStart
-		return self::_migrate('head',
-		[
-			'base'
-		]);
-		// @codeCoverageIgnoreEnd
+		$base = new Head\Base(Registry::getInstance());
+		return $base->render();
 	}
 
 	/**
 	 * title
 	 *
-	 * @since 2.3.0
+	 * @since 3.0.0
 	 *
 	 * @return string
 	 */
 
 	public static function title()
 	{
-		// @codeCoverageIgnoreStart
-		return self::_migrate('head',
-		[
-			'title'
-		]);
-		// @codeCoverageIgnoreEnd
+		$title = new Head\Title(Registry::getInstance());
+		return $title->render();
 	}
 
 	/**
 	 * link
 	 *
-	 * @since 2.3.0
+	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return mixed
 	 */
 
 	public static function link()
 	{
-		// @codeCoverageIgnoreStart
-		return self::_migrate('head',
-		[
-			'link'
-		]);
-		// @codeCoverageIgnoreEnd
+		return Head\Link::getInstance();
 	}
 
 	/**
 	 * meta
 	 *
-	 * @since 2.3.0
+	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return mixed
 	 */
 
 	public static function meta()
 	{
-		// @codeCoverageIgnoreStart
-		return self::_migrate('head',
-		[
-			'meta'
-		]);
-		// @codeCoverageIgnoreEnd
+		return Head\Meta::getInstance();
 	}
 
 	/**
 	 * style
 	 *
-	 * @since 2.3.0
+	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return mixed
 	 */
 
 	public static function style()
 	{
-		// @codeCoverageIgnoreStart
-		return self::_migrate('styles');
-		// @codeCoverageIgnoreEnd
+		return Head\Style::getInstance();
 	}
 
 	/**
 	 * script
 	 *
-	 * @since 2.3.0
+	 * @since 3.0.0
 	 *
-	 * @param string $mode
-	 *
-	 * @return string
+	 * @return mixed
 	 */
 
-	public static function script($mode = null)
+	public static function script()
 	{
-		// @codeCoverageIgnoreStart
-		return self::_migrate('scripts',
-		[
-			$mode
-		]);
-		// @codeCoverageIgnoreEnd
+		return Head\Script::getInstance();
 	}
 
 	/**

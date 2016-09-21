@@ -21,6 +21,8 @@ use org\bovigo\vfs\vfsStreamWrapper as StreamWrapper;
  * @category Tests
  *
  * @author Balázs Szilágyi
+ *
+ * @requires OS Linux
  */
 
 class InstallTest extends TestCaseAbstract

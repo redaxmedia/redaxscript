@@ -65,11 +65,11 @@ class BaseTest extends TestCaseAbstract
 		/* setup */
 
 		$this->_registry->init($registryArray);
-		$baseHead = new Head\Base($this->_registry);
+		$base = new Head\Base($this->_registry);
 
 		/* actual */
 
-		$actual = $baseHead->render();
+		$actual = $base->render();
 
 		/* compare */
 

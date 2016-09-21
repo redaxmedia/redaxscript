@@ -36,12 +36,13 @@ class Meta extends HeadAbstract
 
 		$metaElement = new Html\Element();
 		$metaElement->init('meta');
-		$collectionKeys = array_keys(self::$_collectionArray);
+		$collectionArray = self::$_collectionArray[self::$_namespace];
+		$collectionKeys = array_keys($collectionArray);
 		$lastKey = end($collectionKeys);
 
 		/* process collection */
 
-		foreach (self::$_collectionArray as $key => $value)
+		foreach ($collectionArray as $key => $value)
 		{
 			$output .= $metaElement
 				->copy()

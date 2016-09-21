@@ -13,6 +13,8 @@ use org\bovigo\vfs\vfsStream as Stream;
  * @category Tests
  * @author Henry Ruhs
  * @author Gary Aylward
+ *
+ * @requires OS Linux
  */
 
 class DirectoryTest extends TestCaseAbstract

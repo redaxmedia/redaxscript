@@ -19,11 +19,13 @@
 			<?php echo Tag::partial('templates/console/content.phtml'); ?>
 		</main>
 
-		<!-- footer -->
+		<!-- foot script -->
 
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-		<script src="assets/scripts/init.js"></script>
-		<script src="templates/console/assets/scripts/init.js"></script>
-		<script src="templates/console/assets/scripts/console.js"></script>
+		<?php echo Tag::script()
+			->init('foot')
+			->appendFile('//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js')
+			->appendFile('assets/scripts/fallback.js')
+			->appendFile('templates/console/assets/scripts/console.js'); ?>
+
 	</body>
 </html>

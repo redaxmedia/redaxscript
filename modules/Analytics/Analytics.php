@@ -2,6 +2,7 @@
 namespace Redaxscript\Modules\Analytics;
 
 use Redaxscript\Module;
+use Redaxscript\Head;
 use Redaxscript\Registry;
 
 /**
@@ -32,33 +33,21 @@ class Analytics extends Module
 	];
 
 	/**
-	 * loaderStart
+	 * renderStart
 	 *
-	 * @since 2.2.0
-	 */
-
-	public static function loaderStart()
-	{
-		if (Registry::get('loggedIn') !== Registry::get('token'))
-		{
-			global $loader_modules_scripts;
-			$loader_modules_scripts[] = 'modules/Analytics/assets/scripts/init.js';
-			$loader_modules_scripts[] = 'modules/Analytics/assets/scripts/analytics.js';
-		}
-	}
-
-	/**
-	 * scriptStart
-	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 */
 
 	public static function scriptStart()
 	{
 		if (Registry::get('loggedIn') !== Registry::get('token'))
 		{
-			$output = '<script src="//google-analytics.com/analytics.js"></script>';
-			echo $output;
+			$script = Head\Script::getInstance();
+			$script
+				->init('foot')
+				->appendFile('//google-analytics.com/analytics.js')
+				->appendFile('modules/Analytics/assets/scripts/init.js')
+				->appendFile('modules/Analytics/assets/scripts/analytics.js');
 		}
 	}
 }

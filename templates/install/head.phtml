@@ -1,23 +1,40 @@
 <?php namespace Redaxscript\Template; ?>
 
+<!-- base -->
+
+<?php echo Tag::base(); ?>
+
 <!-- title -->
 
 <title><?php echo Tag::language('installation'); ?></title>
 
 <!-- meta -->
 
-<meta name="viewport" content="width=device-width" />
-<meta name="theme-color" content="#323e4c" />
-<meta name="msapplication-navbutton-color" content="#323e4c" />
-<meta name="apple-mobile-web-app-status-bar-stylecontent" content="#323e4c" />
+<?php echo Tag::meta()
+	->init()
+	->append(['charset' => 'utf-8'])
+	->append(['name' => 'viewport', 'content' => 'width=device-width'])
+	->append(['name' => 'theme-color', 'content' => '#323e4c'])
+	->append(['name' => 'msapplication-navbutton-color', 'content' => '#323e4c'])
+	->append(['name' => 'apple-mobile-web-app-status-bar-stylecontent', 'content' => '#323e4c']); ?>
 
 <!-- link -->
 
-<link href="templates/default/assets/images/favicon.ico" rel="shortcut icon" />
-<link href="templates/default/assets/images/favicon.png" rel="apple-touch-icon" />
-<link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=<?php echo Helper::getSubset(); ?>" rel="stylesheet" />
+<?php echo Tag::link()
+	->init()
+	->append(['href' => 'templates/default/assets/images/favicon.ico', 'rel' => 'shortcut icon'])
+	->append(['href' => 'templates/default/assets/images/favicon.png', 'rel' => 'apple-touch-icon'])
+	->appendFile('//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset())
+	->appendFile('dist/styles/base.min.css')
+	->appendFile('templates/default/dist/styles/default.min.css')
+	->appendFile('templates/install/dist/styles/install.min.css'); ?>
 
-<!-- style and script -->
+<!-- head script -->
 
-<?php echo Tag::style(); ?>
-<?php echo Tag::script('init'); ?>
+<?php echo Tag::script()
+	->init('head')
+	->appendFile('assets/scripts/init.js')
+	->appendFile('templates/install/assets/scripts/init.js')
+	->appendInline(Helper::getTransport());
+?>
+

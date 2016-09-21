@@ -72,24 +72,24 @@ class ScriptTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$scriptCore = Head\Script::getInstance();
-		$scriptModule = Head\Script::getInstance();
+		$script = Head\Script::getInstance();
+		$script->init('append');
 		foreach ($coreArray as $key => $value)
 		{
-			$scriptCore->append($value);
+			$script->append($value);
 		}
 		foreach ($moduleArray as $key => $value)
 		{
-			$scriptModule->append($key, $value);
+			$script->appendFile($value);
 		}
 
 		/* actual */
 
-		$actual = $scriptCore->render();
+		$actual = $script->render();
 
 		/* compare */
 
-		$this->assertEquals($expect, $actual);
+		$this->assertEquals($this->normalizeEOL($expect), $actual);
 	}
 
 	/**
@@ -108,24 +108,24 @@ class ScriptTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$scriptCore = Head\Script::getInstance();
-		$scriptModule = Head\Script::getInstance();
-		foreach ($coreArray as $key => $value)
+		$script = Head\Script::getInstance();
+		$script->init('prepend');
+		foreach ($coreArray as $value)
 		{
-			$scriptCore->prepend($value);
+			$script->prepend($value);
 		}
 		foreach ($moduleArray as $key => $value)
 		{
-			$scriptModule->prepend($key, $value);
+			$script->prependFile($value);
 		}
 
 		/* actual */
 
-		$actual = $scriptCore->render();
+		$actual = $script->render();
 
 		/* compare */
 
-		$this->assertEquals($expect, $actual);
+		$this->assertEquals($this->normalizeEOL($expect), $actual);
 	}
 
 	/**
@@ -144,20 +144,20 @@ class ScriptTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$scriptCore = Head\Script::getInstance();
-		$scriptModule = Head\Script::getInstance();
-		foreach ($coreArray as $key)
+		$script = Head\Script::getInstance();
+		$script->init('inline');
+		foreach ($coreArray as $value)
 		{
-			$scriptCore->appendInline($key);
+			$script->appendInline($value);
 		}
-		foreach ($moduleArray as $key)
+		foreach ($moduleArray as $value)
 		{
-			$scriptModule->prependInline($key);
+			$script->prependInline($value);
 		}
 
 		/* actual */
 
-		$actual = $scriptCore->render();
+		$actual = $script->render();
 
 		/* compare */
 

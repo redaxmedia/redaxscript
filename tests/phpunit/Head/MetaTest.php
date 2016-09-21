@@ -14,6 +14,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @author Henry Ruhs
  * @author Balázs Szilágyi
  */
+
 class MetaTest extends TestCaseAbstract
 {
 	/**
@@ -45,7 +46,7 @@ class MetaTest extends TestCaseAbstract
 		/* setup */
 
 		$metaHead = Head\Meta::getInstance();
-		foreach ($metaArray as $key => $value)
+		foreach ($metaArray as $value)
 		{
 			$metaHead->append($value);
 		}
@@ -56,6 +57,6 @@ class MetaTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect, $actual);
+		$this->assertEquals($this->normalizeEOL($expect), $actual);
 	}
 }

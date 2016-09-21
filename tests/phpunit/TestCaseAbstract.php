@@ -67,4 +67,19 @@ abstract class TestCaseAbstract extends PHPUnit_Framework_TestCase
 	{
 		$this->assertTrue(is_string($actual));
 	}
+
+	/**
+	 * normalizeEOL
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $expect
+	 *
+	 * @return string
+	 */
+
+	public function normalizeEOL($expect = null)
+	{
+		return str_replace('\n', PHP_EOL, $expect);
+	}
 }

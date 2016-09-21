@@ -2,6 +2,7 @@
 namespace Redaxscript\Head;
 
 use Redaxscript\Html;
+use Redaxscript\Hook;
 
 /**
  * children class to create the link tag
@@ -21,7 +22,7 @@ use Redaxscript\Html;
 class Link extends HeadAbstract
 {
 	/**
-	 * append file
+	 * append link file
 	 *
 	 * @since 3.0.0
 	 *
@@ -32,12 +33,16 @@ class Link extends HeadAbstract
 
 	public function appendFile($reference = null)
 	{
-		$this->append('href', $reference);
+		$this->append(
+		[
+			'href' => $reference,
+			'rel' => 'stylesheet'
+		]);
 		return $this;
 	}
 
 	/**
-	 * prepend file
+	 * prepend link file
 	 *
 	 * @since 3.0.0
 	 *
@@ -48,7 +53,27 @@ class Link extends HeadAbstract
 
 	public function prependFile($reference = null)
 	{
-		$this->prepend('href', $reference);
+		$this->prepend(
+		[
+			'href' => $reference,
+			'rel' => 'stylesheet'
+		]);
+		return $this;
+	}
+
+	/**
+	 * remove link file
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $reference
+	 *
+	 * @return Link
+	 */
+
+	public function removeFile($reference = null)
+	{
+		$this->remove('href', $reference);
 		return $this;
 	}
 
@@ -62,18 +87,19 @@ class Link extends HeadAbstract
 
 	public function render()
 	{
-		$output = '';
+		$output = null;
 
 		/* html elements */
 
 		$metaElement = new Html\Element();
 		$metaElement->init('link');
-		$collectionKeys = array_keys(self::$_collectionArray);
+		$collectionArray = self::$_collectionArray[self::$_namespace];
+		$collectionKeys = array_keys($collectionArray);
 		$lastKey = end($collectionKeys);
 
 		/* process collection */
 
-		foreach (self::$_collectionArray as $key => $value)
+		foreach ($collectionArray as $key => $value)
 		{
 			$output .= $metaElement
 				->copy()

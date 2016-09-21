@@ -16,12 +16,41 @@ use Redaxscript\Singleton;
 abstract class HeadAbstract extends Singleton implements HeadInterface
 {
 	/**
+	 * collection namespace
+	 *
+	 * @var string
+	 */
+
+	protected static $_namespace = null;
+
+	/**
 	 * collection of the head
 	 *
 	 * @var array
 	 */
 
 	protected static $_collectionArray = [];
+
+	/**
+	 * init the class
+	 *
+	 * @param string $namespace collection sub namespace
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return HeadAbstract
+	 */
+
+	public function init($namespace = null)
+	{
+		self::$_namespace = get_called_class();
+		if ($namespace)
+		{
+			self::$_namespace .= '\\' . ucfirst($namespace);
+		}
+		return $this;
+	}
+	/*@todo: we need to find a fallback if someone did not use the init method */
 
 	/**
 	 * stringify the collection
@@ -33,7 +62,12 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 
 	public function __toString()
 	{
-		return $this->render();
+		$render = $this->render();
+		if ($render)
+		{
+			return $render;
+		}
+		return '<!-- ' . self::$_namespace . ' === null -->';
 	}
 
 	/**
@@ -51,11 +85,11 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	{
 		if (is_array($attribute))
 		{
-			self::$_collectionArray[] = array_map('trim', $attribute);
+			self::$_collectionArray[self::$_namespace][] = array_map('trim', $attribute);
 		}
 		else if (strlen($attribute) && strlen($value))
 		{
-			self::$_collectionArray[] =
+			self::$_collectionArray[self::$_namespace][] =
 			[
 				trim($attribute) => trim($value)
 			];
@@ -76,16 +110,43 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 
 	public function prepend($attribute = null, $value = null)
 	{
+		if(!self::$_collectionArray[self::$_namespace])
+		{
+			self::$_collectionArray[self::$_namespace] = [];
+		}
 		if (is_array($attribute))
 		{
-			array_unshift(self::$_collectionArray, array_map('trim', $attribute));
+			array_unshift(self::$_collectionArray[self::$_namespace], array_map('trim', $attribute));
 		}
 		else if (strlen($attribute) && strlen($value))
 		{
-			array_unshift(self::$_collectionArray,
+			array_unshift(self::$_collectionArray[self::$_namespace],
 			[
 				trim($attribute) => trim($value)
 			]);
+		}
+		return $this;
+	}
+
+	/**
+	 * remove from to the collection
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $attribute name of attribute
+	 * @param string $value value of the attribute
+	 *
+	 * @return HeadAbstract
+	 */
+
+	public function remove($attribute = null, $value = null)
+	{
+		foreach (self::$_collectionArray[self::$_namespace] as $collectionKey => $collectionValue)
+		{
+			if ($collectionValue[$attribute] === $value)
+			{
+				unset(self::$_collectionArray[self::$_namespace][$collectionKey]);
+			}
 		}
 		return $this;
 	}
@@ -98,7 +159,7 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 
 	public function clear()
 	{
-		self::$_collectionArray = [];
+		self::$_collectionArray[self::$_namespace] = [];
 		return $this;
 	}
 }

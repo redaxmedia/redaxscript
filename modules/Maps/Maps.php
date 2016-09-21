@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\Maps;
 
+use Redaxscript\Head;
 use Redaxscript\Html;
 use Redaxscript\Registry;
 
@@ -32,34 +33,30 @@ class Maps extends Config
 	];
 
 	/**
-	 * loaderStart
+	 * renderStart
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 */
 
-	public static function loaderStart()
+	public function renderStart()
 	{
 		if (!Registry::get('adminParameter'))
 		{
-			global $loader_modules_styles, $loader_modules_scripts;
-			$loader_modules_styles[] = 'modules/Maps/assets/styles/maps.css';
-			$loader_modules_scripts[] = 'modules/Maps/assets/scripts/init.js';
-			$loader_modules_scripts[] = 'modules/Maps/assets/scripts/maps.js';
-		}
-	}
+			/* link */
 
-	/**
-	 * scriptEnd
-	 *
-	 * @since 2.2.0
-	 */
+			$link = Head\Link::getInstance();
+			$link
+				->init()
+				->appendFile('modules/Maps/assets/styles/maps.css');
 
-	public static function scriptEnd()
-	{
-		if (!Registry::get('adminParameter'))
-		{
-			$output = '<script src="' . self::$_configArray['apiUrl'] . '?key=' . self::$_configArray['apiKey'] . '&amp;sensor=' . self::$_configArray['sensor'] . '"></script>';
-			echo $output;
+			/* script */
+			//todo: Google Maps API warning: SensorNotRequired
+			$script = Head\Script::getInstance();
+			$script
+				->init('foot')
+				->appendFile(self::$_configArray['apiUrl'] . '?key=' . self::$_configArray['apiKey'] . '&amp;sensor=' . self::$_configArray['sensor'])
+				->appendFile('modules/Maps/assets/scripts/init.js')
+				->appendFile('modules/Maps/assets/scripts/maps.js');
 		}
 	}
 

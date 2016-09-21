@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\Tinymce;
 
+use Redaxscript\Head;
 use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
@@ -34,19 +35,6 @@ class Tinymce extends Config
 	];
 
 	/**
-	 * loaderStart
-	 *
-	 * @since 3.0.0
-	 */
-
-	public static function loaderStart()
-	{
-		global $loader_modules_scripts;
-		$loader_modules_scripts[] = 'modules/Tinymce/assets/scripts/init.js';
-		$loader_modules_scripts[] = 'modules/Tinymce/assets/scripts/tinymce.js';
-	}
-
-	/**
 	 * scriptEnd
 	 *
 	 * @since 3.0.0
@@ -56,8 +44,12 @@ class Tinymce extends Config
 	{
 		if (Registry::get('loggedIn') === Registry::get('token'))
 		{
-			$output = '<script src="//cdnjs.cloudflare.com/ajax/libs/tinymce/4.4.1/tinymce.min.js"></script>';
-			echo $output;
+			$script = Head\Script::getInstance();
+			$script
+				->init('foot')
+				->appendFile(['src' => '//cdnjs.cloudflare.com/ajax/libs/tinymce/4.4.1/tinymce.min.js'])
+				->appendFile(['src' => 'modules/Tinymce/assets/scripts/init.js'])
+				->appendFile(['src' => 'modules/Tinymce/assets/scripts/tinymce.js']);
 		}
 	}
 

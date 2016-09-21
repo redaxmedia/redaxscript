@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\Disqus;
 
+use Redaxscript\Head;
 use Redaxscript\Html;
 use Redaxscript\Registry;
 
@@ -32,21 +33,6 @@ class Disqus extends Config
 	];
 
 	/**
-	 * loaderStart
-	 *
-	 * @since 2.2.0
-	 */
-
-	public static function loaderStart()
-	{
-		if (Registry::get('articleId'))
-		{
-			global $loader_modules_scripts;
-			$loader_modules_scripts[] = 'modules/Disqus/assets/scripts/init.js';
-		}
-	}
-
-	/**
 	 * renderStart
 	 *
 	 * @since 2.2.0
@@ -57,6 +43,14 @@ class Disqus extends Config
 		if (Registry::get('articleId'))
 		{
 			Registry::set('commentReplace', true);
+
+			/* script */
+
+			$script = Head\Script::getInstance();
+			$script
+				->init('foot')
+				->appendFile(self::$_configArray['url'])
+				->appendFile('modules/Disqus/assets/scripts/init.js');
 		}
 	}
 
@@ -73,15 +67,10 @@ class Disqus extends Config
 		[
 			'id' => self::$_configArray['id']
 		]);
-		$scriptElement = new Html\Element();
-		$scriptElement->init('script',
-		[
-			'src' => self::$_configArray['url']
-		]);
 
 		/* collect output */
 
-		$output = $boxElement . $scriptElement;
+		$output = $boxElement;
 		echo $output;
 	}
 }

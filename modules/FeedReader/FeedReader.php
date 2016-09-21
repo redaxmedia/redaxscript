@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\FeedReader;
 
+use Redaxscript\Head;
 use Redaxscript\Html;
 use Redaxscript\Language;
 use Redaxscript\Reader;
@@ -33,18 +34,6 @@ class FeedReader extends Config
 	];
 
 	/**
-	 * loaderStart
-	 *
-	 * @since 2.3.0
-	 */
-
-	public static function loaderStart()
-	{
-		global $loader_modules_styles;
-		$loader_modules_styles[] = 'modules/FeedReader/assets/styles/feed_reader.css';
-	}
-
-	/**
 	 * adminPanelNotification
 	 *
 	 * @since 3.0.0
@@ -55,6 +44,20 @@ class FeedReader extends Config
 	public static function adminPanelNotification()
 	{
 		return self::getNotification();
+	}
+
+	/**
+	 * renderStart
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function renderStart()
+	{
+		$link = Head\Link::getInstance();
+		$link
+			->init()
+			->appendFile('modules/FeedReader/assets/styles/feed_reader.css');
 	}
 
 	/**

@@ -156,6 +156,8 @@ class TagTest extends TestCaseAbstract
 	 * testPartial
 	 *
 	 * @since 2.3.0
+	 *
+	 * @requires OS Linux
 	 */
 
 	public function testPartial()
