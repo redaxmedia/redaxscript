@@ -144,7 +144,7 @@ class LinkTest extends TestCaseAbstract
 		/* setup */
 
 		$link= Head\Link::getInstance();
-		foreach ($linkArray as $key => $value)
+		foreach ($linkArray as $value)
 		{
 			$link->appendFile($value);
 		}
@@ -174,7 +174,7 @@ class LinkTest extends TestCaseAbstract
 		/* setup */
 
 		$link= Head\Link::getInstance();
-		foreach ($linkArray as $key => $value)
+		foreach ($linkArray as $value)
 		{
 			$link->prependFile($value);
 		}

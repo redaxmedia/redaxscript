@@ -1,23 +1,15 @@
 [
 	[
 		[
-			{
-				"href": "http://localhost/"
-			},
-			{
-				"href": "templates/default/assets/images/favicon.ico"
-			}
+			"http://localhost/",
+			"templates/default/assets/images/favicon.ico"
 		],
 		"<link href=\"http://localhost/\" rel=\"stylesheet\" />\n<link href=\"templates/default/assets/images/favicon.ico\" rel=\"stylesheet\" />"
 	],
 	[
 		[
-			{
-				"href": "style.css"
-			},
-			{
-				"href": "test.css"
-			}
+			"style.css",
+			"test.css"
 		],
 		"<link href=\"style.css\" rel=\"stylesheet\" />\n<link href=\"test.css\" rel=\"stylesheet\" />"
 	]
