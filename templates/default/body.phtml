@@ -55,16 +55,10 @@
 ?>
 
 <?php if (Tag::registry('loggedIn') === Tag::registry('token') && Tag::registry('firstParameter') !== 'logout'): ?>
-	<?php Tag::script()
+	<?php echo Tag::script()
 		->init('foot')
 		->appendFile('templates/admin/assets/scripts/alias.js')
 		->appendFile('templates/admin/assets/scripts/keyword.js')
 		->appendFile('templates/admin/assets/scripts/panel.js');
 	?>
 <?php endif; ?>
-
-<?php echo Tag::script()->init('foot'); ?>
-
-
-<!-- todo: this is a huge block, we should consider to introduce a script.phtml file - what do you think?
-     if we split it up that way, we should do this in install and console template too -->

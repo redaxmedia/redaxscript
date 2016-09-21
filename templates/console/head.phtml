@@ -10,24 +10,22 @@
 
 <!-- meta -->
 
-<?php Tag::meta()
+<?php echo Tag::meta()
 	->init()
 	->append(['charset' => 'utf-8'])
 	->append(['name' => 'viewport', 'content' => 'width=device-width'])
 	->append(['name' => 'theme-color', 'content' => '#300a24'])
 	->append(['name' => 'msapplication-navbutton-color', 'content' => '#300a24'])
 	->append(['name' => 'apple-mobile-web-app-status-bar-stylecontent', 'content' => '#300a24']); ?>
-<?php echo Tag::meta(); ?>
 
 <!-- link -->
 
-<?php Tag::link()
+<?php echo Tag::link()
 	->init()
 	->append(['href' => 'templates/default/assets/images/favicon.ico', 'rel' => 'shortcut icon'])
 	->append(['href' => 'templates/default/assets/images/favicon.png', 'rel' => 'apple-touch-icon'])
 	->appendFile('//fonts.googleapis.com/css?family=Ubuntu+Mono:400&amp;subset=' . Helper::getSubset())
 	->appendFile('templates/console/dist/styles/console.min.css'); ?>
-<?php echo Tag::link(); ?>
 
 <!-- head script -->
 

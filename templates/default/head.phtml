@@ -10,7 +10,7 @@
 
 <!-- meta -->
 
-<?php Tag::meta()
+<?php echo Tag::meta()
 		->init()
 		->append(['charset' => Tag::setting('charset')])
 		->append(['name' => 'author', 'content' => Tag::setting('author')])
@@ -21,11 +21,10 @@
 		->append(['name' => 'theme-color', 'content' => '#323e4c'])
 		->append(['name' => 'msapplication-navbutton-color', 'content' => '#323e4c'])
 		->append(['name' => 'apple-mobile-web-app-status-bar-stylecontent', 'content' => '#323e4c']); ?>
-<?php echo Tag::meta(); ?>
 
 <!-- link -->
 
-<?php Tag::link()
+<?php echo Tag::link()
 		->init()
 		->append(['href' => Tag::registry('root') . '/' . Helper::getCanonical()])
 		->append(['href' => 'templates/default/assets/images/favicon.ico', 'rel' => 'shortcut icon'])
@@ -33,7 +32,6 @@
 		->appendFile('//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset())
 		->appendFile('dist/styles/base.min.css')
 		->appendFile('templates/default/dist/styles/default.min.css'); ?>
-<?php echo Tag::link(); ?>
 
 <!-- head script -->
 
