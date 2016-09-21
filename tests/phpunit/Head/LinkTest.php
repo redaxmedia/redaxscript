@@ -43,6 +43,32 @@ class LinkTest extends TestCaseAbstract
 	}
 
 	/**
+	 * providerFileAppend
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerFileAppend()
+	{
+		return $this->getProvider('tests/provider/Head/link_file_append.json');
+	}
+
+	/**
+	 * providerFilePrepend
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerFilePrepend()
+	{
+		return $this->getProvider('tests/provider/Head/link_file_prepend.json');
+	}
+
+	/**
 	 * testAppend
 	 *
 	 * @since 3.0.0
@@ -60,7 +86,7 @@ class LinkTest extends TestCaseAbstract
 		$link= Head\Link::getInstance();
 		foreach ($linkArray as $key => $value)
 		{
-			$link->appendFile($value);
+			$link->append($value);
 		}
 
 		/* actual */
@@ -84,6 +110,66 @@ class LinkTest extends TestCaseAbstract
 	 */
 
 	public function testPrepend($linkArray = [], $expect = null)
+	{
+		/* setup */
+
+		$link= Head\Link::getInstance();
+		foreach ($linkArray as $key => $value)
+		{
+			$link->prepend($value);
+		}
+
+		/* actual */
+
+		$actual = $link->render();
+
+		/* compare */
+
+		$this->assertEquals($this->normalizeEOL($expect), $actual);
+	}
+
+	/**
+	 * testAppend
+	 *
+	 * @since 3.0.0
+	 *
+	 * @dataProvider providerFileAppend
+	 *
+	 * @param array $linkArray
+	 * @param string $expect
+	 */
+
+	public function testFileAppend($linkArray = [], $expect = null)
+	{
+		/* setup */
+
+		$link= Head\Link::getInstance();
+		foreach ($linkArray as $key => $value)
+		{
+			$link->appendFile($value);
+		}
+
+		/* actual */
+
+		$actual = $link->render();
+
+		/* compare */
+
+		$this->assertEquals($this->normalizeEOL($expect), $actual);
+	}
+
+	/**
+	 * testFilePrepend
+	 *
+	 * @since 3.0.0
+	 *
+	 * @dataProvider providerFilePrepend
+	 *
+	 * @param array $linkArray
+	 * @param string $expect
+	 */
+
+	public function testFilePrepend($linkArray = [], $expect = null)
 	{
 		/* setup */
 

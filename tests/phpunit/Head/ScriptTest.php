@@ -80,7 +80,7 @@ class ScriptTest extends TestCaseAbstract
 		}
 		foreach ($moduleArray as $key => $value)
 		{
-			$script->appendFile($key, $value);
+			$script->appendFile($value);
 		}
 
 		/* actual */
@@ -116,7 +116,7 @@ class ScriptTest extends TestCaseAbstract
 		}
 		foreach ($moduleArray as $key => $value)
 		{
-			$script->prependFile($key, $value);
+			$script->prependFile($value);
 		}
 
 		/* actual */

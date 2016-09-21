@@ -1,0 +1,24 @@
+[
+	[
+		[
+			{
+				"href": "templates/default/assets/images/favicon.ico"
+			},
+			{
+				"href": "http://localhost/"
+			}
+		],
+		"<link href=\"http://localhost/\" rel=\"stylesheet\" />\n<link href=\"templates/default/assets/images/favicon.ico\" rel=\"stylesheet\" />"
+	],
+	[
+		[
+			{
+				"href": "test.css"
+			},
+			{
+				"href": "style.css"
+			}
+		],
+		"<link href=\"style.css\" rel=\"stylesheet\" />\n<link href=\"test.css\" rel=\"stylesheet\" />"
+	]
+]
