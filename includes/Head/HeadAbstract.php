@@ -129,6 +129,29 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	}
 
 	/**
+	 * remove from to the collection
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $attribute name of attribute
+	 * @param string $value value of the attribute
+	 *
+	 * @return HeadAbstract
+	 */
+
+	public function remove($attribute = null, $value = null)
+	{
+		foreach (self::$_collectionArray[self::$_namespace] as $collectionKey => $collectionValue)
+		{
+			if ($collectionValue[$attribute] === $value)
+			{
+				unset(self::$_collectionArray[self::$_namespace][$collectionKey]);
+			}
+		}
+		return $this;
+	}
+
+	/**
 	 * clear the collection
 	 *
 	 * @since 3.0.0

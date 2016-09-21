@@ -22,7 +22,7 @@ use Redaxscript\Hook;
 class Link extends HeadAbstract
 {
 	/**
-	 * append file
+	 * append link file
 	 *
 	 * @since 3.0.0
 	 *
@@ -42,7 +42,7 @@ class Link extends HeadAbstract
 	}
 
 	/**
-	 * prepend file
+	 * prepend link file
 	 *
 	 * @since 3.0.0
 	 *
@@ -58,6 +58,22 @@ class Link extends HeadAbstract
 			'href' => $reference,
 			'rel' => 'stylesheet'
 		]);
+		return $this;
+	}
+
+	/**
+	 * remove link file
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $reference
+	 *
+	 * @return Link
+	 */
+
+	public function removeFile($reference = null)
+	{
+		$this->remove('href', $reference);
 		return $this;
 	}
 

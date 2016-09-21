@@ -59,6 +59,22 @@ class Script extends HeadAbstract
 	}
 
 	/**
+	 * remove script file
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $source
+	 *
+	 * @return Link
+	 */
+
+	public function removeFile($source = null)
+	{
+		$this->remove('src', $source);
+		return $this;
+	}
+
+	/**
 	 * append inline script
 	 *
 	 * @since 3.0.0
