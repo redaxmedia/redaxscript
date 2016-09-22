@@ -245,11 +245,11 @@
 
 .rs-button-default, .rs-button-search
 {
-    background: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-    display: inline-block;
-    margin: 0.25em;
+	background: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	display: inline-block;
+	margin: 0.25em;
 }
 /**
  * @tableofcontents
@@ -266,7 +266,7 @@
 
 .rs-box-comment
 {
-    margin: 0.5em 0 1.5em;
+	margin: 0.5em 0 1.5em;
 }
 /**
  * @tableofcontents
@@ -283,7 +283,7 @@
 
 .rs-field-default, .rs-field-search, .rs-field-select, .rs-field-textarea
 {
-    border: 1px solid;
+	border: 1px solid;
 }
 /**
  * @tableofcontents
