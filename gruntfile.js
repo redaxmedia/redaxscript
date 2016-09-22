@@ -356,6 +356,10 @@ module.exports = function (grunt)
 					'assets/styles/_table.css',
 					'templates/skeleton/assets/styles/helper.css',
 					'templates/skeleton/assets/styles/layout.css',
+					'templates/skeleton/assets/styles/breadcrumb.css',
+					'templates/skeleton/assets/styles/button.css',
+					'templates/skeleton/assets/styles/content.css',
+					'templates/skeleton/assets/styles/field.css',
 					'templates/skeleton/assets/styles/media.css',
 					'templates/skeleton/assets/styles/table.css',
 					'templates/skeleton/assets/styles/typo.css'

@@ -1,0 +1,17 @@
+/**
+ * @tableofcontents
+ *
+ * 1. list breadcrumb
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. list breadcrumb */
+
+.rs-list-breadcrumb li
+{
+	display: inline-block;
+}

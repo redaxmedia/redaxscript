@@ -1,0 +1,22 @@
+/**
+ * @tableofcontents
+ *
+ * 1. button
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. button */
+
+.rs-button-default,
+.rs-button-search
+{
+	background: gray(0);
+	color: gray(255);
+	cursor: pointer;
+	display: inline-block;
+	margin: 0.25em;
+}

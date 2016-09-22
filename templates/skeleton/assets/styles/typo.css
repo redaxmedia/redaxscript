@@ -15,5 +15,13 @@
 a
 {
 	color: inherit;
-	text-decoration: none;
+	text-decoration: underline;
+}
+
+/* @section 2. title */
+
+.rs-title-content,
+.rs-title-extra
+{
+	margin: 1.5em 0 0.5em;
 }

@@ -159,6 +159,13 @@
 {
 	background: rgb(255, 255, 255);
 	color: rgb(0, 0, 0);
+	font: 1em/1.5em arial, sans-serif;
+}
+
+.rs-footer, .rs-header, .rs-main
+{
+	margin-bottom: 1em;
+	margin-top: 1em;
 }
 
 /* @section 2. wrapper */
@@ -204,6 +211,79 @@
 	{
 		display: none;
 	}
+}
+/**
+ * @tableofcontents
+ *
+ * 1. list breadcrumb
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. list breadcrumb */
+
+.rs-list-breadcrumb li
+{
+	display: inline-block;
+}
+
+/**
+ * @tableofcontents
+ *
+ * 1. button
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. button */
+
+.rs-button-default, .rs-button-search
+{
+    background: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    display: inline-block;
+    margin: 0.25em;
+}
+/**
+ * @tableofcontents
+ *
+ * 1. comment
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. comment */
+
+.rs-box-comment
+{
+    margin: 0.5em 0 1.5em;
+}
+/**
+ * @tableofcontents
+ *
+ * 1. field
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. field */
+
+.rs-field-default, .rs-field-search, .rs-field-select, .rs-field-textarea
+{
+    border: 1px solid;
 }
 /**
  * @tableofcontents
@@ -271,5 +351,12 @@
 a
 {
 	color: inherit;
-	text-decoration: none;
+	text-decoration: underline;
+}
+
+/* @section 2. title */
+
+.rs-title-content, .rs-title-extra
+{
+	margin: 1.5em 0 0.5em;
 }
