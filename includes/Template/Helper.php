@@ -126,7 +126,7 @@ class Helper
 
 		if ($route)
 		{
-			return Registry::get('root') . '/' . Registry::get('parameterRoute') . $route;
+			return Registry::get('parameterRoute') . $route;
 		}
 		return $fullRoute;
 	}

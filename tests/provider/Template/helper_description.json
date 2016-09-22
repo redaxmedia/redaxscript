@@ -1,0 +1,23 @@
+[
+	[
+		{
+			"root": "http://localhost"
+		},
+		"Ultra lightweight Content Management System"
+	],
+	[
+		{
+			"lastTable": "articles",
+			"secondParameter": "test-one",
+			"root": "http://localhost"
+		},
+		"test-description"
+	],
+	[
+		{
+			"metaDescription": "Ultra lightweight CMS",
+			"root": "http://localhost"
+		},
+		"Ultra lightweight CMS"
+	]
+]

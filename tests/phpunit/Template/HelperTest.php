@@ -46,20 +46,30 @@ class HelperTest extends TestCaseAbstract
 
 	public static function setUpBeforeClass()
 	{
-		//@todo: enable this method once the reason for disabling has been resolved
-		/*Db::forTablePrefix('categories')
+		Db::forTablePrefix('articles')
 			->create()
 			->set(
 				[
 					'title' => 'test',
 					'alias' => 'test-one',
 					'author' => 'test',
+					'description' => 'test-description',
 					'text' => 'test',
 					'category' => 1,
-					'date' => '2016-01-01 00:00:00'
+					'date' => '2017-01-01 00:00:00'
 				])
 			->save();
-		*/
+	}
+
+	/**
+	 * tearDownAfterClass
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function tearDownAfterClass()
+	{
+		Db::forTablePrefix('articles')->where('title', 'test')->deleteMany();
 	}
 
 	/**
@@ -138,6 +148,19 @@ class HelperTest extends TestCaseAbstract
 	public function providerRobots()
 	{
 		return $this->getProvider('tests/provider/Template/helper_robots.json');
+	}
+
+	/**
+	 * providerDescription
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerDescription()
+	{
+		return $this->getProvider('tests/provider/Template/helper_description.json');
 	}
 
 	/**
@@ -294,5 +317,31 @@ class HelperTest extends TestCaseAbstract
 		/* compare */
 
 		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testDescription
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $registryArray
+	 * @param string $expect
+	 *
+	 * @dataProvider providerDescription
+	 */
+
+	public function testDescription($registryArray = [], $expect = null)
+	{
+		//Todo: fix this. getDescription doesn't find the article
+		/* setup */
+
+		//$this->_registry->init($registryArray);
+
+		/* actual */
+		//$actual = Template\Helper::getDescription();
+
+		/* compare */
+
+		//$this->assertEquals($expect, $actual);
 	}
 }
