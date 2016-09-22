@@ -345,6 +345,23 @@ module.exports = function (grunt)
 				],
 				dest: 'templates/install/dist/styles/install.min.css'
 			},
+			templateSkeleton:
+			{
+				src:
+				[
+					'assets/styles/_query.css',
+					'assets/styles/_clearfix.css',
+					'assets/styles/_dialog.css',
+					'assets/styles/_redirect.css',
+					'assets/styles/_table.css',
+					'templates/skeleton/assets/styles/helper.css',
+					'templates/skeleton/assets/styles/layout.css',
+					'templates/skeleton/assets/styles/media.css',
+					'templates/skeleton/assets/styles/table.css',
+					'templates/skeleton/assets/styles/typo.css'
+				],
+				dest: 'templates/skeleton/dist/styles/skeleton.css'
+			},
 			modulePreview:
 			{
 				src:
@@ -402,7 +419,7 @@ module.exports = function (grunt)
 					]
 				}
 			},
-			templates:
+			templatesAndModules:
 			{
 				src:
 				[
@@ -433,11 +450,37 @@ module.exports = function (grunt)
 					]
 				}
 			},
-			stylelintBase:
+			templateSkeleton:
 			{
 				src:
 				[
-					'assets/styles/*.css'
+					'templates/skeleton/dist/styles/skeleton.css'
+				],
+				options:
+				{
+					processors:
+					[
+						require('postcss-custom-properties'),
+						require('postcss-custom-media'),
+						require('postcss-custom-selectors'),
+						require('postcss-nesting'),
+						require('postcss-extend'),
+						require('postcss-color-gray'),
+						require('postcss-color-function'),
+						require('autoprefixer')(
+						{
+							browsers: 'last 2 versions'
+						})
+					]
+				}
+			},
+			stylelint:
+			{
+				src:
+				[
+					'assets/styles/*.css',
+					'templates/*/assets/styles/*.css',
+					'modules/*/assets/styles/*.css'
 				],
 				options:
 				{
@@ -451,29 +494,12 @@ module.exports = function (grunt)
 					]
 				}
 			},
-			stylelintTemplate:
+			colorguard:
 			{
 				src:
 				[
-					'templates/*/assets/styles/*.css'
-				],
-				options:
-				{
-					processors:
-					[
-						require('stylelint'),
-						require('postcss-reporter')(
-						{
-							throwError: true
-						})
-					]
-				}
-			},
-			colorguardTemplate:
-			{
-				src:
-				[
-					'templates/*/dist/styles/*.css'
+					'templates/*/dist/styles/*.css',
+					'modules/*/assets/styles/*.css'
 				],
 				options:
 				{
@@ -997,12 +1023,11 @@ module.exports = function (grunt)
 	]);
 	grunt.registerTask('stylelint',
 	[
-		'postcss:stylelintBase',
-		'postcss:stylelintTemplate'
+		'postcss:stylelint'
 	]);
 	grunt.registerTask('colorguard',
 	[
-		'postcss:colorguardTemplate'
+		'postcss:colorguard'
 	]);
 	grunt.registerTask('languagelint',
 	[
@@ -1070,7 +1095,8 @@ module.exports = function (grunt)
 	[
 		'concat',
 		'postcss:base',
-		'postcss:templates'
+		'postcss:templatesAndModules',
+		'postcss:templateSkeleton'
 	]);
 	grunt.registerTask('dist',
 	[

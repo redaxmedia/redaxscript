@@ -5,7 +5,7 @@ registry,
 template
 {
 	color: gray(0, 0.5);
-    user-select: none;
+	user-select: none;
 }
 
 readmore
@@ -17,27 +17,27 @@ readmore
 
 codequote:before
 {
-	content: '<codequote>...</codequote>'
+	content: '<codequote>...</codequote>';
 }
 
 language:before
 {
-	content: '<language>...</language>'
+	content: '<language>...</language>';
 }
 
 module:before
 {
-	content: '<module>...</module>'
+	content: '<module>...</module>';
 }
 
 registry:before
 {
-	content: '<registry>...</registry>'
+	content: '<registry>...</registry>';
 }
 
 template:before
 {
-	content: '<template>...</template>'
+	content: '<template>...</template>';
 }
 
 [_moz_editor_bogus_node]

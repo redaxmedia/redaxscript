@@ -12,7 +12,7 @@
 
 <?php echo Tag::meta()
 		->init()
-		->append(['charset' => Tag::setting('charset')])
+		->append('charset', Tag::setting('charset'))
 		->append(['name' => 'author', 'content' => Tag::setting('author')])
 		->append(['name' => 'generator', 'content' => Tag::language('name', '_package') . ' ' . Tag::language('version', '_package')])
 		->append(['name' => 'description', 'content' => Helper::getDescription()])

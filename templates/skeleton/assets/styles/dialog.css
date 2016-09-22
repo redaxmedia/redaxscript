@@ -1,0 +1,25 @@
+/**
+ * @tableofcontents
+ *
+ * 1. overlay dialog
+ * 2. component dialog
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. overlay dialog */
+
+.rs-overlay-dialog
+{
+	@extend %overlay-dialog;
+}
+
+/* @section 2. component dialog */
+
+.rs-component-dialog
+{
+	@extend %component-dialog;
+}

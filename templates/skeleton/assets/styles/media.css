@@ -1,0 +1,32 @@
+/**
+ * @tableofcontents
+ *
+ * 1. media
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. media */
+
+.rs-image-default,
+.rs-video-default
+{
+	border-radius: 0.25em;
+	width: 100%;
+}
+
+.rs-image-placeholder
+{
+	& rect
+	{
+		fill: gray(0, 0.1);
+	}
+
+	& path
+	{
+		fill: gray(255, 1);
+	}
+}

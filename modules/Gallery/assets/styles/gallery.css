@@ -23,7 +23,7 @@
 
 /* @section 1. font face */
 
- @font-face
+@font-face
 {
 	font-family: 'icon gallery';
 	src: url('modules/Gallery/assets/fonts/icon.woff') format('woff'), url('modules/Gallery/assets/fonts/icon.ttf') format('truetype');
@@ -93,8 +93,8 @@
 	font: 1.5em/0 'icon gallery';
 	position: fixed;
 	text-indent: -999em;
-	z-index: 1200;
 	transition: color 0.2s;
+	z-index: 1200;
 }
 
 .rs-gallery-control:hover
@@ -119,8 +119,8 @@
 
 .rs-gallery-control-previous:before
 {
-	left: 1em;
 	content: '<';
+	left: 1em;
 }
 
 /* next */
@@ -132,17 +132,17 @@
 
 .rs-gallery-control-next:after
 {
-	right: 1em;
 	content: '>';
+	right: 1em;
 }
 
 /* @section 7. gallery meta */
 
 .rs-gallery-meta
 {
-	color: rgba(0, 0, 0, 0.2);
 	border-radius: 0 0 0.25em 0.25em;
 	bottom: 0;
+	color: rgba(0, 0, 0, 0.2);
 	font: bold 0.75em arial;
 	left: 0;
 	padding: 2% 0;
@@ -178,8 +178,8 @@
 
 .rs-list-gallery li
 {
-	position: relative;
 	max-width: 50%;
+	position: relative;
 }
 
 .rs-list-gallery li,

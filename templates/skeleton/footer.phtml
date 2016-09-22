@@ -1,0 +1,18 @@
+<?php namespace Redaxscript\Template; ?>
+
+<!-- footer -->
+
+<footer id="footer" class="rs-footer">
+	<div class="rs-wrapper rs-fn-clearfix">
+		<span class="rs-text-about">
+            <span class="rs-text-powered-by">
+                <?php echo Tag::language('powered_by'); ?>
+            </span>
+            <a href="<?php echo Tag::language('homepage', '_package'); ?>" class="rs-link-footer">
+				<?php echo Tag::language('name', '_package'); ?>
+			</a>
+			<?php echo Tag::language('version', '_package'); ?>
+        </span>
+		<a class="rs-link-login" href="<?php echo Tag::registry('parameterRoute'); ?>login"><?php echo Tag::language('login'); ?></a>
+	</div>
+</footer>

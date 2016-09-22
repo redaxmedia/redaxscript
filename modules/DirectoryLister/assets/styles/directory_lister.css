@@ -13,7 +13,7 @@
 
 /* @section 1. font face */
 
- @font-face
+@font-face
 {
 	font-family: 'icon directory lister';
 	src: url('modules/DirectoryLister/assets/fonts/icon.woff') format('woff'), url('modules/DirectoryLister/assets/fonts/icon.ttf') format('truetype');
