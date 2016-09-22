@@ -1,0 +1,16 @@
+[
+	[
+		[
+			{
+				"href": "http://localhost/",
+				"rel": "canonical"
+			},
+			{
+				"href": "templates/default/assets/images/favicon.ico",
+				"rel": "shortcut icon"
+			}
+		],
+		"templates/default/assets/images/favicon.ico",
+		"<link href=\"http://localhost/\" rel=\"canonical\" />"
+	]
+]

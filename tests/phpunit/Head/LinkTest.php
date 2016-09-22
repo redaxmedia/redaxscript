@@ -69,6 +69,19 @@ class LinkTest extends TestCaseAbstract
 	}
 
 	/**
+	 * providerRemove
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerRemove()
+	{
+		return $this->getProvider('tests/provider/Head/link_remove.json');
+	}
+
+	/**
 	 * testAppend
 	 *
 	 * @since 3.0.0
@@ -178,6 +191,38 @@ class LinkTest extends TestCaseAbstract
 		{
 			$link->prependFile($value);
 		}
+
+		/* actual */
+
+		$actual = $link->render();
+
+		/* compare */
+
+		$this->assertEquals($this->normalizeEOL($expect), $actual);
+	}
+
+	/**
+	 * testRemove
+	 *
+	 * @since 3.0.0
+	 *
+	 * @dataProvider providerRemove
+	 *
+	 * @param array $linkArray
+	 * @param string $remove
+	 * @param string $expect
+	 */
+
+	public function testRemove($linkArray = [], $remove = null, $expect = null)
+	{
+		/* setup */
+
+		$link= Head\Link::getInstance();
+		foreach ($linkArray as $key => $value)
+		{
+			$link->append($value);
+		}
+		$link->removeFile($remove);
 
 		/* actual */
 

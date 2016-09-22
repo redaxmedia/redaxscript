@@ -57,6 +57,19 @@ class ScriptTest extends TestCaseAbstract
 	}
 
 	/**
+	 * providerRemove
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerRemove()
+	{
+		return $this->getProvider('tests/provider/Head/script_remove.json');
+	}
+
+	/**
 	 * testAppend
 	 *
 	 * @since 3.0.0
@@ -154,6 +167,39 @@ class ScriptTest extends TestCaseAbstract
 		{
 			$script->prependInline($value);
 		}
+
+		/* actual */
+
+		$actual = $script->render();
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testRemove
+	 *
+	 * @since 3.0.0
+	 *
+	 * @dataProvider providerRemove
+	 *
+	 * @param array $coreArray
+	 * @param string $deleteFile
+	 * @param string $expect
+	 */
+
+	public function testRemove($coreArray = [], $deleteFile = null, $expect = null)
+	{
+		/* setup */
+
+		$script = Head\Script::getInstance();
+		$script->init('append');
+		foreach ($coreArray as $key => $value)
+		{
+			$script->append($value);
+		}
+		$script->removeFile($deleteFile);
 
 		/* actual */
 
