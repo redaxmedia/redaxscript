@@ -50,6 +50,7 @@ class HelperTest extends TestCaseAbstract
 			->create()
 			->set(
 				[
+					'id' => 5,
 					'title' => 'test',
 					'alias' => 'test-one',
 					'author' => 'test',
@@ -57,6 +58,15 @@ class HelperTest extends TestCaseAbstract
 					'text' => 'test',
 					'category' => 1,
 					'date' => '2017-01-01 00:00:00'
+				])
+			->save();
+		Db::forTablePrefix('categories')
+			->create()
+			->set(
+				[
+					'title' => 'Test',
+					'alias' => 'test',
+					'parent' => 0
 				])
 			->save();
 	}
@@ -70,6 +80,7 @@ class HelperTest extends TestCaseAbstract
 	public static function tearDownAfterClass()
 	{
 		Db::forTablePrefix('articles')->where('title', 'test')->deleteMany();
+		Db::forTablePrefix('categories')->where('title', 'test')->deleteMany();
 	}
 
 	/**
@@ -256,15 +267,15 @@ class HelperTest extends TestCaseAbstract
 	{
 		/* setup */
 		//TODO: more test case
-//		$this->_registry->init($registryArray);
+		$this->_registry->init($registryArray);
 
 		/* actual */
 
-//		$actual = Template\Helper::getCanonical();
+		$actual = Template\Helper::getCanonical();
 
 		/* compare */
 
-//		$this->assertEquals($expect, $actual);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -332,16 +343,16 @@ class HelperTest extends TestCaseAbstract
 
 	public function testDescription($registryArray = [], $expect = null)
 	{
-		//Todo: fix this. getDescription doesn't find the article
+		//Todo: fix: 2nd dataProvider expected: test-description
 		/* setup */
 
-		//$this->_registry->init($registryArray);
+		$this->_registry->init($registryArray);
 
 		/* actual */
-		//$actual = Template\Helper::getDescription();
+		$actual = Template\Helper::getDescription();
 
 		/* compare */
 
-		//$this->assertEquals($expect, $actual);
+		$this->assertEquals($expect, $actual);
 	}
 }

@@ -149,7 +149,14 @@ class Helper
 		}
 		else if ($lastTable)
 		{
-			$description = Db::forTablePrefix($lastTable)->findOne()->description;
+			if ($lastTable === 'articles')
+			{
+				$description = Db::forTablePrefix($lastTable)->where('id', Registry::get('articleId'))->findOne()->description;
+			}
+			else
+			{
+				$description = Db::forTablePrefix($lastTable)->findOne()->description;
+			}
 		}
 
 		/* handle description */

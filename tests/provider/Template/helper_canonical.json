@@ -1,19 +1,22 @@
 [
 	[
 		{
-			"firsTable": "categories",
+			"firstTable": "categories",
 			"lastTable": "articles",
+			"firstParameter": "test",
+			"fullRoute": "",
 			"root": "http://localhost"
 		},
-		"http://localhost/"
+		""
 	],
 	[
 		{
-			"root": "http://localhost",
-			"firsTable": "categories",
+			"firstTable": "categories",
 			"lastTable": "articles",
-			"firstParameter": "test"
+			"firstParameter": "test-one",
+			"fullRoute": "test/test-one",
+			"root": "http://localhost"
 		},
-		"http://localhost/"
+		"test/test-one"
 	]
 ]
