@@ -80,6 +80,6 @@ abstract class TestCaseAbstract extends PHPUnit_Framework_TestCase
 
 	public function normalizeEOL($expect = null)
 	{
-		return str_replace('{PHP_EOL}', PHP_EOL, $expect);;
+		return preg_replace('/[\n]/', PHP_EOL, $expect);
 	}
 }

@@ -10,7 +10,7 @@
 				"rel": "canonical"
 			}
 		],
-		"<link href=\"http://localhost/\" rel=\"canonical\" />{PHP_EOL}<link href=\"templates/default/assets/images/favicon.ico\" rel=\"shortcut icon\" />"
+		"<link href=\"http://localhost/\" rel=\"canonical\" />\n<link href=\"templates/default/assets/images/favicon.ico\" rel=\"shortcut icon\" />"
 	],
 	[
 		[
@@ -25,6 +25,6 @@
 				"href": "style.css"
 			}
 		],
-		"<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />{PHP_EOL}<link rel=\"stylesheet\" type=\"text/css\" href=\"test.css\" />"
+		"<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n<link rel=\"stylesheet\" type=\"text/css\" href=\"test.css\" />"
 	]
 ]

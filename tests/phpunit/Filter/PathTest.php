@@ -48,7 +48,7 @@ class PathTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $filter->sanitize($path);
+		$actual = $filter->sanitize($path, '/');
 
 		/* compare */
 

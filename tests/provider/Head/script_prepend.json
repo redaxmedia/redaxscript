@@ -12,6 +12,6 @@
 		{
 			"src": "assets/scripts/three.js"
 		},
-		"<script src=\"assets/scripts/three.js\"></script>{PHP_EOL}<script src=\"assets\/scripts/two.js\"></script>{PHP_EOL}<script src=\"assets/scripts/one.js\" async=\"async\"></script>"
+		"<script src=\"assets/scripts/three.js\"></script>\n<script src=\"assets\/scripts/two.js\"></script>\n<script src=\"assets/scripts/one.js\" async=\"async\"></script>"
 	]
 ]

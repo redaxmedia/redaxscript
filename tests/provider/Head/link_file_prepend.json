@@ -4,13 +4,13 @@
 			"templates/default/assets/images/favicon.ico",
 			"http://localhost/"
 		],
-		"<link href=\"http://localhost/\" rel=\"stylesheet\" />{PHP_EOL}<link href=\"templates/default/assets/images/favicon.ico\" rel=\"stylesheet\" />"
+		"<link href=\"http://localhost/\" rel=\"stylesheet\" />\n<link href=\"templates/default/assets/images/favicon.ico\" rel=\"stylesheet\" />"
 	],
 	[
 		[
 			"test.css",
 			"style.css"
 		],
-		"<link href=\"style.css\" rel=\"stylesheet\" />{PHP_EOL}<link href=\"test.css\" rel=\"stylesheet\" />"
+		"<link href=\"style.css\" rel=\"stylesheet\" />\n<link href=\"test.css\" rel=\"stylesheet\" />"
 	]
 ]
