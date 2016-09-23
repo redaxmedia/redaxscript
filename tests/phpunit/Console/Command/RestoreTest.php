@@ -16,6 +16,8 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ * 
+ * @requires OS Linux
  */
 
 class RestoreTest extends TestCaseAbstract
