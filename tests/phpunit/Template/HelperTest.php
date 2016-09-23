@@ -50,7 +50,6 @@ class HelperTest extends TestCaseAbstract
 			->create()
 			->set(
 				[
-					'id' => 5,
 					'title' => 'test',
 					'alias' => 'test-one',
 					'author' => 'test',
@@ -80,7 +79,7 @@ class HelperTest extends TestCaseAbstract
 	public static function tearDownAfterClass()
 	{
 		Db::forTablePrefix('articles')->where('title', 'test')->deleteMany();
-		Db::forTablePrefix('categories')->where('title', 'test')->deleteMany();
+		Db::forTablePrefix('categories')->where('title', 'Test')->deleteMany();
 	}
 
 	/**
