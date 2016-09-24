@@ -18,6 +18,7 @@ function router()
 	$secondParameter = Redaxscript\Registry::get('secondParameter');
 	$thirdParameter = Redaxscript\Registry::get('thirdParameter');
 	$thirdSubParameter = Redaxscript\Registry::get('thirdSubParameter');
+	$config = Redaxscript\Config::getInstance();
 	Redaxscript\Hook::trigger('routerStart');
 	if (Redaxscript\Registry::get('routerBreak'))
 	{
@@ -35,7 +36,7 @@ function router()
 
 	/* install routing */
 
-	if (Redaxscript\Registry::get('file') === 'install.php')
+	if (Redaxscript\Registry::get('file') === 'install.php' && $config->get('env') !== 'production')
 	{
 		if (Redaxscript\Request::getPost('Redaxscript\View\InstallForm'))
 		{
