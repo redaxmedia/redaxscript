@@ -25,21 +25,30 @@ if (php_sapi_name() === 'cli')
 	}
 }
 
-/* ajax request */
+/* restrict access */
 
-else if ($request->getServer('HTTP_X_REQUESTED_WITH') === 'XMLHttpRequest')
+if ($config->get('env') !== 'production')
 {
-	$console = new Console\Console($registry, $request, $config);
-	$output = $console->init('xhr');
-	if (is_string($output))
+	/* ajax request */
+
+	if ($request->getServer('HTTP_X_REQUESTED_WITH') === 'XMLHttpRequest')
 	{
-		echo htmlentities($output);
+		$console = new Console\Console($registry, $request, $config);
+		$output = $console->init('xhr');
+		if (is_string($output))
+		{
+			echo htmlentities($output);
+		}
+	}
+
+	/* else template */
+
+	else
+	{
+		include_once('templates/console/console.phtml');
 	}
 }
-
-/* else template */
-
 else
 {
-	include_once('templates/console/console.phtml');
+	header('http/1.0 403 forbidden');
 }

@@ -77,6 +77,10 @@ class Config extends CommandAbstract
 							'description' => 'Get variable from ENV'
 						]
 					]
+				],
+				'lock' =>
+				[
+					'description' => 'Lock the production environment'
 				]
 			]
 		]
@@ -111,6 +115,10 @@ class Config extends CommandAbstract
 		if ($argumentKey === 'parse')
 		{
 			return $this->_parse($parser->getOption());
+		}
+		if ($argumentKey === 'lock')
+		{
+			return $this->_lock($parser->getOption());
 		}
 		return $this->getHelp();
 	}
@@ -192,5 +200,19 @@ class Config extends CommandAbstract
 			return $this->_config->write();
 		}
 		return false;
+	}
+
+	/**
+	 * lock the config
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return boolean
+	 */
+
+	protected function _lock()
+	{
+		$this->_config->set('env', 'production');
+		return $this->_config->write();
 	}
 }
