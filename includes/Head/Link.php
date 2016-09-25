@@ -19,6 +19,9 @@ use Redaxscript\Hook;
  * @method clear
  */
 
+/* @todo: implement the Assetic/Loader via a useCache() method - it should basically transform self::$_collectionArray[self::$_namespace] */
+/* @todo: to 1. a single cached file and 2. keep the external (CDN) files untouched */
+
 class Link extends HeadAbstract
 {
 	/**
