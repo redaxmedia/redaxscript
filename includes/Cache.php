@@ -198,7 +198,7 @@ class Cache
 				$bundle
 			];
 		}
-		return sha1(implode('-' . $bundle)) . '.' . $this->_extension;
+		return sha1(implode('-', $bundle)) . '.' . $this->_extension;
 	}
 
 	/**
