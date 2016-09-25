@@ -93,4 +93,27 @@ class CacheTest extends TestCaseAbstract
 
 		$this->assertEquals($actual, 'test');
 	}
+
+	/**
+	 * testValidate
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testValidate()
+	{
+		/* setup */
+
+		$cache = new Cache();
+		$cache->init(Stream::url('root'));
+		$cache->store('test1', 'test');
+		$cache->store('test2', 'test');
+		touch($cache->getPath('test2'), time() - 3600);
+
+		/* compare */
+
+		$this->assertTrue($cache->validate('test1'));
+		$this->assertFalse($cache->validate('test2'));
+		$this->assertFalse($cache->validate('invalid'));
+	}
 }

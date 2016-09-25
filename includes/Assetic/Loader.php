@@ -13,7 +13,7 @@ namespace Redaxscript\Assetic;
 
 class Loader
 {
-	//@todo: 1. this class gets a raw collection from the head bundle and extracts all src and href values
+	//@todo: 1. this class gets a raw collection from the head bundle and extracts all LOCAL HOSTED src and href values
 	//@todo: 2. after that it is using the Cache via $cache->validate($bundle) to see if there is a valid cached (not outdated) file present in the cache folder
 	//@todo: 3. if there is a valid cached file, the loader returns the path via $cache->getPath($bundle) back to the Head bundle and the Head class generates a single tag from it
 	//@todo: 4. otherwise it tries to generate a cached file by using $cache->store($bundle, $content) and returns that one via $cache->getPath($bundle) afterwards
