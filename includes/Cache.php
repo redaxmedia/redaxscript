@@ -22,7 +22,7 @@ class Cache
 	protected $_directory = 'cache';
 
 	/**
-	 * extension of files
+	 * extension of the cached files
 	 *
 	 * @var string
 	 */
@@ -30,28 +30,25 @@ class Cache
 	protected $_extension = 'cache';
 
 	/**
-	 * lifetime in seconds
-	 *
-	 * @var string
-	 */
-
-	protected $_lifetime = 3600;
-
-	/**
 	 * init the class
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param string $directory directory of the cache
+	 * @param string $extension extension of the cached files
 	 *
 	 * @return Cache
 	 */
 
-	public function init($directory = null)
+	public function init($directory = null, $extension = null)
 	{
-		if ($directory)
+		if (strlen($directory))
 		{
 			$this->_directory = $directory;
+		}
+		if (strlen($extension))
+		{
+			$this->_extension = $extension;
 		}
 		return $this;
 	}
@@ -61,7 +58,7 @@ class Cache
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $key
+	 * @param mixed $key
 	 * @param string $value
 	 *
 	 * @return Cache
@@ -69,7 +66,11 @@ class Cache
 
 	public function store($key = null, $value = null)
 	{
-		// plain store $value to _getFilename($key);
+		$path = $this->_getPath($key);
+		if ($path && $value)
+		{
+			file_put_contents($path);
+		}
 		return $this;
 	}
 
@@ -78,51 +79,19 @@ class Cache
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $key
-	 * @param integer $lifetime
+	 * @param mixed $key
 	 *
 	 * @return string
 	 */
 
-	protected function retrieve($key = null, $lifetime = null)
+	protected function retrieve($key = null)
 	{
-		// return $value from _getFilename($key);
-		//return $output;
-	}
-
-	/**
-	 * store to file to cache
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param mixed $file
-	 *
-	 * @return Cache
-	 */
-
-	public function storeFile($file = null)
-	{
-		// use _getFilename($file) from the collection of the file
-		// read content from files and put it to the store($key, $value) method
+		$path = $this->_getPath($key);
+		if ($path)
+		{
+			file_get_contents($path);
+		}
 		return $this;
-	}
-
-	/**
-	 * retrieve from cache
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param mixed $file
-	 * @param integer $lifetime
-	 *
-	 * @return string
-	 */
-
-	protected function retrieveFile($file = null, $lifetime = null)
-	{
-		// generate a hash from the collection of the file names using _getHash()
-		// read content from files and put it to the retrieve() method
-		//return $output;
 	}
 
 	/**
@@ -130,15 +99,16 @@ class Cache
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $key
+	 * @param mixed $key
 	 * @param integer $lifetime
 	 *
-	 * return boolean
+	 * @return boolean
 	 */
 
-	public function validate($key = null, $lifetime = null)
+	public function validate($key = null, $lifetime = 3600)
 	{
-		// use _getFilename($key) and validate for the lifetime and that file has content
+		$path = $this->_getPath($key);
+		return $this->_validate($path, $lifetime);
 	}
 
 	/**
@@ -146,14 +116,14 @@ class Cache
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $key
+	 * @param mixed $key
 	 *
 	 * @return Cache
 	 */
 
 	public function clear($key = null)
 	{
-		// delete the whole cache folder or _getFilename($key) without acceptation
+		// delete the cache folder by getPath(key) or complete
 		return $this;
 	}
 
@@ -167,14 +137,14 @@ class Cache
 	 * @return Cache
 	 */
 
-	public function clearExpired($lifetime = null)
+	public function clearExpired($lifetime = 3600)
 	{
-		// delete the expired files in cache folder using validate();
+		// delete expired files in cache folder using _validate();
 		return $this;
 	}
 
 	/**
-	 * get filename
+	 * get the path
 	 *
 	 * @since 3.0.0
 	 *
@@ -183,7 +153,7 @@ class Cache
 	 * @return string
 	 */
 
-	protected function _getFilename($key = null)
+	public function getPath($key = null)
 	{
 		if (is_string($key))
 		{
@@ -192,6 +162,22 @@ class Cache
 				$key
 			];
 		}
-		return sha1(implode($key)) . '.' . $this->_extension;
+		return $this->_directory . '/' . sha1(implode($key)) . '.' . $this->_extension;
+	}
+
+	/**
+	 * validate the cache
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $path
+	 * @param integer $lifetime
+	 *
+	 * @return boolean
+	 */
+
+	protected function _validate($path = null, $lifetime = 3600)
+	{
+		return filesize($path) && filectime($path) > $lifetime;
 	}
 }
