@@ -21,7 +21,7 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	 * @var string
 	 */
 
-	protected static $_namespace = null;
+	protected static $_namespace = 'Redaxscript\Head';
 
 	/**
 	 * collection of the head
@@ -50,7 +50,6 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 		}
 		return $this;
 	}
-	/*@todo: we need to find a fallback if someone did not use the init method */
 
 	/**
 	 * stringify the collection
