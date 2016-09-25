@@ -54,12 +54,27 @@ class Cache
 	}
 
 	/**
+	 * get the path
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param mixed $bundle key or collection of the bundle
+	 *
+	 * @return string
+	 */
+
+	public function getPath($bundle = null)
+	{
+		return $this->_directory . '/' . $this->_getFile($bundle);
+	}
+
+	/**
 	 * store to cache
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param mixed $bundle
-	 * @param string $content
+	 * @param mixed $bundle key or collection of the bundle
+	 * @param string $content content of the bundle
 	 *
 	 * @return Cache
 	 */
@@ -79,7 +94,7 @@ class Cache
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param mixed $bundle
+	 * @param mixed $bundle key or collection of the bundle
 	 *
 	 * @return string
 	 */
@@ -98,8 +113,8 @@ class Cache
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param mixed $bundle
-	 * @param integer $lifetime
+	 * @param mixed $bundle key or collection of the bundle
+	 * @param integer $lifetime lifetime of the bundle
 	 *
 	 * @return boolean
 	 */
@@ -115,7 +130,7 @@ class Cache
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param mixed $bundle
+	 * @param mixed $bundle key or collection of the bundle
 	 *
 	 * @return Cache
 	 */
@@ -137,16 +152,16 @@ class Cache
 	}
 
 	/**
-	 * clear the expired cache
+	 * clear the invalid cache
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param integer $lifetime
+	 * @param integer $lifetime lifetime of the bundle
 	 *
 	 * @return Cache
 	 */
 
-	public function clearExpired($lifetime = 3600)
+	public function clearInvalid($lifetime = 3600)
 	{
 		$cacheDirectory = new Directory();
 		$cacheDirectory->init($this->_directory);
@@ -156,7 +171,8 @@ class Cache
 
 		foreach ($cacheDirectoryArray as $value)
 		{
-			if (!$this->_validateFile($value, $lifetime))
+			$path = $this->_directory . '/' . $value;
+			if (!$this->_validateFile($path, $lifetime))
 			{
 				$cacheDirectory->remove($value);
 			}
@@ -165,26 +181,11 @@ class Cache
 	}
 
 	/**
-	 * get the path
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param mixed $bundle
-	 *
-	 * @return string
-	 */
-
-	public function getPath($bundle = null)
-	{
-		return $this->_directory . '/' . $this->_getFile($bundle);
-	}
-
-	/**
 	 * get the file
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param mixed $bundle
+	 * @param mixed $bundle key or collection of the bundle
 	 *
 	 * @return string
 	 */
@@ -206,8 +207,8 @@ class Cache
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $path
-	 * @param integer $lifetime
+	 * @param string $path path of the bundle
+	 * @param integer $lifetime lifetime of the bundle
 	 *
 	 * @return boolean
 	 */

@@ -166,7 +166,10 @@ class Directory
 			{
 				$this->_remove($path . '/' . $value);
 			}
-			rmdir($path);
+			if ($path !== $this->_directory)
+			{
+				rmdir($path);
+			}
 		}
 		else if (is_file($path))
 		{

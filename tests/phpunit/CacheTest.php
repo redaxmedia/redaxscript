@@ -68,7 +68,7 @@ class CacheTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($actualArray, $expectArray);
+		$this->assertEquals($expectArray, $actualArray);
 	}
 
 	/**
@@ -82,8 +82,9 @@ class CacheTest extends TestCaseAbstract
 		/* setup */
 
 		$cache = new Cache();
-		$cache->init(Stream::url('root'));
-		$cache->store('test', 'test');
+		$cache
+			->init(Stream::url('root'))
+			->store('test', 'test');
 
 		/* actual */
 
@@ -105,9 +106,10 @@ class CacheTest extends TestCaseAbstract
 		/* setup */
 
 		$cache = new Cache();
-		$cache->init(Stream::url('root'));
-		$cache->store('test1', 'test');
-		$cache->store('test2', 'test');
+		$cache
+			->init(Stream::url('root'))
+			->store('test1', 'test')
+			->store('test2', 'test');
 		touch($cache->getPath('test2'), time() - 3600);
 
 		/* compare */
@@ -115,5 +117,63 @@ class CacheTest extends TestCaseAbstract
 		$this->assertTrue($cache->validate('test1'));
 		$this->assertFalse($cache->validate('test2'));
 		$this->assertFalse($cache->validate('invalid'));
+	}
+
+	/**
+	 * testClear
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testClear()
+	{
+		/* setup */
+
+		$cache = new Cache();
+		$cache
+			->init(Stream::url('root'))
+			->store('test1', 'test')
+			->store('test2', 'test')
+			->clear()
+			->store('test3', 'test')
+			->store('test4', 'test')
+			->clear('test3');
+
+		/* compare */
+
+		$this->assertFalse(file_exists($cache->getPath('test1')));
+		$this->assertFalse(file_exists($cache->getPath('test2')));
+		$this->assertFalse(file_exists($cache->getPath('test3')));
+		$this->assertTrue(file_exists($cache->getPath('test4')));
+	}
+
+	/**
+	 * testClearInvalid
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testClearInvalid()
+	{
+		/* setup */
+
+		$cache = new Cache();
+		$cache
+			->init(Stream::url('root'))
+			->store('test1', 'test')
+			->store('test2', 'test')
+			->store('test3', 'test')
+			->store('test4', 'test');
+		touch($cache->getPath('test1'), time() - 3600);
+		touch($cache->getPath('test2'), time() - 3600);
+		touch($cache->getPath('test3'), time() - 3600);
+		$cache->clearInvalid();
+
+		/* compare */
+
+		$this->assertFalse(is_file($cache->getPath('test1')));
+		$this->assertFalse(is_file($cache->getPath('test2')));
+		$this->assertFalse(is_file($cache->getPath('test3')));
+		$this->assertTrue(is_file($cache->getPath('test4')));
 	}
 }

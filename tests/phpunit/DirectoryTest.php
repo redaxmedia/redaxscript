@@ -209,12 +209,17 @@ class DirectoryTest extends TestCaseAbstract
 		$directory->init(Stream::url('root'));
 		$directory->clear();
 
-		/* actual */
+		/* expect and actual */
 
+		$expectArray =
+		[
+			'.',
+			'..'
+		];
 		$actualArray = scandir(Stream::url('root'));
 
 		/* compare */
 
-		$this->assertFalse($actualArray);
+		$this->assertEquals($expectArray, $actualArray);
 	}
 }
