@@ -124,29 +124,28 @@ class Config extends Singleton
 
 		/* process config */
 
-		$contents = '<?php' . PHP_EOL . 'return' . PHP_EOL . '[' . PHP_EOL;
+		$content = '<?php' . PHP_EOL . 'return' . PHP_EOL . '[' . PHP_EOL;
 		foreach (self::$_configArray as $key => $value)
 		{
 			if ($value)
 			{
-				$contents .= '	\'' . $key . '\' => \'' . $value . '\'';
+				$content .= '	\'' . $key . '\' => \'' . $value . '\'';
 			}
 			else
 			{
-				$contents .= '	\'' . $key . '\' => null';
+				$content .= '	\'' . $key . '\' => null';
 			}
 			if ($key !== $lastKey)
 			{
-				$contents .= ',';
+				$content .= ',';
 			}
-			$contents .= PHP_EOL;
+			$content .= PHP_EOL;
 		}
-		$contents .= '];';
+		$content .= '];';
 
 		/* write to file */
 
-		$output = file_put_contents(self::$_configFile, $contents) > 0;
-		return $output;
+		return file_put_contents(self::$_configFile, $content) > 0;
 	}
 
 	/**

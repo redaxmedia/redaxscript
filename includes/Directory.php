@@ -124,19 +124,30 @@ class Directory
 	}
 
 	/**
-	 * remove the directory
+	 * remove the path
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $directory name of the directory
+	 * @param string $path name of the $path
 	 */
 
-	public function remove($directory = null)
+	public function remove($path = null)
 	{
-		if ($directory)
+		if ($path)
 		{
-			$this->_remove($this->_directory . '/' . $directory);
+			$this->_remove($this->_directory . '/' . $path);
 		}
+	}
+
+	/**
+	 * clear the directory
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function clear()
+	{
+		$this->_remove($this->_directory);
 	}
 
 	/**

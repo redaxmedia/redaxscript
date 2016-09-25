@@ -205,9 +205,9 @@ class Mailer
 
 		else
 		{
-			foreach ($this->_attachmentArray as $file => $contents)
+			foreach ($this->_attachmentArray as $file => $content)
 			{
-				$contents = chunk_split(base64_encode($contents));
+				$content = chunk_split(base64_encode($content));
 				$boundary = uniqid();
 				$this->_headerString .= 'Content-Type: multipart/mixed; boundary="' . $boundary . '"' . PHP_EOL . PHP_EOL;
 				$this->_headerString .= '--' . uniqid() . PHP_EOL;
@@ -228,7 +228,7 @@ class Mailer
 				$this->_headerString .= 'Content-Type: application/octet-stream; name="' . $file . '"' . PHP_EOL;
 				$this->_headerString .= 'Content-Transfer-Encoding: base64' . PHP_EOL;
 				$this->_headerString .= 'Content-Disposition: attachment; filename="' . $file . '"' . PHP_EOL . PHP_EOL;
-				$this->_headerString .= $contents . PHP_EOL . PHP_EOL;
+				$this->_headerString .= $content . PHP_EOL . PHP_EOL;
 				$this->_headerString .= '--' . $boundary . '--';
 			}
 		}

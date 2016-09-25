@@ -58,18 +58,18 @@ class Cache
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param mixed $key
-	 * @param string $value
+	 * @param mixed $bundle
+	 * @param string $content
 	 *
 	 * @return Cache
 	 */
 
-	public function store($key = null, $value = null)
+	public function store($bundle = null, $content = null)
 	{
-		$path = $this->_getPath($key);
-		if ($path && $value)
+		$path = $this->getPath($bundle);
+		if ($path && $content)
 		{
-			file_put_contents($path);
+			file_put_contents($path, $content);
 		}
 		return $this;
 	}
@@ -79,19 +79,18 @@ class Cache
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param mixed $key
+	 * @param mixed $bundle
 	 *
 	 * @return string
 	 */
 
-	protected function retrieve($key = null)
+	protected function retrieve($bundle = null)
 	{
-		$path = $this->_getPath($key);
+		$path = $this->getPath($bundle);
 		if ($path)
 		{
-			file_get_contents($path);
+			return file_get_contents($path);
 		}
-		return $this;
 	}
 
 	/**
@@ -99,15 +98,15 @@ class Cache
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param mixed $key
+	 * @param mixed $bundle
 	 * @param integer $lifetime
 	 *
 	 * @return boolean
 	 */
 
-	public function validate($key = null, $lifetime = 3600)
+	public function validate($bundle = null, $lifetime = 3600)
 	{
-		$path = $this->_getPath($key);
+		$path = $this->getPath($bundle);
 		return $this->_validate($path, $lifetime);
 	}
 
@@ -116,14 +115,24 @@ class Cache
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param mixed $key
+	 * @param mixed $bundle
 	 *
 	 * @return Cache
 	 */
 
-	public function clear($key = null)
+	public function clear($bundle = null)
 	{
-		// delete the cache folder by getPath(key) or complete
+		$cacheDirectory = new Directory();
+		$cacheDirectory->init($this->_directory);
+		if ($bundle)
+		{
+			$file = $this->_getFile($bundle);
+			$cacheDirectory->remove($file);
+		}
+		else
+		{
+			$cacheDirectory->clear();
+		}
 		return $this;
 	}
 
@@ -139,7 +148,19 @@ class Cache
 
 	public function clearExpired($lifetime = 3600)
 	{
-		// delete expired files in cache folder using _validate();
+		$cacheDirectory = new Directory();
+		$cacheDirectory->init($this->_directory);
+		$cacheArray = $cacheDirectory->getArray();
+
+		/* process cache */
+
+		foreach ($cacheArray as $value)
+		{
+			if (!$this->_validate($value, $lifetime))
+			{
+				$cacheDirectory->remove($value);
+			}
+		}
 		return $this;
 	}
 
@@ -148,21 +169,36 @@ class Cache
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param mixed $key
+	 * @param mixed $bundle
 	 *
 	 * @return string
 	 */
 
-	public function getPath($key = null)
+	public function getPath($bundle = null)
 	{
-		if (is_string($key))
+		return $this->_directory . '/' . $this->_getFile($bundle);
+	}
+
+	/**
+	 * get the file
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param mixed $bundle
+	 *
+	 * @return string
+	 */
+
+	public function _getFile($bundle = null)
+	{
+		if (is_string($bundle))
 		{
-			$key =
+			$bundle =
 			[
-				$key
+				$bundle
 			];
 		}
-		return $this->_directory . '/' . sha1(implode($key)) . '.' . $this->_extension;
+		return sha1(implode('-' . $bundle)) . '.' . $this->_extension;
 	}
 
 	/**
@@ -178,6 +214,6 @@ class Cache
 
 	protected function _validate($path = null, $lifetime = 3600)
 	{
-		return filesize($path) && filectime($path) > $lifetime;
+		return filesize($path) && filemtime($path) > time() - $lifetime;
 	}
 }

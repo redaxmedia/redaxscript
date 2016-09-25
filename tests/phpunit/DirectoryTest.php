@@ -194,4 +194,27 @@ class DirectoryTest extends TestCaseAbstract
 
 		$this->assertEquals($expectArray, $actualArray);
 	}
+
+	/**
+	 * testClear
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testClear()
+	{
+		/* setup */
+
+		$directory = new Directory();
+		$directory->init(Stream::url('root'));
+		$directory->clear();
+
+		/* actual */
+
+		$actualArray = scandir(Stream::url('root'));
+
+		/* compare */
+
+		$this->assertFalse($actualArray);
+	}
 }

@@ -143,6 +143,12 @@
 			<file>tests/phpunit/BreadcrumbTest.php</file>
 		</testsuite>
 
+		<!-- cache -->
+
+		<testsuite name="cache">
+			<directory>tests/phpunit/CacheTest.php</directory>
+		</testsuite>
+
 		<!-- captcha -->
 
 		<testsuite name="captcha">

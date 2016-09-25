@@ -31,8 +31,8 @@ abstract class TestCaseAbstract extends PHPUnit_Framework_TestCase
 
 	public function getProvider($url = null, $assoc = true)
 	{
-		$contents = file_get_contents($url);
-		return json_decode($contents, $assoc);
+		$content = file_get_contents($url);
+		return json_decode($content, $assoc);
 	}
 
 	/**
