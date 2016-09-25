@@ -84,7 +84,7 @@ class Cache
 	 * @return string
 	 */
 
-	protected function retrieve($bundle = null)
+	public function retrieve($bundle = null)
 	{
 		$path = $this->getPath($bundle);
 		if ($path)
@@ -107,7 +107,7 @@ class Cache
 	public function validate($bundle = null, $lifetime = 3600)
 	{
 		$path = $this->getPath($bundle);
-		return $this->_validate($path, $lifetime);
+		return $this->_validateFile($path, $lifetime);
 	}
 
 	/**
@@ -150,13 +150,13 @@ class Cache
 	{
 		$cacheDirectory = new Directory();
 		$cacheDirectory->init($this->_directory);
-		$cacheArray = $cacheDirectory->getArray();
+		$cacheDirectoryArray = $cacheDirectory->getArray();
 
 		/* process cache */
 
-		foreach ($cacheArray as $value)
+		foreach ($cacheDirectoryArray as $value)
 		{
-			if (!$this->_validate($value, $lifetime))
+			if (!$this->_validateFile($value, $lifetime))
 			{
 				$cacheDirectory->remove($value);
 			}
@@ -189,7 +189,7 @@ class Cache
 	 * @return string
 	 */
 
-	public function _getFile($bundle = null)
+	protected function _getFile($bundle = null)
 	{
 		if (is_string($bundle))
 		{
@@ -202,7 +202,7 @@ class Cache
 	}
 
 	/**
-	 * validate the cache
+	 * validate the file
 	 *
 	 * @since 3.0.0
 	 *
@@ -212,7 +212,7 @@ class Cache
 	 * @return boolean
 	 */
 
-	protected function _validate($path = null, $lifetime = 3600)
+	protected function _validateFile($path = null, $lifetime = 3600)
 	{
 		return filesize($path) && filemtime($path) > time() - $lifetime;
 	}

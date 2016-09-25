@@ -70,4 +70,27 @@ class CacheTest extends TestCaseAbstract
 
 		$this->assertEquals($actualArray, $expectArray);
 	}
+
+	/**
+	 * testRetrieve
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testRetrieve()
+	{
+		/* setup */
+
+		$cache = new Cache();
+		$cache->init(Stream::url('root'));
+		$cache->store('test', 'test');
+
+		/* actual */
+
+		$actual = $cache->retrieve('test');
+
+		/* compare */
+
+		$this->assertEquals($actual, 'test');
+	}
 }
