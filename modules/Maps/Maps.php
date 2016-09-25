@@ -50,11 +50,11 @@ class Maps extends Config
 				->appendFile('modules/Maps/assets/styles/maps.css');
 
 			/* script */
-			//todo: Google Maps API warning: SensorNotRequired
+
 			$script = Head\Script::getInstance();
 			$script
 				->init('foot')
-				->appendFile(self::$_configArray['apiUrl'] . '?key=' . self::$_configArray['apiKey'] . '&amp;sensor=' . self::$_configArray['sensor'])
+				->appendFile(self::$_configArray['apiUrl'] . '?key=' . self::$_configArray['apiKey'])
 				->appendFile('modules/Maps/assets/scripts/init.js')
 				->appendFile('modules/Maps/assets/scripts/maps.js');
 		}

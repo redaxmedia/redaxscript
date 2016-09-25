@@ -25,7 +25,6 @@ class Config extends Module
 	[
 		'className' => 'rs-js-map rs-map',
 		'apiUrl' => 'https://maps.googleapis.com/maps/api/js',
-		'apiKey' => 'AIzaSyApJDayHOmOnVy6OucJXG_cGSHSC_f7NSM',
-		'sensor' => true
+		'apiKey' => 'AIzaSyApJDayHOmOnVy6OucJXG_cGSHSC_f7NSM'
 	];
 }
