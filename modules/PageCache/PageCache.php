@@ -120,7 +120,7 @@ class PageCache extends Config
 	 *
 	 * @param string $content
 	 *
-	 * @return mixed
+	 * @return string
 	 */
 
 	public static function _compress($content = null)
@@ -135,7 +135,7 @@ class PageCache extends Config
 	 *
 	 * @param string $content
 	 *
-	 * @return mixed
+	 * @return string
 	 */
 
 	public static function _uncompress($content = null)
