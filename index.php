@@ -38,6 +38,10 @@ if ($registry->get('contentError'))
 /* template */
 
 $template = Hook::collect('renderTemplate');
+if (array_key_exists('header', $template))
+{
+	header($template['header']);
+}
 if (array_key_exists('content', $template))
 {
 	echo $template['content'];

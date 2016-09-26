@@ -77,6 +77,7 @@ class PageCache extends Config
 			$cache = new Cache();
 			$cache->init(self::$_configArray['directory'], self::$_configArray['extension']);
 			$fullRoute = $registry->get('fullRoute');
+			$hasDeflate = function_exists('gzdeflate');
 
 			/* load from cache */
 
@@ -84,9 +85,9 @@ class PageCache extends Config
 			{
 				return
 				[
+					'header' => $hasDeflate ? 'content-encoding: deflate' : null,
 					'content' => $cache->retrieve($fullRoute)
 				];
-
 			}
 
 			/* else store to cache */
@@ -94,7 +95,7 @@ class PageCache extends Config
 			else
 			{
 				$content = Template\Tag::partial('templates/' . $registry->get('template') . '/index.phtml');
-				$cache->store($fullRoute, $content);
+				$cache->store($fullRoute, $hasDeflate ? gzdeflate($content) : $content);
 				return
 				[
 					'content' => $content
