@@ -65,6 +65,7 @@ class CallHome extends Module
 	public static function adminPanelNotification()
 	{
 		$output = [];
+		$reader = new Reader();
 		$aliasFilter = new Filter\Alias();
 		$version = $aliasFilter->sanitize(Language::get('version', '_package'));
 
@@ -72,7 +73,6 @@ class CallHome extends Module
 
 		$urlVersion = 'http://service.redaxscript.com/version/' . $version;
 		$urlNews = 'http://service.redaxscript.com/news/' . $version;
-		$reader = new Reader();
 		$resultVersion = $reader->loadJSON($urlVersion)->getArray();
 		$resultNews = $reader->loadJSON($urlNews)->getArray();
 

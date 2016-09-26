@@ -34,5 +34,16 @@ if ($registry->get('contentError'))
 {
 	header('http/1.0 404 not found');
 }
-include_once('templates/' . $registry->get('template') . '/index.phtml');
+
+/* template */
+
+$template = Hook::collect('renderTemplate');
+if (array_key_exists('content', $template))
+{
+	echo $template['content'];
+}
+else
+{
+	include_once('templates/' . $registry->get('template') . '/index.phtml');
+}
 Hook::trigger('renderEnd');

@@ -117,7 +117,7 @@ class Directory
 
 	public function put($path = null, $content = null)
 	{
-		if ($path)
+		if ($path && $content)
 		{
 			file_put_contents($this->_directory . '/' . $path, $content);
 		}

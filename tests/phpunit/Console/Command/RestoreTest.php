@@ -70,7 +70,7 @@ class RestoreTest extends TestCaseAbstract
 		$rootDirectory = new Directory();
 		$rootDirectory->init('.');
 		$rootDirectory->create('.restore');
-		$rootDirectory->put('.restore/test.sql');
+		$rootDirectory->put('.restore/test.sql', '/* test */');
 	}
 
 	/**

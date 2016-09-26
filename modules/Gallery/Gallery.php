@@ -95,7 +95,7 @@ class Gallery extends Config
 			'class' => self::$_configArray['className']['list']
 		]);
 
-		/* directory */
+		/* has directory */
 
 		if (is_dir($directory))
 		{

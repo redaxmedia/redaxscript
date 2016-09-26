@@ -112,7 +112,7 @@ class DirectoryLister extends Config
 			$outputItem .= self::_renderParent($rootDirectory, $parentDirectory, $optionArray);
 		}
 
-		/* directory */
+		/* has directory */
 
 		if (is_dir($directory))
 		{
