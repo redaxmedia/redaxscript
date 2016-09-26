@@ -77,16 +77,17 @@ class PageCache extends Config
 			$cache = new Cache();
 			$cache->init(self::$_configArray['directory'], self::$_configArray['extension']);
 			$fullRoute = $registry->get('fullRoute');
-			$hasDeflate = function_exists('gzdeflate');
 
 			/* load from cache */
 
 			if ($cache->validate($fullRoute, self::$_configArray['lifetime']))
 			{
+				$raw = $cache->retrieve($fullRoute);
+				$content = preg_replace('/{TOKEN}/', $registry->get('token'), self::_uncompress($raw));
 				return
 				[
-					'header' => $hasDeflate ? 'content-encoding: deflate' : null,
-					'content' => $cache->retrieve($fullRoute)
+					'header' => function_exists('gzdeflate') ? 'content-encoding: deflate' : null,
+					'content' => self::_compress($content)
 				];
 			}
 
@@ -94,11 +95,12 @@ class PageCache extends Config
 
 			else
 			{
-				$content = Template\Tag::partial('templates/' . $registry->get('template') . '/index.phtml');
-				$cache->store($fullRoute, $hasDeflate ? gzdeflate($content) : $content);
+				$raw = Template\Tag::partial('templates/' . $registry->get('template') . '/index.phtml');
+				$content = preg_replace('/' . $registry->get('token') . '/', '{TOKEN}', $raw);
+				$cache->store($fullRoute, self::_compress($content));
 				return
 				[
-					'content' => $content
+					'content' => $raw
 				];
 			}
 		}
@@ -109,5 +111,35 @@ class PageCache extends Config
 		{
 			self::setNotification('error', $language->get('directory_not_found') . $language->get('colon') . ' ' . self::$_configArray['directory'] . $language->get('point'));
 		}
+	}
+
+	/**
+	 * compress
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $content
+	 *
+	 * @return mixed
+	 */
+
+	public static function _compress($content = null)
+	{
+		return function_exists('gzdeflate') ? gzdeflate($content) : $content;
+	}
+
+	/**
+	 * uncompress
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $content
+	 *
+	 * @return mixed
+	 */
+
+	public static function _uncompress($content = null)
+	{
+		return function_exists('gzinflate') ? gzinflate($content) : $content;
 	}
 }
