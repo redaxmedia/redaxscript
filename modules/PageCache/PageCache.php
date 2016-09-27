@@ -83,7 +83,7 @@ class PageCache extends Config
 			if ($cache->validate($fullRoute, self::$_configArray['lifetime']))
 			{
 				$raw = $cache->retrieve($fullRoute);
-				$content = preg_replace('/{TOKEN}/', $registry->get('token'), self::_uncompress($raw));
+				$content = preg_replace('/' . self::$_configArray['tokenPlaceholder'] . '/', $registry->get('token'), self::_uncompress($raw));
 				return
 				[
 					'header' => function_exists('gzdeflate') ? 'content-encoding: deflate' : null,
@@ -96,7 +96,7 @@ class PageCache extends Config
 			else
 			{
 				$raw = Template\Tag::partial('templates/' . $registry->get('template') . '/index.phtml');
-				$content = preg_replace('/' . $registry->get('token') . '/', '{TOKEN}', $raw);
+				$content = preg_replace('/' . $registry->get('token') . '/', self::$_configArray['tokenPlaceholder'], $raw);
 				$cache->store($fullRoute, self::_compress($content));
 				return
 				[

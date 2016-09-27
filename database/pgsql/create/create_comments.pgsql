@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS /* {configPrefix} */comments (
+CREATE TABLE IF NOT EXISTS /* %PREFIX% */comments (
 	id SERIAL PRIMARY KEY,
 	author varchar(255) DEFAULT NULL,
 	email varchar(255) DEFAULT NULL,

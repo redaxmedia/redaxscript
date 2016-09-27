@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS /* {configPrefix} */extras;
+DROP TABLE IF EXISTS /* %PREFIX% */extras;

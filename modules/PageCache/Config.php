@@ -25,6 +25,7 @@ class Config extends Module
 	[
 		'directory' => 'cache/page',
 		'extension' => 'phtml',
-		'lifetime' => 86400
+		'lifetime' => 86400,
+		'tokenPlaceholder' => '%TOKEN%'
 	];
 }

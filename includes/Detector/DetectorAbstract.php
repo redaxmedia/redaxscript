@@ -46,7 +46,7 @@ abstract class DetectorAbstract
 	 * @var string
 	 */
 
-	protected $_filePlaceholder = '{filePlaceholder}';
+	protected $_filePlaceholder = '%FILE%';
 
 	/**
 	 * constructor of the class

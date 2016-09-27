@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS /* {configPrefix} */groups (
+CREATE TABLE IF NOT EXISTS /* %PREFIX% */groups (
 	id int(10) PRIMARY KEY AUTO_INCREMENT,
 	name varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
 	alias varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,

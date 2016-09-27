@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS /* {configPrefix} */categories (
+CREATE TABLE IF NOT EXISTS /* %PREFIX% */categories (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	title varchar(255) DEFAULT NULL,
 	alias varchar(255) DEFAULT NULL,

@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS /* {configPrefix} */groups;
+DROP TABLE IF EXISTS /* %PREFIX% */groups;

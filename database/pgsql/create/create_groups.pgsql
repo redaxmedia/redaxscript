@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS /* {configPrefix} */groups (
+CREATE TABLE IF NOT EXISTS /* %PREFIX% */groups (
 	id SERIAL PRIMARY KEY,
 	name varchar(255) DEFAULT NULL,
 	alias varchar(255) DEFAULT NULL,

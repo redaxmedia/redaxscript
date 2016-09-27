@@ -35,7 +35,7 @@ class Installer
 	 * @var string
 	 */
 
-	protected $_prefixPlaceholder = '/* {configPrefix} */';
+	protected $_prefixPlaceholder = '/* %PREFIX% */';
 
 	/**
 	 * constructor of the class

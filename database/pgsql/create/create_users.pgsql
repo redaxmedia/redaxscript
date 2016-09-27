@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS /* {configPrefix} */users (
+CREATE TABLE IF NOT EXISTS /* %PREFIX% */users (
 	id SERIAL PRIMARY KEY,
 	name varchar(255) DEFAULT NULL,
 	"user" varchar(255) DEFAULT NULL,
