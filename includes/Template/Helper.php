@@ -186,7 +186,14 @@ class Helper
 		}
 		else if ($lastTable)
 		{
-			$keywords = Db::forTablePrefix($lastTable)->findOne()->description;
+			if ($lastTable === 'articles')
+			{
+				$keywords = Db::forTablePrefix($lastTable)->where('id', Registry::get('articleId'))->findOne()->keywords;
+			}
+			else
+			{
+				$keywords = Db::forTablePrefix($lastTable)->findOne()->keywords;
+			}
 		}
 
 		/* handle keywords */

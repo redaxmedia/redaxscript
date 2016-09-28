@@ -54,6 +54,7 @@ class HelperTest extends TestCaseAbstract
 					'alias' => 'test-one',
 					'author' => 'test',
 					'description' => 'test-description',
+					'keywords' => 'test-keywords',
 					'text' => 'test',
 					'category' => 1,
 					'date' => '2017-01-01 00:00:00'
@@ -265,7 +266,7 @@ class HelperTest extends TestCaseAbstract
 	public function testCanonical($registryArray = [], $expect = null)
 	{
 		/* setup */
-		//TODO: more test case
+
 		$this->_registry->init($registryArray);
 
 		/* actual */
@@ -291,7 +292,7 @@ class HelperTest extends TestCaseAbstract
 	public function testKeywords($registryArray = [], $expect = null)
 	{
 		/* setup */
-		//TODO: more test case
+
 		$this->_registry->init($registryArray);
 
 		/* actual */
@@ -342,12 +343,12 @@ class HelperTest extends TestCaseAbstract
 
 	public function testDescription($registryArray = [], $expect = null)
 	{
-		//Todo: fix: 2nd dataProvider expected: test-description
 		/* setup */
 
 		$this->_registry->init($registryArray);
 
 		/* actual */
+
 		$actual = Template\Helper::getDescription();
 
 		/* compare */

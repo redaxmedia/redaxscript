@@ -7,5 +7,21 @@
 			"firstParameter": "test"
 		},
 		false
+	],
+	[
+		{
+			"metaKeywords": "metaKeywords"
+		},
+		"metaKeywords"
+	],
+	[
+		{
+			"root": "http://localhost",
+			"lastTable": "articles",
+			"secondParameter": "test-one",
+			"metaKeywords": null,
+			"articleId": 6
+		},
+		"test-keywords"
 	]
 ]
