@@ -141,6 +141,7 @@ class Helper
 
 	public static function getDescription()
 	{
+		$firstParameter = Registry::get('firstParameter');
 		$lastTable = Registry::get('lastTable');
 
 		if (Registry::get('metaDescription'))
@@ -151,7 +152,7 @@ class Helper
 		{
 			if ($lastTable === 'articles')
 			{
-				$description = Db::forTablePrefix($lastTable)->where('id', Registry::get('articleId'))->findOne()->description;
+				$description = Db::forTablePrefix($lastTable)->where('alias', $firstParameter)->findOne()->description;
 			}
 			else
 			{
@@ -178,6 +179,7 @@ class Helper
 
 	public static function getKeywords()
 	{
+		$firstParameter = Registry::get('firstParameter');
 		$lastTable = Registry::get('lastTable');
 
 		if (Registry::get('metaKeywords'))
@@ -188,7 +190,7 @@ class Helper
 		{
 			if ($lastTable === 'articles')
 			{
-				$keywords = Db::forTablePrefix($lastTable)->where('id', Registry::get('articleId'))->findOne()->keywords;
+				$keywords = Db::forTablePrefix($lastTable)->where('alias', $firstParameter)->findOne()->keywords;
 			}
 			else
 			{

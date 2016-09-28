@@ -16,11 +16,11 @@
 	],
 	[
 		{
+			"firstParameter": "test-one",
 			"root": "http://localhost",
 			"lastTable": "articles",
 			"secondParameter": "test-one",
-			"metaKeywords": null,
-			"articleId": 6
+			"metaKeywords": null
 		},
 		"test-keywords"
 	]

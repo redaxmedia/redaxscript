@@ -1,17 +1,16 @@
 [
 	[
 		{
-			"root": "http://localhost",
-			"articleId": null
+			"root": "http://localhost"
 		},
 		"Ultra lightweight Content Management System"
 	],
 	[
 		{
+			"firstParameter": "test-one",
 			"lastTable": "articles",
 			"secondParameter": "test-one",
-			"root": "http://localhost",
-			"articleId": 6
+			"root": "http://localhost"
 		},
 		"test-description"
 	],
