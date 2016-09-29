@@ -54,6 +54,19 @@ class Cache
 	}
 
 	/**
+	 * get the directory
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public function getDirectory()
+	{
+		return $this->_directory;
+	}
+
+	/**
 	 * get the path
 	 *
 	 * @since 3.0.0

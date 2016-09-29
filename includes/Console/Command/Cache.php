@@ -105,9 +105,9 @@ class Cache extends CommandAbstract
 	protected function _clear($optionArray = [])
 	{
 		$directory = $optionArray['directory'];
-		$bundle = $optionArray['bundle'];
+		$bundle = explode(',', $optionArray['bundle']);
 		$cache = new BaseCache();
-		$cache
+		return $cache
 			->init($directory)
 			->clear($bundle);
 	}
@@ -127,7 +127,7 @@ class Cache extends CommandAbstract
 		$directory = $optionArray['directory'];
 		$lifetime = is_numeric($optionArray['lifetime']) ? $optionArray['lifetime'] : 3600;
 		$cache = new BaseCache();
-		$cache
+		return $cache
 			->init($directory)
 			->clearInvalid($lifetime);
 	}
