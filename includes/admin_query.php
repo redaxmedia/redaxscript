@@ -38,6 +38,7 @@ function admin_process()
 
 		case 'articles':
 			$r['keywords'] = $_POST['keywords'];
+			$r['robots'] = $specialFilter->sanitize($_POST['robots']);
 			$r['template'] = $specialFilter->sanitize($_POST['template']);
 
 		/* extras */
