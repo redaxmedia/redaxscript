@@ -26,6 +26,14 @@ class Helper
 	protected static $_prefix = 'rs-';
 
 	/**
+	 * robot
+	 *
+	 * @var string
+	 */
+
+	protected static $_robot = 'all';
+
+	/**
 	 * subset
 	 *
 	 * @var string
@@ -40,6 +48,22 @@ class Helper
 	 */
 
 	protected static $_direction = 'ltr';
+
+	/**
+	 * array of robots
+	 *
+	 * @var array
+	 */
+
+	protected static $_robotArray =
+	[
+		'none',
+		'all',
+		'index',
+		'follow',
+		'index_no',
+		'follow_no'
+	];
 
 	/**
 	 * array of subsets
@@ -104,13 +128,14 @@ class Helper
 		$lastTable = Registry::get('lastTable');
 		$firstParameter = Registry::get('firstParameter');
 		$secondParameter = Registry::get('secondParameter');
+		$categoryParameter = $secondTable === 'categories' ? $secondParameter : $firstParameter;
 		$fullRoute = Registry::get('fullRoute');
 
-		/* query current */
+		/* find route */
 
 		if ($firstTable === 'categories' && $lastTable === 'articles')
 		{
-			$categoryId = Db::forTablePrefix($firstTable)->where('alias', $secondTable === 'categories' ? $secondParameter : $firstParameter)->findOne()->id;
+			$categoryId = Db::forTablePrefix($firstTable)->where('alias', $categoryParameter)->findOne()->id;
 			$articlesTotal = Db::forTablePrefix('articles')->where('category', $categoryId)->count();
 			if ($articlesTotal === 1)
 			{
@@ -141,23 +166,20 @@ class Helper
 
 	public static function getDescription()
 	{
-		$firstParameter = Registry::get('firstParameter');
 		$lastTable = Registry::get('lastTable');
+		$lastId = Registry::get('lastId');
+		$metaDescription = Registry::get('metaDescription');
 
-		if (Registry::get('metaDescription'))
+		/* find description */
+
+		if ($metaDescription)
 		{
-			$description = Registry::get('metaDescription');
+			$description = $metaDescription;
 		}
-		else if ($lastTable)
+		else if ($lastTable && $lastId)
 		{
-			if ($lastTable === 'articles')
-			{
-				$description = Db::forTablePrefix($lastTable)->where('alias', $firstParameter)->findOne()->description;
-			}
-			else
-			{
-				$description = Db::forTablePrefix($lastTable)->findOne()->description;
-			}
+			$lastContent = Db::forTablePrefix($lastTable)->whereIdIs($lastId)->findOne();
+			$description = $lastContent->description;
 		}
 
 		/* handle description */
@@ -179,23 +201,20 @@ class Helper
 
 	public static function getKeywords()
 	{
-		$firstParameter = Registry::get('firstParameter');
 		$lastTable = Registry::get('lastTable');
+		$lastId = Registry::get('lastId');
+		$metaKeywords = Registry::get('metaKeywords');
 
-		if (Registry::get('metaKeywords'))
+		/* find keywords */
+
+		if ($metaKeywords)
 		{
-			$keywords = Registry::get('metaKeywords');
+			$keywords = $metaKeywords;
 		}
-		else if ($lastTable)
+		else if ($lastTable && $lastId)
 		{
-			if ($lastTable === 'articles')
-			{
-				$keywords = Db::forTablePrefix($lastTable)->where('alias', $firstParameter)->findOne()->keywords;
-			}
-			else
-			{
-				$keywords = Db::forTablePrefix($lastTable)->findOne()->keywords;
-			}
+			$lastContent = Db::forTablePrefix($lastTable)->whereIdIs($lastId)->findOne();
+			$keywords = $lastContent->keywords;
 		}
 
 		/* handle keywords */
@@ -218,30 +237,33 @@ class Helper
 	public static function getRobots()
 	{
 		$lastTable = Registry::get('lastTable');
+		$lastId = Registry::get('lastId');
 		$contentError = Registry::get('contentError');
-		if (Registry::get('metaRobots'))
+		$metaRobots = Registry::get('metaRobots');
+
+		/* find robots */
+
+		if ($metaRobots)
 		{
-			$robots = Registry::get('metaRobots');
+			$robots = $metaRobots;
 		}
 		else if ($contentError)
 		{
-			$robots = 'none';
+			$robots = 0;
 		}
-		else if ($lastTable)
+		else if ($lastTable && $lastId)
 		{
-			$robots = Db::forTablePrefix($lastTable)->whereNull('access')->findOne()->robots;
+			$lastContent = Db::forTablePrefix($lastTable)->whereIdIs($lastId)->whereNull('access')->findOne();
+			$robots = $lastContent->robots;
 		}
 
 		/* handle robots */
 
-		if ($robots)
+		if (array_key_exists($robots, self::$_robotArray))
 		{
-			return 'all';
+			return self::$_robotArray[$robots];
 		}
-		else
-		{
-			return 'none';
-		}
+		return self::$_robot;
 	}
 
 	/**
@@ -254,7 +276,6 @@ class Helper
 
 	public static function getTransport()
 	{
-		//tempoary solution that should work with script->appendInline(string) - final version should work with script->varTransport(array)
 		return call_user_func('scripts_transport');
 	}
 

@@ -16,6 +16,7 @@
 	->append(['name' => 'author', 'content' => Tag::setting('author')])
 	->append(['name' => 'generator', 'content' => Tag::language('name', '_package') . ' ' . Tag::language('version', '_package')])
 	->append(['name' => 'description', 'content' => Helper::getDescription()])
+	->append(['name' => 'keywords', 'content' => Helper::getKeywords()])
 	->append(['name' => 'robots', 'content' => Helper::getRobots()])
 	->append(['name' => 'viewport', 'content' => 'width=device-width'])
 	->append(['name' => 'theme-color', 'content' => '#000'])

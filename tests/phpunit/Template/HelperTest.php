@@ -49,25 +49,30 @@ class HelperTest extends TestCaseAbstract
 		Db::forTablePrefix('articles')
 			->create()
 			->set(
-				[
-					'title' => 'test',
-					'alias' => 'test-one',
-					'author' => 'test',
-					'description' => 'test-description',
-					'keywords' => 'test-keywords',
-					'text' => 'test',
-					'category' => 1,
-					'date' => '2017-01-01 00:00:00'
-				])
+			[
+				'id' => 2,
+				'title' => 'test',
+				'alias' => 'test-one',
+				'author' => 'test',
+				'description' => 'article-description',
+				'keywords' => 'article-keywords',
+				'robots' => 4,
+				'text' => 'test',
+				'category' => 1
+			])
 			->save();
 		Db::forTablePrefix('categories')
 			->create()
 			->set(
-				[
-					'title' => 'Test',
-					'alias' => 'test',
-					'parent' => 0
-				])
+			[
+				'id' => 2,
+				'title' => 'test',
+				'alias' => 'test-two',
+				'description' => 'category-description',
+				'keywords' => 'category-keywords',
+				'robots' => 1,
+				'parent' => 0
+			])
 			->save();
 	}
 
@@ -79,8 +84,60 @@ class HelperTest extends TestCaseAbstract
 
 	public static function tearDownAfterClass()
 	{
-		Db::forTablePrefix('articles')->where('title', 'test')->deleteMany();
-		Db::forTablePrefix('categories')->where('title', 'Test')->deleteMany();
+		Db::forTablePrefix('articles')->where('alias', 'test-one')->deleteMany();
+		Db::forTablePrefix('categories')->where('alias', 'test-two')->deleteMany();
+	}
+
+	/**
+	 * providerCanonical
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerCanonical()
+	{
+		return $this->getProvider('tests/provider/Template/helper_canonical.json');
+	}
+
+	/**
+	 * providerDescription
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerDescription()
+	{
+		return $this->getProvider('tests/provider/Template/helper_description.json');
+	}
+
+	/**
+	 * providerKeywords
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerKeywords()
+	{
+		return $this->getProvider('tests/provider/Template/helper_keywords.json');
+	}
+
+	/**
+	 * providerRobots
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerRobots()
+	{
+		return $this->getProvider('tests/provider/Template/helper_robots.json');
 	}
 
 	/**
@@ -123,55 +180,107 @@ class HelperTest extends TestCaseAbstract
 	}
 
 	/**
-	 * providerCanonical
+	 * testCanonical
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array
+	 * @param array $registryArray
+	 * @param string $expect
+	 *
+	 * @dataProvider providerCanonical
 	 */
 
-	public function providerCanonical()
+	public function testCanonical($registryArray = [], $expect = null)
 	{
-		return $this->getProvider('tests/provider/Template/helper_canonical.json');
+		/* setup */
+
+		$this->_registry->init($registryArray);
+
+		/* actual */
+
+		$actual = Template\Helper::getCanonical();
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
-	 * providerKeywords
+	 * testDescription
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array
+	 * @param array $registryArray
+	 * @param string $expect
+	 *
+	 * @dataProvider providerDescription
 	 */
 
-	public function providerKeywords()
+	public function testDescription($registryArray = [], $expect = null)
 	{
-		return $this->getProvider('tests/provider/Template/helper_keywords.json');
+		/* setup */
+
+		$this->_registry->init($registryArray);
+
+		/* actual */
+
+		$actual = Template\Helper::getDescription();
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
-	 * providerRobots
+	 * testKeywords
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array
+	 * @param array $registryArray
+	 * @param string $expect
+	 *
+	 * @dataProvider providerKeywords
 	 */
 
-	public function providerRobots()
+	public function testKeywords($registryArray = [], $expect = null)
 	{
-		return $this->getProvider('tests/provider/Template/helper_robots.json');
+		/* setup */
+
+		$this->_registry->init($registryArray);
+
+		/* actual */
+
+		$actual = Template\Helper::getKeywords();
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
-	 * providerDescription
+	 * testRobots
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array
+	 * @param array $registryArray
+	 * @param string $expect
+	 *
+	 * @dataProvider providerRobots
 	 */
 
-	public function providerDescription()
+	public function testRobots($registryArray = [], $expect = null)
 	{
-		return $this->getProvider('tests/provider/Template/helper_description.json');
+		/* setup */
+
+		$this->_registry->init($registryArray);
+
+		/* actual */
+
+		$actual = Template\Helper::getRobots();
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -246,110 +355,6 @@ class HelperTest extends TestCaseAbstract
 		/* actual */
 
 		$actual = Template\Helper::getClass();
-
-		/* compare */
-
-		$this->assertEquals($expect, $actual);
-	}
-
-	/**
-	 * testCanonical
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param array $registryArray
-	 * @param string $expect
-	 *
-	 * @dataProvider providerCanonical
-	 */
-
-	public function testCanonical($registryArray = [], $expect = null)
-	{
-		/* setup */
-
-		$this->_registry->init($registryArray);
-
-		/* actual */
-
-		$actual = Template\Helper::getCanonical();
-
-		/* compare */
-
-		$this->assertEquals($expect, $actual);
-	}
-
-	/**
-	 * testKeywords
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param array $registryArray
-	 * @param string $expect
-	 *
-	 * @dataProvider providerKeywords
-	 */
-
-	public function testKeywords($registryArray = [], $expect = null)
-	{
-		/* setup */
-
-		$this->_registry->init($registryArray);
-
-		/* actual */
-
-		$actual = Template\Helper::getKeywords();
-
-		/* compare */
-
-		$this->assertEquals($expect, $actual);
-	}
-
-	/**
-	 * testRobots
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param array $registryArray
-	 * @param string $expect
-	 *
-	 * @dataProvider providerRobots
-	 */
-
-	public function testRobots($registryArray = [], $expect = null)
-	{
-		/* setup */
-		//TODO: more test case
-		$this->_registry->init($registryArray);
-
-		/* actual */
-
-		$actual = Template\Helper::getRobots();
-
-		/* compare */
-
-		$this->assertEquals($expect, $actual);
-	}
-
-	/**
-	 * testDescription
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param array $registryArray
-	 * @param string $expect
-	 *
-	 * @dataProvider providerDescription
-	 */
-
-	public function testDescription($registryArray = [], $expect = null)
-	{
-		/* setup */
-
-		$this->_registry->init($registryArray);
-
-		/* actual */
-
-		$actual = Template\Helper::getDescription();
 
 		/* compare */
 

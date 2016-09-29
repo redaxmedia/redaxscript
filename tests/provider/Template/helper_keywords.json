@@ -1,27 +1,34 @@
 [
 	[
 		{
-			"root": "http://localhost",
-			"firsTable": "categories",
-			"lastTable": "articles",
-			"firstParameter": "test"
+			"metaKeywords": null,
+			"lastTable": null,
+			"lastId": null
 		},
-		false
+		null
 	],
 	[
 		{
-			"metaKeywords": "metaKeywords"
+			"metaKeywords": "meta-keywords",
+			"lastTable": null,
+			"lastId": null
 		},
-		"metaKeywords"
+		"meta-keywords"
 	],
 	[
 		{
-			"firstParameter": "test-one",
-			"root": "http://localhost",
+			"metaKeywords": null,
 			"lastTable": "articles",
-			"secondParameter": "test-one",
-			"metaKeywords": null
+			"lastId": 2
 		},
-		"test-keywords"
+		"article-keywords"
+	],
+	[
+		{
+			"metaKeywords": null,
+			"lastTable": "categories",
+			"lastId": 2
+		},
+		"category-keywords"
 	]
 ]

@@ -1,24 +1,34 @@
 [
 	[
 		{
-			"root": "http://localhost"
+			"metaDescription": null,
+			"lastTable": null,
+			"lastId": null
 		},
 		"Ultra lightweight Content Management System"
 	],
 	[
 		{
-			"firstParameter": "test-one",
-			"lastTable": "articles",
-			"secondParameter": "test-one",
-			"root": "http://localhost"
+			"metaDescription": "meta-description",
+			"lastTable": null,
+			"lastId": null
 		},
-		"test-description"
+		"meta-description"
 	],
 	[
 		{
-			"metaDescription": "Ultra lightweight CMS",
-			"root": "http://localhost"
+			"metaDescription": null,
+			"lastTable": "articles",
+			"lastId": 2
 		},
-		"Ultra lightweight CMS"
+		"article-description"
+	],
+	[
+		{
+			"metaDescription": null,
+			"lastTable": "categories",
+			"lastId": 2
+		},
+		"category-description"
 	]
 ]
