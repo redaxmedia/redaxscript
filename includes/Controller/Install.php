@@ -140,6 +140,17 @@ class Install extends ControllerAbstract
 			$this->_refresh();
 		}
 
+		/* database failed */
+
+		if (!Db::getStatus())
+		{
+			return $this->_error(
+			[
+				'url' => 'install.php',
+				'message' => $this->_language->get('database_failed')
+			]);
+		}
+
 		/* install and mail */
 
 		if ($this->_install($adminArray) && $this->_mail($adminArray))
@@ -188,7 +199,9 @@ class Install extends ControllerAbstract
 	protected function _error($errorArray = [])
 	{
 		$messenger = new Messenger($this->_registry);
-		return $messenger->error($errorArray['message'], $errorArray['title']);
+		return $messenger
+			->setUrl($this->_language->get('back'), $errorArray['url'])
+			->error($errorArray['message'], $errorArray['title']);
 	}
 
 	/**
