@@ -27,7 +27,7 @@ if (php_sapi_name() === 'cli')
 
 /* restrict access */
 
-if ($config->get('env') !== 'production')
+else if ($config->get('env') !== 'production')
 {
 	/* ajax request */
 

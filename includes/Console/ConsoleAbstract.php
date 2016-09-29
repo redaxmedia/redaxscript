@@ -50,6 +50,7 @@ abstract class ConsoleAbstract
 	protected $_namespaceArray =
 	[
 		'backup' => 'Redaxscript\Console\Command\Backup',
+		'cache' => 'Redaxscript\Console\Command\Cache',
 		'config' => 'Redaxscript\Console\Command\Config',
 		'help' => 'Redaxscript\Console\Command\Help',
 		'install' => 'Redaxscript\Console\Command\Install',

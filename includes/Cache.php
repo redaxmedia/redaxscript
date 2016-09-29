@@ -172,7 +172,7 @@ class Cache
 		foreach ($cacheDirectoryArray as $value)
 		{
 			$path = $this->_directory . '/' . $value;
-			if (!$this->_validateFile($path, $lifetime))
+			if (is_file($path) && !$this->_validateFile($path, $lifetime))
 			{
 				$cacheDirectory->remove($value);
 			}

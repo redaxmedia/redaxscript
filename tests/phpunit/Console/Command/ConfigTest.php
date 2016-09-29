@@ -236,7 +236,7 @@ class ConfigTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testParse
+	 * testParseEnv
 	 *
 	 * @since 3.0.0
 	 */
@@ -294,5 +294,33 @@ class ConfigTest extends TestCaseAbstract
 		/* compare */
 
 		$this->assertFalse($actual);
+	}
+
+	/**
+	 * testLock
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testLock()
+	{
+		/* setup */
+
+		$this->_config->init(Stream::url('root/config.php'));
+		$this->_request->setServer('argv',
+		[
+			'console.php',
+			'config',
+			'lock'
+		]);
+		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_config);
+
+		/* actual */
+
+		$actual = $configCommand->run('cli');
+
+		/* compare */
+
+		$this->assertTrue($actual);
 	}
 }
