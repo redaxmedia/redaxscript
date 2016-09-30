@@ -175,12 +175,12 @@ class InstallTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$postArray['db-type'] = $postArray['db-type'] ? $this->_config->get('dbType') : null;
-		$postArray['db-host'] = $postArray['db-host'] ? $this->_config->get('dbHost') : null;
-		$postArray['db-name'] = $postArray['db-name'] ? $this->_config->get('dbName') : null;
-		$postArray['db-user'] = $postArray['db-user'] ? $this->_config->get('dbUser') : null;
-		$postArray['db-password'] = $postArray['db-password'] ? $this->_config->get('dbPassword') : null;
-		$postArray['db-prefix'] = $postArray['db-prefix'] ? $this->_config->get('dbPrefix') : null;
+		$postArray['db-type'] = $postArray['db-type'] === '%CURRENT%' ? $this->_config->get('dbType') :  $postArray['db-type'];
+		$postArray['db-host'] = $postArray['db-host'] === '%CURRENT%' ? $this->_config->get('dbHost') : $postArray['db-host'];
+		$postArray['db-name'] = $postArray['db-name'] === '%CURRENT%' ? $this->_config->get('dbName') : $postArray['db-name'];
+		$postArray['db-user'] = $postArray['db-user'] === '%CURRENT%' ? $this->_config->get('dbUser') : $postArray['db-user'];
+		$postArray['db-password'] = $postArray['db-password'] === '%CURRENT%' ? $this->_config->get('dbPassword') : $postArray['db-password'];
+		$postArray['db-prefix'] = $postArray['db-prefix'] === '%CURRENT%' ? $this->_config->get('dbPrefix') : $postArray['db-prefix'];
 		$this->_request->set('post', $postArray);
 		$this->_config->init(Stream::url('root/config.php'));
 		$controllerInstall = new Controller\Install($this->_registry, $this->_language, $this->_request, $this->_config);

@@ -107,7 +107,7 @@ class InstallerTest extends TestCaseAbstract
 		$actualExtras = Db::forTablePrefix('extras')->findMany()->count();
 		$actualGroups = Db::forTablePrefix('groups')->findMany()->count();
 		$actualSettings = Db::forTablePrefix('settings')->findMany()->count();
-		if (is_dir('modules/CallHome'))
+		if (is_dir('modules/CallHome') && is_dir('modules/Validator'))
 		{
 			$actualModules = Db::forTablePrefix('modules')->findMany()->count();
 		}
