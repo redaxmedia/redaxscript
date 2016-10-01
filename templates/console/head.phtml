@@ -33,6 +33,6 @@
 	->init('head')
 	->appendFile('assets/scripts/init.js')
 	->appendFile('templates/console/assets/scripts/init.js')
-	->appendInline(Helper::getTransport());
+	->transportVar(Helper::getTransport());
 ?>
 
