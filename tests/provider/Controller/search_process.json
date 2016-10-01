@@ -5,7 +5,7 @@
 			"secondParameter": null,
 			"thirdParameter": null
 		},
-		"<h2 class=\"rs-title-note rs-is-info\">An error occurred</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-info\">Input is incorrect</div><a href=\"home\" class=\"rs-button-note rs-is-info\">Back</a>"
+		"<h2 class=\"rs-title-note rs-is-info\">Something went wrong</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-info\">Input is incorrect</div><a href=\"home\" class=\"rs-button-note rs-is-info\">Back</a>"
 	],
 	[
 		{
@@ -13,7 +13,7 @@
 			"secondParameter": null,
 			"thirdParameter": "test"
 		},
-		"<h2 class=\"rs-title-note rs-is-info\">An error occurred</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-info\"><ul class=\"rs-list-note\"><li>Input is incorrect</li><li>No results for your search query</li></ul></div><a href=\"home\" class=\"rs-button-note rs-is-info\">Back</a>"
+		"<h2 class=\"rs-title-note rs-is-info\">Something went wrong</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-info\"><ul class=\"rs-list-note\"><li>Input is incorrect</li><li>No results for your search query</li></ul></div><a href=\"home\" class=\"rs-button-note rs-is-info\">Back</a>"
 	],
 	[
 		{
@@ -29,7 +29,7 @@
 			"secondParameter": "articles",
 			"thirdParameter": null
 		},
-		"<h2 class=\"rs-title-note rs-is-info\">An error occurred</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-info\">No results for your search query</div><a href=\"home\" class=\"rs-button-note rs-is-info\">Back</a>"
+		"<h2 class=\"rs-title-note rs-is-info\">Something went wrong</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-info\">No results for your search query</div><a href=\"home\" class=\"rs-button-note rs-is-info\">Back</a>"
 	],
 	[
 		{
