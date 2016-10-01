@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Head;
 
+use Redaxscript\Assetic;
 use Redaxscript\Html;
 
 /**
@@ -15,9 +16,6 @@ use Redaxscript\Html;
  * @method append($attribute = null, $value = null)
  * @method prepend($attribute = null, $value = null)
  */
-
-/* @todo: implement the Assetic/Loader via a useCache() method - it should basically transform self::$_collectionArray[self::$_namespace] */
-/* @todo: to 1. a single cached file and 2. keep the external (CDN) files untouched */
 
 class Script extends HeadAbstract
 {
@@ -109,7 +107,6 @@ class Script extends HeadAbstract
 		return $this;
 	}
 
-
 	/**
 	 * transport javascript variables
 	 *
@@ -120,6 +117,9 @@ class Script extends HeadAbstract
 	 * @return Script
 	 */
 
+	//todo: it should be $key = null, $value = null to create var key = value;
+	//the default transport looks like transportVar(window.rs, Helper::getTransport());
+	//i think we need something like $this->appendInline('var' . $key . ' = ' . json_decode($value)
 	public function transportVar($variable = null)
 	{
 		if (is_array($variable))
@@ -133,6 +133,27 @@ class Script extends HeadAbstract
 		{
 			$this->_inline .= $variable;
 		}
+		return $this;
+	}
+
+	/**
+	 * concat the script
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return Script
+	 */
+
+	public function concat()
+	{
+		$loader = new Assetic\Loader();
+		$loader
+			->init(self::$_collectionArray[self::$_namespace])
+			->concat('script');
+
+		/* concat collection */
+
+		self::$_collectionArray[self::$_namespace] = $loader->getCollectionArray();
 		return $this;
 	}
 

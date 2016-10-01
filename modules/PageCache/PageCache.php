@@ -72,7 +72,7 @@ class PageCache extends Config
 				return false;
 			}
 
-			/* handle cache */
+			/* cache as needed */
 
 			$cache = new Cache();
 			$cache->init(self::$_configArray['directory'], self::$_configArray['extension']);

@@ -1,8 +1,8 @@
 <?php
 namespace Redaxscript\Head;
 
+use Redaxscript\Assetic;
 use Redaxscript\Html;
-use Redaxscript\Hook;
 
 /**
  * children class to create the link tag
@@ -18,9 +18,6 @@ use Redaxscript\Hook;
  * @method prepend($attribute = null, $value = null)
  * @method clear
  */
-
-/* @todo: implement the Assetic/Loader via a useCache() method - it should basically transform self::$_collectionArray[self::$_namespace] */
-/* @todo: to 1. a single cached file and 2. keep the external (CDN) files untouched */
 
 class Link extends HeadAbstract
 {
@@ -77,6 +74,28 @@ class Link extends HeadAbstract
 	public function removeFile($reference = null)
 	{
 		$this->remove('href', $reference);
+
+		return $this;
+	}
+
+	/**
+	 * concat the link
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return Link
+	 */
+
+	public function concat()
+	{
+		$loader = new Assetic\Loader();
+		$loader
+			->init(self::$_collectionArray[self::$_namespace])
+			->concat('link');
+
+		/* concat collection */
+
+		self::$_collectionArray[self::$_namespace] = $loader->getCollectionArray();
 		return $this;
 	}
 

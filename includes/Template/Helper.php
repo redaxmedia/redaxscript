@@ -277,7 +277,8 @@ class Helper
 
 	public static function getTransport()
 	{
-		return Assetic\Transport::scriptsTransport();
+		$transport = new Assetic\Transport();
+		return $transport->getArray();
 	}
 
 	/**

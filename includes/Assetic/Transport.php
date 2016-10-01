@@ -5,7 +5,7 @@ use Redaxscript\Language;
 use Redaxscript\Registry;
 
 /**
- * class to transport javascript
+ * class to provide transport data
  *
  * @since 3.0.0
  *
@@ -17,88 +17,76 @@ use Redaxscript\Registry;
 class Transport
 {
 	/**
-	 * registry keys to transport
+	 * registry to be transported
 	 *
 	 * @since 3.0.0
 	 *
 	 * @var array
 	 */
 
-	private static $public_registry =
-		[
-			'token',
-			'loggedIn',
-			'firstParameter',
-			'secondParameter',
-			'thirdParameter',
-			'adminParameter',
-			'tableParameter',
-			'idParameter',
-			'aliasParameter',
-			'lastParameter',
-			'firstTable',
-			'secondTable',
-			'thirdTable',
-			'lastTable',
-			'fullRoute',
-			'fullTopRoute',
-			'parameterRoute',
-			'languageRoute',
-			'templateRoute',
-			'refreshRoute',
-			'language',
-			'template',
-			'myBrowser',
-			'myBrowserVersion',
-			'myEngine',
-			'myDesktop',
-			'myMobile',
-			'myTablet'
-		];
+	protected $_registryArray =
+	[
+		'token',
+		'loggedIn',
+		'firstParameter',
+		'secondParameter',
+		'thirdParameter',
+		'adminParameter',
+		'tableParameter',
+		'idParameter',
+		'aliasParameter',
+		'lastParameter',
+		'firstTable',
+		'secondTable',
+		'thirdTable',
+		'lastTable',
+		'fullRoute',
+		'fullTopRoute',
+		'parameterRoute',
+		'languageRoute',
+		'templateRoute',
+		'refreshRoute',
+		'language',
+		'template',
+		'myBrowser',
+		'myBrowserVersion',
+		'myEngine',
+		'myDesktop',
+		'myMobile',
+		'myTablet'
+	];
 
 	/**
-	 * scripts transport
+	 * get array
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	public static function scriptsTransport()
+	//this should return an array of DATA and not an array of strings
+	public function getArray()
 	{
 		$language = Language::getInstance();
 		$registry = Registry::getInstance();
 
 		/* collect output */
 
-		$script[] = 'if (typeof rs === \'object\')';
-		$script[] = '{';
-
-		/* add language */
-
-		$script[] = 'rs.language = ' . json_encode($language->get()) . ';';
-
-		/* add registry */
-
-		$script[] = 'rs.registry = {};';
-		foreach (self::$public_registry as $value)
+		$scriptArray[] = 'if (typeof rs === \'object\')';
+		$scriptArray[] = '{';
+		$scriptArray[] = 'rs.language = ' . json_encode($language->get()) . ';';
+		$scriptArray[] = 'rs.registry = {};';
+		foreach ($this->_registryArray as $value)
 		{
-			$script[] = 'rs.registry.' . $value . ' = \'' . $registry->get($value) . '\';';
+			$scriptArray[] = 'rs.registry.' . $value . ' = \'' . $registry->get($value) . '\';';
 		}
-
-		/* baseURL fallback */
-
-		$script[] = 'if (rs.baseURL === \'\')';
-		$script[] = '{';
-		$script[] = 'rs.baseURL = \'' . $registry->get('root') . '\/\';';
-		$script[] = '}';
-
-		/* generator and version */
-
-		$script[] = 'rs.generator = \'' . $language->get('name', '_package') . ' ' . $language->get('version', '_package') . '\';';
-		$script[] = 'rs.version = \'' . $language->get('version', '_package') . '\';';
-		$script[] = '}';
-
-		return $script;
+		$scriptArray[] = 'if (rs.baseURL === \'\')';
+		$scriptArray[] = '{';
+		$scriptArray[] = 'rs.baseURL = \'' . $registry->get('root') . '\/\';';
+		$scriptArray[] = '}';
+		$scriptArray[] = 'rs.generator = \'' . $language->get('name', '_package') . ' ' . $language->get('version', '_package') . '\';';
+		$scriptArray[] = 'rs.version = \'' . $language->get('version', '_package') . '\';';
+		$scriptArray[] = '}';
+		return $scriptArray;
 	}
 }

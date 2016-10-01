@@ -107,7 +107,7 @@ class Breadcrumb
 	}
 
 	/**
-	 * get the breadcrumb array for further processing
+	 * get the breadcrumb array
 	 *
 	 * @since 2.1.0
 	 *
