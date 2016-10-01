@@ -118,10 +118,10 @@ class Script extends HeadAbstract
 	 */
 
 	//todo: it should be $key = null, $value = null to create var key = value;
-	//the default transport looks like transportVar(window.rs, Helper::getTransport());
-	//i think we need something like $this->appendInline('var' . $key . ' = ' . json_decode($value)
 	public function transportVar($variable = null)
 	{
+		// $transport = new Assetic\Transport();
+		// $this->appendInline(transport->render($key, $value));
 		if (is_array($variable))
 		{
 			foreach ($variable as $key)

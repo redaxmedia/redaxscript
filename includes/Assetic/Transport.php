@@ -90,4 +90,20 @@ class Transport
 		$scriptArray[] = '}';
 		return $scriptArray;
 	}
+
+	/**
+	 * render
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $key
+	 * @param mixed $value
+	 *
+	 * @return string
+	 */
+
+	public function render($key = null, $value = null)
+	{
+		//i think we need just something like 'var ' . $key . ' = ' . json_decode($value);
+	}
 }
