@@ -5,7 +5,7 @@ use Redaxscript\Language;
 use Redaxscript\Registry;
 
 /**
- * class to provide transport data
+ * class to transport javascript variables
  *
  * @since 3.0.0
  *
