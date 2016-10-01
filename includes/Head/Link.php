@@ -91,7 +91,13 @@ class Link extends HeadAbstract
 		$loader = new Assetic\Loader();
 		$loader
 			->init(self::$_collectionArray[self::$_namespace])
-			->concat('link');
+			->concat(
+			[
+				'directory' => 'cache/styles',
+				'extension' => 'css',
+				'attribute' => 'href',
+				'lifetime' => 86400
+			]);
 
 		/* concat collection */
 

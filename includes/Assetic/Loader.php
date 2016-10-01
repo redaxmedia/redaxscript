@@ -60,43 +60,46 @@ class Loader
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $type
+	 * @param array $optionArray
 	 *
 	 * @return Loader
 	 */
 
-	public function concat($type = null)
+	public function concat($optionArray = [])
 	{
 		$bundleArray = [];
-		$pathinfo = null;
-		$typeAttribute = $type === 'script' ? 'src' : 'href';
-		$typeExtension =  $type === 'script' ? 'js' : 'css';
-		$typeDirectory = 'cache';
+		$restArray = [];
 
 		/* process collection */
 
 		foreach ($this->_collectionArray as $collectionKey => $attributeArray)
 		{
-			$pathinfo = pathinfo($attributeArray[$typeAttribute]);
-			if (is_file($attributeArray[$typeAttribute]) && $pathinfo['extension'] === $typeExtension)
+			$path = $attributeArray[$optionArray['attribute']];
+			$fileArray = pathinfo($path);
+			if (is_file($path) && $fileArray['extension'] === $optionArray['extension'])
 			{
-				$bundleArray[] = $attributeArray[$typeAttribute];
-				//unset($this->_collectionArray[$collectionKey]);
+				$bundleArray[] = $attributeArray[$optionArray['attribute']];
+			}
+			else
+			{
+				$restArray[] = $attributeArray;
 			}
 		}
 
 		/* cache as needed */
 
 		$cache = new Cache();
-		$cache->init($typeDirectory, $typeExtension);
+		$cache->init($optionArray['directory'], $optionArray['extension']);
 
 		/* load from cache */
 
-		if ($cache->validate($bundleArray))
+		if ($cache->validate($bundleArray, $optionArray['lifetime']))
 		{
+			$this->_collectionArray = $restArray;
 			$this->_collectionArray[] =
 			[
-				$typeAttribute => $cache->getPath($bundleArray)
+				$optionArray['attribute'] => $cache->getPath($bundleArray),
+				'rel' => 'stylesheet'
 			];
 		}
 

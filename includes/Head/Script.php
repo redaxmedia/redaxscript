@@ -66,7 +66,7 @@ class Script extends HeadAbstract
 	 *
 	 * @param string $source
 	 *
-	 * @return Link
+	 * @return Script
 	 */
 
 	public function removeFile($source = null)
@@ -149,7 +149,13 @@ class Script extends HeadAbstract
 		$loader = new Assetic\Loader();
 		$loader
 			->init(self::$_collectionArray[self::$_namespace])
-			->concat('script');
+			->concat(
+			[
+				'directory' => 'cache/scripts',
+				'extension' => 'js',
+				'attribute' => 'src',
+				'lifetime' => 86400
+			]);
 
 		/* concat collection */
 
