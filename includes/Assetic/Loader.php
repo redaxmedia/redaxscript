@@ -92,7 +92,7 @@ class Loader
 			if (is_file($attributeArray[$typeAttribute]) && $pathinfo['extension'] === $typeExtension)
 			{
 				$bundleArray[] = $attributeArray[$typeAttribute];
-				unset($this->_collectionArray[$collectionKey]);
+				//unset($this->_collectionArray[$collectionKey]);
 			}
 		}
 
