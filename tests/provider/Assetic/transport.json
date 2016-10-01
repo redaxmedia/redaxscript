@@ -1,0 +1,46 @@
+[
+	[
+		[
+			"if (typeof rs === 'object')",
+			"{"
+		],
+		[
+			"rs.registry = {};",
+			"rs.registry.token = '';",
+			"rs.registry.loggedIn = '';",
+			"rs.registry.firstParameter = '';",
+			"rs.registry.secondParameter = '';",
+			"rs.registry.thirdParameter = '';",
+			"rs.registry.adminParameter = '';",
+			"rs.registry.tableParameter = '';",
+			"rs.registry.idParameter = '';",
+			"rs.registry.aliasParameter = '';",
+			"rs.registry.lastParameter = '';",
+			"rs.registry.firstTable = '';",
+			"rs.registry.secondTable = '';",
+			"rs.registry.thirdTable = '';",
+			"rs.registry.lastTable = '';",
+			"rs.registry.fullRoute = '';",
+			"rs.registry.fullTopRoute = '';",
+			"rs.registry.parameterRoute = '';",
+			"rs.registry.languageRoute = '';",
+			"rs.registry.templateRoute = '';",
+			"rs.registry.refreshRoute = '';",
+			"rs.registry.language = '';",
+			"rs.registry.template = '';",
+			"rs.registry.myBrowser = '';",
+			"rs.registry.myBrowserVersion = '';",
+			"rs.registry.myEngine = '';",
+			"rs.registry.myDesktop = '';",
+			"rs.registry.myMobile = '';",
+			"rs.registry.myTablet = '';",
+			"if (rs.baseURL === '')",
+			"{",
+			"rs.baseURL = '\/';",
+			"}",
+			"rs.generator = 'Redaxscript 3.0.0';",
+			"rs.version = '3.0.0';",
+			"}"
+		]
+	]
+]

@@ -13,7 +13,6 @@ include_once('includes/admin_query.php');
 include_once('includes/admin_router.php');
 include_once('includes/comments.php');
 include_once('includes/contents.php');
-include_once('includes/loader.php');
 include_once('includes/navigation.php');
 include_once('includes/query.php');
 include_once('includes/router.php');

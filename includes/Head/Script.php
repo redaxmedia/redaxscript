@@ -16,9 +16,6 @@ use Redaxscript\Html;
  * @method prepend($attribute = null, $value = null)
  */
 
-/* @todo: implement the method transportVar() that is using Assetic/Transport it is using the prependInline method */
-/* @todo: transportVar($variableArray) can be used to load custom variables or override existing by merging the $variableArray with the stuff from Assetic/Transport */
-
 /* @todo: implement the Assetic/Loader via a useCache() method - it should basically transform self::$_collectionArray[self::$_namespace] */
 /* @todo: to 1. a single cached file and 2. keep the external (CDN) files untouched */
 
@@ -109,6 +106,33 @@ class Script extends HeadAbstract
 	public function prependInline($inline = null)
 	{
 		$this->_inline = $inline . $this->_inline;
+		return $this;
+	}
+
+
+	/**
+	 * transport javascript variables
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param mixed $variable
+	 *
+	 * @return Script
+	 */
+
+	public function transportVar($variable = null)
+	{
+		if (is_array($variable))
+		{
+			foreach ($variable as $key)
+			{
+				$this->_inline .= $key;
+			}
+		}
+		else
+		{
+			$this->_inline .= $variable;
+		}
 		return $this;
 	}
 

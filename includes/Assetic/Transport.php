@@ -1,8 +1,11 @@
 <?php
 namespace Redaxscript\Assetic;
 
+use Redaxscript\Language;
+use Redaxscript\Registry;
+
 /**
- * parent class to transport javascript
+ * class to transport javascript
  *
  * @since 3.0.0
  *
@@ -13,6 +16,89 @@ namespace Redaxscript\Assetic;
 
 class Transport
 {
-	// @todo this class basically does the job of the deprecated scripts_transport() but without the minify part - delete loader.php asap
-	// @todo keep in mind that this class does not return a script tag - just a plain array that is going to be consumed by transportVar() in Head/Script
+	/**
+	 * registry keys to transport
+	 *
+	 * @since 3.0.0
+	 *
+	 * @var array
+	 */
+
+	private static $public_registry =
+		[
+			'token',
+			'loggedIn',
+			'firstParameter',
+			'secondParameter',
+			'thirdParameter',
+			'adminParameter',
+			'tableParameter',
+			'idParameter',
+			'aliasParameter',
+			'lastParameter',
+			'firstTable',
+			'secondTable',
+			'thirdTable',
+			'lastTable',
+			'fullRoute',
+			'fullTopRoute',
+			'parameterRoute',
+			'languageRoute',
+			'templateRoute',
+			'refreshRoute',
+			'language',
+			'template',
+			'myBrowser',
+			'myBrowserVersion',
+			'myEngine',
+			'myDesktop',
+			'myMobile',
+			'myTablet'
+		];
+
+	/**
+	 * scripts transport
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public static function scriptsTransport()
+	{
+		$language = Language::getInstance();
+		$registry = Registry::getInstance();
+
+		/* collect output */
+
+		$script[] = 'if (typeof rs === \'object\')';
+		$script[] = '{';
+
+		/* add language */
+
+		$script[] = 'rs.language = ' . json_encode($language->get()) . ';';
+
+		/* add registry */
+
+		$script[] = 'rs.registry = {};';
+		foreach (self::$public_registry as $value)
+		{
+			$script[] = 'rs.registry.' . $value . ' = \'' . $registry->get($value) . '\';';
+		}
+
+		/* baseURL fallback */
+
+		$script[] = 'if (rs.baseURL === \'\')';
+		$script[] = '{';
+		$script[] = 'rs.baseURL = \'' . $registry->get('root') . '\/\';';
+		$script[] = '}';
+
+		/* generator and version */
+
+		$script[] = 'rs.generator = \'' . $language->get('name', '_package') . ' ' . $language->get('version', '_package') . '\';';
+		$script[] = 'rs.version = \'' . $language->get('version', '_package') . '\';';
+		$script[] = '}';
+
+		return $script;
+	}
 }

@@ -70,6 +70,19 @@ class ScriptTest extends TestCaseAbstract
 	}
 
 	/**
+	 * providerTransport
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerTransport()
+	{
+		return $this->getProvider('tests/provider/Head/script_transport.json');
+	}
+
+	/**
 	 * testAppend
 	 *
 	 * @since 3.0.0
@@ -200,6 +213,35 @@ class ScriptTest extends TestCaseAbstract
 			$script->append($value);
 		}
 		$script->removeFile($deleteFile);
+
+		/* actual */
+
+		$actual = $script->render();
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testTransportVar
+	 *
+	 * @since 3.0.0
+	 *
+	 * @dataProvider providerTransport
+	 *
+	 * @param array $variablesArray
+	 * @param string $variable
+	 * @param string $expect
+	 */
+
+	public function testTransportVar($variablesArray = [], $variable = null, $expect = null)
+	{
+		/* setup */
+
+		$script = Head\Script::getInstance();
+		$script->transportVar($variablesArray);
+		$script->transportVar($variable);
 
 		/* actual */
 

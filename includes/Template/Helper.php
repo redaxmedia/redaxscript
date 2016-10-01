@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Template;
 
+use Redaxscript\Assetic;
 use Redaxscript\Db;
 use Redaxscript\Registry;
 
@@ -276,7 +277,7 @@ class Helper
 
 	public static function getTransport()
 	{
-		return call_user_func('scripts_transport');
+		return Assetic\Transport::scriptsTransport();
 	}
 
 	/**
