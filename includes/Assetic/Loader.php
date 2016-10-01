@@ -96,11 +96,14 @@ class Loader
 		if ($cache->validate($bundleArray, $optionArray['lifetime']))
 		{
 			$this->_collectionArray = $restArray;
-			$this->_collectionArray[] =
+			$this->_collectionArray['bundle'] =
 			[
 				$optionArray['attribute'] => $cache->getPath($bundleArray),
-				'rel' => 'stylesheet'
 			];
+			if ($optionArray['extension'] === 'css')
+			{
+				$this->_collectionArray['bundle']['rel'] = 'stylesheet';
+			}
 		}
 
 		/* else store to cache */
