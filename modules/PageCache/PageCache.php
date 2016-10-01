@@ -61,55 +61,50 @@ class PageCache extends Config
 		$request = Request::getInstance();
 		$language = Language::getInstance();
 
-		/* has directory */
+		/* handle notification */
 
-		if (is_dir(self::$_configArray['directory']))
+		if (!is_dir(self::$_configArray['directory']) && !mkdir(self::$_configArray['directory']))
 		{
-			/* prevent as needed */
-
-			if ($request->getPost() || $registry->get('loggedIn') === $registry->get('token'))
-			{
-				return false;
-			}
-
-			/* cache as needed */
-
-			$cache = new Cache();
-			$cache->init(self::$_configArray['directory'], self::$_configArray['extension']);
-			$fullRoute = $registry->get('fullRoute');
-
-			/* load from cache */
-
-			if ($cache->validate($fullRoute, self::$_configArray['lifetime']))
-			{
-				$raw = $cache->retrieve($fullRoute);
-				$content = preg_replace('/' . self::$_configArray['tokenPlaceholder'] . '/', $registry->get('token'), self::_uncompress($raw));
-				return
-				[
-					'header' => function_exists('gzdeflate') ? 'content-encoding: deflate' : null,
-					'content' => self::_compress($content)
-				];
-			}
-
-			/* else store to cache */
-
-			else
-			{
-				$raw = Template\Tag::partial('templates/' . $registry->get('template') . '/index.phtml');
-				$content = preg_replace('/' . $registry->get('token') . '/', self::$_configArray['tokenPlaceholder'], $raw);
-				$cache->store($fullRoute, self::_compress($content));
-				return
-				[
-					'content' => $raw
-				];
-			}
+			self::setNotification('error', $language->get('directory_not_found') . $language->get('colon') . ' ' . self::$_configArray['directory'] . $language->get('point'));
 		}
 
-		/* else handle notification */
+		/* prevent as needed */
+
+		if ($request->getPost() || $registry->get('loggedIn') === $registry->get('token'))
+		{
+			return false;
+		}
+
+		/* cache as needed */
+
+		$cache = new Cache();
+		$cache->init(self::$_configArray['directory'], self::$_configArray['extension']);
+		$fullRoute = $registry->get('fullRoute');
+
+		/* load from cache */
+
+		if ($cache->validate($fullRoute, self::$_configArray['lifetime']))
+		{
+			$raw = $cache->retrieve($fullRoute);
+			$content = preg_replace('/' . self::$_configArray['tokenPlaceholder'] . '/', $registry->get('token'), self::_uncompress($raw));
+			return
+			[
+				'header' => function_exists('gzdeflate') ? 'content-encoding: deflate' : null,
+				'content' => self::_compress($content)
+			];
+		}
+
+		/* else store to cache */
 
 		else
 		{
-			self::setNotification('error', $language->get('directory_not_found') . $language->get('colon') . ' ' . self::$_configArray['directory'] . $language->get('point'));
+			$raw = Template\Tag::partial('templates/' . $registry->get('template') . '/index.phtml');
+			$content = preg_replace('/' . $registry->get('token') . '/', self::$_configArray['tokenPlaceholder'], $raw);
+			$cache->store($fullRoute, self::_compress($content));
+			return
+			[
+				'content' => $raw
+			];
 		}
 	}
 

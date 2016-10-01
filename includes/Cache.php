@@ -95,6 +95,10 @@ class Cache
 	public function store($bundle = null, $content = null)
 	{
 		$path = $this->getPath($bundle);
+		if (!is_dir($this->_directory))
+		{
+			mkdir($this->_directory);
+		}
 		if ($path && $content)
 		{
 			file_put_contents($path, $content);
