@@ -72,6 +72,7 @@ class Transport
 
 		/* collect output */
 
+		//rename to transportArray
 		$scriptArray[] = 'if (typeof rs === \'object\')';
 		$scriptArray[] = '{';
 		$scriptArray[] = 'rs.language = ' . json_encode($language->get()) . ';';
