@@ -104,6 +104,6 @@ class Transport
 
 	public function render($key = null, $value = null)
 	{
-		//i think we need just something like 'var ' . $key . ' = ' . json_decode($value);
+		//i think we need just something like 'window. ' . $key . ' = ' . json_decode($value);
 	}
 }
