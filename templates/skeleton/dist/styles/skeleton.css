@@ -159,7 +159,7 @@
 {
 	background: rgb(255, 255, 255);
 	color: rgb(0, 0, 0);
-	font: 1em/1.5em arial, sans-serif;
+	font: 1em arial, sans-serif;
 }
 
 .rs-footer, .rs-header, .rs-main
@@ -249,7 +249,6 @@
 	color: rgb(255, 255, 255);
 	cursor: pointer;
 	display: inline-block;
-	margin: 0.25em;
 }
 /**
  * @tableofcontents
@@ -358,5 +357,6 @@ a
 
 .rs-title-content, .rs-title-extra
 {
-	margin: 1.5em 0 0.5em;
+	margin-bottom: 0.5em;
+	margin-top: 1em;
 }

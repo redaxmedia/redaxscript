@@ -30,9 +30,9 @@
 	->append(['href' => Tag::registry('root') . '/' . Helper::getCanonical(), 'rel' => 'canonical'])
 	->append(['href' => 'templates/skeleton/assets/images/favicon.ico', 'rel' => 'shortcut icon'])
 	->append(['href' => 'templates/skeleton/assets/images/favicon.png', 'rel' => 'apple-touch-icon'])
-	->appendFile('//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset())
 	->appendFile('dist/styles/base.min.css')
-	->appendFile('templates/skeleton/dist/styles/skeleton.css'); ?>
+	->appendFile('templates/skeleton/dist/styles/skeleton.css')
+	->concat(); ?>
 
 <!-- head script -->
 
@@ -41,5 +41,5 @@
 	->prependFile('templates/skeleton/assets/scripts/init.js')
 	->prependFile('assets/scripts/init.js')
 	->prependFile('assets/scripts/support.js')
-	->transportVar(Helper::getTransport());
-?>
+	->transportVar(Helper::getTransport())
+	->concat(); ?>

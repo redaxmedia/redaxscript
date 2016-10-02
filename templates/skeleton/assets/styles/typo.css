@@ -23,5 +23,6 @@ a
 .rs-title-content,
 .rs-title-extra
 {
-	margin: 1.5em 0 0.5em;
+	margin-bottom: 0.5em;
+	margin-top: 1em;
 }
