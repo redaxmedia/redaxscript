@@ -279,7 +279,7 @@ class Helper
 	public static function getTransport()
 	{
 		$transport = new Assetic\Transport(Registry::getInstance(), Language::getInstance());
-		return $transport->getArray();
+		return $transport->render('rs', $transport->getArray());
 	}
 
 	/**

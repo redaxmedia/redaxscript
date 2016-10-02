@@ -60,6 +60,19 @@ class TransportTest extends TestCaseAbstract
 	}
 
 	/**
+	 * providerRender
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerRender()
+	{
+		return $this->getProvider('tests/provider/Assetic/transport_render.json');
+	}
+
+	/**
 	 * testGetArray
 	 *
 	 * @since 3.0.0
@@ -83,13 +96,15 @@ class TransportTest extends TestCaseAbstract
 
 		/* compare */
 
-		//$this->assertEquals($expectArray, $actualArray);
+		$this->assertEquals($expectArray, $actualArray);
 	}
 
 	/**
 	 * testRender
 	 *
 	 * @since 3.0.0
+	 *
+	 * @dataProvider providerRender
 	 */
 
 	public function testRender()

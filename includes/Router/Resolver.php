@@ -99,7 +99,7 @@ class Resolver extends Parameter
 
 		/* else general route */
 
-		else
+		else if ($this->_parameterArray)
 		{
 			if ($type === 'lite')
 			{

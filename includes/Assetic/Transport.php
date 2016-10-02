@@ -97,27 +97,19 @@ class Transport
 
 	public function getArray()
 	{
-		//this should return an array of DATA and not an array of strings
-		$scriptArray[] = 'if (typeof rs === \'object\')';
-		$scriptArray[] = '{';
-		$scriptArray[] = 'rs.language = ' . json_encode($this->_language->get()) . ';';
-		$scriptArray[] = 'rs.registry = {};';
+		$transportArray['baseURL'] = $this->_registry->get('root') . '/';
+		$transportArray['generator'] = $this->_language->get('name', '_package') . ' ' . $this->_language->get('version', '_package');
+		$transportArray['language'] = $this->_language->get();
 		foreach ($this->_registryArray as $value)
 		{
-			$scriptArray[] = 'rs.registry.' . $value . ' = \'' . $this->_registry->get($value) . '\';';
+			$transportArray['registry'][$value] = $this->_registry->get($value);
 		}
-		$scriptArray[] = 'if (rs.baseURL === \'\')';
-		$scriptArray[] = '{';
-		$scriptArray[] = 'rs.baseURL = \'' . $this->_registry->get('root') . '\/\';';
-		$scriptArray[] = '}';
-		$scriptArray[] = 'rs.generator = \'' . $this->_language->get('name', '_package') . ' ' . $this->_language->get('version', '_package') . '\';';
-		$scriptArray[] = 'rs.version = \'' . $this->_language->get('version', '_package') . '\';';
-		$scriptArray[] = '}';
-		return $scriptArray;
+		$transportArray['version'] = $this->_language->get('version', '_package');
+		return $transportArray;
 	}
 
 	/**
-	 * render
+	 * render the javascript variables
 	 *
 	 * @since 3.0.0
 	 *
@@ -129,6 +121,18 @@ class Transport
 
 	public function render($key = null, $value = null)
 	{
-		//i think we need just something like 'window. ' . $key . ' = ' . json_decode($value);
+		$output = null;
+		if (is_string($value))
+		{
+			$output = 'window.' . $key . ' = \'' . $value . '\';';
+		}
+		else if (is_array($value))
+		{
+			foreach ($value as $keyChildren => $valueChildren)
+			{
+				$output .= 'window.' . $key . '.' . $keyChildren . ' = ' . json_encode($valueChildren) . ';';
+			}
+		}
+		return $output;
 	}
 }
