@@ -1,8 +1,9 @@
 <?php
-namespace Redaxscript\Tests\Console;
+namespace Redaxscript\Tests\Assetic;
 
 use Redaxscript\Assetic;
 use Redaxscript\Registry;
+use Redaxscript\Language;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -26,6 +27,14 @@ class TransportTest extends TestCaseAbstract
 	protected $_registry;
 
 	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
+
+	/**
 	 * setUp
 	 *
 	 * @since 3.0.0
@@ -34,47 +43,56 @@ class TransportTest extends TestCaseAbstract
 	public function setUp()
 	{
 		$this->_registry = Registry::getInstance();
-		//todo: i guess this was for testing and is not needed
-		Registry::clearInstance();
+		$this->_language = Language::getInstance();
 	}
 
 	/**
-	 * providerTransport
+	 * providerGetArray
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	public function providerTransport()
+	public function providerGetArray()
 	{
-		return $this->getProvider('tests/provider/Assetic/transport.json');
+		return $this->getProvider('tests/provider/Assetic/transport_get_array.json');
 	}
 
 	/**
-	 * testTransport
+	 * testGetArray
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $expectArrayStart
-	 * @param array $expectArrayEnd
+	 * @param array $registryArray
+	 * @param array $expectArray
 	 *
-	 * @dataProvider providerTransport
+	 * @dataProvider providerGetArray
 	 */
 
-	//todo: refactor to check for an data array and not a set of strings
-	public function testTransport($expectArrayStart = [], $expectArrayEnd = [])
+	public function testGetArray($registryArray = [], $expectArray = [])
 	{
+		/* setup */
+
+		$this->_registry->init($registryArray);
+		$transport = new Assetic\Transport($this->_registry, $this->_language);
+
 		/* actual */
 
-		//switch to new Asetic\Transport
-		//$actual = Assetic\Transport::getArray();
+		$actualArray = $transport->getArray();
 
 		/* compare */
 
-		//$this->assertEquals($expectArray, $actual);
-		//$this->assertStringStartsWith($expectArrayStart.$this->toString(), $actual.$this->toString());
-		//$this->assertStringEndsWith($expectArrayEnd.$this->toString(), $actual.$this->toString());
+		//$this->assertEquals($expectArray, $actualArray);
 	}
 
+	/**
+	 * testRender
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testRender()
+	{
+	}
 }

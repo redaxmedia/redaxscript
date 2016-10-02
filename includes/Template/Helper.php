@@ -4,6 +4,7 @@ namespace Redaxscript\Template;
 use Redaxscript\Assetic;
 use Redaxscript\Db;
 use Redaxscript\Registry;
+use Redaxscript\Language;
 
 /**
  * helper class to provide template helpers
@@ -277,7 +278,7 @@ class Helper
 
 	public static function getTransport()
 	{
-		$transport = new Assetic\Transport();
+		$transport = new Assetic\Transport(Registry::getInstance(), Language::getInstance());
 		return $transport->getArray();
 	}
 

@@ -17,7 +17,23 @@ use Redaxscript\Registry;
 class Transport
 {
 	/**
-	 * registry to be transported
+	 * instance of the registry class
+	 *
+	 * @var object
+	 */
+
+	protected $_registry;
+
+	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
+
+	/**
+	 * registry array to be transported
 	 *
 	 * @since 3.0.0
 	 *
@@ -57,36 +73,45 @@ class Transport
 	];
 
 	/**
-	 * get array
+	 * constructor of the class
+	 *
+	 * @since 2.4.0
+	 *
+	 * @param Registry $registry instance of the registry class
+	 * @param Language $language instance of the language class
+	 */
+
+	public function __construct(Registry $registry, Language $language)
+	{
+		$this->_registry = $registry;
+		$this->_language = $language;
+	}
+
+	/**
+	 * get the array
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	//this should return an array of DATA and not an array of strings
 	public function getArray()
 	{
-		$language = Language::getInstance();
-		$registry = Registry::getInstance();
-
-		/* collect output */
-
-		//rename to transportArray
+		//this should return an array of DATA and not an array of strings
 		$scriptArray[] = 'if (typeof rs === \'object\')';
 		$scriptArray[] = '{';
-		$scriptArray[] = 'rs.language = ' . json_encode($language->get()) . ';';
+		$scriptArray[] = 'rs.language = ' . json_encode($this->_language->get()) . ';';
 		$scriptArray[] = 'rs.registry = {};';
 		foreach ($this->_registryArray as $value)
 		{
-			$scriptArray[] = 'rs.registry.' . $value . ' = \'' . $registry->get($value) . '\';';
+			$scriptArray[] = 'rs.registry.' . $value . ' = \'' . $this->_registry->get($value) . '\';';
 		}
 		$scriptArray[] = 'if (rs.baseURL === \'\')';
 		$scriptArray[] = '{';
-		$scriptArray[] = 'rs.baseURL = \'' . $registry->get('root') . '\/\';';
+		$scriptArray[] = 'rs.baseURL = \'' . $this->_registry->get('root') . '\/\';';
 		$scriptArray[] = '}';
-		$scriptArray[] = 'rs.generator = \'' . $language->get('name', '_package') . ' ' . $language->get('version', '_package') . '\';';
-		$scriptArray[] = 'rs.version = \'' . $language->get('version', '_package') . '\';';
+		$scriptArray[] = 'rs.generator = \'' . $this->_language->get('name', '_package') . ' ' . $this->_language->get('version', '_package') . '\';';
+		$scriptArray[] = 'rs.version = \'' . $this->_language->get('version', '_package') . '\';';
 		$scriptArray[] = '}';
 		return $scriptArray;
 	}
