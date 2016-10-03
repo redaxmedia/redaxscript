@@ -119,16 +119,4 @@ class Loader
 		}
 		return $this;
 	}
-
-	/**
-	 * clear the collection
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function clear()
-	{
-		$this->_collectionArray = [];
-		return $this;
-	}
 }

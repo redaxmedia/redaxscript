@@ -41,5 +41,5 @@
 	->prependFile('templates/skeleton/assets/scripts/init.js')
 	->prependFile('assets/scripts/init.js')
 	->prependFile('assets/scripts/support.js')
-	->transportVar(Helper::getTransport())
+	->transportVar('rs', Helper::getTransport())
 	->concat(); ?>
