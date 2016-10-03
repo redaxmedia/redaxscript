@@ -113,16 +113,17 @@ class Cache
 	 *
 	 * @param mixed $bundle key or collection of the bundle
 	 *
-	 * @return string
+	 * @return mixed
 	 */
 
 	public function retrieve($bundle = null)
 	{
 		$path = $this->getPath($bundle);
-		if ($path)
+		if (file_exists($path))
 		{
 			return file_get_contents($path);
 		}
+		return false;
 	}
 
 	/**

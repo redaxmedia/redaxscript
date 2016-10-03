@@ -96,6 +96,28 @@ class CacheTest extends TestCaseAbstract
 	}
 
 	/**
+	 * testRetrieveInvalid
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testRetrieveInvalid()
+	{
+		/* setup */
+
+		$cache = new Cache();
+		$cache->init(Stream::url('root'));
+
+		/* actual */
+
+		$actual = $cache->retrieve('invalid');
+
+		/* compare */
+
+		$this->assertFalse($actual);
+	}
+
+	/**
 	 * testValidate
 	 *
 	 * @since 3.0.0
