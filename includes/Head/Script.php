@@ -149,7 +149,7 @@ class Script extends HeadAbstract
 				'lifetime' => 86400
 			]);
 
-		/* concat collection */
+		/* update collection */
 
 		self::$_collectionArray[self::$_namespace] = $loader->getCollectionArray();
 		return $this;

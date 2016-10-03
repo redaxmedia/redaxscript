@@ -45,15 +45,16 @@ class MetaTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$metaHead = Head\Meta::getInstance();
+		$meta = Head\Meta::getInstance();
+		$meta->init('append');
 		foreach ($metaArray as $value)
 		{
-			$metaHead->append($value);
+			$meta->append($value);
 		}
 
 		/* actual */
 
-		$actual = $metaHead->render();
+		$actual = $meta->render();
 
 		/* compare */
 
