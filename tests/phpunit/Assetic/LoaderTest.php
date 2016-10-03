@@ -47,20 +47,20 @@ class LoaderTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $concatArray
+	 * @param array $collectionArray
 	 * @param array $expectArray
 	 *
 	 * @dataProvider providerConcat
 	 */
 
-	public function testConcat($concatArray = [], $expectArray = null)
+	public function testConcat($collectionArray = [], $expectArray = [])
 	{
 		/* setup */
 
 		$loader = new Assetic\Loader();
 		$loader
-			->init()
-			->concat($concatArray);
+			->init($collectionArray)
+			->concat();
 
 		/* actual */
 
