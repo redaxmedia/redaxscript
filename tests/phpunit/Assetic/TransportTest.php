@@ -13,7 +13,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  *
  * @package Redaxscript
  * @category Tests
- * @author Balázs Szilágyi
+ * @author Henry Ruhs
  */
 
 class TransportTest extends TestCaseAbstract

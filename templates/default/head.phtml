@@ -32,7 +32,8 @@
 	->append(['href' => 'templates/default/assets/images/favicon.png', 'rel' => 'apple-touch-icon'])
 	->appendFile('//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset())
 	->appendFile('dist/styles/base.min.css')
-	->appendFile('templates/default/dist/styles/default.min.css'); ?>
+	->appendFile('templates/default/dist/styles/default.min.css')
+	->concat(); ?>
 
 <!-- head script -->
 
@@ -41,5 +42,5 @@
 	->prependFile('templates/default/assets/scripts/init.js')
 	->prependFile('assets/scripts/init.js')
 	->prependFile('assets/scripts/support.js')
-	->transportVar(Helper::getTransport());
-?>
+	->transportVar('rs', Helper::getTransport())
+	->concat(); ?>

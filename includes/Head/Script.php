@@ -3,6 +3,8 @@ namespace Redaxscript\Head;
 
 use Redaxscript\Assetic;
 use Redaxscript\Html;
+use Redaxscript\Registry;
+use Redaxscript\Language;
 
 /**
  * children class to create the script tag
@@ -112,27 +114,17 @@ class Script extends HeadAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param mixed $variable
+	 * @param string $key
+	 * @param mixed $value
 	 *
 	 * @return Script
 	 */
 
-	//todo: it should be $key = null, $value = null to create var key = value;
-	public function transportVar($variable = null)
+	public function transportVar($key = null, $value = null)
 	{
-		// $transport = new Assetic\Transport();
-		// $this->appendInline(transport->render($key, $value));
-		if (is_array($variable))
-		{
-			foreach ($variable as $key)
-			{
-				$this->_inline .= $key;
-			}
-		}
-		else
-		{
-			$this->_inline .= $variable;
-		}
+		$transport = new Assetic\Transport(Registry::getInstance(), Language::getInstance());
+		$inline = $transport->render($key, $value);
+		$this->appendInline($inline);
 		return $this;
 	}
 
