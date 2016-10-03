@@ -69,7 +69,7 @@ class TitleTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $title->render();
+		$actual = $title;
 
 		/* compare */
 

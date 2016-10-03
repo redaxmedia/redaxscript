@@ -25,7 +25,7 @@ class Style extends Singleton implements HeadInterface
 	protected $_inline = null;
 
 	/**
-	 * stringify the collection
+	 * stringify the style
 	 *
 	 * @since 3.0.0
 	 *

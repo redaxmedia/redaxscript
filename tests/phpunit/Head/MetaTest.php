@@ -54,7 +54,7 @@ class MetaTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $meta->render();
+		$actual = $meta;
 
 		/* compare */
 

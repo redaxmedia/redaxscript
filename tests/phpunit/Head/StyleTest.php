@@ -52,7 +52,7 @@ class StyleTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $style->render();
+		$actual = $style;
 
 		/* compare */
 

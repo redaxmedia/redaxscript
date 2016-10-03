@@ -136,7 +136,7 @@ class ScriptTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $script->render();
+		$actual = $script;
 
 		/* compare */
 
@@ -172,7 +172,7 @@ class ScriptTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $script->render();
+		$actual = $script;
 
 		/* compare */
 
@@ -208,7 +208,7 @@ class ScriptTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $script->render();
+		$actual = $script;
 
 		/* compare */
 
@@ -241,7 +241,7 @@ class ScriptTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $script->render();
+		$actual = $script;
 
 		/* compare */
 
@@ -270,7 +270,7 @@ class ScriptTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $script->render();
+		$actual = $script;
 
 		/* compare */
 
@@ -311,7 +311,7 @@ class ScriptTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $script->render();
+		$actual = $script;
 
 		/* compare */
 

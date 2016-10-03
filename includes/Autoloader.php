@@ -2,37 +2,29 @@
 namespace Redaxscript;
 
 /**
- * parent class to automatically load required class files
+ * parent class to load required class files
  *
- * @since 2.2.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @category Autoloader
  * @author Henry Ruhs
- * @author Sven Weingartner
  */
 
 class Autoloader
 {
 	/**
-	 * project namespace
+	 * array of the autoload
 	 *
-	 * @var string
+	 * @var array
 	 */
 
-	protected $_namespace =
+	protected $_autoloadArray =
 	[
-		'Redaxscript\Modules\\',
-		'Redaxscript\\'
+		'Redaxscript' => 'includes',
+		'Redaxscript\Modules' => 'modules',
+		'libraries'
 	];
-
-	/**
-	 * project delimiter
-	 *
-	 * @var string
-	 */
-
-	protected $_delimiter = '\\';
 
 	/**
 	 * file suffix
@@ -43,40 +35,27 @@ class Autoloader
 	protected $_fileSuffix = '.php';
 
 	/**
-	 * directory to search for class files
-	 *
-	 * @var array
-	 */
-
-	protected $_directory =
-	[
-		'includes',
-		'libraries',
-		'modules'
-	];
-
-	/**
 	 * init the class
 	 *
-	 * @since 2.1.0
+	 * @since 3.0.0
 	 *
-	 * @param mixed $directory optional directory to search
+	 * @param mixed $autoload key or collection of the autoload
 	 */
 
-	public function init($directory = null)
+	public function init($autoload = null)
 	{
-		/* handle directory */
+		/* handle autoload */
 
-		if (is_array($directory))
+		if (is_string($autoload))
 		{
-			$this->_directory = $directory;
-		}
-		else if (is_string($directory))
-		{
-			$this->_directory =
+			$autoload =
 			[
-				$directory
+				$autoload
 			];
+		}
+		if (is_array($autoload))
+		{
+			$this->_autoloadArray = array_merge($this->_autoloadArray, $autoload);
 		}
 
 		/* register autoload */
@@ -89,23 +68,23 @@ class Autoloader
 	}
 
 	/**
-	 * load a class file
+	 * load the class file
 	 *
-	 * @since 2.6.0
+	 * @since 3.0.0
 	 *
-	 * @param string $className name of the class to load
+	 * @param string $className name of the class
 	 */
 
 	protected function _load($className = null)
 	{
-		$file = str_replace($this->_namespace, '', $className);
-		$file = str_replace($this->_delimiter, '/', $file);
-		$file .=$this->_fileSuffix;
-
-		/* include as needed */
-
-		foreach ($this->_directory as $directory)
+		foreach ($this->_autoloadArray as $namespace => $directory)
 		{
+			$file = str_replace($namespace, '', $className);
+			$file = str_replace('\\', '/', $file);
+			$file .= $this->_fileSuffix;
+
+			/* include as needed */
+
 			if (file_exists($directory . '/' . $file))
 			{
 				include_once($directory . '/' . $file);

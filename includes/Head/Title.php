@@ -40,6 +40,19 @@ class Title implements HeadInterface
 	}
 
 	/**
+	 * stringify the title
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public function __toString()
+	{
+		return $this->render();
+	}
+
+	/**
 	 * render the title
 	 *
 	 * @since 3.0.0
@@ -54,6 +67,7 @@ class Title implements HeadInterface
 		$titleElement = new Html\Element();
 		return $titleElement
 			->init('title')
-			->text($title . Db::getSetting('divider') . $description);
+			->text($title . Db::getSetting('divider') . $description)
+			->render();
 	}
 }

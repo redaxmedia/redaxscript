@@ -39,6 +39,19 @@ class Base implements HeadInterface
 	}
 
 	/**
+	 * stringify the base
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public function __toString()
+	{
+		return $this->render();
+	}
+
+	/**
 	 * render the base
 	 *
 	 * @since 3.0.0

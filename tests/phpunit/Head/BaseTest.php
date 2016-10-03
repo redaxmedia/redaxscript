@@ -69,7 +69,7 @@ class BaseTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $base->render();
+		$actual = $base;
 
 		/* compare */
 

@@ -32,6 +32,24 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	protected static $_collectionArray = [];
 
 	/**
+	 * stringify the collection
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public function __toString()
+	{
+		$render = $this->render();
+		if ($render)
+		{
+			return $render;
+		}
+		return '<!-- ' . self::$_namespace . ' -->';
+	}
+
+	/**
 	 * init the class
 	 *
 	 * @param string $namespace collection sub namespace
@@ -49,24 +67,6 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 			self::$_namespace .= '\\' . ucfirst($namespace);
 		}
 		return $this;
-	}
-
-	/**
-	 * stringify the collection
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return string
-	 */
-
-	public function __toString()
-	{
-		$render = $this->render();
-		if ($render)
-		{
-			return $render;
-		}
-		return '<!-- ' . self::$_namespace . ' === null -->';
 	}
 
 	/**

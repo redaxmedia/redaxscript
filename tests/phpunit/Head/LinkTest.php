@@ -110,7 +110,7 @@ class LinkTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $link->render();
+		$actual = $link;
 
 		/* compare */
 
@@ -146,7 +146,7 @@ class LinkTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $link->render();
+		$actual = $link;
 
 		/* compare */
 
@@ -179,7 +179,7 @@ class LinkTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $link->render();
+		$actual = $link;
 
 		/* compare */
 
@@ -220,7 +220,7 @@ class LinkTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $link->render();
+		$actual = $link;
 
 		/* compare */
 

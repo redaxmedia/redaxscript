@@ -30,25 +30,25 @@ class AutoloaderTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testDirectory
+	 * testInit
 	 *
-	 * @since 2.1.0
+	 * @since 3.0.0
 	 */
 
-	public function testDirectory()
+	public function testInit()
 	{
 		/* setup */
 
 		$autoloader = new Autoloader();
-		$autoloader->init('includes');
+		$autoloader->init('test');
 
 		/* actual */
 
-		$actualArray = $this->readAttribute($autoloader, '_directory');
+		$actualArray = $this->readAttribute($autoloader, '_autoloadArray');
 
 		/* compare */
 
-		$this->assertEquals('includes', $actualArray[0]);
+		$this->assertEquals('test', $actualArray[1]);
 	}
 
 	/**
@@ -70,24 +70,7 @@ class AutoloaderTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect, $actual, 'Classname: ' . $className);
-	}
-
-	/**
-	 * testAutoloader
-	 *
-	 * @since 2.1.0
-	 */
-
-	public function testAutoloader()
-	{
-		/* actual */
-
-		$actual = spl_autoload_functions();
-
-		/* compare */
-
-		$this->assertInternalType('array', $actual);
+		$this->assertEquals($expect, $actual);
 	}
 }
 
