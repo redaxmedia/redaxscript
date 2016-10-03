@@ -239,8 +239,9 @@ class ScriptTest extends TestCaseAbstract
 		/* setup */
 
 		$script = Head\Script::getInstance();
-		$script->init('transport');
-		$script->transportVar($transportArray['key'], $transportArray['value']);
+		$script
+			->init('transport')
+			->transportVar($transportArray['key'], $transportArray['value']);
 
 		/* actual */
 

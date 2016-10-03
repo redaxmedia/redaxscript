@@ -2,15 +2,13 @@
 	[
 		[
 			{
-				"href": "http://localhost/",
-				"rel": "canonical"
+				"href": "assets/styles/one.css"
 			},
 			{
-				"href": "templates/default/assets/images/favicon.ico",
-				"rel": "shortcut icon"
+				"href": "assets/styles/two.css"
 			}
 		],
-		"templates/default/assets/images/favicon.ico",
-		"<link href=\"http://localhost/\" rel=\"canonical\" />"
+		"assets/styles/two.css",
+		"<link href=\"assets/styles/one.css\" />"
 	]
 ]

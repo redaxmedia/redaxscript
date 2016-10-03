@@ -11,6 +11,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  *
  * @package Redaxscript
  * @category Tests
+ * @author Henry Ruhs
  * @author Balázs Szilágyi
  */
 
@@ -43,32 +44,6 @@ class LinkTest extends TestCaseAbstract
 	}
 
 	/**
-	 * providerFileAppend
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerFileAppend()
-	{
-		return $this->getProvider('tests/provider/Head/link_file_append.json');
-	}
-
-	/**
-	 * providerFilePrepend
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerFilePrepend()
-	{
-		return $this->getProvider('tests/provider/Head/link_file_prepend.json');
-	}
-
-	/**
 	 * providerRemove
 	 *
 	 * @since 3.0.0
@@ -86,21 +61,26 @@ class LinkTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @dataProvider providerAppend
-	 *
-	 * @param array $linkArray
+	 * @param array $coreArray
+	 * @param array $moduleArray
 	 * @param string $expect
+	 *
+	 * @dataProvider providerAppend
 	 */
 
-	//todo: refactor this like testAppend from ScriptTest that combines append and appendFile
-	public function testAppend($linkArray = [], $expect = null)
+	public function testAppend($coreArray = [], $moduleArray = [], $expect = null)
 	{
 		/* setup */
 
-		$link= Head\Link::getInstance();
-		foreach ($linkArray as $key => $value)
+		$link = Head\Link::getInstance();
+		$link->init('append');
+		foreach ($coreArray as $key => $value)
 		{
 			$link->append($value);
+		}
+		foreach ($moduleArray as $key => $value)
+		{
+			$link->appendFile($value);
 		}
 
 		/* actual */
@@ -117,78 +97,24 @@ class LinkTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @dataProvider providerPrepend
-	 *
-	 * @param array $linkArray
+	 * @param array $coreArray
+	 * @param array $moduleArray
 	 * @param string $expect
+	 *
+	 * @dataProvider providerPrepend
 	 */
 
-	public function testPrepend($linkArray = [], $expect = null)
+	public function testPrepend($coreArray = [], $moduleArray = [], $expect = null)
 	{
 		/* setup */
 
-		$link= Head\Link::getInstance();
-		foreach ($linkArray as $key => $value)
+		$link = Head\Link::getInstance();
+		$link->init('prepend');
+		foreach ($coreArray as $value)
 		{
 			$link->prepend($value);
 		}
-
-		/* actual */
-
-		$actual = $link->render();
-
-		/* compare */
-
-		$this->assertEquals($this->normalizeEOL($expect), $actual);
-	}
-
-	/**
-	 * testAppend
-	 *
-	 * @since 3.0.0
-	 *
-	 * @dataProvider providerFileAppend
-	 *
-	 * @param array $linkArray
-	 * @param string $expect
-	 */
-
-	public function testFileAppend($linkArray = [], $expect = null)
-	{
-		/* setup */
-
-		$link= Head\Link::getInstance();
-		foreach ($linkArray as $value)
-		{
-			$link->appendFile($value);
-		}
-
-		/* actual */
-
-		$actual = $link->render();
-
-		/* compare */
-
-		$this->assertEquals($this->normalizeEOL($expect), $actual);
-	}
-
-	/**
-	 * testFilePrepend
-	 *
-	 * @since 3.0.0
-	 *
-	 * @dataProvider providerFilePrepend
-	 *
-	 * @param array $linkArray
-	 * @param string $expect
-	 */
-
-	public function testFilePrepend($linkArray = [], $expect = null)
-	{
-		/* setup */
-
-		$link= Head\Link::getInstance();
-		foreach ($linkArray as $value)
+		foreach ($moduleArray as $key => $value)
 		{
 			$link->prependFile($value);
 		}
@@ -207,23 +133,24 @@ class LinkTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @dataProvider providerRemove
-	 *
-	 * @param array $linkArray
-	 * @param string $remove
+	 * @param array $coreArray
+	 * @param string $deleteFile
 	 * @param string $expect
+	 *
+	 * @dataProvider providerRemove
 	 */
 
-	public function testRemove($linkArray = [], $remove = null, $expect = null)
+	public function testRemove($coreArray = [], $deleteFile = null, $expect = null)
 	{
 		/* setup */
 
-		$link= Head\Link::getInstance();
-		foreach ($linkArray as $key => $value)
+		$link = Head\Link::getInstance();
+		$link->init('remove');
+		foreach ($coreArray as $key => $value)
 		{
 			$link->append($value);
 		}
-		$link->removeFile($remove);
+		$link->removeFile($deleteFile);
 
 		/* actual */
 
@@ -231,6 +158,6 @@ class LinkTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($this->normalizeEOL($expect), $actual);
+		$this->assertEquals($expect, $actual);
 	}
 }

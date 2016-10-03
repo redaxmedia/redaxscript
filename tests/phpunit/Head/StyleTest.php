@@ -46,9 +46,9 @@ class StyleTest extends TestCaseAbstract
 		/* setup */
 
 		$style = Head\Style::getInstance();
-
-		$style->appendInline($append);
-		$style->prependInline($prepend);
+		$style
+			->appendInline($append)
+			->prependInline($prepend);
 
 		/* actual */
 

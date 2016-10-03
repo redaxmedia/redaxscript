@@ -2,29 +2,16 @@
 	[
 		[
 			{
-				"href": "templates/default/assets/images/favicon.ico",
-				"rel": "shortcut icon"
+				"href": "assets/styles/one.css",
+				"media": "all"
 			},
 			{
-				"href": "http://localhost/",
-				"rel": "canonical"
+				"href": "assets/styles/two.css"
 			}
 		],
-		"<link href=\"http://localhost/\" rel=\"canonical\" />\n<link href=\"templates/default/assets/images/favicon.ico\" rel=\"shortcut icon\" />"
-	],
-	[
-		[
-			{
-				"rel": "stylesheet",
-				"type": "text/css",
-				"href": "test.css"
-			},
-			{
-				"rel": "stylesheet",
-				"type": "text/css",
-				"href": "style.css"
-			}
-		],
-		"<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n<link rel=\"stylesheet\" type=\"text/css\" href=\"test.css\" />"
+		{
+			"href": "assets/styles/three.css"
+		},
+		"<link href=\"assets/styles/three.css\" rel=\"stylesheet\" />\n<link href=\"assets\/styles/two.css\" />\n<link href=\"assets/styles/one.css\" media=\"all\" />"
 	]
 ]
