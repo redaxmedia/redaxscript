@@ -22,6 +22,20 @@ use Redaxscript\Html;
 class Link extends HeadAbstract
 {
 	/**
+	 * options of the style
+	 *
+	 * @var string
+	 */
+
+	protected $_optionArray =
+	[
+		'directory' => 'cache/styles',
+		'extension' => 'css',
+		'attribute' => 'href',
+		'lifetime' => 86400
+	];
+
+	/**
 	 * append link file
 	 *
 	 * @since 3.0.0
@@ -83,21 +97,18 @@ class Link extends HeadAbstract
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param array $optionArray
+	 *
 	 * @return Link
 	 */
 
-	public function concat()
+	public function concat($optionArray = [])
 	{
+		$optionArray = array_merge($this->_optionArray, $optionArray);
 		$loader = new Assetic\Loader();
 		$loader
 			->init(self::$_collectionArray[self::$_namespace])
-			->concat(
-			[
-				'directory' => 'cache/styles',
-				'extension' => 'css',
-				'attribute' => 'href',
-				'lifetime' => 86400
-			]);
+			->concat($optionArray);
 
 		/* update collection */
 

@@ -3,6 +3,7 @@ namespace Redaxscript\Tests\Head;
 
 use Redaxscript\Head;
 use Redaxscript\Tests\TestCaseAbstract;
+use org\bovigo\vfs\vfsStream as Stream;
 
 /**
  * ScriptTest
@@ -17,6 +18,17 @@ use Redaxscript\Tests\TestCaseAbstract;
 
 class ScriptTest extends TestCaseAbstract
 {
+	/**
+	 * setUp
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function setUp()
+	{
+		Stream::setup('root', 0777, $this->getProvider('tests/provider/Head/script_set_up.json'));
+	}
+
 	/**
 	 * providerAppend
 	 *
@@ -80,6 +92,19 @@ class ScriptTest extends TestCaseAbstract
 	public function providerTransportVar()
 	{
 		return $this->getProvider('tests/provider/Head/script_transport_var.json');
+	}
+
+	/**
+	 * providerConcat
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerConcat()
+	{
+		return $this->getProvider('tests/provider/Head/script_concat.json');
 	}
 
 	/**
@@ -250,5 +275,46 @@ class ScriptTest extends TestCaseAbstract
 		/* compare */
 
 		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testConcat
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $concatArray
+	 * @param string $expect
+	 *
+	 * @dataProvider providerConcat
+	 */
+
+	public function testConcat($concatArray = [], $expect = null)
+	{
+		/* setup */
+
+		$script = Head\Script::getInstance();
+		$script->init('concat');
+		foreach ($concatArray as $key => $value)
+		{
+			$script->append($value);
+		}
+		$directory = Stream::url('root/cache/scripts');
+		$script
+			->concat(
+			[
+				'directory' => $directory
+			])
+			->concat(
+			[
+				'directory' => $directory
+			]);
+
+		/* actual */
+
+		$actual = $script->render();
+
+		/* compare */
+
+		$this->assertEquals($this->normalizeEOL($expect), $actual);
 	}
 }

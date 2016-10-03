@@ -22,6 +22,20 @@ use Redaxscript\Language;
 class Script extends HeadAbstract
 {
 	/**
+	 * options of the script
+	 *
+	 * @var string
+	 */
+
+	protected $_optionArray =
+	[
+		'directory' => 'cache/scripts',
+		'extension' => 'js',
+		'attribute' => 'src',
+		'lifetime' => 86400
+	];
+
+	/**
 	 * inline script
 	 *
 	 * @var string
@@ -133,21 +147,18 @@ class Script extends HeadAbstract
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param array $optionArray
+	 *
 	 * @return Script
 	 */
 
-	public function concat()
+	public function concat($optionArray = [])
 	{
+		$optionArray = array_merge($this->_optionArray, $optionArray);
 		$loader = new Assetic\Loader();
 		$loader
 			->init(self::$_collectionArray[self::$_namespace])
-			->concat(
-			[
-				'directory' => 'cache/scripts',
-				'extension' => 'js',
-				'attribute' => 'src',
-				'lifetime' => 86400
-			]);
+			->concat($optionArray);
 
 		/* update collection */
 

@@ -3,6 +3,7 @@ namespace Redaxscript\Tests\Head;
 
 use Redaxscript\Head;
 use Redaxscript\Tests\TestCaseAbstract;
+use org\bovigo\vfs\vfsStream as Stream;
 
 /**
  * LinkTest
@@ -17,6 +18,17 @@ use Redaxscript\Tests\TestCaseAbstract;
 
 class LinkTest extends TestCaseAbstract
 {
+	/**
+	 * setUp
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function setUp()
+	{
+		Stream::setup('root', 0777, $this->getProvider('tests/provider/Head/link_set_up.json'));
+	}
+
 	/**
 	 * providerAppend
 	 *
@@ -54,6 +66,19 @@ class LinkTest extends TestCaseAbstract
 	public function providerRemove()
 	{
 		return $this->getProvider('tests/provider/Head/link_remove.json');
+	}
+
+	/**
+	 * providerConcat
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerConcat()
+	{
+		return $this->getProvider('tests/provider/Head/link_concat.json');
 	}
 
 	/**
@@ -159,5 +184,46 @@ class LinkTest extends TestCaseAbstract
 		/* compare */
 
 		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testConcat
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $concatArray
+	 * @param string $expect
+	 *
+	 * @dataProvider providerConcat
+	 */
+
+	public function testConcat($concatArray = [], $expect = null)
+	{
+		/* setup */
+
+		$link = Head\Link::getInstance();
+		$link->init('concat');
+		foreach ($concatArray as $key => $value)
+		{
+			$link->append($value);
+		}
+		$directory = Stream::url('root/cache/styles');
+		$link
+			->concat(
+			[
+				'directory' => $directory
+			])
+			->concat(
+			[
+				'directory' => $directory
+			]);
+
+		/* actual */
+
+		$actual = $link->render();
+
+		/* compare */
+
+		$this->assertEquals($this->normalizeEOL($expect), $actual);
 	}
 }
