@@ -1,0 +1,27 @@
+[
+	[
+		{
+			"key": "rs",
+			"value": "test"
+		},
+		"<script>window.rs = \"test\";</script>"
+	],
+	[
+		{
+			"key": "rs",
+			"value": 1337
+		},
+		"<script>window.rs = 1337;</script>"
+	],
+	[
+		{
+			"key": "rs",
+			"value":
+			{
+				"test": "test",
+				"number": 1337
+			}
+		},
+		"<script>window.rs.test = \"test\";window.rs.number = 1337;</script>"
+	]
+]

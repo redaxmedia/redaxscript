@@ -92,6 +92,7 @@ class LinkTest extends TestCaseAbstract
 	 * @param string $expect
 	 */
 
+	//todo: refactor this like testAppend from ScriptTest that combines append and appendFile
 	public function testAppend($linkArray = [], $expect = null)
 	{
 		/* setup */

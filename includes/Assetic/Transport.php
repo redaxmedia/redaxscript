@@ -122,16 +122,16 @@ class Transport
 	public function render($key = null, $value = null)
 	{
 		$output = null;
-		if (is_string($value))
-		{
-			$output = 'window.' . $key . ' = \'' . $value . '\';';
-		}
-		else if (is_array($value))
+		if (is_array($value))
 		{
 			foreach ($value as $keyChildren => $valueChildren)
 			{
 				$output .= 'window.' . $key . '.' . $keyChildren . ' = ' . json_encode($valueChildren) . ';';
 			}
+		}
+		else
+		{
+			$output = 'window.' . $key . ' = ' . json_encode($value) . ';';
 		}
 		return $output;
 	}

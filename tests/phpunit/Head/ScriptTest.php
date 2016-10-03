@@ -70,16 +70,16 @@ class ScriptTest extends TestCaseAbstract
 	}
 
 	/**
-	 * providerTransport
+	 * providerTransportVar
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	public function providerTransport()
+	public function providerTransportVar()
 	{
-		return $this->getProvider('tests/provider/Head/script_transport.json');
+		return $this->getProvider('tests/provider/Head/script_transport_var.json');
 	}
 
 	/**
@@ -87,11 +87,11 @@ class ScriptTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @dataProvider providerAppend
-	 *
 	 * @param array $coreArray
 	 * @param array $moduleArray
 	 * @param string $expect
+	 *
+	 * @dataProvider providerAppend
 	 */
 
 	public function testAppend($coreArray = [], $moduleArray = [], $expect = null)
@@ -123,11 +123,11 @@ class ScriptTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @dataProvider providerPrepend
-	 *
 	 * @param array $coreArray
 	 * @param array $moduleArray
 	 * @param string $expect
+	 *
+	 * @dataProvider providerPrepend
 	 */
 
 	public function testPrepend($coreArray = [], $moduleArray = [], $expect = null)
@@ -159,11 +159,11 @@ class ScriptTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @dataProvider providerInline
-	 *
 	 * @param array $coreArray
 	 * @param array $moduleArray
 	 * @param string $expect
+	 *
+	 * @dataProvider providerInline
 	 */
 
 	public function testInline($coreArray = [], $moduleArray = [], $expect = null)
@@ -195,11 +195,11 @@ class ScriptTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @dataProvider providerRemove
-	 *
 	 * @param array $coreArray
 	 * @param string $deleteFile
 	 * @param string $expect
+	 *
+	 * @dataProvider providerRemove
 	 */
 
 	public function testRemove($coreArray = [], $deleteFile = null, $expect = null)
@@ -207,7 +207,7 @@ class ScriptTest extends TestCaseAbstract
 		/* setup */
 
 		$script = Head\Script::getInstance();
-		$script->init('append');
+		$script->init('remove');
 		foreach ($coreArray as $key => $value)
 		{
 			$script->append($value);
@@ -228,20 +228,19 @@ class ScriptTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @dataProvider providerTransport
-	 *
-	 * @param array $variablesArray
-	 * @param string $variable
+	 * @param array $transportArray
 	 * @param string $expect
+	 *
+	 * @dataProvider providerTransportVar
 	 */
 
-	public function testTransportVar($variablesArray = [], $variable = null, $expect = null)
+	public function testTransportVar($transportArray = [], $expect = null)
 	{
 		/* setup */
 
 		$script = Head\Script::getInstance();
-		$script->transportVar($variablesArray);
-		$script->transportVar($variable);
+		$script->init('transport');
+		$script->transportVar($transportArray['key'], $transportArray['value']);
 
 		/* actual */
 
