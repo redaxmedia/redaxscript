@@ -110,13 +110,40 @@ class Loader
 
 		else
 		{
-			$content = null;
-			foreach ($bundleArray as $value)
-			{
-				$content .= file_get_contents($value);
-			}
+			$content = $this->_getContent($bundleArray, $optionArray['rewrite']);
 			$cache->store($bundleArray, $content);
 		}
 		return $this;
+	}
+
+	/**
+	 * get the content
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $bundleArray
+	 * @param array $rewriteArray
+	 *
+	 * @return string
+	 */
+
+	protected function _getContent($bundleArray = [], $rewriteArray = [])
+	{
+		$output = null;
+
+		/* process bundle */
+
+		foreach ($bundleArray as $value)
+		{
+			$output .= file_get_contents($value);
+		}
+
+		/* process rewrite */
+
+		foreach ($rewriteArray as $key => $value)
+		{
+			$output = str_replace($key, $value, $output);
+		}
+		return $output;
 	}
 }

@@ -28,6 +28,11 @@
 	->appendFile('dist/styles/base.min.css')
 	->appendFile('templates/default/dist/styles/default.min.css')
 	->appendFile('templates/install/dist/styles/install.min.css')
+	->rewrite(
+	[
+		'url(../../assets/fonts' => 'url(../../templates/default/assets/fonts',
+		'url(../../assets/images' => 'url(../../templates/install/assets/images'
+	])
 	->concat(); ?>
 
 <!-- head script -->

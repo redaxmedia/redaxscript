@@ -93,6 +93,22 @@ class Link extends HeadAbstract
 	}
 
 	/**
+	 * rewrite the link
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $rewriteArray
+	 *
+	 * @return Link
+	 */
+
+	public function rewrite($rewriteArray = [])
+	{
+		$this->_optionArray['rewrite'] = $rewriteArray;
+		return $this;
+	}
+
+	/**
 	 * concat the link
 	 *
 	 * @since 3.0.0

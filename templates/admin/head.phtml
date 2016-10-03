@@ -5,9 +5,14 @@
 	<!-- link -->
 
 	<?php Tag::link()
-		->init()
+		->init('admin')
 		->appendFile('//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset())
-		->appendFile('templates/admin/dist/styles/admin.min.css'); ?>
+		->appendFile('templates/admin/dist/styles/admin.min.css')
+		->rewrite(
+		[
+			'url(../../assets/fonts' => 'url(../../templates/admin/assets/fonts'
+		])
+		->concat(); ?>
 
 	<!-- head script -->
 
