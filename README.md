@@ -1,4 +1,4 @@
-![Upcoming Redaxscript 3.0.0](https://dummyimage.com/1000x300/323e4c/ffffff&text=Upcoming+Redaxscript+3.0.0)
+![Redaxscript 3.0.0 Beta](https://dummyimage.com/1000x300/323e4c/ffffff&text=Redaxscript+3.0.0+Beta)
 ![Ultra lightweight Content Management System](http://dummyimage.com/1000x100/323e4c/ffffff&text=Ultra+lightweight+Content+Management+System)
 
 
@@ -11,8 +11,7 @@ Redaxscript
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/redaxmedia/redaxscript.svg?style=flat)](https://scrutinizer-ci.com/g/redaxmedia/redaxscript)
 [![Coverage Status](https://img.shields.io/coveralls/redaxmedia/redaxscript.svg?style=flat)](https://coveralls.io/r/redaxmedia/redaxscript)
 [![PHP 7 Ready](http://php7ready.timesplinter.ch/redaxmedia/redaxscript/badge.svg?style=flat)](https://travis-ci.org/redaxmedia/redaxscript)
-[![Dependency Status](https://www.versioneye.com/user/projects/53b928cb609ff01a1a0000f7/badge.svg?style=flat)](https://www.versioneye.com/user/projects/53b928cb609ff01a1a0000f7)
-[![Dependency Status](https://www.versioneye.com/user/projects/53b92892609ff0ad4d00002c/badge.svg?style=flat)](https://www.versioneye.com/user/projects/53b92892609ff0ad4d00002c)
+[![Dependency Status](https://gemnasium.com/badges/github.com/redaxmedia/redaxscript.svg)](https://gemnasium.com/github.com/redaxmedia/redaxscript)
 [![Latest Stable Version](https://img.shields.io/packagist/v/redaxmedia/redaxscript.svg?style=flat)](https://packagist.org/packages/redaxmedia/redaxscript)
 [![License](https://img.shields.io/packagist/l/redaxmedia/redaxscript.svg?style=flat)](https://packagist.org/packages/redaxmedia/redaxscript)
 [![Gitter Chat](https://img.shields.io/badge/gitter-chat-129e5e.svg?style=flat)](https://gitter.im/redaxmedia/redaxscript)

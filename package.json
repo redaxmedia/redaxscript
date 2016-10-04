@@ -15,8 +15,8 @@
 	},
 	"devDependencies":
 	{
-		"autoprefixer": "6.3.7",
-		"cssnano": "3.7.4",
+		"autoprefixer": "6.5.0",
+		"cssnano": "3.7.6",
 		"colorguard": "1.2.0",
 		"grunt": "1.0.1",
 		"grunt-contrib-compress": "1.3.0",
@@ -34,19 +34,19 @@
 		"grunt-jsonlint": "1.1.0",
 		"grunt-phpcs": "0.4.0",
 		"grunt-postcss": "0.8.0",
-		"grunt-shell": "1.3.0",
-		"grunt-svgmin": "3.3.0",
-		"grunt-webfont": "1.4.0",
-		"material-design-icons": "2.2.3",
+		"grunt-shell": "2.0.0",
+		"grunt-svgmin": "4.0.0",
+		"grunt-webfont": "1.6.0",
+		"material-design-icons": "3.0.1",
 		"postcss-color-function": "2.0.1",
 		"postcss-color-gray": "3.0.0",
 		"postcss-custom-media": "5.0.1",
 		"postcss-custom-properties": "5.0.1",
 		"postcss-custom-selectors": "3.0.0",
-		"postcss-extend": "1.0.4",
+		"postcss-extend": "1.0.5",
 		"postcss-nesting": "2.3.1",
 		"postcss-reporter": "1.4.1",
-		"stylelint": "7.0.1"
+		"stylelint": "7.3.1"
 	},
 	"scripts":
 	{
