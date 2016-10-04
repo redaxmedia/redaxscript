@@ -1,46 +1,29 @@
 <?php
 namespace Redaxscript;
 
-$suffix = $admin ? '_admin' : '_default';
-$titlePartialElement = new Html\Element();
-$titlePartialElement->init('h3', array(
-	'class' => 'title_content_sub'
-));
-$buttonElement = new Html\Element();
-$buttonElement
-	->init('button', array(
-		'class' => 'button' . $suffix
-	))
-	->text(Language::get('preview', '_preview'));
+$language = Language::getInstance();
+$linkElement = new Html\Element();
+$linkElement
+	->init('a',
+	[
+		'class' => $admin ? 'rs-admin-button-default' : 'rs-button-default'
+	])
+	->text($language->get('preview', '_preview'));
 ?>
 
 <!-- button -->
 
-<?php echo $titlePartialElement->text('.button' . $suffix); ?>
+<?php echo $linkElement; ?>
 
-<?php echo $buttonElement; ?>
+<!-- button disabled -->
 
-<!-- disabled -->
-
-<?php echo $titlePartialElement->text('.button' . $suffix . '[disabled]'); ?>
-
-<?php echo $buttonElement
+<?php echo $linkElement
 	->copy()
 	->attr('disabled', 'disabled'); ?>
 
-<!-- large -->
+<!-- button large -->
 
-<?php echo $titlePartialElement->text('.button' . $suffix . '.button_large'); ?>
-
-<?php echo $buttonElement
+<?php echo $linkElement
 	->copy()
-	->addClass('button_large'); ?>
+	->addClass($admin ? 'rs-admin-is-large' : 'rs-is-large'); ?>
 
-<!-- disabled -->
-
-<?php echo $titlePartialElement->text('.button' . $suffix . '.button_large[disabled]'); ?>
-
-<?php echo $buttonElement
-	->copy()
-	->addClass('button_large')
-	->attr('disabled', 'disabled'); ?>

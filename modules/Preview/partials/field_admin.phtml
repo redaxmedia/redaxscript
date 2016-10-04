@@ -1,8 +1,0 @@
-<?php
-namespace Redaxscript;
-
-if (Registry::get('loggedIn') === Registry::get('token'))
-{
-	$admin = true;
-	include('field.phtml');
-}

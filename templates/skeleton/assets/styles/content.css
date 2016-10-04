@@ -1,0 +1,17 @@
+/**
+ * @tableofcontents
+ *
+ * 1. comment
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. comment */
+
+.rs-box-comment
+{
+	margin: 0.5em 0 1.5em;
+}

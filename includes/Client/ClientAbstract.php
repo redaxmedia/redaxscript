@@ -4,7 +4,7 @@ namespace Redaxscript\Client;
 use Redaxscript\Request;
 
 /**
- * abstract class to build a client class
+ * abstract class to create a client class
  *
  * @since 2.4.0
  *
@@ -26,7 +26,7 @@ abstract class ClientAbstract
 	/**
 	 * output of the client
 	 *
-	 * @var string|integer
+	 * @var mixed
 	 */
 
 	protected $_output;
@@ -63,17 +63,17 @@ abstract class ClientAbstract
 	 *
 	 * @since 2.4.0
 	 *
-	 * @param array $setup array of client setup
+	 * @param array $setupArray array of client setup
 	 * @param string $type type of the client
 	 */
 
-	protected function _detect($setup = array(), $type = null)
+	protected function _detect($setupArray = [], $type = null)
 	{
 		$userAgent = strtolower($this->_request->getServer('HTTP_USER_AGENT'));
 
 		/* process setup */
 
-		foreach ($setup as $key => $value)
+		foreach ($setupArray as $key => $value)
 		{
 			if (stristr($userAgent, $value))
 			{

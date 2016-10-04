@@ -1,0 +1,52 @@
+/**
+ * @tableofcontents
+ *
+ * 1. console
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. console */
+
+.rs-console-body
+{
+	background: var(--rs-console-color-primary);
+	color: gray(255);
+	font: 1em var(--rs-console-font-primary);
+	margin: 0.25em;
+}
+
+.rs-console-box-default,
+.rs-console-label-default
+{
+	&::selection
+	{
+		background: gray(255);
+		color: var(--rs-console-color-primary);
+	}
+}
+
+.rs-console-box-default
+{
+	white-space: pre-wrap;
+}
+
+.rs-console-label-default
+{
+	float: left;
+
+	&:after
+	{
+		content: '\00a0';
+	}
+}
+
+.rs-console-field-text
+{
+	background: transparent;
+	color: inherit;
+	float: left;
+}

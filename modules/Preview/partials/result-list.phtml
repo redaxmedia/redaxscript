@@ -1,0 +1,16 @@
+<?php
+namespace Redaxscript;
+
+$searchList = new View\ResultList(Registry::getInstance(), Language::getInstance());
+echo $searchList->render(
+[
+	'categories' =>
+	[
+		Db::forTablePrefix('categories')->findOne()
+	],
+	'articles' =>
+	[
+		Db::forTablePrefix('articles')->findOne(),
+		Db::forTablePrefix('articles')->findOne()
+	]
+]);

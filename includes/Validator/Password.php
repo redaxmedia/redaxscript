@@ -9,8 +9,8 @@ use Redaxscript\Hash;
  *
  * @since 2.6.0
  *
- * @category Redaxscript
- * @package Validator
+ * @package Redaxscript
+ * @category Validator
  * @author Henry Ruhs
  */
 
@@ -24,7 +24,7 @@ class Password implements ValidatorInterface
 	 * @param string $password plain password
 	 * @param string $hash hashed password
 	 *
-	 * @return integer
+	 * @return boolean
 	 */
 
 	public function validate($password = null, $hash = null)

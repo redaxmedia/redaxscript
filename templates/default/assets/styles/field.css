@@ -1,0 +1,78 @@
+/**
+ * @tableofcontents
+ *
+ * 1. field
+ * 2. textarea
+ * 3. query
+ *    3.1 medium-min
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. field */
+
+.rs-field-default,
+.rs-field-select,
+.rs-field-textarea
+{
+	background: gray(255);
+	border: 2px solid gray(200);
+	border-radius: 0.125em;
+	box-sizing: border-box;
+	padding: 0.25em 0.5em;
+	transition: background 0.2s, border 0.2s;
+	width: 100%;
+
+	&:hover
+	{
+		border-color: gray(170);
+	}
+
+	&:focus
+	{
+		border-color: var(--rs-color-primary);
+	}
+
+	&[disabled],
+	&[readonly]
+	{
+		opacity: 0.5;
+		pointer-events: none;
+	}
+}
+
+.rs-field-default,
+.rs-field-select:not([multiple])
+{
+	height: 2.25em;
+}
+
+/* @section 2. textarea */
+
+.rs-field-textarea
+{
+	min-height: 10em;
+	resize: vertical;
+}
+
+.rs-field-textarea.rs-field-small
+{
+	min-height: 5em;
+}
+
+/* @section 3. query */
+
+/* @section 3.1 medium-min */
+
+@media (--media-medium-min)
+{
+	.rs-field-default,
+	.rs-field-select,
+	.rs-field-textarea.rs-field-small
+	{
+		width: 50%;
+	}
+}

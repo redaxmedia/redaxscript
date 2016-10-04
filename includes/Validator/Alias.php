@@ -6,8 +6,8 @@ namespace Redaxscript\Validator;
  *
  * @since 2.2.0
  *
- * @category Redaxscript
- * @package Validator
+ * @package Redaxscript
+ * @category Validator
  * @author Henry Ruhs
  * @author Sven Weingartner
  */
@@ -36,17 +36,19 @@ class Alias implements ValidatorInterface
 	 * @var array
 	 */
 
-	protected $_defaultArray = array(
+	protected $_defaultArray =
+	[
 		'admin',
 		'loader',
 		'login',
 		'logout',
-		'password_reset',
 		'scripts',
+		'search',
 		'styles',
-		'registration',
-		'reminder'
-	);
+		'recover',
+		'register',
+		'reset'
+	];
 
 	/**
 	 * validate the alias

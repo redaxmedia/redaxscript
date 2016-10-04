@@ -1,0 +1,31 @@
+<?php namespace Redaxscript\Template; ?>
+
+<!DOCTYPE html>
+<html lang="<?php echo Tag::registry('language'); ?>" dir="<?php echo Helper::getDirection(); ?>" class="<?php echo Helper::getClass(); ?>">
+
+	<!-- head -->
+
+	<head>
+		<?php echo Tag::partial('templates/console/head.phtml'); ?>
+	</head>
+
+	<!-- body -->
+
+	<body class="rs-body rs-console-body">
+
+		<!-- main -->
+
+		<main id="main" class="rs-console-main">
+			<?php echo Tag::partial('templates/console/content.phtml'); ?>
+		</main>
+
+		<!-- foot script -->
+
+		<?php echo Tag::script()
+			->init('foot')
+			->appendFile('//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js')
+			->appendFile('assets/scripts/fallback.js')
+			->appendFile('templates/console/assets/scripts/console.js')
+			->concat(); ?>
+	</body>
+</html>

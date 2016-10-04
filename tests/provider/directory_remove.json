@@ -1,49 +1,38 @@
 [
 	[
-		[
-			"includes",
-			"root",
-			"root"
-		],
+		"root",
+		null,
 		[
 			".",
 			"..",
+			"includes",
 			"index.php",
 			"languages"
 		]
 	],
 	[
+		"root",
+		"languages",
 		[
-			"includes/Detector",
-			"root",
-			"root/includes"
-		],
+			".",
+			"..",
+			"includes",
+			"index.php"
+		]
+	],
+	[
+		"root/includes",
+		"Detector",
 		[
 			".",
 			"..",
 			"Autoloader.php",
-			"Bootstrap.php"
+			"bootstrap.php"
 		]
 	],
 	[
-		[
-			"",
-			"root/includes",
-			"root"
-		],
-		[
-			".",
-			"..",
-			"index.php",
-			"languages"
-		]
-	],
-	[
-		[
-			"index.php",
-			"root",
-			"root"
-		],
+		"root",
+		"index.php",
 		[
 			".",
 			"..",

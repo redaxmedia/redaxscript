@@ -1,0 +1,42 @@
+[
+	[
+		{
+			"firstParameter": null,
+			"secondParameter": null,
+			"thirdParameter": null
+		},
+		"<h2 class=\"rs-title-note rs-is-info\">Something went wrong</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-info\">Input is incorrect</div><a href=\"home\" class=\"rs-button-note rs-is-info\">Back</a>"
+	],
+	[
+		{
+			"firstParameter": "search",
+			"secondParameter": null,
+			"thirdParameter": "test"
+		},
+		"<h2 class=\"rs-title-note rs-is-info\">Something went wrong</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-info\"><ul class=\"rs-list-note\"><li>Input is incorrect</li><li>No results for your search query</li></ul></div><a href=\"home\" class=\"rs-button-note rs-is-info\">Back</a>"
+	],
+	[
+		{
+			"firstParameter": "search",
+			"secondParameter": "test",
+			"thirdParameter": null
+		},
+		"<h2 class=\"rs-title-result\">Articles</h2><ol class=\"rs-list-result\"><li><a class=\"rs-link-result\" href=\"home/test-one\">test</a><span class=\"rs-text-result-date\">01.01.2016</span></li><li><a class=\"rs-link-result\" href=\"home/test-two\">test</a><span class=\"rs-text-result-date\">01.01.2016</span></li></ol><h2 class=\"rs-title-result\">Comments</h2><ol class=\"rs-list-result\"><li><a class=\"rs-link-result\" href=\"home/welcome#comment-1\">test</a><span class=\"rs-text-result-date\">01.01.2016</span></li></ol>"
+	],
+	[
+		{
+			"firstParameter": "search",
+			"secondParameter": "articles",
+			"thirdParameter": null
+		},
+		"<h2 class=\"rs-title-note rs-is-info\">Something went wrong</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-info\">No results for your search query</div><a href=\"home\" class=\"rs-button-note rs-is-info\">Back</a>"
+	],
+	[
+		{
+			"firstParameter": "search",
+			"secondParameter": "comments",
+			"thirdParameter": "test"
+		},
+		"<h2 class=\"rs-title-result\">Comments</h2><ol class=\"rs-list-result\"><li><a class=\"rs-link-result\" href=\"home/welcome#comment-1\">test</a><span class=\"rs-text-result-date\">01.01.2016</span></li></ol>"
+	]
+]

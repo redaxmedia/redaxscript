@@ -1,0 +1,26 @@
+[
+	[
+		{
+			"metaDescription": "description",
+			"divider": " - ",
+			"metaTitle": "test"
+		},
+		"<title>test - description</title>"
+	],
+	[
+		{
+			"metaDescription": "test description",
+			"divider": " - ",
+			"metaTitle": null
+		},
+		"<title>Redaxscript - test description</title>"
+	],
+	[
+		{
+			"metaDescription": null,
+			"divider": " - ",
+			"metaTitle": null
+		},
+		"<title>Redaxscript - Ultra lightweight Content Management System</title>"
+	]
+]

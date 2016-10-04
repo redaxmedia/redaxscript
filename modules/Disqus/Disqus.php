@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\Disqus;
 
+use Redaxscript\Head;
 use Redaxscript\Html;
 use Redaxscript\Registry;
 
@@ -22,28 +23,14 @@ class Disqus extends Config
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray =
+	[
 		'name' => 'Disqus',
 		'alias' => 'Disqus',
 		'author' => 'Redaxmedia',
 		'description' => 'Replace comments with disqus',
-		'version' => '2.6.2'
-	);
-
-	/**
-	 * loaderStart
-	 *
-	 * @since 2.2.0
-	 */
-
-	public static function loaderStart()
-	{
-		if (Registry::get('article'))
-		{
-			global $loader_modules_scripts;
-			$loader_modules_scripts[] = 'modules/Disqus/scripts/init.js';
-		}
-	}
+		'version' => '3.0.0'
+	];
 
 	/**
 	 * renderStart
@@ -53,32 +40,37 @@ class Disqus extends Config
 
 	public static function renderStart()
 	{
-		if (Registry::get('article'))
+		if (Registry::get('articleId'))
 		{
-			Registry::set('commentsReplace', true);
+			Registry::set('commentReplace', true);
+
+			/* script */
+
+			$script = Head\Script::getInstance();
+			$script
+				->init('foot')
+				->appendFile(self::$_configArray['url'])
+				->appendFile('modules/Disqus/assets/scripts/init.js');
 		}
 	}
 
 	/**
-	 * commentsReplace
+	 * commentReplace
 	 *
 	 * @since 2.2.0
 	*/
 
-	public static function commentsReplace()
+	public static function commentReplace()
 	{
 		$boxElement = new Html\Element();
-		$boxElement->init('div', array(
-			'id' => self::$_config['id']
-		));
-		$scriptElement = new Html\Element();
-		$scriptElement->init('script', array(
-			'src' => self::$_config['url']
-		));
+		$boxElement->init('div',
+		[
+			'id' => self::$_configArray['id']
+		]);
 
 		/* collect output */
 
-		$output = $boxElement . $scriptElement;
+		$output = $boxElement;
 		echo $output;
 	}
 }

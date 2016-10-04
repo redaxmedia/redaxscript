@@ -21,12 +21,13 @@ class Tablet extends ClientAbstract
 
 	protected function _autorun()
 	{
-		$this->_detect(array(
+		$this->_detect(
+		[
 			'tablet',
 			'android',
 			'ipad',
 			'kindle',
 			'xoom'
-		));
+		]);
 	}
 }

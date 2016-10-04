@@ -6,8 +6,8 @@ namespace Redaxscript\Validator;
  *
  * @since 2.2.0
  *
- * @category Redaxscript
- * @package Validator
+ * @package Redaxscript
+ * @category Validator
  * @author Henry Ruhs
  * @author Sven Weingartner
  */
@@ -22,7 +22,7 @@ class Url implements ValidatorInterface
 	 * @param string $url target url address
 	 * @param boolean $dns optional validate dns
 	 *
-	 * @return integer
+	 * @return boolean
 	 */
 
 	public function validate($url = null, $dns = true)

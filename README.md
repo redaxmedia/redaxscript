@@ -1,5 +1,5 @@
-![Try Redaxscript 2.6.2 now](https://dummyimage.com/1000x300/0090db/ffffff&text=Try+Redaxscript+2.6.2+now)
-![Ultra lightweight Content Management System](http://dummyimage.com/1000x100/0090db/ffffff&text=Ultra+lightweight+Content+Management+System)
+![Upcoming Redaxscript 3.0.0](https://dummyimage.com/1000x300/323e4c/ffffff&text=Upcoming+Redaxscript+3.0.0)
+![Ultra lightweight Content Management System](http://dummyimage.com/1000x100/323e4c/ffffff&text=Ultra+lightweight+Content+Management+System)
 
 
 Redaxscript
@@ -17,6 +17,7 @@ Redaxscript
 [![License](https://img.shields.io/packagist/l/redaxmedia/redaxscript.svg?style=flat)](https://packagist.org/packages/redaxmedia/redaxscript)
 [![Gitter Chat](https://img.shields.io/badge/gitter-chat-129e5e.svg?style=flat)](https://gitter.im/redaxmedia/redaxscript)
 [![Deploy Heroku](https://img.shields.io/badge/deploy-heroku-79589f.svg?style=flat)](https://heroku.com/deploy?template=https://github.com/redaxmedia/redaxscript/tree/heroku)
+[![GitHub Stats](https://img.shields.io/badge/github-stats-ff5500.svg)](http://githubstats.com/redaxmedia/redaxscript)
 
 
 Demo
@@ -34,7 +35,6 @@ Links
 **General**
 
 * [Website](http://redaxscript.com)
-* [Download](http://redaxscript.com/download)
 * [Forum](http://forum.redaxscript.com)
 * [Wiki](http://wiki.redaxscript.com)
 * [License](http://redaxscript.com/general/about/license)
@@ -42,8 +42,8 @@ Links
 
 **Development**
 
-* [API](http://api.redaxscript.com)
 * [GitHub](http://github.redaxscript.com)
 * [Travis](http://travis.redaxscript.com)
 * [Scrutenizer](http://scrutenizer.redaxscript.com)
 * [Coveralls](http://coveralls.redaxscript.com)
+* [API](http://api.redaxscript.com)

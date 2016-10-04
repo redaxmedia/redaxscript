@@ -1,0 +1,168 @@
+/**
+ * @tableofcontents
+ *
+ * 1. note
+ *    1.1 success
+ *    1.2 info
+ *    1.3 warning
+ *    1.4 error
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. note */
+
+.rs-title-note
+{
+	font-size: 2.5em;
+
+	& + .rs-box-note
+	{
+		margin-top: 0.5em;
+	}
+}
+
+.rs-box-note
+{
+	border-radius: 0.125em;
+	font-size: 1.5em;
+	font-weight: bold;
+	padding: 0.5em;
+
+	&:before
+	{
+		float: left;
+		font-size: 1.25em;
+		width: 1.5em;
+	}
+
+	& a
+	{
+		text-decoration: underline;
+	}
+
+	& + .rs-box-note,
+	& + .rs-button-note
+	{
+		margin-top: 1em;
+	}
+}
+
+.rs-list-note
+{
+	float: left;
+
+	& li
+	{
+		list-style: inside decimal;
+	}
+}
+
+.rs-button-note
+{
+	@extend %rs-button;
+	font-size: 1.25em;
+}
+
+/* @section 1.1 success */
+
+.rs-is-success
+{
+	color: var(--rs-color-success-dark);
+
+	&.rs-box-note,
+	&.rs-button-note,
+	&.rs-field-note,
+	&.rs-field-note option
+	{
+		background: var(--rs-color-success);
+	}
+
+	&.rs-field-note
+	{
+		border-color: var(--rs-color-success-dark);
+	}
+
+	&.rs-box-note:before
+	{
+		@extend %rs-icon-check-circle;
+	}
+}
+
+/* @section 1.2 info */
+
+.rs-is-info
+{
+	color: var(--rs-color-info-dark);
+
+	&.rs-box-note,
+	&.rs-button-note,
+	&.rs-field-note,
+	&.rs-field-note option
+	{
+		background: var(--rs-color-info);
+	}
+
+	&.rs-field-note
+	{
+		border-color: var(--rs-color-info-dark);
+	}
+
+	&.rs-box-note:before
+	{
+		@extend %rs-icon-info;
+	}
+}
+
+/* @section 1.3 warning */
+
+.rs-is-warning
+{
+	color: var(--rs-color-warning-dark);
+
+	&.rs-box-note,
+	&.rs-button-note,
+	&.rs-field-note,
+	&.rs-field-note option
+	{
+		background: var(--rs-color-warning);
+	}
+
+	&.rs-field-note
+	{
+		border-color: var(--rs-color-warning-dark);
+	}
+
+	&.rs-box-note:before
+	{
+		@extend %rs-icon-warning;
+	}
+}
+
+/* @section 1.4 error */
+
+.rs-is-error
+{
+	color: var(--rs-color-error-dark);
+
+	&.rs-box-note,
+	&.rs-button-note,
+	&.rs-field-note,
+	&.rs-field-note option
+	{
+		background: var(--rs-color-error);
+	}
+
+	&.rs-field-note
+	{
+		border-color: var(--rs-color-error-dark);
+	}
+
+	&.rs-box-note:before
+	{
+		@extend %rs-icon-error;
+	}
+}

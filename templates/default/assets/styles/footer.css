@@ -1,0 +1,59 @@
+/**
+ * @tableofcontents
+ *
+ * 1. footer
+ * 2. query
+ *    2.1 small max
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. footer */
+
+.rs-footer
+{
+	background: var(--rs-color-tertiary);
+	bottom: 0;
+	color: gray(200);
+	left: 0;
+	padding: 1.5em 0;
+	position: fixed;
+	right: 0;
+	z-index: -1;
+
+	& a:hover
+	{
+		color: gray(255);
+	}
+
+	& .rs-text-about,
+	& .rs-link-login
+	{
+		font-size: 1.25em;
+	}
+
+	& .rs-text-about
+	{
+		float: left;
+	}
+
+	& .rs-link-login
+	{
+		float: right;
+	}
+}
+
+/* @section 2. query */
+
+/* @section 2.1 small max */
+
+@media (--media-small-max)
+{
+	.rs-text-powered-by
+	{
+		display: none;
+	}
+}

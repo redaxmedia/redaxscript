@@ -1,0 +1,123 @@
+/**
+ * @tableofcontents
+ *
+ * 1. teaser
+ *    1.1 component
+ *    1.2 title
+ * 2. query
+ *    2.1 medium min
+ *    2.2 medium min or retina
+ *    2.3 large min
+ *    2.4 xlarge min
+ *    2.5 large min or medium min and retina
+ *    2.6 large min and retina
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. teaser */
+
+/* @section 1.1 component */
+
+.rs-component-teaser
+{
+	background: var(--rs-url-teaser-small) center top / cover;
+	box-sizing: border-box;
+	overflow: hidden;
+	padding: 5em 0;
+	padding: 10vw 0;
+}
+
+/* @section 1.2 title */
+
+.rs-title-teaser
+{
+	animation: fade-in 1s ease 0.5s forwards, move-down 1s ease 0.2s forwards;
+	background: color(var(--rs-color-tertiary) a(80%));
+	border-left: 0.25em solid var(--rs-color-quaternary);
+	border-radius: 0 0.125em 0.125em 0;
+	color: gray(255);
+	display: inline-block;
+	font-size: 2.25em;
+	font-weight: 300;
+	line-height: 1.25em;
+	opacity: 0;
+	padding: 0.5em 0.75em;
+
+	& strong
+	{
+		font-weight: bold;
+	}
+}
+
+/* @section 2. query */
+
+/* @section 2.1 medium min */
+
+@media (--media-medium-min)
+{
+	.rs-title-teaser
+	{
+		font-size: 2.75em;
+		max-width: 80%;
+	}
+
+	.rs-title-teaser .rs-is-break:after
+	{
+		content: '';
+		display: block;
+	}
+}
+
+/* @section 2.2 medium min or retina */
+
+@media (--media-medium-min), (--media-retina)
+{
+	.rs-component-teaser
+	{
+		background-image: var(--rs-url-teaser-medium);
+	}
+}
+
+/* @section 2.3 large min */
+
+@media (--media-large-min)
+{
+	.rs-title-teaser
+	{
+		font-size: 3.75em;
+	}
+}
+
+/* @section 2.4 xlarge min */
+
+@media (--media-xlarge-min)
+{
+	.rs-component-teaser
+	{
+		padding: 10em 0;
+	}
+}
+
+/* @section 2.5 large min or medium min and retina */
+
+@media (--media-large-min), (--media-medium-min) and (--media-retina)
+{
+	.rs-component-teaser
+	{
+		background-image: var(--rs-url-teaser-large);
+	}
+}
+
+/* @section 2.6 large min and retina */
+
+@media (--media-large-min) and (--media-retina)
+{
+	.rs-component-teaser
+	{
+		background-image: var(--rs-url-teaser-ultra);
+	}
+}

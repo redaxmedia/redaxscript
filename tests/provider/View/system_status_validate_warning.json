@@ -1,0 +1,27 @@
+[
+	[
+		{
+			"phpOs": "winnt",
+			"apacheModuleArray": null
+		},
+		[
+			"Operating system not supported",
+			"Apache module is disabled: mod_deflate",
+			"Apache module is disabled: mod_headers",
+			"Apache module is disabled: mod_rewrite"
+		]
+	],
+	[
+		{
+			"phpOs": "linux",
+			"apacheModuleArray":
+			[
+				"mod_deflate",
+				"mod_headers",
+				"mod_rewrite"
+			]
+		},
+		[
+		]
+	]
+]

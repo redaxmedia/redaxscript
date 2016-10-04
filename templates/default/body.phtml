@@ -1,0 +1,66 @@
+<?php namespace Redaxscript\Template; ?>
+
+<!-- header -->
+
+<?php echo Tag::partial('templates/default/header.phtml'); ?>
+
+<!-- main -->
+
+<main id="main" class="rs-main rs-fn-clearfix">
+
+	<!-- teaser -->
+
+	<?php if (!Tag::registry('adminParameter')): ?>
+		<?php echo Tag::extra(
+		[	
+			'filter' => 'teaser'
+		]); ?>
+	<?php endif; ?>
+
+	<!-- page -->
+
+	<div class="rs-wrapper rs-wrapper-page rs-fn-clearfix">
+
+		<!-- handle content error -->
+
+		<?php if (Tag::registry('contentError')): ?>
+			<?php echo Tag::partial('templates/default/error.phtml'); ?>
+
+			<!-- else content and sidebar -->
+
+		<?php else: ?>
+			<?php echo Tag::partial(
+			[	
+				'templates/default/content.phtml',
+				'templates/default/sidebar.phtml'
+			]); ?>
+		<?php endif; ?>
+	</div>
+</main>
+
+<!-- footer -->
+
+<?php echo Tag::partial('templates/default/footer.phtml'); ?>
+
+<!-- foot script -->
+
+<?php Tag::script()
+	->init('foot')
+	->prependFile('assets/scripts/fallback.js')
+	->prependFile('//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js')
+	->appendFile('assets/scripts/dialog.js')
+	->appendFile('assets/scripts/form.js')
+	->appendFile('assets/scripts/interface.js')
+	->appendFile('assets/scripts/misc.js');
+?>
+
+<?php if (Tag::registry('loggedIn') === Tag::registry('token') && Tag::registry('firstParameter') !== 'logout'): ?>
+	<?php Tag::script()
+		->init('foot')
+		->appendFile('templates/admin/assets/scripts/alias.js')
+		->appendFile('templates/admin/assets/scripts/keyword.js')
+		->appendFile('templates/admin/assets/scripts/panel.js');
+	?>
+<?php endif; ?>
+
+<?php echo Tag::script()->init('foot')->concat(); ?>

@@ -1,0 +1,82 @@
+/**
+ * @tableofcontents
+ *
+ * 1. dock
+ *    1.1 box
+ *    1.2 link
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. dock */
+
+/* @section 1.1 box */
+
+.rs-admin-box-dock
+{
+	background: gray(30);
+	color: gray(185);
+	font: bold 0.875rem var(--rs-admin-font-primary);
+}
+
+/* @section 1.2 link */
+
+.rs-admin-link-dock
+{
+	box-sizing: border-box;
+	float: left;
+	line-height: 3.5em;
+	overflow: hidden;
+	padding: 0 1em;
+	position: relative;
+	text-align: center;
+	text-overflow: ellipsis;
+	text-transform: uppercase;
+	white-space: nowrap;
+	width: 33.33%;
+
+	&:hover
+	{
+		background: var(--rs-admin-gradient-primary);
+		color: gray(0);
+	}
+
+	&.rs-admin-link-delete:hover
+	{
+		background: var(--rs-admin-gradient-secondary);
+	}
+
+	&:not(:hover)
+	{
+		text-indent: -999em;
+
+		&:before
+		{
+			font-size: 1.75em;
+			left: 0;
+			position: absolute;
+			right: 0;
+			text-align: center;
+			text-indent: 0;
+			top: 0;
+		}
+
+		&.rs-admin-link-unpublish:before
+		{
+			@extend %rs-admin-icon-visibility-off;
+		}
+
+		&.rs-admin-link-edit:before
+		{
+			@extend %rs-admin-icon-create;
+		}
+
+		&.rs-admin-link-delete:before
+		{
+			@extend %rs-admin-icon-delete;
+		}
+	}
+}

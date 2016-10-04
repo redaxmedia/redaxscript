@@ -2,7 +2,7 @@
 namespace Redaxscript;
 
 /**
- * parent class to store the registry
+ * children class to store the registry
  *
  * @since 2.1.0
  *
@@ -19,7 +19,7 @@ class Registry extends Singleton
 	 * @var array
 	 */
 
-	protected static $_registryArray = array();
+	protected static $_registryArray = [];
 
 	/**
 	 * init the class
@@ -29,39 +29,35 @@ class Registry extends Singleton
 	 * @param array $registryArray array of the registry
 	 */
 
-	public static function init($registryArray = array())
+	public function init($registryArray = [])
 	{
 		if (is_array($registryArray))
 		{
-			self::$_registryArray = $registryArray;
+			self::$_registryArray = array_merge(self::$_registryArray, $registryArray);
 		}
 	}
 
 	/**
 	 * get item from registry
 	 *
-	 * @since 2.1.0
+	 * @since 3.0.0
 	 *
 	 * @param string $key key of the item
 	 *
 	 * @return mixed
 	 */
 
-	public static function get($key = null)
+	public function get($key = null)
 	{
-		$output = false;
-
-		/* values as needed */
-
-		if (!$key)
+		if (array_key_exists($key, self::$_registryArray))
 		{
-			$output = self::$_registryArray;
+			return self::$_registryArray[$key];
 		}
-		else if (array_key_exists($key, self::$_registryArray))
+		else if (!$key)
 		{
-			$output = self::$_registryArray[$key];
+			return self::$_registryArray;
 		}
-		return $output;
+		return false;
 	}
 
 	/**
@@ -73,7 +69,7 @@ class Registry extends Singleton
 	 * @param mixed $value value of the item
 	 */
 
-	public static function set($key = null, $value = null)
+	public function set($key = null, $value = null)
 	{
 		self::$_registryArray[$key] = $value;
 	}

@@ -1,0 +1,162 @@
+/**
+ * @tableofcontents
+ *
+ * 1. font face
+ * 2. list share this
+ * 3. link share this
+ *    3.1 icons
+ * 4. counter
+ *
+ * @since 2.0.2
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. font face */
+
+@font-face
+{
+	font-family: 'icon share this';
+	src: url('modules/ShareThis/assets/fonts/icon.woff') format('woff'), url('modules/ShareThis/assets/fonts/icon.ttf') format('truetype');
+}
+
+/* @section 2. list share this */
+
+.rs-list-share-this
+{
+	margin-top: 2em;
+}
+
+.rs-list-share-this li
+{
+	float: left;
+	margin: 0 3.5em 2em 0;
+}
+
+/* @section 3. link share this */
+
+.rs-link-share-this
+{
+	display: inline-block;
+	height: 2.75em;
+	position: relative;
+	text-indent: -999em;
+}
+
+/* @section 3.1 icons */
+
+.rs-link-share-this:before
+{
+	background: rgba(0, 0, 0, 0.15);
+	border-radius: 2em;
+	color: #fff;
+	content: 'a';
+	font: 1.125em/2.25em 'icon share this';
+	left: 0;
+	position: absolute;
+	text-align: center;
+	text-indent: 0;
+	top: 0;
+	transition: background 0.4s;
+	width: 2.25em;
+}
+
+/* facebook */
+
+.rs-link-share-this.rs-link-facebook:before
+{
+	content: 'b';
+}
+
+.rs-link-share-this.rs-link-facebook:hover:before
+{
+	background: #3b5998;
+}
+
+/* google plus one */
+
+.rs-link-share-this.rs-link-googleplusone:before
+{
+	content: 'c';
+}
+
+.rs-link-share-this.rs-link-googleplusone:hover:before
+{
+	background: #d34836;
+}
+
+/* twitter */
+
+.rs-link-share-this.rs-link-twitter:before
+{
+	content: 'd';
+}
+
+.rs-link-share-this.rs-link-twitter:hover:before
+{
+	background: #00aced;
+}
+
+/* pinterest */
+
+.rs-link-share-this.rs-link-pinterest:before
+{
+	content: 'e';
+}
+
+.rs-link-share-this.rs-link-pinterest:hover:before
+{
+	background: #cb2027;
+}
+
+/* linkedin */
+
+.rs-link-share-this.rs-link-linkedin:before
+{
+	content: 'f';
+}
+
+.rs-link-share-this.rs-link-linkedin:hover:before
+{
+	background: #007bb6;
+}
+
+/* stumbleupon */
+
+.rs-link-share-this.rs-link-stumbleupon:before
+{
+	content: 'g';
+}
+
+.rs-link-share-this.rs-link-stumbleupon:hover:before
+{
+	background: #f74425;
+}
+
+/* delicious */
+
+.rs-link-share-this.rs-link-delicious:before
+{
+	content: 'h';
+}
+
+.rs-link-share-this.rs-link-delicious:hover:before
+{
+	background: #205cc0;
+}
+
+/* @section 4. counter */
+
+.rs-link-share-this:after
+{
+	bottom: -1.25em;
+	color: rgba(0, 0, 0, 0.15);
+	content: attr(data-counter);
+	font: bold 1em arial;
+	left: 0;
+	position: absolute;
+	text-align: center;
+	text-indent: 0;
+	width: 2.5em;
+}

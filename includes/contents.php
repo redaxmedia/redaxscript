@@ -13,29 +13,33 @@
 
 function contents()
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+	$output = Redaxscript\Hook::trigger('contentStart');
 	$aliasValidator = new Redaxscript\Validator\Alias();
+	$lastId = Redaxscript\Registry::get('lastId');
+	$lastTable = Redaxscript\Registry::get('lastTable');
+	$categoryId = Redaxscript\Registry::get('categoryId');
+	$articleId = Redaxscript\Registry::get('articleId');
+	$firstParameter = Redaxscript\Registry::get('firstParameter');
 
 	/* query articles */
 
 	$articles = Redaxscript\Db::forTablePrefix('articles')->where('status', 1);
-	$articles->whereIn('language', array(
-		Redaxscript\Registry::get('language'),
-		''
-	));
+	$articles->whereLanguageIs(Redaxscript\Registry::get('language'));
 
 	/* handle sibling */
 
-	if (LAST_ID)
+	if ($lastId)
 	{
-		$sibling = Redaxscript\Db::forTablePrefix(LAST_TABLE)->where('id', LAST_ID)->findOne()->sibling;
+		$sibling = Redaxscript\Db::forTablePrefix($lastTable)->where('id', $lastId)->findOne()->sibling;
 
 		/* query sibling collection */
 
-		$sibling_array = Redaxscript\Db::forTablePrefix(LAST_TABLE)->whereIn('sibling', array(
-			LAST_ID,
+		$sibling_array = Redaxscript\Db::forTablePrefix($lastTable)->whereIn('sibling',
+		[
+			$lastId,
 			$sibling > 0 ? $sibling : null
-		))->where('language', Redaxscript\Registry::get('language'))->select('id')->findArrayFlat();
+		])
+		->where('language', Redaxscript\Registry::get('language'))->select('id')->findFlatArray();
 
 		/* process sibling array */
 
@@ -47,16 +51,16 @@ function contents()
 
 	/* handle article */
 
-	if (ARTICLE)
+	if ($articleId)
 	{
 		$id_array[] = $sibling;
-		$id_array[] = ARTICLE;
+		$id_array[] = $articleId;
 		$articles->whereIn('id', $id_array);
 	}
 
 	/* else handle category */
 
-	else if (CATEGORY)
+	else if ($categoryId)
 	{
 		if (!$id_array)
 		{
@@ -66,7 +70,7 @@ function contents()
 			}
 			else
 			{
-				$id_array[] = CATEGORY;
+				$id_array[] = $categoryId;
 			}
 		}
 		$articles->whereIn('category', $id_array)->orderGlobal('rank');
@@ -77,21 +81,21 @@ function contents()
 		if ($result)
 		{
 			$num_rows = count($result);
-			$sub_maximum = ceil($num_rows / s('limit'));
-			$sub_active = LAST_SUB_PARAMETER;
+			$sub_maximum = ceil($num_rows / Redaxscript\Db::getSetting('limit'));
+			$sub_active = Redaxscript\Registry::get('lastSubParameter');
 
 			/* sub parameter */
 
-			if (LAST_SUB_PARAMETER > $sub_maximum || LAST_SUB_PARAMETER == '')
+			if (Redaxscript\Registry::get('lastSubParameter') > $sub_maximum || !Redaxscript\Registry::get('lastSubParameter'))
 			{
 				$sub_active = 1;
 			}
 			else
 			{
-				$offset_string = ($sub_active - 1) * s('limit') . ', ';
+				$offset_string = ($sub_active - 1) * Redaxscript\Db::getSetting('limit') . ', ';
 			}
 		}
-		$articles->limit($offset_string . s('limit'));
+		$articles->limit($offset_string . Redaxscript\Db::getSetting('limit'));
 	}
 	else
 	{
@@ -105,13 +109,13 @@ function contents()
 
 	/* handle error */
 
-	if (CATEGORY && $num_rows == '')
+	if ($categoryId && !$num_rows)
 	{
-		$error = l('article_no');
+		$error = Redaxscript\Language::get('article_no');
 	}
-	else if ($result == '' || $num_rows_active == '' || CONTENT_ERROR)
+	else if (!$result || !$num_rows_active || Redaxscript\Registry::get('contentError'))
 	{
-		$error = l('content_not_found');
+		$error = Redaxscript\Language::get('content_not_found');
 	}
 
 	/* collect output */
@@ -125,7 +129,7 @@ function contents()
 
 			/* access granted */
 
-			if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\ValidatorInterface::PASSED)
+			if ($accessValidator->validate($access, Redaxscript\Registry::get('myGroups')) === Redaxscript\Validator\ValidatorInterface::PASSED)
 			{
 				if ($r)
 				{
@@ -134,33 +138,29 @@ function contents()
 						$$key = stripslashes($value);
 					}
 				}
-				if (LAST_TABLE == 'categories' || FULL_ROUTE == '' || $aliasValidator->validate(FIRST_PARAMETER, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::PASSED)
+				if ($lastTable == 'categories' || !Redaxscript\Registry::get('fullRoute') || $aliasValidator->validate($firstParameter, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::PASSED)
 				{
 					$route = build_route('articles', $id);
 				}
 
-				/* parser object */
+				/* parser */
 
 				$parser = new Redaxscript\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
-				$parser->init($text, array(
-					'className' => array(
-						'readmore' => 'link_read_more',
-						'codequote' => 'js_code_quote box_code'
-					),
+				$parser->init($text,
+				[
 					'route' => $route
-				));
+				]);
 
 				/* collect headline output */
 
-				$output .= Redaxscript\Hook::trigger('article_start', $r);
+				$output .= Redaxscript\Hook::trigger('contentFragmentStart', $r);
 				if ($headline == 1)
 				{
-					$output .= '<h2 class="title_content" id="article-' . $alias . '">';
-					if (LAST_TABLE == 'categories' || FULL_ROUTE == ''
-						|| $aliasValidator->validate(FIRST_PARAMETER, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::PASSED
+					$output .= '<h2 class="rs-title-content" id="article-' . $alias . '">';
+					if ($lastTable == 'categories' || !Redaxscript\Registry::get('fullRoute') || $aliasValidator->validate($firstParameter, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::PASSED
 					)
 					{
-						$output .= anchor_element('internal', '', '', $title, $route);
+						$output .= '<a href="' . Redaxscript\Registry::get('parameterRoute') . $route . '">' . $title . '</a>';
 					}
 					else
 					{
@@ -171,21 +171,18 @@ function contents()
 
 				/* collect box output */
 
-				$output .= '<div class="box_content">' . $parser->getOutput();
-				$output .= '</div>' . Redaxscript\Hook::trigger('article_end', $r);
+				$output .= '<div class="rs-box-content">' . $parser->getOutput() . '</div>';
+				if ($byline == 1)
+				{
+					$output .= byline('articles', $id, $author, $date);
+				}
+				$output .= Redaxscript\Hook::trigger('contentFragmentEnd', $r);
 
-				/* prepend admin dock */
+				/* admin dock */
 
-				if (LOGGED_IN == TOKEN && FIRST_PARAMETER != 'logout')
+				if (Redaxscript\Registry::get('loggedIn') == Redaxscript\Registry::get('token') && $firstParameter != 'logout')
 				{
 					$output .= admin_dock('articles', $id);
-				}
-
-				/* infoline */
-
-				if ($infoline == 1)
-				{
-					$output .= infoline('articles', $id, $author, $date);
 				}
 			}
 			else
@@ -196,16 +193,16 @@ function contents()
 
 		/* handle access */
 
-		if (LAST_TABLE == 'categories')
+		if ($lastTable == 'categories')
 		{
 			if ($num_rows_active == $counter)
 			{
-				$error = l('access_no');
+				$error = Language::get('access_no');
 			}
 		}
-		else if (LAST_TABLE == 'articles' && $counter == 1)
+		else if ($lastTable == 'articles' && $counter == 1)
 		{
-			$error = l('access_no');
+			$error = Redaxscript\Language::get('access_no');
 		}
 	}
 
@@ -213,36 +210,40 @@ function contents()
 
 	if ($error)
 	{
-		notification(l('something_wrong'), $error);
+		/* show error */
+
+		$messenger = new Redaxscript\Messenger(Redaxscript\Registry::getInstance());
+		echo $messenger->error($error, Redaxscript\Language::get('something_wrong'));
 	}
 	else
 	{
-		$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+		$output .= Redaxscript\Hook::trigger('contentEnd');
 		echo $output;
 
 		/* call comments as needed */
 
-		if (ARTICLE)
+		if ($articleId)
 		{
 			/* comments replace */
 
-			if ($comments == 1 && (COMMENTS_REPLACE == 1 || Redaxscript\Registry::get('commentsReplace')))
+			if ($comments == 1 && Redaxscript\Registry::get('commentReplace'))
 			{
-				Redaxscript\Hook::trigger('comments_replace');
+				Redaxscript\Hook::trigger('commentReplace');
 			}
 
 			/* else native comments */
 
 			else if ($comments > 0)
 			{
-				$route = build_route('articles', ARTICLE);
-				comments(ARTICLE, $route);
+				$route = build_route('articles', $articleId);
+				comments($articleId, $route);
 
 				/* comment form */
 
-				if ($comments == 1 || (COMMENTS_NEW == 1 && $comments == 3))
+				if ($comments == 1 || (Redaxscript\Registry::get('commentNew') && $comments == 3))
 				{
-					comment_form(ARTICLE, $language);
+					$commentForm = new Redaxscript\View\CommentForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+					echo $commentForm->render($articleId);
 				}
 			}
 		}
@@ -250,9 +251,9 @@ function contents()
 
 	/* call pagination as needed */
 
-	if ($sub_maximum > 1 && s('pagination') == 1)
+	if ($sub_maximum > 1 && Redaxscript\Db::getSetting('pagination') == 1)
 	{
-		$route = build_route('categories', CATEGORY);
+		$route = build_route('categories', $categoryId);
 		pagination($sub_active, $sub_maximum, $route);
 	}
 }
@@ -270,20 +271,20 @@ function contents()
  * @param mixed $filter
  */
 
-function extras($filter = '')
+function extras($filter)
 {
-	if ($filter == '')
+	if (!$filter)
 	{
-		$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
+		$output .= Redaxscript\Hook::trigger('extraStart');
 	}
+	$categoryId = Redaxscript\Registry::get('categoryId');
+	$articleId = Redaxscript\Registry::get('articleId');
+	$firstParameter = Redaxscript\Registry::get('firstParameter');
 
 	/* query extras */
 
 	$extras = Redaxscript\Db::forTablePrefix('extras')
-		->whereIn('language', array(
-			Redaxscript\Registry::get('language'),
-			''
-		));
+		->whereLanguageIs(Redaxscript\Registry::get('language'));
 
 	/* has filter */
 
@@ -297,10 +298,12 @@ function extras($filter = '')
 
 		/* query sibling collection */
 
-		$sibling_array = Redaxscript\Db::forTablePrefix('extras')->whereIn('sibling', array(
+		$sibling_array = Redaxscript\Db::forTablePrefix('extras')->whereIn('sibling',
+		[
 			$id,
 			$sibling > 0 ? $sibling : null
-		))->where('language', Redaxscript\Registry::get('language'))->select('id')->findArrayFlat();
+		])
+		->where('language', Redaxscript\Registry::get('language'))->select('id')->findFlatArray();
 
 		/* process sibling array */
 
@@ -313,7 +316,7 @@ function extras($filter = '')
 	}
 	else
 	{
-		$id_array = $extras->where('status', 1)->orderByAsc('rank')->select('id')->findArrayFlat();
+		$id_array = $extras->where('status', 1)->orderByAsc('rank')->select('id')->findFlatArray();
 	}
 
 	/* query result */
@@ -331,7 +334,7 @@ function extras($filter = '')
 
 			/* access granted */
 
-			if ($accessValidator->validate($access, MY_GROUPS) === Redaxscript\Validator\ValidatorInterface::PASSED)
+			if ($accessValidator->validate($access, Redaxscript\Registry::get('myGroups')) === Redaxscript\Validator\ValidatorInterface::PASSED)
 			{
 				if ($r)
 				{
@@ -341,36 +344,33 @@ function extras($filter = '')
 					}
 				}
 
-				/* show if cagegory or article matched */
+				/* show if category or article matched */
 
-				if ($category == CATEGORY || $article == ARTICLE || ($category == 0 && $article == 0))
+				if ($category === $categoryId || $article === $articleId || (!$category && !$article))
 				{
-					/* parser object */
+					/* parser */
 
 					$parser = new Redaxscript\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
-					$parser->init($text, array(
-						'className' => array(
-							'readmore' => 'link_read_more',
-							'codequote' => 'js_code_quote box_code'
-						),
+					$parser->init($text,
+					[
 						'route' => $route
-					));
+					]);
 
 					/* collect headline output */
 
-					$output .= Redaxscript\Hook::trigger('extra_start', $r);
+					$output .= Redaxscript\Hook::trigger('extraFragmentStart', $r);
 					if ($headline == 1)
 					{
-						$output .= '<h3 class="title_extra" id="extra-' . $alias . '">' . $title . '</h3>';
+						$output .= '<h3 class="rs-title-extra" id="extra-' . $alias . '">' . $title . '</h3>';
 					}
 
 					/* collect box output */
 
-					$output .= '<div class="box_extra">' . $parser->getOutput() . '</div>' . Redaxscript\Hook::trigger('extra_end', $r);
+					$output .= '<div class="rs-box-extra">' . $parser->getOutput() . '</div>' . Redaxscript\Hook::trigger('extraFragmentEnd', $r);
 
 					/* prepend admin dock */
 
-					if (LOGGED_IN == TOKEN && FIRST_PARAMETER != 'logout')
+					if (Redaxscript\Registry::get('loggedIn') == Redaxscript\Registry::get('token') && $firstParameter != 'logout')
 					{
 						$output .= admin_dock('extras', $id);
 					}
@@ -378,15 +378,15 @@ function extras($filter = '')
 			}
 		}
 	}
-	if ($filter == '')
+	if (!$filter)
 	{
-		$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+		$output .= Redaxscript\Hook::trigger('extraEnd');
 	}
 	echo $output;
 }
 
 /**
- * infoline
+ * byline
  *
  * @since 1.2.1
  * @deprecated 2.0.0
@@ -403,11 +403,11 @@ function extras($filter = '')
  * @return string
  */
 
-function infoline($table = '', $id = '', $author = '', $date = '')
+function byline($table, $id, $author, $date)
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
-	$time = date(s('time'), strtotime($date));
-	$date = date(s('date'), strtotime($date));
+	$output = Redaxscript\Hook::trigger('bylineStart');
+	$time = date(Redaxscript\Db::getSetting('time'), strtotime($date));
+	$date = date(Redaxscript\Db::getSetting('date'), strtotime($date));
 	if ($table == 'articles')
 	{
 		$comments_total = Redaxscript\Db::forTablePrefix('comments')->where('article', $id)->count();
@@ -415,39 +415,39 @@ function infoline($table = '', $id = '', $author = '', $date = '')
 
 	/* collect output */
 
-	$output .= '<div class="box_infoline box_infoline_' . $table . '">';
+	$output .= '<div class="rs-box-byline">';
 
 	/* collect author output */
 
 	if ($table == 'articles')
 	{
-		$output .= '<span class="infoline_posted_by">' . l('posted_by') . ' ' . $author . '</span>';
-		$output .= '<span class="infoline_on"> ' . l('on') . ' </span>';
+		$output .= '<span class="rs-text-by">' . Redaxscript\Language::get('posted_by') . ' ' . $author . '</span>';
+		$output .= '<span class="rs-text-on"> ' . Redaxscript\Language::get('on') . ' </span>';
 	}
 
 	/* collect date and time output */
 
-	$output .= '<span class="infoline_date">' . $date . '</span>';
-	$output .= '<span class="infoline_at"> ' . l('at') . ' </span>';
-	$output .= '<span class="infoline_time">' . $time . '</span>';
+	$output .= '<span class="rs-text-date">' . $date . '</span>';
+	$output .= '<span class="rs-text-at"> ' . Redaxscript\Language::get('at') . ' </span>';
+	$output .= '<span class="rs-text-time">' . $time . '</span>';
 
 	/* collect comment output */
 
 	if ($comments_total)
 	{
-		$output .= '<span class="divider">' . s('divider') . '</span><span class="infoline_total">' . $comments_total . ' ';
+		$output .= '<span class="rs-text-divider">' . Redaxscript\Db::getSetting('divider') . '</span><span class="rs-text-total">' . $comments_total . ' ';
 		if ($comments_total == 1)
 		{
-			$output .= l('comment');
+			$output .= Redaxscript\Language::get('comment');
 		}
 		else
 		{
-			$output .= l('comments');
+			$output .= Redaxscript\Language::get('comments');
 		}
 		$output .= '</span>';
 	}
 	$output .= '</div>';
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('bylineEnd');
 	return $output;
 }
 
@@ -466,10 +466,10 @@ function infoline($table = '', $id = '', $author = '', $date = '')
  * @param string $route
  */
 
-function pagination($sub_active = '', $sub_maximum = '', $route = '')
+function pagination($sub_active, $sub_maximum, $route)
 {
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
-	$output .= '<ul class="list_pagination">';
+	$output = Redaxscript\Hook::trigger('paginationStart');
+	$output .= '<ul class="rs-list-pagination">';
 
 	/* collect first and previous output */
 
@@ -477,8 +477,8 @@ function pagination($sub_active = '', $sub_maximum = '', $route = '')
 	{
 		$first_route = $route;
 		$previous_route = $route . '/' . ($sub_active - 1);
-		$output .= '<li class="item_first">' . anchor_element('internal', '', '', l('first'), $first_route) . '</li>';
-		$output .= '<li class="item_previous">' . anchor_element('internal', '', '', l('previous'), $previous_route, '', 'rel="previous"') . '</li>';
+		$output .= '<li class="rs-item-first"><a href="' . Redaxscript\Registry::get('parameterRoute') . $first_route . '">' . Redaxscript\Language::get('first') . '</a></li>';
+		$output .= '<li class="rs-item-previous"><a href="' . Redaxscript\Registry::get('parameterRoute') . $previous_route . '" rel="previous">' . Redaxscript\Language::get('previous') . '</a></li>';
 	}
 
 	/* collect center output */
@@ -497,11 +497,11 @@ function pagination($sub_active = '', $sub_maximum = '', $route = '')
 		if ($i == $sub_active)
 		{
 			$j++;
-			$output .= '<li class="item_number item_active"><span>' . $i . '</span></li>';
+			$output .= '<li class="rs-item-number rs-item-active"><span>' . $i . '</span></li>';
 		}
 		else if ($i > 0 && $i < $sub_maximum + 1)
 		{
-			$output .= '<li class="item_number">' . anchor_element('internal', '', '', $i, $route . '/' . $i) . '</li>';
+			$output .= '<li class="rs-item-number"><a href="' . Redaxscript\Registry::get('parameterRoute') . $route . '/' . $i . '">' . $i . '</a></li>';
 		}
 	}
 
@@ -511,135 +511,10 @@ function pagination($sub_active = '', $sub_maximum = '', $route = '')
 	{
 		$next_route = $route . '/' . ($sub_active + 1);
 		$last_route = $route . '/' . $sub_maximum;
-		$output .= '<li class="item_next">' . anchor_element('internal', '', '', l('next'), $next_route, '', 'rel="next"') . '</li>';
-		$output .= '<li class="item_last">' . anchor_element('internal', '', '', l('last'), $last_route) . '</li>';
+		$output .= '<li class="rs-item-next"><a href="' . Redaxscript\Registry::get('parameterRoute') . $next_route . '" rel="next">' . Redaxscript\Language::get('next') . '</a></li>';
+		$output .= '<li class="rs-item-last"><a href="' . Redaxscript\Registry::get('parameterRoute') . $last_route . '">' . Redaxscript\Language::get('last') . '</a></li>';
 	}
 	$output .= '</ul>';
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
+	$output .= Redaxscript\Hook::trigger('paginationEnd');
 	echo $output;
-}
-
-/**
- * notification
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Contents
- * @author Henry Ruhs
- *
- * @param string $title
- * @param string $text
- * @param string $action
- * @param string $route
- */
-
-function notification($title = '', $text = '', $action = '', $route = '')
-{
-	$output = Redaxscript\Hook::trigger(__FUNCTION__ . '_start');
-
-	/* detect needed mode */
-
-	if (LOGGED_IN == TOKEN && FIRST_PARAMETER == 'admin')
-	{
-		$suffix = '_admin';
-	}
-	else
-	{
-		$suffix = '_default';
-	}
-
-	/* collect output */
-
-	if ($title)
-	{
-		$output .= '<h2 class="title_content title_notification">' . $title . '</h2>';
-	}
-	$output .= '<div class="box_content box_notification">';
-
-	/* collect text output */
-
-	if (is_string($text))
-	{
-		$text = array(
-			$text
-		);
-	}
-	foreach ($text as $value)
-	{
-		if ($value)
-		{
-			$output .= '<p class="text_notification">' . $value . l('point') . '</p>';
-		}
-	}
-
-	/* collect button output */
-
-	if ($action && $route)
-	{
-		$output .= anchor_element('internal', '', 'js_forward_notification button' . $suffix, $action, $route);
-	}
-	$output .= '</div>';
-	$output .= Redaxscript\Hook::trigger(__FUNCTION__ . '_end');
-	echo $output;
-}
-
-/**
- * break up
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Replace
- * @author Henry Ruhs
- *
- * @param string $input
- * @return string
- */
-
-function break_up($input = '')
-{
-	$search = array(
-		chr(13) . chr(10),
-		chr(13),
-		chr(10)
-	);
-	$replace = '<br />';
-	$output = str_replace($search, $replace, $input);
-	return $output;
-}
-
-/**
- * truncate
- *
- * @since 1.2.1
- * @deprecated 2.0.0
- *
- * @package Redaxscript
- * @category Replace
- * @author Henry Ruhs
- *
- * @param string $input
- * @param integer $length
- * @param string $end
- * @return string
- */
-
-function truncate($input = '', $length = '', $end = '')
-{
-	$length -= mb_strlen($end);
-	if (mb_strlen($input) > $length)
-	{
-		$output = trim(mb_substr($input, 0, $length)) . $end;
-	}
-
-	/* else fallback */
-
-	else
-	{
-		$output = $input;
-	}
-	return $output;
 }

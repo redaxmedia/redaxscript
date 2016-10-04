@@ -1,0 +1,20 @@
+/**
+ * @tableofcontents
+ *
+ * 1. field
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. field */
+
+.rs-field-default,
+.rs-field-search,
+.rs-field-select,
+.rs-field-textarea
+{
+	border: 1px solid;
+}

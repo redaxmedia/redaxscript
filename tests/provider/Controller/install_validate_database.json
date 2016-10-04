@@ -1,0 +1,49 @@
+[
+	[
+		{
+			"dbType": null,
+			"dbHost": null,
+			"dbName": null,
+			"dbUser": null,
+			"dbPassword": null,
+			"dbPrefix": null,
+			"dbSalt": null
+		},
+		[
+			"Type is empty",
+			"Host is empty",
+			"Name is empty",
+			"User is empty"
+		]
+	],
+	[
+		{
+			"dbType": "sqlite",
+			"dbHost": null,
+			"dbName": null,
+			"dbUser": null,
+			"dbPassword": null,
+			"dbPrefix": null,
+			"dbSalt": null
+		},
+		[
+			"Host is empty"
+		]
+	],
+	[
+		{
+			"dbType": "mysql",
+			"dbHost": null,
+			"dbName": null,
+			"dbUser": null,
+			"dbPassword": null,
+			"dbPrefix": null,
+			"dbSalt": null
+		},
+		[
+			"Host is empty",
+			"Name is empty",
+			"User is empty"
+		]
+	]
+]

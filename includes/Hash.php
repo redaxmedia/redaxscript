@@ -2,7 +2,7 @@
 namespace Redaxscript;
 
 /**
- * parent class to generate a salted hash
+ * parent class to create a salted hash
  *
  * @since 2.6.0
  *
@@ -24,7 +24,7 @@ class Hash
 	/**
 	 * plain raw
 	 *
-	 * @var string|number
+	 * @var string
 	 */
 
 	protected $_raw;

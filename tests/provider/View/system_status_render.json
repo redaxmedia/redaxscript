@@ -1,0 +1,65 @@
+[
+	[
+		{
+			"dbStatus": 0,
+			"phpOs": "linux",
+			"phpVersion": "5.5.0",
+			"pdoDriverArray":
+			[
+				"sqlite",
+				"mysql",
+				"pgsql"
+			],
+			"apacheModuleArray":
+			[
+				"mod_deflate",
+				"mod_headers",
+				"mod_rewrite"
+			],
+			"sessionStatus": true
+		},
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-error\">Connection to database failed</div>"
+	],
+	[
+		{
+			"dbStatus": 2,
+			"phpOs": "winnt",
+			"phpVersion": "5.5.0",
+			"pdoDriverArray":
+			[
+				"sqlite",
+				"mysql",
+				"pgsql"
+			],
+			"apacheModuleArray":
+			[
+				"mod_deflate",
+				"mod_headers",
+				"mod_rewrite"
+			],
+			"sessionStatus": true
+		},
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-warning\">Operating system not supported</div>"
+	],
+	[
+		{
+			"dbStatus": 2,
+			"phpOs": "linux",
+			"phpVersion": "5.5.0",
+			"pdoDriverArray":
+			[
+				"sqlite",
+				"mysql",
+				"pgsql"
+			],
+			"apacheModuleArray":
+			[
+				"mod_deflate",
+				"mod_headers",
+				"mod_rewrite"
+			],
+			"sessionStatus": true
+		},
+		null
+	]
+]

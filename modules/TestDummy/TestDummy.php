@@ -21,13 +21,14 @@ class TestDummy extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray =
+	[
 		'name' => 'Test dummy',
 		'alias' => 'TestDummy',
 		'author' => 'Redaxmedia',
 		'description' => 'Made for testing',
-		'version' => '2.6.2'
-	);
+		'version' => '3.0.0'
+	];
 
 	/**
 	 * render

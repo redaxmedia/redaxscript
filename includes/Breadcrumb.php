@@ -5,7 +5,7 @@ use Redaxscript\Html;
 use Redaxscript\Validator;
 
 /**
- * parent class to generate a breadcrumb navigation
+ * parent class to create a breadcrumb navigation
  *
  * @since 2.1.0
  *
@@ -39,7 +39,7 @@ class Breadcrumb
 	 * @var array
 	 */
 
-	protected $_breadcrumbArray = array();
+	protected $_breadcrumbArray = [];
 
 	/**
 	 * options of the breadcrumb
@@ -47,13 +47,15 @@ class Breadcrumb
 	 * @var array
 	 */
 
-	protected $_options = array(
-		'className' => array(
-			'list' => 'list-breadcrumb',
-			'divider' => 'item-divider'
-		),
+	protected $_optionArray =
+	[
+		'className' =>
+		[
+			'list' => 'rs-list-breadcrumb',
+			'divider' => 'rs-item-divider'
+		],
 		'divider' => null
-	);
+	];
 
 	/**
 	 * constructor of the class
@@ -71,28 +73,41 @@ class Breadcrumb
 	}
 
 	/**
+	 * stringify the breadcrumb
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public function __toString()
+	{
+		return $this->render();
+	}
+
+	/**
 	 * init the class
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param array $options options of the breadcrumb
+	 * @param array $optionArray options of the breadcrumb
 	 */
 
-	public function init($options = array())
+	public function init($optionArray = [])
 	{
-		if (is_array($options))
+		if (is_array($optionArray))
 		{
-			$this->_options = array_merge($this->_options, $options);
+			$this->_optionArray = array_merge($this->_optionArray, $optionArray);
 		}
-		if (!$this->_options['divider'])
+		if (!$this->_optionArray['divider'])
 		{
-			$this->_options['divider'] = Db::getSettings('divider');
+			$this->_optionArray['divider'] = Db::getSetting('divider');
 		}
 		$this->_create();
 	}
 
 	/**
-	 * get the breadcrumb array for further processing
+	 * get the breadcrumb array
 	 *
 	 * @since 2.1.0
 	 *
@@ -114,7 +129,7 @@ class Breadcrumb
 
 	public function render()
 	{
-		$output = Hook::trigger('breadcrumb_start');
+		$output = Hook::trigger('breadcrumbStart');
 		$outputItem = null;
 
 		/* breadcrumb keys */
@@ -129,9 +144,10 @@ class Breadcrumb
 		$itemElement = new Html\Element();
 		$itemElement->init('li');
 		$listElement = new Html\Element();
-		$listElement->init('ul', array(
-			'class' => $this->_options['className']['list']
-		));
+		$listElement->init('ul',
+		[
+			'class' => $this->_optionArray['className']['list']
+		]);
 
 		/* collect item output */
 
@@ -147,10 +163,9 @@ class Breadcrumb
 
 				if ($route)
 				{
-					$outputItem .= $linkElement->attr(array(
-						'href' => $this->_registry->get('rewriteRoute') . $route,
-						'title' => $title
-					))->text($title);
+					$outputItem .= $linkElement
+						->attr('href', $this->_registry->get('parameterRoute') . $route)
+						->text($title);
 				}
 
 				/* else plain text */
@@ -165,7 +180,7 @@ class Breadcrumb
 
 				if ($key !== $lastKey)
 				{
-					$outputItem .= $itemElement->addClass($this->_options['className']['divider'])->text($this->_options['divider']);
+					$outputItem .= $itemElement->addClass($this->_optionArray['className']['divider'])->text($this->_optionArray['divider']);
 				}
 			}
 		}
@@ -176,7 +191,7 @@ class Breadcrumb
 		{
 			$output = $listElement->html($outputItem);
 		}
-		$output .= Hook::trigger('breadcrumb_end');
+		$output .= Hook::trigger('breadcrumbEnd');
 		return $output;
 	}
 
@@ -191,7 +206,7 @@ class Breadcrumb
 	protected function _create($key = 0)
 	{
 		$aliasValidator = new Validator\Alias();
-		$title = $this->_registry->get('title');
+		$title = $this->_registry->get('metaTitle');
 		$firstParameter = $this->_registry->get('firstParameter');
 		$firstTable = $this->_registry->get('firstTable');
 		$fullRoute = $this->_registry->get('fullRoute');

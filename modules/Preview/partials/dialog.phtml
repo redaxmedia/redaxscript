@@ -1,38 +1,56 @@
 <?php
 namespace Redaxscript;
 
-$suffix = $admin ? '_admin' : '_default';
-$titlePartialElement = new Html\Element();
-$titlePartialElement->init('h3', array(
-	'class' => 'title_content_sub'
-));
-$titleDialogElement = new Html\Element();
-$titleDialogElement->init('h3', array(
-	'class' => 'title_dialog title_dialog' . $suffix
-));
-$boxDialogElement = new Html\Element();
-$boxDialogElement->init('div', array(
-	'class' => 'box_dialog' . $suffix
-));
-$textDialogElement = new Html\Element();
-$textDialogElement->init('p');
-$buttonDialogElement = new Html\Element();
-$buttonDialogElement->init('a', array(
-	'class' => 'button' . $suffix
-));
+$titleElement = new Html\Element();
+$titleElement->init('h3',
+[
+	'class' => $admin ? 'rs-admin-title-dialog' : 'rs-title-dialog'
+]);
+$boxElement = new Html\Element();
+$boxElement->init('div',
+[
+	'class' => $admin ? 'rs-admin-box-dialog' : 'rs-box-dialog'
+]);
+$textElement = new Html\Element();
+$textElement->init('p');
+$inputElement = new Html\Element();
+$inputElement->init('input',
+[
+	'class' => $admin ? 'rs-admin-field-default' : 'rs-field-default'
+]);
+$buttonElement = new Html\Element();
+$buttonElement->init('button',
+[
+	'class' => $admin ? 'rs-admin-button-default' : 'rs-button-default'
+]);
 ?>
 
-<!-- dialog -->
+<!-- confirm -->
 
-<?php echo $titlePartialElement->text('.title_dialog' . $suffix . ' + .box_dialog' . $suffix); ?>
+<div class="<?php echo $admin ? 'rs-admin-overlay-dialog' : 'rs-overlay-dialog'; ?>">
+	<div class="<?php echo $admin ? 'rs-admin-component-dialog' : 'rs-component-dialog'; ?>">
 
-<div class="js_dialog dialog<?php echo $suffix; ?>">
+		<?php echo $titleElement->text(Language::get('confirm')); ?>
+		<?php echo $boxElement->html(
+			$textElement->text(Language::get('dialog_question') . Language::get('question_mark')) .
+			$buttonElement->copy()->text(Language::get('ok')) .
+			$buttonElement->copy()->text(Language::get('cancel'))
+		); ?>
 
-	<?php echo $titleDialogElement->text(Language::get('confirm')); ?>
-	<?php echo $boxDialogElement->html(
-		$textDialogElement->text(Language::get('dialog_question') . Language::get('question_mark')) .
-		$buttonDialogElement->copy()->text(Language::get('ok')) .
-		$buttonDialogElement->copy()->text(Language::get('cancel'))
-	); ?>
+	</div>
+</div>
 
+<!-- prompt -->
+
+<div class="<?php echo $admin ? 'rs-admin-overlay-dialog' : 'rs-overlay-dialog'; ?>">
+	<div class="<?php echo $admin ? 'rs-admin-component-dialog' : 'rs-component-dialog'; ?>">
+
+		<?php echo $titleElement->text(Language::get('prompt')); ?>
+		<?php echo $boxElement->html(
+			$inputElement .
+			$buttonElement->copy()->text(Language::get('ok')) .
+			$buttonElement->copy()->text(Language::get('cancel'))
+		); ?>
+
+	</div>
 </div>

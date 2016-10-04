@@ -1,0 +1,54 @@
+[
+	[
+		{
+			"name": null,
+			"user": null,
+			"email": null,
+			"task": 1
+		},
+		[
+			"$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u",
+			"4dff4ea340f0a823f15d3f4f01ab62eae0e5da579ccb851f8db9dfe84c58b2b37b89903a740e1ee172da793a6e79d560e5f7f9bd058a12a280433ed6fa46510a"
+		],
+		"<h2 class=\"rs-title-note rs-is-error\">An error occurred</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-error\"><ul class=\"rs-list-note\"><li>Name is empty</li><li>User is empty</li><li>Email is empty</li></ul></div><a href=\"register\" class=\"rs-button-note rs-is-error\">Back</a>"
+	],
+	[
+		{
+			"name": "test",
+			"user": "1234567890123456789012345678901",
+			"email": "test@test",
+			"task": 1
+		},
+		[
+			"$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u",
+			"4dff4ea340f0a823f15d3f4f01ab62eae0e5da579ccb851f8db9dfe84c58b2b37b89903a740e1ee172da793a6e79d560e5f7f9bd058a12a280433ed6fa46510a"
+		],
+		"<h2 class=\"rs-title-note rs-is-error\">An error occurred</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-error\"><ul class=\"rs-list-note\"><li>User is incorrect</li><li>Email is incorrect</li></ul></div><a href=\"register\" class=\"rs-button-note rs-is-error\">Back</a>"
+	],
+	[
+		{
+			"name": "test",
+			"user": "test",
+			"email": "test@test.com",
+			"task": 1
+		},
+		[
+			null,
+			null
+		],
+		"<h2 class=\"rs-title-note rs-is-error\">An error occurred</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-error\"><ul class=\"rs-list-note\"><li>User already exists</li><li>Captcha is incorrect</li></ul></div><a href=\"register\" class=\"rs-button-note rs-is-error\">Back</a>"
+	],
+	[
+		{
+			"name": "new",
+			"user": "new",
+			"email": "test@test.com",
+			"task": 1
+		},
+		[
+			"$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u",
+			"4dff4ea340f0a823f15d3f4f01ab62eae0e5da579ccb851f8db9dfe84c58b2b37b89903a740e1ee172da793a6e79d560e5f7f9bd058a12a280433ed6fa46510a"
+		],
+		"<h2 class=\"rs-title-note rs-is-success\">Operation completed successfully</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-success\">Your registration information has been successfully sent</div><a href=\"login\" class=\"rs-button-note rs-is-success\">Login</a><meta content=\"2;url=/login\" http-equiv=\"refresh\" />"
+	]
+]

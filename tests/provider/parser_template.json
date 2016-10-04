@@ -1,0 +1,18 @@
+[
+	[
+		"<template>breadcrumb<template>",
+		"<ul class=\"rs-list-breadcrumb\"><li>Home</li></ul>"
+	],
+	[
+		"<template>{\"setting\":{\"key\":\"title\"}}<template>",
+		"Redaxscript"
+	],
+	[
+		"<template>invalid<template>",
+		null
+	],
+	[
+		"<template>{\"invalid\":{\"test\":\"test\"}}<template>",
+		null
+	]
+]

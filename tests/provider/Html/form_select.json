@@ -1,15 +1,15 @@
 [
 	[
-		"",
-		"",
-		"<form class=\"js-validate-form form-default\" method=\"post\"><select class=\"field-select\"></select></form>"
+		null,
+		null,
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><select class=\"rs-field-select\"></select></form>"
 	],
 	[
-		"",
+		null,
 		{
-			"class": "test"
+			"class": "rs-test"
 		},
-		"<form class=\"js-validate-form form-default\" method=\"post\"><select class=\"test\"></select></form>"
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><select class=\"rs-test\"></select></form>"
 	],
 	[
 		[
@@ -17,8 +17,8 @@
 			2,
 			3
 		],
-		"",
-		"<form class=\"js-validate-form form-default\" method=\"post\"><select class=\"field-select\"><option value=\"1\"></option><option value=\"2\"></option><option value=\"3\"></option></select></form>"
+		null,
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><select class=\"rs-field-select\"><option value=\"1\">1</option><option value=\"2\">2</option><option value=\"3\">3</option></select></form>"
 	],
 	[
 		{
@@ -26,8 +26,8 @@
 			"Two": 2,
 			"Three": 3
 		},
-		"",
-		"<form class=\"js-validate-form form-default\" method=\"post\"><select class=\"field-select\"><option value=\"1\">One</option><option value=\"2\">Two</option><option value=\"3\">Three</option></select></form>"
+		null,
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><select class=\"rs-field-select\"><option value=\"1\">One</option><option value=\"2\">Two</option><option value=\"3\">Three</option></select></form>"
 	],
 	[
 		{
@@ -38,6 +38,50 @@
 		{
 			"value": 2
 		},
-		"<form class=\"js-validate-form form-default\" method=\"post\"><select class=\"field-select\"><option value=\"1\">One</option><option selected=\"selected\" value=\"2\">Two</option><option value=\"3\">Three</option></select></form>"
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><select class=\"rs-field-select\"><option value=\"1\">One</option><option selected=\"selected\" value=\"2\">Two</option><option value=\"3\">Three</option></select></form>"
+	],
+	[
+		{
+			"One": 1,
+			"Two": 2,
+			"Three": 3
+		},
+		{
+			"multiple": "multiple",
+			"size": 3,
+			"value": 1
+		},
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><select class=\"rs-field-select\" multiple=\"multiple\" size=\"3\"><option selected=\"selected\" value=\"1\">One</option><option value=\"2\">Two</option><option value=\"3\">Three</option></select></form>"
+	],
+	[
+		{
+			"One": 1,
+			"Two": 2,
+			"Three": 3
+		},
+		{
+			"multiple": "multiple",
+			"size": 3,
+			"value": "2, 3, 4"
+		},
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><select class=\"rs-field-select\" multiple=\"multiple\" size=\"3\"><option value=\"1\">One</option><option selected=\"selected\" value=\"2\">Two</option><option selected=\"selected\" value=\"3\">Three</option></select></form>"
+	],
+	[
+		{
+			"One": 1,
+			"Two": 2,
+			"Three": 3
+		},
+		{
+			"multiple": "multiple",
+			"size": 3,
+			"value":
+			[
+				3,
+				4,
+				5
+			]
+		},
+		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><select class=\"rs-field-select\" multiple=\"multiple\" size=\"3\"><option value=\"1\">One</option><option value=\"2\">Two</option><option selected=\"selected\" value=\"3\">Three</option></select></form>"
 	]
 ]

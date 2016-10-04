@@ -1,0 +1,24 @@
+[
+	[
+		{
+			"firstTable": "categories",
+			"secondTable": null,
+			"lastTable": "articles",
+			"firstParameter": "test",
+			"secondParameter": null,
+			"fullRoute": null
+		},
+		null
+	],
+	[
+		{
+			"firstTable": "categories",
+			"secondTable": null,
+			"lastTable": "articles",
+			"firstParameter": "test-one",
+			"secondParameter": null,
+			"fullRoute": "test/test-one"
+		},
+		"test/test-one"
+	]
+]

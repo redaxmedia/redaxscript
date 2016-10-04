@@ -21,7 +21,8 @@ class Version extends ClientAbstract
 
 	protected function _autorun()
 	{
-		$this->_detect(array(
+		$this->_detect(
+		[
 			'version',
 			'chrome',
 			'edge',
@@ -29,6 +30,6 @@ class Version extends ClientAbstract
 			'konqueror',
 			'msie',
 			'netscape'
-		), 'version');
+		], 'version');
 	}
 }

@@ -4,7 +4,7 @@ namespace Redaxscript\Modules\Demo;
 use Redaxscript\Module;
 
 /**
- * parent class to store module config
+ * children class to store module config
  *
  * @since 2.4.0
  *
@@ -16,16 +16,18 @@ use Redaxscript\Module;
 class Config extends Module
 {
 	/**
-	 * module config
+	 * array of config
 	 *
 	 * @var array
 	 */
 
-	protected static $_config = array(
-		'modules' => array(
+	protected static $_configArray =
+	[
+		'modules' =>
+		[
 			'Analytics' => 'Redaxscript\Modules\Analytics\Analytics',
 			'Demo' => 'Redaxscript\Modules\Demo\Demo',
 			'Editor' => 'Redaxscript\Modules\Editor\Editor'
-		)
-	);
+		]
+	];
 }

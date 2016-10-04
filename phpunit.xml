@@ -1,0 +1,248 @@
+<?xml version="1.0"?>
+<phpunit bootstrap="tests/phpunit/bootstrap.php">
+
+	<!-- listeners -->
+
+	<listeners>
+		<listener class="JohnKary\PHPUnit\Listener\SpeedTrapListener">
+			<arguments>
+				<array>
+					<element key="slowThreshold">
+						<integer>200</integer>
+					</element>
+				</array>
+			</arguments>
+		</listener>
+	</listeners>
+
+	<!-- filter -->
+
+	<filter>
+		<whitelist processUncoveredFilesFromWhitelist="true">
+			<directory suffix=".php">includes</directory>
+			<exclude>
+				<file>includes/bootstrap.php</file>
+				<file>console.php</file>
+				<file>index.php</file>
+				<file>install.php</file>
+
+				<!-- deprecated -->
+
+				<file>includes/admin_admin.php</file>
+				<file>includes/admin_list.php</file>
+				<file>includes/admin_query.php</file>
+				<file>includes/admin_router.php</file>
+				<file>includes/comments.php</file>
+				<file>includes/contents.php</file>
+				<file>includes/loader.php</file>
+				<file>includes/navigation.php</file>
+				<file>includes/query.php</file>
+				<file>includes/router.php</file>
+				<file>includes/startup.php</file>
+			</exclude>
+		</whitelist>
+	</filter>
+
+	<!-- testsuites -->
+
+	<testsuites>
+
+		<!-- admin -->
+
+		<testsuite name="admin">
+			<directory>tests/phpunit/Admin</directory>
+		</testsuite>
+
+		<!-- client -->
+
+		<testsuite name="client">
+			<directory>tests/phpunit/Client</directory>
+		</testsuite>
+
+		<!-- console -->
+
+		<testsuite name="console">
+			<directory>tests/phpunit/Console</directory>
+		</testsuite>
+
+		<!-- controller -->
+
+		<testsuite name="controller">
+			<directory>tests/phpunit/Controller</directory>
+		</testsuite>
+
+		<!-- detector -->
+
+		<testsuite name="detector">
+			<directory>tests/phpunit/Detector</directory>
+		</testsuite>
+
+		<!-- filter -->
+
+		<testsuite name="filter">
+			<directory>tests/phpunit/Filter</directory>
+		</testsuite>
+
+		<!-- head -->
+
+		<testsuite name="head">
+			<directory>tests/phpunit/Head</directory>
+		</testsuite>
+
+		<!-- html -->
+
+		<testsuite name="html">
+			<directory>tests/phpunit/Html</directory>
+		</testsuite>
+
+		<!-- router -->
+
+		<testsuite name="router">
+			<directory>tests/phpunit/Router</directory>
+		</testsuite>
+
+		<!-- server -->
+
+		<testsuite name="server">
+			<directory>tests/phpunit/Server</directory>
+		</testsuite>
+
+		<!-- template -->
+
+		<testsuite name="template">
+			<directory>tests/phpunit/Template</directory>
+		</testsuite>
+
+		<!-- validator -->
+
+		<testsuite name="validator">
+			<directory>tests/phpunit/Validator</directory>
+		</testsuite>
+
+		<!-- view -->
+
+		<testsuite name="view">
+			<directory>tests/phpunit/View</directory>
+		</testsuite>
+
+		<!-- auth -->
+
+		<testsuite name="auth">
+			<file>tests/phpunit/AuthTest.php</file>
+		</testsuite>
+
+		<!-- autoload -->
+
+		<testsuite name="autoload">
+			<file>tests/phpunit/AutoloaderTest.php</file>
+		</testsuite>
+
+		<!-- breadcrumb -->
+
+		<testsuite name="breadcrumb">
+			<file>tests/phpunit/BreadcrumbTest.php</file>
+		</testsuite>
+
+		<!-- cache -->
+
+		<testsuite name="cache">
+			<directory>tests/phpunit/CacheTest.php</directory>
+		</testsuite>
+
+		<!-- captcha -->
+
+		<testsuite name="captcha">
+			<file>tests/phpunit/CaptchaTest.php</file>
+		</testsuite>
+
+		<!-- config -->
+
+		<testsuite name="config">
+			<file>tests/phpunit/ConfigTest.php</file>
+		</testsuite>
+
+		<!-- db -->
+
+		<testsuite name="db">
+			<file>tests/phpunit/DbTest.php</file>
+		</testsuite>
+
+		<!-- directory -->
+
+		<testsuite name="_directory">
+			<file>tests/phpunit/DirectoryTest.php</file>
+		</testsuite>
+
+		<!-- hash -->
+
+		<testsuite name="hash">
+			<file>tests/phpunit/HashTest.php</file>
+		</testsuite>
+
+		<!-- hook -->
+
+		<testsuite name="hook">
+			<file>tests/phpunit/HookTest.php</file>
+		</testsuite>
+
+		<!-- installer -->
+
+		<testsuite name="installer">
+			<file>tests/phpunit/InstallerTest.php</file>
+		</testsuite>
+
+		<!-- language -->
+
+		<testsuite name="language">
+			<file>tests/phpunit/LanguageTest.php</file>
+		</testsuite>
+
+		<!-- mailer -->
+
+		<testsuite name="mailer">
+			<file>tests/phpunit/MailerTest.php</file>
+		</testsuite>
+
+		<!-- messenger -->
+
+		<testsuite name="messenger">
+			<file>tests/phpunit/MessengerTest.php</file>
+		</testsuite>
+
+		<!-- module -->
+
+		<testsuite name="module">
+			<file>tests/phpunit/ModuleTest.php</file>
+		</testsuite>
+
+		<!-- parser -->
+
+		<testsuite name="parser">
+			<file>tests/phpunit/ParserTest.php</file>
+		</testsuite>
+
+		<!-- registry -->
+
+		<testsuite name="registry">
+			<file>tests/phpunit/RegistryTest.php</file>
+		</testsuite>
+
+		<!-- reader -->
+
+		<testsuite name="reader">
+			<file>tests/phpunit/ReaderTest.php</file>
+		</testsuite>
+
+		<!-- request -->
+
+		<testsuite name="request">
+			<file>tests/phpunit/RequestTest.php</file>
+		</testsuite>
+
+		<!-- singleton -->
+
+		<testsuite name="singleton">
+			<file>tests/phpunit/SingletonTest.php</file>
+		</testsuite>
+	</testsuites>
+</phpunit>

@@ -1,57 +1,31 @@
-<?php use Redaxscript\Template as Template; ?>
+<?php namespace Redaxscript\Template; ?>
 
-<header id="header" class="header">
-	<section class="wrapper clearfix">
+<!-- header -->
 
-		<!-- website branding -->
+<header id="header" class="rs-header rs-has-menu">
+	<section class="rs-wrapper rs-fn-clearfix">
 
-		<div class="box_first grid_space s3o7">
-			<img src="templates/default/images/redaxscript.svg" class="logo_website" alt="Redaxscript" />
+		<div class="rs-box-header rs-fn-clearfix">
 
-			<!-- metadata -->
+			<!-- title -->
 
-			<div class="wrapper_metadata">
+			<?php if (Tag::setting('title')): ?>
+				<h1 class="rs-title-header">
+					<a href="<?php echo Tag::registry('root'); ?>">
+						<?php echo Tag::setting('title'); ?>
+					</a>
+				</h1>
+			<?php endif; ?>
 
-				<!-- title -->
+			<!-- description -->
 
-				<?php if (Template::setting('title')): ?>
-					<h1 class="title_website">
-						<a href="<?php echo Template::registry('root'); ?>"><?php echo Template::setting('title'); ?></a>
-					</h1>
-				<?php endif; ?>
-
-				<!-- description -->
-
-				<?php if (Template::setting('description')): ?>
-					<p class="description_website"><?php echo Template::setting('description'); ?></p>
-				<?php endif; ?>
-			</div>
+			<?php if (Tag::setting('description')): ?>
+				<span class="rs-text-header" title="<?php echo Tag::setting('description'); ?>"><?php echo Tag::setting('description'); ?></span>
+			<?php endif; ?>
 		</div>
 
-		<!-- dropdown -->
+		<!-- menu -->
 
-		<div class="box_last grid_space s4o7">
-			<ul class="js_dropdown list_dropdown list_header">
-
-				<!-- categories -->
-
-				<li><?php echo Template::language('categories'); ?>
-					<?php echo Template::navigation('categories', array(
-						'children' => 1,
-						'class' => 'list_header_children',
-						'limit' => 5
-					)); ?>
-				</li>
-
-				<!-- articles -->
-
-				<li><?php echo Template::language('articles'); ?>
-					<?php echo Template::navigation('articles', array(
-						'class' => 'list_header_children',
-						'limit' => 5
-					)); ?>
-				</li>
-			</ul>
-		</div>
+		<?php echo Tag::partial('templates/default/menu.phtml'); ?>
 	</section>
 </header>

@@ -24,7 +24,6 @@ class Template extends DetectorAbstract
 
 	protected function _autorun()
 	{
-		$root = $this->_registry->get('root');
 		$dbStatus = $this->_registry->get('dbStatus');
 		$lastTable = $this->_registry->get('lastTable');
 		$lastId = $this->_registry->get('lastId');
@@ -33,13 +32,14 @@ class Template extends DetectorAbstract
 
 		/* detect template */
 
-		$this->_detect(array(
+		$this->_detect(
+		[
 			'query' => $this->_request->getQuery('t'),
-			'session' => $this->_request->getSession($root . '/template'),
+			'session' => $this->_request->getSession('template'),
 			'contents' => $lastTable ? Db::forTablePrefix($lastTable)->where('id', $lastId)->findOne()->template : null,
-			'settings' => $dbStatus === 2 ? Db::getSettings('template') : null,
+			'settings' => $dbStatus === 2 ? Db::getSetting('template') : null,
 			'install' => $fileInstall ? 'install' : null,
 			'fallback' => 'default'
-		), 'template', 'templates/' . $this->_filePlaceholder . '/' . $partial);
+		], 'template', 'templates/' . $this->_filePlaceholder . '/' . $partial);
 	}
 }

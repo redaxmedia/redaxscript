@@ -4,7 +4,7 @@ namespace Redaxscript\Modules\LazyLoad;
 use Redaxscript\Module;
 
 /**
- * parent class to store module config
+ * children class to store module config
  *
  * @since 2.2.0
  *
@@ -16,21 +16,24 @@ use Redaxscript\Module;
 class Config extends Module
 {
 	/**
-	 * module config
+	 * array of config
 	 *
 	 * @var array
 	 */
 
-	protected static $_config = array(
-		'className' => array(
-			'image' => 'js_lazy_load lazy_load',
-			'placeholder' => 'placeholder_lazy_load'
-		),
+	protected static $_configArray =
+	[
+		'className' =>
+		[
+			'image' => 'rs-js-lazy-load rs-image-default',
+			'placeholder' => 'rs-placeholder-lazy-load'
+		],
 		'placeholder' => 'modules/LazyLoad/images/placeholder.png',
-		'device' => array(
+		'device' =>
+		[
 			'desktop',
 			'tablet',
 			'mobile'
-		)
-	);
+		]
+	];
 }

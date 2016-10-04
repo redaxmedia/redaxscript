@@ -1,0 +1,89 @@
+[
+	[
+		{
+			"toggle":
+			{
+				"Enable": 1,
+				"Disable": 0
+			},
+			"visible":
+			{
+				"Publish": 1,
+				"Unpublish": 0
+			},
+			"robot":
+			{
+				"All": 1,
+				"Index": 2,
+				"Follow": 3,
+				"No index": 4,
+				"No follow": 5,
+				"None": 0
+			},
+			"time":
+			{
+				"24h": "H:i",
+				"12h": "h:i a"
+			},
+			"date":
+			{
+				"DD.MM.YYYY": "d.m.Y",
+				"MM.DD.YYYY": "m.d.Y",
+				"YYYY.MM.DD": "Y.m.d"
+			},
+			"order":
+			{
+				"Ascending" :"asc",
+				"Descending": "desc"
+			},
+			"captcha":
+			{
+				"Random": 1,
+				"Addition": 2,
+				"Subtraction": 3,
+				"Disable": 0
+			},
+			"permission":
+			{
+				"content":
+				{
+					"Create": 1,
+					"Edit": 2,
+					"Delete": 3
+				},
+				"module":
+				{
+					"Install": 1,
+					"Edit": 2,
+					"Uninstall": 3
+				},
+				"setting":
+				{
+					"None": 1,
+					"Edit": 2
+				}
+			},
+			"language":
+			{
+				"Select": "select",
+				"English": "en",
+				"Deutsch": "de"
+			},
+			"template":
+			{
+				"Select": "select",
+				"default": "default"
+			},
+			"content":
+			{
+				"Select": "select",
+				"Welcome (1)": 1
+			},
+			"access":
+			{
+				"Administrators": 1,
+				"Members": 2
+			}
+		}
+	]
+]

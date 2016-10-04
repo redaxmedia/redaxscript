@@ -2,7 +2,7 @@
 namespace Redaxscript\Html;
 
 /**
- * children class to generate a element
+ * children class to create a element
  *
  * @since 2.6.0
  *
@@ -27,7 +27,8 @@ class Element extends HtmlAbstract
 	 * @var array
 	 */
 
-	protected $_singletonTags = array(
+	protected $_singletonTags =
+	[
 		'area',
 		'base',
 		'br',
@@ -44,7 +45,7 @@ class Element extends HtmlAbstract
 		'source',
 		'track',
 		'wbr',
-	);
+	];
 
 	/**
 	 * attributes of the element
@@ -52,31 +53,7 @@ class Element extends HtmlAbstract
 	 * @var array
 	 */
 
-	protected $_attributeArray = array();
-
-	/**
-	 * init the class
-	 *
-	 * @since 2.2.0
-	 *
-	 * @param string $tag tag of the element
-	 * @param array $attributeArray attributes of the element
-	 *
-	 * @return Element
-	 */
-
-	public function init($tag = null, $attributeArray = array())
-	{
-		$this->_tag = strtolower($tag);
-
-		/* process attributes */
-
-		if (is_array($attributeArray))
-		{
-			$this->attr($attributeArray);
-		}
-		return $this;
-	}
+	protected $_attributeArray = [];
 
 	/**
 	 * stringify the element
@@ -89,6 +66,30 @@ class Element extends HtmlAbstract
 	public function __toString()
 	{
 		return $this->render();
+	}
+
+	/**
+	 * init the class
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $tag tag of the element
+	 * @param array $attributeArray attributes of the element
+	 *
+	 * @return Element
+	 */
+
+	public function init($tag = null, $attributeArray = [])
+	{
+		$this->_tag = strtolower($tag);
+
+		/* process attributes */
+
+		if (is_array($attributeArray))
+		{
+			$this->attr($attributeArray);
+		}
+		return $this;
 	}
 
 	/**
@@ -121,7 +122,7 @@ class Element extends HtmlAbstract
 		{
 			$this->_attributeArray = array_merge($this->_attributeArray, array_map('trim', $attribute));
 		}
-		else if (is_string($attribute) && is_string($value))
+		else if (strlen($attribute) && strlen($value))
 		{
 			$this->_attributeArray[$attribute] = trim($value);
 		}
@@ -192,14 +193,14 @@ class Element extends HtmlAbstract
 
 	protected function _editClass($className = null, $type = null)
 	{
-		$classArray = array_filter(explode(' ', $className));
+		$classArray = explode(' ', $className);
 		if (array_key_exists('class', $this->_attributeArray))
 		{
-			$attributeClassArray = array_filter(explode(' ', $this->_attributeArray['class']));
+			$attributeClassArray = explode(' ', $this->_attributeArray['class']);
 		}
 		else
 		{
-			$attributeClassArray = array();
+			$attributeClassArray = [];
 		}
 
 		/* add or remove */
@@ -208,12 +209,13 @@ class Element extends HtmlAbstract
 		{
 			if ($type === 'add')
 			{
-				$this->_attributeArray['class'] = implode(' ', array_merge($attributeClassArray, $classArray));
+				$attributeClassArray = array_merge($attributeClassArray, $classArray);
 			}
 			else if ($type === 'remove')
 			{
-				$this->_attributeArray['class'] = implode(' ', array_diff($attributeClassArray, $classArray));
+				$attributeClassArray = array_diff($attributeClassArray, $classArray);
 			}
+			$this->_attributeArray['class'] = implode(' ', array_unique($attributeClassArray));
 		}
 	}
 
@@ -266,11 +268,11 @@ class Element extends HtmlAbstract
 
 		/* process attributes */
 
-		foreach ($this->_attributeArray as $key => $value)
+		foreach ($this->_attributeArray as $attribute => $value)
 		{
-			if (is_string($key) && $value)
+			if (strlen($attribute) && strlen($value))
 			{
-				$output .= ' ' . $key . '="' . $value . '"';
+				$output .= ' ' . $attribute . '="' . $value . '"';
 			}
 		}
 
@@ -279,7 +281,6 @@ class Element extends HtmlAbstract
 		if (in_array($this->_tag, $this->_singletonTags))
 		{
 			$output .= ' />';
-
 		}
 
 		/* else normal tag */

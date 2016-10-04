@@ -1,28 +1,26 @@
 <?php
 namespace Redaxscript;
 
-$titlePartialElement = new Html\Element();
-$titlePartialElement->init('h3', array(
-	'class' => 'title_content_sub'
-));
 $imageElement = new Html\Element();
-$imageElement->init('img', array(
-	'class' => 'image image_default'
-));
-$playerElement = new Html\Element();
-$playerElement->init('iframe', array(
-	'class' => 'player player_default'
-));
+$imageElement->init('img',
+[
+	'alt' => 'image',
+	'class' => 'rs-image-default',
+	'src' => '//cdn.redaxscript.com/unsplash/817/1250x500.jpg'
+]);
+$videoElement = new Html\Element();
+$videoElement->init('video',
+[
+	'class' => 'rs-video-default',
+	'muted' => 'muted',
+	'src' => '//distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4#t=30'
+]);
 ?>
 
 <!-- image -->
 
-<?php echo $titlePartialElement->text('.image.image_default'); ?>
+<?php echo $imageElement; ?>
 
-<?php echo $imageElement->attr('src', '//i.imgur.com/SKpwO5M.jpg'); ?>
+<!-- video -->
 
-<!-- player -->
-
-<?php echo $titlePartialElement->text('.player.player_default'); ?>
-
-<?php echo $playerElement->attr('src', '//youtube.com/embed//FIA6F-XHCzk?vq=hd720'); ?>
+<?php echo $videoElement; ?>

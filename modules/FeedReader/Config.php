@@ -4,7 +4,7 @@ namespace Redaxscript\Modules\FeedReader;
 use Redaxscript\Module;
 
 /**
- * parent class to store module config
+ * children class to store module config
  *
  * @since 2.3.0
  *
@@ -16,15 +16,17 @@ use Redaxscript\Module;
 class Config extends Module
 {
 	/**
-	 * module config
+	 * array of config
 	 *
 	 * @var array
 	 */
 
-	protected static $_config = array(
-		'className' => array(
-			'title' => 'title_feed_reader clearfix',
-			'box' => 'box_feed_reader'
-		)
-	);
+	protected static $_configArray =
+	[
+		'className' =>
+		[
+			'title' => 'rs-title-feed-reader rs-fn-clearfix',
+			'box' => 'rs-box-feed-reader'
+		]
+	];
 }

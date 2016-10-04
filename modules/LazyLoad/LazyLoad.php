@@ -1,7 +1,9 @@
 <?php
 namespace Redaxscript\Modules\LazyLoad;
 
+use Redaxscript\Head;
 use Redaxscript\Html;
+use Redaxscript\Language;
 use Redaxscript\Registry;
 
 /**
@@ -22,26 +24,50 @@ class LazyLoad extends Config
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray =
+	[
 		'name' => 'Lazy load',
 		'alias' => 'LazyLoad',
 		'author' => 'Redaxmedia',
 		'description' => 'Lazy load images',
-		'version' => '2.6.2'
-	);
+		'version' => '3.0.0'
+	];
 
 	/**
-	 * loaderStart
+	 * adminPanelNotification
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
+	 *
+	 * @return array
 	 */
 
-	public static function loaderStart()
+	public static function adminPanelNotification()
 	{
-		global $loader_modules_styles, $loader_modules_scripts;
-		$loader_modules_styles[] = 'modules/LazyLoad/styles/lazy_load.css';
-		$loader_modules_scripts[] = 'modules/LazyLoad/scripts/init.js';
-		$loader_modules_scripts[] = 'modules/LazyLoad/scripts/lazy_load.js';
+		return self::getNotification();
+	}
+
+	/**
+	 * renderStart
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function renderStart()
+	{
+		/* link */
+
+		$link = Head\Link::getInstance();
+		$link
+			->init()
+			->appendFile('modules/LazyLoad/assets/styles/lazy_load.css');
+
+		/* script */
+
+		$script = Head\Script::getInstance();
+		$script
+			->init('foot')
+			->appendFile('modules/LazyLoad/assets/scripts/init.js')
+			->appendFile('modules/LazyLoad/assets/scripts/lazy_load.js');
 	}
 
 	/**
@@ -49,62 +75,67 @@ class LazyLoad extends Config
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param mixed $src
-	 * @param array $options
+	 * @param mixed $file
+	 * @param array $optionArray
 	 *
 	 * @return string
 	 */
 
-	public static function render($src = null, $options = array())
+	public static function render($file = null, $optionArray = [])
 	{
 		$output = null;
 
 		/* device related images */
 
-		if (is_array($src))
+		if (is_array($file))
 		{
 			/* process source */
 
-			foreach ($src as $key => $value)
+			foreach ($file as $key => $value)
 			{
-				if (in_array($key, self::$_config['device']) && Registry::get('my' . ucfirst($key)))
+				if (in_array($key, self::$_configArray['device']) && Registry::get('my' . ucfirst($key)))
 				{
-					$src = $value;
+					$file = $value;
 				}
 			}
 		}
 
 		/* collect output */
 
-		if (file_exists($src))
+		if (file_exists($file))
 		{
 			$imageElement = new Html\Element();
-			$imageElement->init('img', array(
-				'alt' => $options['alt'],
-				'class' => self::$_config['className']['image'] . ' ' . $options['className'],
-				'src' => self::$_config['placeholder']
-			));
+			$imageElement->init('img',
+			[
+				'alt' => $optionArray['alt'],
+				'class' => self::$_configArray['className']['image'],
+				'src' => self::$_configArray['placeholder']
+			]);
 
-			/* collect output */
+			/* collect image output */
 
-			$output = $imageElement->copy()->attr('data-src', $src);
+			$output = $imageElement
+				->copy()
+				->addClass($optionArray['className'])
+				->attr('data-src', $file);
 
 			/* placeholder */
 
-			if (self::$_config['placeholder'])
+			if (self::$_configArray['placeholder'])
 			{
 				/* calculate image ratio */
 
-				$imageDimensions = getimagesize($src);
+				$imageDimensions = getimagesize($file);
 				$imageRatio = $imageDimensions[1] / $imageDimensions[0] * 100;
 
 				/* placeholder */
 
 				$placeholderElement = new Html\Element();
-				$placeholderElement->init('div', array(
-					'class' => self::$_config['className']['placeholder'],
+				$placeholderElement->init('div',
+				[
+					'class' => self::$_configArray['className']['placeholder'],
 					'style' => 'padding-bottom:' . $imageRatio . '%'
-				));
+				]);
 
 				/* collect output */
 
@@ -114,6 +145,13 @@ class LazyLoad extends Config
 			/* noscript fallback */
 
 			$output .= '<noscript>' . $imageElement . '</noscript>';
+		}
+
+		/* else handle notification */
+
+		else
+		{
+			self::setNotification('error', Language::get('file_not_found') . Language::get('colon') . ' ' . $file . Language::get('point'));
 		}
 		return $output;
 	}

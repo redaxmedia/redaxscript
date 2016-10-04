@@ -1,18 +1,30 @@
 [
 	[
-		"username",
-		true
-	],
-	[
-		"123456",
+		"test",
 		true
 	],
 	[
 		"1234",
+		true
+	],
+	[
+		"1",
+		true
+	],
+	[
+		null,
 		false
 	],
 	[
-		"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+		"_test_",
+		false
+	],
+	[
+		"***",
+		false
+	],
+	[
+		"1234567890123456789012345678901",
 		false
 	]
 ]

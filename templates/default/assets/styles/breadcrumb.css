@@ -1,0 +1,54 @@
+/**
+ * @tableofcontents
+ *
+ * 1. list breadcrumb
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. list breadcrumb */
+
+.rs-list-breadcrumb
+{
+	font-size: 1.25em;
+	margin-bottom: 1em;
+
+	& li
+	{
+		display: inline-block;
+		position: relative;
+		vertical-align: middle;
+	}
+
+	& a
+	{
+		color: var(--rs-color-tertiary);
+		opacity: 0.5;
+		transition: opacity 0.2s;
+
+		&:hover
+		{
+			opacity: 1;
+		}
+	}
+
+	& .rs-item-divider
+	{
+		text-indent: -999em;
+		width: 1em;
+
+		&:before
+		{
+			@extend %rs-icon-chevron-right;
+			left: 0;
+			line-height: 1.5em;
+			position: absolute;
+			right: 0;
+			text-align: center;
+			text-indent: 0;
+		}
+	}
+}

@@ -30,20 +30,12 @@ class Hook
 	protected static $_namespace = 'Redaxscript\Modules\\';
 
 	/**
-	 * hook delimiter
-	 *
-	 * @var string
-	 */
-
-	protected static $_delimiter = '_';
-
-	/**
 	 * array of installed and enabled modules
 	 *
 	 * @var array
 	 */
 
-	protected static $_modules = array();
+	protected static $_moduleArray = [];
 
 	/**
 	 * array of triggered events
@@ -51,7 +43,7 @@ class Hook
 	 * @var array
 	 */
 
-	protected static $_events = array();
+	protected static $_eventArray = [];
 
 	/**
 	 * constructor of the class
@@ -80,7 +72,7 @@ class Hook
 		$modulesAvailable = $modulesDirectory->getArray();
 		$modulesInstalled = Db::forTablePrefix('modules')->where('status', 1)->findMany();
 
-		/* process installed modules */
+		/* process modules */
 
 		foreach ($modulesInstalled as $module)
 		{
@@ -88,74 +80,106 @@ class Hook
 
 			if (in_array($module->alias, $modulesAvailable) && $accessValidator->validate($module->access, self::$_registry->get('myGroups')) === Validator\ValidatorInterface::PASSED)
 			{
-				self::$_modules[$module->alias] = $module->alias;
+				self::$_moduleArray[$module->alias] = $module->alias;
 			}
 		}
 	}
 
 	/**
-	 * get the modules array
+	 * get the module array
 	 *
 	 * @since 2.2.0
 	 *
-	 * @return mixed
+	 * @return array
 	 */
 
-	public static function getModules()
+	public static function getModuleArray()
 	{
-		return self::$_modules;
+		return self::$_moduleArray;
 	}
 
 	/**
-	 * get the events array
+	 * get the event array
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 *
-	 * @return mixed
+	 * @return array
 	 */
 
-	public static function getEvents()
+	public static function getEventArray()
 	{
-		return self::$_events;
+		return self::$_eventArray;
+	}
+
+	/**
+	 * collect from module hook
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $event name of the module event
+	 * @param array $parameterArray parameter of the module hook
+	 *
+	 * @return array
+	 */
+
+	public static function collect($event = null, $parameterArray = [])
+	{
+		$output = [];
+
+		/* process modules */
+
+		foreach (self::$_moduleArray as $module)
+		{
+			$object = self::$_namespace . $module . '\\' . $module;
+			self::$_eventArray[$event][$module] = false;
+
+			/* method exists */
+
+			if (method_exists($object, $event))
+			{
+				self::$_eventArray[$event][$module] = true;
+				$output = array_merge($output, call_user_func_array(
+				[
+					$object,
+					$event
+				], $parameterArray));
+			}
+		}
+		return $output;
 	}
 
 	/**
 	 * trigger the module hook
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 *
 	 * @param string $event name of the module event
-	 * @param array $parameter parameter of the module hook
+	 * @param array $parameterArray parameter of the module hook
 	 *
-	 * @return string $output
+	 * @return mixed
 	 */
 
-	public static function trigger($event = null, $parameter = array())
+	public static function trigger($event = null, $parameterArray = [])
 	{
-		$output = false;
+		$output = null;
 
-		/* trigger event */
+		/* process modules */
 
-		foreach (self::$_modules as $module)
+		foreach (self::$_moduleArray as $module)
 		{
-			$function = $module . self::$_delimiter . $event;
 			$object = self::$_namespace . $module . '\\' . $module;
-			$method = str_replace(self::$_delimiter, '', mb_convert_case($event, MB_CASE_TITLE));
+			self::$_eventArray[$event][$module] = false;
 
 			/* method exists */
 
-			if (method_exists($object, $method))
+			if (method_exists($object, $event))
 			{
-				$output .= call_user_func_array(array($object, $method), $parameter);
-				self::$_events[$event][] = $module;
-			}
-
-			/* function exists */
-
-			else if (function_exists($function))
-			{
-				$output .= call_user_func_array($function, $parameter);
-				self::$_events[$event][] = $module;
+				self::$_eventArray[$event][$module] = true;
+				$output .= call_user_func_array(
+				[
+					$object,
+					$event
+				], $parameterArray);
 			}
 		}
 		return $output;

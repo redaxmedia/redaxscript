@@ -1,0 +1,246 @@
+/**
+ * @tableofcontents
+ *
+ * 1. font face
+ * 2. gallery
+ * 3. gallery overlay
+ * 4. fadein effect
+ * 5. gallery loader
+ * 6. gallery control
+ * 7. gallery meta
+ * 8. gallery list
+ * 9. gallery link
+ * 10. query
+ *    10.1 landscape
+ *    10.2 screen max 50rem
+ *    10.3 min width 50rem
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. font face */
+
+@font-face
+{
+	font-family: 'icon gallery';
+	src: url('modules/Gallery/assets/fonts/icon.woff') format('woff'), url('modules/Gallery/assets/fonts/icon.ttf') format('truetype');
+}
+
+/* @section 2. gallery */
+
+.rs-gallery
+{
+	left: 50%;
+	position: fixed;
+	top: 50%;
+	z-index: 1100;
+}
+
+.rs-gallery-media
+{
+	border-radius: 0.25em;
+	box-shadow: 0 0 50px rgba(0, 0, 0, 0.4);
+	display: block;
+	max-width: 100%;
+}
+
+/* @section 3. gallery overlay */
+
+.rs-gallery-overlay
+{
+	background: rgba(0, 0, 0, 0.4);
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 1000;
+}
+
+/* @section 4. fadein effect */
+
+.rs-gallery-media,
+.rs-gallery-meta,
+.rs-gallery-overlay
+{
+	animation: fade-in 0.2s;
+}
+
+/* @section 5. gallery loader */
+
+.rs-gallery-loader:after
+{
+	animation: scale-in 0.4s 2s, rotate-right 3s 2.4s infinite;
+	color: rgba(0, 0, 0, 0.4);
+	content: '0';
+	font: 6em/2em 'icon gallery';
+	left: 50%;
+	margin: -1em 0 0 -0.5em;
+	position: absolute;
+	top: 50%;
+	transform: scale(0);
+}
+
+/* @section 6. gallery control */
+
+.rs-gallery-control
+{
+	bottom: 0;
+	cursor: pointer;
+	font: 1.5em/0 'icon gallery';
+	position: fixed;
+	text-indent: -999em;
+	transition: color 0.2s;
+	z-index: 1200;
+}
+
+.rs-gallery-control:hover
+{
+	color: #fff;
+}
+
+.rs-gallery-control:before,
+.rs-gallery-control:after
+{
+	position: absolute;
+	text-indent: 0;
+	top: 50%;
+}
+
+/* previous */
+
+.rs-gallery-control-previous
+{
+	left: 0;
+}
+
+.rs-gallery-control-previous:before
+{
+	content: '<';
+	left: 1em;
+}
+
+/* next */
+
+.rs-gallery-control-next
+{
+	right: 0;
+}
+
+.rs-gallery-control-next:after
+{
+	content: '>';
+	right: 1em;
+}
+
+/* @section 7. gallery meta */
+
+.rs-gallery-meta
+{
+	border-radius: 0 0 0.25em 0.25em;
+	bottom: 0;
+	color: rgba(0, 0, 0, 0.2);
+	font: bold 0.75em arial;
+	left: 0;
+	padding: 2% 0;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	transition: background 0.5s, color 0.5s;
+}
+
+.rs-gallery:hover .rs-gallery-meta
+{
+	background: rgba(0, 0, 0, 0.5);
+	color: #fff;
+	transition: background 0.5s, color 0.5s;
+}
+
+.rs-gallery-description
+{
+	font-size: 1.25em;
+}
+
+.rs-gallery-meta div
+{
+	margin-top: 0.5em;
+}
+
+/* @section 8. gallery list */
+
+.rs-list-gallery
+{
+	margin: 1em 0;
+}
+
+.rs-list-gallery li
+{
+	max-width: 50%;
+	position: relative;
+}
+
+.rs-list-gallery li,
+.rs-list-gallery img
+{
+	display: inline-block;
+	vertical-align: top;
+}
+
+/* @section 9. gallery link */
+
+.rs-list-gallery a
+{
+	display: block;
+	margin: 0.25em;
+}
+
+/* @section 10. query */
+
+/* @section 10.1 landscape */
+
+@media screen and (orientation: landscape)
+{
+	.rs-is-mobile .rs-gallery-overlay
+	{
+		background: rgba(0, 0, 0, 0.8);
+	}
+}
+
+/* @section 10.2 screen max 50rem */
+
+@media screen and (max-width: 49.999rem)
+{
+	.rs-gallery-meta
+	{
+		display: none;
+	}
+
+	.rs-gallery-control
+	{
+		background: #000;
+		color: rgba(255, 255, 255, 0.5);
+		min-height: 2em;
+		width: 50%;
+	}
+}
+
+/* @section 10.3 min width 50rem */
+
+@media screen and (min-width: 50rem)
+{
+	.rs-list-gallery li
+	{
+		max-width: 33.33%;
+	}
+
+	.rs-gallery-control
+	{
+		bottom: 50%;
+		color: rgba(0, 0, 0, 0.5);
+		font-size: 4em;
+		margin-bottom: -0.25em;
+	}
+}

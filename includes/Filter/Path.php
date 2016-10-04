@@ -6,8 +6,8 @@ namespace Redaxscript\Filter;
  *
  * @since 2.6.0
  *
- * @category Redaxscript
- * @package Filter
+ * @package Redaxscript
+ * @category Filter
  * @author Henry Ruhs
  */
 
@@ -27,10 +27,11 @@ class Path implements FilterInterface
 	public function sanitize($path = null, $seperator = DIRECTORY_SEPARATOR)
 	{
 		$output = urldecode($path);
-		$output = str_replace(array(
+		$output = str_replace(
+		[
 			' ',
 			'..',
-		), '', $output);
+		], '', $output);
 		$output = preg_replace('~' . $seperator . '+~', $seperator, $output);
 		$output = ltrim($output, '.');
 		$output = trim($output, $seperator);

@@ -1,0 +1,50 @@
+/**
+ * @tableofcontents
+ *
+ * 1. control
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. control */
+
+.rs-admin-list-control
+{
+	font: 1rem var(--rs-admin-font-primary);
+	margin-left: -0.25em;
+	margin-top: 1em;
+
+	& li
+	{
+		display: inline-block;
+		margin: 0.25em;
+	}
+
+	& a,
+	& span
+	{
+		background: var(--rs-admin-gradient-quinary);
+		border-radius: 0.125em;
+		color: gray(100);
+		display: block;
+		line-height: 2em;
+		padding: 0 0.75em;
+		text-align: center;
+		white-space: nowrap;
+	}
+
+	& a:hover
+	{
+		background: var(--rs-admin-gradient-primary);
+		color: gray(255);
+	}
+
+	& .rs-admin-item-delete a:hover,
+	& .rs-admin-item-uninstall a:hover
+	{
+		background: var(--rs-admin-gradient-secondary);
+	}
+}

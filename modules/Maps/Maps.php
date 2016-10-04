@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\Maps;
 
+use Redaxscript\Head;
 use Redaxscript\Html;
 use Redaxscript\Registry;
 
@@ -22,43 +23,40 @@ class Maps extends Config
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray =
+	[
 		'name' => 'Maps',
 		'alias' => 'Maps',
 		'author' => 'Redaxmedia',
 		'description' => 'Integrate Google Maps',
-		'version' => '2.6.2'
-	);
+		'version' => '3.0.0'
+	];
 
 	/**
-	 * loaderStart
+	 * renderStart
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 */
 
-	public static function loaderStart()
+	public function renderStart()
 	{
 		if (!Registry::get('adminParameter'))
 		{
-			global $loader_modules_styles, $loader_modules_scripts;
-			$loader_modules_styles[] = 'modules/Maps/styles/maps.css';
-			$loader_modules_scripts[] = 'modules/Maps/scripts/init.js';
-			$loader_modules_scripts[] = 'modules/Maps/scripts/maps.js';
-		}
-	}
+			/* link */
 
-	/**
-	 * scriptEnd
-	 *
-	 * @since 2.2.0
-	 */
+			$link = Head\Link::getInstance();
+			$link
+				->init()
+				->appendFile('modules/Maps/assets/styles/maps.css');
 
-	public static function scriptEnd()
-	{
-		if (!Registry::get('adminParameter'))
-		{
-			$output = '<script src="' . self::$_config['apiUrl'] . '?key=' . self::$_config['apiKey'] . '&amp;sensor=' . self::$_config['sensor'] . '"></script>';
-			echo $output;
+			/* script */
+
+			$script = Head\Script::getInstance();
+			$script
+				->init('foot')
+				->appendFile(self::$_configArray['apiUrl'] . '?key=' . self::$_configArray['apiKey'])
+				->appendFile('modules/Maps/assets/scripts/init.js')
+				->appendFile('modules/Maps/assets/scripts/maps.js');
 		}
 	}
 
@@ -77,12 +75,13 @@ class Maps extends Config
 	public static function render($lat = 0, $lng = 0, $zoom = 1)
 	{
 		$mapElement = new Html\Element();
-		$mapElement->init('div', array(
-			'class' => self::$_config['className'],
+		$mapElement->init('div',
+		[
+			'class' => self::$_configArray['className'],
 			'data-lat' => is_numeric($lat) ? $lat : null,
 			'data-lng' => is_numeric($lng) ? $lng : null,
 			'data-zoom' => is_numeric($zoom) ? $zoom : null
-		));
+		]);
 
 		/* collect output */
 

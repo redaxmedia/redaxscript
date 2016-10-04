@@ -4,6 +4,7 @@ namespace Redaxscript\Modules\SitemapXml;
 use Redaxscript\Db;
 use Redaxscript\Module;
 use Redaxscript\Registry;
+use XMLWriter;
 
 /**
  * generate a sitemap xml
@@ -23,13 +24,14 @@ class SitemapXml extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray =
+	[
 		'name' => 'Sitemap XML',
 		'alias' => 'SitemapXml',
 		'author' => 'Redaxmedia',
 		'description' => 'Generate a sitemap XML',
-		'version' => '2.6.2'
-	);
+		'version' => '3.0.0'
+	];
 
 	/**
 	 * renderStart
@@ -39,11 +41,11 @@ class SitemapXml extends Module
 
 	public static function renderStart()
 	{
-		if (Registry::get('firstParameter') === 'sitemap_xml')
+		if (Registry::get('firstParameter') === 'sitemap-xml')
 		{
+			Registry::set('renderBreak', true);
 			header('content-type: application/xml');
 			echo self::render();
-			Registry::set('renderBreak', true);
 		}
 	}
 
@@ -57,44 +59,68 @@ class SitemapXml extends Module
 
 	public static function render()
 	{
-		/* fetch categories */
+		/* query categories */
 
 		$categories = Db::forTablePrefix('categories')
 			->where('status', 1)
 			->whereNull('access')
 			->orderByAsc('rank')
-			->findArray();
+			->findMany();
 
-		/* fetch articles */
+		/* query articles */
 
 		$articles = Db::forTablePrefix('articles')
 			->where('status', 1)
 			->whereNull('access')
 			->orderByAsc('rank')
-			->findArray();
+			->findMany();
 
-		/* collect output */
+		/* write xml */
 
-		$output = '<?xml version="1.0" encoding="' . Db::getSettings('charset') . '"?>' . PHP_EOL;
-		$output .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . PHP_EOL;
-		$output .= '<url><loc>' . Registry::get('root') . '</loc></url>' . PHP_EOL;
+		return self::_writeXML($categories, $articles);
+	}
+
+	/**
+	 * @param object $categories
+	 * @param object $articles
+	 *
+	 * @return string
+	 */
+
+	protected static function _writeXML($categories = null, $articles = null)
+	{
+		$writer = new XMLWriter();
+		$writer->openMemory();
+		$writer->setIndent(true);
+		$writer->setIndentString('	');
+		$writer->startDocument('1.0', Db::getSetting('charset'));
+		$writer->startElement('urlset');
+		$writer->writeAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
+		$writer->startElement('url');
+		$writer->writeElement('loc', Registry::get('root'));
+		$writer->endElement();
 
 		/* process categories */
 
 		foreach ($categories as $value)
 		{
-			$route = $value['parent'] < 1 ? $value['alias'] : build_route('categories', $value['id']);
-			$output .= '<url><loc>' . Registry::get('root') . '/' . Registry::get('rewriteRoute') . $route . '</loc></url>' . PHP_EOL;
+			$writer->startElement('url');
+			$writer->writeElement('loc', Registry::get('root') . Registry::get('parameterRoute') . build_route('categories', $value->id));
+			$writer->writeElement('lastmod', date('c', strtotime($value->date)));
+			$writer->endElement();
 		}
 
 		/* process articles */
 
 		foreach ($articles as $value)
 		{
-			$route = $value['category'] < 1 ? $value['alias'] : build_route('articles', $value['id']);
-			$output .= '<url><loc>' . Registry::get('root') . '/' . Registry::get('rewriteRoute') . $route . '</loc></url>' . PHP_EOL;
+			$writer->startElement('url');
+			$writer->writeElement('loc', Registry::get('root') . Registry::get('parameterRoute') . build_route('articles', $value->id));
+			$writer->writeElement('lastmod', date('c', strtotime($value->date)));
+			$writer->endElement();
 		}
-		$output .= '</urlset>';
-		return $output;
+		$writer->endElement();
+		$writer->endDocument();
+		return $writer->outputMemory(true);
 	}
 }

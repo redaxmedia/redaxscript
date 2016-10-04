@@ -6,8 +6,8 @@ namespace Redaxscript\Server;
  *
  * @since 2.4.0
  *
- * @category Redaxscript
- * @package Server
+ * @package Redaxscript
+ * @category Server
  * @author Henry Ruhs
  */
 

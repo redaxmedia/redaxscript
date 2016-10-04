@@ -1,0 +1,12 @@
+[
+	[
+		"body { width: 80em; }",
+		"html { background: #fff; }",
+		"<style>html { background: #fff; }body { width: 80em; }</style>"
+	],
+	[
+		"html { background: #fff; }",
+		"body { width: 80em; }",
+		"<style>body { width: 80em; }html { background: #fff; }</style>"
+	]
+]

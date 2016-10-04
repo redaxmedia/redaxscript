@@ -6,6 +6,7 @@ use Redaxscript\Html;
 use Redaxscript\Filter;
 use Redaxscript\Language;
 use Redaxscript\Mailer;
+use Redaxscript\Messenger;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 use Redaxscript\Module;
@@ -20,7 +21,6 @@ use Redaxscript\Validator;
  * @category Modules
  * @author Henry Ruhs
  */
-
 class Contact extends Module
 {
 	/**
@@ -29,26 +29,27 @@ class Contact extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray =
+	[
 		'name' => 'Contact',
 		'alias' => 'Contact',
 		'author' => 'Redaxmedia',
 		'description' => 'Simple contact form',
-		'version' => '2.6.2'
-	);
+		'version' => '3.0.0'
+	];
 
 	/**
-	 * centerStart
+	 * routerStart
 	 *
-	 * @since 2.6.0
+	 * @since 3.0.0
 	 */
 
-	public static function centerStart()
+	public static function routerStart()
 	{
 		if (Request::getPost(get_class()) === 'submit')
 		{
-			Registry::set('centerBreak', true);
-			self::_process();
+			Registry::set('routerBreak', true);
+			echo self::process();
 		}
 	}
 
@@ -56,48 +57,30 @@ class Contact extends Module
 	 * render
 	 *
 	 * @since 2.6.0
+	 *
+	 * return Form
 	 */
 
 	public static function render()
 	{
 		$formElement = new Html\Form(Registry::getInstance(), Language::getInstance());
-		$formElement->init(array(
-			'form' => array(
-				'class' => 'js_validate_form form_default'
-			),
-			'label' => array(
-				'class' => 'label'
-			),
-			'textarea' => array(
-				'class' => 'js_auto_resize js_editor_textarea field_textarea'
-			),
-			'input' => array(
-				'email' => array(
-					'class' => 'field_text'
-				),
-				'number' => array(
-					'class' => 'field_text'
-				),
-				'text' => array(
-					'class' => 'field_text'
-				),
-				'url' => array(
-					'class' => 'field_text'
-				)
-			),
-			'button' => array(
-				'submit' => array(
-					'class' => 'js_submit button_default',
+		$formElement->init(
+		[
+			'textarea' =>
+			[
+				'class' => 'rs-js-auto-resize rs-js-editor-textarea rs-field-textarea'
+			],
+			'button' =>
+			[
+				'submit' =>
+				[
 					'name' => get_class()
-				),
-				'reset' => array(
-					'class' => 'js_reset button_default',
-					'name' => get_class()
-				)
-			)
-		), array(
-			'captcha' => Db::getSettings('captcha') > 0
-		));
+				]
+			]
+		],
+		[
+			'captcha' => Db::getSetting('captcha') > 0
+		]);
 
 		/* create the form */
 
@@ -105,48 +88,54 @@ class Contact extends Module
 			->append('<fieldset>')
 			->legend()
 			->append('<ul><li>')
-			->label('* ' . Language::get('author'), array(
+			->label('* ' . Language::get('author'),
+			[
 				'for' => 'author'
-			))
-			->text(array(
+			])
+			->text(
+			[
 				'id' => 'author',
 				'name' => 'author',
 				'readonly' => Registry::get('myName') ? 'readonly' : null,
 				'required' => 'required',
-				'value' => Registry::get('myName') ? Registry::get('myName') : Request::getPost('author')
-			))
+				'value' => Registry::get('myName')
+			])
 			->append('</li><li>')
-			->label('* ' . Language::get('email'), array(
+			->label('* ' . Language::get('email'),
+			[
 				'for' => 'email'
-			))
-			->email(array(
+			])
+			->email(
+			[
 				'id' => 'email',
 				'name' => 'email',
 				'readonly' => Registry::get('myEmail') ? 'readonly' : null,
 				'required' => 'required',
-				'value' => Registry::get('myEmail') ? Registry::get('myEmail') : Request::getPost('email')
-			))
+				'value' => Registry::get('myEmail')
+			])
 			->append('</li><li>')
-			->label(Language::get('url'), array(
+			->label(Language::get('url'),
+			[
 				'for' => 'url'
-			))
-			->url(array(
+			])
+			->url(
+			[
 				'id' => 'url',
-				'name' => 'url',
-				'value' => Request::getPost('url')
-			))
+				'name' => 'url'
+			])
 			->append('</li><li>')
-			->label('* ' . Language::get('message'), array(
+			->label('* ' . Language::get('message'),
+			[
 				'for' => 'text'
-			))
-			->textarea(array(
+			])
+			->textarea(
+			[
 				'id' => 'text',
 				'name' => 'text',
-				'required' => 'required',
-				'value' => Request::getPost('text')
-			))
+				'required' => 'required'
+			])
 			->append('</li>');
-		if (Db::getSettings('captcha') > 0)
+		if (Db::getSetting('captcha') > 0)
 		{
 			$formElement
 				->append('<li>')
@@ -154,7 +143,7 @@ class Contact extends Module
 				->append('</li>');
 		}
 		$formElement->append('</ul></fieldset>');
-		if (Db::getSettings('captcha') > 0)
+		if (Db::getSetting('captcha') > 0)
 		{
 			$formElement->captcha('solution');
 		}
@@ -168,104 +157,180 @@ class Contact extends Module
 	/**
 	 * process
 	 *
-	 * @since 2.6.0
+	 * @since 3.0.0
+	 *
+	 * @return string
 	 */
 
-	public static function _process()
+	public static function process()
 	{
 		$specialFilter = new Filter\Special();
 		$emailFilter = new Filter\Email();
-		$urlFilter  = new Filter\Url();
-		$htmlFilter  = new Filter\Html();
-		$emailValidator = new Validator\Email();
-		$urlValidator = new Validator\Url();
-		$captchaValidator = new Validator\Captcha();
+		$urlFilter = new Filter\Url();
+		$htmlFilter = new Filter\Html();
 
 		/* process post */
 
-		$postData = array(
+		$postArray =
+		[
 			'author' => $specialFilter->sanitize(Request::getPost('author')),
 			'email' => $emailFilter->sanitize(Request::getPost('email')),
 			'url' => $urlFilter->sanitize(Request::getPost('url')),
 			'text' => nl2br($htmlFilter->sanitize(Request::getPost('text'))),
 			'task' => Request::getPost('task'),
 			'solution' => Request::getPost('solution')
-		);
-
-		/* validate post */
-
-		if (!$postData['author'])
-		{
-			$errorData['author'] = Language::get('author_empty');
-		}
-		if (!$postData['email'])
-		{
-			$errorData['email'] = Language::get('email_empty');
-		}
-		else if ($emailValidator->validate($postData['email']) === Validator\ValidatorInterface::FAILED)
-		{
-			$errorData['email'] = Language::get('email_incorrect');
-		}
-		if ($errorData['url'] && $urlValidator->validate($postData['url']) === Validator\ValidatorInterface::FAILED)
-		{
-			$errorData['url'] = Language::get('url_incorrect');
-		}
-		if (!$postData['text'])
-		{
-			$errorData['text'] = Language::get('message_empty');
-		}
-		if ($captchaValidator->validate($postData['task'], $postData['solution']) === Validator\ValidatorInterface::FAILED)
-		{
-			$errorData['captcha'] = Language::get('captcha_incorrect');
-		}
+		];
 
 		/* handle error */
 
-		if ($errorData)
+		$messageArray = self::_validate($postArray);
+		if ($messageArray)
 		{
-			notification(Language::get('error_occurred'), $errorData, Language::get('home'), Registry::get('root'));
+			return self::_error(
+			[
+				'message' => $messageArray
+			]);
 		}
 
 		/* handle success */
 
-		else
+		$mailArray =
+		[
+			'author' => $postArray['author'],
+			'email' => $postArray['email'],
+			'url' => $postArray['url'],
+			'text' => $postArray['text']
+		];
+
+		/* mail */
+
+		if (self::_mail($mailArray))
 		{
-			notification(Language::get('operation_completed'), Language::get('message_sent', '_contact'), Language::get('home'), Registry::get('root'));
-			self::_send($postData);
+			return self::_success();
 		}
+		return self::_error(
+		[
+			'message' => Language::get('something_wrong')
+		]);
 	}
 
 	/**
-	 * send
+	 * success
 	 *
-	 * @since 2.6.0
+	 * @since 3.0.0
 	 *
-	 * @param array $postData
+	 * @return string
 	 */
 
-	public static function _send($postData = array())
+	protected static function _success()
 	{
-		$toArray = array(
-			Db::getSettings('author') => Db::getSettings('email')
-		);
-		$fromArray = array(
-			$postData['author'] => $postData['email']
-		);
-		$subject = Language::get('contact');
-		$bodyArray = array(
-			Language::get('author') . Language::get('colon') . ' ' . $postData['author'],
-			'<br />',
-			Language::get('email') . Language::get('colon') . ' <a href="mailto:' . $postData['email'] . '">' . $postData['email'] .'</a>',
-			'<br />',
-			Language::get('url') . Language::get('colon') . ' <a href="' . $postData['url'] . '">' . $postData['url'] .'</a>',
-			'<br />',
-			Language::get('message') . Language::get('colon') . ' ' . $postData['text']
-		);
+		$messenger = new Messenger(Registry::getInstance());
+		return $messenger
+			->setRoute(Language::get('home'), Registry::get('root'))
+			->doRedirect()
+			->success(Language::get('operation_completed'), Language::get('message_sent', '_contact'));
+	}
 
-		/* send message */
+	/**
+	 * error
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $errorArray array of the error
+	 *
+	 * @return string
+	 */
+
+	protected static function _error($errorArray = [])
+	{
+		$messenger = new Messenger(Registry::getInstance());
+		return $messenger
+			->setRoute(Language::get('home'), Registry::get('root'))
+			->error($errorArray['message'], Language::get('error_occurred'));
+	}
+
+	/**
+	 * validate
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $postArray array of the post
+	 *
+	 * @return array
+	 */
+
+	protected static function _validate($postArray = [])
+	{
+		$emailValidator = new Validator\Email();
+		$urlValidator = new Validator\Url();
+		$captchaValidator = new Validator\Captcha();
+
+		/* validate post */
+
+		$messageArray = [];
+		if (!$postArray['author'])
+		{
+			$messageArray[] = Language::get('author_empty');
+		}
+		if (!$postArray['email'])
+		{
+			$messageArray[] = Language::get('email_empty');
+		}
+		else if ($emailValidator->validate($postArray['email']) === Validator\ValidatorInterface::FAILED)
+		{
+			$messageArray['email'] = Language::get('email_incorrect');
+		}
+		if ($postArray['url'] && $urlValidator->validate($postArray['url']) === Validator\ValidatorInterface::FAILED)
+		{
+			$messageArray[] = Language::get('url_incorrect');
+		}
+		if (!$postArray['text'])
+		{
+			$messageArray[] = Language::get('message_empty');
+		}
+		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
+		{
+			$messageArray[] = Language::get('captcha_incorrect');
+		}
+		return $messageArray;
+	}
+
+	/**
+	 * mail
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $mailArray
+	 *
+	 * @return boolean
+	 */
+
+	protected static function _mail($mailArray = [])
+	{
+		$toArray =
+		[
+			Db::getSetting('author') => Db::getSetting('email')
+		];
+		$fromArray =
+		[
+			$mailArray['author'] => $mailArray['email']
+		];
+		$subject = Language::get('contact');
+		$bodyArray =
+		[
+			Language::get('author') . Language::get('colon') . ' ' . $mailArray['author'],
+			'<br />',
+			Language::get('email') . Language::get('colon') . ' <a href="mailto:' . $mailArray['email'] . '">' . $mailArray['email'] . '</a>',
+			'<br />',
+			Language::get('url') . Language::get('colon') . ' <a href="' . $mailArray['url'] . '">' . $mailArray['url'] . '</a>',
+			'<br />',
+			Language::get('message') . Language::get('colon') . ' ' . $mailArray['text']
+		];
+
+		/* send mail */
 
 		$mailer = new Mailer();
 		$mailer->init($toArray, $fromArray, $subject, $bodyArray);
-		$mailer->send();
+		return $mailer->send();
 	}
 }

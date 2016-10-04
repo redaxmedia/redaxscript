@@ -1,0 +1,18 @@
+[
+	[
+		null,
+		"ltr"
+	],
+	[
+		{
+			"language": "en"
+		},
+		"ltr"
+	],
+	[
+		{
+			"language": "ar"
+		},
+		"rtl"
+	]
+]

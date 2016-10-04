@@ -1,0 +1,31 @@
+[
+	[
+		{
+			"dbStatus": 0,
+			"phpVersion": "5.0.0",
+			"pdoDriverArray": null,
+			"sessionStatus": false
+		},
+		[
+			"Connection to database failed",
+			"PHP version not supported",
+			"PDO driver is disabled",
+			"Session is disabled"
+		]
+	],
+	[
+		{
+			"dbStatus": 2,
+			"phpVersion": "5.5.0",
+			"pdoDriverArray":
+			[
+				"sqlite",
+				"mysql",
+				"pgsql"
+			],
+			"sessionStatus": true
+		},
+		[
+		]
+	]
+]

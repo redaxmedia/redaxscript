@@ -1,13 +1,15 @@
 <?php
 namespace Redaxscript\Modules\FeedReader;
 
+use Redaxscript\Head;
 use Redaxscript\Html;
-use SimpleXMLElement;
+use Redaxscript\Language;
+use Redaxscript\Reader;
 
 /**
  * read external rss and atom feeds
  *
- * @since 2.3.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -22,96 +24,106 @@ class FeedReader extends Config
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray =
+	[
 		'name' => 'Feed reader',
 		'alias' => 'FeedReader',
 		'author' => 'Redaxmedia',
 		'description' => 'Read external RSS and Atom feeds',
-		'version' => '2.6.2'
-	);
+		'version' => '3.0.0'
+	];
 
 	/**
-	 * loaderStart
+	 * adminPanelNotification
 	 *
-	 * @since 2.3.0
+	 * @since 3.0.0
+	 *
+	 * @return array
 	 */
 
-	public static function loaderStart()
+	public static function adminPanelNotification()
 	{
-		global $loader_modules_styles;
-		$loader_modules_styles[] = 'modules/FeedReader/styles/feed_reader.css';
+		return self::getNotification();
+	}
+
+	/**
+	 * renderStart
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function renderStart()
+	{
+		$link = Head\Link::getInstance();
+		$link
+			->init()
+			->appendFile('modules/FeedReader/assets/styles/feed_reader.css');
 	}
 
 	/**
 	 * render
 	 *
-	 * @since 2.3.0
+	 * @since 3.0.0
 	 *
 	 * @param string $url
-	 * @param array $options
+	 * @param array $optionArray
 	 *
 	 * @return string
 	 */
 
-	public static function render($url = null, $options = array())
+	public static function render($url = null, $optionArray = [])
 	{
-		$output = null;
 		$counter = 0;
+		$output = null;
 
 		/* html elements */
 
 		$titleElement = new Html\Element();
-		$titleElement->init('h3', array(
-			'class' => self::$_config['className']['title']
-		));
+		$titleElement->init('h3',
+		[
+			'class' => self::$_configArray['className']['title']
+		]);
 		$linkElement = new Html\Element();
-		$linkElement->init('a', array(
+		$linkElement->init('a',
+		[
 			'target' => '_blank'
-		));
+		]);
 		$boxElement = new Html\Element();
-		$boxElement->init('div', array(
-			'class' => self::$_config['className']['box']
-		));
+		$boxElement->init('div',
+		[
+			'class' => self::$_configArray['className']['box']
+		]);
 
-		/* get contents */
+		/* load result */
 
-		$contents = file_get_contents($url);
-		if ($contents)
+		$reader = new Reader();
+		$result = $reader->loadXML($url)->getObject();
+		$result = $result->entry ? $result->entry : $result->channel->item;
+
+		/* process result */
+
+		if ($result)
 		{
-			$feed = new SimpleXMLElement($contents);
-			$result = $feed->entry ? $feed->entry : $feed->channel->item;
-
-			/* process result */
-
 			foreach ($result as $value)
 			{
-				/* break if limit reached */
-
-				if (++$counter > $options['limit'])
+				if ($counter++ < $optionArray['limit'])
 				{
-					break;
+					$linkElement
+							->attr('href', $value->link->attributes()->href ? $value->link->attributes()->href : $value->link)
+							->text($value->title);
+
+					/* collect output */
+
+					$output .= $titleElement->html($linkElement) . $boxElement->text($value->summary ? $value->summary : $value->description);
 				}
-
-				/* handle feed type */
-
-				$url = $value->link['href'] ? (string)$value->link['href'] : (string)$value->link;
-				$text = $value->summary ? $value->summary : $value->description;
-
-				/* url */
-
-				if ($url)
-				{
-					$linkElement->attr('href', $url)->text($value->title);
-				}
-				else
-				{
-					$linkElement = $value->title;
-				}
-
-				/* collect output */
-
-				$output .= $titleElement->html($linkElement) . $boxElement->text($text);
 			}
+		}
+
+		/* else handle notification */
+
+		else
+		{
+			self::setNotification('error', Language::get('url_incorrect') . Language::get('point'));
 		}
 		return $output;
 	}

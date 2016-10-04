@@ -1,0 +1,92 @@
+/**
+ * @tableofcontents
+ *
+ * 1. button default
+ * 2. query
+ *    2.1 medium max
+ *    2.2 medium min
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. button default */
+
+.rs-admin-button-default
+{
+	@extend %rs-admin-button;
+	background: var(--rs-admin-gradient-senary);
+	color: gray(255);
+	font-size: 0.875em;
+
+	&:hover
+	{
+		background: gray(50);
+	}
+
+	&:active
+	{
+		background: var(--rs-admin-gradient-primary);
+	}
+
+	&[disabled]
+	{
+		background: gray(200);
+		color: gray(150);
+		pointer-events: none;
+	}
+
+	&.rs-admin-button-create
+	{
+		background: var(--rs-admin-gradient-tertiary);
+
+		&:hover
+		{
+			background: var(--rs-admin-color-success);
+		}
+	}
+
+	&.rs-admin-button-delete
+	{
+		background: var(--rs-admin-gradient-secondary);
+
+		&:hover
+		{
+			background: var(--rs-admin-color-error);
+		}
+	}
+
+	&.rs-admin-is-large
+	{
+		font-size: 1.125em;
+	}
+}
+
+.rs-admin-wrapper-button
+{
+	margin-bottom: 1em;
+}
+
+/* @section 2. query */
+
+/* @section 2.1 medium max */
+
+@media (--media-medium-max)
+{
+	.rs-admin-button-default + .rs-admin-button-default
+	{
+		margin-top: 1em;
+	}
+}
+
+/* @section 2.2 medium min */
+
+@media (--media-medium-min)
+{
+	.rs-admin-button-default + .rs-admin-button-default
+	{
+		margin-left: 1em;
+	}
+}

@@ -1,7 +1,8 @@
 <?php
 namespace Redaxscript\Modules\Validator;
 
-use Redaxscript\Module;
+use Redaxscript\Html;
+use Redaxscript\Reader;
 use Redaxscript\Registry;
 
 /**
@@ -14,7 +15,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class Validator extends Module
+class Validator extends Config
 {
 	/**
 	 * array of the module
@@ -22,29 +23,52 @@ class Validator extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray =
+	[
 		'name' => 'Validator',
 		'alias' => 'Validator',
 		'author' => 'Redaxmedia',
 		'description' => 'HTML validator for developers',
-		'version' => '2.6.2',
+		'version' => '3.0.0',
 		'access' => '1'
-	);
+	];
 
 	/**
-	 * loaderStart
+	 * adminPanelNotification
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
+	 *
+	 * @return array
 	 */
 
-	public static function loaderStart()
+	public static function adminPanelNotification()
 	{
-		if (Registry::get('firstParameter') !== 'admin')
+		/* load result */
+
+		$urlBase = self::$_configArray['url'] . Registry::get('root') . '/' . Registry::get('parameterRoute') . Registry::get('fullRoute');
+		$urlXML = $urlBase . '&out=xml';
+		$reader = new Reader();
+		$result = $reader->loadXML($urlXML)->getObject();
+
+		/* process result */
+
+		foreach ($result as $value)
 		{
-			global $loader_modules_styles, $loader_modules_scripts;
-			$loader_modules_styles[] = 'modules/Validator/styles/validator.css';
-			$loader_modules_scripts[] = 'modules/Validator/scripts/init.js';
-			$loader_modules_scripts[] = 'modules/Validator/scripts/validator.js';
+			$type = $value->attributes()->type ? (string)$value->attributes()->type : $value->getName();
+			if (in_array($type, self::$_configArray['typeArray']))
+			{
+				$message =
+				[
+					'text' => (string)$value->message,
+					'attr' =>
+					[
+						'href' => $urlBase,
+						'target' => '_blank'
+					]
+				];
+				self::setNotification($type, $message);
+			}
 		}
+		return self::getNotification();
 	}
 }

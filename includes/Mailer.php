@@ -19,7 +19,7 @@ class Mailer
 	 * @var array
 	 */
 
-	protected $_toArray;
+	protected $_toArray = [];
 
 	/**
 	 * array of sender
@@ -27,7 +27,7 @@ class Mailer
 	 * @var array
 	 */
 
-	protected $_fromArray;
+	protected $_fromArray = [];
 
 	/**
 	 * subject of the email
@@ -51,7 +51,7 @@ class Mailer
 	 * @var array
 	 */
 
-	protected $_attachmentArray;
+	protected $_attachmentArray = [];
 
 	/**
 	 * built recipient contents
@@ -97,7 +97,7 @@ class Mailer
 	 * @param array $attachmentArray array of attachments
 	 */
 
-	public function init($toArray = array(), $fromArray = array(), $subject = null, $body = null, $attachmentArray = array())
+	public function init($toArray = [], $fromArray = [], $subject = null, $body = null, $attachmentArray = [])
 	{
 		$this->_toArray = $toArray;
 		$this->_fromArray = $fromArray;
@@ -145,16 +145,16 @@ class Mailer
 	{
 		/* collect subject string */
 
-		$settingsSubject = Db::getSettings('subject');
+		$subject = Db::getSetting('subject');
 
 		/* extended subject string */
 
-		if ($settingsSubject)
+		if ($subject)
 		{
-			$this->_subjectString = $settingsSubject;
+			$this->_subjectString = $subject;
 			if ($this->_subject)
 			{
-				$this->_subjectString .= Db::getSettings('divider');
+				$this->_subjectString .= Db::getSetting('divider');
 			}
 		}
 		$this->_subjectString .= $this->_subject;
@@ -198,16 +198,16 @@ class Mailer
 
 		if (!$this->_attachmentArray)
 		{
-			$this->_headerString .= 'Content-Type: text/html; charset=' . Db::getSettings('charset') . PHP_EOL;
+			$this->_headerString .= 'Content-Type: text/html; charset=' . Db::getSetting('charset') . PHP_EOL;
 		}
 
 		/* else handle attachment */
 
 		else
 		{
-			foreach ($this->_attachmentArray as $file => $contents)
+			foreach ($this->_attachmentArray as $file => $content)
 			{
-				$contents = chunk_split(base64_encode($contents));
+				$content = chunk_split(base64_encode($content));
 				$boundary = uniqid();
 				$this->_headerString .= 'Content-Type: multipart/mixed; boundary="' . $boundary . '"' . PHP_EOL . PHP_EOL;
 				$this->_headerString .= '--' . uniqid() . PHP_EOL;
@@ -216,7 +216,7 @@ class Mailer
 
 				if ($this->_bodyString)
 				{
-					$this->_headerString .= 'Content-Type: text/html; charset=' . Db::getSettings('charset') . PHP_EOL;
+					$this->_headerString .= 'Content-Type: text/html; charset=' . Db::getSetting('charset') . PHP_EOL;
 					$this->_headerString .= 'Content-Transfer-Encoding: 8bit' . PHP_EOL . PHP_EOL;
 					$this->_headerString .= $this->_bodyString . PHP_EOL . PHP_EOL;
 					$this->_headerString .= '--' . $boundary . PHP_EOL;
@@ -228,7 +228,7 @@ class Mailer
 				$this->_headerString .= 'Content-Type: application/octet-stream; name="' . $file . '"' . PHP_EOL;
 				$this->_headerString .= 'Content-Transfer-Encoding: base64' . PHP_EOL;
 				$this->_headerString .= 'Content-Disposition: attachment; filename="' . $file . '"' . PHP_EOL . PHP_EOL;
-				$this->_headerString .= $contents . PHP_EOL . PHP_EOL;
+				$this->_headerString .= $content . PHP_EOL . PHP_EOL;
 				$this->_headerString .= '--' . $boundary . '--';
 			}
 		}
@@ -244,16 +244,23 @@ class Mailer
 	 * send the email
 	 *
 	 * @since 2.6.2
+	 *
+	 * @return boolean
 	 */
 
 	public function send()
 	{
+		$output = false;
 		if (function_exists('mail'))
 		{
 			foreach ($this->_toArray as $to)
 			{
-				mail($to, $this->_subjectString, $this->_bodyString, $this->_headerString);
+				if ($to)
+				{
+					$output = mail($to, $this->_subjectString, $this->_bodyString, $this->_headerString);
+				}
 			}
 		}
+		return $output;
 	}
 }

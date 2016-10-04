@@ -4,7 +4,7 @@ namespace Redaxscript\Modules\Disqus;
 use Redaxscript\Module;
 
 /**
- * parent class to store module config
+ * children class to store module config
  *
  * @since 2.2.0
  *
@@ -16,13 +16,14 @@ use Redaxscript\Module;
 class Config extends Module
 {
 	/**
-	 * module config
+	 * array of config
 	 *
 	 * @var array
 	 */
 
-	protected static $_config = array(
-		'id' => 'disqus_thread',
+	protected static $_configArray =
+	[
+		'id' => 'disqus',
 		'url' => '//example.disqus.com/embed.js'
-	);
+	];
 }

@@ -21,13 +21,14 @@ class Desktop extends ClientAbstract
 
 	protected function _autorun()
 	{
-		$this->_detect(array(
+		$this->_detect(
+		[
 			'bsd',
 			'linux',
 			'ubuntu',
 			'macintosh',
 			'solaris',
 			'windows'
-		));
+		]);
 	}
 }

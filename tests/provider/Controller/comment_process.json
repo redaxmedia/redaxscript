@@ -1,0 +1,97 @@
+[
+	[
+		{
+			"author": null,
+			"email": null,
+			"url": null,
+			"text": null,
+			"article": null,
+			"task": 1
+		},
+		[
+			null,
+			null
+		],
+		{
+			"notification": 0,
+			"moderation": 0
+		},
+		"<h2 class=\"rs-title-note rs-is-error\">An error occurred</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-error\"><ul class=\"rs-list-note\"><li>Author is empty</li><li>Email is empty</li><li>Comment is empty</li><li>Input is incorrect</li><li>Captcha is incorrect</li></ul></div>"
+	],
+	[
+		{
+			"author": "test",
+			"email": "invalid",
+			"url": "invalid",
+			"text": null,
+			"article": 0,
+			"task": 1
+		},
+		[
+			null,
+			null
+		],
+		{
+			"notification": 1,
+			"moderation": 0
+		},
+		"<h2 class=\"rs-title-note rs-is-error\">An error occurred</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-error\"><ul class=\"rs-list-note\"><li>Email is incorrect</li><li>URL is incorrect</li><li>Comment is empty</li><li>Input is incorrect</li><li>Captcha is incorrect</li></ul></div>"
+	],
+	[
+		{
+			"author": null,
+			"email": "test@test.com",
+			"url": null,
+			"text": "test",
+			"article": 1,
+			"task": 1
+		},
+		[
+			"$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u",
+			"4dff4ea340f0a823f15d3f4f01ab62eae0e5da579ccb851f8db9dfe84c58b2b37b89903a740e1ee172da793a6e79d560e5f7f9bd058a12a280433ed6fa46510a"
+		],
+		{
+			"notification": 0,
+			"moderation": 0
+		},
+		"<h2 class=\"rs-title-note rs-is-error\">An error occurred</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-error\">Author is empty</div><a href=\"home/welcome\" class=\"rs-button-note rs-is-error\">Back</a>"
+	],
+	[
+		{
+			"author": "test",
+			"email": "test@test.com",
+			"url": null,
+			"text": "test",
+			"article": 1,
+			"task": 1
+		},
+		[
+			"$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u",
+			"4dff4ea340f0a823f15d3f4f01ab62eae0e5da579ccb851f8db9dfe84c58b2b37b89903a740e1ee172da793a6e79d560e5f7f9bd058a12a280433ed6fa46510a"
+		],
+		{
+			"notification": 0,
+			"moderation": 0
+		},
+		"<h2 class=\"rs-title-note rs-is-success\">Operation completed successfully</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-success\">Your comment has been successfully sent</div><a href=\"home/welcome\" class=\"rs-button-note rs-is-success\">Continue</a><meta class=\"rs-meta-redirect\" content=\"0;url=/home/welcome\" http-equiv=\"refresh\" />"
+	],
+	[
+		{
+			"author": "admin",
+			"email": "test@test.com",
+			"url": "http://test.com",
+			"text": "test",
+			"article": 1,
+			"task": 1
+		},
+		[
+			"$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u",
+			"4dff4ea340f0a823f15d3f4f01ab62eae0e5da579ccb851f8db9dfe84c58b2b37b89903a740e1ee172da793a6e79d560e5f7f9bd058a12a280433ed6fa46510a"
+		],
+		{
+			"notification": 0,
+			"moderation": 1
+		},
+		"<h2 class=\"rs-title-note rs-is-success\">Operation completed successfully</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-success\">Your comment will be approved by a moderator</div><a href=\"home/welcome\" class=\"rs-button-note rs-is-success\">Continue</a><meta class=\"rs-meta-redirect\" content=\"0;url=/home/welcome\" http-equiv=\"refresh\" />"
+	]
+]

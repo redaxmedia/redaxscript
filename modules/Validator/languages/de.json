@@ -1,9 +1,0 @@
-{
-	"_validator":
-	{
-		"from": "Von",
-		"to": "Bis",
-		"line": "Zeile",
-		"column": "Abschnitt"
-	}
-}

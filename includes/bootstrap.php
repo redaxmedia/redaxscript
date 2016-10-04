@@ -1,14 +1,27 @@
 <?php
 namespace Redaxscript;
 
-/* include as needed */
+/* autoload */
 
 include_once('includes/Autoloader.php');
 
+/* deprecated */
+
+include_once('includes/admin_admin.php');
+include_once('includes/admin_list.php');
+include_once('includes/admin_query.php');
+include_once('includes/admin_router.php');
+include_once('includes/comments.php');
+include_once('includes/contents.php');
+include_once('includes/navigation.php');
+include_once('includes/query.php');
+include_once('includes/router.php');
+include_once('includes/startup.php');
+
 /* init */
 
-Autoloader::init();
-Request::init();
+$autoloader = new Autoloader();
+$autoloader->init();
 
 /* get instance */
 
@@ -16,23 +29,26 @@ $registry = Registry::getInstance();
 $request = Request::getInstance();
 $config = Config::getInstance();
 
-/* config and database */
+/* request and config */
 
+$request->init();
 $config->init();
+
+/* database */
+
 Db::construct($config);
 Db::init();
 
-/* startup and migrate */
+/* startup and registry */
 
 startup();
-$registry->init(migrate_constants());
+$registry->init();
 
-/* hook */
+/* deprecated */
 
-if ($registry->get('dbStatus') === 2)
+if ($registry->get('file') === 'index.php')
 {
-	Hook::construct($registry);
-	Hook::init();
+	include_once('includes/router.php');
 }
 
 /* refresh */
@@ -53,3 +69,12 @@ $registry->set('template', $detectorTemplate->getOutput());
 
 $language = Language::getInstance();
 $language->init($registry->get('language'));
+
+/* hook */
+
+if ($registry->get('dbStatus') === 2)
+{
+	Hook::construct($registry);
+	Hook::init();
+	Hook::trigger('init');
+}

@@ -6,8 +6,8 @@ namespace Redaxscript\Filter;
  *
  * @since 2.2.0
  *
- * @category Redaxscript
- * @package Filter
+ * @package Redaxscript
+ * @category Filter
  * @author Henry Ruhs
  */
 

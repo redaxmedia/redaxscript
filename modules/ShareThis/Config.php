@@ -4,7 +4,7 @@ namespace Redaxscript\Modules\ShareThis;
 use Redaxscript\Module;
 
 /**
- * parent class to store module config
+ * children class to store module config
  *
  * @since 2.2.0
  *
@@ -16,50 +16,60 @@ use Redaxscript\Module;
 class Config extends Module
 {
 	/**
-	 * module config
+	 * array of config
 	 *
 	 * @var array
 	 */
 
-	protected static $_config = array(
-		'className' => array(
-			'link' => 'js_link_share_this link_share_this',
-			'list' => 'list_share_this clearfix'
-		),
-		'network' => array(
-			'facebook' => array(
+	protected static $_configArray =
+	[
+		'className' =>
+		[
+			'link' => 'rs-js-link-share-this rs-link-share-this',
+			'list' => 'rs-list-share-this rs-fn-clearfix'
+		],
+		'network' =>
+		[
+			'facebook' =>
+			[
 				'url' => 'http://facebook.com/sharer.php?u=',
-				'className' => 'link_facebook',
+				'className' => 'rs-link-facebook',
 				'attribute' => 'data-type="facebook"'
-			),
-			'googleplusone' => array(
+			],
+			'googleplusone' =>
+			[
 				'url' => 'http://plusone.google.com/_/+1/confirm?url=',
-				'className' => 'link_googleplusone'
-			),
-			'twitter' => array(
+				'className' => 'rs-link-googleplusone'
+			],
+			'twitter' =>
+			[
 				'url' => 'http://twitter.com/share?url=',
-				'className' => 'link_twitter',
+				'className' => 'rs-link-twitter',
 				'height' => 340
-			),
-			'pinterest' => array(
+			],
+			'pinterest' =>
+			[
 				'url' => 'http://pinterest.com/pin/create/button/?url=',
-				'className' => 'link_pinterest'
-			),
-			'linkedin' => array(
+				'className' => 'rs-link-pinterest'
+			],
+			'linkedin' =>
+			[
 				'url' => 'http://linkedin.com/shareArticle?url=',
-				'className' => 'link_linkedin',
+				'className' => 'rs-link-linkedin',
 				'height' => 490,
 				'width' => 850
-			),
-			'stumbleupon' => array(
+			],
+			'stumbleupon' =>
+			[
 				'url' => 'http://stumbleupon.com/submit?url=',
-				'className' => 'link_stumbleupon'
-			),
-			'delicious' => array(
+				'className' => 'rs-link-stumbleupon'
+			],
+			'delicious' =>
+			[
 				'url' => 'http://del.icio.us/post?url=',
-				'className' => 'link_delicious',
+				'className' => 'rs-link-delicious',
 				'height' => 580
-			)
-		)
-	);
+			]
+		]
+	];
 }

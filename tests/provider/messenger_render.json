@@ -1,0 +1,62 @@
+[
+	[
+		{
+			"message": "test",
+			"title": "title",
+			"type": "success"
+		},
+		{
+			"text": null,
+			"url": null,
+			"timeout": null
+		},
+		"<h2 class=\"rs-title-note rs-is-success\">title</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-success\">test</div>"
+	],
+	[
+		{
+			"message":
+			[
+				"test1",
+				"test2"
+			],
+			"title": null,
+			"type": "warning"
+		},
+		{
+			"text": null,
+			"url": null,
+			"timeout": null
+		},
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-warning\"><ul class=\"rs-list-note\"><li>test1</li><li>test2</li></ul></div>"
+	],
+	[
+		{
+			"message": "test",
+			"title": null,
+			"type": "info"
+		},
+		{
+			"text": "ok",
+			"url": "http://test.com",
+			"timeout": 2
+		},
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-info\">test</div><a href=\"http://test.com\" class=\"rs-button-note rs-is-info\">ok</a><meta content=\"2;url=http://test.com\" http-equiv=\"refresh\" />"
+	],
+	[
+		{
+			"message":
+			[
+				"test1",
+				"test2"
+			],
+			"title": null,
+			"type": "info"
+		},
+		{
+			"text": "ok",
+			"url": "http://test.com",
+			"timeout": 0
+		},
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-info\"><ul class=\"rs-list-note\"><li>test1</li><li>test2</li></ul></div><a href=\"http://test.com\" class=\"rs-button-note rs-is-info\">ok</a><meta class=\"rs-meta-redirect\" content=\"0;url=http://test.com\" http-equiv=\"refresh\" />"
+	]
+]

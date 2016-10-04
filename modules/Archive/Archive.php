@@ -25,13 +25,14 @@ class Archive extends Config
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray =
+	[
 		'name' => 'Archive',
 		'alias' => 'Archive',
 		'author' => 'Redaxmedia',
 		'description' => 'Generate a archive tree',
-		'version' => '2.6.2'
-	);
+		'version' => '3.0.0'
+	];
 
 	/**
 	 * render
@@ -44,32 +45,29 @@ class Archive extends Config
 	public static function render()
 	{
 		$output = null;
-		$outputItem = null;
 
 		/* html elements */
 
 		$titleElement = new Html\Element();
-		$titleElement->init('h3', array(
-			'class' => self::$_config['className']['title']
-		));
+		$titleElement->init('h3',
+		[
+			'class' => self::$_configArray['className']['title']
+		]);
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
 		$listElement = new Html\Element();
-		$listElement->init('ul', array(
-			'class' => self::$_config['className']['list']
-		));
+		$listElement->init('ul',
+		[
+			'class' => self::$_configArray['className']['list']
+		]);
 
-		/* fetch articles */
+		/* query articles */
 
 		$articles = Db::forTablePrefix('articles')
-			->selectExpr('*, YEAR(date) as year, MONTH(date) as month')
 			->where('status', 1)
-			->whereIn('language', array(
-				Registry::get('language'),
-				''
-			))
+			->whereLanguageIs(Registry::get('language'))
 			->orderByDesc('date')
-			->findArray();
+			->findMany();
 
 		/* process articles */
 
@@ -84,39 +82,35 @@ class Archive extends Config
 			$lastDate = 0;
 			foreach ($articles as $value)
 			{
-				if ($accessValidator->validate($value['access'], Registry::get('myGroups')) === Validator\ValidatorInterface::PASSED)
+				if ($accessValidator->validate($value->access, Registry::get('myGroups')) === Validator\ValidatorInterface::PASSED)
 				{
-					$currentDate = $value['month'] + $value['year'];
+					$month = date('n', strtotime($value->date));
+					$year = date('Y', strtotime($value->date));
+					$currentDate = $month + $year;
 
 					/* collect output */
 
 					if ($lastDate <> $currentDate)
 					{
-						if ($lastDate > 0)
-						{
-							$output .= $listElement->html($outputItem);
-							$outputItem = null;
-						}
-						$output .= $titleElement->text(Language::get($value['month'] - 1, '_month') . ' ' . $value['year']);
+						$output .= $titleElement->text(Language::get($month - 1, '_month') . ' ' . $year);
 					}
+					$lastDate = $currentDate;
 
 					/* collect item output */
 
-					$outputItem .= '<li>';
-					$outputItem .= $linkElement->attr(array(
-						'href' => $value['category'] < 1 ? $value['alias'] : build_route('articles', $value['id']),
-						'title' => $value['description'] ? $value['description'] : $value['title']
-					))->text($value['title']);
+					$outputItem = '<li>';
+					$outputItem .= $linkElement
+						->attr(
+						[
+							'href' => Registry::get('parameterRoute') . build_route('articles', $value->id),
+							'title' => $value->description ? $value->description : $value->title
+						])
+						->text($value->title);
 					$outputItem .= '</li>';
 
 					/* collect list output */
 
-					if (end($articles) === $value)
-					{
-						$output .= $listElement->html($outputItem);
-						$outputItem = null;
-					}
-					$lastDate = $currentDate;
+					$output .= $listElement->html($outputItem);
 				}
 				else
 				{

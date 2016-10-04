@@ -1,0 +1,25 @@
+/**
+ * @tableofcontents
+ *
+ * 1. list default
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. list default */
+
+ol.rs-list-default li
+{
+	list-style: inherit;
+	list-style-position: inside;
+}
+
+ul.rs-list-default li:before
+{
+	@extend %rs-icon-chevron-right;
+	color: var(--rs-color-primary);
+	margin-right: 0.125em;
+}

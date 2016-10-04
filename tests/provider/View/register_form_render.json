@@ -1,0 +1,8 @@
+[
+	[
+		{
+			"start": "<h2 class=\"rs-title-content\">Create your account</h2><form class=\"rs-js-validate-form rs-form-default rs-form-register\" method=\"post\">",
+			"end": "<button class=\"rs-js-button rs-button-default rs-button-submit\" type=\"submit\" value=\"submit\" name=\"Redaxscript\\View\\RegisterForm\">Create</button></form>"
+		}
+	]
+]

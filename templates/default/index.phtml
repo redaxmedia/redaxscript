@@ -1,51 +1,23 @@
-<?php use Redaxscript\Template as Template; ?>
+<?php namespace Redaxscript\Template; ?>
 
 <!DOCTYPE html>
-<html lang="<?php echo Template::registry('language'); ?>" class="<?php echo Template::helperClass(); ?>">
+<html lang="<?php echo Tag::registry('language'); ?>" dir="<?php echo Helper::getDirection(); ?>" class="<?php echo Helper::getClass(); ?>">
 
 	<!-- head -->
 
 	<head>
-		<?php echo Template::partial(array(
-			'templates/default/head.phtml',
-			'templates/admin/head.phtml'
-		)); ?>
+		<?php echo Tag::partial(
+		[
+			'templates/admin/head.phtml',
+			'templates/default/head.phtml'
+		]); ?>
 	</head>
 
 	<!-- body -->
 
-	<body class="wrapper_body">
-
-		<!-- admin panel and header -->
-
-		<?php echo Template::partial(array(
-			'templates/admin/panel.phtml',
-			'templates/default/header.phtml'
-		)); ?>
-
-		<!-- main -->
-
-		<div class="wrapper clearfix">
-
-			<!-- handle content error -->
-
-			<?php if (Template::registry('contentError')): ?>
-				<?php echo Template::partial('templates/default/error.phtml'); ?>
-
-			<!-- else content and sidebar -->
-
-			<?php else: ?>
-				<?php echo Template::partial(array(
-					'templates/default/navibar.phtml',
-					'templates/default/content.phtml',
-					'templates/default/sidebar.phtml'
-				)); ?>
-			<?php endif; ?>
-		</div>
-
-		<!-- footer -->
-
-		<?php echo Template::partial('templates/default/footer.phtml'); ?>
-		<?php echo Template::script(); ?>
+	<body class="rs-body">
+		<?php $body = Tag::partial('templates/default/body.phtml'); ?>
+		<?php echo Tag::partial('templates/admin/panel.phtml'); ?>
+		<?php echo $body; ?>
 	</body>
 </html>

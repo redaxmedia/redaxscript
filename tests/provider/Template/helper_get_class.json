@@ -1,0 +1,46 @@
+[
+	[
+		{
+			"myBrowser": null,
+			"myBrowserVersion": null,
+			"myEngine": null,
+			"myMobile": null,
+			"myTablet": null,
+			"myDesktop": null
+		},
+		null
+	],
+	[
+		{
+			"myBrowser": "firefox",
+			"myBrowserVersion": 27,
+			"myEngine": "gecko",
+			"myMobile": null,
+			"myTablet": null,
+			"myDesktop": "windows"
+		},
+		"rs-is-firefox rs-is-27 rs-is-gecko rs-is-desktop rs-is-windows"
+	],
+	[
+		{
+			"myBrowser": "chrome",
+			"myBrowserVersion": 32,
+			"myEngine": "webkit",
+			"myMobile": "android",
+			"myTablet": null,
+			"myDesktop": null
+		},
+		"rs-is-chrome rs-is-32 rs-is-webkit rs-is-mobile rs-is-android"
+	],
+	[
+		{
+			"myBrowser": "safari",
+			"myBrowserVersion": 6,
+			"myEngine": "webkit",
+			"myMobile": null,
+			"myTablet": "tablet",
+			"myDesktop": null
+		},
+		"rs-is-safari rs-is-6 rs-is-webkit rs-is-tablet"
+	]
+]

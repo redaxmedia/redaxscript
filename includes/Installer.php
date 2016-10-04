@@ -35,7 +35,7 @@ class Installer
 	 * @var string
 	 */
 
-	protected $_prefixPlaceholder = '/* {configPrefix} */';
+	protected $_prefixPlaceholder = '/* %PREFIX% */';
 
 	/**
 	 * constructor of the class
@@ -90,10 +90,10 @@ class Installer
 	 *
 	 * @since 2.4.0
 	 *
-	 * @param array $options options of the data
+	 * @param array $optionArray options of the installation
 	 */
 
-	public function insertData($options = null)
+	public function insertData($optionArray = null)
 	{
 		$language = Language::getInstance();
 		$language->init();
@@ -102,56 +102,73 @@ class Installer
 
 		Db::forTablePrefix('articles')
 			->create()
-			->set(array(
+			->set(
+			[
 				'title' => 'Welcome',
 				'alias' => 'welcome',
-				'author' => $options['adminUser'],
+				'author' => $optionArray['adminUser'],
+				'robots' => 1,
 				'text' => file_get_contents('database/html/articles/welcome.phtml'),
-				'language' => '',
 				'category' => 1,
 				'rank' => 1
-			))->save();
+			])
+			->save();
 
 		/* categories */
 
 		Db::forTablePrefix('categories')
 			->create()
-			->set(array(
+			->set(
+			[
 				'title' => 'Home',
 				'alias' => 'home',
-				'author' => $options['adminUser'],
-				'language' => '',
+				'author' => $optionArray['adminUser'],
+				'robots' => 1,
 				'rank' => 1
-			))->save();
+			])
+			->save();
 
 		/* extras */
 
-		$extrasArray = array(
-			'categories' => array(
-				'status' => 1,
-				'headline' => 1
-			),
-			'articles' => array(
-				'status' => 1,
-				'headline' => 1
-			),
-			'comments' => array(
-				'status' => 1,
-				'headline' => 1
-			),
-			'languages' => array(
-				'status' => 0,
-				'headline' => 1
-			),
-			'templates' => array(
-				'status' => 0,
-				'headline' => 1
-			),
-			'footer' => array(
-				'status' => 0,
-				'headline' => 0
-			)
-		);
+		$extrasArray =
+		[
+			'categories' =>
+			[
+				'category' => 0,
+				'headline' => 1,
+				'status' => 1
+			],
+			'articles' =>
+			[
+				'category' => 0,
+				'headline' => 1,
+				'status' => 1
+			],
+			'comments' =>
+			[
+				'category' => 0,
+				'headline' => 1,
+				'status' => 1
+			],
+			'languages' =>
+			[
+				'category' => 0,
+				'headline' => 1,
+				'status' => 0
+			],
+			'templates' =>
+			[
+				'category' => 0,
+				'headline' => 1,
+				'status' => 0
+			],
+			'teaser' =>
+			[
+				'category' => 1,
+				'headline' => 0,
+				'status' => 0
+			]
+		];
 		$extrasRank = 0;
 
 		/* process extras array */
@@ -160,23 +177,26 @@ class Installer
 		{
 			Db::forTablePrefix('extras')
 				->create()
-				->set(array(
+				->set(
+				[
 					'title' => ucfirst($key),
 					'alias' => $key,
-					'author' => $options['adminUser'],
+					'author' => $optionArray['adminUser'],
 					'text' => file_get_contents('database/html/extras/' . $key . '.phtml'),
-					'language' => '',
+					'category' => $value['category'],
 					'headline' => $value['headline'],
 					'status' => $value['status'],
 					'rank' => ++$extrasRank
-				))->save();
+				])
+				->save();
 		}
 
 		/* groups */
 
 		Db::forTablePrefix('groups')
 			->create()
-			->set(array(
+			->set(
+			[
 				'name' => 'Administrators',
 				'alias' => 'administrators',
 				'description' => 'Unlimited access',
@@ -188,15 +208,18 @@ class Installer
 				'users' => '1, 2, 3',
 				'modules' => '1, 2, 3',
 				'settings' => 1,
-				'filter' => 0,
-			))->save();
+				'filter' => 0
+			])
+			->save();
 		Db::forTablePrefix('groups')
 			->create()
-			->set(array(
+			->set(
+			[
 				'name' => 'Members',
 				'alias' => 'members',
 				'description' => 'Default members group'
-			))->save();
+			])
+			->save();
 
 		/* modules */
 
@@ -205,65 +228,73 @@ class Installer
 			$callHome = new Modules\CallHome\CallHome;
 			$callHome->install();
 		}
+		if (is_dir('modules/Validator'))
+		{
+			$validator = new Modules\Validator\Validator;
+			$validator->install();
+		}
 
 		/* settings */
 
-		$settingsArray = array(
+		$settingArray =
+		[
 			'language' => 'detect',
 			'template' => 'default',
 			'title' => $language->get('name', '_package'),
-			'author' => null,
+			'author' => $optionArray['adminName'],
 			'copyright' => null,
 			'description' => $language->get('description', '_package'),
 			'keywords' => null,
-			'robots' => 'all',
-			'email' => $options['adminEmail'],
+			'robots' => 1,
+			'email' => $optionArray['adminEmail'],
 			'subject' => $language->get('name', '_package'),
 			'notification' => 0,
 			'charset' => 'utf-8',
 			'divider' => ' - ',
 			'time' => 'H:i',
 			'date' => 'd.m.Y',
-			'homepage' => '0',
+			'homepage' => 0,
 			'limit' => 10,
 			'order' => 'asc',
-			'pagination' => '1',
-			'moderation' => '0',
-			'registration' => '1',
-			'verification' => '0',
-			'reminder' => '1',
-			'captcha' => '0',
-			'blocker' => '1',
+			'pagination' => 1,
+			'registration' => 1,
+			'verification' => 0,
+			'recovery' => 1,
+			'moderation' => 0,
+			'captcha' => 0,
 			'version' => $language->get('version', '_package')
-		);
+		];
 
 		/* process settings array */
 
-		foreach ($settingsArray as $name => $value)
+		foreach ($settingArray as $name => $value)
 		{
 			Db::forTablePrefix('settings')
 				->create()
-				->set(array(
+				->set(
+				[
 					'name' => $name,
 					'value' => $value
-				))->save();
+				])
+				->save();
 		}
 
 		/* users */
 
 		$passwordHash = new Hash(Config::getInstance());
-		$passwordHash->init($options['adminPassword']);
+		$passwordHash->init($optionArray['adminPassword']);
 		Db::forTablePrefix('users')
 			->create()
-			->set(array(
-				'name' => $options['adminName'],
-				'user' => $options['adminUser'],
+			->set(
+			[
+				'name' => $optionArray['adminName'],
+				'user' => $optionArray['adminUser'],
 				'password' => $passwordHash->getHash(),
-				'email' => $options['adminEmail'],
+				'email' => $optionArray['adminEmail'],
 				'description' => 'God admin',
-				'language' => '',
 				'groups' => '1'
-			))->save();
+			])
+			->save();
 	}
 
 	/**
@@ -281,7 +312,7 @@ class Installer
 		$sqlDirectory->init($this->_directory . '/' . $type . '/' . $action);
 		$sqlArray = $sqlDirectory->getArray();
 
-		/* process sql files */
+		/* process sql */
 
 		foreach ($sqlArray as $file)
 		{

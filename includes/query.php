@@ -14,11 +14,11 @@
  * @return string
  */
 
-function query_table($input = '')
+function query_table($input)
 {
 	static $table;
 
-	/* fetch from cache */
+	/* load from cache */
 
 	if ($table[$input])
 	{
@@ -61,7 +61,7 @@ function query_table($input = '')
  * @return string
  */
 
-function build_route($table = '', $id = '')
+function build_route($table, $id)
 {
 	if ($table && $id)
 	{
@@ -72,7 +72,7 @@ function build_route($table = '', $id = '')
 			case 'categories':
 				$result = Redaxscript\Db::forTablePrefix('categories')
 					->tableAlias('c')
-					->leftJoinPrefix('categories', array('c.parent', '=', 'p.id'), 'p')
+					->leftJoinPrefix('categories', 'c.parent = p.id', 'p')
 					->select('p.alias', 'parent_alias')
 					->select('c.alias', 'category_alias')
 					->where('c.id', $id)
@@ -81,8 +81,8 @@ function build_route($table = '', $id = '')
 			case 'articles':
 				$result = Redaxscript\Db::forTablePrefix('articles')
 					->tableAlias('a')
-					->leftJoinPrefix('categories', array('a.category', '=', 'c.id'), 'c')
-					->leftJoinPrefix('categories', array('c.parent', '=', 'p.id'), 'p')
+					->leftJoinPrefix('categories', 'a.category = c.id', 'c')
+					->leftJoinPrefix('categories', 'c.parent = p.id', 'p')
 					->select('p.alias', 'parent_alias')
 					->select('c.alias', 'category_alias')
 					->select('a.alias', 'article_alias')
@@ -138,7 +138,7 @@ function build_route($table = '', $id = '')
  * @param string $table
  */
 
-function future_update($table = '')
+function future_update($table)
 {
 	Redaxscript\Db::forTablePrefix($table)
 		->where('status', 2)

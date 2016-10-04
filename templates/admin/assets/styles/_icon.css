@@ -1,0 +1,147 @@
+/* @section 1. icon */
+
+@font-face
+{
+	font-family: var(--rs-admin-font-icon);
+	src: url('../../assets/fonts/icon.woff2') format('woff2'), url('../../assets/fonts/icon.woff') format('woff');
+}
+
+%rs-admin-icon-check-circle
+{
+	content: '\2714';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: normal;
+}
+
+%rs-admin-icon-delete
+{
+	content: '\2297';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: normal;
+}
+
+%rs-admin-icon-info
+{
+	content: '\69';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: normal;
+}
+
+%rs-admin-icon-lock
+{
+	content: '\1f511';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: normal;
+}
+
+%rs-admin-icon-power-settings-new
+{
+	content: '\2bbe';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: normal;
+}
+
+%rs-admin-icon-settings
+{
+	content: '\2731';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: normal;
+}
+
+%rs-admin-icon-visibility-off
+{
+	content: '\2298';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: normal;
+}
+
+%rs-admin-icon-error
+{
+	content: '\274c';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: normal;
+}
+
+%rs-admin-icon-warning
+{
+	content: '\21';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: normal;
+}
+
+%rs-admin-icon-import-contacts
+{
+	content: '\25eb';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: normal;
+}
+
+%rs-admin-icon-vpn-key
+{
+	content: '\2386';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: normal;
+}
+
+%rs-admin-icon-add
+{
+	content: '\2b';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: normal;
+}
+
+%rs-admin-icon-clear
+{
+	content: '\d7';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: normal;
+}
+
+%rs-admin-icon-create
+{
+	content: '\270e';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: normal;
+}
+
+%rs-admin-icon-remove
+{
+	content: '\2d';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: normal;
+}
+
+%rs-admin-icon-chevron-right
+{
+	content: '\3009';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: normal;
+}
+
+%rs-admin-icon-expand-less
+{
+	content: '\2227';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: normal;
+}
+
+%rs-admin-icon-expand-more
+{
+	content: '\2228';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: normal;
+}
+
+%rs-admin-icon-notifications
+{
+	content: '\1f514';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: normal;
+}
+
+%rs-admin-icon-person
+{
+	content: '\26c4';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: normal;
+}

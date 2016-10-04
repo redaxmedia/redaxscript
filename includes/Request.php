@@ -2,7 +2,7 @@
 namespace Redaxscript;
 
 /**
- * parent class to request globals
+ * children class to request globals
  *
  * @since 2.2.0
  *
@@ -19,7 +19,7 @@ class Request extends Singleton
 	 * @var array
 	 */
 
-	protected static $_requestArray = array();
+	protected static $_requestArray = [];
 
 	/**
 	 * init the class
@@ -27,32 +27,32 @@ class Request extends Singleton
 	 * @since 2.4.0
 	 */
 
-	public static function init()
+	public function init()
 	{
-		self::$_requestArray = array(
-			'server' => $_SERVER ? $_SERVER : array(),
-			'get' => $_GET ? $_GET : array(),
-			'post' => $_POST ? $_POST : array(),
-			'session' => $_SESSION ? $_SESSION : array(),
-			'cookie' => $_COOKIE ? $_COOKIE : array()
-		);
+		self::$_requestArray =
+		[
+			'server' => $_SERVER ? $_SERVER : [],
+			'get' => $_GET ? $_GET : [],
+			'post' => $_POST ? $_POST : [],
+			'files' => $_FILES ? $_FILES : [],
+			'session' => $_SESSION ? $_SESSION : [],
+			'cookie' => $_COOKIE ? $_COOKIE : []
+		];
 	}
 
 	/**
 	 * get item from globals
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 *
 	 * @param string $key key of the item
-	 * @param string $index index of the key array
+	 * @param string $index index of the array
 	 *
 	 * @return mixed
 	 */
 
-	public static function get($key = null, $index = null)
+	public function get($key = null, $index = null)
 	{
-		$output = false;
-
 		/* handle index */
 
 		if (array_key_exists($index, self::$_requestArray))
@@ -66,15 +66,15 @@ class Request extends Singleton
 
 		/* values as needed */
 
-		if (!$key)
+		if (array_key_exists($key, $requestArray))
 		{
-			$output = $requestArray;
+			return $requestArray[$key];
 		}
-		else if (array_key_exists($key, $requestArray))
+		else if (!$key)
 		{
-			$output = $requestArray[$key];
+			return $requestArray;
 		}
-		return $output;
+		return false;
 	}
 
 	/**
@@ -87,10 +87,9 @@ class Request extends Singleton
 	 * @return string
 	 */
 
-	public static function getServer($key = null)
+	public function getServer($key = null)
 	{
-		$output = self::get($key, 'server');
-		return $output;
+		return self::get($key, 'server');
 	}
 
 	/**
@@ -103,10 +102,9 @@ class Request extends Singleton
 	 * @return string
 	 */
 
-	public static function getQuery($key = null)
+	public function getQuery($key = null)
 	{
-		$output = self::get($key, 'get');
-		return $output;
+		return self::get($key, 'get');
 	}
 
 	/**
@@ -119,10 +117,24 @@ class Request extends Singleton
 	 * @return string
 	 */
 
-	public static function getPost($key = null)
+	public function getPost($key = null)
 	{
-		$output = self::get($key, 'post');
-		return $output;
+		return self::get($key, 'post');
+	}
+
+	/**
+	 * get item from files
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $key key of the item
+	 *
+	 * @return string
+	 */
+
+	public function getFiles($key = null)
+	{
+		return self::get($key, 'files');
 	}
 
 	/**
@@ -135,10 +147,9 @@ class Request extends Singleton
 	 * @return string
 	 */
 
-	public static function getSession($key = null)
+	public function getSession($key = null)
 	{
-		$output = self::get($key, 'session');
-		return $output;
+		return self::get($key, 'session');
 	}
 
 	/**
@@ -151,10 +162,9 @@ class Request extends Singleton
 	 * @return string
 	 */
 
-	public static function getCookie($key = null)
+	public function getCookie($key = null)
 	{
-		$output = self::get($key, 'cookie');
-		return $output;
+		return self::get($key, 'cookie');
 	}
 
 	/**
@@ -166,7 +176,7 @@ class Request extends Singleton
 	 * @param mixed $value value of the item
 	 */
 
-	public static function set($key = null, $value = null)
+	public function set($key = null, $value = null)
 	{
 		self::$_requestArray[$key] = $GLOBALS[$key] = $value;
 	}
@@ -180,7 +190,7 @@ class Request extends Singleton
 	 * @param string $value value of the item
 	 */
 
-	public static function setServer($key = null, $value = null)
+	public function setServer($key = null, $value = null)
 	{
 		self::$_requestArray['server'][$key] = $value;
 	}
@@ -194,7 +204,7 @@ class Request extends Singleton
 	 * @param string $value value of the item
 	 */
 
-	public static function setQuery($key = null, $value = null)
+	public function setQuery($key = null, $value = null)
 	{
 		self::$_requestArray['get'][$key] = $value;
 	}
@@ -208,9 +218,23 @@ class Request extends Singleton
 	 * @param string $value value of the item
 	 */
 
-	public static function setPost($key = null, $value = null)
+	public function setPost($key = null, $value = null)
 	{
 		self::$_requestArray['post'][$key] = $value;
+	}
+
+	/**
+	 * set item to files
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $key key of the item
+	 * @param mixed $value value of the item
+	 */
+
+	public function setFiles($key = null, $value = null)
+	{
+		self::$_requestArray['files'][$key] = $value;
 	}
 
 	/**
@@ -222,7 +246,7 @@ class Request extends Singleton
 	 * @param mixed $value value of the item
 	 */
 
-	public static function setSession($key = null, $value = null)
+	public function setSession($key = null, $value = null)
 	{
 		self::$_requestArray['session'][$key] = $_SESSION[$key] = $value;
 	}
@@ -236,7 +260,7 @@ class Request extends Singleton
 	 * @param string $value value of the item
 	 */
 
-	public static function setCookie($key = null, $value = null)
+	public function setCookie($key = null, $value = null)
 	{
 		self::$_requestArray['cookie'][$key] = $_COOKIE[$key] = $value;
 	}
@@ -247,9 +271,9 @@ class Request extends Singleton
 	 * @since 2.6.2
 	 */
 
-	public static function refreshSession()
+	public function refreshSession()
 	{
-		self::$_requestArray['session'] = $_SESSION ? $_SESSION : array();
+		self::$_requestArray['session'] = $_SESSION ? $_SESSION : [];
 	}
 
 	/**
@@ -258,8 +282,8 @@ class Request extends Singleton
 	 * @since 2.6.2
 	 */
 
-	public static function refreshCookie()
+	public function refreshCookie()
 	{
-		self::$_requestArray['cookie'] = $_COOKIE ? $_COOKIE : array();
+		self::$_requestArray['cookie'] = $_COOKIE ? $_COOKIE : [];
 	}
 }

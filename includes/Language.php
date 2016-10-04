@@ -2,7 +2,7 @@
 namespace Redaxscript;
 
 /**
- * parent class to provide the current language
+ * children class to provide the current language
  *
  * @since 2.2.0
  *
@@ -19,7 +19,7 @@ class Language extends Singleton
 	 * @var array
 	 */
 
-	protected static $_languageArray = array();
+	protected static $_languageArray = [];
 
 	/**
 	 * init the class
@@ -29,33 +29,31 @@ class Language extends Singleton
 	 * @since 2.2.0
 	 */
 
-	public static function init($language = 'en')
+	public function init($language = 'en')
 	{
-		self::load('languages/en.json');
+		$this->load('languages/en.json');
 
 		/* merge language */
 
 		if ($language !== 'en')
 		{
-			self::load('languages/' . $language . '.json');
+			$this->load('languages/' . $language . '.json');
 		}
 	}
 
 	/**
 	 * get item from language
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 *
 	 * @param string $key key of the item
-	 * @param string $index index of the key array
+	 * @param string $index index of the array
 	 *
 	 * @return mixed
 	 */
 
-	public static function get($key = null, $index = null)
+	public function get($key = null, $index = null)
 	{
-		$output = false;
-
 		/* handle index */
 
 		if (array_key_exists($index, self::$_languageArray))
@@ -69,15 +67,15 @@ class Language extends Singleton
 
 		/* values as needed */
 
-		if (!$key)
+		if (array_key_exists($key, $languageArray))
 		{
-			$output = $languageArray;
+			return $languageArray[$key];
 		}
-		else if (array_key_exists($key, $languageArray))
+		else if (!$key)
 		{
-			$output = $languageArray[$key];
+			return $languageArray;
 		}
-		return $output;
+		return false;
 	}
 
 	/**
@@ -89,38 +87,40 @@ class Language extends Singleton
 	 * @param mixed $value value of the item
 	 */
 
-	public static function set($key = null, $value = null)
+	public function set($key = null, $value = null)
 	{
 		self::$_languageArray[$key] = $value;
 	}
 
 	/**
-	 * load from language files
+	 * load from language path
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 *
-	 * @param mixed $json single or multiple language paths
+	 * @param mixed $path single or multiple language path
 	 */
 
-	public static function load($json = null)
+	public function load($path = null)
 	{
+		$reader = new Reader();
+
 		/* handle json */
 
-		if (is_string($json))
+		if (is_string($path))
 		{
-			$json = array(
-				$json
-			);
+			$path =
+			[
+				$path
+			];
 		}
 
-		/* merge language files */
+		/* load and merge files */
 
-		foreach ($json as $file)
+		foreach ($path as $file)
 		{
 			if (file_exists($file))
 			{
-				$contents = file_get_contents($file);
-				$languageArray = json_decode($contents, true);
+				$languageArray = $reader->loadJSON($file)->getArray();
 				if (is_array($languageArray))
 				{
 					self::$_languageArray = array_merge(self::$_languageArray, $languageArray);

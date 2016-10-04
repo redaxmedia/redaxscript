@@ -1,15 +1,11 @@
 <?php
 namespace Redaxscript;
 
-$suffix = $admin ? '_admin' : '_default';
-$titlePartialElement = new Html\Element();
-$titlePartialElement->init('h3', array(
-	'class' => 'title_content_sub'
-));
 $tableElement = new Html\Element();
-$tableElement->init('table', array(
-	'class' => 'table table' . $suffix
-));
+$tableElement->init('table',
+[
+	'class' => $admin ? 'rs-admin-table-default' : 'rs-table-default'
+]);
 $theadElement = new Html\Element();
 $theadElement->init('thead');
 $tfootElement = new Html\Element();
@@ -22,58 +18,39 @@ $thElement = new Html\Element();
 $thElement->init('th');
 $tdElement = new Html\Element();
 $tdElement->init('td');
-$theadContent = '';
-$tfootContent = '';
-$tbodyContent = '';
-$columnArray = array(
-	'column_first',
-	'column_second',
-	'column_third',
-	'column_fourth',
-	'column_last'
-);
+$outputHead = null;
+$outputFoot = null;
+$outputBody = null;
 ?>
 
-<!-- thead and tfoot content -->
+<!-- content -->
 
-<?php for ($i = 0; $i < 5; $i++): ?>
+<?php for ($i = 1; $i < 6; $i++): ?>
 
-	<?php $theadContent .= $thElement
+	<?php $outputHead .= $thElement
 		->copy()
-		->addClass('s1o5 ' . $columnArray[$i])
-		->text(Language::get($i + 1, '_number')); ?>
+		->addClass($admin ? 'rs-admin-is-size-1of5' : 'rs-is-size1of5')
+		->text(Language::get($i, '_number')); ?>
 
-	<?php $tfootContent .= $tdElement
-		->copy()
-		->addClass($columnArray[$i])
-		->text(Language::get($i + 1, '_number')); ?>
+	<?php $outputFoot .= $tdElement
+		->text(Language::get($i, '_number')); ?>
+
+	<?php $outputBody .= $tdElement
+		->text(Language::get('preview', '_preview')); ?>
 
 <?php endfor; ?>
 
-<!-- tbody content -->
-
-<?php foreach ($columnArray as $value): ?>
-
-	<?php $tbodyContent .= $tdElement
-		->copy()
-		->addClass($value)
-		->text(Language::get('preview', '_preview')); ?>
-
-<?php endforeach; ?>
-
 <!-- table -->
 
-<?php echo $titlePartialElement->text('.table.table' . $suffix); ?>
-
-<div class="wrapper_table<?php echo $suffix; ?>">
+<div class="<?php echo $admin ? 'rs-admin-wrapper-table' : 'rs-wrapper-table'; ?>">
 
 	<?php echo $tableElement->html(
-		$theadElement->html($theadContent) .
-		$tfootElement->html($tfootContent) .
+		$theadElement->html('<tr>' . $outputHead . '</tr>') .
+		$tfootElement->html('<tr>' . $outputFoot . '</tr>') .
 		$tbodyElement->html(
-			'<tr>' . $tbodyContent . '</tr>' .
-			'<tr>' . $tbodyContent . '</tr>' .
-			'<tr>' . $tbodyContent . '</tr>'
+			'<tr>' . $outputBody . '</tr>' .
+			'<tr>' . $outputBody . '</tr>' .
+			'<tr>' . $outputBody . '</tr>'
 		)
 	); ?>
 
@@ -81,16 +58,14 @@ $columnArray = array(
 
 <!-- table with caption -->
 
-<?php echo $titlePartialElement->text('.table.table' . $suffix); ?>
-
-<div class="wrapper_table<?php echo $suffix; ?>">
+<div class="<?php echo $admin ? 'rs-admin-wrapper-table' : 'rs-wrapper-table'; ?>">
 
 	<?php echo $tableElement->html(
 		$captionElement->text('Caption') .
 		$tbodyElement->html(
-			'<tr>' . $tbodyContent . '</tr>' .
-			'<tr>' . $tbodyContent . '</tr>' .
-			'<tr>' . $tbodyContent . '</tr>'
+			'<tr>' . $outputBody . '</tr>' .
+			'<tr>' . $outputBody . '</tr>' .
+			'<tr>' . $outputBody . '</tr>'
 		)
 	); ?>
 

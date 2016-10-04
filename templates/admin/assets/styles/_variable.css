@@ -1,0 +1,54 @@
+/**
+ * @tableofcontents
+ *
+ * 1. variable
+ *    1.1 base color
+ *    1.2 note color
+ *    1.3 gradient
+ *    1.4 font
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. variable */
+
+:root
+{
+	/* @section 1.1 base color */
+
+	--rs-admin-color-primary: #2db4fa;
+	--rs-admin-color-secondary: #c81e19;
+	--rs-admin-color-tertiary: #77b01e;
+	--rs-admin-color-primary-light: color(var(--rs-admin-color-primary) l(50%));
+	--rs-admin-color-secondary-dark: color(var(--rs-admin-color-secondary) l(40%));
+	--rs-admin-color-tertiary-dark: color(var(--rs-admin-color-tertiary) l(40%));
+
+	/* @section 1.2 note color */
+
+	--rs-admin-color-success: #77b01e;
+	--rs-admin-color-warning: #ffa52d;
+	--rs-admin-color-error: #c81e19;
+	--rs-admin-color-info: #2db4fa;
+	--rs-admin-color-success-dark: color(var(--rs-admin-color-success) b(70%) saturation(+50%));
+	--rs-admin-color-warning-dark: color(var(--rs-admin-color-warning) b(60%) saturation(+50%));
+	--rs-admin-color-error-dark: color(var(--rs-admin-color-error) b(65%) saturation(+50%));
+	--rs-admin-color-info-dark: color(var(--rs-admin-color-info) b(60%) saturation(+50%));
+
+	/* @section 1.3 gradient */
+
+	--rs-admin-gradient-primary: linear-gradient(var(--rs-admin-color-primary), var(--rs-admin-color-primary-light));
+	--rs-admin-gradient-secondary: linear-gradient(var(--rs-admin-color-secondary-dark), var(--rs-admin-color-secondary));
+	--rs-admin-gradient-tertiary: linear-gradient(var(--rs-admin-color-tertiary-dark), var(--rs-admin-color-tertiary));
+	--rs-admin-gradient-quaternary: linear-gradient(gray(230), gray(215));
+	--rs-admin-gradient-quinary: linear-gradient(gray(200), gray(185));
+	--rs-admin-gradient-senary: linear-gradient(gray(70), gray(50));
+
+	/* @section 1.4 font */
+
+	--rs-admin-font-primary: 'open sans condensed', arial, sans-serif;
+	--rs-admin-font-secondary: arial, sans-serif;
+	--rs-admin-font-icon: 'icon admin';
+}

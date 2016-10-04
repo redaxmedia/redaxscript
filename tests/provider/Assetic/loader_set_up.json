@@ -1,0 +1,14 @@
+{
+	"cache":
+	{
+	},
+	"assets":
+	{
+		"scripts":
+		{
+			"one.js": "one",
+			"two.js": "two",
+			"three.js": "three"
+		}
+	}
+}

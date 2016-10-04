@@ -2,7 +2,7 @@
 namespace Redaxscript;
 
 /**
- * parent class to store database config
+ * children class to store database config
  *
  * @since 2.4.0
  *
@@ -14,24 +14,39 @@ namespace Redaxscript;
 class Config extends Singleton
 {
 	/**
+	 * path to config file
+	 *
+	 * @var string
+	 */
+
+	protected static $_configFile = 'config.php';
+
+	/**
 	 * array of the config
 	 *
 	 * @var array
 	 */
 
-	private static $_configArray = array();
+	protected static $_configArray = [];
 
 	/**
 	 * init the class
 	 *
 	 * @since 2.4.0
 	 *
-	 * @param string $file file with config
+	 * @param string $configFile file with config
 	 */
 
-	public static function init($file = 'config.php')
+	public function init($configFile = null)
 	{
-		$configArray = include($file);
+		if (file_exists($configFile))
+		{
+			self::$_configFile = $configFile;
+		}
+
+		/* load config */
+
+		$configArray = include(self::$_configFile);
 		if (is_array($configArray))
 		{
 			self::$_configArray = $configArray;
@@ -45,24 +60,20 @@ class Config extends Singleton
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string|array
+	 * @return mixed
 	 */
 
-	public static function get($key = null)
+	public function get($key = null)
 	{
-		$output = false;
-
-		/* values as needed */
-
-		if (!$key)
+		if (array_key_exists($key, self::$_configArray))
 		{
-			$output = self::$_configArray;
+			return self::$_configArray[$key];
 		}
-		else if (array_key_exists($key, self::$_configArray))
+		else if (!$key)
 		{
-			$output = self::$_configArray[$key];
+			return self::$_configArray;
 		}
-		return $output;
+		return false;
 	}
 
 	/**
@@ -74,9 +85,28 @@ class Config extends Singleton
 	 * @param string $value value of the item
 	 */
 
-	public static function set($key = null, $value = null)
+	public function set($key = null, $value = null)
 	{
 		self::$_configArray[$key] = $value;
+	}
+
+	/**
+	 * parse from database url
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $dbUrl database url to be parsed
+	 */
+
+	public function parse($dbUrl = null)
+	{
+		$dbUrl = parse_url($dbUrl);
+		$this->clear();
+		$this->set('dbType', str_replace('postgres', 'pgsql', $dbUrl['scheme']));
+		$this->set('dbHost', $dbUrl['port'] ? $dbUrl['host'] . ':' . $dbUrl['port'] : $dbUrl['host']);
+		$this->set('dbName', trim($dbUrl['path'], '/'));
+		$this->set('dbUser', $dbUrl['user']);
+		$this->set('dbPassword', $dbUrl['pass']);
 	}
 
 	/**
@@ -84,34 +114,48 @@ class Config extends Singleton
 	 *
 	 * @since 2.4.0
 	 *
-	 * @param string $file file with config
-	 *
 	 * @return boolean
 	 */
 
-	public static function write($file = 'config.php')
+	public function write()
 	{
 		$configKeys = array_keys(self::$_configArray);
 		$lastKey = end($configKeys);
 
 		/* process config */
 
-		$contents = '<?php' . PHP_EOL;
-		$contents .= 'return array(' . PHP_EOL;
+		$content = '<?php' . PHP_EOL . 'return' . PHP_EOL . '[' . PHP_EOL;
 		foreach (self::$_configArray as $key => $value)
 		{
-			$contents .= '	\'' . $key . '\' => \'' . $value . '\'';
+			if ($value)
+			{
+				$content .= '	\'' . $key . '\' => \'' . $value . '\'';
+			}
+			else
+			{
+				$content .= '	\'' . $key . '\' => null';
+			}
 			if ($key !== $lastKey)
 			{
-				$contents .= ',';
+				$content .= ',';
 			}
-			$contents .= PHP_EOL;
+			$content .= PHP_EOL;
 		}
-		$contents .= ');';
+		$content .= '];';
 
 		/* write to file */
 
-		$output = file_put_contents($file, $contents) > 0 ? true : false;
-		return $output;
+		return file_put_contents(self::$_configFile, $content) > 0;
+	}
+
+	/**
+	 * clear the config
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function clear()
+	{
+		self::$_configArray = [];
 	}
 }

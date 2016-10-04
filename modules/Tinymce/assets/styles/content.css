@@ -1,0 +1,46 @@
+codequote,
+language,
+module,
+registry,
+template
+{
+	color: gray(0, 0.5);
+	user-select: none;
+}
+
+readmore
+{
+	border-top: 0.125em dashed gray(0, 0.5);
+	display: block;
+	margin: 1em 0;
+}
+
+codequote:before
+{
+	content: '<codequote>...</codequote>';
+}
+
+language:before
+{
+	content: '<language>...</language>';
+}
+
+module:before
+{
+	content: '<module>...</module>';
+}
+
+registry:before
+{
+	content: '<registry>...</registry>';
+}
+
+template:before
+{
+	content: '<template>...</template>';
+}
+
+[_moz_editor_bogus_node]
+{
+	display: none;
+}

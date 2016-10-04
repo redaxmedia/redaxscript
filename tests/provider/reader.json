@@ -1,0 +1,28 @@
+{
+	"@attributes":
+	{
+		"id": "1"
+	},
+	"one":
+	[
+		{
+			"@attributes":
+			{
+				"id": "2"
+			}
+		},
+		{
+			"@attributes":
+			{
+				"id": "3"
+			}
+		}
+	],
+	"two":
+	{
+		"@attributes":
+		{
+			"id": "4"
+		}
+	}
+}

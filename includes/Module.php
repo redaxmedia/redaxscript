@@ -2,7 +2,7 @@
 namespace Redaxscript;
 
 /**
- * parent class to build a module
+ * parent class to create a module
  *
  * @since 2.2.0
  *
@@ -19,10 +19,19 @@ class Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray =
+	[
 		'status' => 1,
 		'access' => null
-	);
+	];
+
+	/**
+	 * array of the notification
+	 *
+	 * @var array
+	 */
+
+	protected static $_notificationArray = [];
 
 	/**
 	 * init the class
@@ -32,7 +41,7 @@ class Module
 	 * @param array $moduleArray custom module setup
 	 */
 
-	public function init($moduleArray = array())
+	public function init($moduleArray = [])
 	{
 		/* merge module setup */
 
@@ -47,11 +56,50 @@ class Module
 		{
 			$registry = Registry::getInstance();
 			$language = Language::getInstance();
-			$language->load(array(
+			$language->load(
+			[
 				'modules/' . static::$_moduleArray['alias'] . '/languages/en.json',
 				'modules/' . static::$_moduleArray['alias'] . '/languages/' . $registry->get('language') . '.json'
-			));
+			]);
 		}
+	}
+
+	/**
+	 * get message from notification
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $type type of the notification
+	 *
+	 * @return mixed
+	 */
+
+	public function getNotification($type = null)
+	{
+		if (array_key_exists($type, self::$_notificationArray))
+		{
+			return self::$_notificationArray[$type];
+		}
+		else if (!$type)
+		{
+			return self::$_notificationArray;
+		}
+		return false;
+	}
+
+	/**
+	 * set message to notification
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $type type of the notification
+	 * @param mixed $message message of the notification
+	 */
+
+	public function setNotification($type = null, $message = null)
+	{
+		$moduleName = static::$_moduleArray['name'];
+		static::$_notificationArray[$type][$moduleName][] = $message;
 	}
 
 	/**

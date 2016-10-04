@@ -2,6 +2,8 @@ module.exports = function (grunt)
 {
 	'use strict';
 
+	grunt.path = require('path');
+
 	/* config grunt */
 
 	grunt.initConfig(
@@ -20,21 +22,21 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'scripts/*.js'
+					'assets/scripts/*.js'
 				]
 			},
 			modules:
 			{
 				src:
 				[
-					'modules/*/scripts/*.js'
+					'modules/*/assets/scripts/*.js'
 				]
 			},
 			templates:
 			{
 				src:
 				[
-					'templates/*/scripts/*.js'
+					'templates/*/assets/scripts/*.js'
 				]
 			},
 			options:
@@ -55,21 +57,21 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'scripts/*.js'
+					'assets/scripts/*.js'
 				]
 			},
 			modules:
 			{
 				src:
 				[
-					'modules/*/scripts/*.js'
+					'modules/*/assets/scripts/*.js'
 				]
 			},
 			templates:
 			{
 				src:
 				[
-					'templates/*/scripts/*.js'
+					'templates/*/assets/scripts/*.js'
 				]
 			},
 			options:
@@ -91,10 +93,10 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'.csslintrc',
 					'.htmlhintrc',
 					'.jscsrc',
 					'.jshintrc',
+					'.stylelintrc',
 					'.tocgen'
 				]
 			},
@@ -118,34 +120,6 @@ module.exports = function (grunt)
 				[
 					'tests/provider/*.json'
 				]
-			}
-		},
-		csslint:
-		{
-			base:
-			{
-				src:
-				[
-					'styles/*.css'
-				]
-			},
-			modules:
-			{
-				src:
-				[
-					'modules/*/styles/*.css'
-				]
-			},
-			templates:
-			{
-				src:
-				[
-					'templates/*/styles/*.css'
-				]
-			},
-			options:
-			{
-				csslintrc: '.csslintrc'
 			}
 		},
 		htmlhint:
@@ -190,112 +164,495 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'includes/*/*.php',
-					'includes/*.php',
-					'scripts/*.js',
-					'styles/*.css'
+					'includes/**/**/*.php',
+					'assets/scripts/*.js',
+					'assets/styles/*.css'
 				]
 			},
 			modules:
 			{
 				src:
 				[
-					'modules/*/scripts/*.js',
-					'modules/*/styles/*.css',
-					'modules/*/*.php'
+					'modules/*/assets/scripts/*.js',
+					'modules/*/assets/styles/*.css',
+					'modules/**/**/*.php'
 				]
 			},
 			templates:
 			{
 				src:
 				[
-					'templates/*/scripts/*.js',
-					'templates/*/styles/*.css'
+					'templates/*/assets/scripts/*.js',
+					'templates/*/assets/styles/*.css'
+				]
+			},
+			benchs:
+			{
+				src:
+				[
+					'benchs/**/**/*.php'
 				]
 			},
 			tests:
 			{
 				src:
 				[
-					'tests/*/*.php',
-					'tests/*.php'
+					'tests/**/**/*.php'
 				]
 			},
 			options:
 			{
-				bin: 'vendor/bin/phpcs',
-				standard: 'ruleset.xml'
+				bin: grunt.option('fix') ? 'vendor/bin/phpcbf' : 'vendor/bin/phpcs',
+				standard: 'phpcs.xml'
 			}
 		},
-		qunit:
+		diffJSON:
 		{
-			development:
+			languages:
 			{
+				src:
+				[
+					'languages/*.json',
+					'!languages/en.json'
+				],
+				dest: 'build/language.json'
+			},
+			options:
+			{
+				type: 'key',
+				report:
+				{
+					obsolete: 'error',
+					missing: 'error'
+				}
+			}
+		},
+		formatJSON:
+		{
+			languages:
+			{
+				src:
+				[
+					'languages/en.json'
+				],
+				dest: 'build/language.json',
 				options:
 				{
-					urls:
+					remove:
 					[
-						'http://develop.redaxscript.com/qunit'
+						'_package',
+						'_index'
 					]
 				}
 			}
 		},
-		phpunit:
-		{
-			development:
-			{
-				dir: 'tests/includes'
-			},
-			options:
-			{
-				bin: 'vendor/bin/phpunit',
-				bootstrap: './tests/bootstrap.php',
-				coverageClover: grunt.option('xml') ? grunt.option('xml') : false,
-				coverageHtml: grunt.option('html') ? grunt.option('html') : false
-			}
-		},
-		autoprefixer:
+		concat:
 		{
 			base:
 			{
 				src:
 				[
-					'styles/*.css'
-				]
+					'assets/styles/normalize.css',
+					'assets/styles/animate.css'
+				],
+				dest: 'dist/styles/base.min.css'
 			},
-			modules:
+			templateAdmin:
 			{
 				src:
 				[
-					'modules/*/styles/*.css'
-				]
+					'assets/styles/_query.css',
+					'assets/styles/_clearfix.css',
+					'assets/styles/_dialog.css',
+					'assets/styles/_redirect.css',
+					'assets/styles/_table.css',
+					'templates/admin/assets/styles/_variable.css',
+					'templates/admin/assets/styles/_button.css',
+					'templates/admin/assets/styles/_icon.css',
+					'templates/admin/assets/styles/typo.css',
+					'templates/admin/assets/styles/accordion.css',
+					'templates/admin/assets/styles/button.css',
+					'templates/admin/assets/styles/control.css',
+					'templates/admin/assets/styles/dialog.css',
+					'templates/admin/assets/styles/dock.css',
+					'templates/admin/assets/styles/field.css',
+					'templates/admin/assets/styles/form.css',
+					'templates/admin/assets/styles/helper.css',
+					'templates/admin/assets/styles/panel.css',
+					'templates/admin/assets/styles/tab.css',
+					'templates/admin/assets/styles/table.css',
+					'templates/admin/assets/styles/note.css'
+				],
+				dest: 'templates/admin/dist/styles/admin.min.css'
 			},
-			templates:
+			templateConsole:
 			{
 				src:
 				[
-					'templates/*/styles/*.css'
-				]
+					'assets/styles/normalize.css',
+					'templates/console/assets/styles/_variable.css',
+					'templates/console/assets/styles/console.css'
+				],
+				dest: 'templates/console/dist/styles/console.min.css'
+			},
+			templateDefault:
+			{
+				src:
+				[
+					'assets/styles/_query.css',
+					'assets/styles/_clearfix.css',
+					'assets/styles/_dialog.css',
+					'assets/styles/_dropdown.css',
+					'assets/styles/_menu.css',
+					'assets/styles/_redirect.css',
+					'assets/styles/_table.css',
+					'templates/default/assets/styles/_variable.css',
+					'templates/default/assets/styles/_button.css',
+					'templates/default/assets/styles/_icon.css',
+					'templates/default/assets/styles/typo.css',
+					'templates/default/assets/styles/accordion.css',
+					'templates/default/assets/styles/breadcrumb.css',
+					'templates/default/assets/styles/button.css',
+					'templates/default/assets/styles/content.css',
+					'templates/default/assets/styles/dialog.css',
+					'templates/default/assets/styles/field.css',
+					'templates/default/assets/styles/footer.css',
+					'templates/default/assets/styles/form.css',
+					'templates/default/assets/styles/header.css',
+					'templates/default/assets/styles/helper.css',
+					'templates/default/assets/styles/layout.css',
+					'templates/default/assets/styles/list.css',
+					'templates/default/assets/styles/media.css',
+					'templates/default/assets/styles/menu.css',
+					'templates/default/assets/styles/pagination.css',
+					'templates/default/assets/styles/result.css',
+					'templates/default/assets/styles/search.css',
+					'templates/default/assets/styles/sidebar.css',
+					'templates/default/assets/styles/tab.css',
+					'templates/default/assets/styles/table.css',
+					'templates/default/assets/styles/teaser.css',
+					'templates/default/assets/styles/note.css'
+				],
+				dest: 'templates/default/dist/styles/default.min.css'
+			},
+			templateInstall:
+			{
+				src:
+				[
+					'assets/styles/_query.css',
+					'templates/default/assets/styles/_variable.css',
+					'templates/install/assets/styles/install.css'
+				],
+				dest: 'templates/install/dist/styles/install.min.css'
+			},
+			templateSkeleton:
+			{
+				src:
+				[
+					'assets/styles/_query.css',
+					'assets/styles/_clearfix.css',
+					'assets/styles/_dialog.css',
+					'assets/styles/_redirect.css',
+					'assets/styles/_table.css',
+					'templates/skeleton/assets/styles/helper.css',
+					'templates/skeleton/assets/styles/layout.css',
+					'templates/skeleton/assets/styles/breadcrumb.css',
+					'templates/skeleton/assets/styles/button.css',
+					'templates/skeleton/assets/styles/content.css',
+					'templates/skeleton/assets/styles/field.css',
+					'templates/skeleton/assets/styles/media.css',
+					'templates/skeleton/assets/styles/table.css',
+					'templates/skeleton/assets/styles/typo.css'
+				],
+				dest: 'templates/skeleton/dist/styles/skeleton.css'
+			},
+			modulePreview:
+			{
+				src:
+				[
+					'modules/Preview/assets/styles/preview.css'
+				],
+				dest: 'modules/Preview/dist/styles/preview.min.css'
+			},
+			moduleTinymceContent:
+			{
+				src:
+				[
+					'templates/default/assets/styles/_variable.css',
+					'modules/Tinymce/assets/styles/content.css'
+				],
+				dest: 'modules/Tinymce/dist/styles/content.min.css'
+			},
+			moduleTinymceSkin:
+			{
+				src:
+				[
+					'modules/Tinymce/assets/styles/skin.css'
+				],
+				dest: 'modules/Tinymce/dist/styles/skin.min.css'
+			}
+		},
+		postcss:
+		{
+			base:
+			{
+				src:
+				[
+					'dist/styles/*.min.css'
+				],
+				options:
+				{
+					processors:
+					[
+						require('postcss-custom-properties'),
+						require('postcss-custom-media'),
+						require('postcss-custom-selectors'),
+						require('postcss-nesting'),
+						require('postcss-extend'),
+						require('postcss-color-gray'),
+						require('postcss-color-function'),
+						require('autoprefixer')(
+						{
+							browsers: 'last 2 versions'
+						}),
+						require('cssnano')(
+						{
+							'autoprefixer': false,
+							'discardUnused': false
+						})
+					]
+				}
+			},
+			templatesAndModules:
+			{
+				src:
+				[
+					'templates/*/dist/styles/*.min.css',
+					'modules/*/dist/styles/*.min.css'
+				],
+				options:
+				{
+					processors:
+					[
+						require('postcss-custom-properties'),
+						require('postcss-custom-media'),
+						require('postcss-custom-selectors'),
+						require('postcss-nesting'),
+						require('postcss-extend'),
+						require('postcss-color-gray'),
+						require('postcss-color-function'),
+						require('autoprefixer')(
+						{
+							browsers: 'last 2 versions'
+						}),
+						require('cssnano')(
+						{
+							'autoprefixer': false,
+							'colormin': false,
+							'zindex': false
+						})
+					]
+				}
+			},
+			templateSkeleton:
+			{
+				src:
+				[
+					'templates/skeleton/dist/styles/skeleton.css'
+				],
+				options:
+				{
+					processors:
+					[
+						require('postcss-custom-properties'),
+						require('postcss-custom-media'),
+						require('postcss-custom-selectors'),
+						require('postcss-nesting'),
+						require('postcss-extend'),
+						require('postcss-color-gray'),
+						require('postcss-color-function'),
+						require('autoprefixer')(
+						{
+							browsers: 'last 2 versions'
+						})
+					]
+				}
+			},
+			stylelint:
+			{
+				src:
+				[
+					'assets/styles/*.css',
+					'templates/*/assets/styles/*.css',
+					'modules/*/assets/styles/*.css'
+				],
+				options:
+				{
+					processors:
+					[
+						require('stylelint'),
+						require('postcss-reporter')(
+						{
+							throwError: true
+						})
+					]
+				}
+			},
+			colorguard:
+			{
+				src:
+				[
+					'templates/*/dist/styles/*.css',
+					'modules/*/assets/styles/*.css'
+				],
+				options:
+				{
+					processors:
+					[
+						require('colorguard')(
+						{
+							threshold: 2,
+							allowEquivalentNotation: true
+						}),
+						require('postcss-reporter')(
+						{
+							throwError: true
+						})
+					]
+				}
+			}
+		},
+		webfont:
+		{
+			templateAdmin:
+			{
+				src:
+				[
+					'node_modules/material-design-icons/action/svg/production/ic_check_circle_24px.svg',
+					'node_modules/material-design-icons/action/svg/production/ic_delete_24px.svg',
+					'node_modules/material-design-icons/action/svg/production/ic_info_24px.svg',
+					'node_modules/material-design-icons/action/svg/production/ic_lock_24px.svg',
+					'node_modules/material-design-icons/action/svg/production/ic_power_settings_new_24px.svg',
+					'node_modules/material-design-icons/action/svg/production/ic_settings_24px.svg',
+					'node_modules/material-design-icons/action/svg/production/ic_visibility_off_24px.svg',
+					'node_modules/material-design-icons/alert/svg/production/ic_error_24px.svg',
+					'node_modules/material-design-icons/alert/svg/production/ic_warning_24px.svg',
+					'node_modules/material-design-icons/communication/svg/production/ic_import_contacts_24px.svg',
+					'node_modules/material-design-icons/communication/svg/production/ic_vpn_key_24px.svg',
+					'node_modules/material-design-icons/content/svg/production/ic_add_24px.svg',
+					'node_modules/material-design-icons/content/svg/production/ic_clear_24px.svg',
+					'node_modules/material-design-icons/content/svg/production/ic_create_24px.svg',
+					'node_modules/material-design-icons/content/svg/production/ic_remove_24px.svg',
+					'node_modules/material-design-icons/navigation/svg/production/ic_chevron_right_24px.svg',
+					'node_modules/material-design-icons/navigation/svg/production/ic_expand_less_24px.svg',
+					'node_modules/material-design-icons/navigation/svg/production/ic_expand_more_24px.svg',
+					'node_modules/material-design-icons/social/svg/production/ic_notifications_24px.svg',
+					'node_modules/material-design-icons/social/svg/production/ic_person_24px.svg'
+				],
+				dest: 'templates/admin/assets/fonts',
+				options:
+				{
+					destCss: 'templates/admin/assets/styles',
+					template: 'templates/admin/assets/styles/_icon.tpl'
+				}
+			},
+			templateDefault:
+			{
+				src:
+				[
+					'node_modules/material-design-icons/action/svg/production/ic_check_circle_24px.svg',
+					'node_modules/material-design-icons/action/svg/production/ic_info_24px.svg',
+					'node_modules/material-design-icons/action/svg/production/ic_search_24px.svg',
+					'node_modules/material-design-icons/alert/svg/production/ic_error_24px.svg',
+					'node_modules/material-design-icons/alert/svg/production/ic_warning_24px.svg',
+					'node_modules/material-design-icons/navigation/svg/production/ic_chevron_right_24px.svg',
+					'node_modules/material-design-icons/communication/svg/production/ic_chat_bubble_24px.svg',
+					'node_modules/material-design-icons/content/svg/production/ic_add_24px.svg',
+					'node_modules/material-design-icons/content/svg/production/ic_remove_24px.svg',
+					'node_modules/material-design-icons/navigation/svg/production/ic_chevron_right_24px.svg'
+				],
+				dest: 'templates/default/assets/fonts',
+				options:
+				{
+					destCss: 'templates/default/assets/styles',
+					template: 'templates/default/assets/styles/_icon.tpl'
+				}
 			},
 			options:
 			{
-				browsers:
+				font: 'icon',
+				types:
 				[
-					'last 2 Android versions',
-					'last 2 iOS versions',
-					'last 2 Chrome versions',
-					'last 3 Explorer versions',
-					'last 2 Firefox versions',
-					'last 2 Opera versions',
-					'last 2 Safari versions'
-				]
+					'woff',
+					'woff2'
+				],
+				codepoints:
+				{
+					'search': 0x2315,
+					'add': 0x2b,
+					'chat-bubble': 0x25b6,
+					'check-circle': 0x2714,
+					'chevron-right': 0x3009,
+					'clear': 0xd7,
+					'create': 0x270E,
+					'delete': 0x2297,
+					'error': 0x274C,
+					'exit-to-app': 0x2192,
+					'expand-less': 0x2227,
+					'expand-more': 0x2228,
+					'import-contacts': 0x25EB,
+					'info': 0x0069,
+					'lock': 0x1F511,
+					'notifications': 0x1F514,
+					'person': 0x26C4,
+					'power-settings-new': 0x2BBE,
+					'remove': 0x2d,
+					'settings': 0x2731,
+					'visibility-off': 0x2298,
+					'vpn-key': 0x2386,
+					'warning': 0x0021
+				},
+				rename: function (name)
+				{
+					return grunt.path.basename(name).split('_').join('-').replace('ic-', '').replace('-24px', '');
+				},
+				autoHint: false,
+				htmlDemo: false
 			}
 		},
 		shell:
 		{
+			phpbench:
+			{
+				command: 'php vendor/bin/phpbench run benchs/phpbench --bootstrap=benchs/phpbench/includes/bootstrap.php --progress=dots'
+			},
+			phpunit:
+			{
+				command: 'php vendor/bin/phpunit --configuration=phpunit.xml ' + grunt.option.flags()
+			},
+			phpunitParallel:
+			{
+				command: 'php vendor/bin/paratest --processes=10 --configuration=phpunit.xml ' + grunt.option.flags()
+			},
+			phpcpdBase:
+			{
+				command: 'php vendor/bin/phpcpd includes',
+				options:
+				{
+					failOnError: false
+				}
+			},
+			phpcpdModules:
+			{
+				command: 'php vendor/bin/phpcpd modules',
+				options:
+				{
+					failOnError: false
+				}
+			},
 			tocBase:
 			{
-				command: 'sh vendor/bin/tocgen.sh scripts .tocgen && sh vendor/bin/tocgen.sh styles .tocgen'
+				command: 'sh vendor/bin/tocgen.sh assets .tocgen'
 			},
 			tocModules:
 			{
@@ -307,7 +664,7 @@ module.exports = function (grunt)
 			},
 			toclintBase:
 			{
-				command: 'sh vendor/bin/tocgen.sh scripts .tocgen -l && sh vendor/bin/tocgen.sh styles .tocgen -l'
+				command: 'sh vendor/bin/tocgen.sh assets .tocgen -l'
 			},
 			toclintModules:
 			{
@@ -315,7 +672,7 @@ module.exports = function (grunt)
 			},
 			toclintTemplates:
 			{
-				command: 'sh vendor/bin/tocgen.sh templates .tocgen -l'
+				command: 'sh vendor/bin/tocgen.sh templates/admin/assets .tocgen -l && sh vendor/bin/tocgen.sh templates/default/assets .tocgen -l'
 			},
 			apiBase:
 			{
@@ -329,17 +686,45 @@ module.exports = function (grunt)
 			{
 				command: 'php vendor/bin/apigen generate --source tests --destination ../redaxscript-api/tests'
 			},
-			addUpstream:
+			initZwamp:
 			{
-				command: 'git remote add upstream git://github.com/redaxmedia/redaxscript.git'
+				command: 'mkdir -p ../redaxscript-zwamp'
 			},
-			pullUpstream:
+			downloadZwamp:
 			{
-				command: 'git pull upstream master && git pull upstream develop'
+				command: 'wget downloads.sourceforge.net/project/zwamp/zwamp-x64-2.2.1.zip -O ../redaxscript-zwamp/zwamp.zip'
 			},
-			removeUpstream:
+			downloadPapercutService:
 			{
-				command: 'git remote rm upstream'
+				command: 'wget github.com/Jaben/Papercut/releases/download/4.6.1.12/PapercutService.4.6.1.12.zip -O ../redaxscript-zwamp/papercut-service.zip'
+			},
+			batchZwamp:
+			{
+				command: 'echo "zwamp.exe & start /b /wait explorer http://localhost & start /b /wait vdrive/.sys/papercut/Papercut.Service.exe" > ../redaxscript-zwamp/zwamp/start.bat'
+			},
+			zipZwamp:
+			{
+				command: 'cd ../redaxscript-zwamp && zip redaxscript-zwamp.zip zwamp -r && cd ../redaxscript'
+			},
+			unzipZwamp:
+			{
+				command: 'cd ../redaxscript-zwamp && unzip zwamp.zip -d zwamp -x *.txt && cd ../redaxscript'
+			},
+			unzipPapercutService:
+			{
+				command: 'cd ../redaxscript-zwamp && unzip papercut-service.zip -d zwamp/vdrive/.sys/papercut && cd ../redaxscript'
+			},
+			removeZwampWeb:
+			{
+				command: 'rm -rf ../redaxscript-zwamp/zwamp/vdrive/web'
+			},
+			removeZwampBuild:
+			{
+				command: 'rm -rf ../redaxscript-zwamp/zwamp'
+			},
+			removeBuild:
+			{
+				command: 'rm -rf build'
 			},
 			options:
 			{
@@ -355,7 +740,7 @@ module.exports = function (grunt)
 				[
 					'<%=compress.distFull.src%>'
 				],
-				dest: '../redaxscript-dist/export/redaxscript_<%= version %>_full',
+				dest: '../redaxscript-export/redaxscript_<%= version %>_full',
 				dot: true,
 				expand: true
 			},
@@ -365,9 +750,38 @@ module.exports = function (grunt)
 				[
 					'<%=compress.distLite.src%>'
 				],
-				dest: '../redaxscript-dist/export/redaxscript_<%= version %>_lite',
+				dest: '../redaxscript-export/redaxscript_<%= version %>_lite',
 				dot: true,
 				expand: true
+			},
+			distZwamp:
+			{
+				src:
+				[
+					'<%=compress.distFull.src%>'
+				],
+				dest: '../redaxscript-zwamp/zwamp/vdrive/web',
+				dot: true,
+				expand: true
+			}
+		},
+		rename:
+		{
+			templateAdmin:
+			{
+				src:
+				[
+					'templates/admin/assets/styles/icon.tpl'
+				],
+				dest: 'templates/admin/assets/styles/_icon.css'
+			},
+			templateDefault:
+			{
+				src:
+				[
+					'templates/default/assets/styles/icon.tpl'
+				],
+				dest: 'templates/default/assets/styles/_icon.css'
 			}
 		},
 		compress:
@@ -377,14 +791,16 @@ module.exports = function (grunt)
 				src:
 				[
 					'database/**',
+					'dist/**',
 					'includes/**',
 					'languages/**',
 					'libraries/**',
 					'modules/**',
-					'scripts/**',
-					'styles/**',
+					'assets/scripts/**',
+					'assets/styles/**',
 					'templates/**',
 					'config.php',
+					'console.php',
 					'index.php',
 					'install.php',
 					'README.md',
@@ -392,7 +808,7 @@ module.exports = function (grunt)
 				],
 				options:
 				{
-					archive: '../redaxscript-dist/files/releases/redaxscript_<%= version %>_full.zip'
+					archive: '../redaxscript-files/releases/redaxscript-<%= version %>-full.zip'
 				},
 				dot: true
 			},
@@ -401,16 +817,19 @@ module.exports = function (grunt)
 				src:
 				[
 					'database/**',
+					'dist/**',
 					'includes/**',
 					'languages/en.json',
 					'libraries/**',
 					'modules/CallHome/**',
-					'scripts/**',
-					'styles/**',
+					'modules/Validator/**',
+					'assets/scripts/**',
+					'assets/styles/**',
 					'templates/admin/**',
 					'templates/default/**',
 					'templates/install/**',
 					'config.php',
+					'console.php',
 					'index.php',
 					'install.php',
 					'README.md',
@@ -418,9 +837,46 @@ module.exports = function (grunt)
 				],
 				options:
 				{
-					archive: '../redaxscript-dist/files/releases/redaxscript_<%= version %>_lite.zip'
+					archive: '../redaxscript-files/releases/redaxscript-<%= version %>-lite.zip'
 				},
 				dot: true
+			}
+		},
+		deployFTP:
+		{
+			files:
+			{
+				src:
+				[
+					'../redaxscript-files'
+				],
+				dest: 'files',
+				auth:
+				{
+					host: 'develop.redaxscript.com',
+					port: 21,
+					authKey: 'develop',
+					authPath: '../credentials/.redaxscript'
+				}
+			},
+			zwamp:
+			{
+				src:
+				[
+					'../redaxscript-zwamp'
+				],
+				dest: 'zwamp',
+				exclusions:
+				[
+					'../redaxscript-zwamp/zwamp.zip'
+				],
+				auth:
+				{
+					host: 'develop.redaxscript.com',
+					port: 21,
+					authKey: 'develop',
+					authPath: '../credentials/.redaxscript'
+				}
 			}
 		},
 		img:
@@ -441,23 +897,6 @@ module.exports = function (grunt)
 					'templates/*/images/*.gif',
 					'templates/*/images/*.jpg',
 					'templates/*/images/*.png'
-				]
-			}
-		},
-		smushit:
-		{
-			modules:
-			{
-				src:
-				[
-					'<%=img.modules.src%>'
-				]
-			},
-			templates:
-			{
-				src:
-				[
-					'<%=img.templates.src%>'
 				]
 			}
 		},
@@ -491,6 +930,18 @@ module.exports = function (grunt)
 		},
 		watch:
 		{
+			build:
+			{
+				files:
+				[
+					'assets/styles/*.css',
+					'templates/**/assets/styles/*.css'
+				],
+				tasks:
+				[
+					'build'
+				]
+			},
 			phpunit:
 			{
 				files:
@@ -501,15 +952,15 @@ module.exports = function (grunt)
 				],
 				tasks:
 				[
-					'phpunit:development'
+					'phpunit'
 				]
 			}
 		}
 	});
 
-	/* dynamic dist */
+	/* dynamic compress */
 
-	grunt.dynamicDist = function (path)
+	grunt.dynamicCompress = function (path)
 	{
 		var target = grunt.file.expand(path),
 			targetArray;
@@ -521,39 +972,46 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					target[i] + (targetArray[1] ? '' : '/**')
+					targetArray[1] ? target[i] : target[i] + '/**'
 				],
 				options:
 				{
-					archive: '../redaxscript-dist/files/' + targetArray[0].toLowerCase() + '.zip'
+					archive: '../redaxscript-files/' + targetArray[0] + '.zip'
 				},
 				dot: true
 			});
 		}
 	};
-	grunt.dynamicDist('languages/*.json');
-	grunt.dynamicDist('modules/*');
-	grunt.dynamicDist('templates/*');
+	grunt.dynamicCompress('languages/*.json');
+	grunt.dynamicCompress('modules/*');
+	grunt.dynamicCompress('templates/*');
 
 	/* load tasks */
 
-	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-contrib-compress');
+	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.loadNpmTasks('grunt-contrib-csslint');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-qunit');
+	grunt.loadNpmTasks('grunt-contrib-rename');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-diff-json');
+	grunt.loadNpmTasks('grunt-ftp-deploy');
 	grunt.loadNpmTasks('grunt-htmlhint');
 	grunt.loadNpmTasks('grunt-img');
 	grunt.loadNpmTasks('grunt-jscs');
+	grunt.loadNpmTasks('grunt-json-format');	
 	grunt.loadNpmTasks('grunt-jsonlint');
 	grunt.loadNpmTasks('grunt-phpcs');
-	grunt.loadNpmTasks('grunt-phpunit');
+	grunt.loadNpmTasks('grunt-postcss');
 	grunt.loadNpmTasks('grunt-shell');
-	grunt.loadNpmTasks('grunt-smushit');
 	grunt.loadNpmTasks('grunt-svgmin');
+	grunt.loadNpmTasks('grunt-webfont');
 
+	/* rename tasks */
+
+	grunt.task.renameTask('json-format', 'formatJSON');
+	grunt.task.renameTask('ftp-deploy', 'deployFTP');
+	
 	/* register tasks */
 
 	grunt.registerTask('default',
@@ -561,16 +1019,54 @@ module.exports = function (grunt)
 		'jscs',
 		'jshint',
 		'jsonlint',
-		'csslint',
+		'stylelint',
+		'colorguard',
 		'htmlhint',
 		'phpcs',
+		'phpcpd',
+		'languagelint',
 		'toclint'
+	]);
+	grunt.registerTask('stylelint',
+	[
+		'postcss:stylelint'
+	]);
+	grunt.registerTask('colorguard',
+	[
+		'postcss:colorguard'
+	]);
+	grunt.registerTask('languagelint',
+	[
+		'formatJSON:languages',
+		'diffJSON:languages',
+		'shell:removeBuild'
 	]);
 	grunt.registerTask('toclint',
 	[
 		'shell:toclintBase',
 		'shell:toclintModules',
 		'shell:toclintTemplates'
+	]);
+	grunt.registerTask('test',
+	[
+		'phpunit'
+	]);
+	grunt.registerTask('phpbench',
+	[
+		'shell:phpbench'
+	]);
+	grunt.registerTask('phpunit',
+	[
+		'shell:phpunit'
+	]);
+	grunt.registerTask('phpunitParallel',
+	[
+		'shell:phpunitParallel'
+	]);
+	grunt.registerTask('phpcpd',
+	[
+		'shell:phpcpdBase',
+		'shell:phpcpdModules'
 	]);
 	grunt.registerTask('toc',
 	[
@@ -584,24 +1080,51 @@ module.exports = function (grunt)
 		'shell:apiModules',
 		'shell:apiTests'
 	]);
-	grunt.registerTask('sync',
-	[
-		'shell:addUpstream',
-		'shell:pullUpstream',
-		'shell:removeUpstream'
-	]);
 	grunt.registerTask('optimize',
 	[
-		'autoprefixer',
 		'toc',
 		'img',
-		'smushit',
 		'svgmin'
+	]);
+	grunt.registerTask('build',
+	[
+		'build-font',
+		'build-css'
+	]);
+	grunt.registerTask('build-font',
+	[
+		'webfont',
+		'rename:templateAdmin',
+		'rename:templateDefault'
+	]);
+	grunt.registerTask('build-css',
+	[
+		'concat',
+		'postcss:base',
+		'postcss:templatesAndModules',
+		'postcss:templateSkeleton'
 	]);
 	grunt.registerTask('dist',
 	[
 		'copy:distFull',
 		'copy:distLite',
 		'compress'
+	]);
+	grunt.registerTask('zwamp',
+	[
+		'shell:initZwamp',
+		'shell:downloadZwamp',
+		'shell:downloadPapercutService',
+		'shell:unzipZwamp',
+		'shell:unzipPapercutService',
+		'shell:removeZwampWeb',
+		'copy:distZwamp',
+		'shell:batchZwamp',
+		'shell:zipZwamp',
+		'shell:removeZwampBuild'
+	]);
+	grunt.registerTask('deploy',
+	[
+		'deployFTP'
 	]);
 };

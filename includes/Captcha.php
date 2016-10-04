@@ -51,10 +51,11 @@ class Captcha
 	 * @var array
 	 */
 
-	protected $_range = array(
+	protected $_rangeArray =
+	[
 		'min' => 1,
 		'max' => 10
-	);
+	];
 
 	/**
 	 * array of mathematical operators used for the task
@@ -62,10 +63,11 @@ class Captcha
 	 * @var array
 	 */
 
-	protected $_operators = array(
+	protected $_operatorArray =
+	[
 		1 => 'plus',
 		-1 => 'minus'
-	);
+	];
 
 	/**
 	 * constructor of the class
@@ -96,7 +98,7 @@ class Captcha
 		}
 		else
 		{
-			$this->_mode = Db::getSettings('captcha');
+			$this->_mode = Db::getSetting('captcha');
 		}
 		$this->_create();
 	}
@@ -132,12 +134,12 @@ class Captcha
 	 *
 	 * @since 2.6.0
 	 *
-	 * @return string
+	 * @return integer
 	 */
 
 	public function getMin()
 	{
-		return $this->_range['min'];
+		return $this->_rangeArray['min'];
 	}
 
 	/**
@@ -145,12 +147,12 @@ class Captcha
 	 *
 	 * @since 2.6.0
 	 *
-	 * @return string
+	 * @return integer
 	 */
 
 	public function getMax()
 	{
-		return $this->_range['max'];
+		return $this->_rangeArray['max'];
 	}
 
 	/**
@@ -201,7 +203,7 @@ class Captcha
 		/* operator */
 
 		$c = $this->_getOperator();
-		$operator = $this->_operators[$c];
+		$operator = $this->_operatorArray[$c];
 
 		/* solution and task */
 

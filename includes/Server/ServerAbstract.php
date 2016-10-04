@@ -4,7 +4,7 @@ namespace Redaxscript\Server;
 use Redaxscript\Request;
 
 /**
- * abstract class to build a server class
+ * abstract class to create a server class
  *
  * @since 2.4.0
  *

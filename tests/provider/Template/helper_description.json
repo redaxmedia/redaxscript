@@ -1,0 +1,34 @@
+[
+	[
+		{
+			"metaDescription": null,
+			"lastTable": null,
+			"lastId": null
+		},
+		"Ultra lightweight Content Management System"
+	],
+	[
+		{
+			"metaDescription": "meta-description",
+			"lastTable": null,
+			"lastId": null
+		},
+		"meta-description"
+	],
+	[
+		{
+			"metaDescription": null,
+			"lastTable": "articles",
+			"lastId": 2
+		},
+		"article-description"
+	],
+	[
+		{
+			"metaDescription": null,
+			"lastTable": "categories",
+			"lastId": 2
+		},
+		"category-description"
+	]
+]

@@ -1,0 +1,43 @@
+[
+	[
+		{
+			"message": "test",
+			"title": "title"
+		},
+		{
+			"text": null,
+			"route": null
+		},
+		"<h2 class=\"rs-title-note rs-is-warning\">title</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-warning\">test</div>"
+	],
+	[
+		{
+			"message":
+			[
+				"test1",
+				"test2"
+			],
+			"title": null
+		},
+		{
+			"text": null,
+			"route": null
+		},
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-warning\"><ul class=\"rs-list-note\"><li>test1</li><li>test2</li></ul></div>"
+	],
+	[
+		{
+			"message":
+			[
+				"test1",
+				"test2"
+			],
+			"title": null
+		},
+		{
+			"text": "ok",
+			"route": "hello/world"
+		},
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-warning\"><ul class=\"rs-list-note\"><li>test1</li><li>test2</li></ul></div><a href=\"hello/world\" class=\"rs-button-note rs-is-warning\">ok</a>"
+	]
+]

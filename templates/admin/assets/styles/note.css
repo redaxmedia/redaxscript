@@ -1,0 +1,176 @@
+/**
+ * @tableofcontents
+ *
+ * 1. note
+ *    1.1 success
+ *    1.2 info
+ *    1.3 warning
+ *    1.4 error
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. note */
+
+.rs-admin-title-note
+{
+	font-size: 2.5em;
+
+	& + .rs-admin-box-note
+	{
+		margin-top: 0.5em;
+	}
+}
+
+.rs-admin-box-note
+{
+	border-radius: 0.125em;
+	font-size: 1.5em;
+	font-weight: bold;
+	padding: 0.5em;
+
+	&:before
+	{
+		float: left;
+		font-size: 1.25em;
+		width: 1.5em;
+	}
+
+	& a
+	{
+		text-decoration: underline;
+	}
+
+	& + .rs-admin-box-note,
+	& + .rs-admin-button-note
+	{
+		margin-top: 1em;
+	}
+}
+
+.rs-admin-list-note
+{
+	float: left;
+
+	& li
+	{
+		list-style: inside decimal;
+	}
+}
+
+.rs-admin-button-note
+{
+	@extend %rs-admin-button;
+
+	&:hover
+	{
+		box-shadow: 0 0 0 0.125em gray(0, 0.2) inset;
+	}
+}
+
+/* @section 1.1 success */
+
+.rs-admin-is-success
+{
+	color: var(--rs-admin-color-success-dark);
+
+	&.rs-admin-box-note,
+	&.rs-admin-button-note,
+	&.rs-admin-field-note,
+	&.rs-admin-field-note option,
+	&.rs-admin-item-note
+	{
+		background: var(--rs-admin-color-success);
+	}
+
+	&.rs-admin-field-note
+	{
+		border-color: var(--rs-admin-color-success-dark);
+	}
+
+	&.rs-admin-box-note:before
+	{
+		@extend %rs-admin-icon-check-circle;
+	}
+}
+
+/* @section 1.2 info */
+
+.rs-admin-is-info
+{
+	color: var(--rs-admin-color-info-dark);
+
+	&.rs-admin-box-note,
+	&.rs-admin-button-note,
+	&.rs-admin-field-note,
+	&.rs-admin-field-note option,
+	&.rs-admin-item-note
+	{
+		background: var(--rs-admin-color-info);
+	}
+
+	&.rs-admin-field-note
+	{
+		border-color: var(--rs-admin-color-info-dark);
+	}
+
+	&.rs-admin-box-note:before
+	{
+		@extend %rs-admin-icon-info;
+	}
+}
+
+/* @section 1.3 warning */
+
+.rs-admin-is-warning
+{
+	color: var(--rs-admin-color-warning-dark);
+
+	&.rs-admin-box-note,
+	&.rs-admin-button-note,
+	&.rs-admin-field-note,
+	&.rs-admin-field-note option,
+	&.rs-admin-item-note
+	{
+		background: var(--rs-admin-color-warning);
+	}
+
+	&.rs-admin-field-note
+	{
+		border-color: var(--rs-admin-color-warning-dark);
+	}
+
+	&.rs-admin-box-note:before
+	{
+		@extend %rs-admin-icon-warning;
+	}
+}
+
+/* @section 1.4 error */
+
+.rs-admin-is-error
+{
+	color: var(--rs-admin-color-error-dark);
+
+	&.rs-admin-box-note,
+	&.rs-admin-button-note,
+	&.rs-admin-field-note,
+	&.rs-admin-field-note option,
+	&.rs-admin-item-note
+	{
+		background: var(--rs-admin-color-error);
+	}
+
+	&.rs-admin-field-note
+	{
+		border-color: var(--rs-admin-color-error-dark);
+	}
+
+	&.rs-admin-box-note:before
+	{
+		@extend %rs-admin-icon-error;
+	}
+}

@@ -1,0 +1,76 @@
+/**
+ * @tableofcontents
+ *
+ * 1. install
+ * 2. query
+ *    2.1 small min
+ *    2.2 large min
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. install */
+
+.rs-install-body
+{
+	background: var(--rs-color-tertiary);
+}
+
+.rs-install-wrapper
+{
+	margin: 2em 5% 5%;
+	width: 90%;
+}
+
+.rs-install-content
+{
+	background: gray(255);
+	border-radius: 0.125em;
+	padding: 1.5em;
+}
+
+.rs-install-title
+{
+	color: gray(255);
+	font-size: 3.25em;
+	font-weight: normal;
+	line-height: 1em;
+	margin-bottom: 0.75em;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+/* @section 2. query */
+
+/* @section 2.1 small min */
+
+@media (--media-small-min)
+{
+	.rs-install-title
+	{
+		margin-bottom: 0.5em;
+
+		&:before
+		{
+			content: url('../../assets/images/redaxscript.svg');
+			display: inline-block;
+			margin-right: 0.125em;
+			vertical-align: middle;
+		}
+	}
+}
+
+/* @section 2.2 large min */
+
+@media (--media-medium-min)
+{
+	.rs-install-wrapper
+	{
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 50em;
+	}
+}

@@ -14,29 +14,32 @@ use PDOException;
  * @category Db
  * @author Henry Ruhs
  *
- * @method _addJoinSource()
- * @method _addOrderBy()
- * @method _setupDb()
- * @method clearCache()
+ * @method _addJoinSource(string $operator, string $table, mixed $constraint, string $tableAlias)
+ * @method _addOrderBy(string $column, string $value)
+ * @method _addWhere(string $clause, array $valueArray)
+ * @method _setupDb(string $connection = null)
+ * @method clearCache(string $table, string $connection)
  * @method deleteMany()
- * @method deleteOne()
  * @method findArray()
  * @method findMany()
- * @method findOne()
- * @method forTable()
- * @method getDb()
- * @method rawExecute()
- * @method rawQuery()
- * @method orderByAsc()
- * @method orderByDesc()
- * @method selectExpr()
- * @method tableAlias()
- * @method whereGt()
- * @method whereIdIn()
- * @method whereIdIs()
- * @method whereIn()
- * @method whereLt()
- * @method whereRaw()
+ * @method findOne(integer $id = null)
+ * @method forTable(string $table, string $connection = null)
+ * @method getDb(string $connection = null)
+ * @method rawExecute(string $query, array $parameterArray = [], string $connection = null)
+ * @method rawQuery(string $query, array $parameterArray = [])
+ * @method resetDb()
+ * @method orderByAsc(string $column)
+ * @method orderByDesc(string $column)
+ * @method tableAlias(string $tableAlias)
+ * @method whereGt(string $column, string $value)
+ * @method whereIdIn(array $idArray)
+ * @method whereIdIs(integer $id)
+ * @method whereIn(string $column, string $value)
+ * @method whereLike(string $column, string $value)
+ * @method whereLt(string $column, string $value)
+ * @method whereNotEqual(string $column, string $value)
+ * @method whereNull(string $column)
+ * @method whereRaw(string $clause, array $parameterArray = [])
  */
 
 class Db extends ORM
@@ -92,10 +95,11 @@ class Db extends ORM
 
 			/* username and password */
 
-			self::configure(array(
+			self::configure(
+			[
 				'username' => $dbUser,
 				'password' => $dbPassword
-			));
+			]);
 		}
 
 		/* sqlite */
@@ -107,11 +111,12 @@ class Db extends ORM
 
 		/* general */
 
-		self::configure(array(
+		self::configure(
+		[
 			'caching' => true,
 			'caching_auto_clear' => true,
 			'return_result_sets' => true
-		));
+		]);
 	}
 
 	/**
@@ -132,46 +137,12 @@ class Db extends ORM
 		{
 			if (self::$_config->get('dbType') === self::getDb()->getAttribute(PDO::ATTR_DRIVER_NAME))
 			{
-				$output = 1;
-
-				/* has tables */
-
-				if (self::countTablePrefix() > 7)
-				{
-					$output = 2;
-				}
+				$output = self::countTablePrefix() > 7 ? 2 : 1;
 			}
 		}
 		catch (PDOException $exception)
 		{
 			$output = 0;
-		}
-		return $output;
-	}
-
-	/**
-	 * get item from settings
-	 *
-	 * @since 2.2.0
-	 *
-	 * @param string $key key of the item
-	 *
-	 * @return string
-	 */
-
-	public static function getSettings($key = null)
-	{
-		$output = false;
-		$settings = self::forTablePrefix('settings')->findMany();
-
-		/* process settings */
-
-		foreach ($settings as $value)
-		{
-			if ($value->name === $key)
-			{
-				$output = $value->value;
-			}
 		}
 		return $output;
 	}
@@ -186,7 +157,7 @@ class Db extends ORM
 
 	public static function rawInstance()
 	{
-		self::_setup_db();
+		self::_setupDb();
 		return new self(null);
 	}
 
@@ -228,7 +199,7 @@ class Db extends ORM
 	public static function forTablePrefix($table = null, $connection = self::DEFAULT_CONNECTION)
 	{
 		self::_setupDb($connection);
-		return new self(self::$_config->get('dbPrefix') . $table, array(), $connection);
+		return new self(self::$_config->get('dbPrefix') . $table, [], $connection);
 	}
 
 	/**
@@ -251,7 +222,7 @@ class Db extends ORM
 	/**
 	 * where like with many
 	 *
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 *
 	 * @param array $columnArray array of column names
 	 * @param array $likeArray array of the like
@@ -261,34 +232,98 @@ class Db extends ORM
 
 	public function whereLikeMany($columnArray = null, $likeArray = null)
 	{
-		return $this->whereRaw(implode($columnArray, ' LIKE ? OR ') . ' LIKE ?', $likeArray);
+		return $this->_addWhere('(' . implode($columnArray, ' LIKE ? OR ') . ' LIKE ? )', $likeArray);
 	}
 
 	/**
-	 * find a flatten array
+	 * where language is
 	 *
-	 * @since 2.4.0
+	 * @since 3.0.0
+	 *
+	 * @param array $language value of the language
+	 *
+	 * @return Db
+	 */
+
+	public function whereLanguageIs($language = null)
+	{
+		return $this->_addWhere('(language = \'' . $language . '\' OR language IS NULL)');
+	}
+
+	/**
+	 * find a flat array
+	 *
+	 * @since 3.0.0
 	 *
 	 * @param string $key key of the item
 	 *
 	 * @return array
 	 */
 
-	public function findArrayFlat($key = 'id')
+	public function findFlatArray($key = 'id')
 	{
-		$output = array();
+		$flatArray = [];
 		foreach ($this->findArray() as $value)
 		{
 			if (array_key_exists($key, $value))
 			{
-				$output[] = $value[$key];
+				$flatArray[] = $value[$key];
 			}
 		}
-		return $output;
+		return $flatArray;
 	}
 
 	/**
-	 * order according to settings
+	 * get the setting
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $key key of the item
+	 *
+	 * @return mixed
+	 */
+
+	public function getSetting($key = null)
+	{
+		$settings = self::forTablePrefix('settings')->findMany();
+
+		/* process settings */
+
+		if ($key)
+		{
+			foreach ($settings as $setting)
+			{
+				if ($setting->name === $key)
+				{
+					return $setting->value;
+				}
+			}
+		}
+		else if (!$key)
+		{
+			return $settings;
+		}
+		return false;
+	}
+
+	/**
+	 * set the setting
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $key key of the item
+	 * @param string $value value of the item
+	 *
+	 * @return boolean
+	 */
+
+	public function setSetting($key = null, $value = null)
+	{
+		return self::forTablePrefix('settings')->where('name', $key)->findOne()->set('value', $value)->save();
+	}
+
+	/**
+	 * order according to global setting
 	 *
 	 * @since 2.2.0
 	 *
@@ -299,11 +334,11 @@ class Db extends ORM
 
 	public function orderGlobal($column = null)
 	{
-		return $this->_addOrderBy($column, self::getSettings('order'));
+		return $this->_addOrderBy($column, $this->getSetting('order'));
 	}
 
 	/**
-	 * limit according to settings
+	 * limit according to global setting
 	 *
 	 * @since 2.2.0
 	 *
@@ -312,7 +347,7 @@ class Db extends ORM
 
 	public function limitGlobal()
 	{
-		$this->_limit = self::getSettings('limit');
+		$this->_limit = $this->getSetting('limit');
 		return $this;
 	}
 }

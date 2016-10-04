@@ -1,0 +1,34 @@
+<?php
+namespace Redaxscript;
+
+$textElement = new Html\Element();
+$textElement
+	->init('input',
+	[
+		'type' => 'text',
+		'class' => $admin ? 'rs-admin-field-default rs-admin-field-text rs-admin-field-note' : 'rs-field-default rs-field-text rs-field-note',
+		'placeholder' => 'Placeholder'
+	]);
+$optionNative = '<option>Placeholder</option>';
+$selectElement = new Html\Element();
+$selectElement
+	->init('select',
+	[
+		'class' => $admin ? 'rs-admin-field-select rs-admin-field-note' : 'rs-field-select rs-field-note',
+	])
+->html($optionNative . $optionNative . $optionNative);
+$noteArray =
+[
+	$admin ? 'rs-admin-is-success' : 'rs-is-success',
+	$admin ? 'rs-admin-is-info' : 'rs-is-info',
+	$admin ? 'rs-admin-is-warning' : 'rs-is-warning',
+	$admin ? 'rs-admin-is-error' : 'rs-is-error'
+];
+?>
+
+<?php foreach ($noteArray as $value): ?>
+
+	<?php echo $textElement->copy()->addClass($value)->val($value); ?>
+	<?php echo $selectElement->copy()->addClass($value)->val($value); ?>
+
+<?php endforeach; ?>

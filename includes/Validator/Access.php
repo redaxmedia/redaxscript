@@ -6,8 +6,8 @@ namespace Redaxscript\Validator;
  *
  * @since 2.2.0
  *
- * @category Redaxscript
- * @package Validator
+ * @package Redaxscript
+ * @category Validator
  * @author Henry Ruhs
  * @author Sven Weingartner
  */
@@ -22,18 +22,18 @@ class Access implements ValidatorInterface
 	 * @param string $access content related access restriction
 	 * @param string $groups groups the user is a member of
 	 *
-	 * @return integer
+	 * @return boolean
 	 */
 
 	public function validate($access = null, $groups = null)
 	{
 		$output = ValidatorInterface::FAILED;
 		$accessArray = array_filter(explode(',', $access));
-		$groupsArray = array_filter(explode(',', $groups));
+		$groupArray = array_filter(explode(',', $groups));
 
-		/* validate access again group */
+		/* validate access */
 
-		if (!$access || in_array(1, $groupsArray) || array_intersect($accessArray, $groupsArray))
+		if (!$access || in_array(1, $groupArray) || array_intersect($accessArray, $groupArray))
 		{
 			$output = ValidatorInterface::PASSED;
 		}

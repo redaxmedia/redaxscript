@@ -1,190 +1,53 @@
 <?php
-error_reporting(0);
+namespace Redaxscript;
 
-/* include core files */
-
-include_once('includes/center.php');
-include_once('includes/contents.php');
-include_once('includes/generate.php');
-include_once('includes/head.php');
-include_once('includes/loader.php');
-include_once('includes/migrate.php');
-include_once('includes/navigation.php');
-include_once('includes/query.php');
-include_once('includes/search.php');
-include_once('includes/startup.php');
+error_reporting(E_ERROR || E_PARSE);
 
 /* bootstrap */
 
 include_once('includes/bootstrap.php');
 
+/* get instance */
+
+$registry = Registry::getInstance();
+
 /* redirect to install */
 
-$registry = Redaxscript\Registry::getInstance();
 if ($registry->get('dbStatus') < 2 && file_exists('install.php'))
 {
-	echo '<meta http-equiv="refresh" content="2; url=install.php" />' . PHP_EOL;
+	header('location: install.php');
+	exit;
 }
 
-/* include files as needed */
+/* render */
 
-if (LAST_TABLE == 'articles')
+Hook::trigger('renderStart');
+if ($registry->get('renderBreak'))
 {
-	include_once('includes/comments.php');
+	return;
 }
-if (FIRST_PARAMETER == 'admin' || FIRST_PARAMETER == 'login' || FIRST_PARAMETER == 'logout')
+if ($registry->get('routerBreak'))
 {
-	include_once('includes/login.php');
+	$registry->set('contentError', false);
 }
-if ((FIRST_PARAMETER == 'password_reset' || FIRST_PARAMETER == 'reminder') && s('reminder') == 1)
+if ($registry->get('contentError'))
 {
-	include_once('includes/password.php');
-	include_once('includes/reminder.php');
-}
-if (FIRST_PARAMETER == 'registration' && s('registration') == 1)
-{
-	include_once('includes/password.php');
-	include_once('includes/registration.php');
+	header('http/1.0 404 not found');
 }
 
-/* include admin files as needed */
+/* template */
 
-if (LOGGED_IN == TOKEN)
+$template = Hook::collect('renderTemplate');
+if (array_key_exists('header', $template))
 {
-	include_once('includes/admin_admin.php');
-	include_once('includes/admin_center.php');
+	header($template['header']);
 }
-if (FIRST_PARAMETER == 'admin' && LOGGED_IN == TOKEN)
+if (array_key_exists('content', $template))
 {
-	include_once('includes/admin_query.php');
-	switch (true)
-	{
-		case CATEGORIES_NEW == 1:
-		case CATEGORIES_EDIT == 1:
-		case CATEGORIES_DELETE == 1:
-		case ARTICLES_NEW == 1:
-		case ARTICLES_EDIT == 1:
-		case ARTICLES_DELETE == 1:
-		case EXTRAS_NEW == 1:
-		case EXTRAS_EDIT == 1:
-		case EXTRAS_DELETE == 1:
-		case COMMENTS_NEW == 1:
-		case COMMENTS_EDIT == 1:
-		case COMMENTS_DELETE == 1:
-			if (TABLE_PARAMETER == 'categories' || TABLE_PARAMETER == 'articles' || TABLE_PARAMETER == 'extras' || TABLE_PARAMETER == 'comments')
-			{
-				include_once('includes/admin_contents.php');
-			}
-		case GROUPS_NEW == 1:
-		case GROUPS_EDIT == 1:
-		case GROUPS_DELETE == 1:
-			if (TABLE_PARAMETER == 'groups')
-			{
-				include_once('includes/admin_groups.php');
-			}
-		case MODULES_INSTALL == 1:
-		case MODULES_EDIT == 1:
-		case MODULES_UNINSTALL == 1:
-			if (TABLE_PARAMETER == 'modules')
-			{
-				include_once('includes/admin_modules.php');
-			}
-		case SETTINGS_EDIT == 1:
-			if (TABLE_PARAMETER == 'settings')
-			{
-				include_once('includes/admin_settings.php');
-			}
-		case USERS_NEW == 1:
-		case USERS_EDIT == 1:
-		case USERS_DELETE == 1:
-		case USERS_EXCEPTION == 1:
-			if (TABLE_PARAMETER == 'users')
-			{
-				include_once('includes/admin_users.php');
-			}
-			break;
-	}
-}
-
-/* module files as needed */
-
-$modules_include = Redaxscript\Hook::getModules();
-if ($modules_include)
-{
-	/* language object */
-
-	$language = Redaxscript\Language::getInstance();
-
-	/* process modules */
-
-	foreach ($modules_include as $value)
-	{
-		/* language */
-
-		$language->load(array(
-			'modules/' . $value . '/languages/en.json',
-			'modules/' . $value . '/languages/' . Redaxscript\Registry::get('language') . '.json'
-		));
-
-		/* config */
-
-		if (file_exists('modules/' . $value . '/config.php'))
-		{
-			include_once('modules/' . $value . '/config.php');
-		}
-
-		/* index */
-
-		if (file_exists('modules/' . $value . '/index.php'))
-		{
-			include_once('modules/' . $value . '/index.php');
-		}
-	}
-}
-
-/* module init */
-
-Redaxscript\Hook::trigger('init');
-
-/* call loader else render template */
-
-if (FIRST_PARAMETER == 'loader' && (SECOND_PARAMETER == 'styles' || SECOND_PARAMETER == 'scripts'))
-{
-	echo loader(SECOND_PARAMETER, 'outline');
+	echo $template['content'];
 }
 else
 {
-	Redaxscript\Hook::trigger('render_start');
-
-	/* undefine */
-
-	undefine(array(
-		'REFRESH_ROUTE',
-		'DESCRIPTION',
-		'KEYWORDS',
-		'ROBOTS',
-		'TITLE'
-	));
-
-	/* render break */
-
-	if (Redaxscript\Registry::get('renderBreak'))
-	{
-		return;
-	}
-	else
-	{
-		/* handle error */
-
-		if (Redaxscript\Registry::get('centerBreak'))
-		{
-			Redaxscript\Registry::set('contentError', false);
-		}
-		if (Redaxscript\Registry::get('contentError'))
-		{
-			header('http/1.0 404 not found');
-		}
-		include_once('templates/' . Redaxscript\Registry::get('template') . '/index.phtml');
-	}
-	Redaxscript\Hook::trigger('render_end');
+	include_once('templates/' . $registry->get('template') . '/index.phtml');
 }
+Hook::trigger('renderEnd');

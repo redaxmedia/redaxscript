@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS /* {configPrefix} */users (
+CREATE TABLE IF NOT EXISTS /* %PREFIX% */users (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	name varchar(255) DEFAULT NULL,
 	user varchar(255) DEFAULT NULL,
@@ -6,8 +6,8 @@ CREATE TABLE IF NOT EXISTS /* {configPrefix} */users (
 	email varchar(255) DEFAULT NULL,
 	description varchar(255) DEFAULT NULL,
 	language char(3) DEFAULT NULL,
-	first datetime DEFAULT NULL,
-	last datetime DEFAULT NULL,
 	status int(1) DEFAULT 1,
-	groups varchar(255) DEFAULT NULL
+	groups varchar(255) DEFAULT NULL,
+	first datetime DEFAULT NULL,
+	last datetime DEFAULT NULL
 );

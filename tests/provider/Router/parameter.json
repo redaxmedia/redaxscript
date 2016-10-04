@@ -1,0 +1,274 @@
+[
+	[
+		null,
+		{
+			"first": null,
+			"second": null,
+			"third": null,
+			"fourth": null,
+			"last": null,
+			"sub": null,
+			"admin": null,
+			"table": null,
+			"alias": null,
+			"id": null,
+			"token": null
+		}
+	],
+	[
+		"1337",
+		{
+			"first": null,
+			"second": null,
+			"third": null,
+			"fourth": null,
+			"last": null,
+			"sub": "1337",
+			"admin": null,
+			"table": null,
+			"alias": null,
+			"id": null,
+			"token": null
+		}
+	],
+	[
+		"hello",
+		{
+			"first": "hello",
+			"second": null,
+			"third": null,
+			"fourth": null,
+			"last": "hello",
+			"sub": null,
+			"admin": null,
+			"table": null,
+			"alias": null,
+			"id": null,
+			"token": null
+		}
+	],
+	[
+		"hello/1337",
+		{
+			"first": "hello",
+			"second": null,
+			"third": null,
+			"fourth": null,
+			"last": "hello",
+			"sub": "1337",
+			"admin": null,
+			"table": null,
+			"alias": null,
+			"id": null,
+			"token": null
+		}
+	],
+	[
+		"hello/world",
+		{
+			"first": "hello",
+			"second": "world",
+			"third": null,
+			"fourth": null,
+			"last": "world",
+			"sub": null,
+			"admin": null,
+			"table": null,
+			"alias": null,
+			"id": null,
+			"token": null
+		}
+	],
+	[
+		"hello/world/1337",
+		{
+			"first": "hello",
+			"second": "world",
+			"third": null,
+			"fourth": null,
+			"last": "world",
+			"sub": "1337",
+			"admin": null,
+			"table": null,
+			"alias": null,
+			"id": null,
+			"token": null
+		}
+	],
+	[
+		"hello/world/to",
+		{
+			"first": "hello",
+			"second": "world",
+			"third": "to",
+			"fourth": null,
+			"last": "to",
+			"sub": null,
+			"admin": null,
+			"table": null,
+			"alias": null,
+			"id": null,
+			"token": null
+		}
+	],
+	[
+		"hello/world/to/1337",
+		{
+			"first": "hello",
+			"second": "world",
+			"third": "to",
+			"fourth": null,
+			"last": "to",
+			"sub": "1337",
+			"admin": null,
+			"table": null,
+			"alias": null,
+			"id": null,
+			"token": null
+		}
+	],
+	[
+		"hello/world/to/all",
+		{
+			"first": "hello",
+			"second": "world",
+			"third": "to",
+			"fourth": "all",
+			"last": "all",
+			"sub": null,
+			"admin": null,
+			"table": null,
+			"alias": null,
+			"id": null,
+			"token": null
+		}
+	],
+	[
+		"hello/world/to/all/1337",
+		{
+			"first": "hello",
+			"second": "world",
+			"third": "to",
+			"fourth": "all",
+			"last": "all",
+			"sub": "1337",
+			"admin": null,
+			"table": null,
+			"alias": null,
+			"id": null,
+			"token": null
+		}
+	],
+	[
+		"admin",
+		{
+			"first": "admin",
+			"second": null,
+			"third": null,
+			"fourth": null,
+			"last": "admin",
+			"sub": null,
+			"admin": null,
+			"table": null,
+			"alias": null,
+			"id": null,
+			"token": null
+		}
+	],
+	[
+		"admin/view/articles",
+		{
+			"first": "admin",
+			"second": "view",
+			"third": "articles",
+			"fourth": null,
+			"last": "articles",
+			"sub": null,
+			"admin": "view",
+			"table": "articles",
+			"alias": null,
+			"id": null,
+			"token": null
+		}
+	],
+	[
+		"admin/edit/articles/1",
+		{
+			"first": "admin",
+			"second": "edit",
+			"third": "articles",
+			"fourth": null,
+			"last": "articles",
+			"sub": 1,
+			"admin": "edit",
+			"table": "articles",
+			"alias": null,
+			"id": 1,
+			"token": null
+		}
+	],
+	[
+		"admin/delete/articles/1/0071877d20a65c02d9a1654f109b97dc61416d1a",
+		{
+			"first": "admin",
+			"second": "delete",
+			"third": "articles",
+			"fourth": null,
+			"last": "0071877d20a65c02d9a1654f109b97dc61416d1a",
+			"sub": 1,
+			"admin": "delete",
+			"table": "articles",
+			"alias": null,
+			"id": 1,
+			"token": "0071877d20a65c02d9a1654f109b97dc61416d1a"
+		}
+	],
+	[
+		"admin/process/articles/1",
+		{
+			"first": "admin",
+			"second": "process",
+			"third": "articles",
+			"fourth": null,
+			"last": "articles",
+			"sub": 1,
+			"admin": "process",
+			"table": "articles",
+			"alias": null,
+			"id": 1,
+			"token": null
+		}
+	],
+	[
+		"admin/install/modules/helloWorld/0071877d20a65c02d9a1654f109b97dc61416d1a",
+		{
+			"first": "admin",
+			"second": "install",
+			"third": "modules",
+			"fourth": "helloWorld",
+			"last": "0071877d20a65c02d9a1654f109b97dc61416d1a",
+			"sub": null,
+			"admin": "install",
+			"table": "modules",
+			"alias": "helloWorld",
+			"id": null,
+			"token": "0071877d20a65c02d9a1654f109b97dc61416d1a"
+		}
+	],
+	[
+		"admin/update/settings",
+		{
+			"first": "admin",
+			"second": "update",
+			"third": "settings",
+			"fourth": null,
+			"last": "settings",
+			"sub": null,
+			"admin": "update",
+			"table": "settings",
+			"alias": null,
+			"id": null,
+			"token": null
+		}
+	]
+]

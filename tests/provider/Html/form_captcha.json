@@ -2,15 +2,15 @@
 	[
 		{
 			"type": "task",
-			"prefix": "<form class=\"js-validate-form form-default\" method=\"post\"><label class=\"label-default\" for=\"task\">",
-			"suffix": "</form>"
+			"start": "<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><label class=\"rs-label-default\" for=\"task\">",
+			"end": "</form>"
 		}
 	],
 	[
 		{
 			"type": "solution",
-			"prefix": "<form class=\"js-validate-form form-default\" method=\"post\"><input class=\"field-hidden\" type=\"hidden\" name=\"solution\"",
-			"suffix": "</form>"
+			"start": "<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-hidden\" type=\"hidden\" name=\"solution\"",
+			"end": "</form>"
 		}
 	]
 ]

@@ -1,0 +1,24 @@
+[
+	[
+		null,
+		"latin"
+	],
+	[
+		{
+			"language": "en"
+		},
+		"latin"
+	],
+	[
+		{
+			"language": "ru"
+		},
+		"cyrillic"
+	],
+	[
+		{
+			"language": "vi"
+		},
+		"vietnamese"
+	]
+]

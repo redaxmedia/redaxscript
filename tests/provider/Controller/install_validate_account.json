@@ -1,0 +1,40 @@
+[
+	[
+		{
+			"adminName": null,
+			"adminUser": null,
+			"adminPassword": null,
+			"adminEmail": null
+		},
+		[
+			"Name is empty",
+			"User is empty",
+			"Password is empty",
+			"Email is empty"
+		]
+	],
+	[
+		{
+			"adminName": null,
+			"adminUser": "_",
+			"adminPassword": "_",
+			"adminEmail": "test@test"
+		},
+		[
+			"Name is empty",
+			"User is incorrect",
+			"Password is incorrect",
+			"Email is incorrect"
+		]
+	],
+	[
+		{
+			"adminName": "Test",
+			"adminUser": "test",
+			"adminPassword": "test",
+			"adminEmail": "test@test.com"
+		},
+		[
+		]
+	]
+]

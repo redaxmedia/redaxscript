@@ -2,8 +2,10 @@
 namespace Redaxscript\Modules\CallHome;
 
 use Redaxscript\Filter;
+use Redaxscript\Head;
 use Redaxscript\Language;
 use Redaxscript\Module;
+use Redaxscript\Reader;
 use Redaxscript\Registry;
 
 /**
@@ -24,76 +26,66 @@ class CallHome extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray =
+	[
 		'name' => 'Call home',
 		'alias' => 'CallHome',
 		'author' => 'Redaxmedia',
 		'description' => 'Provide version and news updates',
-		'version' => '2.6.2'
-	);
+		'version' => '3.0.0'
+	];
 
 	/**
-	 * loaderStart
+	 * renderStart
 	 *
-	 * @since 2.2.0
-	 */
-
-	public static function loaderStart()
-	{
-		if (Registry::get('loggedIn') === Registry::get('token') && Registry::get('firstParameter') === 'admin')
-		{
-			global $loader_modules_scripts;
-			$loader_modules_scripts[] = 'modules/CallHome/scripts/init.js';
-			$loader_modules_scripts[] = 'modules/CallHome/scripts/call_home.js';
-		}
-	}
-
-	/**
-	 * scriptStart
-	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 */
 
 	public static function scriptStart()
 	{
 		if (Registry::get('loggedIn') === Registry::get('token') && Registry::get('firstParameter') === 'admin')
 		{
-			$output = '<script src="//google-analytics.com/ga.js"></script>';
-			echo $output;
+			$script = Head\Script::getInstance();
+			$script
+				->init('foot')
+				->appendFile('//google-analytics.com/analytics.js')
+				->appendFile('modules/CallHome/assets/scripts/init.js')
+				->appendFile('modules/CallHome/assets/scripts/call_home.js');
 		}
 	}
 
 	/**
-	 * adminNotificationStart
+	 * adminPanelNotification
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
+	 *
+	 * @return array
 	 */
 
-	public static function adminNotificationStart()
+	public static function adminPanelNotification()
 	{
-		$output = null;
+		$output = [];
+		$reader = new Reader();
 		$aliasFilter = new Filter\Alias();
-		$urlVersion = 'http://service.redaxscript.com/version/' . $aliasFilter->sanitize(Language::get('version', '_package'));
-		$urlNews = 'http://service.redaxscript.com/news';
+		$version = $aliasFilter->sanitize(Language::get('version', '_package'));
 
-		/* get contents */
+		/* load result */
 
-		$contentsVersion = file_get_contents($urlVersion);
-		$contentsNews = file_get_contents($urlNews);
+		$urlVersion = 'http://service.redaxscript.com/version/' . $version;
+		$urlNews = 'http://service.redaxscript.com/news/' . $version;
+		$resultVersion = $reader->loadJSON($urlVersion)->getArray();
+		$resultNews = $reader->loadJSON($urlNews)->getArray();
 
-		/* collect version output */
+		/* merge as needed */
 
-		if ($contentsVersion)
+		if (is_array($resultVersion))
 		{
-			$output = $contentsVersion;
+			$output = array_merge_recursive($output, $resultVersion);
 		}
-
-		/* collect news output */
-
-		if ($contentsNews)
+		if (is_array($resultNews))
 		{
-			$output .= $contentsNews;
+			$output = array_merge_recursive($output, $resultNews);
 		}
-		echo $output;
+		return $output;
 	}
 }

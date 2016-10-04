@@ -1,0 +1,32 @@
+[
+	[
+		"mysql://root:test@127.0.0.1/test",
+		{
+			"dbType": "mysql",
+			"dbHost": "127.0.0.1",
+			"dbName": "test",
+			"dbUser": "root",
+			"dbPassword": "test"
+		}
+	],
+	[
+		"postgres://postgres:test@127.0.0.1/test",
+		{
+			"dbType": "pgsql",
+			"dbHost": "127.0.0.1",
+			"dbName": "test",
+			"dbUser": "postgres",
+			"dbPassword": "test"
+		}
+	],
+	[
+		"sqlite://file",
+		{
+			"dbType": "sqlite",
+			"dbHost": "file",
+			"dbName": null,
+			"dbUser": null,
+			"dbPassword": null
+		}
+	]
+]

@@ -1,0 +1,66 @@
+/**
+ * @tableofcontents
+ *
+ * 1. clearfix
+ * 2. dropdown
+ * 3. menu
+ * 4. redirect
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. clearfix */
+
+.rs-fn-clearfix
+{
+	@extend %fn-clearfix;
+}
+
+/* @section 2. dropdown */
+
+.rs-fn-dropdown
+{
+	@extend %fn-dropdown;
+}
+
+/* @section 3. menu */
+
+.rs-fn-menu
+{
+	@extend %fn-menu;
+}
+
+.rs-fn-toggle-menu
+{
+	@extend %fn-toggle-menu;
+}
+
+.rs-fn-close-menu
+{
+	@extend %fn-close-menu;
+}
+
+.rs-fn-status-menu
+{
+	@extend %fn-status-menu;
+
+	&:checked ~ .rs-fn-menu
+	{
+		@extend %fn-checked-menu;
+	}
+
+	&:checked ~ .rs-fn-close-menu
+	{
+		@extend %fn-checked-close-menu;
+	}
+}
+
+/* @section 4. redirect */
+
+.rs-meta-redirect
+{
+	@extend %overlay-redirect;
+}

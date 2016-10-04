@@ -1,0 +1,96 @@
+/**
+ * @tableofcontents
+ *
+ * 1. field
+ * 2. textarea
+ * 3. query
+ *    3.1 medium-min
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/**
+ * @tableofcontents
+ *
+ * 1. field
+ * 2. textarea
+ * 3. query
+ *    3.1 medium-min
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. field */
+
+.rs-admin-field-default,
+.rs-admin-field-select,
+.rs-admin-field-textarea
+{
+	background: gray(240);
+	border: 2px solid gray(215);
+	border-radius: 0.125em;
+	box-sizing: border-box;
+	color: gray(100);
+	display: block;
+	font: 0.875em var(--rs-admin-font-secondary);
+	padding: 0.5em;
+	transition: background 0.2s, border 0.2s;
+	width: 100%;
+
+	&:hover
+	{
+		border-color: gray(170);
+	}
+
+	&:focus
+	{
+		background: gray(255);
+		border-color: gray(185);
+	}
+
+	&[disabled],
+	&[readonly]
+	{
+		opacity: 0.5;
+		pointer-events: none;
+	}
+}
+
+.rs-admin-field-default,
+.rs-admin-field-select:not([multiple])
+{
+	height: 2.5em;
+}
+
+/* @section 2. textarea */
+
+.rs-admin-field-textarea
+{
+	min-height: 10em;
+	resize: vertical;
+}
+
+.rs-admin-field-textarea.rs-admin-field-small
+{
+	min-height: 5em;
+}
+
+/* @section 3. query */
+
+/* @section 3.1 medium-min */
+
+@media (--media-medium-min)
+{
+	.rs-admin-field-default,
+	.rs-admin-field-select,
+	.rs-admin-field-textarea.rs-admin-field-small
+	{
+		width: 50%;
+	}
+}

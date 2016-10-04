@@ -1,0 +1,147 @@
+/**
+ * @tableofcontents
+ *
+ * 1. content
+ *    1.1 title
+ *    1.2 box
+ * 2. comment
+ *    2.1 title
+ *    2.2 box
+ * 3. quote
+ * 4. code
+ * 5. readmore
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. content */
+
+.rs-content
+{
+	word-wrap: break-word;
+}
+
+/* @section 1.1 title */
+
+.rs-title-content
+{
+	border-left: 0.125em solid gray(0, 0.2);
+	color: var(--rs-color-tertiary);
+	font-size: 2.5em;
+	margin-bottom: 0.75em;
+	margin-top: 1em;
+	padding-left: 0.25em;
+}
+
+.rs-title-content-sub
+{
+	font-size: 1.5em;
+	margin-bottom: 0.5em;
+	margin-top: 1em;
+}
+
+/* @section 1.2 box */
+
+.rs-box-content
+{
+	font-size: 1.25em;
+
+	& p
+	{
+		line-height: 1.75em;
+		margin: 0.5em 0;
+	}
+}
+
+.rs-box-byline
+{
+	font-style: italic;
+	margin-top: 1em;
+}
+
+/* @section 2. comment */
+
+/* @section 2.1 title */
+
+.rs-title-comment
+{
+	font-size: 2em;
+	margin-bottom: 0.75em;
+	margin-top: 1em;
+
+	&:after
+	{
+		@extend %rs-icon-chat-bubble;
+		color: gray(0, 0.1);
+		font-size: 0.875em;
+		margin-left: 0.25em;
+		vertical-align: top;
+	}
+}
+
+/* @section 2.2 box */
+
+.rs-box-comment
+{
+	font-size: 1.25em;
+}
+
+/* @section 3. quote */
+
+.rs-box-quote
+{
+	font: italic 1.25em/1.75em var(--rs-font-primary);
+}
+
+@media (--media-medium-min)
+{
+	.rs-box-quote
+	{
+		margin: 1em 1em 1em 3em;
+		position: relative;
+	}
+
+	.rs-box-quote:before
+	{
+		color: gray(0, 0.1);
+		content: '\201d';
+		font: 7em/1em var(--rs-font-quote);
+		left: -0.5em;
+		position: absolute;
+		top: -0.125em;
+	}
+}
+
+/* @section 4. code */
+
+.rs-box-codequote
+{
+	background: gray(200);
+	border: 0.25em solid gray(170);
+	display: block;
+	font: 0.75em/1.25em var(--rs-font-code);
+	padding: 1em;
+	white-space: pre-wrap;
+}
+
+/* @section 5. readmore */
+
+.rs-link-readmore
+{
+	background: var(--rs-color-tertiary);
+	border-radius: 0.125em;
+	color: gray(255);
+	display: inline-block;
+	line-height: 2.5em;
+	margin-top: 0.5em;
+	padding: 0 1em;
+	transition: background 0.2s;
+
+	&:hover
+	{
+		background: var(--rs-color-tertiary-light);
+	}
+}

@@ -1,0 +1,24 @@
+/**
+ * @tableofcontents
+ *
+ * 1. title
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. title */
+
+.rs-admin-title-content
+{
+	color: gray(30);
+	font-size: 2em;
+	margin: 1em 0;
+
+	a
+	{
+		color: inherit;
+	}
+}

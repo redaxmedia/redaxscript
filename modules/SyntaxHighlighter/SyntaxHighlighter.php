@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\SyntaxHighlighter;
 
+use Redaxscript\Head;
 use Redaxscript\Module;
 
 /**
@@ -21,48 +22,37 @@ class SyntaxHighlighter extends Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray =
+	[
 		'name' => 'Syntax highlighter',
 		'alias' => 'SyntaxHighlighter',
 		'author' => 'Redaxmedia',
 		'description' => 'Javascript powered syntax highlighter',
-		'version' => '2.6.2'
-	);
+		'version' => '3.0.0'
+	];
 
 	/**
-	 * loaderStart
+	 * renderStart
 	 *
-	 * @since 2.6.0
+	 * @since 3.0.0
 	 */
 
-	public static function loaderStart()
+	public function renderStart()
 	{
-		global $loader_modules_scripts;
-		$loader_modules_scripts[] = 'modules/SyntaxHighlighter/scripts/init.js';
-		$loader_modules_scripts[] = 'modules/SyntaxHighlighter/scripts/syntax_highlighter.js';
-	}
+		/* link */
 
-	/**
-	 * linkEnd
-	 *
-	 * @since 2.6.0
-	 */
+		$link = Head\Link::getInstance();
+		$link
+			->init()
+			->appendFile('//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/github.min.css');
 
-	public static function linkEnd()
-	{
-		$output = '<link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/github.min.css" rel="stylesheet" />';
-		echo $output;
-	}
+		/* script */
 
-	/**
-	 * scriptEnd
-	 *
-	 * @since 2.6.0
-	 */
-
-	public static function scriptEnd()
-	{
-		$output = '<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>';
-		echo $output;
+		$script = Head\Script::getInstance();
+		$script
+			->init('foot')
+			->appendFile('//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js')
+			->appendFile('modules/SyntaxHighlighter/assets/scripts/init.js')
+			->appendFile('modules/SyntaxHighlighter/assets/scripts/syntax_highlighter.js');
 	}
 }

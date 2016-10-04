@@ -1,25 +1,15 @@
 filter:
  excluded_paths:
-  - includes/admin_*.php
-  - includes/center.php
+  - includes/admin_admin.php
+  - includes/admin_list.php
+  - includes/admin_query.php
+  - includes/admin_router.php
   - includes/comments.php
   - includes/contents.php
-  - includes/generate.php
-  - includes/head.php
-  - includes/loader.php
-  - includes/login.php
-  - includes/migrate.php
   - includes/navigation.php
-  - includes/password.php
   - includes/query.php
-  - includes/registration.php
-  - includes/reminder.php
-  - includes/search.php
+  - includes/router.php
   - includes/startup.php
-  - modules/*/index.php
-  - modules/*/install.php
-  - index.php
-  - install.php
 
 tools:
  external_code_coverage: true

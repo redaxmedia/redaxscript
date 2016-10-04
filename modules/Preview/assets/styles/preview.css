@@ -1,0 +1,72 @@
+/**
+ * @tableofcontents
+ *
+ * 1. preview
+ *    1.1 dialog
+ *    1.2 space between
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. preview */
+
+.rs-title-preview
+{
+	margin-bottom: 1.5rem;
+	margin-top: 1.5rem;
+
+	& a
+	{
+		background: gray(0, 0.8);
+		border-radius: 0.125em;
+		color: gray(255);
+		display: block;
+		padding: 0.5em 1em;
+	}
+
+	&:hover
+	{
+		background: gray(0, 0.9);
+	}
+}
+
+/* @section 1.1 dialog */
+
+.rs-is-preview
+{
+	& .rs-overlay-dialog,
+	& .rs-admin-overlay-dialog
+	{
+		height: 18em;
+		position: relative;
+	}
+
+	& .rs-component-dialog,
+	& .rs-admin-component-dialog
+	{
+		position: absolute;
+	}
+}
+
+/* @section 1.2 space between */
+
+.rs-is-preview
+{
+	& .rs-admin-field-note + .rs-admin-field-note,
+	& .rs-field-note + .rs-field-note
+	{
+		margin-top: 0.75rem;
+	}
+
+	& .rs-image-default + .rs-video-default,
+	& .rs-admin-button-note + .rs-admin-title-note,
+	& .rs-button-note + .rs-title-note,
+	& .rs-admin-wrapper-table + .rs-admin-wrapper-table,
+	& .rs-wrapper-table + .rs-wrapper-table
+	{
+		margin-top: 1.5rem;
+	}
+}

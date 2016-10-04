@@ -1,0 +1,48 @@
+/**
+ * @tableofcontents
+ *
+ * 1. overlay dialog
+ * 2. component dialog
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. overlay dialog */
+
+.rs-overlay-dialog
+{
+	@extend %overlay-dialog;
+	animation: fade-in 0.4s;
+	background: gray(170, 0.9);
+}
+
+/* @section 2. component dialog */
+
+.rs-component-dialog
+{
+	@extend %component-dialog;
+	background: var(--rs-color-tertiary);
+	border-radius: 0.25em;
+	color: gray(255);
+	font-size: 1.25em;
+	padding: 1em;
+
+	& .rs-title-dialog
+	{
+		font-size: 1.25em;
+		margin-bottom: 0.5em;
+	}
+
+	& .rs-button-default
+	{
+		margin-top: 1em;
+	}
+
+	& .rs-field-default
+	{
+		width: 100%;
+	}
+}

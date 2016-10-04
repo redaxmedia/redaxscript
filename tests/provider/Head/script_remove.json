@@ -1,0 +1,14 @@
+[
+	[
+		[
+			{
+				"src": "assets/scripts/one.js"
+			},
+			{
+				"src": "assets/scripts/two.js"
+			}
+		],
+		"assets/scripts/two.js",
+		"<script src=\"assets/scripts/one.js\"></script>"
+	]
+]

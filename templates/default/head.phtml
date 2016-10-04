@@ -1,24 +1,52 @@
-<?php use Redaxscript\Template as Template; ?>
+<?php namespace Redaxscript\Template; ?>
 
-<!-- base and title -->
+<!-- base -->
 
-<?php echo Template::base(); ?>
-<?php echo Template::title(); ?>
+<?php echo Tag::base(); ?>
+
+<!-- title -->
+
+<?php echo Tag::title(); ?>
 
 <!-- meta -->
 
-<?php echo Template::meta(); ?>
-<meta name="viewport" content="width=device-width" />
+<?php echo Tag::meta()
+	->init()
+	->append('charset', Tag::setting('charset'))
+	->append(['name' => 'author', 'content' => Tag::setting('author')])
+	->append(['name' => 'generator', 'content' => Tag::language('name', '_package') . ' ' . Tag::language('version', '_package')])
+	->append(['name' => 'description', 'content' => Helper::getDescription()])
+	->append(['name' => 'keywords', 'content' => Helper::getKeywords()])
+	->append(['name' => 'robots', 'content' => Helper::getRobots()])
+	->append(['name' => 'viewport', 'content' => 'width=device-width'])
+	->append(['name' => 'theme-color', 'content' => '#323e4c'])
+	->append(['name' => 'msapplication-navbutton-color', 'content' => '#323e4c'])
+	->append(['name' => 'apple-mobile-web-app-status-bar-stylecontent', 'content' => '#323e4c']); ?>
 
 <!-- link -->
 
-<?php echo Template::link(); ?>
-<link href="templates/default/images/favicon.ico" rel="shortcut icon" />
-<?php if (!Template::registry('myMobile')): ?>
-	<link href="//fonts.googleapis.com/css?family=PT+Sans+Narrow<?php echo urlencode('|'); ?>Open+Sans&amp;subset=<?php echo Template::helperSubset(); ?>" rel="stylesheet" />
-<?php endif; ?>
+<?php echo Tag::link()
+	->init('default')
+	->append(['href' => Tag::registry('root') . '/' . Helper::getCanonical(), 'rel' => 'canonical'])
+	->append(['href' => 'templates/default/assets/images/favicon.ico', 'rel' => 'shortcut icon'])
+	->append(['href' => 'templates/default/assets/images/favicon.png', 'rel' => 'apple-touch-icon'])
+	->appendFile('//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset())
+	->appendFile('dist/styles/base.min.css')
+	->appendFile('templates/default/dist/styles/default.min.css')
+	->rewrite(
+	[
+		'url(../../assets' => 'url(../../templates/default/assets'
+	])
+	->concat(); ?>
 
-<!-- style and script -->
+<?php echo Tag::link()->init('admin'); ?>
 
-<?php echo Template::style(); ?>
-<?php echo Template::script('init'); ?>
+<!-- head script -->
+
+<?php echo Tag::script()
+	->init('head')
+	->prependFile('templates/default/assets/scripts/init.js')
+	->prependFile('assets/scripts/init.js')
+	->prependFile('assets/scripts/support.js')
+	->transportVar('rs', Helper::getTransport())
+	->concat(); ?>

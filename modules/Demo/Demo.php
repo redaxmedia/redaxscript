@@ -1,12 +1,14 @@
 <?php
 namespace Redaxscript\Modules\Demo;
 
-use Redaxscript\Config as GlobalConfig;
+use Redaxscript\Auth;
+use Redaxscript\Config as BaseConfig;
 use Redaxscript\Db;
 use Redaxscript\Installer;
 use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
+use Redaxscript\Messenger as Messenger;
 
 /**
  * enable anonymous login
@@ -26,13 +28,14 @@ class Demo extends Config
 	 * @var array
 	 */
 
-	protected static $_moduleArray = array(
+	protected static $_moduleArray =
+	[
 		'name' => 'Demo',
 		'alias' => 'Demo',
 		'author' => 'Redaxmedia',
 		'description' => 'Enable demo login',
-		'version' => '2.6.2'
-	);
+		'version' => '3.0.0'
+	];
 
 	/**
 	 * renderStart
@@ -48,74 +51,144 @@ class Demo extends Config
 
 			if (Registry::get('secondParameter') === 'login')
 			{
-				Registry::set('title', Language::get('login'));
-				Registry::set('centerBreak', true);
+				Registry::set('metaTitle', Language::get('login'));
+				Registry::set('routerBreak', true);
 			}
 
 			/* handle reinstall */
 
 			if (Registry::get('secondParameter') === 'reinstall')
 			{
-				self::_reinstall();
 				Registry::set('renderBreak', true);
+				self::_reinstall();
 			}
 		}
 	}
 
 	/**
-	 * centerStart
+	 * routerStart
 	 *
-	 * @since 2.4.0
+	 * @since 3.0.0
 	 */
 
-	public static function centerStart()
+	public static function routerStart()
 	{
 		if (Registry::get('firstParameter') === 'demo' && Registry::get('secondParameter') === 'login')
 		{
-			self::_login();
+			echo self::process();
 		}
 	}
 
 	/**
-	 * login
+	 * adminPanelNotification
 	 *
-	 * @since 2.4.0
+	 * @since 3.0.0
+	 *
+	 * return array
 	 */
 
-	protected static function _login()
+	public static function adminPanelNotification()
 	{
-		$root = Registry::get('root');
-		$token = Registry::get('token');
-		$tableArray = array(
+		$auth = new Auth(Request::getInstance());
+		$auth->init();
+
+		/* demo user */
+
+		if ($auth->getUser('user') === 'demo')
+		{
+			self::setNotification('success', Language::get('logged_in') . Language::get('point'));
+		}
+		return self::getNotification();
+	}
+
+	/**
+	 * process
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public static function process()
+	{
+		$auth = new Auth(Request::getInstance());
+		$tableArray =
+		[
 			'categories',
 			'articles',
 			'extras',
 			'comments',
 			'groups',
 			'users'
-		);
+		];
 
-		/* session values */
+		/* set user */
 
-		Request::setSession($root . '/logged_in', $token);
-		Request::setSession($root . '/my_name', 'Demo');
-		Request::setSession($root . '/my_user', 'demo');
-		Request::setSession($root . '/my_email', 'demo@localhost');
+		$auth->setUser('name', 'Demo');
+		$auth->setUser('user', 'demo');
+		$auth->setUser('email', 'demo@localhost');
+
+		/* set permission */
+
 		foreach ($tableArray as $value)
 		{
-			Request::setSession($root . '/' . $value . '_new', 1);
-			Request::setSession($root . '/' . $value . '_edit', 1);
-			Request::setSession($root . '/' . $value . '_delete', 1);
+			$auth->setPermission($value,
+			[
+				1,
+				2,
+				3
+			]);
 		}
-		Request::setSession($root . '/modules_install', 0);
-		Request::setSession($root . '/modules_edit', 0);
-		Request::setSession($root . '/modules_uninstall', 0);
-		Request::setSession($root . '/settings_edit', 1);
-		Request::setSession($root . '/filter', 1);
+		$auth->setPermission('settings',
+		[
+			1
+		]);
 
-		/* notification */
+		/* save user and permission */
 
-		notification(Language::get('welcome'), Language::get('logged_in'), Language::get('continue'), 'admin');
+		$auth->save();
+
+		/* handle success */
+
+		if ($auth->getStatus())
+		{
+			return self::_success();
+		}
+		return self::_error();
+	}
+
+	/**
+	 * success
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	protected static function _success()
+	{
+		$messenger = new Messenger(Registry::getInstance());
+		return $messenger
+			->setRoute(Language::get('continue'), 'admin')
+			->doRedirect(0)
+			->success(Language::get('logged_in'), Language::get('welcome'));
+	}
+
+	/**
+	 * error
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	protected static function _error()
+	{
+		$messenger = new Messenger(Registry::getInstance());
+		return $messenger
+			->setRoute(Language::get('back'), 'login')
+			->doRedirect()
+			->error(Language::get('something_wrong'), Language::get('error_occurred'));
 	}
 
 	/**
@@ -126,20 +199,21 @@ class Demo extends Config
 
 	protected static function _reinstall()
 	{
-		$installer = new Installer(GlobalConfig::getInstance());
+		$installer = new Installer(BaseConfig::getInstance());
 		$installer->init();
 		$installer->rawDrop();
 		$installer->rawCreate();
-		$installer->insertData(array(
+		$installer->insertData(
+		[
 			'adminName' => 'Admin',
 			'adminUser' => 'admin',
 			'adminPassword' => 'admin',
 			'adminEmail' => 'admin@localhost'
-		));
+		]);
 
 		/* process modules */
 
-		foreach (self::$_config['modules'] as $key => $value)
+		foreach (self::$_configArray['modules'] as $key => $value)
 		{
 			if (is_dir('modules/' . $key))
 			{
@@ -152,10 +226,11 @@ class Demo extends Config
 
 		Db::forTablePrefix('groups')
 			->findMany()
-			->set(array(
+			->set(
+			[
 				'modules' => null,
 				'filter' => 1
-			))
+			])
 			->save();
 	}
 }

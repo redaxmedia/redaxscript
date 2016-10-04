@@ -1,0 +1,34 @@
+[
+	[
+		{
+			"metaKeywords": null,
+			"lastTable": null,
+			"lastId": null
+		},
+		null
+	],
+	[
+		{
+			"metaKeywords": "meta-keywords",
+			"lastTable": null,
+			"lastId": null
+		},
+		"meta-keywords"
+	],
+	[
+		{
+			"metaKeywords": null,
+			"lastTable": "articles",
+			"lastId": 2
+		},
+		"article-keywords"
+	],
+	[
+		{
+			"metaKeywords": null,
+			"lastTable": "categories",
+			"lastId": 2
+		},
+		"category-keywords"
+	]
+]

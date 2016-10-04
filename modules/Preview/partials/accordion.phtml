@@ -1,65 +1,43 @@
 <?php
 namespace Redaxscript;
 
-$suffix = $admin ? '_admin' : '_default';
-$titlePartialElement = new Html\Element();
-$titlePartialElement->init('h3', array(
-	'class' => 'title_content_sub'
-));
-$setAccordionElement = new Html\Element();
-$setAccordionElement->init('div', array(
-	'class' => 'js_set_accordion set_accordion set_accordion' . $suffix
-));
-$titleAccordionElement = new Html\Element();
-$titleAccordionElement->init('h3', array(
-	'class' => 'js_title_accordion title_accordion title_accordion' . $suffix
-));
-$boxAccordionElement = new Html\Element();
-$boxAccordionElement->init('div', array(
-	'class' => 'js_box_accordion box_accordion box_accordion' . $suffix
-));
+$setElement = new Html\Element();
+$setElement->init('div',
+[
+	'class' => $admin ? 'rs-admin-js-set-accordion rs-admin-set-accordion' : 'rs-js-set-accordion rs-set-accordion'
+]);
+$titleElement = new Html\Element();
+$titleElement->init('h3',
+[
+	'class' =>  $admin ? 'rs-admin-js-title-accordion rs-admin-title-accordion' : 'rs-js-title-accordion rs-title-accordion'
+]);
+$boxElement = new Html\Element();
+$boxElement->init('div',
+[
+	'class' => $admin ? 'rs-admin-js-box-accordion rs-admin-box-accordion' : 'rs-js-box-accordion rs-box-accordion'
+]);
 ?>
 
 <!-- accordion -->
 
-<?php echo $titlePartialElement->text('.title_accordion' . $suffix . ' + box_accordion' . $suffix); ?>
+<div class="<?php echo $admin ? 'rs-admin-js-accordion rs-admin-component-accordion' : 'rs-js-accordion rs-component-accordion'; ?>">
 
-<div class="js_accordion accordion">
+	<?php for ($i = 1; $i < 6; $i++): ?>
 
-	<!-- first -->
-
-	<?php echo $setAccordionElement
-		->copy()
-		->addClass('js_set_active set_active')
-		->html(
-			$titleAccordionElement
+		<?php echo $setElement
 				->copy()
-				->addClass('js_title_active title_active')
-				->text(Language::get('first')) .
-			$boxAccordionElement
-				->copy()
-				->addClass('js_box_active box_active')
-				->text(Language::get('first'))
-		); ?>
-
-	<!-- number -->
-
-	<?php for ($i = 2; $i < 5; $i++): ?>
-
-		<?php echo $setAccordionElement->html(
-			$titleAccordionElement->text(Language::get($i, '_number')) .
-			$boxAccordionElement->text(Language::get($i, '_number'))
+				->addClass($i === 2 ? $admin ? 'rs-admin-js-set-active rs-admin-set-active' : 'rs-js-set-active rs-set-active' : null)
+				->html(
+					$titleElement
+						->copy()
+						->addClass($i === 2 ? $admin ? 'rs-admin-js-title-active rs-admin-title-active' : 'rs-js-title-active rs-title-active' : null)
+						->text(Language::get($i, '_number')) .
+					$boxElement
+						->copy()
+						->addClass($i === 2 ? $admin ? 'rs-admin-js-box-active rs-admin-box-active' : 'rs-js-box-active rs-box-active' : null)
+						->text(Language::get($i, '_number'))
 		); ?>
 
 	<?php endfor; ?>
 
-	<!-- last -->
-
-	<?php echo $setAccordionElement
-		->copy()
-		->addClass('js_set_accordion_last set_accordion_last')
-		->html(
-			$titleAccordionElement->text(Language::get('last')) .
-			$boxAccordionElement->text(Language::get('last'))
-		); ?>
 </div>

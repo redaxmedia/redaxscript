@@ -1,0 +1,62 @@
+/**
+ * @tableofcontents
+ *
+ * 1. overlay dialog
+ * 2. component dialog
+ *    2.1 title dialog
+ *    2.2 box dialog
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. overlay dialog */
+
+.rs-admin-overlay-dialog
+{
+	@extend %overlay-dialog;
+	animation: fade-in 0.4s;
+	background: gray(0, 0.3);
+}
+
+/* @section 2. component dialog */
+
+.rs-admin-component-dialog
+{
+	@extend %component-dialog;
+	animation: fade-in 0.4s;
+	border-radius: 0.25rem;
+	font: 1.25rem var(--rs-admin-font-primary);
+
+	& .rs-admin-button-default
+	{
+		margin-top: 1em;
+	}
+
+	& .rs-admin-field-default
+	{
+		width: 100%;
+	}
+}
+
+/* @section 2.1 title dialog */
+
+.rs-admin-title-dialog
+{
+	background: gray(30);
+	color: gray(200);
+	font-size: 1em;
+	font-weight: bold;
+	line-height: 2.5em;
+	padding: 0 1em;
+}
+
+/* @section 2.2 box dialog */
+
+.rs-admin-box-dialog
+{
+	background: var(--rs-admin-gradient-quaternary);
+	padding: 1em;
+}

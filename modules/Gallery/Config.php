@@ -4,7 +4,7 @@ namespace Redaxscript\Modules\Gallery;
 use Redaxscript\Module;
 
 /**
- * parent class to store module config
+ * children class to store module config
  *
  * @since 2.6.0
  *
@@ -16,22 +16,25 @@ use Redaxscript\Module;
 class Config extends Module
 {
 	/**
-	 * module config
+	 * array of config
 	 *
 	 * @var array
 	 */
 
-	protected static $_config = array(
-		'className' => array(
-			'image' => 'image image_gallery',
-			'list' => 'js_list_gallery list_gallery'
-		),
+	protected static $_configArray =
+	[
+		'className' =>
+		[
+			'image' => 'rs-image-gallery',
+			'list' => 'rs-js-gallery rs-list-gallery'
+		],
 		'height' => 200,
 		'quality' => 80,
 		'thumbDirectory' => 'thumbs',
-		'allowedCommands' => array(
+		'allowedCommands' =>
+		[
 			'create',
 			'remove'
-		)
-	);
+		]
+	];
 }

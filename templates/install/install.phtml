@@ -1,26 +1,34 @@
-<?php use Redaxscript\Template as Template; ?>
+<?php namespace Redaxscript\Template; ?>
 
 <!DOCTYPE html>
-<html lang="<?php echo Template::registry('language'); ?>" class="<?php echo Template::helperClass(); ?>">
+<html lang="<?php echo Tag::registry('language'); ?>" dir="<?php echo Helper::getDirection(); ?>" class="<?php echo Helper::getClass(); ?>">
 
 	<!-- head -->
 
 	<head>
-		<?php echo Template::partial('templates/default/head.phtml'); ?>
+		<?php echo Tag::partial('templates/install/head.phtml'); ?>
 	</head>
 
 	<!-- body -->
 
-	<body class="wrapper_body">
+	<body class="rs-body rs-install-body rs-wrapper-body">
 
 		<!-- main -->
 
-		<div class="wrapper clearfix">
-			<?php echo Template::partial('templates/install/content.phtml'); ?>
-		</div>
+		<main id="main" class="rs-install-main rs-install-wrapper rs-fn-clearfix">
+			<h1 class="rs-install-title"><?php echo Tag::language('name', '_package'); ?></h1>
+			<?php echo Tag::partial('templates/install/content.phtml'); ?>
+		</main>
 
-		<!-- footer -->
+		<!-- foot script -->
 
-		<?php echo Template::script(); ?>
+		<?php echo Tag::script()
+			->init('foot')
+			->appendFile('//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js')
+			->appendFile('assets/scripts/fallback.js')
+			->appendFile('assets/scripts/form.js')
+			->appendFile('assets/scripts/interface.js')
+			->appendFile('templates/install/assets/scripts/install.js')
+			->concat();	?>
 	</body>
 </html>

@@ -1,0 +1,79 @@
+/**
+ * @tableofcontents
+ *
+ * 1. general
+ * 2. wrapper
+ * 3. query
+ *    3.1 medium max
+ *    3.2 medium min
+ *    3.3 print
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. general */
+
+.rs-body
+{
+	background: gray(255);
+	color: gray(0);
+	font: 1em arial, sans-serif;
+}
+
+.rs-footer,
+.rs-header,
+.rs-main
+{
+	margin-bottom: 1em;
+	margin-top: 1em;
+}
+
+/* @section 2. wrapper */
+
+.rs-wrapper
+{
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+}
+
+/* @section 3. query */
+
+/* @section 3.1 medium min */
+
+@media (--media-medium-min)
+{
+	.rs-content
+	{
+		float: left;
+		width: 70%;
+	}
+
+	.rs-sidebar
+	{
+		float: right;
+		margin-left: 2%;
+		width: 28%;
+	}
+}
+
+/* @section 3.2 print */
+
+@media print
+{
+	.rs-body
+	{
+		background: gray(255);
+		color: gray(0);
+	}
+
+	.rs-footer,
+	.rs-header,
+	.rs-sidebar
+	{
+		display: none;
+	}
+}

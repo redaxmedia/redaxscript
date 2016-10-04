@@ -1,4 +1,6 @@
 service_name: travis-ci
-src_dir: includes
-coverage_clover: clover.xml
-json_path: coveralls-upload.json
+coverage_clover:
+ - build/mysql.xml
+ - build/pgsql.xml
+ - build/sqlite.xml
+json_path: build/coveralls.json

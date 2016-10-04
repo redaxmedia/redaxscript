@@ -6,8 +6,8 @@ namespace Redaxscript\Validator;
  *
  * @since 2.2.0
  *
- * @category Redaxscript
- * @package Validator
+ * @package Redaxscript
+ * @category Validator
  * @author Henry Ruhs
  * @author Sven Weingartner
  */
@@ -20,10 +20,11 @@ class Login implements ValidatorInterface
 	 * @var array
 	 */
 
-	protected $_range = array(
-		'min' => 5,
-		'max' => 50
-	);
+	protected $_rangeArray =
+	[
+		'min' => 1,
+		'max' => 30
+	];
 
 	/**
 	 * validate the login
@@ -42,7 +43,7 @@ class Login implements ValidatorInterface
 
 		/* validate login */
 
-		if (ctype_alnum($login) && $length >= $this->_range['min'] && $length <= $this->_range['max'])
+		if (ctype_alnum($login) && $length >= $this->_rangeArray['min'] && $length <= $this->_rangeArray['max'])
 		{
 			$output = ValidatorInterface::PASSED;
 		}

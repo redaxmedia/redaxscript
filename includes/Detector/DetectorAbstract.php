@@ -5,7 +5,7 @@ use Redaxscript\Registry;
 use Redaxscript\Request;
 
 /**
- * abstract class to build a detector class
+ * abstract class to create a detector class
  *
  * @since 2.0.0
  *
@@ -46,7 +46,7 @@ abstract class DetectorAbstract
 	 * @var string
 	 */
 
-	protected $_filePlaceholder = '{filePlaceholder}';
+	protected $_filePlaceholder = '%FILE%';
 
 	/**
 	 * constructor of the class
@@ -82,14 +82,14 @@ abstract class DetectorAbstract
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param array $setup array of detector setup
+	 * @param array $setupArray array of detector setup
 	 * @param string $type type of the asset
 	 * @param string $path path to the required file
 	 */
 
-	protected function _detect($setup = array(), $type = null, $path = null)
+	protected function _detect($setupArray = [], $type = null, $path = null)
 	{
-		foreach ($setup as $key => $value)
+		foreach ($setupArray as $key => $value)
 		{
 			$file = str_replace($this->_filePlaceholder, $value, $path);
 
@@ -103,8 +103,7 @@ abstract class DetectorAbstract
 
 				if ($key === 'query')
 				{
-					$root = $this->_registry->get('root');
-					$this->_request->setSession($root . '/' . $type, $value);
+					$this->_request->setSession($type, $value);
 				}
 				break;
 			}

@@ -2,7 +2,6 @@
 namespace Redaxscript\Validator;
 
 use Redaxscript\Config;
-use Redaxscript\Db;
 use Redaxscript\Hash;
 
 /**
@@ -10,8 +9,8 @@ use Redaxscript\Hash;
  *
  * @since 2.2.0
  *
- * @category Redaxscript
- * @package Validator
+ * @package Redaxscript
+ * @category Validator
  * @author Henry Ruhs
  */
 
@@ -35,7 +34,7 @@ class Captcha implements ValidatorInterface
 
 		/* validate captcha */
 
-		if ($task && $captchaHash->validate($task, $hash) || Db::getSettings('captcha') < 1)
+		if ($task && $captchaHash->validate($task, $hash))
 		{
 			$output = ValidatorInterface::PASSED;
 		}

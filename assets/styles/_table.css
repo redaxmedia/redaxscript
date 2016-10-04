@@ -1,0 +1,42 @@
+/**
+ * @tableofcontents
+ *
+ * 1. table
+ * 2. wrapper table
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. table */
+
+%table-default
+{
+	& caption,
+	& th,
+	& tfoot td
+	{
+		font-weight: bold;
+		text-align: left;
+	}
+
+	& th ~ th:last-child,
+	& td ~ td:last-child
+	{
+		text-align: right;
+	}
+}
+
+/* @section 2. wrapper table */
+
+%wrapper-table
+{
+	overflow: hidden;
+
+	& > table
+	{
+		width: 100%;
+	}
+}

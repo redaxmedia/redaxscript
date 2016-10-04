@@ -1,0 +1,14 @@
+[
+	[
+		[
+			{
+				"href": "assets/styles/one.css"
+			},
+			{
+				"href": "assets/styles/two.css"
+			}
+		],
+		"assets/styles/two.css",
+		"<link href=\"assets/styles/one.css\" />"
+	]
+]
