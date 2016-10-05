@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Tests\Controller;
 
+use Redaxscript\Auth;
 use Redaxscript\Controller;
 use Redaxscript\Language;
 use Redaxscript\Registry;
@@ -75,16 +76,26 @@ class LogoutTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
+     * @param array $authArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($expect = null)
+	public function testProcess($authArray = [], $expect = null)
 	{
 		/* setup */
 
-		$logoutController = new Controller\Logout($this->_registry, $this->_language, $this->_request);
+        $auth = new Auth($this->_request);
+        $logoutController = new Controller\Logout($this->_registry, $this->_language, $this->_request);
+        if ($authArray['login'])
+        {
+            $auth->login(1);
+        }
+        if ($authArray['logout'])
+        {
+            $auth->logout();
+        }
 
 		/* actual */
 
