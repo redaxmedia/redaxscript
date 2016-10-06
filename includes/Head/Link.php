@@ -22,7 +22,7 @@ use Redaxscript\Html;
 class Link extends HeadAbstract
 {
 	/**
-	 * options of the style
+	 * options of the link
 	 *
 	 * @var string
 	 */
@@ -34,6 +34,14 @@ class Link extends HeadAbstract
 		'attribute' => 'href',
 		'lifetime' => 86400
 	];
+
+	/**
+	 * rewrite of the link
+	 *
+	 * @var string
+	 */
+
+	protected $_rewriteArray = [];
 
 	/**
 	 * append link file
@@ -104,7 +112,7 @@ class Link extends HeadAbstract
 
 	public function rewrite($rewriteArray = [])
 	{
-		$this->_optionArray['rewrite'] = $rewriteArray;
+		$this->_rewriteArray = array_merge($this->_rewriteArray, $rewriteArray);
 		return $this;
 	}
 
@@ -124,7 +132,7 @@ class Link extends HeadAbstract
 		$loader = new Assetic\Loader();
 		$loader
 			->init(self::$_collectionArray[self::$_namespace])
-			->concat($optionArray);
+			->concat($optionArray, $this->_rewriteArray);
 
 		/* update collection */
 

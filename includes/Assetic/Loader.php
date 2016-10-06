@@ -61,11 +61,12 @@ class Loader
 	 * @since 3.0.0
 	 *
 	 * @param array $optionArray
+	 * @param array $rewriteArray
 	 *
 	 * @return Loader
 	 */
 
-	public function concat($optionArray = [])
+	public function concat($optionArray = [], $rewriteArray = [])
 	{
 		$bundleArray = [];
 		$restArray = [];
@@ -110,7 +111,7 @@ class Loader
 
 		else
 		{
-			$content = $this->_getContent($bundleArray, $optionArray['rewrite']);
+			$content = $this->_getContent($bundleArray, $rewriteArray);
 			$cache->store($bundleArray, $content);
 		}
 		return $this;

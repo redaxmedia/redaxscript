@@ -26,7 +26,7 @@
 <!-- link -->
 
 <?php echo Tag::link()
-	->init('skeleton')
+	->init()
 	->append(['href' => Tag::registry('root') . '/' . Helper::getCanonical(), 'rel' => 'canonical'])
 	->append(['href' => 'templates/skeleton/assets/images/favicon.ico', 'rel' => 'shortcut icon'])
 	->append(['href' => 'templates/skeleton/assets/images/favicon.png', 'rel' => 'apple-touch-icon'])
