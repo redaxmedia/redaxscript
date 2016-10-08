@@ -1,10 +1,8 @@
 /**
  * @tableofcontents
  *
- * 1. dock
- * 2. generate alias
- * 3. generate keyword
- * 4. panel
+ * 1. generate alias
+ * 2. panel
  *
  * @since 3.0.0
  *
@@ -12,25 +10,7 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. dock */
-
-rs.plugins.dock =
-{
-	init: true,
-	selector: 'div.rs-admin-js-dock',
-	options:
-	{
-		element:
-		{
-			dockLink: 'a.rs-admin-js-link-dock',
-			dockDescription: 'span.rs-admin-js-dock',
-			dockDescriptionHTML: '<span class="rs-admin-js-dock rs-admin-text-dock"></span>'
-		},
-		vibrate: 100
-	}
-};
-
-/* @section 2. generate alias */
+/* @section 1. generate alias */
 
 rs.plugins.generateAlias =
 {
@@ -45,30 +25,7 @@ rs.plugins.generateAlias =
 	}
 };
 
-/* @section 3. generate keyword */
-
-rs.plugins.generateKeyword =
-{
-	init: true,
-	selector: 'form textarea.rs-admin-js-generate-keyword-input',
-	options:
-	{
-		element:
-		{
-			related: 'textarea.rs-admin-js-generate-keyword-output',
-			target: 'h1, h2, h3, strong'
-		},
-		splitter:
-		{
-			text: '\n',
-			keyword: ' '
-		},
-		delimiter: ' ',
-		limit: 10
-	}
-};
-
-/* @section 4. panel */
+/* @section 2. panel */
 
 rs.plugins.panel =
 {

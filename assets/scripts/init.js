@@ -109,7 +109,7 @@
 				element:
 				{
 					adminDock: 'div.rs-admin-js-dock',
-					adminPanel: 'nav.rs-admin-js-panel',
+					adminPanel: 'ul.rs-admin-js-list-panel',
 					buttonSubmit: 'form button.rs-admin-js-submit',
 					buttonOk: 'div a.rs-admin-js-ok, form button.rs-admin-js-ok',
 					buttonCancel: 'div a.rs-admin-js-cancel, form button.rs-admin-js-cancel'

@@ -28,8 +28,6 @@
 <?php echo Tag::link()
 	->init()
 	->append(['href' => Tag::registry('root') . '/' . Helper::getCanonical(), 'rel' => 'canonical'])
-	->append(['href' => 'templates/skeleton/assets/images/favicon.ico', 'rel' => 'shortcut icon'])
-	->append(['href' => 'templates/skeleton/assets/images/favicon.png', 'rel' => 'apple-touch-icon'])
 	->appendFile('dist/styles/base.min.css')
 	->appendFile('templates/skeleton/dist/styles/skeleton.css')
 	->concat(); ?>

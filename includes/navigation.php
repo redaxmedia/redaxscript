@@ -273,12 +273,11 @@ function languages_list($options)
 	foreach ($languages_directory_array as $value)
 	{
 		$value = substr($value, 0, 2);
-		$class_string = ' class="rs-language-' . $value;
+		$class_string = null;
 		if ($value == Redaxscript\Registry::get('language'))
 		{
-			$class_string .= ' rs-item-active';
+			$class_string = ' class="rs-item-active"';
 		}
-		$class_string .= '"';
 		$output .= '<li' . $class_string . '><a href="' . Redaxscript\Registry::get('parameterRoute') . Redaxscript\Registry::get('fullRoute') . Redaxscript\Registry::get('languageRoute') . $value . '" rel="nofollow">' . Redaxscript\Language::get($value, '_index') . '</a>';
 	}
 
@@ -350,12 +349,11 @@ function templates_list($options)
 
 	foreach ($templates_directory_array as $value)
 	{
-		$class_string = ' class="rs-template-' . $value;
+		$class_string = null;
 		if ($value == Redaxscript\Registry::get('template'))
 		{
-			$class_string .= ' rs-item-active';
+			$class_string = ' class="rs-item-active"';
 		}
-		$class_string .= '"';
 		$output .= '<li' . $class_string . '><a href="' . Redaxscript\Registry::get('parameterRoute') . Redaxscript\Registry::get('fullRoute') . Redaxscript\Registry::get('templateRoute') . $value . '" rel="nofollow">' . $value . '</a>';
 	}
 
