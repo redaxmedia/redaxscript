@@ -241,13 +241,14 @@ class Option
 	 * @since 3.0.0
 	 *
 	 * @param string $table name of the table
+	 * @param array $excludeArray array of the exclude
 	 *
 	 * @return array
 	 */
 
-	public static function getContentArray($table = null)
+	public static function getContentArray($table = null, $excludeArray = [])
 	{
-		$content = Db::forTablePrefix($table)->orderByAsc('title')->findMany();
+		$content = Db::forTablePrefix($table)->whereNotIn('id', $excludeArray)->orderByAsc('title')->findMany();
 
 		/* process content */
 

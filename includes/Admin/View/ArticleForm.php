@@ -216,7 +216,10 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'sibling'
 			])
-			->select(Helper\Option::getContentArray('articles'),
+			->select(Helper\Option::getContentArray('articles',
+			[
+				intval($article->id)
+			]),
 			[
 				'id' => 'sibling',
 				'name' => 'sibling',

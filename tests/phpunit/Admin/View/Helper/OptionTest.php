@@ -260,7 +260,12 @@ class OptionTest extends TestCaseAbstract
 	{
 		/* actual */
 
-		$actualArray = Helper\Option::getContentArray('articles');
+		$actualArray = Helper\Option::getContentArray('extras',
+		[
+			4,
+			5,
+			6
+		]);
 
 		/* compare */
 

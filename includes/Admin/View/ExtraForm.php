@@ -168,7 +168,10 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'sibling'
 			])
-			->select(Helper\Option::getContentArray('extras'),
+			->select(Helper\Option::getContentArray('extras',
+			[
+				intval($extra->id)
+			]),
 			[
 				'id' => 'sibling',
 				'name' => 'sibling',

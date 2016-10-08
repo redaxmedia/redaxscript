@@ -203,7 +203,10 @@ class CategoryForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'sibling'
 			])
-			->select(Helper\Option::getContentArray('categories'),
+			->select(Helper\Option::getContentArray('categories',
+			[
+				intval($category->id)
+			]),
 			[
 				'id' => 'sibling',
 				'name' => 'sibling',
@@ -214,7 +217,10 @@ class CategoryForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'parent'
 			])
-			->select(Helper\Option::getContentArray('categories'),
+			->select(Helper\Option::getContentArray('categories',
+			[
+				intval($category->id)
+			]),
 			[
 				'id' => 'parent',
 				'name' => 'parent',

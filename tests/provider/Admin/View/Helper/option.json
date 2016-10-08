@@ -78,7 +78,9 @@
 			"content":
 			{
 				"Select": "select",
-				"Welcome (1)": 1
+				"Articles (2)": 2,
+				"Categories (1)": 1,
+				"Comments (3)": 3
 			},
 			"access":
 			{
