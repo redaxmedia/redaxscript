@@ -63,6 +63,7 @@ class Option
 	{
 		return
 		[
+			Language::get('select') => 'select',
 			Language::get('all') => 1,
 			Language::get('index') => 2,
 			Language::get('follow') => 3,

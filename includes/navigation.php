@@ -74,7 +74,7 @@ function navigation_list($table, $options)
 		}
 		else if ($table == 'categories')
 		{
-			$contents->where($query_parent, 0);
+			$contents->whereNull($query_parent);
 		}
 	}
 
