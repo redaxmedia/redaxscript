@@ -24,9 +24,9 @@ class Language extends Singleton
 	/**
 	 * init the class
 	 *
-	 * @param string $language detected language to process
-	 *
 	 * @since 2.2.0
+	 *
+	 * @param string $language detected language to process
 	 */
 
 	public function init($language = 'en')

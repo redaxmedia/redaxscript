@@ -14,12 +14,33 @@ namespace Redaxscript\Tests;
 class SingletonTest extends TestCaseAbstract
 {
 	/**
-	 * testReset
+	 * testGetInstance
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 */
 
-	public function testReset()
+	public function testGetInstance()
+	{
+		/* setup */
+
+		$stub = $this->getMockBuilder('Redaxscript\Singleton')->disableOriginalConstructor()->getMockForAbstractClass();
+
+		/* actual */
+
+		$actual = $stub->getInstance();
+
+		/* compare */
+
+		$this->assertInstanceOf('Redaxscript\Singleton', $actual);
+	}
+
+	/**
+	 * testClearInstance
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testClearInstance()
 	{
 		/* setup */
 
@@ -32,6 +53,6 @@ class SingletonTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertInstanceOf('Redaxscript\Singleton', $actual);
+		$this->assertNull($actual);
 	}
 }

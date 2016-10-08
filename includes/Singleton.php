@@ -32,6 +32,26 @@ abstract class Singleton
 	}
 
 	/**
+	 * clone of the class
+	 *
+	 * @since 3.0.0
+	 */
+
+	private function __clone()
+	{
+	}
+
+	/**
+	 * wakeup of the class
+	 *
+	 * @since 3.0.0
+	 */
+
+	private function __wakeup()
+	{
+	}
+
+	/**
 	 * get the instance
 	 *
 	 * @since 2.2.0
@@ -43,7 +63,7 @@ abstract class Singleton
 	{
 		$className = get_called_class();
 
-		/* instance by class */
+		/* create instance */
 
 		if (!array_key_exists($className, static::$_instance))
 		{
@@ -62,6 +82,7 @@ abstract class Singleton
 
 	public static function clearInstance()
 	{
-		self::$_instance = null;
+		$className = get_called_class();
+		self::$_instance[$className] = null;
 	}
 }

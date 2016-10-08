@@ -51,4 +51,5 @@ else if ($config->get('env') !== 'production')
 else
 {
 	header('http/1.0 403 forbidden');
+	exit;
 }
