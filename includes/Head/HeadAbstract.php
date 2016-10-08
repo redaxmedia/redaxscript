@@ -109,7 +109,7 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 
 	public function prepend($attribute = null, $value = null)
 	{
-		if(!self::$_collectionArray[self::$_namespace])
+		if (!is_array(self::$_collectionArray[self::$_namespace]))
 		{
 			self::$_collectionArray[self::$_namespace] = [];
 		}

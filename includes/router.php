@@ -82,7 +82,7 @@ function router()
 	{
 		$messenger = new Redaxscript\Messenger(Redaxscript\Registry::getInstance());
 		$table = Redaxscript\Request::getPost('table');
-		if($table)
+		if ($table)
 		{
 			$table = '/' . $table;
 		}
