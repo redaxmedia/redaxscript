@@ -26,7 +26,7 @@
 		<?php if (Tag::registry('contentError')): ?>
 			<?php echo Tag::partial('templates/default/error.phtml'); ?>
 
-			<!-- else content and sidebar -->
+		<!-- else content and sidebar -->
 
 		<?php else: ?>
 			<?php echo Tag::partial(
@@ -45,7 +45,6 @@
 <!-- foot script -->
 
 <?php echo Tag::partial('templates/admin/script.phtml'); ?>
-
 <?php echo Tag::script()
 	->init('foot')
 	->prependFile('assets/scripts/fallback.js')

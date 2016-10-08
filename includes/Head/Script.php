@@ -27,7 +27,7 @@ class Script extends HeadAbstract
 	 * @var string
 	 */
 
-	protected $_optionArray =
+	protected static $_optionArray =
 	[
 		'directory' => 'cache/scripts',
 		'extension' => 'js',
@@ -154,7 +154,7 @@ class Script extends HeadAbstract
 
 	public function concat($optionArray = [])
 	{
-		$optionArray = array_merge($this->_optionArray, $optionArray);
+		$optionArray = array_merge(self::$_optionArray, $optionArray);
 		$loader = new Assetic\Loader();
 		$loader
 			->init(self::$_collectionArray[self::$_namespace])

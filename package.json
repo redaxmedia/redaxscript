@@ -36,7 +36,7 @@
 		"grunt-postcss": "0.8.0",
 		"grunt-shell": "2.0.0",
 		"grunt-svgmin": "4.0.0",
-		"grunt-webfont": "1.6.0",
+		"grunt-webfont": "1.5.0",
 		"material-design-icons": "3.0.1",
 		"postcss-color-function": "2.0.1",
 		"postcss-color-gray": "3.0.0",

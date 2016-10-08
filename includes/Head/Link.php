@@ -27,7 +27,7 @@ class Link extends HeadAbstract
 	 * @var string
 	 */
 
-	protected $_optionArray =
+	protected static $_optionArray =
 	[
 		'directory' => 'cache/styles',
 		'extension' => 'css',
@@ -41,7 +41,7 @@ class Link extends HeadAbstract
 	 * @var string
 	 */
 
-	protected $_rewriteArray = [];
+	protected static $_rewriteArray = [];
 
 	/**
 	 * append link file
@@ -96,7 +96,6 @@ class Link extends HeadAbstract
 	public function removeFile($reference = null)
 	{
 		$this->remove('href', $reference);
-
 		return $this;
 	}
 
@@ -112,7 +111,11 @@ class Link extends HeadAbstract
 
 	public function rewrite($rewriteArray = [])
 	{
-		$this->_rewriteArray = array_merge($this->_rewriteArray, $rewriteArray);
+		if (!is_array(self::$_rewriteArray[self::$_namespace]))
+		{
+			self::$_rewriteArray[self::$_namespace] = [];
+		}
+		self::$_rewriteArray[self::$_namespace] = array_merge(self::$_rewriteArray[self::$_namespace], $rewriteArray);
 		return $this;
 	}
 
@@ -128,14 +131,15 @@ class Link extends HeadAbstract
 
 	public function concat($optionArray = [])
 	{
-		$optionArray = array_merge($this->_optionArray, $optionArray);
+		$optionArray = array_merge(self::$_optionArray, $optionArray);
 		$loader = new Assetic\Loader();
 		$loader
 			->init(self::$_collectionArray[self::$_namespace])
-			->concat($optionArray, $this->_rewriteArray);
+			->concat($optionArray, self::$_rewriteArray[self::$_namespace]);
 
 		/* update collection */
 
+		self::$_rewriteArray[self::$_namespace] = [];
 		self::$_collectionArray[self::$_namespace] = $loader->getCollectionArray();
 		return $this;
 	}
