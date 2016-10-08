@@ -26,7 +26,7 @@
 	color: gray(185);
 	font: bold 1rem var(--rs-admin-font-primary);
 	position: relative;
-	z-index: 1000;
+	z-index: 1100;
 
 	& .rs-admin-link-panel,
 	& .rs-admin-text-panel
