@@ -38,7 +38,7 @@ class Ace extends Module
 	 * @since 3.0.0
 	 */
 
-	public function renderStart()
+	public static function renderStart()
 	{
 		if (Registry::get('loggedIn') === Registry::get('token'))
 		{

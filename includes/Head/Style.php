@@ -22,7 +22,7 @@ class Style extends Singleton implements HeadInterface
 	 * @var string
 	 */
 
-	protected $_inline = null;
+	protected static $_inline = null;
 
 	/**
 	 * stringify the style
@@ -49,7 +49,7 @@ class Style extends Singleton implements HeadInterface
 
 	public function appendInline($inline = null)
 	{
-		$this->_inline .= $inline;
+		self::$_inline .= $inline;
 		return $this;
 	}
 
@@ -65,7 +65,7 @@ class Style extends Singleton implements HeadInterface
 
 	public function prependInline($inline = null)
 	{
-		$this->_inline = $inline . $this->_inline;
+		self::$_inline = $inline . self::$_inline;
 		return $this;
 	}
 
@@ -88,11 +88,11 @@ class Style extends Singleton implements HeadInterface
 
 		/* collect inline */
 
-		if ($this->_inline)
+		if (self::$_inline)
 		{
 			$output .= $styleElement
 				->copy()
-				->text($this->_inline);
+				->text(self::$_inline);
 		}
 		$this->clear();
 		return $output;
@@ -108,7 +108,7 @@ class Style extends Singleton implements HeadInterface
 
 	public function clear()
 	{
-		$this->_inline = null;
+		self::$_inline = null;
 		return $this;
 	}
 }

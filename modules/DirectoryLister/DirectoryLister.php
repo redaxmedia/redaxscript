@@ -43,7 +43,7 @@ class DirectoryLister extends Config
 	 * @since 3.0.0
 	 */
 
-	public function renderStart()
+	public static function renderStart()
 	{
 		$link = Head\Link::getInstance();
 		$link

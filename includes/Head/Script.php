@@ -41,7 +41,7 @@ class Script extends HeadAbstract
 	 * @var string
 	 */
 
-	protected $_inline = null;
+	protected static $_inline = null;
 
 	/**
 	 * append script file
@@ -103,7 +103,7 @@ class Script extends HeadAbstract
 
 	public function appendInline($inline = null)
 	{
-		$this->_inline .= $inline;
+		self::$_inline .= $inline;
 		return $this;
 	}
 
@@ -119,7 +119,7 @@ class Script extends HeadAbstract
 
 	public function prependInline($inline = null)
 	{
-		$this->_inline = $inline . $this->_inline;
+		self::$_inline = $inline . self::$_inline;
 		return $this;
 	}
 
@@ -193,7 +193,7 @@ class Script extends HeadAbstract
 			$output .= $scriptElement
 				->copy()
 				->attr($value);
-			if ($key !== $lastKey || $this->_inline)
+			if ($key !== $lastKey || self::$_inline)
 			{
 				$output .= PHP_EOL;
 			}
@@ -201,11 +201,11 @@ class Script extends HeadAbstract
 
 		/* collect inline */
 
-		if ($this->_inline)
+		if (self::$_inline)
 		{
 			$output .= $scriptElement
 				->copy()
-				->text($this->_inline);
+				->text(self::$_inline);
 		}
 		$this->clear();
 		return $output;
@@ -222,7 +222,7 @@ class Script extends HeadAbstract
 	public function clear()
 	{
 		parent::clear();
-		$this->_inline = null;
+		self::$_inline = null;
 		return $this;
 	}
 }
