@@ -84,6 +84,8 @@
  * @tableofcontents
  *
  * 1. table
+ *    1.1. query
+ *       1.1.1 medium max
  * 2. wrapper table
  *
  * @since 3.0.0
@@ -109,6 +111,21 @@
 	text-align: right
 }
 
+/* @section 1.1. query */
+
+/* @section 1.1.1 medium max */
+
+@media (max-width: 49.999em)
+{
+	.rs-table-default
+	{
+	}
+	.rs-table-default th:not(:first-child):not(:last-child), .rs-table-default td:not(:first-child):not(:last-child)
+{
+		display: none
+	}
+}
+
 /* @section 2. wrapper table */
 
 .rs-wrapper-table
@@ -124,9 +141,7 @@
  * @tableofcontents
  *
  * 1. clearfix
- * 2. dropdown
- * 3. menu
- * 4. redirect
+ * 2. redirect
  *
  * @since 3.0.0
  *
@@ -143,9 +158,8 @@
  * 1. general
  * 2. wrapper
  * 3. query
- *    3.1 medium max
- *    3.2 medium min
- *    3.3 print
+ *    3.1 medium min
+ *    3.2 print
  *
  * @since 3.0.0
  *
@@ -320,8 +334,6 @@
  * @tableofcontents
  *
  * 1. table default
- *    1.1 head and foot
- *    1.2 body
  * 2. wrapper table
  *
  * @since 3.0.0
@@ -337,7 +349,7 @@
  * @tableofcontents
  *
  * 1. tag styling
- * 2. link default
+ * 2. title
  *
  * @since 3.0.0
  *

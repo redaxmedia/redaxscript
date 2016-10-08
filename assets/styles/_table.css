@@ -2,6 +2,8 @@
  * @tableofcontents
  *
  * 1. table
+ *    1.1. query
+ *       1.1.1 medium max
  * 2. wrapper table
  *
  * @since 3.0.0
@@ -26,6 +28,22 @@
 	& td ~ td:last-child
 	{
 		text-align: right;
+	}
+}
+
+/* @section 1.1. query */
+
+/* @section 1.1.1 medium max */
+
+@media (--media-medium-max)
+{
+	%table-default
+	{
+		& th:not(:first-child):not(:last-child),
+		& td:not(:first-child):not(:last-child)
+		{
+			display: none;
+		}
 	}
 }
 
