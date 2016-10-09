@@ -56,7 +56,7 @@ class CacheTest extends TestCaseAbstract
 		/* setup */
 
 		$cache = new Cache();
-		$cache->init(Stream::url('root'));
+		$cache->init(Stream::url('root/test'));
 		foreach ($bundleArray as $key => $value)
 		{
 			$cache->store($value, $key);
@@ -64,7 +64,7 @@ class CacheTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actualArray = scandir(Stream::url('root'));
+		$actualArray = scandir(Stream::url('root/test'));
 
 		/* compare */
 
