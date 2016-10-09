@@ -53,7 +53,6 @@ class DirectoryLister extends Config
 			[
 				'url(\'modules/DirectoryLister/assets' => 'url(\'../../modules/DirectoryLister/assets'
 			]);
-
 	}
 
 	/**

@@ -47,7 +47,7 @@ class HashBench extends BenchCaseAbstract
 
 	public function providerHash()
 	{
-		return $this->getProvider('tests/provider/hash.json');
+		return $this->getProvider('benchs/provider/hash.json');
 	}
 
 	/**

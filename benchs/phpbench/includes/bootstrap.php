@@ -8,13 +8,19 @@ include_once('BenchCaseAbstract.php');
 
 /* init */
 
-Autoloader::init();
-Request::init();
+$autoloader = new Autoloader();
+$autoloader->init();
 
 /* get instance */
 
 $registry = Registry::getInstance();
+$request = Request::getInstance();
 $config = Config::getInstance();
+
+/* request and config */
+
+$request->init();
+$config->init();
 
 /* set config */
 
@@ -48,4 +54,4 @@ Hook::init();
 /* language */
 
 $language = Language::getInstance();
-$language::init();
+$language->init();

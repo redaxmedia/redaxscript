@@ -53,7 +53,7 @@ if ($registry->get('file') === 'index.php')
 
 /* refresh */
 
-Request::refreshSession();
+$request->refreshSession();
 
 /* detector */
 
