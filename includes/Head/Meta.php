@@ -13,9 +13,9 @@ use Redaxscript\Html;
  * @author Henry Ruhs
  * @author Balázs Szilágyi
  *
- * @method append
- * @method prepend
- * @method clear
+ * @method append($attribute = null, $value = null)
+ * @method prepend($attribute = null, $value = null)
+ * @method clear()
  */
 
 class Meta extends HeadAbstract

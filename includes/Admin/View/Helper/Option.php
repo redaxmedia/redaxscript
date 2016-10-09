@@ -248,7 +248,12 @@ class Option
 
 	public static function getContentArray($table = null, $excludeArray = [])
 	{
-		$content = Db::forTablePrefix($table)->whereNotIn('id', $excludeArray)->orderByAsc('title')->findMany();
+		$query = Db::forTablePrefix($table);
+		if ($excludeArray)
+		{
+			$query->whereNotIn('id', $excludeArray);
+		}
+		$content = $query->orderByAsc('title')->findMany();
 
 		/* process content */
 

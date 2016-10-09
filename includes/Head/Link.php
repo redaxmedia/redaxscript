@@ -16,7 +16,7 @@ use Redaxscript\Html;
  *
  * @method append($attribute = null, $value = null)
  * @method prepend($attribute = null, $value = null)
- * @method clear
+ * @method clear()
  */
 
 class Link extends HeadAbstract
