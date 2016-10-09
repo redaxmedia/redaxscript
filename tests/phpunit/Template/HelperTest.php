@@ -89,55 +89,55 @@ class HelperTest extends TestCaseAbstract
 	}
 
 	/**
-	 * providerCanonical
+	 * providerGetCanonical
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	public function providerCanonical()
+	public function providerGetCanonical()
 	{
-		return $this->getProvider('tests/provider/Template/helper_canonical.json');
+		return $this->getProvider('tests/provider/Template/helper_get_canonical.json');
 	}
 
 	/**
-	 * providerDescription
+	 * providerGetDescription
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	public function providerDescription()
+	public function providerGetDescription()
 	{
-		return $this->getProvider('tests/provider/Template/helper_description.json');
+		return $this->getProvider('tests/provider/Template/helper_get_description.json');
 	}
 
 	/**
-	 * providerKeywords
+	 * providerGetKeywords
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	public function providerKeywords()
+	public function providerGetKeywords()
 	{
-		return $this->getProvider('tests/provider/Template/helper_keywords.json');
+		return $this->getProvider('tests/provider/Template/helper_get_keywords.json');
 	}
 
 	/**
-	 * providerRobots
+	 * providerGetRobots
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	public function providerRobots()
+	public function providerGetRobots()
 	{
-		return $this->getProvider('tests/provider/Template/helper_robots.json');
+		return $this->getProvider('tests/provider/Template/helper_get_robots.json');
 	}
 
 	/**
@@ -180,14 +180,14 @@ class HelperTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testCanonical
+	 * testGetCanonical
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param array $registryArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerCanonical
+	 * @dataProvider providerGetCanonical
 	 */
 
 	public function testCanonical($registryArray = [], $expect = null)
@@ -206,17 +206,17 @@ class HelperTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testDescription
+	 * testGetDescription
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param array $registryArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerDescription
+	 * @dataProvider providerGetDescription
 	 */
 
-	public function testDescription($registryArray = [], $expect = null)
+	public function testGetDescription($registryArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -232,17 +232,17 @@ class HelperTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testKeywords
+	 * testGetKeywords
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param array $registryArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerKeywords
+	 * @dataProvider providerGetKeywords
 	 */
 
-	public function testKeywords($registryArray = [], $expect = null)
+	public function testGetKeywords($registryArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -258,17 +258,17 @@ class HelperTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testRobots
+	 * testGetRobots
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param array $registryArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerRobots
+	 * @dataProvider providerGetRobots
 	 */
 
-	public function testRobots($registryArray = [], $expect = null)
+	public function testGetRobots($registryArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -281,6 +281,27 @@ class HelperTest extends TestCaseAbstract
 		/* compare */
 
 		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testGetTransport
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testGetTransport()
+	{
+		/* actual */
+
+		$actualArray = Template\Helper::getTransport();
+
+		/* compare */
+
+		$this->assertArrayHasKey('baseURL', $actualArray);
+		$this->assertArrayHasKey('generator', $actualArray);
+		$this->assertArrayHasKey('language', $actualArray);
+		$this->assertArrayHasKey('registry', $actualArray);
+		$this->assertArrayHasKey('version', $actualArray);
 	}
 
 	/**

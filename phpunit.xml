@@ -34,7 +34,6 @@
 				<file>includes/admin_router.php</file>
 				<file>includes/comments.php</file>
 				<file>includes/contents.php</file>
-				<file>includes/loader.php</file>
 				<file>includes/navigation.php</file>
 				<file>includes/query.php</file>
 				<file>includes/router.php</file>

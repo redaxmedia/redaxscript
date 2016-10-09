@@ -24,6 +24,86 @@ use Redaxscript\View;
 class Tag
 {
 	/**
+	 * base
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public static function base()
+	{
+		$base = new Head\Base(Registry::getInstance());
+		return $base->render();
+	}
+
+	/**
+	 * title
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public static function title()
+	{
+		$title = new Head\Title(Registry::getInstance());
+		return $title->render();
+	}
+
+	/**
+	 * link
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return object
+	 */
+
+	public static function link()
+	{
+		return Head\Link::getInstance();
+	}
+
+	/**
+	 * meta
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return object
+	 */
+
+	public static function meta()
+	{
+		return Head\Meta::getInstance();
+	}
+
+	/**
+	 * script
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return mixed
+	 */
+
+	public static function script()
+	{
+		return Head\Script::getInstance();
+	}
+
+	/**
+	 * style
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return object
+	 */
+
+	public static function style()
+	{
+		return Head\Style::getInstance();
+	}
+
+	/**
 	 * breadcrumb
 	 *
 	 * @since 2.3.0
@@ -177,16 +257,16 @@ class Tag
 	 * @param array $options
 	 *
 	 * @return string
-	 *
-	 * @codeCoverageIgnore
 	 */
 
 	public static function content($options = null)
 	{
+		// @codeCoverageIgnoreStart
 		return self::_migrate('router',
 		[
 			$options
 		]);
+		// @codeCoverageIgnoreEnd
 	}
 
 	/**
@@ -197,16 +277,16 @@ class Tag
 	 * @param array $optionArray
 	 *
 	 * @return string
-	 *
-	 * @codeCoverageIgnore
 	 */
 
 	public static function extra($optionArray = [])
 	{
+		// @codeCoverageIgnoreStart
 		return self::_migrate('extras',
 		[
 			$optionArray['filter']
 		]);
+		// @codeCoverageIgnoreEnd
 	}
 
 	/**
@@ -218,12 +298,11 @@ class Tag
 	 * @param array $optionArray
 	 *
 	 * @return string
-	 *
-	 * @codeCoverageIgnore
 	 */
 
 	public static function navigation($type = null, $optionArray = [])
 	{
+		// @codeCoverageIgnoreStart
 		if ($type === 'languages' || $type === 'templates')
 		{
 			return self::_migrate($type . '_list',
@@ -236,86 +315,7 @@ class Tag
 			$type,
 			$optionArray
 		]);
-	}
-
-	/**
-	 * base
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return string
-	 */
-
-	public static function base()
-	{
-		$base = new Head\Base(Registry::getInstance());
-		return $base->render();
-	}
-
-	/**
-	 * title
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return string
-	 */
-
-	public static function title()
-	{
-		$title = new Head\Title(Registry::getInstance());
-		return $title->render();
-	}
-
-	/**
-	 * link
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return mixed
-	 */
-
-	public static function link()
-	{
-		return Head\Link::getInstance();
-	}
-
-	/**
-	 * meta
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return mixed
-	 */
-
-	public static function meta()
-	{
-		return Head\Meta::getInstance();
-	}
-
-	/**
-	 * style
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return mixed
-	 */
-
-	public static function style()
-	{
-		return Head\Style::getInstance();
-	}
-
-	/**
-	 * script
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return mixed
-	 */
-
-	public static function script()
-	{
-		return Head\Script::getInstance();
+		// @codeCoverageIgnoreEnd
 	}
 
 	/**
@@ -327,12 +327,11 @@ class Tag
 	 * @param array $parameterArray
 	 *
 	 * @return string
-	 *
-	 * @codeCoverageIgnore
 	 */
 
 	protected static function _migrate($function = null, $parameterArray = [])
 	{
+		// @codeCoverageIgnoreStart
 		ob_start();
 
 		/* call with parameter */
@@ -349,5 +348,6 @@ class Tag
 			call_user_func($function);
 		}
 		return ob_get_clean();
+		// @codeCoverageIgnoreEnd
 	}
 }

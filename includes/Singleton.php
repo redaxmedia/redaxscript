@@ -9,6 +9,9 @@ namespace Redaxscript;
  * @package Redaxscript
  * @category Singleton
  * @author Henry Ruhs
+ *
+ *
+ * @codeCoverageIgnore
  */
 
 abstract class Singleton
@@ -28,30 +31,6 @@ abstract class Singleton
 	 */
 
 	private function __construct()
-	{
-	}
-
-	/**
-	 * clone of the class
-	 *
-	 * @since 3.0.0
-	 *
-	 * @codeCoverageIgnore
-	 */
-
-	private function __clone()
-	{
-	}
-
-	/**
-	 * wakeup of the class
-	 *
-	 * @since 3.0.0
-	 *
-	 * @codeCoverageIgnore
-	 */
-
-	private function __wakeup()
 	{
 	}
 

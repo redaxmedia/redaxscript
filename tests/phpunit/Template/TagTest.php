@@ -60,6 +60,108 @@ class TagTest extends TestCaseAbstract
 	}
 
 	/**
+	 * testBase
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testBase()
+	{
+		/* actual */
+
+		$actual = Template\Tag::base();
+
+		/* compare */
+
+		$this->assertString($actual);
+	}
+
+	/**
+	 * testTitle
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testTitle()
+	{
+		/* actual */
+
+		$actual = Template\Tag::title();
+
+		/* compare */
+
+		$this->assertString($actual);
+	}
+
+	/**
+	 * testLink
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testLink()
+	{
+		/* actual */
+
+		$actual = Template\Tag::link();
+
+		/* compare */
+
+		$this->assertInstanceOf('Redaxscript\Head\Link', $actual);
+	}
+
+	/**
+	 * testMeta
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testMeta()
+	{
+		/* actual */
+
+		$actual = Template\Tag::meta();
+
+		/* compare */
+
+		$this->assertInstanceOf('Redaxscript\Head\Meta', $actual);
+	}
+
+	/**
+	 * testScript
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testScript()
+	{
+		/* actual */
+
+		$actual = Template\Tag::script();
+
+		/* compare */
+
+		$this->assertInstanceOf('Redaxscript\Head\Script', $actual);
+	}
+
+	/**
+	 * testStyle
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testStyle()
+	{
+		/* actual */
+
+		$actual = Template\Tag::style();
+
+		/* compare */
+
+		$this->assertInstanceOf('Redaxscript\Head\Style', $actual);
+	}
+
+	/**
 	 * testBreadcrumb
 	 *
 	 * @since 2.3.0
