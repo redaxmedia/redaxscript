@@ -35,6 +35,8 @@ abstract class Singleton
 	 * clone of the class
 	 *
 	 * @since 3.0.0
+	 *
+	 * @codeCoverageIgnore
 	 */
 
 	private function __clone()
@@ -45,6 +47,8 @@ abstract class Singleton
 	 * wakeup of the class
 	 *
 	 * @since 3.0.0
+	 *
+	 * @codeCoverageIgnore
 	 */
 
 	private function __wakeup()

@@ -177,16 +177,16 @@ class Tag
 	 * @param array $options
 	 *
 	 * @return string
+	 *
+	 * @codeCoverageIgnore
 	 */
 
 	public static function content($options = null)
 	{
-		// @codeCoverageIgnoreStart
 		return self::_migrate('router',
 		[
 			$options
 		]);
-		// @codeCoverageIgnoreEnd
 	}
 
 	/**
@@ -197,16 +197,16 @@ class Tag
 	 * @param array $optionArray
 	 *
 	 * @return string
+	 *
+	 * @codeCoverageIgnore
 	 */
 
 	public static function extra($optionArray = [])
 	{
-		// @codeCoverageIgnoreStart
 		return self::_migrate('extras',
 		[
 			$optionArray['filter']
 		]);
-		// @codeCoverageIgnoreEnd
 	}
 
 	/**
@@ -218,11 +218,12 @@ class Tag
 	 * @param array $optionArray
 	 *
 	 * @return string
+	 *
+	 * @codeCoverageIgnore
 	 */
 
 	public static function navigation($type = null, $optionArray = [])
 	{
-		// @codeCoverageIgnoreStart
 		if ($type === 'languages' || $type === 'templates')
 		{
 			return self::_migrate($type . '_list',
@@ -235,7 +236,6 @@ class Tag
 			$type,
 			$optionArray
 		]);
-		// @codeCoverageIgnoreEnd
 	}
 
 	/**
@@ -327,11 +327,12 @@ class Tag
 	 * @param array $parameterArray
 	 *
 	 * @return string
+	 *
+	 * @codeCoverageIgnore
 	 */
 
 	protected static function _migrate($function = null, $parameterArray = [])
 	{
-		// @codeCoverageIgnoreStart
 		ob_start();
 
 		/* call with parameter */
@@ -348,6 +349,5 @@ class Tag
 			call_user_func($function);
 		}
 		return ob_get_clean();
-		// @codeCoverageIgnoreEnd
 	}
 }

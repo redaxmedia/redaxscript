@@ -21,12 +21,12 @@ class Tag extends BaseTag
 	 * @since 3.0.0
 	 *
 	 * @return string
+	 *
+	 * @codeCoverageIgnore
 	 */
 
 	public static function panel()
 	{
-		// @codeCoverageIgnoreStart
 		return self::_migrate('admin_panel_list');
-		// @codeCoverageIgnoreEnd
 	}
 }

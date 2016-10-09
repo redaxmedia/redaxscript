@@ -62,13 +62,13 @@ class FormTest extends TestCaseAbstract
 	/**
 	 * testCreate
 	 *
+	 * @since 3.0.0
+	 *
 	 * @param array $attributeArray
 	 * @param array $optionArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerCreate
-	 *
-	 * @since 3.0.0
 	 */
 
 	public function testCreate($attributeArray = [], $optionArray = [], $expect = null)

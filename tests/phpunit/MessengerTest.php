@@ -105,11 +105,11 @@ class MessengerTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @dataProvider providerSuccess
-	 *
 	 * @param array $success
 	 * @param array $actionArray
 	 * @param string $expect
+	 *
+	 * @dataProvider providerSuccess
 	 */
 
 	public function testSuccess($success = null, $actionArray = [], $expect = null)
@@ -133,11 +133,11 @@ class MessengerTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @dataProvider providerInfo
-	 *
 	 * @param array $info
 	 * @param array $actionArray
 	 * @param string $expect
+	 *
+	 * @dataProvider providerInfo
 	 */
 
 	public function testInfo($info = null, $actionArray = [], $expect = null)
@@ -161,11 +161,11 @@ class MessengerTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @dataProvider providerWarning
-	 *
 	 * @param array $warning
 	 * @param array $actionArray
 	 * @param string $expect
+	 *
+	 * @dataProvider providerWarning
 	 */
 
 	public function testWarning($warning = null, $actionArray = [], $expect = null)
@@ -189,11 +189,11 @@ class MessengerTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @dataProvider providerError
-	 *
 	 * @param array $error
 	 * @param array $actionArray
 	 * @param string $expect
+	 *
+	 * @dataProvider providerError
 	 */
 
 	public function testError($error = null, $actionArray = null, $expect = null)
@@ -217,11 +217,11 @@ class MessengerTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @dataProvider providerRender
-	 *
 	 * @param array $render
 	 * @param array $actionArray
 	 * @param string $expect
+	 *
+	 * @dataProvider providerRender
 	 */
 
 	public function testRender($render = null, $actionArray = null, $expect = null)

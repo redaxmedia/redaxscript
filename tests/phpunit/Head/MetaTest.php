@@ -35,10 +35,10 @@ class MetaTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @dataProvider providerAppend
-	 *
 	 * @param array $metaArray
 	 * @param string $expect
+	 *
+	 * @dataProvider providerAppend
 	 */
 
 	public function testAppend($metaArray = [], $expect = null)
