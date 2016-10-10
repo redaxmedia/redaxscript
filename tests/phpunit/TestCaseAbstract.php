@@ -36,6 +36,25 @@ abstract class TestCaseAbstract extends PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 * getProperty
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param object $object
+	 * @param string $property
+	 *
+	 * @return mixed
+	 */
+
+	public function getProperty($object = null, $property = null)
+	{
+		$reflectionObject = new ReflectionClass($object);
+		$reflectionProperty = $reflectionObject->getProperty($property);
+		$reflectionProperty->setAccessible(true);
+		return $reflectionProperty->getValue($object);
+	}
+
+	/**
 	 * callMethod
 	 *
 	 * @since 3.0.0

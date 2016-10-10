@@ -223,4 +223,43 @@ class LinkTest extends TestCaseAbstract
 
 		$this->assertEquals($this->normalizeEOL($expect), $actual);
 	}
+
+	/**
+	 * testRewrite
+	 *
+	 * @since 3.0.0
+	 *
+	 */
+
+	public function testRewrite()
+	{
+		/* setup */
+
+		$link = Head\Link::getInstance();
+		$link
+			->init('rewrite')
+			->rewrite(
+			[
+				'test1' => 'test1',
+				'test2' => 'test2'
+			])
+			->rewrite(
+			[
+				'test3' => 'test3'
+			]);
+
+		/* expect and actual */
+
+		$expectArray =
+		[
+			'test1' => 'test1',
+			'test2' => 'test2',
+			'test3' => 'test3'
+		];
+		$actualArray = $this->getProperty($link, '_rewriteArray')['Redaxscript\Head\Link\Rewrite'];
+
+		/* compare */
+
+		$this->assertEquals($expectArray, $actualArray);
+	}
 }
