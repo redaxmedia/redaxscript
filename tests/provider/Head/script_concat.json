@@ -11,9 +11,9 @@
 				"src": "vfs://root/assets/scripts/three.js"
 			},
 			{
-				"async": "async"
+				"src": "//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"
 			}
 		],
-		"<script async=\"async\"></script>\n<script src=\"vfs://root/cache/scripts/62fd20b463f54bad488a4a3ebc42890d5978c143.js\"></script>"
+		"<script src=\"//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js\"></script>\n<script src=\"vfs://root/cache/scripts/62fd20b463f54bad488a4a3ebc42890d5978c143.js\"></script>"
 	]
 ]

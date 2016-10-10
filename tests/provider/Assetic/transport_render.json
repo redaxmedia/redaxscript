@@ -1,4 +1,27 @@
 [
 	[
+		{
+			"key": "rs",
+			"value": "test"
+		},
+		"window.rs = \"test\";"
+	],
+	[
+		{
+			"key": "rs",
+			"value": 1337
+		},
+		"window.rs = 1337;"
+	],
+	[
+		{
+			"key": "rs",
+			"value":
+			{
+				"test": "test",
+				"number": 1337
+			}
+		},
+		"window.rs.test = \"test\";window.rs.number = 1337;"
 	]
 ]

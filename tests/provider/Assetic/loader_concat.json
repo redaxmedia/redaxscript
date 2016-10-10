@@ -2,25 +2,28 @@
 	[
 		[
 			{
-				"src": "vfs://root/assets/scripts/one.js"
+				"href": "vfs://root/assets/styles/one.css"
 			},
 			{
-				"src": "vfs://root/assets/scripts/two.js"
+				"href": "vfs://root/assets/styles/two.css"
 			},
 			{
-				"src": "vfs://root/assets/scripts/three.js"
+				"href": "vfs://root/assets/styles/three.css"
 			},
 			{
-				"async": "async"
+				"href": "//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
 			}
 		],
-		[
+		{
+			"0":
 			{
-				"src": "vfs://root/cache/scripts/62fd20b463f54bad488a4a3ebc42890d5978c143.js"
+				"href": "//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
 			},
+			"bundle":
 			{
-				"async": "async"
+				"href": "vfs://root/cache/styles/7e7e1772d89d87b96f1955df596b55d335b68fe2.css",
+				"rel": "stylesheet"
 			}
-		]
+		}
 	]
 ]

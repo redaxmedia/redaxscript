@@ -47,19 +47,6 @@ class TransportTest extends TestCaseAbstract
 	}
 
 	/**
-	 * providerGetArray
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerGetArray()
-	{
-		return $this->getProvider('tests/provider/Assetic/transport_get_array.json');
-	}
-
-	/**
 	 * providerRender
 	 *
 	 * @since 3.0.0
@@ -76,18 +63,12 @@ class TransportTest extends TestCaseAbstract
 	 * testGetArray
 	 *
 	 * @since 3.0.0
-	 *
-	 * @param array $registryArray
-	 * @param array $expectArray
-	 *
-	 * @dataProvider providerGetArray
 	 */
 
-	public function testGetArray($registryArray = [], $expectArray = [])
+	public function testGetArray()
 	{
 		/* setup */
 
-		$this->_registry->init($registryArray);
 		$transport = new Assetic\Transport($this->_registry, $this->_language);
 
 		/* actual */
@@ -96,7 +77,11 @@ class TransportTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expectArray, $actualArray);
+		$this->assertArrayHasKey('baseURL', $actualArray);
+		$this->assertArrayHasKey('generator', $actualArray);
+		$this->assertArrayHasKey('language', $actualArray);
+		$this->assertArrayHasKey('registry', $actualArray);
+		$this->assertArrayHasKey('version', $actualArray);
 	}
 
 	/**
@@ -104,10 +89,24 @@ class TransportTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param array $transportArray
+	 * @param string $expect
+	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender()
+	public function testRender($transportArray = [], $expect = null)
 	{
+		/* setup */
+
+		$transport = new Assetic\Transport($this->_registry, $this->_language);
+
+		/* actual */
+
+		$actual = $transport->render($transportArray['key'], $transportArray['value']);
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
 	}
 }

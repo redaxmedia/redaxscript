@@ -56,7 +56,7 @@ class CacheTest extends TestCaseAbstract
 		/* setup */
 
 		$cache = new Cache();
-		$cache->init(Stream::url('root/test'));
+		$cache->init(Stream::url('root/test'), 'cache');
 		foreach ($bundleArray as $key => $value)
 		{
 			$cache->store($value, $key);
@@ -83,7 +83,7 @@ class CacheTest extends TestCaseAbstract
 
 		$cache = new Cache();
 		$cache
-			->init(Stream::url('root'))
+			->init(Stream::url('root'), 'cache')
 			->store('test', 'test');
 
 		/* actual */
@@ -106,7 +106,7 @@ class CacheTest extends TestCaseAbstract
 		/* setup */
 
 		$cache = new Cache();
-		$cache->init(Stream::url('root'));
+		$cache->init(Stream::url('root'), 'cache');
 
 		/* actual */
 
@@ -129,7 +129,7 @@ class CacheTest extends TestCaseAbstract
 
 		$cache = new Cache();
 		$cache
-			->init(Stream::url('root'))
+			->init(Stream::url('root'), 'cache')
 			->store('test1', 'test')
 			->store('test2', 'test');
 		touch($cache->getPath('test2'), time() - 3600);
@@ -153,7 +153,7 @@ class CacheTest extends TestCaseAbstract
 
 		$cache = new Cache();
 		$cache
-			->init(Stream::url('root'))
+			->init(Stream::url('root'), 'cache')
 			->store('test1', 'test')
 			->store('test2', 'test')
 			->clear()
@@ -181,7 +181,7 @@ class CacheTest extends TestCaseAbstract
 
 		$cache = new Cache();
 		$cache
-			->init(Stream::url('root'))
+			->init(Stream::url('root'), 'cache')
 			->store('test1', 'test')
 			->store('test2', 'test')
 			->store('test3', 'test')

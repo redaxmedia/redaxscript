@@ -292,22 +292,19 @@ class ScriptTest extends TestCaseAbstract
 	{
 		/* setup */
 
+		$optionArray =
+		[
+			'directory' => Stream::url('root/cache/scripts')
+		];
 		$script = Head\Script::getInstance();
 		$script->init('concat');
 		foreach ($concatArray as $key => $value)
 		{
 			$script->append($value);
 		}
-		$directory = Stream::url('root/cache/scripts');
 		$script
-			->concat(
-			[
-				'directory' => $directory
-			])
-			->concat(
-			[
-				'directory' => $directory
-			]);
+			->concat($optionArray)
+			->concat($optionArray);
 
 		/* actual */
 

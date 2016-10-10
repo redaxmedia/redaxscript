@@ -1,0 +1,43 @@
+[
+	[
+		[
+			{
+				"href": "vfs://root/assets/styles/one.css"
+			},
+			{
+				"href": "vfs://root/assets/styles/two.css"
+			}
+		],
+		{
+		},
+		"onetwo"
+	],
+	[
+		[
+			{
+				"href": "vfs://root/assets/styles/one.css"
+			},
+			{
+				"href": "vfs://root/assets/styles/two.css"
+			}
+		],
+		{
+			"one": "test"
+		},
+		"testtwo"
+	],
+	[
+		[
+			{
+				"href": "vfs://root/assets/styles/one.css"
+			},
+			{
+				"href": "vfs://root/assets/styles/two.css"
+			}
+		],
+		{
+			"two": "test"
+		},
+		"onetest"
+	]
+]

@@ -201,22 +201,19 @@ class LinkTest extends TestCaseAbstract
 	{
 		/* setup */
 
+		$optionArray =
+		[
+			'directory' => Stream::url('root/cache/styles')
+		];
 		$link = Head\Link::getInstance();
 		$link->init('concat');
 		foreach ($concatArray as $key => $value)
 		{
 			$link->append($value);
 		}
-		$directory = Stream::url('root/cache/styles');
 		$link
-			->concat(
-			[
-				'directory' => $directory
-			])
-			->concat(
-			[
-				'directory' => $directory
-			]);
+			->concat($optionArray)
+			->concat($optionArray);
 
 		/* actual */
 

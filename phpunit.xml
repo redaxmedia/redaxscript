@@ -52,6 +52,12 @@
 			<directory>tests/phpunit/Admin</directory>
 		</testsuite>
 
+		<!-- assetic -->
+
+		<testsuite name="assetic">
+			<directory>tests/phpunit/Assetic</directory>
+		</testsuite>
+
 		<!-- client -->
 
 		<testsuite name="client">

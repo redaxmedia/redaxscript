@@ -4,11 +4,11 @@
 	},
 	"assets":
 	{
-		"scripts":
+		"styles":
 		{
-			"one.js": "one",
-			"two.js": "two",
-			"three.js": "three"
+			"one.css": "one",
+			"two.css": "two",
+			"three.css": "three"
 		}
 	}
 }

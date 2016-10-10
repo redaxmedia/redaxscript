@@ -41,6 +41,18 @@ class LoaderTest extends TestCaseAbstract
 		return $this->getProvider('tests/provider/Assetic/loader_concat.json');
 	}
 
+	/**
+	 * providerRewrite
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerRewrite()
+	{
+		return $this->getProvider('tests/provider/Assetic/loader_rewrite.json');
+	}
 
 	/**
 	 * testConcat
@@ -57,10 +69,22 @@ class LoaderTest extends TestCaseAbstract
 	{
 		/* setup */
 
+		$optionArray =
+		[
+			'directory' => Stream::url('root/cache/styles'),
+			'extension' => 'css',
+			'attribute' => 'href',
+			'lifetime' => 86400
+		];
+		$rewriteArray =
+		[
+			'test' => 'test'
+		];
 		$loader = new Assetic\Loader();
 		$loader
-			->init($collectionArray)
-			->concat();
+			->init($collectionArray, 'css')
+			->concat($optionArray, $rewriteArray)
+			->concat($optionArray, $rewriteArray);
 
 		/* actual */
 
@@ -69,5 +93,44 @@ class LoaderTest extends TestCaseAbstract
 		/* compare */
 
 		$this->assertEquals($expectArray, $actualArray);
+	}
+
+	/**
+	 * testRewrite
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $collectionArray
+	 * @param array $rewriteArray
+	 * @param string $expect
+	 *
+	 * @dataProvider providerRewrite
+	 */
+
+	public function testRewrite($collectionArray = [], $rewriteArray = [], $expect = null)
+	{
+		/* setup */
+
+		$optionArray =
+		[
+			'directory' => Stream::url('root/cache/styles'),
+			'extension' => 'css',
+			'attribute' => 'href',
+			'lifetime' => 86400
+		];
+		$loader = new Assetic\Loader();
+		$loader
+			->init($collectionArray, 'css')
+			->concat($optionArray, $rewriteArray)
+			->concat($optionArray, $rewriteArray);
+
+		/* actual */
+
+		$file = $loader->getCollectionArray()['bundle']['href'];
+		$actual = file_get_contents($file);
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
 	}
 }
