@@ -71,6 +71,12 @@ input[type="submit"]::-moz-focus-inner
 input[type="search"]
 {
 	-webkit-appearance: textfield;
+	border-radius: 0;
+}
+
+input[type="search"]::-ms-clear
+{
+	display: none;
 }
 
 input[type="search"]::-webkit-search-cancel-button,
