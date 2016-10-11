@@ -1,0 +1,21 @@
+/**
+ * @tableofcontents
+ *
+ * 1. sidebar
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. sidebar */
+
+.rs-sidebar
+{
+	& .rs-title-extra
+	{
+		margin-bottom: 0.5em;
+		margin-top: 1em;
+	}
+}

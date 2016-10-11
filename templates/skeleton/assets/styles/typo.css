@@ -2,7 +2,6 @@
  * @tableofcontents
  *
  * 1. tag styling
- * 2. title
  *
  * @since 3.0.0
  *
@@ -16,13 +15,4 @@ a
 {
 	color: inherit;
 	text-decoration: none;
-}
-
-/* @section 2. title */
-
-.rs-title-content,
-.rs-title-extra
-{
-	margin-bottom: 0.5em;
-	margin-top: 1em;
 }

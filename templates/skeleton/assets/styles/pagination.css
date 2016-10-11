@@ -1,0 +1,26 @@
+/**
+ * @tableofcontents
+ *
+ * 1. pagination
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. pagination */
+
+.rs-list-pagination
+{
+	& li
+	{
+		display: inline-block;
+	}
+
+	& a,
+	& span
+	{
+		display: block;
+	}
+}

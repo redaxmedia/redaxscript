@@ -140,6 +140,107 @@
 /**
  * @tableofcontents
  *
+ * 1. variable
+ *    1.1 font
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. variable */
+
+:root
+{
+	/* @section 1.1 font */
+}
+
+/**
+ * @tableofcontents
+ *
+ * 1. list breadcrumb
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. list breadcrumb */
+
+.rs-list-breadcrumb li
+{
+	display: inline-block;
+}
+
+/**
+ * @tableofcontents
+ *
+ * 1. content
+ * 2. comment
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. content */
+
+.rs-title-content, .rs-title-content-sub
+{
+	margin-bottom: 0.5em;
+	margin-top: 1em;
+}
+
+/* @section 2. comment */
+
+.rs-title-comment
+{
+	margin-bottom: 0.5em;
+	margin-top: 1em;
+}
+/**
+ * @tableofcontents
+ *
+ * 1. form default
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. form default */
+
+.rs-form-default
+{
+}
+
+.rs-form-default fieldset li
+{
+	margin-bottom: 0.5em;
+	margin-top: 0.5em
+}
+
+.rs-form-default .rs-label-default
+{
+	display: block
+}
+
+.rs-form-default .rs-label-default:after
+{
+	content: ':'
+}
+
+.rs-form-default .rs-button-default
+{
+	margin-top: 1em
+}
+/**
+ * @tableofcontents
+ *
  * 1. clearfix
  * 2. redirect
  *
@@ -229,78 +330,6 @@
 /**
  * @tableofcontents
  *
- * 1. list breadcrumb
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. list breadcrumb */
-
-.rs-list-breadcrumb li
-{
-	display: inline-block;
-}
-
-/**
- * @tableofcontents
- *
- * 1. button
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. button */
-
-.rs-button-default, .rs-button-search
-{
-	background: rgb(0, 0, 0);
-	color: rgb(255, 255, 255);
-	cursor: pointer;
-	display: inline-block;
-}
-/**
- * @tableofcontents
- *
- * 1. comment
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. comment */
-
-.rs-box-comment
-{
-	margin: 0.5em 0 1.5em;
-}
-/**
- * @tableofcontents
- *
- * 1. field
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. field */
-
-.rs-field-default, .rs-field-search, .rs-field-select, .rs-field-textarea
-{
-	border: 1px solid;
-}
-/**
- * @tableofcontents
- *
  * 1. media
  *
  * @since 3.0.0
@@ -333,6 +362,99 @@
 /**
  * @tableofcontents
  *
+ * 1. pagination
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. pagination */
+
+.rs-list-pagination
+{
+}
+
+.rs-list-pagination li
+{
+	display: inline-block
+}
+
+.rs-list-pagination a, .rs-list-pagination span
+{
+	display: block
+}
+
+/**
+ * @tableofcontents
+ *
+ * 1. result
+ *    1.1 list
+ *    1.2 title
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. result */
+
+/* @section 1.1 list */
+
+.rs-list-result
+{
+	counter-reset: result
+}
+
+.rs-list-result li
+{
+}
+
+.rs-list-result li:before
+{
+	content: counter(result, decimal);
+	counter-increment: result
+}
+
+.rs-list-result li + li
+{
+	margin-top: 1em
+}
+
+/* @section 1.2 title */
+
+.rs-title-result
+{
+	margin-bottom: 0.5em;
+	margin-top: 1em;
+}
+/**
+ * @tableofcontents
+ *
+ * 1. sidebar
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. sidebar */
+
+.rs-sidebar
+{
+}
+
+.rs-sidebar .rs-title-extra
+{
+	margin-bottom: 0.5em;
+	margin-top: 1em
+}
+/**
+ * @tableofcontents
+ *
  * 1. table default
  * 2. wrapper table
  *
@@ -349,7 +471,6 @@
  * @tableofcontents
  *
  * 1. tag styling
- * 2. title
  *
  * @since 3.0.0
  *
@@ -363,12 +484,4 @@ a
 {
 	color: inherit;
 	text-decoration: none;
-}
-
-/* @section 2. title */
-
-.rs-title-content, .rs-title-extra
-{
-	margin-bottom: 0.5em;
-	margin-top: 1em;
 }

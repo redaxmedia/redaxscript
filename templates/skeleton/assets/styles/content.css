@@ -1,7 +1,8 @@
 /**
  * @tableofcontents
  *
- * 1. comment
+ * 1. content
+ * 2. comment
  *
  * @since 3.0.0
  *
@@ -9,9 +10,19 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. comment */
+/* @section 1. content */
 
-.rs-box-comment
+.rs-title-content,
+.rs-title-content-sub
 {
-	margin: 0.5em 0 1.5em;
+	margin-bottom: 0.5em;
+	margin-top: 1em;
+}
+
+/* @section 2. comment */
+
+.rs-title-comment
+{
+	margin-bottom: 0.5em;
+	margin-top: 1em;
 }

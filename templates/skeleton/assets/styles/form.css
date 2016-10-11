@@ -1,0 +1,36 @@
+/**
+ * @tableofcontents
+ *
+ * 1. form default
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. form default */
+
+.rs-form-default
+{
+	& fieldset li
+	{
+		margin-bottom: 0.5em;
+		margin-top: 0.5em;
+	}
+
+	& .rs-label-default
+	{
+		display: block;
+
+		&:after
+		{
+			content: ':';
+		}
+	}
+
+	& .rs-button-default
+	{
+		margin-top: 1em;
+	}
+}

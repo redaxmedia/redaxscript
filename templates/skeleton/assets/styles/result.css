@@ -1,0 +1,43 @@
+/**
+ * @tableofcontents
+ *
+ * 1. result
+ *    1.1 list
+ *    1.2 title
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. result */
+
+/* @section 1.1 list */
+
+.rs-list-result
+{
+	counter-reset: result;
+
+	& li
+	{
+		&:before
+		{
+			content: counter(result, decimal);
+			counter-increment: result;
+		}
+
+		& + li
+		{
+			margin-top: 1em;
+		}
+	}
+}
+
+/* @section 1.2 title */
+
+.rs-title-result
+{
+	margin-bottom: 0.5em;
+	margin-top: 1em;
+}
