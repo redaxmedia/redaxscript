@@ -245,6 +245,7 @@ class ConfigTest extends TestCaseAbstract
 	{
 		/* setup */
 
+		$dbUrl = getenv('DB_URL');
 		putenv('DB_URL=mysql://root:test@127.0.0.1/test');
 		$this->_config->init(Stream::url('root/config.php'));
 		$this->_request->setServer('argv',
@@ -257,6 +258,13 @@ class ConfigTest extends TestCaseAbstract
 			'--db-env'
 		]);
 		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_config);
+
+		/* restore */
+
+		if ($dbUrl)
+		{
+			putenv('DB_URL=' . $dbUrl);
+		}
 
 		/* actual */
 
