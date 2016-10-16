@@ -90,11 +90,11 @@ class Backup extends CommandAbstract
 		$file = $dbName ? $dbName . '_' . $date . '.' . $dbType : $date . '.' . $dbType;
 		if (is_dir($directory) || mkdir($directory))
 		{
-			if ($dbType === 'mysql' && $dbName && $dbName && $dbUser)
+			if ($dbType === 'mysql' && $dbHost && $dbName && $dbUser)
 			{
-				$command = 'mysqldump -u ' . $dbUser . ' -p' . $dbPassword . ' ' . $dbName . ' > ' . $directory . '/' . $file;
+				$command = 'mysqldump -u ' . $dbUser . ' -p' . $dbPassword . ' -h ' . $dbHost . ' ' . $dbName . ' > ' . $directory . '/' . $file;
 			}
-			if ($dbType === 'pgsql' && $dbName)
+			if ($dbType === 'pgsql' && $dbHost && $dbName)
 			{
 				$command = 'PGPASSWORD=' . $dbPassword . ' pg_dump -U postgres -h ' . $dbHost . ' ' . $dbName . ' > ' . $directory . '/' . $file;
 			}

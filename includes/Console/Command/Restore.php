@@ -93,11 +93,11 @@ class Restore extends CommandAbstract
 		$file = $this->prompt('file', $optionArray);
 		if (is_file($directory . '/' . $file))
 		{
-			if ($dbType === 'mysql' && $dbName && $dbName && $dbUser)
+			if ($dbType === 'mysql' && $dbHost && $dbName && $dbUser)
 			{
-				$command = 'mysql -u ' . $dbUser . ' -p' . $dbPassword . ' ' . $dbName . ' < ' . $directory . '/' . $file;
+				$command = 'mysql -u ' . $dbUser . ' -p' . $dbPassword . ' -h ' . $dbHost . ' ' . $dbName . ' < ' . $directory . '/' . $file;
 			}
-			if ($dbType === 'pgsql' && $dbName)
+			if ($dbType === 'pgsql' && $dbHost & $dbName)
 			{
 				$command = 'cat ' . $directory . '/' . $file . ' | PGPASSWORD=' . $dbPassword . ' psql -U postgres -h ' . $dbHost . ' -d ' . $dbName;
 			}
