@@ -60,6 +60,11 @@ button, input, select, textarea
 	font: inherit;
 }
 
+input, textarea
+{
+	-webkit-appearance: none;
+}
+
 button::-moz-focus-inner,
 input[type="button"]::-moz-focus-inner,
 input[type="reset"]::-moz-focus-inner,

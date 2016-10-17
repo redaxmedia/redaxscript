@@ -41,9 +41,30 @@
 	font-weight: normal;
 }
 
+%rs-icon-chevron-left
+{
+	content: '\3008';
+	font-family: var(--rs-font-icon);
+	font-weight: normal;
+}
+
 %rs-icon-chevron-right
 {
 	content: '\3009';
+	font-family: var(--rs-font-icon);
+	font-weight: normal;
+}
+
+%rs-icon-first-page
+{
+	content: '\27ea';
+	font-family: var(--rs-font-icon);
+	font-weight: normal;
+}
+
+%rs-icon-last-page
+{
+	content: '\27eb';
 	font-family: var(--rs-font-icon);
 	font-weight: normal;
 }

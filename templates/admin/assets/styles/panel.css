@@ -154,16 +154,15 @@
 
 .rs-admin-text-notification-counter
 {
-	border: 0.25em solid;
 	border-radius: 50%;
+	box-shadow: 0 0 0 0.25em gray(30);
 	color: gray(30);
-	font-size: 0.625em;
+	font: bold 0.75em/1.5em var(--rs-admin-font-secondary);
 	height: 1.5em;
 	left: 2.5em;
-	line-height: 1.5em;
 	position: absolute;
 	text-align: center;
-	top: 1em;
+	top: 0.75em;
 	width: 1.5em;
 }
 

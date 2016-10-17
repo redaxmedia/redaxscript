@@ -46,6 +46,7 @@
 		{
 			display: inline-block;
 
+			& a,
 			& span
 			{
 				border-radius: 0.125em;
@@ -194,5 +195,16 @@
 	.rs-fn-status-menu:checked ~ .rs-label-close-menu
 	{
 		transition: opacity 0.2s;
+	}
+}
+
+/* @section 3. admin */
+
+@media (--media-medium-max)
+{
+	.rs-admin-list-panel ~ .rs-has-menu .rs-fn-menu
+	{
+		bottom: auto;
+		position: absolute;
 	}
 }

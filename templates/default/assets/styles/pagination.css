@@ -50,12 +50,45 @@
 		color: gray(70);
 	}
 
+	/* icons */
+
 	& .rs-item-first,
 	& .rs-item-previous,
 	& .rs-item-next,
 	& .rs-item-last
 	{
-		min-width: 6em;
+		position: relative;
+		text-indent: -999em;
+
+		& a:before
+		{
+			font-size: 1.5em;
+			left: 0;
+			line-height: 1em;
+			position: absolute;
+			right: 0;
+			text-indent: 0;
+		}
+	}
+
+	& .rs-item-first a:before
+	{
+		@extend %rs-icon-first-page;
+	}
+
+	& .rs-item-previous a:before
+	{
+		@extend %rs-icon-chevron-left;
+	}
+
+	& .rs-item-next a:before
+	{
+		@extend %rs-icon-chevron-right;
+	}
+
+	& .rs-item-last a:before
+	{
+		@extend %rs-icon-last-page;
 	}
 }
 
