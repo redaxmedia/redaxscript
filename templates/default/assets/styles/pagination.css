@@ -3,7 +3,7 @@
  *
  * 1. pagination
  * 2. query
- *    2.1 large max
+ *    2.1 medium max
  *
  * @since 3.0.0
  *
@@ -94,9 +94,9 @@
 
 /* @section 2. query */
 
-/* @section 2.1 large max */
+/* @section 2.1 medium max */
 
-@media (--media-large-max)
+@media (--media-medium-max)
 {
 	.rs-list-pagination .rs-item-number
 	{
