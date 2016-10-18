@@ -26,7 +26,7 @@
 	--rs-color-primary-light: color(var(--rs-color-primary) l(50%));
 	--rs-color-primary-dark: color(var(--rs-color-primary) l(40%));
 	--rs-color-secondary-light: color(var(--rs-color-secondary) l(50%));
-	--rs-color-tertiary-light: color(var(--rs-color-tertiary) l(40%));
+	--rs-color-quaternary-light: color(var(--rs-color-quaternary) l(60%));
 
 	/* @section 1.2 note color */
 

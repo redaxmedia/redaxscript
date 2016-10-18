@@ -1,0 +1,14 @@
+<?php
+namespace Redaxscript;
+
+$preElement = new Html\Element();
+$preElement->init('pre',
+[
+	'class' => $admin ? 'rs-admin-js-codequote rs-admin-box-codequote' : 'rs-js-codequote rs-box-codequote'
+]);
+
+echo $preElement->html(
+'if ($codequote)
+{
+	return true;
+}');

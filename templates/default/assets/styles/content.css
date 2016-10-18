@@ -119,9 +119,8 @@
 
 .rs-box-codequote
 {
-	background: gray(200);
-	border: 0.125rem solid;
-	color: gray(170);
+	background: var(--rs-color-tertiary);
+	color: gray(255);
 	display: block;
 	font: 0.75em/1.25em var(--rs-font-code);
 	padding: 1em;
@@ -132,17 +131,21 @@
 
 .rs-link-readmore
 {
-	background: var(--rs-color-tertiary);
+	background: var(--rs-color-quaternary);
 	border-radius: 0.125em;
 	color: gray(255);
 	display: inline-block;
 	line-height: 2.5em;
-	margin-top: 0.5em;
 	padding: 0 1em;
 	transition: background 0.2s;
 
 	&:hover
 	{
-		background: var(--rs-color-tertiary-light);
+		background: var(--rs-color-quaternary-light);
 	}
+}
+
+.rs-box-content .rs-link-readmore
+{
+	margin-top: 0.5em;
 }
