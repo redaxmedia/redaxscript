@@ -13,7 +13,7 @@
 
 .rs-admin-list-control
 {
-	font: 1rem var(--rs-admin-font-primary);
+	font: bold 0.875rem var(--rs-admin-font-primary);
 	margin-left: -0.25em;
 	margin-top: 1em;
 
@@ -26,7 +26,7 @@
 	& a,
 	& span
 	{
-		background: var(--rs-admin-gradient-quinary);
+		background: gray(200);
 		border-radius: 0.125em;
 		color: gray(100);
 		display: block;
@@ -38,13 +38,13 @@
 
 	& a:hover
 	{
-		background: var(--rs-admin-gradient-primary);
+		background: var(--rs-admin-color-primary);
 		color: gray(255);
 	}
 
 	& .rs-admin-item-delete a:hover,
 	& .rs-admin-item-uninstall a:hover
 	{
-		background: var(--rs-admin-gradient-secondary);
+		background: var(--rs-admin-color-secondary);
 	}
 }

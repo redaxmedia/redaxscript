@@ -17,13 +17,13 @@
 .rs-button-default
 {
 	@extend %rs-button;
-	background: var(--rs-gradient-secondary);
+	background: var(--rs-color-secondary);
 	color: gray(255);
 	font-size: 0.875em;
 
 	&:hover
 	{
-		background: var(--rs-gradient-secondary-light);
+		background: var(--rs-color-secondary-light);
 	}
 
 	&[disabled]

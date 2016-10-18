@@ -64,11 +64,6 @@
 .rs-admin-button-note
 {
 	@extend %rs-admin-button;
-
-	&:hover
-	{
-		box-shadow: 0 0 0 0.125em gray(0, 0.2) inset;
-	}
 }
 
 /* @section 1.1 success */

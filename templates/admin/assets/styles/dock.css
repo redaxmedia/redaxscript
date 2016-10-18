@@ -40,13 +40,13 @@
 
 	&:hover
 	{
-		background: var(--rs-admin-gradient-primary);
+		background: var(--rs-admin-color-primary);
 		color: gray(0);
 	}
 
 	&.rs-admin-link-delete:hover
 	{
-		background: var(--rs-admin-gradient-secondary);
+		background: var(--rs-admin-color-secondary);
 	}
 
 	&:not(:hover)

@@ -19,7 +19,7 @@
 .rs-admin-field-textarea
 {
 	background: gray(240);
-	border: 2px solid gray(215);
+	border: 0.125rem solid gray(215);
 	border-radius: 0.125em;
 	box-sizing: border-box;
 	color: gray(100);

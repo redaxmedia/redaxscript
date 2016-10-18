@@ -28,7 +28,11 @@
 	{
 		display: block;
 		padding: 0 1em;
-		transition: background 0.2s;
+
+		&:hover
+		{
+			transition: background 0.2s;
+		}
 	}
 }
 

@@ -17,18 +17,18 @@
 .rs-admin-button-default
 {
 	@extend %rs-admin-button;
-	background: var(--rs-admin-gradient-senary);
+	background: gray(50);
 	color: gray(255);
 	font-size: 0.875em;
 
 	&:hover
 	{
-		background: gray(50);
+		background: gray(70);
 	}
 
 	&:active
 	{
-		background: var(--rs-admin-gradient-primary);
+		background: var(--rs-admin-color-primary);
 	}
 
 	&[disabled]
@@ -40,21 +40,21 @@
 
 	&.rs-admin-button-create
 	{
-		background: var(--rs-admin-gradient-tertiary);
+		background: var(--rs-admin-color-tertiary);
 
 		&:hover
 		{
-			background: var(--rs-admin-color-success);
+			background: var(--rs-admin-color-tertiary-light);
 		}
 	}
 
 	&.rs-admin-button-delete
 	{
-		background: var(--rs-admin-gradient-secondary);
+		background: var(--rs-admin-color-secondary);
 
 		&:hover
 		{
-			background: var(--rs-admin-color-error);
+			background: var(--rs-admin-color-secondary-light);
 		}
 	}
 

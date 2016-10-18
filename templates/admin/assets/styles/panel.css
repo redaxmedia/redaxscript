@@ -46,13 +46,13 @@
 	& .rs-admin-item-panel .rs-admin-link-panel:hover,
 	& .rs-admin-text-panel-group:hover > .rs-admin-link-panel
 	{
-		background: var(--rs-admin-gradient-primary);
+		background: var(--rs-admin-color-primary);
 		color: gray(0);
 	}
 
 	& .rs-admin-item-logout > .rs-admin-link-panel:hover
 	{
-		background: var(--rs-admin-gradient-secondary);
+		background: var(--rs-admin-color-secondary);
 	}
 
 	/* icons */

@@ -28,7 +28,7 @@
 	&:active
 	{
 		box-shadow: 0 -0.125em 0 0 gray(0, 0.2) inset;
-		transform: translateY(2px);
+		transform: translateY(0.125em);
 	}
 }
 

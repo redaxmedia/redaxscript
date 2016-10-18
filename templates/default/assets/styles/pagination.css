@@ -98,7 +98,7 @@
 
 @media (--media-medium-max)
 {
-	.rs-list-pagination .rs-item-number
+	.rs-list-pagination .rs-item-number:not(.rs-item-active)
 	{
 		display: none;
 	}

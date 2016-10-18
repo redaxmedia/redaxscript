@@ -42,9 +42,9 @@
 	padding: 0.5em 1em;
 }
 
-.rs-set-accordion + .rs-set-accordion
+.rs-set-accordion + .rs-set-accordion .rs-title-accordion:not(.rs-admin-title-active)
 {
-	margin-top: 0.125rem;
+	border-top: 0.125rem solid gray(255);
 }
 
 /* @section 1.3 javascript enabled */

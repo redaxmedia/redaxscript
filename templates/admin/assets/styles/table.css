@@ -64,12 +64,12 @@
 
 		& tr:not(:last-child)
 		{
-			border-bottom: 1px solid gray(185);
+			border-bottom: 0.125rem solid gray(185);
 		}
 
 		& + tbody tr:first-child
 		{
-			border-top: 1px solid gray(185);
+			border-top: 0.125rem solid gray(185);
 		}
 
 		& tr.rs-admin-is-disabled

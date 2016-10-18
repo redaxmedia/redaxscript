@@ -44,7 +44,7 @@
 
 		& tr:not(:last-child)
 		{
-			border-bottom: 1px solid var(--rs-color-tertiary);
+			border-bottom: 0.125rem solid gray(255);
 		}
 	}
 }

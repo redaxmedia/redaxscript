@@ -23,7 +23,7 @@
 
 .rs-admin-title-accordion
 {
-	background: var(--rs-admin-gradient-quaternary);
+	background: gray(230);
 	box-sizing: border-box;
 	color: gray(70);
 	font-size: 1em;
@@ -35,14 +35,14 @@
 
 .rs-admin-set-accordion + .rs-admin-set-accordion .rs-admin-title-accordion:not(.rs-admin-title-active)
 {
-	border-top: 1px solid gray(185);
+	border-top: 0.125rem solid gray(185);
 }
 
 /* @section 1.2 box */
 
 .rs-admin-box-accordion
 {
-	background: var(--rs-admin-gradient-quaternary);
+	background: gray(230);
 	padding: 0.5em 1em;
 }
 

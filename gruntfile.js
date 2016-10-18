@@ -272,6 +272,7 @@ module.exports = function (grunt)
 					'templates/admin/assets/styles/typo.css',
 					'templates/admin/assets/styles/accordion.css',
 					'templates/admin/assets/styles/button.css',
+					'templates/admin/assets/styles/content.css',
 					'templates/admin/assets/styles/control.css',
 					'templates/admin/assets/styles/dialog.css',
 					'templates/admin/assets/styles/dock.css',

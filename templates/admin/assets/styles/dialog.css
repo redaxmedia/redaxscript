@@ -57,6 +57,6 @@
 
 .rs-admin-box-dialog
 {
-	background: var(--rs-admin-gradient-quaternary);
+	background: gray(230);
 	padding: 1em;
 }

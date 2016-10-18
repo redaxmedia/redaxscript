@@ -1,0 +1,12 @@
+/* @section 1. codequote */
+
+.rs-admin-box-codequote
+{
+	background: gray(240);
+	border: 0.125rem solid gray(215);
+	color: gray(100);
+	display: block;
+	font: 0.75em/1.25em var(--rs-admin-font-code);
+	padding: 1em;
+	white-space: pre-wrap;
+}
