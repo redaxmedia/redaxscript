@@ -134,31 +134,31 @@ class Installer
 		[
 			'categories' =>
 			[
-				'category' => 0,
+				'category' => null,
 				'headline' => 1,
 				'status' => 1
 			],
 			'articles' =>
 			[
-				'category' => 0,
+				'category' => null,
 				'headline' => 1,
 				'status' => 1
 			],
 			'comments' =>
 			[
-				'category' => 0,
+				'category' => null,
 				'headline' => 1,
 				'status' => 1
 			],
 			'languages' =>
 			[
-				'category' => 0,
+				'category' => null,
 				'headline' => 1,
 				'status' => 0
 			],
 			'templates' =>
 			[
-				'category' => 0,
+				'category' => null,
 				'headline' => 1,
 				'status' => 0
 			],
