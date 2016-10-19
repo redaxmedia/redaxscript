@@ -243,7 +243,7 @@ class Installer
 			'copyright' => null,
 			'description' => $language->get('description', '_package'),
 			'keywords' => null,
-			'robots' => 1,
+			'robots' => null,
 			'email' => $optionArray['adminEmail'],
 			'subject' => $language->get('name', '_package'),
 			'notification' => 0,
