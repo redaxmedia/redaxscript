@@ -29,4 +29,9 @@
 	{
 		font-size: 1.25em;
 	}
+
+	& .rs-list-children
+	{
+		padding-left: 0.5em;
+	}
 }
