@@ -254,7 +254,7 @@ class Parser
 		{
 			if ($key % 2)
 			{
-				$partArray[$key] = $preElement->copy()->html(htmlspecialchars($value));
+				$partArray[$key] = $preElement->copy()->html(htmlspecialchars($value, null, null, false));
 			}
 		}
 		$output = implode($partArray);

@@ -9,4 +9,9 @@
 	font: 0.75em/1.25em var(--rs-admin-font-code);
 	padding: 1em;
 	white-space: pre-wrap;
+
+	& + .rs-admin-box-codequote
+	{
+		margin-top: 1em;
+	}
 }
