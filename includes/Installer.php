@@ -107,7 +107,6 @@ class Installer
 				'title' => 'Welcome',
 				'alias' => 'welcome',
 				'author' => $optionArray['adminUser'],
-				'robots' => 1,
 				'text' => file_get_contents('database/html/articles/welcome.phtml'),
 				'category' => 1,
 				'rank' => 1
@@ -123,7 +122,6 @@ class Installer
 				'title' => 'Home',
 				'alias' => 'home',
 				'author' => $optionArray['adminUser'],
-				'robots' => 1,
 				'rank' => 1
 			])
 			->save();
