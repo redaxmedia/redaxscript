@@ -115,9 +115,9 @@
 	}
 }
 
-/* @section 4. code */
+/* @section 4. blockcode */
 
-.rs-box-codequote
+.rs-box-blockcode
 {
 	background: var(--rs-color-tertiary);
 	color: gray(255);
@@ -126,7 +126,7 @@
 	padding: 1em;
 	white-space: pre-wrap;
 
-	& + .rs-box-codequote
+	& + .rs-box-blockcode
 	{
 		margin-top: 1em;
 	}

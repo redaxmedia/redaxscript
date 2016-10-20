@@ -1,4 +1,4 @@
-codequote,
+blockcode,
 language,
 module,
 registry,
@@ -15,9 +15,9 @@ readmore
 	margin: 1em 0;
 }
 
-codequote:before
+blockcode:before
 {
-	content: '<codequote>...</codequote>';
+	content: '<blockcode>...</blockcode>';
 }
 
 language:before

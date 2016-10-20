@@ -56,14 +56,14 @@ class Parser
 				'<readmore>'
 			]
 		],
-		'codequote' =>
+		'blockcode' =>
 		[
-			'method' => '_parseCodequote',
+			'method' => '_parseBlockcode',
 			'position' => null,
 			'search' =>
 			[
-				'<codequote>',
-				'</codequote>'
+				'<blockcode>',
+				'</blockcode>'
 			]
 		],
 		'language' =>
@@ -121,7 +121,7 @@ class Parser
 		'className' =>
 		[
 			'readmore' => 'rs-link-readmore',
-			'codequote' => 'rs-js-codequote rs-box-codequote'
+			'blockcode' => 'rs-js-blockcode rs-box-blockcode'
 		],
 		'delimiter' => '@@@'
 	];
@@ -226,7 +226,7 @@ class Parser
 	}
 
 	/**
-	 * parse the codequote tag
+	 * parse the blockcode tag
 	 *
 	 * @since 2.6.0
 	 *
@@ -235,9 +235,9 @@ class Parser
 	 * @return string
 	 */
 
-	protected function _parseCodequote($content = null)
+	protected function _parseBlockcode($content = null)
 	{
-		$output = str_replace($this->_tagArray['codequote']['search'], $this->_optionArray['delimiter'], $content);
+		$output = str_replace($this->_tagArray['blockcode']['search'], $this->_optionArray['delimiter'], $content);
 		$partArray = array_filter(explode($this->_optionArray['delimiter'], $output));
 
 		/* html elements */
@@ -245,7 +245,7 @@ class Parser
 		$preElement = new Html\Element();
 		$preElement->init('pre',
 		[
-			'class' => $this->_optionArray['className']['codequote']
+			'class' => $this->_optionArray['className']['blockcode']
 		]);
 
 		/* parse as needed */

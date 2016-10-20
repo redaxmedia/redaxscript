@@ -1,6 +1,6 @@
-/* @section 1. codequote */
+/* @section 1. blockcode */
 
-.rs-admin-box-codequote
+.rs-admin-box-blockcode
 {
 	background: gray(240);
 	border: 0.125rem solid gray(215);
@@ -10,7 +10,7 @@
 	padding: 1em;
 	white-space: pre-wrap;
 
-	& + .rs-admin-box-codequote
+	& + .rs-admin-box-blockcode
 	{
 		margin-top: 1em;
 	}

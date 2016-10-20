@@ -58,16 +58,16 @@ class ParserTest extends TestCaseAbstract
 	}
 
 	/**
-	 * providerCodequote
+	 * providerBlockcode
 	 *
 	 * @since 2.5.0
 	 *
 	 * @return array
 	 */
 
-	public function providerCodequote()
+	public function providerBlockcode()
 	{
-		return $this->getProvider('tests/provider/parser_codequote.json');
+		return $this->getProvider('tests/provider/parser_blockcode.json');
 	}
 
 	/**
@@ -153,17 +153,17 @@ class ParserTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testCodeQuote
+	 * testBlockcode
 	 *
 	 * @since 2.5.0
 	 *
 	 * @param string $content
 	 * @param string $expect
 	 *
-	 * @dataProvider providerCodequote
+	 * @dataProvider providerBlockcode
 	 */
 
-	public function testCodequote($content = null, $expect = null)
+	public function testBlockcode($content = null, $expect = null)
 	{
 		/* setup */
 

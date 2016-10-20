@@ -4,11 +4,11 @@ namespace Redaxscript;
 $preElement = new Html\Element();
 $preElement->init('pre',
 [
-	'class' => $admin ? 'rs-admin-js-codequote rs-admin-box-codequote' : 'rs-js-codequote rs-box-codequote'
+	'class' => $admin ? 'rs-admin-js-blockcode rs-admin-box-blockcode' : 'rs-js-blockcode rs-box-blockcode'
 ]);
 
 echo $preElement->html(
-'if ($codequote)
+'if ($blockcode)
 {
 	return true;
 }');
