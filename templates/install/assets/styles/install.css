@@ -14,9 +14,16 @@
 
 /* @section 1. install */
 
+@font-face
+{
+	font-family: var(--rs-font-icon);
+	src: url('../../../default/assets/fonts/icon.woff2') format('woff2'), url('../../../default/assets/fonts/icon.woff') format('woff');
+}
+
 .rs-install-body
 {
 	background: var(--rs-color-tertiary);
+	font: 1em var(--rs-font-primary);
 }
 
 .rs-install-wrapper

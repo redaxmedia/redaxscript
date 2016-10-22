@@ -45,7 +45,7 @@ else if ($config->get('env') !== 'production')
 
 	else
 	{
-		include_once('templates/console/console.phtml');
+		include_once('templates/console/index.phtml');
 	}
 }
 else

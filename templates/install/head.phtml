@@ -26,11 +26,10 @@
 	->append(['href' => 'templates/default/assets/images/favicon.png', 'rel' => 'apple-touch-icon'])
 	->appendFile('//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset())
 	->appendFile('dist/styles/base.min.css')
-	->appendFile('templates/default/dist/styles/default.min.css')
 	->appendFile('templates/install/dist/styles/install.min.css')
 	->rewrite(
 	[
-		'url(../../assets/fonts' => 'url(../../templates/default/assets/fonts',
+		'url(../../../default/assets/fonts' => 'url(../../templates/default/assets/fonts',
 		'url(../../assets/images' => 'url(../../templates/install/assets/images'
 	])
 	->concat(); ?>
@@ -43,4 +42,3 @@
 	->appendFile('templates/install/assets/scripts/init.js')
 	->transportVar('rs', Helper::getTransport())
 	->concat(); ?>
-

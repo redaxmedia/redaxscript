@@ -342,7 +342,16 @@ module.exports = function (grunt)
 				[
 					'assets/styles/_query.css',
 					'templates/default/assets/styles/_variable.css',
-					'templates/install/assets/styles/install.css'
+					'templates/default/assets/styles/_button.css',
+					'templates/default/assets/styles/_icon.css',
+					'templates/default/assets/styles/typo.css',
+					'templates/default/assets/styles/accordion.css',
+					'templates/default/assets/styles/button.css',
+					'templates/default/assets/styles/content.css',
+					'templates/default/assets/styles/field.css',
+					'templates/default/assets/styles/form.css',
+					'templates/install/assets/styles/install.css',
+					'templates/default/assets/styles/note.css'
 				],
 				dest: 'templates/install/dist/styles/install.min.css'
 			},
@@ -696,42 +705,6 @@ module.exports = function (grunt)
 			{
 				command: 'php vendor/bin/apigen generate --source tests --destination ../redaxscript-api/tests'
 			},
-			initZwamp:
-			{
-				command: 'mkdir -p ../redaxscript-zwamp'
-			},
-			downloadZwamp:
-			{
-				command: 'wget downloads.sourceforge.net/project/zwamp/zwamp-x64-2.2.1.zip -O ../redaxscript-zwamp/zwamp.zip'
-			},
-			downloadPapercutService:
-			{
-				command: 'wget github.com/Jaben/Papercut/releases/download/4.6.1.12/PapercutService.4.6.1.12.zip -O ../redaxscript-zwamp/papercut-service.zip'
-			},
-			batchZwamp:
-			{
-				command: 'echo "zwamp.exe & start /b /wait explorer http://localhost & start /b /wait vdrive/.sys/papercut/Papercut.Service.exe" > ../redaxscript-zwamp/zwamp/start.bat'
-			},
-			zipZwamp:
-			{
-				command: 'cd ../redaxscript-zwamp && zip redaxscript-zwamp.zip zwamp -r && cd ../redaxscript'
-			},
-			unzipZwamp:
-			{
-				command: 'cd ../redaxscript-zwamp && unzip zwamp.zip -d zwamp -x *.txt && cd ../redaxscript'
-			},
-			unzipPapercutService:
-			{
-				command: 'cd ../redaxscript-zwamp && unzip papercut-service.zip -d zwamp/vdrive/.sys/papercut && cd ../redaxscript'
-			},
-			removeZwampWeb:
-			{
-				command: 'rm -rf ../redaxscript-zwamp/zwamp/vdrive/web'
-			},
-			removeZwampBuild:
-			{
-				command: 'rm -rf ../redaxscript-zwamp/zwamp'
-			},
 			removeBuild:
 			{
 				command: 'rm -rf build'
@@ -761,16 +734,6 @@ module.exports = function (grunt)
 					'<%=compress.distLite.src%>'
 				],
 				dest: '../redaxscript-export/redaxscript_<%= version %>_lite',
-				dot: true,
-				expand: true
-			},
-			distZwamp:
-			{
-				src:
-				[
-					'<%=compress.distFull.src%>'
-				],
-				dest: '../redaxscript-zwamp/zwamp/vdrive/web',
 				dot: true,
 				expand: true
 			}
@@ -1119,19 +1082,6 @@ module.exports = function (grunt)
 		'copy:distFull',
 		'copy:distLite',
 		'compress'
-	]);
-	grunt.registerTask('zwamp',
-	[
-		'shell:initZwamp',
-		'shell:downloadZwamp',
-		'shell:downloadPapercutService',
-		'shell:unzipZwamp',
-		'shell:unzipPapercutService',
-		'shell:removeZwampWeb',
-		'copy:distZwamp',
-		'shell:batchZwamp',
-		'shell:zipZwamp',
-		'shell:removeZwampBuild'
 	]);
 	grunt.registerTask('deploy',
 	[

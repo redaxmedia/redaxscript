@@ -135,7 +135,7 @@ function contents()
 				{
 					foreach ($r as $key => $value)
 					{
-						$$key = stripslashes($value);
+						$$key = $value;
 					}
 				}
 				if ($lastTable == 'categories' || !Redaxscript\Registry::get('fullRoute') || $aliasValidator->validate($firstParameter, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::PASSED)

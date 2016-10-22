@@ -105,7 +105,7 @@ class CacheTest extends TestCaseAbstract
 			'cache',
 			'clear',
 			'--directory',
-			'cache/page',
+			'cache/styles',
 			'--bundle',
 			'base.min.css'
 		]);
@@ -117,7 +117,7 @@ class CacheTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals('cache/page', $actual->getDirectory());
+		$this->assertEquals('cache/styles', $actual->getDirectory());
 	}
 
 	/**

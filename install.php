@@ -15,7 +15,7 @@ $config = Config::getInstance();
 
 if ($config->get('env') !== 'production')
 {
-	include_once('templates/install/install.phtml');
+	include_once('templates/install/index.phtml');
 }
 else
 {
