@@ -298,17 +298,19 @@
 
 @media (min-width: 50em)
 {
-	.rs-content
+	.rs-has-sidebar
 	{
-		float: left;
-		width: 70%;
 	}
-
-	.rs-sidebar
-	{
+	.rs-has-sidebar .rs-content
+{
+		float: left;
+		width: 70%
+	}
+	.rs-has-sidebar .rs-sidebar
+{
 		float: right;
 		margin-left: 2%;
-		width: 28%;
+		width: 28%
 	}
 }
 

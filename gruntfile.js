@@ -430,8 +430,8 @@ module.exports = function (grunt)
 						}),
 						require('cssnano')(
 						{
-							'autoprefixer': false,
-							'discardUnused': false
+							autoprefixer: false,
+							discardUnused: false
 						})
 					]
 				}
@@ -460,9 +460,9 @@ module.exports = function (grunt)
 						}),
 						require('cssnano')(
 						{
-							'autoprefixer': false,
-							'colormin': false,
-							'zindex': false
+							autoprefixer: false,
+							colormin: false,
+							zindex: false
 						})
 					]
 				}

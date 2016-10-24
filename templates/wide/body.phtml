@@ -1,0 +1,35 @@
+<?php namespace Redaxscript\Template; ?>
+
+<!-- header -->
+
+<?php echo Tag::partial('templates/default/header.phtml'); ?>
+
+<!-- main -->
+
+<main id="main" class="rs-main rs-fn-clearfix">
+
+	<!-- page -->
+
+	<div class="rs-wrapper rs-wrapper-page rs-fn-clearfix">
+
+		<!-- handle content error -->
+
+		<?php if (Tag::registry('contentError')): ?>
+			<?php echo Tag::partial('templates/default/error.phtml'); ?>
+
+		<!-- else content -->
+
+		<?php else: ?>
+			<?php echo Tag::partial('templates/default/content.phtml'); ?>
+		<?php endif; ?>
+	</div>
+</main>
+
+<!-- footer -->
+
+<?php echo Tag::partial('templates/default/footer.phtml'); ?>
+
+<!-- foot script -->
+
+<?php echo Tag::partial('templates/admin/script.phtml'); ?>
+<?php echo Tag::partial('templates/default/script.phtml'); ?>

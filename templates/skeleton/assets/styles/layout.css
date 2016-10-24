@@ -45,17 +45,20 @@
 
 @media (--media-medium-min)
 {
-	.rs-content
+	.rs-has-sidebar
 	{
-		float: left;
-		width: 70%;
-	}
+		& .rs-content
+		{
+			float: left;
+			width: 70%;
+		}
 
-	.rs-sidebar
-	{
-		float: right;
-		margin-left: 2%;
-		width: 28%;
+		& .rs-sidebar
+		{
+			float: right;
+			margin-left: 2%;
+			width: 28%;
+		}
 	}
 }
 
