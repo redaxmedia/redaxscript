@@ -1,31 +1,6 @@
-/**
- * @tableofcontents
- *
- * 1. query
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. query */
-/**
- * @tableofcontents
- *
- * 1. clearfix
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. clearfix */
-
 .rs-fn-clearfix
 {
-	clear: both
+	clear: both;
 }
 
 .rs-fn-clearfix:after
@@ -33,41 +8,8 @@
 	clear: both;
 	content: '';
 	display: block;
-	height: 0
+	height: 0;
 }
-/**
- * @tableofcontents
- *
- * 1. dialog
- *    1.1 overlay
- *    1.2 component
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. dialog */
-
-/* @section 1.1 overlay */
-
-/* @section 1.2 component */
-/**
- * @tableofcontents
- *
- * 1. redirect
- *    1.1 overlay
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. redirect */
-
-/* @section 1.1 overlay */
 
 .rs-meta-redirect
 {
@@ -80,195 +22,78 @@
 	top: 0;
 	z-index: 2000;
 }
-/**
- * @tableofcontents
- *
- * 1. table
- *    1.1. query
- *       1.1.1 medium max
- * 2. wrapper table
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
 
-/* @section 1. table */
-
-.rs-table-default
-{
-}
-
-.rs-table-default caption, .rs-table-default th, .rs-table-default tfoot td
+.rs-table-default caption,
+.rs-table-default th,
+.rs-table-default tfoot td
 {
 	font-weight: bold;
-	text-align: left
+	text-align: left;
 }
 
-.rs-table-default th ~ th:last-child, .rs-table-default td ~ td:last-child
+.rs-table-default th ~ th:last-child,
+.rs-table-default td ~ td:last-child
 {
-	text-align: right
+	text-align: right;
 }
-
-/* @section 1.1. query */
-
-/* @section 1.1.1 medium max */
 
 @media (max-width: 49.999em)
 {
-	.rs-table-default
+	.rs-table-default th:not(:first-child):not(:last-child),
+	.rs-table-default td:not(:first-child):not(:last-child)
 	{
-	}
-	.rs-table-default th:not(:first-child):not(:last-child), .rs-table-default td:not(:first-child):not(:last-child)
-{
-		display: none
+		display: none;
 	}
 }
 
-/* @section 2. wrapper table */
-
 .rs-wrapper-table
 {
-	overflow: hidden
+	overflow: hidden;
 }
 
 .rs-wrapper-table > table
 {
-	width: 100%
+	width: 100%;
 }
-/**
- * @tableofcontents
- *
- * 1. variable
- *    1.1 font
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. variable */
-
-:root
-{
-	/* @section 1.1 font */
-}
-
-/**
- * @tableofcontents
- *
- * 1. list breadcrumb
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. list breadcrumb */
 
 .rs-list-breadcrumb li
 {
 	display: inline-block;
 }
 
-/**
- * @tableofcontents
- *
- * 1. content
- * 2. comment
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. content */
-
-.rs-title-content, .rs-title-content-sub
+.rs-title-content,
+.rs-title-content-sub
 {
 	margin-bottom: 0.5em;
 	margin-top: 1em;
 }
-
-/* @section 2. comment */
 
 .rs-title-comment
 {
 	margin-bottom: 0.5em;
 	margin-top: 1em;
 }
-/**
- * @tableofcontents
- *
- * 1. form default
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. form default */
-
-.rs-form-default
-{
-}
 
 .rs-form-default fieldset li
 {
 	margin-bottom: 0.5em;
-	margin-top: 0.5em
+	margin-top: 0.5em;
 }
 
 .rs-form-default .rs-label-default
 {
-	display: block
+	display: block;
 }
 
 .rs-form-default .rs-label-default:after
 {
-	content: ':'
+	content: ':';
 }
 
 .rs-form-default .rs-button-default
 {
-	margin-top: 1em
+	margin-top: 1em;
 }
-/**
- * @tableofcontents
- *
- * 1. clearfix
- * 2. redirect
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. clearfix */
-
-/* @section 2. redirect */
-/**
- * @tableofcontents
- *
- * 1. general
- * 2. wrapper
- * 3. query
- *    3.1 medium min
- *    3.2 print
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. general */
 
 .rs-body
 {
@@ -277,13 +102,13 @@
 	font: 1em arial, sans-serif;
 }
 
-.rs-footer, .rs-header, .rs-main
+.rs-footer,
+.rs-header,
+.rs-main
 {
 	margin-bottom: 1em;
 	margin-top: 1em;
 }
-
-/* @section 2. wrapper */
 
 .rs-wrapper
 {
@@ -292,29 +117,21 @@
 	width: 90%;
 }
 
-/* @section 3. query */
-
-/* @section 3.1 medium min */
-
 @media (min-width: 50em)
 {
-	.rs-has-sidebar
-	{
-	}
 	.rs-has-sidebar .rs-content
-{
+	{
 		float: left;
-		width: 70%
+		width: 70%;
 	}
+
 	.rs-has-sidebar .rs-sidebar
-{
+	{
 		float: right;
 		margin-left: 2%;
-		width: 28%
+		width: 28%;
 	}
 }
-
-/* @section 3.2 print */
 
 @media print
 {
@@ -324,163 +141,69 @@
 		color: rgb(0, 0, 0);
 	}
 
-	.rs-footer, .rs-header, .rs-sidebar
+	.rs-footer,
+	.rs-header,
+	.rs-sidebar
 	{
 		display: none;
 	}
 }
-/**
- * @tableofcontents
- *
- * 1. media
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
 
-/* @section 1. media */
-
-.rs-image-default, .rs-video-default
+.rs-image-default,
+.rs-video-default
 {
 	border-radius: 0.25em;
 	width: 100%;
 }
 
-.rs-image-placeholder
-{
-}
-
 .rs-image-placeholder rect
 {
-	fill: rgba(0, 0, 0, 0.1)
+	fill: rgba(0, 0, 0, 0.1);
 }
 
 .rs-image-placeholder path
 {
-	fill: rgb(255, 255, 255)
-}
-/**
- * @tableofcontents
- *
- * 1. pagination
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. pagination */
-
-.rs-list-pagination
-{
+	fill: rgb(255, 255, 255);
 }
 
 .rs-list-pagination li
 {
-	display: inline-block
+	display: inline-block;
 }
 
-.rs-list-pagination a, .rs-list-pagination span
+.rs-list-pagination a,
+.rs-list-pagination span
 {
-	display: block
+	display: block;
 }
-
-/**
- * @tableofcontents
- *
- * 1. result
- *    1.1 list
- *    1.2 title
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. result */
-
-/* @section 1.1 list */
 
 .rs-list-result
 {
-	counter-reset: result
-}
-
-.rs-list-result li
-{
+	counter-reset: result;
 }
 
 .rs-list-result li:before
 {
 	content: counter(result, decimal);
-	counter-increment: result
+	counter-increment: result;
 }
 
 .rs-list-result li + li
 {
-	margin-top: 1em
+	margin-top: 1em;
 }
-
-/* @section 1.2 title */
 
 .rs-title-result
 {
 	margin-bottom: 0.5em;
 	margin-top: 1em;
 }
-/**
- * @tableofcontents
- *
- * 1. sidebar
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. sidebar */
-
-.rs-sidebar
-{
-}
 
 .rs-sidebar .rs-title-extra
 {
 	margin-bottom: 0.5em;
-	margin-top: 1em
+	margin-top: 1em;
 }
-/**
- * @tableofcontents
- *
- * 1. table default
- * 2. wrapper table
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. table default */
-
-/* @section 2. wrapper table */
-/**
- * @tableofcontents
- *
- * 1. tag styling
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
- */
-
-/* @section 1. tag styling */
 
 a
 {

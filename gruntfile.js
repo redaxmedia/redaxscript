@@ -487,7 +487,13 @@ module.exports = function (grunt)
 						require('autoprefixer')(
 						{
 							browsers: 'last 2 versions'
-						})
+						}),
+						require('postcss-discard-comments'),
+						require('postcss-discard-duplicates'),
+						require('postcss-discard-empty'),
+						require('postcss-discard-overridden'),
+						require('postcss-discard-unused'),
+						require('stylefmt')
 					]
 				}
 			},
