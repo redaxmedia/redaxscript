@@ -17,7 +17,7 @@
 @font-face
 {
 	font-family: var(--rs-font-icon);
-	src: url('../../../default/assets/fonts/icon.woff2') format('woff2'), url('../../../default/assets/fonts/icon.woff') format('woff');
+	src: url('../../../default/dist/fonts/icon.woff2') format('woff2'), url('../../../default/dist/fonts/icon.woff') format('woff');
 }
 
 .rs-install-body

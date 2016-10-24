@@ -568,7 +568,7 @@ module.exports = function (grunt)
 					'node_modules/material-design-icons/social/svg/production/ic_notifications_24px.svg',
 					'node_modules/material-design-icons/social/svg/production/ic_person_24px.svg'
 				],
-				dest: 'templates/admin/assets/fonts',
+				dest: 'templates/admin/dist/fonts',
 				options:
 				{
 					destCss: 'templates/admin/assets/styles',
@@ -593,7 +593,7 @@ module.exports = function (grunt)
 					'node_modules/material-design-icons/content/svg/production/ic_remove_24px.svg',
 					'node_modules/material-design-icons/navigation/svg/production/ic_chevron_right_24px.svg'
 				],
-				dest: 'templates/default/assets/fonts',
+				dest: 'templates/default/dist/fonts',
 				options:
 				{
 					destCss: 'templates/default/assets/styles',
