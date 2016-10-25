@@ -193,10 +193,10 @@ class Element extends HtmlAbstract
 
 	protected function _editClass($className = null, $type = null)
 	{
-		$classArray = explode(' ', $className);
+		$classArray = array_filter(explode(' ', $className));
 		if (array_key_exists('class', $this->_attributeArray))
 		{
-			$attributeClassArray = explode(' ', $this->_attributeArray['class']);
+			$attributeClassArray = array_filter(explode(' ', $this->_attributeArray['class']));
 		}
 		else
 		{

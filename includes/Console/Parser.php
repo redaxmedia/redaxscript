@@ -69,7 +69,7 @@ class Parser
 		}
 		else
 		{
-			$argumentArray = explode(' ', $this->_request->getPost('argv'));
+			$argumentArray = array_filter(explode(' ', $this->_request->getPost('argv')));
 		}
 		$this->_parseArgument($argumentArray);
 	}

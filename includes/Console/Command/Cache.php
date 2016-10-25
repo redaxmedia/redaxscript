@@ -38,6 +38,10 @@ class Cache extends CommandAbstract
 						[
 							'description' => 'Optional directory of the cache'
 						],
+						'extension' =>
+						[
+							'description' => 'Optional extension of the cache files'
+						],
 						'bundle' =>
 						[
 							'description' => 'Optional key or collection of the bundle'
@@ -52,6 +56,10 @@ class Cache extends CommandAbstract
 						'directory' =>
 						[
 							'description' => 'Optional directory of the cache'
+						],
+						'extension' =>
+						[
+							'description' => 'Optional extension of the cache files'
 						],
 						'lifetime' =>
 						[
@@ -105,10 +113,11 @@ class Cache extends CommandAbstract
 	protected function _clear($optionArray = [])
 	{
 		$directory = $optionArray['directory'];
-		$bundle = explode(',', $optionArray['bundle']);
+		$extension = $optionArray['extension'];
+		$bundle = array_filter(explode(',', $optionArray['bundle']));
 		$cache = new BaseCache();
 		return $cache
-			->init($directory)
+			->init($directory, $extension)
 			->clear($bundle);
 	}
 
@@ -125,10 +134,11 @@ class Cache extends CommandAbstract
 	protected function _clearInvalid($optionArray = [])
 	{
 		$directory = $optionArray['directory'];
+		$extension = $optionArray['extension'];
 		$lifetime = is_numeric($optionArray['lifetime']) ? $optionArray['lifetime'] : 3600;
 		$cache = new BaseCache();
 		return $cache
-			->init($directory)
+			->init($directory, $extension)
 			->clearInvalid($lifetime);
 	}
 }

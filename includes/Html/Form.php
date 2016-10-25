@@ -618,7 +618,7 @@ class Form extends HtmlAbstract
 
 		if (is_string($selected))
 		{
-			$selected = explode(', ', $selected);
+			$selected = array_filter(explode(', ', $selected));
 		}
 
 		/* process options */
