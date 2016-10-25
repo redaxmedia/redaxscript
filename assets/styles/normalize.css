@@ -60,7 +60,7 @@ button, input, select, textarea
 	font: inherit;
 }
 
-input, textarea
+input, select, textarea
 {
 	-webkit-appearance: none;
 }
