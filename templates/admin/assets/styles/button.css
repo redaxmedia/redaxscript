@@ -48,7 +48,8 @@
 		}
 	}
 
-	&.rs-admin-button-delete
+	&.rs-admin-button-delete,
+	&.rs-admin-button-uninstall
 	{
 		background: var(--rs-admin-color-secondary);
 
