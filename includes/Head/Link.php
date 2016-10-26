@@ -3,6 +3,7 @@ namespace Redaxscript\Head;
 
 use Redaxscript\Assetic;
 use Redaxscript\Html;
+use Redaxscript\Registry;
 
 /**
  * children class to create the link tag
@@ -132,7 +133,7 @@ class Link extends HeadAbstract
 	public function concat($optionArray = [])
 	{
 		$optionArray = array_merge(self::$_optionArray, $optionArray);
-		$loader = new Assetic\Loader();
+		$loader = new Assetic\Loader(Registry::getInstance());
 		$loader
 			->init(self::$_collectionArray[self::$_namespace])
 			->concat($optionArray, self::$_rewriteArray[self::$_namespace]);

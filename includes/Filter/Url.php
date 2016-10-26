@@ -25,7 +25,6 @@ class Url implements FilterInterface
 
 	public function sanitize($url = null)
 	{
-		$output = filter_var(strtolower($url), FILTER_SANITIZE_URL);
-		return $output;
+		return filter_var(strtolower($url), FILTER_SANITIZE_URL);
 	}
 }

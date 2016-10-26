@@ -199,7 +199,7 @@ class Parser
 
 	protected function _parseReadmore($content = null)
 	{
-		$output = str_replace($this->_tagArray['readmore']['search'], '', $content);
+		$output = str_replace($this->_tagArray['readmore']['search'], null, $content);
 
 		/* html elements */
 

@@ -155,7 +155,7 @@ class Script extends HeadAbstract
 	public function concat($optionArray = [])
 	{
 		$optionArray = array_merge(self::$_optionArray, $optionArray);
-		$loader = new Assetic\Loader();
+		$loader = new Assetic\Loader(Registry::getInstance());
 		$loader
 			->init(self::$_collectionArray[self::$_namespace])
 			->concat($optionArray);

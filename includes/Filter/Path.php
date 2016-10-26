@@ -19,22 +19,22 @@ class Path implements FilterInterface
 	 * @since 2.6.0
 	 *
 	 * @param string $path target path
-	 * @param string $seperator directory seperator
+	 * @param string $separator directory separator
 	 *
 	 * @return string
 	 */
 
-	public function sanitize($path = null, $seperator = DIRECTORY_SEPARATOR)
+	public function sanitize($path = null, $separator = DIRECTORY_SEPARATOR)
 	{
 		$output = urldecode($path);
 		$output = str_replace(
 		[
 			' ',
 			'..',
-		], '', $output);
-		$output = preg_replace('~' . $seperator . '+~', $seperator, $output);
+		], null, $output);
+		$output = preg_replace('~' . $separator . '+~', $separator, $output);
 		$output = ltrim($output, '.');
-		$output = trim($output, $seperator);
+		$output = trim($output, $separator);
 		return $output;
 	}
 }

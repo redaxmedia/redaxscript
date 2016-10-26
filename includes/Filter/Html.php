@@ -338,7 +338,7 @@ class Html implements FilterInterface
 			}
 			else
 			{
-				$childNode->nodeValue = str_ireplace($this->_forbiddenValues, '', $childNode->nodeValue);
+				$childNode->nodeValue = str_ireplace($this->_forbiddenValues, null, $childNode->nodeValue);
 			}
 		}
 		return $node;

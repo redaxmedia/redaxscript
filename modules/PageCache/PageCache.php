@@ -70,7 +70,7 @@ class PageCache extends Config
 
 		/* prevent as needed */
 
-		if ($request->getPost() || $registry->get('loggedIn') === $registry->get('token'))
+		if ($request->getPost() || $registry->get('noCache'))
 		{
 			return false;
 		}

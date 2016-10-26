@@ -25,7 +25,6 @@ class Email implements FilterInterface
 
 	public function sanitize($email = null)
 	{
-		$output = filter_var(strtolower($email), FILTER_SANITIZE_EMAIL);
-		return $output;
+		return filter_var(strtolower($email), FILTER_SANITIZE_EMAIL);
 	}
 }

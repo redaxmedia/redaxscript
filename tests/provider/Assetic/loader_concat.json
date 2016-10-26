@@ -1,5 +1,31 @@
 [
 	[
+		{
+			"noCache": true
+		},
+		[
+			{
+				"href": "vfs://root/assets/styles/one.css"
+			},
+			{
+				"href": "vfs://root/assets/styles/two.css"
+			}
+		],
+		{
+			"0":
+			{
+				"href": "vfs://root/assets/styles/one.css"
+			},
+			"1":
+			{
+				"href": "vfs://root/assets/styles/two.css"
+			}
+		}
+	],
+	[
+		{
+			"noCache": false
+		},
 		[
 			{
 				"href": "vfs://root/assets/styles/one.css"

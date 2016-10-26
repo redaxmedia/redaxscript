@@ -44,11 +44,11 @@ function startup()
 
 	/* prevent session hijacking */
 
-	Redaxscript\Request::refreshSession();
-	if (!Redaxscript\Request::getSession('regenerateId'))
+	$request->refreshSession();
+	if (!$request->getSession('regenerateId'))
 	{
 		session_regenerate_id();
-		Redaxscript\Request::setSession('regenerateId', true);
+		$request->setSession('regenerateId', true);
 	}
 
 	/* database status */
@@ -123,7 +123,7 @@ function startup()
 	}
 	else
 	{
-		$registry->set('parameterRoute', '');
+		$registry->set('parameterRoute', null);
 		$registry->set('languageRoute', '.');
 		$registry->set('templateRoute', '.');
 	}
@@ -317,5 +317,15 @@ function startup()
 		future_update('articles');
 		future_update('comments');
 		future_update('extras');
+	}
+
+	/* cache */
+
+	$registry->set('noCache', false);
+	$filterBoolean = new Redaxscript\Filter\Boolean();
+	$noCache = $filterBoolean->sanitize($request->getQuery('no-cache'));
+	if ($registry->get('loggedIn') == $registry->get('token') || $noCache)
+	{
+		$registry->set('noCache', true);
 	}
 }

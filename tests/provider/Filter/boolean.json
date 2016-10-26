@@ -1,0 +1,34 @@
+[
+	[
+		"true",
+		true
+	],
+	[
+		"on",
+		true
+	],
+	[
+		"1",
+		true
+	],
+	[
+		"false",
+		false
+	],
+	[
+		"off",
+		false
+	],
+	[
+		"0",
+		false
+	],
+	[
+		"invalid",
+		null
+	],
+	[
+		"",
+		null
+	]
+]

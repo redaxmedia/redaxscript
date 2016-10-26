@@ -2,6 +2,7 @@
 namespace Redaxscript\Tests\Assetic;
 
 use Redaxscript\Assetic;
+use Redaxscript\Registry;
 use Redaxscript\Tests\TestCaseAbstract;
 use org\bovigo\vfs\vfsStream as Stream;
 
@@ -18,6 +19,14 @@ use org\bovigo\vfs\vfsStream as Stream;
 class LoaderTest extends TestCaseAbstract
 {
 	/**
+	 * instance of the registry class
+	 *
+	 * @var object
+	 */
+
+	protected $_registry;
+
+	/**
 	 * setUp
 	 *
 	 * @since 3.0.0
@@ -25,6 +34,7 @@ class LoaderTest extends TestCaseAbstract
 
 	public function setUp()
 	{
+		$this->_registry = Registry::getInstance();
 		Stream::setup('root', 0777, $this->getProvider('tests/provider/Assetic/loader_set_up.json'));
 	}
 
@@ -59,13 +69,14 @@ class LoaderTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param array $registryArray
 	 * @param array $collectionArray
 	 * @param array $expectArray
 	 *
 	 * @dataProvider providerConcat
 	 */
 
-	public function testConcat($collectionArray = [], $expectArray = [])
+	public function testConcat($registryArray = [], $collectionArray = [], $expectArray = [])
 	{
 		/* setup */
 
@@ -76,15 +87,12 @@ class LoaderTest extends TestCaseAbstract
 			'attribute' => 'href',
 			'lifetime' => 86400
 		];
-		$rewriteArray =
-		[
-			'test' => 'test'
-		];
-		$loader = new Assetic\Loader();
+		$this->_registry->init($registryArray);
+		$loader = new Assetic\Loader($this->_registry);
 		$loader
 			->init($collectionArray, 'css')
-			->concat($optionArray, $rewriteArray)
-			->concat($optionArray, $rewriteArray);
+			->concat($optionArray)
+			->concat($optionArray);
 
 		/* actual */
 
@@ -118,7 +126,7 @@ class LoaderTest extends TestCaseAbstract
 			'attribute' => 'href',
 			'lifetime' => 86400
 		];
-		$loader = new Assetic\Loader();
+		$loader = new Assetic\Loader(Registry::getInstance());
 		$loader
 			->init($collectionArray, 'css')
 			->concat($optionArray, $rewriteArray)

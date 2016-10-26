@@ -79,7 +79,7 @@ class Autoloader
 	{
 		foreach ($this->_autoloadArray as $namespace => $directory)
 		{
-			$file = str_replace($namespace, '', $className);
+			$file = str_replace($namespace, null, $className);
 			$file = str_replace('\\', '/', $file);
 			$file .= $this->_fileSuffix;
 

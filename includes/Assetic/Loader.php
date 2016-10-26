@@ -2,6 +2,7 @@
 namespace Redaxscript\Assetic;
 
 use Redaxscript\Cache;
+use Redaxscript\Registry;
 
 /**
  * parent class to load and concat assets
@@ -16,12 +17,33 @@ use Redaxscript\Cache;
 class Loader
 {
 	/**
+	 * instance of the registry class
+	 *
+	 * @var object
+	 */
+
+	protected $_registry;
+
+	/**
 	 * collection of the loader
 	 *
 	 * @var array
 	 */
 
 	protected $_collectionArray = [];
+
+	/**
+	 * constructor of the class
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param Registry $registry instance of the registry class
+	 */
+
+	public function __construct(Registry $registry)
+	{
+		$this->_registry = $registry;
+	}
 
 	/**
 	 * init the class
@@ -70,6 +92,13 @@ class Loader
 	{
 		$bundleArray = [];
 		$restArray = [];
+
+		/* prevent as needed */
+
+		if ($this->_registry->get('noCache'))
+		{
+			return $this;
+		}
 
 		/* process collection */
 

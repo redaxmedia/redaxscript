@@ -25,7 +25,6 @@ class Special implements FilterInterface
 
 	public function sanitize($special = null)
 	{
-		$output = preg_replace('/[^a-zA-Z0-9]/i', '', $special);
-		return $output;
+		return preg_replace('/[^a-zA-Z0-9]/i', null, $special);
 	}
 }
