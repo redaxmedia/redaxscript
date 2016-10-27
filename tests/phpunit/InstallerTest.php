@@ -105,26 +105,28 @@ class InstallerTest extends TestCaseAbstract
 		$actualArticles = Db::forTablePrefix('articles')->findMany()->count();
 		$actualCategories = Db::forTablePrefix('categories')->findMany()->count();
 		$actualExtras = Db::forTablePrefix('extras')->findMany()->count();
+		$actualComments = Db::forTablePrefix('comments')->findMany()->count();
 		$actualGroups = Db::forTablePrefix('groups')->findMany()->count();
+		$actualUsers = Db::forTablePrefix('users')->findMany()->count();
 		$actualSettings = Db::forTablePrefix('settings')->findMany()->count();
 		if (is_dir('modules/CallHome') && is_dir('modules/Validator'))
 		{
 			$actualModules = Db::forTablePrefix('modules')->findMany()->count();
 		}
-		$actualUsers = Db::forTablePrefix('users')->findMany()->count();
 
 		/* compare */
 
 		$this->assertEquals(1, $actualArticles);
 		$this->assertEquals(1, $actualCategories);
 		$this->assertEquals(6, $actualExtras);
+		$this->assertEquals(1, $actualComments);
 		$this->assertEquals(2, $actualGroups);
+		$this->assertEquals(1, $actualUsers);
 		$this->assertEquals(25, $actualSettings);
 		if (is_dir('modules/CallHome') && is_dir('modules/Validator'))
 		{
 			$this->assertEquals(2, $actualModules);
 		}
-		$this->assertEquals(1, $actualUsers);
 	}
 
 	/**

@@ -59,7 +59,7 @@ class CommentFormTest extends TestCaseAbstract
 			->create()
 			->set(
 			[
-				'id' => 1,
+				'id' => 2,
 				'author' => 'test',
 				'email' => 'test@test.com',
 				'text' => 'test',

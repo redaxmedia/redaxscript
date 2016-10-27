@@ -109,6 +109,7 @@ class Installer
 				'author' => $optionArray['adminUser'],
 				'text' => file_get_contents('database/html/articles/welcome.phtml'),
 				'category' => 1,
+				'comments' => 1,
 				'rank' => 1
 			])
 			->save();
@@ -188,6 +189,20 @@ class Installer
 				])
 				->save();
 		}
+
+		/* comments */
+
+		Db::forTablePrefix('comments')
+			->create()
+			->set(
+			[
+				'author' => $optionArray['adminUser'],
+				'email' => $optionArray['adminEmail'],
+				'text' => file_get_contents('database/html/comments/hello.phtml'),
+				'article' => 1,
+				'rank' => 1
+			])
+			->save();
 
 		/* groups */
 
