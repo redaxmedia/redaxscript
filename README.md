@@ -21,23 +21,3 @@ Demo
 You have to see it for yourself.
 
 [![Demo](https://img.shields.io/badge/demo-login-129e5e.svg?style=flat)](http://demo.redaxscript.com/demo/login)
-
-
-Links
------
-
-**General**
-
-* [Website](http://redaxscript.com)
-* [Forum](http://forum.redaxscript.com)
-* [Wiki](http://wiki.redaxscript.com)
-* [License](http://redaxscript.com/general/about/license)
-
-
-**Development**
-
-* [GitHub](http://github.redaxscript.com)
-* [Travis](http://travis.redaxscript.com)
-* [Scrutenizer](http://scrutenizer.redaxscript.com)
-* [Coveralls](http://coveralls.redaxscript.com)
-* [API](http://api.redaxscript.com)
