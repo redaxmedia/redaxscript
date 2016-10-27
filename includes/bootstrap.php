@@ -44,13 +44,6 @@ Db::init();
 startup();
 $registry->init();
 
-/* deprecated */
-
-if ($registry->get('file') === 'index.php')
-{
-	include_once('includes/router.php');
-}
-
 /* refresh */
 
 $request->refreshSession();
