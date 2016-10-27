@@ -1,7 +1,3 @@
-![Redaxscript 3.0.0 Beta](https://dummyimage.com/1000x300/323e4c/ffffff&text=Redaxscript+3.0.0+Beta)
-![Ultra lightweight Content Management System](http://dummyimage.com/1000x100/323e4c/ffffff&text=Ultra+lightweight+Content+Management+System)
-
-
 Redaxscript
 ===========
 
