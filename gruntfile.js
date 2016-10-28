@@ -720,29 +720,6 @@ module.exports = function (grunt)
 				failOnError: true
 			}
 		},
-		copy:
-		{
-			distFull:
-			{
-				src:
-				[
-					'<%=compress.distFull.src%>'
-				],
-				dest: '../redaxscript-export/redaxscript_<%= version %>_full',
-				dot: true,
-				expand: true
-			},
-			distLite:
-			{
-				src:
-				[
-					'<%=compress.distLite.src%>'
-				],
-				dest: '../redaxscript-export/redaxscript_<%= version %>_lite',
-				dot: true,
-				expand: true
-			}
-		},
 		rename:
 		{
 			templateAdmin:
@@ -760,101 +737,6 @@ module.exports = function (grunt)
 					'templates/default/assets/styles/icon.tpl'
 				],
 				dest: 'templates/default/assets/styles/_icon.css'
-			}
-		},
-		compress:
-		{
-			distFull:
-			{
-				src:
-				[
-					'database/**',
-					'dist/**',
-					'includes/**',
-					'languages/**',
-					'libraries/**',
-					'modules/**',
-					'assets/scripts/**',
-					'assets/styles/**',
-					'templates/**',
-					'config.php',
-					'console.php',
-					'index.php',
-					'install.php',
-					'README.md',
-					'.htaccess'
-				],
-				options:
-				{
-					archive: '../redaxscript-files/releases/redaxscript-<%= version %>-full.zip'
-				},
-				dot: true
-			},
-			distLite:
-			{
-				src:
-				[
-					'database/**',
-					'dist/**',
-					'includes/**',
-					'languages/en.json',
-					'libraries/**',
-					'modules/CallHome/**',
-					'modules/Validator/**',
-					'assets/scripts/**',
-					'assets/styles/**',
-					'templates/admin/**',
-					'templates/default/**',
-					'templates/install/**',
-					'config.php',
-					'console.php',
-					'index.php',
-					'install.php',
-					'README.md',
-					'.htaccess'
-				],
-				options:
-				{
-					archive: '../redaxscript-files/releases/redaxscript-<%= version %>-lite.zip'
-				},
-				dot: true
-			}
-		},
-		deployFTP:
-		{
-			files:
-			{
-				src:
-				[
-					'../redaxscript-files'
-				],
-				dest: 'files',
-				auth:
-				{
-					host: 'develop.redaxscript.com',
-					port: 21,
-					authKey: 'develop',
-					authPath: '../credentials/.redaxscript'
-				}
-			},
-			zwamp:
-			{
-				src:
-				[
-					'../redaxscript-zwamp'
-				],
-				dest: 'zwamp',
-				exclusions:
-				[
-					'../redaxscript-zwamp/zwamp.zip'
-				],
-				auth:
-				{
-					host: 'develop.redaxscript.com',
-					port: 21,
-					authKey: 'develop',
-					authPath: '../credentials/.redaxscript'
-				}
 			}
 		},
 		img:
@@ -936,59 +818,13 @@ module.exports = function (grunt)
 		}
 	});
 
-	/* dynamic compress */
-
-	grunt.dynamicCompress = function (path)
-	{
-		var target = grunt.file.expand(path),
-			targetArray;
-
-		for (var i in target)
-		{
-			targetArray = target[i].split('.');
-			grunt.config.set('compress.' + targetArray[0],
-			{
-				src:
-				[
-					targetArray[1] ? target[i] : target[i] + '/**'
-				],
-				options:
-				{
-					archive: '../redaxscript-files/' + targetArray[0] + '.zip'
-				},
-				dot: true
-			});
-		}
-	};
-	grunt.dynamicCompress('languages/*.json');
-	grunt.dynamicCompress('modules/*');
-	grunt.dynamicCompress('templates/*');
-
 	/* load tasks */
 
-	grunt.loadNpmTasks('grunt-contrib-compress');
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-rename');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-diff-json');
-	grunt.loadNpmTasks('grunt-ftp-deploy');
-	grunt.loadNpmTasks('grunt-htmlhint');
-	grunt.loadNpmTasks('grunt-img');
-	grunt.loadNpmTasks('grunt-jscs');
-	grunt.loadNpmTasks('grunt-json-format');	
-	grunt.loadNpmTasks('grunt-jsonlint');
-	grunt.loadNpmTasks('grunt-phpcs');
-	grunt.loadNpmTasks('grunt-postcss');
-	grunt.loadNpmTasks('grunt-shell');
-	grunt.loadNpmTasks('grunt-svgmin');
-	grunt.loadNpmTasks('grunt-webfont');
+	require('load-grunt-tasks')(grunt);
 
 	/* rename tasks */
 
 	grunt.task.renameTask('json-format', 'formatJSON');
-	grunt.task.renameTask('ftp-deploy', 'deployFTP');
 	
 	/* register tasks */
 
@@ -1081,15 +917,5 @@ module.exports = function (grunt)
 		'postcss:base',
 		'postcss:templatesAndModules',
 		'postcss:templateSkeleton'
-	]);
-	grunt.registerTask('dist',
-	[
-		'copy:distFull',
-		'copy:distLite',
-		'compress'
-	]);
-	grunt.registerTask('deploy',
-	[
-		'deployFTP'
 	]);
 };
