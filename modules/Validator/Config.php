@@ -30,7 +30,7 @@ class Config extends Module
 			'warning' => 'rs-admin-is-warning',
 			'error' => 'rs-admin-is-error'
 		],
-		'url' => 'https://validator.nu/?doc=',
+		'url' => 'https://validator.w3.org/nu/?doc=',
 		'typeArray' =>
 		[
 			'warning',

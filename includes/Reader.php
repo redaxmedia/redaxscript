@@ -169,7 +169,7 @@ class Reader
 
 		/* else fallback */
 
-		else if (file_exists($url))
+		else
 		{
 			$output = file_get_contents($url);
 		}
