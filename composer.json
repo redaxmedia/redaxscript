@@ -11,7 +11,6 @@
 	},
 	"require-dev":
 	{
-		"apigen/apigen": "4.1.2",
 		"brianium/paratest": "0.14.0",
 		"johnkary/phpunit-speedtrap": "1.0.1",
 		"mikey179/vfsStream": "1.6.4",

@@ -698,18 +698,6 @@ module.exports = function (grunt)
 			{
 				command: 'sh vendor/bin/tocgen.sh templates/admin/assets .tocgen -l && sh vendor/bin/tocgen.sh templates/default/assets .tocgen -l'
 			},
-			apiBase:
-			{
-				command: 'php vendor/bin/apigen generate --source includes --destination ../redaxscript-api/base'
-			},
-			apiModules:
-			{
-				command: 'php vendor/bin/apigen generate --source modules --destination ../redaxscript-api/modules'
-			},
-			apiTests:
-			{
-				command: 'php vendor/bin/apigen generate --source tests --destination ../redaxscript-api/tests'
-			},
 			removeBuild:
 			{
 				command: 'rm -rf build'
@@ -887,12 +875,6 @@ module.exports = function (grunt)
 		'shell:tocBase',
 		'shell:tocModules',
 		'shell:tocTemplates'
-	]);
-	grunt.registerTask('api',
-	[
-		'shell:apiBase',
-		'shell:apiModules',
-		'shell:apiTests'
 	]);
 	grunt.registerTask('optimize',
 	[
