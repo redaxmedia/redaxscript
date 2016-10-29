@@ -15,7 +15,7 @@ rs.modules.syntaxHighlighter =
 {
 	init: true,
 	dependency: typeof hljs === 'object',
-	selector: 'pre.rs-admin-js-blockcode, pre.rs-js-blockcode',
+	selector: 'pre.rs-admin-js-code, pre.rs-js-code',
 	options:
 	{
 		languages:

@@ -4,7 +4,7 @@ namespace Redaxscript;
 $preElement = new Html\Element();
 $preElement->init('pre',
 [
-	'class' => $admin ? 'rs-admin-js-blockcode rs-admin-box-blockcode' : 'rs-js-blockcode rs-box-blockcode'
+	'class' => $admin ? 'rs-admin-js-code rs-admin-code-default' : 'rs-js-code rs-box-blockcode'
 ]);
 
 echo $preElement->html(

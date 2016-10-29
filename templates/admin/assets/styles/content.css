@@ -11,7 +11,7 @@
 
 /* @section 1. blockcode */
 
-.rs-admin-box-blockcode
+.rs-admin-code-default
 {
 	background: gray(240);
 	border: 0.125rem solid gray(215);

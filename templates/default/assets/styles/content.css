@@ -91,20 +91,20 @@
 
 /* @section 3. quote */
 
-.rs-box-quote
+.rs-quote-default
 {
 	font: italic 1.25em/1.75em var(--rs-font-primary);
 }
 
 @media (--media-medium-min)
 {
-	.rs-box-quote
+	.rs-quote-default
 	{
 		margin: 1em 1em 1em 3em;
 		position: relative;
 	}
 
-	.rs-box-quote:before
+	.rs-quote-default:before
 	{
 		color: gray(0, 0.1);
 		content: '\201d';
@@ -115,9 +115,9 @@
 	}
 }
 
-/* @section 4. blockcode */
+/* @section 4. code */
 
-.rs-box-blockcode
+.rs-code-default
 {
 	background: var(--rs-color-tertiary);
 	color: gray(255);
@@ -126,7 +126,7 @@
 	padding: 1em;
 	white-space: pre-wrap;
 
-	& + .rs-box-blockcode
+	& + .rs-code-default
 	{
 		margin-top: 1em;
 	}
