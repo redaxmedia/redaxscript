@@ -132,6 +132,11 @@ class SystemStatus extends ViewAbstract
 	protected function _validateWarning()
 	{
 		$apacheModuleArray = $this->_registry->get('apacheModuleArray');
+		$testOsArray =
+		[
+			'linux',
+			'windows nt'
+		];
 		$testModuleArray =
 		[
 			'mod_deflate',
@@ -139,7 +144,7 @@ class SystemStatus extends ViewAbstract
 			'mod_rewrite'
 		];
 		$messageArray = [];
-		if ($this->_registry->get('phpOs') !== 'linux')
+		if (!in_array($this->_registry->get('phpOs'), $testOsArray))
 		{
 			$messageArray[] = $this->_language->get('php_os_unsupported');
 		}

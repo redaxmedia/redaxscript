@@ -138,6 +138,11 @@ class Status extends CommandAbstract
 	{
 		$pdoDriverArray = $this->_registry->get('pdoDriverArray');
 		$apacheModuleArray = $this->_registry->get('apacheModuleArray');
+		$testOsArray =
+		[
+			'linux',
+			'windows nt'
+		];
 		$testDriverArray =
 		[
 			'sqlite',
@@ -155,7 +160,7 @@ class Status extends CommandAbstract
 			'OS' =>
 			[
 				'value' => $this->_registry->get('phpOs'),
-				'status' => $this->_registry->get('phpOs') === 'linux' ? 1 : 0
+				'status' => in_array($this->_registry->get('phpOs'), $testOsArray) ? 1 : 0
 			],
 			'PHP' =>
 			[

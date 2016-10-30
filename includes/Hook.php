@@ -27,7 +27,7 @@ class Hook
 	 * @var string
 	 */
 
-	protected static $_namespace = 'Redaxscript\Modules\\';
+	protected static $_namespace = 'Redaxscript\Modules';
 
 	/**
 	 * array of installed and enabled modules
@@ -124,13 +124,13 @@ class Hook
 
 	public static function collect($event = null, $parameterArray = [])
 	{
-		$output = [];
+		$outputArray = [];
 
 		/* process modules */
 
 		foreach (self::$_moduleArray as $module)
 		{
-			$object = self::$_namespace . $module . '\\' . $module;
+			$object = self::$_namespace . '\\' . $module . '\\' . $module;
 			self::$_eventArray[$event][$module] = false;
 
 			/* method exists */
@@ -138,14 +138,14 @@ class Hook
 			if (method_exists($object, $event))
 			{
 				self::$_eventArray[$event][$module] = true;
-				$output = array_merge($output, call_user_func_array(
+				$outputArray = array_merge($outputArray, call_user_func_array(
 				[
 					$object,
 					$event
 				], $parameterArray));
 			}
 		}
-		return $output;
+		return $outputArray;
 	}
 
 	/**

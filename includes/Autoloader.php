@@ -27,12 +27,12 @@ class Autoloader
 	];
 
 	/**
-	 * file suffix
+	 * file extension
 	 *
 	 * @var string
 	 */
 
-	protected $_fileSuffix = '.php';
+	protected $_fileExtension = '.php';
 
 	/**
 	 * init the class
@@ -79,16 +79,37 @@ class Autoloader
 	{
 		foreach ($this->_autoloadArray as $namespace => $directory)
 		{
-			$file = str_replace($namespace, null, $className);
-			$file = str_replace('\\', '/', $file);
-			$file .= $this->_fileSuffix;
-
-			/* include as needed */
-
+			$file = $this->_getFile($className, $namespace);
 			if (file_exists($directory . '/' . $file))
 			{
 				include_once($directory . '/' . $file);
 			}
 		}
+	}
+
+	/**
+	 * get the file
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $className name of the class
+	 * @param string $namespace
+	 *
+	 * @return string
+	 */
+
+	protected function _getFile($className = null, $namespace = null)
+	{
+		$searchArray =
+		[
+			$namespace,
+			'\\'
+		];
+		$replaceArray =
+		[
+			null,
+			'/'
+		];
+		return str_replace($searchArray, $replaceArray, $className) . $this->_fileExtension;
 	}
 }

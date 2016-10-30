@@ -100,7 +100,7 @@ class Parser
 		'module' =>
 		[
 			'method' => '_parseModule',
-			'namespace' => 'Redaxscript\Modules\\',
+			'namespace' => 'Redaxscript\Modules',
 			'position' => null,
 			'search' =>
 			[
@@ -397,7 +397,7 @@ class Parser
 
 		foreach ($partArray as $key => $value)
 		{
-			$object = $this->_tagArray['module']['namespace'] . $value . '\\' . $value;
+			$object = $this->_tagArray['module']['namespace'] . '\\' . $value . '\\' . $value;
 			if ($key % 2)
 			{
 				$partArray[$key] = null;
@@ -409,7 +409,7 @@ class Parser
 				{
 					foreach ($json as $module => $parameterArray)
 					{
-						$object = $this->_tagArray['module']['namespace'] . $module . '\\' . $module;
+						$object = $this->_tagArray['module']['namespace'] . '\\' . $module . '\\' . $module;
 
 						/* method exists */
 
