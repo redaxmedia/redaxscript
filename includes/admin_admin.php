@@ -181,6 +181,13 @@ function admin_panel_list()
 	{
 		$notificationSystemArray =
 		[
+			'error' =>
+			[
+				Redaxscript\Language::get('system') =>
+				[
+					!is_dir('cache') ? Redaxscript\Language::get('directory_not_found') . Redaxscript\Language::get('colon') . ' cache ' . Redaxscript\Language::get('point') : null
+				]
+			],
 			'warning' =>
 			[
 				Redaxscript\Language::get('system') =>
@@ -195,7 +202,7 @@ function admin_panel_list()
 	$notificationModuleArray = Redaxscript\Hook::collect('adminPanelNotification');
 	if ($notificationModuleArray)
 	{
-		$notificationArray = array_merge($notificationModuleArray, $notificationSystemArray);
+		$notificationArray = array_merge_recursive($notificationModuleArray, $notificationSystemArray);
 	}
 	else
 	{
@@ -206,6 +213,7 @@ function admin_panel_list()
 		$outputNotification .= '<li class="rs-admin-item-panel-notification rs-admin-item-note rs-admin-is-' . $typeKey . '">';
 		foreach ($typeValue as $moduleKey => $moduleValue)
 		{
+			$moduleLastKey = null;
 			foreach ($moduleValue as $value)
 			{
 				if ($value)

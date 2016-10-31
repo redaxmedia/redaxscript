@@ -167,7 +167,7 @@ class Hook
 
 		foreach (self::$_moduleArray as $module)
 		{
-			$object = self::$_namespace . $module . '\\' . $module;
+			$object = self::$_namespace . '\\' . $module . '\\' . $module;
 			self::$_eventArray[$event][$module] = false;
 
 			/* method exists */

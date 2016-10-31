@@ -203,8 +203,12 @@
 
 	& .rs-admin-title-panel-notification
 	{
-		margin-bottom: 0.25em;
 		text-transform: uppercase;
+	}
+
+	& .rs-admin-text-panel-notification + .rs-admin-title-panel-notification
+	{
+		margin-top: 0.5em;
 	}
 
 	& .rs-admin-link-panel-notification,
