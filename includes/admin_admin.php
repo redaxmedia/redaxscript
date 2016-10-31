@@ -210,19 +210,19 @@ function admin_panel_list()
 	}
 	foreach ($notificationArray as $typeKey => $typeValue)
 	{
-		$outputNotification .= '<li class="rs-admin-item-panel-notification rs-admin-item-note rs-admin-is-' . $typeKey . '">';
-		foreach ($typeValue as $moduleKey => $moduleValue)
+		foreach ($typeValue as $notificationKey => $notificationValue)
 		{
-			$moduleLastKey = null;
-			foreach ($moduleValue as $value)
+			if (array_filter($notificationValue))
 			{
-				if ($value)
+				$outputNotification .= '<li class="rs-admin-item-panel-notification rs-admin-item-note rs-admin-is-' . $typeKey . '">';
+				$moduleLastKey = null;
+				foreach ($notificationValue as $value)
 				{
-					if ($moduleLastKey !== $moduleKey)
+					if ($moduleLastKey !== $notificationKey)
 					{
-						$outputNotification .= '<h3 class="rs-admin-title-panel-notification">' . $moduleKey . '</h3>';
+						$outputNotification .= '<h3 class="rs-admin-title-panel-notification">' . $notificationKey . '</h3>';
 					}
-					$moduleLastKey = $moduleKey;
+					$moduleLastKey = $notificationKey;
 					if (array_key_exists('text', $value) && array_key_exists('attr', $value))
 					{
 						$notificationHasArray[$typeKey] = 'rs-admin-has-' . $typeKey;
@@ -235,9 +235,9 @@ function admin_panel_list()
 					}
 					$counterNotification++;
 				}
+				$outputNotification .= '</li>';
 			}
 		}
-		$outputNotification .= '</li>';
 	}
 	uksort($notificationHasArray, function($key1, $key2) use ($orderArray)
 	{
