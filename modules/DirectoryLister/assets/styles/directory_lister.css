@@ -55,7 +55,8 @@
 		width: 65%;
 	}
 
-	.rs-link-directory-lister, .rs-text-directory-lister
+	.rs-link-directory-lister,
+	.rs-text-directory-lister
 	{
 		display: inline-block;
 		vertical-align: top;

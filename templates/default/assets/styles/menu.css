@@ -73,7 +73,7 @@
 
 		& a,
 		& span
-	  	{
+		{
 			background: var(--rs-color-primary);
 			cursor: pointer;
 

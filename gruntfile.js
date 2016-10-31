@@ -517,6 +517,24 @@ module.exports = function (grunt)
 					]
 				}
 			},
+			stylefmt:
+			{
+				src:
+				[
+					'assets/styles/*.css',
+					'!assets/styles/_query.css',
+					'!assets/styles/normalize.css',
+					'templates/*/assets/styles/*.css',
+					'modules/*/assets/styles/*.css'
+				],
+				options:
+				{
+					processors:
+					[
+						require('stylefmt')
+					]
+				}
+			},
 			colorguard:
 			{
 				src:
@@ -833,6 +851,10 @@ module.exports = function (grunt)
 	grunt.registerTask('stylelint',
 	[
 		'postcss:stylelint'
+	]);
+	grunt.registerTask('stylefmt',
+	[
+		'postcss:stylefmt'
 	]);
 	grunt.registerTask('colorguard',
 	[
