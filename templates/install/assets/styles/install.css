@@ -20,6 +20,11 @@
 	src: url('../../../default/dist/fonts/icon.woff2') format('woff2'), url('../../../default/dist/fonts/icon.woff') format('woff');
 }
 
+.rs-fn-clearfix
+{
+	@extend %fn-clearfix;
+}
+
 .rs-install-body
 {
 	background: var(--rs-color-tertiary);

@@ -340,6 +340,7 @@ module.exports = function (grunt)
 				src:
 				[
 					'assets/styles/_query.css',
+					'assets/styles/_clearfix.css',
 					'templates/default/assets/styles/_variable.css',
 					'templates/default/assets/styles/_button.css',
 					'templates/default/assets/styles/_icon.css',
