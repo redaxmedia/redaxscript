@@ -99,7 +99,7 @@ class HookTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertArrayHasKey('info', $actualArray);
+		$this->assertEquals($actualArray['info']['Test dummy'][0], 'test');
 	}
 
 	/**
