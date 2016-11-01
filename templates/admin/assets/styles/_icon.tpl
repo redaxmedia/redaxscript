@@ -3,7 +3,7 @@
 @font-face
 {
 	font-family: var(--rs-admin-font-icon);
-	src: url('../fonts/icon.woff2') format('woff2'), url('../fonts/icon.woff') format('woff');
+	src: url('../../../../templates/admin/dist/fonts/icon.woff2') format('woff2'), url('../../../../templates/admin/dist/fonts/icon.woff') format('woff');
 }
 <% for (var i in glyphs)
 {

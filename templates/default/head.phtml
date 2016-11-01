@@ -35,7 +35,8 @@
 	->appendFile('templates/default/dist/styles/default.min.css')
 	->rewrite(
 	[
-		'url(../fonts' => 'url(../../templates/default/dist/fonts'
+		'../../../../templates' => '../../templates',
+		'../../../../modules' => '../../modules'
 	])
 	->concat(); ?>
 

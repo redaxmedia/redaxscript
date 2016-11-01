@@ -48,11 +48,7 @@ class DirectoryLister extends Config
 		$link = Head\Link::getInstance();
 		$link
 			->init()
-			->appendFile('modules/DirectoryLister/assets/styles/directory_lister.css')
-			->rewrite(
-			[
-				'url(\'modules/DirectoryLister/assets' => 'url(\'../../modules/DirectoryLister/assets'
-			]);
+			->appendFile('modules/DirectoryLister/assets/styles/directory_lister.css');
 	}
 
 	/**
@@ -101,7 +97,7 @@ class DirectoryLister extends Config
 
 		/* handle query */
 
-		$directoryQuery = Request::getQuery('d');
+		$directoryQuery = Request::getQuery('directory');
 		$directoryQueryArray = explode('/', $directoryQuery);
 
 		/* parent directory */
@@ -151,7 +147,7 @@ class DirectoryLister extends Config
 	protected static function _renderParent($rootDirectory = null, $parentDirectory = null, $optionArray = [])
 	{
 		$outputItem = null;
-		$queryString = $rootDirectory !== $parentDirectory ? '&d=' . $parentDirectory : null;
+		$queryString = $rootDirectory !== $parentDirectory ? '&directory=' . $parentDirectory : null;
 
 		/* html elements */
 
@@ -167,7 +163,7 @@ class DirectoryLister extends Config
 		$outputItem .= $linkElement
 			->attr(
 			[
-				'href' => Registry::get('parameterRoute') . Registry::get('fullRoute') . $queryString. $optionArray['hash'],
+				'href' => Registry::get('parameterRoute') . Registry::get('fullRoute') . $queryString . $optionArray['hash'],
 				'title' => Language::get('directory_parent', '_directory_lister')
 			])
 			->addClass(self::$_configArray['className']['types']['directoryParent'])
@@ -236,7 +232,7 @@ class DirectoryLister extends Config
 					->copy()
 					->attr(
 					[
-						'href' => Registry::get('parameterRoute') . Registry::get('fullRoute') . '&d=' . $path . $optionArray['hash'],
+						'href' => Registry::get('parameterRoute') . Registry::get('fullRoute') . '&directory=' . $path . $optionArray['hash'],
 						'title' => Language::get('directory', '_directory_lister')
 					])
 					->addClass(self::$_configArray['className']['types']['directory'])
