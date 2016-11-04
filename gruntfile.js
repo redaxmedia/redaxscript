@@ -377,7 +377,7 @@ module.exports = function (grunt)
 					'templates/skeleton/assets/styles/table.css',
 					'templates/skeleton/assets/styles/typo.css'
 				],
-				dest: 'templates/skeleton/dist/styles/skeleton.css'
+				dest: 'templates/skeleton/dist/styles/skeleton.min.css'
 			},
 			modulePreview:
 			{
@@ -464,36 +464,6 @@ module.exports = function (grunt)
 							colormin: false,
 							zindex: false
 						})
-					]
-				}
-			},
-			templateSkeleton:
-			{
-				src:
-				[
-					'templates/skeleton/dist/styles/skeleton.css'
-				],
-				options:
-				{
-					processors:
-					[
-						require('postcss-custom-properties'),
-						require('postcss-custom-media'),
-						require('postcss-custom-selectors'),
-						require('postcss-nesting'),
-						require('postcss-extend'),
-						require('postcss-color-gray'),
-						require('postcss-color-function'),
-						require('autoprefixer')(
-						{
-							browsers: 'last 2 versions'
-						}),
-						require('postcss-discard-comments'),
-						require('postcss-discard-duplicates'),
-						require('postcss-discard-empty'),
-						require('postcss-discard-overridden'),
-						require('postcss-discard-unused'),
-						require('stylefmt')
 					]
 				}
 			},
@@ -920,7 +890,6 @@ module.exports = function (grunt)
 	[
 		'concat',
 		'postcss:base',
-		'postcss:templatesAndModules',
-		'postcss:templateSkeleton'
+		'postcss:templatesAndModules'
 	]);
 };
