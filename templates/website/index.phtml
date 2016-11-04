@@ -9,7 +9,8 @@
 		<?php echo Tag::partial(
 		[
 			'templates/admin/head.phtml',
-			'templates/skeleton/head.phtml'
+			'templates/default/head.phtml',
+			'templates/website/link.phtml'
 		]); ?>
 	</head>
 
@@ -18,11 +19,11 @@
 	<body class="rs-body">
 		<?php $body = Tag::partial(
 		[
-			'templates/skeleton/header.phtml',
-			'templates/skeleton/main.phtml',
-			'templates/skeleton/footer.phtml',
+			Tag::registry('fullRoute') ? 'templates/website/header.phtml' : null,
+			'templates/website/main.phtml',
+			Tag::registry('fullRoute') ? 'templates/default/footer.phtml' : null,
 			'templates/admin/script.phtml',
-			'templates/skeleton/script.phtml'
+			'templates/default/script.phtml'
 		]); ?>
 		<?php echo Tag::partial('templates/admin/panel.phtml'); ?>
 		<?php echo $body; ?>

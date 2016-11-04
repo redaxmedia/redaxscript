@@ -16,7 +16,14 @@
 	<!-- body -->
 
 	<body class="rs-body">
-		<?php $body = Tag::partial('templates/default/body.phtml'); ?>
+		<?php $body = Tag::partial(
+		[
+			'templates/default/header.phtml',
+			'templates/default/main.phtml',
+			'templates/default/footer.phtml',
+			'templates/admin/script.phtml',
+			'templates/default/script.phtml'
+		]); ?>
 		<?php echo Tag::partial('templates/admin/panel.phtml'); ?>
 		<?php echo $body; ?>
 	</body>

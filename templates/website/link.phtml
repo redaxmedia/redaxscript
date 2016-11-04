@@ -1,0 +1,12 @@
+<?php namespace Redaxscript\Template; ?>
+
+<!-- link -->
+
+<?php echo Tag::link()
+	->init('website')
+	->appendFile('templates/website/dist/styles/website.min.css')
+	->rewrite(
+	[
+		'../../../../templates' => '../../templates'
+	])
+	->concat(); ?>

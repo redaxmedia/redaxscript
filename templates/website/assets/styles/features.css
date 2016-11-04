@@ -1,0 +1,24 @@
+/**
+ * @tableofcontents
+ *
+ * 1. features
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. features */
+
+.rs-box-features
+{
+	background: gray(255);
+	margin: 0 2em;
+	padding: 2em;
+}
+
+.rs-box-extra + .rs-box-features
+{
+	margin-top: -4em;
+}

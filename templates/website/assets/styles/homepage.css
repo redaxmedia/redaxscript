@@ -1,0 +1,20 @@
+/**
+ * @tableofcontents
+ *
+ * 1. homepage
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. homepage */
+
+.rs-box-homepage
+{
+	background: var(--rs-color-tertiary);
+	color: gray(200);
+	padding: 2em 2em 6em;
+	text-align: center;
+}

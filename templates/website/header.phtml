@@ -1,0 +1,31 @@
+<?php namespace Redaxscript\Template; ?>
+
+<!-- header -->
+
+<header id="header" class="rs-header rs-has-menu">
+	<section class="rs-wrapper rs-fn-clearfix">
+
+		<div class="rs-box-header rs-fn-clearfix">
+
+			<!-- title -->
+
+			<?php if (Tag::setting('title')): ?>
+				<h1 class="rs-title-header">
+					<a href="<?php echo Tag::registry('root'); ?>">
+						<?php echo Tag::setting('title'); ?>
+					</a>
+				</h1>
+			<?php endif; ?>
+
+			<!-- description -->
+
+			<?php if (Tag::setting('description')): ?>
+				<span class="rs-text-header" title="<?php echo Tag::setting('description'); ?>"><?php echo Tag::setting('description'); ?></span>
+			<?php endif; ?>
+		</div>
+
+		<!-- menu -->
+
+		<?php echo Tag::partial('templates/website/menu.phtml'); ?>
+	</section>
+</header>

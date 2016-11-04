@@ -1,0 +1,17 @@
+/**
+ * @tableofcontents
+ *
+ * 1. general
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. general */
+
+.rs-body
+{
+	background: gray(215);
+}

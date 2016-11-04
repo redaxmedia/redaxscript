@@ -29,7 +29,7 @@
 	->init()
 	->append(['href' => Tag::registry('root') . '/' . Helper::getCanonical(), 'rel' => 'canonical'])
 	->appendFile('dist/styles/base.min.css')
-	->appendFile('templates/skeleton/dist/styles/skeleton.css')
+	->appendFile('templates/skeleton/dist/styles/skeleton.min.css')
 	->concat(); ?>
 
 <?php echo Tag::link()->init('admin'); ?>

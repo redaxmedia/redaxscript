@@ -22,6 +22,7 @@
 	border-radius: 0.125em;
 	display: flex;
 	font-size: 1.25em;
+	overflow: hidden;
 
 	/* @section 1.2 field */
 

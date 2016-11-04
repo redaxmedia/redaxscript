@@ -379,6 +379,17 @@ module.exports = function (grunt)
 				],
 				dest: 'templates/skeleton/dist/styles/skeleton.min.css'
 			},
+			templateWebsite:
+			{
+				src:
+				[
+					'templates/default/assets/styles/_variable.css',
+					'templates/website/assets/styles/features.css',
+					'templates/website/assets/styles/homepage.css',
+					'templates/website/assets/styles/layout.css'
+				],
+				dest: 'templates/website/dist/styles/website.min.css'
+			},
 			modulePreview:
 			{
 				src:
