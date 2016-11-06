@@ -16,7 +16,11 @@
 
 	<!-- body -->
 
-	<body class="rs-body">
+	<?php if (!Tag::registry('fullRoute')): ?>
+		<body class="rs-body-homepage">
+	<?php else: ?>
+		<body class="rs-body">
+	<?php endif; ?>
 		<?php $body = Tag::partial(
 		[
 			Tag::registry('fullRoute') ? 'templates/website/header.phtml' : null,

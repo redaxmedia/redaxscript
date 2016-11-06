@@ -335,4 +335,38 @@ class TagTest extends TestCaseAbstract
 
 		$this->assertEquals('utf-8', $actual);
 	}
+
+	/**
+	 * testArticleRaw
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testArticleRaw()
+	{
+		/* actual */
+
+		$actual = Template\Tag::articleRaw();
+
+		/* compare */
+
+		$this->assertInstanceOf('Redaxscript\Db', $actual);
+	}
+
+	/**
+	 * testExtraRaw
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testExtraRaw()
+	{
+		/* actual */
+
+		$actual = Template\Tag::extraRaw();
+
+		/* compare */
+
+		$this->assertInstanceOf('Redaxscript\Db', $actual);
+	}
 }

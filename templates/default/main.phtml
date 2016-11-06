@@ -7,10 +7,14 @@
 	<!-- teaser -->
 
 	<?php if (!Tag::registry('adminParameter')): ?>
-		<?php echo Tag::extra(
-		[
-			'filter' => 'teaser'
-		]); ?>
+		<?php echo Tag::extraRaw()
+			->where(
+			[
+				'alias' => 'teaser',
+				'category' => Tag::registry('categoryId')
+			])
+			->findOne()
+			->text; ?>
 	<?php endif; ?>
 
 	<!-- handle content error -->

@@ -11,7 +11,9 @@
 
 /* @section 1. general */
 
-.rs-body
+.rs-body-homepage
 {
 	background: gray(215);
+	color: var(--rs-color-tertiary);
+	font: 1em var(--rs-font-primary);
 }

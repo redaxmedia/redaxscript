@@ -18,7 +18,7 @@
 	padding: 2em;
 }
 
-.rs-box-extra + .rs-box-features
+.rs-box-homepage + .rs-box-features
 {
 	margin-top: -4em;
 }

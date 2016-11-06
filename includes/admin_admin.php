@@ -233,7 +233,10 @@ function admin_panel_list()
 						$notificationHasArray[$typeKey] = 'rs-admin-has-' . $typeKey;
 						$outputNotification .= '<span class="rs-admin-text-panel-notification">' . $value . '</span>';
 					}
-					$counterNotification++;
+					if (strlen($value))
+					{
+						$counterNotification++;
+					}
 				}
 				$outputNotification .= '</li>';
 			}

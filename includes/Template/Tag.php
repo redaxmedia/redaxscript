@@ -254,18 +254,13 @@ class Tag
 	 *
 	 * @since 2.3.0
 	 *
-	 * @param array $options
-	 *
 	 * @return string
 	 */
 
-	public static function content($options = null)
+	public static function content()
 	{
 		// @codeCoverageIgnoreStart
-		return self::_migrate('router',
-		[
-			$options
-		]);
+		return self::_migrate('router');
 		// @codeCoverageIgnoreEnd
 	}
 
@@ -274,19 +269,40 @@ class Tag
 	 *
 	 * @since 2.3.0
 	 *
-	 * @param array $optionArray
-	 *
 	 * @return string
 	 */
 
-	public static function extra($optionArray = [])
+	public static function extra()
 	{
 		// @codeCoverageIgnoreStart
-		return self::_migrate('extras',
-		[
-			$optionArray['filter']
-		]);
+		return self::_migrate('extras');
 		// @codeCoverageIgnoreEnd
+	}
+
+	/**
+	 * articleRaw
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return Db
+	 */
+
+	public static function articleRaw()
+	{
+		return Db::forTablePrefix('articles');
+	}
+
+	/**
+	 * extraRaw
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return Db
+	 */
+
+	public static function extraRaw()
+	{
+		return Db::forTablePrefix('extras');
 	}
 
 	/**

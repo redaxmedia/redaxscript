@@ -8,16 +8,17 @@
 
 <?php if (!Tag::registry('fullRoute')): ?>
 	<main class="rs-fn-clearfix">
-		<?php echo Tag::extra(
-		[
-			'filter' => 'homepage'
-		]); ?>
+		<?php echo Tag::extraRaw()
+			->where('alias', 'homepage')
+			->findOne()
+			->text; ?>
 
 		<!-- features -->
 
-		<div class="rs-box-features">
-			<?php echo $features->text; ?>
-		</div>
+		<?php echo Tag::articleRaw()
+			->where('alias', 'features')
+			->findOne()
+			->text; ?>
 	</main>
 
 <!-- else default -->

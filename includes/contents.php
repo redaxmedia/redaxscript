@@ -321,7 +321,10 @@ function extras($filter)
 
 	/* query result */
 
-	$result = $extras->whereIn('id', $id_array)->findArray();
+	if ($id_array)
+	{
+		$result = $extras->whereIn('id', $id_array)->findArray();
+	}
 
 	/* collect output */
 
