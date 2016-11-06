@@ -26,9 +26,9 @@ install:
 - gem install mime-types -v 2.6.2
 - gem install mailcatcher
 - nvm install 6
-- npm install --global ied
+- npm install --global yarn
 - npm install --global grunt-cli
-- ied install
+- yarn install
 
 before_script:
 - echo sendmail_path=/usr/bin/env catchmail --smtp-ip 127.0.0.1 --smtp-port 1025 -f test@test.com >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
