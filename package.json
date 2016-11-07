@@ -22,6 +22,7 @@
 		"grunt-contrib-concat": "1.0.1",
 		"grunt-contrib-jshint": "1.0.0",
 		"grunt-contrib-rename": "0.0.3",
+		"grunt-contrib-uglify": "2.0.0",
 		"grunt-contrib-watch": "1.0.0",
 		"grunt-diff-json": "0.1.3",
 		"grunt-htmlhint": "0.9.13",

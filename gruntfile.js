@@ -246,6 +246,45 @@ module.exports = function (grunt)
 				}
 			}
 		},
+		uglify:
+		{
+			base:
+			{
+				src:
+				[
+					'assets/scripts/dialog.js',
+					'assets/scripts/form.js',
+					'assets/scripts/interface.js',
+					'assets/scripts/misc.js'
+				],
+				dest: 'dist/scripts/base.min.js'
+			},
+			templateAdmin:
+			{
+				src:
+				[
+					'templates/admin/assets/scripts/alias.js',
+					'templates/admin/assets/scripts/panel.js'
+				],
+				dest: 'templates/admin/dist/scripts/admin.min.js'
+			},
+			templateConsole:
+			{
+				src:
+				[
+					'templates/console/assets/scripts/console.js'
+				],
+				dest: 'templates/console/dist/scripts/console.min.js'
+			},
+			templateInstall:
+			{
+				src:
+				[
+					'templates/install/assets/scripts/install.js'
+				],
+				dest: 'templates/install/dist/scripts/install.min.js'
+			}
+		},
 		concat:
 		{
 			base:
@@ -889,7 +928,8 @@ module.exports = function (grunt)
 	grunt.registerTask('build',
 	[
 		'build-font',
-		'build-css'
+		'build-css',
+		'build-js'
 	]);
 	grunt.registerTask('build-font',
 	[
@@ -902,5 +942,12 @@ module.exports = function (grunt)
 		'concat',
 		'postcss:base',
 		'postcss:templatesAndModules'
+	]);
+	grunt.registerTask('build-js',
+	[
+		'uglify:base',
+		'uglify:templateAdmin',
+		'uglify:templateConsole',
+		'uglify:templateInstall'
 	]);
 };
