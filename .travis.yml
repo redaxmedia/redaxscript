@@ -26,7 +26,7 @@ install:
 - gem install mime-types -v 2.6.2
 - gem install mailcatcher
 - nvm install 6
-- npm install --global ied
+- npm install --global ied@2.3.3
 - npm install --global rxjs@5.0.0-rc.1
 - npm install --global grunt-cli
 - ied install
