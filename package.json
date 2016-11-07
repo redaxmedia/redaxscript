@@ -44,7 +44,7 @@
 		"postcss-extend": "1.0.5",
 		"postcss-nesting": "2.3.1",
 		"postcss-reporter": "1.4.1",
-		"rxjs": "rxjs@5.0.0-rc.1",
+		"rxjs": "5.0.0-rc.1",
 		"stylefmt": "4.3.1",
 		"stylelint": "7.5.0"
 	},
