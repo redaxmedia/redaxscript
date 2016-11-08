@@ -9,12 +9,124 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. homepage */
+/* @section 1. box */
 
 .rs-box-homepage
 {
 	background: var(--rs-color-tertiary);
+	box-sizing: border-box;
 	color: gray(200);
+	height: 90vh;
+	min-height: 32em;
 	padding: 2em 2em 6em;
 	text-align: center;
 }
+
+@media (--media-medium-min)
+{
+	.rs-box-homepage
+	{
+		align-items: center;
+		display: flex;
+		font-size: 1.25em;
+		justify-content: center;
+	}
+}
+
+/* @section 2. title */
+
+.rs-title-header
+{
+	&:before
+	{
+		background: url('../../assets/images/redaxscript.svg') no-repeat center center / 55%, linear-gradient(to top, gray(226), gray(255));
+		border-radius: 0.05em;
+		content: '';
+		display: inline-block;
+		height: 1.5em;
+		width: 1.5em;
+	}
+
+	& a
+	{
+		display: none;
+	}
+}
+
+@media (--media-medium-min)
+{
+	.rs-title-header:before
+	{
+		height: 2.5em;
+		width: 2.5em;
+	}
+}
+
+/* @section 3. text */
+
+.rs-text-header
+{
+	display: block;
+	font-size: 1.25em;
+	font-weight: 300;
+	margin-bottom: 3em;
+	margin-top: 1em;
+}
+
+/* @section 4. link */
+
+.rs-wrapper-link-header
+{
+	margin-top: 1em;
+
+	& a
+	{
+		border-bottom: 0.125em solid var(--rs-color-secondary);
+		display: inline-block;
+		margin: 0 1em;
+		padding: 0.125em;
+		position: relative;
+
+		&:before
+		{
+			position: absolute;
+			right: 100%;
+			top: 0.25em;
+		}
+	}
+}
+
+/* @section 5. button */
+
+.rs-button-default,
+.rs-button-light
+{
+	font-size: 1.375em;
+	font-weight: 300;
+	margin: 0.5em 0;
+	min-width: 8em;
+	padding: 0 0.5em;
+}
+
+.rs-button-light
+{
+	@extend %rs-button;
+	background: gray(226);
+	color: var(--rs-color-tertiary);
+
+	&:hover
+	{
+		background: gray(255);
+		color: var(--rs-color-tertiary);
+	}
+}
+
+@media (--media-medium-min)
+{
+	.rs-button-default,
+	.rs-button-light
+	{
+		margin: 1em;
+	}
+}
+

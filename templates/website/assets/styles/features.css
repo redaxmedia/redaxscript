@@ -9,16 +9,97 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. features */
+/* @section 1. title */
 
-.rs-box-features
+.rs-title-feature
 {
-	background: gray(255);
-	margin: 0 2em;
-	padding: 2em;
+	border: none;
+	color: var(--rs-color-primary);
+	font-size: 2em;
+	font-weight: 300;
+	margin: 0.25em 0 1em;
+	padding: 0;
+	text-align: center;
+	text-transform: uppercase;
 }
 
-.rs-box-homepage + .rs-box-features
+@media (--media-medium-min)
 {
-	margin-top: -4em;
+	.rs-title-feature
+	{
+		font-size: 3em;
+	}
+}
+
+/* @section 2. title sub */
+
+.rs-title-sub-feature
+{
+	color: var(--rs-color-primary);
+	font-size: 1.5em;
+	font-weight: 300;
+	position: relative;
+
+	&:before
+	{
+		font-size: 2em;
+		line-height: 1em;
+		position: absolute;
+		right: 101%;
+		top: -0.125em;
+	}
+}
+
+/* @section 3. box */
+
+.rs-box-feature
+{
+	background: gray(255);
+	border-radius: 0.25em;
+	border-top: 0.25em solid var(--rs-color-primary);
+	box-sizing: border-box;
+	margin-bottom: 3em;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0 2em 2em;
+	position: relative;
+}
+
+.rs-box-homepage + .rs-box-feature
+{
+	margin-top: -3em;
+}
+
+@media (--media-medium-min)
+{
+	.rs-box-feature
+	{
+		width: 80%;
+	}
+}
+
+/* @section 4. list */
+
+.rs-list-feature li
+{
+	box-sizing: border-box;
+	margin-bottom: 2em;
+	padding-left: 3em;
+}
+
+@media (--media-medium-min)
+{
+	.rs-list-feature
+	{
+		display: flex;
+		flex-wrap: wrap;
+		font-size: 1.25em;
+		justify-content: center;
+
+		& li
+		{
+			padding: 0 1em 0 4em;
+			width: 50%;
+		}
+	}
 }

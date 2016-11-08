@@ -383,7 +383,9 @@ module.exports = function (grunt)
 			{
 				src:
 				[
+					'assets/styles/_query.css',
 					'templates/default/assets/styles/_variable.css',
+					'templates/default/assets/styles/_button.css',
 					'templates/website/assets/styles/features.css',
 					'templates/website/assets/styles/homepage.css',
 					'templates/website/assets/styles/layout.css'
@@ -790,6 +792,18 @@ module.exports = function (grunt)
 					'build'
 				]
 			},
+			css:
+			{
+				files:
+				[
+					'assets/styles/*.css',
+					'templates/**/assets/styles/*.css'
+				],
+				tasks:
+				[
+					'css'
+				]
+			},
 			phpunit:
 			{
 				files:
@@ -889,6 +903,10 @@ module.exports = function (grunt)
 	grunt.registerTask('build',
 	[
 		'build-font',
+		'build-css'
+	]);
+	grunt.registerTask('css',
+	[
 		'build-css'
 	]);
 	grunt.registerTask('build-font',
