@@ -12,3 +12,101 @@
 	font-family: var(--rs-website-font-icon);
 	font-weight: normal;
 }
+
+%rs-website-icon-cruise
+{
+	content: '\f102';
+	font-family: var(--rs-website-font-icon);
+	font-weight: normal;
+}
+
+%rs-website-icon-flask
+{
+	content: '\f103';
+	font-family: var(--rs-website-font-icon);
+	font-weight: normal;
+}
+
+%rs-website-icon-internet
+{
+	content: '\f104';
+	font-family: var(--rs-website-font-icon);
+	font-weight: normal;
+}
+
+%rs-website-icon-paper-pencil
+{
+	content: '\f105';
+	font-family: var(--rs-website-font-icon);
+	font-weight: normal;
+}
+
+%rs-website-icon-pencil
+{
+	content: '\f106';
+	font-family: var(--rs-website-font-icon);
+	font-weight: normal;
+}
+
+%rs-website-icon-rocket-ship
+{
+	content: '\f107';
+	font-family: var(--rs-website-font-icon);
+	font-weight: normal;
+}
+
+%rs-website-icon-statistics
+{
+	content: '\f108';
+	font-family: var(--rs-website-font-icon);
+	font-weight: normal;
+}
+
+%rs-website-icon-database
+{
+	content: '\f109';
+	font-family: var(--rs-website-font-icon);
+	font-weight: normal;
+}
+
+%rs-website-icon-html
+{
+	content: '\f10a';
+	font-family: var(--rs-website-font-icon);
+	font-weight: normal;
+}
+
+%rs-website-icon-layers
+{
+	content: '\f10b';
+	font-family: var(--rs-website-font-icon);
+	font-weight: normal;
+}
+
+%rs-website-icon-paper-plane
+{
+	content: '\f10c';
+	font-family: var(--rs-website-font-icon);
+	font-weight: normal;
+}
+
+%rs-website-icon-responsive
+{
+	content: '\f10d';
+	font-family: var(--rs-website-font-icon);
+	font-weight: normal;
+}
+
+%rs-website-icon-search
+{
+	content: '\f10e';
+	font-family: var(--rs-website-font-icon);
+	font-weight: normal;
+}
+
+%rs-website-icon-stopwatch
+{
+	content: '\f10f';
+	font-family: var(--rs-website-font-icon);
+	font-weight: normal;
+}

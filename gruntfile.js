@@ -607,7 +607,22 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'node_modules/redaxscript-flaticon/flaticon/atom.svg'
+					'node_modules/redaxscript-flaticon/flaticon/atom.svg',
+					'node_modules/redaxscript-flaticon/flaticon/cruise.svg',
+					'node_modules/redaxscript-flaticon/flaticon/flask.svg',
+					'node_modules/redaxscript-flaticon/flaticon/internet.svg',
+					'node_modules/redaxscript-flaticon/flaticon/paper-pencil.svg',
+					'node_modules/redaxscript-flaticon/flaticon/pencil.svg',
+					'node_modules/redaxscript-flaticon/flaticon/rocket-ship.svg',
+					'node_modules/redaxscript-flaticon/flaticon/statistics.svg',
+					//'node_modules/redaxscript-flaticon/flaticon/command-line.svg',
+					'node_modules/redaxscript-flaticon/flaticon/database.svg',
+					'node_modules/redaxscript-flaticon/flaticon/html.svg',
+					'node_modules/redaxscript-flaticon/flaticon/layers.svg',
+					'node_modules/redaxscript-flaticon/flaticon/paper-plane.svg',
+					'node_modules/redaxscript-flaticon/flaticon/responsive.svg',
+					'node_modules/redaxscript-flaticon/flaticon/search.svg',
+					'node_modules/redaxscript-flaticon/flaticon/stopwatch.svg'
 				],
 				dest: 'templates/website/dist/fonts',
 				options:
