@@ -41,7 +41,7 @@
 }
 
 /* @section 1.2 title */
-/* todo: do this at the end: move this to the default template (branding.css) and use the look for the install.php too*/
+/* todo: do this at the end: move this to the default template (branding.css) and use the look for the install.php too */
 /* todo: rename to rs-title-branding */
 .rs-title-header
 {
@@ -55,14 +55,14 @@
 		width: 1.5em;
 	}
 
-	/* todo: why display none? remove the link from html*/
+	/* todo: why display none? remove the link from html */
 	& a
 	{
 		display: none;
 	}
 }
 
-/*todo: do this in combination with the homepage layout class */
+/* todo: do this in combination with the homepage layout class */
 @media (--media-medium-min)
 {
 	.rs-title-header:before
@@ -84,7 +84,7 @@
 }
 
 /* @section 1.4 link */
-/*todo: rename to rs-wrapper-homepage */
+/* todo: rename to rs-wrapper-homepage */
 .rs-wrapper-link-header
 {
 	margin-top: 1em;
@@ -107,8 +107,8 @@
 }
 
 /* @section 1.5 button */
-/*todo: do this in combination with the homepage layout class */
-/*todo: use the rs-is-large class instead of countless moding of font-size, margin and  padding */
+/* todo: do this in combination with the homepage layout class */
+/* todo: use the rs-is-large class instead of countless moding of font-size, margin and  padding */
 .rs-button-default,
 .rs-button-light
 {
@@ -131,7 +131,7 @@
 		color: var(--rs-color-tertiary);
 	}
 }
-/*todo: think about adding margin: 1em to the initial styling*/
+/* todo: think about adding margin: 1em to the initial styling */
 @media (--media-medium-min)
 {
 	.rs-button-default,

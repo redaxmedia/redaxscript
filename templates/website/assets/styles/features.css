@@ -8,6 +8,7 @@
  *    1.4 list
  * 2. query
  *    2.1 medium min
+ * 3. logic
  *
  * @since 3.0.0
  *
@@ -19,8 +20,8 @@
 
 /* @section 1.1 title */
 
-/*todo: use var(rs-font-accent) and gray() everywhere */
-/*todo: add margin-top: 1em; and margin-bottom: 1em */
+/* todo: use var(rs-font-accent) and gray() everywhere */
+/* todo: add margin-top: 1em; and margin-bottom: 1em */
 .rs-title-feature
 {
 	border: none;
@@ -58,7 +59,7 @@
 }
 
 /* @section 1.3 box */
-/*todo: please remove the border-radius - don't like */
+/* todo: please remove the border-radius - don't like */
 .rs-box-feature
 {
 	background: gray(255);
@@ -90,7 +91,7 @@
 
 /* @section 1.4 list */
 
-/*todo: rename to rs-wrapper-feature + add new section */
+/* todo: rename to rs-wrapper-feature + add new section */
 .rs-wrapper-list-feature
 {
 	margin-top: 3em;
@@ -140,7 +141,7 @@
 	}
 }
 
-/* @section 6. logic */
+/* @section 3. logic */
 
 /* put this section to the top of the file */
 .rs-fn-status-feature
