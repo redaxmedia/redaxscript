@@ -20,6 +20,7 @@
 /* @section 1.1 title */
 
 /*todo: use var(rs-font-accent) and gray() everywhere */
+/*todo: add margin-top: 1em; and margin-bottom: 1em */
 .rs-title-feature
 {
 	border: none;
