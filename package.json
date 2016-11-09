@@ -15,7 +15,7 @@
 	},
 	"devDependencies":
 	{
-		"autoprefixer": "6.5.1",
+		"autoprefixer": "6.5.2",
 		"cssnano": "3.8.0",
 		"colorguard": "1.2.0",
 		"grunt": "1.0.1",
@@ -32,7 +32,7 @@
 		"grunt-jsonlint": "1.1.0",
 		"grunt-phpcs": "0.4.0",
 		"grunt-postcss": "0.8.0",
-		"grunt-shell": "2.0.0",
+		"grunt-shell": "2.1.0",
 		"grunt-svgmin": "4.0.0",
 		"grunt-webfont": "1.5.0",
 		"load-grunt-tasks": "3.5.2",
@@ -45,7 +45,6 @@
 		"postcss-extend": "1.0.5",
 		"postcss-nesting": "2.3.1",
 		"postcss-reporter": "1.4.1",
-		"rxjs": "5.0.0-rc.1",
 		"stylefmt": "4.3.1",
 		"stylelint": "7.5.0"
 	},
