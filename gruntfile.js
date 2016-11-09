@@ -386,6 +386,8 @@ module.exports = function (grunt)
 					'assets/styles/_query.css',
 					'templates/default/assets/styles/_variable.css',
 					'templates/default/assets/styles/_button.css',
+					'templates/website/assets/styles/_variable.css',
+					'templates/website/assets/styles/_icon.css',
 					'templates/website/assets/styles/features.css',
 					'templates/website/assets/styles/homepage.css',
 					'templates/website/assets/styles/layout.css'
@@ -601,6 +603,36 @@ module.exports = function (grunt)
 					template: 'templates/default/assets/styles/_icon.tpl'
 				}
 			},
+			templateWebsite:
+			{
+				src:
+				[
+					'node_modules/redaxscript-flaticon/flaticon/atom.svg',
+					'node_modules/redaxscript-flaticon/flaticon/cruise.svg',
+					'node_modules/redaxscript-flaticon/flaticon/flask.svg',
+					'node_modules/redaxscript-flaticon/flaticon/internet.svg',
+					'node_modules/redaxscript-flaticon/flaticon/paper-pencil.svg',
+					'node_modules/redaxscript-flaticon/flaticon/pencil.svg',
+					'node_modules/redaxscript-flaticon/flaticon/rocket-ship.svg',
+					'node_modules/redaxscript-flaticon/flaticon/statistics.svg',
+					//'node_modules/redaxscript-flaticon/flaticon/command-line.svg',
+					'node_modules/redaxscript-flaticon/flaticon/database.svg',
+					'node_modules/redaxscript-flaticon/flaticon/html.svg',
+					'node_modules/redaxscript-flaticon/flaticon/layers.svg',
+					'node_modules/redaxscript-flaticon/flaticon/paper-plane.svg',
+					'node_modules/redaxscript-flaticon/flaticon/responsive.svg',
+					'node_modules/redaxscript-flaticon/flaticon/search.svg',
+					'node_modules/redaxscript-flaticon/flaticon/stopwatch.svg'
+				],
+				dest: 'templates/website/dist/fonts',
+				options:
+				{
+					destCss: 'templates/website/assets/styles',
+					template: 'templates/website/assets/styles/_icon.tpl',
+					codepoints: null,
+					rename: null
+				}
+			},
 			options:
 			{
 				font: 'icon',
@@ -712,7 +744,7 @@ module.exports = function (grunt)
 		},
 		rename:
 		{
-			templateAdmin:
+			iconAdmin:
 			{
 				src:
 				[
@@ -720,13 +752,21 @@ module.exports = function (grunt)
 				],
 				dest: 'templates/admin/assets/styles/_icon.css'
 			},
-			templateDefault:
+			iconDefault:
 			{
 				src:
 				[
 					'templates/default/assets/styles/icon.tpl'
 				],
 				dest: 'templates/default/assets/styles/_icon.css'
+			},
+			iconWebsite:
+			{
+				src:
+				[
+					'templates/website/assets/styles/icon.tpl'
+				],
+				dest: 'templates/website/assets/styles/_icon.css'
 			}
 		},
 		img:
@@ -912,8 +952,7 @@ module.exports = function (grunt)
 	grunt.registerTask('build-font',
 	[
 		'webfont',
-		'rename:templateAdmin',
-		'rename:templateDefault'
+		'rename'
 	]);
 	grunt.registerTask('build-css',
 	[
