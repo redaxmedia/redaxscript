@@ -15,13 +15,14 @@
 	},
 	"devDependencies":
 	{
-		"autoprefixer": "6.5.1",
+		"autoprefixer": "6.5.2",
 		"cssnano": "3.8.0",
 		"colorguard": "1.2.0",
 		"grunt": "1.0.1",
 		"grunt-contrib-concat": "1.0.1",
 		"grunt-contrib-jshint": "1.0.0",
 		"grunt-contrib-rename": "0.0.3",
+		"grunt-contrib-uglify": "2.0.0",
 		"grunt-contrib-watch": "1.0.0",
 		"grunt-diff-json": "0.1.3",
 		"grunt-htmlhint": "0.9.13",
@@ -31,7 +32,7 @@
 		"grunt-jsonlint": "1.1.0",
 		"grunt-phpcs": "0.4.0",
 		"grunt-postcss": "0.8.0",
-		"grunt-shell": "2.0.0",
+		"grunt-shell": "2.1.0",
 		"grunt-svgmin": "4.0.0",
 		"grunt-webfont": "1.5.0",
 		"load-grunt-tasks": "3.5.2",
@@ -43,8 +44,12 @@
 		"postcss-custom-selectors": "3.0.0",
 		"postcss-extend": "1.0.5",
 		"postcss-nesting": "2.3.1",
+<<<<<<< HEAD
 		"postcss-reporter": "1.4.1",
 		"redaxscript-flaticon": "*",
+=======
+		"postcss-reporter": "2.0.0",
+>>>>>>> master
 		"stylefmt": "4.3.1",
 		"stylelint": "7.5.0"
 	},

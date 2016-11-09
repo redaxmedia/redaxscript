@@ -3,7 +3,6 @@
 <?php if (Tag::registry('loggedIn') === Tag::registry('token') && Tag::registry('firstParameter') !== 'logout'): ?>
 	<?php Tag::script()
 		->init('foot')
-		->appendFile('templates/admin/assets/scripts/alias.js')
-		->appendFile('templates/admin/assets/scripts/panel.js');
+		->appendFile('templates/admin/dist/scripts/admin.min.js');
 	?>
 <?php endif; ?>
