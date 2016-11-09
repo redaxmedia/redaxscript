@@ -44,12 +44,8 @@
 		"postcss-custom-selectors": "3.0.0",
 		"postcss-extend": "1.0.5",
 		"postcss-nesting": "2.3.1",
-<<<<<<< HEAD
-		"postcss-reporter": "1.4.1",
-		"redaxscript-flaticon": "*",
-=======
 		"postcss-reporter": "2.0.0",
->>>>>>> master
+		"redaxscript-flaticon": "*",
 		"stylefmt": "4.3.1",
 		"stylelint": "7.5.0"
 	},
