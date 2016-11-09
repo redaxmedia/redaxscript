@@ -46,7 +46,7 @@
 {
 	&:before
 	{
-		background: url('../../assets/images/redaxscript.svg') no-repeat center center / 55%, linear-gradient(to top, gray(226), gray(255));
+		background: url('../../../../templates/default/assets/images/redaxscript.svg') no-repeat center center / 55%, linear-gradient(to top, gray(226), gray(255));
 		border-radius: 0.05em;
 		content: '';
 		display: inline-block;
