@@ -1,0 +1,41 @@
+<?php namespace Redaxscript\Template; ?>
+
+<?php $rewriteRoute = Tag::registry('rewriteRoute'); ?>
+
+<?php foreach ($navigationArray as $categoryArray): ?>
+
+	<!-- title -->
+
+	<h3 class="rs-title-extra"><?php echo $categoryArray['title']; ?></h3>
+
+	<!-- box -->
+
+	<div class="rs-box-extra">
+		<ul class="rs-list-sidebar">
+
+			<!-- children -->
+
+			<?php if ($categoryArray['children']): ?>
+				<ul class="rs-list-children">
+					<?php foreach ($categoryArray['children'] as $subArray): ?>
+						<li>
+							<a href="<?php echo $rewriteRoute . $subArray['route']; ?>"><?php echo $subArray['title']; ?></a>
+
+							<!-- children -->
+
+							<?php if ($subArray['children']): ?>
+								<ul class="rs-list-children">
+									<?php foreach ($subArray['children'] as $articleArray): ?>
+										<li>
+											<a href="<?php echo $rewriteRoute . $articleArray['route']; ?>"><?php echo $articleArray['title']; ?></a>
+										</li>
+									<?php endforeach; ?>
+								</ul>
+							<?php endif; ?>
+						</li>
+					<?php endforeach; ?>
+				</ul>
+			<?php endif; ?>
+		</ul>
+	</div>
+<?php endforeach; ?>
