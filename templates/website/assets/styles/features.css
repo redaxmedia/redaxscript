@@ -15,12 +15,8 @@
 {
 	border: none;
 	color: var(--rs-color-primary);
-	font-size: 2em;
-	font-weight: 300;
-	margin: 0.25em 0 1em;
-	padding: 0;
-	text-align: center;
-	text-transform: uppercase;
+	font: 2.5em Pacifico, arial, sans-serif;
+	margin-bottom: 0.5em;
 }
 
 @media (--media-medium-min)
@@ -61,30 +57,54 @@
 	margin-bottom: 3em;
 	margin-left: auto;
 	margin-right: auto;
+	overflow: hidden;
 	padding: 0 2em 2em;
 	position: relative;
+	text-align: center;
 }
 
 .rs-box-homepage + .rs-box-feature
 {
-	margin-top: -3em;
+	margin-top: -4em;
 }
 
 @media (--media-medium-min)
 {
 	.rs-box-feature
 	{
+		font-size: 1.25em;
 		width: 80%;
 	}
 }
 
 /* @section 4. list */
 
-.rs-list-feature li
+.rs-wrapper-list-feature
 {
-	box-sizing: border-box;
-	margin-bottom: 2em;
-	padding-left: 3em;
+	margin-top: 3em;
+}
+
+.rs-list-feature
+{
+	text-align: left;
+	transition: transform 0.5s;
+
+	& li
+	{
+		box-sizing: border-box;
+		margin-bottom: 2em;
+		padding-left: 3em;
+	}
+
+	&.rs-is-designer
+	{
+		transform: translateX(100%);
+	}
+
+	&.rs-is-developer
+	{
+		transform: translateX(-100%);
+	}
 }
 
 @media (--media-medium-min)
@@ -93,7 +113,6 @@
 	{
 		display: flex;
 		flex-wrap: wrap;
-		font-size: 1.25em;
 		justify-content: center;
 
 		& li
@@ -102,4 +121,36 @@
 			width: 50%;
 		}
 	}
+}
+
+/* @section 6. apparat */
+
+.rs-fn-status-feature
+{
+	display: none;
+
+	&:checked + .rs-label-feature
+	 {
+		background: #323e4c;
+		color: #fff;
+	}
+}
+
+.rs-label-feature
+{
+	background: rgb(215, 215, 215);
+	border-radius: 1.5em;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 1.25em;
+	margin: 0 1em;
+	padding: 0.5em 1em;
+	text-transform: uppercase;
+	transition: background 0.1s, color 0.1s;
+}
+
+.rs-fn-status-feature-developer:checked ~ .rs-wrapper-list-feature .rs-is-developer,
+.rs-fn-status-feature-designer:checked ~ .rs-wrapper-list-feature .rs-is-designer
+{
+	transform: translateX(0);
 }
