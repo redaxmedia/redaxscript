@@ -107,8 +107,7 @@
 }
 
 /* @section 1.5 button */
-/* todo: do this in combination with the homepage layout class */
-/* todo: use the rs-is-large class instead of countless moding of font-size, margin and  padding */
+/* todo: use the rs-button-download and rs-button-demo and extend from the button placeholder instead of modding button default */
 .rs-button-default,
 .rs-button-light
 {
