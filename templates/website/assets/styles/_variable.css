@@ -1,0 +1,32 @@
+/**
+ * @tableofcontents
+ *
+ * 1. variable
+ *    1.1 color
+ *    1.2 gradient
+ *    1.3 font
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. variable */
+
+:root
+{
+	/* @section 1.1 color */
+
+	--color-beta: #d34390;
+	--color-beta-dark: color(var(--color-beta) l(40%));
+
+	/* @section 1.2 gradient */
+
+	--rs-gradient-beta: radial-gradient(var(--color-beta), var(--color-beta-dark));
+
+	/* @section 1.3 font */
+
+	--rs-font-accent: pacifico, arial, sans-serif;
+	--rs-website-font-icon: 'icon website';
+}

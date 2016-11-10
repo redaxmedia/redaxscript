@@ -337,6 +337,23 @@ class TagTest extends TestCaseAbstract
 	}
 
 	/**
+	 * testCategoryRaw
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testCategoryRaw()
+	{
+		/* actual */
+
+		$actual = Template\Tag::categoryRaw();
+
+		/* compare */
+
+		$this->assertInstanceOf('Redaxscript\Db', $actual);
+	}
+
+	/**
 	 * testArticleRaw
 	 *
 	 * @since 3.0.0

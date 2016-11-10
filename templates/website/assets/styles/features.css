@@ -2,6 +2,11 @@
  * @tableofcontents
  *
  * 1. features
+ *    1.1 title
+ *    1.2 box
+ *    1.3 toggle
+ *    1.4 list
+ * 2. logic
  *
  * @since 3.0.0
  *
@@ -11,14 +16,117 @@
 
 /* @section 1. features */
 
-.rs-box-features
+/* @section 1.1 title */
+
+.rs-title-feature
+{
+	color: var(--rs-color-primary);
+	font: 2.5em var(--rs-font-accent);
+	margin-bottom: 1em;
+	text-align: center;
+}
+
+@media (--media-medium-min)
+{
+	.rs-title-feature
+	{
+		font-size: 3em;
+	}
+}
+
+/* @section 1.2 box */
+
+.rs-box-feature
 {
 	background: gray(255);
-	margin: 0 2em;
+	font-size: 1.25em;
+	margin-bottom: 4em;
+	margin-left: auto;
+	margin-right: auto;
 	padding: 2em;
 }
 
-.rs-box-homepage + .rs-box-features
+.rs-box-homepage + .rs-box-feature
 {
 	margin-top: -4em;
+}
+
+@media (--media-medium-min)
+{
+	.rs-box-feature
+	{
+		width: 80%;
+	}
+}
+
+/* @section 1.3 toggle */
+
+.rs-wrapper-label-feature
+{
+	text-align: center;
+}
+
+.rs-label-feature-developer,
+.rs-label-feature-designer
+{
+	border-radius: 0.125em;
+	cursor: pointer;
+	display: block;
+	font-size: 1.5em;
+	padding: 0.5em;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+@media (--media-medium-min)
+{
+	.rs-label-feature-developer,
+	.rs-label-feature-designer
+	{
+		display: inline-block;
+		margin: 0 1em;
+		width: 6em;
+	}
+}
+
+.rs-fn-status-feature-developer:checked ~ .rs-has-feature .rs-label-feature-developer,
+.rs-fn-status-feature-designer:checked ~ .rs-has-feature .rs-label-feature-designer
+{
+	background: var(--rs-color-tertiary);
+	color: gray(255);
+	transition: background 0.1s, color 0.1s;
+}
+
+/* @section 1.4 list */
+
+.rs-wrapper-list-feature
+{
+	margin-top: 4em;
+}
+.rs-list-feature
+{
+	column-gap: 2em;
+	columns: 2;
+}
+
+.rs-title-feature-sub
+{
+	color: var(--rs-color-primary);
+	font-size: 1.5em;
+}
+
+/* @section 2. logic */
+
+.rs-fn-status-feature-developer,
+.rs-fn-status-feature-designer,
+.rs-is-feature-developer,
+.rs-is-feature-designer
+{
+	display: none;
+}
+
+.rs-fn-status-feature-developer:checked ~ .rs-has-feature .rs-is-feature-developer,
+.rs-fn-status-feature-designer:checked ~ .rs-has-feature .rs-is-feature-designer
+{
+	display: block;
 }

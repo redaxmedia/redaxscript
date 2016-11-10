@@ -2,4 +2,11 @@
 
 <aside id="sidebar" class="rs-sidebar">
 	<?php echo Tag::searchForm(); ?>
+
+	<!-- documentation -->
+
+	<?php if(Tag::registry('firstParameter') === 'documentation'): ?>
+		<?php include('templates/website/helper/documentation.phtml'); ?>
+		<?php include('templates/website/navigation.phtml'); ?>
+	<?php endif; ?>
 </aside>

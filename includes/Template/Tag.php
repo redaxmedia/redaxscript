@@ -280,6 +280,19 @@ class Tag
 	}
 
 	/**
+	 * categoryRaw
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return Db
+	 */
+
+	public static function categoryRaw()
+	{
+		return Db::forTablePrefix('categories');
+	}
+
+	/**
 	 * articleRaw
 	 *
 	 * @since 3.0.0
