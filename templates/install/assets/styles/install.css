@@ -3,7 +3,6 @@
  *
  * 1. install
  * 2. query
- *    2.1 small min
  *    2.2 large min
  *
  * @since 3.0.0
@@ -40,8 +39,8 @@
 
 .rs-install-title
 {
-	color: gray(255);
-	font-size: 3.25em;
+	color: gray(200);
+	font-size: 4em;
 	font-weight: normal;
 	line-height: 1em;
 	margin-bottom: 0.75em;
@@ -61,10 +60,14 @@
 
 		&:before
 		{
-			content: url('../../../../templates/default/assets/images/redaxscript.svg');
+			background: var(--rs-url-branding) no-repeat center/ 55%, linear-gradient(to top, gray(230), gray(255));
+			border-radius: 0.05em;
+			content: '';
 			display: inline-block;
-			margin-right: 0.125em;
-			vertical-align: middle;
+			height: 1em;
+			margin-bottom: -0.125em;
+			margin-right: 0.25em;
+			width: 1em;
 		}
 	}
 }

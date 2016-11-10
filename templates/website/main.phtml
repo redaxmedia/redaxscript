@@ -9,12 +9,14 @@
 			->findOne()
 			->text; ?>
 
-		<!-- features -->
+		<!-- feature -->
 
-		<?php echo Tag::articleRaw()
-			->where('alias', 'features')
-			->findOne()
-			->text; ?>
+		<div class="rs-box-feature">
+			<?php echo Tag::articleRaw()
+				->where('alias', 'features')
+				->findOne()
+				->text; ?>
+		</div>
 	</main>
 
 <!-- else default -->

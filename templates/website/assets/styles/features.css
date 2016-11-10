@@ -3,12 +3,10 @@
  *
  * 1. features
  *    1.1 title
- *    1.2 title sub
- *    1.3 box
+ *    1.2 box
+ *    1.3 toggle
  *    1.4 list
- * 2. query
- *    2.1 medium min
- * 3. logic
+ * 2. logic
  *
  * @since 3.0.0
  *
@@ -20,14 +18,12 @@
 
 /* @section 1.1 title */
 
-/* todo: use var(rs-font-accent) and gray() everywhere */
-/* todo: add margin-top: 1em; and margin-bottom: 1em */
 .rs-title-feature
 {
-	border: none;
 	color: var(--rs-color-primary);
-	font: 2.5em Pacifico, arial, sans-serif;
-	margin-bottom: 0.5em;
+	font: 2.5em var(--rs-font-accent);
+	margin-bottom: 1em;
+	text-align: center;
 }
 
 @media (--media-medium-min)
@@ -38,41 +34,16 @@
 	}
 }
 
-/* @section 1.2 title sub */
+/* @section 1.2 box */
 
-.rs-title-sub-feature
-{
-	color: var(--rs-color-primary);
-	font-size: 1.5em;
-	font-weight: 300;
-	position: relative;
-
-	&:before
-	{
-		font-size: 2em;
-		line-height: 1em;
-		position: absolute;
-		/* why right 101% */
-		right: 101%;
-		top: -0.125em;
-	}
-}
-
-/* @section 1.3 box */
-/* todo: please remove the border-radius - don't like */
 .rs-box-feature
 {
 	background: gray(255);
-	border-radius: 0.25em;
-	border-top: 0.25em solid var(--rs-color-primary);
-	box-sizing: border-box;
-	margin-bottom: 3em;
+	font-size: 1.25em;
+	margin-bottom: 4em;
 	margin-left: auto;
 	margin-right: auto;
-	overflow: hidden;
-	padding: 0 2em 2em;
-	position: relative;
-	text-align: center;
+	padding: 2em;
 }
 
 .rs-box-homepage + .rs-box-feature
@@ -84,92 +55,78 @@
 {
 	.rs-box-feature
 	{
-		font-size: 1.25em;
 		width: 80%;
 	}
 }
 
-/* @section 1.4 list */
+/* @section 1.3 toggle */
 
-/* todo: rename to rs-wrapper-feature + add new section */
-.rs-wrapper-list-feature
+.rs-wrapper-label-feature
 {
-	margin-top: 3em;
+	text-align: center;
 }
 
-.rs-list-feature
+.rs-label-feature-developer,
+.rs-label-feature-designer
 {
-	text-align: left;
-	transition: transform 0.5s;
-
-	& li
-	{
-		box-sizing: border-box;
-		margin-bottom: 2em;
-		padding-left: 3em;
-	}
-
-	&.rs-is-designer
-	{
-		transform: translateX(100%);
-	}
-
-	&.rs-is-developer
-	{
-		transform: translateX(-100%);
-	}
+	border-radius: 0.125em;
+	cursor: pointer;
+	display: block;
+	font-size: 1.5em;
+	padding: 0.5em;
+	text-align: center;
+	text-transform: uppercase;
 }
 
-/* @section 2. query */
-
-/* @section 2.1 medium min */
-
-/* todo: does not work, the list are not next to each other */
 @media (--media-medium-min)
 {
-	.rs-list-feature
+	.rs-label-feature-developer,
+	.rs-label-feature-designer
 	{
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-
-		& li
-		{
-			padding: 0 1em 0 4em;
-			width: 50%;
-		}
+		display: inline-block;
+		margin: 0 1em;
+		width: 6em;
 	}
 }
 
-/* @section 3. logic */
-
-/* put this section to the top of the file */
-.rs-fn-status-feature
+.rs-fn-status-feature-developer:checked ~ .rs-has-feature .rs-label-feature-developer,
+.rs-fn-status-feature-designer:checked ~ .rs-has-feature .rs-label-feature-designer
 {
-	display: none;
-
-	&:checked + .rs-label-feature
-	 {
-		background: #323e4c;
-		color: #fff;
-	}
-}
-
-.rs-label-feature
-{
-	background: rgb(215, 215, 215);
-	border-radius: 1.5em;
-	cursor: pointer;
-	display: inline-block;
-	font-size: 1.25em;
-	margin: 0 1em;
-	padding: 0.5em 1em;
-	text-transform: uppercase;
+	background: var(--rs-color-tertiary);
+	color: gray(255);
 	transition: background 0.1s, color 0.1s;
 }
 
-.rs-fn-status-feature-developer:checked ~ .rs-wrapper-list-feature .rs-is-developer,
-.rs-fn-status-feature-designer:checked ~ .rs-wrapper-list-feature .rs-is-designer
+/* @section 1.4 list */
+
+.rs-wrapper-list-feature
 {
-	transform: translateX(0);
+	margin-top: 4em;
+}
+.rs-list-feature
+{
+	column-gap: 2em;
+	columns: 2;
+}
+
+.rs-title-feature-sub
+{
+	color: var(--rs-color-primary);
+	font-size: 1.5em;
+}
+
+/* @section 2. logic */
+
+.rs-fn-status-feature-developer,
+.rs-fn-status-feature-designer,
+.rs-is-feature-developer,
+.rs-is-feature-designer
+{
+	display: none;
+}
+
+.rs-fn-status-feature-developer:checked ~ .rs-has-feature .rs-is-feature-developer,
+.rs-fn-status-feature-designer:checked ~ .rs-has-feature .rs-is-feature-designer
+{
+	display: block;
 }
