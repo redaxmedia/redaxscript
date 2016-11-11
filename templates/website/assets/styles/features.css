@@ -21,7 +21,7 @@
 .rs-title-feature
 {
 	color: var(--rs-color-primary);
-	font: 2.5em var(--rs-font-accent);
+	font: 1.75em var(--rs-font-accent);
 	margin-bottom: 1em;
 	text-align: center;
 }
@@ -39,6 +39,8 @@
 .rs-box-feature
 {
 	background: gray(255);
+	border-radius: 0.25em 0.25em 0 0;
+	border-top: 0.25em solid var(--rs-color-primary);
 	font-size: 1.25em;
 	margin-bottom: 4em;
 	margin-left: auto;
@@ -69,13 +71,16 @@
 .rs-label-feature-developer,
 .rs-label-feature-designer
 {
+	background: gray(230);
 	border-radius: 0.125em;
 	cursor: pointer;
-	display: block;
-	font-size: 1.5em;
+	display: inline-block;
+	font-size: 1.125em;
+	margin: 0 0.25em;
 	padding: 0.5em;
 	text-align: center;
 	text-transform: uppercase;
+	transition: background 0.05s, color 0.05s;
 }
 
 @media (--media-medium-min)
@@ -83,10 +88,9 @@
 	.rs-label-feature-developer,
 	.rs-label-feature-designer
 	{
-		display: inline-block;
+		font-size: 1.5em;
 		margin: 0 1em;
-		transition: background 0.05s, color 0.05s;
-		width: 6em;
+		min-width: 6em;
 	}
 }
 
@@ -103,16 +107,91 @@
 {
 	margin-top: 4em;
 }
+
 .rs-list-feature
 {
-	column-gap: 2em;
-	columns: 2;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	& li
+	{
+		box-sizing: border-box;
+		margin-bottom: 2em;
+		padding-left: 4em;
+		position: relative;
+
+		&:before
+		{
+			color: var(--rs-color-primary);
+			font-size: 3em;
+			left: 0;
+			position: absolute;
+			top: -0.125em;
+		}
+	}
+}
+
+@media (--media-medium-min)
+{
+	.rs-list-feature li
+	{
+		flex-basis: 45%;
+	}
+}
+
+.rs-item-feature-docker:before
+{
+	@extend %rs-website-icon-cruise;
+}
+
+.rs-item-feature-console:before
+{
+	@extend %rs-website-icon-command-line;
+}
+
+.rs-item-feature-assetic:before
+{
+	@extend %rs-website-icon-layers;
+}
+
+.rs-item-feature-caching:before
+{
+	@extend %rs-website-icon-rocket-ship;
+}
+
+.rs-item-feature-css:before
+{
+	@extend %rs-website-icon-atom;
+}
+
+.rs-item-feature-search:before
+{
+	@extend %rs-website-icon-search;
+}
+
+.rs-item-feature-html:before
+{
+	@extend %rs-website-icon-html;
+}
+
+.rs-item-feature-grunt:before
+{
+	@extend %rs-website-icon-flask;
 }
 
 .rs-title-feature-sub
 {
 	color: var(--rs-color-primary);
-	font-size: 1.5em;
+	margin-bottom: 0.5em;
+}
+
+@media (--media-medium-min)
+{
+	.rs-title-feature-sub
+	{
+		font-size: 1.5em;
+	}
 }
 
 /* @section 2. logic */
@@ -128,5 +207,5 @@
 .rs-fn-status-feature-developer:checked ~ .rs-has-feature .rs-is-feature-developer,
 .rs-fn-status-feature-designer:checked ~ .rs-has-feature .rs-is-feature-designer
 {
-	display: block;
+	display: flex;
 }

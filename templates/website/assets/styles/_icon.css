@@ -73,51 +73,58 @@
 	font-weight: normal;
 }
 
-%rs-website-icon-database
+%rs-website-icon-command-line
 {
 	content: '\f109';
 	font-family: var(--rs-website-font-icon);
 	font-weight: normal;
 }
 
-%rs-website-icon-html
+%rs-website-icon-database
 {
 	content: '\f10a';
 	font-family: var(--rs-website-font-icon);
 	font-weight: normal;
 }
 
-%rs-website-icon-layers
+%rs-website-icon-html
 {
 	content: '\f10b';
 	font-family: var(--rs-website-font-icon);
 	font-weight: normal;
 }
 
-%rs-website-icon-paper-plane
+%rs-website-icon-layers
 {
 	content: '\f10c';
 	font-family: var(--rs-website-font-icon);
 	font-weight: normal;
 }
 
-%rs-website-icon-responsive
+%rs-website-icon-paper-plane
 {
 	content: '\f10d';
 	font-family: var(--rs-website-font-icon);
 	font-weight: normal;
 }
 
-%rs-website-icon-search
+%rs-website-icon-responsive
 {
 	content: '\f10e';
 	font-family: var(--rs-website-font-icon);
 	font-weight: normal;
 }
 
-%rs-website-icon-stopwatch
+%rs-website-icon-search
 {
 	content: '\f10f';
+	font-family: var(--rs-website-font-icon);
+	font-weight: normal;
+}
+
+%rs-website-icon-stopwatch
+{
+	content: '\f110';
 	font-family: var(--rs-website-font-icon);
 	font-weight: normal;
 }
