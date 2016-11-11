@@ -21,7 +21,7 @@
 .rs-title-feature
 {
 	color: var(--rs-color-primary);
-	font: 1.75em var(--rs-font-accent);
+	font: 2em var(--rs-font-accent);
 	margin-bottom: 1em;
 	text-align: center;
 }
@@ -39,7 +39,7 @@
 .rs-box-feature
 {
 	background: gray(255);
-	border-radius: 0.25em 0.25em 0 0;
+	border-radius: 0.125em 0.125em 0 0;
 	border-top: 0.25em solid var(--rs-color-primary);
 	font-size: 1.25em;
 	margin-bottom: 4em;
@@ -75,12 +75,13 @@
 	border-radius: 0.125em;
 	cursor: pointer;
 	display: inline-block;
-	font-size: 1.125em;
-	margin: 0 0.25em;
+	font-size: 1.25em;
+	margin: 0.25em;
+	min-width: 4em;
 	padding: 0.5em;
 	text-align: center;
 	text-transform: uppercase;
-	transition: background 0.05s, color 0.05s;
+	transition: background 0.1s, color 0.1s;
 }
 
 @media (--media-medium-min)
@@ -90,7 +91,6 @@
 	{
 		font-size: 1.5em;
 		margin: 0 1em;
-		min-width: 6em;
 	}
 }
 
@@ -140,45 +140,7 @@
 	}
 }
 
-.rs-item-feature-docker:before
-{
-	@extend %rs-website-icon-cruise;
-}
-
-.rs-item-feature-console:before
-{
-	@extend %rs-website-icon-command-line;
-}
-
-.rs-item-feature-assetic:before
-{
-	@extend %rs-website-icon-layers;
-}
-
-.rs-item-feature-caching:before
-{
-	@extend %rs-website-icon-rocket-ship;
-}
-
-.rs-item-feature-css:before
-{
-	@extend %rs-website-icon-atom;
-}
-
-.rs-item-feature-search:before
-{
-	@extend %rs-website-icon-search;
-}
-
-.rs-item-feature-html:before
-{
-	@extend %rs-website-icon-html;
-}
-
-.rs-item-feature-grunt:before
-{
-	@extend %rs-website-icon-flask;
-}
+/* title */
 
 .rs-title-feature-sub
 {
@@ -192,6 +154,48 @@
 	{
 		font-size: 1.5em;
 	}
+}
+
+/* icons */
+
+.rs-item-feature-assetic-management:before
+{
+	@extend %rs-website-icon-layers;
+}
+
+.rs-item-feature-console-interface:before
+{
+	@extend %rs-website-icon-command-line;
+}
+
+.rs-item-feature-database-abstraction:before
+{
+	@extend %rs-website-icon-database;
+}
+
+.rs-item-feature-docker-container:before
+{
+	@extend %rs-website-icon-cruise;
+}
+
+.rs-item-feature-file-cache:before
+{
+	@extend %rs-website-icon-rocket-ship;
+}
+
+.rs-item-feature-grunt-stack:before
+{
+	@extend %rs-website-icon-flask;
+}
+
+.rs-item-feature-modern-css:before
+{
+	@extend %rs-website-icon-atom;
+}
+
+.rs-item-feature-responsive-design:before
+{
+	@extend %rs-website-icon-responsive;
 }
 
 /* @section 2. logic */

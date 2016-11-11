@@ -22,8 +22,7 @@
 	background: var(--rs-color-tertiary);
 	box-sizing: border-box;
 	color: gray(200);
-	min-height: 30em;
-	min-height: 75vh;
+	min-height: 70vh;
 	padding: 2em 2em 6em;
 	text-align: center;
 }
@@ -42,12 +41,12 @@
 
 .rs-title-branding
 {
-	height: 5em;
+	height: 4em;
 	margin-left: auto;
 	margin-right: auto;
 	position: relative;
 	text-indent: -999em;
-	width: 5em;
+	width: 4em;
 
 	&:before
 	{
@@ -64,10 +63,18 @@
 	}
 }
 
+@media (--media-medium-min)
+{
+	.rs-title-branding
+	{
+		font-size: 2.5em;
+	}
+}
+
 .rs-text-branding
 {
 	font-size: 1.5em;
-	margin-bottom: 1em;
+	margin-bottom: 2em;
 	margin-top: 2em;
 }
 
@@ -105,8 +112,7 @@
 
 @media (--media-medium-max)
 {
-	.rs-button-download,
-	.rs-button-demo
+	.rs-button-download + .rs-button-demo
 	{
 		margin-top: 1em;
 	}

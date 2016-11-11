@@ -427,7 +427,7 @@ module.exports = function (grunt)
 					'templates/default/assets/styles/_button.css',
 					'templates/website/assets/styles/_variable.css',
 					'templates/website/assets/styles/_icon.css',
-					'templates/website/assets/styles/features.css',
+					'templates/website/assets/styles/feature.css',
 					'templates/website/assets/styles/homepage.css',
 					'templates/website/assets/styles/layout.css'
 				],
