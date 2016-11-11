@@ -85,6 +85,7 @@
 	{
 		display: inline-block;
 		margin: 0 1em;
+		transition: background 0.05s, color 0.05s;
 		width: 6em;
 	}
 }
@@ -94,7 +95,6 @@
 {
 	background: var(--rs-color-tertiary);
 	color: gray(255);
-	transition: background 0.1s, color 0.1s;
 }
 
 /* @section 1.4 list */

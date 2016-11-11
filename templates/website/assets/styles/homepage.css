@@ -137,12 +137,19 @@
 	background: var(--rs-gradient-beta);
 	box-shadow: 0 -0.125em 0 gray(0, 0.2) inset;
 	color: gray(255);
-	font-size: 2em;
 	font-weight: bold;
 	padding: 2em 3em 0.5em;
 	text-transform: uppercase;
 	transform: rotate(45deg) translate(1.5em, -3em);
 	z-index: 1;
+}
+
+@media (--media-medium-min)
+{
+	.rs-wrapper-badge-beta
+	{
+		font-size: 2em;
+	}
 }
 
 .rs-wrapper-badge-shield
@@ -152,11 +159,21 @@
 
 	& a
 	{
-		margin: 0 0.5em;
+		display: inline-block;
+		margin: 0.25em;
 	}
 
 	& img
 	{
 		height: 1.5em;
+		vertical-align: top;
+	}
+}
+
+@media (--media-medium-min)
+{
+	.rs-wrapper-badge-shield a
+	{
+		margin: 0 0.5em;
 	}
 }
