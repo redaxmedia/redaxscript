@@ -427,7 +427,7 @@ module.exports = function (grunt)
 					'templates/default/assets/styles/_button.css',
 					'templates/website/assets/styles/_variable.css',
 					'templates/website/assets/styles/_icon.css',
-					'templates/website/assets/styles/features.css',
+					'templates/website/assets/styles/feature.css',
 					'templates/website/assets/styles/homepage.css',
 					'templates/website/assets/styles/layout.css'
 				],
@@ -654,7 +654,7 @@ module.exports = function (grunt)
 					'node_modules/redaxscript-flaticon/flaticon/pencil.svg',
 					'node_modules/redaxscript-flaticon/flaticon/rocket-ship.svg',
 					'node_modules/redaxscript-flaticon/flaticon/statistics.svg',
-					//'node_modules/redaxscript-flaticon/flaticon/command-line.svg',
+					'node_modules/redaxscript-flaticon/flaticon/command-line.svg',
 					'node_modules/redaxscript-flaticon/flaticon/database.svg',
 					'node_modules/redaxscript-flaticon/flaticon/html.svg',
 					'node_modules/redaxscript-flaticon/flaticon/layers.svg',
