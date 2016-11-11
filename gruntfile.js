@@ -880,7 +880,7 @@ module.exports = function (grunt)
 				],
 				tasks:
 				[
-					'css'
+					'build-css'
 				]
 			},
 			phpunit:
@@ -984,10 +984,6 @@ module.exports = function (grunt)
 		'build-font',
 		'build-css',
 		'build-js'
-	]);
-	grunt.registerTask('css',
-	[
-		'build-css'
 	]);
 	grunt.registerTask('build-font',
 	[

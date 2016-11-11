@@ -125,7 +125,8 @@
 
 .rs-wrapper-badge-beta
 {
-	height: 10em;
+	height: 5em;
+	font-size: 1.25em;
 	overflow: hidden;
 	position: absolute;
 	right: 0;
