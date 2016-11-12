@@ -190,7 +190,7 @@
 
 .rs-item-feature-modern-css:before
 {
-	@extend %rs-website-icon-atoms
+	@extend %rs-website-icon-atoms;
 }
 
 .rs-item-feature-responsive-design:before
