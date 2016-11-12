@@ -18,19 +18,25 @@
 
 /* @section 1.1 title */
 
-.rs-title-feature
+.rs-title-feature-primary
 {
 	color: var(--rs-color-primary);
 	font: 2em var(--rs-font-accent);
-	margin-bottom: 1em;
-	text-align: center;
+}
+
+.rs-title-feature-secondary
+{
+	color: var(--rs-color-primary);
+	font-size: 2em;
+	text-transform: uppercase;
 }
 
 @media (--media-medium-min)
 {
-	.rs-title-feature
+	.rs-title-feature-primary,
+	.rs-title-feature-secondary
 	{
-		font-size: 3em;
+		font-size: 2.75em;
 	}
 }
 
@@ -47,6 +53,12 @@
 	margin-right: auto;
 	overflow: hidden;
 	padding: 2em 0;
+	text-align: center;
+
+	& .rs-button-default
+	{
+		max-width: 80%;
+	}
 }
 
 .rs-box-homepage + .rs-box-feature
@@ -66,24 +78,42 @@
 
 .rs-wrapper-label-feature
 {
-	text-align: center;
+	margin-bottom: 1em;
 }
 
 .rs-label-feature-developer,
 .rs-label-feature-designer
 {
-	background: gray(230);
 	border-radius: 0.125em;
+	color: gray(170);
 	cursor: pointer;
 	display: inline-block;
 	font-size: 1.25em;
 	margin: 0.25em;
 	min-width: 4em;
 	padding: 0.5em;
-	text-align: center;
 	text-transform: uppercase;
-	transition: background 0.1s, color 0.1s;
+	transition: color 0.1s;
 	user-select: none;
+
+	& img
+	{
+		display: block;
+		margin: 0.75em auto;
+		opacity: 0.8;
+		transition: transform 0.2s, opacity 0.2s;
+		width: 4em;
+	}
+
+	&:hover
+	{
+		color: var(--rs-color-primary);
+
+		& img
+		{
+			opacity: 1;
+		}
+	}
 }
 
 @media (--media-medium-min)
@@ -93,14 +123,24 @@
 	{
 		font-size: 1.5em;
 		margin: 0 1em;
+
+		& img
+		{
+			width: 6em;
+		}
 	}
 }
 
 .rs-fn-status-feature-developer:checked ~ .rs-has-feature .rs-label-feature-developer,
 .rs-fn-status-feature-designer:checked ~ .rs-has-feature .rs-label-feature-designer
 {
-	background: var(--rs-color-tertiary);
-	color: gray(255);
+	color: var(--rs-color-tertiary);
+
+	& img
+	{
+		opacity: 1;
+		transform: scale(1.2);
+	}
 }
 
 /* @section 1.4 list */
@@ -109,7 +149,7 @@
 {
 	box-sizing: border-box;
 	display: flex;
-	margin-top: 4em;
+	margin: 2em 0;
 	width: 200%;
 }
 
@@ -118,6 +158,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
+	text-align: left;
 	transition: transform 0.4s cubic-bezier(0.17, 1.1, 0.45, 1.15);
 	width: 50%;
 
