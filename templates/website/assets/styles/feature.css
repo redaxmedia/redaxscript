@@ -45,7 +45,8 @@
 	margin-bottom: 4em;
 	margin-left: auto;
 	margin-right: auto;
-	padding: 2em;
+	overflow: hidden;
+	padding: 2em 0;
 }
 
 .rs-box-homepage + .rs-box-feature
@@ -82,6 +83,7 @@
 	text-align: center;
 	text-transform: uppercase;
 	transition: background 0.1s, color 0.1s;
+	user-select: none;
 }
 
 @media (--media-medium-min)
@@ -105,7 +107,10 @@
 
 .rs-wrapper-list-feature
 {
+	box-sizing: border-box;
+	display: flex;
 	margin-top: 4em;
+	width: 200%;
 }
 
 .rs-list-feature
@@ -113,19 +118,22 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
+	transition: transform 0.4s cubic-bezier(0.17, 1.1, 0.45, 1.15);
+	width: 50%;
 
 	& li
 	{
 		box-sizing: border-box;
 		margin-bottom: 2em;
-		padding-left: 4em;
+		padding-left: 6em;
+		padding-right: 2em;
 		position: relative;
 
 		&:before
 		{
 			color: var(--rs-color-primary);
 			font-size: 3em;
-			left: 0;
+			left: 0.5em;
 			position: absolute;
 			top: -0.125em;
 		}
@@ -201,15 +209,19 @@
 /* @section 2. logic */
 
 .rs-fn-status-feature-developer,
-.rs-fn-status-feature-designer,
-.rs-is-feature-developer,
-.rs-is-feature-designer
+.rs-fn-status-feature-designer
 {
 	display: none;
 }
 
 .rs-fn-status-feature-developer:checked ~ .rs-has-feature .rs-is-feature-developer,
+.rs-fn-status-feature-developer:checked ~ .rs-has-feature .rs-is-feature-designer
+{
+	transform: translateX(0);
+}
+
+.rs-fn-status-feature-designer:checked ~ .rs-has-feature .rs-is-feature-developer,
 .rs-fn-status-feature-designer:checked ~ .rs-has-feature .rs-is-feature-designer
 {
-	display: flex;
+	transform: translateX(-100%);
 }
