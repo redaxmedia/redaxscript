@@ -170,7 +170,7 @@
 
 .rs-item-feature-database-abstraction:before
 {
-	@extend %rs-website-icon-database;
+	@extend %rs-website-icon-database-1;
 }
 
 .rs-item-feature-docker-container:before
@@ -190,12 +190,12 @@
 
 .rs-item-feature-modern-css:before
 {
-	@extend %rs-website-icon-atom;
+	@extend %rs-website-icon-atoms
 }
 
 .rs-item-feature-responsive-design:before
 {
-	@extend %rs-website-icon-responsive;
+	@extend %rs-website-icon-devices;
 }
 
 /* @section 2. logic */

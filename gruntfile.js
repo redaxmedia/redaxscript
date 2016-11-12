@@ -646,22 +646,14 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'node_modules/redaxscript-flaticon/flaticon/atom.svg',
-					'node_modules/redaxscript-flaticon/flaticon/cruise.svg',
-					'node_modules/redaxscript-flaticon/flaticon/flask.svg',
-					'node_modules/redaxscript-flaticon/flaticon/internet.svg',
-					'node_modules/redaxscript-flaticon/flaticon/paper-pencil.svg',
-					'node_modules/redaxscript-flaticon/flaticon/pencil.svg',
-					'node_modules/redaxscript-flaticon/flaticon/rocket-ship.svg',
-					'node_modules/redaxscript-flaticon/flaticon/statistics.svg',
-					'node_modules/redaxscript-flaticon/flaticon/command-line.svg',
-					'node_modules/redaxscript-flaticon/flaticon/database.svg',
-					'node_modules/redaxscript-flaticon/flaticon/html.svg',
-					'node_modules/redaxscript-flaticon/flaticon/layers.svg',
-					'node_modules/redaxscript-flaticon/flaticon/paper-plane.svg',
-					'node_modules/redaxscript-flaticon/flaticon/responsive.svg',
-					'node_modules/redaxscript-flaticon/flaticon/search.svg',
-					'node_modules/redaxscript-flaticon/flaticon/stopwatch.svg'
+					'node_modules/redaxscript-flaticon/flaticon/essential/database-1.svg',
+					'node_modules/redaxscript-flaticon/flaticon/productivity-and-development/rocket-ship.svg',
+					'node_modules/redaxscript-flaticon/flaticon/online-marketing/devices.svg',
+					'node_modules/redaxscript-flaticon/flaticon/programming-line/command-line.svg',
+					'node_modules/redaxscript-flaticon/flaticon/science/atoms.svg',
+					'node_modules/redaxscript-flaticon/flaticon/science/flask.svg',
+					'node_modules/redaxscript-flaticon/flaticon/stationery/layers.svg',
+					'node_modules/redaxscript-flaticon/flaticon/travel/cruise.svg'
 				],
 				dest: 'templates/website/dist/fonts',
 				options:
