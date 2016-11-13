@@ -87,8 +87,8 @@
 	padding: 0.5em;
 	text-transform: uppercase;
 	transition: color 0.1s;
-	width: 4em;
 	white-space: nowrap;
+	width: 4em;
 
 	& img
 	{
