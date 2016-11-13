@@ -88,6 +88,7 @@
 	text-transform: uppercase;
 	transition: color 0.1s;
 	width: 4em;
+	white-space: nowrap;
 
 	& img
 	{
@@ -154,14 +155,14 @@
 	{
 		box-sizing: border-box;
 		margin-bottom: 2em;
-		padding-left: 6em;
+		padding-left: 4em;
 		padding-right: 2em;
 		position: relative;
 
 		&:before
 		{
 			color: var(--rs-color-primary);
-			font-size: 3em;
+			font-size: 2em;
 			left: 0.5em;
 			position: absolute;
 			top: -0.125em;
@@ -174,6 +175,12 @@
 	.rs-list-feature li
 	{
 		flex-basis: 50%;
+		padding-left: 6em;
+
+		&:before
+		{
+			font-size: 3em;
+		}
 	}
 }
 
