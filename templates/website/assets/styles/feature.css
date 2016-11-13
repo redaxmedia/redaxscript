@@ -18,23 +18,16 @@
 
 /* @section 1.1 title */
 
-.rs-title-feature-primary
+.rs-title-feature
 {
 	color: var(--rs-color-primary);
 	font: 2em var(--rs-font-accent);
-}
-
-.rs-title-feature-secondary
-{
-	color: var(--rs-color-primary);
-	font-size: 2em;
-	text-transform: uppercase;
+	text-align: center;
 }
 
 @media (--media-medium-min)
 {
-	.rs-title-feature-primary,
-	.rs-title-feature-secondary
+	.rs-title-feature
 	{
 		font-size: 2.75em;
 	}
@@ -51,13 +44,12 @@
 	margin-bottom: 4em;
 	margin-left: auto;
 	margin-right: auto;
-	overflow: hidden;
 	padding: 2em 0;
-	text-align: center;
 
-	& .rs-button-default
+	& p
 	{
-		max-width: 80%;
+		line-height: 1.75em;
+		margin: 0.5em 0;
 	}
 }
 
@@ -79,6 +71,8 @@
 .rs-wrapper-label-feature
 {
 	margin-bottom: 1em;
+	margin-top: 1em;
+	text-align: center;
 }
 
 .rs-label-feature-developer,
@@ -90,11 +84,10 @@
 	display: inline-block;
 	font-size: 1.25em;
 	margin: 0.25em;
-	min-width: 4em;
 	padding: 0.5em;
 	text-transform: uppercase;
 	transition: color 0.1s;
-	user-select: none;
+	width: 4em;
 
 	& img
 	{
@@ -102,7 +95,7 @@
 		margin: 0.75em auto;
 		opacity: 0.8;
 		transition: transform 0.2s, opacity 0.2s;
-		width: 4em;
+		width: 100%;
 	}
 
 	&:hover
@@ -123,11 +116,7 @@
 	{
 		font-size: 1.5em;
 		margin: 0 1em;
-
-		& img
-		{
-			width: 6em;
-		}
+		width: 6em;
 	}
 }
 
@@ -158,8 +147,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	text-align: left;
-	transition: transform 0.4s cubic-bezier(0.17, 1.1, 0.45, 1.15);
+	transition: transform 0.4s cubic-bezier(0.2, 1.1, 0.4, 1.1);
 	width: 50%;
 
 	& li
@@ -185,8 +173,13 @@
 {
 	.rs-list-feature li
 	{
-		flex-basis: 45%;
+		flex-basis: 50%;
 	}
+}
+
+.rs-body-homepage .rs-list-feature li:nth-child(n+5)
+{
+	display: none;
 }
 
 /* title */
@@ -194,7 +187,6 @@
 .rs-title-feature-sub
 {
 	color: var(--rs-color-primary);
-	margin-bottom: 0.5em;
 }
 
 @media (--media-medium-min)
@@ -247,12 +239,24 @@
 	@extend %rs-website-icon-devices;
 }
 
+/* /* @section 1.5 button */
+
+.rs-wrapper-button-feature
+{
+	text-align: center;
+}
+
 /* @section 2. logic */
 
 .rs-fn-status-feature-developer,
 .rs-fn-status-feature-designer
 {
 	display: none;
+}
+
+.rs-has-feature
+{
+	overflow: hidden;
 }
 
 .rs-fn-status-feature-developer:checked ~ .rs-has-feature .rs-is-feature-developer,
