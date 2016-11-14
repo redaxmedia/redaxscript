@@ -11,11 +11,14 @@
 
 		<!-- feature -->
 
-		<div class="rs-box-feature">
+		<div class="rs-box-feature rs-wrapper-feature">
 			<?php echo Tag::articleRaw()
 				->where('alias', 'features')
 				->findOne()
 				->text; ?>
+			<div class="rs-wrapper-button-feature">
+				<a href="features" class="rs-link-readmore">Discover all features</a>
+			</div>
 		</div>
 	</main>
 

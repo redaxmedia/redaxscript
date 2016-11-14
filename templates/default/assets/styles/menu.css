@@ -27,7 +27,7 @@
 	& span
 	{
 		display: block;
-		padding: 0 1em;
+		padding: 0 0.75em;
 
 		&:hover
 		{
@@ -46,6 +46,9 @@
 	{
 		float: right;
 		margin: 0.875em 0;
+		max-width: 40%;
+		overflow: hidden;
+		white-space: nowrap;
 
 		& > li
 		{

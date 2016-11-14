@@ -22,7 +22,7 @@
 	background: var(--rs-color-tertiary);
 	box-sizing: border-box;
 	color: gray(200);
-	min-height: 70vh;
+	min-height: 80vh;
 	padding: 2em 2em 6em;
 	text-align: center;
 }
