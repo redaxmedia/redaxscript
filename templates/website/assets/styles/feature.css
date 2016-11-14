@@ -4,8 +4,10 @@
  * 1. features
  *    1.1 title
  *    1.2 box
- *    1.3 toggle
- *    1.4 list
+ *    1.3 wrapper
+ *    1.4 label
+ *    1.5 list
+ *    1.6 button
  * 2. logic
  *
  * @since 3.0.0
@@ -58,15 +60,18 @@
 	margin-top: -4em;
 }
 
-@media (--media-medium-min)
+/* @section 1.3 wrapper */
+
+@media (--media-large-min)
 {
-	.rs-box-feature
+	.rs-wrapper-feature
 	{
+		max-width: 100rem;
 		width: 80%;
 	}
 }
 
-/* @section 1.3 toggle */
+/* @section 1.4 label */
 
 .rs-wrapper-label-feature
 {
@@ -87,7 +92,6 @@
 	padding: 0.5em;
 	text-transform: uppercase;
 	transition: color 0.1s;
-	white-space: nowrap;
 	width: 4em;
 
 	& img
@@ -133,7 +137,7 @@
 	}
 }
 
-/* @section 1.4 list */
+/* @section 1.5 list */
 
 .rs-wrapper-list-feature
 {
@@ -155,14 +159,14 @@
 	{
 		box-sizing: border-box;
 		margin-bottom: 2em;
-		padding-left: 4em;
+		padding-left: 6em;
 		padding-right: 2em;
 		position: relative;
 
 		&:before
 		{
 			color: var(--rs-color-primary);
-			font-size: 2em;
+			font-size: 3em;
 			left: 0.5em;
 			position: absolute;
 			top: -0.125em;
@@ -175,12 +179,6 @@
 	.rs-list-feature li
 	{
 		flex-basis: 50%;
-		padding-left: 6em;
-
-		&:before
-		{
-			font-size: 3em;
-		}
 	}
 }
 
@@ -246,7 +244,7 @@
 	@extend %rs-website-icon-devices;
 }
 
-/* /* @section 1.5 button */
+/* /* @section 1.6 button */
 
 .rs-wrapper-button-feature
 {

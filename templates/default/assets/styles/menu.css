@@ -21,8 +21,7 @@
 .rs-list-menu
 {
 	color: gray(255);
-	font-family: var(--rs-font-primary);
-	line-height: 2em;
+	font: 1.5em/2em var(--rs-font-primary);
 
 	& a,
 	& span
@@ -46,8 +45,10 @@
 	.rs-list-menu
 	{
 		float: right;
-		font-size: 1.25em;
 		margin: 0.875em 0;
+		max-width: 40%;
+		overflow: hidden;
+		white-space: nowrap;
 
 		& > li
 		{
@@ -114,7 +115,6 @@
 	.rs-list-menu
 	{
 		background: var(--rs-color-primary);
-		font-size: 1.5em;
 		max-width: 25em;
 		width: 75%;
 
@@ -203,16 +203,6 @@
 	.rs-fn-status-menu:checked ~ .rs-label-close-menu
 	{
 		transition: opacity 0.2s;
-	}
-}
-
-/* @section 2.3 large min */
-
-@media (--media-large-min)
-{
-	.rs-list-menu
-	{
-		font-size: 1.5em;
 	}
 }
 

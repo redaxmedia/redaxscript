@@ -45,17 +45,14 @@
 
 /* @section 1.2 box */
 
-.rs-box-content p
+.rs-box-content
 {
-	line-height: 1.75em;
-	margin: 0.5em 0;
-}
+	font-size: 1.25em;
 
-@media (--media-medium-min)
-{
-	.rs-box-content
+	& p
 	{
-		font-size: 1.25em;
+		line-height: 1.75em;
+		margin: 0.5em 0;
 	}
 }
 
