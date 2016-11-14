@@ -27,7 +27,7 @@
 	background: var(--rs-color-tertiary);
 	border-radius: 0.25em;
 	color: gray(255);
-	font-size: 1.25em;
+	font-size: 1.25rem;
 	padding: 1em;
 
 	& .rs-title-dialog
