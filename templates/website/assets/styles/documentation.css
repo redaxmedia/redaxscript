@@ -1,0 +1,19 @@
+/**
+ * @tableofcontents
+ *
+ * 1. documentation
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. documentation */
+
+.rs-link-documentation
+{
+	display: inline-block;
+	font-weight: 700;
+	margin-top: 1.5em;
+}
