@@ -800,34 +800,13 @@ module.exports = function (grunt)
 				dest: 'templates/website/assets/styles/_icon.css'
 			}
 		},
-		img:
-		{
-			modules:
-			{
-				src:
-				[
-					'modules/*/images/*.gif',
-					'modules/*/images/*.jpg',
-					'modules/*/images/*.png'
-				]
-			},
-			templates:
-			{
-				src:
-				[
-					'templates/*/images/*.gif',
-					'templates/*/images/*.jpg',
-					'templates/*/images/*.png'
-				]
-			}
-		},
 		svgmin:
 		{
 			modules:
 			{
 				src:
 				[
-					'modules/*/images/*.svg'
+					'modules/*/assets/images/*.svg'
 				],
 				expand: true
 			},
@@ -835,7 +814,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'templates/*/images/*.svg'
+					'templates/*/assets/images/*.svg'
 				],
 				expand: true
 			},
@@ -968,7 +947,6 @@ module.exports = function (grunt)
 	grunt.registerTask('optimize',
 	[
 		'toc',
-		'img',
 		'svgmin'
 	]);
 	grunt.registerTask('build',

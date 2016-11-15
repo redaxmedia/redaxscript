@@ -26,7 +26,6 @@
 		"grunt-contrib-watch": "1.0.0",
 		"grunt-diff-json": "0.1.3",
 		"grunt-htmlhint": "0.9.13",
-		"grunt-img": "0.1.8",
 		"grunt-jscs": "3.0.1",
 		"grunt-json-format": "2.0.1",
 		"grunt-jsonlint": "1.1.0",
