@@ -647,10 +647,10 @@ module.exports = function (grunt)
 			{
 				src:
 				[
+					'node_modules/redaxscript-flaticon/flaticon/essential/agenda.svg',
 					'node_modules/redaxscript-flaticon/flaticon/design/cube.svg',
 					'node_modules/redaxscript-flaticon/flaticon/essential/alarm.svg',
 					'node_modules/redaxscript-flaticon/flaticon/essential/database-1.svg',
-					'node_modules/redaxscript-flaticon/flaticon/essential/document.svg',
 					'node_modules/redaxscript-flaticon/flaticon/essential/magic-wand.svg',
 					'node_modules/redaxscript-flaticon/flaticon/essential/paper-plane-1.svg',
 					'node_modules/redaxscript-flaticon/flaticon/essential/settings-6.svg',

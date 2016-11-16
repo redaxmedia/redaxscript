@@ -268,7 +268,7 @@
 
 .rs-item-feature-great-documentation:before
 {
-	@extend %rs-website-icon-document;
+	@extend %rs-website-icon-agenda;
 }
 
 .rs-item-feature-grunt-stack:before
