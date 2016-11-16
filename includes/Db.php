@@ -96,11 +96,11 @@ class Db extends ORM
 
 			/* username and password */
 
-			self::configure(
-			[
-				'username' => $dbUser,
-				'password' => $dbPassword
-			]);
+			self::configure('username', $dbUser);
+			if ($dbPassword)
+			{
+				self::configure('password', $dbPassword);
+			}
 		}
 
 		/* sqlite */
