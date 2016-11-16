@@ -241,6 +241,11 @@
 	@extend %rs-website-icon-layers;
 }
 
+.rs-item-feature-access-control:before
+{
+	@extend %rs-website-icon-key;
+}
+
 .rs-item-feature-console-interface:before
 {
 	@extend %rs-website-icon-command-line;
@@ -256,14 +261,29 @@
 	@extend %rs-website-icon-cruise;
 }
 
-.rs-item-feature-file-cache:before
+.rs-item-feature-extendable-system:before
 {
-	@extend %rs-website-icon-rocket-ship;
+	@extend %rs-website-icon-cube;
+}
+
+.rs-item-feature-great-documentation:before
+{
+	@extend %rs-website-icon-document;
 }
 
 .rs-item-feature-grunt-stack:before
 {
 	@extend %rs-website-icon-flask;
+}
+
+.rs-item-feature-integrated-admin:before
+{
+	@extend %rs-website-icon-settings-6;
+}
+
+.rs-item-feature-installation-wizard:before
+{
+	@extend %rs-website-icon-magic-wand;
 }
 
 .rs-item-feature-modern-css:before
@@ -274,6 +294,46 @@
 .rs-item-feature-responsive-design:before
 {
 	@extend %rs-website-icon-devices;
+}
+
+.rs-item-feature-robust-security:before
+{
+	@extend %rs-website-icon-antivirus;
+}
+
+.rs-item-feature-rocket-fast:before
+{
+	@extend %rs-website-icon-rocket-ship;
+}
+
+.rs-item-feature-seo-friendly:before
+{
+	@extend %rs-website-icon-analytics-2;
+}
+
+.rs-item-feature-smart-caching:before
+{
+	@extend %rs-website-icon-stopwatch-1;
+}
+
+.rs-item-feature-system-notification:before
+{
+	@extend %rs-website-icon-alarm;
+}
+
+.rs-item-feature-ultra-lightweight:before
+{
+	@extend %rs-website-icon-paper-plane-1;
+}
+
+.rs-item-feature-unleashed-theming:before
+{
+	@extend %rs-website-icon-paint-palette-1;
+}
+
+.rs-item-feature-wysiwyg-editor:before
+{
+	@extend %rs-website-icon-editing-code;
 }
 
 /* /* @section 1.6 button */
