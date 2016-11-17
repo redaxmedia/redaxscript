@@ -46,12 +46,12 @@
 	margin-bottom: 4em;
 	margin-left: auto;
 	margin-right: auto;
-	padding: 2em 0;
+	padding: 5vh 0;
 }
 
 .rs-box-homepage + .rs-box-feature
 {
-	margin-top: -4em;
+	margin-top: -10vh;
 }
 
 /* @section 1.3 wrapper */
