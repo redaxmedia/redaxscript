@@ -11,13 +11,18 @@
 
 /* @section 1. list default */
 
-ol.rs-list-default li
+.rs-list-default > li + li
+{
+	margin-top: 0.25em;
+}
+
+ol.rs-list-default > li
 {
 	list-style: inherit;
 	list-style-position: inside;
 }
 
-ul.rs-list-default li:before
+ul.rs-list-default > li:before
 {
 	@extend %rs-icon-chevron-right;
 	color: var(--rs-color-primary);

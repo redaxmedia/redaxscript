@@ -49,7 +49,7 @@
 {
 	font-size: 1.25em;
 
-	& p
+	& p:not([class])
 	{
 		line-height: 1.75em;
 		margin: 0.5em 0;

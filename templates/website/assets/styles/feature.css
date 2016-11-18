@@ -47,12 +47,6 @@
 	margin-left: auto;
 	margin-right: auto;
 	padding: 2em 0;
-
-	& p
-	{
-		line-height: 1.75em;
-		margin: 0.5em 0;
-	}
 }
 
 .rs-box-homepage + .rs-box-feature
@@ -166,6 +160,12 @@
 			color: var(--rs-color-primary);
 			font-size: 3em;
 		}
+	}
+
+	& p
+	{
+		line-height: 1.75em;
+		margin: 0.5em 0;
 	}
 }
 
