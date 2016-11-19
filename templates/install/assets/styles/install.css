@@ -14,11 +14,6 @@
 
 /* @section 1. install */
 
-.rs-fn-clearfix
-{
-	@extend %fn-clearfix;
-}
-
 .rs-install-body
 {
 	background: var(--rs-color-tertiary);

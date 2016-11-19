@@ -285,200 +285,20 @@ module.exports = function (grunt)
 				dest: 'templates/install/dist/scripts/install.min.js'
 			}
 		},
-		concat:
-		{
-			base:
-			{
-				src:
-				[
-					'assets/styles/normalize.css',
-					'assets/styles/animate.css'
-				],
-				dest: 'dist/styles/base.min.css'
-			},
-			templateAdmin:
-			{
-				src:
-				[
-					'assets/styles/_query.css',
-					'assets/styles/_clearfix.css',
-					'assets/styles/_dialog.css',
-					'assets/styles/_redirect.css',
-					'assets/styles/_table.css',
-					'templates/admin/assets/styles/_variable.css',
-					'templates/admin/assets/styles/_button.css',
-					'templates/admin/assets/styles/_icon.css',
-					'templates/admin/assets/styles/typo.css',
-					'templates/admin/assets/styles/accordion.css',
-					'templates/admin/assets/styles/button.css',
-					'templates/admin/assets/styles/content.css',
-					'templates/admin/assets/styles/control.css',
-					'templates/admin/assets/styles/dialog.css',
-					'templates/admin/assets/styles/dock.css',
-					'templates/admin/assets/styles/field.css',
-					'templates/admin/assets/styles/form.css',
-					'templates/admin/assets/styles/helper.css',
-					'templates/admin/assets/styles/panel.css',
-					'templates/admin/assets/styles/tab.css',
-					'templates/admin/assets/styles/table.css',
-					'templates/admin/assets/styles/note.css'
-				],
-				dest: 'templates/admin/dist/styles/admin.min.css'
-			},
-			templateConsole:
-			{
-				src:
-				[
-					'templates/console/assets/styles/_variable.css',
-					'templates/console/assets/styles/console.css'
-				],
-				dest: 'templates/console/dist/styles/console.min.css'
-			},
-			templateDefault:
-			{
-				src:
-				[
-					'assets/styles/_query.css',
-					'assets/styles/_clearfix.css',
-					'assets/styles/_dialog.css',
-					'assets/styles/_dropdown.css',
-					'assets/styles/_menu.css',
-					'assets/styles/_redirect.css',
-					'assets/styles/_table.css',
-					'templates/default/assets/styles/_variable.css',
-					'templates/default/assets/styles/_button.css',
-					'templates/default/assets/styles/_icon.css',
-					'templates/default/assets/styles/typo.css',
-					'templates/default/assets/styles/accordion.css',
-					'templates/default/assets/styles/breadcrumb.css',
-					'templates/default/assets/styles/button.css',
-					'templates/default/assets/styles/content.css',
-					'templates/default/assets/styles/dialog.css',
-					'templates/default/assets/styles/field.css',
-					'templates/default/assets/styles/footer.css',
-					'templates/default/assets/styles/form.css',
-					'templates/default/assets/styles/header.css',
-					'templates/default/assets/styles/helper.css',
-					'templates/default/assets/styles/layout.css',
-					'templates/default/assets/styles/list.css',
-					'templates/default/assets/styles/media.css',
-					'templates/default/assets/styles/menu.css',
-					'templates/default/assets/styles/pagination.css',
-					'templates/default/assets/styles/result.css',
-					'templates/default/assets/styles/search.css',
-					'templates/default/assets/styles/sidebar.css',
-					'templates/default/assets/styles/tab.css',
-					'templates/default/assets/styles/table.css',
-					'templates/default/assets/styles/teaser.css',
-					'templates/default/assets/styles/note.css'
-				],
-				dest: 'templates/default/dist/styles/default.min.css'
-			},
-			templateInstall:
-			{
-				src:
-				[
-					'assets/styles/_query.css',
-					'assets/styles/_clearfix.css',
-					'templates/default/assets/styles/_variable.css',
-					'templates/default/assets/styles/_button.css',
-					'templates/default/assets/styles/_icon.css',
-					'templates/default/assets/styles/typo.css',
-					'templates/default/assets/styles/accordion.css',
-					'templates/default/assets/styles/button.css',
-					'templates/default/assets/styles/content.css',
-					'templates/default/assets/styles/field.css',
-					'templates/default/assets/styles/form.css',
-					'templates/install/assets/styles/install.css',
-					'templates/default/assets/styles/note.css'
-				],
-				dest: 'templates/install/dist/styles/install.min.css'
-			},
-			templateSkeleton:
-			{
-				src:
-				[
-					'assets/styles/_query.css',
-					'assets/styles/_clearfix.css',
-					'assets/styles/_dialog.css',
-					'assets/styles/_redirect.css',
-					'assets/styles/_table.css',
-					'templates/skeleton/assets/styles/_variable.css',
-					'templates/skeleton/assets/styles/breadcrumb.css',
-					'templates/skeleton/assets/styles/content.css',
-					'templates/skeleton/assets/styles/form.css',
-					'templates/skeleton/assets/styles/helper.css',
-					'templates/skeleton/assets/styles/layout.css',
-					'templates/skeleton/assets/styles/media.css',
-					'templates/skeleton/assets/styles/pagination.css',
-					'templates/skeleton/assets/styles/result.css',
-					'templates/skeleton/assets/styles/sidebar.css',
-					'templates/skeleton/assets/styles/table.css',
-					'templates/skeleton/assets/styles/typo.css'
-				],
-				dest: 'templates/skeleton/dist/styles/skeleton.min.css'
-			},
-			templateWebsite:
-			{
-				src:
-				[
-					'assets/styles/_query.css',
-					'templates/default/assets/styles/_variable.css',
-					'templates/default/assets/styles/_button.css',
-					'templates/website/assets/styles/_variable.css',
-					'templates/website/assets/styles/_icon.css',
-					'templates/website/assets/styles/documentation.css',
-					'templates/website/assets/styles/feature.css',
-					'templates/website/assets/styles/homepage.css',
-					'templates/website/assets/styles/layout.css'
-				],
-				dest: 'templates/website/dist/styles/website.min.css'
-			},
-			modulePreview:
-			{
-				src:
-				[
-					'modules/Preview/assets/styles/preview.css'
-				],
-				dest: 'modules/Preview/dist/styles/preview.min.css'
-			},
-			moduleTinymceContent:
-			{
-				src:
-				[
-					'templates/default/assets/styles/_variable.css',
-					'modules/Tinymce/assets/styles/content.css'
-				],
-				dest: 'modules/Tinymce/dist/styles/content.min.css'
-			},
-			moduleTinymceSkin:
-			{
-				src:
-				[
-					'modules/Tinymce/assets/styles/skin.css'
-				],
-				dest: 'modules/Tinymce/dist/styles/skin.min.css'
-			}
-		},
 		postcss:
 		{
 			base:
 			{
 				src:
 				[
-					'dist/styles/*.min.css'
+					'assets/styles/_base.css'
 				],
+				dest: 'dist/styles/base.min.css',
 				options:
 				{
 					processors:
 					[
-						require('postcss-custom-properties'),
-						require('postcss-custom-media'),
-						require('postcss-custom-selectors'),
-						require('postcss-nesting'),
-						require('postcss-extend'),
-						require('postcss-color-gray'),
-						require('postcss-color-function'),
+						require('postcss-import'),
 						require('autoprefixer')(
 						{
 							browsers: 'last 2 versions'
@@ -491,36 +311,77 @@ module.exports = function (grunt)
 					]
 				}
 			},
-			templatesAndModules:
+			templateAdmin:
 			{
 				src:
 				[
-					'templates/*/dist/styles/*.min.css',
-					'modules/*/dist/styles/*.min.css'
+					'templates/admin/assets/styles/_admin.css'
 				],
-				options:
-				{
-					processors:
-					[
-						require('postcss-custom-properties'),
-						require('postcss-custom-media'),
-						require('postcss-custom-selectors'),
-						require('postcss-nesting'),
-						require('postcss-extend'),
-						require('postcss-color-gray'),
-						require('postcss-color-function'),
-						require('autoprefixer')(
-						{
-							browsers: 'last 2 versions'
-						}),
-						require('cssnano')(
-						{
-							autoprefixer: false,
-							colormin: false,
-							zindex: false
-						})
-					]
-				}
+				dest: 'templates/admin/dist/styles/admin.min.css'
+			},
+			templateConsole:
+			{
+				src:
+				[
+					'templates/console/assets/styles/_console.css'
+				],
+				dest: 'templates/console/dist/styles/console.min.css'
+			},
+			templateDefault:
+			{
+				src:
+				[
+					'templates/default/assets/styles/_default.css'
+				],
+				dest: 'templates/default/dist/styles/default.min.css'
+			},
+			templateSkeleton:
+			{
+				src:
+				[
+					'templates/skeleton/assets/styles/_skeleton.css'
+				],
+				dest: 'templates/skeleton/dist/styles/skeleton.min.css'
+			},
+			templateInstall:
+			{
+				src:
+				[
+					'templates/install/assets/styles/_install.css'
+				],
+				dest: 'templates/install/dist/styles/install.min.css'
+			},
+			templateWebsite:
+			{
+				src:
+				[
+					'templates/website/assets/styles/_website.css'
+				],
+				dest: 'templates/website/dist/styles/website.min.css'
+			},
+			modulePreview:
+			{
+				src:
+				[
+					'modules/Preview/assets/styles/_preview.css'
+				],
+				dest: 'modules/Preview/dist/styles/preview.min.css'
+			},
+			moduleTinymceContent:
+			{
+				src:
+				[
+					'modules/Tinymce/assets/styles/_content.css'
+				],
+				dest: 'modules/Tinymce/dist/styles/content.min.css'
+			},
+			moduleTinymceSkin:
+			{
+				src:
+				[
+					'modules/Tinymce/assets/styles/_skin.css'
+				],
+				dest: 'modules/Tinymce/dist/styles/skin.min.css'
 			},
 			stylelint:
 			{
@@ -582,6 +443,30 @@ module.exports = function (grunt)
 						})
 					]
 				}
+			},
+			options:
+			{
+				processors:
+				[
+					require('postcss-import'),
+					require('postcss-custom-properties'),
+					require('postcss-custom-media'),
+					require('postcss-custom-selectors'),
+					require('postcss-nesting'),
+					require('postcss-extend'),
+					require('postcss-color-gray'),
+					require('postcss-color-function'),
+					require('autoprefixer')(
+					{
+						browsers: 'last 2 versions'
+					}),
+					require('cssnano')(
+					{
+						autoprefixer: false,
+						colormin: false,
+						zindex: false
+					})
+				]
 			}
 		},
 		webfont:
@@ -975,9 +860,16 @@ module.exports = function (grunt)
 	]);
 	grunt.registerTask('build-css',
 	[
-		'concat',
 		'postcss:base',
-		'postcss:templatesAndModules'
+		'postcss:templateAdmin',
+		'postcss:templateConsole',
+		'postcss:templateDefault',
+		'postcss:templateInstall',
+		'postcss:templateSkeleton',
+		'postcss:templateWebsite',
+		'postcss:modulePreview',
+		'postcss:moduleTinymceContent',
+		'postcss:moduleTinymceSkin'
 	]);
 	grunt.registerTask('build-js',
 	[
