@@ -914,6 +914,10 @@ function admin_update()
 
 		foreach ($r as $key => $value)
 		{
+			if ($value == 'select')
+			{
+				$value = null;
+			}
 			Redaxscript\Db::forTablePrefix($tableParameter)
 				->where('name', $key)
 				->findOne()

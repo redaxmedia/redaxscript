@@ -167,7 +167,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			[
 				'id' => 'robots',
 				'name' => 'robots',
-				'value' => Db::getSetting('robots')
+				'value' => filter_var(Db::getSetting('robots'), FILTER_VALIDATE_INT)
 			])
 			->append('</li></ul></fieldset>')
 
@@ -206,7 +206,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			[
 				'id' => 'notification',
 				'name' => 'notification',
-				'value' => Db::getSetting('notification')
+				'value' => intval(Db::getSetting('notification'))
 			])
 			->append('</li></ul></fieldset>')
 
@@ -306,7 +306,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			[
 				'id' => 'pagination',
 				'name' => 'pagination',
-				'value' => Db::getSetting('pagination')
+				'value' => intval(Db::getSetting('pagination'))
 			])
 			->append('</li></ul></fieldset>')
 
@@ -323,7 +323,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			[
 				'id' => 'registration',
 				'name' => 'registration',
-				'value' => Db::getSetting('registration')
+				'value' => intval(Db::getSetting('registration'))
 			])
 			->append('</li><li>')
 			->label($this->_language->get('verification'),
@@ -334,7 +334,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			[
 				'id' => 'verification',
 				'name' => 'verification',
-				'value' => Db::getSetting('verification')
+				'value' => intval(Db::getSetting('verification'))
 			])
 			->append('</li><li>')
 			->label($this->_language->get('recovery'),
@@ -345,7 +345,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			[
 				'id' => 'recovery',
 				'name' => 'recovery',
-				'value' => Db::getSetting('recovery')
+				'value' => intval(Db::getSetting('recovery'))
 			])
 			->append('</li></ul></fieldset>')
 
@@ -362,7 +362,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			[
 				'id' => 'moderation',
 				'name' => 'moderation',
-				'value' => Db::getSetting('moderation')
+				'value' => intval(Db::getSetting('moderation'))
 			])
 			->append('</li><li>')
 			->label($this->_language->get('captcha'),
@@ -373,7 +373,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			[
 				'id' => 'captcha',
 				'name' => 'captcha',
-				'value' => Db::getSetting('captcha')
+				'value' => intval(Db::getSetting('captcha'))
 			])
 			->append('</li></ul></fieldset>')
 			->token()

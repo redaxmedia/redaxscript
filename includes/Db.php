@@ -300,7 +300,7 @@ class Db extends ORM
 				}
 			}
 		}
-		else if (!$key)
+		else
 		{
 			return $settings;
 		}

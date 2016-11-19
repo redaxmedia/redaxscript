@@ -170,7 +170,7 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 			[
 				'id' => 'robots',
 				'name' => 'robots',
-				'value' => $article->id ? intval($article->robots) : 1
+				'value' => $article->id ? filter_var($article->robots, FILTER_VALIDATE_INT) : null
 			])
 			->append('</li><li>')
 			->label($this->_language->get('text'),

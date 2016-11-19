@@ -170,7 +170,7 @@ class CategoryForm extends ViewAbstract implements ViewInterface
 			[
 				'id' => 'robots',
 				'name' => 'robots',
-				'value' => $category->id ? intval($category->robots) : null
+				'value' => $category->id ? filter_var($category->robots, FILTER_VALIDATE_INT) : null
 			])
 			->append('</li></ul></fieldset>')
 
