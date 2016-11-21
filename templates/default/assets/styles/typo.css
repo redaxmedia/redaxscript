@@ -22,7 +22,7 @@ a
 
 .rs-link-default
 {
-	border-bottom: 0.125em solid color(var(--rs-color-tertiary) a(30%));
+	border-bottom: 0.125em solid gray(200);
 	color: var(--rs-color-tertiary);
 	transition: border-color 0.2s;
 
