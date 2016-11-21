@@ -1,7 +1,7 @@
 /**
  * @tableofcontents
  *
- * 1. blockcode
+ * 1. code
  *
  * @since 3.0.0
  *
@@ -9,7 +9,7 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. blockcode */
+/* @section 1. code */
 
 .rs-admin-code-default
 {
@@ -21,7 +21,7 @@
 	padding: 1em;
 	white-space: pre-wrap;
 
-	& + .rs-admin-box-blockcode
+	& + .rs-admin-code-default
 	{
 		margin-top: 1em;
 	}
