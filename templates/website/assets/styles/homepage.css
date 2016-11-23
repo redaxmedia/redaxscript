@@ -137,6 +137,7 @@
 	position: absolute;
 	right: 0;
 	top: 0;
+	z-index: 1;
 }
 
 .rs-box-badge-beta
@@ -148,7 +149,6 @@
 	padding: 2em 3em 0.5em;
 	text-transform: uppercase;
 	transform: rotate(45deg) translate(1.5em, -3em);
-	z-index: 1;
 }
 
 @media (--media-medium-min)
