@@ -30,9 +30,9 @@
 
 			if (typeof variation[id] === 'function')
 			{
-                variation[id]();
+				variation[id]();
 			}
-        }
+		}
 	};
 
 	/* @section 2. init */
