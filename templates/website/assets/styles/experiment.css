@@ -1,0 +1,93 @@
+/* @section 1. experiment */
+
+/* @section 1.1 zero */
+
+.rs-is-variation-0
+{
+	&.rs-wrapper-animation
+	{
+		display: none;
+	}
+}
+
+/* @section 1.2 one */
+
+.rs-is-variation-1
+{
+	& .rs-box-homepage
+	{
+		overflow: hidden;
+		position: relative;
+	}
+
+	& .rs-wrapper-homepage,
+	& .rs-box-feature
+	{
+		position: relative;
+		z-index: 1;
+	}
+
+	& .rs-wrapper-animation
+	{
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		transform: translateZ(0);
+	}
+
+	& .rs-box-animation,
+	& .rs-box-animation:before,
+	& .rs-box-animation:after
+	{
+		background: gray(0, 0.1);
+		position: absolute;
+
+		&.rs-is-first
+		{
+			animation: 100s rotate-left infinite linear, 10s colorize infinite linear;
+			height: 140vh;
+			width: 140vw;
+		}
+
+		&.rs-is-second
+		{
+			animation: 100s rotate-right infinite linear;
+			height: 120vh;
+			width: 120vw;
+		}
+	}
+
+	& .rs-box-animation:before
+	{
+		animation-duration: 50s;
+		content: '';
+	}
+
+	& .rs-box-animation:after
+	{
+		animation-duration: 100s;
+		content: '';
+	}
+}
+
+/* @section 1.3 keyframe */
+
+@keyframes colorize
+{
+	0%
+	{
+		background: gray(0, 0.1);
+	}
+
+	20%
+	{
+		background: rgba(50, 200, 150, 0.3);
+	}
+
+	100%
+	{
+		background: gray(0, 0.1);
+	}
+}

@@ -18,14 +18,21 @@
 
 	$.fn.experiments = function ()
 	{
-		var id = cxApi.chooseVariation();
+		var html = $('html'),
+			id = cxApi.chooseVariation(),
+			variation = rs.modules.experiments.variation;
 
-		/* start as needed */
-
-		if (typeof rs.modules.experiments.variation[id] === 'function')
+		if (typeof id === 'number')
 		{
-			rs.modules.experiments.variation[id]();
-		}
+			html.addClass('rs-is-variation-' + id);
+
+			/* init as needed */
+
+			if (typeof variation[id] === 'function')
+			{
+                variation[id]();
+			}
+        }
 	};
 
 	/* @section 2. init */
