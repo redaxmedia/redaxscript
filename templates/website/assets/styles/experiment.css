@@ -1,3 +1,17 @@
+/**
+ * @tableofcontents
+ *
+ * 1. experiment
+ *    1.1 zero
+ *    1.2 one
+ *    1.3 keyframe
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
 /* @section 1. experiment */
 
 /* @section 1.1 zero */
@@ -43,32 +57,41 @@
 	{
 		background: gray(0, 0.1);
 		position: absolute;
+	}
 
-		&.rs-is-first
+	& .rs-box-animation
+	{
+		&.rs-is-first,
+		&.rs-is-first:before,
+		&.rs-is-first:after
 		{
-			animation: 100s rotate-left infinite linear, 10s colorize infinite linear;
+			animation: 200s rotate-left infinite linear, 10s colorize infinite linear;
 			height: 140vh;
 			width: 140vw;
 		}
 
-		&.rs-is-second
+		&.rs-is-second,
+		&.rs-is-second:before,
+		&.rs-is-second:after
 		{
-			animation: 100s rotate-right infinite linear;
+			animation: 200s rotate-right infinite linear;
 			height: 120vh;
 			width: 120vw;
 		}
-	}
 
-	& .rs-box-animation:before
-	{
-		animation-duration: 50s;
-		content: '';
-	}
+		&.rs-is-first:before,
+		&.rs-is-second:before
+		{
+			animation-duration: 50s;
+			content: '';
+		}
 
-	& .rs-box-animation:after
-	{
-		animation-duration: 100s;
-		content: '';
+		&.rs-is-first:after,
+		&.rs-is-second:after
+		{
+			animation-duration: 100s;
+			content: '';
+		}
 	}
 }
 
@@ -83,7 +106,7 @@
 
 	20%
 	{
-		background: rgba(50, 200, 150, 0.3);
+		background: rgba(50, 200, 150, 0.2);
 	}
 
 	100%

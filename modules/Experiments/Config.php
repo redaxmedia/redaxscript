@@ -23,6 +23,6 @@ class Config extends Module
 
 	protected static $_configArray =
 	[
-		'id' => null
+		'id' => '0000000000000000000000'
 	];
 }
