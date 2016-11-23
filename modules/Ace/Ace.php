@@ -28,7 +28,7 @@ class Ace extends Module
 		'name' => 'Ace',
 		'alias' => 'Ace',
 		'author' => 'Redaxmedia',
-		'description' => 'Javascript powered code editor',
+		'description' => 'JavaScript powered code editor',
 		'version' => '3.0.0'
 	];
 

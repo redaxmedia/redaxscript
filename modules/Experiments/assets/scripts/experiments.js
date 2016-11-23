@@ -24,7 +24,7 @@
 
 		if (typeof rs.modules.experiments.variation[id] === 'function')
 		{
-			rs.modules.experiments.variation[id](id);
+			rs.modules.experiments.variation[id]();
 		}
 	};
 
