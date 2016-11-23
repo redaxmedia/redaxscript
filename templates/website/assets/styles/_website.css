@@ -3,8 +3,8 @@
 @import '../../../default/assets/styles/_button.css';
 @import '_variable.css';
 @import '_icon.css';
+@import 'animation.css';
 @import 'documentation.css';
 @import 'feature.css';
-@import 'experiment.css';
 @import 'homepage.css';
 @import 'layout.css';
