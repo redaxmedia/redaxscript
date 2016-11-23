@@ -20,7 +20,7 @@
 	{
 		var html = $('html'),
 			id = cxApi.chooseVariation(),
-			variation = rs.modules.experiments.variation;
+			variation = rs.modules.experiments.variation || [];
 
 		if (typeof id === 'number')
 		{
