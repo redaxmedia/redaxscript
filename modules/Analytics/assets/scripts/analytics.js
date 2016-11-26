@@ -48,18 +48,20 @@
 				var target = $(this),
 					category = String(target.data('category')),
 					action = String(target.data('action')),
-					label = String(target.data('label'));
+					label = target.data('label') ? String(target.data('label')) : null,
+					value = target.data('value') ? Number(target.data('value')) : null;
 
 				/* track event */
 
-				if (category && action && label)
+				if (category && action)
 				{
 					ga('send',
 					{
 						hitType: 'event',
 						eventCategory: category,
 						eventAction: action,
-						eventLabel: label
+						eventLabel: label,
+						eventValue: value
 					});
 				}
 			});
