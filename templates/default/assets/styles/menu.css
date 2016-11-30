@@ -109,11 +109,21 @@
 
 @media (--media-medium-max)
 {
+	.rs-fn-wrapper-body
+	{
+		transition: transform 0.2s;
+		will-change: transform;
+	}
+
+	.rs-fn-status-menu:checked ~ .rs-fn-wrapper-body
+	{
+		transform: translateX(50%);
+	}
+
 	.rs-list-menu
 	{
 		background: var(--rs-color-primary);
-		max-width: 25em;
-		width: 75%;
+		width: 50%;
 
 		& li
 		{
@@ -131,25 +141,19 @@
 		}
 	}
 
-	.rs-fn-status-menu:checked ~ .rs-list-menu
-	{
-		transition: transform 0.2s;
-	}
-
 	/* toggle */
 
 	.rs-label-toggle-menu
 	{
-		bottom: 0;
 		color: gray(200);
 		cursor: pointer;
 		font: 1em arial;
 		max-width: 5em;
-		padding-top: 3.75em;
+		padding-top: 3em;
 		position: absolute;
 		right: 0;
 		text-align: center;
-		top: 0;
+		top: 0.5em;
 		width: 25%;
 		z-index: 1000;
 
@@ -157,7 +161,7 @@
 		&:after
 		{
 			background: var(--rs-color-primary);
-			bottom: 4em;
+			bottom: 2.5em;
 			content: '';
 			height: 0.25em;
 			left: 25%;
@@ -205,9 +209,11 @@
 
 /* @section 3. admin */
 
+/* TODO: check */
+
 @media (--media-medium-max)
 {
-	.rs-admin-list-panel ~ .rs-has-menu .rs-fn-menu
+	.rs-admin-list-panel ~ .rs-fn-wrapper-body .rs-fn-menu
 	{
 		bottom: auto;
 		position: absolute;

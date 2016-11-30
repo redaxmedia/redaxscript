@@ -33,21 +33,21 @@
 
 @media (--media-medium-max)
 {
+	%fn-toggle-menu
+	{
+		user-select: none;
+	}
+
 	%fn-menu
 	{
 		bottom: 0;
 		left: 0;
 		-webkit-overflow-scrolling: touch;
 		overflow-y: auto;
-		position: fixed;
+		position: absolute;
 		top: 0;
 		transform: translateX(-100%);
 		z-index: 1000;
-	}
-
-	%fn-checked-menu
-	{
-		transform: translateX(0);
 	}
 
 	%fn-close-menu
@@ -59,6 +59,8 @@
 		position: fixed;
 		right: 0;
 		top: 0;
+		transition: opacity 0.2s;
+		will-change: opacity;
 		z-index: 900;
 	}
 
