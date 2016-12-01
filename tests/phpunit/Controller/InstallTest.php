@@ -122,16 +122,16 @@ class InstallTest extends TestCaseAbstract
 	}
 
 	/**
-	 * providerMail
+	 * providerMailFailure
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	public function providerMail()
+	public function providerMailFailure()
 	{
-		return $this->getProvider('tests/provider/Controller/install_mail.json');
+		return $this->getProvider('tests/provider/Controller/install_mail_failure.json');
 	}
 
 	/**
@@ -208,17 +208,17 @@ class InstallTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testMail
+	 * testMailFailure
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param array $postArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerMail
+	 * @dataProvider providerMailFailure
 	 */
 
-	public function testMail($postArray = [], $expect = null)
+	public function testMailFailure($postArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -231,7 +231,7 @@ class InstallTest extends TestCaseAbstract
 		$this->_request->set('post', $postArray);
 		$this->_config->init(Stream::url('root/config.php'));
 		$stub = $this
-			->getMockBuilder('Redaxscript\Controller\Install')
+			->getMockBuilder('Redaxscript\Controller\Comment')
 			->setConstructorArgs(
 			[
 				$this->_registry,
@@ -239,12 +239,7 @@ class InstallTest extends TestCaseAbstract
 				$this->_request,
 				$this->_config
 			])
-			->setMethods(
-			[
-				'_mail'
-			])
-			->getMock();
-		$stub
+			->getMock()
 			->expects($this->any())
 			->method('_mail')
 			->will($this->returnValue(false));

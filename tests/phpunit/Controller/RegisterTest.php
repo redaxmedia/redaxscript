@@ -59,6 +59,17 @@ class RegisterTest extends TestCaseAbstract
 	}
 
 	/**
+	 * tearDown
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function tearDown()
+	{
+		Db::forTablePrefix('users')->where('user', 'new')->deleteMany();
+	}
+
+	/**
 	 * setUpBeforeClass
 	 *
 	 * @since 3.0.0
@@ -96,6 +107,19 @@ class RegisterTest extends TestCaseAbstract
 	}
 
 	/**
+	 * providerMailFailure
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerMailFailure()
+	{
+		return $this->getProvider('tests/provider/Controller/register_mail_failure.json');
+	}
+
+	/**
 	 * testProcess
 	 *
 	 * @since 3.0.0
@@ -118,6 +142,46 @@ class RegisterTest extends TestCaseAbstract
 		/* actual */
 
 		$actual = $registerController->process();
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testMailFailure
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $postArray
+	 * @param array $hashArray
+	 * @param string $expect
+	 *
+	 * @dataProvider providerMailFailure
+	 */
+
+	public function testMailFailure($postArray = [], $hashArray = [], $expect = null)
+	{
+		/* setup */
+
+		$this->_request->set('post', $postArray);
+		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
+		$stub = $this
+			->getMockBuilder('Redaxscript\Controller\Register')
+			->setConstructorArgs(
+			[
+				$this->_registry,
+				$this->_language,
+				$this->_request
+			])
+			->getMock()
+			->expects($this->any())
+			->method('_mail')
+			->will($this->returnValue(false));
+
+		/* actual */
+
+		$actual = $stub->process();
 
 		/* compare */
 

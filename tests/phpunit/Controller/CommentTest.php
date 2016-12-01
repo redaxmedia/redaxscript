@@ -97,16 +97,16 @@ class CommentTest extends TestCaseAbstract
 	}
 
 	/**
-	 * providerMail
+	 * providerMailFailure
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	public function providerMail()
+	public function providerMailFailure()
 	{
-		return $this->getProvider('tests/provider/Controller/comment_mail.json');
+		return $this->getProvider('tests/provider/Controller/comment_mail_failure.json');
 	}
 
 	/**
@@ -142,7 +142,7 @@ class CommentTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testMail
+	 * testMailFailure
 	 *
 	 * @since 3.0.0
 	 *
@@ -151,10 +151,10 @@ class CommentTest extends TestCaseAbstract
 	 * @param array $settingArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerMail
+	 * @dataProvider providerMailFailure
 	 */
 
-	public function testMail($postArray = [], $hashArray = [], $settingArray = [], $expect = null)
+	public function testMailFailure($postArray = [], $hashArray = [], $settingArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -170,12 +170,7 @@ class CommentTest extends TestCaseAbstract
 				$this->_language,
 				$this->_request
 			])
-			->setMethods(
-			[
-				'_mail'
-			])
-			->getMock();
-		$stub
+			->getMock()
 			->expects($this->any())
 			->method('_mail')
 			->will($this->returnValue(false));
