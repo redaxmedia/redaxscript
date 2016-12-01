@@ -1,0 +1,11 @@
+[
+	[
+		{
+			"admin-name": "Test",
+			"admin-user": "test",
+			"admin-password": "test",
+			"admin-email": "test@test.com"
+		},
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-warning\">Email sending failed</div>"
+	]
+]
