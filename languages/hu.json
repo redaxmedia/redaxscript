@@ -146,6 +146,7 @@
 	"email_incorrect": "Érvénytelen Email",
 	"email_empty": "Üres Email mező",
 	"email_unknown": "Ismeretlen Email formátum",
+	"email_failed": "Email sending failed",
 	"url": "URL",
 	"url_incorrect": "Érvénytelen URL",
 	"identifier": "Identifier",

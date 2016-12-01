@@ -81,16 +81,26 @@ class Reset extends ControllerAbstract
 			'password' => $passwordHash->getRaw()
 		];
 
-		/* reset and mail */
+		/* reset */
 
-		if ($this->_reset($resetArray) && $this->_mail($mailArray))
+		if (!$this->_reset($resetArray))
 		{
-			return $this->_success();
+			return $this->_error(
+			[
+				'message' => $this->_language->get('something_wrong')
+			]);
 		}
-		return $this->_error(
-		[
-			'message' => $this->_language->get('something_wrong')
-		]);
+
+		/* mail */
+
+		if (!$this->_mail($mailArray))
+		{
+			return $this->_error(
+			[
+				'message' => $this->_language->get('email_failed')
+			]);
+		}
+		return $this->_success();
 	}
 
 	/**

@@ -146,6 +146,7 @@
 	"email_incorrect": "آدرس ایمیل صحیح نیست",
 	"email_empty": "آدرس ایمیل خالی است",
 	"email_unknown": "این آدرس ایمیل ناشناخته است",
+	"email_failed": "Email sending failed",
 	"url": "URL",
 	"url_incorrect": "URL صحیح نیست",
 	"identifier": "شناسایی",

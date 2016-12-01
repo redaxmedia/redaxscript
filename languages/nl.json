@@ -146,6 +146,7 @@
 	"email_incorrect": "Email is onjuist",
 	"email_empty": "Email is leeg",
 	"email_unknown": "Email is onbekend",
+	"email_failed": "Email sending failed",
 	"url": "URL",
 	"url_incorrect": "URL is onjuist",
 	"identifier": "Identifier",

@@ -140,7 +140,7 @@ class Install extends ControllerAbstract
 			$this->_refresh();
 		}
 
-		/* database failed */
+		/* database status */
 
 		if (!Db::getStatus())
 		{
@@ -151,19 +151,30 @@ class Install extends ControllerAbstract
 			]);
 		}
 
-		/* install and mail */
+		/* install */
 
-		if ($this->_install($adminArray) && $this->_mail($adminArray))
+		if (!$this->_install($adminArray))
 		{
-			return $this->_success(
+			return $this->error(
 			[
-				'url' => $this->_registry->get('root'),
-				'message' => $this->_language->get('installation_completed')
+				'message' => $this->_language->get('installation_failed')
 			]);
 		}
-		return $this->_error(
+
+		/* mail */
+
+		if (!$this->_mail($adminArray))
+		{
+			return $this->_warning(
+			[
+				'url' => $this->_registry->get('root'),
+				'message' => $this->_language->get('email_failed')
+			]);
+		}
+		return $this->_success(
 		[
-			'message' => $this->_language->get('installation_failed')
+			'url' => $this->_registry->get('root'),
+			'message' => $this->_language->get('installation_completed')
 		]);
 	}
 
@@ -172,7 +183,7 @@ class Install extends ControllerAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $successArray
+	 * @param array $successArray array of the success
 	 *
 	 * @return string
 	 */
@@ -187,11 +198,30 @@ class Install extends ControllerAbstract
 	}
 
 	/**
+	 * show the warning
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $warningArray array of the warning
+	 *
+	 * @return string
+	 */
+
+	protected function _warning($warningArray = [])
+	{
+		$messenger = new Messenger($this->_registry);
+		return $messenger
+			->setUrl($this->_language->get('home'), $warningArray['url'])
+			->doRedirect()
+			->warning($warningArray['message'], $warningArray['title']);
+	}
+
+	/**
 	 * show the error
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $errorArray
+	 * @param array $errorArray array of the error
 	 *
 	 * @return string
 	 */

@@ -84,21 +84,32 @@ class Comment extends ControllerAbstract
 			'article' => Db::forTablePrefix('articles')->whereIdIs($postArray['article'])->findOne()->title
 		];
 
-		/* create and mail */
+		/* create */
 
-		if ($this->_create($createArray) && $this->_mail($mailArray))
+		if (!$this->_create($createArray))
 		{
-			return $this->_success(
+			return $this->_error(
 			[
 				'route' => $route,
-				'timeout' => Db::getSetting('notification') ? 2 : 0,
-				'message' => Db::getSetting('moderation') ? $this->_language->get('comment_moderation') : $this->_language->get('comment_sent')
+				'message' => $this->_language->get('something_wrong')
 			]);
 		}
-		return $this->_error(
+
+		/* mail */
+
+		if (!$this->_mail($mailArray))
+		{
+			return $this->_warning(
+			[
+				'route' => $route,
+				'message' => $this->_language->get('mail_failed')
+			]);
+		}
+		return $this->_success(
 		[
 			'route' => $route,
-			'message' => $this->_language->get('something_wrong')
+			'timeout' => Db::getSetting('notification') ? 2 : 0,
+			'message' => Db::getSetting('moderation') ? $this->_language->get('comment_moderation') : $this->_language->get('comment_sent')
 		]);
 	}
 
@@ -119,6 +130,25 @@ class Comment extends ControllerAbstract
 			->setRoute($this->_language->get('continue'), $successArray['route'])
 			->doRedirect($successArray['timeout'])
 			->success($successArray['message'], $this->_language->get('operation_completed'));
+	}
+
+	/**
+	 * show the warning
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $warningArray array of the warning
+	 *
+	 * @return string
+	 */
+
+	protected function _warning($warningArray = [])
+	{
+		$messenger = new Messenger($this->_registry);
+		return $messenger
+			->setRoute($this->_language->get('continue'), $warningArray['route'])
+			->doRedirect($warningArray['timeout'])
+			->warning($warningArray['message'], $this->_language->get('operation_completed'));
 	}
 
 	/**

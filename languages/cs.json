@@ -146,6 +146,7 @@
 	"email_incorrect": "Email je neplatný",
 	"email_empty": "Email je prázdný",
 	"email_unknown": "Email je neznámý",
+	"email_failed": "Email sending failed",
 	"url": "URL",
 	"url_incorrect": "URL je neplatný",
 	"identifier": "Identifier",
