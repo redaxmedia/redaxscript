@@ -146,6 +146,7 @@
 	"email_incorrect": "البريد الالكتروني غير صحيح",
 	"email_empty": "حقل البريد الالكتروني فارغ",
 	"email_unknown": "البريد الالكتروني غير معروف",
+	"email_failed": "Email sending failed",
 	"url": "الرابط",
 	"url_incorrect": "الرابط غير صحيح",
 	"identifier": "Identifier",
