@@ -246,7 +246,8 @@ class InstallTest extends TestCaseAbstract
 			->getMock();
 		$stub
 			->expects($this->any())
-			->method('_mail')->will($this->returnValue(false));
+			->method('_mail')
+			->will($this->returnValue(false));
 
 		/* actual */
 

@@ -102,7 +102,7 @@ class Comment extends ControllerAbstract
 			return $this->_warning(
 			[
 				'route' => $route,
-				'message' => $this->_language->get('mail_failed')
+				'message' => $this->_language->get('email_failed')
 			]);
 		}
 		return $this->_success(
