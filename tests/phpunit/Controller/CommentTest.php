@@ -97,6 +97,19 @@ class CommentTest extends TestCaseAbstract
 	}
 
 	/**
+	 * providerMailFailure
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerMailFailure()
+	{
+		return $this->getProvider('tests/provider/Controller/comment_mail_failure.json');
+	}
+
+	/**
 	 * testProcess
 	 *
 	 * @since 3.0.0
@@ -122,6 +135,57 @@ class CommentTest extends TestCaseAbstract
 		/* actual */
 
 		$actual = $commentController->process();
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testMailFailure
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $postArray
+	 * @param array $hashArray
+	 * @param array $settingArray
+	 * @param string $expect
+	 *
+	 * @dataProvider providerMailFailure
+	 */
+
+	public function testMailFailure($postArray = [], $hashArray = [], $settingArray = [], $expect = null)
+	{
+		/* setup */
+
+		Db::setSetting('notification', $settingArray['notification']);
+		Db::setSetting('moderation', $settingArray['moderation']);
+		$this->_request->set('post', $postArray);
+		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
+		$stub = $this
+			->getMockBuilder('Redaxscript\Controller\Comment')
+			->setConstructorArgs(
+			[
+				$this->_registry,
+				$this->_language,
+				$this->_request
+			])
+			->setMethods(
+			[
+				'_mail'
+			])
+			->getMock();
+
+		/* override */
+
+		$stub
+			->expects($this->any())
+			->method('_mail')
+			->will($this->returnValue(false));
+
+		/* actual */
+
+		$actual = $stub->process();
 
 		/* compare */
 

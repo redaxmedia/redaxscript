@@ -146,6 +146,7 @@
 	"email_incorrect": "Email tidak tepat",
 	"email_empty": "Email kosong",
 	"email_unknown": "Email tidak diketahui",
+	"email_failed": "Email sending failed",
 	"url": "URL",
 	"url_incorrect": "URL tidak tepat",
 	"identifier": "Identifier",

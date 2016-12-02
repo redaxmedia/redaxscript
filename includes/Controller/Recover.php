@@ -75,7 +75,14 @@ class Recover extends ControllerAbstract
 				'password' => $user->password,
 				'email' => $user->email
 			];
-			if ($this->_mail($mailArray))
+			if (!$this->_mail($mailArray))
+			{
+				return $this->_error(
+				[
+					'message' => $this->_language->get('email_failed')
+				]);
+			}
+			else
 			{
 				$messageArray[] = $user->name . $this->_language->get('colon') . ' ' . $this->_language->get('recovery_sent');
 			}

@@ -146,6 +146,7 @@
 	"email_incorrect": "אימייל שגוי",
 	"email_empty": "אימייל ריק",
 	"email_unknown": "אימייל לא ידוע",
+	"email_failed": "Email sending failed",
 	"url": "URL",
 	"url_incorrect": "URL שגוי",
 	"identifier": "מזהה",

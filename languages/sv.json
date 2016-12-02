@@ -146,6 +146,7 @@
 	"email_incorrect": "Epost är felaktigt",
 	"email_empty": "Epost är tomt",
 	"email_unknown": "Epost är okänd",
+	"email_failed": "Email sending failed",
 	"url": "URL",
 	"url_incorrect": "URL är felaktigt",
 	"identifier": "Identifier",

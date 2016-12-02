@@ -146,6 +146,7 @@
 	"email_incorrect": "Неправильный Email",
 	"email_empty": "Email пуст",
 	"email_unknown": "Неизвестный Email",
+	"email_failed": "Email sending failed",
 	"url": "URL",
 	"url_incorrect": "Неправильный URL",
 	"identifier": "Идентификатор",

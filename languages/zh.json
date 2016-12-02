@@ -146,6 +146,7 @@
 	"email_incorrect": "邮件有误",
 	"email_empty": "邮件未空",
 	"email_unknown": "邮件地址未知",
+	"email_failed": "Email sending failed",
 	"url": "URL",
 	"url_incorrect": "URL 不正确",
 	"identifier": "标志符",

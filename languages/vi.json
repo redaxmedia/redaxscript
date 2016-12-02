@@ -146,6 +146,7 @@
 	"email_incorrect": "Email không đúng",
 	"email_empty": "Email bị rỗng",
 	"email_unknown": "Email không biết",
+	"email_failed": "Email sending failed",
 	"url": "URL",
 	"url_incorrect": "URL không đúng",
 	"identifier": "Identifier",

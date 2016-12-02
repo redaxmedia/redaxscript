@@ -80,18 +80,28 @@ class Register extends ControllerAbstract
 			'email' => $postArray['email']
 		];
 
-		/* create and mail */
+		/* create */
 
-		if ($this->_create($createArray) && $this->_mail($mailArray))
+		if (!$this->_create($createArray))
 		{
-			return $this->_success(
+			return $this->_error(
 			[
-				'message' => Db::getSetting('verification') ? $this->_language->get('registration_verification') : $this->_language->get('registration_sent')
+				'message' => $this->_language->get('something_wrong')
 			]);
 		}
-		return $this->_error(
+
+		/* mail */
+
+		if (!$this->_mail($mailArray))
+		{
+			return $this->_error(
+			[
+				'message' => $this->_language->get('email_failed')
+			]);
+		}
+		return $this->_success(
 		[
-			'message' => $this->_language->get('something_wrong')
+			'message' => Db::getSetting('verification') ? $this->_language->get('registration_verification') : $this->_language->get('registration_sent')
 		]);
 	}
 

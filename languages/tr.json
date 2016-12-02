@@ -146,6 +146,7 @@
 	"email_incorrect": "Eposta bilgisi yanlis",
 	"email_empty": "Eposta kismi bos",
 	"email_unknown": "Eposta bilinmiyor",
+	"email_failed": "Email sending failed",
 	"url": "URL",
 	"url_incorrect": "URL hatali",
 	"identifier": "Identifier",
