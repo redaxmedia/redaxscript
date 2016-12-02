@@ -231,7 +231,7 @@ class InstallTest extends TestCaseAbstract
 		$this->_request->set('post', $postArray);
 		$this->_config->init(Stream::url('root/config.php'));
 		$stub = $this
-			->getMockBuilder('Redaxscript\Controller\Comment')
+			->getMockBuilder('Redaxscript\Controller\Install')
 			->setConstructorArgs(
 			[
 				$this->_registry,
@@ -239,7 +239,15 @@ class InstallTest extends TestCaseAbstract
 				$this->_request,
 				$this->_config
 			])
-			->getMock()
+			->setMethods(
+			[
+				'_mail'
+			])
+			->getMock();
+
+		/* override */
+
+		$stub
 			->expects($this->any())
 			->method('_mail')
 			->will($this->returnValue(false));

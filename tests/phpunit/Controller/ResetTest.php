@@ -172,7 +172,15 @@ class ResetTest extends TestCaseAbstract
 				$this->_language,
 				$this->_request
 			])
-			->getMock()
+			->setMethods(
+			[
+				'_mail'
+			])
+			->getMock();
+
+		/* override */
+
+		$stub
 			->expects($this->any())
 			->method('_mail')
 			->will($this->returnValue(false));
