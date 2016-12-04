@@ -2,9 +2,7 @@
  * @tableofcontents
  *
  * 1. animation
- *    1.1 first
- *    1.2 second
- *    1.3 keyframe
+ *    1.1 keyframe
  *
  * @since 3.0.0
  *
@@ -45,8 +43,6 @@
 	will-change: transform;
 }
 
-/* @section 1.1 first */
-
 .rs-box-animation
 {
 	&.rs-is-first,
@@ -58,23 +54,6 @@
 		width: 140vw;
 	}
 
-	&.rs-is-first:before
-	{
-		animation-duration: 50s;
-		content: '';
-	}
-
-	&.rs-is-first:after
-	{
-		animation-duration: 100s;
-		content: '';
-	}
-}
-
-/* @section 1.2 second */
-
-.rs-is-desktop .rs-box-animation
-{
 	&.rs-is-second,
 	&.rs-is-second:before,
 	&.rs-is-second:after
@@ -84,12 +63,14 @@
 		width: 120vw;
 	}
 
+	&.rs-is-first:before,
 	&.rs-is-second:before
 	{
 		animation-duration: 50s;
 		content: '';
 	}
 
+	&.rs-is-first:after,
 	&.rs-is-second:after
 	{
 		animation-duration: 100s;
@@ -97,7 +78,7 @@
 	}
 }
 
-/* @section 1.3 keyframe */
+/* @section 1.1 keyframe */
 
 @keyframes colorize
 {

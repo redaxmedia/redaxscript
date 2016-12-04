@@ -29,7 +29,7 @@
 
 %rs-admin-icon-lock
 {
-	content: '\1f511';
+	content: '\26bf';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
@@ -134,7 +134,7 @@
 
 %rs-admin-icon-notifications
 {
-	content: '\1f514';
+	content: '\23f0';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
