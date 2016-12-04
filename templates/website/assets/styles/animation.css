@@ -1,9 +1,9 @@
 /**
  * @tableofcontents
  *
- * 1. experiment
- *    1.1 zero
- *    1.2 one
+ * 1. animation
+ *    1.1 first
+ *    1.2 second
  *    1.3 keyframe
  *
  * @since 3.0.0
@@ -12,86 +12,88 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. experiment */
+/* @section 1. animation */
 
-/* @section 1.1 zero */
-
-.rs-is-variation-0
+.rs-box-homepage
 {
-	&.rs-wrapper-animation
+	overflow: hidden;
+	position: relative;
+}
+
+.rs-wrapper-homepage,
+.rs-box-feature
+{
+	position: relative;
+	z-index: 1;
+}
+
+.rs-wrapper-animation
+{
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.rs-box-animation,
+.rs-box-animation:before,
+.rs-box-animation:after
+{
+	background: gray(0, 0.1);
+	position: absolute;
+	will-change: transform;
+}
+
+/* @section 1.1 first */
+
+.rs-box-animation
+{
+	&.rs-is-first,
+	&.rs-is-first:before,
+	&.rs-is-first:after
 	{
-		display: none;
+		animation: 200s rotate-left infinite linear, 10s colorize infinite linear;
+		height: 140vh;
+		width: 140vw;
+	}
+
+	&.rs-is-first:before
+	{
+		animation-duration: 50s;
+		content: '';
+	}
+
+	&.rs-is-first:after
+	{
+		animation-duration: 100s;
+		content: '';
 	}
 }
 
-/* @section 1.2 one */
+/* @section 1.2 second */
 
-.rs-is-variation-1
+.rs-is-desktop .rs-box-animation
 {
-	& .rs-box-homepage
+	&.rs-is-second,
+	&.rs-is-second:before,
+	&.rs-is-second:after
 	{
-		overflow: hidden;
-		position: relative;
+		animation: 200s rotate-right infinite linear;
+		height: 120vh;
+		width: 120vw;
 	}
 
-	& .rs-wrapper-homepage,
-	& .rs-box-feature
+	&.rs-is-second:before
 	{
-		position: relative;
-		z-index: 1;
+		animation-duration: 50s;
+		content: '';
 	}
 
-	& .rs-wrapper-animation
+	&.rs-is-second:after
 	{
-		bottom: 0;
-		left: 0;
-		position: absolute;
-		right: 0;
-		top: 0;
-		transform: translateZ(0);
-	}
-
-	& .rs-box-animation,
-	& .rs-box-animation:before,
-	& .rs-box-animation:after
-	{
-		background: gray(0, 0.1);
-		position: absolute;
-	}
-
-	& .rs-box-animation
-	{
-		&.rs-is-first,
-		&.rs-is-first:before,
-		&.rs-is-first:after
-		{
-			animation: 200s rotate-left infinite linear, 10s colorize infinite linear;
-			height: 140vh;
-			width: 140vw;
-		}
-
-		&.rs-is-second,
-		&.rs-is-second:before,
-		&.rs-is-second:after
-		{
-			animation: 200s rotate-right infinite linear;
-			height: 120vh;
-			width: 120vw;
-		}
-
-		&.rs-is-first:before,
-		&.rs-is-second:before
-		{
-			animation-duration: 50s;
-			content: '';
-		}
-
-		&.rs-is-first:after,
-		&.rs-is-second:after
-		{
-			animation-duration: 100s;
-			content: '';
-		}
+		animation-duration: 100s;
+		content: '';
 	}
 }
 
