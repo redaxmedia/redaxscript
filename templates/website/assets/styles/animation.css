@@ -49,7 +49,7 @@
 	&.rs-is-first:before,
 	&.rs-is-first:after
 	{
-		animation: 200s rotate-left infinite linear, 10s colorize infinite linear;
+		animation: 200s rotate-left infinite linear, 20s colorize infinite linear;
 		height: 140vh;
 		width: 140vw;
 	}
@@ -82,14 +82,14 @@
 
 @keyframes colorize
 {
-	0%
+	60%
 	{
 		background: gray(0, 0.1);
 	}
 
-	20%
+	80%
 	{
-		background: rgba(50, 200, 150, 0.2);
+		background: rgba(50, 200, 150, 0.3);
 	}
 
 	100%
