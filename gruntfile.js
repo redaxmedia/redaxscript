@@ -516,10 +516,10 @@ module.exports = function (grunt)
 					'node_modules/material-design-icons/navigation/svg/production/ic_chevron_right_24px.svg',
 					'node_modules/material-design-icons/navigation/svg/production/ic_first_page_24px.svg',
 					'node_modules/material-design-icons/navigation/svg/production/ic_last_page_24px.svg',
-					'node_modules/material-design-icons/communication/svg/production/ic_chat_bubble_24px.svg',
 					'node_modules/material-design-icons/content/svg/production/ic_add_24px.svg',
 					'node_modules/material-design-icons/content/svg/production/ic_remove_24px.svg',
-					'node_modules/material-design-icons/navigation/svg/production/ic_chevron_right_24px.svg'
+					'node_modules/material-design-icons/navigation/svg/production/ic_chevron_right_24px.svg',
+					'node_modules/material-design-icons/social/svg/production/ic_person_24px.svg'
 				],
 				dest: 'templates/default/dist/fonts',
 				options:
@@ -572,9 +572,7 @@ module.exports = function (grunt)
 				],
 				codepoints:
 				{
-					'search': 0x2315,
 					'add': 0x2b,
-					'chat-bubble': 0x25b6,
 					'check-circle': 0x2714,
 					'chevron-left': 0x3008,
 					'chevron-right': 0x3009,
@@ -589,11 +587,12 @@ module.exports = function (grunt)
 					'import-contacts': 0x25EB,
 					'info': 0x0069,
 					'last-page': 0x27EB,
-					'lock': 0x26BF,
-					'notifications': 0x23F0,
+					'lock': 0x1F511,
+					'notifications': 0x1F514,
 					'person': 0x26C4,
 					'power-settings-new': 0x2BBE,
 					'remove': 0x2d,
+					'search': 0x2315,
 					'settings': 0x2731,
 					'visibility-off': 0x2298,
 					'vpn-key': 0x2386,
