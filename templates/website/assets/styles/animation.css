@@ -12,69 +12,72 @@
 
 /* @section 1. animation */
 
-.rs-box-homepage
+.rs-is-desktop
 {
-	overflow: hidden;
-	position: relative;
-}
-
-.rs-wrapper-homepage,
-.rs-box-feature
-{
-	position: relative;
-	z-index: 1;
-}
-
-.rs-wrapper-animation
-{
-	bottom: 0;
-	left: 0;
-	position: absolute;
-	right: 0;
-	top: 0;
-}
-
-.rs-box-animation,
-.rs-box-animation:before,
-.rs-box-animation:after
-{
-	background: gray(0, 0.1);
-	position: absolute;
-	will-change: transform;
-}
-
-.rs-box-animation
-{
-	&.rs-is-first,
-	&.rs-is-first:before,
-	&.rs-is-first:after
+	& .rs-box-homepage
 	{
-		animation: 200s rotate-left infinite linear, 20s colorize infinite linear;
-		height: 140vh;
-		width: 140vw;
+		overflow: hidden;
+		position: relative;
 	}
 
-	&.rs-is-second,
-	&.rs-is-second:before,
-	&.rs-is-second:after
+	& .rs-wrapper-homepage,
+	& .rs-box-feature
 	{
-		animation: 200s rotate-right infinite linear;
-		height: 120vh;
-		width: 120vw;
+		position: relative;
+		z-index: 1;
 	}
 
-	&.rs-is-first:before,
-	&.rs-is-second:before
+	& .rs-wrapper-animation
 	{
-		animation-duration: 50s;
-		content: '';
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
 	}
 
-	&.rs-is-first:after,
-	&.rs-is-second:after
+	& .rs-box-animation,
+	& .rs-box-animation:before,
+	& .rs-box-animation:after
 	{
-		animation-duration: 100s;
-		content: '';
+		background: gray(0, 0.1);
+		position: absolute;
+		will-change: transform;
+	}
+
+	& .rs-box-animation
+	{
+		&.rs-is-first,
+		&.rs-is-first:before,
+		&.rs-is-first:after
+		{
+			animation: 200s rotate-left infinite linear, 20s colorize infinite linear;
+			height: 140vh;
+			width: 140vw;
+		}
+
+		&.rs-is-second,
+		&.rs-is-second:before,
+		&.rs-is-second:after
+		{
+			animation: 200s rotate-right infinite linear;
+			height: 120vh;
+			width: 120vw;
+		}
+
+		&.rs-is-first:before,
+		&.rs-is-second:before
+		{
+			animation-duration: 50s;
+			content: '';
+		}
+
+		&.rs-is-first:after,
+		&.rs-is-second:after
+		{
+			animation-duration: 100s;
+			content: '';
+		}
 	}
 }
 
