@@ -19,7 +19,7 @@
 	bottom: 0;
 	color: gray(200);
 	left: 0;
-	padding: 1.5em 0;
+	line-height: 5em;
 	position: fixed;
 	right: 0;
 	z-index: -1;

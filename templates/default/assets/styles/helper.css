@@ -33,10 +33,15 @@
 	@extend %fn-has-menu;
 }
 
+.rs-fn-status-menu:checked + .rs-has-menu
+{
+	min-height: 100vh;
+	padding-bottom: 5em;
+}
+
 .rs-fn-menu
 {
 	@extend %fn-menu;
-	bottom: -3.375em;
 }
 
 .rs-fn-status-menu:checked + .rs-has-menu .rs-fn-menu
@@ -52,7 +57,6 @@
 .rs-fn-close-menu
 {
 	@extend %fn-close-menu;
-	bottom: -5em;
 }
 
 .rs-fn-status-menu
