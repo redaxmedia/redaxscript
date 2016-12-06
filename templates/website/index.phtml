@@ -21,22 +21,17 @@
 	<?php else: ?>
 		<div class="rs-body">
 	<?php endif; ?>
-
-        <!-- logic -->
-
-        <input id="menu" class="rs-fn-status-menu" type="checkbox"/>
-        <label class="rs-fn-toggle-menu rs-label-toggle-menu" for="menu">Menu</label>
-
-        <div class="rs-wrapper-body rs-fn-wrapper-body">
-            <?php $body = Tag::partial(
-            [
-                Tag::registry('fullRoute') ? 'templates/website/header.phtml' : null,
-                'templates/website/main.phtml',
-                Tag::registry('fullRoute') ? 'templates/default/footer.phtml' : null,
-                'templates/admin/script.phtml',
-                'templates/default/script.phtml'
-            ]); ?>
-            <?php echo Tag::partial('templates/admin/panel.phtml'); ?>
+        <?php $body = Tag::partial(
+        [
+            Tag::registry('fullRoute') ? 'templates/website/header.phtml' : null,
+            'templates/website/main.phtml',
+            Tag::registry('fullRoute') ? 'templates/default/footer.phtml' : null,
+            'templates/admin/script.phtml',
+            'templates/default/script.phtml'
+        ]); ?>
+        <?php echo Tag::partial('templates/admin/panel.phtml'); ?>
+        <?php echo Tag::partial('templates/default/menu-status.phtml'); ?>
+        <div class="rs-has-menu">
             <?php echo $body; ?>
         </div>
 	</body>

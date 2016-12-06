@@ -109,17 +109,6 @@
 
 @media (--media-medium-max)
 {
-	.rs-fn-wrapper-body
-	{
-		transition: transform 0.2s;
-		will-change: transform;
-	}
-
-	.rs-fn-status-menu:checked ~ .rs-fn-wrapper-body
-	{
-		transform: translateX(50%);
-	}
-
 	.rs-list-menu
 	{
 		background: var(--rs-color-primary);
@@ -139,6 +128,11 @@
 		{
 			background: var(--rs-color-primary-light);
 		}
+	}
+
+	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-list-menu
+	{
+		transition: transform 0.2s;
 	}
 
 	/* toggle */
@@ -170,12 +164,12 @@
 		}
 	}
 
-	.rs-fn-status-menu:not(:checked) ~ .rs-label-toggle-menu:after
+	.rs-fn-status-menu:not(:checked) + .rs-has-menu .rs-label-toggle-menu:after
 	{
 		box-shadow: 0 -0.5em 0 var(--rs-color-primary), 0 0.5em 0 var(--rs-color-primary);
 	}
 
-	.rs-fn-status-menu:checked ~ .rs-label-toggle-menu
+	.rs-fn-status-menu:checked + .rs-has-menu .rs-label-toggle-menu
 	{
 		&:before,
 		&:after
@@ -199,23 +193,6 @@
 	.rs-label-close-menu
 	{
 		background: gray(0, 0.8);
-	}
-
-	.rs-fn-status-menu:checked ~ .rs-label-close-menu
-	{
 		transition: opacity 0.2s;
-	}
-}
-
-/* @section 3. admin */
-
-/* TODO: check */
-
-@media (--media-medium-max)
-{
-	.rs-admin-list-panel ~ .rs-fn-wrapper-body .rs-fn-menu
-	{
-		bottom: auto;
-		position: absolute;
 	}
 }
