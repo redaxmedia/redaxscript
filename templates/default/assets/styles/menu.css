@@ -112,7 +112,7 @@
 	.rs-list-menu
 	{
 		background: var(--rs-color-primary);
-		width: 50%;
+		width: 75%;
 
 		& li
 		{
