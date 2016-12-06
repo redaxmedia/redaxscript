@@ -1,11 +1,11 @@
 <?php
 return
 [
-	'dbType' => 'sqlite',
-	'dbHost' => '5846da00cc135.sqlite',
+	'dbType' => null,
+	'dbHost' => null,
 	'dbPrefix' => null,
 	'dbName' => null,
-	'dbUser' => 'admin',
-	'dbPassword' => 'admin',
-	'dbSalt' => '14e4d6b678479aa720cf0ab38aa403d8594eeef4'
+	'dbUser' => null,
+	'dbPassword' => null,
+	'dbSalt' => null
 ];
