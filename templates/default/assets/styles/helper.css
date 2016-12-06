@@ -52,6 +52,7 @@
 .rs-fn-close-menu
 {
 	@extend %fn-close-menu;
+	bottom: -5em;
 }
 
 .rs-fn-status-menu
