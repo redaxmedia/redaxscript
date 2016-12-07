@@ -130,7 +130,7 @@
 		}
 	}
 
-	.rs-fn-status-menu:checked ~ .rs-has-menu .rs-list-menu
+	.rs-fn-status-menu:checked + .rs-has-menu .rs-list-menu
 	{
 		transition: transform 0.2s;
 	}
