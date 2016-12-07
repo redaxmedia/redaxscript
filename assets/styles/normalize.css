@@ -60,11 +60,6 @@ button, input, select, textarea
 	font: inherit;
 }
 
-input, select, textarea
-{
-	-webkit-appearance: none;
-}
-
 button::-moz-focus-inner,
 input[type="button"]::-moz-focus-inner,
 input[type="reset"]::-moz-focus-inner,
@@ -75,7 +70,6 @@ input[type="submit"]::-moz-focus-inner
 
 input[type="search"]
 {
-	-webkit-appearance: none;
 	border-radius: 0;
 }
 
@@ -84,6 +78,7 @@ input[type="search"]::-ms-clear
 	display: none;
 }
 
+input[type="search"],
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration
 {
