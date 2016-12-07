@@ -123,12 +123,24 @@ class Install extends ControllerAbstract
 			'adminPassword' => $postArray['adminPassword']
 		];
 
+		/* touch sqlite */
+
+		if ($configArray['dbType'] === 'sqlite' && !touch($configArray['dbHost']))
+		{
+			return $this->_error(
+			[
+				'url' => 'install.php',
+				'message' => $this->_language->get('file_permission_grant') . $this->_language->get('colon') . ' ' . $configArray['dbHost']
+			]);
+		}
+
 		/* write config */
 
 		if (!$this->_write($configArray))
 		{
 			return $this->_error(
 			[
+				'url' => 'install.php',
 				'message' => $this->_language->get('file_permission_grant') . $this->_language->get('colon') . ' config.php'
 			]);
 		}
@@ -157,6 +169,7 @@ class Install extends ControllerAbstract
 		{
 			return $this->error(
 			[
+				'url' => 'install.php',
 				'message' => $this->_language->get('installation_failed')
 			]);
 		}
