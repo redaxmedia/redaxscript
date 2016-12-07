@@ -16,8 +16,23 @@
 	<!-- body -->
 
 	<body class="rs-body">
-		<?php $body = Tag::partial('templates/wide/body.phtml'); ?>
+
+        <!-- logic -->
+
+        <input id="menu" class="rs-fn-status-menu" type="checkbox" />
+
+        <?php $body = Tag::partial(
+        [
+            'templates/default/header.phtml',
+            'templates/wide/main.phtml',
+            'templates/default/footer.phtml',
+            'templates/admin/script.phtml',
+            'templates/default/script.phtml'
+        ]); ?>
 		<?php echo Tag::partial('templates/admin/panel.phtml'); ?>
-		<?php echo $body; ?>
+        <?php echo Tag::partial('templates/default/menu-status.phtml'); ?>
+        <div class="rs-has-menu">
+		    <?php echo $body; ?>
+        </div>
 	</body>
 </html>

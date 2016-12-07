@@ -28,9 +28,25 @@
 
 /* @section 3. menu */
 
+.rs-has-menu
+{
+	@extend %fn-has-menu;
+}
+
+.rs-fn-status-menu:checked + .rs-has-menu
+{
+	min-height: 100vh;
+	padding-bottom: 5em;
+}
+
 .rs-fn-menu
 {
 	@extend %fn-menu;
+}
+
+.rs-fn-status-menu:checked + .rs-has-menu .rs-fn-menu
+{
+	@extend %fn-checked-menu;
 }
 
 .rs-fn-toggle-menu
@@ -47,12 +63,7 @@
 {
 	@extend %fn-status-menu;
 
-	&:checked ~ .rs-fn-menu
-	{
-		@extend %fn-checked-menu;
-	}
-
-	&:checked ~ .rs-fn-close-menu
+	&:checked + .rs-has-menu .rs-fn-close-menu
 	{
 		@extend %fn-checked-close-menu;
 	}

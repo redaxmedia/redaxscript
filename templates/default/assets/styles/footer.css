@@ -17,7 +17,9 @@
 {
 	background: var(--rs-color-tertiary);
 	bottom: 0;
+	box-sizing: border-box;
 	color: gray(200);
+	height: 5em;
 	left: 0;
 	padding: 1.5em 0;
 	position: fixed;

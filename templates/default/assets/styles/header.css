@@ -19,8 +19,7 @@
 .rs-header
 {
 	background: var(--rs-color-tertiary);
-	padding: 1.5em 0;
-	position: relative;
+	padding: 1.375em 0;
 }
 
 /* @section 1.1 box */
