@@ -89,6 +89,7 @@ class Install extends ControllerAbstract
 		{
 			return $this->_error(
 			[
+                'url' => 'install.php',
 				'title' => $this->_language->get('database'),
 				'message' => $messageArray
 			]);
@@ -98,6 +99,7 @@ class Install extends ControllerAbstract
 		{
 			return $this->_error(
 			[
+                'url' => 'install.php',
 				'title' => $this->_language->get('account'),
 				'message' => $messageArray
 			]);
@@ -123,14 +125,14 @@ class Install extends ControllerAbstract
 			'adminPassword' => $postArray['adminPassword']
 		];
 
-		/* touch sqlite */
+		/* touch file */
 
-		if ($configArray['dbType'] === 'sqlite' && !touch($configArray['dbHost']))
+		if ($configArray['dbType'] === 'sqlite' && !touch($configArray['dbHost']) && !unlink($configArray['dbHost']))
 		{
 			return $this->_error(
 			[
 				'url' => 'install.php',
-				'message' => $this->_language->get('file_permission_grant') . $this->_language->get('colon') . ' ' . $configArray['dbHost']
+				'message' => $this->_language->get('directory_permission_grant') . $this->_language->get('point')
 			]);
 		}
 
