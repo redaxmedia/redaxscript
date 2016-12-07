@@ -17,9 +17,11 @@
 {
 	background: var(--rs-color-tertiary);
 	bottom: 0;
+	box-sizing: border-box;
 	color: gray(200);
+	height: 5em;
 	left: 0;
-	line-height: 5em;
+	padding: 1.5em 0;
 	position: fixed;
 	right: 0;
 	z-index: -1;
