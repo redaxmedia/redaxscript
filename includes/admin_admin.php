@@ -185,7 +185,7 @@ function admin_panel_list()
 			[
 				Redaxscript\Language::get('system') =>
 				[
-					!is_dir('cache') ? Redaxscript\Language::get('directory_not_found') . Redaxscript\Language::get('colon') . ' cache ' . Redaxscript\Language::get('point') : null
+					!is_dir('cache') ? Redaxscript\Language::get('directory_not_found') . Redaxscript\Language::get('colon') . ' cache' . Redaxscript\Language::get('point') : null
 				]
 			],
 			'warning' =>

@@ -28,6 +28,11 @@
 
 /* @section 3. menu */
 
+.rs-has-menu
+{
+	@extend %fn-has-menu;
+}
+
 .rs-fn-menu
 {
 	@extend %fn-menu;
@@ -47,14 +52,20 @@
 {
 	@extend %fn-status-menu;
 
-	&:checked ~ .rs-fn-menu
+	&:checked + .rs-has-menu
 	{
-		@extend %fn-checked-menu;
-	}
+		min-height: 100vh;
+		padding-bottom: 5em;
 
-	&:checked ~ .rs-fn-close-menu
-	{
-		@extend %fn-checked-close-menu;
+		& .rs-fn-menu
+		{
+			@extend %fn-checked-menu;
+		}
+
+		& .rs-fn-close-menu
+		{
+			@extend %fn-checked-close-menu;
+		}
 	}
 }
 

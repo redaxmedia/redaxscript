@@ -146,6 +146,7 @@
 	"email_incorrect": "Email est incorrect",
 	"email_empty": "Email est vide",
 	"email_unknown": "Email est inconnu",
+	"email_failed": "Email sending failed",
 	"url": "URL",
 	"url_incorrect": "URL est incorrect",
 	"identifier": "Identifiant",

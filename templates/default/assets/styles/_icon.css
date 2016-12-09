@@ -69,13 +69,6 @@
 	font-weight: normal;
 }
 
-%rs-icon-chat-bubble
-{
-	content: '\25b6';
-	font-family: var(--rs-font-icon);
-	font-weight: normal;
-}
-
 %rs-icon-add
 {
 	content: '\2b';
@@ -86,6 +79,13 @@
 %rs-icon-remove
 {
 	content: '\2d';
+	font-family: var(--rs-font-icon);
+	font-weight: normal;
+}
+
+%rs-icon-person
+{
+	content: '\26c4';
 	font-family: var(--rs-font-icon);
 	font-weight: normal;
 }

@@ -1,10 +1,8 @@
 /**
  * @tableofcontents
  *
- * 1. experiment
- *    1.1 zero
- *    1.2 one
- *    1.3 keyframe
+ * 1. animation
+ *    1.1 keyframe
  *
  * @since 3.0.0
  *
@@ -12,21 +10,9 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. experiment */
+/* @section 1. animation */
 
-/* @section 1.1 zero */
-
-.rs-is-variation-0
-{
-	&.rs-wrapper-animation
-	{
-		display: none;
-	}
-}
-
-/* @section 1.2 one */
-
-.rs-is-variation-1
+.rs-is-desktop
 {
 	& .rs-box-homepage
 	{
@@ -48,7 +34,6 @@
 		position: absolute;
 		right: 0;
 		top: 0;
-		transform: translateZ(0);
 	}
 
 	& .rs-box-animation,
@@ -57,6 +42,7 @@
 	{
 		background: gray(0, 0.1);
 		position: absolute;
+		will-change: transform;
 	}
 
 	& .rs-box-animation
@@ -65,7 +51,7 @@
 		&.rs-is-first:before,
 		&.rs-is-first:after
 		{
-			animation: 200s rotate-left infinite linear, 10s colorize infinite linear;
+			animation: 200s rotate-left infinite linear, 20s colorize infinite linear;
 			height: 140vh;
 			width: 140vw;
 		}
@@ -95,18 +81,18 @@
 	}
 }
 
-/* @section 1.3 keyframe */
+/* @section 1.1 keyframe */
 
 @keyframes colorize
 {
-	0%
+	60%
 	{
 		background: gray(0, 0.1);
 	}
 
-	20%
+	80%
 	{
-		background: rgba(50, 200, 150, 0.2);
+		background: rgba(50, 200, 150, 0.3);
 	}
 
 	100%

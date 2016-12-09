@@ -146,6 +146,7 @@
 	"email_incorrect": "Το Email είναι λάθος",
 	"email_empty": "Το Email είναι κενό",
 	"email_unknown": "Το Email είναι άγνωστο",
+	"email_failed": "Email sending failed",
 	"url": "URL",
 	"url_incorrect": "Η διεύθυνση URL είναι λάθος",
 	"identifier": "Αναγνωριστικό",

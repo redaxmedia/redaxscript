@@ -146,6 +146,7 @@
 	"email_incorrect": "Nekorekts epasts",
 	"email_empty": "Tukšs epasts",
 	"email_unknown": "Nesaprotams epasts",
+	"email_failed": "Email sending failed",
 	"url": "URL",
 	"url_incorrect": "Nekorekts URL",
 	"identifier": "Identifier",

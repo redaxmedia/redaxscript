@@ -146,6 +146,7 @@
 	"email_incorrect": "Emailアドレスが正しくありません",
 	"email_empty": "Emailアドレスが空です",
 	"email_unknown": "Emailアドレスが見つかりません",
+	"email_failed": "Email sending failed",
 	"url": "URL",
 	"url_incorrect": "URL が正しくありません",
 	"identifier": "識別子",

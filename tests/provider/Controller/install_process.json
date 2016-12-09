@@ -13,7 +13,7 @@
 			"admin-email": null,
 			"admin-password": null
 		},
-		"<h2 class=\"rs-title-note rs-is-error\">Database</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-error\"><ul class=\"rs-list-note\"><li>Type is empty</li><li>Host is empty</li><li>Name is empty</li><li>User is empty</li></ul></div>"
+		"<h2 class=\"rs-title-note rs-is-error\">Database</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-error\"><ul class=\"rs-list-note\"><li>Type is empty</li><li>Host is empty</li><li>Name is empty</li><li>User is empty</li></ul></div><a href=\"install.php\" class=\"rs-button-note rs-is-error\">Back</a>"
 	],
 	[
 		{
@@ -29,7 +29,7 @@
 			"admin-email": null,
 			"admin-password": null
 		},
-		"<h2 class=\"rs-title-note rs-is-error\">Account</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-error\"><ul class=\"rs-list-note\"><li>Name is empty</li><li>User is empty</li><li>Password is empty</li><li>Email is empty</li></ul></div>"
+		"<h2 class=\"rs-title-note rs-is-error\">Account</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-error\"><ul class=\"rs-list-note\"><li>Name is empty</li><li>User is empty</li><li>Password is empty</li><li>Email is empty</li></ul></div><a href=\"install.php\" class=\"rs-button-note rs-is-error\">Back</a>"
 	],
 	[
 		{

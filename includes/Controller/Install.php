@@ -89,6 +89,7 @@ class Install extends ControllerAbstract
 		{
 			return $this->_error(
 			[
+                'url' => 'install.php',
 				'title' => $this->_language->get('database'),
 				'message' => $messageArray
 			]);
@@ -98,6 +99,7 @@ class Install extends ControllerAbstract
 		{
 			return $this->_error(
 			[
+                'url' => 'install.php',
 				'title' => $this->_language->get('account'),
 				'message' => $messageArray
 			]);
@@ -123,12 +125,24 @@ class Install extends ControllerAbstract
 			'adminPassword' => $postArray['adminPassword']
 		];
 
+		/* touch file */
+
+		if ($configArray['dbType'] === 'sqlite' && !touch($configArray['dbHost']) && !unlink($configArray['dbHost']))
+		{
+			return $this->_error(
+			[
+				'url' => 'install.php',
+				'message' => $this->_language->get('directory_permission_grant') . $this->_language->get('point')
+			]);
+		}
+
 		/* write config */
 
 		if (!$this->_write($configArray))
 		{
 			return $this->_error(
 			[
+				'url' => 'install.php',
 				'message' => $this->_language->get('file_permission_grant') . $this->_language->get('colon') . ' config.php'
 			]);
 		}
@@ -140,7 +154,7 @@ class Install extends ControllerAbstract
 			$this->_refresh();
 		}
 
-		/* database failed */
+		/* database status */
 
 		if (!Db::getStatus())
 		{
@@ -151,19 +165,31 @@ class Install extends ControllerAbstract
 			]);
 		}
 
-		/* install and mail */
+		/* install */
 
-		if ($this->_install($adminArray) && $this->_mail($adminArray))
+		if (!$this->_install($adminArray))
 		{
-			return $this->_success(
+			return $this->error(
 			[
-				'url' => $this->_registry->get('root'),
-				'message' => $this->_language->get('installation_completed')
+				'url' => 'install.php',
+				'message' => $this->_language->get('installation_failed')
 			]);
 		}
-		return $this->_error(
+
+		/* mail */
+
+		if (!$this->_mail($adminArray))
+		{
+			return $this->_warning(
+			[
+				'url' => $this->_registry->get('root'),
+				'message' => $this->_language->get('email_failed')
+			]);
+		}
+		return $this->_success(
 		[
-			'message' => $this->_language->get('installation_failed')
+			'url' => $this->_registry->get('root'),
+			'message' => $this->_language->get('installation_completed')
 		]);
 	}
 
@@ -172,7 +198,7 @@ class Install extends ControllerAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $successArray
+	 * @param array $successArray array of the success
 	 *
 	 * @return string
 	 */
@@ -187,11 +213,30 @@ class Install extends ControllerAbstract
 	}
 
 	/**
+	 * show the warning
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $warningArray array of the warning
+	 *
+	 * @return string
+	 */
+
+	protected function _warning($warningArray = [])
+	{
+		$messenger = new Messenger($this->_registry);
+		return $messenger
+			->setUrl($this->_language->get('home'), $warningArray['url'])
+			->doRedirect()
+			->warning($warningArray['message'], $warningArray['title']);
+	}
+
+	/**
 	 * show the error
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $errorArray
+	 * @param array $errorArray array of the error
 	 *
 	 * @return string
 	 */

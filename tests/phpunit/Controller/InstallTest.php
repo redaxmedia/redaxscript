@@ -122,6 +122,19 @@ class InstallTest extends TestCaseAbstract
 	}
 
 	/**
+	 * providerMailFailure
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerMailFailure()
+	{
+		return $this->getProvider('tests/provider/Controller/install_mail_failure.json');
+	}
+
+	/**
 	 * providerValidateDatabase
 	 *
 	 * @since 3.0.0
@@ -188,6 +201,60 @@ class InstallTest extends TestCaseAbstract
 		/* actual */
 
 		$actual = $controllerInstall->process();
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testMailFailure
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $postArray
+	 * @param string $expect
+	 *
+	 * @dataProvider providerMailFailure
+	 */
+
+	public function testMailFailure($postArray = [], $expect = null)
+	{
+		/* setup */
+
+		$postArray['db-type'] = $this->_config->get('dbType');
+		$postArray['db-host'] = $this->_config->get('dbHost');
+		$postArray['db-name'] = $this->_config->get('dbName');
+		$postArray['db-user'] = $this->_config->get('dbUser');
+		$postArray['db-password'] = $this->_config->get('dbPassword');
+		$postArray['db-prefix'] = $this->_config->get('dbPrefix');
+		$this->_request->set('post', $postArray);
+		$this->_config->init(Stream::url('root/config.php'));
+		$stub = $this
+			->getMockBuilder('Redaxscript\Controller\Install')
+			->setConstructorArgs(
+			[
+				$this->_registry,
+				$this->_language,
+				$this->_request,
+				$this->_config
+			])
+			->setMethods(
+			[
+				'_mail'
+			])
+			->getMock();
+
+		/* override */
+
+		$stub
+			->expects($this->any())
+			->method('_mail')
+			->will($this->returnValue(false));
+
+		/* actual */
+
+		$actual = $stub->process();
 
 		/* compare */
 

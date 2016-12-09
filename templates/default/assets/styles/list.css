@@ -26,5 +26,6 @@ ul.rs-list-default > li:before
 {
 	@extend %rs-icon-chevron-right;
 	color: var(--rs-color-primary);
+	margin-left: -0.25em;
 	margin-right: 0.125em;
 }

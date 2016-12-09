@@ -68,17 +68,17 @@
 
 .rs-title-comment
 {
-	font-size: 2em;
-	margin-bottom: 0.75em;
+	font-size: 1.5em;
+	margin-bottom: 0.5em;
 	margin-top: 1em;
 
-	&:after
+	&:before
 	{
-		@extend %rs-icon-chat-bubble;
-		color: gray(0, 0.1);
-		font-size: 0.875em;
-		margin-left: 0.25em;
-		vertical-align: top;
+		@extend %rs-icon-person;
+		font-size: 1.5em;
+		margin-left: -0.125em;
+		margin-right: 0.125em;
+		vertical-align: middle;
 	}
 }
 

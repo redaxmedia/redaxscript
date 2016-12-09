@@ -146,6 +146,7 @@
 	"email_incorrect": "Email on ebakorrektne",
 	"email_empty": "Email puudub",
 	"email_unknown": "Email on tundmatu",
+	"email_failed": "Email sending failed",
 	"url": "URL",
 	"url_incorrect": "URL on ebakorrektne",
 	"identifier": "Identifier",

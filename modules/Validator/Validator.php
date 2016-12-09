@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Modules\Validator;
 
-use Redaxscript\Html;
+use Redaxscript\Language;
 use Redaxscript\Reader;
 use Redaxscript\Registry;
 
@@ -43,32 +43,41 @@ class Validator extends Config
 
 	public static function adminPanelNotification()
 	{
-		/* load result */
-
-		$urlBase = self::$_configArray['url'] . Registry::get('root') . '/' . Registry::get('parameterRoute') . Registry::get('fullRoute');
-		$urlXML = $urlBase . '&out=xml';
-		$reader = new Reader();
-		$result = $reader->loadXML($urlXML)->getObject();
-
-		/* process result */
-
-		foreach ($result as $value)
+		if (Registry::get('firstParameter') !== 'admin')
 		{
-			$type = $value->attributes()->type ? (string)$value->attributes()->type : $value->getName();
-			if (in_array($type, self::$_configArray['typeArray']))
+			/* load result */
+
+			$urlBase = self::$_configArray['url'] . Registry::get('root') . '/' . Registry::get('parameterRoute') . Registry::get('fullRoute');
+			$urlJSON = $urlBase . '&out=json';
+			$reader = new Reader();
+			$result = $reader->loadJSON($urlJSON)->getArray();
+
+			/* process result */
+
+			if ($result['messages'])
 			{
-				$message =
-				[
-					'text' => (string)$value->message,
-					'attr' =>
-					[
-						'href' => $urlBase,
-						'target' => '_blank'
-					]
-				];
-				self::setNotification($type, $message);
+				foreach ($result['messages'] as $value)
+				{
+					if (in_array($value['type'], self::$_configArray['typeArray']))
+					{
+						$message =
+						[
+							'text' => $value['message'],
+							'attr' =>
+							[
+								'href' => $urlBase,
+								'target' => '_blank'
+							]
+						];
+						self::setNotification($value['type'], $message);
+					}
+				}
 			}
+			else
+			{
+				self::setNotification('success', Language::get('documentValidate', '_validator') . Language::get('point'));
+			}
+			return self::getNotification();
 		}
-		return self::getNotification();
 	}
 }

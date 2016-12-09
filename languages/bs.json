@@ -146,6 +146,7 @@
 	"email_incorrect": "Email je pogrešan",
 	"email_empty": "Email je prazan",
 	"email_unknown": "Email je nepoznat",
+	"email_failed": "Email sending failed",
 	"url": "URL",
 	"url_incorrect": "URL je pogrešan",
 	"identifier": "identificirati",

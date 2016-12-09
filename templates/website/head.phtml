@@ -1,13 +1,18 @@
 <?php namespace Redaxscript\Template; ?>
 
+<!-- meta -->
+
+<?php Tag::meta()
+	->init()
+	->append(['name' => 'google-site-verification', 'content' => 'Wz0d7aVxf_6sQ54_ttyu2sMrw-yJLBXd6h4HknDNYaI']); ?>
+
 <!-- link -->
 
-<?php echo Tag::link()
-	->init('website')
+<?php Tag::link()
+	->init()
 	->appendFile('//fonts.googleapis.com/css?family=Pacifico&text=What are you?;subset=' . Helper::getSubset())
 	->appendFile('templates/website/dist/styles/website.min.css')
 	->rewrite(
 	[
 		'../../../../templates' => '../../templates'
-	])
-	->concat(); ?>
+	]); ?>

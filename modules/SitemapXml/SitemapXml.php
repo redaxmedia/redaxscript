@@ -105,7 +105,7 @@ class SitemapXml extends Module
 		foreach ($categories as $value)
 		{
 			$writer->startElement('url');
-			$writer->writeElement('loc', Registry::get('root') . Registry::get('parameterRoute') . build_route('categories', $value->id));
+			$writer->writeElement('loc', Registry::get('root') . '/' . Registry::get('parameterRoute') . build_route('categories', $value->id));
 			$writer->writeElement('lastmod', date('c', strtotime($value->date)));
 			$writer->endElement();
 		}
@@ -115,7 +115,7 @@ class SitemapXml extends Module
 		foreach ($articles as $value)
 		{
 			$writer->startElement('url');
-			$writer->writeElement('loc', Registry::get('root') . Registry::get('parameterRoute') . build_route('articles', $value->id));
+			$writer->writeElement('loc', Registry::get('root') . '/' . Registry::get('parameterRoute') . build_route('articles', $value->id));
 			$writer->writeElement('lastmod', date('c', strtotime($value->date)));
 			$writer->endElement();
 		}
