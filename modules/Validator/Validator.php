@@ -48,29 +48,28 @@ class Validator extends Config
 			/* load result */
 
 			$urlBase = self::$_configArray['url'] . Registry::get('root') . '/' . Registry::get('parameterRoute') . Registry::get('fullRoute');
-			$urlXML = $urlBase . '&out=xml';
+			$urlJSON = $urlBase . '&out=json';
 			$reader = new Reader();
-			$result = $reader->loadXML($urlXML)->getObject();
+			$result = $reader->loadJSON($urlJSON)->getArray();
 
 			/* process result */
 
-			if ($result)
+			if ($result['messages'])
 			{
-				foreach ($result as $value)
+				foreach ($result['messages'] as $value)
 				{
-					$type = $value->attributes()->type ? (string)$value->attributes()->type : $value->getName();
-					if (in_array($type, self::$_configArray['typeArray']))
+					if (in_array($value['type'], self::$_configArray['typeArray']))
 					{
 						$message =
 						[
-							'text' => (string)$value->message,
+							'text' => $value['message'],
 							'attr' =>
 							[
 								'href' => $urlBase,
 								'target' => '_blank'
 							]
 						];
-						self::setNotification($type, $message);
+						self::setNotification($value['type'], $message);
 					}
 				}
 			}

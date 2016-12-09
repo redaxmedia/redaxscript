@@ -212,6 +212,12 @@
 		display: block;
 	}
 
+	& .rs-admin-link-panel-notification + .rs-admin-link-panel-notification,
+	& .rs-admin-text-panel-notification + .rs-admin-text-panel-notification
+	{
+		margin-top: 0.5em;
+	}
+
 	& .rs-admin-link-panel-notification
 	{
 		text-decoration: underline;
