@@ -347,7 +347,8 @@ class Install extends ControllerAbstract
 	{
 		if ($configArray['dbType'] === 'sqlite')
 		{
-			return touch($configArray['dbHost']) && unlink($configArray['dbHost']);
+			$file = $configArray['dbHost'] . '.tmp';
+			return touch($file) && unlink($file);
 		}
 		return true;
 	}
