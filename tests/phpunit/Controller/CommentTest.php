@@ -161,18 +161,15 @@ class CommentTest extends TestCaseAbstract
 	 *
 	 * @param array $postArray
 	 * @param array $hashArray
-	 * @param array $settingArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerCreateFailure
 	 */
 
-	public function testCreateFailure($postArray = [], $hashArray = [], $settingArray = [], $expect = null)
+	public function testCreateFailure($postArray = [], $hashArray = [], $expect = null)
 	{
 		/* setup */
 
-		Db::setSetting('notification', $settingArray['notification']);
-		Db::setSetting('moderation', $settingArray['moderation']);
 		$this->_request->set('post', $postArray);
 		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
 		$stub = $this

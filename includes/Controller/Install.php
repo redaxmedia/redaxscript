@@ -127,7 +127,7 @@ class Install extends ControllerAbstract
 
 		/* touch file */
 
-		if ($configArray['dbType'] === 'sqlite' && !touch($configArray['dbHost']) && !unlink($configArray['dbHost']))
+		if (!$this->_touch($configArray))
 		{
 			return $this->_error(
 			[
@@ -334,13 +334,32 @@ class Install extends ControllerAbstract
 	}
 
 	/**
+	 * touch sqlite file
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $configArray
+	 *
+	 * @return boolean
+	 */
+
+	protected function _touch($configArray = [])
+	{
+		if ($configArray['dbType'] === 'sqlite')
+		{
+			return touch($configArray['dbHost']) && unlink($configArray['dbHost']);
+		}
+		return true;
+	}
+
+	/**
 	 * write config file
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param array $configArray
 	 *
-	 * @return array
+	 * @return boolean
 	 */
 
 	protected function _write($configArray = [])
@@ -376,7 +395,7 @@ class Install extends ControllerAbstract
 	 *
 	 * @param array $installArray
 	 *
-	 * @return array
+	 * @return boolean
 	 */
 
 	protected function _install($installArray = [])
