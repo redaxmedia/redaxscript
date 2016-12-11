@@ -105,16 +105,16 @@ class ResetTest extends TestCaseAbstract
 	}
 
 	/**
-	 * providerMailFailure
+	 * providerProcessFailure
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	public function providerMailFailure()
+	public function providerProcessFailure()
 	{
-		return $this->getProvider('tests/provider/Controller/reset_mail_failure.json');
+		return $this->getProvider('tests/provider/Controller/reset_process_failure.json');
 	}
 
 	/**
@@ -147,18 +147,19 @@ class ResetTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testMailFailure
+	 * testProcessFailure
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param array $postArray
 	 * @param array $hashArray
+	 * @param string $method
 	 * @param string $expect
 	 *
-	 * @dataProvider providerMailFailure
+	 * @dataProvider providerProcessFailure
 	 */
 
-	public function testMailFailure($postArray = [], $hashArray = [], $expect = null)
+	public function testProcessFailure($postArray = [], $hashArray = [], $method = null, $expect = null)
 	{
 		/* setup */
 
@@ -174,7 +175,7 @@ class ResetTest extends TestCaseAbstract
 			])
 			->setMethods(
 			[
-				'_mail'
+				$method
 			])
 			->getMock();
 
@@ -182,7 +183,7 @@ class ResetTest extends TestCaseAbstract
 
 		$stub
 			->expects($this->any())
-			->method('_mail')
+			->method($method)
 			->will($this->returnValue(false));
 
 		/* actual */

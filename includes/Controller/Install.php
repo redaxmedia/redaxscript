@@ -169,7 +169,7 @@ class Install extends ControllerAbstract
 
 		if (!$this->_install($adminArray))
 		{
-			return $this->error(
+			return $this->_error(
 			[
 				'url' => 'install.php',
 				'message' => $this->_language->get('installation_failed')
