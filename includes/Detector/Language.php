@@ -34,7 +34,7 @@ class Language extends DetectorAbstract
 		[
 			'query' => $this->_request->getQuery('l'),
 			'session' => $this->_request->getSession('language'),
-			'contents' => $lastTable ? Db::forTablePrefix($lastTable)->where('id', $lastId)->findOne()->language : null,
+			'contents' => $lastTable ? Db::forTablePrefix($lastTable)->whereIdIs($lastId)->findOne()->language : null,
 			'settings' => $dbStatus === 2 ? Db::getSetting('language') : null,
 			'browser' => substr($this->_request->getServer('HTTP_ACCEPT_LANGUAGE'), 0, 2),
 			'fallback' => 'en'

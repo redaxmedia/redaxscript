@@ -1,10 +1,91 @@
 [
 	[
+		null,
+		null,
+		null,
 		{
-			"route": "localhost",
-			"lastTable": "articles",
+			"dbStatus": 2,
+			"lastTable": "categories",
 			"lastId": 1
 		},
 		"default"
+	],
+	[
+		{
+			"t": "invalid"
+		},
+		null,
+		null,
+		{
+			"dbStatus": 2,
+			"lastTable": "categories",
+			"lastId": 1
+		},
+		"default"
+	],
+	[
+		{
+			"t": "wide"
+		},
+		{
+			"template": "default"
+		},
+		null,
+		{
+			"dbStatus": 2,
+			"lastTable": "categories",
+			"lastId": 1
+		},
+		"wide"
+	],
+	[
+		null,
+		{
+			"template": "wide"
+		},
+		null,
+		{
+			"dbStatus": 2,
+			"lastTable": "categories",
+			"lastId": 1
+		},
+		"wide"
+	],
+	[
+		null,
+		null,
+		{
+			"template": "wide"
+		},
+		{
+			"dbStatus": 0,
+			"lastTable": "categories",
+			"lastId": 1
+		},
+		"default"
+	],
+	[
+		null,
+		null,
+		{
+			"template": "wide"
+		},
+		{
+			"dbStatus": 2,
+			"lastTable": "categories",
+			"lastId": 1
+		},
+		"wide"
+	],
+	[
+		null,
+		null,
+		null,
+		{
+			"dbStatus": 2,
+			"lastTable": "articles",
+			"lastId": 1
+		},
+		"wide"
 	]
 ]

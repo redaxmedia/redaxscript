@@ -96,7 +96,6 @@ class Installer
 	public function insertData($optionArray = null)
 	{
 		$language = Language::getInstance();
-		$language->init();
 
 		/* articles */
 
@@ -251,8 +250,8 @@ class Installer
 
 		$settingArray =
 		[
-			'language' => 'detect',
-			'template' => 'default',
+			'language' => null,
+			'template' => null,
 			'title' => $language->get('name', '_package'),
 			'author' => $optionArray['adminName'],
 			'copyright' => null,

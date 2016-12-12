@@ -1,10 +1,128 @@
 [
 	[
+		null,
+		null,
+		null,
+		null,
 		{
-			"route": "localhost",
-			"lastTable": "articles",
+			"dbStatus": 2,
+			"lastTable": "categories",
 			"lastId": 1
 		},
 		"en"
+	],
+	[
+		{
+			"l": "invalid"
+		},
+		null,
+		null,
+		null,
+		{
+			"dbStatus": 2,
+			"lastTable": "categories",
+			"lastId": 1
+		},
+		"en"
+	],
+	[
+		{
+			"l": "de"
+		},
+		{
+			"language": "de"
+		},
+		null,
+		null,
+		{
+			"dbStatus": 2,
+			"lastTable": "categories",
+			"lastId": 1
+		},
+		"de"
+	],
+	[
+		null,
+		{
+			"language": "de"
+		},
+		null,
+		null,
+		{
+			"dbStatus": 2,
+			"lastTable": "categories",
+			"lastId": 1
+		},
+		"de"
+	],
+	[
+		null,
+		null,
+		{
+			"HTTP_ACCEPT_LANGUAGE": "de"
+		},
+		null,
+		{
+			"dbStatus": 2,
+			"lastTable": "categories",
+			"lastId": 1
+		},
+		"de"
+	],
+	[
+		null,
+		null,
+		{
+			"HTTP_ACCEPT_LANGUAGE": "de"
+		},
+		{
+			"language": null
+		},
+		{
+			"dbStatus": 2,
+			"lastTable": "categories",
+			"lastId": 1
+		},
+		"de"
+	],
+	[
+		null,
+		null,
+		null,
+		{
+			"language": "de"
+		},
+		{
+			"dbStatus": 0,
+			"lastTable": "categories",
+			"lastId": 1
+		},
+		"en"
+	],
+	[
+		null,
+		null,
+		null,
+		{
+			"language": "de"
+		},
+		{
+			"dbStatus": 2,
+			"lastTable": "categories",
+			"lastId": 1
+		},
+		"de"
+	],
+	[
+		null,
+		null,
+		null,
+		null,
+		{
+			"dbStatus": 2,
+			"lastTable": "articles",
+			"lastId": 1
+		},
+		"de"
 	]
 ]
