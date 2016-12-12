@@ -30,7 +30,7 @@
 			"l": "de"
 		},
 		{
-			"language": "de"
+			"language": "en"
 		},
 		null,
 		null,
@@ -62,22 +62,6 @@
 			"HTTP_ACCEPT_LANGUAGE": "de"
 		},
 		null,
-		{
-			"dbStatus": 2,
-			"lastTable": "categories",
-			"lastId": 1
-		},
-		"de"
-	],
-	[
-		null,
-		null,
-		{
-			"HTTP_ACCEPT_LANGUAGE": "de"
-		},
-		{
-			"language": null
-		},
 		{
 			"dbStatus": 2,
 			"lastTable": "categories",
