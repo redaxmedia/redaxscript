@@ -121,7 +121,7 @@ class Module
 			$directory = 'modules/' . static::$_moduleArray['alias'] . '/database';
 			if (is_dir($directory))
 			{
-				$installer = new Installer(Config::getInstance());
+				$installer = new Installer(Language::getInstance(), Config::getInstance());
 				$installer->init($directory);
 				$installer->rawCreate();
 			}
@@ -145,7 +145,7 @@ class Module
 			$directory = 'modules/' . static::$_moduleArray['alias'] . '/database';
 			if (is_dir($directory))
 			{
-				$installer = new Installer(Config::getInstance());
+				$installer = new Installer(Language::getInstance(), Config::getInstance());
 				$installer->init($directory);
 				$installer->rawDrop();
 			}

@@ -3,6 +3,7 @@ namespace Redaxscript\Tests\Console\Command;
 
 use Redaxscript\Config;
 use Redaxscript\Console\Command;
+use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
@@ -36,6 +37,14 @@ class SettingTest extends TestCaseAbstract
 	protected $_request;
 
 	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
+
+	/**
 	 * instance of the config class
 	 *
 	 * @var object
@@ -53,6 +62,7 @@ class SettingTest extends TestCaseAbstract
 	{
 		$this->_registry = Registry::getInstance();
 		$this->_request = Request::getInstance();
+		$this->_language = Language::getInstance();
 		$this->_config = Config::getInstance();
 	}
 
@@ -77,7 +87,7 @@ class SettingTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$settingCommand = new Command\Setting($this->_registry, $this->_request, $this->_config);
+		$settingCommand = new Command\Setting($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* expect and actual */
 
@@ -105,7 +115,7 @@ class SettingTest extends TestCaseAbstract
 			'setting',
 			'list'
 		]);
-		$settingCommand = new Command\Setting($this->_registry, $this->_request, $this->_config);
+		$settingCommand = new Command\Setting($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
@@ -136,7 +146,7 @@ class SettingTest extends TestCaseAbstract
 			'--value',
 			'Redaxscript'
 		]);
-		$settingCommand = new Command\Setting($this->_registry, $this->_request, $this->_config);
+		$settingCommand = new Command\Setting($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
@@ -164,7 +174,7 @@ class SettingTest extends TestCaseAbstract
 			'set',
 			'--no-interaction'
 		]);
-		$settingCommand = new Command\Setting($this->_registry, $this->_request, $this->_config);
+		$settingCommand = new Command\Setting($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 

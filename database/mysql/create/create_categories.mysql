@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS /* %PREFIX% */categories (
 	description varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
 	keywords varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
 	robots int(1) DEFAULT NULL,
-	language char(3) COLLATE utf8_unicode_ci DEFAULT NULL,
+	language char(2) COLLATE utf8_unicode_ci DEFAULT NULL,
 	template varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
 	sibling int(10) DEFAULT NULL,
 	parent int(10) DEFAULT NULL,

@@ -89,7 +89,7 @@ class InstallTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = new Installer($this->_config);
+		$installer = new Installer($this->_language, $this->_config);
 		$installer->init();
 		$installer->rawDrop();
 		$this->_config->set('dbPrefix', $this->_configArray['dbPrefix']);
