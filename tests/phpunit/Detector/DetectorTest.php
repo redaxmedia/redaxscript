@@ -45,36 +45,43 @@ class DetectorTest extends TestCaseAbstract
 	{
 		$this->_registry = Registry::getInstance();
 		$this->_request = Request::getInstance();
+	}
+
+	/**
+	 * setUpBeforeClass
+	 *
+	 * @since 3.0.0
+	 */
+
+	public static function setUpBeforeClass()
+	{
 		Db::forTablePrefix('articles')
-			->whereIdIs(1)
-			->findOne()
+			->create()
 			->set(
 			[
+				'id' => 2,
+				'title' => 'test',
+				'alias' => 'test',
+				'author' => 'test',
+				'text' => 'test',
 				'language' => 'de',
-				'template' => 'wide'
+				'template' => 'wide',
+				'date' => '2016-01-01 00:00:00'
 			])
 			->save();
 	}
 
 	/**
-	 * tearDown
+	 * tearDownAfterClass
 	 *
 	 * @since 3.0.0
 	 */
 
-	public function tearDown()
+	public static function tearDownAfterClass()
 	{
-		$this->_registry = Registry::getInstance();
-		$this->_request = Request::getInstance();
-		Db::forTablePrefix('articles')
-			->whereIdIs(1)
-			->findOne()
-			->set(
-			[
-				'language' => null,
-				'template' => null
-			])
-			->save();
+		Db::setSetting('language', null);
+		Db::setSetting('template', null);
+		Db::forTablePrefix('articles')->whereIdIs(2)->deleteMany();
 	}
 
 	/**
