@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS /* %PREFIX% */categories (
 	description varchar(255) DEFAULT NULL,
 	keywords varchar(255) DEFAULT NULL,
 	robots integer DEFAULT NULL,
-	language char(3) DEFAULT NULL,
+	language char(2) DEFAULT NULL,
 	template varchar(255) DEFAULT NULL,
 	sibling integer DEFAULT NULL,
 	parent integer DEFAULT NULL,
