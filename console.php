@@ -11,13 +11,14 @@ include_once('includes/bootstrap.php');
 
 $registry = Registry::getInstance();
 $request = Request::getInstance();
+$language = Language::getInstance();
 $config = Config::getInstance();
 
 /* command line */
 
 if (php_sapi_name() === 'cli')
 {
-	$console = new Console\Console($registry, $request, $config);
+	$console = new Console\Console($registry, $request, $language, $config);
 	$output = $console->init('cli');
 	if (is_string($output))
 	{
@@ -33,7 +34,7 @@ else if ($config->get('env') !== 'production')
 
 	if ($request->getServer('HTTP_X_REQUESTED_WITH') === 'XMLHttpRequest')
 	{
-		$console = new Console\Console($registry, $request, $config);
+		$console = new Console\Console($registry, $request, $language, $config);
 		$output = $console->init('xhr');
 		if (is_string($output))
 		{

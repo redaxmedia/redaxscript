@@ -407,7 +407,7 @@ class Install extends ControllerAbstract
 		$adminEmail = $installArray['adminEmail'];
 		if ($adminName && $adminUser && $adminPassword && $adminEmail)
 		{
-			$installer = new Installer($this->_config);
+			$installer = new Installer($this->_language, $this->_config);
 			$installer->init();
 			$installer->rawDrop();
 			$installer->rawCreate();

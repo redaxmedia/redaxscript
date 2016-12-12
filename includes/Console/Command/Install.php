@@ -115,7 +115,7 @@ class Install extends CommandAbstract
 		$adminEmail = $this->prompt('admin-email', $optionArray);
 		if ($adminName && $adminUser && $adminPassword && $adminEmail)
 		{
-			$installer = new Installer($this->_config);
+			$installer = new Installer($this->_language, $this->_config);
 			$installer->init();
 			$installer->rawCreate();
 			$installer->insertData(

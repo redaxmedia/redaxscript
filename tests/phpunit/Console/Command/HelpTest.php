@@ -3,6 +3,7 @@ namespace Redaxscript\Tests\Console\Command;
 
 use Redaxscript\Config;
 use Redaxscript\Console\Command;
+use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
@@ -36,6 +37,14 @@ class HelpTest extends TestCaseAbstract
 	protected $_request;
 
 	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
+
+	/**
 	 * instance of the config class
 	 *
 	 * @var object
@@ -53,6 +62,7 @@ class HelpTest extends TestCaseAbstract
 	{
 		$this->_registry = Registry::getInstance();
 		$this->_request = Request::getInstance();
+		$this->_language = Language::getInstance();
 		$this->_config = Config::getInstance();
 	}
 
@@ -77,7 +87,7 @@ class HelpTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$helpCommand = new Command\Help($this->_registry, $this->_request, $this->_config);
+		$helpCommand = new Command\Help($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
@@ -104,7 +114,7 @@ class HelpTest extends TestCaseAbstract
 			'help',
 			'help'
 		]);
-		$helpCommand = new Command\Help($this->_registry, $this->_request, $this->_config);
+		$helpCommand = new Command\Help($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* expect and actual */
 

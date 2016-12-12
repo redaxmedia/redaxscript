@@ -4,6 +4,7 @@ namespace Redaxscript\Tests;
 use Redaxscript\Config;
 use Redaxscript\Db;
 use Redaxscript\Installer;
+use Redaxscript\Language;
 
 /**
  * InstallerTest
@@ -17,6 +18,14 @@ use Redaxscript\Installer;
 
 class InstallerTest extends TestCaseAbstract
 {
+	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
+
 	/**
 	 * instance of the config class
 	 *
@@ -41,6 +50,7 @@ class InstallerTest extends TestCaseAbstract
 
 	public function setUp()
 	{
+		$this->_language = Language::getInstance();
 		$this->_config = Config::getInstance();
 		$this->_configArray = $this->_config->get();
 		$this->_config->set('dbPrefix', 'installer_');
@@ -67,7 +77,7 @@ class InstallerTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$installer = new Installer($this->_config);
+		$installer = new Installer($this->_language, $this->_config);
 		$installer->init();
 		$installer->rawCreate();
 
@@ -90,7 +100,7 @@ class InstallerTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$installer = new Installer($this->_config);
+		$installer = new Installer($this->_language, $this->_config);
 		$installer->init();
 		$installer->insertData(
 		[
@@ -139,7 +149,7 @@ class InstallerTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$installer = new Installer($this->_config);
+		$installer = new Installer($this->_language, $this->_config);
 		$installer->init();
 		$installer->rawDrop();
 

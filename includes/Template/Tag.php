@@ -6,9 +6,9 @@ use Redaxscript\Config;
 use Redaxscript\Console;
 use Redaxscript\Breadcrumb;
 use Redaxscript\Head;
+use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
-use Redaxscript\Language;
 use Redaxscript\View;
 
 /**
@@ -128,7 +128,7 @@ class Tag
 
 	public static function consoleLine()
 	{
-		$console = new Console\Console(Registry::getInstance(), Request::getInstance(), Config::getInstance());
+		$console = new Console\Console(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		$output = $console->init('template');
 		if (is_string($output))
 		{

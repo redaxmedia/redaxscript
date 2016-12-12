@@ -88,7 +88,7 @@ class Uninstall extends CommandAbstract
 
 	protected function _database()
 	{
-		$installer = new Installer($this->_config);
+		$installer = new Installer($this->_language, $this->_config);
 		$installer->init();
 		$installer->rawDrop();
 		return Db::getStatus() === 1;

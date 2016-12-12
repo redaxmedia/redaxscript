@@ -14,6 +14,14 @@ namespace Redaxscript;
 class Installer
 {
 	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
+
+	/**
 	 * instance of the config class
 	 *
 	 * @var object
@@ -42,11 +50,13 @@ class Installer
 	 *
 	 * @since 2.6.0
 	 *
+	 * @param Language $language instance of the language class
 	 * @param Config $config instance of the config class
 	 */
 
-	public function __construct(Config $config)
+	public function __construct(Language $language, Config $config)
 	{
+		$this->_language = $language;
 		$this->_config = $config;
 	}
 
@@ -95,8 +105,6 @@ class Installer
 
 	public function insertData($optionArray = null)
 	{
-		$language = Language::getInstance();
-
 		/* articles */
 
 		Db::forTablePrefix('articles')
@@ -252,14 +260,14 @@ class Installer
 		[
 			'language' => null,
 			'template' => null,
-			'title' => $language->get('name', '_package'),
+			'title' => $this->_language->get('name', '_package'),
 			'author' => $optionArray['adminName'],
 			'copyright' => null,
-			'description' => $language->get('description', '_package'),
+			'description' => $this->_language->get('description', '_package'),
 			'keywords' => null,
 			'robots' => null,
 			'email' => $optionArray['adminEmail'],
-			'subject' => $language->get('name', '_package'),
+			'subject' => $this->_language->get('name', '_package'),
 			'notification' => 0,
 			'charset' => 'utf-8',
 			'divider' => ' - ',
@@ -274,7 +282,7 @@ class Installer
 			'recovery' => 1,
 			'moderation' => 0,
 			'captcha' => 0,
-			'version' => $language->get('version', '_package')
+			'version' => $this->_language->get('version', '_package')
 		];
 
 		/* process settings array */
@@ -293,7 +301,7 @@ class Installer
 
 		/* users */
 
-		$passwordHash = new Hash(Config::getInstance());
+		$passwordHash = new Hash($this->_config);
 		$passwordHash->init($optionArray['adminPassword']);
 		Db::forTablePrefix('users')
 			->create()

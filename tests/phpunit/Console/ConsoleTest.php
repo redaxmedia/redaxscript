@@ -3,6 +3,7 @@ namespace Redaxscript\Tests\Console;
 
 use Redaxscript\Config;
 use Redaxscript\Console;
+use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
@@ -36,6 +37,14 @@ class ConsoleTest extends TestCaseAbstract
 	protected $_request;
 
 	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
+
+	/**
 	 * instance of the config class
 	 *
 	 * @var object
@@ -53,6 +62,7 @@ class ConsoleTest extends TestCaseAbstract
 	{
 		$this->_registry = Registry::getInstance();
 		$this->_request = Request::getInstance();
+		$this->_language = Language::getInstance();
 		$this->_config = Config::getInstance();
 	}
 
@@ -83,7 +93,7 @@ class ConsoleTest extends TestCaseAbstract
 			'console.php',
 			'help'
 		]);
-		$console = new Console\Console($this->_registry, $this->_request, $this->_config);
+		$console = new Console\Console($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
@@ -105,7 +115,7 @@ class ConsoleTest extends TestCaseAbstract
 		/* setup */
 
 		$this->_request->setPost('argv', 'help');
-		$console = new Console\Console($this->_registry, $this->_request, $this->_config);
+		$console = new Console\Console($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
@@ -126,7 +136,7 @@ class ConsoleTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$console = new Console\Console($this->_registry, $this->_request, $this->_config);
+		$console = new Console\Console($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 

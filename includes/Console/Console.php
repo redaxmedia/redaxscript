@@ -34,7 +34,7 @@ class Console extends ConsoleAbstract
 		$commandClass = $this->_namespaceArray[$commandKey];
 		if (array_key_exists($commandKey, $this->_namespaceArray) && class_exists($commandClass))
 		{
-			$command = new $commandClass($this->_registry, $this->_request, $this->_config);
+			$command = new $commandClass($this->_registry, $this->_request, $this->_language, $this->_config);
 			return $command->run($mode);
 		}
 		return false;

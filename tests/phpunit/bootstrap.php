@@ -38,9 +38,14 @@ else
 Db::construct($config);
 Db::init();
 
+/* language */
+
+$language = Language::getInstance();
+$language->init();
+
 /* installer */
 
-$installer = new Installer($config);
+$installer = new Installer($language, $config);
 $installer->init();
 $installer->rawDrop();
 $installer->rawCreate();
@@ -72,11 +77,6 @@ if (is_dir('modules/TestDummy'))
 	$testDummy = new Modules\TestDummy\TestDummy;
 	$testDummy->install();
 }
-
-/* language */
-
-$language = Language::getInstance();
-$language->init();
 
 /* hook */
 
