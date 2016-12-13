@@ -132,7 +132,7 @@ class GroupForm extends ViewAbstract implements ViewInterface
 			[
 				'id' => 'alias',
 				'name' => 'alias',
-                'pattern' => '[a-zA-Z0-9-]+',
+				'pattern' => '[a-zA-Z0-9-]+',
 				'required' => 'required',
 				'value' => $group->alias
 			])

@@ -116,8 +116,8 @@ class CacheTest extends TestCaseAbstract
 			'clear',
 			'--directory',
 			'cache',
-            '--extension',
-            'css',
+			'--extension',
+			'css',
 			'--bundle',
 			'base.min.css'
 		]);
@@ -149,8 +149,8 @@ class CacheTest extends TestCaseAbstract
 			'clear-invalid',
 			'--directory',
 			'cache',
-            '--extension',
-            'js',
+			'--extension',
+			'js',
 			'--lifetime',
 			'3600'
 		]);
@@ -158,10 +158,10 @@ class CacheTest extends TestCaseAbstract
 
 		/* actual */
 
-        $actual = $cacheCommand->run('cli');
+		$actual = $cacheCommand->run('cli');
 
-        /* compare */
+		/* compare */
 
-        $this->assertTrue($actual);
+		$this->assertTrue($actual);
 	}
 }

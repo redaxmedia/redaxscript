@@ -76,7 +76,7 @@ class LogoutTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-     * @param array $authArray
+	 * @param array $authArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerProcess
@@ -86,16 +86,16 @@ class LogoutTest extends TestCaseAbstract
 	{
 		/* setup */
 
-        $auth = new Auth($this->_request);
-        $logoutController = new Controller\Logout($this->_registry, $this->_language, $this->_request);
-        if ($authArray['login'])
-        {
-            $auth->login(1);
-        }
-        if ($authArray['logout'])
-        {
-            $auth->logout();
-        }
+		$auth = new Auth($this->_request);
+		$logoutController = new Controller\Logout($this->_registry, $this->_language, $this->_request);
+		if ($authArray['login'])
+		{
+			$auth->login(1);
+		}
+		if ($authArray['logout'])
+		{
+			$auth->logout();
+		}
 
 		/* actual */
 

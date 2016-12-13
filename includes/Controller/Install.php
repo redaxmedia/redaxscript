@@ -89,7 +89,7 @@ class Install extends ControllerAbstract
 		{
 			return $this->_error(
 			[
-                'url' => 'install.php',
+				'url' => 'install.php',
 				'title' => $this->_language->get('database'),
 				'message' => $messageArray
 			]);
@@ -99,7 +99,7 @@ class Install extends ControllerAbstract
 		{
 			return $this->_error(
 			[
-                'url' => 'install.php',
+				'url' => 'install.php',
 				'title' => $this->_language->get('account'),
 				'message' => $messageArray
 			]);

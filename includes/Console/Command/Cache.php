@@ -112,7 +112,7 @@ class Cache extends CommandAbstract
 
 	protected function _clear($optionArray = [])
 	{
-        $directory = $this->prompt('directory', $optionArray);
+		$directory = $this->prompt('directory', $optionArray);
 		$extension = $this->prompt('extension', $optionArray);
 		$bundle = array_filter(explode(',', $optionArray['bundle']));
 		$cache = new BaseCache();
@@ -134,13 +134,13 @@ class Cache extends CommandAbstract
 
 	protected function _clearInvalid($optionArray = [])
 	{
-        $directory = $this->prompt('directory', $optionArray);
-        $extension = $this->prompt('extension', $optionArray);
+		$directory = $this->prompt('directory', $optionArray);
+		$extension = $this->prompt('extension', $optionArray);
 		$lifetime = is_numeric($optionArray['lifetime']) ? $optionArray['lifetime'] : 3600;
 		$cache = new BaseCache();
 		$cache
 			->init($directory, $extension)
 			->clearInvalid($lifetime);
-        return is_dir($cache->getDirectory());
+		return is_dir($cache->getDirectory());
 	}
 }
