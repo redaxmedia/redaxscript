@@ -116,6 +116,8 @@ class CacheTest extends TestCaseAbstract
 			'clear',
 			'--directory',
 			'cache/styles',
+            '--extension',
+            'css',
 			'--bundle',
 			'base.min.css'
 		]);
@@ -127,7 +129,7 @@ class CacheTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals('cache/styles', $actual->getDirectory());
+		$this->assertTrue($actual);
 	}
 
 	/**
@@ -146,7 +148,9 @@ class CacheTest extends TestCaseAbstract
 			'cache',
 			'clear-invalid',
 			'--directory',
-			'cache/page',
+            '--extension',
+            'js',
+			'cache/scripts',
 			'--lifetime',
 			'3600'
 		]);
@@ -154,10 +158,10 @@ class CacheTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $cacheCommand->run('cli');
+        $actual = $cacheCommand->run('cli');
 
-		/* compare */
+        /* compare */
 
-		$this->assertEquals('cache/page', $actual->getDirectory());
+        $this->assertTrue($actual);
 	}
 }
