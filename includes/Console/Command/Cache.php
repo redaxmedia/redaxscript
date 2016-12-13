@@ -119,7 +119,7 @@ class Cache extends CommandAbstract
 		$cache
 			->init($directory, $extension)
 			->clear($bundle);
-		return filesize($cache->getDirectory()) === 4096;
+		return is_dir($cache->getDirectory());
 	}
 
 	/**
@@ -141,6 +141,6 @@ class Cache extends CommandAbstract
 		$cache
 			->init($directory, $extension)
 			->clearInvalid($lifetime);
-        return fileatime($cache->getDirectory()) < time();
+        return is_dir($cache->getDirectory());
 	}
 }

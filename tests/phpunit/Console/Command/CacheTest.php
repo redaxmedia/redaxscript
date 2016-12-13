@@ -115,7 +115,7 @@ class CacheTest extends TestCaseAbstract
 			'cache',
 			'clear',
 			'--directory',
-			'cache/styles',
+			'cache',
             '--extension',
             'css',
 			'--bundle',
@@ -148,9 +148,9 @@ class CacheTest extends TestCaseAbstract
 			'cache',
 			'clear-invalid',
 			'--directory',
+			'cache',
             '--extension',
             'js',
-			'cache/scripts',
 			'--lifetime',
 			'3600'
 		]);
