@@ -77,7 +77,7 @@ class InstallerTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$installer = new Installer($this->_language, $this->_config);
+		$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
 		$installer->init();
 		$installer->rawCreate();
 
@@ -100,7 +100,7 @@ class InstallerTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$installer = new Installer($this->_language, $this->_config);
+		$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
 		$installer->init();
 		$installer->insertData(
 		[
@@ -149,7 +149,7 @@ class InstallerTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$installer = new Installer($this->_language, $this->_config);
+		$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
 		$installer->init();
 		$installer->rawDrop();
 

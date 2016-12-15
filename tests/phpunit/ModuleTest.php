@@ -2,6 +2,9 @@
 namespace Redaxscript\Tests;
 
 use Redaxscript\Db;
+use Redaxscript\Registry;
+use Redaxscript\Request;
+use Redaxscript\Language;
 use Redaxscript\Module;
 
 /**
@@ -37,7 +40,7 @@ class ModuleTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$module = new Module();
+		$module = new Module(Registry::getInstance(), Request::getInstance(), Language::getInstance());
 		$module->init(
 		[
 			'alias' => 'TestDummy'
@@ -62,7 +65,7 @@ class ModuleTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$module = new Module();
+		$module = new Module(Registry::getInstance(), Request::getInstance(), Language::getInstance());
 		$module->init(
 		[
 			'name' => 'Test dummy',
@@ -89,7 +92,7 @@ class ModuleTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$module = new Module();
+		$module = new Module(Registry::getInstance(), Request::getInstance(), Language::getInstance());
 		$module->init(
 		[
 			'name' => 'Test dummy',
@@ -118,7 +121,7 @@ class ModuleTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$module = new Module();
+		$module = new Module(Registry::getInstance(), Request::getInstance(), Language::getInstance());
 
 		/* actual */
 
@@ -139,7 +142,7 @@ class ModuleTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$module = new Module();
+		$module = new Module(Registry::getInstance(), Request::getInstance(), Language::getInstance());
 		$module->init(
 		[
 			'alias' => 'TestDummy'
@@ -167,7 +170,7 @@ class ModuleTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$module = new Module();
+		$module = new Module(Registry::getInstance(), Request::getInstance(), Language::getInstance());
 		$module->init(
 		[
 			'alias' => 'TestDummy'

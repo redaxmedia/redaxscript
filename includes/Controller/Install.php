@@ -89,7 +89,7 @@ class Install extends ControllerAbstract
 		{
 			return $this->_error(
 			[
-				'url' => 'install.php',
+                'url' => 'install.php',
 				'title' => $this->_language->get('database'),
 				'message' => $messageArray
 			]);
@@ -99,7 +99,7 @@ class Install extends ControllerAbstract
 		{
 			return $this->_error(
 			[
-				'url' => 'install.php',
+                'url' => 'install.php',
 				'title' => $this->_language->get('account'),
 				'message' => $messageArray
 			]);
@@ -407,7 +407,7 @@ class Install extends ControllerAbstract
 		$adminEmail = $installArray['adminEmail'];
 		if ($adminName && $adminUser && $adminPassword && $adminEmail)
 		{
-			$installer = new Installer($this->_language, $this->_config);
+			$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
 			$installer->init();
 			$installer->rawDrop();
 			$installer->rawCreate();

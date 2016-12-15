@@ -85,7 +85,7 @@ class UninstallTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = new Installer($this->_language, $this->_config);
+		$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
 		$installer->init();
 		$installer->rawDrop();
 		$this->_request->setServer('argv', null);
@@ -151,7 +151,7 @@ class UninstallTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$installer = new Installer($this->_language, $this->_config);
+		$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
 		$installer->init();
 		$installer->rawCreate();
 		$this->_request->setServer('argv',

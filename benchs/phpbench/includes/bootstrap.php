@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript;
 
-/* include files */
+/* autoload */
 
 include_once('includes/Autoloader.php');
 include_once('BenchCaseAbstract.php');
@@ -32,9 +32,14 @@ $config->set('dbHost', ':memory:');
 Db::construct($config);
 Db::init();
 
+/* language */
+
+$language = Language::getInstance();
+$language->init();
+
 /* installer */
 
-$installer = new Installer($config);
+$installer = new Installer($registry, $request, $language, $config);
 $installer->init();
 $installer->rawDrop();
 $installer->rawCreate();
@@ -50,8 +55,3 @@ $installer->insertData(
 
 Hook::construct($registry);
 Hook::init();
-
-/* language */
-
-$language = Language::getInstance();
-$language->init();
