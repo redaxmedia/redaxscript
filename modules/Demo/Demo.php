@@ -2,12 +2,8 @@
 namespace Redaxscript\Modules\Demo;
 
 use Redaxscript\Auth;
-use Redaxscript\Config as BaseConfig;
 use Redaxscript\Db;
 use Redaxscript\Installer;
-use Redaxscript\Language;
-use Redaxscript\Registry;
-use Redaxscript\Request;
 use Redaxscript\Messenger as Messenger;
 
 /**
@@ -43,24 +39,24 @@ class Demo extends Config
 	 * @since 2.4.0
 	 */
 
-	public static function renderStart()
+	public function renderStart()
 	{
-		if (Registry::get('firstParameter') === 'demo')
+		if ($this->_registry->get('firstParameter') === 'demo')
 		{
 			/* handle login */
 
-			if (Registry::get('secondParameter') === 'login')
+			if ($this->_registry->get('secondParameter') === 'login')
 			{
-				Registry::set('metaTitle', Language::get('login'));
-				Registry::set('routerBreak', true);
+				$this->_registry->set('metaTitle', $this->_language->get('login'));
+				$this->_registry->set('routerBreak', true);
 			}
 
 			/* handle reinstall */
 
-			if (Registry::get('secondParameter') === 'reinstall')
+			if ($this->_registry->get('secondParameter') === 'reinstall')
 			{
-				Registry::set('renderBreak', true);
-				self::_reinstall();
+				$this->_registry->set('renderBreak', true);
+				$this->_reinstall();
 			}
 		}
 	}
@@ -71,11 +67,11 @@ class Demo extends Config
 	 * @since 3.0.0
 	 */
 
-	public static function routerStart()
+	public function routerStart()
 	{
-		if (Registry::get('firstParameter') === 'demo' && Registry::get('secondParameter') === 'login')
+		if ($this->_registry->get('firstParameter') === 'demo' && $this->_registry->get('secondParameter') === 'login')
 		{
-			echo self::process();
+			echo $this->process();
 		}
 	}
 
@@ -87,18 +83,18 @@ class Demo extends Config
 	 * return array
 	 */
 
-	public static function adminPanelNotification()
+	public function adminPanelNotification()
 	{
-		$auth = new Auth(Request::getInstance());
+		$auth = new Auth($this->_request);
 		$auth->init();
 
 		/* demo user */
 
 		if ($auth->getUser('user') === 'demo')
 		{
-			self::setNotification('success', Language::get('logged_in') . Language::get('point'));
+			$this->setNotification('success', $this->_language->get('logged_in') . $this->_language->get('point'));
 		}
-		return self::getNotification();
+		return $this->getNotification();
 	}
 
 	/**
@@ -109,9 +105,9 @@ class Demo extends Config
 	 * @return string
 	 */
 
-	public static function process()
+	public function process()
 	{
-		$auth = new Auth(Request::getInstance());
+		$auth = new Auth($this->_request);
 		$tableArray =
 		[
 			'categories',
@@ -152,9 +148,9 @@ class Demo extends Config
 
 		if ($auth->getStatus())
 		{
-			return self::_success();
+			return $this->_success();
 		}
-		return self::_error();
+		return $this->_error();
 	}
 
 	/**
@@ -165,13 +161,13 @@ class Demo extends Config
 	 * @return string
 	 */
 
-	protected static function _success()
+	protected function _success()
 	{
-		$messenger = new Messenger(Registry::getInstance());
+		$messenger = new Messenger($this->_registry);
 		return $messenger
-			->setRoute(Language::get('continue'), 'admin')
+			->setRoute($this->_language->get('continue'), 'admin')
 			->doRedirect(0)
-			->success(Language::get('logged_in'), Language::get('welcome'));
+			->success($this->_language->get('logged_in'), $this->_language->get('welcome'));
 	}
 
 	/**
@@ -182,13 +178,13 @@ class Demo extends Config
 	 * @return string
 	 */
 
-	protected static function _error()
+	protected function _error()
 	{
-		$messenger = new Messenger(Registry::getInstance());
+		$messenger = new Messenger($this->_registry);
 		return $messenger
-			->setRoute(Language::get('back'), 'login')
+			->setRoute($this->_language->get('back'), 'login')
 			->doRedirect()
-			->error(Language::get('something_wrong'), Language::get('error_occurred'));
+			->error($this->_language->get('something_wrong'), $this->_language->get('error_occurred'));
 	}
 
 	/**
@@ -197,9 +193,9 @@ class Demo extends Config
 	 * @since 2.4.0
 	 */
 
-	protected static function _reinstall()
+	protected function _reinstall()
 	{
-		$installer = new Installer(BaseConfig::getInstance());
+		$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
 		$installer->init();
 		$installer->rawDrop();
 		$installer->rawCreate();
@@ -213,11 +209,11 @@ class Demo extends Config
 
 		/* process modules */
 
-		foreach (self::$_configArray['modules'] as $key => $value)
+		foreach ($this->_configArray['modules'] as $key => $moduleClass)
 		{
 			if (is_dir('modules/' . $key))
 			{
-				$module = new $value;
+				$module = new $moduleClass($this->_registry, $this->_request, $this->_language, $this->_config);
 				$module->install();
 			}
 		}

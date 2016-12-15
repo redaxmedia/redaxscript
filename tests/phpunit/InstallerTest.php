@@ -5,6 +5,8 @@ use Redaxscript\Config;
 use Redaxscript\Db;
 use Redaxscript\Installer;
 use Redaxscript\Language;
+use Redaxscript\Registry;
+use Redaxscript\Request;
 
 /**
  * InstallerTest
@@ -18,6 +20,22 @@ use Redaxscript\Language;
 
 class InstallerTest extends TestCaseAbstract
 {
+	/**
+	 * instance of the registry class
+	 *
+	 * @var object
+	 */
+
+	protected $_registry;
+
+	/**
+	 * instance of the request class
+	 *
+	 * @var object
+	 */
+
+	protected $_request;
+
 	/**
 	 * instance of the language class
 	 *
@@ -50,6 +68,8 @@ class InstallerTest extends TestCaseAbstract
 
 	public function setUp()
 	{
+		$this->_registry = Registry::getInstance();
+		$this->_request = Request::getInstance();
 		$this->_language = Language::getInstance();
 		$this->_config = Config::getInstance();
 		$this->_configArray = $this->_config->get();

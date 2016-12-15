@@ -38,7 +38,7 @@ class TestDummy extends Module
 	 * @return array
 	 */
 
-	public static function adminPanelNotification()
+	public function adminPanelNotification()
 	{
 		self::setNotification('info', 'test');
 		return self::getNotification();
@@ -55,7 +55,7 @@ class TestDummy extends Module
 	 * @return integer
 	 */
 
-	public static function render($firstNumber = null, $secondNumber = null)
+	public function render($firstNumber = null, $secondNumber = null)
 	{
 		return $firstNumber + $secondNumber;
 	}

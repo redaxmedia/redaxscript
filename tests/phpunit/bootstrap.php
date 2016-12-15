@@ -75,7 +75,7 @@ Db::forTablePrefix('users')
 
 if (is_dir('modules/TestDummy'))
 {
-	$testDummy = new Modules\TestDummy\TestDummy($registry, $request, $language);
+	$testDummy = new Modules\TestDummy\TestDummy($registry, $request, $language, $config);
 	$testDummy->install();
 }
 

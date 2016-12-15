@@ -265,12 +265,12 @@ class Installer
 
 		if (is_dir('modules/CallHome'))
 		{
-			$callHome = new Modules\CallHome\CallHome(Registry::getInstance(), Request::getInstance(), $this->_language);
+			$callHome = new Modules\CallHome\CallHome($this->_registry, $this->_request, $this->_language, $this->_config);
 			$callHome->install();
 		}
 		if (is_dir('modules/Validator'))
 		{
-			$validator = new Modules\Validator\Validator(Registry::getInstance(), Request::getInstance(), $this->_language);
+			$validator = new Modules\Validator\Validator($this->_registry, $this->_request, $this->_language, $this->_config);
 			$validator->install();
 		}
 

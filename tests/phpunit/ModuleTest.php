@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Tests;
 
+use Redaxscript\Config;
 use Redaxscript\Db;
 use Redaxscript\Registry;
 use Redaxscript\Request;
@@ -40,7 +41,7 @@ class ModuleTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$module = new Module(Registry::getInstance(), Request::getInstance(), Language::getInstance());
+		$module = new Module(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		$module->init(
 		[
 			'alias' => 'TestDummy'
@@ -65,7 +66,7 @@ class ModuleTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$module = new Module(Registry::getInstance(), Request::getInstance(), Language::getInstance());
+		$module = new Module(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		$module->init(
 		[
 			'name' => 'Test dummy',
@@ -92,7 +93,7 @@ class ModuleTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$module = new Module(Registry::getInstance(), Request::getInstance(), Language::getInstance());
+		$module = new Module(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		$module->init(
 		[
 			'name' => 'Test dummy',
@@ -121,7 +122,7 @@ class ModuleTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$module = new Module(Registry::getInstance(), Request::getInstance(), Language::getInstance());
+		$module = new Module(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 
 		/* actual */
 
@@ -142,7 +143,7 @@ class ModuleTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$module = new Module(Registry::getInstance(), Request::getInstance(), Language::getInstance());
+		$module = new Module(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		$module->init(
 		[
 			'alias' => 'TestDummy'
@@ -170,7 +171,7 @@ class ModuleTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$module = new Module(Registry::getInstance(), Request::getInstance(), Language::getInstance());
+		$module = new Module(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		$module->init(
 		[
 			'alias' => 'TestDummy'
