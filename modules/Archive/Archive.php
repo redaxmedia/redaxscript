@@ -3,8 +3,6 @@ namespace Redaxscript\Modules\Archive;
 
 use Redaxscript\Db;
 use Redaxscript\Html;
-use Redaxscript\Language;
-use Redaxscript\Registry;
 use Redaxscript\Validator;
 
 /**
@@ -42,7 +40,7 @@ class Archive extends Config
 	 * @return string
 	 */
 
-	public static function render()
+	public function render()
 	{
 		$output = null;
 
@@ -51,21 +49,21 @@ class Archive extends Config
 		$titleElement = new Html\Element();
 		$titleElement->init('h3',
 		[
-			'class' => self::$_configArray['className']['title']
+			'class' => $this->_configArray['className']['title']
 		]);
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
 		$listElement = new Html\Element();
 		$listElement->init('ul',
 		[
-			'class' => self::$_configArray['className']['list']
+			'class' => $this->_configArray['className']['list']
 		]);
 
 		/* query articles */
 
 		$articles = Db::forTablePrefix('articles')
 			->where('status', 1)
-			->whereLanguageIs(Registry::get('language'))
+			->whereLanguageIs($this->_registry->get('language'))
 			->orderByDesc('date')
 			->findMany();
 
@@ -73,7 +71,7 @@ class Archive extends Config
 
 		if (!$articles)
 		{
-			$error = Language::get('article_no') . Language::get('point');
+			$error = $this->_language->get('article_no') . $this->_language->get('point');
 		}
 		else
 		{
@@ -82,7 +80,7 @@ class Archive extends Config
 			$lastDate = 0;
 			foreach ($articles as $value)
 			{
-				if ($accessValidator->validate($value->access, Registry::get('myGroups')) === Validator\ValidatorInterface::PASSED)
+				if ($accessValidator->validate($value->access, $this->_registry->get('myGroups')) === Validator\ValidatorInterface::PASSED)
 				{
 					$month = date('n', strtotime($value->date));
 					$year = date('Y', strtotime($value->date));
@@ -92,7 +90,7 @@ class Archive extends Config
 
 					if ($lastDate <> $currentDate)
 					{
-						$output .= $titleElement->text(Language::get($month - 1, '_month') . ' ' . $year);
+						$output .= $titleElement->text($this->_language->get($month - 1, '_month') . ' ' . $year);
 					}
 					$lastDate = $currentDate;
 
@@ -102,7 +100,7 @@ class Archive extends Config
 					$outputItem .= $linkElement
 						->attr(
 						[
-							'href' => Registry::get('parameterRoute') . build_route('articles', $value->id),
+							'href' => $this->_registry->get('parameterRoute') . build_route('articles', $value->id),
 							'title' => $value->description ? $value->description : $value->title
 						])
 						->text($value->title);
@@ -122,7 +120,7 @@ class Archive extends Config
 
 			if (count($articles) === $accessDeny)
 			{
-				$error = Language::get('access_no') . Language::get('point');
+				$error = $this->_language->get('access_no') . $this->_language->get('point');
 			}
 		}
 

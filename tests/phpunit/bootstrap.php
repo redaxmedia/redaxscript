@@ -18,6 +18,7 @@ $autoloader->init();
 /* get instance */
 
 $registry = Registry::getInstance();
+$request = Request::getInstance();
 $config = Config::getInstance();
 
 /* config */
@@ -45,7 +46,7 @@ $language->init();
 
 /* installer */
 
-$installer = new Installer($language, $config);
+$installer = new Installer($registry, $request, $language, $config);
 $installer->init();
 $installer->rawDrop();
 $installer->rawCreate();
@@ -74,12 +75,11 @@ Db::forTablePrefix('users')
 
 if (is_dir('modules/TestDummy'))
 {
-	$testDummy = new Modules\TestDummy\TestDummy;
+	$testDummy = new Modules\TestDummy\TestDummy($registry, $request, $language, $config);
 	$testDummy->install();
 }
 
 /* hook */
 
-Hook::construct($registry);
+Hook::construct($registry, $request, $language, $config);
 Hook::init();
-

@@ -31,11 +31,11 @@ $boxElement->init('div',
 					$titleElement
 						->copy()
 						->addClass($i === 2 ? $admin ? 'rs-admin-js-title-active rs-admin-title-active' : 'rs-js-title-active rs-title-active' : null)
-						->text(Language::get($i, '_number')) .
+						->text($this->_language->get($i, '_number')) .
 					$boxElement
 						->copy()
 						->addClass($i === 2 ? $admin ? 'rs-admin-js-box-active rs-admin-box-active' : 'rs-js-box-active rs-box-active' : null)
-						->text(Language::get($i, '_number'))
+						->text($this->_language->get($i, '_number'))
 		); ?>
 
 	<?php endfor; ?>

@@ -331,7 +331,7 @@ class Parser
 	{
 		$output = str_replace($this->_tagArray['template']['search'], $this->_optionArray['delimiter'], $content);
 		$partArray = array_filter(explode($this->_optionArray['delimiter'], $output));
-		$object = $this->_tagArray['template']['namespace'];
+		$templateClass = $this->_tagArray['template']['namespace'];
 
 		/* parse as needed */
 
@@ -350,11 +350,11 @@ class Parser
 					{
 						/* method exists */
 
-						if (method_exists($object, $method))
+						if (method_exists($templateClass, $method))
 						{
 							$partArray[$key] = call_user_func_array(
 							[
-								$object,
+								$templateClass,
 								$method
 							], $parameterArray);
 						}
@@ -363,11 +363,11 @@ class Parser
 
 				/* else simple call */
 
-				else if (method_exists($object, $value))
+				else if (method_exists($templateClass, $value))
 				{
 					$partArray[$key] = call_user_func(
 					[
-						$object,
+						$templateClass,
 						$value
 					]);
 				}
@@ -397,7 +397,7 @@ class Parser
 
 		foreach ($partArray as $key => $value)
 		{
-			$object = $this->_tagArray['module']['namespace'] . '\\' . $value . '\\' . $value;
+			$moduleClass = $this->_tagArray['module']['namespace'] . '\\' . $value . '\\' . $value;
 			if ($key % 2)
 			{
 				$partArray[$key] = null;
@@ -407,17 +407,18 @@ class Parser
 
 				if (is_array($json))
 				{
-					foreach ($json as $module => $parameterArray)
+					foreach ($json as $moduleName => $parameterArray)
 					{
-						$object = $this->_tagArray['module']['namespace'] . '\\' . $module . '\\' . $module;
+						$moduleClass = $this->_tagArray['module']['namespace'] . '\\' . $moduleName . '\\' . $moduleName;
 
 						/* method exists */
 
-						if (in_array($module, $modulesLoaded) && method_exists($object, 'render'))
+						if (in_array($moduleName, $modulesLoaded) && method_exists($moduleClass, 'render'))
 						{
+							$module = new $moduleClass(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 							$partArray[$key] = call_user_func_array(
 							[
-								$object,
+								$module,
 								'render'
 							], $parameterArray);
 						}
@@ -426,11 +427,12 @@ class Parser
 
 				/* else simple call */
 
-				else if (in_array($value, $modulesLoaded) && method_exists($object, 'render'))
+				else if (in_array($value, $modulesLoaded) && method_exists($moduleClass, 'render'))
 				{
+					$module = new $moduleClass(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 					$partArray[$key] = call_user_func(
 					[
-						$object,
+						$module,
 						'render'
 					]);
 				}

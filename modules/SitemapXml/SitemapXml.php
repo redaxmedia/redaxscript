@@ -39,13 +39,13 @@ class SitemapXml extends Module
 	 * @since 2.2.0
 	 */
 
-	public static function renderStart()
+	public function renderStart()
 	{
-		if (Registry::get('firstParameter') === 'sitemap-xml')
+		if ($this->_registry->get('firstParameter') === 'sitemap-xml')
 		{
-			Registry::set('renderBreak', true);
+			$this->_registry->set('renderBreak', true);
 			header('content-type: application/xml');
-			echo self::render();
+			echo $this->render();
 		}
 	}
 
@@ -57,7 +57,7 @@ class SitemapXml extends Module
 	 * @return string
 	 */
 
-	public static function render()
+	public function render()
 	{
 		/* query categories */
 
@@ -77,7 +77,7 @@ class SitemapXml extends Module
 
 		/* write xml */
 
-		return self::_writeXML($categories, $articles);
+		return $this->_writeXML($categories, $articles);
 	}
 
 	/**
@@ -87,7 +87,7 @@ class SitemapXml extends Module
 	 * @return string
 	 */
 
-	protected static function _writeXML($categories = null, $articles = null)
+	protected function _writeXML($categories = null, $articles = null)
 	{
 		$writer = new XMLWriter();
 		$writer->openMemory();
@@ -97,7 +97,7 @@ class SitemapXml extends Module
 		$writer->startElement('urlset');
 		$writer->writeAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
 		$writer->startElement('url');
-		$writer->writeElement('loc', Registry::get('root'));
+		$writer->writeElement('loc', $this->_registry->get('root'));
 		$writer->endElement();
 
 		/* process categories */
@@ -105,7 +105,7 @@ class SitemapXml extends Module
 		foreach ($categories as $value)
 		{
 			$writer->startElement('url');
-			$writer->writeElement('loc', Registry::get('root') . '/' . Registry::get('parameterRoute') . build_route('categories', $value->id));
+			$writer->writeElement('loc', $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . build_route('categories', $value->id));
 			$writer->writeElement('lastmod', date('c', strtotime($value->date)));
 			$writer->endElement();
 		}
@@ -115,7 +115,7 @@ class SitemapXml extends Module
 		foreach ($articles as $value)
 		{
 			$writer->startElement('url');
-			$writer->writeElement('loc', Registry::get('root') . '/' . Registry::get('parameterRoute') . build_route('articles', $value->id));
+			$writer->writeElement('loc', $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . build_route('articles', $value->id));
 			$writer->writeElement('lastmod', date('c', strtotime($value->date)));
 			$writer->endElement();
 		}

@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript;
 
-if (Registry::get('loggedIn') === Registry::get('token'))
+if ($this->_registry->get('loggedIn') === $this->_registry->get('token'))
 {
 	$admin = true;
 	include('blockcode.phtml');

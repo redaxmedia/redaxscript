@@ -34,20 +34,20 @@ class InstallTest extends TestCaseAbstract
 	protected $_registry;
 
 	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
 	 * instance of the request class
 	 *
 	 * @var object
 	 */
 
 	protected $_request;
+
+	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
 
 	/**
 	 * instance of the config class
@@ -74,8 +74,8 @@ class InstallTest extends TestCaseAbstract
 	public function setUp()
 	{
 		$this->_registry = Registry::getInstance();
-		$this->_language = Language::getInstance();
 		$this->_request = Request::getInstance();
+		$this->_language = Language::getInstance();
 		$this->_config = Config::getInstance();
 		$this->_configArray = $this->_config->get();
 		$this->_config->set('dbPrefix', 'controller_');
@@ -89,7 +89,7 @@ class InstallTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = new Installer($this->_language, $this->_config);
+		$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
 		$installer->init();
 		$installer->rawDrop();
 		$this->_config->set('dbPrefix', $this->_configArray['dbPrefix']);

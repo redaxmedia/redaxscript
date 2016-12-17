@@ -115,7 +115,7 @@ class Install extends CommandAbstract
 		$adminEmail = $this->prompt('admin-email', $optionArray);
 		if ($adminName && $adminUser && $adminPassword && $adminEmail)
 		{
-			$installer = new Installer($this->_language, $this->_config);
+			$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
 			$installer->init();
 			$installer->rawCreate();
 			$installer->insertData(
@@ -146,7 +146,7 @@ class Install extends CommandAbstract
 		$moduleClass = 'Redaxscript\\Modules\\' . $alias . '\\' . $alias;
 		if (class_exists($moduleClass))
 		{
-			$module = new $moduleClass;
+			$module = new $moduleClass($this->_registry, $this->_request, $this->_language, $this->_config);
 			$module->install();
 			return Db::forTablePrefix('modules')->where('alias', $alias)->count() > 0;
 		}

@@ -41,9 +41,9 @@ class FeedReader extends Config
 	 * @return array
 	 */
 
-	public static function adminPanelNotification()
+	public function adminPanelNotification()
 	{
-		return self::getNotification();
+		return $this->getNotification();
 	}
 
 	/**
@@ -52,7 +52,7 @@ class FeedReader extends Config
 	 * @since 3.0.0
 	 */
 
-	public static function renderStart()
+	public function renderStart()
 	{
 		$link = Head\Link::getInstance();
 		$link
@@ -71,7 +71,7 @@ class FeedReader extends Config
 	 * @return string
 	 */
 
-	public static function render($url = null, $optionArray = [])
+	public function render($url = null, $optionArray = [])
 	{
 		$counter = 0;
 		$output = null;
@@ -81,7 +81,7 @@ class FeedReader extends Config
 		$titleElement = new Html\Element();
 		$titleElement->init('h3',
 		[
-			'class' => self::$_configArray['className']['title']
+			'class' => $this->_configArray['className']['title']
 		]);
 		$linkElement = new Html\Element();
 		$linkElement->init('a',
@@ -91,7 +91,7 @@ class FeedReader extends Config
 		$boxElement = new Html\Element();
 		$boxElement->init('div',
 		[
-			'class' => self::$_configArray['className']['box']
+			'class' => $this->_configArray['className']['box']
 		]);
 
 		/* load result */
@@ -123,7 +123,7 @@ class FeedReader extends Config
 
 		else
 		{
-			self::setNotification('error', Language::get('url_incorrect') . Language::get('point'));
+			$this->setNotification('error', $this->_language->get('url_incorrect') . $this->_language->get('point'));
 		}
 		return $output;
 	}

@@ -14,6 +14,22 @@ namespace Redaxscript;
 class Installer
 {
 	/**
+	 * instance of the registry class
+	 *
+	 * @var object
+	 */
+
+	protected $_registry;
+
+	/**
+	 * instance of the request class
+	 *
+	 * @var object
+	 */
+
+	protected $_request;
+
+	/**
 	 * instance of the language class
 	 *
 	 * @var object
@@ -48,14 +64,18 @@ class Installer
 	/**
 	 * constructor of the class
 	 *
-	 * @since 2.6.0
+	 * @since 3.0.0
 	 *
+	 * @param Registry $registry instance of the registry class
+	 * @param Request $request instance of the request class
 	 * @param Language $language instance of the language class
 	 * @param Config $config instance of the config class
 	 */
 
-	public function __construct(Language $language, Config $config)
+	public function __construct(Registry $registry, Request $request, Language $language, Config $config)
 	{
+		$this->_registry = $registry;
+		$this->_request = $request;
 		$this->_language = $language;
 		$this->_config = $config;
 	}
@@ -245,12 +265,12 @@ class Installer
 
 		if (is_dir('modules/CallHome'))
 		{
-			$callHome = new Modules\CallHome\CallHome;
+			$callHome = new Modules\CallHome\CallHome($this->_registry, $this->_request, $this->_language, $this->_config);
 			$callHome->install();
 		}
 		if (is_dir('modules/Validator'))
 		{
-			$validator = new Modules\Validator\Validator;
+			$validator = new Modules\Validator\Validator($this->_registry, $this->_request, $this->_language, $this->_config);
 			$validator->install();
 		}
 
