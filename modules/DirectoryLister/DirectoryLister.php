@@ -45,7 +45,7 @@ class DirectoryLister extends Config
 		$link = Head\Link::getInstance();
 		$link
 			->init()
-			->appendFile('modules/DirectoryLister/assets/styles/directory_lister.css');
+			->appendFile('modules/DirectoryLister/dist/styles/directory-lister.css');
 	}
 
 	/**

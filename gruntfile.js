@@ -359,6 +359,38 @@ module.exports = function (grunt)
 				],
 				dest: 'templates/website/dist/styles/website.min.css'
 			},
+			moduleAce:
+			{
+				src:
+				[
+					'modules/Ace/assets/styles/_ace.css'
+				],
+				dest: 'modules/Ace/dist/styles/ace.min.css'
+			},
+			moduleDirectoryLister:
+			{
+				src:
+				[
+					'modules/DirectoryLister/assets/styles/_directory-lister.css'
+				],
+				dest: 'modules/DirectoryLister/dist/styles/directory-lister.min.css'
+			},
+			moduleFeedReader:
+			{
+				src:
+				[
+					'modules/FeedReader/assets/styles/_feed-reader.css'
+				],
+				dest: 'modules/FeedReader/dist/styles/feed-reader.min.css'
+			},
+			moduleGallery:
+			{
+				src:
+				[
+					'modules/Gallery/assets/styles/_gallery.css'
+				],
+				dest: 'modules/Gallery/dist/styles/gallery.min.css'
+			},
 			modulePreview:
 			{
 				src:
@@ -366,6 +398,30 @@ module.exports = function (grunt)
 					'modules/Preview/assets/styles/_preview.css'
 				],
 				dest: 'modules/Preview/dist/styles/preview.min.css'
+			},
+			moduleLazyLoad:
+			{
+				src:
+				[
+					'modules/LazyLoad/assets/styles/_lazy-load.css'
+				],
+				dest: 'modules/LazyLoad/dist/styles/lazy-load.min.css'
+			},
+			moduleMaps:
+			{
+				src:
+				[
+					'modules/Maps/assets/styles/_maps.css'
+				],
+				dest: 'modules/Maps/dist/styles/maps.min.css'
+			},
+			moduleShareThis:
+			{
+				src:
+				[
+					'modules/ShareThis/assets/styles/_share-this.css'
+				],
+				dest: 'modules/ShareThis/dist/styles/share-this.min.css'
 			},
 			moduleTinymceContent:
 			{
@@ -866,7 +922,14 @@ module.exports = function (grunt)
 		'postcss:templateInstall',
 		'postcss:templateSkeleton',
 		'postcss:templateWebsite',
+		'postcss:moduleAce',
+		'postcss:moduleDirectoryLister',
+		'postcss:moduleFeedReader',
+		'postcss:moduleGallery',
 		'postcss:modulePreview',
+		'postcss:moduleLazyLoad',
+		'postcss:moduleMaps',
+		'postcss:moduleShareThis',
 		'postcss:moduleTinymceContent',
 		'postcss:moduleTinymceSkin'
 	]);

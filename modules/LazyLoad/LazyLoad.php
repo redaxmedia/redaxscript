@@ -57,7 +57,7 @@ class LazyLoad extends Config
 		$link = Head\Link::getInstance();
 		$link
 			->init()
-			->appendFile('modules/LazyLoad/assets/styles/lazy_load.css');
+			->appendFile('modules/LazyLoad/dist/styles/lazy-load.css');
 
 		/* script */
 

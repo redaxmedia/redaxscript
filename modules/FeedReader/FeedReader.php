@@ -56,7 +56,7 @@ class FeedReader extends Config
 		$link = Head\Link::getInstance();
 		$link
 			->init()
-			->appendFile('modules/FeedReader/assets/styles/feed_reader.css');
+			->appendFile('modules/FeedReader/dist/styles/feed-reader.css');
 	}
 
 	/**

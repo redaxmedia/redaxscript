@@ -46,7 +46,7 @@ class Ace extends Module
 			$link = Head\Link::getInstance();
 			$link
 				->init()
-				->appendFile('modules/Ace/assets/styles/ace.css');
+				->appendFile('modules/Ace/dist/styles/ace.css');
 
 			/* script */
 

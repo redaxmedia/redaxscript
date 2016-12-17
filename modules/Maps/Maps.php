@@ -46,7 +46,7 @@ class Maps extends Config
 			$link = Head\Link::getInstance();
 			$link
 				->init()
-				->appendFile('modules/Maps/assets/styles/maps.css');
+				->appendFile('modules/Maps/dist/styles/maps.css');
 
 			/* script */
 
