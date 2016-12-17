@@ -40,8 +40,8 @@ class TestDummy extends Module
 
 	public function adminPanelNotification()
 	{
-		self::setNotification('info', 'test');
-		return self::getNotification();
+		$this->setNotification('info', 'test');
+		return $this->getNotification();
 	}
 
 	/**
@@ -56,6 +56,22 @@ class TestDummy extends Module
 	 */
 
 	public function render($firstNumber = null, $secondNumber = null)
+	{
+		return $this->_calc($firstNumber, $secondNumber);
+	}
+
+	/**
+	 * calc
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param integer $firstNumber
+	 * @param integer $secondNumber
+	 *
+	 * @return integer
+	 */
+
+	public function _calc($firstNumber = null, $secondNumber = null)
 	{
 		return $firstNumber + $secondNumber;
 	}

@@ -81,5 +81,5 @@ if (is_dir('modules/TestDummy'))
 
 /* hook */
 
-Hook::construct($registry);
+Hook::construct($registry, $request, $language, $config);
 Hook::init();

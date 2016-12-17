@@ -53,5 +53,5 @@ $installer->insertData(
 
 /* hook */
 
-Hook::construct($registry);
+Hook::construct($registry, $request, $language, $config);
 Hook::init();
