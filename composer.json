@@ -1,12 +1,12 @@
 {
 	"name": "redaxmedia/redaxscript",
 	"description": "Ultra lightweight Content Management System",
-	"version": "3.0.0-beta2",
+	"version": "3.0.0-beta3",
 	"homepage": "http://redaxscript.com",
 	"license": "GPL-3.0",
 	"require":
 	{
-		"j4mie/idiorm": "v1.5.1",
+		"j4mie/idiorm": "v1.5.2",
 		"php": ">5.4"
 	},
 	"require-dev":
