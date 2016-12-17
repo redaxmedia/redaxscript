@@ -3,7 +3,6 @@ namespace Redaxscript\Modules\SitemapXml;
 
 use Redaxscript\Db;
 use Redaxscript\Module;
-use Redaxscript\Registry;
 use XMLWriter;
 
 /**

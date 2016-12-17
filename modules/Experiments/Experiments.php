@@ -2,7 +2,6 @@
 namespace Redaxscript\Modules\Experiments;
 
 use Redaxscript\Head;
-use Redaxscript\Registry;
 
 /**
  * integrate google experiments

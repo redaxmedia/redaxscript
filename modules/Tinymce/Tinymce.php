@@ -2,9 +2,6 @@
 namespace Redaxscript\Modules\Tinymce;
 
 use Redaxscript\Head;
-use Redaxscript\Language;
-use Redaxscript\Registry;
-use Redaxscript\Request;
 
 /**
  * javascript powered wysiwyg editor

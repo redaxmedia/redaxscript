@@ -5,7 +5,6 @@ use Redaxscript\Db;
 use Redaxscript\Directory;
 use Redaxscript\Head;
 use Redaxscript\Html;
-use Redaxscript\Language;
 
 /**
  * lightbox enhanced image gallery

@@ -6,9 +6,6 @@ use Redaxscript\Directory;
 use Redaxscript\Filter;
 use Redaxscript\Head;
 use Redaxscript\Html;
-use Redaxscript\Language;
-use Redaxscript\Registry;
-use Redaxscript\Request;
 
 /**
  * simple directory lister

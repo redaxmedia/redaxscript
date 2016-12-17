@@ -1,9 +1,7 @@
 <?php
 namespace Redaxscript\Modules\Validator;
 
-use Redaxscript\Language;
 use Redaxscript\Reader;
-use Redaxscript\Registry;
 
 /**
  * html validator for developers

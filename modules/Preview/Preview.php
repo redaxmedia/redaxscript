@@ -4,9 +4,7 @@ namespace Redaxscript\Modules\Preview;
 use Redaxscript\Directory;
 use Redaxscript\Head;
 use Redaxscript\Html;
-use Redaxscript\Language;
 use Redaxscript\Module;
-use Redaxscript\Registry;
 use Redaxscript\Template;
 
 /**

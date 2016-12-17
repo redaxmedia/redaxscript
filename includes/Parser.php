@@ -1,8 +1,6 @@
 <?php
 namespace Redaxscript;
 
-use Redaxscript\Html;
-
 /**
  * parent class to parse content for pseudo tags
  *

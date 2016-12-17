@@ -2,7 +2,6 @@
 namespace Redaxscript\Detector;
 
 use Redaxscript\Db;
-use Redaxscript\Request;
 
 /**
  * children class to detect the required template

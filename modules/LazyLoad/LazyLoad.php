@@ -3,8 +3,6 @@ namespace Redaxscript\Modules\LazyLoad;
 
 use Redaxscript\Head;
 use Redaxscript\Html;
-use Redaxscript\Language;
-use Redaxscript\Registry;
 
 /**
  * lazy load images

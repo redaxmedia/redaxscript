@@ -12,6 +12,7 @@
 	"require-dev":
 	{
 		"brianium/paratest": "0.14.0",
+		"drupal/coder": "8.2.10",
 		"johnkary/phpunit-speedtrap": "1.0.1",
 		"mikey179/vfsStream": "1.6.4",
 		"phpbench/phpbench": "0.12.2",
@@ -25,9 +26,11 @@
 	{
 		"post-install-cmd":
 		[
-			"php -r \"is_dir('cache') || mkdir('cache');\"",
-			"php -r \"is_dir('libraries') || mkdir('libraries');\"",
-			"php -r \"copy('vendor/j4mie/idiorm/idiorm.php', 'libraries/ORM.php');\""
+			"echo Please install CYGWIN on Windows to perform the install commands:",
+			"mkdir -p cache",
+			"mkdir -p libraries",
+			"cp -r vendor/j4mie/idiorm/idiorm.php libraries/ORM.php",
+			"cp -r vendor/drupal/coder/coder_sniffer/Drupal vendor/squizlabs/php_codesniffer/CodeSniffer/Standards"
 		],
 		"post-update-cmd":
 		[

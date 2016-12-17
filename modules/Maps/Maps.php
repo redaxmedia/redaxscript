@@ -3,7 +3,6 @@ namespace Redaxscript\Modules\Maps;
 
 use Redaxscript\Head;
 use Redaxscript\Html;
-use Redaxscript\Registry;
 
 /**
  * integrate social buttons

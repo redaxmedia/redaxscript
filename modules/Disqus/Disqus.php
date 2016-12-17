@@ -3,7 +3,6 @@ namespace Redaxscript\Modules\Disqus;
 
 use Redaxscript\Head;
 use Redaxscript\Html;
-use Redaxscript\Registry;
 
 /**
  * replace comments with disqus

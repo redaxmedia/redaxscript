@@ -3,8 +3,6 @@ namespace Redaxscript\Modules\FeedGenerator;
 
 use Redaxscript\Db;
 use Redaxscript\Module;
-use Redaxscript\Registry;
-use Redaxscript\Request;
 use XMLWriter;
 
 /**

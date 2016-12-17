@@ -3,8 +3,6 @@ namespace Redaxscript\Modules\Sitemap;
 
 use Redaxscript\Db;
 use Redaxscript\Html;
-use Redaxscript\Language;
-use Redaxscript\Registry;
 use Redaxscript\Validator;
 
 /**

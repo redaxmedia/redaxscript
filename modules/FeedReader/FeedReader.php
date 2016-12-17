@@ -3,7 +3,6 @@ namespace Redaxscript\Modules\FeedReader;
 
 use Redaxscript\Head;
 use Redaxscript\Html;
-use Redaxscript\Language;
 use Redaxscript\Reader;
 
 /**

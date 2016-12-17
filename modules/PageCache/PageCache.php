@@ -2,9 +2,6 @@
 namespace Redaxscript\Modules\PageCache;
 
 use Redaxscript\Cache;
-use Redaxscript\Language;
-use Redaxscript\Registry;
-use Redaxscript\Request;
 use Redaxscript\Template;
 
 /**

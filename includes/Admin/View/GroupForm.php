@@ -2,7 +2,6 @@
 namespace Redaxscript\Admin\View;
 
 use Redaxscript\Admin\Html\Form as AdminForm;
-use Redaxscript\Admin\View\Helper;
 use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Hook;
