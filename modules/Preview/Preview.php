@@ -42,13 +42,13 @@ class Preview extends Module
 	 * @since 2.2.0
 	 */
 
-	public static function renderStart()
+	public function renderStart()
 	{
-		if (Registry::get('firstParameter') === 'preview')
+		if ($this->_registry->get('firstParameter') === 'preview')
 		{
-			Registry::set('metaTitle', Language::get('preview', '_preview'));
-			Registry::set('metaDescription', Language::get('description', '_preview'));
-			Registry::set('routerBreak', true);
+			$this->_registry->set('metaTitle', $this->_language->get('preview', '_preview'));
+			$this->_registry->set('metaDescription', $this->_language->get('description', '_preview'));
+			$this->_registry->set('routerBreak', true);
 
 			/* link */
 
@@ -65,16 +65,16 @@ class Preview extends Module
 	 * @since 3.0.0
 	 */
 
-	public static function routerStart()
+	public function routerStart()
 	{
-		if (Registry::get('firstParameter') === 'preview')
+		if ($this->_registry->get('firstParameter') === 'preview')
 		{
 			$partialsPath = 'modules/Preview/partials';
 			$partialExtension = '.phtml';
 			$partialsDirectory = new Directory();
 			$partialsDirectory->init($partialsPath);
 			$partialsDirectoryArray = $partialsDirectory->getArray();
-			$secondParameter = Registry::get('secondParameter');
+			$secondParameter = $this->_registry->get('secondParameter');
 
 			/* collect partial output */
 
@@ -84,7 +84,7 @@ class Preview extends Module
 
 			if ($secondParameter)
 			{
-				$output .= self::render($secondParameter, $partialsPath . '/' . $secondParameter . $partialExtension);
+				$output .= $this->render($secondParameter, $partialsPath . '/' . $secondParameter . $partialExtension);
 			}
 
 			/* else include all */
@@ -94,7 +94,7 @@ class Preview extends Module
 				foreach ($partialsDirectoryArray as $value)
 				{
 					$alias = str_replace($partialExtension, '', $value);
-					$output .= self::render($alias, $partialsPath . '/' . $value);
+					$output .= $this->render($alias, $partialsPath . '/' . $value);
 				}
 			}
 			$output .= '</div>';
@@ -113,7 +113,7 @@ class Preview extends Module
 	 * @return string
 	 */
 
-	public static function render($alias = null, $path = null)
+	public function render($alias = null, $path = null)
 	{
 		$titleElement = new Html\Element();
 		$titleElement->init('h2',
@@ -124,9 +124,9 @@ class Preview extends Module
 		$linkElement = new Html\Element();
 		$linkElement->init('a',
 		[
-			'href' => Registry::get('secondParameter') === $alias ? Registry::get('parameterRoute') . 'preview#' . $alias : Registry::get('parameterRoute') . 'preview/' . $alias
+			'href' => $this->_registry->get('secondParameter') === $alias ? $this->_registry->get('parameterRoute') . 'preview#' . $alias : $this->_registry->get('parameterRoute') . 'preview/' . $alias
 		])
-		->text(Registry::get('secondParameter') === $alias ? Language::get('back') : $alias);
+		->text($this->_registry->get('secondParameter') === $alias ? $this->_language->get('back') : $alias);
 
 		/* collect output */
 

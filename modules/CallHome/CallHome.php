@@ -3,10 +3,8 @@ namespace Redaxscript\Modules\CallHome;
 
 use Redaxscript\Filter;
 use Redaxscript\Head;
-use Redaxscript\Language;
 use Redaxscript\Module;
 use Redaxscript\Reader;
-use Redaxscript\Registry;
 
 /**
  * provide version and news updates
@@ -41,9 +39,9 @@ class CallHome extends Module
 	 * @since 3.0.0
 	 */
 
-	public static function renderStart()
+	public function renderStart()
 	{
-		if (Registry::get('loggedIn') === Registry::get('token') && Registry::get('firstParameter') === 'admin')
+		if ($this->_registry->get('loggedIn') === $this->_registry->get('token') && $this->_registry->get('firstParameter') === 'admin')
 		{
 			$script = Head\Script::getInstance();
 			$script
@@ -62,12 +60,12 @@ class CallHome extends Module
 	 * @return array
 	 */
 
-	public static function adminPanelNotification()
+	public function adminPanelNotification()
 	{
-		$output = [];
+		$outputArray = [];
 		$reader = new Reader();
 		$aliasFilter = new Filter\Alias();
-		$version = $aliasFilter->sanitize(Language::get('version', '_package'));
+		$version = $aliasFilter->sanitize($this->_language->get('version', '_package'));
 
 		/* load result */
 
@@ -80,12 +78,12 @@ class CallHome extends Module
 
 		if (is_array($resultVersion))
 		{
-			$output = array_merge_recursive($output, $resultVersion);
+			$outputArray = array_merge_recursive($outputArray, $resultVersion);
 		}
 		if (is_array($resultNews))
 		{
-			$output = array_merge_recursive($output, $resultNews);
+			$outputArray = array_merge_recursive($outputArray, $resultNews);
 		}
-		return $output;
+		return $outputArray;
 	}
 }

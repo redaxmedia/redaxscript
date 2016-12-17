@@ -42,7 +42,7 @@ class Sitemap extends Config
 	 * @return string
 	 */
 
-	public static function render()
+	public function render()
 	{
 		$output = null;
 
@@ -51,21 +51,21 @@ class Sitemap extends Config
 		$titleElement = new Html\Element();
 		$titleElement->init('h3',
 		[
-			'class' => self::$_configArray['className']['title']
+			'class' => $this->_configArray['className']['title']
 		]);
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
 		$listElement = new Html\Element();
 		$listElement->init('ul',
 		[
-			'class' => self::$_configArray['className']['list']
+			'class' => $this->_configArray['className']['list']
 		]);
 
 		/* query articles */
 
 		$articles = Db::forTablePrefix('articles')
 			->where('status', 1)
-			->whereLanguageIs(Registry::get('language'))
+			->whereLanguageIs($this->_registry->get('language'))
 			->orderByDesc('category')
 			->findMany();
 
@@ -73,7 +73,7 @@ class Sitemap extends Config
 
 		if (!$articles)
 		{
-			$error = Language::get('article_no') . Language::get('point');
+			$error = $this->_language->get('article_no') . $this->_language->get('point');
 		}
 		else
 		{
@@ -82,7 +82,7 @@ class Sitemap extends Config
 			$lastCategory = 0;
 			foreach ($articles as $value)
 			{
-				if ($accessValidator->validate($value->access, Registry::get('myGroups')) === Validator\ValidatorInterface::PASSED)
+				if ($accessValidator->validate($value->access, $this->_registry->get('myGroups')) === Validator\ValidatorInterface::PASSED)
 				{
 					$currentCategory = $value->category;
 
@@ -91,7 +91,7 @@ class Sitemap extends Config
 					if ($lastCategory <> $currentCategory)
 					{
 						$output .= $titleElement->text(
-							$currentCategory < 1 ? Language::get('uncategorized') : Db::forTablePrefix('categories')->whereIdIs($currentCategory)->findOne()->title
+							$currentCategory < 1 ? $this->_language->get('uncategorized') : Db::forTablePrefix('categories')->whereIdIs($currentCategory)->findOne()->title
 						);
 					}
 					$lastCategory = $currentCategory;
@@ -101,7 +101,7 @@ class Sitemap extends Config
 					$outputItem = '<li>';
 					$outputItem .= $linkElement->attr(
 					[
-						'href' => Registry::get('parameterRoute') . build_route('articles', $value->id),
+						'href' => $this->_registry->get('parameterRoute') . build_route('articles', $value->id),
 						'title' => $value->description ? $value->description : $value->title
 					])
 					->text($value->title);
@@ -121,7 +121,7 @@ class Sitemap extends Config
 
 			if (count($articles) === $accessDeny)
 			{
-				$error = Language::get('access_no') . Language::get('point');
+				$error = $this->_language->get('access_no') . $this->_language->get('point');
 			}
 		}
 

@@ -21,7 +21,7 @@ class Config extends Module
 	 * @var array
 	 */
 
-	protected static $_configArray =
+	protected $_configArray =
 	[
 		'id' => '0000000000000000000000'
 	];

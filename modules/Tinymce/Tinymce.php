@@ -40,9 +40,9 @@ class Tinymce extends Config
 	 * @since 3.0.0
 	 */
 
-	public static function scriptEnd()
+	public function scriptEnd()
 	{
-		if (Registry::get('loggedIn') === Registry::get('token'))
+		if ($this->_registry->get('loggedIn') === $this->_registry->get('token'))
 		{
 			$script = Head\Script::getInstance();
 			$script
@@ -59,12 +59,12 @@ class Tinymce extends Config
 	 * @since 3.0.0
 	 */
 
-	public static function renderStart()
+	public function renderStart()
 	{
-		if (Registry::get('firstParameter') === 'tinymce' && Registry::get('secondParameter') === 'upload' && Registry::get('lastParameter') === Registry::get('token'))
+		if ($this->_registry->get('firstParameter') === 'tinymce' && $this->_registry->get('secondParameter') === 'upload' && $this->_registry->get('lastParameter') === $this->_registry->get('token'))
 		{
-			Registry::set('renderBreak', true);
-			echo self::_upload();
+			$this->_registry->set('renderBreak', true);
+			echo $this->_upload();
 		}
 	}
 
@@ -76,17 +76,17 @@ class Tinymce extends Config
 	 * @return array
 	 */
 
-	public static function adminPanelNotification()
+	public function adminPanelNotification()
 	{
-		if (!is_dir(self::$_configArray['uploadDirectory']))
+		if (!is_dir($this->_configArray['uploadDirectory']))
 		{
-			self::setNotification('error', Language::get('directory_not_found') . Language::get('colon') . ' ' . self::$_configArray['uploadDirectory'] . Language::get('point'));
+			$this->setNotification('error', $this->_language->get('directory_not_found') . $this->_language->get('colon') . ' ' . $this->_configArray['uploadDirectory'] . $this->_language->get('point'));
 		}
-		else if (!chmod(self::$_configArray['uploadDirectory'], 0777))
+		else if (!chmod($this->_configArray['uploadDirectory'], 0777))
 		{
-			self::setNotification('error', Language::get('directory_permission_grant') . Language::get('colon') . ' ' . self::$_configArray['uploadDirectory']  . Language::get('point'));
+			$this->setNotification('error', $this->_language->get('directory_permission_grant') . $this->_language->get('colon') . ' ' . $this->_configArray['uploadDirectory']  . $this->_language->get('point'));
 		}
-		return self::getNotification();
+		return $this->getNotification();
 	}
 
 	/**
@@ -95,19 +95,19 @@ class Tinymce extends Config
 	 * @since 3.0.0
 	 */
 
-	protected static function _upload()
+	protected function _upload()
 	{
-		$filesArray = current(Request::getFiles());
+		$filesArray = current($this->_request->getFiles());
 
 		/* upload file */
 
 		if (is_uploaded_file($filesArray['tmp_name']))
 		{
-			if (move_uploaded_file($filesArray['tmp_name'], self::$_configArray['uploadDirectory'] . '/' . $filesArray['name']))
+			if (move_uploaded_file($filesArray['tmp_name'], $this->_configArray['uploadDirectory'] . '/' . $filesArray['name']))
 			{
 				return json_encode(
 				[
-					'location' => self::$_configArray['uploadDirectory'] . '/' . $filesArray['name']
+					'location' => $this->_configArray['uploadDirectory'] . '/' . $filesArray['name']
 				]);
 			}
 		}
