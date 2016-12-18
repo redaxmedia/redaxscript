@@ -32,25 +32,6 @@ class Tinymce extends Config
 	];
 
 	/**
-	 * scriptEnd
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function scriptEnd()
-	{
-		if ($this->_registry->get('loggedIn') === $this->_registry->get('token'))
-		{
-			$script = Head\Script::getInstance();
-			$script
-				->init('foot')
-				->appendFile(['src' => '//cdnjs.cloudflare.com/ajax/libs/tinymce/4.4.1/tinymce.min.js'])
-				->appendFile(['src' => 'modules/Tinymce/assets/scripts/init.js'])
-				->appendFile(['src' => 'modules/Tinymce/assets/scripts/tinymce.js']);
-		}
-	}
-
-	/**
 	 * renderStart
 	 *
 	 * @since 3.0.0
@@ -58,10 +39,22 @@ class Tinymce extends Config
 
 	public function renderStart()
 	{
-		if ($this->_registry->get('firstParameter') === 'tinymce' && $this->_registry->get('secondParameter') === 'upload' && $this->_registry->get('lastParameter') === $this->_registry->get('token'))
+		if ($this->_registry->get('loggedIn') === $this->_registry->get('token'))
 		{
-			$this->_registry->set('renderBreak', true);
-			echo $this->_upload();
+			$script = Head\Script::getInstance();
+			$script
+				->init('foot')
+				->appendFile('//cdnjs.cloudflare.com/ajax/libs/tinymce/4.4.1/tinymce.min.js')
+				->appendFile('modules/Tinymce/assets/scripts/init.js')
+				->appendFile('modules/Tinymce/dist/scripts/tinymce.min.js');
+
+			/* upload */
+
+			if ($this->_registry->get('firstParameter') === 'tinymce' && $this->_registry->get('secondParameter') === 'upload' && $this->_registry->get('lastParameter') === $this->_registry->get('token'))
+			{
+				$this->_registry->set('renderBreak', true);
+				echo $this->_upload();
+			}
 		}
 	}
 

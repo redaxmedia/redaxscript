@@ -59,7 +59,7 @@ class Gallery extends Config
 		$link = Head\Link::getInstance();
 		$link
 			->init()
-			->appendFile('modules/Gallery/dist/styles/gallery.css');
+			->appendFile('modules/Gallery/dist/styles/gallery.min.css');
 
 		/* script */
 
@@ -67,7 +67,7 @@ class Gallery extends Config
 		$script
 			->init('foot')
 			->appendFile('modules/Gallery/assets/scripts/init.js')
-			->appendFile('modules/Gallery/assets/scripts/gallery.js');
+			->appendFile('modules/Gallery/dist/scripts/gallery.min.js');
 	}
 
 	/**

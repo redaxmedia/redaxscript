@@ -48,7 +48,7 @@ class CallHome extends Module
 				->init('foot')
 				->appendFile('//google-analytics.com/analytics.js')
 				->appendFile('modules/CallHome/assets/scripts/init.js')
-				->appendFile('modules/CallHome/assets/scripts/call_home.js');
+				->appendFile('modules/CallHome/dist/scripts/call-home.min.js');
 		}
 	}
 

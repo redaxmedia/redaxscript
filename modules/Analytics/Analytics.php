@@ -46,7 +46,7 @@ class Analytics extends Module
 				->init('foot')
 				->appendFile('//google-analytics.com/analytics.js')
 				->appendFile('modules/Analytics/assets/scripts/init.js')
-				->appendFile('modules/Analytics/assets/scripts/analytics.js');
+				->appendFile('modules/Analytics/dist/scripts/analytics.min.js');
 		}
 	}
 }

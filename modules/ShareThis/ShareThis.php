@@ -59,7 +59,7 @@ class ShareThis extends Config
 		$link = Head\Link::getInstance();
 		$link
 			->init()
-			->appendFile('modules/ShareThis/dist/styles/share-this.css');
+			->appendFile('modules/ShareThis/dist/styles/share-this.min.css');
 
 		/* script */
 
@@ -67,7 +67,7 @@ class ShareThis extends Config
 		$script
 			->init('foot')
 			->appendFile('modules/ShareThis/assets/scripts/init.js')
-			->appendFile('modules/ShareThis/assets/scripts/share_this.js');
+			->appendFile('modules/ShareThis/dist/scripts/share-this.min.js');
 	}
 
 	/**

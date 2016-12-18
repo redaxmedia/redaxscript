@@ -46,7 +46,7 @@ class Maps extends Config
 			$link = Head\Link::getInstance();
 			$link
 				->init()
-				->appendFile('modules/Maps/dist/styles/maps.css');
+				->appendFile('modules/Maps/dist/styles/maps.min.css');
 
 			/* script */
 
@@ -55,7 +55,7 @@ class Maps extends Config
 				->init('foot')
 				->appendFile($this->_configArray['apiUrl'] . '?key=' . $this->_configArray['apiKey'])
 				->appendFile('modules/Maps/assets/scripts/init.js')
-				->appendFile('modules/Maps/assets/scripts/maps.js');
+				->appendFile('modules/Maps/dist/scripts/maps.min.js');
 		}
 	}
 

@@ -46,7 +46,7 @@ class Ace extends Module
 			$link = Head\Link::getInstance();
 			$link
 				->init()
-				->appendFile('modules/Ace/dist/styles/ace.css');
+				->appendFile('modules/Ace/dist/styles/ace.min.css');
 
 			/* script */
 
@@ -55,7 +55,7 @@ class Ace extends Module
 				->init('foot')
 				->appendFile('//cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/ace.js')
 				->appendFile('modules/Ace/assets/scripts/init.js')
-				->appendFile('modules/Ace/assets/scripts/ace.js');
+				->appendFile('modules/Ace/dist/scripts/ace.min.js');
 		}
 	}
 }

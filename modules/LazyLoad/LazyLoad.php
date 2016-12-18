@@ -57,7 +57,7 @@ class LazyLoad extends Config
 		$link = Head\Link::getInstance();
 		$link
 			->init()
-			->appendFile('modules/LazyLoad/dist/styles/lazy-load.css');
+			->appendFile('modules/LazyLoad/dist/styles/lazy-load.min.css');
 
 		/* script */
 
@@ -65,7 +65,7 @@ class LazyLoad extends Config
 		$script
 			->init('foot')
 			->appendFile('modules/LazyLoad/assets/scripts/init.js')
-			->appendFile('modules/LazyLoad/assets/scripts/lazy_load.js');
+			->appendFile('modules/LazyLoad/dist/scripts/lazy-load.min.js');
 	}
 
 	/**
