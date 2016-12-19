@@ -30,11 +30,10 @@
 		return this.each(function ()
 		{
 			var textarea = $(this),
-				container = $('<div>').attr('id', 'editor').insertBefore(textarea),
+				box = $('<div>').attr('id', 'editor').insertBefore(textarea),
 				editor = ace.edit('editor');
 
 			textarea.hide();
-			container.addClass(options.className.aceEditor).parent().addClass(options.className.hasAceEditor);
 
 			/* theme and mode */
 

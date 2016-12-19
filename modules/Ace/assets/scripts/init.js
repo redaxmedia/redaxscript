@@ -18,12 +18,6 @@ rs.modules.ace =
 	selector: 'form textarea.rs-admin-js-editor-textarea',
 	options:
 	{
-		className:
-		{
-			hasAceEditor: 'rs-has-ace-editor',
-			aceEditor: 'rs-ace-editor'
-		},
-		mode: 'ace/mode/html',
-		theme: 'ace/theme/github'
+		mode: 'ace/mode/html'
 	}
 };
