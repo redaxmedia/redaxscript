@@ -72,13 +72,13 @@ class PageCache extends Config
 
 		$cache = new Cache();
 		$cache->init($this->_configArray['directory'], $this->_configArray['extension']);
-		$fullRoute = $this->_registry->get('fullRoute');
+		$bundle = $this->_registry->get('fullRoute') . '/' . $this->_registry->get('template') . '/' . $this->_registry->get('language');
 
 		/* load from cache */
 
-		if ($cache->validate($fullRoute, $this->_configArray['lifetime']))
+		if ($cache->validate($bundle, $this->_configArray['lifetime']))
 		{
-			$raw = $cache->retrieve($fullRoute);
+			$raw = $cache->retrieve($bundle);
 			$content = preg_replace('/' . $this->_configArray['tokenPlaceholder'] . '/', $this->_registry->get('token'), $this->_uncompress($raw));
 			return
 			[
@@ -93,7 +93,7 @@ class PageCache extends Config
 		{
 			$raw = Template\Tag::partial('templates/' . $this->_registry->get('template') . '/index.phtml');
 			$content = preg_replace('/' . $this->_registry->get('token') . '/', $this->_configArray['tokenPlaceholder'], $raw);
-			$cache->store($fullRoute, $this->_compress($content));
+			$cache->store($bundle, $this->_compress($content));
 			return
 			[
 				'content' => $raw
