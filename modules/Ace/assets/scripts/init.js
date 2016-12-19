@@ -18,6 +18,10 @@ rs.modules.ace =
 	selector: 'form textarea.rs-admin-js-editor-textarea',
 	options:
 	{
-		mode: 'ace/mode/html'
+		ace:
+		{
+			mode: 'ace/mode/html',
+			maxLines: Infinity
+		}
 	}
 };

@@ -30,22 +30,15 @@
 		return this.each(function ()
 		{
 			var textarea = $(this),
-				box = $('<div>').attr('id', 'editor').insertBefore(textarea),
-				editor = ace.edit('editor');
+				editor;
 
 			textarea.hide();
+			$('<div>').attr('id', 'editor').insertBefore(textarea);
+			editor = ace.edit('editor');
 
-			/* theme and mode */
+			/* set options */
 
-			editor.setTheme(options.theme);
-			editor.getSession().setMode(options.mode);
-
-			/* infinity lines */
-
-			editor.setOptions(
-			{
-				maxLines: Infinity
-			});
+			editor.setOptions(options.ace);
 
 			/* transport to editor */
 
