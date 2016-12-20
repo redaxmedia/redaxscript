@@ -276,7 +276,7 @@
 	@extend %rs-website-icon-flask;
 }
 
-.rs-item-feature-integrated-admin:before
+.rs-item-feature-integrated-administration:before
 {
 	@extend %rs-website-icon-settings-6;
 }
