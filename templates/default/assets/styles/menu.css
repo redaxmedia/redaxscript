@@ -43,7 +43,6 @@
 {
 	.rs-list-menu
 	{
-		margin-left: 1em;
 		white-space: nowrap;
 
 		& > li
