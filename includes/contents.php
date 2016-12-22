@@ -351,7 +351,7 @@ function extras($filter)
 					/* parser */
 
 					$parser = new Redaxscript\Parser\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
-					$parser->init($text, $route);
+					$parser->process($text, $route);
 
 					/* collect headline output */
 
