@@ -1,0 +1,18 @@
+[
+	[
+		{
+			"lastTable": "articles"
+		},
+		"hello<readmore> world",
+		null,
+		"hello world"
+	],
+	[
+		{
+			"lastTable": "categories"
+		},
+		"hello<readmore> world",
+		"hello/world",
+		"hello<a class=\"rs-link-readmore\" href=\"hello/world\">Read more</a>"
+	]
+]

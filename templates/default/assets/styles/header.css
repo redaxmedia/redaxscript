@@ -64,11 +64,17 @@
 
 @media (--media-medium-min)
 {
+	.rs-header .rs-wrapper
+	{
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+	}
+
 	.rs-box-header
 	{
-		float: left;
+		flex-shrink: 0;
 		font-size: 1.25em;
-		max-width: 60%;
 	}
 
 	.rs-text-header

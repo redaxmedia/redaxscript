@@ -51,7 +51,7 @@ abstract class ConsoleAbstract
 	protected $_config;
 
 	/**
-	 * array of namespaces
+	 * array of command namespaces
 	 *
 	 * @var string
 	 */

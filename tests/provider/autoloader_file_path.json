@@ -1,6 +1,10 @@
 [
 	[
-		"Redaxscript\\Parser",
+		"Redaxscript\\Registry",
+		true
+	],
+	[
+		"Redaxscript\\Parser\\Parser",
 		true
 	],
 	[

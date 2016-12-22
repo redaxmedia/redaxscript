@@ -1,7 +1,7 @@
 [
 	[
 		"<module>TestDummy<module>",
-		0
+		""
 	],
 	[
 		"<module>{\"TestDummy\":{\"firstNumber\":\"1\",\"secondNumber\":\"1\"}}<module>",

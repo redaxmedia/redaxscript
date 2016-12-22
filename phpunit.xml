@@ -223,7 +223,7 @@
 		<!-- parser -->
 
 		<testsuite name="parser">
-			<file>tests/phpunit/ParserTest.php</file>
+			<file>tests/phpunit/Parser/ParserTest.php</file>
 		</testsuite>
 
 		<!-- registry -->
