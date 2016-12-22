@@ -986,7 +986,8 @@ module.exports = function (grunt)
 	[
 		'build-font',
 		'build-css',
-		'build-js'
+		'build-js',
+		'toc'
 	]);
 	grunt.registerTask('build-font',
 	[
