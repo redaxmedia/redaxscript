@@ -1,9 +1,6 @@
 <?php
 namespace Redaxscript;
 
-use Redaxscript\Html;
-use Redaxscript\Validator;
-
 /**
  * parent class to create a breadcrumb navigation
  *

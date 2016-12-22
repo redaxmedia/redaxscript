@@ -37,7 +37,7 @@ class SyntaxHighlighter extends Module
 	 * @since 3.0.0
 	 */
 
-	public static function renderStart()
+	public function renderStart()
 	{
 		/* link */
 
@@ -53,6 +53,6 @@ class SyntaxHighlighter extends Module
 			->init('foot')
 			->appendFile('//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js')
 			->appendFile('modules/SyntaxHighlighter/assets/scripts/init.js')
-			->appendFile('modules/SyntaxHighlighter/assets/scripts/syntax_highlighter.js');
+			->appendFile('modules/SyntaxHighlighter/dist/scripts/syntax-highlighter.min.js');
 	}
 }

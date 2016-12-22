@@ -3,7 +3,6 @@ namespace Redaxscript\Modules\Maps;
 
 use Redaxscript\Head;
 use Redaxscript\Html;
-use Redaxscript\Registry;
 
 /**
  * integrate social buttons
@@ -38,25 +37,25 @@ class Maps extends Config
 	 * @since 3.0.0
 	 */
 
-	public static function renderStart()
+	public function renderStart()
 	{
-		if (!Registry::get('adminParameter'))
+		if (!$this->_registry->get('adminParameter'))
 		{
 			/* link */
 
 			$link = Head\Link::getInstance();
 			$link
 				->init()
-				->appendFile('modules/Maps/assets/styles/maps.css');
+				->appendFile('modules/Maps/dist/styles/maps.min.css');
 
 			/* script */
 
 			$script = Head\Script::getInstance();
 			$script
 				->init('foot')
-				->appendFile(self::$_configArray['apiUrl'] . '?key=' . self::$_configArray['apiKey'])
+				->appendFile($this->_configArray['apiUrl'] . '?key=' . $this->_configArray['apiKey'])
 				->appendFile('modules/Maps/assets/scripts/init.js')
-				->appendFile('modules/Maps/assets/scripts/maps.js');
+				->appendFile('modules/Maps/dist/scripts/maps.min.js');
 		}
 	}
 
@@ -72,12 +71,12 @@ class Maps extends Config
 	 * @return string
 	 */
 
-	public static function render($lat = 0, $lng = 0, $zoom = 1)
+	public function render($lat = 0, $lng = 0, $zoom = 1)
 	{
 		$mapElement = new Html\Element();
 		$mapElement->init('div',
 		[
-			'class' => self::$_configArray['className'],
+			'class' => $this->_configArray['className'],
 			'data-lat' => is_numeric($lat) ? $lat : null,
 			'data-lng' => is_numeric($lng) ? $lng : null,
 			'data-zoom' => is_numeric($zoom) ? $zoom : null

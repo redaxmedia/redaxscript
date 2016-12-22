@@ -21,7 +21,7 @@ class Config extends Module
 	 * @var array
 	 */
 
-	protected static $_configArray =
+	protected $_configArray =
 	[
 		'className' => 'rs-js-map rs-map',
 		'apiUrl' => 'https://maps.googleapis.com/maps/api/js',

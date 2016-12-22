@@ -114,7 +114,7 @@ class ResultListTest extends TestCaseAbstract
 	public static function tearDownAfterClass()
 	{
 		Db::forTablePrefix('articles')->where('title', 'test')->deleteMany();
-		Db::forTablePrefix('comments')->where('author', 'test')->deleteMany();
+		Db::forTablePrefix('comments')->whereIdIs(2)->deleteMany();
 	}
 
 	/**

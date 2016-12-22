@@ -314,4 +314,27 @@ class ScriptTest extends TestCaseAbstract
 
 		$this->assertEquals($this->normalizeEOL($expect), $actual);
 	}
+
+	/**
+	 * testInvalid
+	 *
+	 * @since 3.0.0
+	 *
+	 */
+
+	public function testInvalid()
+	{
+		/* setup */
+
+		$script = Head\Script::getInstance();
+		$script->init('invalid');
+
+		/* expect and actual */
+
+		$actual = (string)$script;
+
+		/* compare */
+
+		$this->assertEquals('<!-- Redaxscript\Head\Script\Invalid -->', $actual);
+	}
 }

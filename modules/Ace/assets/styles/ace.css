@@ -3,7 +3,7 @@
  *
  * 1. ace
  *
- * @since 2.6.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -11,10 +11,18 @@
 
 /* @section 1. ace */
 
-.rs-has-ace-editor .rs-ace-editor
+:root .ace_editor
 {
-	border: 1px solid #c9c9c9;
-	border-radius: 0.25em;
-	font-size: 1rem;
+	background: gray(240);
+	border: 0.125rem solid gray(215);
+	border-radius: 0.125em;
+	font: 0.875em var(--rs-admin-font-secondary);
 	min-height: 20em;
+	transition: background 0.2s, border-color 0.2s;
+
+	&.ace_focus
+	{
+		background: gray(250);
+		border-color: gray(185);
+	}
 }

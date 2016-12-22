@@ -30,11 +30,11 @@ $buttonElement->init('button',
 <div class="<?php echo $admin ? 'rs-admin-overlay-dialog' : 'rs-overlay-dialog'; ?>">
 	<div class="<?php echo $admin ? 'rs-admin-component-dialog' : 'rs-component-dialog'; ?>">
 
-		<?php echo $titleElement->text(Language::get('confirm')); ?>
+		<?php echo $titleElement->text($this->_language->get('confirm')); ?>
 		<?php echo $boxElement->html(
-			$textElement->text(Language::get('dialog_question') . Language::get('question_mark')) .
-			$buttonElement->copy()->text(Language::get('ok')) .
-			$buttonElement->copy()->text(Language::get('cancel'))
+			$textElement->text($this->_language->get('dialog_question') . $this->_language->get('question_mark')) .
+			$buttonElement->copy()->text($this->_language->get('ok')) .
+			$buttonElement->copy()->text($this->_language->get('cancel'))
 		); ?>
 
 	</div>
@@ -45,11 +45,11 @@ $buttonElement->init('button',
 <div class="<?php echo $admin ? 'rs-admin-overlay-dialog' : 'rs-overlay-dialog'; ?>">
 	<div class="<?php echo $admin ? 'rs-admin-component-dialog' : 'rs-component-dialog'; ?>">
 
-		<?php echo $titleElement->text(Language::get('prompt')); ?>
+		<?php echo $titleElement->text($this->_language->get('prompt')); ?>
 		<?php echo $boxElement->html(
 			$inputElement .
-			$buttonElement->copy()->text(Language::get('ok')) .
-			$buttonElement->copy()->text(Language::get('cancel'))
+			$buttonElement->copy()->text($this->_language->get('ok')) .
+			$buttonElement->copy()->text($this->_language->get('cancel'))
 		); ?>
 
 	</div>

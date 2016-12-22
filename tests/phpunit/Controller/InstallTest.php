@@ -34,20 +34,20 @@ class InstallTest extends TestCaseAbstract
 	protected $_registry;
 
 	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
 	 * instance of the request class
 	 *
 	 * @var object
 	 */
 
 	protected $_request;
+
+	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
 
 	/**
 	 * instance of the config class
@@ -74,8 +74,8 @@ class InstallTest extends TestCaseAbstract
 	public function setUp()
 	{
 		$this->_registry = Registry::getInstance();
-		$this->_language = Language::getInstance();
 		$this->_request = Request::getInstance();
+		$this->_language = Language::getInstance();
 		$this->_config = Config::getInstance();
 		$this->_configArray = $this->_config->get();
 		$this->_config->set('dbPrefix', 'controller_');
@@ -89,7 +89,7 @@ class InstallTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = new Installer($this->_config);
+		$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
 		$installer->init();
 		$installer->rawDrop();
 		$this->_config->set('dbPrefix', $this->_configArray['dbPrefix']);
@@ -122,16 +122,16 @@ class InstallTest extends TestCaseAbstract
 	}
 
 	/**
-	 * providerMailFailure
+	 * providerProcessFailure
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array
 	 */
 
-	public function providerMailFailure()
+	public function providerProcessFailure()
 	{
-		return $this->getProvider('tests/provider/Controller/install_mail_failure.json');
+		return $this->getProvider('tests/provider/Controller/install_process_failure.json');
 	}
 
 	/**
@@ -208,17 +208,18 @@ class InstallTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testMailFailure
+	 * testProcessFailure
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param array $postArray
+	 * @param string $method
 	 * @param string $expect
 	 *
-	 * @dataProvider providerMailFailure
+	 * @dataProvider providerProcessFailure
 	 */
 
-	public function testMailFailure($postArray = [], $expect = null)
+	public function testProcessFailure($postArray = [], $method = null, $expect = null)
 	{
 		/* setup */
 
@@ -241,7 +242,7 @@ class InstallTest extends TestCaseAbstract
 			])
 			->setMethods(
 			[
-				'_mail'
+				$method
 			])
 			->getMock();
 
@@ -249,7 +250,7 @@ class InstallTest extends TestCaseAbstract
 
 		$stub
 			->expects($this->any())
-			->method('_mail')
+			->method($method)
 			->will($this->returnValue(false));
 
 		/* actual */

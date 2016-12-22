@@ -84,18 +84,19 @@ class DbTest extends TestCaseAbstract
 	/**
 	 * testInit
 	 *
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 *
-	 * @param string $dbType
+	 * @param array $configArray
 	 *
 	 * @dataProvider providerInit
 	 */
 
-	public function testInit($dbType = null)
+	public function testInit($configArray = [])
 	{
 		/* setup */
 
-		$this->_config->set('dbType', $dbType);
+		$this->_config->set('dbType', $configArray['dbType']);
+		$this->_config->set('dbPassword', $configArray['dbPassword']);
 		Db::construct($this->_config);
 		Db::init();
 

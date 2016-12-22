@@ -88,7 +88,7 @@ class Uninstall extends CommandAbstract
 
 	protected function _database()
 	{
-		$installer = new Installer($this->_config);
+		$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
 		$installer->init();
 		$installer->rawDrop();
 		return Db::getStatus() === 1;
@@ -110,7 +110,7 @@ class Uninstall extends CommandAbstract
 		$moduleClass = 'Redaxscript\\Modules\\' . $alias . '\\' . $alias;
 		if (class_exists($moduleClass))
 		{
-			$module = new $moduleClass;
+			$module = new $moduleClass($this->_registry, $this->_request, $this->_language, $this->_config);
 			$module->uninstall();
 			return !Db::forTablePrefix('modules')->where('alias', $alias)->count();
 		}

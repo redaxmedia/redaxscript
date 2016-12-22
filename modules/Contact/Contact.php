@@ -4,11 +4,8 @@ namespace Redaxscript\Modules\Contact;
 use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Filter;
-use Redaxscript\Language;
 use Redaxscript\Mailer;
 use Redaxscript\Messenger;
-use Redaxscript\Registry;
-use Redaxscript\Request;
 use Redaxscript\Module;
 use Redaxscript\Validator;
 
@@ -44,12 +41,12 @@ class Contact extends Module
 	 * @since 3.0.0
 	 */
 
-	public static function routerStart()
+	public function routerStart()
 	{
-		if (Request::getPost(get_class()) === 'submit')
+		if ($this->_request->getPost(get_class()) === 'submit')
 		{
-			Registry::set('routerBreak', true);
-			echo self::process();
+			$this->_request->set('routerBreak', true);
+			echo $this->process();
 		}
 	}
 
@@ -61,9 +58,9 @@ class Contact extends Module
 	 * return Form
 	 */
 
-	public static function render()
+	public function render()
 	{
-		$formElement = new Html\Form(Registry::getInstance(), Language::getInstance());
+		$formElement = new Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[
 			'textarea' =>
@@ -88,7 +85,7 @@ class Contact extends Module
 			->append('<fieldset>')
 			->legend()
 			->append('<ul><li>')
-			->label('* ' . Language::get('author'),
+			->label('* ' . $this->_language->get('author'),
 			[
 				'for' => 'author'
 			])
@@ -96,12 +93,12 @@ class Contact extends Module
 			[
 				'id' => 'author',
 				'name' => 'author',
-				'readonly' => Registry::get('myName') ? 'readonly' : null,
+				'readonly' => $this->_registry->get('myName') ? 'readonly' : null,
 				'required' => 'required',
-				'value' => Registry::get('myName')
+				'value' => $this->_registry->get('myName')
 			])
 			->append('</li><li>')
-			->label('* ' . Language::get('email'),
+			->label('* ' . $this->_language->get('email'),
 			[
 				'for' => 'email'
 			])
@@ -109,12 +106,12 @@ class Contact extends Module
 			[
 				'id' => 'email',
 				'name' => 'email',
-				'readonly' => Registry::get('myEmail') ? 'readonly' : null,
+				'readonly' => $this->_registry->get('myEmail') ? 'readonly' : null,
 				'required' => 'required',
-				'value' => Registry::get('myEmail')
+				'value' => $this->_registry->get('myEmail')
 			])
 			->append('</li><li>')
-			->label(Language::get('url'),
+			->label($this->_language->get('url'),
 			[
 				'for' => 'url'
 			])
@@ -124,7 +121,7 @@ class Contact extends Module
 				'name' => 'url'
 			])
 			->append('</li><li>')
-			->label('* ' . Language::get('message'),
+			->label('* ' . $this->_language->get('message'),
 			[
 				'for' => 'text'
 			])
@@ -162,7 +159,7 @@ class Contact extends Module
 	 * @return string
 	 */
 
-	public static function process()
+	public function process()
 	{
 		$specialFilter = new Filter\Special();
 		$emailFilter = new Filter\Email();
@@ -173,20 +170,20 @@ class Contact extends Module
 
 		$postArray =
 		[
-			'author' => $specialFilter->sanitize(Request::getPost('author')),
-			'email' => $emailFilter->sanitize(Request::getPost('email')),
-			'url' => $urlFilter->sanitize(Request::getPost('url')),
-			'text' => nl2br($htmlFilter->sanitize(Request::getPost('text'))),
-			'task' => Request::getPost('task'),
-			'solution' => Request::getPost('solution')
+			'author' => $specialFilter->sanitize($this->_request->getPost('author')),
+			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
+			'url' => $urlFilter->sanitize($this->_request->getPost('url')),
+			'text' => nl2br($htmlFilter->sanitize($this->_request->getPost('text'))),
+			'task' => $this->_request->getPost('task'),
+			'solution' => $this->_request->getPost('solution')
 		];
 
 		/* handle error */
 
-		$messageArray = self::_validate($postArray);
+		$messageArray = $this->_validate($postArray);
 		if ($messageArray)
 		{
-			return self::_error(
+			return $this->_error(
 			[
 				'message' => $messageArray
 			]);
@@ -204,13 +201,13 @@ class Contact extends Module
 
 		/* mail */
 
-		if (self::_mail($mailArray))
+		if ($this->_mail($mailArray))
 		{
-			return self::_success();
+			return $this->_success();
 		}
-		return self::_error(
+		return $this->_error(
 		[
-			'message' => Language::get('something_wrong')
+			'message' => $this->_language->get('something_wrong')
 		]);
 	}
 
@@ -222,13 +219,13 @@ class Contact extends Module
 	 * @return string
 	 */
 
-	protected static function _success()
+	protected function _success()
 	{
-		$messenger = new Messenger(Registry::getInstance());
+		$messenger = new Messenger($this->_registry);
 		return $messenger
-			->setRoute(Language::get('home'), Registry::get('root'))
+			->setRoute($this->_language->get('home'), $this->_registry->get('root'))
 			->doRedirect()
-			->success(Language::get('operation_completed'), Language::get('message_sent', '_contact'));
+			->success($this->_language->get('operation_completed'), $this->_language->get('message_sent', '_contact'));
 	}
 
 	/**
@@ -241,12 +238,12 @@ class Contact extends Module
 	 * @return string
 	 */
 
-	protected static function _error($errorArray = [])
+	protected function _error($errorArray = [])
 	{
-		$messenger = new Messenger(Registry::getInstance());
+		$messenger = new Messenger($this->_registry);
 		return $messenger
-			->setRoute(Language::get('home'), Registry::get('root'))
-			->error($errorArray['message'], Language::get('error_occurred'));
+			->setRoute($this->_language->get('home'), $this->_registry->get('root'))
+			->error($errorArray['message'], $this->_language->get('error_occurred'));
 	}
 
 	/**
@@ -259,7 +256,7 @@ class Contact extends Module
 	 * @return array
 	 */
 
-	protected static function _validate($postArray = [])
+	protected function _validate($postArray = [])
 	{
 		$emailValidator = new Validator\Email();
 		$urlValidator = new Validator\Url();
@@ -270,27 +267,27 @@ class Contact extends Module
 		$messageArray = [];
 		if (!$postArray['author'])
 		{
-			$messageArray[] = Language::get('author_empty');
+			$messageArray[] = $this->_language->get('author_empty');
 		}
 		if (!$postArray['email'])
 		{
-			$messageArray[] = Language::get('email_empty');
+			$messageArray[] = $this->_language->get('email_empty');
 		}
 		else if ($emailValidator->validate($postArray['email']) === Validator\ValidatorInterface::FAILED)
 		{
-			$messageArray['email'] = Language::get('email_incorrect');
+			$messageArray['email'] = $this->_language->get('email_incorrect');
 		}
 		if ($postArray['url'] && $urlValidator->validate($postArray['url']) === Validator\ValidatorInterface::FAILED)
 		{
-			$messageArray[] = Language::get('url_incorrect');
+			$messageArray[] = $this->_language->get('url_incorrect');
 		}
 		if (!$postArray['text'])
 		{
-			$messageArray[] = Language::get('message_empty');
+			$messageArray[] = $this->_language->get('message_empty');
 		}
 		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
 		{
-			$messageArray[] = Language::get('captcha_incorrect');
+			$messageArray[] = $this->_language->get('captcha_incorrect');
 		}
 		return $messageArray;
 	}
@@ -305,7 +302,7 @@ class Contact extends Module
 	 * @return boolean
 	 */
 
-	protected static function _mail($mailArray = [])
+	protected function _mail($mailArray = [])
 	{
 		$toArray =
 		[
@@ -315,16 +312,16 @@ class Contact extends Module
 		[
 			$mailArray['author'] => $mailArray['email']
 		];
-		$subject = Language::get('contact');
+		$subject = $this->_language->get('contact');
 		$bodyArray =
 		[
-			Language::get('author') . Language::get('colon') . ' ' . $mailArray['author'],
+			$this->_language->get('author') . $this->_language->get('colon') . ' ' . $mailArray['author'],
 			'<br />',
-			Language::get('email') . Language::get('colon') . ' <a href="mailto:' . $mailArray['email'] . '">' . $mailArray['email'] . '</a>',
+			$this->_language->get('email') . $this->_language->get('colon') . ' <a href="mailto:' . $mailArray['email'] . '">' . $mailArray['email'] . '</a>',
 			'<br />',
-			Language::get('url') . Language::get('colon') . ' <a href="' . $mailArray['url'] . '">' . $mailArray['url'] . '</a>',
+			$this->_language->get('url') . $this->_language->get('colon') . ' <a href="' . $mailArray['url'] . '">' . $mailArray['url'] . '</a>',
 			'<br />',
-			Language::get('message') . Language::get('colon') . ' ' . $mailArray['text']
+			$this->_language->get('message') . $this->_language->get('colon') . ' ' . $mailArray['text']
 		];
 
 		/* send mail */

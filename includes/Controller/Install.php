@@ -127,7 +127,7 @@ class Install extends ControllerAbstract
 
 		/* touch file */
 
-		if ($configArray['dbType'] === 'sqlite' && !touch($configArray['dbHost']) && !unlink($configArray['dbHost']))
+		if (!$this->_touch($configArray))
 		{
 			return $this->_error(
 			[
@@ -169,7 +169,7 @@ class Install extends ControllerAbstract
 
 		if (!$this->_install($adminArray))
 		{
-			return $this->error(
+			return $this->_error(
 			[
 				'url' => 'install.php',
 				'message' => $this->_language->get('installation_failed')
@@ -334,13 +334,33 @@ class Install extends ControllerAbstract
 	}
 
 	/**
+	 * touch sqlite file
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $configArray
+	 *
+	 * @return boolean
+	 */
+
+	protected function _touch($configArray = [])
+	{
+		if ($configArray['dbType'] === 'sqlite')
+		{
+			$file = $configArray['dbHost'] . '.tmp';
+			return touch($file) && unlink($file);
+		}
+		return true;
+	}
+
+	/**
 	 * write config file
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param array $configArray
 	 *
-	 * @return array
+	 * @return boolean
 	 */
 
 	protected function _write($configArray = [])
@@ -376,7 +396,7 @@ class Install extends ControllerAbstract
 	 *
 	 * @param array $installArray
 	 *
-	 * @return array
+	 * @return boolean
 	 */
 
 	protected function _install($installArray = [])
@@ -387,7 +407,7 @@ class Install extends ControllerAbstract
 		$adminEmail = $installArray['adminEmail'];
 		if ($adminName && $adminUser && $adminPassword && $adminEmail)
 		{
-			$installer = new Installer($this->_config);
+			$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
 			$installer->init();
 			$installer->rawDrop();
 			$installer->rawCreate();

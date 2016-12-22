@@ -14,6 +14,38 @@ namespace Redaxscript;
 class Module
 {
 	/**
+	 * instance of the registry class
+	 *
+	 * @var object
+	 */
+
+	protected $_registry;
+
+	/**
+	 * instance of the request class
+	 *
+	 * @var object
+	 */
+
+	protected $_request;
+
+	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
+
+	/**
+	 * instance of the config class
+	 *
+	 * @var object
+	 */
+
+	protected $_config;
+
+	/**
 	 * array of the module
 	 *
 	 * @var array
@@ -32,6 +64,25 @@ class Module
 	 */
 
 	protected static $_notificationArray = [];
+
+	/**
+	 * constructor of the class
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param Registry $registry instance of the registry class
+	 * @param Request $request instance of the request class
+	 * @param Language $language instance of the language class
+	 * @param Config $config instance of the config class
+	 */
+
+	public function __construct(Registry $registry, Request $request, Language $language, Config $config)
+	{
+		$this->_registry = $registry;
+		$this->_request = $request;
+		$this->_language = $language;
+		$this->_config = $config;
+	}
 
 	/**
 	 * init the class
@@ -121,7 +172,7 @@ class Module
 			$directory = 'modules/' . static::$_moduleArray['alias'] . '/database';
 			if (is_dir($directory))
 			{
-				$installer = new Installer(Config::getInstance());
+				$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
 				$installer->init($directory);
 				$installer->rawCreate();
 			}
@@ -145,7 +196,7 @@ class Module
 			$directory = 'modules/' . static::$_moduleArray['alias'] . '/database';
 			if (is_dir($directory))
 			{
-				$installer = new Installer(Config::getInstance());
+				$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
 				$installer->init($directory);
 				$installer->rawDrop();
 			}

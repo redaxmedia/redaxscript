@@ -3,7 +3,6 @@ namespace Redaxscript\Modules\ShareThis;
 
 use Redaxscript\Head;
 use Redaxscript\Html;
-use Redaxscript\Registry;
 
 /**
  * integrate social networks
@@ -38,12 +37,12 @@ class ShareThis extends Config
 	 * @since 3.0.0
 	 */
 
-	public static function contentFragmentEnd()
+	public function contentFragmentEnd()
 	{
-		if (Registry::get('lastTable') === 'articles')
+		if ($this->_registry->get('lastTable') === 'articles')
 		{
-			$url = Registry::get('root') . '/' . Registry::get('parameterRoute') . Registry::get('fullRoute');
-			return self::render($url);
+			$url = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
+			return $this->render($url);
 		}
 	}
 
@@ -53,14 +52,14 @@ class ShareThis extends Config
 	 * @since 3.0.0
 	 */
 
-	public static function renderStart()
+	public function renderStart()
 	{
 		/* link */
 
 		$link = Head\Link::getInstance();
 		$link
 			->init()
-			->appendFile('modules/ShareThis/assets/styles/share_this.css');
+			->appendFile('modules/ShareThis/dist/styles/share-this.min.css');
 
 		/* script */
 
@@ -68,7 +67,7 @@ class ShareThis extends Config
 		$script
 			->init('foot')
 			->appendFile('modules/ShareThis/assets/scripts/init.js')
-			->appendFile('modules/ShareThis/assets/scripts/share_this.js');
+			->appendFile('modules/ShareThis/dist/scripts/share-this.min.js');
 	}
 
 	/**
@@ -81,7 +80,7 @@ class ShareThis extends Config
 	 * @return string
 	 */
 
-	public static function render($url = null)
+	public function render($url = null)
 	{
 		$output = null;
 		if ($url)
@@ -96,17 +95,17 @@ class ShareThis extends Config
 			$listElement = new Html\Element();
 			$listElement->init('ul',
 			[
-				'class' => self::$_configArray['className']['list']
+				'class' => $this->_configArray['className']['list']
 			]);
 
 			/* process network */
 
-			foreach (self::$_configArray['network'] as $key => $value)
+			foreach ($this->_configArray['network'] as $key => $value)
 			{
 				$output .= '<li>';
 				$output .= $linkElement->attr(
 				[
-					'class' => self::$_configArray['className']['link'] . ' ' . $value['className'],
+					'class' => $this->_configArray['className']['link'] . ' ' . $value['className'],
 					'data-height' => $value['height'],
 					'data-type' => $key,
 					'data-width' => $value['width'],

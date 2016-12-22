@@ -84,8 +84,8 @@ class HelperTest extends TestCaseAbstract
 
 	public static function tearDownAfterClass()
 	{
-		Db::forTablePrefix('articles')->where('alias', 'test-one')->deleteMany();
-		Db::forTablePrefix('categories')->where('alias', 'test-two')->deleteMany();
+		Db::forTablePrefix('articles')->whereIdIs(2)->deleteMany();
+		Db::forTablePrefix('categories')->whereIdIs(2)->deleteMany();
 	}
 
 	/**

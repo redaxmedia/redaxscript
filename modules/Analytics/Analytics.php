@@ -3,7 +3,6 @@ namespace Redaxscript\Modules\Analytics;
 
 use Redaxscript\Module;
 use Redaxscript\Head;
-use Redaxscript\Registry;
 
 /**
  * integrate google analytics
@@ -38,16 +37,16 @@ class Analytics extends Module
 	 * @since 3.0.0
 	 */
 
-	public static function renderStart()
+	public function renderStart()
 	{
-		if (Registry::get('loggedIn') !== Registry::get('token'))
+		if ($this->_registry->get('loggedIn') === $this->_registry->get('token'))
 		{
 			$script = Head\Script::getInstance();
 			$script
 				->init('foot')
 				->appendFile('//google-analytics.com/analytics.js')
 				->appendFile('modules/Analytics/assets/scripts/init.js')
-				->appendFile('modules/Analytics/assets/scripts/analytics.js');
+				->appendFile('modules/Analytics/dist/scripts/analytics.min.js');
 		}
 	}
 }

@@ -120,8 +120,8 @@ class AuthTest extends TestCaseAbstract
 
 		$this->assertFalse($auth->login());
 		$this->assertTrue($auth->login(1));
-        $this->assertTrue($auth->logout());
-        $this->assertFalse($auth->logout());
+		$this->assertTrue($auth->logout());
+		$this->assertFalse($auth->logout());
 	}
 
 	/**

@@ -1,9 +1,7 @@
 <?php
 namespace Redaxscript\Modules\Validator;
 
-use Redaxscript\Language;
 use Redaxscript\Reader;
-use Redaxscript\Registry;
 
 /**
  * html validator for developers
@@ -41,13 +39,13 @@ class Validator extends Config
 	 * @return array
 	 */
 
-	public static function adminPanelNotification()
+	public function adminPanelNotification()
 	{
-		if (Registry::get('firstParameter') !== 'admin')
+		if ($this->_registry->get('firstParameter') !== 'admin')
 		{
 			/* load result */
 
-			$urlBase = self::$_configArray['url'] . Registry::get('root') . '/' . Registry::get('parameterRoute') . Registry::get('fullRoute');
+			$urlBase = $this->_configArray['url'] . $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
 			$urlJSON = $urlBase . '&out=json';
 			$reader = new Reader();
 			$result = $reader->loadJSON($urlJSON)->getArray();
@@ -58,7 +56,7 @@ class Validator extends Config
 			{
 				foreach ($result['messages'] as $value)
 				{
-					if (in_array($value['type'], self::$_configArray['typeArray']))
+					if (in_array($value['type'], $this->_configArray['typeArray']))
 					{
 						$message =
 						[
@@ -69,15 +67,15 @@ class Validator extends Config
 								'target' => '_blank'
 							]
 						];
-						self::setNotification($value['type'], $message);
+						$this->setNotification($value['type'], $message);
 					}
 				}
 			}
 			else
 			{
-				self::setNotification('success', Language::get('documentValidate', '_validator') . Language::get('point'));
+				$this->setNotification('success', $this->_language->get('documentValidate', '_validator') . $this->_language->get('point'));
 			}
-			return self::getNotification();
+			return $this->getNotification();
 		}
 	}
 }

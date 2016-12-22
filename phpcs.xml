@@ -30,6 +30,10 @@
 	<rule ref="Generic.PHP.NoSilencedErrors" />
 	<rule ref="Generic.Strings.UnnecessaryStringConcat" />
 
+	<!-- inherit from drupal -->
+
+	<rule ref="Drupal.Classes.UnusedUseStatement" />
+
 	<!-- inherit from psr1 -->
 
 	<rule ref="PSR1.Classes.ClassDeclaration" />

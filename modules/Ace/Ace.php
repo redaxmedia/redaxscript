@@ -3,7 +3,6 @@ namespace Redaxscript\Modules\Ace;
 
 use Redaxscript\Module;
 use Redaxscript\Head;
-use Redaxscript\Registry;
 
 /**
  * javascript powered code editor
@@ -38,25 +37,25 @@ class Ace extends Module
 	 * @since 3.0.0
 	 */
 
-	public static function renderStart()
+	public function renderStart()
 	{
-		if (Registry::get('loggedIn') === Registry::get('token'))
+		if ($this->_registry->get('loggedIn') === $this->_registry->get('token'))
 		{
 			/* link */
 
 			$link = Head\Link::getInstance();
 			$link
 				->init()
-				->appendFile('modules/Ace/assets/styles/ace.css');
+				->appendFile('modules/Ace/dist/styles/ace.min.css');
 
 			/* script */
 
 			$script = Head\Script::getInstance();
 			$script
 				->init('foot')
-				->appendFile('//cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/ace.js')
+				->appendFile('//cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js')
 				->appendFile('modules/Ace/assets/scripts/init.js')
-				->appendFile('modules/Ace/assets/scripts/ace.js');
+				->appendFile('modules/Ace/dist/scripts/ace.min.js');
 		}
 	}
 }

@@ -262,4 +262,27 @@ class LinkTest extends TestCaseAbstract
 
 		$this->assertEquals($expectArray, $actualArray);
 	}
+
+	/**
+	 * testInvalid
+	 *
+	 * @since 3.0.0
+	 *
+	 */
+
+	public function testInvalid()
+	{
+		/* setup */
+
+		$link = Head\Link::getInstance();
+		$link->init('invalid');
+
+		/* expect and actual */
+
+		$actual = (string)$link;
+
+		/* compare */
+
+		$this->assertEquals('<!-- Redaxscript\Head\Link\Invalid -->', $actual);
+	}
 }

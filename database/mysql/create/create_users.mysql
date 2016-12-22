@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS /* %PREFIX% */users (
 	password varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
 	email varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
 	description varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-	language char(3) COLLATE utf8_unicode_ci DEFAULT NULL,
+	language char(2) COLLATE utf8_unicode_ci DEFAULT NULL,
 	status int(1) DEFAULT 1,
 	groups varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
 	first datetime DEFAULT NULL,

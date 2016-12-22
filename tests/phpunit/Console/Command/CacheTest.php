@@ -3,6 +3,7 @@ namespace Redaxscript\Tests\Console\Command;
 
 use Redaxscript\Config;
 use Redaxscript\Console\Command;
+use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
@@ -36,6 +37,14 @@ class CacheTest extends TestCaseAbstract
 	protected $_request;
 
 	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
+
+	/**
 	 * instance of the config class
 	 *
 	 * @var object
@@ -53,6 +62,7 @@ class CacheTest extends TestCaseAbstract
 	{
 		$this->_registry = Registry::getInstance();
 		$this->_request = Request::getInstance();
+		$this->_language = Language::getInstance();
 		$this->_config = Config::getInstance();
 	}
 
@@ -77,7 +87,7 @@ class CacheTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$cacheCommand = new Command\Cache($this->_registry, $this->_request, $this->_config);
+		$cacheCommand = new Command\Cache($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* expect and actual */
 
@@ -105,11 +115,13 @@ class CacheTest extends TestCaseAbstract
 			'cache',
 			'clear',
 			'--directory',
-			'cache/styles',
+			'cache',
+			'--extension',
+			'css',
 			'--bundle',
 			'base.min.css'
 		]);
-		$cacheCommand = new Command\Cache($this->_registry, $this->_request, $this->_config);
+		$cacheCommand = new Command\Cache($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
@@ -117,7 +129,7 @@ class CacheTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals('cache/styles', $actual->getDirectory());
+		$this->assertTrue($actual);
 	}
 
 	/**
@@ -136,11 +148,13 @@ class CacheTest extends TestCaseAbstract
 			'cache',
 			'clear-invalid',
 			'--directory',
-			'cache/page',
+			'cache',
+			'--extension',
+			'js',
 			'--lifetime',
 			'3600'
 		]);
-		$cacheCommand = new Command\Cache($this->_registry, $this->_request, $this->_config);
+		$cacheCommand = new Command\Cache($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
@@ -148,6 +162,6 @@ class CacheTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals('cache/page', $actual->getDirectory());
+		$this->assertTrue($actual);
 	}
 }

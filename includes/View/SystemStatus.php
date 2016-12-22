@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\View;
 
-use Redaxscript\Html;
 use Redaxscript\Messenger;
 
 /**

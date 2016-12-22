@@ -36,11 +36,11 @@ class Cache extends CommandAbstract
 					[
 						'directory' =>
 						[
-							'description' => 'Optional directory of the cache'
+							'description' => 'Required directory of the cache'
 						],
 						'extension' =>
 						[
-							'description' => 'Optional extension of the cache files'
+							'description' => 'Required extension of the cache files'
 						],
 						'bundle' =>
 						[
@@ -55,11 +55,11 @@ class Cache extends CommandAbstract
 					[
 						'directory' =>
 						[
-							'description' => 'Optional directory of the cache'
+							'description' => 'Required directory of the cache'
 						],
 						'extension' =>
 						[
-							'description' => 'Optional extension of the cache files'
+							'description' => 'Required extension of the cache files'
 						],
 						'lifetime' =>
 						[
@@ -112,13 +112,14 @@ class Cache extends CommandAbstract
 
 	protected function _clear($optionArray = [])
 	{
-		$directory = $optionArray['directory'];
-		$extension = $optionArray['extension'];
+		$directory = $this->prompt('directory', $optionArray);
+		$extension = $this->prompt('extension', $optionArray);
 		$bundle = array_filter(explode(',', $optionArray['bundle']));
 		$cache = new BaseCache();
-		return $cache
+		$cache
 			->init($directory, $extension)
 			->clear($bundle);
+		return is_dir($cache->getDirectory());
 	}
 
 	/**
@@ -133,12 +134,13 @@ class Cache extends CommandAbstract
 
 	protected function _clearInvalid($optionArray = [])
 	{
-		$directory = $optionArray['directory'];
-		$extension = $optionArray['extension'];
+		$directory = $this->prompt('directory', $optionArray);
+		$extension = $this->prompt('extension', $optionArray);
 		$lifetime = is_numeric($optionArray['lifetime']) ? $optionArray['lifetime'] : 3600;
 		$cache = new BaseCache();
-		return $cache
+		$cache
 			->init($directory, $extension)
 			->clearInvalid($lifetime);
+		return is_dir($cache->getDirectory());
 	}
 }

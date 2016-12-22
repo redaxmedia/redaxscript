@@ -3,8 +3,6 @@ namespace Redaxscript\Modules\LazyLoad;
 
 use Redaxscript\Head;
 use Redaxscript\Html;
-use Redaxscript\Language;
-use Redaxscript\Registry;
 
 /**
  * lazy load images
@@ -41,9 +39,9 @@ class LazyLoad extends Config
 	 * @return array
 	 */
 
-	public static function adminPanelNotification()
+	public function adminPanelNotification()
 	{
-		return self::getNotification();
+		return $this->getNotification();
 	}
 
 	/**
@@ -52,14 +50,14 @@ class LazyLoad extends Config
 	 * @since 3.0.0
 	 */
 
-	public static function renderStart()
+	public function renderStart()
 	{
 		/* link */
 
 		$link = Head\Link::getInstance();
 		$link
 			->init()
-			->appendFile('modules/LazyLoad/assets/styles/lazy_load.css');
+			->appendFile('modules/LazyLoad/dist/styles/lazy-load.min.css');
 
 		/* script */
 
@@ -67,7 +65,7 @@ class LazyLoad extends Config
 		$script
 			->init('foot')
 			->appendFile('modules/LazyLoad/assets/scripts/init.js')
-			->appendFile('modules/LazyLoad/assets/scripts/lazy_load.js');
+			->appendFile('modules/LazyLoad/dist/scripts/lazy-load.min.js');
 	}
 
 	/**
@@ -81,7 +79,7 @@ class LazyLoad extends Config
 	 * @return string
 	 */
 
-	public static function render($file = null, $optionArray = [])
+	public function render($file = null, $optionArray = [])
 	{
 		$output = null;
 
@@ -93,7 +91,7 @@ class LazyLoad extends Config
 
 			foreach ($file as $key => $value)
 			{
-				if (in_array($key, self::$_configArray['device']) && Registry::get('my' . ucfirst($key)))
+				if (in_array($key, $this->_configArray['device']) && $this->_registry->get('my' . ucfirst($key)))
 				{
 					$file = $value;
 				}
@@ -108,8 +106,8 @@ class LazyLoad extends Config
 			$imageElement->init('img',
 			[
 				'alt' => $optionArray['alt'],
-				'class' => self::$_configArray['className']['image'],
-				'src' => self::$_configArray['placeholder']
+				'class' => $this->_configArray['className']['image'],
+				'src' => $this->_configArray['placeholder']
 			]);
 
 			/* collect image output */
@@ -121,7 +119,7 @@ class LazyLoad extends Config
 
 			/* placeholder */
 
-			if (self::$_configArray['placeholder'])
+			if ($this->_configArray['placeholder'])
 			{
 				/* calculate image ratio */
 
@@ -133,7 +131,7 @@ class LazyLoad extends Config
 				$placeholderElement = new Html\Element();
 				$placeholderElement->init('div',
 				[
-					'class' => self::$_configArray['className']['placeholder'],
+					'class' => $this->_configArray['className']['placeholder'],
 					'style' => 'padding-bottom:' . $imageRatio . '%'
 				]);
 
@@ -151,7 +149,7 @@ class LazyLoad extends Config
 
 		else
 		{
-			self::setNotification('error', Language::get('file_not_found') . Language::get('colon') . ' ' . $file . Language::get('point'));
+			$this->setNotification('error', $this->_language->get('file_not_found') . $this->_language->get('colon') . ' ' . $file . $this->_language->get('point'));
 		}
 		return $output;
 	}

@@ -60,4 +60,27 @@ class MetaTest extends TestCaseAbstract
 
 		$this->assertEquals($this->normalizeEOL($expect), $actual);
 	}
+
+	/**
+	 * testInvalid
+	 *
+	 * @since 3.0.0
+	 *
+	 */
+
+	public function testInvalid()
+	{
+		/* setup */
+
+		$meta = Head\Meta::getInstance();
+		$meta->init('invalid');
+
+		/* expect and actual */
+
+		$actual = (string)$meta;
+
+		/* compare */
+
+		$this->assertEquals('<!-- Redaxscript\Head\Meta\Invalid -->', $actual);
+	}
 }

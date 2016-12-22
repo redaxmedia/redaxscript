@@ -1,0 +1,42 @@
+[
+	[
+		{
+			"admin-name": "Test",
+			"admin-user": "test",
+			"admin-password": "test",
+			"admin-email": "test@test.com"
+		},
+		"_touch",
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-error\">Grant write permission on directory.</div><a href=\"install.php\" class=\"rs-button-note rs-is-error\">Back</a>"
+	],
+	[
+		{
+			"admin-name": "Test",
+			"admin-user": "test",
+			"admin-password": "test",
+			"admin-email": "test@test.com"
+		},
+		"_write",
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-error\">Grant write permission on file: config.php</div><a href=\"install.php\" class=\"rs-button-note rs-is-error\">Back</a>"
+	],
+	[
+		{
+			"admin-name": "Test",
+			"admin-user": "test",
+			"admin-password": "test",
+			"admin-email": "test@test.com"
+		},
+		"_install",
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-error\">Installation failed</div><a href=\"install.php\" class=\"rs-button-note rs-is-error\">Back</a>"
+	],
+	[
+		{
+			"admin-name": "Test",
+			"admin-user": "test",
+			"admin-password": "test",
+			"admin-email": "test@test.com"
+		},
+		"_mail",
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-warning\">Email sending failed</div>"
+	]
+]

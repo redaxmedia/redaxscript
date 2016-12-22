@@ -241,12 +241,12 @@ class Auth
 
 	public function logout()
 	{
-	    if ($this->getStatus())
-        {
-            $this->_request->setSession('auth', null);
-            return !$this->getStatus();
-        }
-        return false;
+		if ($this->getStatus())
+		{
+			$this->_request->setSession('auth', null);
+			return !$this->getStatus();
+		}
+		return false;
 	}
 
 	/**
