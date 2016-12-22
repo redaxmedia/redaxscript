@@ -8,6 +8,7 @@ Redaxscript
 [![Coverage Status](https://img.shields.io/coveralls/redaxmedia/redaxscript.svg?style=flat)](https://coveralls.io/r/redaxmedia/redaxscript)
 [![PHP 7 Ready](http://php7ready.timesplinter.ch/redaxmedia/redaxscript/badge.svg?style=flat)](https://travis-ci.org/redaxmedia/redaxscript)
 [![Dependency Status](https://gemnasium.com/badges/github.com/redaxmedia/redaxscript.svg)](https://gemnasium.com/github.com/redaxmedia/redaxscript)
+[![Docker Automated build](https://img.shields.io/docker/automated/redaxmedia/redaxscript.svg)](https://hub.docker.com/r/redaxmedia/redaxscript/)
 [![Latest Stable Version](https://img.shields.io/packagist/v/redaxmedia/redaxscript.svg?style=flat)](https://packagist.org/packages/redaxmedia/redaxscript)
 [![License](https://img.shields.io/packagist/l/redaxmedia/redaxscript.svg?style=flat)](https://packagist.org/packages/redaxmedia/redaxscript)
 [![Gitter Chat](https://img.shields.io/badge/gitter-chat-129e5e.svg?style=flat)](https://gitter.im/redaxmedia/redaxscript)
