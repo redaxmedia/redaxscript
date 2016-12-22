@@ -43,8 +43,8 @@
 {
 	.rs-list-menu
 	{
-		float: right;
-		margin: 0.875em 0;
+		margin-left: 1em;
+		white-space: nowrap;
 
 		& > li
 		{
