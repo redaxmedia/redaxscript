@@ -29,7 +29,6 @@
 	color: gray(200);
 	max-width: 70%;
 	min-height: 2em;
-	overflow: hidden;
 	white-space: nowrap;
 
 	& a:hover

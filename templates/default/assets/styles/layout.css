@@ -21,7 +21,6 @@
 	background: gray(255);
 	color: var(--rs-color-tertiary);
 	font: 1em var(--rs-font-primary);
-	overflow-x: hidden;
 }
 
 .rs-main
