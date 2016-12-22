@@ -1,8 +1,10 @@
 <?php
 namespace Redaxscript\Parser\Tag;
 
+use Redaxscript\Html;
+
 /**
- * helper class to parse content for blockcode tags
+ * children class to parse content for blockcode tags
  *
  * @since 3.0.0
  *
@@ -11,21 +13,20 @@ namespace Redaxscript\Parser\Tag;
  * @author Henry Ruhs
  */
 
-class Blockcode implements TagInterface
+class Blockcode extends TagAbstract
 {
 	/**
-	 * array of the pseudo tag
+	 * options of the blockcode tag
 	 *
 	 * @var array
 	 */
 
-	protected $_tagArray =
+	protected $_optionArray =
 	[
 		'className' =>
 		[
 			'blockcode' => 'rs-js-code rs-code-default'
 		],
-		'position' => null,
 		'search' =>
 		[
 			'<blockcode>',
@@ -39,10 +40,34 @@ class Blockcode implements TagInterface
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param string $content content to be parsed
+	 *
 	 * @return string
 	 */
 
-	public function process()
+	public function process($content = null)
 	{
+		$output = str_replace($this->_optionArray['search'], $this->_optionArray['delimiter'], $content);
+		$partArray = array_filter(explode($this->_optionArray['delimiter'], $output));
+
+		/* html elements */
+
+		$preElement = new Html\Element();
+		$preElement->init('pre',
+		[
+			'class' => $this->_optionArray['className']['blockcode']
+		]);
+
+		/* parse as needed */
+
+		foreach ($partArray as $key => $value)
+		{
+			if ($key % 2)
+			{
+				$partArray[$key] = $preElement->copy()->html(htmlspecialchars($value, null, null, false));
+			}
+		}
+		$output = implode($partArray);
+		return $output;
 	}
 }

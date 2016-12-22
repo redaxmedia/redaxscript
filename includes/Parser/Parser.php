@@ -1,9 +1,6 @@
 <?php
 namespace Redaxscript\Parser;
 
-use Redaxscript\Language;
-use Redaxscript\Registry;
-
 /**
  * parent class to parse content for pseudo tags
  *
@@ -14,24 +11,8 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-class Parser
+class Parser extends ParserAbstract
 {
-	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
 	/**
 	 * output of the parser
 	 *
@@ -41,31 +22,25 @@ class Parser
 	protected $_output;
 
 	/**
-	 * constructor of the class
-	 *
-	 * @since 2.4.0
-	 *
-	 * @param Registry $registry instance of the registry class
-	 * @param Language $language instance of the language class
-	 */
-
-	public function __construct(Registry $registry, Language $language)
-	{
-		$this->_registry = $registry;
-		$this->_language = $language;
-	}
-
-	/**
-	 * init the class
+	 * process the class
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param string $content content to be parsed
+	 * @param string $route route of the content
 	 */
 
-	public function init($content = null)
+	public function process($content = null, $route = null)
 	{
 		$this->_output = $content;
+
+		/* process */
+
+		foreach ($this->_namespaceArray as $tagClass)
+		{
+			$tag = new $tagClass($this->_registry, $this->_language);
+			$this->_output = $tag->process($this->_output, $route);
+		}
 	}
 
 	/**

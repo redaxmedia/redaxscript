@@ -2,7 +2,7 @@
 namespace Redaxscript\Parser\Tag;
 
 /**
- * helper class to parse content for language tags
+ * children class to parse content for language tags
  *
  * @since 3.0.0
  *
@@ -11,17 +11,16 @@ namespace Redaxscript\Parser\Tag;
  * @author Henry Ruhs
  */
 
-class Language implements TagInterface
+class Language extends TagAbstract
 {
 	/**
-	 * array of the pseudo tag
+	 * options of the language tag
 	 *
 	 * @var array
 	 */
 
-	protected $_tagArray =
+	protected $_optionArray =
 	[
-		'position' => null,
 		'search' =>
 		[
 			'<language>',
@@ -35,10 +34,26 @@ class Language implements TagInterface
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param string $content content to be parsed
+	 *
 	 * @return string
 	 */
 
-	public function process()
+	public function process($content = null)
 	{
+		$output = str_replace($this->_optionArray['search'], $this->_optionArray['delimiter'], $content);
+		$partArray = array_filter(explode($this->_optionArray['delimiter'], $output));
+
+		/* parse as needed */
+
+		foreach ($partArray as $key => $value)
+		{
+			if ($key % 2)
+			{
+				$partArray[$key] = $this->_language->get($value);
+			}
+		}
+		$output = implode($partArray);
+		return $output;
 	}
 }
