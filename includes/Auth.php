@@ -182,11 +182,11 @@ class Auth
 	/**
 	 * login the user
 	 *
+	 * @since 3.0.0
+	 *
 	 * @param integer $userId identifier of the user
 	 *
 	 * @return boolean
-	 *
-	 * @since 3.0.0
 	 */
 
 	public function login($userId = null)
@@ -234,9 +234,9 @@ class Auth
 	/**
 	 * logout the user
 	 *
-	 * @return boolean
-	 *
 	 * @since 3.0.0
+	 *
+	 * @return boolean
 	 */
 
 	public function logout()

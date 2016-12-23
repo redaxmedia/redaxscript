@@ -100,6 +100,19 @@ class LoginTest extends TestCaseAbstract
 	}
 
 	/**
+	 * providerProcessFailure
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerProcessFailure()
+	{
+		return $this->getProvider('tests/provider/Controller/login_process_failure.json');
+	}
+
+	/**
 	 * testProcess
 	 *
 	 * @since 3.0.0
@@ -124,6 +137,57 @@ class LoginTest extends TestCaseAbstract
 		/* actual */
 
 		$actual = $loginController->process();
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testProcessFailure
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $postArray
+	 * @param array $hashArray
+	 * @param array $userArray
+	 * @param string $method
+	 * @param string $expect
+	 *
+	 * @dataProvider providerProcessFailure
+	 */
+
+	public function testProcessFailure($postArray = [], $hashArray = [], $userArray = [], $method = null, $expect = null)
+	{
+		/* setup */
+
+		Db::forTablePrefix('users')->whereIdIs(1)->findOne()->set('status', $userArray['status'])->save();
+		$this->_request->set('post', $postArray);
+		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
+		$stub = $this
+			->getMockBuilder('Redaxscript\Controller\Login')
+			->setConstructorArgs(
+			[
+				$this->_registry,
+				$this->_language,
+				$this->_request
+			])
+			->setMethods(
+			[
+				$method
+			])
+			->getMock();
+
+		/* override */
+
+		$stub
+			->expects($this->any())
+			->method($method)
+			->will($this->returnValue(false));
+
+		/* actual */
+
+		$actual = $stub->process();
 
 		/* compare */
 

@@ -151,12 +151,12 @@ class Install extends ControllerAbstract
 
 		if ($postArray['refreshConnection'])
 		{
-			$this->_refresh();
+			$this->_refreshConnection();
 		}
 
-		/* database status */
+		/* get status */
 
-		if (!Db::getStatus())
+		if (!$this->_getStatus())
 		{
 			return $this->_error(
 			[
@@ -376,6 +376,19 @@ class Install extends ControllerAbstract
 	}
 
 	/**
+	 * get the status
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return boolean
+	 */
+
+	protected function _getStatus()
+	{
+		return Db::getStatus();
+	}
+
+	/**
 	 * refresh the connection
 	 *
 	 * @since 3.0.0
@@ -383,7 +396,7 @@ class Install extends ControllerAbstract
 	 * @return array
 	 */
 
-	protected function _refresh()
+	protected function _refreshConnection()
 	{
 		Db::init();
 		Db::resetDb();
@@ -418,7 +431,7 @@ class Install extends ControllerAbstract
 				'adminPassword' => $installArray['adminPassword'],
 				'adminEmail' => $installArray['adminEmail']
 			]);
-			return Db::getStatus() === 2;
+			return $this->_getStatus() === 2;
 		}
 		return false;
 	}

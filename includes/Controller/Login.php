@@ -34,7 +34,6 @@ class Login extends ControllerAbstract
 		$emailFilter = new Filter\Email();
 		$emailValidator = new Validator\Email();
 		$loginValidator = new Validator\Login();
-		$auth = new Auth($this->_request);
 
 		/* process post */
 
@@ -73,7 +72,7 @@ class Login extends ControllerAbstract
 
 		/* handle success */
 
-		if ($auth->login($user->id))
+		if ($this->_login($user->id))
 		{
 			return $this->_success();
 		}
@@ -158,5 +157,21 @@ class Login extends ControllerAbstract
 			$messageArray[] = $this->_language->get('captcha_incorrect');
 		}
 		return $messageArray;
+	}
+
+	/**
+	 * login the user
+	 *
+	 * @param integer $userId identifier of the user
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return boolean
+	 */
+
+	protected function _login($userId = null)
+	{
+		$auth = new Auth($this->_request);
+		return $auth->login($userId);
 	}
 }
