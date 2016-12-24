@@ -128,7 +128,7 @@ class Loader
 			$this->_collectionArray = $restArray;
 			$this->_collectionArray['bundle'] =
 			[
-				$optionArray['attribute'] => $cache->getPath($bundleArray),
+				$optionArray['attribute'] => $cache->getPath($bundleArray)
 			];
 			if ($optionArray['extension'] === 'css')
 			{
