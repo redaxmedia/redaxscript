@@ -7,6 +7,7 @@
 	"require":
 	{
 		"j4mie/idiorm": "v1.5.2",
+		"neronmoon/scriptsdev": "0.1.0",
 		"php": ">5.4"
 	},
 	"require-dev":
@@ -29,7 +30,17 @@
 			"echo Please install CYGWIN on Windows to perform the install commands:",
 			"mkdir -p cache",
 			"mkdir -p libraries",
-			"cp -r vendor/j4mie/idiorm/idiorm.php libraries/ORM.php",
+			"cp -r vendor/j4mie/idiorm/idiorm.php libraries/ORM.php"
+		],
+		"post-update-cmd":
+		[
+			"@post-install-cmd"
+		]
+	},
+	"scripts-dev":
+	{
+		"post-install-cmd":
+		[
 			"cp -r vendor/drupal/coder/coder_sniffer/Drupal vendor/squizlabs/php_codesniffer/CodeSniffer/Standards"
 		],
 		"post-update-cmd":
