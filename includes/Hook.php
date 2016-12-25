@@ -22,6 +22,30 @@ class Hook
 	protected static $_registry;
 
 	/**
+	 * instance of the request class
+	 *
+	 * @var object
+	 */
+
+	protected static $_request;
+
+	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected static $_language;
+
+	/**
+	 * instance of the config class
+	 *
+	 * @var object
+	 */
+
+	protected static $_config;
+
+	/**
 	 * module namespace
 	 *
 	 * @var string
@@ -48,14 +72,20 @@ class Hook
 	/**
 	 * constructor of the class
 	 *
-	 * @since 2.6.0
+	 * @since 3.0.0
 	 *
 	 * @param Registry $registry instance of the registry class
+	 * @param Request $request instance of the request class
+	 * @param Language $language instance of the language class
+	 * @param Config $config instance of the config class
 	 */
 
-	public static function construct(Registry $registry)
+	public static function construct(Registry $registry, Request $request, Language $language, Config $config)
 	{
 		self::$_registry = $registry;
+		self::$_request = $request;
+		self::$_language = $language;
+		self::$_config = $config;
 	}
 
 	/**
@@ -130,17 +160,18 @@ class Hook
 
 		foreach (self::$_moduleArray as $module)
 		{
-			$object = self::$_namespace . '\\' . $module . '\\' . $module;
+			$moduleClass = self::$_namespace . '\\' . $module . '\\' . $module;
 			self::$_eventArray[$event][$module] = false;
 
 			/* method exists */
 
-			if (method_exists($object, $event))
+			if (method_exists($moduleClass, $event))
 			{
 				self::$_eventArray[$event][$module] = true;
+				$module = new $moduleClass(self::$_registry, self::$_request, self::$_language, self::$_config);
 				$outputArray = array_merge($outputArray, call_user_func_array(
 				[
-					$object,
+					$module,
 					$event
 				], $parameterArray));
 			}
@@ -167,17 +198,19 @@ class Hook
 
 		foreach (self::$_moduleArray as $module)
 		{
-			$object = self::$_namespace . '\\' . $module . '\\' . $module;
+			$moduleClass = self::$_namespace . '\\' . $module . '\\' . $module;
+
 			self::$_eventArray[$event][$module] = false;
 
 			/* method exists */
 
-			if (method_exists($object, $event))
+			if (method_exists($moduleClass, $event))
 			{
 				self::$_eventArray[$event][$module] = true;
+				$module = new $moduleClass(self::$_registry, self::$_request, self::$_language, self::$_config);
 				$output .= call_user_func_array(
 				[
-					$object,
+					$module,
 					$event
 				], $parameterArray);
 			}

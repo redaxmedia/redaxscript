@@ -3,8 +3,6 @@ namespace Redaxscript\Modules\FeedGenerator;
 
 use Redaxscript\Db;
 use Redaxscript\Module;
-use Redaxscript\Registry;
-use Redaxscript\Request;
 use XMLWriter;
 
 /**
@@ -40,15 +38,15 @@ class FeedGenerator extends Module
 	 * @since 2.3.0
 	 */
 
-	public static function renderStart()
+	public function renderStart()
 	{
-		$firstParamter = Registry::get('firstParameter');
-		$secondParameter = Registry::get('secondParameter');
+		$firstParamter = $this->_registry->get('firstParameter');
+		$secondParameter = $this->_registry->get('secondParameter');
 		if ($firstParamter === 'feed' && ($secondParameter === 'articles' || $secondParameter === 'comments'))
 		{
-			Registry::set('renderBreak', true);
+			$this->_registry->set('renderBreak', true);
 			header('content-type: application/atom+xml');
-			echo self::render($secondParameter);
+			echo $this->render($secondParameter);
 		}
 	}
 
@@ -62,20 +60,20 @@ class FeedGenerator extends Module
 	 * @return string
 	 */
 
-	public static function render($table = 'articles')
+	public function render($table = 'articles')
 	{
 		/* query result */
 
 		$resultArray[$table] = Db::forTablePrefix($table)
 			->where('status', 1)
 			->whereNull('access')
-			->whereLanguageIs(Registry::get('language'))
+			->whereLanguageIs($this->_registry->get('language'))
 			->orderGlobal('rank')
 			->findMany();
 
 		/* write xml */
 
-		return self::_writeXML($resultArray);
+		return $this->_writeXML($resultArray);
 	}
 
 	/**
@@ -84,14 +82,14 @@ class FeedGenerator extends Module
 	 * @return string
 	 */
 
-	protected static function _writeXML($resultArray = [])
+	protected function _writeXML($resultArray = [])
 	{
 		/* prepare href */
 
-		$href = Registry::get('root') . '/' . Registry::get('parameterRoute') . Registry::get('fullRoute');
-		if (Request::getQuery('l'))
+		$href = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
+		if ($this->_request->getQuery('l'))
 		{
-			$href .= Registry::get('languageRoute') . Registry::get('language');
+			$href .= $this->_registry->get('languageRoute') . $this->_registry->get('language');
 		}
 
 		/* write xml */
@@ -110,7 +108,7 @@ class FeedGenerator extends Module
 		$writer->endElement();
 		$writer->writeElement('id', $href);
 		$writer->writeElement('title', Db::getSetting('title'));
-		$writer->writeElement('updated', date('c', strtotime(Registry::get('now'))));
+		$writer->writeElement('updated', date('c', strtotime($this->_registry->get('now'))));
 		$writer->startElement('author');
 		$writer->writeElement('name', Db::getSetting('author'));
 		$writer->endElement();
@@ -122,7 +120,7 @@ class FeedGenerator extends Module
 			foreach ($result as $value)
 			{
 				$writer->startElement('entry');
-				$writer->writeElement('id', Registry::get('root') . '/' . Registry::get('parameterRoute') . build_route($table, $value->id));
+				$writer->writeElement('id', $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . build_route($table, $value->id));
 				$writer->writeElement('title', $value->title);
 				$writer->writeElement('updated', date('c', strtotime($value->date)));
 				$writer->writeElement('content', strip_tags($value->text));

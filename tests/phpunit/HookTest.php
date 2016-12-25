@@ -1,8 +1,11 @@
 <?php
 namespace Redaxscript\Tests;
 
+use Redaxscript\Config;
 use Redaxscript\Hook;
 use Redaxscript\Registry;
+use Redaxscript\Request;
+use Redaxscript\Language;
 
 /**
  * HookTest
@@ -17,25 +20,6 @@ use Redaxscript\Registry;
 class HookTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * setUp
-	 *
-	 * @since 2.4.0
-	 */
-
-	public function setUp()
-	{
-		$this->_registry = Registry::getInstance();
-	}
-
-	/**
 	 * testGetModuleArray
 	 *
 	 * @since 2.4.0
@@ -45,7 +29,7 @@ class HookTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		Hook::construct($this->_registry);
+		Hook::construct(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		Hook::init();
 
 		/* actual */
@@ -67,7 +51,7 @@ class HookTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		Hook::construct($this->_registry);
+		Hook::construct(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		Hook::init();
 		Hook::trigger('render');
 
@@ -90,7 +74,7 @@ class HookTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		Hook::construct($this->_registry);
+		Hook::construct(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		Hook::init();
 
 		/* actual */
@@ -112,7 +96,7 @@ class HookTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		Hook::construct($this->_registry);
+		Hook::construct(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		Hook::init();
 
 		/* actual */
@@ -134,7 +118,7 @@ class HookTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		Hook::construct($this->_registry);
+		Hook::construct(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		Hook::init();
 
 		/* actual */
@@ -156,7 +140,7 @@ class HookTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		Hook::construct($this->_registry);
+		Hook::construct(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		Hook::init();
 
 		/* actual */

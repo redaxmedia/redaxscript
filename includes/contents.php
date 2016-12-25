@@ -145,11 +145,8 @@ function contents()
 
 				/* parser */
 
-				$parser = new Redaxscript\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
-				$parser->init($text,
-				[
-					'route' => $route
-				]);
+				$parser = new Redaxscript\Parser\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+				$parser->process($text, $route);
 
 				/* collect headline output */
 
@@ -353,11 +350,8 @@ function extras($filter)
 				{
 					/* parser */
 
-					$parser = new Redaxscript\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
-					$parser->init($text,
-					[
-						'route' => $route
-					]);
+					$parser = new Redaxscript\Parser\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+					$parser->process($text, $route);
 
 					/* collect headline output */
 

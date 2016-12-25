@@ -28,7 +28,6 @@
 {
 	color: gray(200);
 	max-width: 70%;
-	min-height: 2em;
 	overflow: hidden;
 	white-space: nowrap;
 
@@ -64,11 +63,16 @@
 
 @media (--media-medium-min)
 {
+	.rs-header .rs-wrapper
+	{
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+	}
+
 	.rs-box-header
 	{
-		float: left;
 		font-size: 1.25em;
-		max-width: 60%;
 	}
 
 	.rs-text-header

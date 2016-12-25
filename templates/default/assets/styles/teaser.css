@@ -26,7 +26,6 @@
 {
 	background: var(--rs-url-teaser-small) center top / cover;
 	box-sizing: border-box;
-	overflow: hidden;
 	padding: 5em 0;
 	padding: 10vw 0;
 }

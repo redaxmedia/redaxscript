@@ -2,9 +2,6 @@
 namespace Redaxscript\Modules\PageCache;
 
 use Redaxscript\Cache;
-use Redaxscript\Language;
-use Redaxscript\Registry;
-use Redaxscript\Request;
 use Redaxscript\Template;
 
 /**
@@ -42,9 +39,9 @@ class PageCache extends Config
 	 * @return array
 	 */
 
-	public static function adminPanelNotification()
+	public function adminPanelNotification()
 	{
-		return self::getNotification();
+		return $this->getNotification();
 	}
 
 	/**
@@ -55,22 +52,18 @@ class PageCache extends Config
 	 * @return mixed
 	 */
 
-	public static function renderTemplate()
+	public function renderTemplate()
 	{
-		$registry = Registry::getInstance();
-		$request = Request::getInstance();
-		$language = Language::getInstance();
-
 		/* handle notification */
 
-		if (!is_dir(self::$_configArray['directory']) && !mkdir(self::$_configArray['directory']))
+		if (!is_dir($this->_configArray['directory']) && !mkdir($this->_configArray['directory']))
 		{
-			self::setNotification('error', $language->get('directory_not_found') . $language->get('colon') . ' ' . self::$_configArray['directory'] . $language->get('point'));
+			$this->setNotification('error', $this->_language->get('directory_not_found') . $this->_language->get('colon') . ' ' . $this->_configArray['directory'] . $this->_language->get('point'));
 		}
 
 		/* prevent as needed */
 
-		if ($request->getPost() || $registry->get('noCache'))
+		if ($this->_request->getPost() || $this->_registry->get('noCache'))
 		{
 			return false;
 		}
@@ -78,19 +71,19 @@ class PageCache extends Config
 		/* cache as needed */
 
 		$cache = new Cache();
-		$cache->init(self::$_configArray['directory'], self::$_configArray['extension']);
-		$fullRoute = $registry->get('fullRoute');
+		$cache->init($this->_configArray['directory'], $this->_configArray['extension']);
+		$bundle = $this->_registry->get('fullRoute') . '/' . $this->_registry->get('template') . '/' . $this->_registry->get('language');
 
 		/* load from cache */
 
-		if ($cache->validate($fullRoute, self::$_configArray['lifetime']))
+		if ($cache->validate($bundle, $this->_configArray['lifetime']))
 		{
-			$raw = $cache->retrieve($fullRoute);
-			$content = preg_replace('/' . self::$_configArray['tokenPlaceholder'] . '/', $registry->get('token'), self::_uncompress($raw));
+			$raw = $cache->retrieve($bundle);
+			$content = preg_replace('/' . $this->_configArray['tokenPlaceholder'] . '/', $this->_registry->get('token'), $this->_uncompress($raw));
 			return
 			[
 				'header' => function_exists('gzdeflate') ? 'content-encoding: deflate' : null,
-				'content' => self::_compress($content)
+				'content' => $this->_compress($content)
 			];
 		}
 
@@ -98,9 +91,9 @@ class PageCache extends Config
 
 		else
 		{
-			$raw = Template\Tag::partial('templates/' . $registry->get('template') . '/index.phtml');
-			$content = preg_replace('/' . $registry->get('token') . '/', self::$_configArray['tokenPlaceholder'], $raw);
-			$cache->store($fullRoute, self::_compress($content));
+			$raw = Template\Tag::partial('templates/' . $this->_registry->get('template') . '/index.phtml');
+			$content = preg_replace('/' . $this->_registry->get('token') . '/', $this->_configArray['tokenPlaceholder'], $raw);
+			$cache->store($bundle, $this->_compress($content));
 			return
 			[
 				'content' => $raw
@@ -118,7 +111,7 @@ class PageCache extends Config
 	 * @return string
 	 */
 
-	public static function _compress($content = null)
+	public function _compress($content = null)
 	{
 		return function_exists('gzdeflate') ? gzdeflate($content) : $content;
 	}
@@ -133,7 +126,7 @@ class PageCache extends Config
 	 * @return string
 	 */
 
-	public static function _uncompress($content = null)
+	public function _uncompress($content = null)
 	{
 		return function_exists('gzinflate') ? gzinflate($content) : $content;
 	}

@@ -4,6 +4,7 @@ namespace Redaxscript\Tests\Console\Command;
 use Redaxscript\Config;
 use Redaxscript\Console\Command;
 use Redaxscript\Installer;
+use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
@@ -37,6 +38,14 @@ class UninstallTest extends TestCaseAbstract
 	protected $_request;
 
 	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
+
+	/**
 	 * instance of the config class
 	 *
 	 * @var object
@@ -62,6 +71,7 @@ class UninstallTest extends TestCaseAbstract
 	{
 		$this->_registry = Registry::getInstance();
 		$this->_request = Request::getInstance();
+		$this->_language = Language::getInstance();
 		$this->_config = Config::getInstance();
 		$this->_configArray = $this->_config->get();
 		$this->_config->set('dbPrefix', 'console_');
@@ -75,7 +85,7 @@ class UninstallTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = new Installer($this->_config);
+		$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
 		$installer->init();
 		$installer->rawDrop();
 		$this->_request->setServer('argv', null);
@@ -92,7 +102,7 @@ class UninstallTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$uninstallCommand = new Command\Uninstall($this->_registry, $this->_request, $this->_config);
+		$uninstallCommand = new Command\Uninstall($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* expect and actual */
 
@@ -120,7 +130,7 @@ class UninstallTest extends TestCaseAbstract
 			'uninstall',
 			'database'
 		]);
-		$uninstallCommand = new Command\Uninstall($this->_registry, $this->_request, $this->_config);
+		$uninstallCommand = new Command\Uninstall($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
@@ -141,7 +151,7 @@ class UninstallTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$installer = new Installer($this->_config);
+		$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
 		$installer->init();
 		$installer->rawCreate();
 		$this->_request->setServer('argv',
@@ -152,7 +162,7 @@ class UninstallTest extends TestCaseAbstract
 			'--alias',
 			'TestDummy'
 		]);
-		$uninstallCommand = new Command\Uninstall($this->_registry, $this->_request, $this->_config);
+		$uninstallCommand = new Command\Uninstall($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
@@ -180,7 +190,7 @@ class UninstallTest extends TestCaseAbstract
 			'module',
 			'--no-interaction'
 		]);
-		$uninstallCommand = new Command\Uninstall($this->_registry, $this->_request, $this->_config);
+		$uninstallCommand = new Command\Uninstall($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 

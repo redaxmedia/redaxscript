@@ -2,7 +2,6 @@
 namespace Redaxscript\Modules\Experiments;
 
 use Redaxscript\Head;
-use Redaxscript\Registry;
 
 /**
  * integrate google experiments
@@ -37,16 +36,16 @@ class Experiments extends Config
 	 * @since 3.0.0
 	 */
 
-	public static function renderStart()
+	public function renderStart()
 	{
-		if (Registry::get('loggedIn') !== Registry::get('token'))
+		if ($this->_registry->get('loggedIn') !== $this->_registry->get('token'))
 		{
 			$script = Head\Script::getInstance();
 			$script
 				->init('foot')
-				->appendFile('//google-analytics.com/cx/api.js?experiment=' . self::$_configArray['id'])
+				->appendFile('//google-analytics.com/cx/api.js?experiment=' . $this->_configArray['id'])
 				->appendFile('modules/Experiments/assets/scripts/init.js')
-				->appendFile('modules/Experiments/assets/scripts/experiments.js');
+				->appendFile('modules/Experiments/dist/scripts/experiments.min.js');
 		}
 	}
 }

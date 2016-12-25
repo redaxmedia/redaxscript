@@ -1,0 +1,18 @@
+[
+	[
+		"<template>title<template>",
+		"<title>Redaxscript - Ultra lightweight Content Management System</title>"
+	],
+	[
+		"<template>{\"setting\":{\"key\":\"title\"}}<template>",
+		"Redaxscript"
+	],
+	[
+		"<template>invalid<template>",
+		null
+	],
+	[
+		"<template>{\"invalid\":{\"test\":\"test\"}}<template>",
+		null
+	]
+]

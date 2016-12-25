@@ -3,6 +3,7 @@ namespace Redaxscript\Tests\Console\Command;
 
 use Redaxscript\Config;
 use Redaxscript\Console\Command;
+use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
@@ -36,6 +37,14 @@ class InstallTest extends TestCaseAbstract
 	protected $_request;
 
 	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
+
+	/**
 	 * instance of the config class
 	 *
 	 * @var object
@@ -61,6 +70,7 @@ class InstallTest extends TestCaseAbstract
 	{
 		$this->_registry = Registry::getInstance();
 		$this->_request = Request::getInstance();
+		$this->_language = Language::getInstance();
 		$this->_config = Config::getInstance();
 		$this->_configArray = $this->_config->get();
 		$this->_config->set('dbPrefix', 'console_');
@@ -88,7 +98,7 @@ class InstallTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$installCommand = new Command\Install($this->_registry, $this->_request, $this->_config);
+		$installCommand = new Command\Install($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* expect and actual */
 
@@ -124,7 +134,7 @@ class InstallTest extends TestCaseAbstract
 			'--admin-email',
 			'test@test.com'
 		]);
-		$installCommand = new Command\Install($this->_registry, $this->_request, $this->_config);
+		$installCommand = new Command\Install($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
@@ -152,7 +162,7 @@ class InstallTest extends TestCaseAbstract
 			'database',
 			'--no-interaction'
 		]);
-		$installCommand = new Command\Install($this->_registry, $this->_request, $this->_config);
+		$installCommand = new Command\Install($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
@@ -181,7 +191,7 @@ class InstallTest extends TestCaseAbstract
 			'--alias',
 			'TestDummy'
 		]);
-		$installCommand = new Command\Install($this->_registry, $this->_request, $this->_config);
+		$installCommand = new Command\Install($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
@@ -209,7 +219,7 @@ class InstallTest extends TestCaseAbstract
 			'module',
 			'--no-interaction'
 		]);
-		$installCommand = new Command\Install($this->_registry, $this->_request, $this->_config);
+		$installCommand = new Command\Install($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 

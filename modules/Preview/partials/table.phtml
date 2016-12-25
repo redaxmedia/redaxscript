@@ -30,13 +30,13 @@ $outputBody = null;
 	<?php $outputHead .= $thElement
 		->copy()
 		->addClass($admin ? 'rs-admin-is-size-1of5' : 'rs-is-size1of5')
-		->text(Language::get($i, '_number')); ?>
+		->text($this->_language->get($i, '_number')); ?>
 
 	<?php $outputFoot .= $tdElement
-		->text(Language::get($i, '_number')); ?>
+		->text($this->_language->get($i, '_number')); ?>
 
 	<?php $outputBody .= $tdElement
-		->text(Language::get('preview', '_preview')); ?>
+		->text($this->_language->get('preview', '_preview')); ?>
 
 <?php endfor; ?>
 

@@ -14,6 +14,30 @@ namespace Redaxscript;
 class Installer
 {
 	/**
+	 * instance of the registry class
+	 *
+	 * @var object
+	 */
+
+	protected $_registry;
+
+	/**
+	 * instance of the request class
+	 *
+	 * @var object
+	 */
+
+	protected $_request;
+
+	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
+
+	/**
 	 * instance of the config class
 	 *
 	 * @var object
@@ -40,13 +64,19 @@ class Installer
 	/**
 	 * constructor of the class
 	 *
-	 * @since 2.6.0
+	 * @since 3.0.0
 	 *
+	 * @param Registry $registry instance of the registry class
+	 * @param Request $request instance of the request class
+	 * @param Language $language instance of the language class
 	 * @param Config $config instance of the config class
 	 */
 
-	public function __construct(Config $config)
+	public function __construct(Registry $registry, Request $request, Language $language, Config $config)
 	{
+		$this->_registry = $registry;
+		$this->_request = $request;
+		$this->_language = $language;
 		$this->_config = $config;
 	}
 
@@ -95,9 +125,6 @@ class Installer
 
 	public function insertData($optionArray = null)
 	{
-		$language = Language::getInstance();
-		$language->init();
-
 		/* articles */
 
 		Db::forTablePrefix('articles')
@@ -238,12 +265,12 @@ class Installer
 
 		if (is_dir('modules/CallHome'))
 		{
-			$callHome = new Modules\CallHome\CallHome;
+			$callHome = new Modules\CallHome\CallHome($this->_registry, $this->_request, $this->_language, $this->_config);
 			$callHome->install();
 		}
 		if (is_dir('modules/Validator'))
 		{
-			$validator = new Modules\Validator\Validator;
+			$validator = new Modules\Validator\Validator($this->_registry, $this->_request, $this->_language, $this->_config);
 			$validator->install();
 		}
 
@@ -251,16 +278,16 @@ class Installer
 
 		$settingArray =
 		[
-			'language' => 'detect',
-			'template' => 'default',
-			'title' => $language->get('name', '_package'),
+			'language' => null,
+			'template' => null,
+			'title' => $this->_language->get('name', '_package'),
 			'author' => $optionArray['adminName'],
 			'copyright' => null,
-			'description' => $language->get('description', '_package'),
+			'description' => $this->_language->get('description', '_package'),
 			'keywords' => null,
 			'robots' => null,
 			'email' => $optionArray['adminEmail'],
-			'subject' => $language->get('name', '_package'),
+			'subject' => $this->_language->get('name', '_package'),
 			'notification' => 0,
 			'charset' => 'utf-8',
 			'divider' => ' - ',
@@ -275,7 +302,7 @@ class Installer
 			'recovery' => 1,
 			'moderation' => 0,
 			'captcha' => 0,
-			'version' => $language->get('version', '_package')
+			'version' => $this->_language->get('version', '_package')
 		];
 
 		/* process settings array */
@@ -294,7 +321,7 @@ class Installer
 
 		/* users */
 
-		$passwordHash = new Hash(Config::getInstance());
+		$passwordHash = new Hash($this->_config);
 		$passwordHash->init($optionArray['adminPassword']);
 		Db::forTablePrefix('users')
 			->create()

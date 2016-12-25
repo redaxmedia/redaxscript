@@ -6,9 +6,6 @@ use Redaxscript\Directory;
 use Redaxscript\Filter;
 use Redaxscript\Head;
 use Redaxscript\Html;
-use Redaxscript\Language;
-use Redaxscript\Registry;
-use Redaxscript\Request;
 
 /**
  * simple directory lister
@@ -43,12 +40,12 @@ class DirectoryLister extends Config
 	 * @since 3.0.0
 	 */
 
-	public static function renderStart()
+	public function renderStart()
 	{
 		$link = Head\Link::getInstance();
 		$link
 			->init()
-			->appendFile('modules/DirectoryLister/assets/styles/directory_lister.css');
+			->appendFile('modules/DirectoryLister/dist/styles/directory-lister.min.css');
 	}
 
 	/**
@@ -59,9 +56,9 @@ class DirectoryLister extends Config
 	 * @return array
 	 */
 
-	public static function adminPanelNotification()
+	public function adminPanelNotification()
 	{
-		return self::getNotification();
+		return $this->getNotification();
 	}
 
 	/**
@@ -75,7 +72,7 @@ class DirectoryLister extends Config
 	 * @return string
 	 */
 
-	public static function render($directory = null, $optionArray = [])
+	public function render($directory = null, $optionArray = [])
 	{
 		$output = null;
 		$outputItem = null;
@@ -85,7 +82,7 @@ class DirectoryLister extends Config
 		$listElement = new Html\Element();
 		$listElement->init('ul',
 		[
-			'class' => self::$_configArray['className']['list']
+			'class' => $this->_configArray['className']['list']
 		]);
 
 		/* handle option */
@@ -97,7 +94,7 @@ class DirectoryLister extends Config
 
 		/* handle query */
 
-		$directoryQuery = Request::getQuery('directory');
+		$directoryQuery = $this->_request->getQuery('directory');
 		$directoryQueryArray = explode('/', $directoryQuery);
 
 		/* parent directory */
@@ -108,14 +105,14 @@ class DirectoryLister extends Config
 			$rootDirectory = $directory;
 			$directory = $pathFilter->sanitize($directoryQuery);
 			$parentDirectory = $pathFilter->sanitize(dirname($directory));
-			$outputItem .= self::_renderParent($rootDirectory, $parentDirectory, $optionArray);
+			$outputItem .= $this->_renderParent($rootDirectory, $parentDirectory, $optionArray);
 		}
 
 		/* has directory */
 
 		if (is_dir($directory))
 		{
-			$outputItem .= self::_renderItem($directory, $optionArray);
+			$outputItem .= $this->_renderItem($directory, $optionArray);
 
 			/* collect list output */
 
@@ -129,7 +126,7 @@ class DirectoryLister extends Config
 
 		else
 		{
-			self::setNotification('error', Language::get('directory_not_found') . Language::get('colon') . ' ' . $directory . Language::get('point'));
+			$this->setNotification('error', $this->_language->get('directory_not_found') . $this->_language->get('colon') . ' ' . $directory . $this->_language->get('point'));
 		}
 		return $output;
 	}
@@ -144,7 +141,7 @@ class DirectoryLister extends Config
 	 * @return string
 	 */
 
-	protected static function _renderParent($rootDirectory = null, $parentDirectory = null, $optionArray = [])
+	protected function _renderParent($rootDirectory = null, $parentDirectory = null, $optionArray = [])
 	{
 		$outputItem = null;
 		$queryString = $rootDirectory !== $parentDirectory ? '&directory=' . $parentDirectory : null;
@@ -154,7 +151,7 @@ class DirectoryLister extends Config
 		$linkElement = new Html\Element();
 		$linkElement->init('a',
 		[
-			'class' => self::$_configArray['className']['link']
+			'class' => $this->_configArray['className']['link']
 		]);
 
 		/* collect item output */
@@ -163,11 +160,11 @@ class DirectoryLister extends Config
 		$outputItem .= $linkElement
 			->attr(
 			[
-				'href' => Registry::get('parameterRoute') . Registry::get('fullRoute') . $queryString . $optionArray['hash'],
-				'title' => Language::get('directory_parent', '_directory_lister')
+				'href' => $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute') . $queryString . $optionArray['hash'],
+				'title' => $this->_language->get('directory_parent', '_directory_lister')
 			])
-			->addClass(self::$_configArray['className']['types']['directoryParent'])
-			->text(Language::get('directory_parent', '_directory_lister'));
+			->addClass($this->_configArray['className']['types']['directoryParent'])
+			->text($this->_language->get('directory_parent', '_directory_lister'));
 		$outputItem .= '</li>';
 		return $outputItem;
 	}
@@ -181,7 +178,7 @@ class DirectoryLister extends Config
 	 * @return string
 	 */
 
-	protected static function _renderItem($directory = null, $optionArray = [])
+	protected function _renderItem($directory = null, $optionArray = [])
 	{
 		$outputItem = null;
 
@@ -190,17 +187,17 @@ class DirectoryLister extends Config
 		$linkElement = new Html\Element();
 		$linkElement->init('a',
 		[
-			'class' => self::$_configArray['className']['link']
+			'class' => $this->_configArray['className']['link']
 		]);
 		$textSizeElement = new Html\Element();
 		$textSizeElement->init('span',
 		[
-			'class' => self::$_configArray['className']['textSize']
+			'class' => $this->_configArray['className']['textSize']
 		]);
 		$textDateElement = new Html\Element();
 		$textDateElement->init('span',
 		[
-			'class' => self::$_configArray['className']['textDate']
+			'class' => $this->_configArray['className']['textDate']
 		]);
 
 		/* lister directory */
@@ -215,10 +212,10 @@ class DirectoryLister extends Config
 		{
 			$path = $directory . '/' . $value;
 			$fileExtension = pathinfo($path, PATHINFO_EXTENSION);
-			$text = self::_replace($value, $fileExtension, $optionArray['replace']);
+			$text = $this->_replace($value, $fileExtension, $optionArray['replace']);
 			$textDate = date(Db::getSetting('date'), filectime($path));
 			$isDir = is_dir($path);
-			$isFile = is_file($path) && array_key_exists($fileExtension, self::$_configArray['extension']);
+			$isFile = is_file($path) && array_key_exists($fileExtension, $this->_configArray['extension']);
 
 			/* handle directory */
 
@@ -232,10 +229,10 @@ class DirectoryLister extends Config
 					->copy()
 					->attr(
 					[
-						'href' => Registry::get('parameterRoute') . Registry::get('fullRoute') . '&directory=' . $path . $optionArray['hash'],
-						'title' => Language::get('directory', '_directory_lister')
+						'href' => $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute') . '&directory=' . $path . $optionArray['hash'],
+						'title' => $this->_language->get('directory', '_directory_lister')
 					])
-					->addClass(self::$_configArray['className']['types']['directory'])
+					->addClass($this->_configArray['className']['types']['directory'])
 					->text($text);
 				$outputItem .= $textSizeElement->copy();
 			}
@@ -244,21 +241,21 @@ class DirectoryLister extends Config
 
 			else if ($isFile)
 			{
-				$fileType = self::$_configArray['extension'][$fileExtension];
-				$textSize = ceil(filesize($path) / self::$_configArray['size']['divider']);
+				$fileType = $this->_configArray['extension'][$fileExtension];
+				$textSize = ceil(filesize($path) / $this->_configArray['size']['divider']);
 				$outputItem .= $linkElement
 					->copy()
 					->attr(
 					[
-						'href' => Registry::get('root') . '/' . $path,
+						'href' => $this->_registry->get('root') . '/' . $path,
 						'target' => '_blank',
-						'title' => Language::get('file', '_directory_lister')
+						'title' => $this->_language->get('file', '_directory_lister')
 					])
-					->addClass(self::$_configArray['className']['types'][$fileType])
+					->addClass($this->_configArray['className']['types'][$fileType])
 					->text($text);
 				$outputItem .= $textSizeElement
 					->copy()
-					->attr('data-unit', self::$_configArray['size']['unit'])
+					->attr('data-unit', $this->_configArray['size']['unit'])
 					->text($textSize);
 			}
 			if ($isDir || $isFile)
@@ -282,11 +279,11 @@ class DirectoryLister extends Config
 	 * @return string
 	 */
 
-	protected static function _replace($text, $fileExtension, $replaceArray)
+	protected function _replace($text, $fileExtension, $replaceArray)
 	{
 		foreach ($replaceArray as $replaceKey => $replaceValue)
 		{
-			if ($replaceKey === self::$_configArray['replaceKey']['extension'])
+			if ($replaceKey === $this->_configArray['replaceKey']['extension'])
 			{
 				$replaceKey = $fileExtension;
 			}

@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Console\Command;
 
-use PDO;
 use Redaxscript\Console\Parser;
 use Redaxscript\Db;
 

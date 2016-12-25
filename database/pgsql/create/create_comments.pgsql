@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS /* %PREFIX% */comments (
 	email varchar(255) DEFAULT NULL,
 	url varchar(255) DEFAULT NULL,
 	text text DEFAULT NULL,
-	language char(3) DEFAULT NULL,
+	language char(2) DEFAULT NULL,
 	article integer DEFAULT NULL,
 	status integer DEFAULT 1,
 	rank integer DEFAULT NULL,

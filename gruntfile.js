@@ -283,6 +283,86 @@ module.exports = function (grunt)
 					'templates/install/assets/scripts/install.js'
 				],
 				dest: 'templates/install/dist/scripts/install.min.js'
+			},
+			moduleAce:
+			{
+				src:
+				[
+					'modules/Ace/assets/scripts/ace.js'
+				],
+				dest: 'modules/Ace/dist/scripts/ace.min.js'
+			},
+			moduleAnalytics:
+			{
+				src:
+				[
+					'modules/Analytics/assets/scripts/analytics.js'
+				],
+				dest: 'modules/Analytics/dist/scripts/analytics.min.js'
+			},
+			moduleCallHome:
+			{
+				src:
+				[
+					'modules/CallHome/assets/scripts/call-home.js'
+				],
+				dest: 'modules/CallHome/dist/scripts/call-home.min.js'
+			},
+			moduleExperiments:
+			{
+				src:
+				[
+					'modules/Experiments/assets/scripts/experiments.js'
+				],
+				dest: 'modules/Experiments/dist/scripts/experiments.min.js'
+			},
+			moduleGallery:
+			{
+				src:
+				[
+					'modules/Gallery/assets/scripts/gallery.js'
+				],
+				dest: 'modules/Gallery/dist/scripts/gallery.min.js'
+			},
+			moduleLazyLoad:
+			{
+				src:
+				[
+					'modules/LazyLoad/assets/scripts/lazy-load.js'
+				],
+				dest: 'modules/LazyLoad/dist/scripts/lazy-load.min.js'
+			},
+			moduleMaps:
+			{
+				src:
+				[
+					'modules/Maps/assets/scripts/maps.js'
+				],
+				dest: 'modules/Maps/dist/scripts/maps.min.js'
+			},
+			moduleShareThis:
+			{
+				src:
+				[
+					'modules/ShareThis/assets/scripts/share-this.js'
+				],
+				dest: 'modules/ShareThis/dist/scripts/share-this.min.js'
+			},
+			moduleSyntaxHighlighter:
+			{
+				src:
+				[
+					'modules/SyntaxHighlighter/assets/scripts/syntax-highlighter.js'
+				],
+				dest: 'modules/SyntaxHighlighter/dist/scripts/syntax-highlighter.min.js'
+			},
+			moduleTinymce:
+			{
+				src:
+				[
+					'modules/Tinymce/assets/scripts/tinymce.js'
+				],
+				dest: 'modules/Tinymce/dist/scripts/tinymce.min.js'
 			}
 		},
 		postcss:
@@ -359,6 +439,38 @@ module.exports = function (grunt)
 				],
 				dest: 'templates/website/dist/styles/website.min.css'
 			},
+			moduleAce:
+			{
+				src:
+				[
+					'modules/Ace/assets/styles/_ace.css'
+				],
+				dest: 'modules/Ace/dist/styles/ace.min.css'
+			},
+			moduleDirectoryLister:
+			{
+				src:
+				[
+					'modules/DirectoryLister/assets/styles/_directory-lister.css'
+				],
+				dest: 'modules/DirectoryLister/dist/styles/directory-lister.min.css'
+			},
+			moduleFeedReader:
+			{
+				src:
+				[
+					'modules/FeedReader/assets/styles/_feed-reader.css'
+				],
+				dest: 'modules/FeedReader/dist/styles/feed-reader.min.css'
+			},
+			moduleGallery:
+			{
+				src:
+				[
+					'modules/Gallery/assets/styles/_gallery.css'
+				],
+				dest: 'modules/Gallery/dist/styles/gallery.min.css'
+			},
 			modulePreview:
 			{
 				src:
@@ -366,6 +478,30 @@ module.exports = function (grunt)
 					'modules/Preview/assets/styles/_preview.css'
 				],
 				dest: 'modules/Preview/dist/styles/preview.min.css'
+			},
+			moduleLazyLoad:
+			{
+				src:
+				[
+					'modules/LazyLoad/assets/styles/_lazy-load.css'
+				],
+				dest: 'modules/LazyLoad/dist/styles/lazy-load.min.css'
+			},
+			moduleMaps:
+			{
+				src:
+				[
+					'modules/Maps/assets/styles/_maps.css'
+				],
+				dest: 'modules/Maps/dist/styles/maps.min.css'
+			},
+			moduleShareThis:
+			{
+				src:
+				[
+					'modules/ShareThis/assets/styles/_share-this.css'
+				],
+				dest: 'modules/ShareThis/dist/styles/share-this.min.css'
 			},
 			moduleTinymceContent:
 			{
@@ -866,7 +1002,14 @@ module.exports = function (grunt)
 		'postcss:templateInstall',
 		'postcss:templateSkeleton',
 		'postcss:templateWebsite',
+		'postcss:moduleAce',
+		'postcss:moduleDirectoryLister',
+		'postcss:moduleFeedReader',
+		'postcss:moduleGallery',
 		'postcss:modulePreview',
+		'postcss:moduleLazyLoad',
+		'postcss:moduleMaps',
+		'postcss:moduleShareThis',
 		'postcss:moduleTinymceContent',
 		'postcss:moduleTinymceSkin'
 	]);
@@ -875,6 +1018,16 @@ module.exports = function (grunt)
 		'uglify:base',
 		'uglify:templateAdmin',
 		'uglify:templateConsole',
-		'uglify:templateInstall'
+		'uglify:templateInstall',
+		'uglify:moduleAce',
+		'uglify:moduleAnalytics',
+		'uglify:moduleCallHome',
+		'uglify:moduleExperiments',
+		'uglify:moduleGallery',
+		'uglify:moduleLazyLoad',
+		'uglify:moduleMaps',
+		'uglify:moduleShareThis',
+		'uglify:moduleSyntaxHighlighter',
+		'uglify:moduleTinymce'
 	]);
 };

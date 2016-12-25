@@ -3,6 +3,7 @@ namespace Redaxscript\Tests\Console\Command;
 
 use Redaxscript\Config;
 use Redaxscript\Console\Command;
+use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
@@ -39,6 +40,14 @@ class ConfigTest extends TestCaseAbstract
 	protected $_request;
 
 	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
+
+	/**
 	 * instance of the config class
 	 *
 	 * @var object
@@ -64,6 +73,7 @@ class ConfigTest extends TestCaseAbstract
 	{
 		$this->_registry = Registry::getInstance();
 		$this->_request = Request::getInstance();
+		$this->_language = Language::getInstance();
 		$this->_config = Config::getInstance();
 		$this->_configArray = $this->_config->get();
 	}
@@ -104,7 +114,7 @@ class ConfigTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_config);
+		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* expect and actual */
 
@@ -133,7 +143,7 @@ class ConfigTest extends TestCaseAbstract
 			'config',
 			'list'
 		]);
-		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_config);
+		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
@@ -165,7 +175,7 @@ class ConfigTest extends TestCaseAbstract
 			'--db-host',
 			'127.0.0.1'
 		]);
-		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_config);
+		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
@@ -194,7 +204,7 @@ class ConfigTest extends TestCaseAbstract
 			'set',
 			'--no-interaction'
 		]);
-		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_config);
+		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
@@ -224,7 +234,7 @@ class ConfigTest extends TestCaseAbstract
 			'--db-url',
 			'mysql://root:test@127.0.0.1/test'
 		]);
-		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_config);
+		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
@@ -257,7 +267,7 @@ class ConfigTest extends TestCaseAbstract
 			'DB_URL',
 			'--db-env'
 		]);
-		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_config);
+		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* restore */
 
@@ -293,7 +303,7 @@ class ConfigTest extends TestCaseAbstract
 			'parse',
 			'--no-interaction'
 		]);
-		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_config);
+		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
@@ -321,7 +331,7 @@ class ConfigTest extends TestCaseAbstract
 			'config',
 			'lock'
 		]);
-		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_config);
+		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 

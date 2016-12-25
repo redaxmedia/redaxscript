@@ -188,11 +188,11 @@ class Script extends HeadAbstract
 
 		/* process collection */
 
-		foreach ($collectionArray as $key => $value)
+		foreach ($collectionArray as $key => $attribute)
 		{
 			$output .= $scriptElement
 				->copy()
-				->attr($value);
+				->attr($attribute);
 			if ($key !== $lastKey || self::$_inline)
 			{
 				$output .= PHP_EOL;

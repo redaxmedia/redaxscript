@@ -42,11 +42,11 @@ class Meta extends HeadAbstract
 
 		/* process collection */
 
-		foreach ($collectionArray as $key => $value)
+		foreach ($collectionArray as $key => $attribute)
 		{
 			$output .= $metaElement
 				->copy()
-				->attr($value);
+				->attr($attribute);
 			if ($key !== $lastKey)
 			{
 				$output .= PHP_EOL;

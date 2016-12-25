@@ -1,0 +1,18 @@
+[
+	[
+		"<module>TestDummy<module>",
+		""
+	],
+	[
+		"<module>{\"TestDummy\":{\"firstNumber\":\"1\",\"secondNumber\":\"1\"}}<module>",
+		2
+	],
+	[
+		"<module>Invalid<module>",
+		null
+	],
+	[
+		"<module>{\"Invalid\":{\"test\":\"test\"}}<module>",
+		null
+	]
+]

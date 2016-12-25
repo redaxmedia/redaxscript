@@ -5,7 +5,6 @@ use Redaxscript\Db;
 use Redaxscript\Directory;
 use Redaxscript\Head;
 use Redaxscript\Html;
-use Redaxscript\Language;
 
 /**
  * lightbox enhanced image gallery
@@ -42,9 +41,9 @@ class Gallery extends Config
 	 * @return array
 	 */
 
-	public static function adminPanelNotification()
+	public function adminPanelNotification()
 	{
-		return self::getNotification();
+		return $this->getNotification();
 	}
 
 	/**
@@ -53,14 +52,14 @@ class Gallery extends Config
 	 * @since 3.0.0
 	 */
 
-	public static function renderStart()
+	public function renderStart()
 	{
 		/* link */
 
 		$link = Head\Link::getInstance();
 		$link
 			->init()
-			->appendFile('modules/Gallery/assets/styles/gallery.css');
+			->appendFile('modules/Gallery/dist/styles/gallery.min.css');
 
 		/* script */
 
@@ -68,7 +67,7 @@ class Gallery extends Config
 		$script
 			->init('foot')
 			->appendFile('modules/Gallery/assets/scripts/init.js')
-			->appendFile('modules/Gallery/assets/scripts/gallery.js');
+			->appendFile('modules/Gallery/dist/scripts/gallery.min.js');
 	}
 
 	/**
@@ -82,7 +81,7 @@ class Gallery extends Config
 	 * @return string
 	 */
 
-	public static function render($directory = null, $optionArray = [])
+	public function render($directory = null, $optionArray = [])
 	{
 		$output = null;
 		$outputItem = null;
@@ -92,7 +91,7 @@ class Gallery extends Config
 		$listElement = new Html\Element();
 		$listElement->init('ul',
 		[
-			'class' => self::$_configArray['className']['list']
+			'class' => $this->_configArray['className']['list']
 		]);
 
 		/* has directory */
@@ -103,17 +102,17 @@ class Gallery extends Config
 
 			if ($optionArray['command'] === 'remove')
 			{
-				self::_removeThumb($directory);
+				$this->_removeThumb($directory);
 			}
 
 			/* create as needed */
 
-			if ($optionArray['command'] === 'create' || !is_dir($directory . '/' . self::$_configArray['thumbDirectory']))
+			if ($optionArray['command'] === 'create' || !is_dir($directory . '/' . $this->_configArray['thumbDirectory']))
 			{
-				self::_createThumb($directory, $optionArray);
+				$this->_createThumb($directory, $optionArray);
 			}
 
-			$outputItem .= self::_renderItem($directory, $optionArray);
+			$outputItem .= $this->_renderItem($directory, $optionArray);
 
 			/* collect list output */
 
@@ -127,7 +126,7 @@ class Gallery extends Config
 
 		else
 		{
-			self::setNotification('error', Language::get('directory_not_found') . Language::get('colon') . ' ' . $directory . Language::get('point'));
+			$this->setNotification('error', $this->_language->get('directory_not_found') . $this->_language->get('colon') . ' ' . $directory . $this->_language->get('point'));
 		}
 		return $output;
 	}
@@ -143,7 +142,7 @@ class Gallery extends Config
 	 * @return string
 	 */
 
-	public static function _renderItem($directory = null, $optionArray = [])
+	public function _renderItem($directory = null, $optionArray = [])
 	{
 		$outputItem = null;
 
@@ -152,7 +151,7 @@ class Gallery extends Config
 		$imageElement = new Html\Element();
 		$imageElement->init('img',
 		[
-			'class' => self::$_configArray['className']['image']
+			'class' => $this->_configArray['className']['image']
 		]);
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
@@ -162,7 +161,7 @@ class Gallery extends Config
 		$galleryDirectory = new Directory();
 		$galleryDirectory->init($directory,
 		[
-			self::$_configArray['thumbDirectory']
+			$this->_configArray['thumbDirectory']
 		]);
 		$galleryDirectoryArray = $galleryDirectory->getArray();
 
@@ -183,11 +182,11 @@ class Gallery extends Config
 		foreach ($galleryDirectoryArray as $value)
 		{
 			$imagePath = $directory . '/' . $value;
-			$thumbPath = $directory . '/' . self::$_configArray['thumbDirectory'] . '/' . $value;
+			$thumbPath = $directory . '/' . $this->_configArray['thumbDirectory'] . '/' . $value;
 
 			/* get image data */
 
-			$imageData = self::_getExifData($imagePath);
+			$imageData = $this->_getExifData($imagePath);
 
 			/* collect item output */
 
@@ -227,7 +226,7 @@ class Gallery extends Config
 	 * @return array
 	 */
 
-	protected static function _getExifData($file = null)
+	protected function _getExifData($file = null)
 	{
 		$dataArray = [];
 		$exifArray = function_exists('exif_read_data') ? exif_read_data($file) : [];
@@ -252,11 +251,11 @@ class Gallery extends Config
 	 * @param string $directory
 	 */
 
-	protected static function _removeThumb($directory = null)
+	protected function _removeThumb($directory = null)
 	{
 		$galleryDirectory = new Directory();
 		$galleryDirectory->init($directory);
-		$galleryDirectory->remove(self::$_configArray['thumbDirectory']);
+		$galleryDirectory->remove($this->_configArray['thumbDirectory']);
 	}
 
 	/**
@@ -270,27 +269,27 @@ class Gallery extends Config
 	 * @return string
 	 */
 
-	protected static function _createThumb($directory = null, $optionArray = [])
+	protected function _createThumb($directory = null, $optionArray = [])
 	{
 		/* gallery directory */
 
 		$galleryDirectory = new Directory();
 		$galleryDirectory->init($directory,
 		[
-			self::$_configArray['thumbDirectory']
+			$this->_configArray['thumbDirectory']
 		]);
-		$galleryDirectory->create(self::$_configArray['thumbDirectory']);
+		$galleryDirectory->create($this->_configArray['thumbDirectory']);
 		$galleryDirectoryArray = $galleryDirectory->getArray();
 
 		/* process directory */
 
-		if (chmod($directory . '/' . self::$_configArray['thumbDirectory'], 0777))
+		if (chmod($directory . '/' . $this->_configArray['thumbDirectory'], 0777))
 		{
 			foreach ($galleryDirectoryArray as $value)
 			{
 				$imagePath = $directory . '/' . $value;
 				$imageExtension = strtolower(pathinfo($value, PATHINFO_EXTENSION));
-				$thumbPath = $directory . '/' . self::$_configArray['thumbDirectory'] . '/' . $value;
+				$thumbPath = $directory . '/' . $this->_configArray['thumbDirectory'] . '/' . $value;
 
 				/* switch extension */
 
@@ -311,8 +310,8 @@ class Gallery extends Config
 
 				/* source and dist */
 
-				$sourceArray = self::_calcSource($imagePath);
-				$distArray = self::_calcDist($sourceArray, $optionArray);
+				$sourceArray = $this->_calcSource($imagePath);
+				$distArray = $this->_calcDist($sourceArray, $optionArray);
 
 				/* create thumb files */
 
@@ -331,7 +330,7 @@ class Gallery extends Config
 
 		else
 		{
-			self::setNotification('error', Language::get('directory_permission_grant') . Language::get('colon') . ' ' . $directory . '/' . self::$_configArray['thumbDirectory']  . Language::get('point'));
+			$this->setNotification('error', $this->_language->get('directory_permission_grant') . $this->_language->get('colon') . ' ' . $directory . '/' . $this->_configArray['thumbDirectory']  . $this->_language->get('point'));
 		}
 	}
 
@@ -343,7 +342,7 @@ class Gallery extends Config
 	 * @return array
 	 */
 
-	protected static function _calcSource($imagePath = null)
+	protected function _calcSource($imagePath = null)
 	{
 		$sourceArray['dimensions'] = getimagesize($imagePath);
 		$sourceArray['height'] = $sourceArray['dimensions'][1];
@@ -360,10 +359,10 @@ class Gallery extends Config
 	 * @return array
 	 */
 
-	protected static function _calcDist($sourceArray = [], $optionArray = [])
+	protected function _calcDist($sourceArray = [], $optionArray = [])
 	{
-		$distArray['height'] = array_key_exists('height', $optionArray) ? $optionArray['height'] : self::$_configArray['height'];
-		$distArray['quality'] = array_key_exists('quality', $optionArray) ? $optionArray['quality'] : self::$_configArray['quality'];
+		$distArray['height'] = array_key_exists('height', $optionArray) ? $optionArray['height'] : $this->_configArray['height'];
+		$distArray['quality'] = array_key_exists('quality', $optionArray) ? $optionArray['quality'] : $this->_configArray['quality'];
 
 		/* calculate */
 

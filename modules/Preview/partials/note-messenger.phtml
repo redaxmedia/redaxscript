@@ -1,8 +1,8 @@
 <?php
 namespace Redaxscript;
 
-$registry = Registry::getInstance();
-$language = Language::getInstance();
+$registry = $this->_registry->getInstance();
+$language = $this->_language->getInstance();
 $linkElement = new Html\Element();
 $linkElement
 	->init('a',

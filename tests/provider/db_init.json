@@ -1,11 +1,19 @@
 [
 	[
-		"mysql"
+		{
+			"dbType": "mysql",
+			"dbPassword": "test"
+		}
 	],
 	[
-		"pgsql"
+		{
+			"dbType": "pgsql",
+			"dbPassword": "test"
+		}
 	],
 	[
-		"sqlite"
+		{
+			"dbType": "sqlite"
+		}
 	]
 ]

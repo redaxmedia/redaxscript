@@ -2,7 +2,6 @@
 namespace Redaxscript\Admin\View;
 
 use Redaxscript\Admin\Html\Form as AdminForm;
-use Redaxscript\Admin\View\Helper;
 use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Hook;
@@ -132,7 +131,7 @@ class GroupForm extends ViewAbstract implements ViewInterface
 			[
 				'id' => 'alias',
 				'name' => 'alias',
-                'pattern' => '[a-zA-Z0-9-]+',
+				'pattern' => '[a-zA-Z0-9-]+',
 				'required' => 'required',
 				'value' => $group->alias
 			])

@@ -4,6 +4,7 @@ namespace Redaxscript\Tests\Console\Command;
 use Redaxscript\Config;
 use Redaxscript\Console\Command;
 use Redaxscript\Directory;
+use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
@@ -39,6 +40,14 @@ class BackupTest extends TestCaseAbstract
 	protected $_request;
 
 	/**
+	 * instance of the language class
+	 *
+	 * @var object
+	 */
+
+	protected $_language;
+
+	/**
 	 * instance of the config class
 	 *
 	 * @var object
@@ -56,6 +65,7 @@ class BackupTest extends TestCaseAbstract
 	{
 		$this->_registry = Registry::getInstance();
 		$this->_request = Request::getInstance();
+		$this->_language = Language::getInstance();
 		$this->_config = Config::getInstance();
 	}
 
@@ -93,7 +103,7 @@ class BackupTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$backupCommand = new Command\Backup($this->_registry, $this->_request, $this->_config);
+		$backupCommand = new Command\Backup($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* expect and actual */
 
@@ -123,7 +133,7 @@ class BackupTest extends TestCaseAbstract
 			'--directory',
 			'.backup'
 		]);
-		$backupCommand = new Command\Backup($this->_registry, $this->_request, $this->_config);
+		$backupCommand = new Command\Backup($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
@@ -151,7 +161,7 @@ class BackupTest extends TestCaseAbstract
 			'database',
 			'--no-interaction'
 		]);
-		$backupCommand = new Command\Backup($this->_registry, $this->_request, $this->_config);
+		$backupCommand = new Command\Backup($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 

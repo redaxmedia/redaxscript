@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS /* %PREFIX% */extras (
 	alias varchar(255) DEFAULT NULL,
 	author varchar(255) DEFAULT NULL,
 	text longtext DEFAULT NULL,
-	language char(3) DEFAULT NULL,
+	language char(2) DEFAULT NULL,
 	sibling int(10) DEFAULT NULL,
 	category int(10) DEFAULT NULL,
 	article int(10) DEFAULT NULL,
