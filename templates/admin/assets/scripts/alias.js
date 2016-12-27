@@ -1,7 +1,7 @@
 /**
  * @tableofcontents
  *
- * 1. generate alias
+ * 1. alias
  * 2. init
  *
  * @since 3.0.0
@@ -14,15 +14,15 @@
 {
 	'use strict';
 
-	/* @section 1. generate alias */
+	/* @section 1. alias */
 
-	$.fn.generateAlias = function (options)
+	$.fn.alias = function (options)
 	{
 		/* extend options */
 
-		if (rs.plugins.generateAlias.options !== options)
+		if (rs.plugins.alias.options !== options)
 		{
-			options = $.extend({}, rs.plugins.generateAlias.options, options || {});
+			options = $.extend({}, rs.plugins.alias.options, options || {});
 		}
 
 		/* return this */
@@ -64,9 +64,9 @@
 
 	$(function ()
 	{
-		if (rs.plugins.generateAlias.init)
+		if (rs.plugins.alias.init)
 		{
-			$(rs.plugins.generateAlias.selector).generateAlias(rs.plugins.generateAlias.options);
+			$(rs.plugins.alias.selector).alias(rs.plugins.alias.options);
 		}
 	});
 })(window.jQuery || window.Zepto, window.getSlug);

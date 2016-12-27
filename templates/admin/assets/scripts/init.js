@@ -1,7 +1,7 @@
 /**
  * @tableofcontents
  *
- * 1. generate alias
+ * 1. alias
  * 2. panel
  *
  * @since 3.0.0
@@ -10,17 +10,18 @@
  * @author Henry Ruhs
  */
 
-/* @section 1. generate alias */
+/* @section 1. alias */
 
-rs.plugins.generateAlias =
+rs.plugins.alias =
 {
 	init: true,
-	selector: 'form input.rs-admin-js-generate-alias-input, form input.rs-admin-js-generate-alias-output',
+	dependency: typeof getSlug === 'function',
+	selector: 'form input.rs-admin-js-alias-input, form input.rs-admin-js-alias-output',
 	options:
 	{
 		element:
 		{
-			related: 'input.rs-admin-js-generate-alias-output'
+			related: 'input.rs-admin-js-alias-output'
 		}
 	}
 };
