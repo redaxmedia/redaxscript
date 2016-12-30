@@ -53,6 +53,7 @@ class HelperTest extends TestCaseAbstract
 				'id' => 2,
 				'title' => 'test',
 				'alias' => 'test-one',
+				'author' => 'test',
 				'description' => 'category-description',
 				'keywords' => 'category-keywords',
 				'robots' => 5
@@ -65,6 +66,7 @@ class HelperTest extends TestCaseAbstract
 				'id' => 3,
 				'title' => 'test',
 				'alias' => 'test-two',
+				'author' => 'test',
 				'parent' => 2
 			])
 			->save();

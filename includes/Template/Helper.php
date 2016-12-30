@@ -117,39 +117,31 @@ class Helper
 
 	public static function getCanonical()
 	{
-		$firstTable = Registry::get('firstTable');
-		$secondTable = Registry::get('secondTable');
 		$lastTable = Registry::get('lastTable');
-		$firstParameter = Registry::get('firstParameter');
-		$secondParameter = Registry::get('secondParameter');
-		$parentParameter = $secondTable === 'categories' ? $secondParameter : $firstParameter;
-		$parentTable = $secondTable === 'categories' ? $secondTable : $firstTable;
-		$fullRoute = Registry::get('fullRoute');
-		$canonicalUrl = Registry::get('root') . '/' . Registry::get('parameterRoute');
+		$lastId = Registry::get('lastId');
+		$canonicalUrl = Registry::get('root');
 
 		/* find route */
 
-		if ($firstTable === 'categories' && $lastTable === 'articles')
+		if ($lastTable === 'categories')
 		{
-			$categoryId = Db::forTablePrefix($parentTable)->where('alias', $parentParameter)->findOne()->id;
-			$articlesTotal = Db::forTablePrefix('articles')->where('category', $categoryId)->count();
+			$articles = Db::forTablePrefix('articles')->where('category', $lastId);
+			$articlesTotal = $articles->findMany()->count();
 			if ($articlesTotal === 1)
 			{
-				$canonicalRoute = $firstParameter;
-				if ($secondTable === 'categories')
-				{
-					$canonicalRoute .= '/' . $secondParameter;
-				}
+				$lastTable = 'articles';
+				$lastId = $articles->findOne()->id;
 			}
 		}
+		$canonicalRoute = build_route($lastTable, $lastId);
 
 		/* handle route */
 
 		if ($canonicalRoute)
 		{
-			return $canonicalUrl . $canonicalRoute;
+			return $canonicalUrl . '/' . Registry::get('parameterRoute') . $canonicalRoute;
 		}
-		return $canonicalUrl . $fullRoute;
+		return $canonicalUrl;
 	}
 
 	/**
