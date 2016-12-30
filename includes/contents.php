@@ -13,7 +13,7 @@
 
 function contents()
 {
-	$output = Redaxscript\Hook::trigger('contentStart');
+	$output = Redaxscript\Module\Hook::trigger('contentStart');
 	$aliasValidator = new Redaxscript\Validator\Alias();
 	$lastId = Redaxscript\Registry::get('lastId');
 	$lastTable = Redaxscript\Registry::get('lastTable');
@@ -145,12 +145,12 @@ function contents()
 
 				/* parser */
 
-				$parser = new Redaxscript\Parser\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+				$parser = new Redaxscript\Content\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Request::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Config::getInstance());
 				$parser->process($text, $route);
 
 				/* collect headline output */
 
-				$output .= Redaxscript\Hook::trigger('contentFragmentStart', $r);
+				$output .= Redaxscript\Module\Hook::trigger('contentFragmentStart', $r);
 				if ($headline == 1)
 				{
 					$output .= '<h2 class="rs-title-content" id="article-' . $alias . '">';
@@ -173,7 +173,7 @@ function contents()
 				{
 					$output .= byline('articles', $id, $author, $date);
 				}
-				$output .= Redaxscript\Hook::trigger('contentFragmentEnd', $r);
+				$output .= Redaxscript\Module\Hook::trigger('contentFragmentEnd', $r);
 
 				/* admin dock */
 
@@ -214,7 +214,7 @@ function contents()
 	}
 	else
 	{
-		$output .= Redaxscript\Hook::trigger('contentEnd');
+		$output .= Redaxscript\Module\Hook::trigger('contentEnd');
 		echo $output;
 
 		/* call comments as needed */
@@ -225,7 +225,7 @@ function contents()
 
 			if ($comments == 1 && Redaxscript\Registry::get('commentReplace'))
 			{
-				Redaxscript\Hook::trigger('commentReplace');
+				Redaxscript\Module\Hook::trigger('commentReplace');
 			}
 
 			/* else native comments */
@@ -272,7 +272,7 @@ function extras($filter)
 {
 	if (!$filter)
 	{
-		$output .= Redaxscript\Hook::trigger('extraStart');
+		$output .= Redaxscript\Module\Hook::trigger('extraStart');
 	}
 	$categoryId = Redaxscript\Registry::get('categoryId');
 	$articleId = Redaxscript\Registry::get('articleId');
@@ -350,12 +350,12 @@ function extras($filter)
 				{
 					/* parser */
 
-					$parser = new Redaxscript\Parser\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+					$parser = new Redaxscript\Content\Parser(Redaxscript\Registry::getInstance(), Redaxscript\Request::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Config::getInstance());
 					$parser->process($text, $route);
 
 					/* collect headline output */
 
-					$output .= Redaxscript\Hook::trigger('extraFragmentStart', $r);
+					$output .= Redaxscript\Module\Hook::trigger('extraFragmentStart', $r);
 					if ($headline == 1)
 					{
 						$output .= '<h3 class="rs-title-extra" id="extra-' . $alias . '">' . $title . '</h3>';
@@ -363,7 +363,7 @@ function extras($filter)
 
 					/* collect box output */
 
-					$output .= '<div class="rs-box-extra">' . $parser->getOutput() . '</div>' . Redaxscript\Hook::trigger('extraFragmentEnd', $r);
+					$output .= '<div class="rs-box-extra">' . $parser->getOutput() . '</div>' . Redaxscript\Module\Hook::trigger('extraFragmentEnd', $r);
 
 					/* prepend admin dock */
 
@@ -377,7 +377,7 @@ function extras($filter)
 	}
 	if (!$filter)
 	{
-		$output .= Redaxscript\Hook::trigger('extraEnd');
+		$output .= Redaxscript\Module\Hook::trigger('extraEnd');
 	}
 	echo $output;
 }
@@ -402,7 +402,7 @@ function extras($filter)
 
 function byline($table, $id, $author, $date)
 {
-	$output = Redaxscript\Hook::trigger('bylineStart');
+	$output = Redaxscript\Module\Hook::trigger('bylineStart');
 	$time = date(Redaxscript\Db::getSetting('time'), strtotime($date));
 	$date = date(Redaxscript\Db::getSetting('date'), strtotime($date));
 	if ($table == 'articles')
@@ -444,7 +444,7 @@ function byline($table, $id, $author, $date)
 		$output .= '</span>';
 	}
 	$output .= '</div>';
-	$output .= Redaxscript\Hook::trigger('bylineEnd');
+	$output .= Redaxscript\Module\Hook::trigger('bylineEnd');
 	return $output;
 }
 
@@ -465,7 +465,7 @@ function byline($table, $id, $author, $date)
 
 function pagination($sub_active, $sub_maximum, $route)
 {
-	$output = Redaxscript\Hook::trigger('paginationStart');
+	$output = Redaxscript\Module\Hook::trigger('paginationStart');
 	$output .= '<ul class="rs-list-pagination">';
 
 	/* collect first and previous output */
@@ -512,6 +512,6 @@ function pagination($sub_active, $sub_maximum, $route)
 		$output .= '<li class="rs-item-last"><a href="' . Redaxscript\Registry::get('parameterRoute') . $last_route . '">' . Redaxscript\Language::get('last') . '</a></li>';
 	}
 	$output .= '</ul>';
-	$output .= Redaxscript\Hook::trigger('paginationEnd');
+	$output .= Redaxscript\Module\Hook::trigger('paginationEnd');
 	echo $output;
 }

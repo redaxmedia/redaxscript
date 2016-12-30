@@ -21,7 +21,7 @@ if ($registry->get('dbStatus') < 2 && file_exists('install.php'))
 
 /* render */
 
-Hook::trigger('renderStart');
+Module\Hook::trigger('renderStart');
 if ($registry->get('renderBreak'))
 {
 	return;
@@ -37,7 +37,7 @@ if ($registry->get('contentError'))
 
 /* template */
 
-$template = Hook::collect('renderTemplate');
+$template = Module\Hook::collect('renderTemplate');
 if (array_key_exists('header', $template))
 {
 	header($template['header']);
@@ -50,4 +50,4 @@ else
 {
 	include_once('templates/' . $registry->get('template') . '/index.phtml');
 }
-Hook::trigger('renderEnd');
+Module\Hook::trigger('renderEnd');

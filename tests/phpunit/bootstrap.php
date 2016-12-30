@@ -79,7 +79,7 @@ if (is_dir('modules/TestDummy'))
 	$testDummy->install();
 }
 
-/* hook */
+/* module hook */
 
-Hook::construct($registry, $request, $language, $config);
-Hook::init();
+Module\Hook::construct($registry, $request, $language, $config);
+Module\Hook::init();

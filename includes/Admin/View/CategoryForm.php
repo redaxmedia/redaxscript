@@ -4,7 +4,7 @@ namespace Redaxscript\Admin\View;
 use Redaxscript\Admin\Html\Form as AdminForm;
 use Redaxscript\Db;
 use Redaxscript\Html;
-use Redaxscript\Hook;
+use Redaxscript\Module;
 
 /**
  * children class to create the category form
@@ -30,7 +30,7 @@ class CategoryForm extends ViewAbstract implements ViewInterface
 
 	public function render($categoryId = null)
 	{
-		$output = Hook::trigger('adminCategoryFormStart');
+		$output = Module\Hook::trigger('adminCategoryFormStart');
 		$category = Db::forTablePrefix('categories')->whereIdIs($categoryId)->findOne();
 
 		/* html elements */
@@ -304,7 +304,7 @@ class CategoryForm extends ViewAbstract implements ViewInterface
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
-		$output .= Hook::trigger('adminCategoryFormEnd');
+		$output .= Module\Hook::trigger('adminCategoryFormEnd');
 		return $output;
 	}
 }

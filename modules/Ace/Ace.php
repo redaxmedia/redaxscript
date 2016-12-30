@@ -14,7 +14,7 @@ use Redaxscript\Head;
  * @author Henry Ruhs
  */
 
-class Ace extends Module
+class Ace extends Module\Module
 {
 	/**
 	 * array of the module

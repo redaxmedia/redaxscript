@@ -3,7 +3,7 @@ namespace Redaxscript\View;
 
 use Redaxscript\Db;
 use Redaxscript\Html;
-use Redaxscript\Hook;
+use Redaxscript\Module;
 use Redaxscript\Validator;
 
 /**
@@ -31,7 +31,7 @@ class ResultList extends ViewAbstract
 
 	public function render($resultArray = [])
 	{
-		$output = Hook::trigger('resultListStart');
+		$output = Module\Hook::trigger('resultListStart');
 		$accessValidator = new Validator\Access();
 
 		/* html elements */
@@ -91,7 +91,7 @@ class ResultList extends ViewAbstract
 				}
 			}
 		}
-		$output .= Hook::trigger('resultListEnd');
+		$output .= Module\Hook::trigger('resultListEnd');
 		return $output;
 	}
 }

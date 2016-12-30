@@ -3,7 +3,7 @@ namespace Redaxscript\View;
 
 use Redaxscript\Db;
 use Redaxscript\Html;
-use Redaxscript\Hook;
+use Redaxscript\Module;
 
 /**
  * children class to create the register form
@@ -27,7 +27,7 @@ class RegisterForm extends ViewAbstract
 
 	public function render()
 	{
-		$output = Hook::trigger('registerFormStart');
+		$output = Module\Hook::trigger('registerFormStart');
 
 		/* html elements */
 
@@ -117,7 +117,7 @@ class RegisterForm extends ViewAbstract
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
-		$output .= Hook::trigger('registerFormEnd');
+		$output .= Module\Hook::trigger('registerFormEnd');
 		return $output;
 	}
 }

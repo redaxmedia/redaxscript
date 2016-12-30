@@ -5,7 +5,7 @@ use Redaxscript\Admin\Html\Form as AdminForm;
 use Redaxscript\Db;
 use Redaxscript\Directory;
 use Redaxscript\Html;
-use Redaxscript\Hook;
+use Redaxscript\Module;
 use Redaxscript\Template;
 
 /**
@@ -32,7 +32,7 @@ class ModuleForm extends ViewAbstract implements ViewInterface
 
 	public function render($moduleId = null)
 	{
-		$output = Hook::trigger('adminModuleFormStart');
+		$output = Module\Hook::trigger('adminModuleFormStart');
 		$module = Db::forTablePrefix('modules')->whereIdIs($moduleId)->findOne();
 
 		/* html elements */
@@ -217,7 +217,7 @@ class ModuleForm extends ViewAbstract implements ViewInterface
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
-		$output .= Hook::trigger('adminModuleFormEnd');
+		$output .= Module\Hook::trigger('adminModuleFormEnd');
 		return $output;
 	}
 }

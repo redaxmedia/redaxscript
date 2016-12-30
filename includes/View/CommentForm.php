@@ -3,7 +3,7 @@ namespace Redaxscript\View;
 
 use Redaxscript\Db;
 use Redaxscript\Html;
-use Redaxscript\Hook;
+use Redaxscript\Module;
 
 /**
  * children class to create the comment form
@@ -29,7 +29,7 @@ class CommentForm extends ViewAbstract
 
 	public function render($articleId = null)
 	{
-		$output = Hook::trigger('commentFormStart');
+		$output = Module\Hook::trigger('commentFormStart');
 
 		/* html elements */
 
@@ -134,7 +134,7 @@ class CommentForm extends ViewAbstract
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
-		$output .= Hook::trigger('commentFormEnd');
+		$output .= Module\Hook::trigger('commentFormEnd');
 		return $output;
 	}
 }

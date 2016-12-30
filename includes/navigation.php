@@ -16,7 +16,7 @@
 
 function navigation_list($table, $options)
 {
-	$output = Redaxscript\Hook::trigger('navigationStart');
+	$output = Redaxscript\Module\Hook::trigger('navigationStart');
 
 	/* define option variables */
 
@@ -232,7 +232,7 @@ function navigation_list($table, $options)
 	{
 		$output = '<ul' . $id_string . $class_string . '>' . $output . '</ul>';
 	}
-	$output .= Redaxscript\Hook::trigger('navigationEnd');
+	$output .= Redaxscript\Module\Hook::trigger('navigationEnd');
 	echo $output;
 }
 

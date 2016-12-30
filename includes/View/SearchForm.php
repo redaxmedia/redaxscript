@@ -2,7 +2,7 @@
 namespace Redaxscript\View;
 
 use Redaxscript\Html;
-use Redaxscript\Hook;
+use Redaxscript\Module;
 
 /**
  * children class to create the search form
@@ -28,7 +28,7 @@ class SearchForm extends ViewAbstract
 
 	public function render($table = null)
 	{
-		$output = Hook::trigger('searchFormStart');
+		$output = Module\Hook::trigger('searchFormStart');
 
 		/* html elements */
 
@@ -69,7 +69,7 @@ class SearchForm extends ViewAbstract
 		/* collect output */
 
 		$output .= $formElement;
-		$output .= Hook::trigger('searchFormEnd');
+		$output .= Module\Hook::trigger('searchFormEnd');
 		return $output;
 	}
 }

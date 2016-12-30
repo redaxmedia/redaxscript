@@ -51,7 +51,7 @@ $installer->insertData(
 	'adminEmail' => 'test@test.com'
 ]);
 
-/* hook */
+/* module hook */
 
-Hook::construct($registry, $request, $language, $config);
-Hook::init();
+Module\Hook::construct($registry, $request, $language, $config);
+Module\Hook::init();

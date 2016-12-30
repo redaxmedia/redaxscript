@@ -1,5 +1,12 @@
 <?php
-namespace Redaxscript;
+namespace Redaxscript\Module;
+
+use Redaxscript\Config;
+use Redaxscript\Db;
+use Redaxscript\Installer;
+use Redaxscript\Language;
+use Redaxscript\Registry;
+use Redaxscript\Request;
 
 /**
  * parent class to create a module

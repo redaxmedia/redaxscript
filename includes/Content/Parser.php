@@ -1,5 +1,5 @@
 <?php
-namespace Redaxscript\Parser;
+namespace Redaxscript\Content;
 
 /**
  * parent class to parse content for pseudo tags
@@ -7,7 +7,7 @@ namespace Redaxscript\Parser;
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category Parser
+ * @category Content
  * @author Henry Ruhs
  */
 
@@ -38,7 +38,7 @@ class Parser extends ParserAbstract
 
 		foreach ($this->_namespaceArray as $tagClass)
 		{
-			$tag = new $tagClass($this->_registry, $this->_language);
+			$tag = new $tagClass($this->_registry, $this->_request, $this->_language, $this->_config);
 			$this->_output = $tag->process($this->_output, $route);
 		}
 	}

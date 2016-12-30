@@ -4,7 +4,7 @@ namespace Redaxscript\Admin\View;
 use Redaxscript\Admin\Html\Form as AdminForm;
 use Redaxscript\Db;
 use Redaxscript\Html;
-use Redaxscript\Hook;
+use Redaxscript\Module;
 
 /**
  * children class to create the user form
@@ -30,7 +30,7 @@ class UserForm extends ViewAbstract implements ViewInterface
 
 	public function render($userId = null)
 	{
-		$output = Hook::trigger('adminUserFormStart');
+		$output = Module\Hook::trigger('adminUserFormStart');
 		$user = Db::forTablePrefix('users')->whereIdIs($userId)->findOne();
 
 		/* html elements */
@@ -266,7 +266,7 @@ class UserForm extends ViewAbstract implements ViewInterface
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
-		$output .= Hook::trigger('adminUserFormEnd');
+		$output .= Module\Hook::trigger('adminUserFormEnd');
 		return $output;
 	}
 }

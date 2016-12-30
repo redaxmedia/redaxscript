@@ -70,6 +70,12 @@
 			<directory>tests/phpunit/Console</directory>
 		</testsuite>
 
+		<!-- content -->
+
+		<testsuite name="content">
+			<file>tests/phpunit/Content/ParserTest.php</file>
+		</testsuite>
+
 		<!-- controller -->
 
 		<testsuite name="controller">
@@ -184,12 +190,6 @@
 			<file>tests/phpunit/HashTest.php</file>
 		</testsuite>
 
-		<!-- hook -->
-
-		<testsuite name="hook">
-			<file>tests/phpunit/HookTest.php</file>
-		</testsuite>
-
 		<!-- installer -->
 
 		<testsuite name="installer">
@@ -217,13 +217,8 @@
 		<!-- module -->
 
 		<testsuite name="module">
-			<file>tests/phpunit/ModuleTest.php</file>
-		</testsuite>
-
-		<!-- parser -->
-
-		<testsuite name="parser">
-			<file>tests/phpunit/Parser/ParserTest.php</file>
+			<file>tests/phpunit/Module/HookTest.php</file>
+			<file>tests/phpunit/Module/ModuleTest.php</file>
 		</testsuite>
 
 		<!-- registry -->

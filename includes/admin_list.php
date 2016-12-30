@@ -13,7 +13,7 @@
 
 function admin_contents_list()
 {
-	$output = Redaxscript\Hook::trigger('adminContentListStart');
+	$output = Redaxscript\Module\Hook::trigger('adminContentListStart');
 
 	/* define access variables */
 
@@ -380,7 +380,7 @@ function admin_contents_list()
 		$output .= '<tbody><tr><td colspan="4">' . $error . '</td></tr></tbody>';
 	}
 	$output .= '</table></div>';
-	$output .= Redaxscript\Hook::trigger('adminContentListEnd');
+	$output .= Redaxscript\Module\Hook::trigger('adminContentListEnd');
 	echo $output;
 }
 
@@ -397,7 +397,7 @@ function admin_contents_list()
 
 function admin_groups_list()
 {
-	$output = Redaxscript\Hook::trigger('adminGroupListStart');
+	$output = Redaxscript\Module\Hook::trigger('adminGroupListStart');
 
 	/* query groups */
 
@@ -477,7 +477,7 @@ function admin_groups_list()
 		$output .= '<tbody><tr><td colspan="3">' . $error . '</td></tr></tbody>';
 	}
 	$output .= '</table></div>';
-	$output .= Redaxscript\Hook::trigger('adminGroupListEnd');
+	$output .= Redaxscript\Module\Hook::trigger('adminGroupListEnd');
 	echo $output;
 }
 
@@ -494,7 +494,7 @@ function admin_groups_list()
 
 function admin_users_list()
 {
-	$output = Redaxscript\Hook::trigger('adminUserListStart');
+	$output = Redaxscript\Module\Hook::trigger('adminUserListStart');
 
 	/* query users */
 
@@ -631,7 +631,7 @@ function admin_users_list()
 		$output .= '<tbody><tr><td colspan="3">' . $error . '</td></tr></tbody>';
 	}
 	$output .= '</table></div>';
-	$output .= Redaxscript\Hook::trigger('adminUserListEnd');
+	$output .= Redaxscript\Module\Hook::trigger('adminUserListEnd');
 	echo $output;
 }
 
@@ -648,7 +648,7 @@ function admin_users_list()
 
 function admin_modules_list()
 {
-	$output = Redaxscript\Hook::trigger('adminModuleListStart');
+	$output = Redaxscript\Module\Hook::trigger('adminModuleListStart');
 
 	/* query modules */
 
@@ -783,6 +783,6 @@ function admin_modules_list()
 		}
 	}
 	$output .= '</table></div>';
-	$output .= Redaxscript\Hook::trigger('adminModuleListEnd');
+	$output .= Redaxscript\Module\Hook::trigger('adminModuleListEnd');
 	echo $output;
 }

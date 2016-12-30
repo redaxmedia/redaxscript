@@ -21,7 +21,7 @@ function admin_router()
 	$tokenParameter = Redaxscript\Registry::get('tokenParameter');
 	$usersException = $tableParameter == 'users' && $idParameter == Redaxscript\Registry::get('myId');
 	$messenger = new Redaxscript\Admin\Messenger(Redaxscript\Registry::getInstance());
-	Redaxscript\Hook::trigger('adminRouterStart');
+	Redaxscript\Module\Hook::trigger('adminRouterStart');
 	if (Redaxscript\Registry::get('adminRouterBreak') == 1)
 	{
 		return;
@@ -237,5 +237,5 @@ function admin_router()
 			call_user_func('admin_' . $adminParameter);
 			return;
 	}
-	Redaxscript\Hook::trigger('adminRouterEnd');
+	Redaxscript\Module\Hook::trigger('adminRouterEnd');
 }

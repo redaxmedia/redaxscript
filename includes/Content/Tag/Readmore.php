@@ -1,5 +1,5 @@
 <?php
-namespace Redaxscript\Parser\Tag;
+namespace Redaxscript\Content\Tag;
 
 use Redaxscript\Html;
 
@@ -9,7 +9,7 @@ use Redaxscript\Html;
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category Parser
+ * @category Content
  * @author Henry Ruhs
  */
 

@@ -230,7 +230,7 @@ class Messenger
 
 	public function render($type = null, $message = null, $title = null)
 	{
-		$output = Hook::trigger('messengerStart');
+		$output = Module\Hook::trigger('messengerStart');
 		$outputItem = null;
 
 		/* html elements */
@@ -280,7 +280,7 @@ class Messenger
 		/* collect output */
 
 		$output .= $titleElement . $boxElement . $this->_renderAction($type);
-		$output .= Hook::trigger('messengerEnd');
+		$output .= Module\Hook::trigger('messengerEnd');
 		return $output;
 	}
 

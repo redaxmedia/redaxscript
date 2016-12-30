@@ -14,7 +14,7 @@ use Redaxscript\Module;
  * @author Henry Ruhs
  */
 
-class SyntaxHighlighter extends Module
+class SyntaxHighlighter extends Module\Module
 {
 	/**
 	 * array of the module

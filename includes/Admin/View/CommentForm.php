@@ -4,7 +4,7 @@ namespace Redaxscript\Admin\View;
 use Redaxscript\Admin\Html\Form as AdminForm;
 use Redaxscript\Db;
 use Redaxscript\Html;
-use Redaxscript\Hook;
+use Redaxscript\Module;
 
 /**
  * children class to create the article form
@@ -30,7 +30,7 @@ class CommentForm extends ViewAbstract implements ViewInterface
 
 	public function render($commentId = null)
 	{
-		$output = Hook::trigger('adminCommentFormStart');
+		$output = Module\Hook::trigger('adminCommentFormStart');
 		$comment = Db::forTablePrefix('comments')->whereIdIs($commentId)->findOne();
 
 		/* html elements */
@@ -260,7 +260,7 @@ class CommentForm extends ViewAbstract implements ViewInterface
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
-		$output .= Hook::trigger('adminCommentFormEnd');
+		$output .= Module\Hook::trigger('adminCommentFormEnd');
 		return $output;
 	}
 }

@@ -16,7 +16,7 @@ use Redaxscript\Reader;
  * @author Henry Ruhs
  */
 
-class CallHome extends Module
+class CallHome extends Module\Module
 {
 	/**
 	 * array of the module

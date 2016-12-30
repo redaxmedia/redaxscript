@@ -14,7 +14,7 @@ use Redaxscript\Head;
  * @author Henry Ruhs
  */
 
-class Analytics extends Module
+class Analytics extends Module\Module
 {
 	/**
 	 * array of the module

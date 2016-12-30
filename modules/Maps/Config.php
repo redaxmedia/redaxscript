@@ -13,7 +13,7 @@ use Redaxscript\Module;
  * @author Henry Ruhs
  */
 
-class Config extends Module
+class Config extends Module\Module
 {
 	/**
 	 * array of config

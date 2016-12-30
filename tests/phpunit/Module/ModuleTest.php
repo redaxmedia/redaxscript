@@ -1,12 +1,13 @@
 <?php
-namespace Redaxscript\Tests;
+namespace Redaxscript\Tests\Module;
 
 use Redaxscript\Config;
 use Redaxscript\Db;
-use Redaxscript\Registry;
-use Redaxscript\Request;
 use Redaxscript\Language;
 use Redaxscript\Module;
+use Redaxscript\Registry;
+use Redaxscript\Request;
+use Redaxscript\Tests\TestCaseAbstract;
 
 /**
  * ModuleTest
@@ -41,7 +42,7 @@ class ModuleTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$module = new Module(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		$module = new Module\Module(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		$module->init(
 		[
 			'alias' => 'TestDummy'
@@ -66,7 +67,7 @@ class ModuleTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$module = new Module(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		$module = new Module\Module(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		$module->init(
 		[
 			'name' => 'Test dummy',
@@ -93,7 +94,7 @@ class ModuleTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$module = new Module(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		$module = new Module\Module(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		$module->init(
 		[
 			'name' => 'Test dummy',
@@ -122,7 +123,7 @@ class ModuleTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$module = new Module(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		$module = new Module\Module(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 
 		/* actual */
 
@@ -143,7 +144,7 @@ class ModuleTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$module = new Module(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		$module = new Module\Module(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		$module->init(
 		[
 			'alias' => 'TestDummy'
@@ -171,7 +172,7 @@ class ModuleTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$module = new Module(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		$module = new Module\Module(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		$module->init(
 		[
 			'alias' => 'TestDummy'

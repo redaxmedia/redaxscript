@@ -3,7 +3,7 @@ namespace Redaxscript\View;
 
 use Redaxscript\Db;
 use Redaxscript\Html;
-use Redaxscript\Hook;
+use Redaxscript\Module;
 
 /**
  * children class to create the login form
@@ -27,7 +27,7 @@ class LoginForm extends ViewAbstract
 
 	public function render()
 	{
-		$output = Hook::trigger('loginFormStart');
+		$output = Module\Hook::trigger('loginFormStart');
 		$outputLegend = null;
 
 		/* html elements */
@@ -117,7 +117,7 @@ class LoginForm extends ViewAbstract
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
-		$output .= Hook::trigger('loginFormEnd');
+		$output .= Module\Hook::trigger('loginFormEnd');
 		return $output;
 	}
 }

@@ -4,7 +4,7 @@ namespace Redaxscript\Admin\View;
 use Redaxscript\Admin\Html\Form as AdminForm;
 use Redaxscript\Db;
 use Redaxscript\Html;
-use Redaxscript\Hook;
+use Redaxscript\Module;
 
 /**
  * children class to create the group form
@@ -30,7 +30,7 @@ class GroupForm extends ViewAbstract implements ViewInterface
 
 	public function render($groupId = null)
 	{
-		$output = Hook::trigger('adminGroupFormStart');
+		$output = Module\Hook::trigger('adminGroupFormStart');
 		$group = Db::forTablePrefix('groups')->whereIdIs($groupId)->findOne();
 
 		/* html elements */
@@ -310,7 +310,7 @@ class GroupForm extends ViewAbstract implements ViewInterface
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
-		$output .= Hook::trigger('adminGroupFormEnd');
+		$output .= Module\Hook::trigger('adminGroupFormEnd');
 		return $output;
 	}
 }

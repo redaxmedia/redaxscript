@@ -1,30 +1,36 @@
 <?php
-namespace Redaxscript\Parser\Tag;
+namespace Redaxscript\Content\Tag;
+
+use Redaxscript\Html;
 
 /**
- * children class to parse content for language tags
+ * children class to parse content for blockcode tags
  *
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category Parser
+ * @category Content
  * @author Henry Ruhs
  */
 
-class Language extends TagAbstract
+class Blockcode extends TagAbstract
 {
 	/**
-	 * options of the language tag
+	 * options of the blockcode tag
 	 *
 	 * @var array
 	 */
 
 	protected $_optionArray =
 	[
+		'className' =>
+		[
+			'blockcode' => 'rs-js-code rs-code-default'
+		],
 		'search' =>
 		[
-			'<language>',
-			'</language>'
+			'<blockcode>',
+			'</blockcode>'
 		],
 		'delimiter' => '@@@'
 	];
@@ -44,13 +50,21 @@ class Language extends TagAbstract
 		$output = str_replace($this->_optionArray['search'], $this->_optionArray['delimiter'], $content);
 		$partArray = array_filter(explode($this->_optionArray['delimiter'], $output));
 
+		/* html elements */
+
+		$preElement = new Html\Element();
+		$preElement->init('pre',
+		[
+			'class' => $this->_optionArray['className']['blockcode']
+		]);
+
 		/* parse as needed */
 
 		foreach ($partArray as $key => $value)
 		{
 			if ($key % 2)
 			{
-				$partArray[$key] = $this->_language->get($value);
+				$partArray[$key] = $preElement->copy()->html(htmlspecialchars($value, null, null, false));
 			}
 		}
 		$output = implode($partArray);

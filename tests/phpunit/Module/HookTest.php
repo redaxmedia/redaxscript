@@ -1,11 +1,12 @@
 <?php
-namespace Redaxscript\Tests;
+namespace Redaxscript\Tests\Module;
 
 use Redaxscript\Config;
-use Redaxscript\Hook;
+use Redaxscript\Language;
+use Redaxscript\Module;
 use Redaxscript\Registry;
 use Redaxscript\Request;
-use Redaxscript\Language;
+use Redaxscript\Tests\TestCaseAbstract;
 
 /**
  * HookTest
@@ -29,12 +30,12 @@ class HookTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		Hook::construct(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
-		Hook::init();
+		Module\Hook::construct(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		Module\Hook::init();
 
 		/* actual */
 
-		$actualArray = Hook::getModuleArray();
+		$actualArray = Module\Hook::getModuleArray();
 
 		/* compare */
 
@@ -51,13 +52,13 @@ class HookTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		Hook::construct(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
-		Hook::init();
-		Hook::trigger('render');
+		Module\Hook::construct(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		Module\Hook::init();
+		Module\Hook::trigger('render');
 
 		/* actual */
 
-		$actualArray = Hook::getEventArray();
+		$actualArray = Module\Hook::getEventArray();
 
 		/* compare */
 
@@ -74,12 +75,12 @@ class HookTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		Hook::construct(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
-		Hook::init();
+		Module\Hook::construct(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		Module\Hook::init();
 
 		/* actual */
 
-		$actualArray = Hook::collect('adminPanelNotification');
+		$actualArray = Module\Hook::collect('adminPanelNotification');
 
 		/* compare */
 
@@ -96,12 +97,12 @@ class HookTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		Hook::construct(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
-		Hook::init();
+		Module\Hook::construct(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		Module\Hook::init();
 
 		/* actual */
 
-		$actual = Hook::collect('invalidMethod');
+		$actual = Module\Hook::collect('invalidMethod');
 
 		/* compare */
 
@@ -118,12 +119,12 @@ class HookTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		Hook::construct(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
-		Hook::init();
+		Module\Hook::construct(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		Module\Hook::init();
 
 		/* actual */
 
-		$actual = Hook::trigger('render');
+		$actual = Module\Hook::trigger('render');
 
 		/* compare */
 
@@ -140,12 +141,12 @@ class HookTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		Hook::construct(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
-		Hook::init();
+		Module\Hook::construct(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		Module\Hook::init();
 
 		/* actual */
 
-		$actual = Hook::trigger('invalidMethod');
+		$actual = Module\Hook::trigger('invalidMethod');
 
 		/* compare */
 
