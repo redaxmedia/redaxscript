@@ -59,6 +59,7 @@ class UserFormTest extends TestCaseAbstract
 			->create()
 			->set(
 			[
+				'id' => 2,
 				'name' => 'Test',
 				'user' => 'test',
 				'groups' => '1'

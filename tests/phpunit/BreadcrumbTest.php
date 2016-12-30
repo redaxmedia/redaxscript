@@ -97,9 +97,8 @@ class BreadcrumbTest extends TestCaseAbstract
 
 	public static function tearDownAfterClass()
 	{
-		Db::forTablePrefix('categories')->where('alias', 'ultra')->deleteMany();
-		Db::forTablePrefix('categories')->where('alias', 'lightweight')->deleteMany();
-		Db::forTablePrefix('articles')->where('alias', 'cms')->deleteMany();
+		Db::forTablePrefix('categories')->whereNotEqual('id', 1)->deleteMany();
+		Db::forTablePrefix('articles')->whereNotEqual('id', 1)->deleteMany();
 	}
 
 	/**

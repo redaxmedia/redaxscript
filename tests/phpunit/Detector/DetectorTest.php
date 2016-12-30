@@ -81,7 +81,7 @@ class DetectorTest extends TestCaseAbstract
 	{
 		Db::setSetting('language', null);
 		Db::setSetting('template', null);
-		Db::forTablePrefix('articles')->whereIdIs(2)->deleteMany();
+		Db::forTablePrefix('articles')->whereNotEqual('id', 1)->deleteMany();
 	}
 
 	/**

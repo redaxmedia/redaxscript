@@ -66,7 +66,7 @@ class RegisterTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		Db::forTablePrefix('users')->where('user', 'new')->deleteMany();
+		Db::forTablePrefix('users')->whereNotEqual('id', 1)->deleteMany();
 	}
 
 	/**
