@@ -105,12 +105,10 @@ class Module
 
 		if (array_key_exists('alias', static::$_moduleArray))
 		{
-			$registry = Registry::getInstance();
-			$language = Language::getInstance();
-			$language->load(
+			$this->_language->load(
 			[
 				'modules/' . static::$_moduleArray['alias'] . '/languages/en.json',
-				'modules/' . static::$_moduleArray['alias'] . '/languages/' . $registry->get('language') . '.json'
+				'modules/' . static::$_moduleArray['alias'] . '/languages/' . $this->_registry->get('language') . '.json'
 			]);
 		}
 	}

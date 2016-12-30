@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Head;
 
-use Redaxscript\Assetic;
+use Redaxscript\Asset;
 use Redaxscript\Html;
 use Redaxscript\Registry;
 
@@ -133,7 +133,7 @@ class Link extends HeadAbstract
 	public function concat($optionArray = [])
 	{
 		$optionArray = array_merge(self::$_optionArray, $optionArray);
-		$loader = new Assetic\Loader(Registry::getInstance());
+		$loader = new Asset\Loader(Registry::getInstance());
 		$loader
 			->init(self::$_collectionArray[self::$_namespace])
 			->concat($optionArray, self::$_rewriteArray[self::$_namespace]);

@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Template;
 
-use Redaxscript\Assetic;
+use Redaxscript\Asset;
 use Redaxscript\Db;
 use Redaxscript\Registry;
 use Redaxscript\Language;
@@ -26,14 +26,6 @@ class Helper
 	 */
 
 	protected static $_prefix = 'rs-';
-
-	/**
-	 * robot
-	 *
-	 * @var string
-	 */
-
-	protected static $_robot = 'all';
 
 	/**
 	 * subset
@@ -258,6 +250,10 @@ class Helper
 			$lastContent = Db::forTablePrefix($lastTable)->whereIdIs($lastId)->whereNull('access')->findOne();
 			$robots = $lastContent->robots;
 		}
+		if (!$robots)
+		{
+			$robots = Db::getSetting('robots');
+		}
 
 		/* handle robots */
 
@@ -265,7 +261,6 @@ class Helper
 		{
 			return self::$_robotArray[$robots];
 		}
-		return self::$_robot;
 	}
 
 	/**
@@ -278,7 +273,7 @@ class Helper
 
 	public static function getTransport()
 	{
-		$transport = new Assetic\Transport(Registry::getInstance(), Language::getInstance());
+		$transport = new Asset\Transport(Registry::getInstance(), Language::getInstance());
 		return $transport->getArray();
 	}
 

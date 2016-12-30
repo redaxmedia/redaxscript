@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Head;
 
-use Redaxscript\Assetic;
+use Redaxscript\Asset;
 use Redaxscript\Html;
 use Redaxscript\Registry;
 use Redaxscript\Language;
@@ -136,7 +136,7 @@ class Script extends HeadAbstract
 
 	public function transportVar($key = null, $value = null)
 	{
-		$transport = new Assetic\Transport(Registry::getInstance(), Language::getInstance());
+		$transport = new Asset\Transport(Registry::getInstance(), Language::getInstance());
 		$inline = $transport->render($key, $value);
 		$this->appendInline($inline);
 		return $this;
@@ -155,7 +155,7 @@ class Script extends HeadAbstract
 	public function concat($optionArray = [])
 	{
 		$optionArray = array_merge(self::$_optionArray, $optionArray);
-		$loader = new Assetic\Loader(Registry::getInstance());
+		$loader = new Asset\Loader(Registry::getInstance());
 		$loader
 			->init(self::$_collectionArray[self::$_namespace])
 			->concat($optionArray);
