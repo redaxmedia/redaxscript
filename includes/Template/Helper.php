@@ -172,8 +172,17 @@ class Helper
 		}
 		else if ($lastTable && $lastId)
 		{
-			$lastContent = Db::forTablePrefix($lastTable)->whereIdIs($lastId)->findOne();
-			$description = $lastContent->description;
+			$content = Db::forTablePrefix($lastTable)->whereIdIs($lastId)->findOne();
+			$description = $content->description;
+
+			/* handle parent */
+
+			if (!$description)
+			{
+				$parentId = $content->category ? $content->category : $content->parent;
+				$parent = Db::forTablePrefix('categories')->whereIdIs($parentId)->whereNull('access')->findOne();
+				$description = $parent->description;
+			}
 		}
 
 		/* handle description */
@@ -207,8 +216,17 @@ class Helper
 		}
 		else if ($lastTable && $lastId)
 		{
-			$lastContent = Db::forTablePrefix($lastTable)->whereIdIs($lastId)->findOne();
-			$keywords = $lastContent->keywords;
+			$content = Db::forTablePrefix($lastTable)->whereIdIs($lastId)->findOne();
+			$keywords = $content->keywords;
+
+			/* handle parent */
+
+			if (!$keywords)
+			{
+				$parentId = $content->category ? $content->category : $content->parent;
+				$parent = Db::forTablePrefix('categories')->whereIdIs($parentId)->whereNull('access')->findOne();
+				$keywords = $parent->keywords;
+			}
 		}
 
 		/* handle keywords */
@@ -247,12 +265,17 @@ class Helper
 		}
 		else if ($lastTable && $lastId)
 		{
-			$lastContent = Db::forTablePrefix($lastTable)->whereIdIs($lastId)->whereNull('access')->findOne();
-			$robots = $lastContent->robots;
-		}
-		if (!$robots)
-		{
-			$robots = Db::getSetting('robots');
+			$content = Db::forTablePrefix($lastTable)->whereIdIs($lastId)->whereNull('access')->findOne();
+			$robots = $content->robots;
+
+			/* handle parent */
+
+			if (!$robots)
+			{
+				$parentId = $content->category ? $content->category : $content->parent;
+				$parent = Db::forTablePrefix('categories')->whereIdIs($parentId)->whereNull('access')->findOne();
+				$robots = $parent->robots;
+			}
 		}
 
 		/* handle robots */
@@ -261,6 +284,8 @@ class Helper
 		{
 			return self::$_robotArray[$robots];
 		}
+		$robots = Db::getSetting('robots');
+		return self::$_robotArray[$robots];
 	}
 
 	/**
@@ -287,9 +312,10 @@ class Helper
 
 	public static function getSubset()
 	{
-		foreach (self::$_subsetArray as $subset => $language)
+		$language = Registry::get('language');
+		foreach (self::$_subsetArray as $subset => $valueArray)
 		{
-			if (in_array(Registry::get('language'), $language))
+			if (in_array($language, $valueArray))
 			{
 				return $subset;
 			}
@@ -307,9 +333,10 @@ class Helper
 
 	public static function getDirection()
 	{
-		foreach (self::$_directionArray as $direction => $language)
+		$language = Registry::get('language');
+		foreach (self::$_directionArray as $direction => $valueArray)
 		{
-			if (in_array(Registry::get('language'), $language))
+			if (in_array($language, $valueArray))
 			{
 				return $direction;
 			}

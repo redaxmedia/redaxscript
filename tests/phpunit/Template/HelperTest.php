@@ -55,8 +55,17 @@ class HelperTest extends TestCaseAbstract
 				'alias' => 'test-one',
 				'description' => 'category-description',
 				'keywords' => 'category-keywords',
-				'robots' => 1,
-				'parent' => 0
+				'robots' => 5
+			])
+			->save();
+		Db::forTablePrefix('categories')
+			->create()
+			->set(
+			[
+				'id' => 3,
+				'title' => 'test',
+				'alias' => 'test-two',
+				'parent' => 2
 			])
 			->save();
 		Db::forTablePrefix('articles')
@@ -65,7 +74,7 @@ class HelperTest extends TestCaseAbstract
 			[
 				'id' => 2,
 				'title' => 'test',
-				'alias' => 'test-two',
+				'alias' => 'test-three',
 				'author' => 'test',
 				'description' => 'article-description',
 				'keywords' => 'article-keywords',
@@ -80,12 +89,14 @@ class HelperTest extends TestCaseAbstract
 			[
 				'id' => 3,
 				'title' => 'test',
-				'alias' => 'test-three',
+				'alias' => 'test-four',
 				'author' => 'test',
 				'text' => 'test',
 				'category' => 2
 			])
 			->save();
+		Db::setSetting('description', 'setting-description');
+		Db::setSetting('keywords', 'setting-keywords');
 	}
 
 	/**
