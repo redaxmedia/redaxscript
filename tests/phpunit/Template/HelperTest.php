@@ -95,6 +95,18 @@ class HelperTest extends TestCaseAbstract
 				'category' => 2
 			])
 			->save();
+		Db::forTablePrefix('articles')
+			->create()
+			->set(
+			[
+				'id' => 4,
+				'title' => 'test',
+				'alias' => 'test-five',
+				'author' => 'test',
+				'text' => 'test',
+				'category' => 3
+			])
+			->save();
 		Db::setSetting('description', 'setting-description');
 		Db::setSetting('keywords', 'setting-keywords');
 	}

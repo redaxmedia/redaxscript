@@ -1,24 +1,62 @@
 [
 	[
 		{
-			"firstTable": "categories",
+			"firstTable": null,
 			"secondTable": null,
-			"lastTable": "articles",
-			"firstParameter": "test",
+			"lastTable": null,
+			"firstParameter": null,
 			"secondParameter": null,
-			"fullRoute": null
+			"fullRoute": null,
+			"root": "http://localhost"
 		},
-		null
+		"http://localhost/"
 	],
 	[
 		{
 			"firstTable": "categories",
 			"secondTable": null,
-			"lastTable": "articles",
+			"lastTable": "categories",
+			"firstParameter": null,
+			"secondParameter": null,
+			"fullRoute": null,
+			"root": "http://localhost"
+		},
+		"http://localhost/"
+	],
+	[
+		{
+			"firstTable": "categories",
+			"secondTable": null,
+			"lastTable": "categories",
 			"firstParameter": "test-one",
 			"secondParameter": null,
-			"fullRoute": "test/test-one"
+			"fullRoute": "test-one",
+			"root": "http://localhost"
 		},
-		"test/test-one"
+		"http://localhost/test-one"
+	],
+	[
+		{
+			"firstTable": "categories",
+			"secondTable": "articles",
+			"lastTable": "articles",
+			"firstParameter": "test-one",
+			"secondParameter": "test-three",
+			"fullRoute": "test-one/test-three",
+			"root": "http://localhost"
+		},
+		"http://localhost/test-one/test-three"
+	],
+	[
+		{
+			"firstTable": "categories",
+			"secondTable": "categories",
+			"lastTable": "articles",
+			"firstParameter": "test-one",
+			"secondParameter": "test-two",
+			"fullRoute": "test-one/test-two/test-five",
+			"root": "http://localhost"
+		},
+		"http://localhost/test-one/test-two"
 	]
 ]
