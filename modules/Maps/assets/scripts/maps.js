@@ -34,44 +34,30 @@
 			$(this).each(function ()
 			{
 				var map = $(this),
-					mapLat = Number(map.data('lat')),
-					mapLng = Number(map.data('lng')),
-					mapZoom = Number(map.data('zoom')),
-					mapInstance = '';
+					latitude = Number(map.data('latitude')),
+					longitude = Number(map.data('longitude')),
+					zoom = Number(map.data('zoom')),
+					mapInstance = null;
 
 				/* overwrite center */
 
-				if (mapLat && mapLng)
+				if (latitude && longitude)
 				{
-					options.general.center = new google.maps.LatLng(mapLat, mapLng);
+					options.general.center = new google.maps.LatLng(latitude, longitude);
 				}
 
 				/* overwrite zoom */
 
-				if (mapZoom)
+				if (zoom)
 				{
-					options.general.zoom = mapZoom;
+					options.general.zoom = zoom;
 				}
 
 				/* create map instance */
 
 				if (map.length)
 				{
-					mapInstance = new google.maps.Map(map[0], options.general);
-
-					/* debranding */
-
-					if (options.deBranding)
-					{
-						google.maps.event.addListenerOnce(mapInstance, 'bounds_changed', function ()
-						{
-							map.children('div').css('opacity', 0);
-						});
-						google.maps.event.addListenerOnce(mapInstance, 'tilesloaded', function ()
-						{
-							map.children('div').css('opacity', 1).children('div').slice(1, 7).remove();
-						});
-					}
+					mapInstance = new google.maps.Map(map.get(0), options.general);
 
 					/* set custom styles */
 

@@ -23,7 +23,7 @@ class Config extends Module\Module
 
 	protected $_configArray =
 	[
-		'className' => 'rs-js-map rs-map',
+		'className' => 'rs-js-map rs-component-map',
 		'apiUrl' => 'https://maps.googleapis.com/maps/api/js',
 		'apiKey' => 'AIzaSyApJDayHOmOnVy6OucJXG_cGSHSC_f7NSM'
 	];

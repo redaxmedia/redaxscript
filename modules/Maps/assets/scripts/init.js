@@ -33,16 +33,57 @@ rs.modules.maps =
 		styles:
 		[
 			{
-				featureType: 'all',
+				featureType: 'administrative',
+				elementType: 'labels.text.fill',
 				stylers:
 				[
 					{
-						saturation: -100
+						color: '#333333'
+					}
+				]
+			},
+			{
+				featureType: 'landscape',
+				stylers:
+				[
+					{
+						color: '#f5f5f5'
 					}
 				]
 			},
 			{
 				featureType: 'poi',
+				stylers:
+				[
+					{
+						visibility: 'off'
+					}
+				]
+			},
+			{
+				featureType: 'road',
+				stylers:
+				[
+					{
+						saturation: -100
+					},
+					{
+						lightness: 45
+					}
+				]
+			},
+			{
+				featureType: 'road.highway',
+				stylers:
+				[
+					{
+						visibility: 'simplified'
+					}
+				]
+			},
+			{
+				featureType: 'road.arterial',
+				elementType: 'labels.icon',
 				stylers:
 				[
 					{
@@ -60,26 +101,15 @@ rs.modules.maps =
 				]
 			},
 			{
-				featureType: 'road.highway',
-				elementType: 'labels',
-				stylers:
-				[
-					{
-						visibility: 'off'
-					}
-				]
-			},
-			{
 				featureType: 'water',
 				stylers:
 				[
 					{
-						color: '#0090db'
+						color: '#3873b5'
 					}
 				]
 			}
 		],
-		marker: true,
-		deBranding: true
+		marker: true
 	}
 };
