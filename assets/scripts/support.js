@@ -25,13 +25,14 @@
  *    1.21 svg
  *    1.22 touch
  *    1.23 vibrate
- *    1.24 web gl
- *    1.25 web sql
- *    1.26 web socket
- *    1.27 web storage
- *    1.28 web worker
+ *    1.24 webgl
+ *    1.25 webp
+ *    1.26 websql
+ *    1.27 websocket
+ *    1.28 webstorage
+ *    1.29 webworker
  *
- * @since 2.6.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -409,7 +410,7 @@
 			return false;
 		}(),
 
-		/* @section 1.24 web gl */
+		/* @section 1.24 webgl */
 
 		webGL: function ()
 		{
@@ -420,7 +421,18 @@
 			return false;
 		}(),
 
-		/* @section 1.25 web sql */
+		/* @section 1.25 webp */
+
+		webP: function ()
+		{
+			if (doc.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') === 0)
+			{
+				return true;
+			}
+			return false;
+		}(),
+
+		/* @section 1.26 websql */
 
 		webSQL: function ()
 		{
@@ -431,7 +443,7 @@
 			return false;
 		}(),
 
-		/* @section 1.26 web socket */
+		/* @section 1.27 websocket */
 
 		webSocket: function ()
 		{
@@ -442,7 +454,7 @@
 			return false;
 		}(),
 
-		/* @section 1.27 web storage */
+		/* @section 1.28 webstorage */
 
 		webStorage: function ()
 		{
@@ -453,7 +465,7 @@
 			return false;
 		}(),
 
-		/* @section 1.28 web worker */
+		/* @section 1.29 webworker */
 
 		webWorker: function ()
 		{
