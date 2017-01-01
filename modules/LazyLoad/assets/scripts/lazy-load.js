@@ -116,4 +116,4 @@
 			$(rs.modules.lazyLoad.selector).lazyLoad(rs.modules.lazyLoad.options);
 		}
 	});
-})(window.jQuery || window.Zepto);
+})(window.jQuery);

@@ -461,4 +461,4 @@
 			$(rs.modules.gallery.selector).gallery(rs.modules.gallery.options);
 		}
 	});
-})(window.jQuery || window.Zepto);
+})(window.jQuery);

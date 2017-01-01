@@ -93,4 +93,4 @@
 			$(rs.modules.maps.selector).maps(rs.modules.maps.options);
 		}
 	});
-})(window.jQuery || window.Zepto, window.google);
+})(window.jQuery, window.google);

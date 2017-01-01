@@ -131,4 +131,4 @@
 			$(rs.plugins.panel.selector).panel(rs.plugins.panel.options);
 		}
 	});
-})(window.jQuery || window.Zepto);
+})(window.jQuery);

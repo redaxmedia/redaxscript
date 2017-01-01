@@ -103,4 +103,4 @@
 			$(rs.plugins.keyShortcut.selector).keyShortcut(rs.plugins.keyShortcut.options);
 		}
 	});
-})(window.jQuery || window.Zepto);
+})(window.jQuery);

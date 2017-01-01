@@ -70,4 +70,4 @@
 			$.fn.tinymce(rs.modules.tinymce.options);
 		}
 	});
-})(window.jQuery || window.Zepto, window.tinymce);
+})(window.jQuery, window.tinymce);

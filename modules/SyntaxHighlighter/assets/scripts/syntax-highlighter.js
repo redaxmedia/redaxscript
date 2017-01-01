@@ -49,4 +49,4 @@
 			$(rs.modules.syntaxHighlighter.selector).syntaxHighlighter(rs.modules.syntaxHighlighter.options);
 		}
 	});
-})(window.jQuery || window.Zepto, window.hljs);
+})(window.jQuery, window.hljs);

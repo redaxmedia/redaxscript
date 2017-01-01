@@ -419,4 +419,4 @@
 			$(rs.plugins.validateSearch.selector).validateSearch(rs.plugins.validateSearch.options);
 		}
 	});
-})(window.jQuery || window.Zepto);
+})(window.jQuery);

@@ -44,4 +44,4 @@
 			$.fn.experiments();
 		}
 	});
-})(window.jQuery || window.Zepto, window.cxApi);
+})(window.jQuery, window.cxApi);

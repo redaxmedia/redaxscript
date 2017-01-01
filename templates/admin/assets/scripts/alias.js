@@ -36,8 +36,8 @@
 				var field = $(this),
 					form = field.closest('form'),
 					related = form.find(options.element.related),
-					fieldValue = $.trim(field.val()),
-					aliasValue = '';
+					fieldValue = field.val(),
+					aliasValue;
 
 				/* clean alias from value */
 
@@ -64,9 +64,9 @@
 
 	$(function ()
 	{
-		if (rs.plugins.alias.init)
+		if (rs.plugins.alias.init && rs.plugins.alias.dependency)
 		{
 			$(rs.plugins.alias.selector).alias(rs.plugins.alias.options);
 		}
 	});
-})(window.jQuery || window.Zepto, window.getSlug);
+})(window.jQuery, window.getSlug);
