@@ -243,7 +243,7 @@
 			}
 		}
 
-		/* load */
+		/* window loaded */
 
 		win.onload = function ()
 		{
