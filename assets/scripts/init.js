@@ -252,6 +252,6 @@
 				docElement.className += ' ';
 			}
 			docElement.className += 'rs-is-load';
-		}
+		};
 	})();
 })(document, document.documentElement, window);
