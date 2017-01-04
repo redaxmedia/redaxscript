@@ -242,5 +242,16 @@
 				}
 			}
 		}
+
+		/* load */
+
+		win.onload = function ()
+		{
+			if (docElement.className)
+			{
+				docElement.className += ' ';
+			}
+			docElement.className += 'rs-is-load';
+		}
 	})();
 })(document, document.documentElement, window);

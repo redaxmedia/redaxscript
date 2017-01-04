@@ -5,7 +5,7 @@
 	allow from all
 </filesmatch>
 <ifmodule mod_deflate.c>
-	<filesmatch \.(css|js|php|svg|ttf|woff|woff2)$>
+	<filesmatch \.(css|ico|jpg|js|svg|png|webp|woff|woff2)$>
 		setoutputfilter deflate
 	</filesmatch>
 </ifmodule>
@@ -25,7 +25,7 @@
 	rewriterule ^([^.]*).([\w]{3,})$ ?p=$1&t=$2 [l]
 </ifmodule>
 <ifmodule mod_headers.c>
-	<filesmatch \.(css|gif|ico|jpg|js|svg|ttf|png|woff|woff2)$>
+	<filesmatch \.(css|ico|jpg|js|svg|png|webp|woff|woff2)$>
 		header set cache-control max-age=604800
 	</filesmatch>
 </ifmodule>
