@@ -11,7 +11,7 @@ Redaxscript
 [![Docker Automated build](https://img.shields.io/docker/automated/redaxmedia/redaxscript.svg)](https://hub.docker.com/r/redaxmedia/redaxscript/)
 [![Latest Stable Version](https://img.shields.io/packagist/v/redaxmedia/redaxscript.svg?style=flat)](https://packagist.org/packages/redaxmedia/redaxscript)
 [![License](https://img.shields.io/packagist/l/redaxmedia/redaxscript.svg?style=flat)](https://packagist.org/packages/redaxmedia/redaxscript)
-[![Gitter Chat](https://img.shields.io/badge/gitter-chat-129e5e.svg?style=flat)](https://gitter.im/redaxmedia/redaxscript)
+[![Gitter Chat](https://img.shields.io/gitter/room/redaxmedia/redaxscript.js.svg?style=flat)](https://gitter.im/redaxmedia/redaxscript)
 [![GitHub Stats](https://img.shields.io/badge/github-stats-ff5500.svg)](http://githubstats.com/redaxmedia/redaxscript)
 
 
