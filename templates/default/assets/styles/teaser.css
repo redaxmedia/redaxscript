@@ -32,7 +32,7 @@
 
 .rs-is-load
 {
-	&. rs-component-teaser
+	& .rs-component-teaser
 	{
 		background-image: var(--rs-url-teaser-small-jpg);
 	}
