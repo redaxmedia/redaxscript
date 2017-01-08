@@ -169,12 +169,15 @@ class Link extends HeadAbstract
 
 		foreach ($collectionArray as $key => $attribute)
 		{
-			$output .= $metaElement
-				->copy()
-				->attr($attribute);
-			if ($key !== $lastKey)
+			if ($attribute['href'])
 			{
-				$output .= PHP_EOL;
+				$output .= $metaElement
+					->copy()
+					->attr($attribute);
+				if ($key !== $lastKey)
+				{
+					$output .= PHP_EOL;
+				}
 			}
 		}
 		$this->clear();

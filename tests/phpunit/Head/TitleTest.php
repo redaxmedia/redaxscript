@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Tests\Head;
 
+use Redaxscript\Db;
 use Redaxscript\Head;
 use Redaxscript\Registry;
 use Redaxscript\Tests\TestCaseAbstract;
@@ -26,6 +27,14 @@ class TitleTest extends TestCaseAbstract
 	protected $_registry;
 
 	/**
+	 * array to restore setting
+	 *
+	 * @var array
+	 */
+
+	protected $_settingArray;
+
+	/**
 	 * setUp
 	 *
 	 * @since 3.0.0
@@ -34,6 +43,25 @@ class TitleTest extends TestCaseAbstract
 	public function setUp()
 	{
 		$this->_registry = Registry::getInstance();
+		$this->_settingArray =
+		[
+			'title' => Db::getSetting('title'),
+			'description' => Db::getSetting('description'),
+			'divider' => Db::getSetting('divider')
+		];
+	}
+
+	/**
+	 * tearDown
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function tearDown()
+	{
+		Db::setSetting('title', $this->_settingArray['title']);
+		Db::setSetting('description', $this->_settingArray['description']);
+		Db::setSetting('divider', $this->_settingArray['divider']);
 	}
 
 	/**
@@ -55,15 +83,19 @@ class TitleTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $registryArray
+	 * @param array $settingArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($registryArray = [], $expect = null)
+	public function testRender($registryArray = [], $settingArray = [], $expect = null)
 	{
 		/* setup */
 
+		Db::setSetting('title', $settingArray['title']);
+		Db::setSetting('description', $settingArray['description']);
+		Db::setSetting('divider', $settingArray['divider']);
 		$this->_registry->init($registryArray);
 		$title = new Head\Title($this->_registry);
 

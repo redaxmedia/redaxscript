@@ -98,7 +98,7 @@ class Breadcrumb
 		}
 		if (!$this->_optionArray['divider'])
 		{
-			$this->_optionArray['divider'] = Db::getSetting('divider');
+			$this->_optionArray['divider'] = Db::getSetting('divider') ? Db::getSetting('divider') : null;
 		}
 		$this->_create();
 	}
@@ -175,9 +175,11 @@ class Breadcrumb
 
 				/* add divider */
 
-				if ($key !== $lastKey)
+				if ($key !== $lastKey && $this->_optionArray['divider'])
 				{
-					$outputItem .= $itemElement->addClass($this->_optionArray['className']['divider'])->text($this->_optionArray['divider']);
+					$outputItem .= $itemElement
+						->addClass($this->_optionArray['className']['divider'])
+						->text($this->_optionArray['divider']);
 				}
 			}
 		}

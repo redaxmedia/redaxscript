@@ -1,26 +1,54 @@
 [
 	[
 		{
-			"metaDescription": "description",
-			"divider": " - ",
-			"metaTitle": "test"
+			"metaTitle": "test",
+			"metaDivider": " + ",
+			"metaDescription": "description"
 		},
-		"<title>test - description</title>"
+		{
+			"title": null,
+			"divider": null,
+			"description": null
+		},
+		"<title>test + description</title>"
 	],
 	[
 		{
-			"metaDescription": "test description",
-			"divider": " - ",
-			"metaTitle": null
+			"metaTitle": "test",
+			"metaDivider": " + ",
+			"metaDescription": null
 		},
-		"<title>Redaxscript - test description</title>"
+		{
+			"title": null,
+			"divider": null,
+			"description": null
+		},
+		"<title>test</title>"
+	],
+	[
+		{
+			"metaTitle": null,
+			"metaDivider": null,
+			"metaDescription": null
+		},
+		{
+			"title": "Redaxscript",
+			"divider": " - ",
+			"description": "Ultra lightweight Content Management System"
+		},
+		"<title>Redaxscript - Ultra lightweight Content Management System</title>"
 	],
 	[
 		{
 			"metaDescription": null,
-			"divider": " - ",
+			"metaDivider": null,
 			"metaTitle": null
 		},
-		"<title>Redaxscript - Ultra lightweight Content Management System</title>"
+		{
+			"title": null,
+			"divider": null,
+			"description": null
+		},
+		"<!-- Redaxscript\\Head\\Title -->"
 	]
 ]

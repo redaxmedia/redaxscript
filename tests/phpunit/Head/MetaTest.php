@@ -77,7 +77,7 @@ class MetaTest extends TestCaseAbstract
 
 		/* expect and actual */
 
-		$actual = (string)$meta;
+		$actual = $meta;
 
 		/* compare */
 
