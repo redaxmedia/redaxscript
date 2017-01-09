@@ -392,8 +392,6 @@ class Install extends ControllerAbstract
 	 * refresh the connection
 	 *
 	 * @since 3.0.0
-	 *
-	 * @return array
 	 */
 
 	protected function _refreshConnection()

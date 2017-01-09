@@ -17,30 +17,7 @@ use PDOException;
  * @method _addJoinSource(string $operator, string $table, mixed $constraint, string $tableAlias)
  * @method _addOrderBy(string $column, string $value)
  * @method _addWhere(string $clause, array $valueArray)
- * @method _setupDb(string $connection = null)
- * @method clearCache(string $table, string $connection)
- * @method deleteMany()
- * @method findArray()
- * @method findMany()
- * @method findOne(integer $id = null)
- * @method forTable(string $table, string $connection = null)
- * @method getDb(string $connection = null)
- * @method rawExecute(string $query, array $parameterArray = [], string $connection = null)
- * @method rawQuery(string $query, array $parameterArray = [])
- * @method resetDb()
- * @method orderByAsc(string $column)
- * @method orderByDesc(string $column)
- * @method tableAlias(string $tableAlias)
- * @method whereGt(string $column, string $value)
- * @method whereIdIn(array $idArray)
- * @method whereIdIs(integer $id)
- * @method whereIn(string $column, string $value)
- * @method whereLike(string $column, string $value)
- * @method whereLt(string $column, string $value)
- * @method whereNotEqual(string $column, string $value)
- * @method whereNotIn(string $column, array $valueArray)
- * @method whereNull(string $column)
- * @method whereRaw(string $clause, array $parameterArray = [])
+ * @method _setupDb(string $connection)
  */
 
 class Db extends ORM
@@ -153,13 +130,16 @@ class Db extends ORM
 	 *
 	 * @since 2.4.0
 	 *
+	 * @param string $table name of the table
+	 * @param string $connection which connection to use
+	 *
 	 * @return Db
 	 */
 
-	public static function rawInstance()
+	public static function rawInstance($table = null, $connection = self::DEFAULT_CONNECTION)
 	{
-		self::_setupDb();
-		return new self(null);
+		self::_setupDb($connection);
+		return new self($table);
 	}
 
 	/**
