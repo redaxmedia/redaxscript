@@ -39,7 +39,7 @@ class Analytics extends Module\Module
 
 	public function renderStart()
 	{
-		if ($this->_registry->get('loggedIn') === $this->_registry->get('token'))
+		if ($this->_registry->get('loggedIn') !== $this->_registry->get('token'))
 		{
 			$script = Head\Script::getInstance();
 			$script
