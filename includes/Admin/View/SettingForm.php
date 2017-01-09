@@ -4,7 +4,7 @@ namespace Redaxscript\Admin\View;
 use Redaxscript\Admin\Html\Form as AdminForm;
 use Redaxscript\Db;
 use Redaxscript\Html;
-use Redaxscript\Hook;
+use Redaxscript\Module;
 
 /**
  * children class to create the setting form
@@ -28,7 +28,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 
 	public function render()
 	{
-		$output = Hook::trigger('adminSettingFormStart');
+		$output = Module\Hook::trigger('adminSettingFormStart');
 
 		/* html elements */
 
@@ -382,7 +382,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
-		$output .= Hook::trigger('adminSettingFormEnd');
+		$output .= Module\Hook::trigger('adminSettingFormEnd');
 		return $output;
 	}
 }

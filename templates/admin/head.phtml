@@ -14,10 +14,11 @@
 		])
 		->concat(); ?>
 
-	<!-- head script -->
+    <!-- foot script -->
 
 	<?php Tag::script()
-		->init('head')
-		->appendFile('templates/admin/assets/scripts/init.js');	?>
+		->init('foot')
+		->appendFile('//cdnjs.cloudflare.com/ajax/libs/speakingurl/11.0.0/speakingurl.min.js')
+		->appendFile('templates/admin/assets/scripts/init.js'); ?>
 <?php endif; ?>
 

@@ -63,11 +63,11 @@ $registry->set('template', $detectorTemplate->getOutput());
 $language = Language::getInstance();
 $language->init($registry->get('language'));
 
-/* hook */
+/* module hook */
 
 if ($registry->get('dbStatus') === 2)
 {
-	Hook::construct($registry, $request, $language, $config);
-	Hook::init();
-	Hook::trigger('init');
+	Module\Hook::construct($registry, $request, $language, $config);
+	Module\Hook::init();
+	Module\Hook::trigger('init');
 }

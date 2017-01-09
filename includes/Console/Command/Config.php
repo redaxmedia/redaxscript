@@ -118,7 +118,7 @@ class Config extends CommandAbstract
 		}
 		if ($argumentKey === 'lock')
 		{
-			return $this->_lock($parser->getOption());
+			return $this->_lock();
 		}
 		return $this->getHelp();
 	}

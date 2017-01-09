@@ -98,7 +98,7 @@ class Breadcrumb
 		}
 		if (!$this->_optionArray['divider'])
 		{
-			$this->_optionArray['divider'] = Db::getSetting('divider');
+			$this->_optionArray['divider'] = Db::getSetting('divider') ? Db::getSetting('divider') : null;
 		}
 		$this->_create();
 	}
@@ -126,7 +126,7 @@ class Breadcrumb
 
 	public function render()
 	{
-		$output = Hook::trigger('breadcrumbStart');
+		$output = Module\Hook::trigger('breadcrumbStart');
 		$outputItem = null;
 
 		/* breadcrumb keys */
@@ -175,9 +175,11 @@ class Breadcrumb
 
 				/* add divider */
 
-				if ($key !== $lastKey)
+				if ($key !== $lastKey && $this->_optionArray['divider'])
 				{
-					$outputItem .= $itemElement->addClass($this->_optionArray['className']['divider'])->text($this->_optionArray['divider']);
+					$outputItem .= $itemElement
+						->addClass($this->_optionArray['className']['divider'])
+						->text($this->_optionArray['divider']);
 				}
 			}
 		}
@@ -188,7 +190,7 @@ class Breadcrumb
 		{
 			$output = $listElement->html($outputItem);
 		}
-		$output .= Hook::trigger('breadcrumbEnd');
+		$output .= Module\Hook::trigger('breadcrumbEnd');
 		return $output;
 	}
 

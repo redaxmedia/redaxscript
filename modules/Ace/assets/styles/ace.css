@@ -16,7 +16,7 @@
 	background: gray(240);
 	border: 0.125rem solid gray(215);
 	border-radius: 0.125em;
-	font: 0.875em var(--rs-admin-font-secondary);
+	font-size: 0.875em;
 	min-height: 20em;
 	transition: background 0.2s, border-color 0.2s;
 

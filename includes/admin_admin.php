@@ -13,7 +13,7 @@
 
 function admin_panel_list()
 {
-	$output = Redaxscript\Hook::trigger('adminPanelStart');
+	$output = Redaxscript\Module\Hook::trigger('adminPanelStart');
 
 	/* define access variables */
 
@@ -137,7 +137,7 @@ function admin_panel_list()
 		if ($modules_access == 1)
 		{
 			$output .= '<li><a href="' . Redaxscript\Registry::get('parameterRoute') . 'admin/view/modules" class="rs-admin-link-panel">' . Redaxscript\Language::get('modules') . '</a>';
-			$moduleArray = Redaxscript\Hook::collect('adminPanelModule');
+			$moduleArray = Redaxscript\Module\Hook::collect('adminPanelModule');
 			if ($moduleArray)
 			{
 				foreach ($moduleArray as $key => $value)
@@ -199,7 +199,7 @@ function admin_panel_list()
 			]
 		];
 	}
-	$notificationModuleArray = Redaxscript\Hook::collect('adminPanelNotification');
+	$notificationModuleArray = Redaxscript\Module\Hook::collect('adminPanelNotification');
 	if ($notificationModuleArray)
 	{
 		$notificationArray = array_merge_recursive($notificationModuleArray, $notificationSystemArray);
@@ -263,7 +263,7 @@ function admin_panel_list()
 	{
 		$output = '<ul class="rs-admin-js-list-panel rs-admin-list-panel rs-admin-has-column' . $counter . ' rs-admin-fn-clearfix">' . $output . '</ul>';
 	}
-	$output .= Redaxscript\Hook::trigger('adminPanelEnd');
+	$output .= Redaxscript\Module\Hook::trigger('adminPanelEnd');
 	echo $output;
 }
 
@@ -284,7 +284,7 @@ function admin_panel_list()
 
 function admin_dock($table, $id)
 {
-	$output = Redaxscript\Hook::trigger('adminDockStart');
+	$output = Redaxscript\Module\Hook::trigger('adminDockStart');
 
 	/* define access variables */
 
@@ -307,7 +307,7 @@ function admin_dock($table, $id)
 		}
 		$output .= '</div></div>';
 	}
-	$output .= Redaxscript\Hook::trigger('adminDockEnd');
+	$output .= Redaxscript\Module\Hook::trigger('adminDockEnd');
 	return $output;
 }
 
@@ -334,7 +334,7 @@ function admin_dock($table, $id)
 
 function admin_control($type, $table, $id, $alias, $status, $new, $edit, $delete)
 {
-	$output = Redaxscript\Hook::trigger('adminControlStart');
+	$output = Redaxscript\Module\Hook::trigger('adminControlStart');
 
 	/* define access variables */
 
@@ -413,6 +413,6 @@ function admin_control($type, $table, $id, $alias, $status, $new, $edit, $delete
 	{
 		$output = '<ul class="rs-admin-list-control">' . $output . '</ul>';
 	}
-	$output .= Redaxscript\Hook::trigger('adminControlEnd');
+	$output .= Redaxscript\Module\Hook::trigger('adminControlEnd');
 	return $output;
 }

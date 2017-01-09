@@ -285,7 +285,7 @@ class Installer
 			'copyright' => null,
 			'description' => $this->_language->get('description', '_package'),
 			'keywords' => null,
-			'robots' => null,
+			'robots' => 1,
 			'email' => $optionArray['adminEmail'],
 			'subject' => $this->_language->get('name', '_package'),
 			'notification' => 0,

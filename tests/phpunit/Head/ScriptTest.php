@@ -331,7 +331,7 @@ class ScriptTest extends TestCaseAbstract
 
 		/* expect and actual */
 
-		$actual = (string)$script;
+		$actual = $script;
 
 		/* compare */
 

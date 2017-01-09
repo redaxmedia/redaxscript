@@ -5,7 +5,15 @@
 			"lastTable": null,
 			"lastId": null
 		},
-		null
+		"setting-keywords"
+	],
+	[
+		{
+			"metaDescription": null,
+			"lastTable": "categories",
+			"lastId": 1
+		},
+		"setting-keywords"
 	],
 	[
 		{
@@ -28,6 +36,22 @@
 			"metaKeywords": null,
 			"lastTable": "categories",
 			"lastId": 2
+		},
+		"category-keywords"
+	],
+	[
+		{
+			"metaKeywords": null,
+			"lastTable": "articles",
+			"lastId": 3
+		},
+		"category-keywords"
+	],
+	[
+		{
+			"metaKeywords": null,
+			"lastTable": "categories",
+			"lastId": 3
 		},
 		"category-keywords"
 	]

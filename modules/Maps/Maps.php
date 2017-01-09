@@ -5,7 +5,7 @@ use Redaxscript\Head;
 use Redaxscript\Html;
 
 /**
- * integrate social buttons
+ * integrate google maps
  *
  * @since 2.2.0
  *
@@ -62,23 +62,23 @@ class Maps extends Config
 	/**
 	 * render
 	 *
-	 * @since 2.6.0
+	 * @since 3.0.0
 	 *
-	 * @param integer $lat
-	 * @param integer $lng
+	 * @param integer $latitude
+	 * @param integer $longitude
 	 * @param integer $zoom
 	 *
 	 * @return string
 	 */
 
-	public function render($lat = 0, $lng = 0, $zoom = 1)
+	public function render($latitude = 0, $longitude = 0, $zoom = 1)
 	{
 		$mapElement = new Html\Element();
 		$mapElement->init('div',
 		[
 			'class' => $this->_configArray['className'],
-			'data-lat' => is_numeric($lat) ? $lat : null,
-			'data-lng' => is_numeric($lng) ? $lng : null,
+			'data-latitude' => is_numeric($latitude) ? $latitude : null,
+			'data-longitude' => is_numeric($longitude) ? $longitude : null,
 			'data-zoom' => is_numeric($zoom) ? $zoom : null
 		]);
 

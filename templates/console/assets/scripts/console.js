@@ -88,4 +88,4 @@
 			$(rs.plugins.console.selector).console(rs.plugins.console.options);
 		}
 	});
-})(document, window, window.jQuery || window.Zepto);
+})(document, window, window.jQuery);

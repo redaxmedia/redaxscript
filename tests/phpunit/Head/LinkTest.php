@@ -279,7 +279,7 @@ class LinkTest extends TestCaseAbstract
 
 		/* expect and actual */
 
-		$actual = (string)$link;
+		$actual = $link;
 
 		/* compare */
 

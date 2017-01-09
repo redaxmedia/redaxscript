@@ -215,7 +215,7 @@ module.exports = function (grunt)
 					'languages/*.json',
 					'!languages/en.json'
 				],
-				dest: 'build/language.json'
+				dest: 'build/parser_language.json'
 			},
 			options:
 			{
@@ -235,7 +235,7 @@ module.exports = function (grunt)
 				[
 					'languages/en.json'
 				],
-				dest: 'build/language.json',
+				dest: 'build/parser_language.json',
 				options:
 				{
 					remove:

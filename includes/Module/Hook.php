@@ -1,5 +1,13 @@
 <?php
-namespace Redaxscript;
+namespace Redaxscript\Module;
+
+use Redaxscript\Config;
+use Redaxscript\Db;
+use Redaxscript\Directory;
+use Redaxscript\Language;
+use Redaxscript\Registry;
+use Redaxscript\Request;
+use Redaxscript\Validator;
 
 /**
  * parent class to handle module hooks

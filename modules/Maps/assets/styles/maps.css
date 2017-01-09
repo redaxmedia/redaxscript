@@ -11,14 +11,19 @@
 
 /* @section 1. map */
 
-.rs-map
+.rs-component-map
 {
 	height: 30em;
 }
 
 /* mobile */
 
-.rs-is-mobile .rs-map
+.rs-is-mobile .rs-component-map
 {
 	height: 15em;
+}
+
+.gm-style-cc
+{
+	display: none;
 }

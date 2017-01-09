@@ -2,7 +2,7 @@
 namespace Redaxscript\View;
 
 use Redaxscript\Html;
-use Redaxscript\Hook;
+use Redaxscript\Module;
 
 /**
  * children class to create the console form
@@ -26,7 +26,7 @@ class ConsoleForm extends ViewAbstract
 
 	public function render()
 	{
-		$output = Hook::trigger('consoleFormStart');
+		$output = Module\Hook::trigger('consoleFormStart');
 
 		/* html elements */
 
@@ -64,7 +64,7 @@ class ConsoleForm extends ViewAbstract
 		/* collect output */
 
 		$output .= $formElement;
-		$output .= Hook::trigger('consoleFormEnd');
+		$output .= Module\Hook::trigger('consoleFormEnd');
 		return $output;
 	}
 }

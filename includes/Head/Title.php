@@ -49,7 +49,12 @@ class Title implements HeadInterface
 
 	public function __toString()
 	{
-		return $this->render();
+		$render = $this->render();
+		if ($render)
+		{
+			return $render;
+		}
+		return '<!-- Redaxscript\Head\Title -->';
 	}
 
 	/**
@@ -62,12 +67,23 @@ class Title implements HeadInterface
 
 	public function render()
 	{
-		$title = $this->_registry->get('metaTitle') ? $this->_registry->get('metaTitle') : Db::getSetting('title');
-		$description = $this->_registry->get('metaDescription') ? $this->_registry->get('metaDescription') : Db::getSetting('description');
+		$titleArray =
+		[
+			'title' => $this->_registry->get('metaTitle') ? $this->_registry->get('metaTitle') : Db::getSetting('title'),
+			'description' => $this->_registry->get('metaDescription') ? $this->_registry->get('metaDescription') : Db::getSetting('description')
+		];
+		$divider = $this->_registry->get('metaDivider') ? $this->_registry->get('metaDivider') : Db::getSetting('divider');
+
+		/* html elements */
+
 		$titleElement = new Html\Element();
-		return $titleElement
-			->init('title')
-			->text($title . Db::getSetting('divider') . $description)
-			->render();
+		$titleText = implode($divider, array_filter($titleArray));
+		if ($titleText)
+		{
+			return $titleElement
+				->init('title')
+				->text($titleText)
+				->render();
+		}
 	}
 }

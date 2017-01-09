@@ -4,8 +4,8 @@ namespace Redaxscript\Html;
 use Redaxscript\Captcha;
 use Redaxscript\Config;
 use Redaxscript\Hash;
-use Redaxscript\Hook;
 use Redaxscript\Language;
+use Redaxscript\Module;
 use Redaxscript\Registry;
 
 /**
@@ -558,14 +558,14 @@ class Form extends HtmlAbstract
 
 	public function render()
 	{
-		$output = Hook::trigger('formStart');
+		$output = Module\Hook::trigger('formStart');
 		$formElement = new Element();
 		$formElement->init('form', $this->_attributeArray['form']);
 
 		/* collect output */
 
 		$output .= $formElement->html($this->_html);
-		$output .= Hook::trigger('formEnd');
+		$output .= Module\Hook::trigger('formEnd');
 		return $output;
 	}
 

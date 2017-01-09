@@ -18,7 +18,7 @@ use Redaxscript\Validator;
  * @category Modules
  * @author Henry Ruhs
  */
-class Contact extends Module
+class Contact extends Module\Module
 {
 	/**
 	 * array of the module

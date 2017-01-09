@@ -312,7 +312,7 @@ function startup()
 
 	if ($registry->get('cronUpdate'))
 	{
-		Redaxscript\Hook::trigger('cronUpdate');
+		Redaxscript\Module\Hook::trigger('cronUpdate');
 		future_update('categories');
 		future_update('articles');
 		future_update('comments');

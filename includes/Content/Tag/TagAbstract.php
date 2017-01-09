@@ -1,5 +1,7 @@
 <?php
-namespace Redaxscript\Parser\Tag;
+namespace Redaxscript\Content\Tag;
+
+use Redaxscript\Content\ParserAbstract;
 
 /**
  * interface to define a pseudo tag class
@@ -11,13 +13,6 @@ namespace Redaxscript\Parser\Tag;
  * @author Henry Ruhs
  */
 
-interface TagInterface
+abstract class TagAbstract extends ParserAbstract implements TagInterface
 {
-	/**
-	 * process the class
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function process();
 }

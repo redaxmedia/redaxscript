@@ -15,7 +15,7 @@ use XMLWriter;
  * @author Henry Ruhs
  */
 
-class FeedGenerator extends Module
+class FeedGenerator extends Module\Module
 {
 	/**
 	 * array of the module

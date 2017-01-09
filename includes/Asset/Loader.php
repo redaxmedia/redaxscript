@@ -1,5 +1,5 @@
 <?php
-namespace Redaxscript\Assetic;
+namespace Redaxscript\Asset;
 
 use Redaxscript\Cache;
 use Redaxscript\Registry;
@@ -10,7 +10,7 @@ use Redaxscript\Registry;
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category Assetic
+ * @category Asset
  * @author Henry Ruhs
  */
 

@@ -1,9 +1,12 @@
 <?php
-namespace Redaxscript\Tests;
+namespace Redaxscript\Tests\Parser;
 
+use Redaxscript\Config;
 use Redaxscript\Language;
-use Redaxscript\Parser;
+use Redaxscript\Content;
 use Redaxscript\Registry;
+use Redaxscript\Request;
+use Redaxscript\Tests\TestCaseAbstract;
 
 /**
  * ParserTest
@@ -26,12 +29,29 @@ class ParserTest extends TestCaseAbstract
 	protected $_registry;
 
 	/**
+	 * instance of the request class
+	 *
+	 * @var object
+	 */
+
+	protected $_request;
+
+	/**
 	 * instance of the language class
 	 *
 	 * @var object
 	 */
 
 	protected $_language;
+
+	/**
+	 * instance of the config class
+	 *
+	 * @var object
+	 */
+
+	protected $_config;
+
 	/**
 	 * setUp
 	 *
@@ -41,7 +61,9 @@ class ParserTest extends TestCaseAbstract
 	public function setUp()
 	{
 		$this->_registry = Registry::getInstance();
+		$this->_request = Request::getInstance();
 		$this->_language = Language::getInstance();
+		$this->_config = Config::getInstance();
 	}
 
 	/**
@@ -54,7 +76,7 @@ class ParserTest extends TestCaseAbstract
 
 	public function providerBlockcode()
 	{
-		return $this->getProvider('tests/provider/Parser/blockcode.json');
+		return $this->getProvider('tests/provider/Content/parser_blockcode.json');
 	}
 
 	/**
@@ -67,7 +89,7 @@ class ParserTest extends TestCaseAbstract
 
 	public function providerLanguage()
 	{
-		return $this->getProvider('tests/provider/Parser/language.json');
+		return $this->getProvider('tests/provider/Content/parser_language.json');
 	}
 
 	/**
@@ -80,7 +102,7 @@ class ParserTest extends TestCaseAbstract
 
 	public function providerModule()
 	{
-		return $this->getProvider('tests/provider/Parser/module.json');
+		return $this->getProvider('tests/provider/Content/parser_module.json');
 	}
 
 	/**
@@ -93,7 +115,7 @@ class ParserTest extends TestCaseAbstract
 
 	public function providerReadmore()
 	{
-		return $this->getProvider('tests/provider/Parser/readmore.json');
+		return $this->getProvider('tests/provider/Content/parser_readmore.json');
 	}
 
 	/**
@@ -106,7 +128,7 @@ class ParserTest extends TestCaseAbstract
 
 	public function providerRegistry()
 	{
-		return $this->getProvider('tests/provider/Parser/registry.json');
+		return $this->getProvider('tests/provider/Content/parser_registry.json');
 	}
 
 	/**
@@ -119,7 +141,7 @@ class ParserTest extends TestCaseAbstract
 
 	public function providerTemplate()
 	{
-		return $this->getProvider('tests/provider/Parser/template.json');
+		return $this->getProvider('tests/provider/Content/parser_template.json');
 	}
 
 	/**
@@ -137,7 +159,7 @@ class ParserTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$parser = new Parser\Parser($this->_registry, $this->_language);
+		$parser = new Content\Parser($this->_registry, $this->_request, $this->_language, $this->_config);
 		$parser->process($content);
 
 		/* actual */
@@ -166,7 +188,7 @@ class ParserTest extends TestCaseAbstract
 		/* setup */
 
 		$this->_language->init($language);
-		$parser = new Parser\Parser($this->_registry, $this->_language);
+		$parser = new Content\Parser($this->_registry, $this->_request, $this->_language, $this->_config);
 		$parser->process($content);
 
 		/* actual */
@@ -193,7 +215,7 @@ class ParserTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$parser = new Parser\Parser($this->_registry, $this->_language);
+		$parser = new Content\Parser($this->_registry, $this->_request, $this->_language, $this->_config);
 		$parser->process($content);
 
 		/* actual */
@@ -223,7 +245,7 @@ class ParserTest extends TestCaseAbstract
 		/* setup */
 
 		$this->_registry->init($registryArray);
-		$parser = new Parser\Parser($this->_registry, $this->_language);
+		$parser = new Content\Parser($this->_registry, $this->_request, $this->_language, $this->_config);
 		$parser->process($content, $route);
 
 		/* actual */
@@ -252,7 +274,7 @@ class ParserTest extends TestCaseAbstract
 		/* setup */
 
 		$this->_registry->init($registryArray);
-		$parser = new Parser\Parser($this->_registry, $this->_language);
+		$parser = new Content\Parser($this->_registry, $this->_request, $this->_language, $this->_config);
 		$parser->process($content);
 
 		/* actual */
@@ -279,7 +301,7 @@ class ParserTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$parser = new Parser\Parser($this->_registry, $this->_language);
+		$parser = new Content\Parser($this->_registry, $this->_request, $this->_language, $this->_config);
 		$parser->process($content);
 
 		/* actual */

@@ -2,7 +2,7 @@
 namespace Redaxscript\View;
 
 use Redaxscript\Html;
-use Redaxscript\Hook;
+use Redaxscript\Module;
 
 /**
  * children class to create the install form
@@ -28,7 +28,7 @@ class InstallForm extends ViewAbstract
 
 	public function render($optionArray = [])
 	{
-		$output = Hook::trigger('installFormStart');
+		$output = Module\Hook::trigger('installFormStart');
 
 		/* html elements */
 
@@ -209,7 +209,7 @@ class InstallForm extends ViewAbstract
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
-		$output .= Hook::trigger('installFormEnd');
+		$output .= Module\Hook::trigger('installFormEnd');
 		return $output;
 	}
 }

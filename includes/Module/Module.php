@@ -1,5 +1,12 @@
 <?php
-namespace Redaxscript;
+namespace Redaxscript\Module;
+
+use Redaxscript\Config;
+use Redaxscript\Db;
+use Redaxscript\Installer;
+use Redaxscript\Language;
+use Redaxscript\Registry;
+use Redaxscript\Request;
 
 /**
  * parent class to create a module
@@ -105,12 +112,10 @@ class Module
 
 		if (array_key_exists('alias', static::$_moduleArray))
 		{
-			$registry = Registry::getInstance();
-			$language = Language::getInstance();
-			$language->load(
+			$this->_language->load(
 			[
 				'modules/' . static::$_moduleArray['alias'] . '/languages/en.json',
-				'modules/' . static::$_moduleArray['alias'] . '/languages/' . $registry->get('language') . '.json'
+				'modules/' . static::$_moduleArray['alias'] . '/languages/' . $this->_registry->get('language') . '.json'
 			]);
 		}
 	}

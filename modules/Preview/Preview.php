@@ -17,7 +17,7 @@ use Redaxscript\Template;
  * @author Henry Ruhs
  */
 
-class Preview extends Module
+class Preview extends Module\Module
 {
 	/**
 	 * array of the module

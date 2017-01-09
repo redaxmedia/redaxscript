@@ -54,4 +54,4 @@
 			$.fn.callHome(rs.modules.callHome.options);
 		}
 	});
-})(window.jQuery || window.Zepto, window.ga);
+})(window.jQuery, window.ga);

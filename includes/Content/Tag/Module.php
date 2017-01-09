@@ -1,9 +1,7 @@
 <?php
-namespace Redaxscript\Parser\Tag;
+namespace Redaxscript\Content\Tag;
 
-use Redaxscript\Config;
-use Redaxscript\Hook;
-use Redaxscript\Request;
+use Redaxscript\Module as BaseModule;
 
 /**
  * children class to parse content for module tags
@@ -11,7 +9,7 @@ use Redaxscript\Request;
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category Parser
+ * @category Content
  * @author Henry Ruhs
  */
 
@@ -48,7 +46,7 @@ class Module extends TagAbstract
 	{
 		$output = str_replace($this->_optionArray['search'], $this->_optionArray['delimiter'], $content);
 		$partArray = array_filter(explode($this->_optionArray['delimiter'], $output));
-		$modulesLoaded = Hook::getModuleArray();
+		$modulesLoaded = BaseModule\Hook::getModuleArray();
 
 		/* parse as needed */
 
@@ -72,7 +70,7 @@ class Module extends TagAbstract
 
 						if (in_array($moduleName, $modulesLoaded) && method_exists($moduleClass, 'render'))
 						{
-							$module = new $moduleClass($this->_registry, Request::getInstance(), $this->_language, Config::getInstance());
+							$module = new $moduleClass($this->_registry, $this->_request, $this->_language, $this->_config);
 							$partArray[$key] = call_user_func_array(
 							[
 								$module,
@@ -86,7 +84,7 @@ class Module extends TagAbstract
 
 				else if (in_array($value, $modulesLoaded) && method_exists($moduleClass, 'render'))
 				{
-					$module = new $moduleClass($this->_registry, Request::getInstance(), $this->_language, Config::getInstance());
+					$module = new $moduleClass($this->_registry, $this->_request, $this->_language, $this->_config);
 					$partArray[$key] = call_user_func(
 					[
 						$module,

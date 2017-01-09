@@ -23,7 +23,6 @@
 	"predef":
 	[
 		"jQuery",
-		"rs",
-		"Zepto"
+		"rs"
 	]
 }

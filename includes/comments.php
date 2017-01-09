@@ -16,7 +16,7 @@
 
 function comments($article, $route)
 {
-	$output = Redaxscript\Hook::trigger('commentStart');
+	$output = Redaxscript\Module\Hook::trigger('commentStart');
 
 	/* query comments */
 
@@ -86,7 +86,7 @@ function comments($article, $route)
 
 				/* collect headline output */
 
-				$output .= Redaxscript\Hook::trigger('commentFragmentStart', $r) . '<h3 id="comment-' . $id . '" class="rs-title-comment">';
+				$output .= Redaxscript\Module\Hook::trigger('commentFragmentStart', $r) . '<h3 id="comment-' . $id . '" class="rs-title-comment">';
 				if ($url)
 				{
 					$output .= '<a href="' . $url . '" rel="nofollow">' . $author . '</a>';
@@ -101,7 +101,7 @@ function comments($article, $route)
 
 				$output .= '<div class="rs-box-comment">' . $text . '</div>';
 				$output .= byline('comments', $id, $author, $date);
-				$output .= Redaxscript\Hook::trigger('commentFragmentEnd', $r);
+				$output .= Redaxscript\Module\Hook::trigger('commentFragmentEnd', $r);
 
 				/* admin dock */
 
@@ -130,7 +130,7 @@ function comments($article, $route)
 	{
 		$output = '<div class="rs-box-comment">' . $error . Redaxscript\Language::get('point') . '</div>';
 	}
-	$output .= Redaxscript\Hook::trigger('commentEnd');
+	$output .= Redaxscript\Module\Hook::trigger('commentEnd');
 	echo $output;
 
 	/* call pagination as needed */

@@ -135,4 +135,4 @@
 			$(rs.plugins.tab.selector).tab(rs.plugins.tab.options);
 		}
 	});
-})(window.jQuery || window.Zepto);
+})(window.jQuery);

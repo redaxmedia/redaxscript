@@ -73,4 +73,4 @@
 			$(rs.plugins.install.selector).install(rs.plugins.install.options);
 		}
 	});
-})(window.jQuery || window.Zepto);
+})(window.jQuery);

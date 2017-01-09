@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Template;
 
-use Redaxscript\Assetic;
+use Redaxscript\Asset;
 use Redaxscript\Db;
 use Redaxscript\Registry;
 use Redaxscript\Language;
@@ -26,14 +26,6 @@ class Helper
 	 */
 
 	protected static $_prefix = 'rs-';
-
-	/**
-	 * robot
-	 *
-	 * @var string
-	 */
-
-	protected static $_robot = 'all';
 
 	/**
 	 * subset
@@ -125,37 +117,31 @@ class Helper
 
 	public static function getCanonical()
 	{
-		$firstTable = Registry::get('firstTable');
-		$secondTable = Registry::get('secondTable');
 		$lastTable = Registry::get('lastTable');
-		$firstParameter = Registry::get('firstParameter');
-		$secondParameter = Registry::get('secondParameter');
-		$categoryParameter = $secondTable === 'categories' ? $secondParameter : $firstParameter;
-		$fullRoute = Registry::get('fullRoute');
+		$lastId = Registry::get('lastId');
+		$canonicalUrl = Registry::get('root');
 
 		/* find route */
 
-		if ($firstTable === 'categories' && $lastTable === 'articles')
+		if ($lastTable === 'categories')
 		{
-			$categoryId = Db::forTablePrefix($firstTable)->where('alias', $categoryParameter)->findOne()->id;
-			$articlesTotal = Db::forTablePrefix('articles')->where('category', $categoryId)->count();
+			$articles = Db::forTablePrefix('articles')->where('category', $lastId);
+			$articlesTotal = $articles->findMany()->count();
 			if ($articlesTotal === 1)
 			{
-				$route = $firstParameter;
-				if ($secondTable === 'categories')
-				{
-					$route .= '/' . $secondParameter;
-				}
+				$lastTable = 'articles';
+				$lastId = $articles->findOne()->id;
 			}
 		}
+		$canonicalRoute = build_route($lastTable, $lastId);
 
-		/* handle route  */
+		/* handle route */
 
-		if ($route)
+		if ($canonicalRoute)
 		{
-			return Registry::get('parameterRoute') . $route;
+			return $canonicalUrl . '/' . Registry::get('parameterRoute') . $canonicalRoute;
 		}
-		return $fullRoute;
+		return $canonicalUrl;
 	}
 
 	/**
@@ -180,8 +166,17 @@ class Helper
 		}
 		else if ($lastTable && $lastId)
 		{
-			$lastContent = Db::forTablePrefix($lastTable)->whereIdIs($lastId)->findOne();
-			$description = $lastContent->description;
+			$content = Db::forTablePrefix($lastTable)->whereIdIs($lastId)->findOne();
+			$description = $content->description;
+
+			/* handle parent */
+
+			if (!$description)
+			{
+				$parentId = $content->category ? $content->category : $content->parent;
+				$parent = Db::forTablePrefix('categories')->whereIdIs($parentId)->whereNull('access')->findOne();
+				$description = $parent->description;
+			}
 		}
 
 		/* handle description */
@@ -215,8 +210,17 @@ class Helper
 		}
 		else if ($lastTable && $lastId)
 		{
-			$lastContent = Db::forTablePrefix($lastTable)->whereIdIs($lastId)->findOne();
-			$keywords = $lastContent->keywords;
+			$content = Db::forTablePrefix($lastTable)->whereIdIs($lastId)->findOne();
+			$keywords = $content->keywords;
+
+			/* handle parent */
+
+			if (!$keywords)
+			{
+				$parentId = $content->category ? $content->category : $content->parent;
+				$parent = Db::forTablePrefix('categories')->whereIdIs($parentId)->whereNull('access')->findOne();
+				$keywords = $parent->keywords;
+			}
 		}
 
 		/* handle keywords */
@@ -255,8 +259,17 @@ class Helper
 		}
 		else if ($lastTable && $lastId)
 		{
-			$lastContent = Db::forTablePrefix($lastTable)->whereIdIs($lastId)->whereNull('access')->findOne();
-			$robots = $lastContent->robots;
+			$content = Db::forTablePrefix($lastTable)->whereIdIs($lastId)->whereNull('access')->findOne();
+			$robots = $content->robots;
+
+			/* handle parent */
+
+			if (!$robots)
+			{
+				$parentId = $content->category ? $content->category : $content->parent;
+				$parent = Db::forTablePrefix('categories')->whereIdIs($parentId)->whereNull('access')->findOne();
+				$robots = $parent->robots;
+			}
 		}
 
 		/* handle robots */
@@ -265,7 +278,8 @@ class Helper
 		{
 			return self::$_robotArray[$robots];
 		}
-		return self::$_robot;
+		$robots = Db::getSetting('robots');
+		return self::$_robotArray[$robots];
 	}
 
 	/**
@@ -278,7 +292,7 @@ class Helper
 
 	public static function getTransport()
 	{
-		$transport = new Assetic\Transport(Registry::getInstance(), Language::getInstance());
+		$transport = new Asset\Transport(Registry::getInstance(), Language::getInstance());
 		return $transport->getArray();
 	}
 
@@ -292,9 +306,10 @@ class Helper
 
 	public static function getSubset()
 	{
-		foreach (self::$_subsetArray as $subset => $language)
+		$language = Registry::get('language');
+		foreach (self::$_subsetArray as $subset => $valueArray)
 		{
-			if (in_array(Registry::get('language'), $language))
+			if (in_array($language, $valueArray))
 			{
 				return $subset;
 			}
@@ -312,9 +327,10 @@ class Helper
 
 	public static function getDirection()
 	{
-		foreach (self::$_directionArray as $direction => $language)
+		$language = Registry::get('language');
+		foreach (self::$_directionArray as $direction => $valueArray)
 		{
-			if (in_array(Registry::get('language'), $language))
+			if (in_array($language, $valueArray))
 			{
 				return $direction;
 			}

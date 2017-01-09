@@ -62,4 +62,4 @@
 			$(rs.modules.ace.selector).ace(rs.modules.ace.options);
 		}
 	});
-})(window.jQuery || window.Zepto, window.ace);
+})(window.jQuery, window.ace);

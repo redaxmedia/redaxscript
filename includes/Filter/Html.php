@@ -182,7 +182,7 @@ class Html implements FilterInterface
 		$charset = Db::getSetting('charset');
 		$html = mb_convert_encoding($html, 'html-entities', $charset);
 		$doc = $this->_createDocument($html);
-		$doc = $this->_cleanDocument($doc);
+		$doc = $this->_tidyDocument($doc);
 
 		/* filter nodes */
 
@@ -217,7 +217,7 @@ class Html implements FilterInterface
 	}
 
 	/**
-	 * clean the document
+	 * tidy the document
 	 *
 	 * @since 2.6.0
 	 *
@@ -226,10 +226,8 @@ class Html implements FilterInterface
 	 * @return DOMDocument
 	 */
 
-	protected function _cleanDocument(DOMDocument $doc)
+	protected function _tidyDocument(DOMDocument $doc)
 	{
-		/* clean document */
-
 		if ($doc->firstChild->nodeType === XML_DOCUMENT_TYPE_NODE)
 		{
 			/* remove doctype */

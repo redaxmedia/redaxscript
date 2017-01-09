@@ -345,8 +345,6 @@ class Auth
 	 * save user and permission
 	 *
 	 * @since 3.0.0
-	 *
-	 * @return boolean
 	 */
 
 	public function save()

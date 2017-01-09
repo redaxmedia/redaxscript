@@ -46,7 +46,7 @@ class HelperTest extends TestCaseAbstract
 
 	public static function setUpBeforeClass()
 	{
-		Db::forTablePrefix('articles')
+		Db::forTablePrefix('categories')
 			->create()
 			->set(
 			[
@@ -54,26 +54,63 @@ class HelperTest extends TestCaseAbstract
 				'title' => 'test',
 				'alias' => 'test-one',
 				'author' => 'test',
-				'description' => 'article-description',
-				'keywords' => 'article-keywords',
-				'robots' => 4,
-				'text' => 'test',
-				'category' => 1
+				'description' => 'category-description',
+				'keywords' => 'category-keywords',
+				'robots' => 5
 			])
 			->save();
 		Db::forTablePrefix('categories')
 			->create()
 			->set(
 			[
-				'id' => 2,
+				'id' => 3,
 				'title' => 'test',
 				'alias' => 'test-two',
-				'description' => 'category-description',
-				'keywords' => 'category-keywords',
-				'robots' => 1,
-				'parent' => 0
+				'author' => 'test',
+				'parent' => 2
 			])
 			->save();
+		Db::forTablePrefix('articles')
+			->create()
+			->set(
+			[
+				'id' => 2,
+				'title' => 'test',
+				'alias' => 'test-three',
+				'author' => 'test',
+				'description' => 'article-description',
+				'keywords' => 'article-keywords',
+				'robots' => 4,
+				'text' => 'test',
+				'category' => 2
+			])
+			->save();
+		Db::forTablePrefix('articles')
+			->create()
+			->set(
+			[
+				'id' => 3,
+				'title' => 'test',
+				'alias' => 'test-four',
+				'author' => 'test',
+				'text' => 'test',
+				'category' => 2
+			])
+			->save();
+		Db::forTablePrefix('articles')
+			->create()
+			->set(
+			[
+				'id' => 4,
+				'title' => 'test',
+				'alias' => 'test-five',
+				'author' => 'test',
+				'text' => 'test',
+				'category' => 3
+			])
+			->save();
+		Db::setSetting('description', 'setting-description');
+		Db::setSetting('keywords', 'setting-keywords');
 	}
 
 	/**
@@ -84,8 +121,8 @@ class HelperTest extends TestCaseAbstract
 
 	public static function tearDownAfterClass()
 	{
-		Db::forTablePrefix('articles')->whereIdIs(2)->deleteMany();
-		Db::forTablePrefix('categories')->whereIdIs(2)->deleteMany();
+		Db::forTablePrefix('categories')->whereNotEqual('id', 1)->deleteMany();
+		Db::forTablePrefix('articles')->whereNotEqual('id', 1)->deleteMany();
 	}
 
 	/**

@@ -77,7 +77,7 @@ class CommentFormTest extends TestCaseAbstract
 
 	public static function tearDownAfterClass()
 	{
-		Db::forTablePrefix('comments')->where('author', 'test')->deleteMany();
+		Db::forTablePrefix('comments')->whereNotEqual('id', 1)->deleteMany();
 	}
 
 	/**

@@ -128,4 +128,4 @@
 			$(rs.modules.shareThis.selector).shareThis(rs.modules.shareThis.options);
 		}
 	});
-})(window.jQuery || window.Zepto);
+})(window.jQuery);

@@ -10,6 +10,15 @@
 	],
 	[
 		{
+			"metaRobots": null,
+			"contentError": null,
+			"lastTable": "categories",
+			"lastId": 1
+		},
+		"all"
+	],
+	[
+		{
 			"metaRobots": 3,
 			"contentError": null,
 			"lastTable": null,
@@ -42,6 +51,24 @@
 			"lastTable": "categories",
 			"lastId": 2
 		},
-		"all"
+		"follow_no"
+	],
+	[
+		{
+			"metaRobots": null,
+			"contentError": null,
+			"lastTable": "articles",
+			"lastId": 3
+		},
+		"follow_no"
+	],
+	[
+		{
+			"metaRobots": null,
+			"contentError": null,
+			"lastTable": "categories",
+			"lastId": 3
+		},
+		"follow_no"
 	]
 ]

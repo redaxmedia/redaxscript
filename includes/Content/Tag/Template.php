@@ -1,5 +1,5 @@
 <?php
-namespace Redaxscript\Parser\Tag;
+namespace Redaxscript\Content\Tag;
 
 /**
  * children class to parse content for template tags
@@ -7,7 +7,7 @@ namespace Redaxscript\Parser\Tag;
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category Parser
+ * @category Content
  * @author Henry Ruhs
  */
 

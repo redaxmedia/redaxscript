@@ -1,24 +1,50 @@
 [
 	[
 		{
-			"firstTable": "categories",
-			"secondTable": null,
-			"lastTable": "articles",
-			"firstParameter": "test",
-			"secondParameter": null,
-			"fullRoute": null
+			"lastTable": null,
+			"lastId": null,
+			"root": "http://localhost"
 		},
-		null
+		"http://localhost"
 	],
 	[
 		{
-			"firstTable": "categories",
-			"secondTable": null,
-			"lastTable": "articles",
-			"firstParameter": "test-one",
-			"secondParameter": null,
-			"fullRoute": "test/test-one"
+			"lastTable": "categories",
+			"lastId": 2,
+			"root": "http://localhost"
 		},
-		"test/test-one"
+		"http://localhost/test-one"
+	],
+	[
+		{
+			"lastTable": "categories",
+			"lastId": 3,
+			"root": "http://localhost"
+		},
+		"http://localhost/test-one/test-two/test-five"
+	],
+	[
+		{
+			"lastTable": "articles",
+			"lastId": 2,
+			"root": "http://localhost"
+		},
+		"http://localhost/test-one/test-three"
+	],
+	[
+		{
+			"lastTable": "articles",
+			"lastId": 3,
+			"root": "http://localhost"
+		},
+		"http://localhost/test-one/test-four"
+	],
+	[
+		{
+			"lastTable": "articles",
+			"lastId": 4,
+			"root": "http://localhost"
+		},
+		"http://localhost/test-one/test-two/test-five"
 	]
 ]

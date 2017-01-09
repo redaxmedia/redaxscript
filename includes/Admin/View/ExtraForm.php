@@ -4,7 +4,7 @@ namespace Redaxscript\Admin\View;
 use Redaxscript\Admin\Html\Form as AdminForm;
 use Redaxscript\Db;
 use Redaxscript\Html;
-use Redaxscript\Hook;
+use Redaxscript\Module;
 
 /**
  * children class to create the extra form
@@ -30,7 +30,7 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 
 	public function render($extraId = null)
 	{
-		$output = Hook::trigger('adminExtraFormStart');
+		$output = Module\Hook::trigger('adminExtraFormStart');
 		$extra = Db::forTablePrefix('extras')->whereIdIs($extraId)->findOne();
 
 		/* html elements */
@@ -114,7 +114,7 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 			->text(
 			[
 				'autofocus' => 'autofocus',
-				'class' => 'rs-admin-js-generate-alias-input rs-admin-field-default rs-admin-field-text',
+				'class' => 'rs-admin-js-alias-input rs-admin-field-default rs-admin-field-text',
 				'id' => 'title',
 				'name' => 'title',
 				'required' => 'required',
@@ -127,7 +127,7 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 			])
 			->text(
 			[
-				'class' => 'rs-admin-js-generate-alias-output rs-admin-field-default rs-admin-field-text',
+				'class' => 'rs-admin-js-alias-output rs-admin-field-default rs-admin-field-text',
 				'id' => 'alias',
 				'name' => 'alias',
 				'pattern' => '[a-zA-Z0-9-]+',
@@ -288,7 +288,7 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
-		$output .= Hook::trigger('adminExtraFormEnd');
+		$output .= Module\Hook::trigger('adminExtraFormEnd');
 		return $output;
 	}
 }

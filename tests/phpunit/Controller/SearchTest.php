@@ -70,6 +70,7 @@ class SearchTest extends TestCaseAbstract
 			->create()
 			->set(
 			[
+				'id' => 2,
 				'title' => 'test',
 				'alias' => 'test-one',
 				'author' => 'test',
@@ -82,6 +83,7 @@ class SearchTest extends TestCaseAbstract
 			->create()
 			->set(
 			[
+				'id' => 3,
 				'title' => 'test',
 				'alias' => 'test-two',
 				'author' => 'test',
@@ -94,6 +96,7 @@ class SearchTest extends TestCaseAbstract
 			->create()
 			->set(
 			[
+				'id' => 4,
 				'title' => 'test',
 				'alias' => 'test-three',
 				'author' => 'test',
@@ -138,8 +141,8 @@ class SearchTest extends TestCaseAbstract
 
 	public static function tearDownAfterClass()
 	{
-		Db::forTablePrefix('articles')->where('title', 'test')->deleteMany();
-		Db::forTablePrefix('comments')->where('author', 'test')->deleteMany();
+		Db::forTablePrefix('articles')->whereNotEqual('id', 1)->deleteMany();
+		Db::forTablePrefix('comments')->whereNotEqual('id', 1)->deleteMany();
 	}
 
 	/**

@@ -4,7 +4,7 @@
 		true
 	],
 	[
-		"Redaxscript\\Parser\\Parser",
+		"Redaxscript\\Content\\Parser",
 		true
 	],
 	[

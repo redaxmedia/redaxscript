@@ -2,7 +2,7 @@
 namespace Redaxscript\View;
 
 use Redaxscript\Html;
-use Redaxscript\Hook;
+use Redaxscript\Module;
 
 /**
  * children class to create the reset form
@@ -26,7 +26,7 @@ class ResetForm extends ViewAbstract
 
 	public function render()
 	{
-		$output = Hook::trigger('resetFormStart');
+		$output = Module\Hook::trigger('resetFormStart');
 
 		/* html elements */
 
@@ -81,7 +81,7 @@ class ResetForm extends ViewAbstract
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
-		$output .= Hook::trigger('resetFormEnd');
+		$output .= Module\Hook::trigger('resetFormEnd');
 		return $output;
 	}
 }

@@ -15,7 +15,7 @@ use XMLWriter;
  * @author Henry Ruhs
  */
 
-class SitemapXml extends Module
+class SitemapXml extends Module\Module
 {
 	/**
 	 * array of the module

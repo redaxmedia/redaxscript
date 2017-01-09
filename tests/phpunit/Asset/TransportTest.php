@@ -1,7 +1,7 @@
 <?php
-namespace Redaxscript\Tests\Assetic;
+namespace Redaxscript\Tests\Asset;
 
-use Redaxscript\Assetic;
+use Redaxscript\Asset;
 use Redaxscript\Registry;
 use Redaxscript\Language;
 use Redaxscript\Tests\TestCaseAbstract;
@@ -56,7 +56,7 @@ class TransportTest extends TestCaseAbstract
 
 	public function providerRender()
 	{
-		return $this->getProvider('tests/provider/Assetic/transport_render.json');
+		return $this->getProvider('tests/provider/Asset/transport_render.json');
 	}
 
 	/**
@@ -69,7 +69,7 @@ class TransportTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$transport = new Assetic\Transport($this->_registry, $this->_language);
+		$transport = new Asset\Transport($this->_registry, $this->_language);
 
 		/* actual */
 
@@ -99,7 +99,7 @@ class TransportTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$transport = new Assetic\Transport($this->_registry, $this->_language);
+		$transport = new Asset\Transport($this->_registry, $this->_language);
 
 		/* actual */
 

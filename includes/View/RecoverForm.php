@@ -3,7 +3,7 @@ namespace Redaxscript\View;
 
 use Redaxscript\Db;
 use Redaxscript\Html;
-use Redaxscript\Hook;
+use Redaxscript\Module;
 
 /**
  * children class to create the recover form
@@ -27,7 +27,7 @@ class RecoverForm extends ViewAbstract
 
 	public function render()
 	{
-		$output = Hook::trigger('recoverFormStart');
+		$output = Module\Hook::trigger('recoverFormStart');
 
 		/* html elements */
 
@@ -94,7 +94,7 @@ class RecoverForm extends ViewAbstract
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
-		$output .= Hook::trigger('recoverFormEnd');
+		$output .= Module\Hook::trigger('recoverFormEnd');
 		return $output;
 	}
 }

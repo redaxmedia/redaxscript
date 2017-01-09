@@ -23,4 +23,4 @@
 		script.parentNode.removeChild(script);
 		doc.write('<script src="' + src + '"></script>');
 	}
-})(document, window.jQuery || window.Zepto);
+})(document, window.jQuery);

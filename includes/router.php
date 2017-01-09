@@ -19,7 +19,7 @@ function router()
 	$thirdParameter = Redaxscript\Registry::get('thirdParameter');
 	$thirdSubParameter = Redaxscript\Registry::get('thirdSubParameter');
 	$config = Redaxscript\Config::getInstance();
-	Redaxscript\Hook::trigger('routerStart');
+	Redaxscript\Module\Hook::trigger('routerStart');
 	if (Redaxscript\Registry::get('routerBreak'))
 	{
 		return;
@@ -162,5 +162,5 @@ function router()
 			contents();
 			return;
 	}
-	Redaxscript\Hook::trigger('routerEnd');
+	Redaxscript\Module\Hook::trigger('routerEnd');
 }

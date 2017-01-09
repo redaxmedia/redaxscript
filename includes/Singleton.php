@@ -59,8 +59,6 @@ abstract class Singleton
 	 * clear the instance
 	 *
 	 * @since 3.0.0
-	 *
-	 * @return object
 	 */
 
 	public static function clearInstance()

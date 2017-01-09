@@ -236,7 +236,7 @@
 
 /* icons */
 
-.rs-item-feature-assetic-management:before
+.rs-item-feature-asset-management:before
 {
 	@extend %rs-website-icon-layers;
 }
@@ -261,7 +261,7 @@
 	@extend %rs-website-icon-cruise;
 }
 
-.rs-item-feature-extendable-system:before
+.rs-item-feature-extensible-system:before
 {
 	@extend %rs-website-icon-cube;
 }

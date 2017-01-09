@@ -187,8 +187,6 @@ class Element extends HtmlAbstract
 	 *
 	 * @param string $className name of the classes
 	 * @param string $type add or remove
-	 *
-	 * @return Element
 	 */
 
 	protected function _editClass($className = null, $type = null)

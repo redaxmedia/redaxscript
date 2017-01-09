@@ -1,7 +1,7 @@
 {
 	"name": "redaxscript",
 	"description": "Ultra lightweight Content Management System",
-	"version": "3.0.0-beta3",
+	"version": "3.0.0-beta4",
 	"homepage": "http://redaxscript.com",
 	"license": "GPL-3.0",
 	"author":
@@ -15,8 +15,8 @@
 	},
 	"devDependencies":
 	{
-		"autoprefixer": "6.5.2",
-		"cssnano": "3.8.0",
+		"autoprefixer": "6.6.1",
+		"cssnano": "3.10.0",
 		"colorguard": "1.2.0",
 		"grunt": "1.0.1",
 		"grunt-contrib-jshint": "1.0.0",
