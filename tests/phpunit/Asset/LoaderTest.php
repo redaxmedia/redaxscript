@@ -90,7 +90,7 @@ class LoaderTest extends TestCaseAbstract
 		$this->_registry->init($registryArray);
 		$loader = new Asset\Loader($this->_registry);
 		$loader
-			->init($collectionArray, 'css')
+			->init($collectionArray)
 			->concat($optionArray)
 			->concat($optionArray);
 

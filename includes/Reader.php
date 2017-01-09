@@ -149,8 +149,6 @@ class Reader
 
 	public function load($url = null)
 	{
-		$output = null;
-
 		/* curl */
 
 		if (function_exists('curl_version') && !file_exists($url))

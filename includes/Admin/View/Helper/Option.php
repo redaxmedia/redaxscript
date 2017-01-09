@@ -194,10 +194,13 @@ class Option
 		$languageDirectory = new Directory();
 		$languageDirectory->init('languages');
 		$languageDirectoryArray = $languageDirectory->getArray();
+		$languageArray =
+		[
+			Language::get('select') => 'select'
+		];
 
 		/* process directory */
 
-		$languageArray[Language::get('select')] = 'select';
 		foreach ($languageDirectoryArray as $value)
 		{
 			$value = substr($value, 0, 2);
@@ -224,10 +227,13 @@ class Option
 			'install'
 		]);
 		$templateDirectoryArray = $templateDirectory->getArray();
+		$templateArray =
+		[
+			Language::get('select') => 'select'
+		];
 
 		/* process directory */
 
-		$templateArray[Language::get('select')] = 'select';
 		foreach ($templateDirectoryArray as $value)
 		{
 			$templateArray[$value] = $value;
@@ -254,10 +260,13 @@ class Option
 			$query->whereNotIn('id', $excludeArray);
 		}
 		$content = $query->orderByAsc('title')->findMany();
+		$contentArray =
+		[
+			Language::get('select') => 'select'
+		];
 
 		/* process content */
 
-		$contentArray[Language::get('select')] = 'select';
 		foreach ($content as $value)
 		{
 			$contentKey = $value->title . ' (' . $value->id . ')';
@@ -279,6 +288,7 @@ class Option
 	public static function getAccessArray($table = null)
 	{
 		$access = Db::forTablePrefix($table)->orderByAsc('name')->findMany();
+		$accessArray = [];
 
 		/* process access */
 
