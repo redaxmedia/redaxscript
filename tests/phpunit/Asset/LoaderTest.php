@@ -128,7 +128,7 @@ class LoaderTest extends TestCaseAbstract
 		];
 		$loader = new Asset\Loader(Registry::getInstance());
 		$loader
-			->init($collectionArray, 'css')
+			->init($collectionArray)
 			->concat($optionArray, $rewriteArray)
 			->concat($optionArray, $rewriteArray);
 

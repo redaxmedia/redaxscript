@@ -97,14 +97,20 @@ class Transport
 
 	public function getArray()
 	{
-		$transportArray['baseURL'] = $this->_registry->get('root') . '/';
-		$transportArray['generator'] = $this->_language->get('name', '_package') . ' ' . $this->_language->get('version', '_package');
-		$transportArray['language'] = $this->_language->get();
+		$transportArray =
+		[
+			'baseURL' => $this->_registry->get('root') . '/',
+			'generator' => $this->_language->get('name', '_package') . ' ' . $this->_language->get('version', '_package'),
+			'language' => $this->_language->get(),
+			'version' => $this->_language->get('version', '_package')
+		];
+
+		/* process registry */
+
 		foreach ($this->_registryArray as $value)
 		{
 			$transportArray['registry'][$value] = $this->_registry->get($value);
 		}
-		$transportArray['version'] = $this->_language->get('version', '_package');
 		return $transportArray;
 	}
 
