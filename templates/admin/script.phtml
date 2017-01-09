@@ -1,8 +1,12 @@
 <?php namespace Redaxscript\Admin\Template; ?>
 
+<!-- foot script -->
+
 <?php if (Tag::registry('loggedIn') === Tag::registry('token') && Tag::registry('firstParameter') !== 'logout'): ?>
 	<?php Tag::script()
 		->init('foot')
+		->appendFile('//cdnjs.cloudflare.com/ajax/libs/speakingurl/11.0.0/speakingurl.min.js')
+		->appendFile('templates/admin/assets/scripts/init.js')
 		->appendFile('templates/admin/dist/scripts/admin.min.js');
 	?>
 <?php endif; ?>
