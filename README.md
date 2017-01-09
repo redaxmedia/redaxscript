@@ -3,16 +3,16 @@ Redaxscript
 
 > Ultra lightweight Content Management System for SQLite, MySQL and PostgreSQL.
 
-[![Build Status](https://img.shields.io/travis/redaxmedia/redaxscript.svg?style=flat)](https://travis-ci.org/redaxmedia/redaxscript)
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/redaxmedia/redaxscript.svg?style=flat)](https://scrutinizer-ci.com/g/redaxmedia/redaxscript)
-[![Coverage Status](https://img.shields.io/coveralls/redaxmedia/redaxscript.svg?style=flat)](https://coveralls.io/r/redaxmedia/redaxscript)
-[![PHP 7 Ready](http://php7ready.timesplinter.ch/redaxmedia/redaxscript/badge.svg?style=flat)](https://travis-ci.org/redaxmedia/redaxscript)
+[![Build Status](https://img.shields.io/travis/redaxmedia/redaxscript.svg)](https://travis-ci.org/redaxmedia/redaxscript)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/redaxmedia/redaxscript.svg)](https://scrutinizer-ci.com/g/redaxmedia/redaxscript)
+[![Coverage Status](https://img.shields.io/coveralls/redaxmedia/redaxscript.svg)](https://coveralls.io/r/redaxmedia/redaxscript)
+[![PHP 7 Ready](http://php7ready.timesplinter.ch/redaxmedia/redaxscript/badge.svg)](https://travis-ci.org/redaxmedia/redaxscript)
 [![Dependency Status](https://gemnasium.com/badges/github.com/redaxmedia/redaxscript.svg)](https://gemnasium.com/github.com/redaxmedia/redaxscript)
 [![Docker Automated build](https://img.shields.io/docker/automated/redaxmedia/redaxscript.svg)](https://hub.docker.com/r/redaxmedia/redaxscript/)
-[![Latest Stable Version](https://img.shields.io/packagist/v/redaxmedia/redaxscript.svg?style=flat)](https://packagist.org/packages/redaxmedia/redaxscript)
-[![License](https://img.shields.io/packagist/l/redaxmedia/redaxscript.svg?style=flat)](https://packagist.org/packages/redaxmedia/redaxscript)
-[![Gitter Chat](https://img.shields.io/gitter/room/redaxmedia/redaxscript.svg?style=flat)](https://gitter.im/redaxmedia/redaxscript)
-[![Facebook Chat](https://img.shields.io/badge/chat-on_facebook-0084ff.svg?style=flat)](https://m.me/redaxscript)
+[![Latest Stable Version](https://img.shields.io/packagist/v/redaxmedia/redaxscript.svg)](https://packagist.org/packages/redaxmedia/redaxscript)
+[![License](https://img.shields.io/packagist/l/redaxmedia/redaxscript.svg)](https://packagist.org/packages/redaxmedia/redaxscript)
+[![Gitter Chat](https://img.shields.io/gitter/room/redaxmedia/redaxscript.svg)](https://gitter.im/redaxmedia/redaxscript)
+[![Facebook Chat](https://img.shields.io/badge/chat-on_facebook-0084ff.svg)](https://m.me/redaxscript)
 [![GitHub Stats](https://img.shields.io/badge/github-stats-ff5500.svg)](http://githubstats.com/redaxmedia/redaxscript)
 
 

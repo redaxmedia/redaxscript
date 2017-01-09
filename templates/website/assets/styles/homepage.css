@@ -181,6 +181,7 @@
 {
 	.rs-wrapper-badge-shield a
 	{
-		margin: 0 0.5em;
+		margin-left: 0.5em;
+		margin-right: 0.5em;
 	}
 }
