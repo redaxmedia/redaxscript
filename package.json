@@ -15,8 +15,8 @@
 	},
 	"devDependencies":
 	{
-		"autoprefixer": "6.5.2",
-		"cssnano": "3.8.0",
+		"autoprefixer": "6.6.1",
+		"cssnano": "3.10.0",
 		"colorguard": "1.2.0",
 		"grunt": "1.0.1",
 		"grunt-contrib-jshint": "1.0.0",
