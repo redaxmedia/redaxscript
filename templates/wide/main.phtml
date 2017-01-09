@@ -10,7 +10,7 @@
 
 		<!-- handle content error -->
 
-		<?php if (Tag::registry('contentError')): ?>
+		<?php if (Tag::getRegistry('contentError')): ?>
 			<?php echo Tag::partial('templates/default/error.phtml'); ?>
 
 		<!-- else content -->

@@ -2,7 +2,7 @@
 
 <!-- foot script -->
 
-<?php if (Tag::registry('loggedIn') === Tag::registry('token') && Tag::registry('firstParameter') !== 'logout'): ?>
+<?php if (Tag::getRegistry('loggedIn') === Tag::getRegistry('token') && Tag::getRegistry('firstParameter') !== 'logout'): ?>
 	<?php Tag::script()
 		->init('foot')
 		->appendFile('//cdnjs.cloudflare.com/ajax/libs/speakingurl/11.0.0/speakingurl.min.js')

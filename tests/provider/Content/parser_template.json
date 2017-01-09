@@ -4,7 +4,7 @@
 		"<title>Redaxscript - Ultra lightweight Content Management System</title>"
 	],
 	[
-		"<template>{\"setting\":{\"key\":\"title\"}}<template>",
+		"<template>{\"getSetting\":{\"key\":\"title\"}}<template>",
 		"Redaxscript"
 	],
 	[

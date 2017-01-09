@@ -9,18 +9,18 @@
 
 			<!-- title -->
 
-			<?php if (Tag::setting('title')): ?>
+			<?php if (Tag::getSetting('title')): ?>
 				<h1 class="rs-title-header">
-					<a href="<?php echo Tag::registry('root'); ?>">
-						<?php echo Tag::setting('title'); ?>
+					<a href="<?php echo Tag::getRegistry('root'); ?>">
+						<?php echo Tag::getSetting('title'); ?>
 					</a>
 				</h1>
 			<?php endif; ?>
 
 			<!-- description -->
 
-			<?php if (Tag::setting('description')): ?>
-				<span class="rs-text-header" title="<?php echo Tag::setting('description'); ?>"><?php echo Tag::setting('description'); ?></span>
+			<?php if (Tag::getSetting('description')): ?>
+				<span class="rs-text-header" title="<?php echo Tag::getSetting('description'); ?>"><?php echo Tag::getSetting('description'); ?></span>
 			<?php endif; ?>
 		</div>
 

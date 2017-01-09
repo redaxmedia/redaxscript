@@ -202,7 +202,7 @@ class Tag
 	}
 
 	/**
-	 * registry
+	 * get registry
 	 *
 	 * @since 2.6.0
 	 *
@@ -211,14 +211,14 @@ class Tag
 	 * @return string
 	 */
 
-	public static function registry($key = null)
+	public static function getRegistry($key = null)
 	{
 		$registry = Registry::getInstance();
 		return $registry->get($key);
 	}
 
 	/**
-	 * language
+	 * get language
 	 *
 	 * @since 2.6.0
 	 *
@@ -228,14 +228,14 @@ class Tag
 	 * @return string
 	 */
 
-	public static function language($key = null, $index = null)
+	public static function getLanguage($key = null, $index = null)
 	{
 		$language = Language::getInstance();
 		return $language->get($key, $index);
 	}
 
 	/**
-	 * setting
+	 * get setting
 	 *
 	 * @since 2.6.0
 	 *
@@ -244,7 +244,7 @@ class Tag
 	 * @return string
 	 */
 
-	public static function setting($key = null)
+	public static function getSetting($key = null)
 	{
 		return Db::getSetting($key);
 	}

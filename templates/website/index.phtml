@@ -1,7 +1,7 @@
 <?php namespace Redaxscript\Template; ?>
 
 <!DOCTYPE html>
-<html lang="<?php echo Tag::registry('language'); ?>" dir="<?php echo Helper::getDirection(); ?>" class="<?php echo Helper::getClass(); ?>">
+<html lang="<?php echo Tag::getRegistry('language'); ?>" dir="<?php echo Helper::getDirection(); ?>" class="<?php echo Helper::getClass(); ?>">
 
 	<!-- head -->
 
@@ -16,16 +16,16 @@
 
 	<!-- body -->
 
-	<?php if (!Tag::registry('fullRoute')): ?>
+	<?php if (!Tag::getRegistry('fullRoute')): ?>
 		<body class="rs-body-homepage">
 	<?php else: ?>
 		<body class="rs-body">
 	<?php endif; ?>
         <?php $body = Tag::partial(
         [
-            Tag::registry('fullRoute') ? 'templates/website/header.phtml' : null,
+            Tag::getRegistry('fullRoute') ? 'templates/website/header.phtml' : null,
             'templates/website/main.phtml',
-            Tag::registry('fullRoute') ? 'templates/default/footer.phtml' : null,
+            Tag::getRegistry('fullRoute') ? 'templates/default/footer.phtml' : null,
             'templates/admin/script.phtml',
             'templates/default/script.phtml'
         ]); ?>

@@ -6,7 +6,7 @@
 
 	<!-- handle content error -->
 
-	<?php if (Tag::registry('contentError')): ?>
+	<?php if (Tag::getRegistry('contentError')): ?>
 		<div class="rs-wrapper rs-fn-clearfix">
 			<?php echo Tag::partial('templates/skeleton/error.phtml'); ?>
 		</div>

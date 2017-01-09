@@ -1,5 +1,5 @@
 <?php
-namespace Redaxscript\Tests\Parser;
+namespace Redaxscript\Tests\Content;
 
 use Redaxscript\Config;
 use Redaxscript\Language;
