@@ -407,7 +407,7 @@ module.exports = function (grunt)
 				],
 				dest: 'templates/console/dist/styles/console.min.css'
 			},
-            templateCameleon:
+			templateCameleon:
 			{
 				src:
 				[
