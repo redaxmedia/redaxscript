@@ -21,18 +21,18 @@
 	<?php else: ?>
 		<body class="rs-body">
 	<?php endif; ?>
-        <?php $body = Tag::partial(
-        [
-            Tag::getRegistry('fullRoute') ? 'templates/website/header.phtml' : null,
-            'templates/website/main.phtml',
-            Tag::getRegistry('fullRoute') ? 'templates/default/footer.phtml' : null,
-            'templates/admin/script.phtml',
-            'templates/default/script.phtml'
-        ]); ?>
-        <?php echo Tag::partial('templates/admin/panel.phtml'); ?>
-        <?php echo Tag::partial('templates/default/menu-status.phtml'); ?>
-        <div class="rs-has-menu">
-            <?php echo $body; ?>
-        </div>
+		<?php $body = Tag::partial(
+		[
+			Tag::getRegistry('fullRoute') ? 'templates/website/header.phtml' : null,
+			'templates/website/main.phtml',
+			Tag::getRegistry('fullRoute') ? 'templates/default/footer.phtml' : null,
+			'templates/admin/script.phtml',
+			'templates/default/script.phtml'
+		]); ?>
+		<?php echo Tag::partial('templates/admin/panel.phtml'); ?>
+		<?php echo Tag::partial('templates/default/menu-status.phtml'); ?>
+		<div class="rs-has-menu">
+			<?php echo $body; ?>
+		</div>
 	</body>
 </html>
