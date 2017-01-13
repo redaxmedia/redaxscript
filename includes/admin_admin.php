@@ -228,7 +228,7 @@ function admin_panel_list()
 						$notificationHasArray[$typeKey] = 'rs-admin-has-' . $typeKey;
 						$outputNotification .= '<a href="' . $value['attr']['href'] . '" target="' . $value['attr']['target'] . '" class="rs-admin-link-panel-notification">' . $value['text'] . '</a>';
 					}
-					else
+					else if ($value)
 					{
 						$notificationHasArray[$typeKey] = 'rs-admin-has-' . $typeKey;
 						$outputNotification .= '<span class="rs-admin-text-panel-notification">' . $value . '</span>';
