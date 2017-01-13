@@ -15,6 +15,7 @@ foreach ($categories as $category)
 		$navigationArray[$parentAlias] =
 		[
 			'title' => $category->title,
+			'alias' => $category->alias,
 			'route' => $category->alias
 		];
 	}
@@ -24,6 +25,7 @@ foreach ($categories as $category)
 		$navigationArray[$parentAlias]['children'][$categoryAlias] =
 		[
 			'title' => $category->title,
+			'alias' => $category->alias,
 			'route' => $parentAlias . '/' . $category->alias
 		];
 
@@ -36,6 +38,7 @@ foreach ($categories as $category)
 				$navigationArray[$parentAlias]['children'][$categoryAlias]['children'][$article->alias] =
 				[
 					'title' => $article->title,
+					'alias' => $article->alias,
 					'route' => $parentAlias . '/' . $category->alias . '/' . $article->alias
 				];
 			}

@@ -33,6 +33,12 @@
 
 	& .rs-list-children
 	{
+		display: none;
 		padding-left: 0.5em;
+	}
+
+	& .rs-item-active .rs-list-children
+	{
+		display: block;
 	}
 }
