@@ -2,7 +2,7 @@
 
 <!-- homepage -->
 
-<?php if (!Tag::registry('fullRoute')): ?>
+<?php if (!Tag::getRegistry('fullRoute')): ?>
 	<main class="rs-fn-clearfix">
 		<?php echo Tag::extraRaw()
 			->where('alias', 'homepage')
@@ -27,16 +27,16 @@
 <?php else: ?>
 	<main id="main" class="rs-main rs-fn-clearfix">
 
-		<!-- handle content error -->
+		<!-- error -->
 
-		<?php if (Tag::registry('contentError')): ?>
+		<?php if (Tag::getRegistry('contentError')): ?>
 			<div class="rs-wrapper rs-wrapper-page rs-fn-clearfix">
 				<?php echo Tag::partial('templates/default/error.phtml'); ?>
 			</div>
 
 		<!-- else content and sidebar -->
 
-		<?php elseif (Tag::registry('firstParameter') === 'documentation'): ?>
+		<?php elseif (Tag::getRegistry('firstParameter') === 'documentation'): ?>
 			<div class="rs-wrapper rs-wrapper-page rs-has-sidebar rs-fn-clearfix">
 				<?php echo Tag::partial(
 				[

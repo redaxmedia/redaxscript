@@ -6,20 +6,20 @@
 
 	<!-- teaser -->
 
-	<?php if (!Tag::registry('adminParameter')): ?>
+	<?php if (!Tag::getRegistry('adminParameter')): ?>
 		<?php echo Tag::extraRaw()
 			->where(
 			[
 				'alias' => 'teaser',
-				'category' => Tag::registry('categoryId')
+				'category' => Tag::getRegistry('categoryId')
 			])
 			->findOne()
 			->text; ?>
 	<?php endif; ?>
 
-	<!-- handle content error -->
+	<!-- error -->
 
-	<?php if (Tag::registry('contentError')): ?>
+	<?php if (Tag::getRegistry('contentError')): ?>
 		<div class="rs-wrapper rs-wrapper-page rs-fn-clearfix">
 			<?php echo Tag::partial('templates/default/error.phtml'); ?>
 		</div>

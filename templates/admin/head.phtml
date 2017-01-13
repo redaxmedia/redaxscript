@@ -1,6 +1,6 @@
 <?php namespace Redaxscript\Admin\Template; ?>
 
-<?php if (Tag::registry('loggedIn') === Tag::registry('token') && Tag::registry('firstParameter') !== 'logout'): ?>
+<?php if (Tag::getRegistry('loggedIn') === Tag::getRegistry('token') && Tag::getRegistry('firstParameter') !== 'logout'): ?>
 
 	<!-- link -->
 
@@ -13,12 +13,5 @@
 			'../../../../templates' => '../../templates'
 		])
 		->concat(); ?>
-
-	<!-- foot script -->
-
-	<?php Tag::script()
-		->init('foot')
-		->appendFile('//cdnjs.cloudflare.com/ajax/libs/speakingurl/11.0.0/speakingurl.min.js')
-		->appendFile('templates/admin/assets/scripts/init.js'); ?>
 <?php endif; ?>
 

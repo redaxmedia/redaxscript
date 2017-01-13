@@ -1,6 +1,6 @@
 <?php namespace Redaxscript\Template; ?>
 
-<?php $rewriteRoute = Tag::registry('rewriteRoute'); ?>
+<?php $rewriteRoute = Tag::getRegistry('rewriteRoute'); ?>
 
 <?php foreach ($navigationArray as $categoryArray): ?>
 
@@ -12,12 +12,9 @@
 
 	<div class="rs-box-extra">
 		<ul class="rs-list-sidebar">
-
-			<!-- children -->
-
 			<?php if ($categoryArray['children']): ?>
 				<?php foreach ($categoryArray['children'] as $subArray): ?>
-					<?php if (Tag::registry('secondParameter') === $subArray['alias']): ?>
+					<?php if (Tag::getRegistry('secondParameter') === $subArray['alias']): ?>
 						<li class="rs-item-active">
 					<?php else: ?>
 						<li>

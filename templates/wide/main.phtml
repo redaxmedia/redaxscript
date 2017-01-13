@@ -8,9 +8,9 @@
 
 	<div class="rs-wrapper rs-wrapper-page rs-fn-clearfix">
 
-		<!-- handle content error -->
+		<!-- error -->
 
-		<?php if (Tag::registry('contentError')): ?>
+		<?php if (Tag::getRegistry('contentError')): ?>
 			<?php echo Tag::partial('templates/default/error.phtml'); ?>
 
 		<!-- else content -->

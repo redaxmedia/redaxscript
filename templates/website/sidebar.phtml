@@ -5,7 +5,7 @@
 
 	<!-- documentation -->
 
-	<?php if(Tag::registry('firstParameter') === 'documentation'): ?>
+	<?php if(Tag::getRegistry('firstParameter') === 'documentation'): ?>
 		<?php include('templates/website/helper/documentation.php'); ?>
 		<?php include('templates/website/navigation.phtml'); ?>
 	<?php endif; ?>

@@ -1,7 +1,7 @@
 <?php namespace Redaxscript\Template; ?>
 
 <!DOCTYPE html>
-<html lang="<?php echo Tag::registry('language'); ?>" dir="<?php echo Helper::getDirection(); ?>" class="<?php echo Helper::getClass(); ?>">
+<html lang="<?php echo Tag::getRegistry('language'); ?>" dir="<?php echo Helper::getDirection(); ?>" class="<?php echo Helper::getClass(); ?>">
 
 	<!-- head -->
 
@@ -16,7 +16,7 @@
 		<!-- main -->
 
 		<main id="main" class="rs-install-main rs-install-wrapper">
-			<h1 class="rs-install-title"><?php echo Tag::language('name', '_package'); ?></h1>
+			<h1 class="rs-install-title"><?php echo Tag::getLanguage('name', '_package'); ?></h1>
 			<?php echo Tag::partial('templates/install/content.phtml'); ?>
 		</main>
 

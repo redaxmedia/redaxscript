@@ -278,12 +278,12 @@ class TagTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testRegistry
+	 * testGetRegistry
 	 *
 	 * @since 2.6.0
 	 */
 
-	public function testRegistry()
+	public function testGetRegistry()
 	{
 		/* setup */
 
@@ -291,7 +291,7 @@ class TagTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = Template\Tag::registry('testKey');
+		$actual = Template\Tag::getRegistry('testKey');
 
 		/* compare */
 
@@ -299,12 +299,12 @@ class TagTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testLanguage
+	 * testGetLanguage
 	 *
 	 * @since 2.6.0
 	 */
 
-	public function testLanguage()
+	public function testGetLanguage()
 	{
 		/* setup */
 
@@ -312,7 +312,7 @@ class TagTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = Template\Tag::language('testKey');
+		$actual = Template\Tag::getLanguage('testKey');
 
 		/* compare */
 
@@ -320,16 +320,16 @@ class TagTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testSetting
+	 * testGetSetting
 	 *
 	 * @since 2.6.0
 	 */
 
-	public function testSetting()
+	public function testGetSetting()
 	{
 		/* actual */
 
-		$actual = Template\Tag::setting('charset');
+		$actual = Template\Tag::getSetting('charset');
 
 		/* compare */
 
