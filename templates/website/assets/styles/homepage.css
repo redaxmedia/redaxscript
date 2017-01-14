@@ -63,11 +63,9 @@
 	border-radius: 0.05em;
 	bottom: 0;
 	content: '';
-	display: inline-block;
 	left: 0;
 	position: absolute;
 	right: 0;
-	text-indent: 0;
 	top: 0;
 }
 
