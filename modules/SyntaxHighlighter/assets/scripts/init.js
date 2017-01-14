@@ -20,6 +20,7 @@ rs.modules.syntaxHighlighter =
 	{
 		languages:
 		[
+			'bash',
 			'css',
 			'html',
 			'js',
