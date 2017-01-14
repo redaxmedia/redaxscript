@@ -47,20 +47,6 @@
 	position: relative;
 	text-indent: -999em;
 	width: 4em;
-
-	&:before
-	{
-		background: var(--rs-url-branding) no-repeat center/ 55%, linear-gradient(to top, gray(230), gray(255));
-		border-radius: 0.05em;
-		bottom: 0;
-		content: '';
-		display: inline-block;
-		left: 0;
-		position: absolute;
-		right: 0;
-		text-indent: 0;
-		top: 0;
-	}
 }
 
 @media (--media-medium-min)
@@ -71,12 +57,17 @@
 	}
 }
 
-.rs-link-branding
+.rs-link-branding:before
 {
+	background: var(--rs-url-branding) no-repeat center/ 55%, linear-gradient(to top, gray(230), gray(255));
+	border-radius: 0.05em;
 	bottom: 0;
+	content: '';
+	display: inline-block;
 	left: 0;
 	position: absolute;
 	right: 0;
+	text-indent: 0;
 	top: 0;
 }
 
