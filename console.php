@@ -13,6 +13,7 @@ $registry = Registry::getInstance();
 $request = Request::getInstance();
 $language = Language::getInstance();
 $config = Config::getInstance();
+$accessValidator = new Validator\Access();
 
 /* command line */
 
@@ -28,7 +29,7 @@ if (php_sapi_name() === 'cli')
 
 /* restrict access */
 
-else if ($config->get('env') !== 'production')
+else if ($config->get('env') !== 'production' || $accessValidator->validate('1', $registry->get('myGroups')) === Validator\ValidatorInterface::PASSED)
 {
 	/* ajax request */
 
