@@ -22,9 +22,9 @@ a
 
 .rs-link-default
 {
-	border-bottom: 0.125em solid gray(200);
+	border-bottom: 0.125em solid gray(0, 0.2);
 	color: var(--rs-color-tertiary);
-	transition: border-color 0.2s;
+	transition: border-color 0.1s;
 
 	&:hover
 	{
