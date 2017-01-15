@@ -892,7 +892,7 @@ module.exports = function (grunt)
 				],
 				tasks:
 				[
-					'build-css'
+					'build-styles'
 				]
 			},
 			phpunit:
@@ -992,16 +992,16 @@ module.exports = function (grunt)
 	]);
 	grunt.registerTask('build',
 	[
-		'build-font',
-		'build-css',
-		'build-js'
+		'build-fonts',
+		'build-styles',
+		'build-scripts'
 	]);
-	grunt.registerTask('build-font',
+	grunt.registerTask('build-fonts',
 	[
 		'webfont',
 		'rename'
 	]);
-	grunt.registerTask('build-css',
+	grunt.registerTask('build-styles',
 	[
 		'postcss:base',
 		'postcss:templateAdmin',
@@ -1021,7 +1021,7 @@ module.exports = function (grunt)
 		'postcss:moduleTinymceContent',
 		'postcss:moduleTinymceSkin'
 	]);
-	grunt.registerTask('build-js',
+	grunt.registerTask('build-scripts',
 	[
 		'uglify:base',
 		'uglify:templateAdmin',
