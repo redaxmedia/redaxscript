@@ -816,7 +816,7 @@ module.exports = function (grunt)
 		},
 		rename:
 		{
-			iconAdmin:
+			templateAdmin:
 			{
 				src:
 				[
@@ -824,7 +824,7 @@ module.exports = function (grunt)
 				],
 				dest: 'templates/admin/assets/styles/_icon.css'
 			},
-			iconDefault:
+			templateDefault:
 			{
 				src:
 				[
@@ -832,7 +832,7 @@ module.exports = function (grunt)
 				],
 				dest: 'templates/default/assets/styles/_icon.css'
 			},
-			iconWebsite:
+			templateWebsite:
 			{
 				src:
 				[
