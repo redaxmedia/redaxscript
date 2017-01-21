@@ -6,9 +6,12 @@
 			},
 			{
 				"href": "assets/styles/two.css"
+			},
+			{
+				"href": "assets/styles/three.css"
 			}
 		],
 		"assets/styles/two.css",
-		"<link href=\"assets/styles/one.css\" />"
+		"<link href=\"assets/styles/one.css\" />\n<link href=\"assets/styles/three.css\" />"
 	]
 ]

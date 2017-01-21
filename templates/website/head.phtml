@@ -1,18 +1,56 @@
 <?php namespace Redaxscript\Template; ?>
 
+<!-- base -->
+
+<?php echo Tag::base(); ?>
+
+<!-- title -->
+
+<?php echo Tag::title(); ?>
+
 <!-- meta -->
 
-<?php Tag::meta()
+<?php echo Tag::meta()
 	->init()
+	->append('charset', Tag::getSetting('charset'))
+	->append(['name' => 'author', 'content' => Tag::getSetting('author')])
+	->append(['name' => 'generator', 'content' => Tag::getLanguage('name', '_package') . ' ' . Tag::getLanguage('version', '_package')])
+	->append(['name' => 'description', 'content' => Helper::getDescription()])
+	->append(['name' => 'keywords', 'content' => Helper::getKeywords()])
+	->append(['name' => 'robots', 'content' => Helper::getRobots()])
+	->append(['name' => 'viewport', 'content' => 'width=device-width'])
+	->append(['name' => 'theme-color', 'content' => '#323e4c'])
+	->append(['name' => 'msapplication-navbutton-color', 'content' => '#323e4c'])
+	->append(['name' => 'apple-mobile-web-app-status-bar-stylecontent', 'content' => '#323e4c'])
 	->append(['name' => 'google-site-verification', 'content' => 'Wz0d7aVxf_6sQ54_ttyu2sMrw-yJLBXd6h4HknDNYaI']); ?>
 
 <!-- link -->
 
-<?php Tag::link()
+<?php echo Tag::link()
 	->init()
+	->append(['href' => Tag::getRegistry('fullRoute') ? Helper::getCanonical() : Tag::getRegistry('root'), 'rel' => 'canonical'])
+	->append(['href' => 'templates/default/assets/images/favicon.ico', 'rel' => 'shortcut icon'])
+	->append(['href' => 'templates/default/assets/images/favicon.png', 'rel' => 'apple-touch-icon'])
+	->appendFile('//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset())
 	->appendFile('//fonts.googleapis.com/css?family=Pacifico&text=What+are+you?;subset=' . Helper::getSubset())
+	->appendFile('dist/styles/base.min.css')
+	->appendFile('templates/default/dist/styles/default.min.css')
 	->appendFile('templates/website/dist/styles/website.min.css')
 	->rewrite(
 	[
-		'../../../../templates' => '../../templates'
-	]); ?>
+		'../../../../templates' => '../../templates',
+		'../../../../modules' => '../../modules'
+	])
+	->concat(); ?>
+
+<?php echo Tag::link()->init('admin'); ?>
+
+<!-- head script -->
+
+<?php echo Tag::script()
+	->init('head')
+	->prependFile('templates/default/assets/scripts/init.js')
+	->prependFile('assets/scripts/init.js')
+	->prependFile('assets/scripts/support.js')
+	->transportVar('rs', Helper::getTransport())
+	->concat(); ?>
