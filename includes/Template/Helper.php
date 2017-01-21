@@ -108,6 +108,45 @@ class Helper
 	];
 
 	/**
+	 * get the title
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+
+	public static function getTitle()
+	{
+		$lastTable = Registry::get('lastTable');
+		$lastId = Registry::get('lastId');
+		$useTitle = Registry::get('useTitle');
+
+		/* find title */
+
+		if ($useTitle)
+		{
+			$title = $useTitle;
+		}
+		else if ($lastTable && $lastId)
+		{
+			$content = Db::forTablePrefix($lastTable)->whereIdIs($lastId)->findOne();
+			$title = $content->title;
+			if ($title)
+			{
+				$title .= Db::getSetting('divider') . Db::getSetting('title');
+			}
+		}
+
+		/* handle description */
+
+		if ($title)
+		{
+			return $title;
+		}
+		return Db::getSetting('title');
+	}
+
+	/**
 	 * get the canonical
 	 *
 	 * @since 3.0.0
@@ -307,6 +346,9 @@ class Helper
 	public static function getSubset()
 	{
 		$language = Registry::get('language');
+
+		/* process subset */
+
 		foreach (self::$_subsetArray as $subset => $valueArray)
 		{
 			if (in_array($language, $valueArray))
@@ -328,6 +370,9 @@ class Helper
 	public static function getDirection()
 	{
 		$language = Registry::get('language');
+
+		/* process direction */
+
 		foreach (self::$_directionArray as $direction => $valueArray)
 		{
 			if (in_array($language, $valueArray))

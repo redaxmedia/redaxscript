@@ -51,7 +51,7 @@ class HelperTest extends TestCaseAbstract
 			->set(
 			[
 				'id' => 2,
-				'title' => 'test',
+				'title' => 'test-one',
 				'alias' => 'test-one',
 				'author' => 'test',
 				'description' => 'category-description',
@@ -64,7 +64,7 @@ class HelperTest extends TestCaseAbstract
 			->set(
 			[
 				'id' => 3,
-				'title' => 'test',
+				'title' => 'test-two',
 				'alias' => 'test-two',
 				'author' => 'test',
 				'parent' => 2
@@ -75,7 +75,7 @@ class HelperTest extends TestCaseAbstract
 			->set(
 			[
 				'id' => 2,
-				'title' => 'test',
+				'title' => 'test-three',
 				'alias' => 'test-three',
 				'author' => 'test',
 				'description' => 'article-description',
@@ -90,7 +90,7 @@ class HelperTest extends TestCaseAbstract
 			->set(
 			[
 				'id' => 3,
-				'title' => 'test',
+				'title' => 'test-four',
 				'alias' => 'test-four',
 				'author' => 'test',
 				'text' => 'test',
@@ -102,13 +102,14 @@ class HelperTest extends TestCaseAbstract
 			->set(
 			[
 				'id' => 4,
-				'title' => 'test',
+				'title' => 'test-five',
 				'alias' => 'test-five',
 				'author' => 'test',
 				'text' => 'test',
 				'category' => 3
 			])
 			->save();
+		Db::setSetting('title', 'setting-title');
 		Db::setSetting('description', 'setting-description');
 		Db::setSetting('keywords', 'setting-keywords');
 	}
@@ -123,6 +124,19 @@ class HelperTest extends TestCaseAbstract
 	{
 		Db::forTablePrefix('categories')->whereNotEqual('id', 1)->deleteMany();
 		Db::forTablePrefix('articles')->whereNotEqual('id', 1)->deleteMany();
+	}
+
+	/**
+	 * providerGetTitle
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function providerGetTitle()
+	{
+		return $this->getProvider('tests/provider/Template/helper_get_title.json');
 	}
 
 	/**
@@ -214,6 +228,32 @@ class HelperTest extends TestCaseAbstract
 	public function providerGetClass()
 	{
 		return $this->getProvider('tests/provider/Template/helper_get_class.json');
+	}
+
+	/**
+	 * testGetTitle
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $registryArray
+	 * @param string $expect
+	 *
+	 * @dataProvider providerGetTitle
+	 */
+
+	public function testGetTitle($registryArray = [], $expect = null)
+	{
+		/* setup */
+
+		$this->_registry->init($registryArray);
+
+		/* actual */
+
+		$actual = Template\Helper::getTitle();
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
