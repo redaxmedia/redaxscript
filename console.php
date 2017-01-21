@@ -7,6 +7,10 @@ error_reporting(E_ERROR || E_PARSE);
 
 include_once('includes/bootstrap.php');
 
+/* header */
+
+header_remove('x-powered-by');
+
 /* get instance */
 
 $registry = Registry::getInstance();
