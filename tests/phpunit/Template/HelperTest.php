@@ -452,7 +452,7 @@ class HelperTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = Template\Helper::getClass();
+		$actual = Template\Helper::getClass('rs-is-');
 
 		/* compare */
 
