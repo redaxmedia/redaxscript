@@ -195,13 +195,13 @@ class Helper
 	{
 		$lastTable = Registry::get('lastTable');
 		$lastId = Registry::get('lastId');
-		$metaDescription = Registry::get('metaDescription');
+		$useDescription = Registry::get('useDescription');
 
 		/* find description */
 
-		if ($metaDescription)
+		if ($useDescription)
 		{
-			$description = $metaDescription;
+			$description = $useDescription;
 		}
 		else if ($lastTable && $lastId)
 		{
@@ -239,13 +239,13 @@ class Helper
 	{
 		$lastTable = Registry::get('lastTable');
 		$lastId = Registry::get('lastId');
-		$metaKeywords = Registry::get('metaKeywords');
+		$useKeywords = Registry::get('useKeywords');
 
 		/* find keywords */
 
-		if ($metaKeywords)
+		if ($useKeywords)
 		{
-			$keywords = $metaKeywords;
+			$keywords = $useKeywords;
 		}
 		else if ($lastTable && $lastId)
 		{
@@ -284,13 +284,13 @@ class Helper
 		$lastTable = Registry::get('lastTable');
 		$lastId = Registry::get('lastId');
 		$contentError = Registry::get('contentError');
-		$metaRobots = Registry::get('metaRobots');
+		$useRobots = Registry::get('useRobots');
 
 		/* find robots */
 
-		if ($metaRobots)
+		if ($useRobots)
 		{
-			$robots = $metaRobots;
+			$robots = $useRobots;
 		}
 		else if ($contentError)
 		{

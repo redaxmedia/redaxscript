@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Head;
 
-use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Registry;
 

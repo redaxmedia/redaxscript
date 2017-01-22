@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Tests\Head;
 
-use Redaxscript\Db;
 use Redaxscript\Head;
 use Redaxscript\Registry;
 use Redaxscript\Tests\TestCaseAbstract;

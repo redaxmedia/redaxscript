@@ -1,7 +1,7 @@
 [
 	[
 		{
-			"metaRobots": null,
+			"useRobots": null,
 			"contentError": null,
 			"lastTable": null,
 			"lastId": null
@@ -10,7 +10,7 @@
 	],
 	[
 		{
-			"metaRobots": null,
+			"useRobots": null,
 			"contentError": null,
 			"lastTable": "categories",
 			"lastId": 1
@@ -19,7 +19,7 @@
 	],
 	[
 		{
-			"metaRobots": 3,
+			"useRobots": 3,
 			"contentError": null,
 			"lastTable": null,
 			"lastId": null
@@ -28,7 +28,7 @@
 	],
 	[
 		{
-			"metaRobots": null,
+			"useRobots": null,
 			"contentError": true,
 			"lastTable": null,
 			"lastId": null
@@ -37,7 +37,7 @@
 	],
 	[
 		{
-			"metaRobots": null,
+			"useRobots": null,
 			"contentError": null,
 			"lastTable": "articles",
 			"lastId": 2
@@ -46,7 +46,7 @@
 	],
 	[
 		{
-			"metaRobots": null,
+			"useRobots": null,
 			"contentError": null,
 			"lastTable": "categories",
 			"lastId": 2
@@ -55,7 +55,7 @@
 	],
 	[
 		{
-			"metaRobots": null,
+			"useRobots": null,
 			"contentError": null,
 			"lastTable": "articles",
 			"lastId": 3
@@ -64,7 +64,7 @@
 	],
 	[
 		{
-			"metaRobots": null,
+			"useRobots": null,
 			"contentError": null,
 			"lastTable": "categories",
 			"lastId": 3
