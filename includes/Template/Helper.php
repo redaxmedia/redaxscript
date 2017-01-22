@@ -2,7 +2,6 @@
 namespace Redaxscript\Template;
 
 use Redaxscript\Asset;
-use Redaxscript\Db;
 use Redaxscript\Registry;
 use Redaxscript\Language;
 
@@ -14,99 +13,10 @@ use Redaxscript\Language;
  * @package Redaxscript
  * @category Helper
  * @author Henry Ruhs
- * @author Kim Kha Nguyen
  */
 
 class Helper
 {
-	/**
-	 * prefix for the class
-	 *
-	 * @var string
-	 */
-
-	protected static $_prefix = 'rs-';
-
-	/**
-	 * subset
-	 *
-	 * @var string
-	 */
-
-	protected static $_subset = 'latin';
-
-	/**
-	 * direction
-	 *
-	 * @var string
-	 */
-
-	protected static $_direction = 'ltr';
-
-	/**
-	 * array of robots
-	 *
-	 * @var array
-	 */
-
-	protected static $_robotArray =
-	[
-		'none',
-		'all',
-		'index',
-		'follow',
-		'index_no',
-		'follow_no'
-	];
-
-	/**
-	 * array of subsets
-	 *
-	 * @var array
-	 */
-
-	protected static $_subsetArray =
-	[
-		'cyrillic' =>
-		[
-			'bg',
-			'ru'
-		],
-		'vietnamese' =>
-		[
-			'vi'
-		]
-	];
-
-	/**
-	 * array of directions
-	 *
-	 * @var array
-	 */
-
-	protected static $_directionArray =
-	[
-		'rtl' =>
-		[
-			'ar',
-			'fa',
-			'he'
-		]
-	];
-
-	/**
-	 * array of devices
-	 *
-	 * @var array
-	 */
-
-	protected static $_deviceArray =
-	[
-		'mobile' => 'myMobile',
-		'tablet' => 'myTablet',
-		'desktop' => 'myDesktop'
-	];
-
 	/**
 	 * get the title
 	 *
@@ -117,33 +27,8 @@ class Helper
 
 	public static function getTitle()
 	{
-		$lastTable = Registry::get('lastTable');
-		$lastId = Registry::get('lastId');
-		$useTitle = Registry::get('useTitle');
-
-		/* find title */
-
-		if ($useTitle)
-		{
-			$title = $useTitle;
-		}
-		else if ($lastTable && $lastId)
-		{
-			$content = Db::forTablePrefix($lastTable)->whereIdIs($lastId)->findOne();
-			$title = $content->title;
-			if ($title)
-			{
-				$title .= Db::getSetting('divider') . Db::getSetting('title');
-			}
-		}
-
-		/* handle description */
-
-		if ($title)
-		{
-			return $title;
-		}
-		return Db::getSetting('title');
+		$title = new Helper\Title(Registry::getInstance());
+		return $title->process();
 	}
 
 	/**
@@ -156,31 +41,8 @@ class Helper
 
 	public static function getCanonical()
 	{
-		$lastTable = Registry::get('lastTable');
-		$lastId = Registry::get('lastId');
-		$canonicalUrl = Registry::get('root');
-
-		/* find route */
-
-		if ($lastTable === 'categories')
-		{
-			$articles = Db::forTablePrefix('articles')->where('category', $lastId);
-			$articlesTotal = $articles->findMany()->count();
-			if ($articlesTotal === 1)
-			{
-				$lastTable = 'articles';
-				$lastId = $articles->findOne()->id;
-			}
-		}
-		$canonicalRoute = build_route($lastTable, $lastId);
-
-		/* handle route */
-
-		if ($canonicalRoute)
-		{
-			return $canonicalUrl . '/' . Registry::get('parameterRoute') . $canonicalRoute;
-		}
-		return $canonicalUrl;
+		$canonical = new Helper\Canonical(Registry::getInstance());
+		return $canonical->process();
 	}
 
 	/**
@@ -193,38 +55,8 @@ class Helper
 
 	public static function getDescription()
 	{
-		$lastTable = Registry::get('lastTable');
-		$lastId = Registry::get('lastId');
-		$useDescription = Registry::get('useDescription');
-
-		/* find description */
-
-		if ($useDescription)
-		{
-			$description = $useDescription;
-		}
-		else if ($lastTable && $lastId)
-		{
-			$content = Db::forTablePrefix($lastTable)->whereIdIs($lastId)->findOne();
-			$description = $content->description;
-
-			/* handle parent */
-
-			if (!$description)
-			{
-				$parentId = $content->category ? $content->category : $content->parent;
-				$parent = Db::forTablePrefix('categories')->whereIdIs($parentId)->whereNull('access')->findOne();
-				$description = $parent->description;
-			}
-		}
-
-		/* handle description */
-
-		if ($description)
-		{
-			return $description;
-		}
-		return Db::getSetting('description');
+		$description = new Helper\Description(Registry::getInstance());
+		return $description->process();
 	}
 
 	/**
@@ -237,42 +69,12 @@ class Helper
 
 	public static function getKeywords()
 	{
-		$lastTable = Registry::get('lastTable');
-		$lastId = Registry::get('lastId');
-		$useKeywords = Registry::get('useKeywords');
-
-		/* find keywords */
-
-		if ($useKeywords)
-		{
-			$keywords = $useKeywords;
-		}
-		else if ($lastTable && $lastId)
-		{
-			$content = Db::forTablePrefix($lastTable)->whereIdIs($lastId)->findOne();
-			$keywords = $content->keywords;
-
-			/* handle parent */
-
-			if (!$keywords)
-			{
-				$parentId = $content->category ? $content->category : $content->parent;
-				$parent = Db::forTablePrefix('categories')->whereIdIs($parentId)->whereNull('access')->findOne();
-				$keywords = $parent->keywords;
-			}
-		}
-
-		/* handle keywords */
-
-		if ($keywords)
-		{
-			return $keywords;
-		}
-		return Db::getSetting('keywords');
+		$keywords = new Helper\Keywords(Registry::getInstance());
+		return $keywords->process();
 	}
 
 	/**
-	 * get the keywords
+	 * get the robots
 	 *
 	 * @since 3.0.0
 	 *
@@ -281,44 +83,8 @@ class Helper
 
 	public static function getRobots()
 	{
-		$lastTable = Registry::get('lastTable');
-		$lastId = Registry::get('lastId');
-		$contentError = Registry::get('contentError');
-		$useRobots = Registry::get('useRobots');
-
-		/* find robots */
-
-		if ($useRobots)
-		{
-			$robots = $useRobots;
-		}
-		else if ($contentError)
-		{
-			$robots = 0;
-		}
-		else if ($lastTable && $lastId)
-		{
-			$content = Db::forTablePrefix($lastTable)->whereIdIs($lastId)->whereNull('access')->findOne();
-			$robots = $content->robots;
-
-			/* handle parent */
-
-			if (!$robots)
-			{
-				$parentId = $content->category ? $content->category : $content->parent;
-				$parent = Db::forTablePrefix('categories')->whereIdIs($parentId)->whereNull('access')->findOne();
-				$robots = $parent->robots;
-			}
-		}
-
-		/* handle robots */
-
-		if (array_key_exists($robots, self::$_robotArray))
-		{
-			return self::$_robotArray[$robots];
-		}
-		$robots = Db::getSetting('robots');
-		return self::$_robotArray[$robots];
+		$robots = new Helper\Robots(Registry::getInstance());
+		return $robots->process();
 	}
 
 	/**
@@ -326,7 +92,7 @@ class Helper
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return array
 	 */
 
 	public static function getTransport()
@@ -345,18 +111,8 @@ class Helper
 
 	public static function getSubset()
 	{
-		$language = Registry::get('language');
-
-		/* process subset */
-
-		foreach (self::$_subsetArray as $subset => $valueArray)
-		{
-			if (in_array($language, $valueArray))
-			{
-				return $subset;
-			}
-		}
-		return self::$_subset;
+		$subset = new Helper\Subset(Registry::getInstance());
+		return $subset->process();
 	}
 
 	/**
@@ -369,18 +125,8 @@ class Helper
 
 	public static function getDirection()
 	{
-		$language = Registry::get('language');
-
-		/* process direction */
-
-		foreach (self::$_directionArray as $direction => $valueArray)
-		{
-			if (in_array($language, $valueArray))
-			{
-				return $direction;
-			}
-		}
-		return self::$_direction;
+		$direction = new Helper\Direction(Registry::getInstance());
+		return $direction->process();
 	}
 
 	/**
@@ -388,64 +134,22 @@ class Helper
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param string $prefix
+	 *
 	 * @return string
 	 */
 
-	public static function getClass()
+	public static function getClass($prefix = null)
 	{
-		$classArray = array_unique(array_merge(
-			self::_getBrowserArray(),
-			self::_getDeviceArray()
-		));
+		$client = new Helper\Client(Registry::getInstance());
+		$clientArray = $client->process();
 
-		/* process class */
+		/* process client */
 
-		foreach ($classArray as $key => $value)
+		foreach ($clientArray as $key => $value)
 		{
-			$classArray[$key] = self::$_prefix . 'is-' . $value;
+			$clientArray[$key] = $prefix . $value;
 		}
-		return implode(' ', $classArray);
-	}
-
-	/**
-	 * get the browser array
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	protected static function _getBrowserArray()
-	{
-		return
-		[
-			Registry::get('myBrowser'),
-			Registry::get('myBrowserVersion'),
-			Registry::get('myEngine')
-		];
-	}
-
-	/**
-	 * get the device array
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	protected static function _getDeviceArray()
-	{
-		foreach (self::$_deviceArray as $system => $value)
-		{
-			$device = Registry::get($value);
-			if ($device)
-			{
-				return
-				[
-					$system,
-					$device
-				];
-			}
-		}
+		return implode(' ', $clientArray);
 	}
 }
