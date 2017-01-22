@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Head;
 
-use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Registry;
 
@@ -40,49 +39,24 @@ class Title implements HeadInterface
 	}
 
 	/**
-	 * stringify the title
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return string
-	 */
-
-	public function __toString()
-	{
-		$render = $this->render();
-		if ($render)
-		{
-			return $render;
-		}
-		return '<!-- Redaxscript\Head\Title -->';
-	}
-
-	/**
 	 * render the title
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param string $text
+	 *
 	 * @return string
 	 */
 
-	public function render()
+	public function render($text = null)
 	{
-		$titleArray =
-		[
-			'title' => $this->_registry->get('metaTitle') ? $this->_registry->get('metaTitle') : Db::getSetting('title'),
-			'description' => $this->_registry->get('metaDescription') ? $this->_registry->get('metaDescription') : Db::getSetting('description')
-		];
-		$divider = $this->_registry->get('metaDivider') ? $this->_registry->get('metaDivider') : Db::getSetting('divider');
-
-		/* html elements */
-
 		$titleElement = new Html\Element();
-		$titleText = implode($divider, array_filter($titleArray));
-		if ($titleText)
+		$titleElement->init();
+		if ($text)
 		{
 			return $titleElement
 				->init('title')
-				->text($titleText)
+				->text($text)
 				->render();
 		}
 	}

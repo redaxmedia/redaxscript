@@ -86,7 +86,7 @@ class TagTest extends TestCaseAbstract
 	{
 		/* actual */
 
-		$actual = Template\Tag::title();
+		$actual = Template\Tag::title('test');
 
 		/* compare */
 

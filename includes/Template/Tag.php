@@ -42,13 +42,15 @@ class Tag
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param string $text
+	 *
 	 * @return string
 	 */
 
-	public static function title()
+	public static function title($text = null)
 	{
 		$title = new Head\Title(Registry::getInstance());
-		return $title->render();
+		return $title->render($text);
 	}
 
 	/**

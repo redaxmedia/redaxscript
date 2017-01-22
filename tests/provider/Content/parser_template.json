@@ -1,7 +1,7 @@
 [
 	[
-		"<template>title<template>",
-		"<title>Redaxscript - Ultra lightweight Content Management System</title>"
+		"<template>breadcrumb<template>",
+		"<ul class=\"rs-list-breadcrumb\"><li>Home</li></ul>"
 	],
 	[
 		"<template>{\"getSetting\":{\"key\":\"title\"}}<template>",

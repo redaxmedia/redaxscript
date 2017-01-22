@@ -45,7 +45,7 @@ class Preview extends Module\Module
 		if ($this->_registry->get('firstParameter') === 'preview')
 		{
 			$this->_registry->set('metaTitle', $this->_language->get('preview', '_preview'));
-			$this->_registry->set('metaDescription', $this->_language->get('description', '_preview'));
+			$this->_registry->set('useDescription', $this->_language->get('description', '_preview'));
 			$this->_registry->set('routerBreak', true);
 
 			/* link */

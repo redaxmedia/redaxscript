@@ -1,58 +1,58 @@
 [
 	[
 		{
-			"useKeywords": null,
+			"useTitle": null,
 			"lastTable": null,
 			"lastId": null
 		},
-		"setting-keywords"
+		"setting-title"
 	],
 	[
 		{
-			"useDescription": null,
+			"useTitle": null,
 			"lastTable": "categories",
 			"lastId": 1
 		},
-		"setting-keywords"
+		"Home - setting-title"
 	],
 	[
 		{
-			"useKeywords": "meta-keywords",
+			"useTitle": "use-title",
 			"lastTable": null,
 			"lastId": null
 		},
-		"meta-keywords"
+		"use-title"
 	],
 	[
 		{
-			"useKeywords": null,
+			"useTitle": null,
 			"lastTable": "articles",
 			"lastId": 2
 		},
-		"article-keywords"
+		"test-three - setting-title"
 	],
 	[
 		{
-			"useKeywords": null,
+			"useTitle": null,
 			"lastTable": "categories",
 			"lastId": 2
 		},
-		"category-keywords"
+		"test-one - setting-title"
 	],
 	[
 		{
-			"useKeywords": null,
+			"useTitle": null,
 			"lastTable": "articles",
 			"lastId": 3
 		},
-		"category-keywords"
+		"test-four - setting-title"
 	],
 	[
 		{
-			"useKeywords": null,
+			"useTitle": null,
 			"lastTable": "categories",
 			"lastId": 3
 		},
-		"category-keywords"
+		"test-two - setting-title"
 	]
 ]
