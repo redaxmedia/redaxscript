@@ -1,7 +1,7 @@
 [
 	[
 		{
-			"metaDescription": null,
+			"useDescription": null,
 			"lastTable": null,
 			"lastId": null
 		},
@@ -9,7 +9,7 @@
 	],
 	[
 		{
-			"metaDescription": null,
+			"useDescription": null,
 			"lastTable": "categories",
 			"lastId": 1
 		},
@@ -17,7 +17,7 @@
 	],
 	[
 		{
-			"metaDescription": "meta-description",
+			"useDescription": "meta-description",
 			"lastTable": null,
 			"lastId": null
 		},
@@ -25,7 +25,7 @@
 	],
 	[
 		{
-			"metaDescription": null,
+			"useDescription": null,
 			"lastTable": "articles",
 			"lastId": 2
 		},
@@ -33,7 +33,7 @@
 	],
 	[
 		{
-			"metaDescription": null,
+			"useDescription": null,
 			"lastTable": "categories",
 			"lastId": 2
 		},
@@ -41,7 +41,7 @@
 	],
 	[
 		{
-			"metaDescription": null,
+			"useDescription": null,
 			"lastTable": "articles",
 			"lastId": 3
 		},
@@ -49,7 +49,7 @@
 	],
 	[
 		{
-			"metaDescription": null,
+			"useDescription": null,
 			"lastTable": "categories",
 			"lastId": 3
 		},

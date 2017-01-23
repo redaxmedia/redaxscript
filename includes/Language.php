@@ -2,7 +2,7 @@
 namespace Redaxscript;
 
 /**
- * children class to provide the current language
+ * children class to provide the language
  *
  * @since 2.2.0
  *

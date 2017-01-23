@@ -1,7 +1,7 @@
 <?php namespace Redaxscript\Template; ?>
 
 <!DOCTYPE html>
-<html lang="<?php echo Tag::getRegistry('language'); ?>" dir="<?php echo Helper::getDirection(); ?>" class="<?php echo Helper::getClass(); ?>">
+<html lang="<?php echo Tag::getRegistry('language'); ?>" dir="<?php echo Helper::getDirection(); ?>" class="<?php echo Helper::getClass('rs-is-'); ?>">
 
 	<!-- head -->
 
@@ -9,8 +9,7 @@
 		<?php echo Tag::partial(
 		[
 			'templates/admin/head.phtml',
-			'templates/website/head.phtml',
-			'templates/default/head.phtml'
+			'templates/website/head.phtml'
 		]); ?>
 	</head>
 

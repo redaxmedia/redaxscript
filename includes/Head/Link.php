@@ -159,8 +159,8 @@ class Link extends HeadAbstract
 
 		/* html elements */
 
-		$metaElement = new Html\Element();
-		$metaElement->init('link');
+		$linkElement = new Html\Element();
+		$linkElement->init('link');
 		$collectionArray = self::$_collectionArray[self::$_namespace];
 		$collectionKeys = array_keys($collectionArray);
 		$lastKey = end($collectionKeys);
@@ -171,7 +171,7 @@ class Link extends HeadAbstract
 		{
 			if ($attribute['href'])
 			{
-				$output .= $metaElement
+				$output .= $linkElement
 					->copy()
 					->attr($attribute);
 				if ($key !== $lastKey)

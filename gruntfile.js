@@ -407,14 +407,6 @@ module.exports = function (grunt)
 				],
 				dest: 'templates/console/dist/styles/console.min.css'
 			},
-			templateCameleon:
-			{
-				src:
-				[
-					'templates/cameleon/assets/styles/_cameleon.css'
-				],
-				dest: 'templates/cameleon/dist/styles/cameleon.min.css'
-			},
 			templateDefault:
 			{
 				src:
@@ -816,7 +808,7 @@ module.exports = function (grunt)
 		},
 		rename:
 		{
-			iconAdmin:
+			templateAdmin:
 			{
 				src:
 				[
@@ -824,7 +816,7 @@ module.exports = function (grunt)
 				],
 				dest: 'templates/admin/assets/styles/_icon.css'
 			},
-			iconDefault:
+			templateDefault:
 			{
 				src:
 				[
@@ -832,7 +824,7 @@ module.exports = function (grunt)
 				],
 				dest: 'templates/default/assets/styles/_icon.css'
 			},
-			iconWebsite:
+			templateWebsite:
 			{
 				src:
 				[
@@ -892,7 +884,7 @@ module.exports = function (grunt)
 				],
 				tasks:
 				[
-					'build-css'
+					'build-styles'
 				]
 			},
 			phpunit:
@@ -992,16 +984,16 @@ module.exports = function (grunt)
 	]);
 	grunt.registerTask('build',
 	[
-		'build-font',
-		'build-css',
-		'build-js'
+		'build-fonts',
+		'build-styles',
+		'build-scripts'
 	]);
-	grunt.registerTask('build-font',
+	grunt.registerTask('build-fonts',
 	[
 		'webfont',
 		'rename'
 	]);
-	grunt.registerTask('build-css',
+	grunt.registerTask('build-styles',
 	[
 		'postcss:base',
 		'postcss:templateAdmin',
@@ -1021,7 +1013,7 @@ module.exports = function (grunt)
 		'postcss:moduleTinymceContent',
 		'postcss:moduleTinymceSkin'
 	]);
-	grunt.registerTask('build-js',
+	grunt.registerTask('build-scripts',
 	[
 		'uglify:base',
 		'uglify:templateAdmin',
