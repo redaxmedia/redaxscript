@@ -415,14 +415,6 @@ module.exports = function (grunt)
 				],
 				dest: 'templates/default/dist/styles/default.min.css'
 			},
-			templateSkeleton:
-			{
-				src:
-				[
-					'templates/skeleton/assets/styles/_skeleton.css'
-				],
-				dest: 'templates/skeleton/dist/styles/skeleton.min.css'
-			},
 			templateInstall:
 			{
 				src:
@@ -430,6 +422,14 @@ module.exports = function (grunt)
 					'templates/install/assets/styles/_install.css'
 				],
 				dest: 'templates/install/dist/styles/install.min.css'
+			},
+			templateSkeleton:
+			{
+				src:
+				[
+					'templates/skeleton/assets/styles/_skeleton.css'
+				],
+				dest: 'templates/skeleton/dist/styles/skeleton.min.css'
 			},
 			templateWebsite:
 			{
