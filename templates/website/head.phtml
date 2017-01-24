@@ -6,7 +6,7 @@
 
 <!-- title -->
 
-<?php echo Tag::title(Tag::getRegistry('fullRoute') ? Helper::getTitle() : Tag::getLanguage('homepage')); ?>
+<?php echo Tag::title(Tag::getRegistry('fullRoute') ? Helper::getTitle() : Tag::getSetting('title')); ?>
 
 <!-- meta -->
 
@@ -17,7 +17,7 @@
 	->append(['name' => 'generator', 'content' => Tag::getLanguage('name', '_package') . ' ' . Tag::getLanguage('version', '_package')])
 	->append(['name' => 'description', 'content' => Tag::getRegistry('fullRoute') ? Helper::getDescription() : Tag::getSetting('description')])
 	->append(['name' => 'keywords', 'content' => Tag::getRegistry('fullRoute') ? Helper::getKeywords() : Tag::getSetting('keywords')])
-	->append(['name' => 'robots', 'content' => Tag::getRegistry('fullRoute') ? Helper::getRobots() : Tag::getSetting('robots')])
+	->append(['name' => 'robots', 'content' => Tag::getRegistry('fullRoute') ? Helper::getRobots() : 'all'])
 	->append(['name' => 'viewport', 'content' => 'width=device-width'])
 	->append(['name' => 'theme-color', 'content' => '#323e4c'])
 	->append(['name' => 'msapplication-navbutton-color', 'content' => '#323e4c'])
