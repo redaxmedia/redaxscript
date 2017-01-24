@@ -6,7 +6,7 @@
 
 <!-- title -->
 
-<?php echo Tag::title(Helper::getTitle()); ?>
+<?php echo Tag::title(Tag::getRegistry('fullRoute') ? Helper::getTitle() : Tag::getLanguage('homepage')); ?>
 
 <!-- meta -->
 
