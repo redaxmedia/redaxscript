@@ -875,7 +875,7 @@ module.exports = function (grunt)
 					'build'
 				]
 			},
-			css:
+			styles:
 			{
 				files:
 				[
