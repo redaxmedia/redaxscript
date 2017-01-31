@@ -1,7 +1,7 @@
 {
 	"name": "redaxmedia/redaxscript",
 	"description": "Ultra lightweight Content Management System",
-	"version": "3.0.0-beta6",
+	"version": "3.0.0-beta7",
 	"homepage": "http://redaxscript.com",
 	"license": "GPL-3.0",
 	"require":
