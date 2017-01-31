@@ -182,7 +182,6 @@ class Html implements FilterInterface
 		$charset = Db::getSetting('charset');
 		$html = mb_convert_encoding($html, 'html-entities', $charset);
 		$doc = $this->_createDocument($html);
-		$doc = $this->_tidyDocument($doc);
 
 		/* filter nodes */
 
@@ -212,35 +211,7 @@ class Html implements FilterInterface
 	protected function _createDocument($html = null)
 	{
 		$doc = new DOMDocument();
-		$doc->loadHTML($html);
-		return $doc;
-	}
-
-	/**
-	 * tidy the document
-	 *
-	 * @since 2.6.0
-	 *
-	 * @param DOMDocument $doc target document
-	 *
-	 * @return DOMDocument
-	 */
-
-	protected function _tidyDocument(DOMDocument $doc)
-	{
-		if ($doc->firstChild->nodeType === XML_DOCUMENT_TYPE_NODE)
-		{
-			/* remove doctype */
-
-			$doc->removeChild($doc->firstChild);
-
-			/* remove head and body */
-
-			if ($doc->firstChild->firstChild->nodeName === 'head' || $doc->firstChild->firstChild->nodeName === 'body')
-			{
-				$doc->replaceChild($doc->firstChild->firstChild->firstChild, $doc->firstChild);
-			}
-		}
+		$doc->loadHTML($html, LIBXML_HTML_NODEFDTD | LIBXML_HTML_NOIMPLIED);
 		return $doc;
 	}
 
@@ -258,7 +229,7 @@ class Html implements FilterInterface
 	{
 		foreach ($node->childNodes as $childNode)
 		{
-			if ($childNode->nodeType === XML_ELEMENT_NODE)
+			if ($childNode->nodeType === XML_ELEMENT_NODE || $childNode->nodeType === XML_CDATA_SECTION_NODE)
 			{
 				if (!in_array($childNode->tagName, $this->_allowedTags))
 				{
