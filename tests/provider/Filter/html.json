@@ -13,7 +13,7 @@
 	],
 	[
 		"<p><div>test</div></p>",
-		"<p></p>"
+		"<p><div>test</div></p>"
 	],
 	[
 		"<ul><li>test</li></ul>",
