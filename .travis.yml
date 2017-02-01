@@ -21,6 +21,7 @@ before_install:
 - composer global require hirak/prestissimo
 
 install:
+- sudo apt-get install libxml2-dev
 - composer self-update
 - composer install
 - gem install mime-types -v 2.6.2
