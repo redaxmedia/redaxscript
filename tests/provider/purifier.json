@@ -1,0 +1,39 @@
+[
+	[
+		"<base href=\"javascript:alert('test')\" />",
+		null
+	],
+	[
+		"<form id=\"test\"></form><input form=\"test\" formaction=\"javascript:alert('test')\" />",
+		null
+	],
+	[
+		"<img src=\"javascript:alert('test')\" />",
+		null
+	],
+	[
+		"<input onfocus=\"alert('test')\" autofocus=\"autofocus\" />",
+		null
+	],
+	[
+		"<iframe sandbox=\"test\" src=\"http://localhost\"></iframe>",
+		null
+	],
+	[
+		"<link rel=\"stylesheet\" href=\"javascript:alert('test')\" />",
+		null
+	],
+	[
+		"<meta http-equiv=\"refresh\" content=\"0; url=javascript:alert('test')\" />",
+		null
+	],
+
+	[
+		"<style type=\"text/javascript\">alert('test')</style>",
+		null
+	],
+	[
+		"<script type=\"text/javascript\">javascript:alert('test);</script>",
+		null
+	]
+]
