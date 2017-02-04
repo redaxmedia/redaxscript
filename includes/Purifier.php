@@ -2,8 +2,6 @@
 namespace Redaxscript;
 
 use DOMDocument;
-use DOMDocumentFragment;
-use DOMNode;
 
 /**
  * parent class to purify html against xss
@@ -130,7 +128,7 @@ class Purifier
 	 *
 	 * @param object $node document node
 	 *
-	 * @return DOMNode
+	 * @return object
 	 */
 
 	protected function _stripTags($node = null)
@@ -165,7 +163,7 @@ class Purifier
 	 *
 	 * @param string $html html to be loaded
 	 *
-	 * @return DOMDocument
+	 * @return object
 	 */
 
 	protected function _createDocument($html = null)
@@ -182,7 +180,7 @@ class Purifier
 	 *
 	 * @param string $node document node
 	 *
-	 * @return DOMDocumentFragment
+	 * @return object
 	 */
 
 	protected function _createFragment($node = null)
