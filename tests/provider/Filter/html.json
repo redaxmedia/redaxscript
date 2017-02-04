@@ -1,42 +1,22 @@
 [
 	[
-		"test",
+		"TEST",
 		"<p>test</p>"
-	],
-	[
-		"onMouseOver",
-		"<p></p>"
-	],
-	[
-		"<span>",
-		"<span></span>"
-	],
-	[
-		"<p><div>test</div></p>",
-		"<p><div>test</div></p>"
 	],
 	[
 		"<ul><li>test</li></ul>",
 		"<ul><li>test</li></ul>"
 	],
 	[
-		"<script>alert('test')</script>",
-		null
+		"<script>alert('test')</script>test",
+		"<p>test</p>"
 	],
 	[
-		"<iframe src=\"test\"></iframe>",
-		null
+		"<script>alert('test')</script>test<script>alert('test')</script>",
+		"<p>test</p>"
 	],
 	[
-		"<div><div><script src=\"test\"></script></div></div>",
-		"<div><div></div></div>"
-	],
-	[
-		"<span src=\"test\">",
-		"<span></span>"
-	],
-	[
-		"<div><div><span href=\"test\">onMouseOver</div></div>",
-		"<div><div><span></span></div></div>"
+		"test<script>alert('test')</script><script>alert('test')</script>",
+		"<p>test</p>"
 	]
 ]
