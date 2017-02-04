@@ -2,6 +2,8 @@
 namespace Redaxscript;
 
 use DOMDocument;
+use DOMDocumentFragment;
+use DOMNode;
 
 /**
  * parent class to purify html against xss
@@ -63,8 +65,8 @@ class Purifier
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $html target html
-	 * @param boolean $filter optional filter nodes
+	 * @param string $html html to be purified
+	 * @param boolean $filter optional filter
 	 *
 	 * @return string
 	 */
@@ -88,9 +90,9 @@ class Purifier
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param object $html target node
+	 * @param object $html html to be processed
 	 *
-	 * @return object
+	 * @return string
 	 */
 
 	protected function _process($html = null)
@@ -126,9 +128,9 @@ class Purifier
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param object $node target node
+	 * @param object $node document node
 	 *
-	 * @return object
+	 * @return DOMNode
 	 */
 
 	protected function _stripTags($node = null)
@@ -145,7 +147,7 @@ class Purifier
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param object $node target node
+	 * @param object $node document node
 	 */
 
 	protected function _stripAttributes($node = null)
@@ -161,9 +163,9 @@ class Purifier
 	 *
 	 * @since 2.4.0
 	 *
-	 * @param string $html target html
+	 * @param string $html html to be loaded
 	 *
-	 * @return object
+	 * @return DOMDocument
 	 */
 
 	protected function _createDocument($html = null)
@@ -178,9 +180,9 @@ class Purifier
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $node target node
+	 * @param string $node document node
 	 *
-	 * @return object
+	 * @return DOMDocumentFragment
 	 */
 
 	protected function _createFragment($node = null)

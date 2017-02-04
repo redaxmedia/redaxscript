@@ -4,6 +4,10 @@
 		"<p>test</p>"
 	],
 	[
+		"<p class=\"rs-is-test\">test</p>",
+		"<p>test</p>"
+	],
+	[
 		"<ul><li>test</li></ul>",
 		"<ul><li>test</li></ul>"
 	],
