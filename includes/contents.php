@@ -265,7 +265,7 @@ function contents()
  * @category Contents
  * @author Henry Ruhs
  *
- * @param mixed $filter
+ * @param string $filter
  */
 
 function extras($filter)

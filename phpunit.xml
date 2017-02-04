@@ -106,6 +106,12 @@
 			<directory>tests/phpunit/Html</directory>
 		</testsuite>
 
+		<!-- module -->
+
+		<testsuite name="module">
+			<directory>tests/phpunit/Module</directory>
+		</testsuite>
+
 		<!-- router -->
 
 		<testsuite name="router">
@@ -214,11 +220,10 @@
 			<file>tests/phpunit/MessengerTest.php</file>
 		</testsuite>
 
-		<!-- module -->
+		<!-- purifier -->
 
-		<testsuite name="module">
-			<file>tests/phpunit/Module/HookTest.php</file>
-			<file>tests/phpunit/Module/ModuleTest.php</file>
+		<testsuite name="purifier">
+			<file>tests/phpunit/PurifierTest.php</file>
 		</testsuite>
 
 		<!-- registry -->

@@ -81,12 +81,14 @@ function router()
 	if (Redaxscript\Request::getPost('Redaxscript\View\SearchForm'))
 	{
 		$messenger = new Redaxscript\Messenger(Redaxscript\Registry::getInstance());
-		$table = Redaxscript\Request::getPost('table');
+		$specialFilter = new Redaxscript\Filter\Special();
+		$table = $specialFilter->sanitize(Redaxscript\Request::getPost('table'));
+		$search = $specialFilter->sanitize(Redaxscript\Request::getPost('search'));
 		if ($table)
 		{
 			$table = '/' . $table;
 		}
-		echo $messenger->setRoute(Redaxscript\Language::get('continue'), 'search' . $table  . '/' . Redaxscript\Request::getPost('search'))->doRedirect(0)->success(Redaxscript\Language::get('search'));
+		echo $messenger->setRoute(Redaxscript\Language::get('continue'), 'search' . $table  . '/' . $search)->doRedirect(0)->success($search);
 	}
 
 	/* parameter routing */

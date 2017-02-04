@@ -132,7 +132,7 @@ class Search extends ControllerAbstract
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
-			->setRoute($this->_language->get('back'), 'home')
+			->setUrl($this->_language->get('back'), $this->_registry->get('root'))
 			->info($infoArray['message'], $this->_language->get('something_wrong'));
 	}
 

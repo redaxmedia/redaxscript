@@ -271,13 +271,18 @@ class Tag
 	 *
 	 * @since 2.3.0
 	 *
+	 * @param string $filter
+	 *
 	 * @return string
 	 */
 
-	public static function extra()
+	public static function extra($filter = null)
 	{
 		// @codeCoverageIgnoreStart
-		return self::_migrate('extras');
+		return self::_migrate('extras',
+		[
+			$filter
+		]);
 		// @codeCoverageIgnoreEnd
 	}
 
