@@ -113,7 +113,7 @@ class Purifier
 			$this->_stripTags($html);
 			$this->_stripAttributes($html);
 		}
-		else
+		else if (is_string($html))
 		{
 			$dom = $this->_createDocument($html);
 			$this->_process($dom->documentElement);
