@@ -44,7 +44,6 @@
 		"postcss-import": "9.1.0",
 		"postcss-nesting": "2.3.1",
 		"postcss-reporter": "3.0.0",
-		"redaxscript-flaticon": "3.0.4",
 		"stylefmt": "5.1.1",
 		"stylelint": "7.7.1"
 	},
