@@ -431,14 +431,6 @@ module.exports = function (grunt)
 				],
 				dest: 'templates/skeleton/dist/styles/skeleton.min.css'
 			},
-			templateWebsite:
-			{
-				src:
-				[
-					'templates/website/assets/styles/_website.css'
-				],
-				dest: 'templates/website/dist/styles/website.min.css'
-			},
 			moduleAce:
 			{
 				src:
@@ -664,40 +656,6 @@ module.exports = function (grunt)
 					template: 'templates/default/assets/styles/_icon.tpl'
 				}
 			},
-			templateWebsite:
-			{
-				src:
-				[
-					'node_modules/redaxscript-flaticon/flaticon/essential/agenda.svg',
-					'node_modules/redaxscript-flaticon/flaticon/design/cube.svg',
-					'node_modules/redaxscript-flaticon/flaticon/essential/alarm.svg',
-					'node_modules/redaxscript-flaticon/flaticon/essential/database-1.svg',
-					'node_modules/redaxscript-flaticon/flaticon/essential/magic-wand.svg',
-					'node_modules/redaxscript-flaticon/flaticon/essential/paper-plane-1.svg',
-					'node_modules/redaxscript-flaticon/flaticon/essential/settings-6.svg',
-					'node_modules/redaxscript-flaticon/flaticon/essential/stopwatch-1.svg',
-					'node_modules/redaxscript-flaticon/flaticon/productivity-and-development/rocket-ship.svg',
-					'node_modules/redaxscript-flaticon/flaticon/online-marketing/devices.svg',
-					'node_modules/redaxscript-flaticon/flaticon/programming-line/command-line.svg',
-					'node_modules/redaxscript-flaticon/flaticon/programming-line/editing-code.svg',
-					'node_modules/redaxscript-flaticon/flaticon/science/atoms.svg',
-					'node_modules/redaxscript-flaticon/flaticon/science/flask.svg',
-					'node_modules/redaxscript-flaticon/flaticon/security/antivirus.svg',
-					'node_modules/redaxscript-flaticon/flaticon/security/key.svg',
-					'node_modules/redaxscript-flaticon/flaticon/seo-and-analytics/analytics-2.svg',
-					'node_modules/redaxscript-flaticon/flaticon/stationery/layers.svg',
-					'node_modules/redaxscript-flaticon/flaticon/stationery/paint-palette-1.svg',
-					'node_modules/redaxscript-flaticon/flaticon/travel/cruise.svg'
-				],
-				dest: 'templates/website/dist/fonts',
-				options:
-				{
-					destCss: 'templates/website/assets/styles',
-					template: 'templates/website/assets/styles/_icon.tpl',
-					codepoints: null,
-					rename: null
-				}
-			},
 			options:
 			{
 				font: 'icon',
@@ -823,14 +781,6 @@ module.exports = function (grunt)
 					'templates/default/assets/styles/icon.tpl'
 				],
 				dest: 'templates/default/assets/styles/_icon.css'
-			},
-			templateWebsite:
-			{
-				src:
-				[
-					'templates/website/assets/styles/icon.tpl'
-				],
-				dest: 'templates/website/assets/styles/_icon.css'
 			}
 		},
 		svgmin:
@@ -1001,7 +951,6 @@ module.exports = function (grunt)
 		'postcss:templateDefault',
 		'postcss:templateInstall',
 		'postcss:templateSkeleton',
-		'postcss:templateWebsite',
 		'postcss:moduleAce',
 		'postcss:moduleDirectoryLister',
 		'postcss:moduleFeedReader',
