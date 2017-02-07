@@ -26,6 +26,7 @@
 
 	&:before
 	{
+		font-size: 1.25em;
 		margin-right: 0.5em;
 		vertical-align: middle;
 	}
@@ -35,19 +36,14 @@
 		@extend %rs-icon-folder;
 	}
 
-	&.rs-is-directory-parent:before
+	&.rs-is-directory.rs-is-parent:before
 	{
 		@extend %rs-icon-folder-open;
 	}
 
-	&.rs-is-file-blank:before
+	&.rs-is-file:before
 	{
 		@extend %rs-icon-insert-drive-file;
-	}
-
-	&.rs-is-file-image:before
-	{
-		@extend %rs-icon-image;
 	}
 }
 
@@ -63,7 +59,7 @@
 		text-align: right;
 	}
 
-	&.rs-text-size[data-unit]:after
+	&.rs-has-size[data-unit]:after
 	{
 		content: ' ' attr(data-unit);
 	}
