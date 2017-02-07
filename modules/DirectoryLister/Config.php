@@ -31,14 +31,14 @@ class Config extends Module\Module
 			'textDate' => 'rs-text-directory-lister rs-text-date',
 			'types' =>
 			[
-				'directory' => 'rs-directory',
-				'directoryParent' => 'rs-directory-parent',
-				'fileBlank' => 'rs-file-blank',
-				'fileText' => 'rs-file-text',
-				'fileImage' => 'rs-file-image',
-				'fileMusic' => 'rs-file-music',
-				'fileVideo' => 'rs-file-video',
-				'fileArchive' => 'rs-file-archive'
+				'directory' => 'rs-is-directory',
+				'directoryParent' => 'rs-is-directory-parent',
+				'fileBlank' => 'rs-is-file-blank',
+				'fileText' => 'rs-is-file-text',
+				'fileImage' => 'rs-is-file-image',
+				'fileMusic' => 'rs-is-file-music',
+				'fileVideo' => 'rs-is-file-video',
+				'fileArchive' => 'rs-is-file-archive'
 			]
 		],
 		'size' =>
