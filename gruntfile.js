@@ -656,6 +656,22 @@ module.exports = function (grunt)
 					template: 'templates/default/assets/styles/_icon.tpl'
 				}
 			},
+			moduleDirectoryLister:
+			{
+				src:
+				[
+					'node_modules/material-design-icons/editor/svg/production/ic_insert_drive_file_24px.svg',
+					'node_modules/material-design-icons/file/svg/production/ic_folder_24px.svg',
+					'node_modules/material-design-icons/file/svg/production/ic_folder_open_24px.svg',
+					'node_modules/material-design-icons/image/svg/production/ic_image_24px.svg'
+				],
+				dest: 'modules/DirectoryLister/dist/fonts',
+				options:
+				{
+					destCss: 'modules/DirectoryLister/assets/styles',
+					template: 'modules/DirectoryLister/assets/styles/_icon.tpl'
+				}
+			},
 			options:
 			{
 				font: 'icon',
@@ -781,6 +797,14 @@ module.exports = function (grunt)
 					'templates/default/assets/styles/icon.tpl'
 				],
 				dest: 'templates/default/assets/styles/_icon.css'
+			},
+			moduleDiretoryLister:
+			{
+				src:
+				[
+					'modules/DirectoryLister/assets/styles/icon.tpl'
+				],
+				dest: 'modules/DirectoryLister/assets/styles/_icon.css'
 			}
 		},
 		svgmin:

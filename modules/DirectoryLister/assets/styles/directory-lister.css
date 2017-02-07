@@ -1,25 +1,16 @@
 /**
  * @tableofcontents
  *
- * 1. font face
- * 2. directory list
- * 3. icons
+ * 1. directory list
+ * 2. icons
  *
- * @since 2.6.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
  */
 
-/* @section 1. font face */
-
-@font-face
-{
-	font-family: 'icon directory lister';
-	src: url('../../../../modules/DirectoryLister/assets/fonts/icon.woff') format('woff'), url('../../../../modules/DirectoryLister/assets/fonts/icon.woff') format('truetype');
-}
-
-/* @section 2. directory list */
+/* @section 1. directory list */
 
 .rs-link-directory-lister
 {
@@ -63,7 +54,7 @@
 	}
 }
 
-/* @section 3. icons */
+/* @section 2. icons */
 
 .rs-link-directory-lister:before
 {
