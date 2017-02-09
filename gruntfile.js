@@ -935,7 +935,7 @@ module.exports = function (grunt)
 	[
 		'shell:phpunit'
 	]);
-	grunt.registerTask('phpunitParallel',
+	grunt.registerTask('phpunit-parallel',
 	[
 		'shell:phpunitParallel'
 	]);
