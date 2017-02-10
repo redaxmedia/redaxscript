@@ -655,17 +655,17 @@ module.exports = function (grunt)
 					template: 'modules/DirectoryLister/assets/styles/_icon.tpl'
 				}
 			},
-            moduleShareThis:
+			moduleShareThis:
 			{
 				src:
 				[
-                    'node_modules/icomoon-free-npm/SVG/396-google-plus.svg',
+					'node_modules/icomoon-free-npm/SVG/396-google-plus.svg',
 					'node_modules/icomoon-free-npm/SVG/401-facebook.svg',
 					'node_modules/icomoon-free-npm/SVG/407-twitter.svg',
-                    'node_modules/icomoon-free-npm/SVG/459-linkedin2.svg',
-                    'node_modules/icomoon-free-npm/SVG/462-delicious.svg',
-                    'node_modules/icomoon-free-npm/SVG/463-stumbleupon.svg',
-                    'node_modules/icomoon-free-npm/SVG/466-pinterest.svg'
+					'node_modules/icomoon-free-npm/SVG/459-linkedin2.svg',
+					'node_modules/icomoon-free-npm/SVG/462-delicious.svg',
+					'node_modules/icomoon-free-npm/SVG/463-stumbleupon.svg',
+					'node_modules/icomoon-free-npm/SVG/466-pinterest.svg'
 				],
 				dest: 'modules/ShareThis/dist/fonts',
 				options:
@@ -808,7 +808,7 @@ module.exports = function (grunt)
 				],
 				dest: 'modules/DirectoryLister/assets/styles/_icon.css'
 			},
-            moduleShareThis:
+			moduleShareThis:
 			{
 				src:
 				[

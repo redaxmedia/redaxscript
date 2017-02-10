@@ -71,7 +71,7 @@
 .rs-link-share-this
 {
 	/* facebook */
-	
+
 	&.rs-link-facebook
 	{
 		&:before
@@ -86,7 +86,7 @@
 	}
 
 	/* google plus */
-	
+
 	&.rs-link-googleplus
 	{
 		&:before
@@ -101,7 +101,7 @@
 	}
 
 	/* twitter */
-	
+
 	&.rs-link-twitter
 	{
 		&:before
@@ -116,7 +116,7 @@
 	}
 
 	/* pinterest */
-	
+
 	&.rs-link-pinterest
 	{
 		&:before
