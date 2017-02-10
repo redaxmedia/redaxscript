@@ -32,41 +32,41 @@ class Config extends Module\Module
 		[
 			'facebook' =>
 			[
-				'url' => 'http://facebook.com/sharer.php?u=',
+				'url' => 'https://facebook.com/sharer.php?u=',
 				'className' => 'rs-link-facebook',
 				'attribute' => 'data-type="facebook"'
 			],
-			'googleplusone' =>
+			'googleplus' =>
 			[
-				'url' => 'http://plusone.google.com/_/+1/confirm?url=',
-				'className' => 'rs-link-googleplusone'
+				'url' => 'https://plusone.google.com/_/+1/confirm?url=',
+				'className' => 'rs-link-googleplus'
 			],
 			'twitter' =>
 			[
-				'url' => 'http://twitter.com/share?url=',
+				'url' => 'https://twitter.com/share?url=',
 				'className' => 'rs-link-twitter',
 				'height' => 340
 			],
 			'pinterest' =>
 			[
-				'url' => 'http://pinterest.com/pin/create/button/?url=',
+				'url' => 'https://pinterest.com/pin/create/button/?url=',
 				'className' => 'rs-link-pinterest'
 			],
 			'linkedin' =>
 			[
-				'url' => 'http://linkedin.com/shareArticle?url=',
+				'url' => 'https://linkedin.com/shareArticle?url=',
 				'className' => 'rs-link-linkedin',
 				'height' => 490,
 				'width' => 850
 			],
 			'stumbleupon' =>
 			[
-				'url' => 'http://stumbleupon.com/submit?url=',
+				'url' => 'https://stumbleupon.com/submit?url=',
 				'className' => 'rs-link-stumbleupon'
 			],
 			'delicious' =>
 			[
-				'url' => 'http://del.icio.us/post?url=',
+				'url' => 'https://del.icio.us/post?url=',
 				'className' => 'rs-link-delicious',
 				'height' => 580
 			]

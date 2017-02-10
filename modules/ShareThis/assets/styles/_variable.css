@@ -1,0 +1,31 @@
+/**
+ * @tableofcontents
+ *
+ * 1. variable
+ *    1.1 color
+ *    1.2 font
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. variable */
+
+:root
+{
+	/* @section 1.1 color */
+
+	--rs-color-facebook: #3b5998;
+	--rs-color-googleplus: #d34836;
+	--rs-color-twitter: #00aced;
+	--rs-color-pinterest: #cb2027;
+	--rs-color-linkedin: #007bb6;
+	--rs-color-stumbleupon: #f74425;
+	--rs-color-delicious: #205cc0;
+
+	/* @section 1.2 font */
+
+	--rs-font-icon-share-this: 'icon share this';
+}

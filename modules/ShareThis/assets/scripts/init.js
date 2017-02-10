@@ -17,7 +17,7 @@ rs.modules.shareThis =
 	selector: 'a.rs-js-link-share-this',
 	options:
 	{
-		url: 'http://free.sharedcount.com',
+		url: 'https://free.sharedcount.com',
 		key: '80ef3b1280dda194f398bde9314d72d359bedbaa',
 		popup:
 		{

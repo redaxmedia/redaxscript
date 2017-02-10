@@ -324,14 +324,6 @@ module.exports = function (grunt)
 				],
 				dest: 'modules/Gallery/dist/scripts/gallery.min.js'
 			},
-			moduleLazyLoad:
-			{
-				src:
-				[
-					'modules/LazyLoad/assets/scripts/lazy-load.js'
-				],
-				dest: 'modules/LazyLoad/dist/scripts/lazy-load.min.js'
-			},
 			moduleMaps:
 			{
 				src:
@@ -470,14 +462,6 @@ module.exports = function (grunt)
 					'modules/Preview/assets/styles/_preview.css'
 				],
 				dest: 'modules/Preview/dist/styles/preview.min.css'
-			},
-			moduleLazyLoad:
-			{
-				src:
-				[
-					'modules/LazyLoad/assets/styles/_lazy-load.css'
-				],
-				dest: 'modules/LazyLoad/dist/styles/lazy-load.min.css'
 			},
 			moduleMaps:
 			{
@@ -671,6 +655,25 @@ module.exports = function (grunt)
 					template: 'modules/DirectoryLister/assets/styles/_icon.tpl'
 				}
 			},
+            moduleShareThis:
+			{
+				src:
+				[
+                    'node_modules/icomoon-free-npm/SVG/396-google-plus.svg',
+					'node_modules/icomoon-free-npm/SVG/401-facebook.svg',
+					'node_modules/icomoon-free-npm/SVG/407-twitter.svg',
+                    'node_modules/icomoon-free-npm/SVG/459-linkedin2.svg',
+                    'node_modules/icomoon-free-npm/SVG/462-delicious.svg',
+                    'node_modules/icomoon-free-npm/SVG/463-stumbleupon.svg',
+                    'node_modules/icomoon-free-npm/SVG/466-pinterest.svg'
+				],
+				dest: 'modules/ShareThis/dist/fonts',
+				options:
+				{
+					destCss: 'modules/ShareThis/assets/styles',
+					template: 'modules/ShareThis/assets/styles/_icon.tpl'
+				}
+			},
 			options:
 			{
 				font: 'icon',
@@ -804,6 +807,14 @@ module.exports = function (grunt)
 					'modules/DirectoryLister/assets/styles/icon.tpl'
 				],
 				dest: 'modules/DirectoryLister/assets/styles/_icon.css'
+			},
+            moduleShareThis:
+			{
+				src:
+				[
+					'modules/ShareThis/assets/styles/icon.tpl'
+				],
+				dest: 'modules/ShareThis/assets/styles/_icon.css'
 			}
 		},
 		svgmin:
@@ -979,7 +990,6 @@ module.exports = function (grunt)
 		'postcss:moduleFeedReader',
 		'postcss:moduleGallery',
 		'postcss:modulePreview',
-		'postcss:moduleLazyLoad',
 		'postcss:moduleMaps',
 		'postcss:moduleShareThis',
 		'postcss:moduleTinymceContent',
@@ -996,7 +1006,6 @@ module.exports = function (grunt)
 		'uglify:moduleCallHome',
 		'uglify:moduleExperiments',
 		'uglify:moduleGallery',
-		'uglify:moduleLazyLoad',
 		'uglify:moduleMaps',
 		'uglify:moduleShareThis',
 		'uglify:moduleSyntaxHighlighter',

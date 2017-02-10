@@ -45,7 +45,7 @@ class Validator extends Config
 		{
 			/* load result */
 
-			$urlBase = $this->_configArray['url'] . $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
+			$urlBase = $this->_configArray['apiUrl'] . $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
 			$urlJSON = $urlBase . '&out=json';
 			$reader = new Reader();
 			$result = $reader->loadJSON($urlJSON)->getArray();
