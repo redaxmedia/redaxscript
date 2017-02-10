@@ -18,12 +18,14 @@
 
 .rs-list-share-this
 {
-	margin-top: 2em;
+	margin-bottom: 2em;
+	margin-left: -1em;
+	margin-top: 1em;
 
 	& li
 	{
 		float: left;
-		margin: 0 3.5em 2em 0;
+		margin: 1em;
 	}
 }
 
@@ -35,34 +37,34 @@
 	height: 2.75em;
 	position: relative;
 	text-indent: -999em;
+	width: 2.75em;
 
 	&:before
 	{
-		background: rgba(0, 0, 0, 0.15);
-		border-radius: 2em;
-		color: #fff;
-		content: 'a';
-		font: 1.125em/2.25em 'icon share this';
+		background: gray(0, 0.1);
+		border-radius: 50%;
+		color: gray(255);
+		font: 1.25em/2.25em 'icon share this';
 		left: 0;
 		position: absolute;
+		right: 0;
 		text-align: center;
 		text-indent: 0;
 		top: 0;
-		transition: background 0.4s;
-		width: 2.25em;
+		transition: background 0.1s;
 	}
 
 	&:after
 	{
-		bottom: -1.25em;
-		color: rgba(0, 0, 0, 0.15);
+		bottom: -2em;
+		color: gray(0, 0.1);
 		content: attr(data-counter);
-		font: bold 1em arial;
+		font-weight: bold;
 		left: 0;
 		position: absolute;
+		right: 0;
 		text-align: center;
 		text-indent: 0;
-		width: 2.5em;
 	}
 }
 
@@ -152,21 +154,6 @@
 		&:before
 		{
 			@extend %rs-icon-463-stumbleupon;
-		}
-
-		&:hover:before
-		{
-			background: var(--rs-color-stumbleupon);
-		}
-	}
-
-	/* delicious */
-
-	&.rs-link-delicious
-	{
-		&:before
-		{
-			@extend %rs-icon-462-delicious;
 		}
 
 		&:hover:before

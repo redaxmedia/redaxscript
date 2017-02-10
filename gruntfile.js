@@ -663,7 +663,6 @@ module.exports = function (grunt)
 					'node_modules/icomoon-free-npm/SVG/401-facebook.svg',
 					'node_modules/icomoon-free-npm/SVG/407-twitter.svg',
 					'node_modules/icomoon-free-npm/SVG/459-linkedin2.svg',
-					'node_modules/icomoon-free-npm/SVG/462-delicious.svg',
 					'node_modules/icomoon-free-npm/SVG/463-stumbleupon.svg',
 					'node_modules/icomoon-free-npm/SVG/466-pinterest.svg'
 				],

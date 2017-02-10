@@ -107,7 +107,7 @@ class ShareThis extends Config
 				[
 					'class' => $this->_configArray['className']['link'] . ' ' . $value['className'],
 					'data-height' => $value['height'],
-					'data-type' => $key,
+					'data-type' => $value['type'],
 					'data-width' => $value['width'],
 					'href' => $value['url'] . $url,
 				])

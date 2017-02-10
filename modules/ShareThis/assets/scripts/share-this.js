@@ -35,7 +35,7 @@
 		{
 			var shareThis =
 				{
-					links: $(this)
+					links: $(this).find('a')
 				};
 
 			/* @section 1.1 fetch data */
@@ -69,13 +69,6 @@
 				{
 					var counter = data[i],
 						type = i.toLowerCase();
-
-					/* facebook */
-
-					if (type === 'facebook')
-					{
-						counter = data[i].share_count;
-					}
 
 					/* filter by type */
 
