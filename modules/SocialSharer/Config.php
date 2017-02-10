@@ -1,5 +1,5 @@
 <?php
-namespace Redaxscript\Modules\ShareThis;
+namespace Redaxscript\Modules\SocialSharer;
 
 use Redaxscript\Module;
 
@@ -25,8 +25,8 @@ class Config extends Module\Module
 	[
 		'className' =>
 		[
-			'link' => 'rs-link-share-this',
-			'list' => 'rs-js-share-this rs-list-share-this rs-fn-clearfix'
+			'link' => 'rs-link-social-sharer',
+			'list' => 'rs-js-social-sharer rs-list-social-sharer rs-fn-clearfix'
 		],
 		'network' =>
 		[

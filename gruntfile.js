@@ -332,13 +332,13 @@ module.exports = function (grunt)
 				],
 				dest: 'modules/Maps/dist/scripts/maps.min.js'
 			},
-			moduleShareThis:
+			moduleSocialSharer:
 			{
 				src:
 				[
-					'modules/ShareThis/assets/scripts/share-this.js'
+					'modules/SocialSharer/assets/scripts/social-sharer.js'
 				],
-				dest: 'modules/ShareThis/dist/scripts/share-this.min.js'
+				dest: 'modules/SocialSharer/dist/scripts/social-sharer.min.js'
 			},
 			moduleSyntaxHighlighter:
 			{
@@ -471,13 +471,13 @@ module.exports = function (grunt)
 				],
 				dest: 'modules/Maps/dist/styles/maps.min.css'
 			},
-			moduleShareThis:
+			moduleSocialSharer:
 			{
 				src:
 				[
-					'modules/ShareThis/assets/styles/_share-this.css'
+					'modules/SocialSharer/assets/styles/_social-sharer.css'
 				],
-				dest: 'modules/ShareThis/dist/styles/share-this.min.css'
+				dest: 'modules/SocialSharer/dist/styles/social-sharer.min.css'
 			},
 			moduleTinymceContent:
 			{
@@ -655,7 +655,7 @@ module.exports = function (grunt)
 					template: 'modules/DirectoryLister/assets/styles/_icon.tpl'
 				}
 			},
-			moduleShareThis:
+			moduleSocialSharer:
 			{
 				src:
 				[
@@ -666,11 +666,11 @@ module.exports = function (grunt)
 					'node_modules/icomoon-free-npm/SVG/463-stumbleupon.svg',
 					'node_modules/icomoon-free-npm/SVG/466-pinterest.svg'
 				],
-				dest: 'modules/ShareThis/dist/fonts',
+				dest: 'modules/SocialSharer/dist/fonts',
 				options:
 				{
-					destCss: 'modules/ShareThis/assets/styles',
-					template: 'modules/ShareThis/assets/styles/_icon.tpl'
+					destCss: 'modules/SocialSharer/assets/styles',
+					template: 'modules/SocialSharer/assets/styles/_icon.tpl'
 				}
 			},
 			options:
@@ -807,13 +807,13 @@ module.exports = function (grunt)
 				],
 				dest: 'modules/DirectoryLister/assets/styles/_icon.css'
 			},
-			moduleShareThis:
+			moduleSocialSharer:
 			{
 				src:
 				[
-					'modules/ShareThis/assets/styles/icon.tpl'
+					'modules/SocialSharer/assets/styles/icon.tpl'
 				],
-				dest: 'modules/ShareThis/assets/styles/_icon.css'
+				dest: 'modules/SocialSharer/assets/styles/_icon.css'
 			}
 		},
 		svgmin:
@@ -990,7 +990,7 @@ module.exports = function (grunt)
 		'postcss:moduleGallery',
 		'postcss:modulePreview',
 		'postcss:moduleMaps',
-		'postcss:moduleShareThis',
+		'postcss:moduleSocialSharer',
 		'postcss:moduleTinymceContent',
 		'postcss:moduleTinymceSkin'
 	]);
@@ -1006,7 +1006,7 @@ module.exports = function (grunt)
 		'uglify:moduleExperiments',
 		'uglify:moduleGallery',
 		'uglify:moduleMaps',
-		'uglify:moduleShareThis',
+		'uglify:moduleSocialSharer',
 		'uglify:moduleSyntaxHighlighter',
 		'uglify:moduleTinymce'
 	]);

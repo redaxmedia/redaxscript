@@ -23,9 +23,8 @@
 	--rs-color-pinterest: #cb2027;
 	--rs-color-linkedin: #007bb6;
 	--rs-color-stumbleupon: #f74425;
-	--rs-color-delicious: #205cc0;
 
 	/* @section 1.2 font */
 
-	--rs-font-icon-share-this: 'icon share this';
+	--rs-font-icon-social-sharer: 'icon social sharer';
 }

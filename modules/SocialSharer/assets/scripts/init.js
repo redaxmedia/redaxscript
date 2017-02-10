@@ -1,20 +1,20 @@
 /**
  * @tableofcontents
  *
- * 1. share this
+ * 1. social sharer
  *
- * @since 2.0.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
  */
 
-/* @section 1. share this */
+/* @section 1. social sharer */
 
-rs.modules.shareThis =
+rs.modules.socialSharer =
 {
 	init: true,
-	selector: 'ul.rs-js-share-this',
+	selector: 'ul.rs-js-social-sharer',
 	options:
 	{
 		url: 'https://free.sharedcount.com',
@@ -23,7 +23,7 @@ rs.modules.shareThis =
 		{
 			height: 500,
 			menubar: 0,
-			name: 'Share This',
+			name: 'Social Sharer',
 			resizable: 0,
 			status: 0,
 			scrollbars: 0,
