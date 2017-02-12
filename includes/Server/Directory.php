@@ -2,7 +2,7 @@
 namespace Redaxscript\Server;
 
 /**
- * children class to get directory
+ * children class to get the directory
  *
  * @since 2.4.0
  *

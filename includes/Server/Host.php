@@ -2,7 +2,7 @@
 namespace Redaxscript\Server;
 
 /**
- * children class to get host
+ * children class to get the host
  *
  * @since 2.4.0
  *

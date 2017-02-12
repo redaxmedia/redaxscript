@@ -2,7 +2,7 @@
 namespace Redaxscript\Filter;
 
 /**
- * children class to filter special
+ * children class to filter the special
  *
  * @since 2.2.0
  *

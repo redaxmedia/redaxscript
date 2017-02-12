@@ -4,7 +4,7 @@ namespace Redaxscript\Filter;
 use Redaxscript\Purifier;
 
 /**
- * children class to filter html
+ * children class to filter the html
  *
  * @since 3.0.0
  *

@@ -2,7 +2,7 @@
 namespace Redaxscript\Filter;
 
 /**
- * children class to filter url
+ * children class to filter the url
  *
  * @since 2.2.0
  *

@@ -2,7 +2,7 @@
 namespace Redaxscript\Client;
 
 /**
- * children class to detect tablet device
+ * children class to detect the tablet device
  *
  * @since 2.4.0
  *

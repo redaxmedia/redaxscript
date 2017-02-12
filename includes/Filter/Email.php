@@ -2,7 +2,7 @@
 namespace Redaxscript\Filter;
 
 /**
- * children class to filter email
+ * children class to filter the email
  *
  * @since 2.2.0
  *
