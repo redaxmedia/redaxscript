@@ -17,7 +17,7 @@ services:
 - postgresql
 
 before_install:
-- if [ ${TRAVIS_PHP_VERSION:0:3} == "5.4" ] || [ ${TRAVIS_PHP_VERSION:0:3} == "5.5" ]; then composer require brianium/paratest 0.13.3 phpbench/phpbench 0.10.0 phpunit/phpunit 4.8.27 phpunit/phpcov 2.0.2 --dev --no-update; fi
+- if [ ${TRAVIS_PHP_VERSION:0:3} == "5.4" ] || [ ${TRAVIS_PHP_VERSION:0:3} == "5.5" ]; then composer require brianium/paratest 0.13.3 phpbench/phpbench 0.10.0 phpunit/phpunit 4.8.27 sebastianbergmann/phpcpd 2.0.4 phpunit/phpcov 2.0.2 --dev --no-update; fi
 - composer global require hirak/prestissimo
 
 install:
