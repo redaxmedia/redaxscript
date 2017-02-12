@@ -1,34 +1,34 @@
 /**
  * @tableofcontents
  *
- * 1. share this
+ * 1. social sharer
  *
- * @since 2.0.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
  */
 
-/* @section 1. share this */
+/* @section 1. social sharer */
 
-rs.modules.shareThis =
+rs.modules.socialSharer =
 {
 	init: true,
-	selector: 'a.rs-js-link-share-this',
+	selector: 'ul.rs-js-social-sharer',
 	options:
 	{
-		url: 'http://free.sharedcount.com',
+		url: 'https://free.sharedcount.com',
 		key: '80ef3b1280dda194f398bde9314d72d359bedbaa',
 		popup:
 		{
-			height: 450,
+			height: 500,
 			menubar: 0,
-			name: 'Share This',
+			name: 'Social Sharer',
 			resizable: 0,
 			status: 0,
 			scrollbars: 0,
 			toolbar: 0,
-			width: 500
+			width: 600
 		}
 	}
 };

@@ -27,18 +27,18 @@ class Config extends Module\Module
 		[
 			'list' => 'rs-list-directory-lister rs-fn-clearfix',
 			'link' => 'rs-link-directory-lister',
-			'textSize' => 'rs-text-directory-lister rs-text-size',
-			'textDate' => 'rs-text-directory-lister rs-text-date',
+			'textSize' => 'rs-text-directory-lister rs-has-size',
+			'textDate' => 'rs-text-directory-lister rs-has-date',
 			'types' =>
 			[
-				'directory' => 'rs-directory',
-				'directoryParent' => 'rs-directory-parent',
-				'fileBlank' => 'rs-file-blank',
-				'fileText' => 'rs-file-text',
-				'fileImage' => 'rs-file-image',
-				'fileMusic' => 'rs-file-music',
-				'fileVideo' => 'rs-file-video',
-				'fileArchive' => 'rs-file-archive'
+				'directory' => 'rs-is-directory',
+				'directoryParent' => 'rs-is-directory rs-is-parent',
+				'file' => 'rs-is-file',
+				'fileText' => 'rs-is-file rs-is-text',
+				'fileImage' => 'rs-is-file rs-is-image',
+				'fileMusic' => 'rs-is-file rs-is-music',
+				'fileVideo' => 'rs-is-file rs-is-video',
+				'fileArchive' => 'rs-is-file rs-is-archive'
 			]
 		],
 		'size' =>

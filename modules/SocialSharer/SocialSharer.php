@@ -1,20 +1,20 @@
 <?php
-namespace Redaxscript\Modules\ShareThis;
+namespace Redaxscript\Modules\SocialSharer;
 
 use Redaxscript\Head;
 use Redaxscript\Html;
 
 /**
- * integrate social networks
+ * integrate a social sharer
  *
- * @since 2.2.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @category Modules
  * @author Henry Ruhs
  */
 
-class ShareThis extends Config
+class SocialSharer extends Config
 {
 	/**
 	 * array of the module
@@ -24,10 +24,10 @@ class ShareThis extends Config
 
 	protected static $_moduleArray =
 	[
-		'name' => 'Share this',
-		'alias' => 'ShareThis',
+		'name' => 'Social sharer',
+		'alias' => 'SocialSharer',
 		'author' => 'Redaxmedia',
-		'description' => 'Integrate social networks',
+		'description' => 'Integrate a social sharer',
 		'version' => '3.0.0'
 	];
 
@@ -59,15 +59,15 @@ class ShareThis extends Config
 		$link = Head\Link::getInstance();
 		$link
 			->init()
-			->appendFile('modules/ShareThis/dist/styles/share-this.min.css');
+			->appendFile('modules/SocialSharer/dist/styles/social-sharer.min.css');
 
 		/* script */
 
 		$script = Head\Script::getInstance();
 		$script
 			->init('foot')
-			->appendFile('modules/ShareThis/assets/scripts/init.js')
-			->appendFile('modules/ShareThis/dist/scripts/share-this.min.js');
+			->appendFile('modules/SocialSharer/assets/scripts/init.js')
+			->appendFile('modules/SocialSharer/dist/scripts/social-sharer.min.js');
 	}
 
 	/**
@@ -107,7 +107,7 @@ class ShareThis extends Config
 				[
 					'class' => $this->_configArray['className']['link'] . ' ' . $value['className'],
 					'data-height' => $value['height'],
-					'data-type' => $key,
+					'data-type' => $value['type'],
 					'data-width' => $value['width'],
 					'href' => $value['url'] . $url,
 				])

@@ -1,14 +1,14 @@
 /**
  * @tableofcontents
  *
- * 1. share this
+ * 1. social sharer
  *    1.1 fetch data
  *    1.2 process data
  *    1.3 listen
  *    1.4 init
  * 2. init
  *
- * @since 2.2.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -18,29 +18,29 @@
 {
 	'use strict';
 
-	/* @section 1. share this */
+	/* @section 1. social sharer */
 
-	$.fn.shareThis = function (options)
+	$.fn.socialSharer = function (options)
 	{
 		/* extend options */
 
-		if (rs.modules.shareThis.options !== options)
+		if (rs.modules.socialSharer.options !== options)
 		{
-			options = $.extend({}, rs.modules.shareThis.options, options || {});
+			options = $.extend({}, rs.modules.socialSharer.options, options || {});
 		}
 
 		/* return this */
 
 		return this.each(function ()
 		{
-			var shareThis =
+			var socialSharer =
 				{
-					links: $(this)
+					links: $(this).find('a')
 				};
 
 			/* @section 1.1 fetch data */
 
-			shareThis.fetchData = function ()
+			socialSharer.fetchData = function ()
 			{
 				$.ajax(
 				{
@@ -55,7 +55,7 @@
 					{
 						if (typeof data === 'object')
 						{
-							shareThis.processData(data);
+							socialSharer.processData(data);
 						}
 					}
 				});
@@ -63,31 +63,24 @@
 
 			/* @section 1.2 process data */
 
-			shareThis.processData = function (data)
+			socialSharer.processData = function (data)
 			{
 				for (var i in data)
 				{
 					var counter = data[i],
 						type = i.toLowerCase();
 
-					/* facebook */
-
-					if (type === 'facebook')
-					{
-						counter = data[i].share_count;
-					}
-
 					/* filter by type */
 
-					shareThis.links.filter('[data-type="' + type + '"]').attr('data-counter', counter);
+					socialSharer.links.filter('[data-type="' + type + '"]').attr('data-counter', counter);
 				}
 			};
 
 			/* @section 1.3 listen */
 
-			shareThis.listen = function ()
+			socialSharer.listen = function ()
 			{
-				shareThis.links.on('click', function (event)
+				socialSharer.links.on('click', function (event)
 				{
 					var link = $(this),
 						url = link.attr('href'),
@@ -104,17 +97,17 @@
 
 			/* @section 1.4 init */
 
-			shareThis.init = function ()
+			socialSharer.init = function ()
 			{
-				shareThis.fetchData();
-				shareThis.listen();
+				socialSharer.fetchData();
+				socialSharer.listen();
 			};
 
 			/* init as needed */
 
-			if (shareThis.links.length)
+			if (socialSharer.links.length)
 			{
-				shareThis.init();
+				socialSharer.init();
 			}
 		});
 	};
@@ -123,9 +116,9 @@
 
 	$(function ()
 	{
-		if (rs.modules.shareThis.init)
+		if (rs.modules.socialSharer.init)
 		{
-			$(rs.modules.shareThis.selector).shareThis(rs.modules.shareThis.options);
+			$(rs.modules.socialSharer.selector).socialSharer(rs.modules.socialSharer.options);
 		}
 	});
 })(window.jQuery);

@@ -324,14 +324,6 @@ module.exports = function (grunt)
 				],
 				dest: 'modules/Gallery/dist/scripts/gallery.min.js'
 			},
-			moduleLazyLoad:
-			{
-				src:
-				[
-					'modules/LazyLoad/assets/scripts/lazy-load.js'
-				],
-				dest: 'modules/LazyLoad/dist/scripts/lazy-load.min.js'
-			},
 			moduleMaps:
 			{
 				src:
@@ -340,13 +332,13 @@ module.exports = function (grunt)
 				],
 				dest: 'modules/Maps/dist/scripts/maps.min.js'
 			},
-			moduleShareThis:
+			moduleSocialSharer:
 			{
 				src:
 				[
-					'modules/ShareThis/assets/scripts/share-this.js'
+					'modules/SocialSharer/assets/scripts/social-sharer.js'
 				],
-				dest: 'modules/ShareThis/dist/scripts/share-this.min.js'
+				dest: 'modules/SocialSharer/dist/scripts/social-sharer.min.js'
 			},
 			moduleSyntaxHighlighter:
 			{
@@ -471,14 +463,6 @@ module.exports = function (grunt)
 				],
 				dest: 'modules/Preview/dist/styles/preview.min.css'
 			},
-			moduleLazyLoad:
-			{
-				src:
-				[
-					'modules/LazyLoad/assets/styles/_lazy-load.css'
-				],
-				dest: 'modules/LazyLoad/dist/styles/lazy-load.min.css'
-			},
 			moduleMaps:
 			{
 				src:
@@ -487,13 +471,13 @@ module.exports = function (grunt)
 				],
 				dest: 'modules/Maps/dist/styles/maps.min.css'
 			},
-			moduleShareThis:
+			moduleSocialSharer:
 			{
 				src:
 				[
-					'modules/ShareThis/assets/styles/_share-this.css'
+					'modules/SocialSharer/assets/styles/_social-sharer.css'
 				],
-				dest: 'modules/ShareThis/dist/styles/share-this.min.css'
+				dest: 'modules/SocialSharer/dist/styles/social-sharer.min.css'
 			},
 			moduleTinymceContent:
 			{
@@ -656,6 +640,39 @@ module.exports = function (grunt)
 					template: 'templates/default/assets/styles/_icon.tpl'
 				}
 			},
+			moduleDirectoryLister:
+			{
+				src:
+				[
+					'node_modules/material-design-icons/editor/svg/production/ic_insert_drive_file_24px.svg',
+					'node_modules/material-design-icons/file/svg/production/ic_folder_24px.svg',
+					'node_modules/material-design-icons/file/svg/production/ic_folder_open_24px.svg'
+				],
+				dest: 'modules/DirectoryLister/dist/fonts',
+				options:
+				{
+					destCss: 'modules/DirectoryLister/assets/styles',
+					template: 'modules/DirectoryLister/assets/styles/_icon.tpl'
+				}
+			},
+			moduleSocialSharer:
+			{
+				src:
+				[
+					'node_modules/icomoon-free-npm/SVG/396-google-plus.svg',
+					'node_modules/icomoon-free-npm/SVG/401-facebook.svg',
+					'node_modules/icomoon-free-npm/SVG/407-twitter.svg',
+					'node_modules/icomoon-free-npm/SVG/459-linkedin2.svg',
+					'node_modules/icomoon-free-npm/SVG/463-stumbleupon.svg',
+					'node_modules/icomoon-free-npm/SVG/466-pinterest.svg'
+				],
+				dest: 'modules/SocialSharer/dist/fonts',
+				options:
+				{
+					destCss: 'modules/SocialSharer/assets/styles',
+					template: 'modules/SocialSharer/assets/styles/_icon.tpl'
+				}
+			},
 			options:
 			{
 				font: 'icon',
@@ -781,6 +798,22 @@ module.exports = function (grunt)
 					'templates/default/assets/styles/icon.tpl'
 				],
 				dest: 'templates/default/assets/styles/_icon.css'
+			},
+			moduleDiretoryLister:
+			{
+				src:
+				[
+					'modules/DirectoryLister/assets/styles/icon.tpl'
+				],
+				dest: 'modules/DirectoryLister/assets/styles/_icon.css'
+			},
+			moduleSocialSharer:
+			{
+				src:
+				[
+					'modules/SocialSharer/assets/styles/icon.tpl'
+				],
+				dest: 'modules/SocialSharer/assets/styles/_icon.css'
 			}
 		},
 		svgmin:
@@ -912,7 +945,7 @@ module.exports = function (grunt)
 	[
 		'shell:phpunit'
 	]);
-	grunt.registerTask('phpunitParallel',
+	grunt.registerTask('phpunit-parallel',
 	[
 		'shell:phpunitParallel'
 	]);
@@ -956,9 +989,8 @@ module.exports = function (grunt)
 		'postcss:moduleFeedReader',
 		'postcss:moduleGallery',
 		'postcss:modulePreview',
-		'postcss:moduleLazyLoad',
 		'postcss:moduleMaps',
-		'postcss:moduleShareThis',
+		'postcss:moduleSocialSharer',
 		'postcss:moduleTinymceContent',
 		'postcss:moduleTinymceSkin'
 	]);
@@ -973,9 +1005,8 @@ module.exports = function (grunt)
 		'uglify:moduleCallHome',
 		'uglify:moduleExperiments',
 		'uglify:moduleGallery',
-		'uglify:moduleLazyLoad',
 		'uglify:moduleMaps',
-		'uglify:moduleShareThis',
+		'uglify:moduleSocialSharer',
 		'uglify:moduleSyntaxHighlighter',
 		'uglify:moduleTinymce'
 	]);

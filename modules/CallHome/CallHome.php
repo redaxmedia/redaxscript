@@ -69,8 +69,8 @@ class CallHome extends Module\Module
 
 		/* load result */
 
-		$urlVersion = 'http://service.redaxscript.com/version/' . $version;
-		$urlNews = 'http://service.redaxscript.com/news/' . $version;
+		$urlVersion = 'https://service.redaxscript.com/version/' . $version;
+		$urlNews = 'https://service.redaxscript.com/news/' . $version;
 		$resultVersion = $reader->loadJSON($urlVersion)->getArray();
 		$resultNews = $reader->loadJSON($urlNews)->getArray();
 

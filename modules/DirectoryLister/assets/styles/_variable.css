@@ -1,0 +1,20 @@
+/**
+ * @tableofcontents
+ *
+ * 1. variable
+ *    1.1 font
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. variable */
+
+:root
+{
+	/* @section 1.1 font */
+
+	--rs-font-icon-directory-lister: 'icon directory lister';
+}

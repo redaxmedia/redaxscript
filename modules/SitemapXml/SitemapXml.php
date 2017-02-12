@@ -94,7 +94,7 @@ class SitemapXml extends Module\Module
 		$writer->setIndentString('	');
 		$writer->startDocument('1.0', Db::getSetting('charset'));
 		$writer->startElement('urlset');
-		$writer->writeAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
+		$writer->writeAttribute('xmlns', 'https://www.sitemaps.org/schemas/sitemap/0.9');
 		$writer->startElement('url');
 		$writer->writeElement('loc', $this->_registry->get('root'));
 		$writer->endElement();

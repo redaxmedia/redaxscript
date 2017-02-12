@@ -1,0 +1,164 @@
+/**
+ * @tableofcontents
+ *
+ * 1. social sharer
+ *    1.1 list
+ *    1.2 link
+ *    1.3 icon
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. social sharer */
+
+/* @section 1.1 list */
+
+.rs-list-social-sharer
+{
+	margin-bottom: 2em;
+	margin-left: -1em;
+	margin-top: 1em;
+
+	& li
+	{
+		float: left;
+		margin: 1em;
+	}
+}
+
+/* @section 1.2 link */
+
+.rs-link-social-sharer
+{
+	display: inline-block;
+	height: 2.75em;
+	position: relative;
+	text-indent: -999em;
+	width: 2.75em;
+
+	&:before
+	{
+		background: gray(0, 0.1);
+		border-radius: 50%;
+		color: gray(255);
+		font: 1.25em/2.25em 'icon social sharer';
+		left: 0;
+		position: absolute;
+		right: 0;
+		text-align: center;
+		text-indent: 0;
+		top: 0;
+		transition: background 0.1s;
+	}
+
+	&:after
+	{
+		bottom: -2em;
+		color: gray(0, 0.1);
+		content: attr(data-counter);
+		font-weight: bold;
+		left: 0;
+		position: absolute;
+		right: 0;
+		text-align: center;
+		text-indent: 0;
+	}
+}
+
+/* @section 1.3 icon */
+
+.rs-link-social-sharer
+{
+	/* facebook */
+
+	&.rs-link-facebook
+	{
+		&:before
+		{
+			@extend %rs-icon-401-facebook;
+		}
+
+		&:hover:before
+		{
+			background: var(--rs-color-facebook);
+		}
+	}
+
+	/* google plus */
+
+	&.rs-link-googleplus
+	{
+		&:before
+		{
+			@extend %rs-icon-396-google-plus;
+		}
+
+		&:hover:before
+		{
+			background: var(--rs-color-googleplus);
+		}
+	}
+
+	/* twitter */
+
+	&.rs-link-twitter
+	{
+		&:before
+		{
+			@extend %rs-icon-407-twitter;
+		}
+
+		&:hover:before
+		{
+			background: var(--rs-color-twitter);
+		}
+	}
+
+	/* pinterest */
+
+	&.rs-link-pinterest
+	{
+		&:before
+		{
+			@extend %rs-icon-466-pinterest;
+		}
+
+		&:hover:before
+		{
+			background: var(--rs-color-pinterest);
+		}
+	}
+
+	/* linkedin */
+
+	&.rs-link-linkedin
+	{
+		&:before
+		{
+			@extend %rs-icon-459-linkedin2;
+		}
+
+		&:hover:before
+		{
+			background: var(--rs-color-linkedin);
+		}
+	}
+
+	/* stumbleupon */
+
+	&.rs-link-stumbleupon
+	{
+		&:before
+		{
+			@extend %rs-icon-463-stumbleupon;
+		}
+
+		&:hover:before
+		{
+			background: var(--rs-color-stumbleupon);
+		}
+	}
+}
