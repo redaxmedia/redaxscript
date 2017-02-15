@@ -123,7 +123,7 @@ class Installer
 	 * @param array $optionArray options of the installation
 	 */
 
-	public function insertData($optionArray = null)
+	public function insertData($optionArray = [])
 	{
 		/* articles */
 

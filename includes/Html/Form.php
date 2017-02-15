@@ -433,13 +433,13 @@ class Form extends HtmlAbstract
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param array $optionArray options of the select
+	 * @param array $valueArray values of the select
 	 * @param array $attributeArray attributes of the select
 	 *
 	 * @return Form
 	 */
 
-	public function select($optionArray = [], $attributeArray = [])
+	public function select($valueArray = [], $attributeArray = [])
 	{
 		if (is_array($attributeArray))
 		{
@@ -452,7 +452,7 @@ class Form extends HtmlAbstract
 		$selectElement = new Element();
 		$selectElement
 			->init('select', $attributeArray)
-			->html($this->_createOption($optionArray, $attributeArray['value']))
+			->html($this->_createOption($valueArray, $attributeArray['value']))
 			->val(null);
 		$this->append($selectElement);
 		return $this;
@@ -602,13 +602,13 @@ class Form extends HtmlAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $optionArray options of the select
-	 * @param mixed $selected option to be selected
+	 * @param array $valueArray values of the select
+	 * @param mixed $selected value to be selected
 	 *
 	 * @return string
 	 */
 
-	protected function _createOption($optionArray = [], $selected = null)
+	protected function _createOption($valueArray = [], $selected = null)
 	{
 		$output = null;
 		$optionElement = new Element();
@@ -621,9 +621,9 @@ class Form extends HtmlAbstract
 			$selected = array_filter(explode(', ', $selected));
 		}
 
-		/* process options */
+		/* process values */
 
-		foreach ($optionArray as $key => $value)
+		foreach ($valueArray as $key => $value)
 		{
 			if ($key || $value)
 			{
