@@ -5,7 +5,7 @@
 <?php if (Tag::getRegistry('loggedIn') === Tag::getRegistry('token') && Tag::getRegistry('firstParameter') !== 'logout'): ?>
 	<?php Tag::script()
 		->init('foot')
-		->appendFile('//cdnjs.cloudflare.com/ajax/libs/speakingurl/11.0.0/speakingurl.min.js')
+		->appendFile('//cdnjs.cloudflare.com/ajax/libs/speakingurl/13.0.0/speakingurl.min.js')
 		->appendFile('templates/admin/assets/scripts/init.js')
 		->appendFile('templates/admin/dist/scripts/admin.min.js');
 	?>
