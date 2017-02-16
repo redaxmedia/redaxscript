@@ -211,7 +211,7 @@ class Db extends ORM
 	 * @return Db
 	 */
 
-	public function whereLikeMany($columnArray = null, $likeArray = null)
+	public function whereLikeMany($columnArray = [], $likeArray = [])
 	{
 		return $this->_addWhere('(' . implode($columnArray, ' LIKE ? OR ') . ' LIKE ? )', $likeArray);
 	}
@@ -221,7 +221,7 @@ class Db extends ORM
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $language value of the language
+	 * @param string $language value of the language
 	 *
 	 * @return Db
 	 */

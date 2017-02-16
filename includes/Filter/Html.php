@@ -29,6 +29,6 @@ class Html implements FilterInterface
 	public function sanitize($html = null, $filter = true)
 	{
 		$purifier = new Purifier();
-		return strtolower($purifier->purify($html, $filter));
+		return $purifier->purify($html, $filter);
 	}
 }
