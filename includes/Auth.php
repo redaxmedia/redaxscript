@@ -1,8 +1,6 @@
 <?php
 namespace Redaxscript;
 
-use Redaxscript\Server;
-
 /**
  * parent class to authenticate the user
  *
