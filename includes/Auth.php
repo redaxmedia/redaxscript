@@ -1,6 +1,8 @@
 <?php
 namespace Redaxscript;
 
+use Redaxscript\Server;
+
 /**
  * parent class to authenticate the user
  *
@@ -168,7 +170,7 @@ class Auth
 
 	public function init()
 	{
-		$authArray = $this->_request->getSession('auth');
+		$authArray = $this->_getAuth();
 		if (array_key_exists('user', $authArray))
 		{
 			$this->_userArray = $authArray['user'];
@@ -243,7 +245,7 @@ class Auth
 	{
 		if ($this->getStatus())
 		{
-			$this->_request->setSession('auth', null);
+			$this->_setAuth(null);
 			return !$this->getStatus();
 		}
 		return false;
@@ -337,7 +339,7 @@ class Auth
 
 	public function getStatus()
 	{
-		$authArray = $this->_request->getSession('auth');
+		$authArray = $this->_getAuth();
 		return array_key_exists('user', $authArray) && array_key_exists('permission', $authArray);
 	}
 
@@ -356,7 +358,7 @@ class Auth
 
 		if ($userArray && $permissionArray)
 		{
-			$this->_request->setSession('auth',
+			$this->_setAuth(
 			[
 				'user' => $userArray,
 				'permission' => $permissionArray
@@ -366,5 +368,33 @@ class Auth
 				$this->_request->setSession('language', $userArray['language']);
 			}
 		}
+	}
+
+	/**
+	 * get auth from session
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return mixed
+	 */
+
+	protected function _getAuth()
+	{
+		$root = new Server\Root($this->_request);
+		return $this->_request->getSession($root->getOutput() . '/auth');
+	}
+
+	/**
+	 * set auth to session
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param mixed $value
+	 */
+
+	protected function _setAuth($value = null)
+	{
+		$root = new Server\Root($this->_request);
+		return $this->_request->setSession($root->getOutput() . '/auth', $value);
 	}
 }

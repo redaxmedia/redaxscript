@@ -3,6 +3,7 @@ namespace Redaxscript\Tests;
 
 use Redaxscript\Auth;
 use Redaxscript\Db;
+use Redaxscript\Server;
 use Redaxscript\Request;
 
 /**
@@ -83,7 +84,8 @@ class AuthTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_request->setSession('auth',
+		$root = new Server\Root($this->_request);
+		$this->_request->setSession($root->getOutput() . '/auth',
 		[
 			'user' =>
 			[
