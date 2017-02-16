@@ -4,7 +4,7 @@ namespace Redaxscript\Modules\Tinymce;
 use Redaxscript\Module;
 
 /**
- * children class to store module config
+ * children class to store module configuration
  *
  * @since 3.0.0
  *

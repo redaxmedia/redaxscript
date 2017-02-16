@@ -2,7 +2,7 @@
 namespace Redaxscript\Server;
 
 /**
- * children class to get protocol
+ * children class to get the protocol
  *
  * @since 2.4.0
  *

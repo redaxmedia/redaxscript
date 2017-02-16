@@ -2,7 +2,7 @@
 namespace Redaxscript\Server;
 
 /**
- * children class to get file
+ * children class to get the file
  *
  * @since 2.4.0
  *

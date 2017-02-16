@@ -2,7 +2,7 @@
 namespace Redaxscript\Server;
 
 /**
- * children class to get token
+ * children class to get the token
  *
  * @since 2.4.0
  *

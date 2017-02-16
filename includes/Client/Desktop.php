@@ -2,7 +2,7 @@
 namespace Redaxscript\Client;
 
 /**
- * children class to detect desktop device
+ * children class to detect the desktop device
  *
  * @since 2.4.0
  *

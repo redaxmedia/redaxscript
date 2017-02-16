@@ -2,7 +2,7 @@
 namespace Redaxscript\Filter;
 
 /**
- * children class to filter path
+ * children class to filter the path
  *
  * @since 2.6.0
  *

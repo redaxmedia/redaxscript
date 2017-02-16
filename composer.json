@@ -20,8 +20,8 @@
 		"phpunit/phpunit": "5.7.5",
 		"redaxmedia/tocgen": "4.1.1",
 		"satooshi/php-coveralls": "1.0.1",
-		"sebastian/phpcpd": "2.0.4",
-		"squizlabs/php_codesniffer": "2.7.1"
+		"sebastian/phpcpd": "3.0.0",
+		"squizlabs/php_codesniffer": "2.8.0"
 	},
 	"scripts":
 	{

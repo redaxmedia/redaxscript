@@ -2,7 +2,7 @@
 namespace Redaxscript\Client;
 
 /**
- * children class to detect browser engine
+ * children class to detect the browser engine
  *
  * @since 2.4.0
  *

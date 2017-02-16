@@ -4,7 +4,7 @@ namespace Redaxscript\Modules\Gallery;
 use Redaxscript\Module;
 
 /**
- * children class to store module config
+ * children class to store module configuration
  *
  * @since 2.6.0
  *

@@ -2,7 +2,7 @@
 namespace Redaxscript\Server;
 
 /**
- * children class to get root
+ * children class to get the root
  *
  * @since 2.4.0
  *

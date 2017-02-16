@@ -2,7 +2,7 @@
 namespace Redaxscript\Client;
 
 /**
- * children class to detect mobile device
+ * children class to detect the mobile device
  *
  * @since 2.4.0
  *

@@ -187,7 +187,7 @@ class Request extends Singleton
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
-	 * @param string $value value of the item
+	 * @param mixed $value value of the item
 	 */
 
 	public function setServer($key = null, $value = null)
@@ -201,7 +201,7 @@ class Request extends Singleton
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
-	 * @param string $value value of the item
+	 * @param mixed $value value of the item
 	 */
 
 	public function setQuery($key = null, $value = null)
@@ -215,7 +215,7 @@ class Request extends Singleton
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
-	 * @param string $value value of the item
+	 * @param mixed $value value of the item
 	 */
 
 	public function setPost($key = null, $value = null)
@@ -257,7 +257,7 @@ class Request extends Singleton
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
-	 * @param string $value value of the item
+	 * @param mixed $value value of the item
 	 */
 
 	public function setCookie($key = null, $value = null)

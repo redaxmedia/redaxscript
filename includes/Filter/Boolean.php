@@ -2,7 +2,7 @@
 namespace Redaxscript\Filter;
 
 /**
- * children class to filter boolean
+ * children class to filter the boolean
  *
  * @since 3.0.0
  *
