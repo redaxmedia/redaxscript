@@ -1,1 +1,9 @@
-@import 'skin.css';
+@import 'skin/_variable.css';
+@import 'skin/_icon.css';
+@import 'skin/button.css';
+@import 'skin/skin.css';
+
+/*
+create a architecture like the following LESS file under /skin - only support styling for enabled features
+https://github.com/tinymce/tinymce/blob/master/src/skins/lightgray/src/main/less/Skin.less
+*/

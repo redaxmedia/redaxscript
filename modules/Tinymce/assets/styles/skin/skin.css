@@ -1,0 +1,5 @@
+/*
+this file just loads the ORIGINAL and MINIFIED theme from CDNJS and has to be removed!
+*/
+
+@import '//cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.3/skins/lightgray/skin.min.css';

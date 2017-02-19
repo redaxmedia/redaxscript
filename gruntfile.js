@@ -673,6 +673,19 @@ module.exports = function (grunt)
 					template: 'modules/SocialSharer/assets/styles/_icon.tpl'
 				}
 			},
+			moduleTinymce:
+			{
+				src:
+				[
+					'node_modules/material-design-icons/editor/svg/production/ic_format_bold_24px.svg'
+				],
+				dest: 'modules/Tinymce/dist/fonts',
+				options:
+				{
+					destCss: 'modules/Tinymce/assets/styles/skin',
+					template: 'modules/Tinymce/assets/styles/skin/_icon.tpl'
+				}
+			},
 			options:
 			{
 				font: 'icon',
@@ -814,6 +827,14 @@ module.exports = function (grunt)
 					'modules/SocialSharer/assets/styles/icon.tpl'
 				],
 				dest: 'modules/SocialSharer/assets/styles/_icon.css'
+			},
+			moduleTinymce:
+			{
+				src:
+				[
+					'modules/Tinymce/assets/styles/skin/icon.tpl'
+				],
+				dest: 'modules/Tinymce/assets/styles/skin/_icon.css'
 			}
 		},
 		svgmin:

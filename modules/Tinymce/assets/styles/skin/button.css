@@ -1,0 +1,26 @@
+/**
+ * @tableofcontents
+ *
+ * 1. button
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. button */
+
+.mce-btn
+{
+	& .mce-i-bold:before
+	{
+		@extend %rs-icon-format-bold;
+		color: red;
+	}
+}
+
+/*
+in the ORIGINAL project the icons are defined inside a icon file, but we should stick to our component based architecture
+https://github.com/tinymce/tinymce/blob/master/src/skins/lightgray/src/main/less/Icons.less
+*/
