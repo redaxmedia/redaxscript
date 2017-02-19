@@ -1,9 +1,51 @@
-@import 'skin/_variable.css';
-@import 'skin/_icon.css';
-@import 'skin/button.css';
-@import 'skin/skin.css';
-
-/*
-create a architecture like the following LESS file under /skin - only support styling for enabled features
-https://github.com/tinymce/tinymce/blob/master/src/skins/lightgray/src/main/less/Skin.less
-*/
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Variables.less';
+/* remove the ORIGINAL variables.less at the end of theming!? */
+@import 'skin/_variable.less';
+/*@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Reset.less';*/
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Mixins.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Animations.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/TinyMCE.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/CropRect.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/ImagePanel.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Arrows.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Sidebar.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Container.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Scrollable.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Panel.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/FloatPanel.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Window.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/ToolTip.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Progress.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Notification.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/AbsoluteLayout.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Button.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/ButtonGroup.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Checkbox.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/ComboBox.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/ColorBox.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/ColorButton.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/ColorPicker.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Path.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/FieldSet.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/FitLayout.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/FlowLayout.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Iframe.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/InfoBox.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Label.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/MenuBar.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/MenuButton.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/MenuItem.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Throbber.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Menu.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/ListBox.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Radio.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/ResizeHandle.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/SelectBox.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Slider.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Spacer.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/SplitButton.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/StackLayout.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/TabPanel.less';
+@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/TextBox.less';
+/*@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Icons.less';*/
+@import 'skin/_icon.less';

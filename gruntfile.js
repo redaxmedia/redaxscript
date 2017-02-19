@@ -493,7 +493,25 @@ module.exports = function (grunt)
 				[
 					'modules/Tinymce/assets/styles/_skin.css'
 				],
-				dest: 'modules/Tinymce/dist/styles/skin.min.css'
+				dest: 'modules/Tinymce/dist/styles/skin.min.css',
+				options:
+				{
+					parser: require('postcss-less-engine').parser,
+					processors:
+					[
+						require('postcss-less-engine'),
+						require('autoprefixer')(
+						{
+							browsers: 'last 2 versions'
+						}),
+						require('cssnano')(
+						{
+							autoprefixer: false,
+							colormin: false,
+							zindex: false
+						})
+					]
+				}
 			},
 			stylelint:
 			{
@@ -683,7 +701,13 @@ module.exports = function (grunt)
 				options:
 				{
 					destCss: 'modules/Tinymce/assets/styles/skin',
-					template: 'modules/Tinymce/assets/styles/skin/_icon.tpl'
+					template: 'modules/Tinymce/assets/styles/skin/_icon.tpl',
+					rename: function (name)
+					{
+						return grunt.path.basename(name)
+							.replace('ic_format_bold', 'i-bold')
+							.replace('_24px', '');
+					}
 				}
 			},
 			options:
@@ -724,7 +748,11 @@ module.exports = function (grunt)
 				},
 				rename: function (name)
 				{
-					return grunt.path.basename(name).split('_').join('-').replace('ic-', '').replace('-24px', '');
+					return grunt.path.basename(name)
+						.replace('ic_', '')
+						.replace('_24px', '')
+						.split('_')
+						.join('-');
 				},
 				autoHint: false,
 				htmlDemo: false
@@ -834,7 +862,7 @@ module.exports = function (grunt)
 				[
 					'modules/Tinymce/assets/styles/skin/icon.tpl'
 				],
-				dest: 'modules/Tinymce/assets/styles/skin/_icon.css'
+				dest: 'modules/Tinymce/assets/styles/skin/_icon.less'
 			}
 		},
 		svgmin:
