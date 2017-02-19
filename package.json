@@ -37,6 +37,7 @@
 		"less": "2.7.2",
 		"load-grunt-tasks": "3.5.2",
 		"material-design-icons": "3.0.1",
+		"postcss": "5.2.14",
 		"postcss-color-function": "2.0.1",
 		"postcss-color-gray": "3.0.1",
 		"postcss-custom-media": "5.0.1",
