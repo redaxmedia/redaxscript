@@ -1,7 +1,7 @@
 @import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Variables.less';
 /* remove the ORIGINAL variables.less at the end of theming!? */
 @import 'skin/_variable.less';
-/*@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Reset.less';*/
+/* @import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Reset.less'; */
 @import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Mixins.less';
 @import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Animations.less';
 @import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/TinyMCE.less';
@@ -47,5 +47,5 @@
 @import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/StackLayout.less';
 @import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/TabPanel.less';
 @import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/TextBox.less';
-/*@import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Icons.less';*/
+/* @import '../../../../node_modules/tinymce/src/skins/lightgray/src/main/less/Icons.less'; */
 @import 'skin/_icon.less';
