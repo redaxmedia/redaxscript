@@ -8,7 +8,6 @@ template
 	&:after
 	{
 		color: gray(0, 0.2);
-		display: block;
 	}
 }
 
@@ -17,6 +16,11 @@ readmore
 	border-top: 0.125em dashed gray(0, 0.5);
 	display: block;
 	margin: 1em 0;
+}
+
+template
+{
+	display: block;
 }
 
 blockcode
@@ -84,6 +88,7 @@ template
 	}
 }
 
+[_moz_editor_bogus_node],
 [data-mce-bogus]
 {
 	display: none;

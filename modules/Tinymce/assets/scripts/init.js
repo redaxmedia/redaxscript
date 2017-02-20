@@ -25,7 +25,7 @@ rs.modules.tinymce =
 		images_upload_url: rs.registry.parameterRoute + 'tinymce/upload/' + rs.registry.token,
 		images_reuse_filename: true,
 		custom_elements: 'blockcode, language, module, readmore, registry, template',
-		extended_valid_elements: 'blockcode, language, module, readmore, registry, template',
+		extended_valid_elements: 'template',
 		short_ended_elements: 'readmore',
 		forced_root_block: false,
 		file_picker_callback: true,
