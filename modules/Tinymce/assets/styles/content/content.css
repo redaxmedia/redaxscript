@@ -4,8 +4,12 @@ module,
 registry,
 template
 {
-	color: gray(0, 0.5);
-	user-select: none;
+	&:before,
+	&:after
+	{
+		color: gray(0, 0.2);
+		display: block;
+	}
 }
 
 readmore
@@ -15,32 +19,72 @@ readmore
 	margin: 1em 0;
 }
 
-blockcode:before
+blockcode
 {
-	content: '<blockcode>...</blockcode>';
+	&:before
+	{
+		 content: '<blockcode>';
+	}
+
+	&:after
+	{
+		content: '</blockcode>';
+	}
 }
 
-language:before
+language
 {
-	content: '<language>...</language>';
+	&:before
+	{
+		content: '<language>';
+	}
+
+	&:after
+	{
+		content: '</language>';
+	}
 }
 
-module:before
+module
 {
-	content: '<module>...</module>';
+	&:before
+	{
+		content: '<module>';
+	}
+
+	&:after
+	{
+		content: '</module>';
+	}
 }
 
-registry:before
+registry
 {
-	content: '<registry>...</registry>';
+	&:before
+	{
+		content: '<registry>';
+	}
+
+	&:after
+	{
+		content: '</registry>';
+	}
 }
 
-template:before
+template
 {
-	content: '<template>...</template>';
+	&:before
+	{
+		content: '<template>';
+	}
+
+	&:after
+	{
+		content: '</template>';
+	}
 }
 
-[_moz_editor_bogus_node]
+[data-mce-bogus]
 {
 	display: none;
 }
