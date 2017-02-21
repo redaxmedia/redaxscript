@@ -491,7 +491,7 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'modules/Tinymce/assets/styles/_skin.css'
+					'modules/Tinymce/assets/styles/_skin.less'
 				],
 				dest: 'modules/Tinymce/dist/styles/skin.min.css',
 				options:
@@ -695,7 +695,19 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'node_modules/material-design-icons/editor/svg/production/ic_format_bold_24px.svg'
+					'node_modules/material-design-icons/content/svg/production/ic_redo_24px.svg',
+					'node_modules/material-design-icons/content/svg/production/ic_undo_24px.svg',
+					'node_modules/material-design-icons/editor/svg/production/ic_format_align_center_24px.svg',
+					'node_modules/material-design-icons/editor/svg/production/ic_format_align_justify_24px.svg',
+					'node_modules/material-design-icons/editor/svg/production/ic_format_align_left_24px.svg',
+					'node_modules/material-design-icons/editor/svg/production/ic_format_align_right_24px.svg',
+					'node_modules/material-design-icons/editor/svg/production/ic_format_bold_24px.svg',
+					'node_modules/material-design-icons/editor/svg/production/ic_format_indent_decrease_24px.svg',
+					'node_modules/material-design-icons/editor/svg/production/ic_format_indent_increase_24px.svg',
+					'node_modules/material-design-icons/editor/svg/production/ic_format_italic_24px.svg',
+					'node_modules/material-design-icons/editor/svg/production/ic_format_underlined_24px.svg',
+					'node_modules/material-design-icons/editor/svg/production/ic_insert_link_24px.svg',
+					'node_modules/material-design-icons/editor/svg/production/ic_insert_photo_24px.svg'
 				],
 				dest: 'modules/Tinymce/dist/fonts',
 				options:
@@ -705,7 +717,19 @@ module.exports = function (grunt)
 					rename: function (name)
 					{
 						return grunt.path.basename(name)
+							.replace('ic_redo', 'i-redo')
+							.replace('ic_undo', 'i-undo')
+							.replace('ic_format_align_center', 'i-aligncenter')
+							.replace('ic_format_align_justify', 'i-alignjustify')
+							.replace('ic_format_align_left', 'i-alignleft')
+							.replace('ic_format_align_right', 'i-alignright')
 							.replace('ic_format_bold', 'i-bold')
+							.replace('ic_format_indent_decrease', 'i-outdent')
+							.replace('ic_format_indent_increase', 'i-indent')
+							.replace('ic_format_italic', 'i-italic')
+							.replace('ic_format_underlined', 'i-underline')
+							.replace('ic_insert_link', 'i-link')
+							.replace('ic_insert_photo', 'i-image')
 							.replace('_24px', '');
 					}
 				}

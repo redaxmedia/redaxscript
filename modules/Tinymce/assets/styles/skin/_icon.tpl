@@ -23,6 +23,7 @@
 {
 	content: '\<%= codepoints[i] %>';
 	font-family: @font-icon-tinymce;
+	font-style: normal;
 	font-weight: normal;
 }
 <%
