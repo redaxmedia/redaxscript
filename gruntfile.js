@@ -923,24 +923,13 @@ module.exports = function (grunt)
 			{
 				files:
 				[
-					'assets/styles/*.css',
-					'templates/**/assets/styles/*.css'
+					'assets/**/*.*',
+					'templates/**/assets/**/*.*',
+					'modules/**/assets/**/*.*'
 				],
 				tasks:
 				[
 					'build'
-				]
-			},
-			styles:
-			{
-				files:
-				[
-					'assets/styles/*.css',
-					'templates/**/assets/styles/*.css'
-				],
-				tasks:
-				[
-					'build-styles'
 				]
 			},
 			phpunit:
