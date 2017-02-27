@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript;
 
-$searchList = new View\ResultList($this->_registry->getInstance(), $this->_language->getInstance());
+$searchList = new View\ResultList(Registry::getInstance(), Language::getInstance());
 echo $searchList->render(
 [
 	'categories' =>

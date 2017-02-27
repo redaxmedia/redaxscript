@@ -26,3 +26,8 @@
 		margin-top: 1em;
 	}
 }
+
+.rs-admin-text-documentation + .rs-admin-code-default
+{
+	margin-top: 1em;
+}

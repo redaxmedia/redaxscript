@@ -1,13 +1,15 @@
 <?php
 namespace Redaxscript;
 
+$registry = Registry::getInstance();
+$language = Language::getInstance();
 $id = uniqid($admin ? 'admin-form-' : 'form-');
 $i = 0;
-$formElement = $admin ? new Admin\Html\Form($this->_registry->getInstance(), $this->_language->getInstance()) : new Html\Form($this->_registry->getInstance(), $this->_language->getInstance());
+$formElement = $admin ? new Admin\Html\Form($registry, $language) : new Html\Form($registry, $language);
 $formElement
 	->init()
 	->append('<fieldset><ul><li>')
-	->label($this->_language->get(++$i, '_number'),
+	->label($language->get(++$i, '_number'),
 	[
 		'for' => $id . $i
 	])
@@ -18,7 +20,7 @@ $formElement
 		'required' => 'required'
 	])
 	->append('</li><li>')
-	->label($this->_language->get(++$i, '_number'),
+	->label($language->get(++$i, '_number'),
 	[
 		'for' => $id . $i
 	])
@@ -29,7 +31,7 @@ $formElement
 		'placeholder' => 'Placeholder'
 	])
 	->append('</li><li>')
-	->label($this->_language->get(++$i, '_number'),
+	->label($language->get(++$i, '_number'),
 	[
 		'for' => $id . $i
 	])
@@ -43,7 +45,7 @@ $formElement
 		'required' => 'required'
 	])
 	->append('</li><li>')
-	->label($this->_language->get(++$i, '_number'),
+	->label($language->get(++$i, '_number'),
 	[
 		'for' => $id . $i
 	])
@@ -57,7 +59,7 @@ $formElement
 		'id' => $id . $i
 	])
 	->append('</li><li>')
-	->label($this->_language->get(++$i, '_number'),
+	->label($language->get(++$i, '_number'),
 	[
 		'for' => $id . $i
 	])
@@ -67,7 +69,7 @@ $formElement
 		'id' => $id . $i
 	])
 	->append('</li><li>')
-	->label($this->_language->get(++$i, '_number'),
+	->label($language->get(++$i, '_number'),
 	[
 		'for' => $id . $i
 	])
@@ -78,7 +80,7 @@ $formElement
 		'id' => $id . $i
 	])
 	->append('</li><li>')
-	->label($this->_language->get(++$i, '_number'),
+	->label($language->get(++$i, '_number'),
 	[
 		'for' => $id . $i
 	])
