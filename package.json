@@ -34,7 +34,6 @@
 		"grunt-svgmin": "4.0.0",
 		"grunt-webfont": "1.5.0",
 		"icomoon-free-npm": "0.0.0",
-		"less": "2.7.2",
 		"load-grunt-tasks": "3.5.2",
 		"material-design-icons": "3.0.1",
 		"postcss": "5.2.14",
@@ -45,13 +44,11 @@
 		"postcss-custom-selectors": "3.0.0",
 		"postcss-extend": "1.0.5",
 		"postcss-import": "9.1.0",
-		"postcss-less-engine": "0.6.2 ",
 		"postcss-nesting": "2.3.1",
 		"postcss-reporter": "3.0.0",
 		"stylefmt": "5.1.2",
 		"stylelint": "7.9.0",
-		"stylelint-order": "0.3.0",
-		"tinymce": "https://github.com/tinymce/tinymce.git#master"
+		"stylelint-order": "0.3.0"
 	},
 	"scripts":
 	{

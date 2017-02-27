@@ -491,27 +491,9 @@ module.exports = function (grunt)
 			{
 				src:
 				[
-					'modules/Tinymce/assets/styles/_skin.less'
+					'modules/Tinymce/assets/styles/_skin.css'
 				],
-				dest: 'modules/Tinymce/dist/styles/skin.min.css',
-				options:
-				{
-					parser: require('postcss-less-engine').parser,
-					processors:
-					[
-						require('postcss-less-engine'),
-						require('autoprefixer')(
-						{
-							browsers: 'last 2 versions'
-						}),
-						require('cssnano')(
-						{
-							autoprefixer: false,
-							colormin: false,
-							zindex: false
-						})
-					]
-				}
+				dest: 'modules/Tinymce/dist/styles/skin.min.css'
 			},
 			stylelint:
 			{
@@ -691,59 +673,6 @@ module.exports = function (grunt)
 					template: 'modules/SocialSharer/assets/styles/_icon.tpl'
 				}
 			},
-			moduleTinymce:
-			{
-				src:
-				[
-					'node_modules/material-design-icons/action/svg/production/ic_code_24px.svg',
-					'node_modules/material-design-icons/action/svg/production/ic_search_24px.svg',
-					'node_modules/material-design-icons/av/svg/production/ic_movie_24px.svg',
-					'node_modules/material-design-icons/content/svg/production/ic_redo_24px.svg',
-					'node_modules/material-design-icons/content/svg/production/ic_undo_24px.svg',
-					'node_modules/material-design-icons/editor/svg/production/ic_format_align_center_24px.svg',
-					'node_modules/material-design-icons/editor/svg/production/ic_format_align_justify_24px.svg',
-					'node_modules/material-design-icons/editor/svg/production/ic_format_align_left_24px.svg',
-					'node_modules/material-design-icons/editor/svg/production/ic_format_align_right_24px.svg',
-					'node_modules/material-design-icons/editor/svg/production/ic_format_bold_24px.svg',
-					'node_modules/material-design-icons/editor/svg/production/ic_format_indent_decrease_24px.svg',
-					'node_modules/material-design-icons/editor/svg/production/ic_format_indent_increase_24px.svg',
-					'node_modules/material-design-icons/editor/svg/production/ic_format_italic_24px.svg',
-					'node_modules/material-design-icons/editor/svg/production/ic_format_underlined_24px.svg',
-					'node_modules/material-design-icons/editor/svg/production/ic_insert_link_24px.svg',
-					'node_modules/material-design-icons/editor/svg/production/ic_insert_photo_24px.svg',
-					'node_modules/material-design-icons/editor/svg/production/ic_strikethrough_s_24px.svg',
-					'node_modules/material-design-icons/navigation/svg/production/ic_close_24px.svg'
-				],
-				dest: 'modules/Tinymce/dist/fonts',
-				options:
-				{
-					destCss: 'modules/Tinymce/assets/styles/skin',
-					template: 'modules/Tinymce/assets/styles/skin/_icon.tpl',
-					rename: function (name)
-					{
-						return grunt.path.basename(name)
-							.replace('ic_code', 'i-code')
-							.replace('ic_search', 'i-browse')
-							.replace('ic_movie', 'i-media')
-							.replace('ic_redo', 'i-redo')
-							.replace('ic_undo', 'i-undo')
-							.replace('ic_format_align_center', 'i-aligncenter')
-							.replace('ic_format_align_justify', 'i-alignjustify')
-							.replace('ic_format_align_left', 'i-alignleft')
-							.replace('ic_format_align_right', 'i-alignright')
-							.replace('ic_format_bold', 'i-bold')
-							.replace('ic_format_indent_decrease', 'i-outdent')
-							.replace('ic_format_indent_increase', 'i-indent')
-							.replace('ic_format_italic', 'i-italic')
-							.replace('ic_format_underlined', 'i-underline')
-							.replace('ic_insert_link', 'i-link')
-							.replace('ic_insert_photo', 'i-image')
-							.replace('ic_strikethrough_s', 'i-strikethrough')
-							.replace('ic_close', 'i-remove')
-							.replace('_24px', '');
-					}
-				}
-			},
 			options:
 			{
 				font: 'icon',
@@ -889,14 +818,6 @@ module.exports = function (grunt)
 					'modules/SocialSharer/assets/styles/icon.tpl'
 				],
 				dest: 'modules/SocialSharer/assets/styles/_icon.css'
-			},
-			moduleTinymce:
-			{
-				src:
-				[
-					'modules/Tinymce/assets/styles/skin/icon.tpl'
-				],
-				dest: 'modules/Tinymce/assets/styles/skin/_icon.less'
 			}
 		},
 		svgmin:
