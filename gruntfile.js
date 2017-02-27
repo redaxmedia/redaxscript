@@ -695,6 +695,9 @@ module.exports = function (grunt)
 			{
 				src:
 				[
+					'node_modules/material-design-icons/action/svg/production/ic_code_24px.svg',
+					'node_modules/material-design-icons/action/svg/production/ic_search_24px.svg',
+					'node_modules/material-design-icons/av/svg/production/ic_movie_24px.svg',
 					'node_modules/material-design-icons/content/svg/production/ic_redo_24px.svg',
 					'node_modules/material-design-icons/content/svg/production/ic_undo_24px.svg',
 					'node_modules/material-design-icons/editor/svg/production/ic_format_align_center_24px.svg',
@@ -707,7 +710,9 @@ module.exports = function (grunt)
 					'node_modules/material-design-icons/editor/svg/production/ic_format_italic_24px.svg',
 					'node_modules/material-design-icons/editor/svg/production/ic_format_underlined_24px.svg',
 					'node_modules/material-design-icons/editor/svg/production/ic_insert_link_24px.svg',
-					'node_modules/material-design-icons/editor/svg/production/ic_insert_photo_24px.svg'
+					'node_modules/material-design-icons/editor/svg/production/ic_insert_photo_24px.svg',
+					'node_modules/material-design-icons/editor/svg/production/ic_strikethrough_s_24px.svg',
+					'node_modules/material-design-icons/navigation/svg/production/ic_close_24px.svg'
 				],
 				dest: 'modules/Tinymce/dist/fonts',
 				options:
@@ -717,6 +722,9 @@ module.exports = function (grunt)
 					rename: function (name)
 					{
 						return grunt.path.basename(name)
+							.replace('ic_code', 'i-code')
+							.replace('ic_search', 'i-browse')
+							.replace('ic_movie', 'i-media')
 							.replace('ic_redo', 'i-redo')
 							.replace('ic_undo', 'i-undo')
 							.replace('ic_format_align_center', 'i-aligncenter')
@@ -730,6 +738,8 @@ module.exports = function (grunt)
 							.replace('ic_format_underlined', 'i-underline')
 							.replace('ic_insert_link', 'i-link')
 							.replace('ic_insert_photo', 'i-image')
+							.replace('ic_strikethrough_s', 'i-strikethrough')
+							.replace('ic_close', 'i-remove')
 							.replace('_24px', '');
 					}
 				}
