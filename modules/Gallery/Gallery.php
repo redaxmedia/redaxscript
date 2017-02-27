@@ -94,9 +94,16 @@ class Gallery extends Config
 			'class' => $this->_configArray['className']['list']
 		]);
 
-		/* has directory */
+		/* handle notification */
 
-		if (is_dir($directory))
+		if (!is_dir($directory))
+		{
+			$this->setNotification('error', $this->_language->get('directory_not_found') . $this->_language->get('colon') . ' ' . $directory . $this->_language->get('point'));
+		}
+
+		/* else collect item */
+
+		else
 		{
 			/* remove as needed */
 
@@ -120,13 +127,6 @@ class Gallery extends Config
 			{
 				$output = $listElement->html($outputItem);
 			}
-		}
-
-		/* else handle notification */
-
-		else
-		{
-			$this->setNotification('error', $this->_language->get('directory_not_found') . $this->_language->get('colon') . ' ' . $directory . $this->_language->get('point'));
 		}
 		return $output;
 	}
@@ -281,9 +281,16 @@ class Gallery extends Config
 		$galleryDirectory->create($this->_configArray['thumbDirectory']);
 		$galleryDirectoryArray = $galleryDirectory->getArray();
 
-		/* process directory */
+		/* handle notification */
 
-		if (chmod($directory . '/' . $this->_configArray['thumbDirectory'], 0777))
+		if (!chmod($directory . '/' . $this->_configArray['thumbDirectory'], 0777))
+		{
+			$this->setNotification('error', $this->_language->get('directory_permission_grant') . $this->_language->get('colon') . ' ' . $directory . '/' . $this->_configArray['thumbDirectory']  . $this->_language->get('point'));
+		}
+
+		/* else process directory */
+
+		else
 		{
 			foreach ($galleryDirectoryArray as $value)
 			{
@@ -324,13 +331,6 @@ class Gallery extends Config
 				imagedestroy($thumb);
 				imagedestroy($image);
 			}
-		}
-
-		/* handle notification */
-
-		else
-		{
-			$this->setNotification('error', $this->_language->get('directory_permission_grant') . $this->_language->get('colon') . ' ' . $directory . '/' . $this->_configArray['thumbDirectory']  . $this->_language->get('point'));
 		}
 	}
 

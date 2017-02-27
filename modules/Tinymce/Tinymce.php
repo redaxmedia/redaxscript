@@ -68,7 +68,7 @@ class Tinymce extends Config
 
 	public function adminPanelNotification()
 	{
-		if (!is_dir($this->_configArray['uploadDirectory']))
+		if (!is_dir($this->_configArray['uploadDirectory']) && !mkdir($this->_configArray['uploadDirectory']))
 		{
 			$this->setNotification('error', $this->_language->get('directory_not_found') . $this->_language->get('colon') . ' ' . $this->_configArray['uploadDirectory'] . $this->_language->get('point'));
 		}
