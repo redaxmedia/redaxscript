@@ -1,6 +1,8 @@
 <?php
 namespace Redaxscript;
 
+$registry = Registry::getInstance();
+$language = Language::getInstance();
 $listElement = new Html\Element();
 $listElement->init('ul',
 [
@@ -37,15 +39,15 @@ $outputBox = null;
 				->addClass($i === 2 ? $admin ? 'rs-admin-js-item-active rs-admin-item-active' : 'rs-js-item-active rs-item-active' : null)
 				->html(
 					$linkElement
-						->attr('href', $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute') . '#' . $id)
-						->text($this->_language->get($i, '_number'))
+						->attr('href', $registry->get('parameterRoute') . $registry->get('fullRoute') . '#' . $id)
+						->text($language->get($i, '_number'))
 				); ?>
 
 		<?php $outputBox .= $setElement
 				->copy()
 				->addClass($i === 2 ? $admin ? 'rs-admin-js-set-active rs-admin-set-active' : 'rs-js-set-active rs-set-active' : null)
 				->attr('id', $id)
-				->text($this->_language->get($i, '_number')); ?>
+				->text($language->get($i, '_number')); ?>
 
 	<?php endfor; ?>
 

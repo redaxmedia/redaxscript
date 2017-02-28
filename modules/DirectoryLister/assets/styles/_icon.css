@@ -21,6 +21,7 @@
 {
 	content: '\f101';
 	font-family: var(--rs-font-icon-directory-lister);
+	font-style: normal;
 	font-weight: normal;
 }
 
@@ -28,6 +29,7 @@
 {
 	content: '\f102';
 	font-family: var(--rs-font-icon-directory-lister);
+	font-style: normal;
 	font-weight: normal;
 }
 
@@ -35,5 +37,6 @@
 {
 	content: '\f103';
 	font-family: var(--rs-font-icon-directory-lister);
+	font-style: normal;
 	font-weight: normal;
 }

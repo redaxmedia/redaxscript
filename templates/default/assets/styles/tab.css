@@ -72,7 +72,7 @@
 {
 	background: gray(200);
 	color: gray(0);
-	padding: 0.5em 1em;
+	padding: 1em;
 }
 
 @media (--media-medium-max)

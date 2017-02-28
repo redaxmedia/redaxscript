@@ -23,7 +23,12 @@ rs.modules.tinymce =
 		content_css: rs.baseURL + 'templates/' + rs.registry.template + '/dist/styles/' + rs.registry.template + '.min.css',
 		skin_url: rs.baseURL + 'modules/Tinymce/dist/styles',
 		images_upload_url: rs.registry.parameterRoute + 'tinymce/upload/' + rs.registry.token,
+		images_reuse_filename: true,
 		custom_elements: 'blockcode, language, module, readmore, registry, template',
-		forced_root_block: false
+		extended_valid_elements: 'template',
+		short_ended_elements: 'readmore',
+		forced_root_block: false,
+		file_picker_callback: true,
+		file_browser_callback_types: 'image'
 	}
 };

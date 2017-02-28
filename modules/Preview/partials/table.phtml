@@ -1,6 +1,8 @@
 <?php
 namespace Redaxscript;
 
+$registry = Registry::getInstance();
+$language = Language::getInstance();
 $tableElement = new Html\Element();
 $tableElement->init('table',
 [
@@ -30,13 +32,13 @@ $outputBody = null;
 	<?php $outputHead .= $thElement
 		->copy()
 		->addClass($admin ? 'rs-admin-is-size-1of5' : 'rs-is-size1of5')
-		->text($this->_language->get($i, '_number')); ?>
+		->text($language->get($i, '_number')); ?>
 
 	<?php $outputFoot .= $tdElement
-		->text($this->_language->get($i, '_number')); ?>
+		->text($language->get($i, '_number')); ?>
 
 	<?php $outputBody .= $tdElement
-		->text($this->_language->get('preview', '_preview')); ?>
+		->text($language->get('preview', '_preview')); ?>
 
 <?php endfor; ?>
 

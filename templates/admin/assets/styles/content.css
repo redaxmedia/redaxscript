@@ -21,7 +21,17 @@
 	padding: 1em;
 	white-space: pre-wrap;
 
-	& + .rs-admin-code-default
+	& + .rs-admin-code-default,
+	& + .rs-admin-text-documentation
+	{
+		margin-top: 1em;
+	}
+}
+
+.rs-admin-text-documentation
+{
+	& + .rs-admin-code-default,
+	& + .rs-admin-list-default
 	{
 		margin-top: 1em;
 	}

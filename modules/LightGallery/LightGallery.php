@@ -1,22 +1,21 @@
 <?php
-namespace Redaxscript\Modules\Gallery;
+namespace Redaxscript\Modules\LightGallery;
 
-use Redaxscript\Db;
 use Redaxscript\Directory;
 use Redaxscript\Head;
 use Redaxscript\Html;
 
 /**
- * lightbox enhanced image gallery
+ * javascript powered light gallery
  *
- * @since 2.6.0
+ * @since 3.0.0
  *
  * @package Redaxscript
  * @category Modules
  * @author Henry Ruhs
  */
 
-class Gallery extends Config
+class LightGallery extends Config
 {
 	/**
 	 * array of the module
@@ -26,10 +25,10 @@ class Gallery extends Config
 
 	protected static $_moduleArray =
 	[
-		'name' => 'Gallery',
-		'alias' => 'Gallery',
+		'name' => 'Light gallery',
+		'alias' => 'LightGallery',
 		'author' => 'Redaxmedia',
-		'description' => 'Lightbox enhanced image gallery',
+		'description' => 'Javascript powered light gallery',
 		'version' => '3.0.0'
 	];
 
@@ -59,15 +58,17 @@ class Gallery extends Config
 		$link = Head\Link::getInstance();
 		$link
 			->init()
-			->appendFile('modules/Gallery/dist/styles/gallery.min.css');
+			->appendFile('//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.3.9/css/lightgallery.min.css')
+			->appendFile('modules/LightGallery/dist/styles/light-gallery.min.css');
 
 		/* script */
 
 		$script = Head\Script::getInstance();
 		$script
 			->init('foot')
-			->appendFile('modules/Gallery/assets/scripts/init.js')
-			->appendFile('modules/Gallery/dist/scripts/gallery.min.js');
+			->appendFile('//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.3.9/js/lightgallery.min.js')
+			->appendFile('modules/LightGallery/assets/scripts/init.js')
+			->appendFile('modules/LightGallery/dist/scripts/light-gallery.min.js');
 	}
 
 	/**
@@ -94,9 +95,16 @@ class Gallery extends Config
 			'class' => $this->_configArray['className']['list']
 		]);
 
-		/* has directory */
+		/* handle notification */
 
-		if (is_dir($directory))
+		if (!is_dir($directory))
+		{
+			$this->setNotification('error', $this->_language->get('directory_not_found') . $this->_language->get('colon') . ' ' . $directory . $this->_language->get('point'));
+		}
+
+		/* else collect item */
+
+		else
 		{
 			/* remove as needed */
 
@@ -120,13 +128,6 @@ class Gallery extends Config
 			{
 				$output = $listElement->html($outputItem);
 			}
-		}
-
-		/* else handle notification */
-
-		else
-		{
-			$this->setNotification('error', $this->_language->get('directory_not_found') . $this->_language->get('colon') . ' ' . $directory . $this->_language->get('point'));
 		}
 		return $output;
 	}
@@ -172,11 +173,6 @@ class Gallery extends Config
 			$galleryDirectoryArray = array_reverse($galleryDirectoryArray);
 		}
 
-		/* gallery data */
-
-		$galleryCounter = 0;
-		$galleryTotal = count($galleryDirectoryArray);
-
 		/* process directory */
 
 		foreach ($galleryDirectoryArray as $value)
@@ -184,63 +180,24 @@ class Gallery extends Config
 			$imagePath = $directory . '/' . $value;
 			$thumbPath = $directory . '/' . $this->_configArray['thumbDirectory'] . '/' . $value;
 
-			/* get image data */
-
-			$imageData = $this->_getExifData($imagePath);
-
 			/* collect item output */
 
 			$outputItem .= '<li>';
 			$outputItem .= $linkElement
 				->copy()
-				->attr(
-				[
-					'href' => $imagePath,
-					'data-counter' => ++$galleryCounter,
-					'data-total' => $galleryTotal,
-					'data-artist' => array_key_exists('artist', $imageData) ? $imageData['artist'] : null,
-					'data-date' => array_key_exists('date', $imageData) ? $imageData['date'] : null,
-					'data-description' => array_key_exists('description', $imageData) ? $imageData['description'] : null
-				])
+				->attr('href', $imagePath)
 				->html(
 					$imageElement
 						->copy()
 						->attr(
 						[
 							'src' => $thumbPath,
-							'alt' => array_key_exists('description', $imageData) ? $imageData['description'] : $value
+							'alt' => $value
 						])
 				);
 			$outputItem .= '</li>';
 		}
 		return $outputItem;
-	}
-
-	/**
-	 * getExifData
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param string $file
-	 *
-	 * @return array
-	 */
-
-	protected function _getExifData($file = null)
-	{
-		$dataArray = [];
-		$exifArray = function_exists('exif_read_data') ? exif_read_data($file) : [];
-
-		/* handle data */
-
-		if ($exifArray)
-		{
-			$dataArray['artist'] = $exifArray['Artist'];
-			$dataArray['date'] = $exifArray['DateTime'] ? date(Db::getSetting('date'), strtotime($exifArray['DateTime'])) : null;
-			$dataArray['description'] = $exifArray['ImageDescription'];
-		}
-		$dataArray = array_filter($dataArray);
-		return $dataArray;
 	}
 
 	/**
@@ -281,9 +238,16 @@ class Gallery extends Config
 		$galleryDirectory->create($this->_configArray['thumbDirectory']);
 		$galleryDirectoryArray = $galleryDirectory->getArray();
 
-		/* process directory */
+		/* handle notification */
 
-		if (chmod($directory . '/' . $this->_configArray['thumbDirectory'], 0777))
+		if (!chmod($directory . '/' . $this->_configArray['thumbDirectory'], 0777))
+		{
+			$this->setNotification('error', $this->_language->get('directory_permission_grant') . $this->_language->get('colon') . ' ' . $directory . '/' . $this->_configArray['thumbDirectory']  . $this->_language->get('point'));
+		}
+
+		/* else process directory */
+
+		else
 		{
 			foreach ($galleryDirectoryArray as $value)
 			{
@@ -324,13 +288,6 @@ class Gallery extends Config
 				imagedestroy($thumb);
 				imagedestroy($image);
 			}
-		}
-
-		/* handle notification */
-
-		else
-		{
-			$this->setNotification('error', $this->_language->get('directory_permission_grant') . $this->_language->get('colon') . ' ' . $directory . '/' . $this->_configArray['thumbDirectory']  . $this->_language->get('point'));
 		}
 	}
 

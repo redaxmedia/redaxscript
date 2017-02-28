@@ -1,5 +1,5 @@
 <?php
-namespace Redaxscript\Modules\Gallery;
+namespace Redaxscript\Modules\LightGallery;
 
 use Redaxscript\Module;
 
@@ -25,8 +25,8 @@ class Config extends Module\Module
 	[
 		'className' =>
 		[
-			'image' => 'rs-image-gallery',
-			'list' => 'rs-js-gallery rs-list-gallery'
+			'image' => 'rs-image-light-gallery',
+			'list' => 'rs-js-light-gallery rs-list-light-gallery rs-fn-clearfix'
 		],
 		'height' => 200,
 		'quality' => 80,

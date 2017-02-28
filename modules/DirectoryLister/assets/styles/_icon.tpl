@@ -23,6 +23,7 @@
 {
 	content: '\<%= codepoints[i] %>';
 	font-family: var(--rs-font-icon-directory-lister);
+	font-style: normal;
 	font-weight: normal;
 }
 <%

@@ -15,9 +15,8 @@
 {
 	font-size: 1.25rem;
 
-	& fieldset li
+	& fieldset li + li
 	{
-		margin-bottom: 0.5em;
 		margin-top: 0.5em;
 	}
 

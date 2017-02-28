@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript;
 
+$language = Language::getInstance();
 $setElement = new Html\Element();
 $setElement->init('div',
 [
@@ -31,11 +32,10 @@ $boxElement->init('div',
 					$titleElement
 						->copy()
 						->addClass($i === 2 ? $admin ? 'rs-admin-js-title-active rs-admin-title-active' : 'rs-js-title-active rs-title-active' : null)
-						->text($this->_language->get($i, '_number')) .
-					$boxElement
+						->text($language->get($i, '_number')) . $boxElement
 						->copy()
 						->addClass($i === 2 ? $admin ? 'rs-admin-js-box-active rs-admin-box-active' : 'rs-js-box-active rs-box-active' : null)
-						->text($this->_language->get($i, '_number'))
+						->text($language->get($i, '_number'))
 		); ?>
 
 	<?php endfor; ?>

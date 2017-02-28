@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript;
 
+$language = Language::getInstance();
 $titleElement = new Html\Element();
 $titleElement->init('h3',
 [
@@ -30,11 +31,11 @@ $buttonElement->init('button',
 <div class="<?php echo $admin ? 'rs-admin-overlay-dialog' : 'rs-overlay-dialog'; ?>">
 	<div class="<?php echo $admin ? 'rs-admin-component-dialog' : 'rs-component-dialog'; ?>">
 
-		<?php echo $titleElement->text($this->_language->get('confirm')); ?>
+		<?php echo $titleElement->text($language->get('confirm')); ?>
 		<?php echo $boxElement->html(
-			$textElement->text($this->_language->get('dialog_question') . $this->_language->get('question_mark')) .
-			$buttonElement->copy()->text($this->_language->get('ok')) .
-			$buttonElement->copy()->text($this->_language->get('cancel'))
+			$textElement->text($language->get('dialog_question') . $language->get('question_mark')) .
+			$buttonElement->copy()->text($language->get('ok')) .
+			$buttonElement->copy()->text($language->get('cancel'))
 		); ?>
 
 	</div>
@@ -45,11 +46,11 @@ $buttonElement->init('button',
 <div class="<?php echo $admin ? 'rs-admin-overlay-dialog' : 'rs-overlay-dialog'; ?>">
 	<div class="<?php echo $admin ? 'rs-admin-component-dialog' : 'rs-component-dialog'; ?>">
 
-		<?php echo $titleElement->text($this->_language->get('prompt')); ?>
+		<?php echo $titleElement->text($language->get('prompt')); ?>
 		<?php echo $boxElement->html(
 			$inputElement .
-			$buttonElement->copy()->text($this->_language->get('ok')) .
-			$buttonElement->copy()->text($this->_language->get('cancel'))
+			$buttonElement->copy()->text($language->get('ok')) .
+			$buttonElement->copy()->text($language->get('cancel'))
 		); ?>
 
 	</div>

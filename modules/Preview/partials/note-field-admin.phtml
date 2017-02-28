@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript;
 
-$registry = $this->_registry->getInstance();
+$registry = Registry::getInstance();
 if ($registry->get('loggedIn') === $registry->get('token'))
 {
 	$admin = true;

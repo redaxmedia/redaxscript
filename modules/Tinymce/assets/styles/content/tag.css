@@ -1,0 +1,108 @@
+/**
+ * @tableofcontents
+ *
+ * 1. tag
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. tag */
+
+blockcode,
+language,
+module,
+registry,
+template
+{
+	&:before,
+	&:after
+	{
+		color: gray(0, 0.2);
+	}
+}
+
+readmore
+{
+	border-top: 0.125em dashed gray(0, 0.5);
+	display: block;
+	margin: 1em 0;
+}
+
+template
+{
+	display: block;
+}
+
+blockcode
+{
+	&:before
+	{
+		 content: '<blockcode>';
+	}
+
+	&:after
+	{
+		content: '</blockcode>';
+	}
+}
+
+language
+{
+	&:before
+	{
+		content: '<language>';
+	}
+
+	&:after
+	{
+		content: '</language>';
+	}
+}
+
+module
+{
+	&:before
+	{
+		content: '<module>';
+	}
+
+	&:after
+	{
+		content: '</module>';
+	}
+}
+
+registry
+{
+	&:before
+	{
+		content: '<registry>';
+	}
+
+	&:after
+	{
+		content: '</registry>';
+	}
+}
+
+template
+{
+	&:before
+	{
+		content: '<template>';
+	}
+
+	&:after
+	{
+		content: '</template>';
+	}
+}
+
+[_moz_editor_bogus_node],
+[data-mce-bogus]
+{
+	display: none;
+}

@@ -108,9 +108,16 @@ class DirectoryLister extends Config
 			$outputItem .= $this->_renderParent($rootDirectory, $parentDirectory, $optionArray);
 		}
 
-		/* has directory */
+		/* handle notification */
 
-		if (is_dir($directory))
+		if (!is_dir($directory))
+		{
+			$this->setNotification('error', $this->_language->get('directory_not_found') . $this->_language->get('colon') . ' ' . $directory . $this->_language->get('point'));
+		}
+
+		/* else collect item */
+
+		else
 		{
 			$outputItem .= $this->_renderItem($directory, $optionArray);
 
@@ -120,13 +127,6 @@ class DirectoryLister extends Config
 			{
 				$output = $listElement->html($outputItem);
 			}
-		}
-
-		/* else handle notification */
-
-		else
-		{
-			$this->setNotification('error', $this->_language->get('directory_not_found') . $this->_language->get('colon') . ' ' . $directory . $this->_language->get('point'));
 		}
 		return $output;
 	}

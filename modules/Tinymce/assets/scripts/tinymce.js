@@ -2,6 +2,7 @@
  * @tableofcontents
  *
  * 1. tinymce
+ *    1.1 file picker
  * 2. init
  *
  * @since 3.0.0
@@ -40,7 +41,7 @@
 				tinymce.triggerSave();
 			});
 
-			/* pseudo tags */
+			/* content tags */
 
 			for (i in tagArray)
 			{
@@ -52,13 +53,51 @@
 						context: 'insert',
 						onclick: function ()
 						{
-							editor.insertContent('<' + tag + '>');
+							editor.dom.add(editor.getBody(), tag);
 						}
 					});
 				})(tagArray[i]);
 			}
 		};
+
+		/* file picker */
+
+		if (options.file_picker_callback)
+		{
+			options.file_picker_callback = function (callback)
+			{
+				$.fn.tinymceFilePicker(callback);
+			};
+		}
 		tinymce.init(options);
+	};
+
+	/* @section 1.1 file picker */
+
+	$.fn.tinymceFilePicker = function(callback)
+	{
+		var field = $('<input>');
+
+		field
+			.attr(
+			{
+				type: 'file',
+				accept: 'image/jpg,image/png,image/svg'
+			})
+			.on('change', function ()
+			{
+				var that = $(this),
+					file = that.get(0).files[0],
+					blobCache = tinymce.activeEditor.editorUpload.blobCache,
+					blobInfo = blobCache.create(Date.now(), file);
+
+				blobCache.add(blobInfo);
+				callback(blobInfo.blobUri(),
+				{
+					title: file.name
+				});
+			})
+			.trigger('click');
 	};
 
 	/* @section 2. init */

@@ -1,2 +1,2 @@
-@import '../../../../templates/default/assets/styles/_variable.css';
-@import 'content.css';
+@import 'content/table.css';
+@import 'content/tag.css';

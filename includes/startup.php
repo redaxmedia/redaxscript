@@ -123,7 +123,7 @@ function startup()
 	}
 	else
 	{
-		$registry->set('parameterRoute', null);
+		$registry->set('parameterRoute', '');
 		$registry->set('languageRoute', '.');
 		$registry->set('templateRoute', '.');
 	}
