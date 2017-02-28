@@ -316,13 +316,13 @@ module.exports = function (grunt)
 				],
 				dest: 'modules/Experiments/dist/scripts/experiments.min.js'
 			},
-			moduleGallery:
+			moduleLightGallery:
 			{
 				src:
 				[
-					'modules/Gallery/assets/scripts/gallery.js'
+					'modules/LightGallery/assets/scripts/light-gallery.js'
 				],
-				dest: 'modules/Gallery/dist/scripts/gallery.min.js'
+				dest: 'modules/LightGallery/dist/scripts/light-gallery.min.js'
 			},
 			moduleMaps:
 			{
@@ -447,13 +447,13 @@ module.exports = function (grunt)
 				],
 				dest: 'modules/FeedReader/dist/styles/feed-reader.min.css'
 			},
-			moduleGallery:
+			moduleLightGallery:
 			{
 				src:
 				[
-					'modules/Gallery/assets/styles/_gallery.css'
+					'modules/LightGallery/assets/styles/_light-gallery.css'
 				],
-				dest: 'modules/Gallery/dist/styles/gallery.min.css'
+				dest: 'modules/LightGallery/dist/styles/light-gallery.min.css'
 			},
 			modulePreview:
 			{
@@ -980,7 +980,7 @@ module.exports = function (grunt)
 		'postcss:moduleAce',
 		'postcss:moduleDirectoryLister',
 		'postcss:moduleFeedReader',
-		'postcss:moduleGallery',
+		'postcss:moduleLightGallery',
 		'postcss:modulePreview',
 		'postcss:moduleMaps',
 		'postcss:moduleSocialSharer',
@@ -997,7 +997,7 @@ module.exports = function (grunt)
 		'uglify:moduleAnalytics',
 		'uglify:moduleCallHome',
 		'uglify:moduleExperiments',
-		'uglify:moduleGallery',
+		'uglify:moduleLightGallery',
 		'uglify:moduleMaps',
 		'uglify:moduleSocialSharer',
 		'uglify:moduleSyntaxHighlighter',

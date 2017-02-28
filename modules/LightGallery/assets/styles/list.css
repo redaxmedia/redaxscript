@@ -1,0 +1,27 @@
+/**
+ * @tableofcontents
+ *
+ * 1. list
+ *
+ * @since 3.0.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. list */
+
+.rs-list-light-gallery
+{
+	& li
+	{
+		float: left;
+		margin-bottom: 0.5em;
+		margin-right: 0.5em;
+	}
+
+	& img
+	{
+		max-width: 100%;
+	}
+}
