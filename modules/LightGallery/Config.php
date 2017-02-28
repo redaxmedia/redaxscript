@@ -25,7 +25,7 @@ class Config extends Module\Module
 	[
 		'className' =>
 		[
-			'image' => 'rs-image-gallery',
+			'image' => 'rs-image-light-gallery',
 			'list' => 'rs-js-light-gallery rs-list-light-gallery rs-fn-clearfix'
 		],
 		'height' => 200,
