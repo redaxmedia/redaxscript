@@ -21,7 +21,7 @@
 		"redaxmedia/tocgen": "4.1.1",
 		"satooshi/php-coveralls": "1.0.1",
 		"sebastian/phpcpd": "3.0.0",
-		"squizlabs/php_codesniffer": "2.8.0"
+		"squizlabs/php_codesniffer": "2.8.1"
 	},
 	"scripts":
 	{
