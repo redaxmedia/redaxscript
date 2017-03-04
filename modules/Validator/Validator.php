@@ -34,7 +34,7 @@ class Validator extends Config
 	/**
 	 * adminPanelNotification
 	 *
-	 * @since 3.0.0
+	 * @since 3.0.1
 	 *
 	 * @return array
 	 */
@@ -75,7 +75,7 @@ class Validator extends Config
 			{
 				$this->setNotification('success', $this->_language->get('documentValidate', '_validator') . $this->_language->get('point'));
 			}
-			return $this->getNotification();
 		}
+		return $this->getNotification();
 	}
 }

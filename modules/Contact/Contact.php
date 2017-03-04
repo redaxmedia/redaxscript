@@ -223,7 +223,7 @@ class Contact extends Module\Module
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
-			->setRoute($this->_language->get('home'), $this->_registry->get('root'))
+			->setUrl($this->_language->get('home'), $this->_registry->get('root'))
 			->doRedirect()
 			->success($this->_language->get('operation_completed'), $this->_language->get('message_sent', '_contact'));
 	}
@@ -242,7 +242,7 @@ class Contact extends Module\Module
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
-			->setRoute($this->_language->get('home'), $this->_registry->get('root'))
+			->setUrl($this->_language->get('home'), $this->_registry->get('root'))
 			->error($errorArray['message'], $this->_language->get('error_occurred'));
 	}
 

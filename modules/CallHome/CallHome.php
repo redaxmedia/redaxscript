@@ -55,14 +55,13 @@ class CallHome extends Module\Module
 	/**
 	 * adminPanelNotification
 	 *
-	 * @since 3.0.0
+	 * @since 3.0.1
 	 *
 	 * @return array
 	 */
 
 	public function adminPanelNotification()
 	{
-		$outputArray = [];
 		$reader = new Reader();
 		$aliasFilter = new Filter\Alias();
 		$version = $aliasFilter->sanitize($this->_language->get('version', '_package'));
@@ -71,19 +70,28 @@ class CallHome extends Module\Module
 
 		$urlVersion = 'https://service.redaxscript.com/version/' . $version;
 		$urlNews = 'https://service.redaxscript.com/news/' . $version;
-		$resultVersion = $reader->loadJSON($urlVersion)->getArray();
-		$resultNews = $reader->loadJSON($urlNews)->getArray();
+		$versionArray = $reader->loadJSON($urlVersion)->getArray();
+		$newsArray = $reader->loadJSON($urlNews)->getArray();
 
-		/* merge as needed */
+		/* process version */
 
-		if (is_array($resultVersion))
+		foreach ($versionArray as $version)
 		{
-			$outputArray = array_merge_recursive($outputArray, $resultVersion);
+			foreach ($version as $type => $message)
+			{
+				$this->setNotification($type, $message);
+			}
 		}
-		if (is_array($resultNews))
+
+		/* process news */
+
+		foreach ($newsArray as $news)
 		{
-			$outputArray = array_merge_recursive($outputArray, $resultNews);
+			foreach ($news as $type => $message)
+			{
+				$this->setNotification($type, $message);
+			}
 		}
-		return $outputArray;
+		return $this->getNotification();
 	}
 }
