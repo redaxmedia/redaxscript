@@ -13,8 +13,8 @@
 	"require-dev":
 	{
 		"brianium/paratest": "0.14.0",
-		"drupal/coder": "8.2.10",
-		"johnkary/phpunit-speedtrap": "1.0.1",
+		"drupal/coder": "8.2.11",
+		"johnkary/phpunit-speedtrap": "1.0.2",
 		"mikey179/vfsStream": "1.6.4",
 		"phpbench/phpbench": "0.13.0",
 		"phpunit/phpunit": "5.7.5",
