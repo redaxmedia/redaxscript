@@ -100,7 +100,7 @@ class FeedGenerator extends Module\Module
 		$writer->setIndentString('	');
 		$writer->startDocument('1.0', Db::getSetting('charset'));
 		$writer->startElement('feed');
-		$writer->writeAttribute('xmlns', 'https://www.w3.org/2005/Atom');
+		$writer->writeAttribute('xmlns', 'http://www.w3.org/2005/Atom');
 		$writer->startElement('link');
 		$writer->writeAttribute('type', 'application/atom+xml');
 		$writer->writeAttribute('href', $href);
