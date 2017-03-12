@@ -44,7 +44,7 @@
 		{
 			@extend %rs-icon-chevron-right;
 			left: 0;
-			line-height: 1.5em;
+			line-height: 1.375em;
 			position: absolute;
 			right: 0;
 			text-align: center;
