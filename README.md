@@ -1,7 +1,7 @@
 Redaxscript
 ===========
 
-> Ultra lightweight Content Management System for SQLite, MySQL and PostgreSQL.
+> A modern, ultra lightweight and rocket fast Content Management System for SQLite, MySQL and PostgreSQL.
 
 [![Build Status](https://img.shields.io/travis/redaxmedia/redaxscript.svg)](https://travis-ci.org/redaxmedia/redaxscript)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/redaxmedia/redaxscript.svg)](https://scrutinizer-ci.com/g/redaxmedia/redaxscript)
