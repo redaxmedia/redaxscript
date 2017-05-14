@@ -257,13 +257,13 @@ class Register extends ControllerAbstract
 		$subject = $this->_language->get('registration');
 		$bodyArray =
 		[
-			'<strong>' . $this->_language->get('name') . $this->_language->get('colon') . '</strong> ' . $mailArray['name'],
+			$this->_language->get('name') . $this->_language->get('colon') . $mailArray['name'],
 			'<br />',
-			'<strong>' . $this->_language->get('user') . $this->_language->get('colon') . '</strong> ' . $mailArray['user'],
+			$this->_language->get('user') . $this->_language->get('colon') . $mailArray['user'],
 			'<br />',
-			'<strong>' . $this->_language->get('password') . $this->_language->get('colon') . '</strong> ' . $mailArray['password'],
+			$this->_language->get('password') . $this->_language->get('colon') . $mailArray['password'],
 			'<br />',
-			'<strong>' . $this->_language->get('login') . $this->_language->get('colon') . '<strong> ' . $linkElement
+			$this->_language->get('login') . $this->_language->get('colon') . $linkElement
 		];
 
 		/* send mail */

@@ -1,6 +1,12 @@
 [
 	[
 		{
+			"dbType": "mssql",
+			"dbPassword": "test"
+		}
+	],
+	[
+		{
 			"dbType": "mysql",
 			"dbPassword": "test"
 		}

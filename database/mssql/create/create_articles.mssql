@@ -1,0 +1,24 @@
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = '/* {configPrefix} */articles')
+BEGIN
+	CREATE TABLE /* %PREFIX% */articles (
+		id int PRIMARY KEY IDENTITY,
+		title nvarchar(255) NULL,
+		alias nvarchar(255) NULL,
+		author nvarchar(255) NULL,
+		description nvarchar(255) NULL,
+		keywords nvarchar(255) NULL,
+		robots int NULL,
+		text varchar(max) NULL,
+		language char(2) NULL,
+		template nvarchar(255) NULL,
+		sibling int NULL,
+		category int NULL,
+		headline int DEFAULT 1,
+		byline int DEFAULT 1,
+		comments int DEFAULT 0,
+		status int DEFAULT 1,
+		rank int NULL,
+		access nvarchar(255) NULL,
+		date datetime2(0) DEFAULT GETDATE()
+	);
+END

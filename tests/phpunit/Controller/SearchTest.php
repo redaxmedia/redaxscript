@@ -3,9 +3,6 @@ namespace Redaxscript\Tests\Controller;
 
 use Redaxscript\Db;
 use Redaxscript\Controller;
-use Redaxscript\Language;
-use Redaxscript\Registry;
-use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -22,87 +19,82 @@ use Redaxscript\Tests\TestCaseAbstract;
 class SearchTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
 	 * setUp
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 */
 
 	public function setUp()
 	{
-		$this->_registry = Registry::getInstance();
-		$this->_language = Language::getInstance();
-		$this->_request = Request::getInstance();
-	}
-
-	/**
-	 * setUpBeforeClass
-	 *
-	 * @since 3.0.0
-	 */
-
-	public static function setUpBeforeClass()
-	{
-		Db::forTablePrefix('articles')
-			->create()
+		parent::setUp();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		$categoryOne = Db::forTablePrefix('categories')->create();
+		$categoryOne
 			->set(
 			[
-				'id' => 2,
-				'title' => 'test',
-				'alias' => 'test-one',
-				'author' => 'test',
-				'text' => 'test',
-				'category' => 1,
+				'title' => 'Category One',
+				'alias' => 'category-one',
 				'date' => '2016-01-01 00:00:00'
 			])
 			->save();
-		Db::forTablePrefix('articles')
+		Db::forTablePrefix('categories')
 			->create()
 			->set(
 			[
-				'id' => 3,
-				'title' => 'test',
-				'alias' => 'test-two',
-				'author' => 'test',
-				'text' => 'test',
-				'category' => 1,
-				'date' => '2016-01-01 00:00:00'
+				'title' => 'Category Two',
+				'alias' => 'category-two',
+				'date' => '2016-02-01 00:00:00'
 			])
 			->save();
-		Db::forTablePrefix('articles')
+		Db::forTablePrefix('categories')
 			->create()
 			->set(
 			[
-				'id' => 4,
-				'title' => 'test',
-				'alias' => 'test-three',
-				'author' => 'test',
-				'text' => 'test',
-				'category' => 1,
+				'title' => 'Category Three',
+				'alias' => 'category-three',
 				'status' => 0,
+				'date' => '2016-03-01 00:00:00'
+			])
+			->save();
+		$articleOne = Db::forTablePrefix('articles')->create();
+		$articleOne
+			->set(
+			[
+				'title' => 'Article One',
+				'alias' => 'article-one',
+				'category' => $categoryOne->id,
+				'date' => '2016-01-01 00:00:00'
+			])
+			->save();
+		Db::forTablePrefix('articles')
+			->create()
+			->set(
+			[
+				'title' => 'Article Two',
+				'alias' => 'article-two',
+				'category' => $categoryOne->id,
+				'date' => '2016-02-01 00:00:00'
+			])
+			->save();
+		Db::forTablePrefix('articles')
+			->create()
+			->set(
+			[
+				'title' => 'Article Three',
+				'alias' => 'article-three',
+				'status' => 0,
+				'date' => '2016-03-01 00:00:00'
+			])
+			->save();
+		Db::forTablePrefix('comments')
+			->create()
+			->set(
+			[
+				'author' => 'Comment One',
+				'text' => 'Comment One',
+				'article' => $articleOne->id,
 				'date' => '2016-01-01 00:00:00'
 			])
 			->save();
@@ -110,39 +102,36 @@ class SearchTest extends TestCaseAbstract
 			->create()
 			->set(
 			[
-				'id' => 2,
-				'author' => 'test',
-				'email' => 'test@test.com',
-				'text' => 'test',
-				'article' => 1,
-				'date' => '2016-01-01 00:00:00'
+				'author' => 'Comment Two',
+				'text' => 'Comment Two',
+				'article' => $articleOne->id,
+				'date' => '2016-02-01 00:00:00'
 			])
 			->save();
 		Db::forTablePrefix('comments')
 			->create()
 			->set(
 			[
-				'id' => 3,
-				'author' => 'test',
-				'email' => 'test@test.com',
-				'text' => 'test',
-				'article' => 1,
+				'author' => 'Comment Three',
+				'text' => 'Comment Three',
+				'article' => $articleOne->id,
 				'status' => 0,
-				'date' => '2016-01-01 00:00:00'
+				'date' => '2016-03-01 00:00:00'
 			])
 			->save();
 	}
 
 	/**
-	 * tearDownAfterClass
+	 * tearDown
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 */
 
-	public static function tearDownAfterClass()
+	public function tearDown()
 	{
-		Db::forTablePrefix('articles')->whereNotEqual('id', 1)->deleteMany();
-		Db::forTablePrefix('comments')->whereNotEqual('id', 1)->deleteMany();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
 	}
 
 	/**
@@ -174,7 +163,7 @@ class SearchTest extends TestCaseAbstract
 		/* setup */
 
 		$this->_registry->init($registryArray);
-		$searchController = new Controller\Search($this->_registry, $this->_language, $this->_request);
+		$searchController = new Controller\Search($this->_registry, $this->_request, $this->_language);
 
 		/* actual */
 

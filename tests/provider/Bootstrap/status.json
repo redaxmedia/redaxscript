@@ -1,0 +1,24 @@
+[
+	[
+		null,
+		null,
+		{
+			"dbStatus": 2,
+			"authStatus": 0,
+			"token": null,
+			"loggedIn": null
+		}
+	],
+	[
+		1,
+		{
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{
+			"dbStatus": 2,
+			"authStatus": 1,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"loggedIn": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		}
+	]
+]

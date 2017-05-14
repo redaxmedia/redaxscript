@@ -4,13 +4,14 @@
 			"dbStatus": 0,
 			"phpOs": "linux",
 			"phpVersion": "5.5.0",
-			"pdoDriverArray":
+			"driverArray":
 			[
-				"sqlite",
+				"mssql",
 				"mysql",
-				"pgsql"
+				"pgsql",
+				"sqlite"
 			],
-			"apacheModuleArray":
+			"moduleArray":
 			[
 				"mod_deflate",
 				"mod_headers",
@@ -25,13 +26,14 @@
 			"dbStatus": 2,
 			"phpOs": "winnt",
 			"phpVersion": "5.5.0",
-			"pdoDriverArray":
+			"driverArray":
 			[
-				"sqlite",
+				"mssql",
 				"mysql",
-				"pgsql"
+				"pgsql",
+				"sqlite"
 			],
-			"apacheModuleArray":
+			"moduleArray":
 			[
 				"mod_deflate",
 				"mod_headers",
@@ -46,13 +48,14 @@
 			"dbStatus": 2,
 			"phpOs": "linux",
 			"phpVersion": "5.5.0",
-			"pdoDriverArray":
+			"driverArray":
 			[
-				"sqlite",
+				"mssql",
 				"mysql",
-				"pgsql"
+				"pgsql",
+				"sqlite"
 			],
-			"apacheModuleArray":
+			"moduleArray":
 			[
 				"mod_deflate",
 				"mod_headers",

@@ -24,7 +24,7 @@ class SocialSharer extends Config
 
 	protected static $_moduleArray =
 	[
-		'name' => 'Social sharer',
+		'name' => 'Social Sharer',
 		'alias' => 'SocialSharer',
 		'author' => 'Redaxmedia',
 		'description' => 'Integrate a social sharer',
@@ -82,7 +82,7 @@ class SocialSharer extends Config
 
 	public function render($url = null)
 	{
-		$output = null;
+		$outputItem = null;
 		if ($url)
 		{
 			/* html elements */
@@ -92,6 +92,8 @@ class SocialSharer extends Config
 			[
 				'target' => '_blank'
 			]);
+			$itemElement = new Html\Element();
+			$itemElement->init('li');
 			$listElement = new Html\Element();
 			$listElement->init('ul',
 			[
@@ -102,26 +104,29 @@ class SocialSharer extends Config
 
 			foreach ($this->_configArray['network'] as $key => $value)
 			{
-				$output .= '<li>';
-				$output .= $linkElement->attr(
-				[
-					'class' => $this->_configArray['className']['link'] . ' ' . $value['className'],
-					'data-height' => $value['height'],
-					'data-type' => $value['type'],
-					'data-width' => $value['width'],
-					'href' => $value['url'] . $url,
-				])
-				->text($key);
-				$output .= '</li>';
+				$outputItem .= $itemElement
+					->clear()
+					->html(
+						$linkElement
+							->attr(
+							[
+								'class' => $this->_configArray['className']['link'] . ' ' . $value['className'],
+								'data-height' => $value['height'],
+								'data-type' => $value['type'],
+								'data-width' => $value['width'],
+								'href' => $value['url'] . $url,
+							])
+							->text($key)
+					);
 			}
 
 			/* collect list output */
 
-			if ($output)
+			if ($outputItem)
 			{
-				$output = $listElement->html($output);
+				$outputItem = $listElement->html($outputItem);
 			}
 		}
-		return $output;
+		return $outputItem;
 	}
 }

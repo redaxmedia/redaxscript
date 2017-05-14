@@ -4,7 +4,6 @@ namespace Redaxscript\Tests;
 use Redaxscript\Auth;
 use Redaxscript\Db;
 use Redaxscript\Server;
-use Redaxscript\Request;
 
 /**
  * AuthTest
@@ -19,33 +18,60 @@ use Redaxscript\Request;
 class AuthTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
 	 * setUp
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 */
 
 	public function setUp()
 	{
-		$this->_request = Request::getInstance();
+		parent::setUp();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		$installer->insertUsers(
+		[
+			'adminName' => 'Test',
+			'adminUser' => 'test',
+			'adminPassword' => 'test',
+			'adminEmail' => 'test@test.com'
+		]);
+		Db::forTablePrefix('users')
+			->whereIdIs(1)
+			->findOne()
+			->set('language', 'en')
+			->save();
+		Db::forTablePrefix('groups')
+			->create()
+			->set(
+			[
+				'name' => 'Group One',
+				'alias' => 'group-one',
+				'description' => 'Unlimited access',
+				'categories' => '1, 2, 3',
+				'articles' => '1, 2, 3',
+				'extras' => '1, 2, 3',
+				'comments' => '1, 2, 3',
+				'groups' => '1, 2, 3',
+				'users' => '1, 2, 3',
+				'modules' => '1, 2, 3',
+				'settings' => 1,
+				'filter' => 0
+			])
+			->save();
 	}
 
 	/**
-	 * tearDownAfterClass
+	 * tearDown
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 */
 
-	public static function tearDownAfterClass()
+	public function tearDown()
 	{
-		Db::forTablePrefix('users')->whereIdIs(1)->findOne()->set('groups', '1')->save();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
 	}
 
 	/**
@@ -120,10 +146,10 @@ class AuthTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertFalse($auth->login());
-		$this->assertTrue($auth->login(1));
-		$this->assertTrue($auth->logout());
-		$this->assertFalse($auth->logout());
+		$this->assertEquals(0, $auth->login());
+		$this->assertEquals(1, $auth->login(1));
+		$this->assertEquals(1, $auth->logout());
+		$this->assertEquals(0, $auth->logout());
 	}
 
 	/**
@@ -145,7 +171,7 @@ class AuthTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertFalse($actual);
+		$this->assertEquals(0, $actual);
 	}
 
 	/**

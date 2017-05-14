@@ -70,9 +70,17 @@
 					var counter = data[i],
 						type = i.toLowerCase();
 
+					if (typeof counter.total_count === 'number')
+					{
+						counter = counter.total_count;
+					}
+
 					/* filter by type */
 
-					socialSharer.links.filter('[data-type="' + type + '"]').attr('data-counter', counter);
+					if (typeof counter === 'number')
+					{
+						socialSharer.links.filter('[data-type="' + type + '"]').attr('data-counter', counter);
+					}
 				}
 			};
 

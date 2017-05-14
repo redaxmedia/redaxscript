@@ -195,7 +195,7 @@ class Tag
 		ob_start();
 		foreach ($file as $value)
 		{
-			if (file_exists($value))
+			if (is_file($value))
 			{
 				include($value);
 			}

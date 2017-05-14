@@ -1,22 +1,23 @@
 <?php
 namespace Redaxscript;
 
+error_reporting(E_ERROR | E_PARSE);
+
 /* autoload */
 
-include_once('includes/Autoloader.php');
+include_once('includes' . DIRECTORY_SEPARATOR . 'Autoloader.php');
 
 /* deprecated */
 
-include_once('includes/admin_admin.php');
-include_once('includes/admin_list.php');
-include_once('includes/admin_query.php');
-include_once('includes/admin_router.php');
-include_once('includes/comments.php');
-include_once('includes/contents.php');
-include_once('includes/navigation.php');
-include_once('includes/query.php');
-include_once('includes/router.php');
-include_once('includes/startup.php');
+include_once('includes' . DIRECTORY_SEPARATOR . 'admin_admin.php');
+include_once('includes' . DIRECTORY_SEPARATOR . 'admin_list.php');
+include_once('includes' . DIRECTORY_SEPARATOR . 'admin_query.php');
+include_once('includes' . DIRECTORY_SEPARATOR . 'admin_router.php');
+include_once('includes' . DIRECTORY_SEPARATOR . 'comments.php');
+include_once('includes' . DIRECTORY_SEPARATOR . 'contents.php');
+include_once('includes' . DIRECTORY_SEPARATOR . 'navigation.php');
+include_once('includes' . DIRECTORY_SEPARATOR . 'query.php');
+include_once('includes' . DIRECTORY_SEPARATOR . 'router.php');
 
 /* init */
 
@@ -29,8 +30,9 @@ $registry = Registry::getInstance();
 $request = Request::getInstance();
 $config = Config::getInstance();
 
-/* request and config */
+/* registry and request and config */
 
+$registry->init();
 $request->init();
 $config->init();
 
@@ -39,24 +41,18 @@ $config->init();
 Db::construct($config);
 Db::init();
 
-/* startup and registry */
+/* bootstrap */
 
-startup();
-$registry->init();
-
-/* refresh */
-
-$request->refreshSession();
-
-/* detector */
-
-$detectorLanguage = new Detector\Language($registry, $request);
-$detectorTemplate = new Detector\Template($registry, $request);
-
-/* set language and template */
-
-$registry->set('language', $detectorLanguage->getOutput());
-$registry->set('template', $detectorTemplate->getOutput());
+new Bootstrap\Config();
+new Bootstrap\Session($registry, $request);
+new Bootstrap\Common($registry, $request);
+new Bootstrap\Status($registry, $request);
+new Bootstrap\Router($registry, $request);
+new Bootstrap\Auth($registry, $request);
+new Bootstrap\Content($registry, $request);
+new Bootstrap\Cronjob($registry, $request);
+new Bootstrap\Cache($registry, $request);
+new Bootstrap\Detector($registry, $request);
 
 /* language */
 

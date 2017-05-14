@@ -1,8 +1,6 @@
 <?php
 namespace Redaxscript\Tests;
 
-use Redaxscript\Request;
-
 /**
  * RequestTest
  *
@@ -15,25 +13,6 @@ use Redaxscript\Request;
 
 class RequestTest extends TestCaseAbstract
 {
-	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
-	 * setUp
-	 *
-	 * @since 2.4.0
-	 */
-
-	public function setUp()
-	{
-		$this->_request = Request::getInstance();
-	}
-
 	/**
 	 * testInit
 	 *

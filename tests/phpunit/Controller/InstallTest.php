@@ -1,12 +1,7 @@
 <?php
 namespace Redaxscript\Tests\Controller;
 
-use Redaxscript\Config;
 use Redaxscript\Controller;
-use Redaxscript\Installer;
-use Redaxscript\Language;
-use Redaxscript\Registry;
-use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
 use org\bovigo\vfs\vfsStream as Stream;
 use org\bovigo\vfs\vfsStreamFile as StreamFile;
@@ -20,51 +15,12 @@ use org\bovigo\vfs\vfsStreamWrapper as StreamWrapper;
  * @package Redaxscript
  * @category Tests
  *
+ * @author Henry Ruhs
  * @author Balázs Szilágyi
  */
 
 class InstallTest extends TestCaseAbstract
 {
-	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
-	 * instance of the config class
-	 *
-	 * @var object
-	 */
-
-	protected $_config;
-
-	/**
-	 * array to restore config
-	 *
-	 * @var array
-	 */
-
-	protected $_configArray = [];
-
 	/**
 	 * setUp
 	 *
@@ -73,39 +29,23 @@ class InstallTest extends TestCaseAbstract
 
 	public function setUp()
 	{
-		$this->_registry = Registry::getInstance();
-		$this->_request = Request::getInstance();
-		$this->_language = Language::getInstance();
-		$this->_config = Config::getInstance();
-		$this->_configArray = $this->_config->get();
-		$this->_config->set('dbPrefix', 'controller_');
+		parent::setUp();
+		Stream::setup('root');
+		$file = new StreamFile('config.php');
+		StreamWrapper::getRoot()->addChild($file);
 	}
 
 	/**
 	 * tearDown
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 */
 
 	public function tearDown()
 	{
-		$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
+		$installer = $this->installerFactory();
 		$installer->init();
 		$installer->rawDrop();
-		$this->_config->set('dbPrefix', $this->_configArray['dbPrefix']);
-	}
-
-	/**
-	 * setUpBeforeClass
-	 *
-	 * @since 3.0.0
-	 */
-
-	public static function setUpBeforeClass()
-	{
-		Stream::setup('root');
-		$file = new StreamFile('config.php');
-		StreamWrapper::getRoot()->addChild($file);
 	}
 
 	/**
@@ -188,7 +128,7 @@ class InstallTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$postArray['db-type'] = $postArray['db-type'] === '%CURRENT%' ? $this->_config->get('dbType') :  $postArray['db-type'];
+		$postArray['db-type'] = $postArray['db-type'] === '%CURRENT%' ? $this->_config->get('dbType') : $postArray['db-type'];
 		$postArray['db-host'] = $postArray['db-host'] === '%CURRENT%' ? $this->_config->get('dbHost') : $postArray['db-host'];
 		$postArray['db-name'] = $postArray['db-name'] === '%CURRENT%' ? $this->_config->get('dbName') : $postArray['db-name'];
 		$postArray['db-user'] = $postArray['db-user'] === '%CURRENT%' ? $this->_config->get('dbUser') : $postArray['db-user'];
@@ -196,7 +136,7 @@ class InstallTest extends TestCaseAbstract
 		$postArray['db-prefix'] = $postArray['db-prefix'] === '%CURRENT%' ? $this->_config->get('dbPrefix') : $postArray['db-prefix'];
 		$this->_request->set('post', $postArray);
 		$this->_config->init(Stream::url('root/config.php'));
-		$controllerInstall = new Controller\Install($this->_registry, $this->_language, $this->_request, $this->_config);
+		$controllerInstall = new Controller\Install($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
@@ -236,8 +176,8 @@ class InstallTest extends TestCaseAbstract
 			->setConstructorArgs(
 			[
 				$this->_registry,
-				$this->_language,
 				$this->_request,
+				$this->_language,
 				$this->_config
 			])
 			->setMethods(
@@ -277,7 +217,7 @@ class InstallTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$controllerInstall = new Controller\Install($this->_registry, $this->_language, $this->_request, $this->_config);
+		$controllerInstall = new Controller\Install($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
@@ -306,7 +246,7 @@ class InstallTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$controllerInstall = new Controller\Install($this->_registry, $this->_language, $this->_request, $this->_config);
+		$controllerInstall = new Controller\Install($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
@@ -335,7 +275,7 @@ class InstallTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$controllerInstall = new Controller\Install($this->_registry, $this->_language, $this->_request, $this->_config);
+		$controllerInstall = new Controller\Install($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 

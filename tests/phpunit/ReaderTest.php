@@ -16,12 +16,12 @@ use Redaxscript\Reader;
 class ReaderTest extends TestCaseAbstract
 {
 	/**
-	* testLoadAndGetJSON
+	* testLoadAndConvertJSON
 	*
-	* @since 3.0.0
+	* @since 3.1.0
 	*/
 
-	public function testLoadAndGetJSON()
+	public function testLoadAndConvertJSON()
 	{
 		/* setup */
 
@@ -30,25 +30,73 @@ class ReaderTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $reader->getArray();
+		$actualArray = $reader->getArray();
+		$actualObject = $reader->getObject();
+		$actualJSON = $reader->getJSON();
+		$actualXML = $reader->getXML();
 
 		/* compare */
 
-		$this->assertEquals('4', $actual['two']['@attributes']['id']);
+		$this->assertEquals('1', $actualArray['@attributes']['id']);
+		$this->assertEquals('2', $actualArray['one'][0]['@attributes']['id']);
+		$this->assertEquals('3', $actualArray['one'][1]['@attributes']['id']);
+		$this->assertEquals('4', $actualArray['two']['@attributes']['id']);
+		$this->assertEquals('1', $actualObject->{'@attributes'}->id);
+		$this->assertEquals('2', $actualObject->one{0}->{'@attributes'}->id);
+		$this->assertEquals('3', $actualObject->one{1}->{'@attributes'}->id);
+		$this->assertEquals('4', $actualObject->two->{'@attributes'}->id);
+		$this->assertString($actualJSON);
+		$this->assertString($actualXML);
 	}
 
 	/**
-	* testLoadAndGetXML
-	*
-	* @since 3.0.0
-	*/
+	 * testLoadAndConvertXML
+	 *
+	 * @since 3.1.0
+	 */
 
-	public function testLoadAndGetXML()
+	public function testLoadAndConvertXML()
 	{
 		/* setup */
 
 		$reader = new Reader();
 		$reader->loadXML('tests/provider/reader.xml');
+
+		/* actual */
+
+		$actualArray = $reader->getArray();
+		$actualObject = $reader->getObject();
+		$actualJSON = $reader->getJSON();
+		$actualXML = $reader->getXML();
+
+		/* compare */
+
+		$this->assertEquals('1', $actualArray['@attributes']['id']);
+		$this->assertEquals('2', $actualArray['one'][0]['@attributes']['id']);
+		$this->assertEquals('3', $actualArray['one'][1]['@attributes']['id']);
+		$this->assertEquals('4', $actualArray['two']['@attributes']['id']);
+		$this->assertEquals('1', $actualObject->attributes()->id);
+		$this->assertEquals('2', $actualObject->one{0}->attributes()->id);
+		$this->assertEquals('3', $actualObject->one{1}->attributes()->id);
+		$this->assertEquals('4', $actualObject->two->attributes()->id);
+		$this->assertString($actualJSON);
+		$this->assertString($actualXML);
+	}
+
+	/**
+	 * testLoadAndConvertExternalXML
+	 *
+	 * @since 3.1.0
+	 *
+	 * @requires OS Linux
+	 */
+
+	public function testLoadExternalXML()
+	{
+		/* setup */
+
+		$reader = new Reader();
+		$reader->loadXML('https://service.redaxscript.com/xml/pad.xml');
 
 		/* actual */
 
@@ -56,94 +104,6 @@ class ReaderTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals('4', $actual->two->attributes()->id);
-	}
-
-	/**
-	 * testConvertToArray
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function testConvertToArray()
-	{
-		/* setup */
-
-		$reader = new Reader();
-		$reader->loadXML('tests/provider/reader.xml');
-
-		/* actual */
-
-		$actual = $reader->getArray();
-
-		/* compare */
-
-		$this->assertEquals('1', $actual['@attributes']['id']);
-	}
-
-	/**
-	 * testConvertToObject
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function testConvertToObject()
-	{
-		/* setup */
-
-		$reader = new Reader();
-		$reader->loadJSON('tests/provider/reader.json');
-
-		/* actual */
-
-		$actual = $reader->getObject();
-
-		/* compare */
-
-		$this->assertEquals('1', $actual->id);
-	}
-
-	/**
-	 * testConvertToJSON
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function testConvertToJSON()
-	{
-		/* setup */
-
-		$reader = new Reader();
-		$reader->loadXML('tests/provider/reader.xml');
-
-		/* actual */
-
-		$actual = $reader->getJSON();
-
-		/* compare */
-
-		$this->assertString($actual);
-	}
-
-	/**
-	 * testConvertToJSON
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function testConvertToXML()
-	{
-		/* setup */
-
-		$reader = new Reader();
-		$reader->loadJSON('tests/provider/reader.json');
-
-		/* actual */
-
-		$actual = $reader->getXML();
-
-		/* compare */
-
-		$this->assertString($actual);
+		$this->assertObject($actual);
 	}
 }

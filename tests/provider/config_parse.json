@@ -1,5 +1,15 @@
 [
 	[
+		"mssql://sa:test@127.0.0.1/test",
+		{
+			"dbType": "mssql",
+			"dbHost": "127.0.0.1",
+			"dbName": "test",
+			"dbUser": "sa",
+			"dbPassword": "test"
+		}
+	],
+	[
 		"mysql://root:test@127.0.0.1/test",
 		{
 			"dbType": "mysql",

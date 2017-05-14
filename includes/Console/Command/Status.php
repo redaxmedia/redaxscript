@@ -135,18 +135,12 @@ class Status extends CommandAbstract
 
 	protected function _getStatusArray()
 	{
-		$pdoDriverArray = $this->_registry->get('pdoDriverArray');
-		$apacheModuleArray = $this->_registry->get('apacheModuleArray');
+		$driverArray = $this->_registry->get('driverArray');
+		$moduleArray = $this->_registry->get('moduleArray');
 		$testOsArray =
 		[
 			'linux',
 			'windows nt'
-		];
-		$testDriverArray =
-		[
-			'sqlite',
-			'mysql',
-			'pgsql'
 		];
 		$testModuleArray =
 		[
@@ -168,8 +162,8 @@ class Status extends CommandAbstract
 			],
 			'PDO' =>
 			[
-				'value' => implode($pdoDriverArray, ', '),
-				'status' => array_intersect($pdoDriverArray, $testDriverArray) ? 1 : 0
+				'value' => implode($driverArray, ', '),
+				'status' => count($driverArray) ? 1 : 0
 			],
 			'SESSION' =>
 			[
@@ -180,14 +174,14 @@ class Status extends CommandAbstract
 
 		/* process optional */
 
-		if ($apacheModuleArray)
+		if ($moduleArray)
 		{
 			foreach ($testModuleArray as $value)
 			{
 				$statusArray[$value] =
 				[
 					'value' => null,
-					'status' => in_array($value, $apacheModuleArray) ? 1 : 0
+					'status' => in_array($value, $moduleArray) ? 1 : 0
 				];
 			}
 		}

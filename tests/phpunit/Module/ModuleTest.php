@@ -1,12 +1,8 @@
 <?php
 namespace Redaxscript\Tests\Module;
 
-use Redaxscript\Config;
 use Redaxscript\Db;
-use Redaxscript\Language;
 use Redaxscript\Module;
-use Redaxscript\Registry;
-use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -24,12 +20,28 @@ class ModuleTest extends TestCaseAbstract
 	/**
 	 * setUp
 	 *
-	 * @since 2.4.0
+	 * @since 3.1.0
 	 */
 
 	public function setUp()
 	{
-		Db::clearCache();
+		parent::setUp();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+	}
+
+	/**
+	 * tearDown
+	 *
+	 * @since 3.1.0
+	 */
+
+	public function tearDown()
+	{
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
 	}
 
 	/**
@@ -42,9 +54,10 @@ class ModuleTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$module = new Module\Module(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		$module = new Module\Module($this->_registry, $this->_request, $this->_language, $this->_config);
 		$module->init(
 		[
+			'name' => 'Test Dummy',
 			'alias' => 'TestDummy'
 		]);
 
@@ -54,7 +67,7 @@ class ModuleTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertTrue(is_object($actual));
+		$this->assertObject($actual);
 	}
 
 	/**
@@ -67,10 +80,10 @@ class ModuleTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$module = new Module\Module(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		$module = new Module\Module($this->_registry, $this->_request, $this->_language, $this->_config);
 		$module->init(
 		[
-			'name' => 'Test dummy',
+			'name' => 'Test Dummy',
 			'alias' => 'TestDummy'
 		]);
 		$module->setNotification('error', 'testValue');
@@ -81,7 +94,7 @@ class ModuleTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals('testValue', $actual['Test dummy'][0]);
+		$this->assertEquals('testValue', $actual['Test Dummy'][0]);
 	}
 
 	/**
@@ -94,10 +107,10 @@ class ModuleTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$module = new Module\Module(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		$module = new Module\Module($this->_registry, $this->_request, $this->_language, $this->_config);
 		$module->init(
 		[
-			'name' => 'Test dummy',
+			'name' => 'Test Dummy',
 			'alias' => 'TestDummy'
 		]);
 		$module->setNotification('success', 'testValue');
@@ -123,7 +136,12 @@ class ModuleTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$module = new Module\Module(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		$module = new Module\Module($this->_registry, $this->_request, $this->_language, $this->_config);
+		$module->init(
+		[
+			'name' => 'Test Dummy',
+			'alias' => 'TestDummy'
+		]);
 
 		/* actual */
 
@@ -140,53 +158,36 @@ class ModuleTest extends TestCaseAbstract
 	 * @since 2.6.0
 	 */
 
-	public function testInstall()
+	public function testInstallAndUninstall()
 	{
 		/* setup */
 
-		$module = new Module\Module(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		$module = new Module\Module($this->_registry, $this->_request, $this->_language, $this->_config);
 		$module->init(
 		[
+			'name' => 'Test Dummy',
 			'alias' => 'TestDummy'
 		]);
+
+		/* install */
+
 		$module->install();
+		Db::clearCache();
+		$actualModulesInstall = Db::forTablePrefix('modules')->count();
+		$actualTablesInstall = Db::countTablePrefix();
 
-		/* actual */
+		/* uninstall */
 
-		$actualModules = Db::forTablePrefix('modules')->findMany()->count();
-		$actualTables = Db::countTablePrefix();
-
-		/* compare */
-
-		$this->assertEquals(4, $actualModules);
-		$this->assertEquals(9, $actualTables);
-	}
-
-	/**
-	 * testUninstall
-	 *
-	 * @since 2.6.0
-	 */
-
-	public function testUninstall()
-	{
-		/* setup */
-
-		$module = new Module\Module(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
-		$module->init(
-		[
-			'alias' => 'TestDummy'
-		]);
 		$module->uninstall();
-
-		/* actual */
-
-		$actualModules = Db::forTablePrefix('modules')->findMany()->count();
-		$actualTables = Db::countTablePrefix();
+		Db::clearCache();
+		$actualModulesUninstall = Db::forTablePrefix('modules')->count();
+		$actualTablesUninstall = Db::countTablePrefix();
 
 		/* compare */
 
-		$this->assertEquals(2, $actualModules);
-		$this->assertEquals(8, $actualTables);
+		$this->assertEquals(1, $actualModulesInstall);
+		$this->assertEquals(9, $actualTablesInstall);
+		$this->assertEquals(0, $actualModulesUninstall);
+		$this->assertEquals(8, $actualTablesUninstall);
 	}
 }

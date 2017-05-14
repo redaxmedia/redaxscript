@@ -36,6 +36,6 @@ class Template extends DetectorAbstract
 			'contents' => $lastTable ? Db::forTablePrefix($lastTable)->whereIdIs($lastId)->findOne()->template : null,
 			'settings' => $dbStatus === 2 ? Db::getSetting('template') : null,
 			'fallback' => 'default'
-		], 'template', 'templates/' . $this->_filePlaceholder . '/index.phtml');
+		], 'template', 'templates' . DIRECTORY_SEPARATOR . $this->_filePlaceholder . DIRECTORY_SEPARATOR . 'index.phtml');
 	}
 }

@@ -2,7 +2,6 @@
 namespace Redaxscript\Tests\Console;
 
 use Redaxscript\Console;
-use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -17,25 +16,6 @@ use Redaxscript\Tests\TestCaseAbstract;
 
 class ParserTest extends TestCaseAbstract
 {
-	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
-	 * setUp
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function setUp()
-	{
-		$this->_request = Request::getInstance();
-	}
-
 	/**
 	 * tearDown
 	 *

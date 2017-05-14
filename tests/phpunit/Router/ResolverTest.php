@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Tests\Router;
 
-use Redaxscript\Request;
 use Redaxscript\Router;
 use Redaxscript\Tests\TestCaseAbstract;
 
@@ -17,25 +16,6 @@ use Redaxscript\Tests\TestCaseAbstract;
 
 class ResolverTest extends TestCaseAbstract
 {
-	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
-	 * setUp
-	 *
-	 * @since 2.4.0
-	 */
-
-	public function setUp()
-	{
-		$this->_request = Request::getInstance();
-	}
-
 	/**
 	 * providerResolver
 	 *

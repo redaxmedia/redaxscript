@@ -1,12 +1,8 @@
 <?php
 namespace Redaxscript\Tests\Console\Command;
 
-use Redaxscript\Config;
 use Redaxscript\Console\Command;
-use Redaxscript\Installer;
-use Redaxscript\Language;
-use Redaxscript\Registry;
-use Redaxscript\Request;
+use Redaxscript\Modules\TestDummy;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -22,74 +18,31 @@ use Redaxscript\Tests\TestCaseAbstract;
 class UninstallTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
-	 * instance of the config class
-	 *
-	 * @var object
-	 */
-
-	protected $_config;
-
-	/**
-	 * array to restore config
-	 *
-	 * @var array
-	 */
-
-	protected $_configArray = [];
-
-	/**
 	 * setUp
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 */
 
 	public function setUp()
 	{
-		$this->_registry = Registry::getInstance();
-		$this->_request = Request::getInstance();
-		$this->_language = Language::getInstance();
-		$this->_config = Config::getInstance();
-		$this->_configArray = $this->_config->get();
-		$this->_config->set('dbPrefix', 'console_');
+		parent::setUp();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
 	}
 
 	/**
 	 * tearDown
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 */
 
 	public function tearDown()
 	{
-		$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
+		$installer = $this->installerFactory();
 		$installer->init();
 		$installer->rawDrop();
 		$this->_request->setServer('argv', null);
-		$this->_config->set('dbPrefix', $this->_configArray['dbPrefix']);
 	}
 
 	/**
@@ -151,9 +104,8 @@ class UninstallTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
-		$installer->init();
-		$installer->rawCreate();
+		$testDummy = new TestDummy\TestDummy($this->_registry, $this->_request, $this->_language, $this->_config);
+		$testDummy->install();
 		$this->_request->setServer('argv',
 		[
 			'console.php',

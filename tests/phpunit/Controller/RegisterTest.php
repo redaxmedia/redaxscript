@@ -3,9 +3,6 @@ namespace Redaxscript\Tests\Controller;
 
 use Redaxscript\Controller;
 use Redaxscript\Db;
-use Redaxscript\Language;
-use Redaxscript\Registry;
-use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -22,75 +19,46 @@ use Redaxscript\Tests\TestCaseAbstract;
 class RegisterTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
 	 * setUp
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 */
 
 	public function setUp()
 	{
-		$this->_registry = Registry::getInstance();
-		$this->_language = Language::getInstance();
-		$this->_request = Request::getInstance();
-	}
-
-	/**
-	 * tearDown
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function tearDown()
-	{
-		Db::forTablePrefix('users')->whereNotEqual('id', 1)->deleteMany();
-	}
-
-	/**
-	 * setUpBeforeClass
-	 *
-	 * @since 3.0.0
-	 */
-
-	public static function setUpBeforeClass()
-	{
+		parent::setUp();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		$installer->insertSettings(
+		[
+			'adminName' => 'Test',
+			'adminUser' => 'test',
+			'adminPassword' => 'test',
+			'adminEmail' => 'test@test.com'
+		]);
+		$installer->insertUsers(
+		[
+			'adminName' => 'Test',
+			'adminUser' => 'test',
+			'adminPassword' => 'test',
+			'adminEmail' => 'test@test.com'
+		]);
 		Db::setSetting('captcha', 1);
 		Db::setSetting('notification', 1);
 	}
 
 	/**
-	 * tearDownAfterClass
+	 * tearDown
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 */
 
-	public static function tearDownAfterClass()
+	public function tearDown()
 	{
-		Db::setSetting('captcha', 0);
-		Db::setSetting('notification', 0);
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
 	}
 
 	/**
@@ -137,7 +105,7 @@ class RegisterTest extends TestCaseAbstract
 
 		$this->_request->set('post', $postArray);
 		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
-		$registerController = new Controller\Register($this->_registry, $this->_language, $this->_request);
+		$registerController = new Controller\Register($this->_registry, $this->_request, $this->_language);
 
 		/* actual */
 
@@ -172,8 +140,8 @@ class RegisterTest extends TestCaseAbstract
 			->setConstructorArgs(
 			[
 				$this->_registry,
-				$this->_language,
-				$this->_request
+				$this->_request,
+				$this->_language
 			])
 			->setMethods(
 			[

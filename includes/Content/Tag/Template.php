@@ -44,7 +44,6 @@ class Template extends TagAbstract
 	{
 		$output = str_replace($this->_optionArray['search'], $this->_optionArray['delimiter'], $content);
 		$partArray = array_filter(explode($this->_optionArray['delimiter'], $output));
-		$templateClass = $this->_optionArray['namespace'];
 
 		/* parse as needed */
 
@@ -59,34 +58,45 @@ class Template extends TagAbstract
 
 				if (is_array($json))
 				{
-					foreach ($json as $method => $parameterArray)
+					foreach ($json as $methodName => $parameterArray)
 					{
-						/* method exists */
-
-						if (method_exists($templateClass, $method))
-						{
-							$partArray[$key] = call_user_func_array(
-							[
-								$templateClass,
-								$method
-							], $parameterArray);
-						}
+						$partArray[$key] = $this->_call($methodName, $parameterArray);
 					}
 				}
 
 				/* else simple call */
 
-				else if (method_exists($templateClass, $value))
+				else
 				{
-					$partArray[$key] = call_user_func(
-					[
-						$templateClass,
-						$value
-					]);
+					$partArray[$key] = $this->_call($value);
 				}
 			}
 		}
 		$output = implode($partArray);
 		return $output;
+	}
+
+	/**
+	 * call the method
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $methodName
+	 * @param array $parameterArray
+	 *
+	 * @return string
+	 */
+
+	protected function _call($methodName = null, $parameterArray = [])
+	{
+		$templateClass = $this->_optionArray['namespace'];
+		if (method_exists($templateClass, $methodName))
+		{
+			return call_user_func_array(
+			[
+				$templateClass,
+				$methodName
+			], $parameterArray);
+		}
 	}
 }

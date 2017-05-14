@@ -1,0 +1,32 @@
+[
+	[
+		{
+			"loggedIn": null,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{
+			"no-cache": null
+		},
+		false
+	],
+	[
+		{
+			"loggedIn": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{
+			"no-cache": null
+		},
+		true
+	],
+	[
+		{
+			"loggedIn": null,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{
+			"no-cache": true
+		},
+		true
+	]
+]

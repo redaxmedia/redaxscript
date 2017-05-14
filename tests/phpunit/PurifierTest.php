@@ -17,6 +17,40 @@ use Redaxscript\Tests\TestCaseAbstract;
 class PurifierTest extends TestCaseAbstract
 {
 	/**
+	 * setUp
+	 *
+	 * @since 3.1.0
+	 */
+
+	public function setUp()
+	{
+		parent::setUp();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		$installer->insertSettings(
+		[
+			'adminName' => 'Test',
+			'adminUser' => 'test',
+			'adminPassword' => 'test',
+			'adminEmail' => 'test@test.com'
+		]);
+	}
+
+	/**
+	 * tearDown
+	 *
+	 * @since 3.1.0
+	 */
+
+	public function tearDown()
+	{
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
+	}
+
+	/**
 	 * providerPurifier
 	 *
 	 * @since 3.0.0

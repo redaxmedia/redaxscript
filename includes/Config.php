@@ -39,7 +39,7 @@ class Config extends Singleton
 
 	public function init($configFile = null)
 	{
-		if (file_exists($configFile))
+		if (is_file($configFile))
 		{
 			self::$_configFile = $configFile;
 		}

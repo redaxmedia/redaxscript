@@ -1,8 +1,6 @@
 <?php
 namespace Redaxscript\Tests;
 
-use Redaxscript\Language;
-
 /**
  * LanguageTest
  *
@@ -15,27 +13,6 @@ use Redaxscript\Language;
 
 class LanguageTest extends TestCaseAbstract
 {
-	/**
-	 * language
-	 *
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
-	 * setUp
-	 *
-	 * @since 2.2.0
-	 */
-
-	public function setUp()
-	{
-		$this->_language = Language::getInstance();
-	}
-
 	/**
 	 * testInit
 	 *

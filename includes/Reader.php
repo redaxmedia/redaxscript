@@ -21,69 +21,45 @@ class Reader
 	 * @var object
 	 */
 
-	protected $_dataObject = [];
-
-	/**
-	 * data array
-	 *
-	 * @var array
-	 */
-
-	protected $_dataArray = [];
-
-	/**
-	 * assoc
-	 *
-	 * @var boolean
-	 */
-
-	protected $_assoc = true;
+	protected $_dataObject;
 
 	/**
 	 * get the object
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array
+	 * @return object
 	 */
 
 	public function getObject()
 	{
-		if (!$this->_dataObject && $this->_dataArray)
-		{
-			$this->_dataObject = $this->_convertToObject();
-		}
 		return $this->_dataObject;
 	}
 
 	/**
 	 * get the array
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 *
 	 * @return array
 	 */
 
 	public function getArray()
 	{
-		if (!$this->_dataArray && $this->_dataObject)
-		{
-			$this->_dataArray = $this->_convertToArray();
-		}
-		return $this->_dataArray;
+		return json_decode(json_encode($this->_dataObject), true);
 	}
 
 	/**
 	 * get the json
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 *
 	 * @return string
 	 */
 
 	public function getJSON()
 	{
-		return json_encode($this->getArray());
+		return json_encode($this->_dataObject);
 	}
 
 	/**
@@ -96,25 +72,27 @@ class Reader
 
 	public function getXML()
 	{
-		return $this->getObject()->asXML();
+		if (method_exists($this->getObject(), 'asXML'))
+		{
+			return $this->getObject()->asXML();
+		}
+		return $this->_convertArrayToObject($this->getArray())->asXML();
 	}
 
 	/**
 	 * load json from url
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 *
 	 * @param string $url
-	 * @param boolean $assoc
 	 *
 	 * @return Reader
 	 */
 
-	public function loadJSON($url = null, $assoc = true)
+	public function loadJSON($url = null)
 	{
 		$content = $this->load($url);
-		$this->_assoc = $assoc;
-		$this->_dataArray = json_decode($content, $this->_assoc);
+		$this->_dataObject = json_decode($content);
 		return $this;
 	}
 
@@ -124,15 +102,13 @@ class Reader
 	 * @since 3.0.0
 	 *
 	 * @param string $url
-	 * @param boolean $assoc
 	 *
 	 * @return Reader
 	 */
 
-	public function loadXML($url = null, $assoc = true)
+	public function loadXML($url = null)
 	{
 		$content = $this->load($url);
-		$this->_assoc = $assoc;
 		$this->_dataObject = simplexml_load_string($content);
 		return $this;
 	}
@@ -151,7 +127,7 @@ class Reader
 	{
 		/* curl */
 
-		if (function_exists('curl_version') && !file_exists($url))
+		if (function_exists('curl_version') && !is_file($url))
 		{
 			$optionArray =
 			[
@@ -179,33 +155,47 @@ class Reader
 	}
 
 	/**
-	 * convert to object
+	 * convert array to object
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
+	 *
+	 * @param array $dataArray
+	 * @param object $dataObject
 	 *
 	 * @return object
 	 */
 
-	protected function _convertToObject()
+	protected function _convertArrayToObject($dataArray = [], $dataObject = null)
 	{
-		$dataObject = new SimpleXMLElement('<root />');
-		array_walk_recursive($this->_dataArray, function($value, $key) use ($dataObject)
+		if (!is_object($dataObject))
 		{
-			$dataObject->addChild($key, $value);
-		});
+			$dataObject = new SimpleXMLElement('<root />');
+		}
+
+		/* process data */
+
+		foreach ($dataArray as $key => $value)
+		{
+			if(is_numeric($key))
+			{
+				$key = 'children';
+			}
+			if ($key === '@attributes')
+			{
+				foreach ($value as $attributeKey => $attributeValue)
+				{
+					$dataObject->addAttribute($attributeKey, $attributeValue);
+				}
+			}
+			else if (is_array($value))
+			{
+				$this->_convertArrayToObject($value, $dataObject->addChild($key));
+			}
+			else
+			{
+				$dataObject->addChild($key, $value);
+			}
+		}
 		return $dataObject;
-	}
-
-	/**
-	 * convert to array
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	protected function _convertToArray()
-	{
-		return json_decode(json_encode($this->_dataObject), $this->_assoc);
 	}
 }

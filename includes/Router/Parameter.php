@@ -20,7 +20,7 @@ class Parameter
 	/**
 	 * instance of the request class
 	 *
-	 * @var object
+	 * @var Request
 	 */
 
 	protected $_request;
@@ -54,7 +54,8 @@ class Parameter
 
 	public function init()
 	{
-		$this->_parameterArray = array_filter(explode('/', $this->_request->getQuery('p')));
+		$parameter = $this->_request->getQuery('p');
+		$this->_parameterArray = array_filter(explode('/', $parameter));
 		if (is_array($this->_parameterArray))
 		{
 			$aliasFilter = new Filter\Alias;
@@ -69,65 +70,105 @@ class Parameter
 	/**
 	 * get the first parameter
 	 *
-	 * @since 2.4.0
+	 * @since 3.1.0
 	 *
 	 * @return string
 	 */
 
 	public function getFirst()
 	{
-		if (array_key_exists(0, $this->_parameterArray) && !is_numeric($this->_parameterArray[0]))
-		{
-			return $this->_parameterArray[0];
-		}
+		return $this->_getParameter(0);
+	}
+
+	/**
+	 * get the first sub parameter
+	 *
+	 * @since 3.1.0
+	 *
+	 * @return integer
+	 */
+
+	public function getFirstSub()
+	{
+		return $this->_getParameterSub(1);
 	}
 
 	/**
 	 * get the second parameter
 	 *
-	 * @since 2.4.0
+	 * @since 3.1.0
 	 *
 	 * @return string
 	 */
 
 	public function getSecond()
 	{
-		if (array_key_exists(1, $this->_parameterArray) && !is_numeric($this->_parameterArray[1]))
-		{
-			return $this->_parameterArray[1];
-		}
+		return $this->_getParameter(1);
+	}
+
+	/**
+	 * get the second sub parameter
+	 *
+	 * @since 3.1.0
+	 *
+	 * @return integer
+	 */
+
+	public function getSecondSub()
+	{
+		return $this->_getParameterSub(2);
 	}
 
 	/**
 	 * get the third parameter
 	 *
-	 * @since 2.4.0
+	 * @since 3.1.0
 	 *
 	 * @return string
 	 */
 
 	public function getThird()
 	{
-		if (array_key_exists(2, $this->_parameterArray) && !is_numeric($this->_parameterArray[2]))
-		{
-			return $this->_parameterArray[2];
-		}
+		return $this->_getParameter(2);
+	}
+
+	/**
+	 * get the third sub parameter
+	 *
+	 * @since 3.1.0
+	 *
+	 * @return integer
+	 */
+
+	public function getThirdSub()
+	{
+		return $this->_getParameterSub(3);
 	}
 
 	/**
 	 * get the fourth parameter
 	 *
-	 * @since 2.4.0
+	 * @since 3.1.0
 	 *
 	 * @return string
 	 */
 
 	public function getFourth()
 	{
-		if (array_key_exists(3, $this->_parameterArray) && !is_numeric($this->_parameterArray[3]))
-		{
-			return $this->_parameterArray[3];
-		}
+		return $this->_getParameter(3);
+	}
+
+	/**
+	 * get the fourth sub parameter
+	 *
+	 * @since 3.1.0
+	 *
+	 * @return string
+	 */
+
+	public function getFourthSub()
+	{
+		return $this->_getParameterSub(4);
 	}
 
 	/**
@@ -140,28 +181,30 @@ class Parameter
 
 	public function getLast()
 	{
-		if (!is_numeric(end($this->_parameterArray)))
+		foreach (array_reverse($this->_parameterArray) as $value)
 		{
-			return end($this->_parameterArray);
+			if (!is_numeric($value))
+			{
+				return $value;
+			}
 		}
-		return prev($this->_parameterArray);
 	}
 
 	/**
-	 * get the sub parameter
+	 * get the last sub parameter
 	 *
-	 * @since 2.4.0
+	 * @since 3.1.0
 	 *
 	 * @return string
 	 */
 
-	public function getSub()
+	public function getLastSub()
 	{
-		foreach ($this->_parameterArray as $subParameter)
+		foreach (array_reverse($this->_parameterArray) as $value)
 		{
-			if (is_numeric($subParameter))
+			if (is_numeric($value))
 			{
-				return $subParameter;
+				return $value;
 			}
 		}
 	}
@@ -224,9 +267,9 @@ class Parameter
 
 	public function getId()
 	{
-		if ($this->getTable() && $this->getSub())
+		if ($this->getTable() && $this->getThirdSub())
 		{
-			return $this->getSub();
+			return $this->getThirdSub();
 		}
 	}
 
@@ -244,6 +287,42 @@ class Parameter
 		if ($this->getLast() === $token->getOutput())
 		{
 			return $this->getLast();
+		}
+	}
+
+	/**
+	 * get the parameter by key
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param integer $key
+	 *
+	 * @return string
+	 */
+
+	protected function _getParameter($key = null)
+	{
+		if (array_key_exists($key, $this->_parameterArray) && !is_numeric($this->_parameterArray[$key]))
+		{
+			return $this->_parameterArray[$key];
+		}
+	}
+
+	/**
+	 * get the parameter sub by key
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param integer $key
+	 *
+	 * @return integer
+	 */
+
+	protected function _getParameterSub($key = null)
+	{
+		if (array_key_exists($key, $this->_parameterArray) && is_numeric($this->_parameterArray[$key]))
+		{
+			return $this->_parameterArray[$key];
 		}
 	}
 }

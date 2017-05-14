@@ -1,11 +1,8 @@
 <?php
 namespace Redaxscript\Tests\Console\Command;
 
-use Redaxscript\Config;
 use Redaxscript\Console\Command;
-use Redaxscript\Language;
-use Redaxscript\Registry;
-use Redaxscript\Request;
+use Redaxscript\Modules\TestDummy;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -21,62 +18,6 @@ use Redaxscript\Tests\TestCaseAbstract;
 class InstallTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
-	 * instance of the config class
-	 *
-	 * @var object
-	 */
-
-	protected $_config;
-
-	/**
-	 * array to restore config
-	 *
-	 * @var array
-	 */
-
-	protected $_configArray = [];
-
-	/**
-	 * setUp
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function setUp()
-	{
-		$this->_registry = Registry::getInstance();
-		$this->_request = Request::getInstance();
-		$this->_language = Language::getInstance();
-		$this->_config = Config::getInstance();
-		$this->_configArray = $this->_config->get();
-		$this->_config->set('dbPrefix', 'console_');
-	}
-
-	/**
 	 * tearDown
 	 *
 	 * @since 3.0.0
@@ -84,8 +25,10 @@ class InstallTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
 		$this->_request->setServer('argv', null);
-		$this->_config->set('dbPrefix', $this->_configArray['dbPrefix']);
 	}
 
 	/**
@@ -183,6 +126,9 @@ class InstallTest extends TestCaseAbstract
 	{
 		/* setup */
 
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
 		$this->_request->setServer('argv',
 		[
 			'console.php',
@@ -196,6 +142,11 @@ class InstallTest extends TestCaseAbstract
 		/* actual */
 
 		$actual = $installCommand->run('cli');
+
+		/* teardown */
+
+		$testDummy = new TestDummy\TestDummy($this->_registry, $this->_request, $this->_language, $this->_config);
+		$testDummy->uninstall();
 
 		/* compare */
 
@@ -212,6 +163,9 @@ class InstallTest extends TestCaseAbstract
 	{
 		/* setup */
 
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
 		$this->_request->setServer('argv',
 		[
 			'console.php',

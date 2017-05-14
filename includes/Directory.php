@@ -99,7 +99,7 @@ class Directory
 
 	public function create($directory = null, $mode = 0777)
 	{
-		$path = $this->_directory . '/' . $directory;
+		$path = $this->_directory . DIRECTORY_SEPARATOR . $directory;
 		if (!is_dir($path))
 		{
 			mkdir($path, $mode);
@@ -119,7 +119,7 @@ class Directory
 	{
 		if ($path && $content)
 		{
-			file_put_contents($this->_directory . '/' . $path, $content);
+			file_put_contents($this->_directory . DIRECTORY_SEPARATOR . $path, $content);
 		}
 	}
 
@@ -135,7 +135,7 @@ class Directory
 	{
 		if ($path)
 		{
-			$this->_remove($this->_directory . '/' . $path);
+			$this->_remove($this->_directory . DIRECTORY_SEPARATOR . $path);
 		}
 	}
 
@@ -164,7 +164,7 @@ class Directory
 		{
 			foreach ($this->_scan($path) as $value)
 			{
-				$this->_remove($path . '/' . $value);
+				$this->_remove($path . DIRECTORY_SEPARATOR . $value);
 			}
 			if ($path !== $this->_directory)
 			{

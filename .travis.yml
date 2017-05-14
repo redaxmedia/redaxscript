@@ -9,6 +9,7 @@ php:
 - nightly
 
 matrix:
+ fast_finish: true
  allow_failures:
  - php: nightly
 
@@ -17,10 +18,11 @@ services:
 - postgresql
 
 before_install:
-- if [ ${TRAVIS_PHP_VERSION:0:3} == "5.4" ] || [ ${TRAVIS_PHP_VERSION:0:3} == "5.5" ]; then composer require brianium/paratest 0.13.3 phpbench/phpbench 0.10.0 phpunit/phpunit 4.8.27 sebastian/phpcpd 2.0.4 phpunit/phpcov 2.0.2 --dev --no-update; fi
+- if [ ${TRAVIS_PHP_VERSION:0:1} == "5" ]; then composer require brianium/paratest 0.13.3 johnkary/phpunit-speedtrap 1.0.1 phpbench/phpbench 0.10.0 phpunit/phpunit 4.8.35 sebastian/phpcpd 2.0.4 phpunit/phpcov 2.0.2 --dev --no-update; fi
 - composer global require hirak/prestissimo
 
 install:
+- sudo apt-get update
 - sudo apt-get install libxml2-dev
 - composer self-update
 - composer install
@@ -37,17 +39,17 @@ before_script:
 - mysqladmin -u root password test
 - psql -U postgres -c 'create database test'
 - psql -U postgres -c 'alter user postgres with password '\'test\'
+- mkdir build
 
 script:
 - grunt
 - mailcatcher
-- mkdir build
 - DB_URL=mysql://root:test@127.0.0.1/test grunt phpunit --coverage-clover=build/mysql.xml
 - DB_URL=postgres://postgres:test@127.0.0.1/test grunt phpunit --coverage-clover=build/pgsql.xml
 - DB_URL=sqlite://test.sqlite grunt phpunit --coverage-clover=build/sqlite.xml
 
-after_script:
-- php vendor/bin/coveralls
+after_success:
+- vendor/bin/coveralls -v
 - wget https://scrutinizer-ci.com/ocular.phar
 - php ocular.phar code-coverage:upload --format=php-clover build/sqlite.xml
 

@@ -19,7 +19,7 @@ abstract class Singleton
 	/**
 	 * instance of the class
 	 *
-	 * @var array
+	 * @var Singleton
 	 */
 
 	protected static $_instance;
@@ -39,7 +39,7 @@ abstract class Singleton
 	 *
 	 * @since 2.2.0
 	 *
-	 * @return object
+	 * @return Singleton
 	 */
 
 	public static function getInstance()

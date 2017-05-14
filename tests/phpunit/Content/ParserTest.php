@@ -1,11 +1,9 @@
 <?php
 namespace Redaxscript\Tests\Content;
 
-use Redaxscript\Config;
-use Redaxscript\Language;
 use Redaxscript\Content;
-use Redaxscript\Registry;
-use Redaxscript\Request;
+use Redaxscript\Module\Hook;
+use Redaxscript\Modules\TestDummy;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -21,49 +19,41 @@ use Redaxscript\Tests\TestCaseAbstract;
 class ParserTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
-	 * instance of the config class
-	 *
-	 * @var object
-	 */
-
-	protected $_config;
-
-	/**
 	 * setUp
 	 *
-	 * @since 2.1.0
+	 * @since 3.1.0
 	 */
 
 	public function setUp()
 	{
-		$this->_registry = Registry::getInstance();
-		$this->_request = Request::getInstance();
-		$this->_language = Language::getInstance();
-		$this->_config = Config::getInstance();
+		parent::setUp();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		$installer->insertSettings(
+		[
+			'adminName' => 'Test',
+			'adminUser' => 'test',
+			'adminPassword' => 'test',
+			'adminEmail' => 'test@test.com'
+		]);
+		$testDummy = new TestDummy\TestDummy($this->_registry, $this->_request, $this->_language, $this->_config);
+		$testDummy->install();
+	}
+
+	/**
+	 * tearDown
+	 *
+	 * @since 3.1.0
+	 */
+
+	public function tearDown()
+	{
+		$testDummy = new TestDummy\TestDummy($this->_registry, $this->_request, $this->_language, $this->_config);
+		$testDummy->uninstall();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
 	}
 
 	/**
@@ -215,6 +205,8 @@ class ParserTest extends TestCaseAbstract
 	{
 		/* setup */
 
+		Hook::construct($this->_registry, $this->_request, $this->_language, $this->_config);
+		Hook::init();
 		$parser = new Content\Parser($this->_registry, $this->_request, $this->_language, $this->_config);
 		$parser->process($content);
 

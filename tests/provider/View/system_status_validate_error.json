@@ -3,7 +3,7 @@
 		{
 			"dbStatus": 0,
 			"phpVersion": "5.0.0",
-			"pdoDriverArray": null,
+			"driverArray": null,
 			"sessionStatus": false
 		},
 		[
@@ -17,11 +17,12 @@
 		{
 			"dbStatus": 2,
 			"phpVersion": "5.5.0",
-			"pdoDriverArray":
+			"driverArray":
 			[
-				"sqlite",
+				"mssql",
 				"mysql",
-				"pgsql"
+				"pgsql",
+				"sqlite"
 			],
 			"sessionStatus": true
 		},

@@ -3,8 +3,6 @@ namespace Redaxscript\Tests\Admin\View;
 
 use Redaxscript\Admin;
 use Redaxscript\Db;
-use Redaxscript\Language;
-use Redaxscript\Registry;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -20,64 +18,38 @@ use Redaxscript\Tests\TestCaseAbstract;
 class CommentFormTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
 	 * setUp
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 */
 
 	public function setUp()
 	{
-		$this->_registry = Registry::getInstance();
-		$this->_language = Language::getInstance();
-	}
-
-	/**
-	 * setUpBeforeClass
-	 *
-	 * @since 3.0.0
-	 */
-
-	public static function setUpBeforeClass()
-	{
+		parent::setUp();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
 		Db::forTablePrefix('comments')
 			->create()
 			->set(
 			[
-				'id' => 2,
-				'author' => 'test',
-				'email' => 'test@test.com',
-				'text' => 'test',
-				'article' => 1,
-				'date' => '2016-01-01 00:00:00'
+				'author' => 'Comment One',
+				'text' => 'Comment One',
 			])
 			->save();
 	}
 
 	/**
-	 * tearDownAfterClass
+	 * tearDown
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 */
 
-	public static function tearDownAfterClass()
+	public function tearDown()
 	{
-		Db::forTablePrefix('comments')->whereNotEqual('id', 1)->deleteMany();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
 	}
 
 	/**

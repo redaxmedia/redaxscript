@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Tests\Validator;
 
-use Redaxscript\Db;
 use Redaxscript\Tests\TestCaseAbstract;
 use Redaxscript\Validator;
 
@@ -19,25 +18,37 @@ use Redaxscript\Validator;
 class CaptchaTest extends TestCaseAbstract
 {
 	/**
-	 * setUpBeforeClass
+	 * setUp
 	 *
-	 * @since 2.6.0
+	 * @since 3.1.0
 	 */
 
-	public static function setUpBeforeClass()
+	public function setUp()
 	{
-		Db::setSetting('captcha', 1);
+		parent::setUp();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		$installer->insertSettings(
+		[
+			'adminName' => 'Test',
+			'adminUser' => 'test',
+			'adminPassword' => 'test',
+			'adminEmail' => 'test@test.com'
+		]);
 	}
 
 	/**
-	 * tearDownAfterClass
+	 * tearDown
 	 *
-	 * @since 2.6.0
+	 * @since 3.1.0
 	 */
 
-	public static function tearDownAfterClass()
+	public function tearDown()
 	{
-		Db::setSetting('captcha', 0);
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
 	}
 
 	/**

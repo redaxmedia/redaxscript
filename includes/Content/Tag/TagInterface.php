@@ -7,7 +7,7 @@ namespace Redaxscript\Content\Tag;
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category Controller
+ * @category Content
  * @author Henry Ruhs
  */
 

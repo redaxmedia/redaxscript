@@ -2,37 +2,37 @@
 	[
 		{
 			"title": null,
-			"fullRoute": "home",
-			"firstParameter": "home",
+			"fullRoute": "category-one",
+			"firstParameter": "category-one",
 			"secondParameter": null,
 			"thirdParameter": null,
 			"adminParameter": null,
 			"tableParameter": null,
-			"lastParameter": "home",
+			"lastParameter": "category-one",
 			"firstTable": "categories",
 			"secondTable": null,
 			"thirdTable": null,
 			"lastTable": "categories",
 			"lastId": 1
 		},
-		"<ul class=\"rs-list-breadcrumb\"><li>Home</li></ul>"
+		"<ul class=\"rs-list-breadcrumb\"><li>Category One</li></ul>"
 	],
 	[
 		{
 			"title": null,
-			"fullRoute": "home/welcome",
-			"firstParameter": "home",
-			"secondParameter": "welcome",
+			"fullRoute": "category-one/article-one",
+			"firstParameter": "category-one",
+			"secondParameter": "article-one",
 			"thirdParameter": null,
 			"adminParameter": null,
 			"tableParameter": null,
-			"lastParameter": "welcome",
+			"lastParameter": "article-one",
 			"firstTable": "categories",
 			"secondTable": "articles",
 			"thirdTable": null,
 			"lastTable": "articles",
 			"lastId": 1
 		},
-		"<ul class=\"rs-list-breadcrumb\"><li><a href=\"home\">Home</a></li><li class=\"rs-item-divider\"> - </li><li>Welcome</li></ul>"
+		"<ul class=\"rs-list-breadcrumb\"><li><a href=\"category-one\">Category One</a></li><li class=\"rs-item-divider\"> - </li><li>Article One</li></ul>"
 	]
 ]

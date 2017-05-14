@@ -11,7 +11,7 @@ use Redaxscript\Registry;
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category Controller
+ * @category Head
  * @author Henry Ruhs
  * @author Balázs Szilágyi
  *
@@ -105,18 +105,20 @@ class Link extends HeadAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $rewriteArray
+	 * @param array $pathArray
 	 *
 	 * @return Link
 	 */
 
-	public function rewrite($rewriteArray = [])
+	public function rewrite($pathArray = [])
 	{
-		if (!is_array(self::$_rewriteArray[self::$_namespace]))
+		$rewriteArray = $this->_getRewriteArray();
+		if (!is_array($rewriteArray))
 		{
-			self::$_rewriteArray[self::$_namespace] = [];
+			$rewriteArray = [];
 		}
-		self::$_rewriteArray[self::$_namespace] = array_merge(self::$_rewriteArray[self::$_namespace], $rewriteArray);
+		$rewriteArray = array_merge($rewriteArray, $pathArray);
+		$this->_setRewriteArray($rewriteArray);
 		return $this;
 	}
 
@@ -135,13 +137,13 @@ class Link extends HeadAbstract
 		$optionArray = array_merge(self::$_optionArray, $optionArray);
 		$loader = new Asset\Loader(Registry::getInstance());
 		$loader
-			->init(self::$_collectionArray[self::$_namespace])
-			->concat($optionArray, self::$_rewriteArray[self::$_namespace]);
+			->init($this->_getCollectionArray())
+			->concat($optionArray, $this->_getRewriteArray());
 
 		/* update collection */
 
-		self::$_rewriteArray[self::$_namespace] = [];
-		self::$_collectionArray[self::$_namespace] = $loader->getCollectionArray();
+		$this->_setRewriteArray();
+		$this->_setCollectionArray($loader->getCollectionArray());
 		return $this;
 	}
 
@@ -161,7 +163,10 @@ class Link extends HeadAbstract
 
 		$linkElement = new Html\Element();
 		$linkElement->init('link');
-		$collectionArray = self::$_collectionArray[self::$_namespace];
+
+		/* handle collection */
+
+		$collectionArray = $this->_getCollectionArray();
 		$collectionKeys = array_keys($collectionArray);
 		$lastKey = end($collectionKeys);
 
@@ -182,5 +187,31 @@ class Link extends HeadAbstract
 		}
 		$this->clear();
 		return $output;
+	}
+
+	/**
+	 * get the rewrite array
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	protected function _getRewriteArray()
+	{
+		return self::$_rewriteArray[self::$_namespace];
+	}
+
+	/**
+	 * set the rewrite array
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $rewriteArrayy
+	 */
+
+	protected function _setRewriteArray($rewriteArrayy = [])
+	{
+		self::$_rewriteArray[self::$_namespace] = $rewriteArrayy;
 	}
 }

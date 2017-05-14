@@ -211,9 +211,9 @@ class Recover extends ControllerAbstract
 		$subject = $this->_language->get('recovery');
 		$bodyArray =
 		[
-			'<strong>' . $this->_language->get('user') . $this->_language->get('colon') . '</strong> ' . $mailArray['user'],
+			$this->_language->get('user') . $this->_language->get('colon') . $mailArray['user'],
 			'<br />',
-			'<strong>' . $this->_language->get('password_reset') . $this->_language->get('colon') . '</strong> ' . $linkElement
+			$this->_language->get('password_reset') . $this->_language->get('colon') . $linkElement
 		];
 
 		/* send mail */

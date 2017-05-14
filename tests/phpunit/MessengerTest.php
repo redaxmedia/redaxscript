@@ -2,7 +2,6 @@
 namespace Redaxscript\Tests;
 
 use Redaxscript\Messenger;
-use Redaxscript\Registry;
 
 /**
  * MessengerTest
@@ -16,25 +15,6 @@ use Redaxscript\Registry;
 
 class MessengerTest extends TestCaseAbstract
 {
-	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * setUp
-	 *
-	 * @since 2.1.0
-	 */
-
-	public function setUp()
-	{
-		$this->_registry = Registry::getInstance();
-	}
-
 	/**
 	 * providerSuccess
 	 *
@@ -196,7 +176,7 @@ class MessengerTest extends TestCaseAbstract
 	 * @dataProvider providerError
 	 */
 
-	public function testError($error = null, $actionArray = null, $expect = null)
+	public function testError($error = null, $actionArray = [], $expect = null)
 	{
 		/* setup */
 
@@ -224,7 +204,7 @@ class MessengerTest extends TestCaseAbstract
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($render = null, $actionArray = null, $expect = null)
+	public function testRender($render = null, $actionArray = [], $expect = null)
 	{
 		/* setup */
 

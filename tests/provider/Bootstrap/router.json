@@ -1,0 +1,88 @@
+[
+	[
+		null,
+		null,
+		{
+			"firstParameter": null,
+			"firstSubParameter": null,
+			"secondParameter": null,
+			"secondSubParameter": null,
+			"thirdParameter": null,
+			"thirdSubParameter": null,
+			"adminParameter": false,
+			"tableParameter": false,
+			"idParameter": false,
+			"aliasParameter": false,
+			"lastParameter": false,
+			"lastSubParameter": null,
+			"tokenParameter": null,
+			"liteRoute": null,
+			"fullRoute": null,
+			"parameterRoute": "?p=",
+			"languageRoute": "&amp;l=",
+			"templateRoute": "&amp;t="
+		}
+	],
+	[
+		"hello/1337",
+		{
+			"file": "index.php",
+			"moduleArray":
+			{
+				"mod_rewrite": true
+			}
+		},
+		{
+			"firstParameter": "hello",
+			"firstSubParameter": 1337,
+			"secondParameter": null,
+			"secondSubParameter": null,
+			"thirdParameter": null,
+			"thirdSubParameter": null,
+			"adminParameter": false,
+			"tableParameter": false,
+			"idParameter": false,
+			"aliasParameter": false,
+			"lastParameter": "hello",
+			"lastSubParameter": 1337,
+			"tokenParameter": null,
+			"liteRoute": "hello",
+			"fullRoute": "hello/1337",
+			"parameterRoute": "",
+			"languageRoute": ".",
+			"templateRoute": "."
+		}
+	],
+	[
+		"admin/edit/articles/1337",
+		{
+			"file": "index.php",
+			"moduleArray":
+			{
+				"mod_rewrite": true
+			},
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"loggedIn": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{
+			"firstParameter": "admin",
+			"firstSubParameter": null,
+			"secondParameter": "edit",
+			"secondSubParameter": null,
+			"thirdParameter": "articles",
+			"thirdSubParameter": 1337,
+			"adminParameter": "edit",
+			"tableParameter": "articles",
+			"idParameter": 1337,
+			"aliasParameter": null,
+			"lastParameter": "articles",
+			"lastSubParameter": 1337,
+			"tokenParameter": null,
+			"liteRoute": "admin/edit/articles",
+			"fullRoute": "admin/edit/articles/1337",
+			"parameterRoute": "",
+			"languageRoute": ".",
+			"templateRoute": "."
+		}
+	]
+]

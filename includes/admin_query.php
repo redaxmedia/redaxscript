@@ -178,7 +178,7 @@ function admin_process()
 			$r[$value] = $groups_string;
 		}
 		$r['settings'] = $specialFilter->sanitize($_POST['settings']);
-		$r['filter'] =  $specialFilter->sanitize($_POST['filter']);
+		$r['filter'] = $specialFilter->sanitize($_POST['filter']);
 	}
 	if (($tableParameter == 'groups' || $tableParameter == 'users') && $idParameter == 1)
 	{
@@ -730,20 +730,21 @@ function admin_install()
 	{
 		/* install module */
 
-		if (is_dir('modules/' . $aliasParameter))
+		if (is_dir('modules' . DIRECTORY_SEPARATOR . $aliasParameter))
 		{
 			$module = Redaxscript\Db::forTablePrefix('modules')->where('alias', $aliasParameter)->findOne()->id;
 			if (($adminParameter == 'install' && !$module) || ($adminParameter == 'uninstall' && $module))
 			{
-				$object = 'Redaxscript\Modules\\' . $aliasParameter . '\\' . $aliasParameter;
+				$moduleClass = 'Redaxscript\Modules\\' . $aliasParameter . '\\' . $aliasParameter;
+				$module = new $moduleClass(Redaxscript\Registry::getInstance(), Redaxscript\Request::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Config::getInstance());
 
 				/* method exists */
 
-				if (method_exists($object, $adminParameter))
+				if (method_exists($module, $adminParameter))
 				{
 					call_user_func(
 					[
-						$object,
+						$module,
 						$adminParameter
 					]);
 				}
@@ -843,7 +844,7 @@ function admin_delete()
 
 	if ($tableParameter == 'users' && $idParameter == Redaxscript\Registry::get('myId'))
 	{
-		$logoutController = new Redaxscript\Controller\Logout(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
+		$logoutController = new Redaxscript\Controller\Logout(Redaxscript\Registry::getInstance(), Redaxscript\Request::getInstance(), Redaxscript\Language::getInstance());
 		echo $logoutController->process();
 	}
 
@@ -899,7 +900,7 @@ function admin_update()
 		$r['charset'] = !$r['charset'] ? 'utf-8' : $r['charset'];
 		$r['divider'] = $_POST['divider'];
 		$r['time'] = $_POST['time'];
-		$r['date'] =  $_POST['date'];
+		$r['date'] = $_POST['date'];
 		$r['homepage'] = $specialFilter->sanitize($_POST['homepage']);
 		$r['limit'] = !$specialFilter->sanitize($_POST['limit']) ? 10 : $specialFilter->sanitize($_POST['limit']);
 		$r['order'] = $specialFilter->sanitize($_POST['order']);

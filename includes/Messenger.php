@@ -17,7 +17,7 @@ class Messenger
 	/**
 	 * instance of the registry class
 	 *
-	 * @var object
+	 * @var Registry
 	 */
 
 	protected $_registry;
@@ -231,7 +231,6 @@ class Messenger
 	public function render($type = null, $message = null, $title = null)
 	{
 		$output = Module\Hook::trigger('messengerStart');
-		$outputItem = null;
 
 		/* html elements */
 
@@ -260,21 +259,25 @@ class Messenger
 			[
 				'class' => $this->_optionArray['className']['list']
 			]);
+			$itemElement = new Html\Element();
+			$itemElement->init('li');
 
 			/* collect item output */
 
 			foreach ($message as $value)
 			{
-				$outputItem .= '<li>' . $value . '</li>';
+				$listElement
+					->append($itemElement
+					->text($value));
 			}
-			$boxElement->html($listElement->html($outputItem));
+			$boxElement->html($listElement);
 		}
 
 		/* else plain text */
 
 		else
 		{
-			$boxElement->html(array_key_exists(0, $message) ? $message[0] : $message);
+			$boxElement->html(is_array($message) && array_key_exists(0, $message) ? $message[0] : $message);
 		}
 
 		/* collect output */

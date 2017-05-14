@@ -1,23 +1,23 @@
 {
 	"name": "redaxscript",
-	"description": "Ultra lightweight Content Management System",
-	"version": "3.0.1",
-	"homepage": "http://redaxscript.com",
+	"description": "A modern, ultra lightweight and rocket fast Content Management System",
+	"version": "3.1.0",
+	"homepage": "https://redaxscript.com",
 	"license": "GPL-3.0",
 	"author":
 	{
 		"name": "Henry Ruhs",
-		"url": "http://redaxmedia.com"
+		"url": "https://redaxmedia.com"
 	},
 	"bugs":
 	{
-		"url": "http://github.com/redaxmedia/redaxscript/issues"
+		"url": "https://github.com/redaxmedia/redaxscript/issues"
 	},
 	"devDependencies":
 	{
-		"autoprefixer": "6.7.6",
-		"cssnano": "3.10.0",
+		"autoprefixer": "6.7.7",
 		"colorguard": "1.2.0",
+		"cssnano": "3.10.0",
 		"grunt": "1.0.1",
 		"grunt-contrib-jshint": "1.1.0",
 		"grunt-contrib-rename": "0.0.3",
@@ -36,26 +36,30 @@
 		"icomoon-free-npm": "0.0.0",
 		"load-grunt-tasks": "3.5.2",
 		"material-design-icons": "3.0.1",
-		"postcss": "5.2.14",
+		"postcss": "5.2.16",
 		"postcss-color-function": "3.0.0",
 		"postcss-color-gray": "3.0.1",
 		"postcss-custom-media": "5.0.1",
 		"postcss-custom-properties": "5.0.2",
 		"postcss-custom-selectors": "3.0.0",
 		"postcss-extend": "1.0.5",
+		"postcss-harmonize": "1.0.1",
 		"postcss-import": "9.1.0",
 		"postcss-nesting": "2.3.1",
 		"postcss-reporter": "3.0.0",
-		"stylefmt": "5.1.2",
+		"stylefmt": "5.3.0",
 		"stylelint": "7.9.0",
-		"stylelint-order": "0.3.0"
+		"stylelint-order": "0.4.1"
 	},
 	"scripts":
 	{
+		"phpunit-mssql": "DB_URL=mssql://sa:tPSCp0G0mZ@127.0.0.1/test grunt phpunit",
 		"phpunit-mysql": "DB_URL=mysql://root:test@127.0.0.1/test grunt phpunit",
 		"phpunit-pgsql": "DB_URL=postgres://postgres:test@127.0.0.1/test grunt phpunit",
 		"phpunit-sqlite": "DB_URL=sqlite://test.sqlite grunt phpunit",
+		"phpunit-mssql-docker": "DB_URL=mssql://sa:tPSCp0G0mZ@mssql/test grunt phpunit",
 		"phpunit-mysql-docker": "DB_URL=mysql://root:test@mysql/test grunt phpunit",
-		"phpunit-pgsql-docker": "DB_URL=postgres://postgres:test@pgsql/test grunt phpunit"
+		"phpunit-pgsql-docker": "DB_URL=postgres://postgres:test@pgsql/test grunt phpunit",
+		"phpunit-sqlite-docker": "DB_URL=sqlite://test.sqlite grunt phpunit"
 	}
 }

@@ -2,7 +2,6 @@
 namespace Redaxscript\Tests\Template;
 
 use Redaxscript\Db;
-use Redaxscript\Registry;
 use Redaxscript\Template;
 use Redaxscript\Tests\TestCaseAbstract;
 
@@ -20,110 +19,108 @@ use Redaxscript\Tests\TestCaseAbstract;
 class HelperTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
 	 * setUp
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 */
 
 	public function setUp()
 	{
-		$this->_registry = Registry::getInstance();
-	}
-
-	/**
-	 * setUpBeforeClass
-	 *
-	 * @since 3.0.0
-	 */
-
-	public static function setUpBeforeClass()
-	{
-		Db::forTablePrefix('categories')
-			->create()
+		parent::setUp();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		$installer->insertSettings(
+		[
+			'adminName' => 'Test',
+			'adminUser' => 'test',
+			'adminPassword' => 'test',
+			'adminEmail' => 'test@test.com'
+		]);
+		$categoryOne = Db::forTablePrefix('categories')->create();
+		$categoryOne
 			->set(
 			[
-				'id' => 2,
-				'title' => 'test-one',
-				'alias' => 'test-one',
-				'author' => 'test',
-				'description' => 'category-description',
-				'keywords' => 'category-keywords',
+				'title' => 'Category One',
+				'alias' => 'category-one'
+			])
+			->save();
+		$categoryTwo = Db::forTablePrefix('categories')->create();
+		$categoryTwo
+			->set(
+			[
+				'title' => 'Category Two',
+				'alias' => 'category-two',
+				'description' => 'Category Two',
+				'keywords' => 'Category Two',
 				'robots' => 5
 			])
 			->save();
-		Db::forTablePrefix('categories')
+		$categoryThree = Db::forTablePrefix('categories')->create();
+		$categoryThree
 			->create()
 			->set(
 			[
-				'id' => 3,
-				'title' => 'test-two',
-				'alias' => 'test-two',
-				'author' => 'test',
-				'parent' => 2
+				'title' => 'Category Three',
+				'alias' => 'category-three',
+				'parent' => $categoryTwo->id
 			])
 			->save();
 		Db::forTablePrefix('articles')
 			->create()
 			->set(
 			[
-				'id' => 2,
-				'title' => 'test-three',
-				'alias' => 'test-three',
-				'author' => 'test',
-				'description' => 'article-description',
-				'keywords' => 'article-keywords',
+				'title' => 'Article One',
+				'alias' => 'article-one',
+				'category' => $categoryOne->id
+			])
+			->save();
+		Db::forTablePrefix('articles')
+			->create()
+			->set(
+			[
+				'title' => 'Article Two',
+				'alias' => 'article-two',
+				'description' => 'Article Two',
+				'keywords' => 'Article Two',
 				'robots' => 4,
-				'text' => 'test',
-				'category' => 2
+				'category' => $categoryTwo->id
 			])
 			->save();
 		Db::forTablePrefix('articles')
 			->create()
 			->set(
 			[
-				'id' => 3,
-				'title' => 'test-four',
-				'alias' => 'test-four',
-				'author' => 'test',
-				'text' => 'test',
-				'category' => 2
+				'title' => 'Article Three',
+				'alias' => 'article-three',
+				'category' => $categoryTwo->id
 			])
 			->save();
 		Db::forTablePrefix('articles')
 			->create()
 			->set(
 			[
-				'id' => 4,
-				'title' => 'test-five',
-				'alias' => 'test-five',
-				'author' => 'test',
-				'text' => 'test',
-				'category' => 3
+				'title' => 'Article Four',
+				'alias' => 'article-four',
+				'category' => $categoryThree->id
 			])
 			->save();
-		Db::setSetting('title', 'setting-title');
-		Db::setSetting('description', 'setting-description');
-		Db::setSetting('keywords', 'setting-keywords');
+		Db::setSetting('title', 'Setting');
+		Db::setSetting('description', 'Setting');
+		Db::setSetting('keywords', 'Setting');
 	}
 
 	/**
-	 * tearDownAfterClass
+	 * tearDown
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 */
 
-	public static function tearDownAfterClass()
+	public function tearDown()
 	{
-		Db::forTablePrefix('categories')->whereNotEqual('id', 1)->deleteMany();
-		Db::forTablePrefix('articles')->whereNotEqual('id', 1)->deleteMany();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
 	}
 
 	/**

@@ -1,0 +1,218 @@
+[
+	[
+		{
+			"dbStatus": 2,
+			"firstParameter": null,
+			"secondParameter": null,
+			"thirdParameter": null,
+			"lastParameter": null,
+			"fullRoute": null
+		},
+		{
+			"homepage": 1,
+			"order": "asc"
+		},
+		{
+			"firstTable": "articles",
+			"secondTable": false,
+			"thirdTable": false,
+			"lastTable": "articles",
+			"categoryId": false,
+			"articleId": 1,
+			"lastId": 1,
+			"contentError": false
+		}
+	],
+	[
+		{
+			"dbStatus": 2,
+			"firstParameter": null,
+			"secondParameter": null,
+			"thirdParameter": null,
+			"lastParameter": null,
+			"fullRoute": null
+		},
+		{
+			"homepage": null,
+			"order": "desc"
+		},
+		{
+			"firstTable": "categories",
+			"secondTable": false,
+			"thirdTable": false,
+			"lastTable": "categories",
+			"categoryId": 2,
+			"articleId": false,
+			"lastId": 2,
+			"contentError": false
+		}
+	],
+	[
+		{
+			"dbStatus": 2,
+			"firstParameter": null,
+			"secondParameter": null,
+			"thirdParameter": null,
+			"lastParameter": null,
+			"fullRoute": null
+		},
+		{
+			"homepage": null,
+			"order": "asc"
+		},
+		{
+			"firstTable": "categories",
+			"secondTable": false,
+			"thirdTable": false,
+			"lastTable": "categories",
+			"categoryId": 1,
+			"articleId": false,
+			"lastId": 1,
+			"contentError": false
+		}
+	],
+	[
+		{
+			"dbStatus": 2,
+			"firstParameter": "category-one",
+			"secondParameter": null,
+			"thirdParameter": null,
+			"lastParameter": "category-one",
+			"fullRoute": "category-one"
+		},
+		{
+			"homepage": null,
+			"order": "asc"
+		},
+		{
+			"firstTable": "categories",
+			"secondTable": false,
+			"thirdTable": false,
+			"lastTable": "categories",
+			"categoryId": 1,
+			"articleId": false,
+			"lastId": 1,
+			"contentError": false
+		}
+	],
+	[
+		{
+			"dbStatus": 2,
+			"firstParameter": "category-one",
+			"secondParameter": "article-one",
+			"thirdParameter": null,
+			"lastParameter": "article-one",
+			"fullRoute": "category-one/article-one"
+		},
+		{
+			"homepage": null,
+			"order": "asc"
+		},
+		{
+			"firstTable": "categories",
+			"secondTable": "articles",
+			"thirdTable": false,
+			"lastTable": "articles",
+			"categoryId": false,
+			"articleId": 1,
+			"lastId": 1,
+			"contentError": false
+		}
+	],
+	[
+		{
+			"dbStatus": 2,
+			"firstParameter": "category-one",
+			"secondParameter": "category-two",
+			"thirdParameter": null,
+			"lastParameter": "category-two",
+			"fullRoute": "category-one/category-two"
+		},
+		{
+			"homepage": null,
+			"order": "asc"
+		},
+		{
+			"firstTable": "categories",
+			"secondTable": "categories",
+			"thirdTable": false,
+			"lastTable": "categories",
+			"categoryId": 2,
+			"articleId": false,
+			"lastId": 2,
+			"contentError": false
+		}
+	],
+	[
+		{
+			"dbStatus": 2,
+			"firstParameter": "category-one",
+			"secondParameter": "category-two",
+			"thirdParameter": "article-two",
+			"lastParameter": "article-two",
+			"fullRoute": "category-one/category-two/article-two"
+		},
+		{
+			"homepage": null,
+			"order": "asc"
+		},
+		{
+			"firstTable": "categories",
+			"secondTable": "categories",
+			"thirdTable": "articles",
+			"lastTable": "articles",
+			"categoryId": false,
+			"articleId": 2,
+			"lastId": 2,
+			"contentError": false
+		}
+	],
+	[
+		{
+			"dbStatus": 2,
+			"firstParameter": "invalid",
+			"secondParameter": null,
+			"thirdParameter": null,
+			"lastParameter": "invalid",
+			"fullRoute": "invalid"
+		},
+		{
+			"homepage": null,
+			"order": "asc"
+		},
+		{
+			"firstTable": null,
+			"secondTable": false,
+			"thirdTable": false,
+			"lastTable": null,
+			"categoryId": false,
+			"articleId": false,
+			"lastId": false,
+			"contentError": true
+		}
+	],
+	[
+		{
+			"dbStatus": 2,
+			"firstParameter": "login",
+			"secondParameter": null,
+			"thirdParameter": null,
+			"lastParameter": "login",
+			"fullRoute": "login"
+		},
+		{
+			"homepage": null,
+			"order": "asc"
+		},
+		{
+			"firstTable": null,
+			"secondTable": false,
+			"thirdTable": false,
+			"lastTable": null,
+			"categoryId": false,
+			"articleId": false,
+			"lastId": false,
+			"contentError": false
+		}
+	]
+]

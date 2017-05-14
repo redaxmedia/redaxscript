@@ -1,0 +1,16 @@
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = '/* {configPrefix} */comments')
+BEGIN
+	CREATE TABLE /* %PREFIX% */comments (
+		id int PRIMARY KEY IDENTITY,
+		author nvarchar(255) NULL,
+		email nvarchar(255) NULL,
+		url nvarchar(255) NULL,
+		text varchar(max) NULL,
+		language char(2) NULL,
+		article int NULL,
+		status int DEFAULT 1,
+		rank int NULL,
+		access nvarchar(255) NULL,
+		date datetime2(0) DEFAULT GETDATE()
+	);
+END

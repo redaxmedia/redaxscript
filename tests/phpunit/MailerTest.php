@@ -2,6 +2,9 @@
 namespace Redaxscript\Tests;
 
 use Redaxscript\Mailer;
+use org\bovigo\vfs\vfsStream as Stream;
+use org\bovigo\vfs\vfsStreamFile as StreamFile;
+use org\bovigo\vfs\vfsStreamWrapper as StreamWrapper;
 
 /**
  * MailerTest
@@ -16,6 +19,43 @@ use Redaxscript\Mailer;
 class MailerTest extends TestCaseAbstract
 {
 	/**
+	 * setUp
+	 *
+	 * @since 3.1.0
+	 */
+
+	public function setUp()
+	{
+		parent::setUp();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		$installer->insertSettings(
+		[
+			'adminName' => 'Test',
+			'adminUser' => 'test',
+			'adminPassword' => 'test',
+			'adminEmail' => 'test@test.com'
+		]);
+		Stream::setup('root');
+		$file = new StreamFile('attachment.zip');
+		StreamWrapper::getRoot()->addChild($file);
+	}
+
+	/**
+	 * tearDown
+	 *
+	 * @since 3.1.0
+	 */
+
+	public function tearDown()
+	{
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
+	}
+
+	/**
 	 * providerMailer
 	 *
 	 * @since 2.2.0
@@ -29,7 +69,7 @@ class MailerTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testMessage
+	 * testSend
 	 *
 	 * @since 2.2.0
 	 *
@@ -37,20 +77,57 @@ class MailerTest extends TestCaseAbstract
 	 * @param array $fromArray
 	 * @param string $subject
 	 * @param mixed $body
-	 * @param array $attachmentArray
 	 *
 	 * @dataProvider providerMailer
 	 */
 
-	public function testMessage($toArray = [], $fromArray = [], $subject = null, $body = null, $attachmentArray = [])
+	public function testSend($toArray = [], $fromArray = [], $subject = null, $body = null)
 	{
 		/* setup */
 
 		$mailer = new Mailer();
+		$mailer->init($toArray, $fromArray, $subject, $body);
+
+		/* actual */
+
+		$actual = $mailer->send();
+
+		/* compare */
+
+		$this->assertTrue($actual);
+	}
+
+	/**
+	 * testSendAttachment
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param array $toArray
+	 * @param array $fromArray
+	 * @param string $subject
+	 * @param mixed $body
+	 *
+	 * @requires OS Linux
+	 * @dataProvider providerMailer
+	 */
+
+	public function testSendAttachment($toArray = [], $fromArray = [], $subject = null, $body = null)
+	{
+		/* setup */
+
+		$attachmentArray =
+		[
+			Stream::url('root/attachment.zip')
+		];
+		$mailer = new Mailer();
 		$mailer->init($toArray, $fromArray, $subject, $body, $attachmentArray);
 
-		/*compare */
+		/* actual */
 
-		$this->assertTrue(is_bool($mailer->send()));
+		$actual = $mailer->send();
+
+		/* compare */
+
+		$this->assertTrue($actual);
 	}
 }

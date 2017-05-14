@@ -18,7 +18,7 @@ class Special implements FilterInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $special target with special character
+	 * @param string $special special character
 	 *
 	 * @return string
 	 */

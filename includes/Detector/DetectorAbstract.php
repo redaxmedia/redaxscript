@@ -19,7 +19,7 @@ abstract class DetectorAbstract
 	/**
 	 * instance of the registry class
 	 *
-	 * @var object
+	 * @var Registry
 	 */
 
 	protected $_registry;
@@ -27,7 +27,7 @@ abstract class DetectorAbstract
 	/**
 	 * instance of the request class
 	 *
-	 * @var object
+	 * @var Request
 	 */
 
 	protected $_request;
@@ -93,9 +93,9 @@ abstract class DetectorAbstract
 		{
 			$file = str_replace($this->_filePlaceholder, $value, $path);
 
-			/* file exists */
+			/* handle file */
 
-			if (file_exists($file))
+			if (is_file($file))
 			{
 				$this->_output = $value;
 

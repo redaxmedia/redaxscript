@@ -26,7 +26,7 @@
 		},
 		1,
 		{
-			"start": "<h2 class=\"rs-admin-title-content\">test</h2><form class=\"rs-admin-js-tab rs-admin-js-validate-form rs-admin-component-tab rs-admin-form-default rs-admin-fn-clearfix\" method=\"post\" action=\"admin/process/comments/1\">",
+			"start": "<h2 class=\"rs-admin-title-content\">Comment One</h2><form class=\"rs-admin-js-tab rs-admin-js-validate-form rs-admin-component-tab rs-admin-form-default rs-admin-fn-clearfix\" method=\"post\" action=\"admin/process/comments/1\">",
 			"end": "<a class=\"rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large\" href=\"admin\">Cancel</a></form>"
 		}
 	],
@@ -35,12 +35,12 @@
 			"commentsEdit": true,
 			"commentsDelete": true,
 			"groupsEdit": true,
-			"token": "0071877d20a65c02d9a1654f109b97dc61416d1a"
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
 		},
 		1,
 		{
-			"start": "<h2 class=\"rs-admin-title-content\">test</h2><form class=\"rs-admin-js-tab rs-admin-js-validate-form rs-admin-component-tab rs-admin-form-default rs-admin-fn-clearfix\" method=\"post\" action=\"admin/process/comments/1\">",
-			"end": "<a class=\"rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large\" href=\"admin/view/comments\">Cancel</a><a class=\"rs-admin-js-delete rs-admin-button-default rs-admin-button-delete rs-admin-button-large\" href=\"admin/delete/comments/1/0071877d20a65c02d9a1654f109b97dc61416d1a\">Delete</a><button class=\"rs-admin-js-save rs-admin-button-default rs-admin-button-save rs-admin-button-large\" name=\"edit\" type=\"submit\" value=\"save\">Save</button></form>"
+			"start": "<h2 class=\"rs-admin-title-content\">Comment One</h2><form class=\"rs-admin-js-tab rs-admin-js-validate-form rs-admin-component-tab rs-admin-form-default rs-admin-fn-clearfix\" method=\"post\" action=\"admin/process/comments/1\">",
+			"end": "<a class=\"rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large\" href=\"admin/view/comments\">Cancel</a><a class=\"rs-admin-js-delete rs-admin-button-default rs-admin-button-delete rs-admin-button-large\" href=\"admin/delete/comments/1/ffd845f78510f02580d329127bab3dd1aa7f4453\">Delete</a><button class=\"rs-admin-js-save rs-admin-button-default rs-admin-button-save rs-admin-button-large\" name=\"edit\" type=\"submit\" value=\"save\">Save</button></form>"
 		}
 	]
 ]

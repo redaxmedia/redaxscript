@@ -1,11 +1,9 @@
 <?php
 namespace Redaxscript;
 
-error_reporting(E_ERROR || E_PARSE);
-
 /* bootstrap */
 
-include_once('includes/bootstrap.php');
+include_once('includes' . DIRECTORY_SEPARATOR . 'bootstrap.php');
 
 /* header */
 
@@ -51,7 +49,7 @@ else if ($config->get('env') !== 'production' || $accessValidator->validate('1',
 
 	else
 	{
-		include_once('templates/console/index.phtml');
+		include_once('templates' . DIRECTORY_SEPARATOR . 'console' . DIRECTORY_SEPARATOR . 'index.phtml');
 	}
 }
 else

@@ -2,7 +2,7 @@
 	[
 		{
 			"phpOs": "winnt",
-			"apacheModuleArray": null
+			"moduleArray": null
 		},
 		[
 			"Operating system not supported",
@@ -14,7 +14,7 @@
 	[
 		{
 			"phpOs": "linux",
-			"apacheModuleArray":
+			"moduleArray":
 			[
 				"mod_deflate",
 				"mod_headers",

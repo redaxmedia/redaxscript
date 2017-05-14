@@ -40,15 +40,29 @@ function router()
 	{
 		if (Redaxscript\Request::getPost('Redaxscript\View\InstallForm'))
 		{
-			$installController = new Redaxscript\Controller\Install(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance(), Redaxscript\Config::getInstance());
+			Redaxscript\Request::setSession('installArray',
+			[
+				'dbType' => Redaxscript\Request::getPost('db-type'),
+				'dbHost' => Redaxscript\Request::getPost('db-host'),
+				'dbName' => Redaxscript\Request::getPost('db-name'),
+				'dbUser' => Redaxscript\Request::getPost('db-user'),
+				'dbPassword' => Redaxscript\Request::getPost('db-password'),
+				'dbPrefix' => Redaxscript\Request::getPost('db-prefix'),
+				'adminName' => Redaxscript\Request::getPost('admin-name'),
+				'adminUser' => Redaxscript\Request::getPost('admin-user'),
+				'adminPassword' => Redaxscript\Request::getPost('admin-password'),
+				'adminEmail' => Redaxscript\Request::getPost('admin-email')
+			]);
+			$installController = new Redaxscript\Controller\Install(Redaxscript\Registry::getInstance(), Redaxscript\Request::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Config::getInstance());
 			echo $installController->process();
 			return;
 		}
 		else
 		{
+			$installArray = Redaxscript\Request::getSession('installArray');
 			$systemStatus = new Redaxscript\View\SystemStatus(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
 			$installForm = new Redaxscript\View\InstallForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
-			echo $systemStatus->render() . $installForm->render();
+			echo $systemStatus->render() . $installForm->render($installArray);
 			return;
 		}
 	}
@@ -69,7 +83,7 @@ function router()
 		{
 			if (class_exists($value))
 			{
-				$controller = new $value(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
+				$controller = new $value(Redaxscript\Registry::getInstance(), Redaxscript\Request::getInstance(), Redaxscript\Language::getInstance());
 				echo $controller->process();
 			}
 			return;
@@ -81,14 +95,14 @@ function router()
 	if (Redaxscript\Request::getPost('Redaxscript\View\SearchForm'))
 	{
 		$messenger = new Redaxscript\Messenger(Redaxscript\Registry::getInstance());
-		$specialFilter = new Redaxscript\Filter\Special();
-		$table = $specialFilter->sanitize(Redaxscript\Request::getPost('table'));
-		$search = $specialFilter->sanitize(Redaxscript\Request::getPost('search'));
+		$aliasFilter = new Redaxscript\Filter\Alias();
+		$table = $aliasFilter->sanitize(Redaxscript\Request::getPost('table'));
+		$search = $aliasFilter->sanitize(Redaxscript\Request::getPost('search'));
 		if ($table)
 		{
 			$table = '/' . $table;
 		}
-		echo $messenger->setRoute(Redaxscript\Language::get('continue'), 'search' . $table  . '/' . $search)->doRedirect(0)->success($search);
+		echo $messenger->setRoute(Redaxscript\Language::get('continue'), 'search' . $table . '/' . $search)->doRedirect(0)->success($search);
 	}
 
 	/* parameter routing */
@@ -135,7 +149,7 @@ function router()
 		case 'logout':
 			if (Redaxscript\Registry::get('loggedIn') == Redaxscript\Registry::get('token'))
 			{
-				$logoutController = new Redaxscript\Controller\Logout(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
+				$logoutController = new Redaxscript\Controller\Logout(Redaxscript\Registry::getInstance(), Redaxscript\Request::getInstance(), Redaxscript\Language::getInstance());
 				echo $logoutController->process();
 				return;
 			}
@@ -157,7 +171,7 @@ function router()
 			echo $messenger->setRoute(Language::get('home'), Redaxscript\Registry::get('root'))->error(Language::get('access_no'), Language::get('error_occurred'));
 			return;
 		case 'search':
-			$searchController = new Redaxscript\Controller\Search(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Request::getInstance());
+			$searchController = new Redaxscript\Controller\Search(Redaxscript\Registry::getInstance(), Redaxscript\Request::getInstance(), Redaxscript\Language::getInstance());
 			echo $searchController->process();
 			return;
 		default:

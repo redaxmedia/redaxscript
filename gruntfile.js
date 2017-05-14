@@ -371,6 +371,7 @@ module.exports = function (grunt)
 					processors:
 					[
 						require('postcss-import'),
+						require('postcss-harmonize'),
 						require('autoprefixer')(
 						{
 							browsers: 'last 2 versions'
@@ -725,19 +726,19 @@ module.exports = function (grunt)
 		{
 			phpbench:
 			{
-				command: 'php vendor/bin/phpbench run benchs/phpbench --bootstrap=benchs/phpbench/includes/bootstrap.php --iterations=10 --progress=blinken'
+				command: 'vendor/bin/phpbench run benchs/phpbench --bootstrap=benchs/phpbench/includes/bootstrap.php --iterations=10 --progress=blinken'
 			},
 			phpunit:
 			{
-				command: 'php vendor/bin/phpunit --configuration=phpunit.xml ' + grunt.option.flags()
+				command: 'vendor/bin/phpunit --configuration=phpunit.xml ' + grunt.option.flags()
 			},
 			phpunitParallel:
 			{
-				command: 'php vendor/bin/paratest --processes=10 --configuration=phpunit.xml ' + grunt.option.flags()
+				command: 'vendor/bin/paratest --processes=10 --configuration=phpunit.xml ' + grunt.option.flags()
 			},
 			phpcpdBase:
 			{
-				command: 'php vendor/bin/phpcpd includes',
+				command: 'vendor/bin/phpcpd includes',
 				options:
 				{
 					failOnError: false
@@ -745,7 +746,7 @@ module.exports = function (grunt)
 			},
 			phpcpdModules:
 			{
-				command: 'php vendor/bin/phpcpd modules',
+				command: 'vendor/bin/phpcpd modules',
 				options:
 				{
 					failOnError: false
@@ -925,10 +926,6 @@ module.exports = function (grunt)
 		'shell:toclintBase',
 		'shell:toclintModules',
 		'shell:toclintTemplates'
-	]);
-	grunt.registerTask('test',
-	[
-		'phpunit'
 	]);
 	grunt.registerTask('phpbench',
 	[

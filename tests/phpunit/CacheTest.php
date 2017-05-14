@@ -84,15 +84,15 @@ class CacheTest extends TestCaseAbstract
 		$cache = new Cache();
 		$cache
 			->init(Stream::url('root'), 'cache')
-			->store('test', 'test');
+			->store('bundle-one', 'Content One');
 
 		/* actual */
 
-		$actual = $cache->retrieve('test');
+		$actual = $cache->retrieve('bundle-one');
 
 		/* compare */
 
-		$this->assertEquals($actual, 'test');
+		$this->assertEquals('Content One', $actual);
 	}
 
 	/**
@@ -130,14 +130,14 @@ class CacheTest extends TestCaseAbstract
 		$cache = new Cache();
 		$cache
 			->init(Stream::url('root'), 'cache')
-			->store('test1', 'test')
-			->store('test2', 'test');
-		touch($cache->getPath('test2'), time() - 3600);
+			->store('bundle-one', 'Content One')
+			->store('bundle-two', 'Content Two');
+		touch($cache->getPath('bundle-two'), time() - 3600);
 
 		/* compare */
 
-		$this->assertTrue($cache->validate('test1'));
-		$this->assertFalse($cache->validate('test2'));
+		$this->assertTrue($cache->validate('bundle-one'));
+		$this->assertFalse($cache->validate('bundle-two'));
 		$this->assertFalse($cache->validate('invalid'));
 	}
 
@@ -154,19 +154,19 @@ class CacheTest extends TestCaseAbstract
 		$cache = new Cache();
 		$cache
 			->init(Stream::url('root'), 'cache')
-			->store('test1', 'test')
-			->store('test2', 'test')
+			->store('bundle-one', 'Content One')
+			->store('bundle-two', 'Content Two')
 			->clear()
-			->store('test3', 'test')
-			->store('test4', 'test')
-			->clear('test3');
+			->store('bundle-three', 'Content Three')
+			->store('bundle-four', 'Content Four')
+			->clear('bundle-three');
 
 		/* compare */
 
-		$this->assertFalse(file_exists($cache->getPath('test1')));
-		$this->assertFalse(file_exists($cache->getPath('test2')));
-		$this->assertFalse(file_exists($cache->getPath('test3')));
-		$this->assertTrue(file_exists($cache->getPath('test4')));
+		$this->assertFalse(is_file($cache->getPath('bundle-one')));
+		$this->assertFalse(is_file($cache->getPath('bundle-two')));
+		$this->assertFalse(is_file($cache->getPath('bundle-three')));
+		$this->assertTrue(is_file($cache->getPath('bundle-four')));
 	}
 
 	/**
@@ -182,20 +182,20 @@ class CacheTest extends TestCaseAbstract
 		$cache = new Cache();
 		$cache
 			->init(Stream::url('root'), 'cache')
-			->store('test1', 'test')
-			->store('test2', 'test')
-			->store('test3', 'test')
-			->store('test4', 'test');
-		touch($cache->getPath('test1'), time() - 3600);
-		touch($cache->getPath('test2'), time() - 3600);
-		touch($cache->getPath('test3'), time() - 3600);
+			->store('bundle-one', 'Content One')
+			->store('bundle-two', 'Content Two')
+			->store('bundle-three', 'Content Three')
+			->store('bundle-four', 'Content Four');
+		touch($cache->getPath('bundle-one'), time() - 3600);
+		touch($cache->getPath('bundle-two'), time() - 3600);
+		touch($cache->getPath('bundle-three'), time() - 3600);
 		$cache->clearInvalid();
 
 		/* compare */
 
-		$this->assertFalse(is_file($cache->getPath('test1')));
-		$this->assertFalse(is_file($cache->getPath('test2')));
-		$this->assertFalse(is_file($cache->getPath('test3')));
-		$this->assertTrue(is_file($cache->getPath('test4')));
+		$this->assertFalse(is_file($cache->getPath('bundle-one')));
+		$this->assertFalse(is_file($cache->getPath('bundle-two')));
+		$this->assertFalse(is_file($cache->getPath('bundle-three')));
+		$this->assertTrue(is_file($cache->getPath('bundle-four')));
 	}
 }

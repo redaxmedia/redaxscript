@@ -52,7 +52,6 @@ class Module extends TagAbstract
 
 		foreach ($partArray as $key => $value)
 		{
-			$moduleClass = $this->_optionArray['namespace'] . '\\' . $value . '\\' . $value;
 			if ($key % 2)
 			{
 				$partArray[$key] = null;
@@ -64,36 +63,47 @@ class Module extends TagAbstract
 				{
 					foreach ($json as $moduleName => $parameterArray)
 					{
-						$moduleClass = $this->_optionArray['namespace'] . '\\' . $moduleName . '\\' . $moduleName;
-
-						/* method exists */
-
-						if (in_array($moduleName, $modulesLoaded) && method_exists($moduleClass, 'render'))
+						if (in_array($moduleName, $modulesLoaded))
 						{
-							$module = new $moduleClass($this->_registry, $this->_request, $this->_language, $this->_config);
-							$partArray[$key] = call_user_func_array(
-							[
-								$module,
-								'render'
-							], $parameterArray);
+							$partArray[$key] = $this->_call($moduleName, $parameterArray);
 						}
 					}
 				}
 
 				/* else simple call */
 
-				else if (in_array($value, $modulesLoaded) && method_exists($moduleClass, 'render'))
+				else if (in_array($value, $modulesLoaded))
 				{
-					$module = new $moduleClass($this->_registry, $this->_request, $this->_language, $this->_config);
-					$partArray[$key] = call_user_func(
-					[
-						$module,
-						'render'
-					]);
+					$partArray[$key] = $this->_call($value);
 				}
 			}
 		}
 		$output = implode($partArray);
 		return $output;
+	}
+
+	/**
+	 * call the module
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $moduleName
+	 * @param array $parameterArray
+	 *
+	 * @return string
+	 */
+
+	protected function _call($moduleName = null, $parameterArray = [])
+	{
+		$moduleClass = $this->_optionArray['namespace'] . '\\' . $moduleName . '\\' . $moduleName;
+		$module = new $moduleClass($this->_registry, $this->_request, $this->_language, $this->_config);
+		if (method_exists($moduleClass, 'render'))
+		{
+			return call_user_func_array(
+			[
+				$module,
+				'render'
+			], $parameterArray);
+		}
 	}
 }

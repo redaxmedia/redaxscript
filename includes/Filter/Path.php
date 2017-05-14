@@ -18,7 +18,7 @@ class Path implements FilterInterface
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param string $path target path
+	 * @param string $path path
 	 * @param string $separator directory separator
 	 *
 	 * @return string

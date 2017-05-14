@@ -74,7 +74,7 @@ class Tinymce extends Config
 		}
 		else if (!chmod($this->_configArray['uploadDirectory'], 0777))
 		{
-			$this->setNotification('error', $this->_language->get('directory_permission_grant') . $this->_language->get('colon') . ' ' . $this->_configArray['uploadDirectory']  . $this->_language->get('point'));
+			$this->setNotification('error', $this->_language->get('directory_permission_grant') . $this->_language->get('colon') . ' ' . $this->_configArray['uploadDirectory'] . $this->_language->get('point'));
 		}
 		return $this->getNotification();
 	}
@@ -93,11 +93,11 @@ class Tinymce extends Config
 
 		if (is_uploaded_file($filesArray['tmp_name']))
 		{
-			if (move_uploaded_file($filesArray['tmp_name'], $this->_configArray['uploadDirectory'] . '/' . $filesArray['name']))
+			if (move_uploaded_file($filesArray['tmp_name'], $this->_configArray['uploadDirectory'] . DIRECTORY_SEPARATOR . $filesArray['name']))
 			{
 				return json_encode(
 				[
-					'location' => $this->_configArray['uploadDirectory'] . '/' . $filesArray['name']
+					'location' => $this->_configArray['uploadDirectory'] . DIRECTORY_SEPARATOR . $filesArray['name']
 				]);
 			}
 		}

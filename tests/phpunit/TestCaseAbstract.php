@@ -1,10 +1,14 @@
 <?php
 namespace Redaxscript\Tests;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit;
+use Redaxscript\Config;
+use Redaxscript\Db;
+use Redaxscript\Installer;
+use Redaxscript\Language;
+use Redaxscript\Registry;
+use Redaxscript\Request;
 use ReflectionClass;
-
-error_reporting(E_ERROR || E_PARSE);
 
 /**
  * TestCaseAbstract
@@ -16,8 +20,66 @@ error_reporting(E_ERROR || E_PARSE);
  * @author Henry Ruhs
  */
 
-abstract class TestCaseAbstract extends PHPUnit_Framework_TestCase
+abstract class TestCaseAbstract extends PHPUnit\Framework\TestCase
 {
+	/**
+	 * instance of the registry class
+	 *
+	 * @var Registry
+	 */
+
+	protected $_registry;
+
+	/**
+	 * instance of the request class
+	 *
+	 * @var Request
+	 */
+
+	protected $_request;
+
+	/**
+	 * instance of the language class
+	 *
+	 * @var Language
+	 */
+
+	protected $_language;
+
+	/**
+	 * instance of the config class
+	 *
+	 * @var Config
+	 */
+
+	protected $_config;
+
+	/**
+	 * setUp
+	 *
+	 * @since 3.1.0
+	 */
+
+	public function setUp()
+	{
+		Db::clearCache();
+		$this->_registry = Registry::getInstance();
+		$this->_request = Request::getInstance();
+		$this->_language = Language::getInstance();
+		$this->_config = Config::getInstance();
+	}
+
+	/**
+	 * installerFactory
+	 *
+	 * @since 3.1.0
+	 */
+
+	public function installerFactory()
+	{
+		return new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
+	}
+
 	/**
 	 * getProvider
 	 *
@@ -85,6 +147,32 @@ abstract class TestCaseAbstract extends PHPUnit_Framework_TestCase
 	public function assertString($actual = null)
 	{
 		$this->assertTrue(is_string($actual));
+	}
+
+	/**
+	 * assertNumber
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param integer $actual
+	 */
+
+	public function assertNumber($actual = null)
+	{
+		$this->assertTrue(is_numeric($actual));
+	}
+
+	/**
+	 * assertObject
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param integer $actual
+	 */
+
+	public function assertObject($actual = null)
+	{
+		$this->assertTrue(is_object($actual));
 	}
 
 	/**

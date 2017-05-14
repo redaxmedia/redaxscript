@@ -16,7 +16,7 @@ class Hash
 	/**
 	 * instance of the config class
 	 *
-	 * @var object
+	 * @var Config
 	 */
 
 	protected static $_config;

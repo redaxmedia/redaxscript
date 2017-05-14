@@ -118,7 +118,7 @@ class Language extends Singleton
 
 		foreach ($path as $file)
 		{
-			if (file_exists($file))
+			if (is_file($file))
 			{
 				$languageArray = $reader->loadJSON($file)->getArray();
 				if (is_array($languageArray))

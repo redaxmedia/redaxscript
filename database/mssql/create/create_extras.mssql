@@ -1,0 +1,19 @@
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = '/* {configPrefix} */extras')
+BEGIN
+	CREATE TABLE /* %PREFIX% */extras (
+		id int PRIMARY KEY IDENTITY,
+		title nvarchar(255) NULL,
+		alias nvarchar(255) NULL,
+		author nvarchar(255) NULL,
+		text varchar(max) NULL,
+		language char(2) NULL,
+		sibling int NULL,
+		category int NULL,
+		article int NULL,
+		headline int DEFAULT 1,
+		status int DEFAULT 1,
+		rank int NULL,
+		access nvarchar(255) NULL,
+		date datetime2(0) DEFAULT GETDATE()
+	);
+END

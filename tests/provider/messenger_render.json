@@ -1,8 +1,8 @@
 [
 	[
 		{
-			"message": "test",
-			"title": "title",
+			"message": "Message One",
+			"title": "Title",
 			"type": "success"
 		},
 		{
@@ -10,14 +10,14 @@
 			"url": null,
 			"timeout": null
 		},
-		"<h2 class=\"rs-title-note rs-is-success\">title</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-success\">test</div>"
+		"<h2 class=\"rs-title-note rs-is-success\">Title</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-success\">Message One</div>"
 	],
 	[
 		{
 			"message":
 			[
-				"test1",
-				"test2"
+				"Message One",
+				"Message Two"
 			],
 			"title": null,
 			"type": "warning"
@@ -27,36 +27,36 @@
 			"url": null,
 			"timeout": null
 		},
-		"<div class=\"rs-box-note rs-fn-clearfix rs-is-warning\"><ul class=\"rs-list-note\"><li>test1</li><li>test2</li></ul></div>"
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-warning\"><ul class=\"rs-list-note\"><li>Message One</li><li>Message Two</li></ul></div>"
 	],
 	[
 		{
-			"message": "test",
+			"message": "Message One",
 			"title": null,
 			"type": "info"
 		},
 		{
-			"text": "ok",
+			"text": "Text",
 			"url": "http://test.com",
 			"timeout": 2
 		},
-		"<div class=\"rs-box-note rs-fn-clearfix rs-is-info\">test</div><a href=\"http://test.com\" class=\"rs-button-note rs-is-info\">ok</a><meta content=\"2;url=http://test.com\" http-equiv=\"refresh\" />"
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-info\">Message One</div><a href=\"http://test.com\" class=\"rs-button-note rs-is-info\">Text</a><meta content=\"2;url=http://test.com\" http-equiv=\"refresh\" />"
 	],
 	[
 		{
 			"message":
 			[
-				"test1",
-				"test2"
+				"Message One",
+				"Message Two"
 			],
 			"title": null,
 			"type": "info"
 		},
 		{
-			"text": "ok",
+			"text": "Text",
 			"url": "http://test.com",
 			"timeout": 0
 		},
-		"<div class=\"rs-box-note rs-fn-clearfix rs-is-info\"><ul class=\"rs-list-note\"><li>test1</li><li>test2</li></ul></div><a href=\"http://test.com\" class=\"rs-button-note rs-is-info\">ok</a><meta class=\"rs-meta-redirect\" content=\"0;url=http://test.com\" http-equiv=\"refresh\" />"
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-info\"><ul class=\"rs-list-note\"><li>Message One</li><li>Message Two</li></ul></div><a href=\"http://test.com\" class=\"rs-button-note rs-is-info\">Text</a><meta class=\"rs-meta-redirect\" content=\"0;url=http://test.com\" http-equiv=\"refresh\" />"
 	]
 ]

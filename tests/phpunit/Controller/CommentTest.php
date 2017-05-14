@@ -3,9 +3,6 @@ namespace Redaxscript\Tests\Controller;
 
 use Redaxscript\Db;
 use Redaxscript\Controller;
-use Redaxscript\Language;
-use Redaxscript\Registry;
-use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -22,65 +19,56 @@ use Redaxscript\Tests\TestCaseAbstract;
 class CommentTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
 	 * setUp
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 */
 
 	public function setUp()
 	{
-		$this->_registry = Registry::getInstance();
-		$this->_language = Language::getInstance();
-		$this->_request = Request::getInstance();
-	}
+		parent::setUp();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		$installer->insertSettings(
+		[
+			'adminName' => 'Test',
+			'adminUser' => 'test',
+			'adminPassword' => 'test',
+			'adminEmail' => 'test@test.com'
+		]);
+		$categoryOne = Db::forTablePrefix('categories')->create();
+		$categoryOne
+			->set(
+			[
+				'title' => 'Category One',
+				'alias' => 'category-one'
+			])
+			->save();
+		Db::forTablePrefix('articles')
+			->create()
+			->set(
+			[
+				'title' => 'Article One',
+				'alias' => 'article-one',
+				'category' => $categoryOne->id
 
-	/**
-	 * setUpBeforeClass
-	 *
-	 * @since 3.0.0
-	 */
-
-	public static function setUpBeforeClass()
-	{
+			])
+			->save();
 		Db::setSetting('captcha', 1);
 	}
 
 	/**
-	 * tearDownAfterClass
+	 * tearDown
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 */
 
-	public static function tearDownAfterClass()
+	public function tearDown()
 	{
-		Db::setSetting('captcha', 0);
-		Db::setSetting('notification', 0);
-		Db::setSetting('moderation', 0);
-		Db::forTablePrefix('comments')->whereNotEqual('id', 1)->deleteMany();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
 	}
 
 	/**
@@ -130,7 +118,7 @@ class CommentTest extends TestCaseAbstract
 		Db::setSetting('moderation', $settingArray['moderation']);
 		$this->_request->set('post', $postArray);
 		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
-		$commentController = new Controller\Comment($this->_registry, $this->_language, $this->_request);
+		$commentController = new Controller\Comment($this->_registry, $this->_request, $this->_language);
 
 		/* actual */
 
@@ -168,8 +156,8 @@ class CommentTest extends TestCaseAbstract
 			->setConstructorArgs(
 			[
 				$this->_registry,
-				$this->_language,
-				$this->_request
+				$this->_request,
+				$this->_language
 			])
 			->setMethods(
 			[

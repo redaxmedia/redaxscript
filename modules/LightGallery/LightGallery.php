@@ -25,7 +25,7 @@ class LightGallery extends Config
 
 	protected static $_moduleArray =
 	[
-		'name' => 'Light gallery',
+		'name' => 'Light Gallery',
 		'alias' => 'LightGallery',
 		'author' => 'Redaxmedia',
 		'description' => 'Javascript powered light gallery',
@@ -115,11 +115,10 @@ class LightGallery extends Config
 
 			/* create as needed */
 
-			if ($optionArray['command'] === 'create' || !is_dir($directory . '/' . $this->_configArray['thumbDirectory']))
+			if ($optionArray['command'] === 'create' || !is_dir($directory . DIRECTORY_SEPARATOR . $this->_configArray['thumbDirectory']))
 			{
 				$this->_createThumb($directory, $optionArray);
 			}
-
 			$outputItem .= $this->_renderItem($directory, $optionArray);
 
 			/* collect list output */
@@ -156,6 +155,8 @@ class LightGallery extends Config
 		]);
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
+		$itemElement = new Html\Element();
+		$itemElement->init('li');
 
 		/* gallery directory */
 
@@ -177,25 +178,27 @@ class LightGallery extends Config
 
 		foreach ($galleryDirectoryArray as $value)
 		{
-			$imagePath = $directory . '/' . $value;
-			$thumbPath = $directory . '/' . $this->_configArray['thumbDirectory'] . '/' . $value;
+			$imagePath = $directory . DIRECTORY_SEPARATOR . $value;
+			$thumbPath = $directory . DIRECTORY_SEPARATOR . $this->_configArray['thumbDirectory'] . DIRECTORY_SEPARATOR . $value;
 
 			/* collect item output */
 
-			$outputItem .= '<li>';
-			$outputItem .= $linkElement
-				->copy()
-				->attr('href', $imagePath)
+			$outputItem .= $itemElement
+				->clear()
 				->html(
-					$imageElement
+					$linkElement
 						->copy()
-						->attr(
-						[
-							'src' => $thumbPath,
-							'alt' => $value
-						])
+						->attr('href', $imagePath)
+						->html(
+							$imageElement
+								->copy()
+								->attr(
+								[
+									'src' => $thumbPath,
+									'alt' => $value
+								])
+						)
 				);
-			$outputItem .= '</li>';
 		}
 		return $outputItem;
 	}
@@ -240,9 +243,9 @@ class LightGallery extends Config
 
 		/* handle notification */
 
-		if (!chmod($directory . '/' . $this->_configArray['thumbDirectory'], 0777))
+		if (!chmod($directory . DIRECTORY_SEPARATOR . $this->_configArray['thumbDirectory'], 0777))
 		{
-			$this->setNotification('error', $this->_language->get('directory_permission_grant') . $this->_language->get('colon') . ' ' . $directory . '/' . $this->_configArray['thumbDirectory']  . $this->_language->get('point'));
+			$this->setNotification('error', $this->_language->get('directory_permission_grant') . $this->_language->get('colon') . ' ' . $directory . DIRECTORY_SEPARATOR . $this->_configArray['thumbDirectory'] . $this->_language->get('point'));
 		}
 
 		/* else process directory */
@@ -251,9 +254,9 @@ class LightGallery extends Config
 		{
 			foreach ($galleryDirectoryArray as $value)
 			{
-				$imagePath = $directory . '/' . $value;
+				$imagePath = $directory . DIRECTORY_SEPARATOR . $value;
 				$imageExtension = strtolower(pathinfo($value, PATHINFO_EXTENSION));
-				$thumbPath = $directory . '/' . $this->_configArray['thumbDirectory'] . '/' . $value;
+				$thumbPath = $directory . DIRECTORY_SEPARATOR . $this->_configArray['thumbDirectory'] . DIRECTORY_SEPARATOR . $value;
 
 				/* switch extension */
 

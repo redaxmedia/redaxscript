@@ -3,8 +3,6 @@ namespace Redaxscript\Tests;
 
 use Redaxscript\Breadcrumb;
 use Redaxscript\Db;
-use Redaxscript\Language;
-use Redaxscript\Registry;
 
 /**
  * BreadcrumbTest
@@ -15,90 +13,79 @@ use Redaxscript\Registry;
  * @category Tests
  * @author Henry Ruhs
  * @author Gary Aylward
+ *
+ * @requires extension mysqli
  */
 
 class BreadcrumbTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
 	 * setUp
 	 *
-	 * @since 2.1.0
+	 * @since 3.1.0
 	 */
 
 	public function setUp()
 	{
-		$this->_registry = Registry::getInstance();
-		$this->_language = Language::getInstance();
+		parent::setUp();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		$installer->insertSettings(
+		[
+			'adminName' => 'Test',
+			'adminUser' => 'test',
+			'adminPassword' => 'test',
+			'adminEmail' => 'test@test.com'
+		]);
+		$categoryOne = Db::forTablePrefix('categories')->create();
+		$categoryOne
+			->set(
+			[
+				'title' => 'Category One',
+				'alias' => 'category-one'
+			])
+			->save();
+		$categoryTwo = Db::forTablePrefix('categories')->create();
+		$categoryTwo
+			->set(
+			[
+				'title' => 'Category Two',
+				'alias' => 'category-two',
+				'parent' => $categoryOne->id
+			])
+			->save();
+		Db::forTablePrefix('articles')
+			->create()
+			->set(
+			[
+				'title' => 'Article One',
+				'alias' => 'article-one',
+				'category' => $categoryOne->id
+			])
+			->save();
+		Db::forTablePrefix('articles')
+			->create()
+			->set(
+			[
+				'title' => 'Article Two',
+				'alias' => 'article-two',
+				'category' => $categoryTwo->id
+			])
+			->save();
 	}
 
 	/**
-	 * setUpBeforeClass
+	 * tearDown
 	 *
-	 * @since 2.2.0
+	 * @since 3.1.0
 	 */
 
-	public static function setUpBeforeClass()
+	public function tearDown()
 	{
-		/* first parameter */
-
-		$ultra = Db::forTablePrefix('categories')->create();
-		$ultra->set(
-		[
-			'title' => 'Ultra',
-			'alias' => 'ultra',
-			'parent' => 0
-		])
-		->save();
-
-		/* second parameter */
-
-		$lightweight = Db::forTablePrefix('categories')->create();
-		$lightweight->set(
-		[
-			'title' => 'Lightweight',
-			'alias' => 'lightweight',
-			'parent' => $ultra->id()
-		])
-		->save();
-
-		/* third parameter */
-
-		$cms = Db::forTablePrefix('articles')->create();
-		$cms->set(
-		[
-			'title' => 'CMS',
-			'alias' => 'cms',
-			'category' => $lightweight->id()
-		])
-		->save();
-	}
-
-	/**
-	 * tearDownAfterClass
-	 *
-	 * @since 2.2.0
-	 */
-
-	public static function tearDownAfterClass()
-	{
-		Db::forTablePrefix('categories')->whereNotEqual('id', 1)->deleteMany();
-		Db::forTablePrefix('articles')->whereNotEqual('id', 1)->deleteMany();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
 	}
 
 	/**

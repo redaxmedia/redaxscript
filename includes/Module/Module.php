@@ -23,7 +23,7 @@ class Module
 	/**
 	 * instance of the registry class
 	 *
-	 * @var object
+	 * @var Registry
 	 */
 
 	protected $_registry;
@@ -31,7 +31,7 @@ class Module
 	/**
 	 * instance of the request class
 	 *
-	 * @var object
+	 * @var Request
 	 */
 
 	protected $_request;
@@ -39,7 +39,7 @@ class Module
 	/**
 	 * instance of the language class
 	 *
-	 * @var object
+	 * @var Language
 	 */
 
 	protected $_language;
@@ -47,7 +47,7 @@ class Module
 	/**
 	 * instance of the config class
 	 *
-	 * @var object
+	 * @var Config
 	 */
 
 	protected $_config;
@@ -114,8 +114,8 @@ class Module
 		{
 			$this->_language->load(
 			[
-				'modules/' . static::$_moduleArray['alias'] . '/languages/en.json',
-				'modules/' . static::$_moduleArray['alias'] . '/languages/' . $this->_registry->get('language') . '.json'
+				'modules' . DIRECTORY_SEPARATOR . static::$_moduleArray['alias'] . DIRECTORY_SEPARATOR . 'languages' . DIRECTORY_SEPARATOR . 'en.json',
+				'modules' . DIRECTORY_SEPARATOR . static::$_moduleArray['alias'] . DIRECTORY_SEPARATOR . 'languages' . DIRECTORY_SEPARATOR . $this->_registry->get('language') . '.json'
 			]);
 		}
 	}
@@ -174,7 +174,7 @@ class Module
 
 			/* create from sql */
 
-			$directory = 'modules/' . static::$_moduleArray['alias'] . '/database';
+			$directory = 'modules' . DIRECTORY_SEPARATOR . static::$_moduleArray['alias'] . DIRECTORY_SEPARATOR . 'database';
 			if (is_dir($directory))
 			{
 				$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
@@ -198,7 +198,7 @@ class Module
 
 			/* drop from sql */
 
-			$directory = 'modules/' . static::$_moduleArray['alias'] . '/database';
+			$directory = 'modules' . DIRECTORY_SEPARATOR . static::$_moduleArray['alias'] . DIRECTORY_SEPARATOR . 'database';
 			if (is_dir($directory))
 			{
 				$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);

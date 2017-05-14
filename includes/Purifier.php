@@ -9,7 +9,7 @@ use DOMDocument;
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category Html
+ * @category Purifier
  * @author Henry Ruhs
  */
 

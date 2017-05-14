@@ -1,11 +1,7 @@
 <?php
 namespace Redaxscript\Tests\Console\Command;
 
-use Redaxscript\Config;
 use Redaxscript\Console\Command;
-use Redaxscript\Language;
-use Redaxscript\Registry;
-use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -21,59 +17,37 @@ use Redaxscript\Tests\TestCaseAbstract;
 class SettingTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
-	 * instance of the config class
-	 *
-	 * @var object
-	 */
-
-	protected $_config;
-
-	/**
 	 * setUp
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 */
 
 	public function setUp()
 	{
-		$this->_registry = Registry::getInstance();
-		$this->_request = Request::getInstance();
-		$this->_language = Language::getInstance();
-		$this->_config = Config::getInstance();
+		parent::setUp();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		$installer->insertSettings(
+		[
+			'adminName' => 'Test',
+			'adminUser' => 'test',
+			'adminPassword' => 'test',
+			'adminEmail' => 'test@test.com'
+		]);
 	}
 
 	/**
 	 * tearDown
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 */
 
 	public function tearDown()
 	{
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
 		$this->_request->setServer('argv', null);
 	}
 

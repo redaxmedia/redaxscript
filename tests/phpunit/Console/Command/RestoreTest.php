@@ -1,12 +1,8 @@
 <?php
 namespace Redaxscript\Tests\Console\Command;
 
-use Redaxscript\Config;
 use Redaxscript\Console\Command;
 use Redaxscript\Directory;
-use Redaxscript\Language;
-use Redaxscript\Registry;
-use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -24,38 +20,6 @@ use Redaxscript\Tests\TestCaseAbstract;
 class RestoreTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
-	 * instance of the config class
-	 *
-	 * @var object
-	 */
-
-	protected $_config;
-
-	/**
 	 * setUp
 	 *
 	 * @since 3.0.0
@@ -63,24 +27,11 @@ class RestoreTest extends TestCaseAbstract
 
 	public function setUp()
 	{
-		$this->_registry = Registry::getInstance();
-		$this->_request = Request::getInstance();
-		$this->_language = Language::getInstance();
-		$this->_config = Config::getInstance();
-	}
-
-	/**
-	 * setUpBeforeClass
-	 *
-	 * @since 3.0.0
-	 */
-
-	public static function setUpBeforeClass()
-	{
+		parent::setUp();
 		$rootDirectory = new Directory();
 		$rootDirectory->init('.');
-		$rootDirectory->create('.restore');
-		$rootDirectory->put('.restore/test.sql', '/* test */');
+		$rootDirectory->create('build');
+		$rootDirectory->put('build' . DIRECTORY_SEPARATOR . 'test.sql', '/* test */');
 	}
 
 	/**
@@ -92,19 +43,6 @@ class RestoreTest extends TestCaseAbstract
 	public function tearDown()
 	{
 		$this->_request->setServer('argv', null);
-	}
-
-	/**
-	 * tearDownAfterClass
-	 *
-	 * @since 3.0.0
-	 */
-
-	public static function tearDownAfterClass()
-	{
-		$rootDirectory = new Directory();
-		$rootDirectory->init('.');
-		$rootDirectory->remove('.restore');
 	}
 
 	/**
@@ -145,7 +83,7 @@ class RestoreTest extends TestCaseAbstract
 			'restore',
 			'database',
 			'--directory',
-			'.restore',
+			'build',
 			'--file',
 			'test.sql'
 		]);

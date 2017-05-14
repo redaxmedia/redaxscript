@@ -113,6 +113,9 @@ class Install extends CommandAbstract
 		$adminUser = $this->prompt('admin-user', $optionArray);
 		$adminPassword = $this->prompt('admin-password', $optionArray);
 		$adminEmail = $this->prompt('admin-email', $optionArray);
+
+		/* install */
+
 		if ($adminName && $adminUser && $adminPassword && $adminEmail)
 		{
 			$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
@@ -144,6 +147,9 @@ class Install extends CommandAbstract
 	{
 		$alias = $this->prompt('alias', $optionArray);
 		$moduleClass = 'Redaxscript\\Modules\\' . $alias . '\\' . $alias;
+
+		/* install */
+
 		if (class_exists($moduleClass))
 		{
 			$module = new $moduleClass($this->_registry, $this->_request, $this->_language, $this->_config);

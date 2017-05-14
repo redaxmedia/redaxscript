@@ -4,7 +4,7 @@ namespace Redaxscript;
 /**
  * parent class to load required class files
  *
- * @since 3.0.0
+ * @since 3.1.0
  *
  * @package Redaxscript
  * @category Autoloader
@@ -55,7 +55,7 @@ class Autoloader
 		}
 		if (is_array($autoload))
 		{
-			$this->_autoloadArray = array_merge($this->_autoloadArray, $autoload);
+			$this->_autoloadArray = $autoload;
 		}
 
 		/* register autoload */
@@ -70,7 +70,7 @@ class Autoloader
 	/**
 	 * load the class file
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 *
 	 * @param string $className name of the class
 	 */
@@ -80,9 +80,9 @@ class Autoloader
 		foreach ($this->_autoloadArray as $namespace => $directory)
 		{
 			$file = $this->_getFile($className, $namespace);
-			if (file_exists($directory . '/' . $file))
+			if (is_file($directory . DIRECTORY_SEPARATOR . $file))
 			{
-				include_once($directory . '/' . $file);
+				include_once($directory . DIRECTORY_SEPARATOR . $file);
 			}
 		}
 	}
@@ -108,7 +108,7 @@ class Autoloader
 		$replaceArray =
 		[
 			null,
-			'/'
+			DIRECTORY_SEPARATOR
 		];
 		return str_replace($searchArray, $replaceArray, $className) . $this->_fileExtension;
 	}

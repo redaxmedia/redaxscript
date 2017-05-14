@@ -1,11 +1,9 @@
 <?php
 namespace Redaxscript;
 
-error_reporting(E_ERROR || E_PARSE);
-
 /* bootstrap */
 
-include_once('includes/bootstrap.php');
+include_once('includes' . DIRECTORY_SEPARATOR . 'bootstrap.php');
 
 /* header */
 
@@ -19,7 +17,7 @@ $config = Config::getInstance();
 
 if ($config->get('env') !== 'production')
 {
-	include_once('templates/install/index.phtml');
+	include_once('templates' . DIRECTORY_SEPARATOR . 'install' . DIRECTORY_SEPARATOR . 'index.phtml');
 }
 else
 {

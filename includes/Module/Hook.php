@@ -15,7 +15,7 @@ use Redaxscript\Validator;
  * @since 2.2.0
  *
  * @package Redaxscript
- * @category Hook
+ * @category Module
  * @author Henry Ruhs
  */
 
@@ -24,7 +24,7 @@ class Hook
 	/**
 	 * instance of the registry class
 	 *
-	 * @var object
+	 * @var Registry
 	 */
 
 	protected static $_registry;
@@ -32,7 +32,7 @@ class Hook
 	/**
 	 * instance of the request class
 	 *
-	 * @var object
+	 * @var Request
 	 */
 
 	protected static $_request;
@@ -40,7 +40,7 @@ class Hook
 	/**
 	 * instance of the language class
 	 *
-	 * @var object
+	 * @var Language
 	 */
 
 	protected static $_language;
@@ -48,7 +48,7 @@ class Hook
 	/**
 	 * instance of the config class
 	 *
-	 * @var object
+	 * @var Config
 	 */
 
 	protected static $_config;
@@ -207,7 +207,6 @@ class Hook
 		foreach (self::$_moduleArray as $module)
 		{
 			$moduleClass = self::$_namespace . '\\' . $module . '\\' . $module;
-
 			self::$_eventArray[$event][$module] = false;
 
 			/* method exists */

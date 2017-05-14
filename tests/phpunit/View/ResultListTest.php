@@ -3,9 +3,6 @@ namespace Redaxscript\Tests\View;
 
 use Redaxscript\Controller;
 use Redaxscript\Db;
-use Redaxscript\Language;
-use Redaxscript\Registry;
-use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
 use Redaxscript\View;
 
@@ -23,100 +20,66 @@ use Redaxscript\View;
 class ResultListTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
 	 * setUp
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 */
 
 	public function setUp()
 	{
-		$this->_registry = Registry::getInstance();
-		$this->_language = Language::getInstance();
-		$this->_request = Request::getInstance();
-	}
-
-	/**
-	 * setUpBeforeClass
-	 *
-	 * @since 3.0.0
-	 */
-
-	public static function setUpBeforeClass()
-	{
-		Db::forTablePrefix('articles')
-			->create()
+		parent::setUp();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		$installer->insertSettings(
+		[
+			'adminName' => 'Test',
+			'adminUser' => 'test',
+			'adminPassword' => 'test',
+			'adminEmail' => 'test@test.com'
+		]);
+		$categoryOne = Db::forTablePrefix('categories')->create();
+		$categoryOne
 			->set(
 			[
-				'id' => 2,
-				'title' => 'test',
-				'alias' => 'test-one',
-				'author' => 'test',
-				'text' => 'test',
-				'category' => 1,
+				'title' => 'Category One',
+				'alias' => 'category-one',
 				'date' => '2017-01-01 00:00:00'
 			])
 			->save();
-		Db::forTablePrefix('articles')
-			->create()
+		$articleOne = Db::forTablePrefix('articles')->create();
+		$articleOne
 			->set(
 			[
-				'id' => 3,
-				'title' => 'test',
-				'alias' => 'test-two',
-				'author' => 'test',
-				'text' => 'test',
-				'category' => 1,
-				'date' => '2016-01-01 00:00:00'
+				'title' => 'Article One',
+				'alias' => 'article-one',
+				'category' => $categoryOne->id,
+				'date' => '2017-01-01 00:00:00'
 			])
 			->save();
 		Db::forTablePrefix('comments')
 			->create()
 			->set(
 			[
-				'id' => 2,
-				'author' => 'test',
-				'email' => 'test@test.com',
-				'text' => 'test',
-				'article' => 1,
+				'author' => 'Comment One',
+				'text' => 'Comment One',
+				'article' => $articleOne->id,
 				'date' => '2016-01-01 00:00:00'
 			])
 			->save();
 	}
 
 	/**
-	 * tearDownAfterClass
+	 * tearDown
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 */
 
-	public static function tearDownAfterClass()
+	public function tearDown()
 	{
-		Db::forTablePrefix('articles')->whereNotEqual('id', 1)->deleteMany();
-		Db::forTablePrefix('comments')->whereNotEqual('id', 1)->deleteMany();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
 	}
 
 	/**
@@ -138,17 +101,17 @@ class ResultListTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $searchArray
-	 * @param array $expectArray
+	 * @param string $expect
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($searchArray = [], $expectArray = [])
+	public function testRender($searchArray = [], $expect = null)
 	{
 		/* setup */
 
 		$resultList = new View\ResultList($this->_registry, $this->_language);
-		$controllerSearch = new Controller\Search($this->_registry, $this->_language, $this->_request);
+		$controllerSearch = new Controller\Search($this->_registry, $this->_request, $this->_language);
 		$resultArray = $this->callMethod($controllerSearch, '_search',
 		[
 			$searchArray
@@ -156,10 +119,10 @@ class ResultListTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actualArray = $resultList->render($resultArray);
+		$actual = $resultList->render($resultArray);
 
 		/* compare */
 
-		$this->assertEquals($expectArray, $actualArray);
+		$this->assertEquals($expect, $actual);
 	}
 }

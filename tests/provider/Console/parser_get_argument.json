@@ -10,46 +10,46 @@
 	[
 		[
 			"console.php",
-			"test"
+			"option-one"
 		],
 		[
-			"test"
+			"option-one"
 		]
 	],
 	[
 		[
 			"console.php",
-			"test1",
-			"test2",
+			"option-one",
+			"option-two",
 			"-a",
 			"-b",
-			"test3",
-			"-c=test4",
-			"test5",
+			"option-three",
+			"-c=option-four",
+			"option-five",
 			"-d"
 		],
 		[
-			"test1",
-			"test2",
-			"test5"
+			"option-one",
+			"option-two",
+			"option-five"
 		]
 	],
 	[
 		[
 			"console.php",
-			"test1",
-			"test2",
+			"option-one",
+			"option-two",
 			"--a-long",
 			"--b-long",
-			"test3",
-			"--c-long=test4",
-			"test5",
+			"option-three",
+			"--c-long=option-four",
+			"option-five",
 			"--d-long"
 		],
 		[
-			"test1",
-			"test2",
-			"test5"
+			"option-one",
+			"option-two",
+			"option-five"
 		]
 	]
 ]

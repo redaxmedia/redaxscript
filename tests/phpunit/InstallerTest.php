@@ -1,12 +1,8 @@
 <?php
 namespace Redaxscript\Tests;
 
-use Redaxscript\Config;
 use Redaxscript\Db;
 use Redaxscript\Installer;
-use Redaxscript\Language;
-use Redaxscript\Registry;
-use Redaxscript\Request;
 
 /**
  * InstallerTest
@@ -20,73 +16,6 @@ use Redaxscript\Request;
 
 class InstallerTest extends TestCaseAbstract
 {
-	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
-	 * instance of the config class
-	 *
-	 * @var object
-	 */
-
-	protected $_config;
-
-	/**
-	 * array to restore config
-	 *
-	 * @var array
-	 */
-
-	protected $_configArray = [];
-
-	/**
-	 * setUp
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function setUp()
-	{
-		$this->_registry = Registry::getInstance();
-		$this->_request = Request::getInstance();
-		$this->_language = Language::getInstance();
-		$this->_config = Config::getInstance();
-		$this->_configArray = $this->_config->get();
-		$this->_config->set('dbPrefix', 'installer_');
-	}
-
-	/**
-	 * tearDown
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function tearDown()
-	{
-		$this->_config->set('dbPrefix', $this->_configArray['dbPrefix']);
-	}
-
 	/**
 	 * testRawCreate
 	 *
@@ -132,16 +61,16 @@ class InstallerTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actualArticles = Db::forTablePrefix('articles')->findMany()->count();
-		$actualCategories = Db::forTablePrefix('categories')->findMany()->count();
-		$actualExtras = Db::forTablePrefix('extras')->findMany()->count();
-		$actualComments = Db::forTablePrefix('comments')->findMany()->count();
-		$actualGroups = Db::forTablePrefix('groups')->findMany()->count();
-		$actualUsers = Db::forTablePrefix('users')->findMany()->count();
-		$actualSettings = Db::forTablePrefix('settings')->findMany()->count();
+		$actualArticles = Db::forTablePrefix('articles')->count();
+		$actualCategories = Db::forTablePrefix('categories')->count();
+		$actualExtras = Db::forTablePrefix('extras')->count();
+		$actualComments = Db::forTablePrefix('comments')->count();
+		$actualGroups = Db::forTablePrefix('groups')->count();
+		$actualUsers = Db::forTablePrefix('users')->count();
+		$actualSettings = Db::forTablePrefix('settings')->count();
 		if (is_dir('modules/CallHome') && is_dir('modules/Validator'))
 		{
-			$actualModules = Db::forTablePrefix('modules')->findMany()->count();
+			$actualModules = Db::forTablePrefix('modules')->count();
 		}
 
 		/* compare */

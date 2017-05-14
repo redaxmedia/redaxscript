@@ -26,7 +26,7 @@ class CallHome extends Module\Module
 
 	protected static $_moduleArray =
 	[
-		'name' => 'Call home',
+		'name' => 'Call Home',
 		'alias' => 'CallHome',
 		'author' => 'Redaxmedia',
 		'description' => 'Provide version and news updates',

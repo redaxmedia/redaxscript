@@ -10,9 +10,6 @@
 		[
 			"test",
 			"test"
-		],
-		[
-			"test.php"
 		]
 	],
 	[
@@ -23,7 +20,6 @@
 			"from@test.com"
 		],
 		"test",
-		"test",
-		null
+		"test"
 	]
 ]

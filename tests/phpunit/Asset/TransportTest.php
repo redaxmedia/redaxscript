@@ -2,8 +2,6 @@
 namespace Redaxscript\Tests\Asset;
 
 use Redaxscript\Asset;
-use Redaxscript\Registry;
-use Redaxscript\Language;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -18,34 +16,6 @@ use Redaxscript\Tests\TestCaseAbstract;
 
 class TransportTest extends TestCaseAbstract
 {
-	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
-	 * setUp
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function setUp()
-	{
-		$this->_registry = Registry::getInstance();
-		$this->_language = Language::getInstance();
-	}
-
 	/**
 	 * providerRender
 	 *

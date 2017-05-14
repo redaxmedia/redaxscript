@@ -25,7 +25,7 @@ class FeedGenerator extends Module\Module
 
 	protected static $_moduleArray =
 	[
-		'name' => 'Feed generator',
+		'name' => 'Feed Generator',
 		'alias' => 'FeedGenerator',
 		'author' => 'Redaxmedia',
 		'description' => 'Generate Atom feeds from content',

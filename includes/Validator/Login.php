@@ -31,7 +31,7 @@ class Login implements ValidatorInterface
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string $login login name
+	 * @param string $login login
 	 *
 	 * @return integer
 	 */

@@ -75,7 +75,7 @@ class MetaTest extends TestCaseAbstract
 		$meta = Head\Meta::getInstance();
 		$meta->init('invalid');
 
-		/* expect and actual */
+		/* actual */
 
 		$actual = $meta;
 

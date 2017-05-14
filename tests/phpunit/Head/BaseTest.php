@@ -2,7 +2,6 @@
 namespace Redaxscript\Tests\Head;
 
 use Redaxscript\Head;
-use Redaxscript\Registry;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -17,25 +16,6 @@ use Redaxscript\Tests\TestCaseAbstract;
 
 class BaseTest extends TestCaseAbstract
 {
-	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * setUp
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function setUp()
-	{
-		$this->_registry = Registry::getInstance();
-	}
-
 	/**
 	 * providerRender
 	 *

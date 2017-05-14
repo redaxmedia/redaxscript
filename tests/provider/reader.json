@@ -9,13 +9,15 @@
 			"@attributes":
 			{
 				"id": "2"
-			}
+			},
+			"value": "2"
 		},
 		{
 			"@attributes":
 			{
 				"id": "3"
-			}
+			},
+			"value": "3"
 		}
 	],
 	"two":
@@ -23,6 +25,7 @@
 		"@attributes":
 		{
 			"id": "4"
-		}
+		},
+		"value": "4"
 	}
 }

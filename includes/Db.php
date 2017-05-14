@@ -25,7 +25,7 @@ class Db extends ORM
 	/**
 	 * instance of the config class
 	 *
-	 * @var object
+	 * @var Config
 	 */
 
 	protected static $_config;
@@ -46,7 +46,7 @@ class Db extends ORM
 	/**
 	 * init the class
 	 *
-	 * @since 2.6.0
+	 * @since 3.1.0
 	 */
 
 	public static function init()
@@ -58,15 +58,19 @@ class Db extends ORM
 		$dbPassword = self::$_config->get('dbPassword');
 		$dbSocket = strstr($dbHost, '.sock');
 
-		/* mysql and pgsql */
+		/* handle various types */
 
-		if ($dbType === 'mysql' || $dbType === 'pgsql')
+		if ($dbType === 'mssql' || $dbType === 'mysql' || $dbType === 'pgsql')
 		{
+			if ($dbType === 'mssql')
+			{
+				self::configure('connection_string', 'sqlsrv:server=' . $dbHost . ';database=' . $dbName);
+			}
 			if ($dbType === 'mysql')
 			{
 				self::configure('connection_string', 'mysql:' . ($dbSocket ? 'unix_socket' : 'host') . '=' . $dbHost . ';dbname=' . $dbName . ';charset=utf8');
 			}
-			else
+			if ($dbType === 'pgsql')
 			{
 				self::configure('connection_string', 'pgsql:' . ($dbSocket ? 'unix_socket' : 'host') . '=' . $dbHost . ';dbname=' . $dbName . ';options=--client_encoding=utf8');
 			}
@@ -80,7 +84,7 @@ class Db extends ORM
 			}
 		}
 
-		/* sqlite */
+		/* else handle sqlite */
 
 		if ($dbType === 'sqlite')
 		{
@@ -100,7 +104,7 @@ class Db extends ORM
 	/**
 	 * get the database status
 	 *
-	 * @since 2.4.0
+	 * @since 3.1.0
 	 *
 	 * @return integer
 	 */
@@ -113,7 +117,9 @@ class Db extends ORM
 
 		try
 		{
-			if (self::$_config->get('dbType') === self::getDb()->getAttribute(PDO::ATTR_DRIVER_NAME))
+			$dbType = self::$_config->get('dbType') === 'mssql' ? 'sqlsrv' : self::$_config->get('dbType');
+			$dbDriver = self::getDb()->getAttribute(PDO::ATTR_DRIVER_NAME);
+			if ($dbType === $dbDriver)
 			{
 				$output = self::countTablePrefix() > 7 ? 2 : 1;
 			}
@@ -145,24 +151,46 @@ class Db extends ORM
 	/**
 	 * count table with prefix
 	 *
-	 * @since 2.4.0
+	 * @since 3.1.0
 	 *
 	 * @return Db
 	 */
 
 	public static function countTablePrefix()
 	{
-		if (self::$_config->get('dbType') === 'mysql')
+		$dbType = self::$_config->get('dbType');
+		$dbName = self::$_config->get('dbName');
+		$dbPrefix = self::$_config->get('dbPrefix');
+
+		/* mssql and mysql */
+
+		if ($dbType === 'mssql' || $dbType === 'mysql')
 		{
-			return self::rawInstance()->rawQuery('SHOW TABLES LIKE \'' . self::$_config->get('dbPrefix') . '%\'')->findMany()->count();
+			return self::forTable('information_schema.tables')
+				->where($dbType === 'mssql' ? 'table_catalog' : 'table_schema', $dbName)
+				->whereLike('table_name', $dbPrefix . '%')
+				->count();
 		}
-		if (self::$_config->get('dbType') === 'pgsql')
+
+		/* pgsql */
+
+		if ($dbType === 'pgsql')
 		{
-			return self::forTable('pg_catalog.pg_tables')->whereLike('tablename', '%' . self::$_config->get('dbPrefix') . '%')->whereNotLike('tablename', '%pg_%')->whereNotLike('tablename', '%sql_%')->count();
+			return self::forTable('pg_catalog.pg_tables')
+				->whereLike('tablename', $dbPrefix . '%')
+				->whereNotLike('tablename', 'pg_%')
+				->whereNotLike('tablename', 'sql_%')
+				->count();
 		}
-		if (self::$_config->get('dbType') === 'sqlite')
+
+		/* sqlite */
+
+		if ($dbType === 'sqlite')
 		{
-			return self::forTable('sqlite_master')->where('type', 'table')->whereLike('name', '%' . self::$_config->get('dbPrefix') . '%')->whereNotLike('name', '%sqlite_%')->count();
+			return self::forTable('sqlite_master')
+				->whereLike('tbl_name', $dbPrefix . '%')
+				->whereNotLike('tbl_name', 'sql_%')
+				->count();
 		}
 	}
 

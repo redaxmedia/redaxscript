@@ -16,7 +16,7 @@ class Captcha
 	/**
 	 * instance of the language class
 	 *
-	 * @var object
+	 * @var Language
 	 */
 
 	protected $_language;

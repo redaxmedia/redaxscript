@@ -23,7 +23,7 @@ class Auth
 	/**
 	 * instance of the request class
 	 *
-	 * @var object
+	 * @var Request
 	 */
 
 	protected $_request;
@@ -191,8 +191,14 @@ class Auth
 
 	public function login($userId = null)
 	{
-		$user = Db::forTablePrefix('users')->whereIdIs($userId)->where('status', 1)->findOne();
-		if ($user)
+		$user = Db::forTablePrefix('users')
+			->whereIdIs($userId)
+			->where('status', 1)
+			->findOne();
+
+		/* handle user */
+
+		if ($user->user && $user->password)
 		{
 			$groupArray = array_map('intval', explode(',', $user->groups));
 			$group = Db::forTablePrefix('groups')->whereIdIn($groupArray)->where('status', 1)->select($this->_typeArray)->findArray();
@@ -332,13 +338,13 @@ class Auth
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return boolean
+	 * @return integer
 	 */
 
 	public function getStatus()
 	{
 		$authArray = $this->_getAuth();
-		return array_key_exists('user', $authArray) && array_key_exists('permission', $authArray);
+		return array_key_exists('user', $authArray) && array_key_exists('permission', $authArray) ? 1 : 0;
 	}
 
 	/**

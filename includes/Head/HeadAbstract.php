@@ -82,17 +82,19 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 
 	public function append($attribute = null, $value = null)
 	{
+		$collectionArray = $this->_getCollectionArray();
 		if (is_array($attribute))
 		{
-			self::$_collectionArray[self::$_namespace][] = array_map('trim', $attribute);
+			$collectionArray[] = array_map('trim', $attribute);
 		}
 		else if (strlen($attribute) && strlen($value))
 		{
-			self::$_collectionArray[self::$_namespace][] =
+			$collectionArray[] =
 			[
 				trim($attribute) => trim($value)
 			];
 		}
+		$this->_setCollectionArray($collectionArray);
 		return $this;
 	}
 
@@ -109,21 +111,23 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 
 	public function prepend($attribute = null, $value = null)
 	{
-		if (!is_array(self::$_collectionArray[self::$_namespace]))
+		$collectionArray = $this->_getCollectionArray();
+		if (!is_array($collectionArray))
 		{
-			self::$_collectionArray[self::$_namespace] = [];
+			$collectionArray = [];
 		}
 		if (is_array($attribute))
 		{
-			array_unshift(self::$_collectionArray[self::$_namespace], array_map('trim', $attribute));
+			array_unshift($collectionArray, array_map('trim', $attribute));
 		}
 		else if (strlen($attribute) && strlen($value))
 		{
-			array_unshift(self::$_collectionArray[self::$_namespace],
+			array_unshift($collectionArray,
 			[
 				trim($attribute) => trim($value)
 			]);
 		}
+		$this->_setCollectionArray($collectionArray);
 		return $this;
 	}
 
@@ -140,13 +144,15 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 
 	public function remove($attribute = null, $value = null)
 	{
-		foreach (self::$_collectionArray[self::$_namespace] as $collectionKey => $collectionValue)
+		$collectionArray = $this->_getCollectionArray();
+		foreach ($collectionArray as $collectionKey => $collectionValue)
 		{
 			if ($collectionValue[$attribute] === $value)
 			{
-				unset(self::$_collectionArray[self::$_namespace][$collectionKey]);
+				unset($collectionArray[$collectionKey]);
 			}
 		}
+		$this->_setCollectionArray($collectionArray);
 		return $this;
 	}
 
@@ -158,7 +164,33 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 
 	public function clear()
 	{
-		self::$_collectionArray[self::$_namespace] = [];
+		$this->_setCollectionArray();
 		return $this;
+	}
+
+	/**
+	 * get the collection array
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	protected function _getCollectionArray()
+	{
+		return self::$_collectionArray[self::$_namespace];
+	}
+
+	/**
+	 * set the collection array
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $collectionArray
+	 */
+
+	protected function _setCollectionArray($collectionArray = [])
+	{
+		self::$_collectionArray[self::$_namespace] = $collectionArray;
 	}
 }

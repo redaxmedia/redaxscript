@@ -21,7 +21,7 @@ abstract class ConsoleAbstract
 	/**
 	 * instance of the registry class
 	 *
-	 * @var object
+	 * @var Registry
 	 */
 
 	protected $_registry;
@@ -29,7 +29,7 @@ abstract class ConsoleAbstract
 	/**
 	 * instance of the request class
 	 *
-	 * @var object
+	 * @var Request
 	 */
 
 	protected $_request;
@@ -37,7 +37,7 @@ abstract class ConsoleAbstract
 	/**
 	 * instance of the language class
 	 *
-	 * @var object
+	 * @var Language
 	 */
 
 	protected $_language;
@@ -45,7 +45,7 @@ abstract class ConsoleAbstract
 	/**
 	 * instance of the config class
 	 *
-	 * @var object
+	 * @var Config
 	 */
 
 	protected $_config;

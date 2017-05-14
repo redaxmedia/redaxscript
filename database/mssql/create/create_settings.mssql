@@ -1,0 +1,8 @@
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = '/* {configPrefix} */settings')
+BEGIN
+	CREATE TABLE /* %PREFIX% */settings (
+		id int PRIMARY KEY IDENTITY,
+		name nvarchar(255) NULL,
+		value nvarchar(255) NULL
+	);
+END

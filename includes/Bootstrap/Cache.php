@@ -1,0 +1,37 @@
+<?php
+namespace Redaxscript\Bootstrap;
+
+use Redaxscript\Filter;
+
+/**
+ * children class to boot the cache
+ *
+ * @since 3.1.0
+ *
+ * @package Redaxscript
+ * @category Bootstrap
+ * @author Henry Ruhs
+ */
+
+class Cache extends BootstrapAbstract
+{
+	/**
+	 * automate run
+	 *
+	 * @since 3.1.0
+	 */
+
+	protected function _autorun()
+	{
+		$filterBoolean = new Filter\Boolean();
+		$noCache = $filterBoolean->sanitize($this->_request->getQuery('no-cache'));
+
+		/* set registry */
+
+		$this->_registry->set('noCache', false);
+		if ($this->_registry->get('loggedIn') === $this->_registry->get('token') || $noCache)
+		{
+			$this->_registry->set('noCache', true);
+		}
+	}
+}

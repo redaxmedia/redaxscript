@@ -3,8 +3,6 @@ namespace Redaxscript\Tests\Detector;
 
 use Redaxscript\Db;
 use Redaxscript\Detector;
-use Redaxscript\Registry;
-use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -20,68 +18,55 @@ use Redaxscript\Tests\TestCaseAbstract;
 class DetectorTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
 	 * setUp
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 */
 
 	public function setUp()
 	{
-		$this->_registry = Registry::getInstance();
-		$this->_request = Request::getInstance();
-	}
-
-	/**
-	 * setUpBeforeClass
-	 *
-	 * @since 3.0.0
-	 */
-
-	public static function setUpBeforeClass()
-	{
+		parent::setUp();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		$installer->insertSettings(
+		[
+			'adminName' => 'Test',
+			'adminUser' => 'test',
+			'adminPassword' => 'test',
+			'adminEmail' => 'test@test.com'
+		]);
+		Db::forTablePrefix('categories')
+			->create()
+			->set(
+			[
+				'title' => 'Category One',
+				'alias' => 'category-one'
+			])
+			->save();
 		Db::forTablePrefix('articles')
 			->create()
 			->set(
 			[
-				'id' => 2,
-				'title' => 'test',
-				'alias' => 'test',
-				'author' => 'test',
-				'text' => 'test',
+				'title' => 'Article One',
+				'alias' => 'article-one',
 				'language' => 'de',
-				'template' => 'wide',
-				'date' => '2016-01-01 00:00:00'
+				'template' => 'wide'
 			])
 			->save();
 	}
 
 	/**
-	 * tearDownAfterClass
+	 * tearDown
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 */
 
-	public static function tearDownAfterClass()
+	public function tearDown()
 	{
-		Db::setSetting('language', null);
-		Db::setSetting('template', null);
-		Db::forTablePrefix('articles')->whereNotEqual('id', 1)->deleteMany();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
 	}
 
 	/**
@@ -115,25 +100,25 @@ class DetectorTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param array $registryArray
 	 * @param array $queryArray
 	 * @param array $sessionArray
 	 * @param array $serverArray
 	 * @param array $settingArray
-	 * @param array $registryArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerLanguage
 	 */
 
-	public function testLanguage($queryArray = [], $sessionArray = [], $serverArray = [], $settingArray = [], $registryArray = [], $expect = null)
+	public function testLanguage($registryArray = [], $queryArray = [], $sessionArray = [], $serverArray = [], $settingArray = [], $expect = null)
 	{
 		/* setup */
 
+		$this->_registry->init($registryArray);
 		$this->_request->set('get', $queryArray);
 		$this->_request->set('session', $sessionArray);
 		$this->_request->set('server', $serverArray);
 		Db::setSetting('language', $settingArray['language']);
-		$this->_registry->init($registryArray);
 		$detector = new Detector\Language($this->_registry, $this->_request);
 
 		/* actual */
@@ -150,23 +135,23 @@ class DetectorTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param array $registryArray
 	 * @param array $queryArray
 	 * @param array $sessionArray
 	 * @param array $settingArray
-	 * @param array $registryArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerTemplate
 	 */
 
-	public function testTemplate($queryArray = [], $sessionArray = [], $settingArray = [], $registryArray = [], $expect = null)
+	public function testTemplate($registryArray = [], $queryArray = [], $sessionArray = [], $settingArray = [], $expect = null)
 	{
 		/* setup */
 
+		$this->_registry->init($registryArray);
 		$this->_request->set('get', $queryArray);
 		$this->_request->set('session', $sessionArray);
 		Db::setSetting('template', $settingArray['template']);
-		$this->_registry->init($registryArray);
 		$detector = new Detector\Template($this->_registry, $this->_request);
 
 		/* actual */

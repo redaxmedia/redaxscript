@@ -20,7 +20,7 @@ class Html implements FilterInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $html target html
+	 * @param string $html html
 	 * @param boolean $filter optional filter
 	 *
 	 * @return string

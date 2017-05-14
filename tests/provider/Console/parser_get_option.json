@@ -10,7 +10,7 @@
 	[
 		[
 			"console.php",
-			"test"
+			"option-one"
 		],
 		[
 		]
@@ -18,38 +18,38 @@
 	[
 		[
 			"console.php",
-			"test1",
-			"test2",
+			"option-one",
+			"option-two",
 			"-a",
 			"-b",
-			"test3",
-			"-c=test4",
-			"test5",
+			"option-three",
+			"-c=option-four",
+			"option-five",
 			"-d"
 		],
 		{
 			"a": true,
-			"b": "test3",
-			"c": "test4",
+			"b": "option-three",
+			"c": "option-four",
 			"d": true
 		}
 	],
 	[
 		[
 			"console.php",
-			"test1",
-			"test2",
+			"option-one",
+			"option-two",
 			"--a-long",
 			"--b-long",
-			"test3",
-			"--c-long=test4",
-			"test5",
+			"option-three",
+			"--c-long=option-four",
+			"option-five",
 			"--d-long"
 		],
 		{
 			"a-long": true,
-			"b-long": "test3",
-			"c-long": "test4",
+			"b-long": "option-three",
+			"c-long": "option-four",
 			"d-long": true
 		}
 	]

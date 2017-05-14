@@ -20,26 +20,26 @@ abstract class ControllerAbstract implements ControllerInterface
 	/**
 	 * instance of the registry class
 	 *
-	 * @var object
+	 * @var Registry
 	 */
 
 	protected $_registry;
 
 	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
 	 * instance of the request class
 	 *
-	 * @var object
+	 * @var Request
 	 */
 
 	protected $_request;
+
+	/**
+	 * instance of the language class
+	 *
+	 * @var Language
+	 */
+
+	protected $_language;
 
 	/**
 	 * constructor of the class
@@ -47,14 +47,14 @@ abstract class ControllerAbstract implements ControllerInterface
 	 * @since 3.0.0
 	 *
 	 * @param Registry $registry instance of the registry class
-	 * @param Language $language instance of the language class
 	 * @param Request $request instance of the request class
+	 * @param Language $language instance of the language class
 	 */
 
-	public function __construct(Registry $registry, Language $language, Request $request)
+	public function __construct(Registry $registry, Request $request, Language $language)
 	{
 		$this->_registry = $registry;
-		$this->_language = $language;
 		$this->_request = $request;
+		$this->_language = $language;
 	}
 }

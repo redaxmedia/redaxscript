@@ -108,6 +108,9 @@ class Uninstall extends CommandAbstract
 	{
 		$alias = $this->prompt('alias', $optionArray);
 		$moduleClass = 'Redaxscript\\Modules\\' . $alias . '\\' . $alias;
+
+		/* uninstall */
+
 		if (class_exists($moduleClass))
 		{
 			$module = new $moduleClass($this->_registry, $this->_request, $this->_language, $this->_config);

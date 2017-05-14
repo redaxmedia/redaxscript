@@ -194,43 +194,43 @@ class Mailer
 
 		$this->_headerString = 'MIME-Version: 1.0' . PHP_EOL;
 
-		/* empty attachment */
+		/* handle attachment */
 
-		if (!$this->_attachmentArray)
+		if ($this->_attachmentArray)
 		{
-			$this->_headerString .= 'Content-Type: text/html; charset=' . Db::getSetting('charset') . PHP_EOL;
-		}
-
-		/* else handle attachment */
-
-		else
-		{
-			foreach ($this->_attachmentArray as $file => $content)
+			foreach ($this->_attachmentArray as $attachment)
 			{
-				$content = chunk_split(base64_encode($content));
-				$boundary = uniqid();
-				$this->_headerString .= 'Content-Type: multipart/mixed; boundary="' . $boundary . '"' . PHP_EOL . PHP_EOL;
-				$this->_headerString .= '--' . uniqid() . PHP_EOL;
-
-				/* integrate body string */
-
-				if ($this->_bodyString)
+				if (is_file($attachment))
 				{
-					$this->_headerString .= 'Content-Type: text/html; charset=' . Db::getSetting('charset') . PHP_EOL;
-					$this->_headerString .= 'Content-Transfer-Encoding: 8bit' . PHP_EOL . PHP_EOL;
-					$this->_headerString .= $this->_bodyString . PHP_EOL . PHP_EOL;
+					$content = trim(chunk_split(base64_encode($attachment)));
+					$boundary = uniqid();
+					$this->_headerString .= 'Content-Type: multipart/mixed; boundary="' . $boundary . '"' . PHP_EOL;
 					$this->_headerString .= '--' . $boundary . PHP_EOL;
 
-					/* reset body string */
+					/* handle body string */
 
-					$this->_bodyString = null;
+					if ($this->_bodyString)
+					{
+						$this->_headerString .= 'Content-Type: text/html; charset=' . Db::getSetting('charset') . PHP_EOL;
+						$this->_headerString .= 'Content-Transfer-Encoding: 8bit' . PHP_EOL;
+						$this->_headerString .= $this->_bodyString . PHP_EOL;
+						$this->_headerString .= '--' . $boundary . PHP_EOL;
+
+						/* reset body string */
+
+						$this->_bodyString = null;
+					}
+					$this->_headerString .= 'Content-Type: application/octet-stream; name="' . $attachment . '"' . PHP_EOL;
+					$this->_headerString .= 'Content-Transfer-Encoding: base64' . PHP_EOL;
+					$this->_headerString .= 'Content-Disposition: attachment; filename="' . $attachment . '"' . PHP_EOL;
+					$this->_headerString .= $content . PHP_EOL;
+					$this->_headerString .= '--' . $boundary . '--';
 				}
-				$this->_headerString .= 'Content-Type: application/octet-stream; name="' . $file . '"' . PHP_EOL;
-				$this->_headerString .= 'Content-Transfer-Encoding: base64' . PHP_EOL;
-				$this->_headerString .= 'Content-Disposition: attachment; filename="' . $file . '"' . PHP_EOL . PHP_EOL;
-				$this->_headerString .= $content . PHP_EOL . PHP_EOL;
-				$this->_headerString .= '--' . $boundary . '--';
 			}
+		}
+		else
+		{
+			$this->_headerString .= 'Content-Type: text/html; charset=' . Db::getSetting('charset') . PHP_EOL;
 		}
 
 		/* collect from output */

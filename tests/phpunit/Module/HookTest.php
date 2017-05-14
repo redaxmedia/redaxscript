@@ -1,11 +1,8 @@
 <?php
 namespace Redaxscript\Tests\Module;
 
-use Redaxscript\Config;
-use Redaxscript\Language;
 use Redaxscript\Module;
-use Redaxscript\Registry;
-use Redaxscript\Request;
+use Redaxscript\Modules\TestDummy;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -21,6 +18,37 @@ use Redaxscript\Tests\TestCaseAbstract;
 class HookTest extends TestCaseAbstract
 {
 	/**
+	 * setUp
+	 *
+	 * @since 3.1.0
+	 */
+
+	public function setUp()
+	{
+		parent::setUp();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		$testDummy = new TestDummy\TestDummy($this->_registry, $this->_request, $this->_language, $this->_config);
+		$testDummy->install();
+	}
+
+	/**
+	 * tearDown
+	 *
+	 * @since 3.1.0
+	 */
+
+	public function tearDown()
+	{
+		$testDummy = new TestDummy\TestDummy($this->_registry, $this->_request, $this->_language, $this->_config);
+		$testDummy->uninstall();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
+	}
+
+	/**
 	 * testGetModuleArray
 	 *
 	 * @since 2.4.0
@@ -30,7 +58,7 @@ class HookTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		Module\Hook::construct(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		Module\Hook::construct($this->_registry, $this->_request, $this->_language, $this->_config);
 		Module\Hook::init();
 
 		/* actual */
@@ -52,7 +80,7 @@ class HookTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		Module\Hook::construct(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		Module\Hook::construct($this->_registry, $this->_request, $this->_language, $this->_config);
 		Module\Hook::init();
 		Module\Hook::trigger('render');
 
@@ -75,7 +103,7 @@ class HookTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		Module\Hook::construct(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		Module\Hook::construct($this->_registry, $this->_request, $this->_language, $this->_config);
 		Module\Hook::init();
 
 		/* actual */
@@ -84,7 +112,7 @@ class HookTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($actualArray['info']['Test dummy'][0], 'test');
+		$this->assertEquals('Test Dummy', $actualArray['info']['Test Dummy'][0]);
 	}
 
 	/**
@@ -97,7 +125,7 @@ class HookTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		Module\Hook::construct(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		Module\Hook::construct($this->_registry, $this->_request, $this->_language, $this->_config);
 		Module\Hook::init();
 
 		/* actual */
@@ -119,7 +147,7 @@ class HookTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		Module\Hook::construct(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		Module\Hook::construct($this->_registry, $this->_request, $this->_language, $this->_config);
 		Module\Hook::init();
 
 		/* actual */
@@ -128,7 +156,7 @@ class HookTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals(0, $actual);
+		$this->assertEquals(2, $actual);
 	}
 
 	/**
@@ -141,7 +169,7 @@ class HookTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		Module\Hook::construct(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		Module\Hook::construct($this->_registry, $this->_request, $this->_language, $this->_config);
 		Module\Hook::init();
 
 		/* actual */

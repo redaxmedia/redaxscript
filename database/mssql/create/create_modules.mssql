@@ -1,0 +1,13 @@
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = '/* {configPrefix} */modules')
+BEGIN
+	CREATE TABLE /* %PREFIX% */modules (
+		id int PRIMARY KEY IDENTITY,
+		name nvarchar(255) NULL,
+		alias nvarchar(255) NULL,
+		author nvarchar(255) NULL,
+		description nvarchar(255) NULL,
+		version nvarchar(255) NULL,
+		status int DEFAULT 1,
+		access nvarchar(255) NULL
+	);
+END

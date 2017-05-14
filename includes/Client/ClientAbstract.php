@@ -18,7 +18,7 @@ abstract class ClientAbstract
 	/**
 	 * instance of the request class
 	 *
-	 * @var object
+	 * @var Request
 	 */
 
 	protected $_request;

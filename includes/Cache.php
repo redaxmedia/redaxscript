@@ -119,7 +119,7 @@ class Cache
 	public function retrieve($bundle = null)
 	{
 		$path = $this->getPath($bundle);
-		if (file_exists($path))
+		if (is_file($path))
 		{
 			return file_get_contents($path);
 		}
@@ -189,7 +189,7 @@ class Cache
 
 		foreach ($cacheDirectoryArray as $value)
 		{
-			$path = $this->_directory . '/' . $value;
+			$path = $this->_directory . DIRECTORY_SEPARATOR . $value;
 			if (is_file($path) && !$this->_validateFile($path, $lifetime))
 			{
 				$cacheDirectory->remove($value);

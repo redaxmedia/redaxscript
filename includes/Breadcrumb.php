@@ -17,7 +17,7 @@ class Breadcrumb
 	/**
 	 * instance of the registry class
 	 *
-	 * @var object
+	 * @var Registry
 	 */
 
 	protected $_registry;
@@ -25,7 +25,7 @@ class Breadcrumb
 	/**
 	 * instance of the language class
 	 *
-	 * @var object
+	 * @var Language
 	 */
 
 	protected $_language;
@@ -127,26 +127,25 @@ class Breadcrumb
 	public function render()
 	{
 		$output = Module\Hook::trigger('breadcrumbStart');
-		$outputItem = null;
+
+		/* html elements */
+
+		$listElement = new Html\Element();
+		$listElement->init('ul',
+		[
+			'class' => $this->_optionArray['className']['list']
+		]);
+		$itemElement = new Html\Element();
+		$itemElement->init('li');
+		$linkElement = new Html\Element();
+		$linkElement->init('a');
 
 		/* breadcrumb keys */
 
 		$breadcrumbKeys = array_keys($this->_breadcrumbArray);
 		$lastKey = end($breadcrumbKeys);
 
-		/* html elements */
-
-		$linkElement = new Html\Element();
-		$linkElement->init('a');
-		$itemElement = new Html\Element();
-		$itemElement->init('li');
-		$listElement = new Html\Element();
-		$listElement->init('ul',
-		[
-			'class' => $this->_optionArray['className']['list']
-		]);
-
-		/* collect item output */
+		/* process breadcrumb */
 
 		foreach ($this->_breadcrumbArray as $key => $value)
 		{
@@ -154,42 +153,44 @@ class Breadcrumb
 			$route = array_key_exists('route', $value) ? $value['route'] : null;
 			if ($title)
 			{
-				$outputItem .= '<li>';
+				$itemElement->clear();
 
-				/* create a link */
+				/* append link */
 
 				if ($route)
 				{
-					$outputItem .= $linkElement
-						->attr('href', $this->_registry->get('parameterRoute') . $route)
-						->text($title);
+					$itemElement->append(
+						$linkElement
+							->attr('href', $this->_registry->get('parameterRoute') . $route)
+							->text($title)
+					);
 				}
 
-				/* else plain text */
+				/* else append text */
 
 				else
 				{
-					$outputItem .= $title;
+					$itemElement->text($title);
 				}
-				$outputItem .= '</li>';
+				$listElement->append($itemElement);
 
-				/* add divider */
+				/* append divider */
 
 				if ($key !== $lastKey && $this->_optionArray['divider'])
 				{
-					$outputItem .= $itemElement
-						->addClass($this->_optionArray['className']['divider'])
-						->text($this->_optionArray['divider']);
+					$listElement->append(
+						$itemElement
+							->copy()
+							->addClass($this->_optionArray['className']['divider'])
+							->text($this->_optionArray['divider'])
+					);
 				}
 			}
 		}
 
 		/* collect list output */
 
-		if ($outputItem)
-		{
-			$output = $listElement->html($outputItem);
-		}
+		$output .= $listElement;
 		$output .= Module\Hook::trigger('breadcrumbEnd');
 		return $output;
 	}
@@ -205,7 +206,7 @@ class Breadcrumb
 	protected function _create($key = 0)
 	{
 		$aliasValidator = new Validator\Alias();
-		$title = $this->_registry->get('metaTitle');
+		$title = $this->_registry->get('useTitle');
 		$firstParameter = $this->_registry->get('firstParameter');
 		$firstTable = $this->_registry->get('firstTable');
 		$fullRoute = $this->_registry->get('fullRoute');
@@ -234,14 +235,9 @@ class Breadcrumb
 
 		/* else default alias */
 
-		else if ($aliasValidator->validate($firstParameter, Validator\Alias::MODE_DEFAULT) === Validator\ValidatorInterface::PASSED)
+		else if ($aliasValidator->validate($firstParameter, Validator\Alias::MODE_DEFAULT) === Validator\ValidatorInterface::PASSED && $firstParameter && $this->_language->get($firstParameter))
 		{
-			/* join default title */
-
-			if ($firstParameter && $this->_language->get($firstParameter))
-			{
-				$this->_breadcrumbArray[$key]['title'] = $this->_language->get($firstParameter);
-			}
+			$this->_breadcrumbArray[$key]['title'] = $this->_language->get($firstParameter);
 		}
 
 		/* handle error */
@@ -260,7 +256,7 @@ class Breadcrumb
 	}
 
 	/**
-	 * create the breadcrumb array for current administration
+	 * create the breadcrumb array for the administration
 	 *
 	 * @since 2.1.0
 	 *
@@ -310,7 +306,7 @@ class Breadcrumb
 	}
 
 	/**
-	 * create the breadcrumb array for current content
+	 * create the breadcrumb array for the content
 	 *
 	 * @since 2.1.0
 	 *

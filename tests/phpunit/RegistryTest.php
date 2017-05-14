@@ -1,8 +1,6 @@
 <?php
 namespace Redaxscript\Tests;
 
-use Redaxscript\Registry;
-
 /**
  * RegistryTest
  *
@@ -16,25 +14,6 @@ use Redaxscript\Registry;
 
 class RegistryTest extends TestCaseAbstract
 {
-	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * setUp
-	 *
-	 * @since 2.1.0
-	 */
-
-	public function setUp()
-	{
-		$this->_registry = Registry::getInstance();
-	}
-
 	/**
 	 * testInit
 	 *

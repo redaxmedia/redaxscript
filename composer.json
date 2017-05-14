@@ -1,51 +1,46 @@
 {
 	"name": "redaxmedia/redaxscript",
-	"description": "Ultra lightweight Content Management System",
-	"version": "3.0.1",
-	"homepage": "http://redaxscript.com",
+	"description": "A modern, ultra lightweight and rocket fast Content Management System",
+	"version": "3.1.0",
+	"homepage": "https://redaxscript.com",
 	"license": "GPL-3.0",
 	"require":
 	{
-		"j4mie/idiorm": "v1.5.2",
-		"neronmoon/scriptsdev": "0.1.0",
+		"j4mie/idiorm": "v1.5.3",
 		"php": ">5.4"
 	},
 	"require-dev":
 	{
 		"brianium/paratest": "0.14.0",
-		"drupal/coder": "8.2.11",
-		"johnkary/phpunit-speedtrap": "1.0.1",
+		"drupal/coder": "8.2.12",
+		"johnkary/phpunit-speedtrap": "2.0.0-BETA1",
 		"mikey179/vfsStream": "1.6.4",
 		"phpbench/phpbench": "0.13.0",
-		"phpunit/phpunit": "5.7.5",
+		"phpunit/phpunit": "6.1.0",
 		"redaxmedia/tocgen": "4.1.1",
 		"satooshi/php-coveralls": "1.0.1",
 		"sebastian/phpcpd": "3.0.0",
+		"slowprog/composer-copy-file": "0.2.0",
 		"squizlabs/php_codesniffer": "2.8.1"
 	},
 	"scripts":
 	{
 		"post-install-cmd":
 		[
-			"echo Please install CYGWIN on Windows to perform the install commands:",
-			"mkdir -p cache",
-			"mkdir -p libraries",
-			"cp -r vendor/j4mie/idiorm/idiorm.php libraries/ORM.php"
+			"SlowProg\\CopyFile\\ScriptHandler::copy",
+			"php -r \"is_dir('cache') || mkdir('cache');\""
 		],
 		"post-update-cmd":
 		[
 			"@post-install-cmd"
 		]
 	},
-	"scripts-dev":
+	"extra":
 	{
-		"post-install-cmd":
-		[
-			"cp -r vendor/drupal/coder/coder_sniffer/Drupal vendor/squizlabs/php_codesniffer/CodeSniffer/Standards"
-		],
-		"post-update-cmd":
-		[
-			"@post-install-cmd"
-		]
+		"copy-file":
+		{
+			"vendor/j4mie/idiorm/idiorm.php": "libraries/ORM.php",
+			"vendor/drupal/coder/coder_sniffer/Drupal": "vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Drupal"
+		}
 	}
 }

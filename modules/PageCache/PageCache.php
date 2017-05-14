@@ -24,7 +24,7 @@ class PageCache extends Config
 
 	protected static $_moduleArray =
 	[
-		'name' => 'Page cache',
+		'name' => 'Page Cache',
 		'alias' => 'PageCache',
 		'author' => 'Redaxmedia',
 		'description' => 'Simple page cache',
@@ -72,7 +72,7 @@ class PageCache extends Config
 
 		$cache = new Cache();
 		$cache->init($this->_configArray['directory'], $this->_configArray['extension']);
-		$bundle = $this->_registry->get('fullRoute') . '/' . $this->_registry->get('template') . '/' . $this->_registry->get('language');
+		$bundle = $this->_registry->get('root') . $this->_registry->get('fullRoute') . '/' . $this->_registry->get('template') . '/' . $this->_registry->get('language');
 
 		/* load from cache */
 

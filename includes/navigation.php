@@ -171,7 +171,7 @@ function navigation_list($table, $options)
 
 				/* collect item output */
 
-				$output .=  '<li' . $class_string . '><a href="' . Redaxscript\Registry::get('parameterRoute') . $route . '">' . $title . '</a>';
+				$output .= '<li' . $class_string . '><a href="' . Redaxscript\Registry::get('parameterRoute') . $route . '">' . $title . '</a>';
 
 				/* collect children list output */
 

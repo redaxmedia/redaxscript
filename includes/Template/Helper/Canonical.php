@@ -35,7 +35,7 @@ class Canonical extends HelperAbstract
 		if ($lastTable === 'categories')
 		{
 			$articles = Db::forTablePrefix('articles')->where('category', $lastId);
-			$articlesTotal = $articles->findMany()->count();
+			$articlesTotal = $articles->count();
 			if ($articlesTotal === 1)
 			{
 				$lastTable = 'articles';

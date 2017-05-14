@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Tests;
 
-use Redaxscript\Config;
 use org\bovigo\vfs\vfsStream as Stream;
 use org\bovigo\vfs\vfsStreamFile as StreamFile;
 use org\bovigo\vfs\vfsStreamWrapper as StreamWrapper;
@@ -19,14 +18,6 @@ use org\bovigo\vfs\vfsStreamWrapper as StreamWrapper;
 class ConfigTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the config class
-	 *
-	 * @var object
-	 */
-
-	protected $_config;
-
-	/**
 	 * array to restore config
 	 *
 	 * @var array
@@ -42,32 +33,27 @@ class ConfigTest extends TestCaseAbstract
 
 	public function setUp()
 	{
-		$this->_config = Config::getInstance();
-		$this->_configArray = $this->_config->get();
-	}
-
-	/**
-	 * setUpBeforeClass
-	 *
-	 * @since 3.0.0
-	 */
-
-	public static function setUpBeforeClass()
-	{
+		parent::setUp();
 		Stream::setup('root');
 		$file = new StreamFile('config.php');
 		StreamWrapper::getRoot()->addChild($file);
+		$this->_configArray = $this->_config->get();
 	}
 
 	/**
 	 * tearDown
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 */
 
 	public function tearDown()
 	{
 		$this->_config->set('dbType', $this->_configArray['dbType']);
+		$this->_config->set('dbHost', $this->_configArray['dbHost']);
+		$this->_config->set('dbPrefix', $this->_configArray['dbPrefix']);
+		$this->_config->set('dbName', $this->_configArray['dbName']);
+		$this->_config->set('dbUser', $this->_configArray['dbUser']);
+		$this->_config->set('dbPassword', $this->_configArray['dbPassword']);
 	}
 
 	/**

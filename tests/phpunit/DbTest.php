@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Tests;
 
-use Redaxscript\Config;
 use Redaxscript\Db;
 
 /**
@@ -16,14 +15,6 @@ use Redaxscript\Db;
 
 class DbTest extends TestCaseAbstract
 {
-	/**
-	 * instance of the config class
-	 *
-	 * @var object
-	 */
-
-	protected $_config;
-
 	/**
 	 * array to restore config
 	 *
@@ -40,8 +31,35 @@ class DbTest extends TestCaseAbstract
 
 	public function setUp()
 	{
-		$this->_config = Config::getInstance();
+		parent::setUp();
 		$this->_configArray = $this->_config->get();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		$installer->insertSettings(
+		[
+			'adminName' => 'Test',
+			'adminUser' => 'test',
+			'adminPassword' => 'test',
+			'adminEmail' => 'test@test.com'
+		]);
+		Db::forTablePrefix('categories')
+			->create()
+			->set(
+			[
+				'title' => 'Category One',
+				'alias' => 'category-one'
+			])
+			->save();
+		Db::forTablePrefix('articles')
+			->create()
+			->set(
+			[
+				'title' => 'Article One',
+				'alias' => 'article-one',
+				'category' => 1
+			])
+			->save();
 	}
 
 	/**
@@ -52,7 +70,11 @@ class DbTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
 		$this->_config->set('dbType', $this->_configArray['dbType']);
+		$this->_config->set('dbPassword', $this->_configArray['dbPassword']);
 	}
 
 	/**
@@ -157,7 +179,7 @@ class DbTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertGreaterThan(-1, $actual);
+		$this->assertEquals(8, $actual);
 	}
 
 	/**
@@ -170,11 +192,11 @@ class DbTest extends TestCaseAbstract
 	{
 		/* actual */
 
-		$actual = Db::forTablePrefix('categories')->where('alias', 'home')->findOne()->alias;
+		$actual = Db::forTablePrefix('categories')->where('alias', 'category-one')->findOne()->alias;
 
 		/* compare */
 
-		$this->assertEquals('home', $actual);
+		$this->assertEquals('category-one', $actual);
 	}
 
 	/**
@@ -189,15 +211,15 @@ class DbTest extends TestCaseAbstract
 
 		$expectArray =
 		[
-			'category_alias' => 'home',
-			'article_alias' => 'welcome'
+			'category_alias' => 'category-one',
+			'article_alias' => 'article-one'
 		];
 		$actualArray = Db::forTablePrefix('articles')
 			->tableAlias('a')
 			->leftJoinPrefix('categories', 'a.category = c.id', 'c')
 			->select('c.alias', 'category_alias')
 			->select('a.alias', 'article_alias')
-			->where('a.alias', 'welcome')
+			->where('a.alias', 'article-one')
 			->findArray();
 
 		/* compare */
@@ -220,13 +242,13 @@ class DbTest extends TestCaseAbstract
 			'alias'
 		],
 		[
-			'%welcome%'
+			'%article-one%'
 		])
 		->findOne()->alias;
 
 		/* compare */
 
-		$this->assertEquals('welcome', $actual);
+		$this->assertEquals('article-one', $actual);
 	}
 
 	/**
@@ -244,7 +266,7 @@ class DbTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		Db::forTablePrefix('articles')->where('alias', 'welcome')->findOne()->set('language', $language)->save();
+		Db::forTablePrefix('articles')->where('alias', 'article-one')->findOne()->set('language', $language)->save();
 
 		/* actual */
 
@@ -328,7 +350,7 @@ class DbTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals('home', $actual);
+		$this->assertEquals('category-one', $actual);
 	}
 
 	/**
@@ -345,6 +367,6 @@ class DbTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals('home', $actual);
+		$this->assertEquals('category-one', $actual);
 	}
 }

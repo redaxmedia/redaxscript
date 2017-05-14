@@ -1,12 +1,7 @@
 <?php
 namespace Redaxscript\Tests\Console\Command;
 
-use Redaxscript\Config;
 use Redaxscript\Console\Command;
-use Redaxscript\Directory;
-use Redaxscript\Language;
-use Redaxscript\Registry;
-use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -24,52 +19,6 @@ use Redaxscript\Tests\TestCaseAbstract;
 class BackupTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
-	 * instance of the config class
-	 *
-	 * @var object
-	 */
-
-	protected $_config;
-
-	/**
-	 * setUp
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function setUp()
-	{
-		$this->_registry = Registry::getInstance();
-		$this->_request = Request::getInstance();
-		$this->_language = Language::getInstance();
-		$this->_config = Config::getInstance();
-	}
-
-	/**
 	 * tearDown
 	 *
 	 * @since 3.0.0
@@ -78,19 +27,6 @@ class BackupTest extends TestCaseAbstract
 	public function tearDown()
 	{
 		$this->_request->setServer('argv', null);
-	}
-
-	/**
-	 * tearDownAfterClass
-	 *
-	 * @since 3.0.0
-	 */
-
-	public static function tearDownAfterClass()
-	{
-		$rootDirectory = new Directory();
-		$rootDirectory->init('.');
-		$rootDirectory->remove('.backup');
 	}
 
 	/**
@@ -131,7 +67,7 @@ class BackupTest extends TestCaseAbstract
 			'backup',
 			'database',
 			'--directory',
-			'.backup'
+			'build'
 		]);
 		$backupCommand = new Command\Backup($this->_registry, $this->_request, $this->_language, $this->_config);
 

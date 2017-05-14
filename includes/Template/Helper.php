@@ -11,7 +11,7 @@ use Redaxscript\Language;
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category Helper
+ * @category Template
  * @author Henry Ruhs
  */
 

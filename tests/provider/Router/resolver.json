@@ -91,7 +91,7 @@
 		}
 	],
 	[
-		"admin/delete/articles/1/0071877d20a65c02d9a1654f109b97dc61416d1a",
+		"admin/delete/articles/1/ffd845f78510f02580d329127bab3dd1aa7f4453",
 		{
 			"lite": "admin/view/articles",
 			"full": "admin/view/articles"
@@ -105,7 +105,7 @@
 		}
 	],
 	[
-		"admin/install/modules/helloWorld/0071877d20a65c02d9a1654f109b97dc61416d1a",
+		"admin/install/modules/HelloWorld/ffd845f78510f02580d329127bab3dd1aa7f4453",
 		{
 			"lite": "admin/view/modules",
 			"full": "admin/view/modules"

@@ -1,6 +1,8 @@
 service_name: travis-ci
+
 coverage_clover:
- - build/mysql.xml
- - build/pgsql.xml
- - build/sqlite.xml
+- build/mysql.xml
+- build/pgsql.xml
+- build/sqlite.xml
+
 json_path: build/coveralls.json

@@ -20,7 +20,7 @@ class Base implements HeadInterface
 	/**
 	 * instance of the registry class
 	 *
-	 * @var object
+	 * @var Registry
 	 */
 
 	protected $_registry;

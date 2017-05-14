@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<reader id="1">
-	<one id="2"></one>
-	<one id="3"></one>
-	<two id="4"></two>
-</reader>
+<root id="1">
+	<one id="2">2</one>
+	<one id="3">3</one>
+	<two id="4">4</two>
+</root>

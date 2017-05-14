@@ -1,0 +1,19 @@
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = '/* {configPrefix} */groups')
+BEGIN
+	CREATE TABLE /* %PREFIX% */groups (
+		id int PRIMARY KEY IDENTITY,
+		name nvarchar(255) NULL,
+		alias nvarchar(255) NULL,
+		description nvarchar(255) NULL,
+		categories nvarchar(255) NULL,
+		articles nvarchar(255) NULL,
+		extras nvarchar(255) NULL,
+		comments nvarchar(255) NULL,
+		groups nvarchar(255) NULL,
+		users nvarchar(255) NULL,
+		modules nvarchar(255) NULL,
+		settings int NULL,
+		filter int DEFAULT 1,
+		status int DEFAULT 1
+	);
+END

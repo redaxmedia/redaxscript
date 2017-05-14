@@ -159,7 +159,7 @@ class DirectoryTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = file_get_contents(Stream::url($path . '/' . $putArray[0]));
+		$actual = file_get_contents(Stream::url($path . DIRECTORY_SEPARATOR . $putArray[0]));
 
 		/* compare */
 

@@ -1,8 +1,6 @@
 <?php
 namespace Redaxscript\Tests\View;
 
-use Redaxscript\Language;
-use Redaxscript\Registry;
 use Redaxscript\Tests\TestCaseAbstract;
 use Redaxscript\View;
 
@@ -18,34 +16,6 @@ use Redaxscript\View;
 
 class ConsoleFormTest extends TestCaseAbstract
 {
-	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
-	 * setUp
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function setUp()
-	{
-		$this->_registry = Registry::getInstance();
-		$this->_language = Language::getInstance();
-	}
-
 	/**
 	 * providerRender
 	 *

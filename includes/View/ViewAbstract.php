@@ -19,7 +19,7 @@ abstract class ViewAbstract implements ViewInterface
 	/**
 	 * instance of the registry class
 	 *
-	 * @var object
+	 * @var Registry
 	 */
 
 	protected $_registry;
@@ -27,7 +27,7 @@ abstract class ViewAbstract implements ViewInterface
 	/**
 	 * instance of the language class
 	 *
-	 * @var object
+	 * @var Language
 	 */
 
 	protected $_language;

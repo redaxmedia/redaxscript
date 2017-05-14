@@ -2,6 +2,7 @@
 namespace Redaxscript\Tests\Admin\View\Helper;
 
 use Redaxscript\Admin\View\Helper;
+use Redaxscript\Db;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -16,6 +17,80 @@ use Redaxscript\Tests\TestCaseAbstract;
 
 class OptionTest extends TestCaseAbstract
 {
+	/**
+	 * setUp
+	 *
+	 * @since 3.1.0
+	 */
+
+	public function setUp()
+	{
+		parent::setUp();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		$installer->insertSettings(
+		[
+			'adminName' => 'Test',
+			'adminUser' => 'test',
+			'adminPassword' => 'test',
+			'adminEmail' => 'test@test.com'
+		]);
+		Db::forTablePrefix('articles')
+			->create()
+			->set(
+			[
+				'title' => 'Article One',
+				'alias' => 'article-one'
+			])
+			->save();
+		Db::forTablePrefix('articles')
+			->create()
+			->set(
+			[
+				'title' => 'Article Two',
+				'alias' => 'article-two'
+			])
+			->save();
+		Db::forTablePrefix('articles')
+			->create()
+			->set(
+			[
+				'title' => 'Article Three',
+				'alias' => 'article-three'
+			])
+			->save();
+		Db::forTablePrefix('groups')
+			->create()
+			->set(
+			[
+				'name' => 'Group One',
+				'alias' => 'group-one'
+			])
+			->save();
+		Db::forTablePrefix('groups')
+			->create()
+			->set(
+			[
+				'name' => 'Group Two',
+				'alias' => 'group-two'
+			])
+			->save();
+	}
+
+	/**
+	 * tearDown
+	 *
+	 * @since 3.1.0
+	 */
+
+	public function tearDown()
+	{
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
+	}
+
 	/**
 	 * providerOption
 	 *
@@ -260,11 +335,9 @@ class OptionTest extends TestCaseAbstract
 	{
 		/* actual */
 
-		$actualArray = Helper\Option::getContentArray('extras',
+		$actualArray = Helper\Option::getContentArray('articles',
 		[
-			4,
-			5,
-			6
+			3,
 		]);
 
 		/* compare */

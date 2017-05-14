@@ -69,7 +69,7 @@ class InstallForm extends ViewAbstract
 			[
 				'for' => 'db-type'
 			])
-			->select(Helper\Option::getDatabaseArray(),
+			->select($this->_registry->get('driverArray'),
 			[
 				'id' => 'db-type',
 				'name' => 'db-type',
@@ -83,6 +83,7 @@ class InstallForm extends ViewAbstract
 			->text(
 			[
 				'data-sqlite' => uniqid() . '.sqlite',
+				'data-mssql' => 'localhost',
 				'data-mysql' => 'localhost',
 				'data-pgsql' => 'localhost',
 				'id' => 'db-host',
@@ -170,7 +171,7 @@ class InstallForm extends ViewAbstract
 			->append('</li><li>')
 			->label($this->_language->get('password'),
 			[
-				'for' => 'admin_password'
+				'for' => 'admin-password'
 			])
 			->password(
 			[

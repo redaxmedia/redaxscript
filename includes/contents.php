@@ -7,7 +7,7 @@
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Contents
+ * @category Content
  * @author Henry Ruhs
  */
 
@@ -262,7 +262,7 @@ function contents()
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Contents
+ * @category Content
  * @author Henry Ruhs
  *
  * @param string $filter
@@ -389,7 +389,7 @@ function extras($filter)
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Contents
+ * @category Content
  * @author Henry Ruhs
  *
  * @param string $table
@@ -455,7 +455,7 @@ function byline($table, $id, $author, $date)
  * @deprecated 2.0.0
  *
  * @package Redaxscript
- * @category Contents
+ * @category Content
  * @author Henry Ruhs
  *
  * @param integer $sub_active

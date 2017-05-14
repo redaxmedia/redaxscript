@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Tests\Router;
 
-use Redaxscript\Request;
 use Redaxscript\Router;
 use Redaxscript\Tests\TestCaseAbstract;
 
@@ -18,25 +17,6 @@ use Redaxscript\Tests\TestCaseAbstract;
 class ParameterTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
-	 * setUp
-	 *
-	 * @since 2.4.0
-	 */
-
-	public function setUp()
-	{
-		$this->_request = Request::getInstance();
-	}
-
-	/**
 	 * providerParameter
 	 *
 	 * @since 3.0.0
@@ -52,7 +32,7 @@ class ParameterTest extends TestCaseAbstract
 	/**
 	 * testGetFirst
 	 *
-	 * @since 2.4.0
+	 * @since 3.1.0
 	 *
 	 * @param string $route
 	 * @param array $expectArray
@@ -70,17 +50,22 @@ class ParameterTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $parameter->getFirst();
+		$actualArray =
+		[
+			'first' => $parameter->getFirst(),
+			'firstSub' => $parameter->getFirstSub()
+		];
 
 		/* compare */
 
-		$this->assertEquals($expectArray['first'], $actual);
+		$this->assertEquals($expectArray['first'], $actualArray['first']);
+		$this->assertEquals($expectArray['firstSub'], $actualArray['firstSub']);
 	}
 
 	/**
 	 * testGetSecond
 	 *
-	 * @since 2.4.0
+	 * @since 3.1.0
 	 *
 	 * @param string $route
 	 * @param array $expectArray
@@ -98,11 +83,16 @@ class ParameterTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $parameter->getSecond();
+		$actualArray =
+		[
+			'second' => $parameter->getSecond(),
+			'secondSub' => $parameter->getSecondSub()
+		];
 
 		/* compare */
 
-		$this->assertEquals($expectArray['second'], $actual);
+		$this->assertEquals($expectArray['second'], $actualArray['second']);
+		$this->assertEquals($expectArray['secondSub'], $actualArray['secondSub']);
 	}
 
 	/**
@@ -126,11 +116,16 @@ class ParameterTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $parameter->getThird();
+		$actualArray =
+		[
+			'third' => $parameter->getThird(),
+			'thirdSub' => $parameter->getThirdSub(),
+		];
 
 		/* compare */
 
-		$this->assertEquals($expectArray['third'], $actual);
+		$this->assertEquals($expectArray['third'], $actualArray['third']);
+		$this->assertEquals($expectArray['thirdSub'], $actualArray['thirdSub']);
 	}
 
 	/**
@@ -154,11 +149,16 @@ class ParameterTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $parameter->getFourth();
+		$actualArray =
+		[
+			'fourth' => $parameter->getFourth(),
+			'fourthSub' => $parameter->getFourthSub(),
+		];
 
 		/* compare */
 
-		$this->assertEquals($expectArray['fourth'], $actual);
+		$this->assertEquals($expectArray['fourth'], $actualArray['fourth']);
+		$this->assertEquals($expectArray['fourthSub'], $actualArray['fourthSub']);
 	}
 
 	/**
@@ -182,40 +182,18 @@ class ParameterTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $parameter->getLast();
+		$actualArray =
+		[
+			'last' => $parameter->getLast(),
+			'lastSub' => $parameter->getLastSub()
+		];
 
 		/* compare */
 
-		$this->assertEquals($expectArray['last'], $actual);
+		$this->assertEquals($expectArray['last'], $actualArray['last']);
+		$this->assertEquals($expectArray['lastSub'], $actualArray['lastSub']);
 	}
 
-	/**
-	 * testGetSub
-	 *
-	 * @since 2.4.0
-	 *
-	 * @param string $route
-	 * @param array $expectArray
-	 *
-	 * @dataProvider providerParameter
-	 */
-
-	public function testGetSub($route = null, $expectArray = [])
-	{
-		/* setup */
-
-		$this->_request->setQuery('p', $route);
-		$parameter = new Router\Parameter($this->_request);
-		$parameter->init();
-
-		/* actual */
-
-		$actual = $parameter->getSub();
-
-		/* compare */
-
-		$this->assertEquals($expectArray['sub'], $actual);
-	}
 
 	/**
 	 * testGetAdmin
@@ -345,9 +323,12 @@ class ParameterTest extends TestCaseAbstract
 		/* setup */
 
 		$this->_request->setQuery('p', $route);
-		$this->_request->setServer('REMOTE_ADDR', 'test');
-		$this->_request->setServer('HTTP_USER_AGENT', 'test');
-		$this->_request->setServer('HTTP_HOST', 'test');
+		$this->_request->set('server',
+		[
+			'HTTP_HOST' => 'localhost',
+			'HTTP_USER_AGENT' => 'redaxscript',
+			'REMOTE_ADDR' => 'localhost'
+		]);
 		$parameter = new Router\Parameter($this->_request);
 		$parameter->init();
 

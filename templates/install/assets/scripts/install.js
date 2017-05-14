@@ -44,12 +44,13 @@
 					host = fieldHost.attr('data-' + type);
 
 				fieldHost.val(host);
+				form.trigger('unvalidate');
 
 				/* hide related */
 
 				if (type === 'sqlite')
 				{
-					fieldRequired.removeAttr('required').removeClass('js_note_error note_error');
+					fieldRequired.removeAttr('required');
 					fieldRelated.parent().hide();
 				}
 

@@ -19,7 +19,7 @@ class Loader
 	/**
 	 * instance of the registry class
 	 *
-	 * @var object
+	 * @var Registry
 	 */
 
 	protected $_registry;
@@ -78,6 +78,19 @@ class Loader
 	}
 
 	/**
+	 * set the collection array
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $collectionArray
+	 */
+
+	public function setCollectionArray($collectionArray = [])
+	{
+		$this->_collectionArray = $collectionArray;
+	}
+
+	/**
 	 * concat the collection
 	 *
 	 * @since 3.0.0
@@ -90,6 +103,7 @@ class Loader
 
 	public function concat($optionArray = [], $rewriteArray = [])
 	{
+		$collectionArray = $this->getCollectionArray();
 		$bundleArray = [];
 		$restArray = [];
 
@@ -102,7 +116,7 @@ class Loader
 
 		/* process collection */
 
-		foreach ($this->_collectionArray as $collectionKey => $attributeArray)
+		foreach ($collectionArray as $collectionKey => $attributeArray)
 		{
 			$path = $attributeArray[$optionArray['attribute']];
 			$fileArray = pathinfo($path);
@@ -125,15 +139,16 @@ class Loader
 
 		if ($cache->validate($bundleArray, $optionArray['lifetime']))
 		{
-			$this->_collectionArray = $restArray;
-			$this->_collectionArray['bundle'] =
+			$collectionArray = $restArray;
+			$collectionArray['bundle'] =
 			[
 				$optionArray['attribute'] => $cache->getPath($bundleArray)
 			];
 			if ($optionArray['extension'] === 'css')
 			{
-				$this->_collectionArray['bundle']['rel'] = 'stylesheet';
+				$collectionArray['bundle']['rel'] = 'stylesheet';
 			}
+			$this->setCollectionArray($collectionArray);
 		}
 
 		/* else store to cache */

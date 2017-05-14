@@ -2,7 +2,7 @@
 namespace Redaxscript\Filter;
 
 /**
- * children class to filter the  alias
+ * children class to filter the alias
  *
  * @since 2.2.0
  *

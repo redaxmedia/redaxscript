@@ -1,14 +1,16 @@
 <?php
 namespace Redaxscript;
 
+error_reporting(E_ERROR | E_PARSE);
+
 /* autoload */
 
-include_once('includes/Autoloader.php');
+include_once('includes' . DIRECTORY_SEPARATOR . 'Autoloader.php');
 include_once('TestCaseAbstract.php');
 
 /* deprecated */
 
-include_once('includes/query.php');
+include_once('includes' . DIRECTORY_SEPARATOR . 'query.php');
 
 /* init */
 
@@ -17,8 +19,6 @@ $autoloader->init();
 
 /* get instance */
 
-$registry = Registry::getInstance();
-$request = Request::getInstance();
 $config = Config::getInstance();
 
 /* config */
@@ -33,6 +33,7 @@ else
 	$config->set('dbType', 'sqlite');
 	$config->set('dbHost', ':memory:');
 }
+$config->set('dbPrefix', 'test_');
 
 /* database */
 
@@ -43,43 +44,3 @@ Db::init();
 
 $language = Language::getInstance();
 $language->init();
-
-/* installer */
-
-$installer = new Installer($registry, $request, $language, $config);
-$installer->init();
-$installer->rawDrop();
-$installer->rawCreate();
-$installer->insertData(
-[
-	'adminName' => 'Test',
-	'adminUser' => 'test',
-	'adminPassword' => 'test',
-	'adminEmail' => 'test@test.com'
-]);
-
-/* test user */
-
-Db::forTablePrefix('users')
-	->whereIdIs(1)
-	->findOne()
-	->set(
-	[
-		'password' => 'test',
-		'description' => 'test',
-		'language' => 'en'
-	])
-	->save();
-
-/* test module */
-
-if (is_dir('modules/TestDummy'))
-{
-	$testDummy = new Modules\TestDummy\TestDummy($registry, $request, $language, $config);
-	$testDummy->install();
-}
-
-/* module hook */
-
-Module\Hook::construct($registry, $request, $language, $config);
-Module\Hook::init();

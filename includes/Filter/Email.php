@@ -18,7 +18,7 @@ class Email implements FilterInterface
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string $email target email address
+	 * @param string $email email address
 	 *
 	 * @return string
 	 */

@@ -76,7 +76,7 @@ class ModuleForm extends ViewAbstract implements ViewInterface
 		/* docs directory */
 
 		$docsDirectory = new Directory();
-		$docsDirectory->init('modules/' . $module->alias . '/docs');
+		$docsDirectory->init('modules' . DIRECTORY_SEPARATOR . $module->alias . DIRECTORY_SEPARATOR . 'docs');
 		$docsDirectoryArray = $docsDirectory->getArray();
 
 		/* collect item output */
@@ -163,7 +163,7 @@ class ModuleForm extends ViewAbstract implements ViewInterface
 				{
 					$formElement
 						->append('<fieldset id="tab-' . $tabCounter++ . '" class="rs-admin-js-set-tab rs-admin-set-tab">')
-						->append(Template\Tag::partial('modules/' . $module->alias . '/docs/' . $value))
+						->append(Template\Tag::partial('modules' . DIRECTORY_SEPARATOR . $module->alias . DIRECTORY_SEPARATOR . 'docs' . DIRECTORY_SEPARATOR . $value))
 						->append('</fieldset>');
 				}
 			}

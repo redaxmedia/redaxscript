@@ -7,7 +7,7 @@ namespace Redaxscript\Head;
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category Controller
+ * @category Head
  * @author Henry Ruhs
  */
 

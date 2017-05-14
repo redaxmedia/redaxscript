@@ -1,11 +1,7 @@
 <?php
 namespace Redaxscript\Tests\Console\Command;
 
-use Redaxscript\Config;
 use Redaxscript\Console\Command;
-use Redaxscript\Language;
-use Redaxscript\Registry;
-use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
 use org\bovigo\vfs\vfsStream as Stream;
 use org\bovigo\vfs\vfsStreamFile as StreamFile;
@@ -24,38 +20,6 @@ use org\bovigo\vfs\vfsStreamWrapper as StreamWrapper;
 class ConfigTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
-	 * instance of the config class
-	 *
-	 * @var object
-	 */
-
-	protected $_config;
-
-	/**
 	 * array to restore config
 	 *
 	 * @var array
@@ -71,37 +35,28 @@ class ConfigTest extends TestCaseAbstract
 
 	public function setUp()
 	{
-		$this->_registry = Registry::getInstance();
-		$this->_request = Request::getInstance();
-		$this->_language = Language::getInstance();
-		$this->_config = Config::getInstance();
-		$this->_configArray = $this->_config->get();
-	}
-
-	/**
-	 * setUpBeforeClass
-	 *
-	 * @since 3.0.0
-	 */
-
-	public static function setUpBeforeClass()
-	{
+		parent::setUp();
 		Stream::setup('root');
 		$file = new StreamFile('config.php');
 		StreamWrapper::getRoot()->addChild($file);
+		$this->_configArray = $this->_config->get();
 	}
 
 	/**
 	 * tearDown
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 */
 
 	public function tearDown()
 	{
-		$this->_request->setServer('argv', null);
 		$this->_config->set('dbType', $this->_configArray['dbType']);
+		$this->_config->set('dbHost', $this->_configArray['dbHost']);
+		$this->_config->set('dbPrefix', $this->_configArray['dbPrefix']);
+		$this->_config->set('dbName', $this->_configArray['dbName']);
+		$this->_config->set('dbUser', $this->_configArray['dbUser']);
 		$this->_config->set('dbPassword', $this->_configArray['dbPassword']);
+		$this->_request->setServer('argv', null);
 	}
 
 	/**

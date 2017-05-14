@@ -304,6 +304,27 @@ class Contact extends Module\Module
 
 	protected function _mail($mailArray = [])
 	{
+		/* html elements */
+
+		$linkElement = new Html\Element();
+		$linkElement->init('a');
+		$linkEmail = $linkElement->copy();
+		$linkEmail
+			->attr(
+			[
+				'href' => 'mailto:' . $mailArray['email']
+			])
+			->text($mailArray['email']);
+		$linkUrl = $linkElement->copy();
+		$linkUrl
+			->attr(
+			[
+				'href' => $mailArray['url']
+			])
+			->text($mailArray['url'] ? $mailArray['url'] : $this->_language->get('none'));
+
+		/* prepare mail */
+
 		$toArray =
 		[
 			Db::getSetting('author') => Db::getSetting('email')
@@ -317,9 +338,9 @@ class Contact extends Module\Module
 		[
 			$this->_language->get('author') . $this->_language->get('colon') . ' ' . $mailArray['author'],
 			'<br />',
-			$this->_language->get('email') . $this->_language->get('colon') . ' <a href="mailto:' . $mailArray['email'] . '">' . $mailArray['email'] . '</a>',
+			$this->_language->get('email') . $this->_language->get('colon') . $linkEmail,
 			'<br />',
-			$this->_language->get('url') . $this->_language->get('colon') . ' <a href="' . $mailArray['url'] . '">' . $mailArray['url'] . '</a>',
+			$this->_language->get('url') . $this->_language->get('colon') . $linkUrl,
 			'<br />',
 			$this->_language->get('message') . $this->_language->get('colon') . ' ' . $mailArray['text']
 		];

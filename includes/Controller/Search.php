@@ -43,9 +43,9 @@ class Search extends ControllerAbstract
 
 	public function process()
 	{
-		$specialFilter = new Filter\Special();
-		$secondParameter = $specialFilter->sanitize($this->_registry->get('secondParameter'));
-		$thirdParameter = $specialFilter->sanitize($this->_registry->get('thirdParameter'));
+		$searchFilter = new Filter\Search();
+		$secondParameter = $searchFilter->sanitize($this->_registry->get('secondParameter'));
+		$thirdParameter = $searchFilter->sanitize($this->_registry->get('thirdParameter'));
 
 		/* process query */
 
@@ -55,7 +55,7 @@ class Search extends ControllerAbstract
 			$queryArray =
 			[
 				'table' => $this->tableArray,
-				'search' => $secondParameter
+				'search' => str_replace('-', ' ', $secondParameter)
 			];
 		}
 		else if (in_array($secondParameter, $this->tableArray))
@@ -66,7 +66,7 @@ class Search extends ControllerAbstract
 				[
 					$secondParameter
 				],
-				'search' => $thirdParameter
+				'search' => str_replace('-', ' ', $thirdParameter)
 			];
 		}
 

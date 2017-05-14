@@ -192,8 +192,8 @@ function admin_panel_list()
 			[
 				Redaxscript\Language::get('system') =>
 				[
-					file_exists('console.php') ? Redaxscript\Language::get('file_remove') . ' console.php' . Redaxscript\Language::get('point') : null,
-					file_exists('install.php') ? Redaxscript\Language::get('file_remove') . ' install.php' . Redaxscript\Language::get('point') : null,
+					is_file('console.php') ? Redaxscript\Language::get('file_remove') . ' console.php' . Redaxscript\Language::get('point') : null,
+					is_file('install.php') ? Redaxscript\Language::get('file_remove') . ' install.php' . Redaxscript\Language::get('point') : null,
 					is_writable('config.php') ? Redaxscript\Language::get('file_permission_revoke') . ' config.php' . Redaxscript\Language::get('point') : null
 				]
 			]

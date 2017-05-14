@@ -1,21 +1,21 @@
 [
 	[
 		{
-			"message": "test",
-			"title": "title"
+			"message": "Message One",
+			"title": "Title"
 		},
 		{
 			"text": null,
 			"route": null
 		},
-		"<h2 class=\"rs-title-note rs-is-info\">title</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-info\">test</div>"
+		"<h2 class=\"rs-title-note rs-is-info\">Title</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-info\">Message One</div>"
 	],
 	[
 		{
 			"message":
 			[
-				"test1",
-				"test2"
+				"Message One",
+				"Message Two"
 			],
 			"title": null
 		},
@@ -23,21 +23,21 @@
 			"text": null,
 			"route": null
 		},
-		"<div class=\"rs-box-note rs-fn-clearfix rs-is-info\"><ul class=\"rs-list-note\"><li>test1</li><li>test2</li></ul></div>"
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-info\"><ul class=\"rs-list-note\"><li>Message One</li><li>Message Two</li></ul></div>"
 	],
 	[
 		{
 			"message":
 			[
-				"test1",
-				"test2"
+				"Message One",
+				"Message Two"
 			],
 			"title": null
 		},
 		{
-			"text": "ok",
+			"text": "Text",
 			"route": "hello/world"
 		},
-		"<div class=\"rs-box-note rs-fn-clearfix rs-is-info\"><ul class=\"rs-list-note\"><li>test1</li><li>test2</li></ul></div><a href=\"hello/world\" class=\"rs-button-note rs-is-info\">ok</a>"
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-info\"><ul class=\"rs-list-note\"><li>Message One</li><li>Message Two</li></ul></div><a href=\"hello/world\" class=\"rs-button-note rs-is-info\">Text</a>"
 	]
 ]

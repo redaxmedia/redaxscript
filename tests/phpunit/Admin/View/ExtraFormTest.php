@@ -2,8 +2,7 @@
 namespace Redaxscript\Tests\Admin\View;
 
 use Redaxscript\Admin;
-use Redaxscript\Language;
-use Redaxscript\Registry;
+use Redaxscript\Db;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -19,31 +18,38 @@ use Redaxscript\Tests\TestCaseAbstract;
 class ExtraFormTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
-	 * instance of the language class
-	 *
-	 * @var object
-	 */
-
-	protected $_language;
-
-	/**
 	 * setUp
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 */
 
 	public function setUp()
 	{
-		$this->_registry = Registry::getInstance();
-		$this->_language = Language::getInstance();
+		parent::setUp();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		Db::forTablePrefix('extras')
+			->create()
+			->set(
+			[
+				'title' => 'Extra One',
+				'alias' => 'extra-one',
+			])
+			->save();
+	}
+
+	/**
+	 * tearDown
+	 *
+	 * @since 3.1.0
+	 */
+
+	public function tearDown()
+	{
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
 	}
 
 	/**

@@ -83,7 +83,7 @@ class Resolver extends Parameter
 		$tableParameter = $this->getTable();
 		$subArray =
 		[
-			$this->getSub()
+			$this->getLastSub()
 		];
 
 		/* admin route */

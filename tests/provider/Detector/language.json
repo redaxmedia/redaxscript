@@ -1,31 +1,36 @@
 [
 	[
-		null,
-		null,
-		null,
-		null,
 		{
 			"dbStatus": 2,
 			"lastTable": "categories",
 			"lastId": 1
 		},
+		null,
+		null,
+		null,
+		null,
 		"en"
 	],
 	[
+		{
+			"dbStatus": 2,
+			"lastTable": "categories",
+			"lastId": 1
+		},
 		{
 			"l": "invalid"
 		},
 		null,
 		null,
 		null,
+		"en"
+	],
+	[
 		{
 			"dbStatus": 2,
 			"lastTable": "categories",
 			"lastId": 1
 		},
-		"en"
-	],
-	[
 		{
 			"l": "de"
 		},
@@ -34,79 +39,74 @@
 		},
 		null,
 		null,
+		"de"
+	],
+	[
 		{
 			"dbStatus": 2,
 			"lastTable": "categories",
 			"lastId": 1
 		},
-		"de"
-	],
-	[
 		null,
 		{
 			"language": "de"
 		},
 		null,
 		null,
+		"de"
+	],
+	[
 		{
 			"dbStatus": 2,
 			"lastTable": "categories",
 			"lastId": 1
 		},
-		"de"
-	],
-	[
 		null,
 		null,
 		{
 			"HTTP_ACCEPT_LANGUAGE": "de"
 		},
 		null,
-		{
-			"dbStatus": 2,
-			"lastTable": "categories",
-			"lastId": 1
-		},
 		"de"
 	],
 	[
-		null,
-		null,
-		null,
-		{
-			"language": "de"
-		},
 		{
 			"dbStatus": 0,
 			"lastTable": "categories",
 			"lastId": 1
 		},
-		"en"
-	],
-	[
 		null,
 		null,
 		null,
 		{
 			"language": "de"
 		},
+		"en"
+	],
+	[
 		{
 			"dbStatus": 2,
 			"lastTable": "categories",
 			"lastId": 1
 		},
-		"de"
-	],
-	[
-		null,
 		null,
 		null,
 		null,
 		{
+			"language": "de"
+		},
+		"de"
+	],
+	[
+		{
 			"dbStatus": 2,
 			"lastTable": "articles",
-			"lastId": 2
+			"lastId": 1
 		},
+		null,
+		null,
+		null,
+		null,
 		"de"
 	]
 ]

@@ -54,7 +54,7 @@
 			"notification": 0,
 			"moderation": 0
 		},
-		"<h2 class=\"rs-title-note rs-is-error\">An error occurred</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-error\">Author is empty</div><a href=\"home/welcome\" class=\"rs-button-note rs-is-error\">Back</a>"
+		"<h2 class=\"rs-title-note rs-is-error\">An error occurred</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-error\">Author is empty</div><a href=\"category-one/article-one\" class=\"rs-button-note rs-is-error\">Back</a>"
 	],
 	[
 		{
@@ -73,7 +73,7 @@
 			"notification": 0,
 			"moderation": 0
 		},
-		"<h2 class=\"rs-title-note rs-is-success\">Operation completed successfully</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-success\">Your comment has been successfully sent</div><a href=\"home/welcome\" class=\"rs-button-note rs-is-success\">Continue</a><meta class=\"rs-meta-redirect\" content=\"0;url=/home/welcome\" http-equiv=\"refresh\" />"
+		"<h2 class=\"rs-title-note rs-is-success\">Operation completed successfully</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-success\">Your comment has been successfully sent</div><a href=\"category-one/article-one\" class=\"rs-button-note rs-is-success\">Continue</a><meta class=\"rs-meta-redirect\" content=\"0;url=/category-one/article-one\" http-equiv=\"refresh\" />"
 	],
 	[
 		{
@@ -92,6 +92,6 @@
 			"notification": 0,
 			"moderation": 1
 		},
-		"<h2 class=\"rs-title-note rs-is-success\">Operation completed successfully</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-success\">Your comment will be approved by a moderator</div><a href=\"home/welcome\" class=\"rs-button-note rs-is-success\">Continue</a><meta class=\"rs-meta-redirect\" content=\"0;url=/home/welcome\" http-equiv=\"refresh\" />"
+		"<h2 class=\"rs-title-note rs-is-success\">Operation completed successfully</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-success\">Your comment will be approved by a moderator</div><a href=\"category-one/article-one\" class=\"rs-button-note rs-is-success\">Continue</a><meta class=\"rs-meta-redirect\" content=\"0;url=/category-one/article-one\" http-equiv=\"refresh\" />"
 	]
 ]

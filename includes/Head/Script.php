@@ -157,12 +157,12 @@ class Script extends HeadAbstract
 		$optionArray = array_merge(self::$_optionArray, $optionArray);
 		$loader = new Asset\Loader(Registry::getInstance());
 		$loader
-			->init(self::$_collectionArray[self::$_namespace])
+			->init($this->_getCollectionArray())
 			->concat($optionArray);
 
 		/* update collection */
 
-		self::$_collectionArray[self::$_namespace] = $loader->getCollectionArray();
+		$this->_setCollectionArray($loader->getCollectionArray());
 		return $this;
 	}
 
@@ -182,7 +182,10 @@ class Script extends HeadAbstract
 
 		$scriptElement = new Html\Element();
 		$scriptElement->init('script');
-		$collectionArray = self::$_collectionArray[self::$_namespace];
+
+		/* handle collection */
+
+		$collectionArray = $this->_getCollectionArray();
 		$collectionKeys = array_keys($collectionArray);
 		$lastKey = end($collectionKeys);
 

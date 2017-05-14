@@ -25,7 +25,7 @@ class FeedReader extends Config
 
 	protected static $_moduleArray =
 	[
-		'name' => 'Feed reader',
+		'name' => 'Feed Reader',
 		'alias' => 'FeedReader',
 		'author' => 'Redaxmedia',
 		'description' => 'Read external RSS and Atom feeds',

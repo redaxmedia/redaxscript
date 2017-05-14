@@ -29,7 +29,7 @@ class Install extends ControllerAbstract
 	/**
 	 * instance of the config class
 	 *
-	 * @var object
+	 * @var Config
 	 */
 
 	protected $_config;
@@ -40,14 +40,14 @@ class Install extends ControllerAbstract
 	 * @since 3.0.0
 	 *
 	 * @param Registry $registry
-	 * @param Language $language
 	 * @param Request $request
+	 * @param Language $language
 	 * @param Config $config
 	 */
 
-	public function __construct(Registry $registry, Language $language, Request $request, Config $config)
+	public function __construct(Registry $registry, Request $request, Language $language, Config $config)
 	{
-		parent::__construct($registry, $language, $request);
+		parent::__construct($registry, $request, $language);
 		$this->_config = $config;
 	}
 
@@ -89,7 +89,7 @@ class Install extends ControllerAbstract
 		{
 			return $this->_error(
 			[
-                'url' => 'install.php',
+				'url' => 'install.php',
 				'title' => $this->_language->get('database'),
 				'message' => $messageArray
 			]);
@@ -99,7 +99,7 @@ class Install extends ControllerAbstract
 		{
 			return $this->_error(
 			[
-                'url' => 'install.php',
+				'url' => 'install.php',
 				'title' => $this->_language->get('account'),
 				'message' => $messageArray
 			]);
@@ -469,11 +469,11 @@ class Install extends ControllerAbstract
 		$subject = $this->_language->get('installation');
 		$bodyArray =
 		[
-			'<strong>' . $this->_language->get('user') . $this->_language->get('colon') . '</strong> ' . $mailArray['adminUser'],
+			$this->_language->get('user') . $this->_language->get('colon') . $mailArray['adminUser'],
 			'<br />',
-			'<strong>' . $this->_language->get('password') . $this->_language->get('colon') . '</strong> ' . $mailArray['adminPassword'],
+			$this->_language->get('password') . $this->_language->get('colon') . $mailArray['adminPassword'],
 			'<br />',
-			'<strong>' . $this->_language->get('url') . $this->_language->get('colon') . '</strong> ' . $linkElement
+			$this->_language->get('url') . $this->_language->get('colon') . $linkElement
 		];
 
 		/* send mail */

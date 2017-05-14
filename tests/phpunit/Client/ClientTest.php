@@ -2,7 +2,6 @@
 namespace Redaxscript\Tests\Client;
 
 use Redaxscript\Client;
-use Redaxscript\Request;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -17,25 +16,6 @@ use Redaxscript\Tests\TestCaseAbstract;
 
 class ClientTest extends TestCaseAbstract
 {
-	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
-	 * setUp
-	 *
-	 * @since 2.4.0
-	 */
-
-	public function setUp()
-	{
-		$this->_request = Request::getInstance();
-	}
-
 	/**
 	 * providerClient
 	 *

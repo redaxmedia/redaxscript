@@ -9,7 +9,7 @@ use Redaxscript\Html;
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category Controller
+ * @category Head
  * @author Henry Ruhs
  * @author Balázs Szilágyi
  *
@@ -36,7 +36,10 @@ class Meta extends HeadAbstract
 
 		$metaElement = new Html\Element();
 		$metaElement->init('meta');
-		$collectionArray = self::$_collectionArray[self::$_namespace];
+
+		/* handle collection */
+
+		$collectionArray = $this->_getCollectionArray();
 		$collectionKeys = array_keys($collectionArray);
 		$lastKey = end($collectionKeys);
 

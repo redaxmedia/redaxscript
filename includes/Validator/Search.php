@@ -30,8 +30,8 @@ class Search implements ValidatorInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $search target search term
-	 * @param string $placeholder target search placeholder
+	 * @param string $search search term
+	 * @param string $placeholder search placeholder
 	 *
 	 * @return boolean
 	 */

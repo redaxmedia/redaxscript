@@ -18,7 +18,7 @@ class Url implements FilterInterface
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string $url target url address
+	 * @param string $url url address
 	 *
 	 * @return string
 	 */

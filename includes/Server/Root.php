@@ -30,7 +30,7 @@ class Root extends ServerAbstract
 		/* collect output */
 
 		$output = $protocol->getOutput() . '://' . $host->getOutput();
-		if ($directory->getOutput() !== '/' && $directory->getOutput() !== '\\')
+		if ($directory->getOutput() !== DIRECTORY_SEPARATOR)
 		{
 			$output .= $directory->getOutput();
 		}

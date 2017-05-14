@@ -1,7 +1,7 @@
 [
 	[
 		{
-			"metaTitle": null,
+			"useTitle": null,
 			"fullRoute": null,
 			"firstParameter": null,
 			"secondParameter": null,
@@ -23,7 +23,7 @@
 	],
 	[
 		{
-			"metaTitle": "Title",
+			"useTitle": "Title",
 			"fullRoute": null,
 			"firstParameter": null,
 			"secondParameter": null,
@@ -45,7 +45,7 @@
 	],
 	[
 		{
-			"metaTitle": null,
+			"useTitle": null,
 			"fullRoute": "admin",
 			"firstParameter": "admin",
 			"secondParameter": null,
@@ -67,7 +67,7 @@
 	],
 	[
 		{
-			"metaTitle": null,
+			"useTitle": null,
 			"fullRoute": "admin/view/categories",
 			"firstParameter": "admin",
 			"secondParameter": "view",
@@ -97,7 +97,7 @@
 	],
 	[
 		{
-			"metaTitle": null,
+			"useTitle": null,
 			"fullRoute": "login",
 			"firstParameter": "login",
 			"secondParameter": null,
@@ -119,7 +119,7 @@
 	],
 	[
 		{
-			"metaTitle": null,
+			"useTitle": null,
 			"fullRoute": "invalid",
 			"firstParameter": "invalid",
 			"secondParameter": null,
@@ -141,14 +141,14 @@
 	],
 	[
 		{
-			"metaTitle": null,
-			"fullRoute": "home",
-			"firstParameter": "home",
+			"useTitle": null,
+			"fullRoute": "category-one",
+			"firstParameter": "category-one",
 			"secondParameter": null,
 			"thirdParameter": null,
 			"adminParameter": null,
 			"tableParameter": null,
-			"lastParameter": "home",
+			"lastParameter": "category-one",
 			"firstTable": "categories",
 			"secondTable": null,
 			"thirdTable": null,
@@ -157,20 +157,20 @@
 		},
 		[
 			{
-				"title": "Home"
+				"title": "Category One"
 			}
 		]
 	],
 	[
 		{
-			"metaTitle": null,
-			"fullRoute": "home/welcome",
-			"firstParameter": "home",
-			"secondParameter": "welcome",
+			"useTitle": null,
+			"fullRoute": "category-one/article-one",
+			"firstParameter": "category-one",
+			"secondParameter": "article-one",
 			"thirdParameter": null,
 			"adminParameter": null,
 			"tableParameter": null,
-			"lastParameter": "welcome",
+			"lastParameter": "article-one",
 			"firstTable": "categories",
 			"secondTable": "articles",
 			"thirdTable": null,
@@ -179,24 +179,24 @@
 		},
 		[
 			{
-				"title": "Home",
-				"route": "home"
+				"title": "Category One",
+				"route": "category-one"
 			},
 			{
-				"title": "Welcome"
+				"title": "Article One"
 			}
 		]
 	],
 	[
 		{
-			"metaTitle": null,
-			"fullRoute": "ultra/lightweight/cms",
-			"firstParameter": "ultra",
-			"secondParameter": "lightweight",
-			"thirdParameter": "cms",
+			"useTitle": null,
+			"fullRoute": "category-one/category-two/article-two",
+			"firstParameter": "category-one",
+			"secondParameter": "category-two",
+			"thirdParameter": "article-two",
 			"adminParameter": null,
 			"tableParameter": null,
-			"lastParameter": "cms",
+			"lastParameter": "article-two",
 			"firstTable": "categories",
 			"secondTable": "categories",
 			"thirdTable": "articles",
@@ -205,15 +205,15 @@
 		},
 		[
 			{
-				"title": "Ultra",
-				"route": "ultra"
+				"title": "Category One",
+				"route": "category-one"
 			},
 			{
-				"title": "Lightweight",
-				"route": "ultra/lightweight"
+				"title": "Category Two",
+				"route": "category-one/category-two"
 			},
 			{
-				"title": "CMS"
+				"title": "Article Two"
 			}
 		]
 	]

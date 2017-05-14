@@ -1,11 +1,9 @@
 <?php
 namespace Redaxscript;
 
-error_reporting(E_ERROR || E_PARSE);
-
 /* bootstrap */
 
-include_once('includes/bootstrap.php');
+include_once('includes' . DIRECTORY_SEPARATOR . 'bootstrap.php');
 
 /* header */
 
@@ -17,7 +15,7 @@ $registry = Registry::getInstance();
 
 /* redirect to install */
 
-if ($registry->get('dbStatus') < 2 && file_exists('install.php'))
+if ($registry->get('dbStatus') < 2 && is_file('install.php'))
 {
 	header('location: install.php');
 	exit;
@@ -52,6 +50,6 @@ if (array_key_exists('content', $template))
 }
 else
 {
-	include_once('templates/' . $registry->get('template') . '/index.phtml');
+	include_once('templates' . DIRECTORY_SEPARATOR . $registry->get('template') . DIRECTORY_SEPARATOR . 'index.phtml');
 }
 Module\Hook::trigger('renderEnd');

@@ -5,7 +5,7 @@
 			"lastTable": null,
 			"lastId": null
 		},
-		"setting-keywords"
+		"Setting"
 	],
 	[
 		{
@@ -13,15 +13,15 @@
 			"lastTable": "categories",
 			"lastId": 1
 		},
-		"setting-keywords"
+		"Setting"
 	],
 	[
 		{
-			"useKeywords": "meta-keywords",
+			"useKeywords": "Use",
 			"lastTable": null,
 			"lastId": null
 		},
-		"meta-keywords"
+		"Use"
 	],
 	[
 		{
@@ -29,7 +29,7 @@
 			"lastTable": "articles",
 			"lastId": 2
 		},
-		"article-keywords"
+		"Article Two"
 	],
 	[
 		{
@@ -37,7 +37,7 @@
 			"lastTable": "categories",
 			"lastId": 2
 		},
-		"category-keywords"
+		"Category Two"
 	],
 	[
 		{
@@ -45,7 +45,7 @@
 			"lastTable": "articles",
 			"lastId": 3
 		},
-		"category-keywords"
+		"Category Two"
 	],
 	[
 		{
@@ -53,6 +53,6 @@
 			"lastTable": "categories",
 			"lastId": 3
 		},
-		"category-keywords"
+		"Category Two"
 	]
 ]

@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Tests;
 
-use Redaxscript\Config;
 use Redaxscript\Hash;
 
 /**
@@ -16,25 +15,6 @@ use Redaxscript\Hash;
 
 class HashTest extends TestCaseAbstract
 {
-	/**
-	 * instance of the config class
-	 *
-	 * @var object
-	 */
-
-	protected $_config;
-
-	/**
-	 * setUp
-	 *
-	 * @since 2.6.0
-	 */
-
-	public function setUp()
-	{
-		$this->_config = Config::getInstance();
-	}
-
 	/**
 	 * providerHash
 	 *

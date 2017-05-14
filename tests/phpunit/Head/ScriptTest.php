@@ -245,7 +245,7 @@ class ScriptTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect, $actual);
+		$this->assertEquals($this->normalizeEOL($expect), $actual);
 	}
 
 	/**
@@ -329,7 +329,7 @@ class ScriptTest extends TestCaseAbstract
 		$script = Head\Script::getInstance();
 		$script->init('invalid');
 
-		/* expect and actual */
+		/* actual */
 
 		$actual = $script;
 

@@ -341,7 +341,18 @@
 					form.trigger('success');
 					buttonSubmit.removeAttr('disabled');
 				}
-			}).attr('novalidate', 'novalidate');
+			})
+			.on('unvalidate reset', function ()
+			{
+				var form = $(this),
+					buttonSubmit = form.find(options.element.buttonSubmit),
+					field = form.find(options.element.field);
+
+				field.removeClass('rs-js-note-error rs-is-error');
+				field.siblings('label').removeClass('rs-label-message').removeAttr('data-message');
+				buttonSubmit.removeAttr('disabled');
+			})
+			.attr('novalidate', 'novalidate');
 		});
 	};
 

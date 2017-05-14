@@ -19,22 +19,14 @@ use org\bovigo\vfs\vfsStream as Stream;
 class LoaderTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the registry class
-	 *
-	 * @var object
-	 */
-
-	protected $_registry;
-
-	/**
 	 * setUp
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 */
 
 	public function setUp()
 	{
-		$this->_registry = Registry::getInstance();
+		parent::setUp();
 		Stream::setup('root', 0777, $this->getProvider('tests/provider/Asset/loader_set_up.json'));
 	}
 

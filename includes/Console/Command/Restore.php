@@ -91,22 +91,25 @@ class Restore extends CommandAbstract
 		$dbPassword = $this->_config->get('dbPassword');
 		$directory = $this->prompt('directory', $optionArray);
 		$file = $this->prompt('file', $optionArray);
-		if (is_file($directory . '/' . $file))
+
+		/* restore */
+
+		if (is_file($directory . DIRECTORY_SEPARATOR . $file))
 		{
 			if ($dbType === 'mysql' && $dbHost && $dbName && $dbUser)
 			{
-				$command = 'mysql -u ' . $dbUser . ' -p' . $dbPassword . ' -h ' . $dbHost . ' ' . $dbName . ' < ' . $directory . '/' . $file;
+				$command = 'mysql -u ' . $dbUser . ' -p' . $dbPassword . ' -h ' . $dbHost . ' ' . $dbName . ' < ' . $directory . DIRECTORY_SEPARATOR . $file;
 			}
 			if ($dbType === 'pgsql' && $dbHost & $dbName)
 			{
-				$command = 'cat ' . $directory . '/' . $file . ' | PGPASSWORD=' . $dbPassword . ' psql -U postgres -h ' . $dbHost . ' -d ' . $dbName;
+				$command = 'cat ' . $directory . DIRECTORY_SEPARATOR . $file . ' | PGPASSWORD=' . $dbPassword . ' psql -U postgres -h ' . $dbHost . ' -d ' . $dbName;
 			}
 			if ($dbType === 'sqlite' && $dbHost)
 			{
-				$command = 'sqlite3 ' . $dbHost . ' < ' . $directory . '/' . $file;
+				$command = 'sqlite3 ' . $dbHost . ' < ' . $directory . DIRECTORY_SEPARATOR . $file;
 			}
 			exec($command, $output, $error);
-			return $error === 0;
+			return $error === 0 || $dbType === 'mssql';
 		}
 		return false;
 	}

@@ -16,7 +16,7 @@ class Installer
 	/**
 	 * instance of the registry class
 	 *
-	 * @var object
+	 * @var Registry
 	 */
 
 	protected $_registry;
@@ -24,7 +24,7 @@ class Installer
 	/**
 	 * instance of the request class
 	 *
-	 * @var object
+	 * @var Request
 	 */
 
 	protected $_request;
@@ -32,7 +32,7 @@ class Installer
 	/**
 	 * instance of the language class
 	 *
-	 * @var object
+	 * @var Language
 	 */
 
 	protected $_language;
@@ -40,7 +40,7 @@ class Installer
 	/**
 	 * instance of the config class
 	 *
-	 * @var object
+	 * @var Config
 	 */
 
 	protected $_config;
@@ -118,31 +118,33 @@ class Installer
 	/**
 	 * insert the data
 	 *
-	 * @since 2.4.0
+	 * @since 3.1.0
 	 *
 	 * @param array $optionArray options of the installation
 	 */
 
 	public function insertData($optionArray = [])
 	{
-		/* articles */
+		$this->insertCategories($optionArray);
+		$this->insertArticles($optionArray);
+		$this->insertExtras($optionArray);
+		$this->insertComments($optionArray);
+		$this->insertGroups();
+		$this->insertUsers($optionArray);
+		$this->insertModules();
+		$this->insertSettings($optionArray);
+	}
 
-		Db::forTablePrefix('articles')
-			->create()
-			->set(
-			[
-				'title' => 'Welcome',
-				'alias' => 'welcome',
-				'author' => $optionArray['adminUser'],
-				'text' => file_get_contents('database/html/articles/welcome.phtml'),
-				'category' => 1,
-				'comments' => 1,
-				'rank' => 1
-			])
-			->save();
+	/**
+	 * insert the categories
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param array $optionArray options of the installation
+	 */
 
-		/* categories */
-
+	public function insertCategories($optionArray = [])
+	{
 		Db::forTablePrefix('categories')
 			->create()
 			->set(
@@ -153,9 +155,43 @@ class Installer
 				'rank' => 1
 			])
 			->save();
+	}
 
-		/* extras */
+	/**
+	 * insert the articles
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param array $optionArray options of the installation
+	 */
 
+	public function insertArticles($optionArray = [])
+	{
+		Db::forTablePrefix('articles')
+			->create()
+			->set(
+			[
+				'title' => 'Welcome',
+				'alias' => 'welcome',
+				'author' => $optionArray['adminUser'],
+				'text' => file_get_contents('database' . DIRECTORY_SEPARATOR . 'html' . DIRECTORY_SEPARATOR . 'articles' . DIRECTORY_SEPARATOR . 'welcome.phtml'),
+				'category' => 1,
+				'comments' => 1,
+				'rank' => 1
+				])
+			->save();
+	}
+
+	/**
+	 * insert the extras
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param array $optionArray options of the installation
+	 */
+
+	public function insertExtras($optionArray = [])
+	{
 		$extrasArray =
 		[
 			'categories' =>
@@ -197,7 +233,7 @@ class Installer
 		];
 		$extrasRank = 0;
 
-		/* process extras array */
+		/* process extras */
 
 		foreach ($extrasArray as $key => $value)
 		{
@@ -208,7 +244,7 @@ class Installer
 					'title' => ucfirst($key),
 					'alias' => $key,
 					'author' => $optionArray['adminUser'],
-					'text' => file_get_contents('database/html/extras/' . $key . '.phtml'),
+					'text' => file_get_contents('database' . DIRECTORY_SEPARATOR . 'html' . DIRECTORY_SEPARATOR . 'extras' . DIRECTORY_SEPARATOR . $key . '.phtml'),
 					'category' => $value['category'],
 					'headline' => $value['headline'],
 					'status' => $value['status'],
@@ -216,23 +252,39 @@ class Installer
 				])
 				->save();
 		}
+	}
 
-		/* comments */
+	/**
+	 * insert the comments
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param array $optionArray options of the installation
+	 */
 
+	public function insertComments($optionArray = [])
+	{
 		Db::forTablePrefix('comments')
 			->create()
 			->set(
 			[
 				'author' => $optionArray['adminUser'],
 				'email' => $optionArray['adminEmail'],
-				'text' => file_get_contents('database/html/comments/hello.phtml'),
+				'text' => file_get_contents('database' . DIRECTORY_SEPARATOR . 'html' . DIRECTORY_SEPARATOR . 'comments' . DIRECTORY_SEPARATOR . 'hello.phtml'),
 				'article' => 1,
 				'rank' => 1
 			])
 			->save();
+	}
 
-		/* groups */
+	/**
+	 * insert the groups
+	 *
+	 * @since 3.1.0
+	 */
 
+	public function insertGroups()
+	{
 		Db::forTablePrefix('groups')
 			->create()
 			->set(
@@ -260,22 +312,64 @@ class Installer
 				'description' => 'Default members group'
 			])
 			->save();
+	}
 
-		/* modules */
+	/**
+	 * insert the users
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param array $optionArray options of the installation
+	 */
 
-		if (is_dir('modules/CallHome'))
+	public function insertUsers($optionArray = [])
+	{
+		$passwordHash = new Hash($this->_config);
+		$passwordHash->init($optionArray['adminPassword']);
+		Db::forTablePrefix('users')
+			->create()
+			->set(
+			[
+				'name' => $optionArray['adminName'],
+				'user' => $optionArray['adminUser'],
+				'password' => $passwordHash->getHash(),
+				'email' => $optionArray['adminEmail'],
+				'description' => 'God admin',
+				'groups' => '1'
+			])
+			->save();
+	}
+
+	/**
+	 * insert the modules
+	 *
+	 * @since 3.1.0
+	 */
+
+	public function insertModules()
+	{
+		if (is_dir('modules' . DIRECTORY_SEPARATOR . 'CallHome'))
 		{
 			$callHome = new Modules\CallHome\CallHome($this->_registry, $this->_request, $this->_language, $this->_config);
 			$callHome->install();
 		}
-		if (is_dir('modules/Validator'))
+		if (is_dir('modules' . DIRECTORY_SEPARATOR . 'Validator'))
 		{
 			$validator = new Modules\Validator\Validator($this->_registry, $this->_request, $this->_language, $this->_config);
 			$validator->install();
 		}
+	}
 
-		/* settings */
+	/**
+	 * insert the settings
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param array $optionArray options of the installation
+	 */
 
+	public function insertSettings($optionArray = [])
+	{
 		$settingArray =
 		[
 			'language' => null,
@@ -297,7 +391,7 @@ class Installer
 			'limit' => 10,
 			'order' => 'asc',
 			'pagination' => 1,
-			'registration' => 1,
+			'registration' => 0,
 			'verification' => 0,
 			'recovery' => 1,
 			'moderation' => 0,
@@ -305,7 +399,7 @@ class Installer
 			'version' => $this->_language->get('version', '_package')
 		];
 
-		/* process settings array */
+		/* process settings */
 
 		foreach ($settingArray as $name => $value)
 		{
@@ -318,23 +412,6 @@ class Installer
 				])
 				->save();
 		}
-
-		/* users */
-
-		$passwordHash = new Hash($this->_config);
-		$passwordHash->init($optionArray['adminPassword']);
-		Db::forTablePrefix('users')
-			->create()
-			->set(
-			[
-				'name' => $optionArray['adminName'],
-				'user' => $optionArray['adminUser'],
-				'password' => $passwordHash->getHash(),
-				'email' => $optionArray['adminEmail'],
-				'description' => 'God admin',
-				'groups' => '1'
-			])
-			->save();
 	}
 
 	/**
@@ -348,15 +425,15 @@ class Installer
 
 	protected function _rawExecute($action = null, $type = 'mysql')
 	{
-		$sqlDirectory = new Directory();
-		$sqlDirectory->init($this->_directory . '/' . $type . '/' . $action);
-		$sqlArray = $sqlDirectory->getArray();
+		$actionDirectory = new Directory();
+		$actionDirectory->init($this->_directory . DIRECTORY_SEPARATOR . $type . DIRECTORY_SEPARATOR . $action);
+		$actionArray = $actionDirectory->getArray();
 
-		/* process sql */
+		/* process action */
 
-		foreach ($sqlArray as $file)
+		foreach ($actionArray as $file)
 		{
-			$query = file_get_contents($this->_directory . '/' . $type . '/' . $action . '/' . $file);
+			$query = file_get_contents($this->_directory . DIRECTORY_SEPARATOR . $type . DIRECTORY_SEPARATOR . $action . DIRECTORY_SEPARATOR . $file);
 			if ($query)
 			{
 				if ($this->_config->get('dbPrefix'))

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<phpunit bootstrap="tests/phpunit/bootstrap.php">
+<phpunit convertErrorsToExceptions="false" convertWarningsToExceptions="false" bootstrap="tests/phpunit/bootstrap.php">
 
 	<!-- listeners -->
 
@@ -8,7 +8,7 @@
 			<arguments>
 				<array>
 					<element key="slowThreshold">
-						<integer>200</integer>
+						<integer>1000</integer>
 					</element>
 				</array>
 			</arguments>
@@ -21,6 +21,7 @@
 		<whitelist processUncoveredFilesFromWhitelist="true">
 			<directory suffix=".php">includes</directory>
 			<exclude>
+				<file>includes/Bootstrap/Config.php</file>
 				<file>includes/bootstrap.php</file>
 				<file>console.php</file>
 				<file>index.php</file>
@@ -37,7 +38,6 @@
 				<file>includes/navigation.php</file>
 				<file>includes/query.php</file>
 				<file>includes/router.php</file>
-				<file>includes/startup.php</file>
 			</exclude>
 		</whitelist>
 	</filter>
@@ -56,6 +56,12 @@
 
 		<testsuite name="asset">
 			<directory>tests/phpunit/Asset</directory>
+		</testsuite>
+
+		<!-- bootstrap -->
+
+		<testsuite name="bootstrap">
+			<directory>tests/phpunit/Bootstrap</directory>
 		</testsuite>
 
 		<!-- client -->

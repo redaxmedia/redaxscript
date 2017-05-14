@@ -92,7 +92,7 @@ class Preview extends Module\Module
 				foreach ($partialsDirectoryArray as $value)
 				{
 					$alias = str_replace($partialExtension, '', $value);
-					$output .= $this->render($alias, $partialsPath . '/' . $value);
+					$output .= $this->render($alias, $partialsPath . DIRECTORY_SEPARATOR . $value);
 				}
 			}
 			$output .= '</div>';

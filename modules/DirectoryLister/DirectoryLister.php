@@ -27,7 +27,7 @@ class DirectoryLister extends Config
 
 	protected static $_moduleArray =
 	[
-		'name' => 'Directory lister',
+		'name' => 'Directory Lister',
 		'alias' => 'DirectoryLister',
 		'author' => 'Redaxmedia',
 		'description' => 'Simple directory lister',
@@ -153,19 +153,22 @@ class DirectoryLister extends Config
 		[
 			'class' => $this->_configArray['className']['link']
 		]);
+		$itemElement = new Html\Element();
+		$itemElement->init('li');
 
 		/* collect item output */
 
-		$outputItem .= '<li>';
-		$outputItem .= $linkElement
-			->attr(
-			[
-				'href' => $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute') . $queryString . $optionArray['hash'],
-				'title' => $this->_language->get('directory_parent', '_directory_lister')
-			])
-			->addClass($this->_configArray['className']['types']['directoryParent'])
-			->text($this->_language->get('directory_parent', '_directory_lister'));
-		$outputItem .= '</li>';
+		$outputItem = $itemElement
+			->html(
+				$linkElement
+				->attr(
+				[
+					'href' => $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute') . $queryString . $optionArray['hash'],
+					'title' => $this->_language->get('directory_parent', '_directory_lister')
+				])
+				->addClass($this->_configArray['className']['types']['directoryParent'])
+				->text($this->_language->get('directory_parent', '_directory_lister'))
+			);
 		return $outputItem;
 	}
 
@@ -199,6 +202,8 @@ class DirectoryLister extends Config
 		[
 			'class' => $this->_configArray['className']['textDate']
 		]);
+		$itemElement = new Html\Element();
+		$itemElement->init('li');
 
 		/* lister directory */
 
@@ -210,7 +215,7 @@ class DirectoryLister extends Config
 
 		foreach ($listerDirectoryArray as $value)
 		{
-			$path = $directory . '/' . $value;
+			$path = $directory . DIRECTORY_SEPARATOR . $value;
 			$fileExtension = pathinfo($path, PATHINFO_EXTENSION);
 			$text = $this->_replace($value, $fileExtension, $optionArray['replace']);
 			$textDate = date(Db::getSetting('date'), filectime($path));
@@ -219,22 +224,25 @@ class DirectoryLister extends Config
 
 			/* handle directory */
 
-			if ($isDir || $isFile)
-			{
-				$outputItem .= '<li>';
-			}
 			if ($isDir)
 			{
-				$outputItem .= $linkElement
-					->copy()
-					->attr(
-					[
-						'href' => $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute') . '&directory=' . $path . $optionArray['hash'],
-						'title' => $this->_language->get('directory', '_directory_lister')
-					])
-					->addClass($this->_configArray['className']['types']['directory'])
-					->text($text);
-				$outputItem .= $textSizeElement->copy();
+				$itemElement
+					->clear()
+					->html(
+						$linkElement
+							->copy()
+							->attr(
+							[
+								'href' => $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute') . '&directory=' . $path . $optionArray['hash'],
+								'title' => $this->_language->get('directory', '_directory_lister')
+							])
+							->addClass($this->_configArray['className']['types']['directory'])
+							->text($text)
+					)
+					->append(
+						$textSizeElement
+							->copy()
+					);
 			}
 
 			/* else handle file */
@@ -243,27 +251,34 @@ class DirectoryLister extends Config
 			{
 				$fileType = $this->_configArray['extension'][$fileExtension];
 				$textSize = ceil(filesize($path) / $this->_configArray['size']['divider']);
-				$outputItem .= $linkElement
-					->copy()
-					->attr(
-					[
-						'href' => $this->_registry->get('root') . '/' . $path,
-						'target' => '_blank',
-						'title' => $this->_language->get('file', '_directory_lister')
-					])
-					->addClass($this->_configArray['className']['types'][$fileType])
-					->text($text);
-				$outputItem .= $textSizeElement
-					->copy()
-					->attr('data-unit', $this->_configArray['size']['unit'])
-					->text($textSize);
+				$itemElement
+					->clear()
+					->html(
+						$linkElement
+							->copy()
+							->attr(
+							[
+								'href' => $this->_registry->get('root') . '/' . $path,
+								'target' => '_blank',
+								'title' => $this->_language->get('file', '_directory_lister')
+							])
+							->addClass($this->_configArray['className']['types'][$fileType])
+							->text($text)
+					)
+					->append(
+						$textSizeElement
+							->copy()
+							->attr('data-unit', $this->_configArray['size']['unit'])
+							->text($textSize)
+				);
 			}
 			if ($isDir || $isFile)
 			{
-				$outputItem .= $textDateElement
-					->copy()
-					->text($textDate);
-				$outputItem .= '</li>';
+				$outputItem .= $itemElement
+					->append($textDateElement
+						->copy()
+						->text($textDate)
+					);
 			}
 		}
 		return $outputItem;

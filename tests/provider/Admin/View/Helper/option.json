@@ -78,14 +78,13 @@
 			"content":
 			{
 				"Select": "select",
-				"Articles (2)": 2,
-				"Categories (1)": 1,
-				"Comments (3)": 3
+				"Article One (1)": 1,
+				"Article Two (2)": 2
 			},
 			"access":
 			{
-				"Administrators": 1,
-				"Members": 2
+				"Group One": 1,
+				"Group Two": 2
 			}
 		}
 	]

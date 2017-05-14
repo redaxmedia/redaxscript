@@ -1,9 +1,11 @@
 <?php
 namespace Redaxscript;
 
+error_reporting(E_ERROR | E_PARSE);
+
 /* autoload */
 
-include_once('includes/Autoloader.php');
+include_once('includes' . DIRECTORY_SEPARATOR . 'Autoloader.php');
 include_once('BenchCaseAbstract.php');
 
 /* init */
@@ -13,19 +15,21 @@ $autoloader->init();
 
 /* get instance */
 
-$registry = Registry::getInstance();
-$request = Request::getInstance();
 $config = Config::getInstance();
 
-/* request and config */
+/* config */
 
-$request->init();
-$config->init();
-
-/* set config */
-
-$config->set('dbType', 'sqlite');
-$config->set('dbHost', ':memory:');
+$dbUrl = getenv('DB_URL');
+if ($dbUrl)
+{
+	$config->parse($dbUrl);
+}
+else
+{
+	$config->set('dbType', 'sqlite');
+	$config->set('dbHost', ':memory:');
+}
+$config->set('dbPrefix', 'test_');
 
 /* database */
 
@@ -36,22 +40,3 @@ Db::init();
 
 $language = Language::getInstance();
 $language->init();
-
-/* installer */
-
-$installer = new Installer($registry, $request, $language, $config);
-$installer->init();
-$installer->rawDrop();
-$installer->rawCreate();
-$installer->insertData(
-[
-	'adminName' => 'Test',
-	'adminUser' => 'test',
-	'adminPassword' => 'test',
-	'adminEmail' => 'test@test.com'
-]);
-
-/* module hook */
-
-Module\Hook::construct($registry, $request, $language, $config);
-Module\Hook::init();

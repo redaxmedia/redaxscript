@@ -36,7 +36,7 @@ class Client extends HelperAbstract
 
 	public function process()
 	{
-		return  array_unique(array_merge(
+		return array_unique(array_merge(
 			$this->_getBrowserArray(),
 			$this->_getDeviceArray()
 		));

@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Tests\Server;
 
-use Redaxscript\Request;
 use Redaxscript\Server;
 use Redaxscript\Tests\TestCaseAbstract;
 
@@ -18,14 +17,6 @@ use Redaxscript\Tests\TestCaseAbstract;
 class ServerTest extends TestCaseAbstract
 {
 	/**
-	 * instance of the request class
-	 *
-	 * @var object
-	 */
-
-	protected $_request;
-
-	/**
 	 * setUp
 	 *
 	 * @since 2.4.0
@@ -33,12 +24,12 @@ class ServerTest extends TestCaseAbstract
 
 	public function setUp()
 	{
-		$this->_request = Request::getInstance();
+		parent::setUp();
 		$this->_request->set('server',
 		[
 			'HTTP_HOST' => 'localhost',
 			'HTTPS' => 'off',
-			'SCRIPT_NAME' => '/tests/includes/Server/ServerTest.php'
+			'SCRIPT_NAME' => '/redaxscript/index.php'
 		]);
 	}
 
@@ -60,7 +51,7 @@ class ServerTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals('/tests/includes/Server', $actual);
+		$this->assertEquals('/redaxscript', $actual);
 	}
 
 	/**
@@ -81,7 +72,7 @@ class ServerTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals('ServerTest.php', $actual);
+		$this->assertEquals('index.php', $actual);
 	}
 
 	/**
@@ -144,7 +135,7 @@ class ServerTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals('http://localhost/tests/includes/Server', $actual);
+		$this->assertEquals('http://localhost/redaxscript', $actual);
 	}
 
 	/**

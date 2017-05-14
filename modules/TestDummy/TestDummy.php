@@ -4,7 +4,7 @@ namespace Redaxscript\Modules\TestDummy;
 use Redaxscript\Module;
 
 /**
- * made for testing
+ * test dummy
  *
  * @since 2.6.0
  *
@@ -23,31 +23,31 @@ class TestDummy extends Module\Module
 
 	protected static $_moduleArray =
 	[
-		'name' => 'Test dummy',
+		'name' => 'Test Dummy',
 		'alias' => 'TestDummy',
 		'author' => 'Redaxmedia',
-		'description' => 'Made for testing',
+		'description' => 'Test Dummy',
 		'version' => '3.0.0'
 	];
 
 	/**
 	 * adminPanelNotification
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 *
 	 * @return array
 	 */
 
 	public function adminPanelNotification()
 	{
-		$this->setNotification('info', 'test');
+		$this->setNotification('info', 'Test Dummy');
 		return $this->getNotification();
 	}
 
 	/**
 	 * render
 	 *
-	 * @since 2.4.0
+	 * @since 3.1.0
 	 *
 	 * @param integer $firstNumber
 	 * @param integer $secondNumber
@@ -55,23 +55,7 @@ class TestDummy extends Module\Module
 	 * @return integer
 	 */
 
-	public function render($firstNumber = null, $secondNumber = null)
-	{
-		return $this->_calc($firstNumber, $secondNumber);
-	}
-
-	/**
-	 * calc
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param integer $firstNumber
-	 * @param integer $secondNumber
-	 *
-	 * @return integer
-	 */
-
-	public function _calc($firstNumber = null, $secondNumber = null)
+	public function render($firstNumber = 1, $secondNumber = 1)
 	{
 		return $firstNumber + $secondNumber;
 	}
