@@ -1,7 +1,7 @@
 Redaxscript
 ===========
 
-> A modern, ultra lightweight and rocket fast Content Management System for SQLite, MSSQL, MySQL and PostgreSQL
+> A modern, ultra lightweight and rocket fast Content Management System for SQLite, MSSQL, MySQL and PostgreSQL.
 
 [![Build Status](https://img.shields.io/travis/redaxmedia/redaxscript.svg)](https://travis-ci.org/redaxmedia/redaxscript)
 [![Build Status](https://img.shields.io/appveyor/ci/redaxmedia/redaxscript.svg)](https://ci.appveyor.com/project/redaxmedia/redaxscript)
@@ -14,7 +14,7 @@ Redaxscript
 [![License](https://img.shields.io/packagist/l/redaxmedia/redaxscript.svg)](https://packagist.org/packages/redaxmedia/redaxscript)
 [![Gitter Chat](https://img.shields.io/gitter/room/redaxmedia/redaxscript.svg)](https://gitter.im/redaxmedia/redaxscript)
 [![Facebook Chat](https://img.shields.io/badge/chat-on_facebook-0084ff.svg)](https://m.me/redaxscript)
-[![GitHub Stats](https://img.shields.io/badge/github-stats-ff5500.svg)](http://githubstats.com/redaxmedia/redaxscript)
+[![GitHub Stats](https://img.shields.io/badge/github-stats-ff5500.svg)](https://githubstats.com/redaxmedia/redaxscript)
 
 
 Demo
@@ -23,4 +23,4 @@ Demo
 > Unfortunately, no one can be told what Redaxscript is.
 You have to see it for yourself.
 
-[![Demo](https://img.shields.io/badge/demo-login-129e5e.svg?style=flat)](http://demo.redaxscript.com/demo/login)
+[![Demo](https://img.shields.io/badge/demo-login-129e5e.svg?style=flat)](https://demo.redaxscript.com/demo/login)
