@@ -72,7 +72,7 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return string
+	 * @return string|boolean
 	 */
 
 	public function getFirst()
@@ -85,7 +85,7 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return integer
+	 * @return integer|boolean
 	 */
 
 	public function getFirstSub()
@@ -98,7 +98,7 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return string
+	 * @return string|boolean
 	 */
 
 	public function getSecond()
@@ -111,7 +111,7 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return integer
+	 * @return integer|boolean
 	 */
 
 	public function getSecondSub()
@@ -124,7 +124,7 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return string
+	 * @return string|boolean
 	 */
 
 	public function getThird()
@@ -137,7 +137,7 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return integer
+	 * @return integer|boolean
 	 */
 
 	public function getThirdSub()
@@ -150,7 +150,7 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return string
+	 * @return string|boolean
 	 */
 
 	public function getFourth()
@@ -163,7 +163,7 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return string
+	 * @return string|boolean
 	 */
 
 	public function getFourthSub()

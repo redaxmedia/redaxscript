@@ -10,36 +10,36 @@
  * @category Query
  * @author Henry Ruhs
  *
- * @param string $input
+ * @param string $alias
  * @return string
  */
 
-function query_table($input)
+function query_table($alias)
 {
 	static $table;
 
 	/* load from cache */
 
-	if ($table[$input])
+	if ($table[$alias])
 	{
-		$output = $table[$input];
+		$output = $table[$alias];
 	}
 
 	/* else query */
 
-	else
+	else if (strlen($alias))
 	{
-		$category = Redaxscript\Db::forTablePrefix('categories')->where('alias', $input)->findOne()->id;
+		$category = Redaxscript\Db::forTablePrefix('categories')->where('alias', $alias)->findOne()->id;
 		if ($category)
 		{
-			$output = $table[$input] = 'categories';
+			$output = $table[$alias] = 'categories';
 		}
 		else
 		{
-			$article = Redaxscript\Db::forTablePrefix('articles')->where('alias', $input)->findOne()->id;
+			$article = Redaxscript\Db::forTablePrefix('articles')->where('alias', $alias)->findOne()->id;
 			if ($article)
 			{
-				$output = $table[$input] = 'articles';
+				$output = $table[$alias] = 'articles';
 			}
 		}
 	}
@@ -63,7 +63,7 @@ function query_table($input)
 
 function build_route($table, $id)
 {
-	if ($table && $id)
+	if (is_string($table) && is_numeric($id))
 	{
 		/* switch table */
 
