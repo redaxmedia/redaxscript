@@ -32,6 +32,7 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 	{
 		$output = Module\Hook::trigger('adminArticleFormStart');
 		$article = Db::forTablePrefix('articles')->whereIdIs($articleId)->findOne();
+		$helperOption = new Helper\Option($this->_language);
 
 		/* html elements */
 
@@ -41,15 +42,6 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 			'class' => 'rs-admin-title-content',
 		]);
 		$titleElement->text($article->title ? $article->title : $this->_language->get('article_new'));
-		$linkElement = new Html\Element();
-		$linkElement->init('a');
-		$itemElement = new Html\Element();
-		$itemElement->init('li');
-		$listElement = new Html\Element();
-		$listElement->init('ul',
-		[
-			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
-		]);
 		$formElement = new AdminForm($this->_registry, $this->_language);
 		$formElement->init(
 		[
@@ -71,37 +63,10 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 			]
 		]);
 
-		/* collect item output */
-
-		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
-		$outputItem = $itemElement
-			->copy()
-			->addClass('rs-admin-js-item-active rs-admin-item-active')
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-1')
-				->text($this->_language->get('article'))
-			);
-		$outputItem .= $itemElement
-			->copy()
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-2')
-				->text($this->_language->get('general'))
-			);
-		$outputItem .= $itemElement
-			->copy()
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-3')
-				->text($this->_language->get('customize'))
-			);
-		$listElement->append($outputItem);
-
 		/* create the form */
 
 		$formElement
-			->append($listElement)
+			->append($this->_renderList())
 			->append('<div class="rs-admin-js-box-tab rs-admin-box-tab">')
 
 			/* first tab */
@@ -165,11 +130,13 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'robots'
 			])
-			->select(Helper\Option::getRobotArray(),
+			->select($helperOption->getRobotArray(),
+			[
+				$article->id ? filter_var($article->robots, FILTER_VALIDATE_INT) : null
+			],
 			[
 				'id' => 'robots',
-				'name' => 'robots',
-				'value' => $article->id ? filter_var($article->robots, FILTER_VALIDATE_INT) : null
+				'name' => 'robots'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('text'),
@@ -193,47 +160,55 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'language'
 			])
-			->select(Helper\Option::getLanguageArray(),
+			->select($helperOption->getLanguageArray(),
+			[
+				$article->language
+			],
 			[
 				'id' => 'language',
-				'name' => 'language',
-				'value' => $article->language
+				'name' => 'language'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('template'),
 			[
 				'for' => 'template'
 			])
-			->select(Helper\Option::getTemplateArray(),
+			->select($helperOption->getTemplateArray(),
+			[
+				$article->template
+			],
 			[
 				'id' => 'template',
-				'name' => 'template',
-				'value' => $article->template
+				'name' => 'template'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('article_sibling'),
 			[
 				'for' => 'sibling'
 			])
-			->select(Helper\Option::getContentArray('articles',
+			->select($helperOption->getContentArray('articles',
 			[
 				intval($article->id)
 			]),
 			[
+				intval($article->sibling)
+			],
+			[
 				'id' => 'sibling',
-				'name' => 'sibling',
-				'value' => intval($article->sibling)
+				'name' => 'sibling'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('category'),
 			[
 				'for' => 'category'
 			])
-			->select(Helper\Option::getContentArray('categories'),
+			->select($helperOption->getContentArray('categories'),
+			[
+				intval($article->category)
+			],
 			[
 				'id' => 'category',
-				'name' => 'category',
-				'value' => intval($article->category)
+				'name' => 'category'
 			])
 			->append('</li></ul></fieldset>')
 
@@ -244,44 +219,52 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'headline'
 			])
-			->select(Helper\Option::getToggleArray(),
+			->select($helperOption->getToggleArray(),
+			[
+				$article->id ? intval($article->headline) : 1
+			],
 			[
 				'id' => 'headline',
-				'name' => 'headline',
-				'value' => $article->id ? intval($article->headline) : 1
+				'name' => 'headline'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('byline'),
 			[
 				'for' => 'byline'
 			])
-			->select(Helper\Option::getToggleArray(),
+			->select($helperOption->getToggleArray(),
+			[
+				$article->id ? intval($article->byline) : 1
+			],
 			[
 				'id' => 'byline',
-				'name' => 'byline',
-				'value' => $article->id ? intval($article->byline) : 1
+				'name' => 'byline'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('comments'),
 			[
 				'for' => 'comments'
 			])
-			->select(Helper\Option::getToggleArray(),
+			->select($helperOption->getToggleArray(),
+			[
+				intval($article->comments)
+			],
 			[
 				'id' => 'comments',
-				'name' => 'comments',
-				'value' => intval($article->comments)
+				'name' => 'comments'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('status'),
 			[
 				'for' => 'status'
 			])
-			->select(Helper\Option::getVisibleArray(),
+			->select($helperOption->getVisibleArray(),
+			[
+				$article->id ? intval($article->status) : 1
+			],
 			[
 				'id' => 'status',
-				'name' => 'status',
-				'value' => $article->id ? intval($article->status) : 1
+				'name' => 'status'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('rank'),
@@ -303,13 +286,15 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 				[
 					'for' => 'access'
 				])
-				->select(Helper\Option::getAccessArray('groups'),
+				->select($helperOption->getAccessArray('groups'),
+				[
+					$article->access
+				],
 				[
 					'id' => 'access',
 					'name' => 'access[]',
 					'multiple' => 'multiple',
-					'size' => count(Helper\Option::getAccessArray('groups')),
-					'value' => $article->access
+					'size' => count($helperOption->getAccessArray('groups'))
 				])
 				->append('</li>');
 		}
@@ -349,5 +334,57 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 		$output .= $titleElement . $formElement;
 		$output .= Module\Hook::trigger('adminArticleFormEnd');
 		return $output;
+	}
+
+	/**
+	 * render the list
+	 *
+	 * @since 3.2.0
+	 *
+	 * @return object
+	 */
+
+	protected function _renderList()
+	{
+		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
+
+		/* html elements */
+
+		$linkElement = new Html\Element();
+		$linkElement->init('a');
+		$itemElement = new Html\Element();
+		$itemElement->init('li');
+		$listElement = new Html\Element();
+		$listElement->init('ul',
+		[
+			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
+		]);
+
+		/* collect item output */
+
+		$outputItem = $itemElement
+			->copy()
+			->addClass('rs-admin-js-item-active rs-admin-item-active')
+			->html($linkElement
+				->copy()
+				->attr('href', $tabRoute . '#tab-1')
+				->text($this->_language->get('article'))
+			);
+		$outputItem .= $itemElement
+			->copy()
+			->html($linkElement
+				->copy()
+				->attr('href', $tabRoute . '#tab-2')
+				->text($this->_language->get('general'))
+			);
+		$outputItem .= $itemElement
+			->copy()
+			->html($linkElement
+				->copy()
+				->attr('href', $tabRoute . '#tab-3')
+				->text($this->_language->get('customize'))
+			);
+		$listElement->html($outputItem);
+		return $listElement;
 	}
 }

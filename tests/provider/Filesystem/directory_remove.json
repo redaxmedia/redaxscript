@@ -1,0 +1,37 @@
+[
+	[
+		"root",
+		false,
+		null,
+		[
+			"includes",
+			"languages",
+			"index.php"
+		]
+	],
+	[
+		"root",
+		true,
+		"includes",
+		[
+			"languages",
+			"de.json",
+			"en.json",
+			"index.php"
+		]
+	],
+	[
+		"root",
+		true,
+		"includes/Detector",
+		[
+			"includes",
+			"Autoloader.php",
+			"bootstrap.php",
+			"languages",
+			"de.json",
+			"en.json",
+			"index.php"
+		]
+	]
+]

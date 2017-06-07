@@ -32,17 +32,60 @@ $formElement
 	])
 	->append('</li><li>')
 	->label($language->get(++$i, '_number'),
+    [
+        'for' => $id . $i
+    ])
+	->select(
+    [
+        1,
+        2,
+        3,
+        4
+    ],
+    [
+        2
+    ],
+    [
+        'id' => $id . $i
+    ])
+	->append('</li><li>')
+	->label($language->get(++$i, '_number'),
+    [
+        'for' => $id . $i
+    ])
+	->select(
+    [
+        1,
+        2,
+        3,
+        4
+    ],
+    [
+        2
+    ],
+    [
+        'disabled' => 'disabled',
+        'id' => $id . $i
+    ])
+	->append('</li><li>')
+	->label($language->get(++$i, '_number'),
 	[
 		'for' => $id . $i
 	])
 	->selectRange(
 	[
 		'min' => 1,
-		'max' => 10
+		'max' => 4
 	],
 	[
+		2,
+		3
+    ],
+	[
 		'id' => $id . $i,
-		'required' => 'required'
+		'multiple' => 'multiple',
+		'required' => 'required',
+		'size' => 4
 	])
 	->append('</li><li>')
 	->label($language->get(++$i, '_number'),
@@ -52,11 +95,18 @@ $formElement
 	->selectRange(
 	[
 		'min' => 1,
-		'max' => 10
+		'max' => 4
 	],
+    [
+        2,
+        3
+    ],
 	[
 		'disabled' => 'disabled',
-		'id' => $id . $i
+		'id' => $id . $i,
+		'multiple' => 'multiple',
+		'required' => 'required',
+		'size' => 4
 	])
 	->append('</li><li>')
 	->label($language->get(++$i, '_number'),

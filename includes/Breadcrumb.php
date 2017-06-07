@@ -117,7 +117,7 @@ class Breadcrumb
 	}
 
 	/**
-	 * render the breadcrumb trail as an unordered list
+	 * render the breadcrumb
 	 *
 	 * @since 2.1.0
 	 *
@@ -147,10 +147,10 @@ class Breadcrumb
 
 		/* process breadcrumb */
 
-		foreach ($this->_breadcrumbArray as $key => $value)
+		foreach ($this->_breadcrumbArray as $key => $valueArray)
 		{
-			$title = array_key_exists('title', $value) ? $value['title'] : null;
-			$route = array_key_exists('route', $value) ? $value['route'] : null;
+			$title = is_array($valueArray) && array_key_exists('title', $valueArray) ? $valueArray['title'] : null;
+			$route = is_array($valueArray) && array_key_exists('route', $valueArray) ? $valueArray['route'] : null;
 			if ($title)
 			{
 				$itemElement->clear();

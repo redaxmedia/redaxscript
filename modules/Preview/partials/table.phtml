@@ -48,12 +48,12 @@ $outputBody = null;
 
 	<?php echo $tableElement->html(
 		$theadElement->html('<tr>' . $outputHead . '</tr>') .
-		$tfootElement->html('<tr>' . $outputFoot . '</tr>') .
 		$tbodyElement->html(
 			'<tr>' . $outputBody . '</tr>' .
 			'<tr>' . $outputBody . '</tr>' .
 			'<tr>' . $outputBody . '</tr>'
-		)
+		) .
+        $tfootElement->html('<tr>' . $outputFoot . '</tr>')
 	); ?>
 
 </div>

@@ -1,0 +1,17 @@
+/**
+ * @tableofcontents
+ *
+ * 1. textarea
+ *
+ * @since 3.2.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. textarea */
+
+.rs-field-textarea
+{
+	width: 100%;
+}

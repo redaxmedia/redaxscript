@@ -20,7 +20,7 @@ class Console extends ConsoleAbstract
 	 *
 	 * @param string $mode name of the mode
 	 *
-	 * @return mixed
+	 * @return string|boolean
 	 */
 
 	public function init($mode = null)
@@ -31,11 +31,14 @@ class Console extends ConsoleAbstract
 		/* run command */
 
 		$commandKey = $parser->getArgument(0);
-		$commandClass = $this->_namespaceArray[$commandKey];
-		if (array_key_exists($commandKey, $this->_namespaceArray) && class_exists($commandClass))
+		if (is_string($commandKey) && is_array($this->_namespaceArray) && array_key_exists($commandKey, $this->_namespaceArray))
 		{
-			$command = new $commandClass($this->_registry, $this->_request, $this->_language, $this->_config);
-			return $command->run($mode);
+			$commandClass = $this->_namespaceArray[$commandKey];
+			if (class_exists($commandClass))
+			{
+				$command = new $commandClass($this->_registry, $this->_request, $this->_language, $this->_config);
+				return $command->run($mode);
+			}
 		}
 		return false;
 	}

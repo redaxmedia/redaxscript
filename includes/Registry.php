@@ -44,12 +44,12 @@ class Registry extends Singleton
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return mixed
+	 * @return string|array|boolean
 	 */
 
 	public function get($key = null)
 	{
-		if (array_key_exists($key, self::$_registryArray))
+		if (is_array(self::$_registryArray) && array_key_exists($key, self::$_registryArray))
 		{
 			return self::$_registryArray[$key];
 		}
@@ -66,7 +66,7 @@ class Registry extends Singleton
 	 * @since 2.1.0
 	 *
 	 * @param string $key key of the item
-	 * @param mixed $value value of the item
+	 * @param string|array|boolean $value value of the item
 	 */
 
 	public function set($key = null, $value = null)

@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Tests\Filter;
 
-use Redaxscript\Purifier;
+use Redaxscript\Html;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -60,7 +60,7 @@ class PurifierTest extends TestCaseAbstract
 
 	public function providerPurifier()
 	{
-		return $this->getProvider('tests/provider/purifier.json');
+		return $this->getProvider('tests/provider/Html/purifier.json');
 	}
 
 	/**
@@ -78,7 +78,7 @@ class PurifierTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$purifier = new Purifier();
+		$purifier = new Html\Purifier();
 
 		/* actual */
 

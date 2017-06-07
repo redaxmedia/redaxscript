@@ -37,13 +37,13 @@ class Url implements ValidatorInterface
 
 			/* validate dns */
 
-			if ($dns === true)
+			if ($dns)
 			{
-				$parsedUrl = parse_url($url);
-				if (array_key_exists('host', $parsedUrl))
+				$urlArray = parse_url($url);
+				if (is_array($urlArray) && array_key_exists('host', $urlArray))
 				{
 					$dnsValidator = new Dns();
-					$output = $dnsValidator->validate($parsedUrl['host']);
+					$output = $dnsValidator->validate($urlArray['host']);
 				}
 			}
 		}

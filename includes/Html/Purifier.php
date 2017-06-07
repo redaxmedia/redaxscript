@@ -1,6 +1,7 @@
 <?php
-namespace Redaxscript;
+namespace Redaxscript\Html;
 
+use Redaxscript\Db;
 use DOMDocument;
 
 /**
@@ -9,7 +10,7 @@ use DOMDocument;
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category Purifier
+ * @category Html
  * @author Henry Ruhs
  */
 
@@ -49,6 +50,7 @@ class Purifier
 		'table',
 		'tbody',
 		'tfoot',
+		'thead',
 		'td',
 		'th',
 		'tr',
@@ -76,7 +78,7 @@ class Purifier
 
 		/* filter html */
 
-		if ($filter === true)
+		if ($filter && strlen($html))
 		{
 			$html = $this->_process($html);
 		}
@@ -88,9 +90,9 @@ class Purifier
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param object $html html to be processed
+	 * @param string|object $html html to be processed
 	 *
-	 * @return string
+	 * @return string|boolean
 	 */
 
 	protected function _process($html = null)
@@ -119,6 +121,7 @@ class Purifier
 			$this->_process($dom->documentElement);
 			return trim($dom->saveHTML());
 		}
+		return false;
 	}
 
 	/**
@@ -127,8 +130,6 @@ class Purifier
 	 * @since 3.0.0
 	 *
 	 * @param object $node document node
-	 *
-	 * @return object
 	 */
 
 	protected function _stripTags($node = null)
@@ -136,7 +137,7 @@ class Purifier
 		if (!in_array($node->nodeName, $this->_allowedTags))
 		{
 			$fragment = $this->_createFragment($node);
-			return $node->parentNode->replaceChild($fragment, $node);
+			$node->parentNode->replaceChild($fragment, $node);
 		}
 	}
 
@@ -178,7 +179,7 @@ class Purifier
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $node document node
+	 * @param object $node document node
 	 *
 	 * @return object
 	 */

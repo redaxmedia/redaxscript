@@ -1,0 +1,15 @@
+[
+	[
+		"root",
+		false,
+		[
+			"includes",
+			"languages"
+		]
+	],
+	[
+		"root",
+		true,
+		[]
+	]
+]

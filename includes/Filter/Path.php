@@ -18,13 +18,13 @@ class Path implements FilterInterface
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param string $path path
+	 * @param string $path name of the path
 	 * @param string $separator directory separator
 	 *
 	 * @return string
 	 */
 
-	public function sanitize($path = null, $separator = '/')
+	public function sanitize($path = null, $separator = DIRECTORY_SEPARATOR)
 	{
 		$output = urldecode($path);
 		$output = str_replace(

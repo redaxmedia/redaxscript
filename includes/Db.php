@@ -14,9 +14,9 @@ use PDOException;
  * @category Db
  * @author Henry Ruhs
  *
- * @method _addJoinSource(string $operator, string $table, mixed $constraint, string $tableAlias)
- * @method _addOrderBy(string $column, string $value)
- * @method _addWhere(string $clause, array $valueArray)
+ * @method $this _addJoinSource(string $operator, string $table, mixed $constraint, string $tableAlias)
+ * @method $this _addOrderBy(string $column, string $value)
+ * @method $this _addWhere(string $clause, array $valueArray)
  * @method _setupDb(string $connection)
  */
 
@@ -139,7 +139,7 @@ class Db extends ORM
 	 * @param string $table name of the table
 	 * @param string $connection which connection to use
 	 *
-	 * @return Db
+	 * @return self
 	 */
 
 	public static function rawInstance($table = null, $connection = self::DEFAULT_CONNECTION)
@@ -153,11 +153,12 @@ class Db extends ORM
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return Db
+	 * @return integer
 	 */
 
 	public static function countTablePrefix()
 	{
+		$output = 0;
 		$dbType = self::$_config->get('dbType');
 		$dbName = self::$_config->get('dbName');
 		$dbPrefix = self::$_config->get('dbPrefix');
@@ -166,7 +167,7 @@ class Db extends ORM
 
 		if ($dbType === 'mssql' || $dbType === 'mysql')
 		{
-			return self::forTable('information_schema.tables')
+			$output = self::forTable('information_schema.tables')
 				->where($dbType === 'mssql' ? 'table_catalog' : 'table_schema', $dbName)
 				->whereLike('table_name', $dbPrefix . '%')
 				->count();
@@ -176,7 +177,7 @@ class Db extends ORM
 
 		if ($dbType === 'pgsql')
 		{
-			return self::forTable('pg_catalog.pg_tables')
+			$output = self::forTable('pg_catalog.pg_tables')
 				->whereLike('tablename', $dbPrefix . '%')
 				->whereNotLike('tablename', 'pg_%')
 				->whereNotLike('tablename', 'sql_%')
@@ -187,11 +188,12 @@ class Db extends ORM
 
 		if ($dbType === 'sqlite')
 		{
-			return self::forTable('sqlite_master')
+			$output = self::forTable('sqlite_master')
 				->whereLike('tbl_name', $dbPrefix . '%')
 				->whereNotLike('tbl_name', 'sql_%')
 				->count();
 		}
+		return $output;
 	}
 
 	/**
@@ -202,7 +204,7 @@ class Db extends ORM
 	 * @param string $table name of the table
 	 * @param string $connection which connection to use
 	 *
-	 * @return Db
+	 * @return self
 	 */
 
 	public static function forTablePrefix($table = null, $connection = self::DEFAULT_CONNECTION)
@@ -220,7 +222,7 @@ class Db extends ORM
 	 * @param string $constraint constraint as needed
 	 * @param string $tableAlias alias of the table
 	 *
-	 * @return Db
+	 * @return $this
 	 */
 
 	public function leftJoinPrefix($table = null, $constraint = null, $tableAlias = null)
@@ -236,7 +238,7 @@ class Db extends ORM
 	 * @param array $columnArray array of column names
 	 * @param array $likeArray array of the like
 	 *
-	 * @return Db
+	 * @return $this
 	 */
 
 	public function whereLikeMany($columnArray = [], $likeArray = [])
@@ -251,7 +253,7 @@ class Db extends ORM
 	 *
 	 * @param string $language value of the language
 	 *
-	 * @return Db
+	 * @return $this
 	 */
 
 	public function whereLanguageIs($language = null)
@@ -272,11 +274,11 @@ class Db extends ORM
 	public function findFlatArray($key = 'id')
 	{
 		$flatArray = [];
-		foreach ($this->findArray() as $value)
+		foreach ($this->findArray() as $valueArray)
 		{
-			if (array_key_exists($key, $value))
+			if (is_array($valueArray) && array_key_exists($key, $valueArray))
 			{
-				$flatArray[] = $value[$key];
+				$flatArray[] = $valueArray[$key];
 			}
 		}
 		return $flatArray;
@@ -289,10 +291,10 @@ class Db extends ORM
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return mixed
+	 * @return string|integer
 	 */
 
-	public function getSetting($key = null)
+	public static function getSetting($key = null)
 	{
 		$settings = self::forTablePrefix('settings')->findMany();
 
@@ -321,12 +323,12 @@ class Db extends ORM
 	 * @since 3.0.0
 	 *
 	 * @param string $key key of the item
-	 * @param string $value value of the item
+	 * @param string|integer $value value of the item
 	 *
 	 * @return boolean
 	 */
 
-	public function setSetting($key = null, $value = null)
+	public static function setSetting($key = null, $value = null)
 	{
 		return self::forTablePrefix('settings')->where('name', $key)->findOne()->set('value', $value)->save();
 	}
@@ -338,7 +340,7 @@ class Db extends ORM
 	 *
 	 * @param string $column name of the column
 	 *
-	 * @return Db
+	 * @return $this
 	 */
 
 	public function orderGlobal($column = null)
@@ -351,7 +353,7 @@ class Db extends ORM
 	 *
 	 * @since 2.2.0
 	 *
-	 * @return Db
+	 * @return self
 	 */
 
 	public function limitGlobal()

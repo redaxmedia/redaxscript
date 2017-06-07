@@ -14,9 +14,6 @@ use Redaxscript\Language;
  * @package Redaxscript
  * @category Head
  * @author Henry Ruhs
- *
- * @method append($attribute = null, $value = null)
- * @method prepend($attribute = null, $value = null)
  */
 
 class Script extends HeadAbstract
@@ -50,7 +47,7 @@ class Script extends HeadAbstract
 	 *
 	 * @param string $source
 	 *
-	 * @return Script
+	 * @return $this
 	 */
 
 	public function appendFile($source = null)
@@ -66,7 +63,7 @@ class Script extends HeadAbstract
 	 *
 	 * @param string $source
 	 *
-	 * @return Script
+	 * @return $this
 	 */
 
 	public function prependFile($source = null)
@@ -82,7 +79,7 @@ class Script extends HeadAbstract
 	 *
 	 * @param string $source
 	 *
-	 * @return Script
+	 * @return $this
 	 */
 
 	public function removeFile($source = null)
@@ -98,7 +95,7 @@ class Script extends HeadAbstract
 	 *
 	 * @param string $inline
 	 *
-	 * @return Script
+	 * @return $this
 	 */
 
 	public function appendInline($inline = null)
@@ -114,7 +111,7 @@ class Script extends HeadAbstract
 	 *
 	 * @param string $inline
 	 *
-	 * @return Script
+	 * @return $this
 	 */
 
 	public function prependInline($inline = null)
@@ -129,9 +126,9 @@ class Script extends HeadAbstract
 	 * @since 3.0.0
 	 *
 	 * @param string $key
-	 * @param mixed $value
+	 * @param string|array $value
 	 *
-	 * @return Script
+	 * @return $this
 	 */
 
 	public function transportVar($key = null, $value = null)
@@ -149,7 +146,7 @@ class Script extends HeadAbstract
 	 *
 	 * @param array $optionArray
 	 *
-	 * @return Script
+	 * @return $this
 	 */
 
 	public function concat($optionArray = [])
@@ -219,7 +216,7 @@ class Script extends HeadAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return Script
+	 * @return $this
 	 */
 
 	public function clear()

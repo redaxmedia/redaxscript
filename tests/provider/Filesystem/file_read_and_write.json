@@ -1,0 +1,22 @@
+[
+	[
+		"root",
+		false,
+		"test.php",
+		"test",
+		[
+			"test",
+			"test"
+		]
+	],
+	[
+		"root",
+		false,
+		"test.php",
+		"<?php echo test;",
+		[
+			"<?php echo test;",
+			"test"
+		]
+	]
+]

@@ -49,14 +49,14 @@ class Language extends Singleton
 	 * @param string $key key of the item
 	 * @param string $index index of the array
 	 *
-	 * @return mixed
+	 * @return string|array|boolean
 	 */
 
 	public function get($key = null, $index = null)
 	{
 		/* handle index */
 
-		if (array_key_exists($index, self::$_languageArray))
+		if (is_array(self::$_languageArray) && array_key_exists($index, self::$_languageArray))
 		{
 			$languageArray = self::$_languageArray[$index];
 		}
@@ -67,7 +67,7 @@ class Language extends Singleton
 
 		/* values as needed */
 
-		if (array_key_exists($key, $languageArray))
+		if (is_array($languageArray) && array_key_exists($key, $languageArray))
 		{
 			return $languageArray[$key];
 		}
@@ -84,7 +84,7 @@ class Language extends Singleton
 	 * @since 2.4.0
 	 *
 	 * @param string $key key of the item
-	 * @param mixed $value value of the item
+	 * @param string|array $value value of the item
 	 */
 
 	public function set($key = null, $value = null)
@@ -97,26 +97,16 @@ class Language extends Singleton
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param mixed $path single or multiple language path
+	 * @param string|array $path single or multiple language path
 	 */
 
 	public function load($path = null)
 	{
 		$reader = new Reader();
 
-		/* handle json */
+		/* process path */
 
-		if (is_string($path))
-		{
-			$path =
-			[
-				$path
-			];
-		}
-
-		/* load and merge files */
-
-		foreach ($path as $file)
+		foreach ((array)$path as $file)
 		{
 			if (is_file($file))
 			{

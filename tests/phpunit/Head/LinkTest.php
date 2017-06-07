@@ -26,7 +26,7 @@ class LinkTest extends TestCaseAbstract
 
 	public function setUp()
 	{
-		Stream::setup('root', 0777, $this->getProvider('tests/provider/Head/link_set_up.json'));
+		Stream::setup('root', 0777, $this->getProvider('tests/provider/Head/link_setup.json'));
 	}
 
 	/**
@@ -99,10 +99,16 @@ class LinkTest extends TestCaseAbstract
 
 		$link = Head\Link::getInstance();
 		$link->init('append');
+
+		/* process core */
+
 		foreach ($coreArray as $key => $value)
 		{
 			$link->append($value);
 		}
+
+		/* process module */
+
 		foreach ($moduleArray as $key => $value)
 		{
 			$link->appendFile($value);
@@ -114,7 +120,7 @@ class LinkTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($this->normalizeEOL($expect), $actual);
+		$this->assertEquals($expect, $this->normalizeNewline($actual));
 	}
 
 	/**
@@ -135,10 +141,16 @@ class LinkTest extends TestCaseAbstract
 
 		$link = Head\Link::getInstance();
 		$link->init('prepend');
+
+		/* process core */
+
 		foreach ($coreArray as $value)
 		{
 			$link->prepend($value);
 		}
+
+		/* process module */
+
 		foreach ($moduleArray as $key => $value)
 		{
 			$link->prependFile($value);
@@ -150,7 +162,7 @@ class LinkTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($this->normalizeEOL($expect), $actual);
+		$this->assertEquals($expect, $this->normalizeNewline($actual));
 	}
 
 	/**
@@ -171,6 +183,9 @@ class LinkTest extends TestCaseAbstract
 
 		$link = Head\Link::getInstance();
 		$link->init('remove');
+
+		/* process core */
+
 		foreach ($coreArray as $key => $value)
 		{
 			$link->append($value);
@@ -183,7 +198,7 @@ class LinkTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($this->normalizeEOL($expect), $actual);
+		$this->assertEquals($expect, $this->normalizeNewline($actual));
 	}
 
 	/**
@@ -207,6 +222,9 @@ class LinkTest extends TestCaseAbstract
 		];
 		$link = Head\Link::getInstance();
 		$link->init('concat');
+
+		/* process concat */
+
 		foreach ($concatArray as $key => $value)
 		{
 			$link->append($value);
@@ -221,14 +239,13 @@ class LinkTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($this->normalizeEOL($expect), $actual);
+		$this->assertEquals($expect, $this->normalizeNewline($actual));
 	}
 
 	/**
 	 * testRewrite
 	 *
 	 * @since 3.0.0
-	 *
 	 */
 
 	public function testRewrite()
@@ -267,7 +284,6 @@ class LinkTest extends TestCaseAbstract
 	 * testInvalid
 	 *
 	 * @since 3.0.0
-	 *
 	 */
 
 	public function testInvalid()

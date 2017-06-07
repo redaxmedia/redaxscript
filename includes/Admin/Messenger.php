@@ -31,7 +31,7 @@ class Messenger extends BaseMessenger
 			'list' => 'rs-admin-list-note',
 			'link' => 'rs-admin-button-note',
 			'redirect' => 'rs-admin-meta-redirect',
-			'notes' =>
+			'noteArray' =>
 			[
 				'success' => 'rs-admin-is-success',
 				'warning' => 'rs-admin-is-warning',

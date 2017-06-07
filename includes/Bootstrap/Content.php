@@ -81,8 +81,6 @@ class Content extends BootstrapAbstract
 	 * set table by parameter
 	 *
 	 * @since 3.1.0
-	 *
-	 * @return integer
 	 */
 
 	protected function _setTableByParameter()
@@ -154,8 +152,6 @@ class Content extends BootstrapAbstract
 	 * set id by root
 	 *
 	 * @since 3.1.0
-	 *
-	 * @return integer
 	 */
 
 	protected function _setIdByRoot()
@@ -185,8 +181,6 @@ class Content extends BootstrapAbstract
 	 * set id by parameter
 	 *
 	 * @since 3.1.0
-	 *
-	 * @return integer
 	 */
 
 	protected function _setIdByParameter()

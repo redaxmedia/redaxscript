@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<phpunit convertErrorsToExceptions="false" convertWarningsToExceptions="false" bootstrap="tests/phpunit/bootstrap.php">
+<phpunit convertErrorsToExceptions="true" convertWarningsToExceptions="true" bootstrap="tests/phpunit/bootstrap.php">
 
 	<!-- listeners -->
 
@@ -94,6 +94,12 @@
 			<directory>tests/phpunit/Detector</directory>
 		</testsuite>
 
+		<!-- filesystem -->
+
+		<testsuite name="filesystem">
+			<directory>tests/phpunit/Filesystem</directory>
+		</testsuite>
+
 		<!-- filter -->
 
 		<testsuite name="filter">
@@ -166,12 +172,6 @@
 			<file>tests/phpunit/BreadcrumbTest.php</file>
 		</testsuite>
 
-		<!-- cache -->
-
-		<testsuite name="cache">
-			<directory>tests/phpunit/CacheTest.php</directory>
-		</testsuite>
-
 		<!-- captcha -->
 
 		<testsuite name="captcha">
@@ -188,12 +188,6 @@
 
 		<testsuite name="db">
 			<file>tests/phpunit/DbTest.php</file>
-		</testsuite>
-
-		<!-- directory -->
-
-		<testsuite name="_directory">
-			<file>tests/phpunit/DirectoryTest.php</file>
 		</testsuite>
 
 		<!-- hash -->

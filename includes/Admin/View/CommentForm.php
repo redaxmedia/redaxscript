@@ -32,6 +32,7 @@ class CommentForm extends ViewAbstract implements ViewInterface
 	{
 		$output = Module\Hook::trigger('adminCommentFormStart');
 		$comment = Db::forTablePrefix('comments')->whereIdIs($commentId)->findOne();
+		$helperOption = new Helper\Option($this->_language);
 
 		/* html elements */
 
@@ -41,15 +42,6 @@ class CommentForm extends ViewAbstract implements ViewInterface
 			'class' => 'rs-admin-title-content',
 		]);
 		$titleElement->text($comment->author ? $comment->author : $this->_language->get('comment_new'));
-		$linkElement = new Html\Element();
-		$linkElement->init('a');
-		$itemElement = new Html\Element();
-		$itemElement->init('li');
-		$listElement = new Html\Element();
-		$listElement->init('ul',
-		[
-			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
-		]);
 		$formElement = new AdminForm($this->_registry, $this->_language);
 		$formElement->init(
 		[
@@ -71,37 +63,10 @@ class CommentForm extends ViewAbstract implements ViewInterface
 			]
 		]);
 
-		/* collect item output */
-
-		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
-		$outputItem = $itemElement
-			->copy()
-			->addClass('rs-admin-js-item-active rs-admin-item-active')
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-1')
-				->text($this->_language->get('comment'))
-			);
-		$outputItem .= $itemElement
-			->copy()
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-2')
-				->text($this->_language->get('general'))
-			);
-		$outputItem .= $itemElement
-			->copy()
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-3')
-				->text($this->_language->get('customize'))
-			);
-		$listElement->append($outputItem);
-
 		/* create the form */
 
 		$formElement
-			->append($listElement)
+			->append($this->_renderList())
 			->append('<div class="rs-admin-js-box-tab rs-admin-box-tab">')
 
 			/* first tab */
@@ -164,22 +129,26 @@ class CommentForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'language'
 			])
-			->select(Helper\Option::getLanguageArray(),
+			->select($helperOption->getLanguageArray(),
+			[
+				'value' => $comment->language
+			],
 			[
 				'id' => 'language',
-				'name' => 'language',
-				'value' => $comment->language
+				'name' => 'language'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('article'),
 			[
 				'for' => 'article'
 			])
-			->select(Helper\Option::getContentArray('articles'),
+			->select($helperOption->getContentArray('articles'),
+			[
+				intval($comment->article)
+			],
 			[
 				'id' => 'article',
-				'name' => 'article',
-				'value' => intval($comment->article)
+				'name' => 'article'
 			])
 			->append('</li></ul></fieldset>')
 
@@ -190,11 +159,13 @@ class CommentForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'status'
 			])
-			->select(Helper\Option::getVisibleArray(),
+			->select($helperOption->getVisibleArray(),
+			[
+				$comment->id ? intval($comment->status) : 1
+			],
 			[
 				'id' => 'status',
-				'name' => 'status',
-				'value' => $comment->id ? intval($comment->status) : 1
+				'name' => 'status'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('rank'),
@@ -216,13 +187,15 @@ class CommentForm extends ViewAbstract implements ViewInterface
 				[
 					'for' => 'access'
 				])
-				->select(Helper\Option::getAccessArray('groups'),
+				->select($helperOption->getAccessArray('groups'),
+				[
+					$comment->access
+				],
 				[
 					'id' => 'access',
 					'name' => 'access[]',
 					'multiple' => 'multiple',
-					'size' => count(Helper\Option::getAccessArray('groups')),
-					'value' => $comment->access
+					'size' => count($helperOption->getAccessArray('groups'))
 				])
 				->append('</li>');
 		}
@@ -262,5 +235,57 @@ class CommentForm extends ViewAbstract implements ViewInterface
 		$output .= $titleElement . $formElement;
 		$output .= Module\Hook::trigger('adminCommentFormEnd');
 		return $output;
+	}
+
+	/**
+	 * render the list
+	 *
+	 * @since 3.2.0
+	 *
+	 * @return object
+	 */
+
+	protected function _renderList()
+	{
+		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
+
+		/* html elements */
+
+		$linkElement = new Html\Element();
+		$linkElement->init('a');
+		$itemElement = new Html\Element();
+		$itemElement->init('li');
+		$listElement = new Html\Element();
+		$listElement->init('ul',
+		[
+			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
+		]);
+
+		/* collect item output */
+
+		$outputItem = $itemElement
+			->copy()
+			->addClass('rs-admin-js-item-active rs-admin-item-active')
+			->html($linkElement
+				->copy()
+				->attr('href', $tabRoute . '#tab-1')
+				->text($this->_language->get('comment'))
+			);
+		$outputItem .= $itemElement
+			->copy()
+			->html($linkElement
+				->copy()
+				->attr('href', $tabRoute . '#tab-2')
+				->text($this->_language->get('general'))
+			);
+		$outputItem .= $itemElement
+			->copy()
+			->html($linkElement
+				->copy()
+				->attr('href', $tabRoute . '#tab-3')
+				->text($this->_language->get('customize'))
+			);
+		$listElement->html($outputItem);
+		return $listElement;
 	}
 }

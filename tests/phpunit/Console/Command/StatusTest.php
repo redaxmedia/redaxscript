@@ -86,6 +86,13 @@ class StatusTest extends TestCaseAbstract
 	{
 		/* setup */
 
+		$this->_registry->set('driverArray',
+		[
+			'mssql',
+			'mysql',
+			'pgsql',
+			'sqlite'
+		]);
 		$this->_registry->set('moduleArray',
 		[
 			'mod_deflate',

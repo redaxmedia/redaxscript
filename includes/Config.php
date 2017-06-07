@@ -60,12 +60,12 @@ class Config extends Singleton
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return mixed
+	 * @return string|array|boolean
 	 */
 
 	public function get($key = null)
 	{
-		if (array_key_exists($key, self::$_configArray))
+		if (is_array(self::$_configArray) && array_key_exists($key, self::$_configArray))
 		{
 			return self::$_configArray[$key];
 		}

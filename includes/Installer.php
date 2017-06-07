@@ -425,15 +425,15 @@ class Installer
 
 	protected function _rawExecute($action = null, $type = 'mysql')
 	{
-		$actionDirectory = new Directory();
-		$actionDirectory->init($this->_directory . DIRECTORY_SEPARATOR . $type . DIRECTORY_SEPARATOR . $action);
-		$actionArray = $actionDirectory->getArray();
+		$actionFilesystem = new Filesystem\File();
+		$actionFilesystem->init($this->_directory . DIRECTORY_SEPARATOR . $type . DIRECTORY_SEPARATOR . $action);
+		$actionFilesystemArray = $actionFilesystem->getSortArray();
 
-		/* process action */
+		/* process filesystem */
 
-		foreach ($actionArray as $file)
+		foreach ($actionFilesystemArray as $file)
 		{
-			$query = file_get_contents($this->_directory . DIRECTORY_SEPARATOR . $type . DIRECTORY_SEPARATOR . $action . DIRECTORY_SEPARATOR . $file);
+			$query = $actionFilesystem->readFile($file);
 			if ($query)
 			{
 				if ($this->_config->get('dbPrefix'))

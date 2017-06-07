@@ -2,7 +2,7 @@
 namespace Redaxscript;
 
 /**
- * parent class to create a message
+ * parent class to create a flash message
  *
  * @since 3.0.0
  *
@@ -50,7 +50,7 @@ class Messenger
 			'list' => 'rs-list-note',
 			'link' => 'rs-button-note',
 			'redirect' => 'rs-meta-redirect',
-			'notes' =>
+			'noteArray' =>
 			[
 				'success' => 'rs-is-success',
 				'info' => 'rs-is-info',
@@ -80,7 +80,7 @@ class Messenger
 	 *
 	 * @param array $optionArray options of the messenger
 	 *
-	 * @return Messenger
+	 * @return $this
 	 */
 
 	public function init($optionArray = [])
@@ -100,7 +100,7 @@ class Messenger
 	 * @param string $text text of the action
 	 * @param string $url absolute url of the action
 	 *
-	 * @return Messenger
+	 * @return $this
 	 */
 
 	public function setUrl($text = null, $url = null)
@@ -122,7 +122,7 @@ class Messenger
 	 * @param string $text text of the action
 	 * @param string $route relative route of the action
 	 *
-	 * @return Messenger
+	 * @return $this
 	 */
 
 	public function setRoute($text = null, $route = null)
@@ -143,7 +143,7 @@ class Messenger
 	 *
 	 * @param integer $timeout timeout of the redirect
 	 *
-	 * @return Messenger
+	 * @return $this
 	 */
 
 	public function doRedirect($timeout = 2)
@@ -157,7 +157,7 @@ class Messenger
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param mixed $message message of the success
+	 * @param string|array $message message of the success
 	 * @param string $title title of the success
 	 *
 	 * @return string
@@ -173,7 +173,7 @@ class Messenger
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param mixed $message message of the info
+	 * @param string|array $message message of the info
 	 * @param string $title title of the info
 	 *
 	 * @return string
@@ -189,7 +189,7 @@ class Messenger
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param mixed $message message of the warning
+	 * @param string|array $message message of the warning
 	 * @param string $title message title of the warning
 	 *
 	 * @return string
@@ -205,7 +205,7 @@ class Messenger
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param mixed $message message of the error
+	 * @param string|array $message message of the error
 	 * @param string $title title of the error
 	 *
 	 * @return string
@@ -222,7 +222,7 @@ class Messenger
 	 * @since 3.0.0
 	 *
 	 * @param string $type type of the flash
-	 * @param mixed $message message of the flash
+	 * @param string|array $message message of the flash
 	 * @param string $title title of the flash
 	 *
 	 * @return string
@@ -240,14 +240,14 @@ class Messenger
 			$titleElement
 				->init('h2',
 				[
-					'class' => $this->_optionArray['className']['title'] . ' ' . $this->_optionArray['className']['notes'][$type]
+					'class' => $this->_optionArray['className']['title'] . ' ' . $this->_optionArray['className']['noteArray'][$type]
 				])
 				->text($title);
 		}
 		$boxElement = new Html\Element();
 		$boxElement->init('div',
 		[
-			'class' => $this->_optionArray['className']['box'] . ' ' . $this->_optionArray['className']['notes'][$type]
+			'class' => $this->_optionArray['className']['box'] . ' ' . $this->_optionArray['className']['noteArray'][$type]
 		]);
 
 		/* create a list */
@@ -307,7 +307,7 @@ class Messenger
 				->init('a',
 				[
 					'href' => $this->_actionArray['route'] ? $this->_registry->get('parameterRoute') . $this->_actionArray['route'] : $this->_actionArray['url'],
-					'class' => $this->_optionArray['className']['link'] . ' ' . $this->_optionArray['className']['notes'][$type]
+					'class' => $this->_optionArray['className']['link'] . ' ' . $this->_optionArray['className']['noteArray'][$type]
 				])
 				->text($this->_actionArray['text']);
 

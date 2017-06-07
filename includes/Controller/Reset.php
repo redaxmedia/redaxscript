@@ -240,9 +240,9 @@ class Reset extends ControllerAbstract
 		$subject = $this->_language->get('password_new');
 		$bodyArray =
 		[
-			$this->_language->get('password_new') . $this->_language->get('colon') . $mailArray['password'],
+			$this->_language->get('password_new') . $this->_language->get('colon') . ' ' . $mailArray['password'],
 			'<br />',
-			$this->_language->get('login') . $this->_language->get('colon') . $linkElement
+			$this->_language->get('login') . $this->_language->get('colon') . ' ' . $linkElement
 		];
 
 		/* send mail */

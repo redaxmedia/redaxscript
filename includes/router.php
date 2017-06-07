@@ -1,5 +1,4 @@
 <?php
-use Redaxscript\Language;
 
 /**
  * router
@@ -14,54 +13,58 @@ use Redaxscript\Language;
 
 function router()
 {
-	$firstParameter = Redaxscript\Registry::get('firstParameter');
-	$secondParameter = Redaxscript\Registry::get('secondParameter');
-	$thirdParameter = Redaxscript\Registry::get('thirdParameter');
-	$thirdSubParameter = Redaxscript\Registry::get('thirdSubParameter');
+	$registry = Redaxscript\Registry::getInstance();
+	$request = Redaxscript\Request::getInstance();
+	$language = Redaxscript\Language::getInstance();
+	$config = Redaxscript\Config::getInstance();
+	$firstParameter = $registry->get('firstParameter');
+	$secondParameter = $registry->get('secondParameter');
+	$thirdParameter = $registry->get('thirdParameter');
+	$thirdSubParameter = $registry->get('thirdSubParameter');
 	$config = Redaxscript\Config::getInstance();
 	Redaxscript\Module\Hook::trigger('routerStart');
-	if (Redaxscript\Registry::get('routerBreak'))
+	if ($registry->get('routerBreak'))
 	{
 		return;
 	}
 
 	/* check token */
 
-	$messenger = new Redaxscript\Messenger(Redaxscript\Registry::getInstance());
-	if ($_POST && $_POST['token'] != Redaxscript\Registry::get('token'))
+	$messenger = new Redaxscript\Messenger($registry);
+	if ($_POST && $_POST['token'] != $registry->get('token'))
 	{
-		echo $messenger->setRoute(Redaxscript\Language::get('home'), Redaxscript\Registry::get('root'))->error(Redaxscript\Language::get('token_incorrect'), Redaxscript\Language::get('error_occurred'));
+		echo $messenger->setRoute($language->get('home'), $registry->get('root'))->error($language->get('token_incorrect'), $language->get('error_occurred'));
 		return;
 	}
 
 	/* install routing */
 
-	if (Redaxscript\Registry::get('file') === 'install.php' && $config->get('env') !== 'production')
+	if ($registry->get('file') === 'install.php' && $config->get('env') !== 'production')
 	{
-		if (Redaxscript\Request::getPost('Redaxscript\View\InstallForm'))
+		if ($request->getPost('Redaxscript\View\InstallForm'))
 		{
-			Redaxscript\Request::setSession('installArray',
+			$request->setSession('installArray',
 			[
-				'dbType' => Redaxscript\Request::getPost('db-type'),
-				'dbHost' => Redaxscript\Request::getPost('db-host'),
-				'dbName' => Redaxscript\Request::getPost('db-name'),
-				'dbUser' => Redaxscript\Request::getPost('db-user'),
-				'dbPassword' => Redaxscript\Request::getPost('db-password'),
-				'dbPrefix' => Redaxscript\Request::getPost('db-prefix'),
-				'adminName' => Redaxscript\Request::getPost('admin-name'),
-				'adminUser' => Redaxscript\Request::getPost('admin-user'),
-				'adminPassword' => Redaxscript\Request::getPost('admin-password'),
-				'adminEmail' => Redaxscript\Request::getPost('admin-email')
+				'dbType' => $request->getPost('db-type'),
+				'dbHost' => $request->getPost('db-host'),
+				'dbName' => $request->getPost('db-name'),
+				'dbUser' => $request->getPost('db-user'),
+				'dbPassword' => $request->getPost('db-password'),
+				'dbPrefix' => $request->getPost('db-prefix'),
+				'adminName' => $request->getPost('admin-name'),
+				'adminUser' => $request->getPost('admin-user'),
+				'adminPassword' => $request->getPost('admin-password'),
+				'adminEmail' => $request->getPost('admin-email')
 			]);
-			$installController = new Redaxscript\Controller\Install(Redaxscript\Registry::getInstance(), Redaxscript\Request::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Config::getInstance());
+			$installController = new Redaxscript\Controller\Install($registry, $request, $language, $config);
 			echo $installController->process();
 			return;
 		}
 		else
 		{
-			$installArray = Redaxscript\Request::getSession('installArray');
-			$systemStatus = new Redaxscript\View\SystemStatus(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
-			$installForm = new Redaxscript\View\InstallForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+			$installArray = $request->getSession('installArray');
+			$systemStatus = new Redaxscript\View\SystemStatus($registry, $language);
+			$installForm = new Redaxscript\View\InstallForm($registry, $language);
 			echo $systemStatus->render() . $installForm->render($installArray);
 			return;
 		}
@@ -79,11 +82,11 @@ function router()
 	];
 	foreach ($post_list as $key => $value)
 	{
-		if (Redaxscript\Request::getPost($key))
+		if ($request->getPost($key))
 		{
 			if (class_exists($value))
 			{
-				$controller = new $value(Redaxscript\Registry::getInstance(), Redaxscript\Request::getInstance(), Redaxscript\Language::getInstance());
+				$controller = new $value($registry, $request, $language);
 				echo $controller->process();
 			}
 			return;
@@ -92,17 +95,17 @@ function router()
 
 	/* search routing */
 
-	if (Redaxscript\Request::getPost('Redaxscript\View\SearchForm'))
+	if ($request->getPost('Redaxscript\View\SearchForm'))
 	{
-		$messenger = new Redaxscript\Messenger(Redaxscript\Registry::getInstance());
+		$messenger = new Redaxscript\Messenger($registry);
 		$aliasFilter = new Redaxscript\Filter\Alias();
-		$table = $aliasFilter->sanitize(Redaxscript\Request::getPost('table'));
-		$search = $aliasFilter->sanitize(Redaxscript\Request::getPost('search'));
+		$table = $aliasFilter->sanitize($request->getPost('table'));
+		$search = $aliasFilter->sanitize($request->getPost('search'));
 		if ($table)
 		{
 			$table = '/' . $table;
 		}
-		echo $messenger->setRoute(Redaxscript\Language::get('continue'), 'search' . $table . '/' . $search)->doRedirect(0)->success($search);
+		echo $messenger->setRoute($language->get('continue'), 'search' . $table . '/' . $search)->doRedirect(0)->success($search);
 	}
 
 	/* parameter routing */
@@ -110,13 +113,13 @@ function router()
 	switch ($firstParameter)
 	{
 		case 'admin':
-			if (Redaxscript\Registry::get('loggedIn') == Redaxscript\Registry::get('token'))
+			if ($registry->get('loggedIn') == $registry->get('token'))
 			{
 				admin_router();
 			}
 			else
 			{
-				echo $messenger->setRoute(Language::get('login'), 'login')->error(Language::get('access_no'), Language::get('error_occurred'));
+				echo $messenger->setRoute($language->get('login'), 'login')->error($language->get('access_no'), $language->get('error_occurred'));
 			}
 			return;
 		case 'login':
@@ -125,53 +128,53 @@ function router()
 			case 'recover':
 				if (Redaxscript\Db::getSetting('recovery') == 1)
 				{
-					$recoverForm = new Redaxscript\View\RecoverForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+					$recoverForm = new Redaxscript\View\RecoverForm($registry, $language);
 					echo $recoverForm->render();
 					return;
 				}
 			case 'reset':
 				if (Redaxscript\Db::getSetting('recovery') == 1 && $thirdParameter && $thirdSubParameter)
 				{
-					$resetForm = new Redaxscript\View\ResetForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+					$resetForm = new Redaxscript\View\ResetForm($registry, $language);
 					echo $resetForm->render();
 					return;
 				}
 
 				/* show error */
 
-				echo $messenger->setRoute(Language::get('login'), 'login')->error(Language::get('access_no'), Language::get('error_occurred'));
+				echo $messenger->setRoute($language->get('login'), 'login')->error($language->get('access_no'), $language->get('error_occurred'));
 				return;
 			default:
-				$loginForm = new Redaxscript\View\LoginForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+				$loginForm = new Redaxscript\View\LoginForm($registry, $language);
 				echo $loginForm->render();
 				return;
 			}
 		case 'logout':
-			if (Redaxscript\Registry::get('loggedIn') == Redaxscript\Registry::get('token'))
+			if ($registry->get('loggedIn') == $registry->get('token'))
 			{
-				$logoutController = new Redaxscript\Controller\Logout(Redaxscript\Registry::getInstance(), Redaxscript\Request::getInstance(), Redaxscript\Language::getInstance());
+				$logoutController = new Redaxscript\Controller\Logout($registry, $request, $language);
 				echo $logoutController->process();
 				return;
 			}
 
 			/* show error */
 
-			echo $messenger->setRoute(Language::get('login'), 'login')->error(Language::get('access_no'), Language::get('error_occurred'));
+			echo $messenger->setRoute($language->get('login'), 'login')->error($language->get('access_no'), $language->get('error_occurred'));
 			return;
 		case 'register':
 			if (Redaxscript\Db::getSetting('registration'))
 			{
-				$registerForm = new Redaxscript\View\RegisterForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+				$registerForm = new Redaxscript\View\RegisterForm($registry, $language);
 				echo $registerForm->render();
 				return;
 			}
 
 			/* show error */
 
-			echo $messenger->setRoute(Language::get('home'), Redaxscript\Registry::get('root'))->error(Language::get('access_no'), Language::get('error_occurred'));
+			echo $messenger->setRoute($language->get('home'), $registry->get('root'))->error($language->get('access_no'), $language->get('error_occurred'));
 			return;
 		case 'search':
-			$searchController = new Redaxscript\Controller\Search(Redaxscript\Registry::getInstance(), Redaxscript\Request::getInstance(), Redaxscript\Language::getInstance());
+			$searchController = new Redaxscript\Controller\Search($registry, $request, $language);
 			echo $searchController->process();
 			return;
 		default:

@@ -13,6 +13,10 @@
 
 function admin_process()
 {
+	$registry = Redaxscript\Registry::getInstance();
+	$request = Redaxscript\Request::getInstance();
+	$language = Redaxscript\Language::getInstance();
+	$config = Redaxscript\Config::getInstance();
 	$aliasFilter = new Redaxscript\Filter\Alias();
 	$emailFilter = new Redaxscript\Filter\Email();
 	$urlFilter = new Redaxscript\Filter\Url();
@@ -20,10 +24,10 @@ function admin_process()
 	$aliasValidator = new Redaxscript\Validator\Alias();
 	$loginValidator = new Redaxscript\Validator\Login();
 	$specialFilter = new Redaxscript\Filter\Special;
-	$messenger = new Redaxscript\Admin\Messenger(Redaxscript\Registry::getInstance());
-	$filter = Redaxscript\Registry::get('filter');
-	$tableParameter = Redaxscript\Registry::get('tableParameter');
-	$idParameter = Redaxscript\Registry::get('idParameter');
+	$messenger = new Redaxscript\Admin\Messenger($registry);
+	$filter = $registry->get('filter');
+	$tableParameter = $registry->get('tableParameter');
+	$idParameter = $registry->get('idParameter');
 
 	/* clean post */
 
@@ -50,7 +54,7 @@ function admin_process()
 				$r['headline'] = $specialFilter->sanitize($_POST['headline']);
 			}
 			$r['sibling'] = $specialFilter->sanitize($_POST['sibling']);
-			$author = $r['author'] = Redaxscript\Registry::get('myUser');
+			$author = $r['author'] = $registry->get('myUser');
 
 		/* comments */
 
@@ -80,7 +84,7 @@ function admin_process()
 		case 'users':
 			if ($tableParameter != 'groups')
 			{
-				$language = $r['language'] = $specialFilter->sanitize($_POST['language']);
+				$r['language'] = $specialFilter->sanitize($_POST['language']);
 			}
 
 		/* modules */
@@ -88,14 +92,17 @@ function admin_process()
 		case 'modules';
 			$alias = $aliasFilter->sanitize($_POST['alias']);
 			$status = $r['status'] = $specialFilter->sanitize($_POST['status']);
-			if ($tableParameter != 'groups' && $tableParameter != 'users' && Redaxscript\Registry::get('groupsEdit'))
+			if ($tableParameter != 'groups' && $tableParameter != 'users' && $registry->get('groupsEdit'))
 			{
-				$access = array_map(
-				[
-					$specialFilter,
-					'sanitize'
-				], $_POST['access']);
-				$access_string = implode(', ', $access);
+				if ($_POST['access'])
+				{
+					$access = array_map(
+					[
+						$specialFilter,
+						'sanitize'
+					], $_POST['access']);
+					$access_string = implode(', ', $access);
+				}
 				if (!$access_string)
 				{
 					$access_string = null;
@@ -127,13 +134,13 @@ function admin_process()
 	}
 	if ($tableParameter == 'articles' || $tableParameter == 'extras' || $tableParameter == 'comments')
 	{
-		if ($date > Redaxscript\Registry::get('now'))
+		if ($date > $registry->get('now'))
 		{
 			$status = $r['status'] = 2;
 		}
 		if (!$date)
 		{
-			$r['date'] = Redaxscript\Registry::get('now');
+			$r['date'] = $registry->get('now');
 		}
 	}
 	if ($tableParameter == 'extras' || $tableParameter == 'comments')
@@ -213,13 +220,13 @@ function admin_process()
 		$password = $specialFilter->sanitize($_POST['password']);
 		if ($password_check == 1 && $password_confirm == 1)
 		{
-			$passwordHash = new Redaxscript\Hash(Redaxscript\Config::getInstance());
+			$passwordHash = new Redaxscript\Hash($config);
 			$passwordHash->init($password);
 			$r['password'] = $passwordHash->getHash();
 		}
 		if ($_POST['new'])
 		{
-			$r['first'] = $r['last'] = Redaxscript\Registry::get('now');
+			$r['first'] = $r['last'] = $registry->get('now');
 		}
 		if (!$idParameter || $idParameter > 1)
 		{
@@ -250,7 +257,7 @@ function admin_process()
 		case 'extras':
 			if (!$title)
 			{
-				$error = Redaxscript\Language::get('title_empty');
+				$error = $language->get('title_empty');
 			}
 			if ($tableParameter == 'categories')
 			{
@@ -262,11 +269,11 @@ function admin_process()
 			}
 			if ($opponent_id)
 			{
-				$error = Redaxscript\Language::get('alias_exists');
+				$error = $language->get('alias_exists');
 			}
 			if ($tableParameter != 'groups' && $aliasValidator->validate($alias, Redaxscript\Validator\Alias::MODE_GENERAL) == Redaxscript\Validator\ValidatorInterface::PASSED || $aliasValidator->validate($alias, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::PASSED)
 			{
-				$error = Redaxscript\Language::get('alias_incorrect');
+				$error = $language->get('alias_incorrect');
 			}
 
 		/* groups */
@@ -274,7 +281,7 @@ function admin_process()
 		case 'groups':
 			if (!$alias)
 			{
-				$error = Redaxscript\Language::get('alias_empty');
+				$error = $language->get('alias_empty');
 			}
 			else
 			{
@@ -283,7 +290,7 @@ function admin_process()
 			}
 			if ($id_alias && strcasecmp($alias_id, $alias) < 0)
 			{
-				$error = Redaxscript\Language::get('alias_exists');
+				$error = $language->get('alias_exists');
 			}
 	}
 
@@ -296,7 +303,7 @@ function admin_process()
 		case 'comments':
 			if (!$text)
 			{
-				$error = Redaxscript\Language::get('text_empty');
+				$error = $language->get('text_empty');
 			}
 			break;
 		case 'groups':
@@ -304,7 +311,7 @@ function admin_process()
 		case 'modules':
 			if (!$name)
 			{
-				$error = Redaxscript\Language::get('name_empty');
+				$error = $language->get('name_empty');
 			}
 			break;
 	}
@@ -315,7 +322,7 @@ function admin_process()
 	{
 		if (!$user)
 		{
-			$error = Redaxscript\Language::get('user_incorrect');
+			$error = $language->get('user_incorrect');
 		}
 		else
 		{
@@ -324,21 +331,21 @@ function admin_process()
 		}
 		if ($id_user && strcasecmp($user_id, $user) < 0)
 		{
-			$error = Redaxscript\Language::get('user_exists');
+			$error = $language->get('user_exists');
 		}
 		if ($loginValidator->validate($user) == Redaxscript\Validator\ValidatorInterface::FAILED)
 		{
-			$error = Redaxscript\Language::get('user_incorrect');
+			$error = $language->get('user_incorrect');
 		}
 		if ($password_check == 1)
 		{
 			if (!$password)
 			{
-				$error = Redaxscript\Language::get('password_empty');
+				$error = $language->get('password_empty');
 			}
 			if ($password_confirm == 0 || $loginValidator->validate($password) == Redaxscript\Validator\ValidatorInterface::FAILED)
 			{
-				$error = Redaxscript\Language::get('password_incorrect');
+				$error = $language->get('password_incorrect');
 			}
 		}
 	}
@@ -351,12 +358,12 @@ function admin_process()
 		case 'comments':
 			if (!$author)
 			{
-				$error = Redaxscript\Language::get('author_empty');
+				$error = $language->get('author_empty');
 			}
 		case 'users':
 			if ($emailValidator->validate($email) == Redaxscript\Validator\ValidatorInterface::FAILED)
 			{
-				$error = Redaxscript\Language::get('email_incorrect');
+				$error = $language->get('email_incorrect');
 			}
 	}
 	$route = 'admin';
@@ -376,7 +383,7 @@ function admin_process()
 
 		/* show error */
 
-		echo $messenger->setRoute(Redaxscript\Language::get('back'), $route)->error($error, Redaxscript\Language::get('error_occurred'));
+		echo $messenger->setRoute($language->get('back'), $route)->error($error, $language->get('error_occurred'));
 		return;
 	}
 
@@ -384,7 +391,7 @@ function admin_process()
 
 	else
 	{
-		if (Redaxscript\Registry::get('tableEdit') == 1 || Redaxscript\Registry::get('tableEdit') == 1)
+		if ($registry->get('tableEdit') == 1 || $registry->get('tableEdit') == 1)
 		{
 			$route .= '/view/' . $tableParameter;
 			if ($alias)
@@ -415,22 +422,22 @@ function admin_process()
 		/* query new */
 
 		case $_POST['new']:
-			Redaxscript\Db::forTablePrefix(Redaxscript\Registry::get('tableParameter'))
+			Redaxscript\Db::forTablePrefix($registry->get('tableParameter'))
 				->create()
 				->set($r)
 				->save();
 
 			/* show success */
 
-			echo $messenger->setRoute(Redaxscript\Language::get('continue'), $route)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
+			echo $messenger->setRoute($language->get('continue'), $route)->doRedirect()->success($language->get('operation_completed'));
 
 			return;
 
 		/* query edit */
 
 		case $_POST['edit']:
-			Redaxscript\Db::forTablePrefix(Redaxscript\Registry::get('tableParameter'))
-				->whereIdIs(Redaxscript\Registry::get('idParameter'))
+			Redaxscript\Db::forTablePrefix($registry->get('tableParameter'))
+				->whereIdIs($registry->get('idParameter'))
 				->findOne()
 				->set($r)
 				->save();
@@ -495,20 +502,21 @@ function admin_process()
 					->save();
 			}
 
-			if ($tableParameter == 'users' && $idParameter == Redaxscript\Registry::get('myId'))
+			if ($tableParameter == 'users' && $idParameter == $registry->get('myId'))
 			{
-				$auth = new Redaxscript\Auth(Redaxscript\Request::getInstance());
+				$auth = new Redaxscript\Auth($request);
 				$auth->init();
 				$auth->setUser('name', $name);
 				$auth->setUser('email', $email);
-				$auth->setUser('language', $language);
+				$auth->setUser('language', $r['language']);
 				$auth->save();
-				Redaxscript\Request::setSession('language', $language);
+				$request = Redaxscript\Request::getInstance();
+				$request->setSession('language', $r['language']);
 			}
 
 			/* show success */
 
-			echo $messenger->setRoute(Redaxscript\Language::get('continue'), $route)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
+			echo $messenger->setRoute($language->get('continue'), $route)->doRedirect()->success($language->get('operation_completed'));
 			return;
 	}
 }
@@ -526,9 +534,9 @@ function admin_process()
 
 function admin_move()
 {
-	$adminParameter = Redaxscript\Registry::get('adminParameter');
-	$tableParameter = Redaxscript\Registry::get('tableParameter');
-	$idParameter = Redaxscript\Registry::get('idParameter');
+	$adminParameter = $registry->get('adminParameter');
+	$tableParameter = $registry->get('tableParameter');
+	$idParameter = $registry->get('idParameter');
 
 	/* retrieve rank */
 
@@ -556,8 +564,8 @@ function admin_move()
 
 	/* show success */
 
-	$messenger = new Redaxscript\Admin\Messenger(Redaxscript\Registry::getInstance());
-	echo $messenger->setRoute(Redaxscript\Language::get('continue'), 'admin/view/' . $tableParameter)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
+	$messenger = new Redaxscript\Admin\Messenger($registry);
+	echo $messenger->setRoute($language->get('continue'), 'admin/view/' . $tableParameter)->doRedirect()->success($language->get('operation_completed'));
 }
 
 /**
@@ -573,7 +581,9 @@ function admin_move()
 
 function admin_sort()
 {
-	$tableParameter = Redaxscript\Registry::get('tableParameter');
+	$registry = Redaxscript\Registry::getInstance();
+	$language = Redaxscript\Language::getInstance();
+	$tableParameter = $registry->get('tableParameter');
 	if ($tableParameter == 'categories' || $tableParameter == 'articles' || $tableParameter == 'extras' || $tableParameter == 'comments')
 	{
 		/* query general select */
@@ -590,7 +600,10 @@ function admin_sort()
 				{
 					foreach ($r as $key => $value)
 					{
-						$$key = stripslashes($value);
+						if ($key !== 'language')
+						{
+							$$key = stripslashes($value);
+						}
 					}
 				}
 				if ($tableParameter == 'articles')
@@ -643,8 +656,8 @@ function admin_sort()
 
 	/* show success */
 
-	$messenger = new Redaxscript\Admin\Messenger(Redaxscript\Registry::getInstance());
-	echo $messenger->setRoute(Redaxscript\Language::get('continue'), 'admin/view/' . $tableParameter)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
+	$messenger = new Redaxscript\Admin\Messenger($registry);
+	echo $messenger->setRoute($language->get('continue'), 'admin/view/' . $tableParameter)->doRedirect()->success($language->get('operation_completed'));
 }
 
 /**
@@ -662,8 +675,10 @@ function admin_sort()
 
 function admin_status($input)
 {
-	$tableParameter = Redaxscript\Registry::get('tableParameter');
-	$idParameter = Redaxscript\Registry::get('idParameter');
+	$registry = Redaxscript\Registry::getInstance();
+	$language = Redaxscript\Language::getInstance();
+	$tableParameter = $registry->get('tableParameter');
+	$idParameter = $registry->get('idParameter');
 	Redaxscript\Db::forTablePrefix($tableParameter)
 		->where('id', $idParameter)
 		->findMany()
@@ -706,8 +721,8 @@ function admin_status($input)
 
 	/* show success */
 
-	$messenger = new Redaxscript\Admin\Messenger(Redaxscript\Registry::getInstance());
-	echo $messenger->setRoute(Redaxscript\Language::get('continue'), 'admin/view/' . $tableParameter)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
+	$messenger = new Redaxscript\Admin\Messenger($registry);
+	echo $messenger->setRoute($language->get('continue'), 'admin/view/' . $tableParameter)->doRedirect()->success($language->get('operation_completed'));
 }
 
 /**
@@ -723,9 +738,13 @@ function admin_status($input)
 
 function admin_install()
 {
-	$adminParameter = Redaxscript\Registry::get('adminParameter');
-	$tableParameter = Redaxscript\Registry::get('tableParameter');
-	$aliasParameter = Redaxscript\Registry::get('aliasParameter');
+	$registry = Redaxscript\Registry::getInstance();
+	$request = Redaxscript\Request::getInstance();
+	$language = Redaxscript\Language::getInstance();
+	$config = Redaxscript\Config::getInstance();
+	$adminParameter = $registry->get('adminParameter');
+	$tableParameter = $registry->get('tableParameter');
+	$aliasParameter = $registry->get('aliasParameter');
 	if ($tableParameter == 'modules')
 	{
 		/* install module */
@@ -736,7 +755,7 @@ function admin_install()
 			if (($adminParameter == 'install' && !$module) || ($adminParameter == 'uninstall' && $module))
 			{
 				$moduleClass = 'Redaxscript\Modules\\' . $aliasParameter . '\\' . $aliasParameter;
-				$module = new $moduleClass(Redaxscript\Registry::getInstance(), Redaxscript\Request::getInstance(), Redaxscript\Language::getInstance(), Redaxscript\Config::getInstance());
+				$module = new $moduleClass($registry, $request, $language, $config);
 
 				/* method exists */
 
@@ -754,8 +773,8 @@ function admin_install()
 
 	/* show success */
 
-	$messenger = new Redaxscript\Admin\Messenger(Redaxscript\Registry::getInstance());
-	echo $messenger->setRoute(Redaxscript\Language::get('continue'), 'admin/view/' . $tableParameter . '#' . $aliasParameter)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
+	$messenger = new Redaxscript\Admin\Messenger($registry);
+	echo $messenger->setRoute($language->get('continue'), 'admin/view/' . $tableParameter . '#' . $aliasParameter)->doRedirect()->success($language->get('operation_completed'));
 }
 
 /**
@@ -771,8 +790,11 @@ function admin_install()
 
 function admin_delete()
 {
-	$tableParameter = Redaxscript\Registry::get('tableParameter');
-	$idParameter = Redaxscript\Registry::get('idParameter');
+	$registry = Redaxscript\Registry::getInstance();
+	$request = Redaxscript\Request::getInstance();
+	$language = Redaxscript\Language::getInstance();
+	$tableParameter = $registry->get('tableParameter');
+	$idParameter = $registry->get('idParameter');
 	if ($tableParameter == 'categories' || $tableParameter == 'articles' || $tableParameter == 'extras' || $tableParameter == 'comments' || $tableParameter == 'groups' || $tableParameter == 'users')
 	{
 		Redaxscript\Db::forTablePrefix($tableParameter)
@@ -842,9 +864,9 @@ function admin_delete()
 
 	/* handle exception */
 
-	if ($tableParameter == 'users' && $idParameter == Redaxscript\Registry::get('myId'))
+	if ($tableParameter == 'users' && $idParameter == $registry->get('myId'))
 	{
-		$logoutController = new Redaxscript\Controller\Logout(Redaxscript\Registry::getInstance(), Redaxscript\Request::getInstance(), Redaxscript\Language::getInstance());
+		$logoutController = new Redaxscript\Controller\Logout($registry, $request, $language);
 		echo $logoutController->process();
 	}
 
@@ -853,15 +875,15 @@ function admin_delete()
 	else
 	{
 		$route = 'admin';
-		if (Redaxscript\Registry::get('tableEdit') == 1 || Redaxscript\Registry::get('tableEdit') == 1)
+		if ($registry->get('tableEdit') == 1 || $registry->get('tableEdit') == 1)
 		{
 			$route .= '/view/' . $tableParameter;
 		}
 
 		/* show success */
 
-		$messenger = new Redaxscript\Admin\Messenger(Redaxscript\Registry::getInstance());
-		echo $messenger->setRoute(Redaxscript\Language::get('continue'), $route)->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
+		$messenger = new Redaxscript\Admin\Messenger($registry);
+		echo $messenger->setRoute($language->get('continue'), $route)->doRedirect()->success($language->get('operation_completed'));
 	}
 }
 
@@ -878,7 +900,9 @@ function admin_delete()
 
 function admin_update()
 {
-	$tableParameter = Redaxscript\Registry::get('tableParameter');
+	$registry = Redaxscript\Registry::getInstance();
+	$language = Redaxscript\Language::getInstance();
+	$tableParameter = $registry->get('tableParameter');
 	if ($tableParameter == 'settings')
 	{
 		$specialFilter = new Redaxscript\Filter\Special();
@@ -928,8 +952,8 @@ function admin_update()
 
 		/* show success */
 
-		$messenger = new Redaxscript\Admin\Messenger(Redaxscript\Registry::getInstance());
-		echo $messenger->setRoute(Redaxscript\Language::get('continue'), 'admin/edit/settings')->doRedirect()->success(Redaxscript\Language::get('operation_completed'));
+		$messenger = new Redaxscript\Admin\Messenger($registry);
+		echo $messenger->setRoute($language->get('continue'), 'admin/edit/settings')->doRedirect()->success($language->get('operation_completed'));
 	}
 }
 
@@ -946,12 +970,13 @@ function admin_update()
 
 function admin_last_update()
 {
-	if (Redaxscript\Registry::get('myId'))
+	$registry = Redaxscript\Registry::getInstance();
+	if ($registry->get('myId'))
 	{
 		Redaxscript\Db::forTablePrefix('users')
-			->where('id', Redaxscript\Registry::get('myId'))
+			->where('id', $registry->get('myId'))
 			->findOne()
-			->set('last', Redaxscript\Registry::get('now'))
+			->set('last', $registry->get('now'))
 			->save();
 	}
 }

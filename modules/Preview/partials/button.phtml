@@ -2,9 +2,9 @@
 namespace Redaxscript;
 
 $language = Language::getInstance();
-$linkElement = new Html\Element();
-$linkElement
-	->init('a',
+$buttonElement = new Html\Element();
+$buttonElement
+	->init('button',
 	[
 		'class' => $admin ? 'rs-admin-button-default' : 'rs-button-default'
 	])
@@ -13,17 +13,17 @@ $linkElement
 
 <!-- button -->
 
-<?php echo $linkElement; ?>
+<?php echo $buttonElement; ?>
 
 <!-- button disabled -->
 
-<?php echo $linkElement
+<?php echo $buttonElement
 	->copy()
 	->attr('disabled', 'disabled'); ?>
 
 <!-- button large -->
 
-<?php echo $linkElement
+<?php echo $buttonElement
 	->copy()
 	->addClass($admin ? 'rs-admin-is-large' : 'rs-is-large'); ?>
 

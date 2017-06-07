@@ -2,6 +2,7 @@
 namespace Redaxscript\Console\Command;
 
 use Redaxscript\Console\Parser;
+use Redaxscript\Filesystem;
 
 /**
  * children class to execute the restore command
@@ -92,24 +93,31 @@ class Restore extends CommandAbstract
 		$directory = $this->prompt('directory', $optionArray);
 		$file = $this->prompt('file', $optionArray);
 
+		/* restore filesystem */
+
+		$backupFilesystem = new Filesystem\Directory();
+		$backupFilesystem->init($directory);
+
 		/* restore */
 
 		if (is_file($directory . DIRECTORY_SEPARATOR . $file))
 		{
+			$command = 'echo not supported';
+			$content = $backupFilesystem->readFile($file);
 			if ($dbType === 'mysql' && $dbHost && $dbName && $dbUser)
 			{
-				$command = 'mysql -u ' . $dbUser . ' -p' . $dbPassword . ' -h ' . $dbHost . ' ' . $dbName . ' < ' . $directory . DIRECTORY_SEPARATOR . $file;
+				$command = $content . ' | mysql -u ' . $dbUser . ' -p' . $dbPassword . ' -h ' . $dbHost . ' ' . $dbName;
 			}
 			if ($dbType === 'pgsql' && $dbHost & $dbName)
 			{
-				$command = 'cat ' . $directory . DIRECTORY_SEPARATOR . $file . ' | PGPASSWORD=' . $dbPassword . ' psql -U postgres -h ' . $dbHost . ' -d ' . $dbName;
+				$command = $content . ' | PGPASSWORD=' . $dbPassword . ' psql -U postgres -h ' . $dbHost . ' -d ' . $dbName;
 			}
 			if ($dbType === 'sqlite' && $dbHost)
 			{
-				$command = 'sqlite3 ' . $dbHost . ' < ' . $directory . DIRECTORY_SEPARATOR . $file;
+				$command = $content . ' | sqlite3 ' . $dbHost;
 			}
-			exec($command, $output, $error);
-			return $error === 0 || $dbType === 'mssql';
+			exec($command, $outputArray, $error);
+			return $error === 0;
 		}
 		return false;
 	}

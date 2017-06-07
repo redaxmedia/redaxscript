@@ -14,10 +14,6 @@ use Redaxscript\Registry;
  * @category Head
  * @author Henry Ruhs
  * @author Balázs Szilágyi
- *
- * @method append($attribute = null, $value = null)
- * @method prepend($attribute = null, $value = null)
- * @method clear()
  */
 
 class Link extends HeadAbstract
@@ -51,7 +47,7 @@ class Link extends HeadAbstract
 	 *
 	 * @param string $reference
 	 *
-	 * @return Link
+	 * @return $this
 	 */
 
 	public function appendFile($reference = null)
@@ -71,7 +67,7 @@ class Link extends HeadAbstract
 	 *
 	 * @param string $reference
 	 *
-	 * @return Link
+	 * @return $this
 	 */
 
 	public function prependFile($reference = null)
@@ -91,7 +87,7 @@ class Link extends HeadAbstract
 	 *
 	 * @param string $reference
 	 *
-	 * @return Link
+	 * @return $this
 	 */
 
 	public function removeFile($reference = null)
@@ -107,16 +103,12 @@ class Link extends HeadAbstract
 	 *
 	 * @param array $pathArray
 	 *
-	 * @return Link
+	 * @return $this
 	 */
 
 	public function rewrite($pathArray = [])
 	{
 		$rewriteArray = $this->_getRewriteArray();
-		if (!is_array($rewriteArray))
-		{
-			$rewriteArray = [];
-		}
 		$rewriteArray = array_merge($rewriteArray, $pathArray);
 		$this->_setRewriteArray($rewriteArray);
 		return $this;
@@ -129,7 +121,7 @@ class Link extends HeadAbstract
 	 *
 	 * @param array $optionArray
 	 *
-	 * @return Link
+	 * @return $this
 	 */
 
 	public function concat($optionArray = [])
@@ -199,7 +191,8 @@ class Link extends HeadAbstract
 
 	protected function _getRewriteArray()
 	{
-		return self::$_rewriteArray[self::$_namespace];
+		$rewriteArray = self::$_rewriteArray[self::$_namespace];
+		return is_array($rewriteArray) ? $rewriteArray : [];
 	}
 
 	/**
@@ -207,11 +200,11 @@ class Link extends HeadAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $rewriteArrayy
+	 * @param array $rewriteArray
 	 */
 
-	protected function _setRewriteArray($rewriteArrayy = [])
+	protected function _setRewriteArray($rewriteArray = [])
 	{
-		self::$_rewriteArray[self::$_namespace] = $rewriteArrayy;
+		self::$_rewriteArray[self::$_namespace] = $rewriteArray;
 	}
 }

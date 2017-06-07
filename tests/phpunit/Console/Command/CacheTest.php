@@ -83,6 +83,34 @@ class CacheTest extends TestCaseAbstract
 	}
 
 	/**
+	 * testClearFailure
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testClearFailure()
+	{
+		/* setup */
+
+		$this->_request->setServer('argv',
+		[
+			'console.php',
+			'cache',
+			'clear',
+			'--no-interaction'
+		]);
+		$cacheCommand = new Command\Cache($this->_registry, $this->_request, $this->_language, $this->_config);
+
+		/* actual */
+
+		$actual = $cacheCommand->run('cli');
+
+		/* compare */
+
+		$this->assertFalse($actual);
+	}
+
+	/**
 	 * testClearInvalid
 	 *
 	 * @since 3.0.0
@@ -113,5 +141,33 @@ class CacheTest extends TestCaseAbstract
 		/* compare */
 
 		$this->assertTrue($actual);
+	}
+
+	/**
+	 * testClearInvalidFailure
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testClearInvalidFailure()
+	{
+		/* setup */
+
+		$this->_request->setServer('argv',
+		[
+			'console.php',
+			'cache',
+			'clear-invalid',
+			'--no-interaction'
+		]);
+		$cacheCommand = new Command\Cache($this->_registry, $this->_request, $this->_language, $this->_config);
+
+		/* actual */
+
+		$actual = $cacheCommand->run('cli');
+
+		/* compare */
+
+		$this->assertFalse($actual);
 	}
 }

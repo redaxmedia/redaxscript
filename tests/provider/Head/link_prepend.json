@@ -13,5 +13,10 @@
 			"href": "assets/styles/three.css"
 		},
 		"<link href=\"assets/styles/three.css\" rel=\"stylesheet\" />\n<link href=\"assets\/styles/two.css\" />\n<link href=\"assets/styles/one.css\" media=\"all\" />"
+	],
+	[
+		[],
+		[],
+		"<!-- Redaxscript\\Head\\Link\\Prepend -->"
 	]
 ]

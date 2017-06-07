@@ -339,22 +339,23 @@ class FormTest extends TestCaseAbstract
 	/**
 	 * testSelect
 	 *
-	 * @since 2.6.0
+	 * @since 3.1.0
 	 *
 	 * @param array $optionArray
+	 * @param array $selectArray
 	 * @param array $attributeArray
 	 * @param array $expect
 	 *
 	 * @dataProvider providerSelect
 	 */
 
-	public function testSelect($optionArray = [], $attributeArray = [], $expect = null)
+	public function testSelect($optionArray = [], $selectArray = [], $attributeArray = [], $expect = null)
 	{
 		/* setup */
 
 		$form = new Html\Form($this->_registry, $this->_language);
 		$form->init();
-		$form->select($optionArray, $attributeArray);
+		$form->select($optionArray, $selectArray, $attributeArray);
 
 		/* actual */
 
@@ -371,6 +372,7 @@ class FormTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $rangeArray
+	 * @param array $selectArray
 	 * @param array $attributeArray
 	 * @param string $expect
 	 *
@@ -378,13 +380,13 @@ class FormTest extends TestCaseAbstract
 
 	 */
 
-	public function testSelectRange($rangeArray = [], $attributeArray = [], $expect = null)
+	public function testSelectRange($rangeArray = [], $selectArray = [], $attributeArray = [], $expect = null)
 	{
 		/* setup */
 
 		$form = new Html\Form($this->_registry, $this->_language);
 		$form->init();
-		$form->selectRange($rangeArray, $attributeArray);
+		$form->selectRange($rangeArray, $selectArray, $attributeArray);
 
 		/* actual */
 

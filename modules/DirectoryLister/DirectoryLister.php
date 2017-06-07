@@ -2,7 +2,7 @@
 namespace Redaxscript\Modules\DirectoryLister;
 
 use Redaxscript\Db;
-use Redaxscript\Directory;
+use Redaxscript\Filesystem;
 use Redaxscript\Filter;
 use Redaxscript\Head;
 use Redaxscript\Html;
@@ -143,7 +143,6 @@ class DirectoryLister extends Config
 
 	protected function _renderParent($rootDirectory = null, $parentDirectory = null, $optionArray = [])
 	{
-		$outputItem = null;
 		$queryString = $rootDirectory !== $parentDirectory ? '&directory=' . $parentDirectory : null;
 
 		/* html elements */
@@ -205,22 +204,22 @@ class DirectoryLister extends Config
 		$itemElement = new Html\Element();
 		$itemElement->init('li');
 
-		/* lister directory */
+		/* lister filesystem */
 
-		$listerDirectory = new Directory();
-		$listerDirectory->init($directory);
-		$listerDirectoryArray = $listerDirectory->getArray();
+		$listerFilesystem = new Filesystem\Filesystem();
+		$listerFilesystem->init($directory);
+		$listerFilesystemArray = $listerFilesystem->getSortArray();
 
-		/* process directory */
+		/* process filesystem */
 
-		foreach ($listerDirectoryArray as $value)
+		foreach ($listerFilesystemArray as $value)
 		{
 			$path = $directory . DIRECTORY_SEPARATOR . $value;
 			$fileExtension = pathinfo($path, PATHINFO_EXTENSION);
 			$text = $this->_replace($value, $fileExtension, $optionArray['replace']);
 			$textDate = date(Db::getSetting('date'), filectime($path));
 			$isDir = is_dir($path);
-			$isFile = is_file($path) && array_key_exists($fileExtension, $this->_configArray['extension']);
+			$isFile = is_file($path) && is_array($this->_configArray['extension']) && array_key_exists($fileExtension, $this->_configArray['extension']);
 
 			/* handle directory */
 

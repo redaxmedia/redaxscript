@@ -79,12 +79,12 @@ class Template extends TagAbstract
 	/**
 	 * call the method
 	 *
-	 * @since 3.0.0
+	 * @since 3.2.0
 	 *
 	 * @param string $methodName
 	 * @param array $parameterArray
 	 *
-	 * @return string
+	 * @return string|boolean
 	 */
 
 	protected function _call($methodName = null, $parameterArray = [])
@@ -92,11 +92,13 @@ class Template extends TagAbstract
 		$templateClass = $this->_optionArray['namespace'];
 		if (method_exists($templateClass, $methodName))
 		{
+			$template = new $templateClass();
 			return call_user_func_array(
 			[
-				$templateClass,
+				$template,
 				$methodName
 			], $parameterArray);
 		}
+		return false;
 	}
 }

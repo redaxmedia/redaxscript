@@ -29,6 +29,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 	public function render()
 	{
 		$output = Module\Hook::trigger('adminSettingFormStart');
+		$helperOption = new Helper\Option($this->_language);
 
 		/* html elements */
 
@@ -75,22 +76,26 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'language'
 			])
-			->select(Helper\Option::getLanguageArray(),
+			->select($helperOption->getLanguageArray(),
+			[
+				Db::getSetting('language')
+			],
 			[
 				'id' => 'language',
-				'name' => 'language',
-				'value' => Db::getSetting('language')
+				'name' => 'language'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('template'),
 			[
 				'for' => 'template'
 			])
-			->select(Helper\Option::getTemplateArray(),
+			->select($helperOption->getTemplateArray(),
+			[
+				Db::getSetting('template')
+			],
 			[
 				'id' => 'template',
-				'name' => 'template',
-				'value' => Db::getSetting('template')
+				'name' => 'template'
 			])
 			->append('</li></ul></fieldset>')
 
@@ -162,11 +167,13 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'robots'
 			])
-			->select(Helper\Option::getRobotArray(),
+			->select($helperOption->getRobotArray(),
+			[
+				filter_var(Db::getSetting('robots'), FILTER_VALIDATE_INT)
+			],
 			[
 				'id' => 'robots',
-				'name' => 'robots',
-				'value' => filter_var(Db::getSetting('robots'), FILTER_VALIDATE_INT)
+				'name' => 'robots'
 			])
 			->append('</li></ul></fieldset>')
 
@@ -201,11 +208,13 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'notification'
 			])
-			->select(Helper\Option::getToggleArray(),
+			->select($helperOption->getToggleArray(),
+			[
+				intval(Db::getSetting('notification'))
+			],
 			[
 				'id' => 'notification',
-				'name' => 'notification',
-				'value' => intval(Db::getSetting('notification'))
+				'name' => 'notification'
 			])
 			->append('</li></ul></fieldset>')
 
@@ -240,22 +249,26 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'time'
 			])
-			->select(Helper\Option::getTimeArray(),
+			->select($helperOption->getTimeArray(),
+			[
+				Db::getSetting('time')
+			],
 			[
 				'id' => 'time',
-				'name' => 'time',
-				'value' => Db::getSetting('time')
+				'name' => 'time'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('date'),
 			[
 				'for' => 'date'
 			])
-			->select(Helper\Option::getDateArray(),
+			->select($helperOption->getDateArray(),
+			[
+				Db::getSetting('date')
+			],
 			[
 				'id' => 'date',
-				'name' => 'date',
-				'value' => Db::getSetting('date')
+				'name' => 'date'
 			])
 			->append('</li></ul></fieldset>')
 
@@ -268,11 +281,13 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'homepage'
 			])
-			->select(Helper\Option::getContentArray('articles'),
+			->select($helperOption->getContentArray('articles'),
+			[
+				Db::getSetting('homepage')
+			],
 			[
 				'id' => 'homepage',
-				'name' => 'homepage',
-				'value' => Db::getSetting('homepage')
+				'name' => 'homepage'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('limit'),
@@ -290,22 +305,26 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'order'
 			])
-			->select(Helper\Option::getOrderArray(),
+			->select($helperOption->getOrderArray(),
+			[
+				Db::getSetting('order')
+			],
 			[
 				'id' => 'order',
-				'name' => 'order',
-				'value' => Db::getSetting('order')
+				'name' => 'order'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('pagination'),
 			[
 				'for' => 'pagination'
 			])
-			->select(Helper\Option::getToggleArray(),
+			->select($helperOption->getToggleArray(),
+			[
+				intval(Db::getSetting('pagination'))
+			],
 			[
 				'id' => 'pagination',
-				'name' => 'pagination',
-				'value' => intval(Db::getSetting('pagination'))
+				'name' => 'pagination'
 			])
 			->append('</li></ul></fieldset>')
 
@@ -318,33 +337,39 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'registration'
 			])
-			->select(Helper\Option::getToggleArray(),
+			->select($helperOption->getToggleArray(),
+			[
+				intval(Db::getSetting('registration'))
+			],
 			[
 				'id' => 'registration',
-				'name' => 'registration',
-				'value' => intval(Db::getSetting('registration'))
+				'name' => 'registration'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('verification'),
 			[
 				'for' => 'verification'
 			])
-			->select(Helper\Option::getToggleArray(),
+			->select($helperOption->getToggleArray(),
+			[
+				intval(Db::getSetting('verification'))
+			],
 			[
 				'id' => 'verification',
-				'name' => 'verification',
-				'value' => intval(Db::getSetting('verification'))
+				'name' => 'verification'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('recovery'),
 			[
 				'for' => 'recovery'
 			])
-			->select(Helper\Option::getToggleArray(),
+			->select($helperOption->getToggleArray(),
+			[
+				intval(Db::getSetting('recovery'))
+			],
 			[
 				'id' => 'recovery',
-				'name' => 'recovery',
-				'value' => intval(Db::getSetting('recovery'))
+				'name' => 'recovery'
 			])
 			->append('</li></ul></fieldset>')
 
@@ -357,22 +382,26 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'moderation'
 			])
-			->select(Helper\Option::getToggleArray(),
+			->select($helperOption->getToggleArray(),
+			[
+				intval(Db::getSetting('moderation'))
+			],
 			[
 				'id' => 'moderation',
-				'name' => 'moderation',
-				'value' => intval(Db::getSetting('moderation'))
+				'name' => 'moderation'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('captcha'),
 			[
 				'for' => 'captcha'
 			])
-			->select(Helper\Option::getCaptchaArray(),
+			->select($helperOption->getCaptchaArray(),
+			[
+				intval(Db::getSetting('captcha'))
+			],
 			[
 				'id' => 'captcha',
-				'name' => 'captcha',
-				'value' => intval(Db::getSetting('captcha'))
+				'name' => 'captcha'
 			])
 			->append('</li></ul></fieldset>')
 			->token()

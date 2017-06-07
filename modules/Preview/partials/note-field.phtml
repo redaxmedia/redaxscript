@@ -16,7 +16,7 @@ $selectElement
 	[
 		'class' => $admin ? 'rs-admin-field-select rs-admin-field-note' : 'rs-field-select rs-field-note',
 	])
-->html($optionNative . $optionNative . $optionNative);
+	->html($optionNative . $optionNative . $optionNative);
 $noteArray =
 [
 	$admin ? 'rs-admin-is-success' : 'rs-is-success',
@@ -28,7 +28,7 @@ $noteArray =
 
 <?php foreach ($noteArray as $value): ?>
 
-	<?php echo $textElement->copy()->addClass($value)->val($value); ?>
-	<?php echo $selectElement->copy()->addClass($value)->val($value); ?>
+	<?php echo $textElement->copy()->addClass($value); ?>
+	<?php echo $selectElement->copy()->addClass($value); ?>
 
 <?php endforeach; ?>

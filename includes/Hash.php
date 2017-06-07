@@ -24,7 +24,7 @@ class Hash
 	/**
 	 * plain raw
 	 *
-	 * @var string
+	 * @var string|integer
 	 */
 
 	protected $_raw;
@@ -55,7 +55,7 @@ class Hash
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param string $raw plain raw
+	 * @param string|integer $raw plain raw
 	 */
 
 	public function init($raw = null)
@@ -94,7 +94,7 @@ class Hash
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param string $raw plain raw
+	 * @param string|integer $raw plain raw
 	 * @param string $hash salted hash
 	 *
 	 * @return boolean

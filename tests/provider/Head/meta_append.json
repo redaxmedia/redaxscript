@@ -21,11 +21,7 @@
 		"<meta name=\"viewport\" content=\"width=device-width\" />\n<meta name=\"theme-color\" content=\"#323e4c\" />"
 	],
 	[
-		[
-			{
-				"name": "invalid"
-			}
-		],
+		[],
 		"<!-- Redaxscript\\Head\\Meta\\Append -->"
 	]
 ]

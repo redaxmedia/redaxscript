@@ -2,6 +2,7 @@
 namespace Redaxscript\Console\Command;
 
 use Redaxscript\Console\Parser;
+use Redaxscript\Filesystem;
 
 /**
  * children class to execute the backup command
@@ -89,24 +90,31 @@ class Backup extends CommandAbstract
 		$date = date('Y_m_d_H:i:s');
 		$file = $dbName ? $dbName . '_' . $date . '.' . $dbType : $date . '.' . $dbType;
 
+		/* backup filesystem */
+
+		$backupFilesystem = new Filesystem\Directory();
+		$backupFilesystem->init($directory);
+
 		/* backup */
 
-		if (is_dir($directory) || mkdir($directory))
+		if (is_dir($directory) || is_string($directory) && mkdir($directory))
 		{
+			$command = 'echo not supported';
 			if ($dbType === 'mysql' && $dbHost && $dbName && $dbUser)
 			{
-				$command = 'mysqldump -u ' . $dbUser . ' -p' . $dbPassword . ' -h ' . $dbHost . ' ' . $dbName . ' > ' . $directory . DIRECTORY_SEPARATOR . $file;
+				$command = 'mysqldump -u ' . $dbUser . ' -p' . $dbPassword . ' -h ' . $dbHost . ' ' . $dbName;
 			}
 			if ($dbType === 'pgsql' && $dbHost && $dbName)
 			{
-				$command = 'PGPASSWORD=' . $dbPassword . ' pg_dump -U postgres -h ' . $dbHost . ' ' . $dbName . ' > ' . $directory . DIRECTORY_SEPARATOR . $file;
+				$command = 'PGPASSWORD=' . $dbPassword . ' pg_dump -U postgres -h ' . $dbHost . ' ' . $dbName;
 			}
 			if ($dbType === 'sqlite' && $dbHost)
 			{
-				$command = 'sqlite3 ' . $dbHost . ' .dump > ' . $directory . DIRECTORY_SEPARATOR . $file;
+				$command = 'sqlite3 ' . $dbHost . ' .dump';
 			}
-			exec($command, $output, $error);
-			return $error === 0 || $dbType === 'mssql';
+			exec($command, $outputArray, $error);
+			$content = implode($outputArray, PHP_EOL);
+			return $error === 0 && $backupFilesystem->writeFile($file, $content);
 		}
 		return false;
 	}

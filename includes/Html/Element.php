@@ -76,7 +76,7 @@ class Element extends HtmlAbstract
 	 * @param string $tag tag of the element
 	 * @param array $attributeArray attributes of the element
 	 *
-	 * @return Element
+	 * @return $this
 	 */
 
 	public function init($tag = null, $attributeArray = [])
@@ -97,7 +97,7 @@ class Element extends HtmlAbstract
 	 *
 	 * @since 2.2.0
 	 *
-	 * @return Element
+	 * @return $this
 	 */
 
 	public function copy()
@@ -110,10 +110,10 @@ class Element extends HtmlAbstract
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param mixed $attribute name or set of attributes
+	 * @param string|array $attribute name or set of attributes
 	 * @param string $value value of the attribute
 	 *
-	 * @return Element
+	 * @return $this
 	 */
 
 	public function attr($attribute = null, $value = null)
@@ -136,12 +136,12 @@ class Element extends HtmlAbstract
 	 *
 	 * @param string $attribute name of attributes
 	 *
-	 * @return Element
+	 * @return $this
 	 */
 
 	public function removeAttr($attribute = null)
 	{
-		if (array_key_exists($attribute, $this->_attributeArray))
+		if (is_array($this->_attributeArray) && array_key_exists($attribute, $this->_attributeArray))
 		{
 			unset($this->_attributeArray[$attribute]);
 		}
@@ -155,7 +155,7 @@ class Element extends HtmlAbstract
 	 *
 	 * @param string $className name of the classes
 	 *
-	 * @return Element
+	 * @return $this
 	 */
 
 	public function addClass($className = null)
@@ -171,7 +171,7 @@ class Element extends HtmlAbstract
 	 *
 	 * @param string $className name of the classes
 	 *
-	 * @return Element
+	 * @return $this
 	 */
 
 	public function removeClass($className = null)
@@ -192,7 +192,7 @@ class Element extends HtmlAbstract
 	protected function _editClass($className = null, $type = null)
 	{
 		$classArray = array_filter(explode(' ', $className));
-		if (array_key_exists('class', $this->_attributeArray))
+		if (is_array($this->_attributeArray) && array_key_exists('class', $this->_attributeArray))
 		{
 			$attributeClassArray = array_filter(explode(' ', $this->_attributeArray['class']));
 		}
@@ -224,7 +224,7 @@ class Element extends HtmlAbstract
 	 *
 	 * @param string $value value of the element
 	 *
-	 * @return Element
+	 * @return $this
 	 */
 
 	public function val($value = null)
@@ -240,7 +240,7 @@ class Element extends HtmlAbstract
 	 *
 	 * @param string $text text of the element
 	 *
-	 * @return Element
+	 * @return $this
 	 */
 
 	public function text($text = null)

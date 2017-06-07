@@ -39,7 +39,7 @@ abstract class Singleton
 	 *
 	 * @since 2.2.0
 	 *
-	 * @return Singleton
+	 * @return static
 	 */
 
 	public static function getInstance()
@@ -48,7 +48,7 @@ abstract class Singleton
 
 		/* create instance */
 
-		if (!array_key_exists($className, static::$_instance))
+		if (!is_array(static::$_instance) || !array_key_exists($className, static::$_instance))
 		{
 			static::$_instance[$className] = new static();
 		}

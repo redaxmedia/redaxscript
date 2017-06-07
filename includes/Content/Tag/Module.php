@@ -85,7 +85,7 @@ class Module extends TagAbstract
 	/**
 	 * call the module
 	 *
-	 * @since 3.0.0
+	 * @since 3.2.0
 	 *
 	 * @param string $moduleName
 	 * @param array $parameterArray
@@ -96,14 +96,16 @@ class Module extends TagAbstract
 	protected function _call($moduleName = null, $parameterArray = [])
 	{
 		$moduleClass = $this->_optionArray['namespace'] . '\\' . $moduleName . '\\' . $moduleName;
-		$module = new $moduleClass($this->_registry, $this->_request, $this->_language, $this->_config);
-		if (method_exists($moduleClass, 'render'))
+		$methodName = 'render';
+		if (method_exists($moduleClass, $methodName))
 		{
+			$module = new $moduleClass($this->_registry, $this->_request, $this->_language, $this->_config);
 			return call_user_func_array(
 			[
 				$module,
-				'render'
+				$methodName,
 			], $parameterArray);
 		}
+		return false;
 	}
 }

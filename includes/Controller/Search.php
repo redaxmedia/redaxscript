@@ -182,16 +182,19 @@ class Search extends ControllerAbstract
 	{
 		$resultArray = [];
 
-		/* process tables */
+		/* process table */
 
-		foreach ($searchArray['table'] as $table)
+		if (is_array($searchArray['table']))
 		{
-			$resultArray[$table] = Db::forTablePrefix($table)
-				->whereLikeMany($this->_getColumnArray($table), $this->_getLikeArray($table, $searchArray))
-				->where('status', 1)
-				->whereLanguageIs($this->_registry->get('language'))
-				->orderByDesc('date')
-				->findMany();
+			foreach ($searchArray['table'] as $table)
+			{
+				$resultArray[$table] = Db::forTablePrefix($table)
+					->whereLikeMany($this->_getColumnArray($table), $this->_getLikeArray($table, $searchArray['search']))
+					->where('status', 1)
+					->whereLanguageIs($this->_registry->get('language'))
+					->orderByDesc('date')
+					->findMany();
+			}
 		}
 		return $resultArray;
 	}
@@ -220,22 +223,22 @@ class Search extends ControllerAbstract
 	/**
 	 * get the like array
 	 *
-	 * @since 3.0.0
+	 * @since 3.1.0
 	 *
 	 * @param string $table name of the table
-	 * @param array $searchArray array of the search
+	 * @param array $search value of the search
 	 *
 	 * @return array
 	 */
 
-	protected function _getLikeArray($table = null, $searchArray = [])
+	protected function _getLikeArray($table = null, $search = null)
 	{
 		return array_filter(
 		[
-			$table === 'categories' || $table === 'articles' ? '%' . $searchArray['search'] . '%' : null,
-			$table === 'categories' || $table === 'articles' ? '%' . $searchArray['search'] . '%' : null,
-			$table === 'categories' || $table === 'articles' ? '%' . $searchArray['search'] . '%' : null,
-			$table === 'articles' || $table === 'comments' ? '%' . $searchArray['search'] . '%' : null
+			$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
+			$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
+			$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
+			$table === 'articles' || $table === 'comments' ? '%' . $search . '%' : null
 		]);
 	}
 }

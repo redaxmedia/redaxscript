@@ -2,7 +2,7 @@
 namespace Redaxscript\Admin\View\Helper;
 
 use Redaxscript\Db;
-use Redaxscript\Directory;
+use Redaxscript\Filesystem;
 use Redaxscript\Language;
 
 /**
@@ -18,6 +18,27 @@ use Redaxscript\Language;
 class Option
 {
 	/**
+	 * instance of the language class
+	 *
+	 * @var Language
+	 */
+
+	protected $_language;
+
+	/**
+	 * constructor of the class
+	 *
+	 * @since 3.2.0
+	 *
+	 * @param Language $language instance of the language class
+	 */
+
+	public function __construct(Language $language)
+	{
+		$this->_language = $language;
+	}
+
+	/**
 	 * get the toggle array
 	 *
 	 * @since 3.0.0
@@ -25,12 +46,12 @@ class Option
 	 * @return array
 	 */
 
-	public static function getToggleArray()
+	public function getToggleArray()
 	{
 		return
 		[
-			Language::get('enable') => 1,
-			Language::get('disable') => 0
+			$this->_language->get('enable') => 1,
+			$this->_language->get('disable') => 0
 		];
 	}
 
@@ -42,12 +63,12 @@ class Option
 	 * @return array
 	 */
 
-	public static function getVisibleArray()
+	public function getVisibleArray()
 	{
 		return
 		[
-			Language::get('publish') => 1,
-			Language::get('unpublish') => 0
+			$this->_language->get('publish') => 1,
+			$this->_language->get('unpublish') => 0
 		];
 	}
 
@@ -59,17 +80,17 @@ class Option
 	 * @return array
 	 */
 
-	public static function getRobotArray()
+	public function getRobotArray()
 	{
 		return
 		[
-			Language::get('select') => 'select',
-			Language::get('all') => 1,
-			Language::get('index') => 2,
-			Language::get('follow') => 3,
-			Language::get('index_no') => 4,
-			Language::get('follow_no') => 5,
-			Language::get('none') => 0
+			$this->_language->get('select') => 'select',
+			$this->_language->get('all') => 1,
+			$this->_language->get('index') => 2,
+			$this->_language->get('follow') => 3,
+			$this->_language->get('index_no') => 4,
+			$this->_language->get('follow_no') => 5,
+			$this->_language->get('none') => 0
 		];
 	}
 
@@ -81,7 +102,7 @@ class Option
 	 * @return array
 	 */
 
-	public static function getTimeArray()
+	public function getTimeArray()
 	{
 		return
 		[
@@ -98,7 +119,7 @@ class Option
 	 * @return array
 	 */
 
-	public static function getDateArray()
+	public function getDateArray()
 	{
 		return
 		[
@@ -116,12 +137,12 @@ class Option
 	 * @return array
 	 */
 
-	public static function getOrderArray()
+	public function getOrderArray()
 	{
 		return
 		[
-			Language::get('ascending') => 'asc',
-			Language::get('descending') => 'desc'
+			$this->_language->get('ascending') => 'asc',
+			$this->_language->get('descending') => 'desc'
 		];
 	}
 
@@ -133,14 +154,14 @@ class Option
 	 * @return array
 	 */
 
-	public static function getCaptchaArray()
+	public function getCaptchaArray()
 	{
 		return
 		[
-			Language::get('random') => 1,
-			Language::get('addition') => 2,
-			Language::get('subtraction') => 3,
-			Language::get('disable') => 0
+			$this->_language->get('random') => 1,
+			$this->_language->get('addition') => 2,
+			$this->_language->get('subtraction') => 3,
+			$this->_language->get('disable') => 0
 		];
 	}
 
@@ -154,30 +175,30 @@ class Option
 	 * @return array
 	 */
 
-	public static function getPermissionArray($table = null)
+	public function getPermissionArray($table = null)
 	{
 		if ($table === 'modules')
 		{
 			return
 			[
-				Language::get('install') => 1,
-				Language::get('edit') => 2,
-				Language::get('uninstall') => 3
+				$this->_language->get('install') => 1,
+				$this->_language->get('edit') => 2,
+				$this->_language->get('uninstall') => 3
 			];
 		}
 		if ($table === 'settings')
 		{
 			return
 			[
-				Language::get('none') => 1,
-				Language::get('edit') => 2,
+				$this->_language->get('none') => 1,
+				$this->_language->get('edit') => 2,
 			];
 		}
 		return
 		[
-			Language::get('create') => 1,
-			Language::get('edit') => 2,
-			Language::get('delete') => 3
+			$this->_language->get('create') => 1,
+			$this->_language->get('edit') => 2,
+			$this->_language->get('delete') => 3
 		];
 	}
 
@@ -189,22 +210,22 @@ class Option
 	 * @return array
 	 */
 
-	public static function getLanguageArray()
+	public function getLanguageArray()
 	{
-		$languageDirectory = new Directory();
-		$languageDirectory->init('languages');
-		$languageDirectoryArray = $languageDirectory->getArray();
+		$languageFilesystem = new Filesystem\Filesystem();
+		$languageFilesystem->init('languages');
+		$languageFilesystemArray = $languageFilesystem->getSortArray();
 		$languageArray =
 		[
-			Language::get('select') => 'select'
+			$this->_language->get('select') => 'select'
 		];
 
-		/* process directory */
+		/* process filesystem */
 
-		foreach ($languageDirectoryArray as $value)
+		foreach ($languageFilesystemArray as $value)
 		{
 			$value = substr($value, 0, 2);
-			$languageArray[Language::get($value, '_index')] = $value;
+			$languageArray[$this->_language->get($value, '_index')] = $value;
 		}
 		return $languageArray;
 	}
@@ -217,24 +238,24 @@ class Option
 	 * @return array
 	 */
 
-	public static function getTemplateArray()
+	public function getTemplateArray()
 	{
-		$templateDirectory = new Directory();
-		$templateDirectory->init('templates',
+		$templateFilesystem = new Filesystem\Filesystem();
+		$templateFilesystem->init('templates', false,
 		[
 			'admin',
 			'console',
 			'install'
 		]);
-		$templateDirectoryArray = $templateDirectory->getArray();
+		$templateFilesystemArray = $templateFilesystem->getSortArray();
 		$templateArray =
 		[
-			Language::get('select') => 'select'
+			$this->_language->get('select') => 'select'
 		];
 
-		/* process directory */
+		/* process filesystem */
 
-		foreach ($templateDirectoryArray as $value)
+		foreach ($templateFilesystemArray as $value)
 		{
 			$templateArray[$value] = $value;
 		}
@@ -252,7 +273,7 @@ class Option
 	 * @return array
 	 */
 
-	public static function getContentArray($table = null, $excludeArray = [])
+	public function getContentArray($table = null, $excludeArray = [])
 	{
 		$query = Db::forTablePrefix($table);
 		if ($excludeArray)
@@ -262,7 +283,7 @@ class Option
 		$content = $query->orderByAsc('title')->findMany();
 		$contentArray =
 		[
-			Language::get('select') => 'select'
+			$this->_language->get('select') => 'select'
 		];
 
 		/* process content */
@@ -285,7 +306,7 @@ class Option
 	 * @return array
 	 */
 
-	public static function getAccessArray($table = null)
+	public function getAccessArray($table = null)
 	{
 		$access = Db::forTablePrefix($table)->orderByAsc('name')->findMany();
 		$accessArray = [];

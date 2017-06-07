@@ -38,7 +38,7 @@ class Email implements ValidatorInterface
 
 			/* validate dns */
 
-			if ($dns === true)
+			if ($dns)
 			{
 				$dnsValidator = new Dns();
 				$output = $dnsValidator->validate($emailArray[1], 'MX');

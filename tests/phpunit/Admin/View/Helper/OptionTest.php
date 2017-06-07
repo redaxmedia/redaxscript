@@ -116,9 +116,13 @@ class OptionTest extends TestCaseAbstract
 
 	public function testGetToggleArray($expectArray = [])
 	{
+		/* setup */
+
+		$helperOption = new Helper\Option($this->_language);
+
 		/* actual */
 
-		$actualArray = Helper\Option::getToggleArray();
+		$actualArray = $helperOption->getToggleArray();
 
 		/* compare */
 
@@ -137,9 +141,13 @@ class OptionTest extends TestCaseAbstract
 
 	public function testGetVisibleArray($expectArray = [])
 	{
+		/* setup */
+
+		$helperOption = new Helper\Option($this->_language);
+
 		/* actual */
 
-		$actualArray = Helper\Option::getVisibleArray();
+		$actualArray = $helperOption->getVisibleArray();
 
 		/* compare */
 
@@ -158,9 +166,13 @@ class OptionTest extends TestCaseAbstract
 
 	public function testGetRobotArray($expectArray = [])
 	{
+		/* setup */
+
+		$helperOption = new Helper\Option($this->_language);
+
 		/* actual */
 
-		$actualArray = Helper\Option::getRobotArray();
+		$actualArray = $helperOption->getRobotArray();
 
 		/* compare */
 
@@ -179,9 +191,13 @@ class OptionTest extends TestCaseAbstract
 
 	public function testGetTimeArray($expectArray = [])
 	{
+		/* setup */
+
+		$helperOption = new Helper\Option($this->_language);
+
 		/* actual */
 
-		$actualArray = Helper\Option::getTimeArray();
+		$actualArray = $helperOption->getTimeArray();
 
 		/* compare */
 
@@ -200,9 +216,13 @@ class OptionTest extends TestCaseAbstract
 
 	public function testGetDateArray($expectArray = [])
 	{
+		/* setup */
+
+		$helperOption = new Helper\Option($this->_language);
+
 		/* actual */
 
-		$actualArray = Helper\Option::getDateArray();
+		$actualArray = $helperOption->getDateArray();
 
 		/* compare */
 
@@ -221,9 +241,13 @@ class OptionTest extends TestCaseAbstract
 
 	public function testGetOrderArray($expectArray = [])
 	{
+		/* setup */
+
+		$helperOption = new Helper\Option($this->_language);
+
 		/* actual */
 
-		$actualArray = Helper\Option::getOrderArray();
+		$actualArray = $helperOption->getOrderArray();
 
 		/* compare */
 
@@ -242,9 +266,13 @@ class OptionTest extends TestCaseAbstract
 
 	public function testGetCaptchaArray($expectArray = [])
 	{
+		/* setup */
+
+		$helperOption = new Helper\Option($this->_language);
+
 		/* actual */
 
-		$actualArray = Helper\Option::getCaptchaArray();
+		$actualArray = $helperOption->getCaptchaArray();
 
 		/* compare */
 
@@ -263,13 +291,17 @@ class OptionTest extends TestCaseAbstract
 
 	public function testGetPermissionArray($expectArray = [])
 	{
+		/* setup */
+
+		$helperOption = new Helper\Option($this->_language);
+
 		/* actual */
 
 		$actualArray =
 		[
-			'content' => Helper\Option::getPermissionArray(),
-			'module' => Helper\Option::getPermissionArray('modules'),
-			'setting' => Helper\Option::getPermissionArray('settings')
+			'content' => $helperOption->getPermissionArray(),
+			'module' => $helperOption->getPermissionArray('modules'),
+			'setting' => $helperOption->getPermissionArray('settings')
 		];
 
 		/* compare */
@@ -291,9 +323,13 @@ class OptionTest extends TestCaseAbstract
 
 	public function testGetLanguageArray($expectArray = [])
 	{
+		/* setup */
+
+		$helperOption = new Helper\Option($this->_language);
+
 		/* actual */
 
-		$actualArray = Helper\Option::getLanguageArray();
+		$actualArray = $helperOption->getLanguageArray();
 
 		/* compare */
 
@@ -312,9 +348,13 @@ class OptionTest extends TestCaseAbstract
 
 	public function testGetTemplateArray($expectArray = [])
 	{
+		/* setup */
+
+		$helperOption = new Helper\Option($this->_language);
+
 		/* actual */
 
-		$actualArray = Helper\Option::getTemplateArray();
+		$actualArray = $helperOption->getTemplateArray();
 
 		/* compare */
 
@@ -333,9 +373,13 @@ class OptionTest extends TestCaseAbstract
 
 	public function testGetContentArray($expectArray = [])
 	{
+		/* setup */
+
+		$helperOption = new Helper\Option($this->_language);
+
 		/* actual */
 
-		$actualArray = Helper\Option::getContentArray('articles',
+		$actualArray = $helperOption->getContentArray('articles',
 		[
 			3,
 		]);
@@ -357,9 +401,13 @@ class OptionTest extends TestCaseAbstract
 
 	public function testGetAccessArray($expectArray = [])
 	{
+		/* setup */
+
+		$helperOption = new Helper\Option($this->_language);
+
 		/* actual */
 
-		$actualArray = Helper\Option::getAccessArray('groups');
+		$actualArray = $helperOption->getAccessArray('groups');
 
 		/* compare */
 

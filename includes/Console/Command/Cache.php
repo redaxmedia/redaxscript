@@ -1,8 +1,8 @@
 <?php
 namespace Redaxscript\Console\Command;
 
-use Redaxscript\Cache as BaseCache;
 use Redaxscript\Console\Parser;
+use Redaxscript\Filesystem;
 
 /**
  * children class to execute the cache command
@@ -115,11 +115,12 @@ class Cache extends CommandAbstract
 		$directory = $this->prompt('directory', $optionArray);
 		$extension = $this->prompt('extension', $optionArray);
 		$bundle = array_filter(explode(',', $optionArray['bundle']));
-		$cache = new BaseCache();
-		$cache
-			->init($directory, $extension)
-			->clear($bundle);
-		return is_dir($cache->getDirectory());
+		if (is_dir($directory))
+		{
+			$cacheFilesystem = new Filesystem\Cache();
+			return is_object($cacheFilesystem->init($directory, $extension)->clear($bundle));
+		}
+		return false;
 	}
 
 	/**
@@ -137,10 +138,11 @@ class Cache extends CommandAbstract
 		$directory = $this->prompt('directory', $optionArray);
 		$extension = $this->prompt('extension', $optionArray);
 		$lifetime = is_numeric($optionArray['lifetime']) ? $optionArray['lifetime'] : 3600;
-		$cache = new BaseCache();
-		$cache
-			->init($directory, $extension)
-			->clearInvalid($lifetime);
-		return is_dir($cache->getDirectory());
+		if (is_dir($directory))
+		{
+			$cacheFilesystem = new Filesystem\Cache();
+			return is_object($cacheFilesystem->init($directory, $extension)->clearInvalid($lifetime));
+		}
+		return false;
 	}
 }

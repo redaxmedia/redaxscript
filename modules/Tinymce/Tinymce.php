@@ -68,7 +68,7 @@ class Tinymce extends Config
 
 	public function adminPanelNotification()
 	{
-		if (!is_dir($this->_configArray['uploadDirectory']) && !mkdir($this->_configArray['uploadDirectory']))
+		if (!is_dir($this->_configArray['uploadDirectory']) || !mkdir($this->_configArray['uploadDirectory']))
 		{
 			$this->setNotification('error', $this->_language->get('directory_not_found') . $this->_language->get('colon') . ' ' . $this->_configArray['uploadDirectory'] . $this->_language->get('point'));
 		}
@@ -83,6 +83,8 @@ class Tinymce extends Config
 	 * upload
 	 *
 	 * @since 3.0.0
+	 *
+	 * @return array|boolean
 	 */
 
 	protected function _upload()
@@ -102,5 +104,6 @@ class Tinymce extends Config
 			}
 		}
 		header('http/1.0 404 not found');
+		return false;
 	}
 }

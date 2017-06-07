@@ -31,6 +31,19 @@ class MetaTest extends TestCaseAbstract
 	}
 
 	/**
+	 * providerPrepend
+	 *
+	 * @since 3.1.0
+	 *
+	 * @return array
+	 */
+
+	public function providerPrepend()
+	{
+		return $this->getProvider('tests/provider/Head/meta_prepend.json');
+	}
+
+	/**
 	 * testAppend
 	 *
 	 * @since 3.0.0
@@ -47,6 +60,9 @@ class MetaTest extends TestCaseAbstract
 
 		$meta = Head\Meta::getInstance();
 		$meta->init('append');
+
+		/* process meta */
+
 		foreach ($metaArray as $value)
 		{
 			$meta->append($value);
@@ -58,14 +74,47 @@ class MetaTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($this->normalizeEOL($expect), $actual);
+		$this->assertEquals($expect, $this->normalizeNewline($actual));
+	}
+
+	/**
+	 * testPrepend
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param array $metaArray
+	 * @param string $expect
+	 *
+	 * @dataProvider providerPrepend
+	 */
+
+	public function testPrepend($metaArray = [], $expect = null)
+	{
+		/* setup */
+
+		$meta = Head\Meta::getInstance();
+		$meta->init('prepend');
+
+		/* process meta */
+
+		foreach ($metaArray as $value)
+		{
+			$meta->prepend($value);
+		}
+
+		/* actual */
+
+		$actual = $meta;
+
+		/* compare */
+
+		$this->assertEquals($expect, $this->normalizeNewline($actual));
 	}
 
 	/**
 	 * testInvalid
 	 *
 	 * @since 3.0.0
-	 *
 	 */
 
 	public function testInvalid()

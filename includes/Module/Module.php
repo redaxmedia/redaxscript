@@ -110,7 +110,7 @@ class Module
 
 		/* load the language */
 
-		if (array_key_exists('alias', static::$_moduleArray))
+		if (is_array(static::$_moduleArray) && array_key_exists('alias', static::$_moduleArray))
 		{
 			$this->_language->load(
 			[
@@ -127,12 +127,12 @@ class Module
 	 *
 	 * @param string $type type of the notification
 	 *
-	 * @return mixed
+	 * @return string|array|boolean
 	 */
 
 	public function getNotification($type = null)
 	{
-		if (array_key_exists($type, self::$_notificationArray))
+		if (is_array(self::$_notificationArray) && array_key_exists($type, self::$_notificationArray))
 		{
 			return self::$_notificationArray[$type];
 		}
@@ -149,7 +149,7 @@ class Module
 	 * @since 3.0.0
 	 *
 	 * @param string $type type of the notification
-	 * @param mixed $message message of the notification
+	 * @param string|array $message message of the notification
 	 */
 
 	public function setNotification($type = null, $message = null)
@@ -166,7 +166,7 @@ class Module
 
 	public function install()
 	{
-		if (array_key_exists('alias', static::$_moduleArray))
+		if (is_array(static::$_moduleArray) && array_key_exists('alias', static::$_moduleArray))
 		{
 			$module = Db::forTablePrefix('modules')->create();
 			$module->set(static::$_moduleArray);
@@ -192,7 +192,7 @@ class Module
 
 	public function uninstall()
 	{
-		if (array_key_exists('alias', static::$_moduleArray))
+		if (is_array(static::$_moduleArray) && array_key_exists('alias', static::$_moduleArray))
 		{
 			Db::forTablePrefix('modules')->where('alias', static::$_moduleArray['alias'])->deleteMany();
 

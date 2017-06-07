@@ -12,10 +12,6 @@ use Redaxscript\Html;
  * @category Head
  * @author Henry Ruhs
  * @author Balázs Szilágyi
- *
- * @method append($attribute = null, $value = null)
- * @method prepend($attribute = null, $value = null)
- * @method clear()
  */
 
 class Meta extends HeadAbstract

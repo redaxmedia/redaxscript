@@ -16,6 +16,8 @@
 
 function navigation_list($table, $options)
 {
+	$registry = Redaxscript\Registry::getInstance();
+	$language = Redaxscript\Language::getInstance();
 	$output = Redaxscript\Module\Hook::trigger('navigationStart');
 
 	/* define option variables */
@@ -24,8 +26,11 @@ function navigation_list($table, $options)
 	{
 		foreach ($options as $key => $value)
 		{
-			$key = 'option_' . $key;
-			$$key = $value;
+			if ($key !== 'language')
+			{
+				$key = 'option_' . $key;
+				$$key = $value;
+			}
 		}
 	}
 
@@ -62,7 +67,7 @@ function navigation_list($table, $options)
 
 	$contents = Redaxscript\Db::forTablePrefix($table)
 		->where('status', 1)
-		->whereLanguageIs(Redaxscript\Registry::get('language'));
+		->whereLanguageIs($registry->get('language'));
 
 	/* setup parent */
 
@@ -115,7 +120,7 @@ function navigation_list($table, $options)
 	$num_rows = count($result);
 	if (!$result || !$num_rows)
 	{
-		$error = Redaxscript\Language::get($wording_single . '_no') . Redaxscript\Language::get('point');
+		$error = $language->get($wording_single . '_no') . $language->get('point');
 	}
 	else if ($result)
 	{
@@ -126,19 +131,22 @@ function navigation_list($table, $options)
 
 			/* access granted */
 
-			if ($accessValidator->validate($access, Redaxscript\Registry::get('myGroups')) === Redaxscript\Validator\ValidatorInterface::PASSED)
+			if ($accessValidator->validate($access, $registry->get('myGroups')) === Redaxscript\Validator\ValidatorInterface::PASSED)
 			{
 				if ($r)
 				{
 					foreach ($r as $key => $value)
 					{
-						$$key = stripslashes($value);
+						if ($key !== 'language')
+						{
+							$$key = stripslashes($value);
+						}
 					}
 				}
 
 				/* build class string */
 
-				if (Redaxscript\Registry::get('lastParameter') == $alias && $table != 'comments')
+				if ($registry->get('lastParameter') == $alias && $table != 'comments')
 				{
 					$class_string = ' class="rs-item-active"';
 				}
@@ -151,7 +159,7 @@ function navigation_list($table, $options)
 
 				if ($table == 'comments')
 				{
-					$description = $title = $author . Redaxscript\Language::get('colon') . ' ' . strip_tags($text);
+					$description = $title = $author . $language->get('colon') . ' ' . strip_tags($text);
 				}
 				if (!$description)
 				{
@@ -171,7 +179,7 @@ function navigation_list($table, $options)
 
 				/* collect item output */
 
-				$output .= '<li' . $class_string . '><a href="' . Redaxscript\Registry::get('parameterRoute') . $route . '">' . $title . '</a>';
+				$output .= '<li' . $class_string . '><a href="' . $registry->get('parameterRoute') . $route . '">' . $title . '</a>';
 
 				/* collect children list output */
 
@@ -197,7 +205,7 @@ function navigation_list($table, $options)
 
 		if ($num_rows == $counter)
 		{
-			$error = Redaxscript\Language::get('access_no') . Redaxscript\Language::get('point');
+			$error = $language->get('access_no') . $language->get('point');
 		}
 	}
 
@@ -251,22 +259,28 @@ function navigation_list($table, $options)
 
 function languages_list($options)
 {
+	$registry = Redaxscript\Registry::getInstance();
+	$language = Redaxscript\Language::getInstance();
+
 	/* define option variables */
 
 	if (is_array($options))
 	{
 		foreach ($options as $key => $value)
 		{
-			$key = 'option_' . $key;
-			$$key = $value;
+			if ($key !== 'language')
+			{
+				$key = 'option_' . $key;
+				$$key = $value;
+			}
 		}
 	}
 
 	/* languages directory */
 
-	$languages_directory = new Redaxscript\Directory();
+	$languages_directory = new Redaxscript\Filesystem\Filesystem();
 	$languages_directory->init('languages');
-	$languages_directory_array = $languages_directory->getArray();
+	$languages_directory_array = $languages_directory->getSortArray();
 
 	/* collect languages output */
 
@@ -274,11 +288,11 @@ function languages_list($options)
 	{
 		$value = substr($value, 0, 2);
 		$class_string = null;
-		if ($value == Redaxscript\Registry::get('language'))
+		if ($value == $registry->get('language'))
 		{
 			$class_string = ' class="rs-item-active"';
 		}
-		$output .= '<li' . $class_string . '><a href="' . Redaxscript\Registry::get('parameterRoute') . Redaxscript\Registry::get('fullRoute') . Redaxscript\Registry::get('languageRoute') . $value . '" rel="nofollow">' . Redaxscript\Language::get($value, '_index') . '</a>';
+		$output .= '<li' . $class_string . '><a href="' . $registry->get('parameterRoute') . $registry->get('fullRoute') . $registry->get('languageRoute') . $value . '" rel="nofollow">' . $language->get($value, '_index') . '</a>';
 	}
 
 	/* build id string */
@@ -323,38 +337,43 @@ function languages_list($options)
 
 function templates_list($options)
 {
+	$registry = Redaxscript\Registry::getInstance();
+
 	/* define option variables */
 
 	if (is_array($options))
 	{
 		foreach ($options as $key => $value)
 		{
-			$key = 'option_' . $key;
-			$$key = $value;
+			if ($key !== 'language')
+			{
+				$key = 'option_' . $key;
+				$$key = $value;
+			}
 		}
 	}
 
 	/* templates directory */
 
-	$templates_directory = new Redaxscript\Directory();
-	$templates_directory->init('templates',
+	$templates_directory = new Redaxscript\Filesystem\Filesystem();
+	$templates_directory->init('templates', false,
 	[
 		'admin',
 		'console',
 		'install'
 	]);
-	$templates_directory_array = $templates_directory->getArray();
+	$templates_directory_array = $templates_directory->getSortArray();
 
 	/* collect templates output */
 
 	foreach ($templates_directory_array as $value)
 	{
 		$class_string = null;
-		if ($value == Redaxscript\Registry::get('template'))
+		if ($value == $registry->get('template'))
 		{
 			$class_string = ' class="rs-item-active"';
 		}
-		$output .= '<li' . $class_string . '><a href="' . Redaxscript\Registry::get('parameterRoute') . Redaxscript\Registry::get('fullRoute') . Redaxscript\Registry::get('templateRoute') . $value . '" rel="nofollow">' . $value . '</a>';
+		$output .= '<li' . $class_string . '><a href="' . $registry->get('parameterRoute') . $registry->get('fullRoute') . $registry->get('templateRoute') . $value . '" rel="nofollow">' . $value . '</a>';
 	}
 
 	/* build id string */

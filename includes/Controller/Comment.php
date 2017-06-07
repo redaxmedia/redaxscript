@@ -298,15 +298,15 @@ class Comment extends ControllerAbstract
 		$subject = $this->_language->get('comment_new');
 		$bodyArray =
 		[
-			$this->_language->get('author') . $this->_language->get('colon') . $mailArray['author'],
+			$this->_language->get('author') . $this->_language->get('colon') . ' ' . $mailArray['author'],
 			'<br />',
-			$this->_language->get('email') . $this->_language->get('colon') . $linkEmail,
+			$this->_language->get('email') . $this->_language->get('colon') . ' ' . $linkEmail,
 			'<br />',
-			$this->_language->get('url') . $this->_language->get('colon') . $linkUrl,
+			$this->_language->get('url') . $this->_language->get('colon') . ' ' . $linkUrl,
 			'<br />',
-			$this->_language->get('article') . $this->_language->get('colon') .$linkArticle,
+			$this->_language->get('article') . $this->_language->get('colon') . ' ' . $linkArticle,
 			'<br />',
-			$this->_language->get('comment') . $this->_language->get('colon') . $mailArray['text']
+			$this->_language->get('comment') . $this->_language->get('colon') . ' ' . $mailArray['text']
 		];
 
 		/* send mail */

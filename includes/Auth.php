@@ -10,12 +10,12 @@ namespace Redaxscript;
  * @category Auth
  * @author Henry Ruhs
  *
- * @method getPermissionNew(string $type)
- * @method getPermissionInstall(string $type)
- * @method getPermissionEdit(string $type)
- * @method getPermissionDelete(string $type)
- * @method getPermissionUninstall(string $type)
- * @method getFilter()
+ * @method mixed getPermissionNew(string $type)
+ * @method mixed getPermissionInstall(string $type)
+ * @method mixed getPermissionEdit(string $type)
+ * @method mixed getPermissionDelete(string $type)
+ * @method mixed getPermissionUninstall(string $type)
+ * @method mixed getFilter()
  */
 
 class Auth
@@ -144,20 +144,23 @@ class Auth
 	 * @param string $method name of the method
 	 * @param array $argumentArray arguments of the method
 	 *
-	 * @return mixed
+	 * @return boolean
 	 */
 
 	public function __call($method = null, $argumentArray = [])
 	{
 		$type = $argumentArray[0];
-		if (array_key_exists($method, $this->_callArray[$type]))
+		if (is_array($this->_callArray[$type]) && array_key_exists($method, $this->_callArray[$type]))
 		{
-			return in_array($this->_callArray[$type][$method], $this->getPermission($type));
+			$permissionArray = $this->getPermission($type);
+			return is_array($permissionArray) && in_array($this->_callArray[$type][$method], $permissionArray);
 		}
 		if ($method === 'getFilter')
 		{
-			return !in_array($this->_callArray['filter'][$method], $this->getPermission('filter'));
+			$permissionArray = $this->getPermission('filter');
+			return !is_array($permissionArray) || !in_array($this->_callArray['filter'][$method], $permissionArray);
 		}
+		return false;
 	}
 
 	/**
@@ -169,11 +172,11 @@ class Auth
 	public function init()
 	{
 		$authArray = $this->_getAuth();
-		if (array_key_exists('user', $authArray))
+		if (is_array($authArray) && array_key_exists('user', $authArray))
 		{
 			$this->_userArray = $authArray['user'];
 		}
-		if (array_key_exists('permission', $authArray))
+		if (is_array($authArray) && array_key_exists('permission', $authArray))
 		{
 			$this->_permissionArray = $authArray['permission'];
 		}
@@ -186,7 +189,7 @@ class Auth
 	 *
 	 * @param integer $userId identifier of the user
 	 *
-	 * @return boolean
+	 * @return integer
 	 */
 
 	public function login($userId = null)
@@ -262,12 +265,12 @@ class Auth
 	 *
 	 * @param string $key key of the user
 	 *
-	 * @return mixed
+	 * @return string|array|boolean
 	 */
 
 	public function getUser($key = null)
 	{
-		if (array_key_exists($key, $this->_userArray))
+		if (is_array($this->_userArray) && array_key_exists($key, $this->_userArray))
 		{
 			return $this->_userArray[$key];
 		}
@@ -284,7 +287,7 @@ class Auth
 	 * @since 3.0.0
 	 *
 	 * @param string $key key of the user
-	 * @param string $value value of the user
+	 * @param string|array|boolean $value value of the user
 	 */
 
 	public function setUser($key = null, $value = null)
@@ -299,12 +302,12 @@ class Auth
 	 *
 	 * @param string $key key of the permission
 	 *
-	 * @return mixed
+	 * @return string|array|boolean
 	 */
 
 	public function getPermission($key = null)
 	{
-		if (array_key_exists($key, $this->_permissionArray))
+		if (is_array($this->_permissionArray) && array_key_exists($key, $this->_permissionArray))
 		{
 			return $this->_permissionArray[$key];
 		}
@@ -321,16 +324,16 @@ class Auth
 	 * @since 3.0.0
 	 *
 	 * @param string $key key of the permission
-	 * @param integer $value value of the permission
+	 * @param array $valueArray value of the permission
 	 */
 
-	public function setPermission($key = null, $value = null)
+	public function setPermission($key = null, $valueArray = [])
 	{
 		if (is_array($this->_permissionArray[$key]))
 		{
-			$value = array_merge($this->_permissionArray[$key], $value);
+			$valueArray = array_merge($this->_permissionArray[$key], $valueArray);
 		}
-		$this->_permissionArray[$key] = $value;
+		$this->_permissionArray[$key] = $valueArray;
 	}
 
 	/**
@@ -344,7 +347,7 @@ class Auth
 	public function getStatus()
 	{
 		$authArray = $this->_getAuth();
-		return array_key_exists('user', $authArray) && array_key_exists('permission', $authArray) ? 1 : 0;
+		return is_array($authArray) && array_key_exists('user', $authArray) && array_key_exists('permission', $authArray) ? 1 : 0;
 	}
 
 	/**
@@ -379,7 +382,7 @@ class Auth
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return mixed
+	 * @return string
 	 */
 
 	protected function _getAuth()
@@ -393,7 +396,7 @@ class Auth
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param mixed $value
+	 * @param string $value
 	 */
 
 	protected function _setAuth($value = null)

@@ -194,7 +194,7 @@ class AuthTest extends TestCaseAbstract
 		$auth = new Auth($this->_request);
 		$auth->login(1);
 
-		/* compare */
+		/* process type */
 
 		foreach ($typeArray as $key => $value)
 		{

@@ -19,6 +19,7 @@ services:
 
 before_install:
 - if [ ${TRAVIS_PHP_VERSION:0:1} == "5" ]; then composer require brianium/paratest 0.13.3 johnkary/phpunit-speedtrap 1.0.1 phpbench/phpbench 0.10.0 phpunit/phpunit 4.8.35 sebastian/phpcpd 2.0.4 phpunit/phpcov 2.0.2 --dev --no-update; fi
+- if [ ${TRAVIS_PHP_VERSION:0:1} != "7" ]; then composer remove phpstan/phpstan --dev --no-update; fi
 - composer global require hirak/prestissimo
 
 install:

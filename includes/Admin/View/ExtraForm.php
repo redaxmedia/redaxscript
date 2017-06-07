@@ -32,6 +32,7 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 	{
 		$output = Module\Hook::trigger('adminExtraFormStart');
 		$extra = Db::forTablePrefix('extras')->whereIdIs($extraId)->findOne();
+		$helperOption = new Helper\Option($this->_language);
 
 		/* html elements */
 
@@ -41,15 +42,6 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 			'class' => 'rs-admin-title-content',
 		]);
 		$titleElement->text($extra->title ? $extra->title : $this->_language->get('extra_new'));
-		$linkElement = new Html\Element();
-		$linkElement->init('a');
-		$itemElement = new Html\Element();
-		$itemElement->init('li');
-		$listElement = new Html\Element();
-		$listElement->init('ul',
-		[
-			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
-		]);
 		$formElement = new AdminForm($this->_registry, $this->_language);
 		$formElement->init(
 		[
@@ -71,37 +63,10 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 			]
 		]);
 
-		/* collect item output */
-
-		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
-		$outputItem = $itemElement
-			->copy()
-			->addClass('rs-admin-js-item-active rs-admin-item-active')
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-1')
-				->text($this->_language->get('extra'))
-			);
-		$outputItem .= $itemElement
-			->copy()
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-2')
-				->text($this->_language->get('general'))
-			);
-		$outputItem .= $itemElement
-			->copy()
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-3')
-				->text($this->_language->get('customize'))
-			);
-		$listElement->append($outputItem);
-
 		/* create the form */
 
 		$formElement
-			->append($listElement)
+			->append($this->_renderList())
 			->append('<div class="rs-admin-js-box-tab rs-admin-box-tab">')
 
 			/* first tab */
@@ -156,47 +121,55 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'language'
 			])
-			->select(Helper\Option::getLanguageArray(),
+			->select($helperOption->getLanguageArray(),
+			[
+				$extra->language
+			],
 			[
 				'id' => 'language',
-				'name' => 'language',
-				'value' => $extra->language
+				'name' => 'language'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('extra_sibling'),
 			[
 				'for' => 'sibling'
 			])
-			->select(Helper\Option::getContentArray('extras',
+			->select($helperOption->getContentArray('extras',
 			[
 				intval($extra->id)
 			]),
 			[
+				intval($extra->sibling)
+			],
+			[
 				'id' => 'sibling',
-				'name' => 'sibling',
-				'value' => intval($extra->sibling)
+				'name' => 'sibling'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('category'),
 			[
 				'for' => 'category'
 			])
-			->select(Helper\Option::getContentArray('categories'),
+			->select($helperOption->getContentArray('categories'),
+			[
+				intval($extra->category)
+			],
 			[
 				'id' => 'category',
-				'name' => 'category',
-				'value' => intval($extra->category)
+				'name' => 'category'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('article'),
 			[
 				'for' => 'article'
 			])
-			->select(Helper\Option::getContentArray('articles'),
+			->select($helperOption->getContentArray('articles'),
+			[
+				intval($extra->article)
+			],
 			[
 				'id' => 'article',
-				'name' => 'article',
-				'value' => intval($extra->article)
+				'name' => 'article'
 			])
 			->append('</li></ul></fieldset>')
 
@@ -207,22 +180,26 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'headline'
 			])
-			->select(Helper\Option::getToggleArray(),
+			->select($helperOption->getToggleArray(),
+			[
+				$extra->id ? intval($extra->headline) : 1
+			],
 			[
 				'id' => 'headline',
-				'name' => 'headline',
-				'value' => $extra->id ? intval($extra->headline) : 1
+				'name' => 'headline'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('status'),
 			[
 				'for' => 'status'
 			])
-			->select(Helper\Option::getVisibleArray(),
+			->select($helperOption->getVisibleArray(),
+			[
+				$extra->id ? intval($extra->status) : 1
+			],
 			[
 				'id' => 'status',
-				'name' => 'status',
-				'value' => $extra->id ? intval($extra->status) : 1
+				'name' => 'status'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('rank'),
@@ -244,13 +221,15 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 				[
 					'for' => 'access'
 				])
-				->select(Helper\Option::getAccessArray('groups'),
+				->select($helperOption->getAccessArray('groups'),
+				[
+					$extra->access
+				],
 				[
 					'id' => 'access',
 					'name' => 'access[]',
 					'multiple' => 'multiple',
-					'size' => count(Helper\Option::getAccessArray('groups')),
-					'value' => $extra->access
+					'size' => count($helperOption->getAccessArray('groups'))
 				])
 				->append('</li>');
 		}
@@ -290,5 +269,57 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 		$output .= $titleElement . $formElement;
 		$output .= Module\Hook::trigger('adminExtraFormEnd');
 		return $output;
+	}
+
+	/**
+	 * render the list
+	 *
+	 * @since 3.2.0
+	 *
+	 * @return object
+	 */
+
+	protected function _renderList()
+	{
+		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
+
+		/* html elements */
+
+		$linkElement = new Html\Element();
+		$linkElement->init('a');
+		$itemElement = new Html\Element();
+		$itemElement->init('li');
+		$listElement = new Html\Element();
+		$listElement->init('ul',
+		[
+			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
+		]);
+
+		/* collect item output */
+
+		$outputItem = $itemElement
+			->copy()
+			->addClass('rs-admin-js-item-active rs-admin-item-active')
+			->html($linkElement
+				->copy()
+				->attr('href', $tabRoute . '#tab-1')
+				->text($this->_language->get('extra'))
+			);
+		$outputItem .= $itemElement
+			->copy()
+			->html($linkElement
+				->copy()
+				->attr('href', $tabRoute . '#tab-2')
+				->text($this->_language->get('general'))
+			);
+		$outputItem .= $itemElement
+			->copy()
+			->html($linkElement
+				->copy()
+				->attr('href', $tabRoute . '#tab-3')
+				->text($this->_language->get('customize'))
+			);
+		$listElement->html($outputItem);
+		return $listElement;
 	}
 }

@@ -16,6 +16,8 @@
 
 function comments($article, $route)
 {
+	$registry = Redaxscript\Registry::getInstance();
+	$language = Redaxscript\Language::getInstance();
 	$output = Redaxscript\Module\Hook::trigger('commentStart');
 
 	/* query comments */
@@ -26,7 +28,7 @@ function comments($article, $route)
 			'status' => 1,
 			'article' => $article
 		])
-		->whereLanguageIs(Redaxscript\Registry::get('language'))
+		->whereLanguageIs($registry->get('language'))
 		->orderGlobal('rank');
 
 	/* query result */
@@ -36,11 +38,11 @@ function comments($article, $route)
 	{
 		$num_rows = count($result);
 		$sub_maximum = ceil($num_rows / Redaxscript\Db::getSetting('limit'));
-		$sub_active = Redaxscript\Registry::get('lastSubParameter');
+		$sub_active = $registry->get('lastSubParameter');
 
 		/* sub parameter */
 
-		if (Redaxscript\Registry::get('lastSubParameter') > $sub_maximum || !Redaxscript\Registry::get('lastSubParameter'))
+		if ($registry->get('lastSubParameter') > $sub_maximum || !$registry->get('lastSubParameter'))
 		{
 			$sub_active = 1;
 		}
@@ -60,7 +62,7 @@ function comments($article, $route)
 
 	if (!$result || !$num_rows)
 	{
-		$error = Redaxscript\Language::get('comment_no');
+		$error = $language->get('comment_no');
 	}
 
 	/* collect output */
@@ -74,13 +76,16 @@ function comments($article, $route)
 
 			/* access granted */
 
-			if ($accessValidator->validate($access, Redaxscript\Registry::get('myGroups')) === Redaxscript\Validator\ValidatorInterface::PASSED)
+			if ($accessValidator->validate($access, $registry->get('myGroups')) === Redaxscript\Validator\ValidatorInterface::PASSED)
 			{
 				if ($r)
 				{
 					foreach ($r as $key => $value)
 					{
-						$$key = stripslashes($value);
+						if ($key !== 'language')
+						{
+							$$key = stripslashes($value);
+						}
 					}
 				}
 
@@ -105,7 +110,7 @@ function comments($article, $route)
 
 				/* admin dock */
 
-				if (Redaxscript\Registry::get('loggedIn') == Redaxscript\Registry::get('token') && Redaxscript\Registry::get('firstParameter') != 'logout')
+				if ($registry->get('loggedIn') == $registry->get('token') && $registry->get('firstParameter') != 'logout')
 				{
 					$output .= admin_dock('comments', $id);
 				}
@@ -120,7 +125,7 @@ function comments($article, $route)
 
 		if ($num_rows_active == $counter)
 		{
-			$error = Redaxscript\Language::get('access_no');
+			$error = $language->get('access_no');
 		}
 	}
 
@@ -128,7 +133,7 @@ function comments($article, $route)
 
 	if ($error)
 	{
-		$output = '<div class="rs-box-comment">' . $error . Redaxscript\Language::get('point') . '</div>';
+		$output = '<div class="rs-box-comment">' . $error . $language->get('point') . '</div>';
 	}
 	$output .= Redaxscript\Module\Hook::trigger('commentEnd');
 	echo $output;

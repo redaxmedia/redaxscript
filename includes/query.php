@@ -140,9 +140,10 @@ function build_route($table, $id)
 
 function future_update($table)
 {
+	$registry = Redaxscript\Registry::getInstance();
 	Redaxscript\Db::forTablePrefix($table)
 		->where('status', 2)
-		->whereLt('date', Redaxscript\Registry::get('now'))
+		->whereLt('date', $registry->get('now'))
 		->findMany()
 		->set('status', 1)
 		->save();

@@ -1,0 +1,50 @@
+[
+	[
+		"root",
+		false,
+		null,
+		{
+			"includes": "vfs://root/includes",
+			"languages": "vfs://root/languages",
+			"index.php": "vfs://root/index.php"
+		}
+	],
+	[
+		"root/includes",
+		true,
+		null,
+		{
+			"Detector": "vfs://root/includes/Detector",
+			"DetectorAbstract.php": "vfs://root/includes/Detector/DetectorAbstract.php",
+			"Language.php": "vfs://root/includes/Detector/Language.php",
+			"Template.php": "vfs://root/includes/Detector/Template.php",
+			"Autoloader.php": "vfs://root/includes/Autoloader.php",
+			"bootstrap.php": "vfs://root/includes/bootstrap.php"
+		}
+	],
+	[
+		"root/languages",
+		true,
+		null,
+		{
+			"de.json": "vfs://root/languages/de.json",
+			"en.json": "vfs://root/languages/en.json"
+		}
+	],
+	[
+		"root/languages",
+		true,
+		[
+			"de.json"
+		],
+		{
+			"en.json": "vfs://root/languages/en.json"
+		}
+	],
+	[
+		"invalid",
+		false,
+		null,
+		{}
+	]
+]

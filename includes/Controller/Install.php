@@ -380,7 +380,7 @@ class Install extends ControllerAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return boolean
+	 * @return integer
 	 */
 
 	protected function _getStatus()
@@ -469,11 +469,11 @@ class Install extends ControllerAbstract
 		$subject = $this->_language->get('installation');
 		$bodyArray =
 		[
-			$this->_language->get('user') . $this->_language->get('colon') . $mailArray['adminUser'],
+			$this->_language->get('user') . $this->_language->get('colon') . ' ' . $mailArray['adminUser'],
 			'<br />',
-			$this->_language->get('password') . $this->_language->get('colon') . $mailArray['adminPassword'],
+			$this->_language->get('password') . $this->_language->get('colon') . ' ' . $mailArray['adminPassword'],
 			'<br />',
-			$this->_language->get('url') . $this->_language->get('colon') . $linkElement
+			$this->_language->get('url') . $this->_language->get('colon') . ' ' . $linkElement
 		];
 
 		/* send mail */

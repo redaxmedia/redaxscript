@@ -20,7 +20,7 @@ class Boolean implements FilterInterface
 	 *
 	 * @param string $boolean boolean
 	 *
-	 * @return mixed
+	 * @return boolean
 	 */
 
 	public function sanitize($boolean = null)

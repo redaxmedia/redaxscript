@@ -12,6 +12,11 @@
 
 /* @section 1. content */
 
+.rs-content
+{
+	word-wrap: break-word;
+}
+
 .rs-title-content,
 .rs-title-content-sub
 {

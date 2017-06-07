@@ -1,8 +1,7 @@
 <?php
 namespace Redaxscript\Modules\PageCache;
 
-use Redaxscript\Cache;
-use Redaxscript\Template;
+use Redaxscript\Filesystem;
 
 /**
  * simple page cache
@@ -49,7 +48,7 @@ class PageCache extends Config
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return mixed
+	 * @return array|boolean
 	 */
 
 	public function renderTemplate()
@@ -70,16 +69,17 @@ class PageCache extends Config
 
 		/* cache as needed */
 
-		$cache = new Cache();
-		$cache->init($this->_configArray['directory'], $this->_configArray['extension']);
+		$cacheFilesystem = new Filesystem\Cache();
+		$cacheFilesystem->init($this->_configArray['directory'], $this->_configArray['extension']);
 		$bundle = $this->_registry->get('root') . $this->_registry->get('fullRoute') . '/' . $this->_registry->get('template') . '/' . $this->_registry->get('language');
+		$token = $this->_registry->get('token');
 
 		/* load from cache */
 
-		if ($cache->validate($bundle, $this->_configArray['lifetime']))
+		if ($cacheFilesystem->validate($bundle, $this->_configArray['lifetime']))
 		{
-			$raw = $cache->retrieve($bundle);
-			$content = preg_replace('/' . $this->_configArray['tokenPlaceholder'] . '/', $this->_registry->get('token'), $this->_uncompress($raw));
+			$raw = $this->_uncompress($cacheFilesystem->retrieve($bundle));
+			$content = preg_replace('/' . $this->_configArray['tokenPlaceholder'] . '/', $token, $raw);
 			return
 			[
 				'header' => function_exists('gzdeflate') ? 'content-encoding: deflate' : null,
@@ -91,9 +91,11 @@ class PageCache extends Config
 
 		else
 		{
-			$raw = Template\Tag::partial('templates/' . $this->_registry->get('template') . '/index.phtml');
-			$content = preg_replace('/' . $this->_registry->get('token') . '/', $this->_configArray['tokenPlaceholder'], $raw);
-			$cache->store($bundle, $this->_compress($content));
+			$rawFilesystem = new Filesystem\File();
+			$rawFilesystem->init('templates/' . $this->_registry->get('template'));
+			$raw = $rawFilesystem->renderFile('index.phtml');
+			$content = preg_replace('/' . $token . '/', $this->_configArray['tokenPlaceholder'], $raw);
+			$cacheFilesystem->store($bundle, $this->_compress($content));
 			return
 			[
 				'content' => $raw

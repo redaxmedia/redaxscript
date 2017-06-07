@@ -33,7 +33,7 @@ class Dns implements ValidatorInterface
 
 		if ($host)
 		{
-			if (function_exists('checkdnsrr') && checkdnsrr($host, $type) === false)
+			if (function_exists('checkdnsrr') && !checkdnsrr($host, $type))
 			{
 				$output = ValidatorInterface::FAILED;
 			}

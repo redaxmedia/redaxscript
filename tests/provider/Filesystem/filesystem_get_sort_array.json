@@ -1,0 +1,25 @@
+[
+	[
+		"root",
+		false,
+		null,
+		[
+			"includes",
+			"index.php",
+			"languages"
+		]
+	],
+	[
+		"root/includes",
+		true,
+		null,
+		[
+			"Autoloader.php",
+			"Detector",
+			"DetectorAbstract.php",
+			"Language.php",
+			"Template.php",
+			"bootstrap.php"
+		]
+	]
+]

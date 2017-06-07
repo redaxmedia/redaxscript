@@ -176,7 +176,7 @@ class Parameter
 	 *
 	 * @since 2.4.0
 	 *
-	 * @return string
+	 * @return string|boolean
 	 */
 
 	public function getLast()
@@ -188,6 +188,7 @@ class Parameter
 				return $value;
 			}
 		}
+		return false;
 	}
 
 	/**
@@ -195,7 +196,7 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return string
+	 * @return integer|boolean
 	 */
 
 	public function getLastSub()
@@ -207,6 +208,7 @@ class Parameter
 				return $value;
 			}
 		}
+		return false;
 	}
 
 	/**
@@ -214,7 +216,7 @@ class Parameter
 	 *
 	 * @since 2.4.0
 	 *
-	 * @return string
+	 * @return string|boolean
 	 */
 
 	public function getAdmin()
@@ -223,6 +225,7 @@ class Parameter
 		{
 			return $this->getSecond();
 		}
+		return false;
 	}
 
 	/**
@@ -230,7 +233,7 @@ class Parameter
 	 *
 	 * @since 2.4.0
 	 *
-	 * @return string
+	 * @return string|boolean
 	 */
 
 	public function getTable()
@@ -239,6 +242,7 @@ class Parameter
 		{
 			return $this->getThird();
 		}
+		return false;
 	}
 
 	/**
@@ -246,7 +250,7 @@ class Parameter
 	 *
 	 * @since 2.4.0
 	 *
-	 * @return string
+	 * @return string|boolean
 	 */
 
 	public function getAlias()
@@ -255,6 +259,7 @@ class Parameter
 		{
 			return $this->getFourth();
 		}
+		return false;
 	}
 
 	/**
@@ -262,7 +267,7 @@ class Parameter
 	 *
 	 * @since 2.4.0
 	 *
-	 * @return string
+	 * @return string|boolean
 	 */
 
 	public function getId()
@@ -271,6 +276,7 @@ class Parameter
 		{
 			return $this->getThirdSub();
 		}
+		return false;
 	}
 
 	/**
@@ -278,7 +284,7 @@ class Parameter
 	 *
 	 * @since 2.4.0
 	 *
-	 * @return string
+	 * @return string|boolean
 	 */
 
 	public function getToken()
@@ -288,6 +294,7 @@ class Parameter
 		{
 			return $this->getLast();
 		}
+		return false;
 	}
 
 	/**
@@ -297,15 +304,16 @@ class Parameter
 	 *
 	 * @param integer $key
 	 *
-	 * @return string
+	 * @return string|boolean
 	 */
 
 	protected function _getParameter($key = null)
 	{
-		if (array_key_exists($key, $this->_parameterArray) && !is_numeric($this->_parameterArray[$key]))
+		if (is_array($this->_parameterArray) && array_key_exists($key, $this->_parameterArray) && !is_numeric($this->_parameterArray[$key]))
 		{
 			return $this->_parameterArray[$key];
 		}
+		return false;
 	}
 
 	/**
@@ -315,14 +323,15 @@ class Parameter
 	 *
 	 * @param integer $key
 	 *
-	 * @return integer
+	 * @return integer|boolean
 	 */
 
 	protected function _getParameterSub($key = null)
 	{
-		if (array_key_exists($key, $this->_parameterArray) && is_numeric($this->_parameterArray[$key]))
+		if (is_array($this->_parameterArray) && array_key_exists($key, $this->_parameterArray) && is_numeric($this->_parameterArray[$key]))
 		{
 			return $this->_parameterArray[$key];
 		}
+		return false;
 	}
 }

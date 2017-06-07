@@ -5,6 +5,7 @@ use Redaxscript\Db;
 use Redaxscript\Config;
 use Redaxscript\Console;
 use Redaxscript\Breadcrumb;
+use Redaxscript\Filesystem;
 use Redaxscript\Head;
 use Redaxscript\Language;
 use Redaxscript\Registry;
@@ -84,7 +85,7 @@ class Tag
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return mixed
+	 * @return object
 	 */
 
 	public static function script()
@@ -125,17 +126,18 @@ class Tag
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return string|boolean
 	 */
 
 	public static function consoleLine()
 	{
 		$console = new Console\Console(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		$output = $console->init('template');
-		if (is_string($output))
+		if (strlen($output))
 		{
 			return htmlentities($output);
 		}
+		return false;
 	}
 
 	/**
@@ -171,36 +173,29 @@ class Tag
 	/**
 	 * partial
 	 *
-	 * @since 2.3.0
+	 * @since 3.2.0
 	 *
-	 * @param mixed $file
+	 * @param string|array $partial
 	 *
 	 * @return string
 	 */
 
-	public static function partial($file = null)
+	public static function partial($partial = null)
 	{
-		/* handle file */
+		$output = null;
 
-		if (is_string($file))
+		/* template filesystem */
+
+		$templateFilesystem = new Filesystem\File();
+		$templateFilesystem->init('.');
+
+		/* process partial */
+
+		foreach ((array)$partial as $file)
 		{
-			$file =
-			[
-				$file
-			];
+			$output .= $templateFilesystem->renderFile($file);
 		}
-
-		/* include files */
-
-		ob_start();
-		foreach ($file as $value)
-		{
-			if (is_file($value))
-			{
-				include($value);
-			}
-		}
-		return ob_get_clean();
+		return $output;
 	}
 
 	/**

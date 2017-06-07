@@ -12,6 +12,8 @@ use Redaxscript\Request;
  * @package Redaxscript
  * @category Detector
  * @author Henry Ruhs
+ *
+ * @method protected _autorun()
  */
 
 abstract class DetectorAbstract

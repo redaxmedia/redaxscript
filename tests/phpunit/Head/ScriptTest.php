@@ -26,7 +26,7 @@ class ScriptTest extends TestCaseAbstract
 
 	public function setUp()
 	{
-		Stream::setup('root', 0777, $this->getProvider('tests/provider/Head/script_set_up.json'));
+		Stream::setup('root', 0777, $this->getProvider('tests/provider/Head/script_setup.json'));
 	}
 
 	/**
@@ -125,10 +125,16 @@ class ScriptTest extends TestCaseAbstract
 
 		$script = Head\Script::getInstance();
 		$script->init('append');
+
+		/* process core */
+
 		foreach ($coreArray as $key => $value)
 		{
 			$script->append($value);
 		}
+
+		/* process module */
+
 		foreach ($moduleArray as $key => $value)
 		{
 			$script->appendFile($value);
@@ -140,7 +146,7 @@ class ScriptTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($this->normalizeEOL($expect), $actual);
+		$this->assertEquals($expect, $this->normalizeNewline($actual));
 	}
 
 	/**
@@ -161,10 +167,16 @@ class ScriptTest extends TestCaseAbstract
 
 		$script = Head\Script::getInstance();
 		$script->init('prepend');
+
+		/* process core */
+
 		foreach ($coreArray as $value)
 		{
 			$script->prepend($value);
 		}
+
+		/* process module */
+
 		foreach ($moduleArray as $key => $value)
 		{
 			$script->prependFile($value);
@@ -176,7 +188,7 @@ class ScriptTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($this->normalizeEOL($expect), $actual);
+		$this->assertEquals($expect, $this->normalizeNewline($actual));
 	}
 
 	/**
@@ -197,10 +209,16 @@ class ScriptTest extends TestCaseAbstract
 
 		$script = Head\Script::getInstance();
 		$script->init('inline');
+
+		/* process core */
+
 		foreach ($coreArray as $value)
 		{
 			$script->appendInline($value);
 		}
+
+		/* process module */
+
 		foreach ($moduleArray as $value)
 		{
 			$script->prependInline($value);
@@ -233,6 +251,9 @@ class ScriptTest extends TestCaseAbstract
 
 		$script = Head\Script::getInstance();
 		$script->init('remove');
+
+		/* process core */
+
 		foreach ($coreArray as $key => $value)
 		{
 			$script->append($value);
@@ -245,7 +266,7 @@ class ScriptTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($this->normalizeEOL($expect), $actual);
+		$this->assertEquals($expect, $this->normalizeNewline($actual));
 	}
 
 	/**
@@ -298,6 +319,9 @@ class ScriptTest extends TestCaseAbstract
 		];
 		$script = Head\Script::getInstance();
 		$script->init('concat');
+
+		/* process concat */
+
 		foreach ($concatArray as $key => $value)
 		{
 			$script->append($value);
@@ -312,14 +336,13 @@ class ScriptTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($this->normalizeEOL($expect), $actual);
+		$this->assertEquals($expect, $this->normalizeNewline($actual));
 	}
 
 	/**
 	 * testInvalid
 	 *
 	 * @since 3.0.0
-	 *
 	 */
 
 	public function testInvalid()

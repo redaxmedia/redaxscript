@@ -1,11 +1,10 @@
 <?php
 namespace Redaxscript\Modules\Preview;
 
-use Redaxscript\Directory;
+use Redaxscript\Filesystem;
 use Redaxscript\Head;
 use Redaxscript\Html;
 use Redaxscript\Module;
-use Redaxscript\Template;
 
 /**
  * preview template elements
@@ -44,7 +43,7 @@ class Preview extends Module\Module
 	{
 		if ($this->_registry->get('firstParameter') === 'preview')
 		{
-			$this->_registry->set('metaTitle', $this->_language->get('preview', '_preview'));
+			$this->_registry->set('useTitle', $this->_language->get('preview', '_preview'));
 			$this->_registry->set('useDescription', $this->_language->get('description', '_preview'));
 			$this->_registry->set('routerBreak', true);
 
@@ -67,69 +66,94 @@ class Preview extends Module\Module
 	{
 		if ($this->_registry->get('firstParameter') === 'preview')
 		{
-			$partialsPath = 'modules/Preview/partials';
-			$partialExtension = '.phtml';
-			$partialsDirectory = new Directory();
-			$partialsDirectory->init($partialsPath);
-			$partialsDirectoryArray = $partialsDirectory->getArray();
-			$secondParameter = $this->_registry->get('secondParameter');
-
-			/* collect partial output */
-
-			$output = '<div class="rs-is-preview rs-fn-clearfix">';
-
-			/* include single */
-
-			if ($secondParameter)
-			{
-				$output .= $this->render($secondParameter, $partialsPath . '/' . $secondParameter . $partialExtension);
-			}
-
-			/* else include all */
-
-			else
-			{
-				foreach ($partialsDirectoryArray as $value)
-				{
-					$alias = str_replace($partialExtension, '', $value);
-					$output .= $this->render($alias, $partialsPath . DIRECTORY_SEPARATOR . $value);
-				}
-			}
-			$output .= '</div>';
-			echo $output;
+			echo $this->render();
 		}
 	}
 
 	/**
 	 * render
 	 *
-	 * @since 3.0.0
-	 *
-	 * @param string $alias
-	 * @param string $path
+	 * @since 3.2.0
 	 *
 	 * @return string
 	 */
 
-	public function render($alias = null, $path = null)
+	public function render()
 	{
-		$titleElement = new Html\Element();
-		$titleElement->init('h2',
-		[
-			'class' => 'rs-title-preview',
-			'id' => $alias
-		]);
+		$output = null;
+		$partialsFilesystem = new Filesystem\File();
+		$partialsFilesystem->init('modules/Preview/partials');
+		$secondParameter = $this->_registry->get('secondParameter');
+		$extension = '.phtml';
+
+		/* collect single */
+
+		if ($secondParameter)
+		{
+			$output = $this->_renderPartial($secondParameter, $partialsFilesystem->renderFile($secondParameter . $extension));
+		}
+
+		/* else collect all */
+
+		else
+		{
+			$partialsFilesystemArray = $partialsFilesystem->getSortArray();
+
+			/* process filesystem */
+
+			foreach ($partialsFilesystemArray as $value)
+			{
+				$alias = str_replace($extension, '', $value);
+				$output .= $this->_renderPartial($alias, $partialsFilesystem->renderFile($value));
+			}
+		}
+		return $output;
+	}
+
+	/**
+	 * renderPartial
+	 *
+	 * @since 3.2.0
+	 *
+	 * @param string $alias
+	 * @param string $html
+	 *
+	 * @return string
+	 */
+
+	protected function _renderPartial($alias = null, $html = null)
+	{
+		$secondParameter = $this->_registry->get('secondParameter');
+		$parameterRoute = $this->_registry->get('parameterRoute');
+
+		/* html elements */
+
 		$linkElement = new Html\Element();
-		$linkElement->init('a',
-		[
-			'href' => $this->_registry->get('secondParameter') === $alias ? $this->_registry->get('parameterRoute') . 'preview#' . $alias : $this->_registry->get('parameterRoute') . 'preview/' . $alias
-		])
-		->text($this->_registry->get('secondParameter') === $alias ? $this->_language->get('back') : $alias);
+		$linkElement
+			->init('a',
+			[
+				'href' => $secondParameter === $alias ? $parameterRoute . 'preview#' . $alias : $parameterRoute . 'preview/' . $alias
+			])
+			->text($secondParameter === $alias ? $this->_language->get('back') : $alias);
+		$titleElement = new Html\Element();
+		$titleElement
+			->init('h2',
+			[
+				'class' => 'rs-title-preview',
+				'id' => $alias
+			])
+			->html($linkElement);
+		$boxElement = new Html\Element();
+		$boxElement
+			->init('div',
+			[
+				'class' => 'rs-is-preview rs-fn-clearfix'
+			])
+			->html($html);
 
 		/* collect output */
 
-		$output = $titleElement->html($linkElement);
-		$output .= Template\Tag::partial($path);
+		$output = $titleElement . $boxElement;
 		return $output;
 	}
 }

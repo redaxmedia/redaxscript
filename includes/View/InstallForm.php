@@ -71,9 +71,11 @@ class InstallForm extends ViewAbstract
 			])
 			->select($this->_registry->get('driverArray'),
 			[
+				$optionArray['dbType']
+			],
+			[
 				'id' => 'db-type',
-				'name' => 'db-type',
-				'value' => $optionArray['dbType']
+				'name' => 'db-type'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('host'),

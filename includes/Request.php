@@ -48,14 +48,14 @@ class Request extends Singleton
 	 * @param string $key key of the item
 	 * @param string $index index of the array
 	 *
-	 * @return mixed
+	 * @return string|array|boolean
 	 */
 
 	public function get($key = null, $index = null)
 	{
 		/* handle index */
 
-		if (array_key_exists($index, self::$_requestArray))
+		if (is_array(self::$_requestArray) && array_key_exists($index, self::$_requestArray))
 		{
 			$requestArray = self::$_requestArray[$index];
 		}
@@ -66,7 +66,7 @@ class Request extends Singleton
 
 		/* values as needed */
 
-		if (array_key_exists($key, $requestArray))
+		if (is_array($requestArray) && array_key_exists($key, $requestArray))
 		{
 			return $requestArray[$key];
 		}
@@ -84,7 +84,7 @@ class Request extends Singleton
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string
+	 * @return string|boolean
 	 */
 
 	public function getServer($key = null)
@@ -99,7 +99,7 @@ class Request extends Singleton
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string
+	 * @return string|array|boolean
 	 */
 
 	public function getQuery($key = null)
@@ -114,7 +114,7 @@ class Request extends Singleton
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string
+	 * @return string|array|boolean
 	 */
 
 	public function getPost($key = null)
@@ -129,7 +129,7 @@ class Request extends Singleton
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string
+	 * @return string|boolean
 	 */
 
 	public function getFiles($key = null)
@@ -144,7 +144,7 @@ class Request extends Singleton
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string
+	 * @return string|array|boolean
 	 */
 
 	public function getSession($key = null)
@@ -159,7 +159,7 @@ class Request extends Singleton
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string
+	 * @return string|boolean
 	 */
 
 	public function getCookie($key = null)
@@ -173,12 +173,12 @@ class Request extends Singleton
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
-	 * @param mixed $value value of the item
+	 * @param array|boolean $valueArray value of the item
 	 */
 
-	public function set($key = null, $value = null)
+	public function set($key = null, $valueArray = [])
 	{
-		self::$_requestArray[$key] = $GLOBALS[$key] = $value;
+		self::$_requestArray[$key] = $GLOBALS[$key] = $valueArray;
 	}
 
 	/**
@@ -187,7 +187,7 @@ class Request extends Singleton
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
-	 * @param mixed $value value of the item
+	 * @param string|boolean $value value of the item
 	 */
 
 	public function setServer($key = null, $value = null)
@@ -201,7 +201,7 @@ class Request extends Singleton
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
-	 * @param mixed $value value of the item
+	 * @param string|array|boolean $value value of the item
 	 */
 
 	public function setQuery($key = null, $value = null)
@@ -215,7 +215,7 @@ class Request extends Singleton
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
-	 * @param mixed $value value of the item
+	 * @param string|array|boolean $value value of the item
 	 */
 
 	public function setPost($key = null, $value = null)
@@ -229,7 +229,7 @@ class Request extends Singleton
 	 * @since 3.0.0
 	 *
 	 * @param string $key key of the item
-	 * @param mixed $value value of the item
+	 * @param string|boolean $value value of the item
 	 */
 
 	public function setFiles($key = null, $value = null)
@@ -243,7 +243,7 @@ class Request extends Singleton
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
-	 * @param mixed $value value of the item
+	 * @param string|array|boolean $value value of the item
 	 */
 
 	public function setSession($key = null, $value = null)
@@ -257,7 +257,7 @@ class Request extends Singleton
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
-	 * @param mixed $value value of the item
+	 * @param string|boolean $value value of the item
 	 */
 
 	public function setCookie($key = null, $value = null)

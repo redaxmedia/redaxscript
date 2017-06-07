@@ -32,6 +32,7 @@ class GroupForm extends ViewAbstract implements ViewInterface
 	{
 		$output = Module\Hook::trigger('adminGroupFormStart');
 		$group = Db::forTablePrefix('groups')->whereIdIs($groupId)->findOne();
+		$helperOption = new Helper\Option($this->_language);
 
 		/* html elements */
 
@@ -41,15 +42,6 @@ class GroupForm extends ViewAbstract implements ViewInterface
 			'class' => 'rs-admin-title-content',
 		]);
 		$titleElement->text($group->name ? $group->name : $this->_language->get('group_new'));
-		$linkElement = new Html\Element();
-		$linkElement->init('a');
-		$itemElement = new Html\Element();
-		$itemElement->init('li');
-		$listElement = new Html\Element();
-		$listElement->init('ul',
-		[
-			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
-		]);
 		$formElement = new AdminForm($this->_registry, $this->_language);
 		$formElement->init(
 		[
@@ -71,40 +63,10 @@ class GroupForm extends ViewAbstract implements ViewInterface
 			]
 		]);
 
-		/* collect item output */
-
-		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
-		$outputItem = $itemElement
-			->copy()
-			->addClass('rs-admin-js-item-active rs-admin-item-active')
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-1')
-				->text($this->_language->get('group'))
-			);
-		if (!$group->id || $group->id > 1)
-		{
-			$outputItem .= $itemElement
-				->copy()
-				->html($linkElement
-					->copy()
-					->attr('href', $tabRoute . '#tab-2')
-					->text($this->_language->get('access'))
-				);
-			$outputItem .= $itemElement
-				->copy()
-				->html($linkElement
-					->copy()
-					->attr('href', $tabRoute . '#tab-3')
-					->text($this->_language->get('customize'))
-				);
-		}
-		$listElement->append($outputItem);
-
 		/* create the form */
 
 		$formElement
-			->append($listElement)
+			->append($this->_renderList($group->id))
 			->append('<div class="rs-admin-js-box-tab rs-admin-box-tab rs-admin-box-tab">')
 
 			/* first tab */
@@ -160,104 +122,120 @@ class GroupForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'categories'
 			])
-			->select(Helper\Option::getPermissionArray(),
+			->select($helperOption->getPermissionArray(),
+			[
+				$group->categories
+			],
 			[
 				'id' => 'categories',
 				'name' => 'categories[]',
 				'multiple' => 'multiple',
-				'size' => count(Helper\Option::getPermissionArray()),
-				'value' => $group->categories
+				'size' => count($helperOption->getPermissionArray())
 			])
 			->append('</li><li>')
 			->label($this->_language->get('articles'),
 			[
 				'for' => 'articles'
 			])
-			->select(Helper\Option::getPermissionArray(),
+			->select($helperOption->getPermissionArray(),
+			[
+				$group->articles
+			],
 			[
 				'id' => 'articles',
 				'name' => 'articles[]',
 				'multiple' => 'multiple',
-				'size' => count(Helper\Option::getPermissionArray()),
-				'value' => $group->articles
+				'size' => count($helperOption->getPermissionArray())
 			])
 			->append('</li><li>')
 			->label($this->_language->get('extras'),
 			[
 				'for' => 'extras'
 			])
-			->select(Helper\Option::getPermissionArray(),
+			->select($helperOption->getPermissionArray(),
+			[
+				$group->extras
+			],
 			[
 				'id' => 'extras',
 				'name' => 'extras[]',
 				'multiple' => 'multiple',
-				'size' => count(Helper\Option::getPermissionArray()),
-				'value' => $group->extras
+				'size' => count($helperOption->getPermissionArray())
 			])
 			->append('</li><li>')
 			->label($this->_language->get('comments'),
 			[
 				'for' => 'comments'
 			])
-			->select(Helper\Option::getPermissionArray(),
+			->select($helperOption->getPermissionArray(),
+			[
+				$group->comments
+			],
 			[
 				'id' => 'comments',
 				'name' => 'comments[]',
 				'multiple' => 'multiple',
-				'size' => count(Helper\Option::getPermissionArray()),
-				'value' => $group->comments
+				'size' => count($helperOption->getPermissionArray())
 			])
 			->append('</li><li>')
 			->label($this->_language->get('groups'),
 			[
 				'for' => 'groups'
 			])
-			->select(Helper\Option::getPermissionArray(),
+			->select($helperOption->getPermissionArray(),
+			[
+				$group->groups
+			],
 			[
 				'id' => 'groups',
 				'name' => 'groups[]',
 				'multiple' => 'multiple',
-				'size' => count(Helper\Option::getPermissionArray()),
-				'value' => $group->groups
+				'size' => count($helperOption->getPermissionArray())
 			])
 			->append('</li><li>')
 			->label($this->_language->get('users'),
 			[
 				'for' => 'users'
 			])
-			->select(Helper\Option::getPermissionArray(),
+			->select($helperOption->getPermissionArray(),
+			[
+				$group->users
+			],
 			[
 				'id' => 'users',
 				'name' => 'users[]',
 				'multiple' => 'multiple',
-				'size' => count(Helper\Option::getPermissionArray()),
-				'value' => $group->users
+				'size' => count($helperOption->getPermissionArray())
 			])
 			->append('</li><li>')
 			->label($this->_language->get('modules'),
 			[
 				'for' => 'modules'
 			])
-			->select(Helper\Option::getPermissionArray('modules'),
+			->select($helperOption->getPermissionArray('modules'),
+			[
+				$group->modules
+			],
 			[
 				'id' => 'modules',
 				'name' => 'modules[]',
 				'multiple' => 'multiple',
-				'size' => count(Helper\Option::getPermissionArray('modules')),
-				'value' => $group->modules
+				'size' => count($helperOption->getPermissionArray('modules'))
 			])
 			->append('</li><li>')
 			->label($this->_language->get('settings'),
 			[
 				'for' => 'settings'
 			])
-			->select(Helper\Option::getPermissionArray('settings'),
+			->select($helperOption->getPermissionArray('settings'),
+			[
+				intval($group->settings)
+			],
 			[
 				'id' => 'settings',
 				'name' => 'settings[]',
 				'multiple' => 'multiple',
-				'size' => count(Helper\Option::getPermissionArray('settings')),
-				'value' => intval($group->settings)
+				'size' => count($helperOption->getPermissionArray('settings'))
 			])
 			->append('</li></ul></fieldset>')
 
@@ -268,22 +246,26 @@ class GroupForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'filter'
 			])
-			->select(Helper\Option::getToggleArray(),
+			->select($helperOption->getToggleArray(),
+			[
+				$group->id ? $group->filter : 1
+			],
 			[
 				'id' => 'filter',
-				'name' => 'filter',
-				'value' => $group->id ? $group->filter : 1
+				'name' => 'filter'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('status'),
 			[
 				'for' => 'status'
 			])
-			->select(Helper\Option::getToggleArray(),
+			->select($helperOption->getToggleArray(),
+			[
+				$group->id ? intval($group->status) : 1
+			],
 			[
 				'id' => 'status',
-				'name' => 'status',
-				'value' => $group->id ? intval($group->status) : 1
+				'name' => 'status'
 			])
 			->append('</li></ul></fieldset>');
 		}
@@ -312,5 +294,62 @@ class GroupForm extends ViewAbstract implements ViewInterface
 		$output .= $titleElement . $formElement;
 		$output .= Module\Hook::trigger('adminGroupFormEnd');
 		return $output;
+	}
+
+	/**
+	 * render the list
+	 *
+	 * @since 3.2.0
+	 *
+	 * @param integer $groupId identifier of the group
+	 *
+	 * @return object
+	 */
+
+	protected function _renderList($groupId = null)
+	{
+		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
+
+		/* html elements */
+
+		$linkElement = new Html\Element();
+		$linkElement->init('a');
+		$itemElement = new Html\Element();
+		$itemElement->init('li');
+		$listElement = new Html\Element();
+		$listElement->init('ul',
+		[
+			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
+		]);
+
+		/* collect item output */
+
+		$outputItem = $itemElement
+			->copy()
+			->addClass('rs-admin-js-item-active rs-admin-item-active')
+			->html($linkElement
+				->copy()
+				->attr('href', $tabRoute . '#tab-1')
+				->text($this->_language->get('group'))
+			);
+		if (!$groupId || $groupId > 1)
+		{
+			$outputItem .= $itemElement
+				->copy()
+				->html($linkElement
+					->copy()
+					->attr('href', $tabRoute . '#tab-2')
+					->text($this->_language->get('access'))
+				);
+			$outputItem .= $itemElement
+				->copy()
+				->html($linkElement
+					->copy()
+					->attr('href', $tabRoute . '#tab-3')
+					->text($this->_language->get('customize'))
+				);
+		}
+		$listElement->html($outputItem);
+		return $listElement;
 	}
 }

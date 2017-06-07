@@ -45,7 +45,7 @@ class Title implements HeadInterface
 	 *
 	 * @param string $text
 	 *
-	 * @return string
+	 * @return string|boolean
 	 */
 
 	public function render($text = null)
@@ -59,5 +59,6 @@ class Title implements HeadInterface
 				->text($text)
 				->render();
 		}
+		return false;
 	}
 }

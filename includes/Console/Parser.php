@@ -81,12 +81,12 @@ class Parser
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return mixed
+	 * @return string|array|boolean
 	 */
 
 	public function getArgument($key = null)
 	{
-		if (array_key_exists($key, $this->_argumentArray))
+		if (is_array($this->_argumentArray) && array_key_exists($key, $this->_argumentArray))
 		{
 			return $this->_argumentArray[$key];
 		}
@@ -104,12 +104,12 @@ class Parser
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return mixed
+	 * @return string|array|boolean
 	 */
 
 	public function getOption($key = null)
 	{
-		if (array_key_exists($key, $this->_optionArray))
+		if (is_array($this->_optionArray) && array_key_exists($key, $this->_optionArray))
 		{
 			return $this->_optionArray[$key];
 		}
@@ -126,7 +126,7 @@ class Parser
 	 * @since 3.0.0
 	 *
 	 * @param string $key key of the item
-	 * @param mixed $value value of the item
+	 * @param string|integer $value value of the item
 	 */
 
 	public function setArgument($key = null, $value = null)
@@ -140,7 +140,7 @@ class Parser
 	 * @since 3.0.0
 	 *
 	 * @param string $key key of the item
-	 * @param mixed $value value of the item
+	 * @param string|integer $value value of the item
 	 */
 
 	public function setOption($key = null, $value = null)
@@ -158,21 +158,24 @@ class Parser
 
 	protected function _parseArgument($argumentArray = [])
 	{
-		$skip = false;
+		$doSkip = false;
 		$argumentKey = 0;
-		foreach ($argumentArray as $key => $value)
+		if (is_array($argumentArray))
 		{
-			$next = next($argumentArray);
-			if (substr($value, 0, 1) === '-')
+			foreach ($argumentArray as $key => $value)
 			{
-				$offset = substr($value, 0, 2) === '--' ? 2 : 1;
-				$optionArray = $this->_parseOption($value, $next, $offset);
-				$skip = $optionArray['value'] === $next;
-				$this->setOption($optionArray['key'], $optionArray['value']);
-			}
-			else if ($value && !$skip)
-			{
-				$this->setArgument($argumentKey++, $value);
+				$next = next($argumentArray);
+				if (substr($value, 0, 1) === '-')
+				{
+					$offset = substr($value, 0, 2) === '--' ? 2 : 1;
+					$optionArray = $this->_parseOption($value, $next, $offset);
+					$doSkip = $optionArray['value'] === $next;
+					$this->setOption($optionArray['key'], $optionArray['value']);
+				}
+				else if ($value && !$doSkip)
+				{
+					$this->setArgument($argumentKey++, $value);
+				}
 			}
 		}
 	}
@@ -186,7 +189,7 @@ class Parser
 	 * @param string $next raw next to be parsed
 	 * @param integer $offset offset of the raw option
 	 *
-	 * @return boolean
+	 * @return array
 	 */
 
 	protected function _parseOption($option = null, $next = null, $offset = null)

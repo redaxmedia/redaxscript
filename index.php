@@ -39,14 +39,14 @@ if ($registry->get('contentError'))
 
 /* template */
 
-$template = Module\Hook::collect('renderTemplate');
-if (array_key_exists('header', $template))
+$templateArray = Module\Hook::collect('renderTemplate');
+if (is_array($templateArray) && array_key_exists('header', $templateArray))
 {
-	header($template['header']);
+	header($templateArray['header']);
 }
-if (array_key_exists('content', $template))
+if (is_array($templateArray) && array_key_exists('content', $templateArray))
 {
-	echo $template['content'];
+	echo $templateArray['content'];
 }
 else
 {

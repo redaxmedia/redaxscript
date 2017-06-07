@@ -12,8 +12,8 @@
 	},
 	"languages":
 	{
-		"en.json": "en",
-		"de.json": "de"
+		"de.json": "de",
+		"en.json": "en"
 	},
 	"index.php": "index"
 }

@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Asset;
 
-use Redaxscript\Cache;
+use Redaxscript\Filesystem;
 use Redaxscript\Registry;
 
 /**
@@ -52,7 +52,7 @@ class Loader
 	 *
 	 * @param array $collectionArray
 	 *
-	 * @return Loader
+	 * @return $this
 	 */
 
 	public function init($collectionArray = [])
@@ -98,7 +98,7 @@ class Loader
 	 * @param array $optionArray
 	 * @param array $rewriteArray
 	 *
-	 * @return Loader
+	 * @return $this
 	 */
 
 	public function concat($optionArray = [], $rewriteArray = [])
@@ -132,17 +132,17 @@ class Loader
 
 		/* cache as needed */
 
-		$cache = new Cache();
-		$cache->init($optionArray['directory'], $optionArray['extension']);
+		$cacheFilesystem = new Filesystem\Cache();
+		$cacheFilesystem->init($optionArray['directory'], $optionArray['extension']);
 
 		/* load from cache */
 
-		if ($cache->validate($bundleArray, $optionArray['lifetime']))
+		if ($cacheFilesystem->validate($bundleArray, $optionArray['lifetime']))
 		{
 			$collectionArray = $restArray;
 			$collectionArray['bundle'] =
 			[
-				$optionArray['attribute'] => $cache->getPath($bundleArray)
+				$optionArray['attribute'] => $cacheFilesystem->getPath($bundleArray, '/')
 			];
 			if ($optionArray['extension'] === 'css')
 			{
@@ -156,7 +156,7 @@ class Loader
 		else
 		{
 			$content = $this->_getContent($bundleArray, $rewriteArray);
-			$cache->store($bundleArray, $content);
+			$cacheFilesystem->store($bundleArray, $content);
 		}
 		return $this;
 	}

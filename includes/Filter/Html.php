@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Filter;
 
-use Redaxscript\Purifier;
+use Redaxscript\Html as BaseHtml;
 
 /**
  * children class to filter the html
@@ -28,7 +28,7 @@ class Html implements FilterInterface
 
 	public function sanitize($html = null, $filter = true)
 	{
-		$purifier = new Purifier();
+		$purifier = new BaseHtml\Purifier();
 		return $purifier->purify($html, $filter);
 	}
 }

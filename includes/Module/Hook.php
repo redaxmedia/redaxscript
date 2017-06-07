@@ -3,7 +3,7 @@ namespace Redaxscript\Module;
 
 use Redaxscript\Config;
 use Redaxscript\Db;
-use Redaxscript\Directory;
+use Redaxscript\Filesystem;
 use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
@@ -105,9 +105,9 @@ class Hook
 	public static function init()
 	{
 		$accessValidator = new Validator\Access();
-		$modulesDirectory = new Directory();
-		$modulesDirectory->init('modules');
-		$modulesAvailable = $modulesDirectory->getArray();
+		$modulesFilesystem = new Filesystem\Filesystem();
+		$modulesFilesystem->init('modules');
+		$modulesFilesystemArray = $modulesFilesystem->getSortArray();
 		$modulesInstalled = Db::forTablePrefix('modules')->where('status', 1)->findMany();
 
 		/* process modules */
@@ -116,7 +116,7 @@ class Hook
 		{
 			/* validate access */
 
-			if (in_array($module->alias, $modulesAvailable) && $accessValidator->validate($module->access, self::$_registry->get('myGroups')) === Validator\ValidatorInterface::PASSED)
+			if (in_array($module->alias, $modulesFilesystemArray) && $accessValidator->validate($module->access, self::$_registry->get('myGroups')) === Validator\ValidatorInterface::PASSED)
 			{
 				self::$_moduleArray[$module->alias] = $module->alias;
 			}
@@ -152,36 +152,26 @@ class Hook
 	/**
 	 * collect from module hook
 	 *
-	 * @since 3.0.0
+	 * @since 3.2.0
 	 *
-	 * @param string $event name of the module event
+	 * @param string $eventName name of the module event
 	 * @param array $parameterArray parameter of the module hook
 	 *
 	 * @return array
 	 */
 
-	public static function collect($event = null, $parameterArray = [])
+	public static function collect($eventName = null, $parameterArray = [])
 	{
 		$outputArray = [];
 
 		/* process modules */
 
-		foreach (self::$_moduleArray as $module)
+		foreach (self::$_moduleArray as $moduleName)
 		{
-			$moduleClass = self::$_namespace . '\\' . $module . '\\' . $module;
-			self::$_eventArray[$event][$module] = false;
-
-			/* method exists */
-
-			if (method_exists($moduleClass, $event))
+			$callArray = self::_call($moduleName, $eventName, $parameterArray);
+			if (is_array($callArray))
 			{
-				self::$_eventArray[$event][$module] = true;
-				$module = new $moduleClass(self::$_registry, self::$_request, self::$_language, self::$_config);
-				$outputArray = array_merge($outputArray, call_user_func_array(
-				[
-					$module,
-					$event
-				], $parameterArray));
+				$outputArray = array_merge($outputArray, $callArray);
 			}
 		}
 		return $outputArray;
@@ -190,38 +180,56 @@ class Hook
 	/**
 	 * trigger the module hook
 	 *
-	 * @since 3.0.0
+	 * @since 3.2.0
 	 *
-	 * @param string $event name of the module event
+	 * @param string $eventName name of the module event
 	 * @param array $parameterArray parameter of the module hook
 	 *
-	 * @return mixed
+	 * @return string
 	 */
 
-	public static function trigger($event = null, $parameterArray = [])
+	public static function trigger($eventName = null, $parameterArray = [])
 	{
 		$output = null;
 
 		/* process modules */
 
-		foreach (self::$_moduleArray as $module)
+		foreach (self::$_moduleArray as $moduleName)
 		{
-			$moduleClass = self::$_namespace . '\\' . $module . '\\' . $module;
-			self::$_eventArray[$event][$module] = false;
-
-			/* method exists */
-
-			if (method_exists($moduleClass, $event))
+			$outputCall = self::_call($moduleName, $eventName, $parameterArray);
+			if (strlen($outputCall))
 			{
-				self::$_eventArray[$event][$module] = true;
-				$module = new $moduleClass(self::$_registry, self::$_request, self::$_language, self::$_config);
-				$output .= call_user_func_array(
-				[
-					$module,
-					$event
-				], $parameterArray);
+				$output .= $outputCall;
 			}
 		}
 		return $output;
+	}
+
+	/**
+	 * call the module
+	 *
+	 * @since 3.2.0
+	 *
+	 * @param string $moduleName
+	 * @param string $eventName
+	 * @param array $parameterArray
+	 *
+	 * @return string|boolean
+	 */
+
+	protected static function _call($moduleName = null, $eventName = null, $parameterArray = [])
+	{
+		$moduleClass = self::$_namespace . '\\' . $moduleName . '\\' . $moduleName;
+		if (method_exists($moduleClass, $eventName))
+		{
+			self::$_eventArray[$eventName][$moduleName] = true;
+			$module = new $moduleClass(self::$_registry, self::$_request, self::$_language, self::$_config);
+			return call_user_func_array(
+			[
+				$module,
+				$eventName
+			], $parameterArray);
+		}
+		return false;
 	}
 }

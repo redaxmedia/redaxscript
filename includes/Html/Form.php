@@ -14,30 +14,30 @@ use Redaxscript\Registry;
  * @since 2.6.0
  *
  * @package Redaxscript
- * @category Server
+ * @category Html
  * @author Henry Ruhs
  *
- * @method button(string $text = null, array $attributeArray = [])
- * @method cancel(string $text = null, array $attributeArray = [])
- * @method checkbox(array $attributeArray = [])
- * @method color(array $attributeArray = [])
- * @method date(array $attributeArray = [])
- * @method datetime(array $attributeArray = [])
- * @method email(array $attributeArray = [])
- * @method file(array $attributeArray = [])
- * @method hidden(array $attributeArray = [])
- * @method number(array $attributeArray = [])
- * @method password(array $attributeArray = [])
- * @method radio(array $attributeArray = [])
- * @method range(array $attributeArray = [])
- * @method reset(string $text = null, array $attributeArray = [])
- * @method search(array $attributeArray = [])
- * @method submit(string $text = null, array $attributeArray = [])
- * @method time(array $attributeArray = [])
- * @method tel(array $attributeArray = [])
- * @method text(array $attributeArray = [])
- * @method url(array $attributeArray = [])
- * @method week(array $attributeArray = [])
+ * @method $this button(string $text = null, array $attributeArray = [])
+ * @method $this cancel(string $text = null, array $attributeArray = [])
+ * @method $this checkbox(array $attributeArray = [])
+ * @method $this color(array $attributeArray = [])
+ * @method $this date(array $attributeArray = [])
+ * @method $this datetime(array $attributeArray = [])
+ * @method $this email(array $attributeArray = [])
+ * @method $this file(array $attributeArray = [])
+ * @method $this hidden(array $attributeArray = [])
+ * @method $this number(array $attributeArray = [])
+ * @method $this password(array $attributeArray = [])
+ * @method $this radio(array $attributeArray = [])
+ * @method $this range(array $attributeArray = [])
+ * @method $this reset(string $text = null, array $attributeArray = [])
+ * @method $this search(array $attributeArray = [])
+ * @method $this submit(string $text = null, array $attributeArray = [])
+ * @method $this time(array $attributeArray = [])
+ * @method $this tel(array $attributeArray = [])
+ * @method $this text(array $attributeArray = [])
+ * @method $this url(array $attributeArray = [])
+ * @method $this week(array $attributeArray = [])
  */
 
 class Form extends HtmlAbstract
@@ -269,31 +269,32 @@ class Form extends HtmlAbstract
 	 * @param string $method name of the method
 	 * @param array $argumentArray arguments of the method
 	 *
-	 * @return Form
+	 * @return $this
 	 */
 
 	public function __call($method = null, $argumentArray = [])
 	{
 		/* input */
 
-		if (array_key_exists($method, $this->_attributeArray['input']))
+		if (is_array($this->_attributeArray['input']) && array_key_exists($method, $this->_attributeArray['input']))
 		{
 			return $this->_createInput($method, $argumentArray[0]);
 		}
 
 		/* button */
 
-		if (array_key_exists($method, $this->_attributeArray['button']))
+		if (is_array($this->_attributeArray['button']) && array_key_exists($method, $this->_attributeArray['button']))
 		{
 			return $this->_createButton($method, $argumentArray[0], $argumentArray[1]);
 		}
 
 		/* link */
 
-		if (array_key_exists($method, $this->_attributeArray['link']))
+		if (is_array($this->_attributeArray['link']) && array_key_exists($method, $this->_attributeArray['link']))
 		{
 			return $this->_createLink($method, $argumentArray[0], $argumentArray[1]);
 		}
+		return $this;
 	}
 
 	/**
@@ -317,7 +318,7 @@ class Form extends HtmlAbstract
 	 * @param array $attributeArray attributes of the form
 	 * @param array $optionArray options of the form
 	 *
-	 * @return Form
+	 * @return $this
 	 */
 
 	public function init($attributeArray = [], $optionArray = [])
@@ -349,7 +350,7 @@ class Form extends HtmlAbstract
 	 * @param string $html html of the legend
 	 * @param array $attributeArray attributes of the legend
 	 *
-	 * @return Form
+	 * @return $this
 	 */
 
 	public function legend($html = null, $attributeArray = [])
@@ -378,7 +379,7 @@ class Form extends HtmlAbstract
 	 * @param string $html html of the label
 	 * @param array $attributeArray attributes of the label
 	 *
-	 * @return Form
+	 * @return $this
 	 */
 
 	public function label($html = null, $attributeArray = [])
@@ -406,7 +407,7 @@ class Form extends HtmlAbstract
 	 *
 	 * @param array $attributeArray attributes of the textarea
 	 *
-	 * @return Form
+	 * @return $this
 	 */
 
 	public function textarea($attributeArray = [])
@@ -433,13 +434,14 @@ class Form extends HtmlAbstract
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param array $valueArray values of the select
+	 * @param array $optionArray option of the select
+	 * @param array $selectArray values to be selected
 	 * @param array $attributeArray attributes of the select
 	 *
-	 * @return Form
+	 * @return $this
 	 */
 
-	public function select($valueArray = [], $attributeArray = [])
+	public function select($optionArray = [], $selectArray = [], $attributeArray = [])
 	{
 		if (is_array($attributeArray))
 		{
@@ -452,8 +454,7 @@ class Form extends HtmlAbstract
 		$selectElement = new Element();
 		$selectElement
 			->init('select', $attributeArray)
-			->html($this->_createOption($valueArray, $attributeArray['value']))
-			->val(null);
+			->html($this->_createOption($optionArray, $selectArray));
 		$this->append($selectElement);
 		return $this;
 	}
@@ -464,14 +465,15 @@ class Form extends HtmlAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $rangeArray range of the select
+	 * @param array $selectArray values to be selected
 	 * @param array $attributeArray attributes of the select
 	 *
-	 * @return Form
+	 * @return $this
 	 */
 
-	public function selectRange($rangeArray = [], $attributeArray = [])
+	public function selectRange($rangeArray = [], $selectArray = [], $attributeArray = [])
 	{
-		$this->select(range($rangeArray['min'], $rangeArray['max']), $attributeArray);
+		$this->select(range($rangeArray['min'], $rangeArray['max']), $selectArray, $attributeArray);
 		return $this;
 	}
 
@@ -482,7 +484,7 @@ class Form extends HtmlAbstract
 	 *
 	 * @param string $type type of the captcha
 	 *
-	 * @return Form
+	 * @return $this
 	 */
 
 	public function captcha($type = null)
@@ -531,7 +533,7 @@ class Form extends HtmlAbstract
 	 *
 	 * @since 2.6.0
 	 *
-	 * @return Form
+	 * @return $this
 	 */
 
 	public function token()
@@ -577,7 +579,7 @@ class Form extends HtmlAbstract
 	 * @param string $type type of the input
 	 * @param array $attributeArray attributes of the input
 	 *
-	 * @return Form
+	 * @return $this
 	 */
 
 	protected function _createInput($type = 'text', $attributeArray = [])
@@ -602,39 +604,35 @@ class Form extends HtmlAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $valueArray values of the select
-	 * @param mixed $selected value to be selected
+	 * @param array $optionArray option of the select
+	 * @param array $selectArray values to be selected
 	 *
 	 * @return string
 	 */
 
-	protected function _createOption($valueArray = [], $selected = null)
+	protected function _createOption($optionArray = [], $selectArray = [])
 	{
 		$output = null;
 		$optionElement = new Element();
 		$optionElement->init('option');
 
-		/* handle selected */
-
-		if (is_string($selected))
-		{
-			$selected = array_filter(explode(', ', $selected));
-		}
-
 		/* process values */
 
-		foreach ($valueArray as $key => $value)
+		if (is_array($optionArray))
 		{
-			if ($key || $value)
+			foreach ($optionArray as $key => $value)
 			{
-				$output .= $optionElement
-					->copy()
-					->attr(
-					[
-						'selected' => $value === $selected || in_array($value, $selected) ? 'selected' : null,
-						'value' => $value
-					])
-					->text(is_string($key) ? $key : $value);
+				if ($key || $value)
+				{
+					$output .= $optionElement
+						->copy()
+						->attr(
+						[
+							'selected' => is_array($selectArray) && in_array($value, $selectArray) ? 'selected' : null,
+							'value' => $value
+						])
+						->text(is_string($key) ? $key : $value);
+				}
 			}
 		}
 		return $output;
@@ -649,7 +647,7 @@ class Form extends HtmlAbstract
 	 * @param string $text text of the button
 	 * @param array $attributeArray attributes of the button
 	 *
-	 * @return Form
+	 * @return $this
 	 */
 
 	protected function _createButton($type = null, $text = null, $attributeArray = [])
@@ -679,7 +677,7 @@ class Form extends HtmlAbstract
 	 * @param string $text text of the link
 	 * @param array $attributeArray attributes of the link
 	 *
-	 * @return Form
+	 * @return $this
 	 */
 
 	protected function _createLink($type = null, $text = null, $attributeArray = [])

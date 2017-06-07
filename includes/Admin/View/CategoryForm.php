@@ -32,6 +32,7 @@ class CategoryForm extends ViewAbstract implements ViewInterface
 	{
 		$output = Module\Hook::trigger('adminCategoryFormStart');
 		$category = Db::forTablePrefix('categories')->whereIdIs($categoryId)->findOne();
+		$helperOption = new Helper\Option($this->_language);
 
 		/* html elements */
 
@@ -41,15 +42,6 @@ class CategoryForm extends ViewAbstract implements ViewInterface
 			'class' => 'rs-admin-title-content',
 		]);
 		$titleElement->text($category->title ? $category->title : $this->_language->get('category_new'));
-		$linkElement = new Html\Element();
-		$linkElement->init('a');
-		$itemElement = new Html\Element();
-		$itemElement->init('li');
-		$listElement = new Html\Element();
-		$listElement->init('ul',
-		[
-			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
-		]);
 		$formElement = new AdminForm($this->_registry, $this->_language);
 		$formElement->init(
 		[
@@ -71,37 +63,10 @@ class CategoryForm extends ViewAbstract implements ViewInterface
 			]
 		]);
 
-		/* collect item output */
-
-		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
-		$outputItem = $itemElement
-			->copy()
-			->addClass('rs-admin-js-item-active rs-admin-item-active')
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-1')
-				->text($this->_language->get('category'))
-			);
-		$outputItem .= $itemElement
-			->copy()
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-2')
-				->text($this->_language->get('general'))
-			);
-		$outputItem .= $itemElement
-			->copy()
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-3')
-				->text($this->_language->get('customize'))
-			);
-		$listElement->append($outputItem);
-
 		/* create the form */
 
 		$formElement
-			->append($listElement)
+			->append($this->_renderList())
 			->append('<div class="rs-admin-js-box-tab rs-admin-box-tab">')
 
 			/* first tab */
@@ -165,11 +130,13 @@ class CategoryForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'robots'
 			])
-			->select(Helper\Option::getRobotArray(),
+			->select($helperOption->getRobotArray(),
+			[
+				$category->id ? filter_var($category->robots, FILTER_VALIDATE_INT) : null
+			],
 			[
 				'id' => 'robots',
-				'name' => 'robots',
-				'value' => $category->id ? filter_var($category->robots, FILTER_VALIDATE_INT) : null
+				'name' => 'robots'
 			])
 			->append('</li></ul></fieldset>')
 
@@ -180,50 +147,58 @@ class CategoryForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'language'
 			])
-			->select(Helper\Option::getLanguageArray(),
+			->select($helperOption->getLanguageArray(),
+			[
+				$category->language
+			],
 			[
 				'id' => 'language',
-				'name' => 'language',
-				'value' => $category->language
+				'name' => 'language'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('template'),
 			[
 				'for' => 'template'
 			])
-			->select(Helper\Option::getTemplateArray(),
+			->select($helperOption->getTemplateArray(),
+			[
+				$category->template
+			],
 			[
 				'id' => 'template',
-				'name' => 'template',
-				'value' => $category->template
+				'name' => 'template'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('category_sibling'),
 			[
 				'for' => 'sibling'
 			])
-			->select(Helper\Option::getContentArray('categories',
+			->select($helperOption->getContentArray('categories',
 			[
 				intval($category->id)
 			]),
 			[
+				intval($category->sibling)
+			],
+			[
 				'id' => 'sibling',
-				'name' => 'sibling',
-				'value' => intval($category->sibling)
+				'name' => 'sibling'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('category_parent'),
 			[
 				'for' => 'parent'
 			])
-			->select(Helper\Option::getContentArray('categories',
+			->select($helperOption->getContentArray('categories',
 			[
 				intval($category->id)
 			]),
 			[
+				intval($category->parent)
+			],
+			[
 				'id' => 'parent',
-				'name' => 'parent',
-				'value' => intval($category->parent)
+				'name' => 'parent'
 			])
 			->append('</li></ul></fieldset>')
 
@@ -234,11 +209,13 @@ class CategoryForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'status'
 			])
-			->select(Helper\Option::getVisibleArray(),
+			->select($helperOption->getVisibleArray(),
+			[
+				$category->id ? intval($category->status) : 1
+			],
 			[
 				'id' => 'status',
-				'name' => 'status',
-				'value' => $category->id ? intval($category->status) : 1
+				'name' => 'status'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('rank'),
@@ -260,13 +237,15 @@ class CategoryForm extends ViewAbstract implements ViewInterface
 				[
 					'for' => 'access'
 				])
-				->select(Helper\Option::getAccessArray('groups'),
+				->select($helperOption->getAccessArray('groups'),
+				[
+					$category->access
+				],
 				[
 					'id' => 'access',
 					'name' => 'access[]',
 					'multiple' => 'multiple',
-					'size' => count(Helper\Option::getAccessArray('groups')),
-					'value' => $category->access
+					'size' => count($helperOption->getAccessArray('groups'))
 				])
 				->append('</li>');
 		}
@@ -306,5 +285,57 @@ class CategoryForm extends ViewAbstract implements ViewInterface
 		$output .= $titleElement . $formElement;
 		$output .= Module\Hook::trigger('adminCategoryFormEnd');
 		return $output;
+	}
+
+	/**
+	 * render the list
+	 *
+	 * @since 3.2.0
+	 *
+	 * @return object
+	 */
+
+	protected function _renderList()
+	{
+		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
+
+		/* html elements */
+
+		$linkElement = new Html\Element();
+		$linkElement->init('a');
+		$itemElement = new Html\Element();
+		$itemElement->init('li');
+		$listElement = new Html\Element();
+		$listElement->init('ul',
+		[
+			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
+		]);
+
+		/* collect item output */
+
+		$outputItem = $itemElement
+			->copy()
+			->addClass('rs-admin-js-item-active rs-admin-item-active')
+			->html($linkElement
+				->copy()
+				->attr('href', $tabRoute . '#tab-1')
+				->text($this->_language->get('category'))
+			);
+		$outputItem .= $itemElement
+			->copy()
+			->html($linkElement
+				->copy()
+				->attr('href', $tabRoute . '#tab-2')
+				->text($this->_language->get('general'))
+			);
+		$outputItem .= $itemElement
+			->copy()
+			->html($linkElement
+				->copy()
+				->attr('href', $tabRoute . '#tab-3')
+				->text($this->_language->get('customize'))
+			);
+		$listElement->html($outputItem);
+		return $listElement;
 	}
 }

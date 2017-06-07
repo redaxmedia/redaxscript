@@ -31,15 +31,21 @@ class Client extends HelperAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return array
 	 */
 
 	public function process()
 	{
-		return array_unique(array_merge(
-			$this->_getBrowserArray(),
-			$this->_getDeviceArray()
-		));
+		$browserArray = $this->_getBrowserArray();
+		$deviceArray = $this->_getDeviceArray();
+		if (is_array($browserArray) && is_array($deviceArray))
+		{
+			$clientArray = array_unique(array_merge(
+				$browserArray,
+				$deviceArray
+			));
+		}
+		return is_array($clientArray) ? $clientArray : [];
 	}
 
 	/**
@@ -65,7 +71,7 @@ class Client extends HelperAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array
+	 * @return array|boolean
 	 */
 
 	protected function _getDeviceArray()
@@ -82,5 +88,6 @@ class Client extends HelperAbstract
 				];
 			}
 		}
+		return false;
 	}
 }

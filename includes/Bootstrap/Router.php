@@ -68,7 +68,7 @@ class Router extends BootstrapAbstract
 	{
 		$moduleArray = $this->_registry->get('moduleArray');
 		$file = $this->_registry->get('file');
-		$doRewrite = in_array('mod_rewrite', $moduleArray) && is_file('.htaccess') && $file === 'index.php';
+		$doRewrite = is_array($moduleArray) && in_array('mod_rewrite', $moduleArray) && $file === 'index.php';
 		$resolver = new BaseRouter\Resolver($this->_request);
 		$resolver->init();
 

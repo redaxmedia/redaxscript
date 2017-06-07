@@ -1,0 +1,23 @@
+[
+	[
+		"root",
+		false,
+		null,
+		[
+			"includes",
+			"languages",
+			"index.php"
+		]
+	],
+	[
+		"root",
+		false,
+		"test.php",
+		[
+			"includes",
+			"languages",
+			"index.php",
+			"test.php"
+		]
+	]
+]

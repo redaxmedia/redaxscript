@@ -13,5 +13,10 @@
 			"src": "assets/scripts/three.js"
 		},
 		"<script src=\"assets/scripts/one.js\" async=\"async\"></script>\n<script src=\"assets/scripts/two.js\"></script>\n<script src=\"assets/scripts/three.js\"></script>"
+	],
+	[
+		[],
+		[],
+		"<!-- Redaxscript\\Head\\Script\\Append -->"
 	]
 ]

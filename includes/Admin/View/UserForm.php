@@ -32,6 +32,7 @@ class UserForm extends ViewAbstract implements ViewInterface
 	{
 		$output = Module\Hook::trigger('adminUserFormStart');
 		$user = Db::forTablePrefix('users')->whereIdIs($userId)->findOne();
+		$helperOption = new Helper\Option($this->_language);
 
 		/* html elements */
 
@@ -41,15 +42,6 @@ class UserForm extends ViewAbstract implements ViewInterface
 			'class' => 'rs-admin-title-content',
 		]);
 		$titleElement->text($user->name ? $user->name : $this->_language->get('user_new'));
-		$linkElement = new Html\Element();
-		$linkElement->init('a');
-		$itemElement = new Html\Element();
-		$itemElement->init('li');
-		$listElement = new Html\Element();
-		$listElement->init('ul',
-		[
-			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
-		]);
 		$formElement = new AdminForm($this->_registry, $this->_language);
 		$formElement->init(
 		[
@@ -71,40 +63,10 @@ class UserForm extends ViewAbstract implements ViewInterface
 			]
 		]);
 
-		/* collect item output */
-
-		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
-		$outputItem = $itemElement
-			->copy()
-			->addClass('rs-admin-js-item-active rs-admin-item-active')
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-1')
-				->text($this->_language->get('user'))
-			);
-		$outputItem .= $itemElement
-			->copy()
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-2')
-				->text($this->_language->get('general'))
-			);
-		if (!$user->id || $user->id > 1)
-		{
-			$outputItem .= $itemElement
-				->copy()
-				->html($linkElement
-					->copy()
-					->attr('href', $tabRoute . '#tab-3')
-					->text($this->_language->get('customize'))
-				);
-		}
-		$listElement->append($outputItem);
-
 		/* create the form */
 
 		$formElement
-			->append($listElement)
+			->append($this->_renderList($user->id))
 			->append('<div class="rs-admin-js-box-tab rs-admin-box-tab">')
 
 			/* first tab */
@@ -198,11 +160,13 @@ class UserForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'language'
 			])
-			->select(Helper\Option::getLanguageArray(),
+			->select($helperOption->getLanguageArray(),
+			[
+				$user->language
+			],
 			[
 				'id' => 'language',
-				'name' => 'language',
-				'value' => $user->language
+				'name' => 'language'
 			])
 			->append('</li></ul></fieldset>');
 
@@ -216,11 +180,13 @@ class UserForm extends ViewAbstract implements ViewInterface
 				[
 					'for' => 'status'
 				])
-				->select(Helper\Option::getToggleArray(),
+				->select($helperOption->getToggleArray(),
+				[
+					$user->id ? intval($user->status) : 1
+				],
 				[
 					'id' => 'status',
-					'name' => 'status',
-					'value' => $user->id ? intval($user->status) : 1
+					'name' => 'status'
 				])
 				->append('</li>');
 			if ($this->_registry->get('groupsEdit'))
@@ -231,13 +197,15 @@ class UserForm extends ViewAbstract implements ViewInterface
 					[
 						'for' => 'groups'
 					])
-					->select(Helper\Option::getAccessArray('groups'),
+					->select($helperOption->getAccessArray('groups'),
+					[
+						$user->groups
+					],
 					[
 						'id' => 'groups',
 						'name' => 'groups[]',
 						'multiple' => 'multiple',
-						'size' => count(Helper\Option::getAccessArray('groups')),
-						'value' => $user->groups
+						'size' => count($helperOption->getAccessArray('groups'))
 					])
 					->append('</li>');
 			}
@@ -268,5 +236,62 @@ class UserForm extends ViewAbstract implements ViewInterface
 		$output .= $titleElement . $formElement;
 		$output .= Module\Hook::trigger('adminUserFormEnd');
 		return $output;
+	}
+
+	/**
+	 * render the list
+	 *
+	 * @since 3.2.0
+	 *
+	 * @param integer $userId identifier of the user
+	 *
+	 * @return object
+	 */
+
+	protected function _renderList($userId = null)
+	{
+		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
+
+		/* html elements */
+
+		$linkElement = new Html\Element();
+		$linkElement->init('a');
+		$itemElement = new Html\Element();
+		$itemElement->init('li');
+		$listElement = new Html\Element();
+		$listElement->init('ul',
+		[
+			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
+		]);
+
+		/* collect item output */
+
+		$outputItem = $itemElement
+			->copy()
+			->addClass('rs-admin-js-item-active rs-admin-item-active')
+			->html($linkElement
+				->copy()
+				->attr('href', $tabRoute . '#tab-1')
+				->text($this->_language->get('user'))
+			);
+		$outputItem .= $itemElement
+			->copy()
+			->html($linkElement
+				->copy()
+				->attr('href', $tabRoute . '#tab-2')
+				->text($this->_language->get('general'))
+			);
+		if (!$userId || $userId > 1)
+		{
+			$outputItem .= $itemElement
+				->copy()
+				->html($linkElement
+					->copy()
+					->attr('href', $tabRoute . '#tab-3')
+					->text($this->_language->get('customize'))
+				);
+		}
+		$listElement->html($outputItem);
+		return $listElement;
 	}
 }

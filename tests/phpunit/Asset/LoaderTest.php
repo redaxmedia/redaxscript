@@ -27,7 +27,7 @@ class LoaderTest extends TestCaseAbstract
 	public function setUp()
 	{
 		parent::setUp();
-		Stream::setup('root', 0777, $this->getProvider('tests/provider/Asset/loader_set_up.json'));
+		Stream::setup('root', 0777, $this->getProvider('tests/provider/Asset/loader_setup.json'));
 	}
 
 	/**

@@ -28,7 +28,7 @@ abstract class HtmlAbstract
 	 *
 	 * @param string $html html to set
 	 *
-	 * @return Element
+	 * @return $this
 	 */
 
 	public function html($html = null)
@@ -44,7 +44,7 @@ abstract class HtmlAbstract
 	 *
 	 * @param string $html html to append
 	 *
-	 * @return Element
+	 * @return $this
 	 */
 
 	public function append($html = null)
@@ -60,7 +60,7 @@ abstract class HtmlAbstract
 	 *
 	 * @param string $html html to prepend
 	 *
-	 * @return Element
+	 * @return $this
 	 */
 
 	public function prepend($html = null)
@@ -74,7 +74,7 @@ abstract class HtmlAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return Element
+	 * @return $this
 	 */
 
 	public function clear()

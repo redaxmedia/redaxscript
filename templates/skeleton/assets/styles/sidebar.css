@@ -13,6 +13,8 @@
 
 .rs-sidebar
 {
+	word-wrap: break-word;
+
 	& .rs-title-extra
 	{
 		margin-bottom: 0.5em;

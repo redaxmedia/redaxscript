@@ -35,6 +35,8 @@ class SocialSharer extends Config
 	 * contentFragmentEnd
 	 *
 	 * @since 3.0.0
+	 *
+	 * @return string|boolean
 	 */
 
 	public function contentFragmentEnd()
@@ -44,6 +46,7 @@ class SocialSharer extends Config
 			$url = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
 			return $this->render($url);
 		}
+		return false;
 	}
 
 	/**

@@ -93,7 +93,7 @@ class Mailer
 	 * @param array $toArray array of recipient
 	 * @param array $fromArray array of sender
 	 * @param string $subject subject of the email
-	 * @param mixed $body body of the email
+	 * @param string|array $body body of the email
 	 * @param array $attachmentArray array of attachments
 	 */
 
@@ -168,18 +168,7 @@ class Mailer
 
 	protected function _createBodyString()
 	{
-		if (is_array($this->_body))
-		{
-			foreach ($this->_body as $key => $value)
-			{
-
-				$this->_bodyString .= $value;
-			}
-		}
-		else
-		{
-			$this->_bodyString = $this->_body;
-		}
+		$this->_bodyString = is_array($this->_body) ? implode(PHP_EOL, $this->_body) : $this->_body;
 	}
 
 	/**

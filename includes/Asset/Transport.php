@@ -120,7 +120,7 @@ class Transport
 	 * @since 3.0.0
 	 *
 	 * @param string $key
-	 * @param mixed $value
+	 * @param string|array $value
 	 *
 	 * @return string
 	 */

@@ -13,23 +13,25 @@
 
 function admin_router()
 {
-	$firstParameter = Redaxscript\Registry::get('firstParameter');
-	$adminParameter = Redaxscript\Registry::get('adminParameter');
-	$tableParameter = Redaxscript\Registry::get('tableParameter');
-	$idParameter = Redaxscript\Registry::get('idParameter');
-	$aliasParameter = Redaxscript\Registry::get('aliasParameter');
-	$tokenParameter = Redaxscript\Registry::get('tokenParameter');
-	$usersException = $tableParameter == 'users' && $idParameter == Redaxscript\Registry::get('myId');
-	$messenger = new Redaxscript\Admin\Messenger(Redaxscript\Registry::getInstance());
+	$registry = Redaxscript\Registry::getInstance();
+	$language = Redaxscript\Language::getInstance();
+	$firstParameter = $registry->get('firstParameter');
+	$adminParameter = $registry->get('adminParameter');
+	$tableParameter = $registry->get('tableParameter');
+	$idParameter = $registry->get('idParameter');
+	$aliasParameter = $registry->get('aliasParameter');
+	$tokenParameter = $registry->get('tokenParameter');
+	$usersException = $tableParameter == 'users' && $idParameter == $registry->get('myId');
+	$messenger = new Redaxscript\Admin\Messenger($registry);
 	Redaxscript\Module\Hook::trigger('adminRouterStart');
-	if (Redaxscript\Registry::get('adminRouterBreak') == 1)
+	if ($registry->get('adminRouterBreak') == 1)
 	{
 		return;
 	}
 
 	/* last seen update */
 
-	if (($firstParameter == 'admin' && !$adminParameter) || ($adminParameter == 'view' && $tableParameter == 'users') || Redaxscript\Registry::get('cronUpdate'))
+	if (($firstParameter == 'admin' && !$adminParameter) || ($adminParameter == 'view' && $tableParameter == 'users') || $registry->get('cronUpdate'))
 	{
 		admin_last_update();
 	}
@@ -48,7 +50,7 @@ function admin_router()
 
 			/* show error */
 
-			echo $messenger->setRoute(Redaxscript\Language::get('back'), 'admin')->error(Redaxscript\Language::get('something_wrong'));
+			echo $messenger->setRoute($language->get('back'), 'admin')->error($language->get('something_wrong'));
 			return;
 	}
 
@@ -58,12 +60,12 @@ function admin_router()
 	{
 		if ($tableParameter == 'modules')
 		{
-			$install = Redaxscript\Registry::get('modulesInstall');
-			$uninstall = Redaxscript\Registry::get('modulesUninstall');
+			$install = $registry->get('modulesInstall');
+			$uninstall = $registry->get('modulesUninstall');
 		}
 		else if ($tableParameter != 'settings')
 		{
-			$new = Redaxscript\Registry::get('tableNew');
+			$new = $registry->get('tableNew');
 			if ($tableParameter == 'comments')
 			{
 				$articles_total = Redaxscript\Db::forTablePrefix('articles')->count();
@@ -73,15 +75,15 @@ function admin_router()
 					$new = 0;
 				}
 			}
-			$delete = Redaxscript\Registry::get('tableDelete');
+			$delete = $registry->get('tableDelete');
 		}
-		$edit = Redaxscript\Registry::get('tableEdit');
+		$edit = $registry->get('tableEdit');
 	}
 	if ($edit == 1 || $delete == 1)
 	{
 		$accessValidator = new Redaxscript\Validator\Access();
 		$access = Redaxscript\Db::forTablePrefix($tableParameter)->where('id', $idParameter)->findOne()->access;
-		$check_access = $accessValidator->validate($access, Redaxscript\Registry::get('myGroups'));
+		$check_access = $accessValidator->validate($access, $registry->get('myGroups'));
 	}
 
 	/* validate access */
@@ -99,14 +101,14 @@ function admin_router()
 		case $adminParameter == 'delete' && $delete == 0 && !$usersException:
 		case $adminParameter == 'process' && $_POST['new'] && $new == 0:
 		case $adminParameter == 'process' && $_POST['edit'] && $edit == 0 && !$usersException:
-		case $adminParameter == 'process' && $_POST['groups'] && !Redaxscript\Registry::get('groupsEdit'):
+		case $adminParameter == 'process' && $_POST['groups'] && !$registry->get('groupsEdit'):
 		case $adminParameter == 'update' && $edit == 0:
 		case $idParameter == 1 && ($adminParameter == 'disable' || $adminParameter == 'delete') && ($tableParameter == 'groups' || $tableParameter == 'users'):
 		case is_numeric($idParameter) && $tableParameter && $check_access == 0 && !$usersException:
 
 			/* show error */
 
-			echo $messenger->setRoute(Redaxscript\Language::get('back'), 'admin')->error(Redaxscript\Language::get('error_occurred'), Redaxscript\Language::get('access_no'));
+			echo $messenger->setRoute($language->get('back'), 'admin')->error($language->get('error_occurred'), $language->get('access_no'));
 			return;
 	}
 
@@ -116,7 +118,7 @@ function admin_router()
 	{
 		/* show error */
 
-		echo $messenger->setRoute(Redaxscript\Language::get('back'), 'admin')->error(Redaxscript\Language::get('error_occurred'), Redaxscript\Language::get('token_no'));
+		echo $messenger->setRoute($language->get('back'), 'admin')->error($language->get('error_occurred'), $language->get('token_no'));
 		return;
 	}
 
@@ -131,32 +133,32 @@ function admin_router()
 		case 'new':
 			if ($tableParameter == 'categories')
 			{
-				$categoryForm = new Redaxscript\Admin\View\CategoryForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+				$categoryForm = new Redaxscript\Admin\View\CategoryForm($registry, $language);
 				echo $categoryForm->render();
 			}
 			if ($tableParameter == 'articles')
 			{
-				$articleForm = new Redaxscript\Admin\View\ArticleForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+				$articleForm = new Redaxscript\Admin\View\ArticleForm($registry, $language);
 				echo $articleForm->render();
 			}
 			if ($tableParameter == 'extras')
 			{
-				$extraForm = new Redaxscript\Admin\View\ExtraForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+				$extraForm = new Redaxscript\Admin\View\ExtraForm($registry, $language);
 				echo $extraForm->render();
 			}
 			if ($tableParameter == 'comments')
 			{
-				$commentForm = new Redaxscript\Admin\View\CommentForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+				$commentForm = new Redaxscript\Admin\View\CommentForm($registry, $language);
 				echo $commentForm->render();
 			}
 			if ($tableParameter == 'groups')
 			{
-				$groupForm = new Redaxscript\Admin\View\GroupForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+				$groupForm = new Redaxscript\Admin\View\GroupForm($registry, $language);
 				echo $groupForm->render();
 			}
 			if ($tableParameter == 'users')
 			{
-				$userForm = new Redaxscript\Admin\View\UserForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+				$userForm = new Redaxscript\Admin\View\UserForm($registry, $language);
 				echo $userForm->render();
 			}
 			return;
@@ -173,42 +175,42 @@ function admin_router()
 		case 'edit':
 			if ($tableParameter == 'categories')
 			{
-				$categoryForm = new Redaxscript\Admin\View\CategoryForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+				$categoryForm = new Redaxscript\Admin\View\CategoryForm($registry, $language);
 				echo $categoryForm->render($idParameter);
 			}
 			if ($tableParameter == 'articles')
 			{
-				$articleForm = new Redaxscript\Admin\View\ArticleForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+				$articleForm = new Redaxscript\Admin\View\ArticleForm($registry, $language);
 				echo $articleForm->render($idParameter);
 			}
 			if ($tableParameter == 'extras')
 			{
-				$extraForm = new Redaxscript\Admin\View\ExtraForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+				$extraForm = new Redaxscript\Admin\View\ExtraForm($registry, $language);
 				echo $extraForm->render($idParameter);
 			}
 			if ($tableParameter == 'comments')
 			{
-				$commentForm = new Redaxscript\Admin\View\CommentForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+				$commentForm = new Redaxscript\Admin\View\CommentForm($registry, $language);
 				echo $commentForm->render($idParameter);
 			}
 			if ($tableParameter == 'groups')
 			{
-				$groupForm = new Redaxscript\Admin\View\GroupForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+				$groupForm = new Redaxscript\Admin\View\GroupForm($registry, $language);
 				echo $groupForm->render($idParameter);
 			}
 			if ($tableParameter == 'users')
 			{
-				$userForm = new Redaxscript\Admin\View\UserForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+				$userForm = new Redaxscript\Admin\View\UserForm($registry, $language);
 				echo $userForm->render($idParameter);
 			}
 			if ($tableParameter == 'modules')
 			{
-				$moduleForm = new Redaxscript\Admin\View\ModuleForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+				$moduleForm = new Redaxscript\Admin\View\ModuleForm($registry, $language);
 				echo $moduleForm->render($idParameter);
 			}
 			if ($tableParameter == 'settings')
 			{
-				$settingForm = new Redaxscript\Admin\View\SettingForm(Redaxscript\Registry::getInstance(), Redaxscript\Language::getInstance());
+				$settingForm = new Redaxscript\Admin\View\SettingForm($registry, $language);
 				echo $settingForm->render();
 			}
 			return;

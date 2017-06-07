@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Bootstrap;
 
-use Redaxscript\Auth;
+use Redaxscript\Auth as BaseAuth;
 use Redaxscript\Db;
 
 /**
@@ -24,7 +24,7 @@ class Status extends BootstrapAbstract
 
 	protected function _autorun()
 	{
-		$auth = new Auth($this->_request);
+		$auth = new BaseAuth($this->_request);
 
 		/* set registry */
 

@@ -3,10 +3,9 @@ namespace Redaxscript\Admin\View;
 
 use Redaxscript\Admin\Html\Form as AdminForm;
 use Redaxscript\Db;
-use Redaxscript\Directory;
+use Redaxscript\Filesystem;
 use Redaxscript\Html;
 use Redaxscript\Module;
-use Redaxscript\Template;
 
 /**
  * children class to create the module form
@@ -34,6 +33,7 @@ class ModuleForm extends ViewAbstract implements ViewInterface
 	{
 		$output = Module\Hook::trigger('adminModuleFormStart');
 		$module = Db::forTablePrefix('modules')->whereIdIs($moduleId)->findOne();
+		$helperOption = new Helper\Option($this->_language);
 
 		/* html elements */
 
@@ -43,15 +43,6 @@ class ModuleForm extends ViewAbstract implements ViewInterface
 			'class' => 'rs-admin-title-content',
 		]);
 		$titleElement->text($module->name);
-		$linkElement = new Html\Element();
-		$linkElement->init('a');
-		$itemElement = new Html\Element();
-		$itemElement->init('li');
-		$listElement = new Html\Element();
-		$listElement->init('ul',
-		[
-			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
-		]);
 		$formElement = new AdminForm($this->_registry, $this->_language);
 		$formElement->init(
 		[
@@ -73,54 +64,17 @@ class ModuleForm extends ViewAbstract implements ViewInterface
 			]
 		]);
 
-		/* docs directory */
+		/* docs filesystem */
 
-		$docsDirectory = new Directory();
-		$docsDirectory->init('modules' . DIRECTORY_SEPARATOR . $module->alias . DIRECTORY_SEPARATOR . 'docs');
-		$docsDirectoryArray = $docsDirectory->getArray();
-
-		/* collect item output */
-
-		$tabCounter = 1;
-		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
-		$outputItem = $itemElement
-			->copy()
-			->addClass('rs-admin-js-item-active rs-admin-item-active')
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-' . $tabCounter++)
-				->text($this->_language->get('module'))
-			);
-
-		/* process directory */
-
-		foreach ($docsDirectoryArray as $value)
-		{
-			$outputItem .= $itemElement
-				->copy()
-				->html($linkElement
-					->copy()
-					->attr('href', $tabRoute . '#tab-' . $tabCounter++)
-					->text(pathinfo($value, PATHINFO_FILENAME))
-				);
-		}
-
-		/* collect item output */
-
-		$outputItem .= $itemElement
-			->copy()
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-' . $tabCounter++)
-				->text($this->_language->get('customize'))
-			);
-		$listElement->append($outputItem);
+		$docsFilesystem = new Filesystem\File();
+		$docsFilesystem->init('modules' . DIRECTORY_SEPARATOR . $module->alias . DIRECTORY_SEPARATOR . 'docs');
+		$docsFilesystemArray = $docsFilesystem->getSortArray();
 
 		/* create the form */
 
 		$tabCounter = 1;
 		$formElement
-			->append($listElement)
+			->append($this->_renderList($docsFilesystemArray))
 			->append('<div class="rs-admin-js-box-tab rs-admin-box-tab rs-admin-box-tab">')
 
 			/* first tab */
@@ -153,22 +107,20 @@ class ModuleForm extends ViewAbstract implements ViewInterface
 			])
 			->append('</li></ul></fieldset>');
 
-			/* second tab */
+			/* docs tab */
 
-			if ($docsDirectoryArray)
+			if (is_array($docsFilesystemArray))
 			{
-				/* process directory */
-
-				foreach ($docsDirectoryArray as $value)
+				foreach ($docsFilesystemArray as $file)
 				{
 					$formElement
 						->append('<fieldset id="tab-' . $tabCounter++ . '" class="rs-admin-js-set-tab rs-admin-set-tab">')
-						->append(Template\Tag::partial('modules' . DIRECTORY_SEPARATOR . $module->alias . DIRECTORY_SEPARATOR . 'docs' . DIRECTORY_SEPARATOR . $value))
+						->append($docsFilesystem->renderFile($file))
 						->append('</fieldset>');
 				}
 			}
 
-			/* last tab */
+		/* last tab */
 
 		$formElement
 			->append('<fieldset id="tab-' . $tabCounter++ . '" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
@@ -176,11 +128,13 @@ class ModuleForm extends ViewAbstract implements ViewInterface
 			[
 				'for' => 'status'
 			])
-			->select(Helper\Option::getToggleArray(),
+			->select($helperOption->getToggleArray(),
+			[
+				intval($module->status)
+			],
 			[
 				'id' => 'status',
-				'name' => 'status',
-				'value' => intval($module->status)
+				'name' => 'status'
 			])
 			->append('</li>');
 		if ($this->_registry->get('groupsEdit'))
@@ -191,13 +145,15 @@ class ModuleForm extends ViewAbstract implements ViewInterface
 				[
 					'for' => 'access'
 				])
-				->select(Helper\Option::getAccessArray('groups'),
+				->select($helperOption->getAccessArray('groups'),
+				[
+					$module->access
+				],
 				[
 					'id' => 'access',
 					'name' => 'access[]',
 					'multiple' => 'multiple',
-					'size' => count(Helper\Option::getAccessArray('groups')),
-					'value' => $module->access
+					'size' => count($helperOption->getAccessArray('groups'))
 				])
 				->append('</li>');
 		}
@@ -219,5 +175,72 @@ class ModuleForm extends ViewAbstract implements ViewInterface
 		$output .= $titleElement . $formElement;
 		$output .= Module\Hook::trigger('adminModuleFormEnd');
 		return $output;
+	}
+
+	/**
+	 * render the list
+	 *
+	 * @since 3.2.0
+	 *
+	 * @param array $docsFilesystemArray
+	 *
+	 * @return object
+	 */
+
+	protected function _renderList($docsFilesystemArray = [])
+	{
+		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
+		$tabCounter = 1;
+
+		/* html elements */
+
+		$linkElement = new Html\Element();
+		$linkElement->init('a');
+		$itemElement = new Html\Element();
+		$itemElement->init('li');
+		$listElement = new Html\Element();
+		$listElement->init('ul',
+		[
+			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
+		]);
+
+		/* collect item output */
+
+		$outputItem = $itemElement
+			->copy()
+			->addClass('rs-admin-js-item-active rs-admin-item-active')
+			->html($linkElement
+				->copy()
+				->attr('href', $tabRoute . '#tab-' . $tabCounter++)
+				->text($this->_language->get('module'))
+			);
+
+		/* process filesystem */
+
+		if (is_array($docsFilesystemArray))
+		{
+			foreach ($docsFilesystemArray as $file)
+			{
+				$outputItem .= $itemElement
+					->copy()
+					->html($linkElement
+						->copy()
+						->attr('href', $tabRoute . '#tab-' . $tabCounter++)
+						->text(pathinfo($file, PATHINFO_FILENAME))
+					);
+			}
+		}
+
+		/* collect item output */
+
+		$outputItem .= $itemElement
+			->copy()
+			->html($linkElement
+				->copy()
+				->attr('href', $tabRoute . '#tab-' . $tabCounter++)
+				->text($this->_language->get('customize'))
+			);
+		$listElement->html($outputItem);
+		return $listElement;
 	}
 }

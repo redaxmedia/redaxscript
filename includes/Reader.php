@@ -86,7 +86,7 @@ class Reader
 	 *
 	 * @param string $url
 	 *
-	 * @return Reader
+	 * @return $this
 	 */
 
 	public function loadJSON($url = null)
@@ -103,7 +103,7 @@ class Reader
 	 *
 	 * @param string $url
 	 *
-	 * @return Reader
+	 * @return $this
 	 */
 
 	public function loadXML($url = null)
@@ -120,7 +120,7 @@ class Reader
 	 *
 	 * @param string $url
 	 *
-	 * @return Reader
+	 * @return $this
 	 */
 
 	public function load($url = null)

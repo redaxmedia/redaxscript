@@ -39,23 +39,14 @@ class Autoloader
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param mixed $autoload key or collection of the autoload
+	 * @param string|array $autoload key or collection of the autoload
 	 */
 
 	public function init($autoload = null)
 	{
-		/* handle autoload */
-
-		if (is_string($autoload))
+		if ($autoload)
 		{
-			$autoload =
-			[
-				$autoload
-			];
-		}
-		if (is_array($autoload))
-		{
-			$this->_autoloadArray = $autoload;
+			$this->_autoloadArray = (array)$autoload;
 		}
 
 		/* register autoload */

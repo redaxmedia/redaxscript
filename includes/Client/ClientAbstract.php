@@ -11,6 +11,8 @@ use Redaxscript\Request;
  * @package Redaxscript
  * @category Client
  * @author Henry Ruhs
+ *
+ * @method protected _autorun()
  */
 
 abstract class ClientAbstract

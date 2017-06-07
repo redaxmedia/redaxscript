@@ -72,7 +72,7 @@ class Help extends CommandAbstract
 
 		/* collect each help */
 
-		if (!array_key_exists($argumentKey, $this->_namespaceArray))
+		if (!is_string($argumentKey) || !is_array($this->_namespaceArray) || !array_key_exists($argumentKey, $this->_namespaceArray))
 		{
 			$namespaceKeys = array_keys($this->_namespaceArray);
 			$lastKey = end($namespaceKeys);

@@ -2,8 +2,8 @@
 namespace Redaxscript\Tests\Console\Command;
 
 use Redaxscript\Console\Command;
-use Redaxscript\Directory;
 use Redaxscript\Tests\TestCaseAbstract;
+use org\bovigo\vfs\vfsStream as Stream;
 
 /**
  * RestoreTest
@@ -28,10 +28,7 @@ class RestoreTest extends TestCaseAbstract
 	public function setUp()
 	{
 		parent::setUp();
-		$rootDirectory = new Directory();
-		$rootDirectory->init('.');
-		$rootDirectory->create('build');
-		$rootDirectory->put('build' . DIRECTORY_SEPARATOR . 'test.sql', '/* test */');
+		Stream::setup('root', 0777, $this->getProvider('tests/provider/Console/console_setup.json'));
 	}
 
 	/**
@@ -83,7 +80,7 @@ class RestoreTest extends TestCaseAbstract
 			'restore',
 			'database',
 			'--directory',
-			'build',
+			Stream::url('root/build'),
 			'--file',
 			'test.sql'
 		]);

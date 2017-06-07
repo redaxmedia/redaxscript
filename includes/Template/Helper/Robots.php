@@ -74,7 +74,7 @@ class Robots extends HelperAbstract
 
 		/* handle robots */
 
-		if (array_key_exists($robots, self::$_robotArray))
+		if (is_array(self::$_robotArray) && array_key_exists($robots, self::$_robotArray))
 		{
 			return self::$_robotArray[$robots];
 		}

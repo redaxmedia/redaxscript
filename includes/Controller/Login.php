@@ -166,7 +166,7 @@ class Login extends ControllerAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return boolean
+	 * @return integer
 	 */
 
 	protected function _login($userId = null)

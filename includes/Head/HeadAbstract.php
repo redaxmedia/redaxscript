@@ -56,7 +56,7 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return HeadAbstract
+	 * @return $this
 	 */
 
 	public function init($namespace = null)
@@ -74,10 +74,10 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param mixed $attribute name or set of attributes
+	 * @param string|array $attribute name or set of attributes
 	 * @param string $value value of the attribute
 	 *
-	 * @return HeadAbstract
+	 * @return $this
 	 */
 
 	public function append($attribute = null, $value = null)
@@ -103,19 +103,15 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param mixed $attribute name or set of attributes
+	 * @param string|array $attribute name or set of attributes
 	 * @param string $value value of the attribute
 	 *
-	 * @return HeadAbstract
+	 * @return $this
 	 */
 
 	public function prepend($attribute = null, $value = null)
 	{
 		$collectionArray = $this->_getCollectionArray();
-		if (!is_array($collectionArray))
-		{
-			$collectionArray = [];
-		}
 		if (is_array($attribute))
 		{
 			array_unshift($collectionArray, array_map('trim', $attribute));
@@ -139,20 +135,23 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	 * @param string $attribute name of attribute
 	 * @param string $value value of the attribute
 	 *
-	 * @return HeadAbstract
+	 * @return $this
 	 */
 
 	public function remove($attribute = null, $value = null)
 	{
 		$collectionArray = $this->_getCollectionArray();
-		foreach ($collectionArray as $collectionKey => $collectionValue)
+		if (is_array($collectionArray))
 		{
-			if ($collectionValue[$attribute] === $value)
+			foreach ($collectionArray as $collectionKey => $collectionValue)
 			{
-				unset($collectionArray[$collectionKey]);
+				if ($collectionValue[$attribute] === $value)
+				{
+					unset($collectionArray[$collectionKey]);
+				}
 			}
+			$this->_setCollectionArray($collectionArray);
 		}
-		$this->_setCollectionArray($collectionArray);
 		return $this;
 	}
 
@@ -160,6 +159,8 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	 * clear the collection
 	 *
 	 * @since 3.0.0
+	 *
+	 * @return $this
 	 */
 
 	public function clear()
@@ -178,7 +179,8 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 
 	protected function _getCollectionArray()
 	{
-		return self::$_collectionArray[self::$_namespace];
+		$collectionArray = self::$_collectionArray[self::$_namespace];
+		return is_array($collectionArray) ? $collectionArray : [];
 	}
 
 	/**

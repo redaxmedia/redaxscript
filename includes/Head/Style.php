@@ -44,7 +44,7 @@ class Style extends Singleton implements HeadInterface
 	 *
 	 * @param string $inline
 	 *
-	 * @return Style
+	 * @return $this
 	 */
 
 	public function appendInline($inline = null)
@@ -60,7 +60,7 @@ class Style extends Singleton implements HeadInterface
 	 *
 	 * @param string $inline
 	 *
-	 * @return Style
+	 * @return $this
 	 */
 
 	public function prependInline($inline = null)
@@ -103,7 +103,7 @@ class Style extends Singleton implements HeadInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return Style
+	 * @return $this
 	 */
 
 	public function clear()

@@ -1,8 +1,9 @@
 <?php
-namespace Redaxscript\Tests;
+namespace Redaxscript\Tests\Filesystem;
 
-use Redaxscript\Cache;
+use Redaxscript\Filesystem;
 use org\bovigo\vfs\vfsStream as Stream;
+use Redaxscript\Tests\TestCaseAbstract;
 
 /**
  * CacheTest
@@ -37,7 +38,7 @@ class CacheTest extends TestCaseAbstract
 
 	public function providerStore()
 	{
-		return $this->getProvider('tests/provider/cache_store.json');
+		return $this->getProvider('tests/provider/Filesystem/cache_store.json');
 	}
 
 	/**
@@ -55,8 +56,11 @@ class CacheTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$cache = new Cache();
+		$cache = new Filesystem\Cache();
 		$cache->init(Stream::url('root/test'), 'cache');
+
+		/* process bundle */
+
 		foreach ($bundleArray as $key => $value)
 		{
 			$cache->store($value, $key);
@@ -81,7 +85,7 @@ class CacheTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$cache = new Cache();
+		$cache = new Filesystem\Cache();
 		$cache
 			->init(Stream::url('root'), 'cache')
 			->store('bundle-one', 'Content One');
@@ -105,7 +109,7 @@ class CacheTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$cache = new Cache();
+		$cache = new Filesystem\Cache();
 		$cache->init(Stream::url('root'), 'cache');
 
 		/* actual */
@@ -127,11 +131,14 @@ class CacheTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$cache = new Cache();
+		$cache = new Filesystem\Cache();
 		$cache
 			->init(Stream::url('root'), 'cache')
 			->store('bundle-one', 'Content One')
 			->store('bundle-two', 'Content Two');
+
+		/* lifetime */
+
 		touch($cache->getPath('bundle-two'), time() - 3600);
 
 		/* compare */
@@ -151,7 +158,7 @@ class CacheTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$cache = new Cache();
+		$cache = new Filesystem\Cache();
 		$cache
 			->init(Stream::url('root'), 'cache')
 			->store('bundle-one', 'Content One')
@@ -179,13 +186,16 @@ class CacheTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$cache = new Cache();
+		$cache = new Filesystem\Cache();
 		$cache
 			->init(Stream::url('root'), 'cache')
 			->store('bundle-one', 'Content One')
 			->store('bundle-two', 'Content Two')
 			->store('bundle-three', 'Content Three')
 			->store('bundle-four', 'Content Four');
+
+		/* lifetime */
+
 		touch($cache->getPath('bundle-one'), time() - 3600);
 		touch($cache->getPath('bundle-two'), time() - 3600);
 		touch($cache->getPath('bundle-three'), time() - 3600);

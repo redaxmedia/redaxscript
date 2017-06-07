@@ -47,7 +47,7 @@ class Demo extends Config
 
 			if ($this->_registry->get('secondParameter') === 'login')
 			{
-				$this->_registry->set('metaTitle', $this->_language->get('login'));
+				$this->_registry->set('useTitle', $this->_language->get('login'));
 				$this->_registry->set('routerBreak', true);
 			}
 

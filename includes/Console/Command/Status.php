@@ -91,12 +91,14 @@ class Status extends CommandAbstract
 
 	protected function _database()
 	{
+		$output = null;
 		$status = Db::getStatus();
 		$wordingArray = $this->_commandArray['status']['argumentArray']['database']['wordingArray'];
-		if (array_key_exists($status, $wordingArray))
+		if (is_array($wordingArray) && array_key_exists($status, $wordingArray))
 		{
-			return $wordingArray[$status] . PHP_EOL;
+			$output = $wordingArray[$status] . PHP_EOL;
 		}
+		return $output;
 	}
 
 	/**
@@ -117,7 +119,7 @@ class Status extends CommandAbstract
 
 		foreach ($statusArray as $key => $valueArray)
 		{
-			if (array_key_exists($valueArray['status'], $wordingArray))
+			if (is_array($wordingArray) && array_key_exists($valueArray['status'], $wordingArray))
 			{
 				$output .= str_pad($key, 30) . str_pad($valueArray['value'], 60) . $wordingArray[$valueArray['status']] . PHP_EOL;
 			}
@@ -140,7 +142,14 @@ class Status extends CommandAbstract
 		$testOsArray =
 		[
 			'linux',
-			'windows nt'
+			'windows'
+		];
+		$testDriverArray =
+		[
+			'mssql',
+			'mysql',
+			'pgsql',
+			'sqlite'
 		];
 		$testModuleArray =
 		[
@@ -160,11 +169,6 @@ class Status extends CommandAbstract
 				'value' => $this->_registry->get('phpVersion'),
 				'status' => version_compare($this->_registry->get('phpVersion'), '5.4', '>') ? 1 : 0
 			],
-			'PDO' =>
-			[
-				'value' => implode($driverArray, ', '),
-				'status' => count($driverArray) ? 1 : 0
-			],
 			'SESSION' =>
 			[
 				'value' => $this->_registry->get('sessionStatus'),
@@ -172,15 +176,27 @@ class Status extends CommandAbstract
 			]
 		];
 
-		/* process optional */
+		/* process driver */
 
-		if ($moduleArray)
+		if (is_array($driverArray))
+		{
+			foreach ($testDriverArray as $value)
+			{
+				$statusArray[$value] =
+				[
+					'status' => in_array($value, $driverArray) ? 1 : 0
+				];
+			}
+		}
+
+		/* process module */
+
+		if (is_array($moduleArray))
 		{
 			foreach ($testModuleArray as $value)
 			{
 				$statusArray[$value] =
 				[
-					'value' => null,
 					'status' => in_array($value, $moduleArray) ? 1 : 0
 				];
 			}

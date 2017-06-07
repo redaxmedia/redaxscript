@@ -728,13 +728,13 @@ module.exports = function (grunt)
 			{
 				command: 'vendor/bin/phpbench run benchs/phpbench --bootstrap=benchs/phpbench/includes/bootstrap.php --iterations=10 --progress=blinken'
 			},
-			phpunit:
+			phpstanBase:
 			{
-				command: 'vendor/bin/phpunit --configuration=phpunit.xml ' + grunt.option.flags()
+				command: 'php -d memory_limit=-1 vendor/bin/phpstan analyse --configuration=phpstan.neon --level 2 --no-progress includes'
 			},
-			phpunitParallel:
+			phpstanModules:
 			{
-				command: 'vendor/bin/paratest --processes=10 --configuration=phpunit.xml ' + grunt.option.flags()
+				command: 'php -d memory_limit=-1 vendor/bin/phpstan analyse --configuration=phpstan.neon --level 2 --no-progress modules'
 			},
 			phpcpdBase:
 			{
@@ -751,6 +751,14 @@ module.exports = function (grunt)
 				{
 					failOnError: false
 				}
+			},
+			phpunit:
+			{
+				command: 'vendor/bin/phpunit --configuration=phpunit.xml ' + grunt.option.flags()
+			},
+			phpunitParallel:
+			{
+				command: 'vendor/bin/paratest --processes=10 --configuration=phpunit.xml ' + grunt.option.flags()
 			},
 			tocBase:
 			{
@@ -887,7 +895,7 @@ module.exports = function (grunt)
 	/* rename tasks */
 
 	grunt.task.renameTask('json-format', 'formatJSON');
-	
+
 	/* register tasks */
 
 	grunt.registerTask('default',
@@ -931,6 +939,16 @@ module.exports = function (grunt)
 	[
 		'shell:phpbench'
 	]);
+	grunt.registerTask('phpcpd',
+	[
+		'shell:phpcpdBase',
+		'shell:phpcpdModules'
+	]);
+	grunt.registerTask('phpstan',
+	[
+		'shell:phpstanBase',
+		'shell:phpstanModules'
+	]);
 	grunt.registerTask('phpunit',
 	[
 		'shell:phpunit'
@@ -938,11 +956,6 @@ module.exports = function (grunt)
 	grunt.registerTask('phpunit-parallel',
 	[
 		'shell:phpunitParallel'
-	]);
-	grunt.registerTask('phpcpd',
-	[
-		'shell:phpcpdBase',
-		'shell:phpcpdModules'
 	]);
 	grunt.registerTask('toc',
 	[

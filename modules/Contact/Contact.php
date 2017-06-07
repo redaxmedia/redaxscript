@@ -338,9 +338,9 @@ class Contact extends Module\Module
 		[
 			$this->_language->get('author') . $this->_language->get('colon') . ' ' . $mailArray['author'],
 			'<br />',
-			$this->_language->get('email') . $this->_language->get('colon') . $linkEmail,
+			$this->_language->get('email') . $this->_language->get('colon') . ' ' . $linkEmail,
 			'<br />',
-			$this->_language->get('url') . $this->_language->get('colon') . $linkUrl,
+			$this->_language->get('url') . $this->_language->get('colon') . ' ' . $linkUrl,
 			'<br />',
 			$this->_language->get('message') . $this->_language->get('colon') . ' ' . $mailArray['text']
 		];

@@ -58,7 +58,7 @@ class SystemStatus extends ViewAbstract
 	 *
 	 * @param array $errorArray
 	 *
-	 * @return array
+	 * @return string
 	 */
 
 	protected function _error($errorArray = [])
@@ -74,7 +74,7 @@ class SystemStatus extends ViewAbstract
 	 *
 	 * @param array $warningArray
 	 *
-	 * @return array
+	 * @return string
 	 */
 
 	protected function _warning($warningArray = [])
@@ -128,7 +128,7 @@ class SystemStatus extends ViewAbstract
 		$testOsArray =
 		[
 			'linux',
-			'windows nt'
+			'windows'
 		];
 		$testModuleArray =
 		[
@@ -146,7 +146,7 @@ class SystemStatus extends ViewAbstract
 
 		foreach ($testModuleArray as $value)
 		{
-			if (!in_array($value, $moduleArray))
+			if (!is_array($moduleArray) || !in_array($value, $moduleArray))
 			{
 				$messageArray[] = $this->_language->get('apache_module_disabled') . $this->_language->get('colon') . ' ' . $value;
 			}

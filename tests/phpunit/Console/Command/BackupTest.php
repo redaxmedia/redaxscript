@@ -3,6 +3,7 @@ namespace Redaxscript\Tests\Console\Command;
 
 use Redaxscript\Console\Command;
 use Redaxscript\Tests\TestCaseAbstract;
+use org\bovigo\vfs\vfsStream as Stream;
 
 /**
  * BackupTest
@@ -18,6 +19,18 @@ use Redaxscript\Tests\TestCaseAbstract;
 
 class BackupTest extends TestCaseAbstract
 {
+	/**
+	 * setUp
+	 *
+	 * @since 3.2.0
+	 */
+
+	public function setUp()
+	{
+		parent::setUp();
+		Stream::setup('root', 0777, $this->getProvider('tests/provider/Console/console_setup.json'));
+	}
+
 	/**
 	 * tearDown
 	 *
@@ -67,7 +80,7 @@ class BackupTest extends TestCaseAbstract
 			'backup',
 			'database',
 			'--directory',
-			'build'
+			Stream::url('root/build')
 		]);
 		$backupCommand = new Command\Backup($this->_registry, $this->_request, $this->_language, $this->_config);
 

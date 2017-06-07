@@ -72,9 +72,9 @@ class ReaderTest extends TestCaseAbstract
 		/* compare */
 
 		$this->assertEquals('1', $actualArray['@attributes']['id']);
-		$this->assertEquals('2', $actualArray['one'][0]['@attributes']['id']);
-		$this->assertEquals('3', $actualArray['one'][1]['@attributes']['id']);
-		$this->assertEquals('4', $actualArray['two']['@attributes']['id']);
+		$this->assertEquals('2', $actualArray['one'][0]);
+		$this->assertEquals('3', $actualArray['one'][1]);
+		$this->assertEquals('4', $actualArray['two']);
 		$this->assertEquals('1', $actualObject->attributes()->id);
 		$this->assertEquals('2', $actualObject->one{0}->attributes()->id);
 		$this->assertEquals('3', $actualObject->one{1}->attributes()->id);

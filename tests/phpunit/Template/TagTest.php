@@ -211,7 +211,7 @@ class TagTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertNull($actual);
+		$this->assertFalse($actual);
 	}
 
 	/**

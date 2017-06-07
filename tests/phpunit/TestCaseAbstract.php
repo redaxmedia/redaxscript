@@ -176,17 +176,32 @@ abstract class TestCaseAbstract extends PHPUnit\Framework\TestCase
 	}
 
 	/**
-	 * normalizeEOL
+	 * normalizeSeparator
 	 *
-	 * @since 3.0.0
+	 * @since 3.2.0
 	 *
-	 * @param string $expect
+	 * @param string $actual
 	 *
 	 * @return string
 	 */
 
-	public function normalizeEOL($expect = null)
+	public function normalizeSeparator($actual = null)
 	{
-		return preg_replace('/[\n]/', PHP_EOL, $expect);
+		return str_replace(DIRECTORY_SEPARATOR, chr(47), $actual);
+	}
+
+	/**
+	 * normalizeNewline
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $actual
+	 *
+	 * @return string
+	 */
+
+	public function normalizeNewline($actual = null)
+	{
+		return str_replace(PHP_EOL, chr(10), $actual);
 	}
 }
