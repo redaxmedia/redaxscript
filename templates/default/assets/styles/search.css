@@ -6,7 +6,7 @@
  *    1.2 field
  *    1.3 button
  *
- * @since 3.0.0
+ * @since 3.2.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -23,43 +23,42 @@
 	display: flex;
 	font-size: 1.25em;
 	overflow: hidden;
+}
 
-	/* @section 1.2 field */
+/* @section 1.2 field */
 
-	& .rs-field-search
+.rs-field-search
+{
+	flex-grow: 1;
+	padding: 0 0.5em;
+}
+
+/* @section 1.3 button */
+
+.rs-button-search
+{
+	background: transparent;
+	color: var(--rs-color-tertiary);
+	cursor: pointer;
+	flex-basis: 2em;
+	flex-shrink: 0;
+	height: 2em;
+	position: relative;
+	text-indent: -999em;
+	transition: color 0.2s;
+
+	&:hover
 	{
-		flex-grow: 1;
-		min-width: 0;
-		padding: 0 0.5em;
+		color: gray(0);
 	}
 
-	/* @section 1.3 button */
-
-	& .rs-button-search
+	&:after
 	{
-		background: transparent;
-		color: var(--rs-color-tertiary);
-		cursor: pointer;
-		flex-basis: 2em;
-		flex-shrink: 0;
-		height: 2em;
-		position: relative;
-		text-indent: -999em;
-		transition: color 0.2s;
-
-		&:hover
-		{
-			color: gray(0);
-		}
-
-		&:after
-		{
-			@extend %rs-icon-search;
-			font-size: 1.25em;
-			left: 0;
-			position: absolute;
-			right: 0;
-			text-indent: 0;
-		}
+		@extend %rs-icon-search;
+		font-size: 1.25em;
+		left: 0;
+		position: absolute;
+		right: 0;
+		text-indent: 0;
 	}
 }

@@ -13,9 +13,13 @@
 
 .rs-list-pagination
 {
+	margin-top: 1em;
+	text-align: center;
+
 	& li
 	{
 		display: inline-block;
+		margin: 0.5em;
 	}
 
 	& a,

@@ -2,8 +2,9 @@
  * @tableofcontents
  *
  * 1. tag styling
+ * 2. link default
  *
- * @since 3.0.0
+ * @since 3.2.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -15,4 +16,11 @@ a
 {
 	color: inherit;
 	text-decoration: none;
+}
+
+/* @section 2. link default */
+
+.rs-link-default
+{
+	text-decoration: underline;
 }

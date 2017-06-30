@@ -1,0 +1,40 @@
+/**
+ * @tableofcontents
+ *
+ * 1. note
+ *    1.1 title
+ *    1.2 box
+ *    1.3 list
+ *
+ * @since 3.2.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. note */
+
+/* @section 1.1 title */
+
+.rs-title-note
+{
+	margin-bottom: 0.5em;
+}
+
+/* @section 1.2 box */
+
+.rs-box-note
+{
+	& + .rs-box-note,
+	& + .rs-button-note
+	{
+		margin-top: 1em;
+	}
+}
+
+/* @section 1.3 list */
+
+.rs-list-note li
+{
+	list-style: inside decimal;
+}

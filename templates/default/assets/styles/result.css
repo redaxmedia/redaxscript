@@ -2,11 +2,11 @@
  * @tableofcontents
  *
  * 1. result
- *    1.1 list
- *    1.2 title
+ *    1.1 title
+ *    1.2 list
  *    1.3 text
  *
- * @since 3.0.0
+ * @since 3.2.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
@@ -14,7 +14,18 @@
 
 /* @section 1. result */
 
-/* @section 1.1 list */
+/* @section 1.1 title */
+
+.rs-title-result
+{
+	border-left: 0.125em solid gray(0, 0.2);
+	font-size: 2.5em;
+	margin-bottom: 0.75em;
+	margin-top: 1em;
+	padding-left: 0.25em;
+}
+
+/* @section 1.2 list */
 
 .rs-list-result
 {
@@ -53,17 +64,6 @@
 			margin-top: 1em;
 		}
 	}
-}
-
-/* @section 1.2 title */
-
-.rs-title-result
-{
-	border-left: 0.125em solid gray(0, 0.2);
-	font-size: 2.5em;
-	margin-bottom: 0.75em;
-	margin-top: 1em;
-	padding-left: 0.25em;
 }
 
 /* @section 1.3 text */

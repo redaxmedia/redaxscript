@@ -4,6 +4,7 @@
 @import '../../../../assets/styles/_redirect.css';
 @import '../../../../assets/styles/_table.css';
 @import '_variable.css';
+@import 'button.css';
 @import 'breadcrumb.css';
 @import 'content.css';
 @import 'field.css';
@@ -13,6 +14,8 @@
 @import 'media.css';
 @import 'pagination.css';
 @import 'result.css';
+@import 'search.css';
 @import 'sidebar.css';
 @import 'table.css';
 @import 'typo.css';
+@import 'note.css';

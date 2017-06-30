@@ -1,18 +1,18 @@
 /**
  * @tableofcontents
  *
- * 1. table
+ * 1. table default
  *    1.1. query
  *       1.1.1 medium max
  * 2. wrapper table
  *
- * @since 3.0.0
+ * @since 3.2.0
  *
  * @package Redaxscript
  * @author Henry Ruhs
  */
 
-/* @section 1. table */
+/* @section 1. table default */
 
 %table-default
 {

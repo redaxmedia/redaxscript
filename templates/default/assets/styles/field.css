@@ -21,7 +21,6 @@
 	background: gray(255);
 	border: 0.125rem solid gray(200);
 	border-radius: 0.125em;
-	box-sizing: border-box;
 	padding: 0.25em 0.5em;
 	transition: background 0.2s, border-color 0.2s;
 	width: 100%;

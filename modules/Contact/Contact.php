@@ -32,7 +32,7 @@ class Contact extends Module\Module
 		'alias' => 'Contact',
 		'author' => 'Redaxmedia',
 		'description' => 'Simple contact form',
-		'version' => '3.0.0'
+		'version' => '3.2.1'
 	];
 
 	/**

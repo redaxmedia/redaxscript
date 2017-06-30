@@ -1,0 +1,28 @@
+/**
+ * @tableofcontents
+ *
+ * 1. search
+ *    1.1 field
+ *    1.2 button
+ *
+ * @since 3.2.0
+ *
+ * @package Redaxscript
+ * @author Henry Ruhs
+ */
+
+/* @section 1. search */
+
+/* @section 1.1 field */
+
+.rs-field-search
+{
+	padding: 0.5em;
+}
+
+/* @section 1.2 button */
+
+.rs-button-search
+{
+	padding: 0.5em;
+}

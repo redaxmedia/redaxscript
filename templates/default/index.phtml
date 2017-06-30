@@ -24,8 +24,11 @@
 			'templates/admin/script.phtml',
 			'templates/default/script.phtml'
 		]); ?>
-		<?php echo Tag::partial('templates/admin/panel.phtml'); ?>
-		<?php echo Tag::partial('templates/default/menu-status.phtml'); ?>
+		<?php echo Tag::partial(
+		[
+			'templates/admin/panel.phtml',
+			'templates/default/menu-status.phtml'
+		]); ?>
 		<div class="rs-has-menu">
 			<?php echo $body; ?>
 		</div>
