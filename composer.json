@@ -13,6 +13,7 @@
 	{
 		"brianium/paratest": "0.14.0",
 		"drupal/coder": "8.2.12",
+		"fbourigault/composer-mkdir": "2.0.0",
 		"johnkary/phpunit-speedtrap": "2.0.0-BETA1",
 		"mikey179/vfsStream": "1.6.4",
 		"phpbench/phpbench": "0.13.0",
@@ -29,7 +30,7 @@
 		"post-install-cmd":
 		[
 			"SlowProg\\CopyFile\\ScriptHandler::copy",
-			"php -r \"is_dir(\"cache\") || mkdir(\"cache\");\""
+			"Fbourigault\\ComposerMkdir\\ScriptHandler::mkdirs"
 		],
 		"post-update-cmd":
 		[
@@ -42,6 +43,10 @@
 		{
 			"vendor/j4mie/idiorm/idiorm.php": "libraries/ORM.php",
 			"vendor/drupal/coder/coder_sniffer/Drupal": "vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Drupal"
-		}
+		},
+		"fbourigault-composer-mkdir":
+		[
+			"cache"
+		]
 	}
 }
