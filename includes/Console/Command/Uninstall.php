@@ -114,8 +114,7 @@ class Uninstall extends CommandAbstract
 		if (class_exists($moduleClass))
 		{
 			$module = new $moduleClass($this->_registry, $this->_request, $this->_language, $this->_config);
-			$module->uninstall();
-			return !Db::forTablePrefix('modules')->where('alias', $alias)->count();
+			return $module->uninstall();
 		}
 		return false;
 	}

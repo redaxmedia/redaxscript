@@ -14,7 +14,7 @@ namespace Redaxscript;
 class Mailer
 {
 	/**
-	 * array of recipient
+	 * array of the recipient
 	 *
 	 * @var array
 	 */
@@ -22,7 +22,7 @@ class Mailer
 	protected $_toArray = [];
 
 	/**
-	 * array of sender
+	 * array of the sender
 	 *
 	 * @var array
 	 */
@@ -46,7 +46,7 @@ class Mailer
 	protected $_body;
 
 	/**
-	 * array of attachments
+	 * array of the attachments
 	 *
 	 * @var array
 	 */
@@ -90,11 +90,11 @@ class Mailer
 	 *
 	 * @since 2.4.0
 	 *
-	 * @param array $toArray array of recipient
-	 * @param array $fromArray array of sender
+	 * @param array $toArray array of  the recipient
+	 * @param array $fromArray array of the sender
 	 * @param string $subject subject of the email
 	 * @param string|array $body body of the email
-	 * @param array $attachmentArray array of attachments
+	 * @param array $attachmentArray array of the attachments
 	 */
 
 	public function init($toArray = [], $fromArray = [], $subject = null, $body = null, $attachmentArray = [])

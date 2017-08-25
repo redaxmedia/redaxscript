@@ -22,7 +22,7 @@ class Direction extends HelperAbstract
 	protected $_direction = 'ltr';
 
 	/**
-	 * array of directions
+	 * array of the directions
 	 *
 	 * @var array
 	 */

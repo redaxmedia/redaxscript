@@ -35,7 +35,6 @@
 	{
 		background: gray(200);
 		color: gray(150);
-		pointer-events: none;
 	}
 
 	&.rs-admin-button-create

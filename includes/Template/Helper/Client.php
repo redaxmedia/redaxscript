@@ -14,7 +14,7 @@ namespace Redaxscript\Template\Helper;
 class Client extends HelperAbstract
 {
 	/**
-	 * array of devices
+	 * array of the devices
 	 *
 	 * @var array
 	 */

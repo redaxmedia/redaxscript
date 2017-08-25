@@ -39,12 +39,9 @@ class Alias implements ValidatorInterface
 	protected $_defaultArray =
 	[
 		'admin',
-		'loader',
 		'login',
 		'logout',
-		'scripts',
 		'search',
-		'styles',
 		'recover',
 		'register',
 		'reset'

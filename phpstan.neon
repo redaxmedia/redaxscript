@@ -1,7 +1,84 @@
 parameters:
 	bootstrap: includes\bootstrap.php
 	excludes_analyse:
-	- includes\Admin\View
+	- includes/Admin/View
+	- includes/Bootstrap/Cache.php
+	- includes/Bootstrap/Common.php
+	- includes/Bootstrap/Content.php
+	- includes/Bootstrap/Cronjob.php
+	- includes/Bootstrap/Router.php
+	- includes/Bootstrap/Status.php
+	- includes/Console/Command/Backup.php
+	- includes/Console/Command/Cache.php
+	- includes/Console/Command/Config.php
+	- includes/Console/Command/Help.php
+	- includes/Console/Command/Install.php
+	- includes/Console/Command/Restore.php
+	- includes/Console/Command/Setting.php
+	- includes/Console/Command/Status.php
+	- includes/Console/Command/Uninstall.php
+	- includes/Console/Console.php
+	- includes/Console/ConsoleAbstract.php
+	- includes/Content/Tag/Module.php
+	- includes/Content/Tag/Readmore.php
+	- includes/Content/Parser.php
+	- includes/Controller/Comment.php
+	- includes/Controller/Install.php
+	- includes/Controller/Login.php
+	- includes/Controller/Logout.php
+	- includes/Controller/Recover.php
+	- includes/Controller/Register.php
+	- includes/Controller/Reset.php
+	- includes/Controller/Search.php
+	- includes/Detector/Language.php
+	- includes/Detector/Template.php
+	- includes/Filesystem/Cache.php
+	- includes/Filesystem/Filesystem.php
+	- includes/Head/Link.php
+	- includes/Head/Script.php
+	- includes/Head/Style.php
+	- includes/Html/Form.php
+	- includes/Html/HtmlAbstract.php
+	- includes/Html/Purifier.php
+	- includes/Module/Hook.php
+	- includes/Router/Parameter.php
+	- includes/Template/Helper/Canonical.php
+	- includes/Template/Helper/Client.php
+	- includes/Template/Helper/Description.php
+	- includes/Template/Helper/Keywords.php
+	- includes/Template/Helper/Robots.php
+	- includes/Template/Helper/Title.php
+	- includes/Template/Tag.php
+	- includes/Validator/Alias.php
+	- includes/Validator/Captcha.php
+	- includes/Validator/Dns.php
+	- includes/Validator/Email.php
+	- includes/Validator/Login.php
+	- includes/Validator/Url.php
+	- includes/View/CommentForm.php
+	- includes/View/InstallForm.php
+	- includes/View/LoginForm.php
+	- includes/View/RecoverForm.php
+	- includes/View/RegisterForm.php
+	- includes/View/ResetForm.php
+	- includes/View/ResultList.php
+	- includes/admin_admin.php
+	- includes/admin_list.php
+	- includes/admin_query.php
+	- includes/admin_router.php
+	- includes/Auth.php
+	- includes/bootstrap.php
+	- includes/Breadcrumb.php
+	- includes/comments.php
+	- includes/Config.php
+	- includes/contents.php
+	- includes/Db.php
+	- includes/Installer.php
+	- includes/Mailer.php
+	- includes/Messenger.php
+	- includes/navigation.php
+	- includes/query.php
+	- includes/router.php
 	- includes/admin_admin.php
 	- includes/admin_list.php
 	- includes/admin_query.php
@@ -11,3 +88,20 @@ parameters:
 	- includes/navigation.php
 	- includes/query.php
 	- includes/router.php
+	- modules/Archive
+	- modules/CallHome
+	- modules/Contact
+	- modules/Demo
+	- modules/DirectoryLister
+	- modules/FeedGenerator
+	- modules/FeedReader
+	- modules/LightGallery
+	- modules/Maps
+	- modules/PageCache
+	- modules/Preview
+	- modules/Sitemap
+	- modules/SocialSharer
+	- modules/TestDummy
+	- modules/Tinymce
+	- modules/Validator
+	- console.php

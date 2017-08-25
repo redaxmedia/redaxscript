@@ -22,7 +22,7 @@ class Subset extends HelperAbstract
 	protected $_subset = 'latin';
 
 	/**
-	 * array of subsets
+	 * array of the subsets
 	 *
 	 * @var array
 	 */

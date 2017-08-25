@@ -171,20 +171,20 @@ class ModuleTest extends TestCaseAbstract
 
 		/* install */
 
-		$module->install();
-		Db::clearCache();
+		$actualInstall = $module->install();
 		$actualModulesInstall = Db::forTablePrefix('modules')->count();
 		$actualTablesInstall = Db::countTablePrefix();
 
 		/* uninstall */
 
-		$module->uninstall();
-		Db::clearCache();
+		$actualUninstall = $module->uninstall();
 		$actualModulesUninstall = Db::forTablePrefix('modules')->count();
 		$actualTablesUninstall = Db::countTablePrefix();
 
 		/* compare */
 
+		$this->assertTrue($actualInstall);
+		$this->assertTrue($actualUninstall);
 		$this->assertEquals(1, $actualModulesInstall);
 		$this->assertEquals(9, $actualTablesInstall);
 		$this->assertEquals(0, $actualModulesUninstall);

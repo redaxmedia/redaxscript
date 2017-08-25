@@ -16,7 +16,7 @@
 
 .rs-button-default
 {
-	padding: 0.5em;
+	@extend %rs-button;
 }
 
 /* @section 2. query */

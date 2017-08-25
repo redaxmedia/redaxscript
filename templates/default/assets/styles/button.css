@@ -26,12 +26,6 @@
 		background: var(--rs-color-secondary-light);
 	}
 
-	&[disabled]
-	{
-		opacity: 0.5;
-		pointer-events: none;
-	}
-
 	&.rs-is-large
 	{
 		font-size: 1.125em;

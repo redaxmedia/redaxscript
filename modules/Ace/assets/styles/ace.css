@@ -22,7 +22,7 @@
 
 	&.ace_focus
 	{
-		background: gray(250);
+		background: gray(255);
 		border-color: gray(185);
 	}
 }

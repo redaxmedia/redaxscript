@@ -1,7 +1,7 @@
 {
 	"name": "redaxmedia/redaxscript",
 	"description": "A modern, ultra lightweight and rocket fast Content Management System",
-	"version": "3.2.1",
+	"version": "3.2.2",
 	"homepage": "https://redaxscript.com",
 	"license": "GPL-3.0",
 	"require":
@@ -16,7 +16,6 @@
 		"fbourigault/composer-mkdir": "2.0.0",
 		"johnkary/phpunit-speedtrap": "2.0.0-BETA1",
 		"mikey179/vfsStream": "1.6.4",
-		"phpbench/phpbench": "0.13.0",
 		"phpstan/phpstan": "0.7.0",
 		"phpunit/phpunit": "6.1.4",
 		"redaxmedia/tocgen": "4.1.1",

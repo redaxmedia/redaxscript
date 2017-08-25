@@ -16,7 +16,7 @@ use Redaxscript\Db;
 class Robots extends HelperAbstract
 {
 	/**
-	 * array of robots
+	 * array of the robots
 	 *
 	 * @var array
 	 */

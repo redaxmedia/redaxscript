@@ -18,7 +18,7 @@ services:
 - postgresql
 
 before_install:
-- if [ ${TRAVIS_PHP_VERSION:0:1} == "5" ]; then composer require brianium/paratest 0.13.3 johnkary/phpunit-speedtrap 1.0.1 phpbench/phpbench 0.10.0 phpunit/phpunit 4.8.35 sebastian/phpcpd 2.0.4 phpunit/phpcov 2.0.2 --dev --no-update; fi
+- if [ ${TRAVIS_PHP_VERSION:0:1} == "5" ]; then composer require brianium/paratest 0.13.3 johnkary/phpunit-speedtrap 1.0.1 phpunit/phpunit 4.8.35 sebastian/phpcpd 2.0.4 phpunit/phpcov 2.0.2 --dev --no-update; fi
 - if [ ${TRAVIS_PHP_VERSION:0:1} != "7" ]; then composer remove phpstan/phpstan --dev --no-update; fi
 - composer global require hirak/prestissimo
 
@@ -30,9 +30,8 @@ install:
 - gem install mime-types -v 2.6.2
 - gem install mailcatcher
 - nvm install 7
-- npm install --global ied
 - npm install --global grunt-cli
-- ied install
+- npm install
 
 before_script:
 - echo sendmail_path=/usr/bin/env catchmail --smtp-ip 127.0.0.1 --smtp-port 1025 -f test@test.com >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini

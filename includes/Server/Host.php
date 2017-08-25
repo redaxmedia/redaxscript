@@ -18,7 +18,7 @@ class Host extends ServerAbstract
 	 *
 	 * @since 2.4.0
 	 *
-	 * @return string
+	 * @return string|boolean
 	 */
 
 	public function getOutput()

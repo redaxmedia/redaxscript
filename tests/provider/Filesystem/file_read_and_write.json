@@ -13,9 +13,9 @@
 		"root",
 		false,
 		"test.php",
-		"<?php echo test;",
+		"<?php echo \"test\";",
 		[
-			"<?php echo test;",
+			"<?php echo \"test\";",
 			"test"
 		]
 	]

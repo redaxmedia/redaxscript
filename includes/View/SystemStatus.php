@@ -93,7 +93,6 @@ class SystemStatus extends ViewAbstract
 
 	protected function _validateError()
 	{
-		$driverArray = $this->_registry->get('driverArray');
 		$messageArray = [];
 		if (!$this->_registry->get('dbStatus'))
 		{
@@ -103,7 +102,7 @@ class SystemStatus extends ViewAbstract
 		{
 			$messageArray[] = $this->_language->get('php_version_unsupported');
 		}
-		if (!count($driverArray))
+		if (!$this->_registry->get('driverArray'))
 		{
 			$messageArray[] = $this->_language->get('pdo_driver_disabled');
 		}

@@ -90,7 +90,7 @@ class Captcha
 	 * @param integer $mode captcha operator mode
 	 */
 
-	public function init($mode = null)
+	public function init($mode = 0)
 	{
 		if (is_numeric($mode))
 		{
@@ -98,7 +98,7 @@ class Captcha
 		}
 		else
 		{
-			$this->_mode = Db::getSetting('captcha');
+			$this->_mode = (integer)Db::getSetting('captcha');
 		}
 		$this->_create();
 	}

@@ -162,6 +162,8 @@ class Module
 	 * install the module
 	 *
 	 * @since 2.6.0
+	 *
+	 * @return boolean
 	 */
 
 	public function install()
@@ -181,13 +183,18 @@ class Module
 				$installer->init($directory);
 				$installer->rawCreate();
 			}
+			Db::clearCache();
+			return Db::forTablePrefix('modules')->where('alias', static::$_moduleArray['alias'])->count() === 1;
 		}
+		return false;
 	}
 
 	/**
 	 * uninstall the module
 	 *
 	 * @since 2.6.0
+	 *
+	 * @return boolean
 	 */
 
 	public function uninstall()
@@ -205,6 +212,9 @@ class Module
 				$installer->init($directory);
 				$installer->rawDrop();
 			}
+			Db::clearCache();
+			return Db::forTablePrefix('modules')->where('alias', static::$_moduleArray['alias'])->count() === 0;
 		}
+		return false;
 	}
 }

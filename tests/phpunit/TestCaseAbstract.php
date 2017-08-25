@@ -86,15 +86,14 @@ abstract class TestCaseAbstract extends PHPUnit\Framework\TestCase
 	 * @since 2.2.0
 	 *
 	 * @param string $url
-	 * @param boolean $assoc
 	 *
 	 * @return array
 	 */
 
-	public function getProvider($url = null, $assoc = true)
+	public function getProvider($url = null)
 	{
 		$content = file_get_contents($url);
-		return json_decode($content, $assoc);
+		return json_decode($content, true);
 	}
 
 	/**

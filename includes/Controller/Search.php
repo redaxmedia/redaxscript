@@ -21,7 +21,7 @@ use Redaxscript\View;
 class Search extends ControllerAbstract
 {
 	/**
-	 * array of tables
+	 * array of the tables
 	 *
 	 * @var array
 	 */

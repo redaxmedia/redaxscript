@@ -4,6 +4,7 @@
 @import '../../../../assets/styles/_redirect.css';
 @import '../../../../assets/styles/_table.css';
 @import '_variable.css';
+@import '_button.css';
 @import 'button.css';
 @import 'breadcrumb.css';
 @import 'content.css';

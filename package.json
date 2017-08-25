@@ -1,7 +1,7 @@
 {
 	"name": "redaxscript",
 	"description": "A modern, ultra lightweight and rocket fast Content Management System",
-	"version": "3.2.1",
+	"version": "3.2.2",
 	"homepage": "https://redaxscript.com",
 	"license": "GPL-3.0",
 	"author":
@@ -15,19 +15,19 @@
 	},
 	"devDependencies":
 	{
-		"autoprefixer": "7.1.1",
+		"autoprefixer": "7.1.2",
 		"colorguard": "1.2.0",
 		"cssnano": "3.10.0",
 		"grunt": "1.0.1",
 		"grunt-contrib-jshint": "1.1.0",
 		"grunt-contrib-rename": "0.2.0",
 		"grunt-contrib-uglify": "3.0.1",
-		"grunt-contrib-watch": "1.0.0",
 		"grunt-diff-json": "0.1.3",
 		"grunt-htmlhint": "0.9.13",
 		"grunt-jscs": "3.0.1",
 		"grunt-json-format": "2.0.1",
 		"grunt-jsonlint": "1.1.0",
+		"grunt-ncss-linter": "1.4.0",
 		"grunt-phpcs": "0.4.0",
 		"grunt-postcss": "0.8.0",
 		"grunt-shell": "2.1.0",
@@ -36,20 +36,20 @@
 		"icomoon-free-npm": "0.0.0",
 		"load-grunt-tasks": "3.5.2",
 		"material-design-icons": "3.0.1",
-		"postcss": "6.0.4",
+		"postcss": "6.0.9",
 		"postcss-color-function": "4.0.0",
 		"postcss-color-gray": "4.0.0",
 		"postcss-custom-media": "6.0.0",
 		"postcss-custom-properties": "6.1.0",
 		"postcss-custom-selectors": "4.0.1",
 		"postcss-extend": "1.0.5",
-		"postcss-harmonize": "1.1.0",
+		"postcss-harmonize": "2.1.1",
 		"postcss-import": "10.0.0",
 		"postcss-nesting": "4.0.1",
-		"postcss-reporter": "4.0.0",
+		"postcss-reporter": "5.0.0",
 		"stylefmt": "6.0.0",
-		"stylelint": "7.12.0",
-		"stylelint-order": "0.5.0"
+		"stylelint": "8.0.0",
+		"stylelint-order": "0.6.0"
 	},
 	"scripts":
 	{

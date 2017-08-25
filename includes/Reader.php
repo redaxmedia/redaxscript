@@ -120,7 +120,7 @@ class Reader
 	 *
 	 * @param string $url
 	 *
-	 * @return $this
+	 * @return string
 	 */
 
 	public function load($url = null)
