@@ -3,13 +3,10 @@ namespace Redaxscript;
 
 error_reporting(E_DEPRECATED | E_WARNING | E_ERROR | E_PARSE);
 
-/* include autoload */
+/* include */
 
 include_once('includes' . DIRECTORY_SEPARATOR . 'Autoloader.php');
 include_once('TestCaseAbstract.php');
-
-/* include deprecated */
-
 include_once('includes' . DIRECTORY_SEPARATOR . 'admin_admin.php');
 include_once('includes' . DIRECTORY_SEPARATOR . 'admin_list.php');
 include_once('includes' . DIRECTORY_SEPARATOR . 'admin_query.php');
