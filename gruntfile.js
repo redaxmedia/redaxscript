@@ -43,8 +43,7 @@ module.exports = function (grunt)
 		'htmlhint',
 		'phpcs',
 		'phpcpd',
-		'languagelint',
-		'toclint'
+		'languagelint'
 	]);
 	grunt.registerTask('stylelint',
 	[
@@ -63,12 +62,6 @@ module.exports = function (grunt)
 		'formatJSON:languages',
 		'diffJSON:languages',
 		'shell:removeBuild'
-	]);
-	grunt.registerTask('toclint',
-	[
-		'shell:toclintBase',
-		'shell:toclintModules',
-		'shell:toclintTemplates'
 	]);
 	grunt.registerTask('phpcpd',
 	[
@@ -90,15 +83,8 @@ module.exports = function (grunt)
 	[
 		'shell:phpunitParallel'
 	]);
-	grunt.registerTask('toc',
-	[
-		'shell:tocBase',
-		'shell:tocModules',
-		'shell:tocTemplates'
-	]);
 	grunt.registerTask('optimize',
 	[
-		'toc',
 		'svgmin'
 	]);
 	grunt.registerTask('build',

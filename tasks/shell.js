@@ -44,30 +44,6 @@ module.exports = function (grunt)
 		{
 			command: 'vendor/bin/paratest --processes=10 --configuration=phpunit.xml ' + grunt.option.flags()
 		},
-		tocBase:
-		{
-			command: 'sh vendor/bin/tocgen.sh assets .tocgen'
-		},
-		tocModules:
-		{
-			command: 'sh vendor/bin/tocgen.sh modules .tocgen'
-		},
-		tocTemplates:
-		{
-			command: 'sh vendor/bin/tocgen.sh templates .tocgen'
-		},
-		toclintBase:
-		{
-			command: 'sh vendor/bin/tocgen.sh assets .tocgen -l'
-		},
-		toclintModules:
-		{
-			command: 'sh vendor/bin/tocgen.sh modules .tocgen -l'
-		},
-		toclintTemplates:
-		{
-			command: 'sh vendor/bin/tocgen.sh templates/admin/assets .tocgen -l && sh vendor/bin/tocgen.sh templates/default/assets .tocgen -l'
-		},
 		removeBuild:
 		{
 			command: 'rm -rf build'

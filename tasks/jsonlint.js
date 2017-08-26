@@ -19,8 +19,7 @@ module.exports = function ()
 				'.htmlhintrc',
 				'.jscsrc',
 				'.jshintrc',
-				'.stylelintrc',
-				'.tocgen'
+				'.stylelintrc'
 			]
 		},
 		languages:

@@ -18,7 +18,6 @@
 		"mikey179/vfsStream": "1.6.4",
 		"phpstan/phpstan": "0.7.0",
 		"phpunit/phpunit": "6.1.4",
-		"redaxmedia/tocgen": "4.1.1",
 		"satooshi/php-coveralls": "1.0.1",
 		"sebastian/phpcpd": "3.0.0",
 		"slowprog/composer-copy-file": "0.2.0",
