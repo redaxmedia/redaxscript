@@ -23,7 +23,7 @@ class Config extends Module\Module
 
 	protected $_configArray =
 	[
-		'directory' => 'cache/pages',
+		'cacheDirectory' => 'cache/pages',
 		'extension' => 'phtml',
 		'lifetime' => 3600,
 		'tokenPlaceholder' => '%TOKEN%'

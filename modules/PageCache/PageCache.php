@@ -40,6 +40,14 @@ class PageCache extends Config
 
 	public function adminPanelNotification()
 	{
+		if (!is_dir($this->_configArray['cacheDirectory']) && !mkdir($this->_configArray['cacheDirectory']))
+		{
+			$this->setNotification('error', $this->_language->get('directory_not_found') . $this->_language->get('colon') . ' ' . $this->_configArray['cacheDirectory'] . $this->_language->get('point'));
+		}
+		else if (!chmod($this->_configArray['cacheDirectory'], 0777))
+		{
+			$this->setNotification('error', $this->_language->get('directory_permission_grant') . $this->_language->get('colon') . ' ' . $this->_configArray['cacheDirectory'] . $this->_language->get('point'));
+		}
 		return $this->getNotification();
 	}
 
@@ -53,13 +61,6 @@ class PageCache extends Config
 
 	public function renderTemplate()
 	{
-		/* handle notification */
-
-		if (!is_dir($this->_configArray['directory']) && !mkdir($this->_configArray['directory']))
-		{
-			$this->setNotification('error', $this->_language->get('directory_not_found') . $this->_language->get('colon') . ' ' . $this->_configArray['directory'] . $this->_language->get('point'));
-		}
-
 		/* prevent as needed */
 
 		if ($this->_request->getPost() || $this->_registry->get('noCache'))
@@ -70,7 +71,7 @@ class PageCache extends Config
 		/* cache as needed */
 
 		$cacheFilesystem = new Filesystem\Cache();
-		$cacheFilesystem->init($this->_configArray['directory'], $this->_configArray['extension']);
+		$cacheFilesystem->init($this->_configArray['cacheDirectory'], $this->_configArray['extension']);
 		$bundle = $this->_registry->get('root') . $this->_registry->get('fullRoute') . '/' . $this->_registry->get('template') . '/' . $this->_registry->get('language');
 		$token = $this->_registry->get('token');
 
