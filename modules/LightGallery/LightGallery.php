@@ -58,7 +58,7 @@ class LightGallery extends Config
 		$link = Head\Link::getInstance();
 		$link
 			->init()
-			->appendFile('//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.3.9/css/lightgallery.min.css')
+			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.3.9/css/lightgallery.min.css')
 			->appendFile('modules/LightGallery/dist/styles/light-gallery.min.css');
 
 		/* script */
@@ -66,7 +66,7 @@ class LightGallery extends Config
 		$script = Head\Script::getInstance();
 		$script
 			->init('foot')
-			->appendFile('//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.3.9/js/lightgallery.min.js')
+			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.3.9/js/lightgallery.min.js')
 			->appendFile('modules/LightGallery/assets/scripts/init.js')
 			->appendFile('modules/LightGallery/dist/scripts/light-gallery.min.js');
 	}

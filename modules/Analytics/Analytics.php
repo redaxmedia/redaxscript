@@ -44,7 +44,7 @@ class Analytics extends Module\Module
 			$script = Head\Script::getInstance();
 			$script
 				->init('foot')
-				->appendFile('//google-analytics.com/analytics.js')
+				->appendFile('https://google-analytics.com/analytics.js')
 				->appendFile('modules/Analytics/assets/scripts/init.js')
 				->appendFile('modules/Analytics/dist/scripts/analytics.min.js');
 		}

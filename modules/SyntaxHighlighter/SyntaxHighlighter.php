@@ -44,14 +44,14 @@ class SyntaxHighlighter extends Module\Module
 		$link = Head\Link::getInstance();
 		$link
 			->init()
-			->appendFile('//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css');
+			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css');
 
 		/* script */
 
 		$script = Head\Script::getInstance();
 		$script
 			->init('foot')
-			->appendFile('//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js')
+			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js')
 			->appendFile('modules/SyntaxHighlighter/assets/scripts/init.js')
 			->appendFile('modules/SyntaxHighlighter/dist/scripts/syntax-highlighter.min.js');
 	}

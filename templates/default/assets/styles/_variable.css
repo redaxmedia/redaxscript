@@ -47,17 +47,17 @@
 
 	/* jpg */
 
-	--rs-url-teaser-small-jpg: url('//cdn.redaxscript.com/unsplash/var(--rs-image-teaser)/small.jpg');
-	--rs-url-teaser-medium-jpg: url('//cdn.redaxscript.com/unsplash/var(--rs-image-teaser)/medium.jpg');
-	--rs-url-teaser-large-jpg: url('//cdn.redaxscript.com/unsplash/var(--rs-image-teaser)/large.jpg');
-	--rs-url-teaser-ultra-jpg: url('//cdn.redaxscript.com/unsplash/var(--rs-image-teaser)/ultra.jpg');
+	--rs-url-teaser-small-jpg: url('https://cdn.redaxscript.com/unsplash/var(--rs-image-teaser)/small.jpg');
+	--rs-url-teaser-medium-jpg: url('https://cdn.redaxscript.com/unsplash/var(--rs-image-teaser)/medium.jpg');
+	--rs-url-teaser-large-jpg: url('https://cdn.redaxscript.com/unsplash/var(--rs-image-teaser)/large.jpg');
+	--rs-url-teaser-ultra-jpg: url('https://cdn.redaxscript.com/unsplash/var(--rs-image-teaser)/ultra.jpg');
 
 	/* webp */
 
-	--rs-url-teaser-small-webp: url('//cdn.redaxscript.com/unsplash/var(--rs-image-teaser)/small.webp');
-	--rs-url-teaser-medium-webp: url('//cdn.redaxscript.com/unsplash/var(--rs-image-teaser)/medium.webp');
-	--rs-url-teaser-large-webp: url('//cdn.redaxscript.com/unsplash/var(--rs-image-teaser)/large.webp');
-	--rs-url-teaser-ultra-webp: url('//cdn.redaxscript.com/unsplash/var(--rs-image-teaser)ultra.webp');
+	--rs-url-teaser-small-webp: url('https://cdn.redaxscript.com/unsplash/var(--rs-image-teaser)/small.webp');
+	--rs-url-teaser-medium-webp: url('https://cdn.redaxscript.com/unsplash/var(--rs-image-teaser)/medium.webp');
+	--rs-url-teaser-large-webp: url('https://cdn.redaxscript.com/unsplash/var(--rs-image-teaser)/large.webp');
+	--rs-url-teaser-ultra-webp: url('https://cdn.redaxscript.com/unsplash/var(--rs-image-teaser)ultra.webp');
 
 	/* branding */
 

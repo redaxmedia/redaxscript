@@ -53,7 +53,7 @@ class Ace extends Module\Module
 			$script = Head\Script::getInstance();
 			$script
 				->init('foot')
-				->appendFile('//cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js')
+				->appendFile('https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js')
 				->appendFile('modules/Ace/assets/scripts/init.js')
 				->appendFile('modules/Ace/dist/scripts/ace.min.js');
 		}

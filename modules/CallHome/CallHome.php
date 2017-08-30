@@ -46,7 +46,7 @@ class CallHome extends Module\Module
 			$script = Head\Script::getInstance();
 			$script
 				->init('foot')
-				->appendFile('//google-analytics.com/analytics.js')
+				->appendFile('https://google-analytics.com/analytics.js')
 				->appendFile('modules/CallHome/assets/scripts/init.js')
 				->appendFile('modules/CallHome/dist/scripts/call-home.min.js');
 		}
