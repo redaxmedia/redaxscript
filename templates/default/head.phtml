@@ -30,7 +30,7 @@
 	->append(['href' => Helper::getCanonical(), 'rel' => 'canonical'])
 	->append(['href' => 'templates/default/assets/images/favicon.ico', 'rel' => 'shortcut icon'])
 	->append(['href' => 'templates/default/assets/images/favicon.png', 'rel' => 'apple-touch-icon'])
-	->appendFile('//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset())
+	->appendFile('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset())
 	->appendFile('dist/styles/base.min.css')
 	->appendFile('templates/default/dist/styles/default.min.css')
 	->rewrite(

@@ -2,6 +2,7 @@ parameters:
 	bootstrap: includes\bootstrap.php
 	excludes_analyse:
 	- includes/Admin/View
+	- includes/Asset/Transport.php
 	- includes/Bootstrap/Cache.php
 	- includes/Bootstrap/Common.php
 	- includes/Bootstrap/Content.php
@@ -10,6 +11,7 @@ parameters:
 	- includes/Bootstrap/Status.php
 	- includes/Console/Command/Backup.php
 	- includes/Console/Command/Cache.php
+	- includes/Console/Command/CommandAbstract.php
 	- includes/Console/Command/Config.php
 	- includes/Console/Command/Help.php
 	- includes/Console/Command/Install.php
@@ -19,6 +21,7 @@ parameters:
 	- includes/Console/Command/Uninstall.php
 	- includes/Console/Console.php
 	- includes/Console/ConsoleAbstract.php
+	- includes/Console/Parser.php
 	- includes/Content/Tag/Module.php
 	- includes/Content/Tag/Readmore.php
 	- includes/Content/Parser.php
@@ -35,6 +38,7 @@ parameters:
 	- includes/Filesystem/Cache.php
 	- includes/Filesystem/Filesystem.php
 	- includes/Head/Link.php
+	- includes/Head/Meta.php
 	- includes/Head/Script.php
 	- includes/Head/Style.php
 	- includes/Html/Form.php
@@ -62,6 +66,8 @@ parameters:
 	- includes/View/RegisterForm.php
 	- includes/View/ResetForm.php
 	- includes/View/ResultList.php
+	- includes/View/SearchForm.php
+	- includes/View/SystemStatus.php
 	- includes/admin_admin.php
 	- includes/admin_list.php
 	- includes/admin_query.php
@@ -73,6 +79,7 @@ parameters:
 	- includes/Config.php
 	- includes/contents.php
 	- includes/Db.php
+	- includes/Hash.php
 	- includes/Installer.php
 	- includes/Mailer.php
 	- includes/Messenger.php

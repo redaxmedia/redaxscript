@@ -534,6 +534,8 @@ function admin_process()
 
 function admin_move()
 {
+	$registry = Redaxscript\Registry::getInstance();
+	$language = Redaxscript\Language::getInstance();
 	$adminParameter = $registry->get('adminParameter');
 	$tableParameter = $registry->get('tableParameter');
 	$idParameter = $registry->get('idParameter');

@@ -28,7 +28,7 @@ class SocialSharer extends Config
 		'alias' => 'SocialSharer',
 		'author' => 'Redaxmedia',
 		'description' => 'Integrate a social sharer',
-		'version' => '3.2.2'
+		'version' => '3.2.3'
 	];
 
 	/**

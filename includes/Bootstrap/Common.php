@@ -135,12 +135,20 @@ class Common extends BootstrapAbstract
 	/**
 	 * set php
 	 *
-	 * @since 3.1.0
+	 * @since 3.2.3
 	 */
 
 	protected function _setPhp()
 	{
-		$this->_registry->set('phpOs', strtolower(php_uname('s')));
+		$phpOs = strtolower(php_uname('s'));
+		if (substr($phpOs, 0, 5) === 'linux')
+		{
+			$this->_registry->set('phpOs', 'linux');
+		}
+		else if (substr($phpOs, 0, 3) === 'win')
+		{
+			$this->_registry->set('phpOs', 'windows');
+		}
 		$this->_registry->set('phpVersion', phpversion());
 	}
 }

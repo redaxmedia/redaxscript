@@ -30,7 +30,7 @@ class Demo extends Config
 		'alias' => 'Demo',
 		'author' => 'Redaxmedia',
 		'description' => 'Enable demo login',
-		'version' => '3.2.2'
+		'version' => '3.2.3'
 	];
 
 	/**

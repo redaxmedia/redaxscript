@@ -220,12 +220,6 @@
 			<file>tests/phpunit/MessengerTest.php</file>
 		</testsuite>
 
-		<!-- purifier -->
-
-		<testsuite name="purifier">
-			<file>tests/phpunit/PurifierTest.php</file>
-		</testsuite>
-
 		<!-- registry -->
 
 		<testsuite name="registry">

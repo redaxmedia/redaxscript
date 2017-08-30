@@ -29,7 +29,7 @@ class FeedReader extends Config
 		'alias' => 'FeedReader',
 		'author' => 'Redaxmedia',
 		'description' => 'Read external RSS and Atom feeds',
-		'version' => '3.2.2'
+		'version' => '3.2.3'
 	];
 
 	/**

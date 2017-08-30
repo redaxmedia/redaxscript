@@ -37,13 +37,13 @@
 				"href": "vfs://root/assets/styles/three.css"
 			},
 			{
-				"href": "//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+				"href": "https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
 			}
 		],
 		{
 			"0":
 			{
-				"href": "//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+				"href": "https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
 			},
 			"bundle":
 			{

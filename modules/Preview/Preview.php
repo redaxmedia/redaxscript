@@ -30,7 +30,7 @@ class Preview extends Module\Module
 		'alias' => 'Preview',
 		'author' => 'Redaxmedia',
 		'description' => 'Preview template elements',
-		'version' => '3.2.2'
+		'version' => '3.2.3'
 	];
 
 	/**

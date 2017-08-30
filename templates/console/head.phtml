@@ -24,7 +24,7 @@
 	->init()
 	->append(['href' => 'templates/default/assets/images/favicon.ico', 'rel' => 'shortcut icon'])
 	->append(['href' => 'templates/default/assets/images/favicon.png', 'rel' => 'apple-touch-icon'])
-	->appendFile('//fonts.googleapis.com/css?family=Ubuntu+Mono:400&amp;subset=' . Helper::getSubset())
+	->appendFile('https://fonts.googleapis.com/css?family=Ubuntu+Mono:400&amp;subset=' . Helper::getSubset())
 	->appendFile('dist/styles/base.min.css')
 	->appendFile('templates/console/dist/styles/console.min.css')
 	->concat(); ?>
