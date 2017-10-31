@@ -11,9 +11,18 @@
 
 /* @section 1. list default */
 
-.rs-list-default > li + li
+.rs-list-default > li
 {
-	margin-top: 0.25em;
+	& > ul
+	{
+		margin-left: 0.875em;
+		margin-top: 0.25em;
+	}
+
+	& + li
+	{
+		margin-top: 0.25em;
+	}
 }
 
 ol.rs-list-default > li
