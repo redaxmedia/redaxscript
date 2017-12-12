@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Validator;
 
-use Redaxscript\Config;
 use Redaxscript\Hash;
 
 /**
@@ -30,7 +29,7 @@ class Password implements ValidatorInterface
 	public function validate($password = null, $hash = null)
 	{
 		$output = ValidatorInterface::FAILED;
-		$passwordHash = new Hash(Config::getInstance());
+		$passwordHash = new Hash();
 
 		/* validate password */
 

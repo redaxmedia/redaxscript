@@ -2,7 +2,6 @@
 namespace Redaxscript\Html;
 
 use Redaxscript\Captcha;
-use Redaxscript\Config;
 use Redaxscript\Hash;
 use Redaxscript\Language;
 use Redaxscript\Module;
@@ -514,7 +513,7 @@ class Form extends HtmlAbstract
 
 		if ($this->_optionArray['captcha'] && $type === 'solution')
 		{
-			$captchaHash = new Hash(Config::getInstance());
+			$captchaHash = new Hash();
 			$captchaHash->init($this->_captcha->getSolution());
 
 			/* hidden */

@@ -6,8 +6,7 @@
 			"dbName": null,
 			"dbUser": null,
 			"dbPassword": null,
-			"dbPrefix": null,
-			"dbSalt": null
+			"dbPrefix": null
 		},
 		[
 			"Type is empty",
@@ -23,8 +22,7 @@
 			"dbName": null,
 			"dbUser": null,
 			"dbPassword": null,
-			"dbPrefix": null,
-			"dbSalt": null
+			"dbPrefix": null
 		},
 		[
 			"Host is empty"
@@ -37,8 +35,7 @@
 			"dbName": null,
 			"dbUser": null,
 			"dbPassword": null,
-			"dbPrefix": null,
-			"dbSalt": null
+			"dbPrefix": null
 		},
 		[
 			"Host is empty",

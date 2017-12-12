@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Validator;
 
-use Redaxscript\Config;
 use Redaxscript\Hash;
 
 /**
@@ -30,7 +29,7 @@ class Captcha implements ValidatorInterface
 	public function validate($task = null, $hash = null)
 	{
 		$output = ValidatorInterface::FAILED;
-		$captchaHash = new Hash(Config::getInstance());
+		$captchaHash = new Hash();
 
 		/* validate captcha */
 

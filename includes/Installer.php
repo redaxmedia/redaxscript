@@ -324,7 +324,7 @@ class Installer
 
 	public function insertUsers(array $optionArray = [])
 	{
-		$passwordHash = new Hash($this->_config);
+		$passwordHash = new Hash();
 		$passwordHash->init($optionArray['adminPassword']);
 		Db::forTablePrefix('users')
 			->create()

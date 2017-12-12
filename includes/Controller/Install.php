@@ -75,7 +75,6 @@ class Install extends ControllerAbstract
 			'dbUser' => $this->_request->getPost('db-user'),
 			'dbPassword' => $this->_request->getPost('db-password'),
 			'dbPrefix' => $this->_request->getPost('db-prefix'),
-			'dbSalt' => $this->_request->getPost('db-salt'),
 			'adminName' => $specialFilter->sanitize($this->_request->getPost('admin-name')),
 			'adminUser' => $specialFilter->sanitize($this->_request->getPost('admin-user')),
 			'adminPassword' => $specialFilter->sanitize($this->_request->getPost('admin-password')),
@@ -115,8 +114,7 @@ class Install extends ControllerAbstract
 			'dbName' => $postArray['dbName'],
 			'dbUser' => $postArray['dbUser'],
 			'dbPassword' => $postArray['dbPassword'],
-			'dbPrefix' => $postArray['dbPrefix'],
-			'dbSalt' => $postArray['dbSalt']
+			'dbPrefix' => $postArray['dbPrefix']
 		];
 		$adminArray =
 		[
@@ -372,7 +370,6 @@ class Install extends ControllerAbstract
 		$this->_config->set('dbUser', $configArray['dbUser']);
 		$this->_config->set('dbPassword', $configArray['dbPassword']);
 		$this->_config->set('dbPrefix', $configArray['dbPrefix']);
-		$this->_config->set('dbSalt', $configArray['dbSalt']);
 		return $this->_config->write();
 	}
 

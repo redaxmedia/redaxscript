@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Controller;
 
-use Redaxscript\Config;
 use Redaxscript\Db;
 use Redaxscript\Hash;
 use Redaxscript\Html\Element;
@@ -68,7 +67,7 @@ class Reset extends ControllerAbstract
 
 		/* handle success */
 
-		$passwordHash = new Hash(Config::getInstance());
+		$passwordHash = new Hash();
 		$passwordHash->init(uniqid());
 		$resetArray =
 		[

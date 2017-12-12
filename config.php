@@ -6,6 +6,5 @@ return
 	'dbPrefix' => null,
 	'dbName' => null,
 	'dbUser' => null,
-	'dbPassword' => null,
-	'dbSalt' => null
+	'dbPassword' => null
 ];

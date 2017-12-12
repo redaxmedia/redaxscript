@@ -14,14 +14,6 @@ namespace Redaxscript;
 class Hash
 {
 	/**
-	 * instance of the config class
-	 *
-	 * @var Config
-	 */
-
-	protected static $_config;
-
-	/**
 	 * plain raw
 	 *
 	 * @var string|int
@@ -36,19 +28,6 @@ class Hash
 	 */
 
 	protected $_hash;
-
-	/**
-	 * constructor of the class
-	 *
-	 * @since 2.6.0
-	 *
-	 * @param Config $config instance of the config class
-	 */
-
-	public function __construct(Config $config)
-	{
-		$this->_config = $config;
-	}
 
 	/**
 	 * init the class
@@ -106,7 +85,7 @@ class Hash
 
 	public function validate($raw = null, string $hash = null) : bool
 	{
-		return function_exists('password_hash') ? password_verify($raw, $hash) : $hash === hash('sha512', $raw . $this->_config->get('salt'));
+		return password_verify($raw, $hash);
 	}
 
 	/**
@@ -117,6 +96,6 @@ class Hash
 
 	protected function _create()
 	{
-		$this->_hash = function_exists('password_verify') ? password_hash($this->_raw, PASSWORD_DEFAULT) : hash('sha512', $this->_raw . $this->_config->get('salt'));
+		$this->_hash = password_hash($this->_raw, PASSWORD_DEFAULT);
 	}
 }

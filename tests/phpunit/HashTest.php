@@ -42,7 +42,7 @@ class HashTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$hash = new Hash($this->_config);
+		$hash = new Hash();
 		$hash->init($raw);
 
 		/* compare */
@@ -64,7 +64,7 @@ class HashTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$hash = new Hash($this->_config);
+		$hash = new Hash();
 		$hash->init($raw);
 
 		/* expect and actual */
@@ -92,24 +92,17 @@ class HashTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$hash = new Hash($this->_config);
+		$hash = new Hash();
 		$hash->init($raw);
 
 		/* expect and actual */
 
-		$expect = function_exists('password_hash') ? $hashArray[0][0] : $hashArray[1];
+		$expect = $hashArray[0];
 		$actual = $hash->getHash();
 
 		/* compare */
 
-		if (function_exists('password_hash'))
-		{
-			$this->assertStringStartsWith($expect, $actual);
-		}
-		else
-		{
-			$this->assertEquals($expect, $actual);
-		}
+		$this->assertStringStartsWith($expect, $actual);
 	}
 
 	/**
@@ -127,12 +120,12 @@ class HashTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$hash = new Hash($this->_config);
+		$hash = new Hash();
 		$hash->init($raw);
 
 		/* actual */
 
-		$actual = $hash->validate($raw, function_exists('password_verify') ? $hashArray[0][1] : $hashArray[1]);
+		$actual = $hash->validate($raw, $hashArray[1]);
 
 		/* compare */
 

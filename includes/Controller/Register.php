@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Controller;
 
-use Redaxscript\Config;
 use Redaxscript\Db;
 use Redaxscript\Filter;
 use Redaxscript\Hash;
@@ -63,7 +62,7 @@ class Register extends ControllerAbstract
 
 		$groupModel = new Model\Group();
 		$settingModel = new Model\Setting();
-		$passwordHash = new Hash(Config::getInstance());
+		$passwordHash = new Hash();
 		$passwordHash->init(uniqid());
 		$createArray =
 		[

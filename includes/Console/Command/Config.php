@@ -140,7 +140,7 @@ class Config extends CommandAbstract
 
 		foreach ($configArray as $key => $value)
 		{
-			if ($key === 'dbPassword' || $key === 'dbSalt')
+			if ($key === 'dbPassword')
 			{
 				$value = str_repeat('*', strlen($value));
 			}
@@ -174,7 +174,6 @@ class Config extends CommandAbstract
 			$this->_config->set('dbUser', $optionArray['db-user']);
 			$this->_config->set('dbPassword', $optionArray['db-password']);
 			$this->_config->set('dbPrefix', $optionArray['db-prefix']);
-			$this->_config->set('dbSalt', sha1(uniqid()));
 			return $this->_config->write();
 		}
 		return false;
