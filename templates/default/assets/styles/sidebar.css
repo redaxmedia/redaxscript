@@ -34,7 +34,10 @@
 
 	& .rs-item-active
 	{
-		font-weight: bold;
+		& > a
+		{
+			font-weight: bold;
+		}
 
 		& .rs-list-children
 		{
