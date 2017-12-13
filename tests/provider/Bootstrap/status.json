@@ -1,7 +1,7 @@
 [
 	[
 		null,
-		null,
+		{},
 		{
 			"dbStatus": 2,
 			"authStatus": 0,

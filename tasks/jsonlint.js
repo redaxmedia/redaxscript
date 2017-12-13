@@ -1,8 +1,8 @@
-module.exports = function ()
+module.exports = () =>
 {
 	'use strict';
 
-	var config =
+	const config =
 	{
 		dependency:
 		{

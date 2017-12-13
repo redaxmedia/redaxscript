@@ -24,7 +24,7 @@ class PathTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerPath()
+	public function providerPath() : array
 	{
 		return $this->getProvider('tests/provider/Filter/path.json');
 	}
@@ -40,7 +40,7 @@ class PathTest extends TestCaseAbstract
 	 * @dataProvider providerPath
 	 */
 
-	public function testPath($path = null, $expect = null)
+	public function testPath(string $path = null, string $expect = null)
 	{
 		/* setup */
 

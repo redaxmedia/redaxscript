@@ -23,12 +23,12 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param integer $articleId identifier of the article
+	 * @param int|bool $articleId identifier of the article
 	 *
 	 * @return string
 	 */
 
-	public function render($articleId = null)
+	public function render(int $articleId = null) : string
 	{
 		$output = Module\Hook::trigger('adminArticleFormStart');
 		$article = Db::forTablePrefix('articles')->whereIdIs($articleId)->findOne();
@@ -47,8 +47,18 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 		[
 			'form' =>
 			[
-				'action' => $this->_registry->get('parameterRoute') . ($article->id ? 'admin/process/articles/' . $article->id : 'admin/process/articles'),
 				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-component-tab rs-admin-form-default rs-admin-fn-clearfix'
+			],
+			'button' =>
+			[
+				'create' =>
+				[
+					'name' => get_class()
+				],
+				'save' =>
+				[
+					'name' => get_class()
+				]
 			],
 			'link' =>
 			[
@@ -341,10 +351,10 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 	 *
 	 * @since 3.2.0
 	 *
-	 * @return object
+	 * @return string
 	 */
 
-	protected function _renderList()
+	protected function _renderList() : string
 	{
 		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
 
@@ -384,7 +394,6 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 				->attr('href', $tabRoute . '#tab-3')
 				->text($this->_language->get('customize'))
 			);
-		$listElement->html($outputItem);
-		return $listElement;
+		return $listElement->html($outputItem)->render();
 	}
 }

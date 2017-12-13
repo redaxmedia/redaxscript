@@ -5,6 +5,7 @@ use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Mailer;
 use Redaxscript\Messenger;
+use Redaxscript\Model;
 use Redaxscript\Filter;
 use Redaxscript\Validator;
 
@@ -24,17 +25,19 @@ class Comment extends ControllerAbstract
 	/**
 	 * process the class
 	 *
-	 * @since 3.0.0
+	 * @since 3.3.0
 	 *
 	 * @return string
 	 */
 
-	public function process()
+	public function process() : string
 	{
 		$specialFilter = new Filter\Special();
 		$emailFilter = new Filter\Email();
 		$urlFilter = new Filter\Url();
 		$htmlFilter = new Filter\Html();
+		$articleModel = new Model\Article();
+		$settingModel = new Model\Setting();
 
 		/* process post */
 
@@ -48,7 +51,7 @@ class Comment extends ControllerAbstract
 			'task' => $this->_request->getPost('task'),
 			'solution' => $this->_request->getPost('solution')
 		];
-		$route = build_route('articles', $postArray['article']);
+		$route = $postArray['article'] ? $articleModel->getRouteById($postArray['article']) : null;
 
 		/* handle error */
 
@@ -72,7 +75,7 @@ class Comment extends ControllerAbstract
 			'text' => $postArray['text'],
 			'language' => Db::forTablePrefix('articles')->whereIdIs($postArray['article'])->findOne()->language,
 			'article' => $postArray['article'],
-			'status' => Db::getSetting('verification') ? 0 : 1
+			'status' => $settingModel->get('verification') ? 0 : 1
 		];
 		$mailArray =
 		[
@@ -108,8 +111,8 @@ class Comment extends ControllerAbstract
 		return $this->_success(
 		[
 			'route' => $route,
-			'timeout' => Db::getSetting('notification') ? 2 : 0,
-			'message' => Db::getSetting('moderation') ? $this->_language->get('comment_moderation') : $this->_language->get('comment_sent')
+			'timeout' => $settingModel->get('notification') ? 2 : 0,
+			'message' => $settingModel->get('moderation') ? $this->_language->get('comment_moderation') : $this->_language->get('comment_sent')
 		]);
 	}
 
@@ -123,7 +126,7 @@ class Comment extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _success($successArray = [])
+	protected function _success(array $successArray = []) : string
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
@@ -142,7 +145,7 @@ class Comment extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _warning($warningArray = [])
+	protected function _warning(array $warningArray = []) : string
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
@@ -161,7 +164,7 @@ class Comment extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _error($errorArray = [])
+	protected function _error(array $errorArray = []) : string
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
@@ -172,18 +175,19 @@ class Comment extends ControllerAbstract
 	/**
 	 * validate
 	 *
-	 * @since 3.0.0
+	 * @since 3.3.0
 	 *
 	 * @param array $postArray array of the post
 	 *
 	 * @return array
 	 */
 
-	protected function _validate($postArray = [])
+	protected function _validate(array $postArray = []) : array
 	{
 		$emailValidator = new Validator\Email();
 		$captchaValidator = new Validator\Captcha();
 		$urlValidator = new Validator\Url();
+		$settingModel = new Model\Setting();
 
 		/* validate post */
 
@@ -212,7 +216,7 @@ class Comment extends ControllerAbstract
 		{
 			$messageArray[] = $this->_language->get('input_incorrect');
 		}
-		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
+		if ($settingModel->get('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
 		{
 			$messageArray[] = $this->_language->get('captcha_incorrect');
 		}
@@ -226,37 +230,28 @@ class Comment extends ControllerAbstract
 	 *
 	 * @param array $createArray array of the create
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
-	protected function _create($createArray = [])
+	protected function _create(array $createArray = []) : bool
 	{
-		return Db::forTablePrefix('comments')
-			->create()
-			->set(
-			[
-				'author' => $createArray['author'],
-				'email' => $createArray['email'],
-				'url' => $createArray['url'],
-				'text' => $createArray['text'],
-				'language' => $createArray['language'],
-				'article' => $createArray['article']
-			])
-			->save();
+		$commentModel = new Model\Comment();
+		return $commentModel->createByArray($createArray);
 	}
 
 	/**
 	 * send the mail
 	 *
-	 * @since 3.0.0
+	 * @since 3.3.0
 	 *
 	 * @param array $mailArray array of the mail
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
-	protected function _mail($mailArray = [])
+	protected function _mail(array $mailArray = []) : bool
 	{
+		$settingModel = new Model\Setting();
 		$urlArticle = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $mailArray['route'];
 
 		/* html elements */
@@ -289,7 +284,7 @@ class Comment extends ControllerAbstract
 
 		$toArray =
 		[
-			$this->_language->get('author') => Db::getSetting('email')
+			$this->_language->get('author') => $settingModel->get('email')
 		];
 		$fromArray =
 		[

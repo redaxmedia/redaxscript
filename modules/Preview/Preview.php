@@ -30,7 +30,7 @@ class Preview extends Module\Module
 		'alias' => 'Preview',
 		'author' => 'Redaxmedia',
 		'description' => 'Preview template elements',
-		'version' => '3.2.3'
+		'version' => '3.3.0'
 	];
 
 	/**
@@ -78,7 +78,7 @@ class Preview extends Module\Module
 	 * @return string
 	 */
 
-	public function render()
+	public function render() : string
 	{
 		$output = null;
 		$partialsFilesystem = new Filesystem\File();
@@ -121,7 +121,7 @@ class Preview extends Module\Module
 	 * @return string
 	 */
 
-	protected function _renderPartial($alias = null, $html = null)
+	protected function _renderPartial(string $alias = null, string $html = null) : string
 	{
 		$secondParameter = $this->_registry->get('secondParameter');
 		$parameterRoute = $this->_registry->get('parameterRoute');

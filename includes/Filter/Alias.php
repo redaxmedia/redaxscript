@@ -23,7 +23,7 @@ class Alias implements FilterInterface
 	 * @return string
 	 */
 
-	public function sanitize($alias = null)
+	public function sanitize(string $alias = null) : string
 	{
 		$output = preg_replace('/[^a-zA-Z0-9]/i', ' ', $alias);
 		$output = preg_replace('/\s+/i', '-', trim($output));

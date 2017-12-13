@@ -1,15 +1,10 @@
 /**
-* @tableofcontents
-*
-* 1. icon
-*
-* @since 3.0.0
-*
-* @package Redaxscript
-* @author Henry Ruhs
-*/
+ * @tableofcontents
+ *
+ * 1. icon
+ */
 
-/* @section 1. icon */
+/** @section 1. icon */
 
 @font-face
 {

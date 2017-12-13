@@ -3,18 +3,13 @@
  *
  * 1. maps
  * 2. init
- *
- * @since 2.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
 (function ($, google)
 {
 	'use strict';
 
-	/* @section 1. maps */
+	/** @section 1. maps */
 
 	$.fn.maps = function (options)
 	{
@@ -59,7 +54,7 @@
 				{
 					mapInstance = new google.maps.Map(map.get(0), options.general);
 
-					/* set custom styles */
+					/* set the styles */
 
 					if (options.styles)
 					{
@@ -69,7 +64,7 @@
 						});
 					}
 
-					/* set marker */
+					/* set the marker */
 
 					if (options.marker)
 					{
@@ -84,7 +79,7 @@
 		});
 	};
 
-	/* @section 2. init */
+	/** @section 2. init */
 
 	$(function ()
 	{

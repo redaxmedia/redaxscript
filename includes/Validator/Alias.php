@@ -53,9 +53,9 @@ class Alias implements ValidatorInterface
 	 * @since 2.2.0
 	 *
 	 * @param string $alias alias for routes and users
-	 * @param integer $mode switch between general and default validation
+	 * @param int $mode switch between general and default validation
 	 *
-	 * @return integer
+	 * @return int
 	 */
 
 	public function validate($alias = null, $mode = 0)

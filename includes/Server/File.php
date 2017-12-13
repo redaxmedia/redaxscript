@@ -21,7 +21,7 @@ class File extends ServerAbstract
 	 * @return string
 	 */
 
-	public function getOutput()
+	public function getOutput() : string
 	{
 		$output = basename($this->_request->getServer('SCRIPT_NAME'));
 		return $output;

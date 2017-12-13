@@ -7,14 +7,9 @@
  *    3.1 medium max
  *    3.2 medium min
  *    3.3 print
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. general */
+/** @section 1. general */
 
 .rs-body
 {
@@ -30,7 +25,7 @@
 	min-height: 20em;
 }
 
-/* @section 2. wrapper */
+/** @section 2. wrapper */
 
 .rs-wrapper
 {
@@ -44,9 +39,9 @@
 	padding: 1.5em 0;
 }
 
-/* @section 3. query */
+/** @section 3. query */
 
-/* @section 3.1 medium max */
+/** @section 3.1 medium max */
 
 @media (--media-medium-max)
 {
@@ -56,7 +51,7 @@
 	}
 }
 
-/* @section 3.2 medium min */
+/** @section 3.2 medium min */
 
 @media (--media-medium-min)
 {
@@ -84,7 +79,7 @@
 	}
 }
 
-/* @section 3.3 print */
+/** @section 3.3 print */
 
 @media print
 {

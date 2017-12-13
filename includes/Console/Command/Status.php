@@ -135,7 +135,7 @@ class Status extends CommandAbstract
 	 * @return array
 	 */
 
-	protected function _getStatusArray()
+	protected function _getStatusArray() : array
 	{
 		$driverArray = $this->_registry->get('driverArray');
 		$moduleArray = $this->_registry->get('moduleArray');
@@ -167,7 +167,7 @@ class Status extends CommandAbstract
 			'PHP' =>
 			[
 				'value' => $this->_registry->get('phpVersion'),
-				'status' => version_compare($this->_registry->get('phpVersion'), '5.4', '>') ? 1 : 0
+				'status' => $this->_registry->get('phpStatus') ? 1 : 0
 			],
 			'SESSION' =>
 			[

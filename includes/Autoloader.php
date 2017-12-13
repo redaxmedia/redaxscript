@@ -66,7 +66,7 @@ class Autoloader
 	 * @param string $className name of the class
 	 */
 
-	protected function _load($className = null)
+	protected function _load(string $className = null)
 	{
 		foreach ($this->_autoloadArray as $namespace => $directory)
 		{
@@ -89,7 +89,7 @@ class Autoloader
 	 * @return string
 	 */
 
-	protected function _getFile($className = null, $namespace = null)
+	protected function _getFile(string $className = null, string $namespace = null)
 	{
 		$searchArray =
 		[

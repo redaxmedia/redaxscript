@@ -1,8 +1,8 @@
-module.exports = function (grunt)
+module.exports = grunt =>
 {
 	'use strict';
 
-	var config =
+	const config =
 	{
 		root:
 		{

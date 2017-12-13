@@ -2,6 +2,7 @@
 namespace Redaxscript\Template\Helper;
 
 use Redaxscript\Db;
+use Redaxscript\Model;
 
 /**
  * helper class to provide a robots helper
@@ -41,11 +42,12 @@ class Robots extends HelperAbstract
 
 	public function process()
 	{
+		$settingModel = new Model\Setting();
 		$lastTable = $this->_registry->get('lastTable');
 		$lastId = $this->_registry->get('lastId');
 		$contentError = $this->_registry->get('contentError');
 		$useRobots = $this->_registry->get('useRobots');
-		$settingRobots = Db::getSetting('robots');
+		$settingRobots = $settingModel->get('robots');
 
 		/* find robots */
 

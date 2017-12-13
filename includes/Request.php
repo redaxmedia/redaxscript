@@ -41,14 +41,14 @@ class Request extends Singleton
 	}
 
 	/**
-	 * get item from globals
+	 * get the value from globals
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param string $key key of the item
 	 * @param string $index index of the array
 	 *
-	 * @return string|array|boolean
+	 * @return string|array|bool
 	 */
 
 	public function get($key = null, $index = null)
@@ -78,13 +78,13 @@ class Request extends Singleton
 	}
 
 	/**
-	 * get item from server
+	 * get the value from server
 	 *
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string|boolean
+	 * @return string|bool
 	 */
 
 	public function getServer($key = null)
@@ -93,13 +93,13 @@ class Request extends Singleton
 	}
 
 	/**
-	 * get item from query
+	 * get the value from query
 	 *
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string|array|boolean
+	 * @return string|array|bool
 	 */
 
 	public function getQuery($key = null)
@@ -108,13 +108,13 @@ class Request extends Singleton
 	}
 
 	/**
-	 * get item from post
+	 * get the value from post
 	 *
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string|array|boolean
+	 * @return string|array|bool
 	 */
 
 	public function getPost($key = null)
@@ -123,13 +123,13 @@ class Request extends Singleton
 	}
 
 	/**
-	 * get item from files
+	 * get the value from files
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string|boolean
+	 * @return string|bool
 	 */
 
 	public function getFiles($key = null)
@@ -138,13 +138,13 @@ class Request extends Singleton
 	}
 
 	/**
-	 * get item from session
+	 * get the value from session
 	 *
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string|array|boolean
+	 * @return string|array|bool
 	 */
 
 	public function getSession($key = null)
@@ -153,13 +153,13 @@ class Request extends Singleton
 	}
 
 	/**
-	 * get item from cookie
+	 * get the value from cookie
 	 *
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string|boolean
+	 * @return string|bool
 	 */
 
 	public function getCookie($key = null)
@@ -168,12 +168,12 @@ class Request extends Singleton
 	}
 
 	/**
-	 * set item to globals
+	 * set the value to globals
 	 *
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
-	 * @param array|boolean $valueArray value of the item
+	 * @param array|bool $valueArray value of the item
 	 */
 
 	public function set($key = null, $valueArray = [])
@@ -182,12 +182,12 @@ class Request extends Singleton
 	}
 
 	/**
-	 * set item to server
+	 * set the value to server
 	 *
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
-	 * @param string|boolean $value value of the item
+	 * @param string|bool $value value of the item
 	 */
 
 	public function setServer($key = null, $value = null)
@@ -196,12 +196,12 @@ class Request extends Singleton
 	}
 
 	/**
-	 * set item to query
+	 * set the value to query
 	 *
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
-	 * @param string|array|boolean $value value of the item
+	 * @param string|array|bool $value value of the item
 	 */
 
 	public function setQuery($key = null, $value = null)
@@ -210,12 +210,12 @@ class Request extends Singleton
 	}
 
 	/**
-	 * set item to post
+	 * set the value to post
 	 *
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
-	 * @param string|array|boolean $value value of the item
+	 * @param string|array|bool $value value of the item
 	 */
 
 	public function setPost($key = null, $value = null)
@@ -224,12 +224,12 @@ class Request extends Singleton
 	}
 
 	/**
-	 * set item to files
+	 * set the value to files
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param string $key key of the item
-	 * @param string|boolean $value value of the item
+	 * @param string|bool $value value of the item
 	 */
 
 	public function setFiles($key = null, $value = null)
@@ -238,12 +238,12 @@ class Request extends Singleton
 	}
 
 	/**
-	 * set item to session
+	 * set the value to session
 	 *
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
-	 * @param string|array|boolean $value value of the item
+	 * @param string|array|bool $value value of the item
 	 */
 
 	public function setSession($key = null, $value = null)
@@ -252,12 +252,12 @@ class Request extends Singleton
 	}
 
 	/**
-	 * set item to cookie
+	 * set the value to cookie
 	 *
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
-	 * @param string|boolean $value value of the item
+	 * @param string|bool $value value of the item
 	 */
 
 	public function setCookie($key = null, $value = null)

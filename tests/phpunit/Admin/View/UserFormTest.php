@@ -68,7 +68,7 @@ class UserFormTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerRender()
+	public function providerRender() : array
 	{
 		return $this->getProvider('tests/provider/Admin/View/user_form_render.json');
 	}
@@ -79,13 +79,13 @@ class UserFormTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $registryArray
-	 * @param integer $userId
+	 * @param int $userId
 	 * @param array $expectArray
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($registryArray = [], $userId = null, $expectArray = [])
+	public function testRender(array $registryArray = [], int $userId = null, array $expectArray = [])
 	{
 		/* setup */
 

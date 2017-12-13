@@ -35,7 +35,7 @@ class ParserTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerGetArgument()
+	public function providerGetArgument() : array
 	{
 		return $this->getProvider('tests/provider/Console/parser_get_argument.json');
 	}
@@ -48,7 +48,7 @@ class ParserTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerGetOption()
+	public function providerGetOption() : array
 	{
 		return $this->getProvider('tests/provider/Console/parser_get_option.json');
 	}
@@ -104,7 +104,7 @@ class ParserTest extends TestCaseAbstract
 	 * @dataProvider providerGetArgument
 	 */
 
-	public function testGetArgument($argumentArray = [], $expectArray = [])
+	public function testGetArgument($argumentArray = [], array $expectArray = [])
 	{
 		/* setup */
 
@@ -176,7 +176,7 @@ class ParserTest extends TestCaseAbstract
 	 * @dataProvider providerGetOption
 	 */
 
-	public function testGetOption($argumentArray = [], $expectArray = [])
+	public function testGetOption($argumentArray = [], array $expectArray = [])
 	{
 		/* setup */
 

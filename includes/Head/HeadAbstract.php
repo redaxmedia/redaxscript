@@ -39,7 +39,7 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	 * @return string
 	 */
 
-	public function __toString()
+	public function __toString() : string
 	{
 		$render = $this->render();
 		if ($render)
@@ -59,7 +59,7 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	 * @return $this
 	 */
 
-	public function init($namespace = null)
+	public function init(string $namespace = null)
 	{
 		self::$_namespace = get_called_class();
 		if ($namespace)
@@ -74,13 +74,13 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string|array $attribute name or set of attributes
+	 * @param string|array $attribute key or array of attributes
 	 * @param string $value value of the attribute
 	 *
 	 * @return $this
 	 */
 
-	public function append($attribute = null, $value = null)
+	public function append($attribute = null, string $value = null)
 	{
 		$collectionArray = $this->_getCollectionArray();
 		if (is_array($attribute))
@@ -103,13 +103,13 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string|array $attribute name or set of attributes
+	 * @param string|array $attribute key or array of attributes
 	 * @param string $value value of the attribute
 	 *
 	 * @return $this
 	 */
 
-	public function prepend($attribute = null, $value = null)
+	public function prepend($attribute = null, string $value = null)
 	{
 		$collectionArray = $this->_getCollectionArray();
 		if (is_array($attribute))
@@ -138,7 +138,7 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	 * @return $this
 	 */
 
-	public function remove($attribute = null, $value = null)
+	public function remove(string $attribute = null, string $value = null)
 	{
 		$collectionArray = $this->_getCollectionArray();
 		if (is_array($collectionArray))
@@ -177,7 +177,7 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	 * @return array
 	 */
 
-	protected function _getCollectionArray()
+	protected function _getCollectionArray() : array
 	{
 		$collectionArray = self::$_collectionArray[self::$_namespace];
 		return is_array($collectionArray) ? $collectionArray : [];

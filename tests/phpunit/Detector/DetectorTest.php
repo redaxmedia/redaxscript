@@ -77,7 +77,7 @@ class DetectorTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerLanguage()
+	public function providerLanguage() : array
 	{
 		return $this->getProvider('tests/provider/Detector/language.json');
 	}
@@ -90,7 +90,7 @@ class DetectorTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerTemplate()
+	public function providerTemplate() : array
 	{
 		return $this->getProvider('tests/provider/Detector/template.json');
 	}
@@ -110,7 +110,7 @@ class DetectorTest extends TestCaseAbstract
 	 * @dataProvider providerLanguage
 	 */
 
-	public function testLanguage($registryArray = [], $queryArray = [], $sessionArray = [], $serverArray = [], $settingArray = [], $expect = null)
+	public function testLanguage(array $registryArray = [], array $queryArray = [], array $sessionArray = [], array $serverArray = [], array $settingArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -118,7 +118,8 @@ class DetectorTest extends TestCaseAbstract
 		$this->_request->set('get', $queryArray);
 		$this->_request->set('session', $sessionArray);
 		$this->_request->set('server', $serverArray);
-		Db::setSetting('language', $settingArray['language']);
+		$setting = $this->settingFactory();
+		$setting->set('language', $settingArray['language']);
 		$detector = new Detector\Language($this->_registry, $this->_request);
 
 		/* actual */
@@ -144,14 +145,15 @@ class DetectorTest extends TestCaseAbstract
 	 * @dataProvider providerTemplate
 	 */
 
-	public function testTemplate($registryArray = [], $queryArray = [], $sessionArray = [], $settingArray = [], $expect = null)
+	public function testTemplate(array $registryArray = [], array $queryArray = [], array $sessionArray = [], array $settingArray = [], string $expect = null)
 	{
 		/* setup */
 
 		$this->_registry->init($registryArray);
 		$this->_request->set('get', $queryArray);
 		$this->_request->set('session', $sessionArray);
-		Db::setSetting('template', $settingArray['template']);
+		$setting = $this->settingFactory();
+		$setting->set('template', $settingArray['template']);
 		$detector = new Detector\Template($this->_registry, $this->_request);
 
 		/* actual */

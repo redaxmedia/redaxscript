@@ -26,7 +26,7 @@ class CacheTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerCache()
+	public function providerCache() : array
 	{
 		return $this->getProvider('tests/provider/Bootstrap/cache.json');
 	}
@@ -38,12 +38,12 @@ class CacheTest extends TestCaseAbstract
 	 *
 	 * @param array $registryArray
 	 * @param array $queryArray
-	 * @param boolean $expect
+	 * @param bool $expect
 	 *
 	 * @dataProvider providerCache
 	 */
 
-	public function testCache($registryArray = [], $queryArray = [], $expect = null)
+	public function testCache(array $registryArray = [], array $queryArray = [], bool $expect = null)
 	{
 		/* setup */
 

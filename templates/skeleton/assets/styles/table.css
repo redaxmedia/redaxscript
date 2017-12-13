@@ -3,21 +3,16 @@
  *
  * 1. table default
  * 2. wrapper table
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. table default */
+/** @section 1. table default */
 
 .rs-table-default
 {
 	@extend %table-default;
 }
 
-/* @section 2. wrapper table */
+/** @section 2. wrapper table */
 
 .rs-wrapper-table
 {

@@ -46,7 +46,7 @@ class Base implements HeadInterface
 	 * @return string
 	 */
 
-	public function __toString()
+	public function __toString() : string
 	{
 		return $this->render();
 	}
@@ -59,7 +59,7 @@ class Base implements HeadInterface
 	 * @return string
 	 */
 
-	public function render()
+	public function render() : string
 	{
 		$titleElement = new Html\Element();
 		$titleElement->init('base',

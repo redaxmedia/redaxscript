@@ -54,13 +54,13 @@ class Config extends Singleton
 	}
 
 	/**
-	 * get item from config
+	 * get the value from config
 	 *
 	 * @since 2.2.0
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string|array|boolean
+	 * @return string|array|bool
 	 */
 
 	public function get($key = null)
@@ -77,7 +77,7 @@ class Config extends Singleton
 	}
 
 	/**
-	 * set item to config
+	 * set the value to config
 	 *
 	 * @since 2.2.0
 	 *
@@ -114,7 +114,7 @@ class Config extends Singleton
 	 *
 	 * @since 2.4.0
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
 	public function write()

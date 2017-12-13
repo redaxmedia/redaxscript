@@ -1,0 +1,17 @@
+[
+	[
+		{},
+		{},
+		"<ul class=\"rs-list-comments\"><li><a href=\"article-one#comment-1\">Comment One: Comment One</a></li><li><a href=\"article-one#comment-2\">Comment Two: Comment Two</a></li><li><a href=\"article-one#comment-3\">Comment Three: Comment Three</a></li></ul>"
+	],
+	[
+		{},
+		{
+			"className":
+			{
+				"list": "rs-list-sidebar"
+			}
+		},
+		"<ul class=\"rs-list-sidebar\"><li><a href=\"article-one#comment-1\">Comment One: Comment One</a></li><li><a href=\"article-one#comment-2\">Comment Two: Comment Two</a></li><li><a href=\"article-one#comment-3\">Comment Three: Comment Three</a></li></ul>"
+	]
+]

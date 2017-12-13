@@ -62,7 +62,7 @@ class StatusTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerStatus()
+	public function providerStatus() : array
 	{
 		return $this->getProvider('tests/provider/Bootstrap/status.json');
 	}
@@ -72,14 +72,14 @@ class StatusTest extends TestCaseAbstract
 	 *
 	 * @since 3.1.0
 	 *
-	 * @param integer $userId
+	 * @param int $userId
 	 * @param array $registryArray
 	 * @param array $expectArray
 	 *
 	 * @dataProvider providerStatus
 	 */
 
-	public function testStatus($userId = null, $registryArray = [], $expectArray = [])
+	public function testStatus(int $userId = null, array $registryArray = [], array $expectArray = [])
 	{
 		/* setup */
 

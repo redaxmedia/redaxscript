@@ -143,9 +143,11 @@ class Mailer
 
 	protected function _createSubjectString()
 	{
+		$settingModel = new Model\Setting();
+
 		/* collect subject string */
 
-		$subject = Db::getSetting('subject');
+		$subject = $settingModel->get('subject');
 
 		/* extended subject string */
 
@@ -154,7 +156,7 @@ class Mailer
 			$this->_subjectString = $subject;
 			if ($this->_subject)
 			{
-				$this->_subjectString .= Db::getSetting('divider');
+				$this->_subjectString .= $settingModel->get('divider');
 			}
 		}
 		$this->_subjectString .= $this->_subject;
@@ -179,6 +181,8 @@ class Mailer
 
 	protected function _createHeaderString()
 	{
+		$settingModel = new Model\Setting();
+
 		/* collect header string */
 
 		$this->_headerString = 'MIME-Version: 1.0' . PHP_EOL;
@@ -200,7 +204,7 @@ class Mailer
 
 					if ($this->_bodyString)
 					{
-						$this->_headerString .= 'Content-Type: text/html; charset=' . Db::getSetting('charset') . PHP_EOL;
+						$this->_headerString .= 'Content-Type: text/html; charset=' . $settingModel->get('charset') . PHP_EOL;
 						$this->_headerString .= 'Content-Transfer-Encoding: 8bit' . PHP_EOL;
 						$this->_headerString .= $this->_bodyString . PHP_EOL;
 						$this->_headerString .= '--' . $boundary . PHP_EOL;
@@ -219,10 +223,10 @@ class Mailer
 		}
 		else
 		{
-			$this->_headerString .= 'Content-Type: text/html; charset=' . Db::getSetting('charset') . PHP_EOL;
+			$this->_headerString .= 'Content-Type: text/html; charset=' . $settingModel->get('charset') . PHP_EOL;
 		}
 
-		/* collect from output */
+		/* collect header string */
 
 		$this->_headerString .= 'From: ' . $this->_fromString . PHP_EOL;
 		$this->_headerString .= 'Reply-To: ' . $this->_fromString . PHP_EOL;
@@ -234,7 +238,7 @@ class Mailer
 	 *
 	 * @since 2.6.2
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
 	public function send()

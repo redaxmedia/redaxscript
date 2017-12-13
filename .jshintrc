@@ -4,6 +4,7 @@
 	"curly": true,
 	"eqeqeq": true,
 	"eqnull": true,
+	"esversion": 6,
 	"latedef": true,
 	"loopfunc": true,
 	"maxdepth": 5,

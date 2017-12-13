@@ -4,14 +4,9 @@
  * 1. footer
  * 2. query
  *    2.1 small max
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. footer */
+/** @section 1. footer */
 
 .rs-footer
 {
@@ -48,9 +43,9 @@
 	}
 }
 
-/* @section 2. query */
+/** @section 2. query */
 
-/* @section 2.1 small max */
+/** @section 2.1 small max */
 
 @media (--media-small-max)
 {

@@ -79,7 +79,7 @@ class Backup extends CommandAbstract
 	 * @return string
 	 */
 
-	protected function _database($optionArray = [])
+	protected function _database(array $optionArray = [])
 	{
 		$dbType = $this->_config->get('dbType');
 		$dbHost = $this->_config->get('dbHost');

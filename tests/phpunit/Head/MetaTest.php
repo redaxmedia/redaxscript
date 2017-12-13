@@ -25,7 +25,7 @@ class MetaTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerAppend()
+	public function providerAppend() : array
 	{
 		return $this->getProvider('tests/provider/Head/meta_append.json');
 	}
@@ -38,7 +38,7 @@ class MetaTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerPrepend()
+	public function providerPrepend() : array
 	{
 		return $this->getProvider('tests/provider/Head/meta_prepend.json');
 	}
@@ -54,7 +54,7 @@ class MetaTest extends TestCaseAbstract
 	 * @dataProvider providerAppend
 	 */
 
-	public function testAppend($metaArray = [], $expect = null)
+	public function testAppend(array $metaArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -88,7 +88,7 @@ class MetaTest extends TestCaseAbstract
 	 * @dataProvider providerPrepend
 	 */
 
-	public function testPrepend($metaArray = [], $expect = null)
+	public function testPrepend(array $metaArray = [], string $expect = null)
 	{
 		/* setup */
 

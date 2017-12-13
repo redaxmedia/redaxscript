@@ -23,7 +23,7 @@ class Url implements FilterInterface
 	 * @return string
 	 */
 
-	public function sanitize($url = null)
+	public function sanitize(string $url = null) : string
 	{
 		return filter_var(strtolower($url), FILTER_SANITIZE_URL);
 	}

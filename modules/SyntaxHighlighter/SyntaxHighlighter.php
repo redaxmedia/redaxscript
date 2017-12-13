@@ -28,7 +28,7 @@ class SyntaxHighlighter extends Module\Module
 		'alias' => 'SyntaxHighlighter',
 		'author' => 'Redaxmedia',
 		'description' => 'JavaScript powered syntax highlighter',
-		'version' => '3.2.3'
+		'version' => '3.3.0'
 	];
 
 	/**
@@ -44,14 +44,14 @@ class SyntaxHighlighter extends Module\Module
 		$link = Head\Link::getInstance();
 		$link
 			->init()
-			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css');
+			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css');
 
 		/* script */
 
 		$script = Head\Script::getInstance();
 		$script
 			->init('foot')
-			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js')
+			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js')
 			->appendFile('modules/SyntaxHighlighter/assets/scripts/init.js')
 			->appendFile('modules/SyntaxHighlighter/dist/scripts/syntax-highlighter.min.js');
 	}

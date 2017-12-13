@@ -2,7 +2,7 @@
 	[
 		{
 			"dbStatus": 0,
-			"phpVersion": "5.0.0",
+			"phpStatus": false,
 			"driverArray": null,
 			"sessionStatus": false
 		},
@@ -16,7 +16,7 @@
 	[
 		{
 			"dbStatus": 2,
-			"phpVersion": "5.5.0",
+			"phpStatus": true,
 			"driverArray":
 			[
 				"mssql",

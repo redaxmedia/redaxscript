@@ -17,11 +17,7 @@ interface FilterInterface
 	 * sanitize the value
 	 *
 	 * @since 2.2.0
-	 *
-	 * @param string $value general value to sanitize
-	 *
-	 * @return string
 	 */
 
-	public function sanitize($value = null);
+	public function sanitize();
 }

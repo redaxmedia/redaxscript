@@ -4,14 +4,9 @@
  * 1. preview
  *    1.1 dialog
  *    1.2 space between
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. preview */
+/** @section 1. preview */
 
 .rs-title-preview
 {
@@ -33,7 +28,7 @@
 	}
 }
 
-/* @section 1.1 dialog */
+/** @section 1.1 dialog */
 
 .rs-is-preview
 {
@@ -51,7 +46,7 @@
 	}
 }
 
-/* @section 1.2 space between */
+/** @section 1.2 space between */
 
 .rs-is-preview
 {

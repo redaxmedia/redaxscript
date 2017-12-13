@@ -4,23 +4,18 @@
  * 1. dialog
  *    1.1 overlay
  *    1.2 component
- *
- * @since 3.2.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. dialog */
+/** @section 1. dialog */
 
-/* @section 1.1 overlay */
+/** @section 1.1 overlay */
 
 .rs-overlay-dialog
 {
 	@extend %overlay-dialog;
 }
 
-/* @section 1.2 component */
+/** @section 1.2 component */
 
 .rs-component-dialog
 {

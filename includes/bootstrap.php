@@ -9,19 +9,15 @@ include_once('includes' . DIRECTORY_SEPARATOR . 'Autoloader.php');
 include_once('includes' . DIRECTORY_SEPARATOR . 'admin_admin.php');
 include_once('includes' . DIRECTORY_SEPARATOR . 'admin_list.php');
 include_once('includes' . DIRECTORY_SEPARATOR . 'admin_query.php');
-include_once('includes' . DIRECTORY_SEPARATOR . 'admin_router.php');
 include_once('includes' . DIRECTORY_SEPARATOR . 'comments.php');
 include_once('includes' . DIRECTORY_SEPARATOR . 'contents.php');
-include_once('includes' . DIRECTORY_SEPARATOR . 'navigation.php');
-include_once('includes' . DIRECTORY_SEPARATOR . 'query.php');
-include_once('includes' . DIRECTORY_SEPARATOR . 'router.php');
 
 /* autoload */
 
 $autoloader = new Autoloader();
 $autoloader->init();
 
-/* get instance */
+/* get the instance */
 
 $registry = Registry::getInstance();
 $request = Request::getInstance();
@@ -58,9 +54,21 @@ $language->init($registry->get('language'));
 
 /* module hook */
 
-if ($registry->get('dbStatus') === 2)
+if ($registry->get('dbStatus') > 1)
 {
 	Module\Hook::construct($registry, $request, $language, $config);
 	Module\Hook::init();
 	Module\Hook::trigger('init');
 }
+
+/* router */
+
+if ($registry->get('token') === $registry->get('loggedIn'))
+{
+	$adminRouter = new Admin\Router\Router($registry, $request, $language, $config);
+	$adminRouter->init();
+	$adminRouter->routeHeader();
+}
+$router = new Router\Router($registry, $request, $language, $config);
+$router->init();
+$router->routeHeader();

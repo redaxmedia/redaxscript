@@ -4,14 +4,9 @@
  * 1. box feed reader
  * 2. title feed reader
  * 3. space between elements
- *
- * @since 2.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. box feed reader */
+/** @section 1. box feed reader */
 
 .rs-box-feed-reader
 {
@@ -25,7 +20,7 @@
 	text-decoration: underline;
 }
 
-/* @section 2. title feed reader */
+/** @section 2. title feed reader */
 
 .rs-title-feed-reader
 {
@@ -47,7 +42,7 @@
 	float: right;
 }
 
-/* @section 3. space between elements */
+/** @section 3. space between elements */
 
 .rs-box-feed-reader + .rs-title-feed-reader
 {

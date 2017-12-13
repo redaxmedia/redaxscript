@@ -27,7 +27,7 @@ class Validator extends Config
 		'alias' => 'Validator',
 		'author' => 'Redaxmedia',
 		'description' => 'HTML validator for developers',
-		'version' => '3.2.3',
+		'version' => '3.3.0',
 		'access' => '1'
 	];
 
@@ -36,7 +36,7 @@ class Validator extends Config
 	 *
 	 * @since 3.0.1
 	 *
-	 * @return array
+	 * @return array|bool
 	 */
 
 	public function adminPanelNotification()

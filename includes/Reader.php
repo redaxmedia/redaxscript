@@ -18,7 +18,7 @@ class Reader
 	/**
 	 * data object
 	 *
-	 * @var object
+	 * @var SimpleXMLElement
 	 */
 
 	protected $_dataObject;
@@ -28,7 +28,7 @@ class Reader
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return object
+	 * @return SimpleXMLElement
 	 */
 
 	public function getObject()
@@ -44,9 +44,9 @@ class Reader
 	 * @return array
 	 */
 
-	public function getArray()
+	public function getArray() : array
 	{
-		return json_decode(json_encode($this->_dataObject), true);
+		return json_decode(json_encode($this->_dataObject ? $this->_dataObject : []), true);
 	}
 
 	/**
@@ -57,7 +57,7 @@ class Reader
 	 * @return string
 	 */
 
-	public function getJSON()
+	public function getJSON() : string
 	{
 		return json_encode($this->_dataObject);
 	}
@@ -70,7 +70,7 @@ class Reader
 	 * @return string
 	 */
 
-	public function getXML()
+	public function getXML() : string
 	{
 		if (method_exists($this->getObject(), 'asXML'))
 		{
@@ -86,10 +86,10 @@ class Reader
 	 *
 	 * @param string $url
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function loadJSON($url = null)
+	public function loadJSON(string $url = null) : self
 	{
 		$content = $this->load($url);
 		$this->_dataObject = json_decode($content);
@@ -103,10 +103,10 @@ class Reader
 	 *
 	 * @param string $url
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function loadXML($url = null)
+	public function loadXML(string $url = null) : self
 	{
 		$content = $this->load($url);
 		$this->_dataObject = simplexml_load_string($content);
@@ -123,7 +123,7 @@ class Reader
 	 * @return string
 	 */
 
-	public function load($url = null)
+	public function load(string $url = null) : string
 	{
 		/* curl */
 
@@ -160,12 +160,12 @@ class Reader
 	 * @since 3.1.0
 	 *
 	 * @param array $dataArray
-	 * @param object $dataObject
+	 * @param SimpleXMLElement $dataObject
 	 *
-	 * @return object
+	 * @return SimpleXMLElement
 	 */
 
-	protected function _convertArrayToObject($dataArray = [], $dataObject = null)
+	protected function _convertArrayToObject(array $dataArray = [], $dataObject = null)
 	{
 		if (!is_object($dataObject))
 		{

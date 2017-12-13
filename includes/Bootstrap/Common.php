@@ -33,7 +33,7 @@ class Common extends BootstrapAbstract
 	}
 
 	/**
-	 * set server
+	 * set the server
 	 *
 	 * @since 3.1.0
 	 */
@@ -45,7 +45,7 @@ class Common extends BootstrapAbstract
 		$host = new Server\Host($this->_request);
 		$token = new Server\Token($this->_request);
 
-		/* set registry */
+		/* set the registry */
 
 		$this->_registry->set('file', $file->getOutput());
 		$this->_registry->set('root', $root->getOutput());
@@ -54,7 +54,7 @@ class Common extends BootstrapAbstract
 	}
 
 	/**
-	 * set client
+	 * set the client
 	 *
 	 * @since 3.1.0
 	 */
@@ -68,7 +68,7 @@ class Common extends BootstrapAbstract
 		$tablet = new Client\Tablet($this->_request);
 		$desktop = new Client\Desktop($this->_request);
 
-		/* set registry */
+		/* set the registry */
 
 		$this->_registry->set('myBrowser', $browser->getOutput());
 		$this->_registry->set('myBrowserVersion', $version->getOutput());
@@ -79,7 +79,7 @@ class Common extends BootstrapAbstract
 	}
 
 	/**
-	 * set driver
+	 * set the driver
 	 *
 	 * @since 3.1.0
 	 */
@@ -102,7 +102,7 @@ class Common extends BootstrapAbstract
 	}
 
 	/**
-	 * set module
+	 * set the module
 	 *
 	 * @since 3.1.0
 	 */
@@ -133,7 +133,7 @@ class Common extends BootstrapAbstract
 	}
 
 	/**
-	 * set php
+	 * set the php
 	 *
 	 * @since 3.2.3
 	 */
@@ -141,6 +141,7 @@ class Common extends BootstrapAbstract
 	protected function _setPhp()
 	{
 		$phpOs = strtolower(php_uname('s'));
+		$phpVersion = phpversion();
 		if (substr($phpOs, 0, 5) === 'linux')
 		{
 			$this->_registry->set('phpOs', 'linux');
@@ -149,6 +150,8 @@ class Common extends BootstrapAbstract
 		{
 			$this->_registry->set('phpOs', 'windows');
 		}
-		$this->_registry->set('phpVersion', phpversion());
+		$this->_registry->set('phpVersion', $phpVersion);
+		$this->_registry->set('phpStatus', version_compare($phpVersion, '7.0', '>='));
+
 	}
 }

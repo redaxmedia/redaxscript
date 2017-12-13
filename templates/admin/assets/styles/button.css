@@ -5,14 +5,9 @@
  * 2. query
  *    2.1 medium max
  *    2.2 medium min
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. button default */
+/** @section 1. button default */
 
 .rs-admin-button-default
 {
@@ -69,9 +64,9 @@
 	margin-bottom: 1em;
 }
 
-/* @section 2. query */
+/** @section 2. query */
 
-/* @section 2.1 medium max */
+/** @section 2.1 medium max */
 
 @media (--media-medium-max)
 {
@@ -81,7 +76,7 @@
 	}
 }
 
-/* @section 2.2 medium min */
+/** @section 2.2 medium min */
 
 @media (--media-medium-min)
 {

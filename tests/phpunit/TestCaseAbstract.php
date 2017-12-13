@@ -6,6 +6,7 @@ use Redaxscript\Config;
 use Redaxscript\Db;
 use Redaxscript\Installer;
 use Redaxscript\Language;
+use Redaxscript\Model;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 use ReflectionClass;
@@ -73,11 +74,26 @@ abstract class TestCaseAbstract extends PHPUnit\Framework\TestCase
 	 * installerFactory
 	 *
 	 * @since 3.1.0
+	 *
+	 * @return Installer
 	 */
 
-	public function installerFactory()
+	public function installerFactory() : Installer
 	{
 		return new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
+	}
+
+	/**
+	 * installerFactory
+	 *
+	 * @since 3.3.0
+	 *
+	 * @return Model\Setting
+	 */
+
+	public function settingFactory() : Model\Setting
+	{
+		return new Model\Setting();
 	}
 
 	/**
@@ -90,7 +106,7 @@ abstract class TestCaseAbstract extends PHPUnit\Framework\TestCase
 	 * @return array
 	 */
 
-	public function getProvider($url = null)
+	public function getProvider(string $url = null) : array
 	{
 		$content = file_get_contents($url);
 		return json_decode($content, true);
@@ -107,7 +123,7 @@ abstract class TestCaseAbstract extends PHPUnit\Framework\TestCase
 	 * @return mixed
 	 */
 
-	public function getProperty($object = null, $property = null)
+	public function getProperty($object = null, string $property = null)
 	{
 		$reflectionObject = new ReflectionClass($object);
 		$reflectionProperty = $reflectionObject->getProperty($property);
@@ -127,7 +143,7 @@ abstract class TestCaseAbstract extends PHPUnit\Framework\TestCase
 	 * @return mixed
 	 */
 
-	public function callMethod($object = null, $method = null, $argumentArray = [])
+	public function callMethod($object = null, string $method = null, array $argumentArray = [])
 	{
 		$reflectionObject = new ReflectionClass($object);
 		$reflectionMethod = $reflectionObject->getMethod($method);
@@ -143,7 +159,7 @@ abstract class TestCaseAbstract extends PHPUnit\Framework\TestCase
 	 * @param string $actual
 	 */
 
-	public function assertString($actual = null)
+	public function assertString(string $actual = null)
 	{
 		$this->assertTrue(is_string($actual));
 	}
@@ -153,10 +169,10 @@ abstract class TestCaseAbstract extends PHPUnit\Framework\TestCase
 	 *
 	 * @since 3.1.0
 	 *
-	 * @param integer $actual
+	 * @param int $actual
 	 */
 
-	public function assertNumber($actual = null)
+	public function assertNumber(int $actual = null)
 	{
 		$this->assertTrue(is_numeric($actual));
 	}
@@ -166,7 +182,7 @@ abstract class TestCaseAbstract extends PHPUnit\Framework\TestCase
 	 *
 	 * @since 3.1.0
 	 *
-	 * @param integer $actual
+	 * @param object $actual
 	 */
 
 	public function assertObject($actual = null)
@@ -184,7 +200,7 @@ abstract class TestCaseAbstract extends PHPUnit\Framework\TestCase
 	 * @return string
 	 */
 
-	public function normalizeSeparator($actual = null)
+	public function normalizeSeparator(string $actual = null) : string
 	{
 		return str_replace(DIRECTORY_SEPARATOR, chr(47), $actual);
 	}
@@ -199,7 +215,7 @@ abstract class TestCaseAbstract extends PHPUnit\Framework\TestCase
 	 * @return string
 	 */
 
-	public function normalizeNewline($actual = null)
+	public function normalizeNewline(string $actual = null) : string
 	{
 		return str_replace(PHP_EOL, chr(10), $actual);
 	}

@@ -9,6 +9,7 @@ use Redaxscript\Installer;
 use Redaxscript\Language;
 use Redaxscript\Mailer;
 use Redaxscript\Messenger;
+use Redaxscript\Model;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 use Redaxscript\Validator;
@@ -59,7 +60,7 @@ class Install extends ControllerAbstract
 	 * @return string
 	 */
 
-	public function process()
+	public function process() : string
 	{
 		$specialFilter = new Filter\Special();
 		$emailFilter = new Filter\Email();
@@ -154,7 +155,7 @@ class Install extends ControllerAbstract
 			$this->_refreshConnection();
 		}
 
-		/* get status */
+		/* get the status */
 
 		if (!$this->_getStatus())
 		{
@@ -203,7 +204,7 @@ class Install extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _success($successArray = [])
+	protected function _success(array $successArray = []) : string
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
@@ -222,7 +223,7 @@ class Install extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _warning($warningArray = [])
+	protected function _warning(array $warningArray = []) : string
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
@@ -241,7 +242,7 @@ class Install extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _error($errorArray = [])
+	protected function _error(array $errorArray = [])  : string
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
@@ -259,7 +260,7 @@ class Install extends ControllerAbstract
 	 * @return array
 	 */
 
-	protected function _validateDatabase($postArray = [])
+	protected function _validateDatabase(array $postArray = []) : array
 	{
 		$messageArray = [];
 		if (!$postArray['dbType'])
@@ -294,7 +295,7 @@ class Install extends ControllerAbstract
 	 * @return array
 	 */
 
-	protected function _validateAccount($postArray = [])
+	protected function _validateAccount(array $postArray = []) : array
 	{
 		$emailValidator = new Validator\Email();
 		$loginValidator = new Validator\Login();
@@ -340,10 +341,10 @@ class Install extends ControllerAbstract
 	 *
 	 * @param array $configArray
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
-	protected function _touch($configArray = [])
+	protected function _touch(array $configArray = []) : bool
 	{
 		if ($configArray['dbType'] === 'sqlite')
 		{
@@ -360,10 +361,10 @@ class Install extends ControllerAbstract
 	 *
 	 * @param array $configArray
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
-	protected function _write($configArray = [])
+	protected function _write(array $configArray = []) : bool
 	{
 		$this->_config->set('dbType', $configArray['dbType']);
 		$this->_config->set('dbHost', $configArray['dbHost']);
@@ -380,10 +381,10 @@ class Install extends ControllerAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return integer
+	 * @return int
 	 */
 
-	protected function _getStatus()
+	protected function _getStatus() : int
 	{
 		return Db::getStatus();
 	}
@@ -407,10 +408,10 @@ class Install extends ControllerAbstract
 	 *
 	 * @param array $installArray
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
-	protected function _install($installArray = [])
+	protected function _install(array $installArray = []) : bool
 	{
 		$adminName = $installArray['adminName'];
 		$adminUser = $installArray['adminUser'];
@@ -441,11 +442,13 @@ class Install extends ControllerAbstract
 	 *
 	 * @param array $mailArray
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
-	protected function _mail($mailArray = [])
+	protected function _mail(array $mailArray = []) : bool
 	{
+		$settingModel = new Model\Setting();
+
 		/* html elements */
 
 		$linkElement = new Html\Element();
@@ -464,7 +467,7 @@ class Install extends ControllerAbstract
 		];
 		$fromArray =
 		[
-			Db::getSetting('author') => Db::getSetting('email')
+			$settingModel->get('author') => $settingModel->get('email')
 		];
 		$subject = $this->_language->get('installation');
 		$bodyArray =

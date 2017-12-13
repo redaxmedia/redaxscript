@@ -16,7 +16,7 @@ use Redaxscript\Reader;
  * @author Henry Ruhs
  */
 
-class CallHome extends Module\Module
+class CallHome extends Module\Notification
 {
 	/**
 	 * array of the module
@@ -30,7 +30,7 @@ class CallHome extends Module\Module
 		'alias' => 'CallHome',
 		'author' => 'Redaxmedia',
 		'description' => 'Provide version and news updates',
-		'version' => '3.2.3'
+		'version' => '3.3.0'
 	];
 
 	/**
@@ -57,7 +57,7 @@ class CallHome extends Module\Module
 	 *
 	 * @since 3.0.1
 	 *
-	 * @return array
+	 * @return array|bool
 	 */
 
 	public function adminPanelNotification()

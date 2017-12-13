@@ -24,7 +24,7 @@ class HtmlTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerHtml()
+	public function providerHtml() : array
 	{
 		return $this->getProvider('tests/provider/Html/html_html.json');
 	}
@@ -37,7 +37,7 @@ class HtmlTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerAppend()
+	public function providerAppend() : array
 	{
 		return $this->getProvider('tests/provider/Html/html_append.json');
 	}
@@ -50,7 +50,7 @@ class HtmlTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerPrepend()
+	public function providerPrepend() : array
 	{
 		return $this->getProvider('tests/provider/Html/html_prepend.json');
 	}
@@ -66,7 +66,7 @@ class HtmlTest extends TestCaseAbstract
 	 * @dataProvider providerHtml
 	 */
 
-	public function testHtml($html = null, $expect = null)
+	public function testHtml(string $html = null, string $expect = null)
 	{
 		/* setup */
 
@@ -94,7 +94,7 @@ class HtmlTest extends TestCaseAbstract
 	 * @dataProvider providerAppend
 	 */
 
-	public function testAppend($html = null, $append = null, $expect = null)
+	public function testAppend(string $html = null, string $append = null, string $expect = null)
 	{
 		/* setup */
 
@@ -122,7 +122,7 @@ class HtmlTest extends TestCaseAbstract
 	 * @dataProvider providerPrepend
 	 */
 
-	public function testPrepend($html = null, $prepend = null, $expect = null)
+	public function testPrepend(string $html = null, string $prepend = null, string $expect = null)
 	{
 		/* setup */
 

@@ -2,20 +2,15 @@
  * @tableofcontents
  *
  * 1. accordion
- * 3. tab
- * 4. init
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
+ * 2. tab
+ * 3. init
  */
 
 (function ($)
 {
 	'use strict';
 
-	/* @section 1. accordion */
+	/** @section 1. accordion */
 
 	$.fn.accordion = function (options)
 	{
@@ -71,7 +66,7 @@
 		});
 	};
 
-	/* @section 3. tab */
+	/** @section 2. tab */
 
 	$.fn.tab = function (options)
 	{
@@ -122,7 +117,7 @@
 		});
 	};
 
-	/* @section 4. init */
+	/** @section 3. init */
 
 	$(function ()
 	{

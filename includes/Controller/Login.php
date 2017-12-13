@@ -5,6 +5,7 @@ use Redaxscript\Auth;
 use Redaxscript\Db;
 use Redaxscript\Filter;
 use Redaxscript\Messenger;
+use Redaxscript\Model;
 use Redaxscript\Validator;
 
 /**
@@ -28,7 +29,7 @@ class Login extends ControllerAbstract
 	 * @return string
 	 */
 
-	public function process()
+	public function process() : string
 	{
 		$specialFilter = new Filter\Special();
 		$emailFilter = new Filter\Email();
@@ -90,7 +91,7 @@ class Login extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _success()
+	protected function _success() : string
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
@@ -109,7 +110,7 @@ class Login extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _error($errorArray = [])
+	protected function _error(array $errorArray = []) : string
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
@@ -128,10 +129,11 @@ class Login extends ControllerAbstract
 	 * @return array
 	 */
 
-	protected function _validate($postArray = [], $user = null)
+	protected function _validate(array $postArray = [], $user = null) : array
 	{
 		$passwordValidator = new Validator\Password();
 		$captchaValidator = new Validator\Captcha();
+		$settingModel = new Model\Setting();
 
 		/* validate post */
 
@@ -152,7 +154,7 @@ class Login extends ControllerAbstract
 		{
 			$messageArray[] = $this->_language->get('password_incorrect');
 		}
-		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
+		if ($settingModel->get('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
 		{
 			$messageArray[] = $this->_language->get('captcha_incorrect');
 		}
@@ -162,14 +164,14 @@ class Login extends ControllerAbstract
 	/**
 	 * login the user
 	 *
-	 * @param integer $userId identifier of the user
+	 *  @since 3.0.0
 	 *
-	 * @since 3.0.0
+	 * @param int $userId identifier of the user
 	 *
-	 * @return integer
+	 * @return int
 	 */
 
-	protected function _login($userId = null)
+	protected function _login(int $userId = null) : int
 	{
 		$auth = new Auth($this->_request);
 		return $auth->login($userId);

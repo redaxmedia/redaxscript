@@ -46,7 +46,7 @@ class Option
 	 * @return array
 	 */
 
-	public function getToggleArray()
+	public function getToggleArray() : array
 	{
 		return
 		[
@@ -63,7 +63,7 @@ class Option
 	 * @return array
 	 */
 
-	public function getVisibleArray()
+	public function getVisibleArray() : array
 	{
 		return
 		[
@@ -80,7 +80,7 @@ class Option
 	 * @return array
 	 */
 
-	public function getRobotArray()
+	public function getRobotArray() : array
 	{
 		return
 		[
@@ -102,7 +102,7 @@ class Option
 	 * @return array
 	 */
 
-	public function getTimeArray()
+	public function getTimeArray() : array
 	{
 		return
 		[
@@ -119,7 +119,7 @@ class Option
 	 * @return array
 	 */
 
-	public function getDateArray()
+	public function getDateArray() : array
 	{
 		return
 		[
@@ -137,7 +137,7 @@ class Option
 	 * @return array
 	 */
 
-	public function getOrderArray()
+	public function getOrderArray() : array
 	{
 		return
 		[
@@ -154,7 +154,7 @@ class Option
 	 * @return array
 	 */
 
-	public function getCaptchaArray()
+	public function getCaptchaArray() : array
 	{
 		return
 		[
@@ -175,7 +175,7 @@ class Option
 	 * @return array
 	 */
 
-	public function getPermissionArray($table = null)
+	public function getPermissionArray($table = null) : array
 	{
 		if ($table === 'modules')
 		{
@@ -210,7 +210,7 @@ class Option
 	 * @return array
 	 */
 
-	public function getLanguageArray()
+	public function getLanguageArray() : array
 	{
 		$languageFilesystem = new Filesystem\Filesystem();
 		$languageFilesystem->init('languages');
@@ -238,7 +238,7 @@ class Option
 	 * @return array
 	 */
 
-	public function getTemplateArray()
+	public function getTemplateArray() : array
 	{
 		$templateFilesystem = new Filesystem\Filesystem();
 		$templateFilesystem->init('templates', false,
@@ -273,7 +273,7 @@ class Option
 	 * @return array
 	 */
 
-	public function getContentArray($table = null, $excludeArray = [])
+	public function getContentArray($table = null, $excludeArray = []) : array
 	{
 		$query = Db::forTablePrefix($table);
 		if ($excludeArray)
@@ -306,7 +306,7 @@ class Option
 	 * @return array
 	 */
 
-	public function getAccessArray($table = null)
+	public function getAccessArray($table = null) : array
 	{
 		$access = Db::forTablePrefix($table)->orderByAsc('name')->findMany();
 		$accessArray = [];

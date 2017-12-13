@@ -33,7 +33,7 @@ class Search implements ValidatorInterface
 	 * @param string $search search term
 	 * @param string $placeholder search placeholder
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
 	public function validate($search = null, $placeholder = null)

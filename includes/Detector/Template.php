@@ -2,6 +2,7 @@
 namespace Redaxscript\Detector;
 
 use Redaxscript\Db;
+use Redaxscript\Model;
 
 /**
  * children class to detect the required template
@@ -23,6 +24,7 @@ class Template extends DetectorAbstract
 
 	protected function _autorun()
 	{
+		$settingModel = new Model\Setting();
 		$dbStatus = $this->_registry->get('dbStatus');
 		$lastTable = $this->_registry->get('lastTable');
 		$lastId = $this->_registry->get('lastId');
@@ -34,7 +36,7 @@ class Template extends DetectorAbstract
 			'query' => $this->_request->getQuery('t'),
 			'session' => $this->_request->getSession('template'),
 			'contents' => $lastTable ? Db::forTablePrefix($lastTable)->whereIdIs($lastId)->findOne()->template : null,
-			'settings' => $dbStatus === 2 ? Db::getSetting('template') : null,
+			'settings' => $dbStatus === 2 ? $settingModel->get('template') : null,
 			'fallback' => 'default'
 		], 'template', 'templates' . DIRECTORY_SEPARATOR . $this->_filePlaceholder . DIRECTORY_SEPARATOR . 'index.phtml');
 	}

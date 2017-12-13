@@ -49,7 +49,8 @@ class ResetTest extends TestCaseAbstract
 			->findOne()
 			->set('password', 'test')
 			->save();
-		Db::setSetting('captcha', 1);
+		$setting = $this->settingFactory();
+		$setting->set('captcha', 1);
 	}
 
 	/**
@@ -73,7 +74,7 @@ class ResetTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerProcess()
+	public function providerProcess() : array
 	{
 		return $this->getProvider('tests/provider/Controller/reset_process.json');
 	}
@@ -86,7 +87,7 @@ class ResetTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerProcessFailure()
+	public function providerProcessFailure() : array
 	{
 		return $this->getProvider('tests/provider/Controller/reset_process_failure.json');
 	}
@@ -103,7 +104,7 @@ class ResetTest extends TestCaseAbstract
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($postArray = [], $hashArray = [], $expect = null)
+	public function testProcess(array $postArray = [], array $hashArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -133,7 +134,7 @@ class ResetTest extends TestCaseAbstract
 	 * @dataProvider providerProcessFailure
 	 */
 
-	public function testProcessFailure($postArray = [], $hashArray = [], $method = null, $expect = null)
+	public function testProcessFailure(array $postArray = [], array $hashArray = [], string $method = null, string $expect = null)
 	{
 		/* setup */
 

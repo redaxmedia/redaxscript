@@ -1,1 +1,21 @@
-@import 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.3/skins/lightgray/skin.min.css';
+/**
+ * @tableofcontents
+ *
+ * 1. tinymce
+ */
+
+/** @section 1. tinymce */
+
+.mce-fullscreen
+{
+	z-index: 2000;
+}
+
+.mce-tinymce,
+.mce-window,
+.mce-top-part:before,
+.mce-floatpanel,
+.mce-floatpanel.mce-popover
+{
+	box-shadow: none;
+}

@@ -5,6 +5,7 @@ use Redaxscript\Config;
 use Redaxscript\Db;
 use Redaxscript\Installer;
 use Redaxscript\Language;
+use Redaxscript\Model;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 
@@ -65,14 +66,6 @@ class Module
 	];
 
 	/**
-	 * array of the notification
-	 *
-	 * @var array
-	 */
-
-	protected static $_notificationArray = [];
-
-	/**
 	 * constructor of the class
 	 *
 	 * @since 3.0.0
@@ -121,58 +114,19 @@ class Module
 	}
 
 	/**
-	 * get message from notification
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param string $type type of the notification
-	 *
-	 * @return string|array|boolean
-	 */
-
-	public function getNotification($type = null)
-	{
-		if (is_array(self::$_notificationArray) && array_key_exists($type, self::$_notificationArray))
-		{
-			return self::$_notificationArray[$type];
-		}
-		else if (!$type)
-		{
-			return self::$_notificationArray;
-		}
-		return false;
-	}
-
-	/**
-	 * set message to notification
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param string $type type of the notification
-	 * @param string|array $message message of the notification
-	 */
-
-	public function setNotification($type = null, $message = null)
-	{
-		$moduleName = static::$_moduleArray['name'];
-		static::$_notificationArray[$type][$moduleName][] = $message;
-	}
-
-	/**
 	 * install the module
 	 *
 	 * @since 2.6.0
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
 	public function install()
 	{
 		if (is_array(static::$_moduleArray) && array_key_exists('alias', static::$_moduleArray))
 		{
-			$module = Db::forTablePrefix('modules')->create();
-			$module->set(static::$_moduleArray);
-			$module->save();
+			$moduleModel = new Model\Module();
+			$moduleModel->createByArray(static::$_moduleArray);
 
 			/* create from sql */
 
@@ -194,14 +148,15 @@ class Module
 	 *
 	 * @since 2.6.0
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
 	public function uninstall()
 	{
 		if (is_array(static::$_moduleArray) && array_key_exists('alias', static::$_moduleArray))
 		{
-			Db::forTablePrefix('modules')->where('alias', static::$_moduleArray['alias'])->deleteMany();
+			$moduleModel = new Model\Module();
+			$moduleModel->deleteByAlias(static::$_moduleArray['alias']);
 
 			/* drop from sql */
 

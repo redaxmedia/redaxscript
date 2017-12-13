@@ -6,17 +6,12 @@
  *    1.2 link
  *    1.3 text
  *    1.4 query
- *       1.4.1 medium min
- *
- * @since 3.2.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
+ *      1.4.1 medium min
  */
 
-/* @section 1. directory lister */
+/** @section 1. directory lister */
 
-/* @section 1.1 list */
+/** @section 1.1 list */
 
 .rs-list-directory-lister
 {
@@ -26,7 +21,7 @@
 	}
 }
 
-/* @section 1.2 link */
+/** @section 1.2 link */
 
 .rs-link-directory-lister
 {
@@ -58,7 +53,7 @@
 	}
 }
 
-/* @section 1.3 text */
+/** @section 1.3 text */
 
 .rs-text-directory-lister
 {
@@ -76,9 +71,9 @@
 	}
 }
 
-/* @section 1.4 query */
+/** @section 1.4 query */
 
-/* @section 1.4.1 medium min */
+/** @section 1.4.1 medium min */
 
 @media (--media-medium-min)
 {

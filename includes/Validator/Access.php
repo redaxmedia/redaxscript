@@ -20,12 +20,12 @@ class Access implements ValidatorInterface
 	 * @since 2.2.0
 	 *
 	 * @param string $access content related access restriction
-	 * @param string $groups groups the user is a member of
+	 * @param string|bool $groups groups the user is a member of
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
-	public function validate($access = null, $groups = null)
+	public function validate($access = null, $groups = null) : bool
 	{
 		$output = ValidatorInterface::FAILED;
 		$accessArray = array_filter(explode(',', $access));

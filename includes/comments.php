@@ -10,7 +10,7 @@
  * @category Comments
  * @author Henry Ruhs
  *
- * @param integer $article
+ * @param int $article
  * @param string $route
  */
 
@@ -19,6 +19,7 @@ function comments($article, $route)
 	$registry = Redaxscript\Registry::getInstance();
 	$language = Redaxscript\Language::getInstance();
 	$output = Redaxscript\Module\Hook::trigger('commentStart');
+	$settingModel = new Redaxscript\Model\Setting();
 
 	/* query comments */
 
@@ -37,7 +38,7 @@ function comments($article, $route)
 	if ($result)
 	{
 		$num_rows = count($result);
-		$sub_maximum = ceil($num_rows / Redaxscript\Db::getSetting('limit'));
+		$sub_maximum = ceil($num_rows / $settingModel->get('limit'));
 		$sub_active = $registry->get('lastSubParameter');
 
 		/* sub parameter */
@@ -48,10 +49,10 @@ function comments($article, $route)
 		}
 		else
 		{
-			$offset_string = ($sub_active - 1) * Redaxscript\Db::getSetting('limit') . ', ';
+			$offset_string = ($sub_active - 1) * $settingModel->get('limit') . ', ';
 		}
 	}
-	$comments->limit($offset_string . Redaxscript\Db::getSetting('limit'));
+	$comments->limit($offset_string . $settingModel->get('limit'));
 
 	/* query result */
 
@@ -140,7 +141,7 @@ function comments($article, $route)
 
 	/* call pagination as needed */
 
-	if ($sub_maximum > 1 && Redaxscript\Db::getSetting('pagination') == 1)
+	if ($sub_maximum > 1 && $settingModel->get('pagination') == 1)
 	{
 		pagination($sub_active, $sub_maximum, $route);
 	}

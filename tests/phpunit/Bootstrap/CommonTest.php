@@ -26,7 +26,7 @@ class CommonTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerCommonServer()
+	public function providerCommonServer() : array
 	{
 		return $this->getProvider('tests/provider/Bootstrap/common_server.json');
 	}
@@ -39,7 +39,7 @@ class CommonTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerCommonClient()
+	public function providerCommonClient() : array
 	{
 		return $this->getProvider('tests/provider/Bootstrap/common_client.json');
 	}
@@ -55,7 +55,7 @@ class CommonTest extends TestCaseAbstract
 	 * @dataProvider providerCommonServer
 	 */
 
-	public function testCommonServer($userAgent = null, $expectArray = [])
+	public function testCommonServer(string $userAgent = null, array $expectArray = [])
 	{
 		/* setup */
 
@@ -94,7 +94,7 @@ class CommonTest extends TestCaseAbstract
 	 * @dataProvider providerCommonClient
 	 */
 
-	public function testCommonClient($userAgent = null, $expectArray = [])
+	public function testCommonClient(string $userAgent = null, array $expectArray = [])
 	{
 		/* setup */
 
@@ -186,12 +186,14 @@ class CommonTest extends TestCaseAbstract
 		$actualArray =
 		[
 			'phpOs' => $this->_registry->get('phpOs'),
-			'phpVersion' => $this->_registry->get('phpVersion')
+			'phpVersion' => $this->_registry->get('phpVersion'),
+			'phpStatus' => $this->_registry->get('phpStatus')
 		];
 
 		/* compare */
 
 		$this->assertString($actualArray['phpOs']);
 		$this->assertString($actualArray['phpVersion']);
+		$this->assertTrue($actualArray['phpStatus']);
 	}
 }

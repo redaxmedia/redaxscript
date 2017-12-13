@@ -2,7 +2,7 @@
 namespace Redaxscript\Console\Command;
 
 use Redaxscript\Console\Parser;
-use Redaxscript\Db;
+use Redaxscript\Model;
 
 /**
  * children class to execute the setting command
@@ -92,7 +92,8 @@ class Setting extends CommandAbstract
 	protected function _list()
 	{
 		$output = null;
-		$settings = Db::getSetting();
+		$settingModel = new Model\Setting();
+		$settings = $settingModel->getAll();
 
 		/* process settings */
 
@@ -110,16 +111,17 @@ class Setting extends CommandAbstract
 	 *
 	 * @param array $optionArray
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
-	protected function _set($optionArray = [])
+	protected function _set(array $optionArray = [])
 	{
+		$settingModel = new Model\Setting();
 		$key = $this->prompt('key', $optionArray);
 		$value = $this->prompt('value', $optionArray);
 		if ($key && $value)
 		{
-			return Db::setSetting($key, $value);
+			return $settingModel->set($key, $value);
 		}
 		return false;
 	}

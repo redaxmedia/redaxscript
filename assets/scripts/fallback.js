@@ -2,14 +2,9 @@
  * @tableofcontents
  *
  * 1. fallback
- *
- * @since 2.6.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. fallback */
+/** @section 1. fallback */
 
 (function (doc, $)
 {

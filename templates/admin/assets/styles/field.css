@@ -5,14 +5,9 @@
  * 2. textarea
  * 3. query
  *    3.1 medium-min
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. field */
+/** @section 1. field */
 
 .rs-admin-field-default,
 .rs-admin-field-select,
@@ -53,7 +48,7 @@
 	height: 2.5em;
 }
 
-/* @section 2. textarea */
+/** @section 2. textarea */
 
 .rs-admin-field-textarea
 {
@@ -66,9 +61,9 @@
 	min-height: 5em;
 }
 
-/* @section 3. query */
+/** @section 3. query */
 
-/* @section 3.1 medium-min */
+/** @section 3.1 medium-min */
 
 @media (--media-medium-min)
 {

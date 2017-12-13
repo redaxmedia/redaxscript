@@ -104,10 +104,10 @@ class Install extends CommandAbstract
 	 *
 	 * @param array $optionArray
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
-	protected function _database($optionArray = [])
+	protected function _database(array $optionArray = [])
 	{
 		$adminName = $this->prompt('admin-name', $optionArray);
 		$adminUser = $this->prompt('admin-user', $optionArray);
@@ -140,10 +140,10 @@ class Install extends CommandAbstract
 	 *
 	 * @param array $optionArray
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
-	protected function _module($optionArray = [])
+	protected function _module(array $optionArray = [])
 	{
 		$alias = $this->prompt('alias', $optionArray);
 		$moduleClass = 'Redaxscript\\Modules\\' . $alias . '\\' . $alias;

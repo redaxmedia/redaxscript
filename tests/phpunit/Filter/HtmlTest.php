@@ -58,7 +58,7 @@ class HtmlTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerHtml()
+	public function providerHtml() : array
 	{
 		return $this->getProvider('tests/provider/Filter/html.json');
 	}
@@ -74,7 +74,7 @@ class HtmlTest extends TestCaseAbstract
 	 * @dataProvider providerHtml
 	 */
 
-	public function testHtml($html = null, $expect = null)
+	public function testHtml(string $html = null, string $expect = null)
 	{
 		/* setup */
 

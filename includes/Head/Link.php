@@ -47,10 +47,10 @@ class Link extends HeadAbstract
 	 *
 	 * @param string $reference
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function appendFile($reference = null)
+	public function appendFile(string $reference = null) : self
 	{
 		$this->append(
 		[
@@ -67,10 +67,10 @@ class Link extends HeadAbstract
 	 *
 	 * @param string $reference
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function prependFile($reference = null)
+	public function prependFile(string $reference = null) : self
 	{
 		$this->prepend(
 		[
@@ -87,10 +87,10 @@ class Link extends HeadAbstract
 	 *
 	 * @param string $reference
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function removeFile($reference = null)
+	public function removeFile(string $reference = null) : self
 	{
 		$this->remove('href', $reference);
 		return $this;
@@ -103,10 +103,10 @@ class Link extends HeadAbstract
 	 *
 	 * @param array $pathArray
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function rewrite($pathArray = [])
+	public function rewrite(array $pathArray = []) : self
 	{
 		$rewriteArray = $this->_getRewriteArray();
 		$rewriteArray = array_merge($rewriteArray, $pathArray);
@@ -121,10 +121,10 @@ class Link extends HeadAbstract
 	 *
 	 * @param array $optionArray
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function concat($optionArray = [])
+	public function concat(array $optionArray = []) : self
 	{
 		$optionArray = array_merge(self::$_optionArray, $optionArray);
 		$loader = new Asset\Loader(Registry::getInstance());
@@ -144,7 +144,7 @@ class Link extends HeadAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
 	public function render()
@@ -189,7 +189,7 @@ class Link extends HeadAbstract
 	 * @return array
 	 */
 
-	protected function _getRewriteArray()
+	protected function _getRewriteArray() : array
 	{
 		$rewriteArray = self::$_rewriteArray[self::$_namespace];
 		return is_array($rewriteArray) ? $rewriteArray : [];

@@ -5,10 +5,10 @@
 			"lastTable": "categories",
 			"lastId": 1
 		},
-		null,
-		null,
-		null,
-		null,
+		{},
+		{},
+		{},
+		{},
 		"en"
 	],
 	[
@@ -20,9 +20,9 @@
 		{
 			"l": "invalid"
 		},
-		null,
-		null,
-		null,
+		{},
+		{},
+		{},
 		"en"
 	],
 	[
@@ -37,8 +37,8 @@
 		{
 			"language": "en"
 		},
-		null,
-		null,
+		{},
+		{},
 		"de"
 	],
 	[
@@ -47,12 +47,12 @@
 			"lastTable": "categories",
 			"lastId": 1
 		},
-		null,
+		{},
 		{
 			"language": "de"
 		},
-		null,
-		null,
+		{},
+		{},
 		"de"
 	],
 	[
@@ -61,12 +61,12 @@
 			"lastTable": "categories",
 			"lastId": 1
 		},
-		null,
-		null,
+		{},
+		{},
 		{
 			"HTTP_ACCEPT_LANGUAGE": "de"
 		},
-		null,
+		{},
 		"de"
 	],
 	[
@@ -75,9 +75,9 @@
 			"lastTable": "categories",
 			"lastId": 1
 		},
-		null,
-		null,
-		null,
+		{},
+		{},
+		{},
 		{
 			"language": "de"
 		},
@@ -89,9 +89,9 @@
 			"lastTable": "categories",
 			"lastId": 1
 		},
-		null,
-		null,
-		null,
+		{},
+		{},
+		{},
 		{
 			"language": "de"
 		},
@@ -103,10 +103,10 @@
 			"lastTable": "articles",
 			"lastId": 1
 		},
-		null,
-		null,
-		null,
-		null,
+		{},
+		{},
+		{},
+		{},
 		"de"
 	]
 ]

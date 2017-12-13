@@ -1,6 +1,6 @@
 [
 	[
-		null,
+		{},
 		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><textarea class=\"rs-field-textarea\" cols=\"100\" rows=\"5\"></textarea></form>"
 	],
 	[

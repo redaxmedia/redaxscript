@@ -5,11 +5,6 @@
  *    1.1 plugins
  *    1.2 base url
  *    1.3 helper
- *
- * @since 2.2.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
 (function (doc, docElement, win)
@@ -18,13 +13,13 @@
 
 	win.rs = win.rs || {};
 
-	/* @section 1. redaxscript */
+	/** @section 1. redaxscript */
 
 	rs.flags = rs.flags || {};
 	rs.modules = rs.modules || {};
 	rs.support = rs.support || {};
 
-	/* @section 1.1 plugins */
+	/** @section 1.1 plugins */
 
 	rs.plugins =
 	{
@@ -199,7 +194,7 @@
 		}
 	};
 
-	/* @section 1.2 base url */
+	/** @section 1.2 base url */
 
 	rs.baseURL = function ()
 	{
@@ -214,7 +209,7 @@
 		return output;
 	}();
 
-	/* @section 1.3 helper */
+	/** @section 1.3 helper */
 
 	(function ()
 	{

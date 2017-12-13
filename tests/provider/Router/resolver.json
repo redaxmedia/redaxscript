@@ -98,7 +98,7 @@
 		}
 	],
 	[
-		"admin/process/articles/1",
+		"admin/publish/articles/1",
 		{
 			"lite": "admin/view/articles",
 			"full": "admin/view/articles"
@@ -112,7 +112,7 @@
 		}
 	],
 	[
-		"admin/update/settings",
+		"admin/edit/settings",
 		{
 			"lite": "admin/edit/settings",
 			"full": "admin/edit/settings"

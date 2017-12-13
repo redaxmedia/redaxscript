@@ -23,7 +23,7 @@ class Search implements FilterInterface
 	 * @return string
 	 */
 
-	public function sanitize($search = null)
+	public function sanitize(string $search = null) : string
 	{
 		return preg_replace('/[^a-zA-Z0-9-]/i', null, $search);
 	}

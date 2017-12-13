@@ -1,11 +1,11 @@
 <?php
 namespace Redaxscript\Modules\Contact;
 
-use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Filter;
 use Redaxscript\Mailer;
 use Redaxscript\Messenger;
+use Redaxscript\Model;
 use Redaxscript\Module;
 use Redaxscript\Validator;
 
@@ -32,7 +32,7 @@ class Contact extends Module\Module
 		'alias' => 'Contact',
 		'author' => 'Redaxmedia',
 		'description' => 'Simple contact form',
-		'version' => '3.2.3'
+		'version' => '3.3.0'
 	];
 
 	/**
@@ -55,11 +55,12 @@ class Contact extends Module\Module
 	 *
 	 * @since 2.6.0
 	 *
-	 * return Form
+	 * @return string
 	 */
 
-	public function render()
+	public function render() : string
 	{
+		$settingModel = new Model\Setting();
 		$formElement = new Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[
@@ -76,7 +77,7 @@ class Contact extends Module\Module
 			]
 		],
 		[
-			'captcha' => Db::getSetting('captcha') > 0
+			'captcha' => $settingModel->get('captcha') > 0
 		]);
 
 		/* create the form */
@@ -132,7 +133,7 @@ class Contact extends Module\Module
 				'required' => 'required'
 			])
 			->append('</li>');
-		if (Db::getSetting('captcha') > 0)
+		if ($settingModel->get('captcha') > 0)
 		{
 			$formElement
 				->append('<li>')
@@ -140,7 +141,7 @@ class Contact extends Module\Module
 				->append('</li>');
 		}
 		$formElement->append('</ul></fieldset>');
-		if (Db::getSetting('captcha') > 0)
+		if ($settingModel->get('captcha') > 0)
 		{
 			$formElement->captcha('solution');
 		}
@@ -148,7 +149,7 @@ class Contact extends Module\Module
 			->token()
 			->submit()
 			->reset();
-		return $formElement;
+		return $formElement->render();
 	}
 
 	/**
@@ -261,6 +262,7 @@ class Contact extends Module\Module
 		$emailValidator = new Validator\Email();
 		$urlValidator = new Validator\Url();
 		$captchaValidator = new Validator\Captcha();
+		$settingModel = new Model\Setting();
 
 		/* validate post */
 
@@ -285,7 +287,7 @@ class Contact extends Module\Module
 		{
 			$messageArray[] = $this->_language->get('message_empty');
 		}
-		if (Db::getSetting('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
+		if ($settingModel->get('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
 		{
 			$messageArray[] = $this->_language->get('captcha_incorrect');
 		}
@@ -304,6 +306,8 @@ class Contact extends Module\Module
 
 	protected function _mail($mailArray = [])
 	{
+		$settingModel = new Model\Setting();
+
 		/* html elements */
 
 		$linkElement = new Html\Element();
@@ -327,7 +331,7 @@ class Contact extends Module\Module
 
 		$toArray =
 		[
-			Db::getSetting('author') => Db::getSetting('email')
+			$settingModel->get('author') => $settingModel->get('email')
 		];
 		$fromArray =
 		[

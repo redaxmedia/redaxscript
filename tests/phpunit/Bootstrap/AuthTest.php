@@ -62,7 +62,7 @@ class AuthTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerAuth()
+	public function providerAuth() : array
 	{
 		return $this->getProvider('tests/provider/Bootstrap/auth.json');
 	}
@@ -72,13 +72,13 @@ class AuthTest extends TestCaseAbstract
 	 *
 	 * @since 3.1.0
 	 *
-	 * @param integer $userId
+	 * @param int $userId
 	 * @param array $expectArray
 	 *
 	 * @dataProvider providerAuth
 	 */
 
-	public function testAuth($userId = null, $expectArray = [])
+	public function testAuth(int $userId = null, array $expectArray = [])
 	{
 		/* setup */
 

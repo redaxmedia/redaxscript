@@ -2,7 +2,7 @@
 	[
 		"root",
 		false,
-		null,
+		[],
 		[
 			"includes",
 			"index.php",
@@ -12,7 +12,7 @@
 	[
 		"root/includes",
 		true,
-		null,
+		[],
 		[
 			"Autoloader.php",
 			"Detector",

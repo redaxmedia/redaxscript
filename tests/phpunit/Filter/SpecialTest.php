@@ -24,7 +24,7 @@ class SpecialTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerSpecial()
+	public function providerSpecial() : array
 	{
 		return $this->getProvider('tests/provider/Filter/special.json');
 	}
@@ -40,7 +40,7 @@ class SpecialTest extends TestCaseAbstract
 	 * @dataProvider providerSpecial
 	 */
 
-	public function testSpecial($special = null, $expect = null)
+	public function testSpecial(string $special = null, string $expect = null)
 	{
 		/* setup */
 

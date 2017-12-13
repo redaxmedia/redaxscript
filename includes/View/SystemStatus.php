@@ -61,7 +61,7 @@ class SystemStatus extends ViewAbstract
 	 * @return string
 	 */
 
-	protected function _error($errorArray = [])
+	protected function _error(array $errorArray = []) : string
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger->error($errorArray['message']);
@@ -77,7 +77,7 @@ class SystemStatus extends ViewAbstract
 	 * @return string
 	 */
 
-	protected function _warning($warningArray = [])
+	protected function _warning(array $warningArray = []) : string
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger->warning($warningArray['message']);
@@ -91,14 +91,14 @@ class SystemStatus extends ViewAbstract
 	 * @return array
 	 */
 
-	protected function _validateError()
+	protected function _validateError() : array
 	{
 		$messageArray = [];
 		if (!$this->_registry->get('dbStatus'))
 		{
 			$messageArray[] = $this->_language->get('database_failed');
 		}
-		if (version_compare($this->_registry->get('phpVersion'), '5.4', '<'))
+		if (!$this->_registry->get('phpStatus'))
 		{
 			$messageArray[] = $this->_language->get('php_version_unsupported');
 		}
@@ -121,7 +121,7 @@ class SystemStatus extends ViewAbstract
 	 * @return array
 	 */
 
-	protected function _validateWarning()
+	protected function _validateWarning() : array
 	{
 		$moduleArray = $this->_registry->get('moduleArray');
 		$testOsArray =

@@ -26,7 +26,7 @@ class DetectorTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerDetector()
+	public function providerDetector() : array
 	{
 		return $this->getProvider('tests/provider/Bootstrap/detector.json');
 	}
@@ -41,7 +41,7 @@ class DetectorTest extends TestCaseAbstract
 	 * @dataProvider providerDetector
 	 */
 
-	public function testDetector($expectArray = [])
+	public function testDetector(array $expectArray = [])
 	{
 		/* setup */
 

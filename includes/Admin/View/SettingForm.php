@@ -2,8 +2,8 @@
 namespace Redaxscript\Admin\View;
 
 use Redaxscript\Admin\Html\Form as AdminForm;
-use Redaxscript\Db;
 use Redaxscript\Html;
+use Redaxscript\Model;
 use Redaxscript\Module;
 
 /**
@@ -26,9 +26,10 @@ class SettingForm extends ViewAbstract implements ViewInterface
 	 * @return string
 	 */
 
-	public function render()
+	public function render() : string
 	{
 		$output = Module\Hook::trigger('adminSettingFormStart');
+		$settingModel = new Model\Setting();
 		$helperOption = new Helper\Option($this->_language);
 
 		/* html elements */
@@ -44,14 +45,13 @@ class SettingForm extends ViewAbstract implements ViewInterface
 		[
 			'form' =>
 			[
-				'action' => $this->_registry->get('parameterRoute') . 'admin/update/settings',
 				'class' => 'rs-admin-js-accordion rs-admin-js-validate-form rs-admin-component-accordion rs-admin-form-default rs-admin-fn-clearfix'
 			],
 			'button' =>
 			[
 				'save' =>
 				[
-					'name' => 'update'
+					'name' => get_class()
 				]
 			],
 			'link' =>
@@ -67,7 +67,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 
 		$formElement
 
-			/* general set */
+			/* general fieldset */
 
 			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-js-set-active rs-admin-set-accordion rs-admin-set-active">')
 			->append('<legend class="rs-admin-js-title-accordion rs-admin-js-title-active rs-admin-title-accordion rs-admin-title-active">' . $this->_language->get('general') . '</legend>')
@@ -78,7 +78,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getLanguageArray(),
 			[
-				Db::getSetting('language')
+				$settingModel->get('language')
 			],
 			[
 				'id' => 'language',
@@ -91,7 +91,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getTemplateArray(),
 			[
-				Db::getSetting('template')
+				$settingModel->get('template')
 			],
 			[
 				'id' => 'template',
@@ -99,7 +99,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->append('</li></ul></fieldset>')
 
-			/* metadata set */
+			/* metadata fieldset */
 
 			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-set-accordion">')
 			->append('<legend class="rs-admin-js-title-accordion rs-admin-title-accordion">' . $this->_language->get('metadata') . '</legend>')
@@ -112,7 +112,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			[
 				'id' => 'title',
 				'name' => 'title',
-				'value' => Db::getSetting('title')
+				'value' => $settingModel->get('title')
 			])
 			->append('</li><li>')
 			->label($this->_language->get('author'),
@@ -123,7 +123,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			[
 				'id' => 'author',
 				'name' => 'author',
-				'value' => Db::getSetting('author')
+				'value' => $settingModel->get('author')
 			])
 			->append('</li><li>')
 			->label($this->_language->get('copyright'),
@@ -134,7 +134,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			[
 				'id' => 'copyright',
 				'name' => 'copyright',
-				'value' => Db::getSetting('copyright')
+				'value' => $settingModel->get('copyright')
 			])
 			->append('</li><li>')
 			->label($this->_language->get('description'),
@@ -147,7 +147,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 				'id' => 'description',
 				'name' => 'description',
 				'rows' => 1,
-				'value' => Db::getSetting('description')
+				'value' => $settingModel->get('description')
 			])
 			->append('</li><li>')
 			->label($this->_language->get('keywords'),
@@ -160,7 +160,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 				'id' => 'keywords',
 				'name' => 'keywords',
 				'rows' => 1,
-				'value' => Db::getSetting('keywords')
+				'value' => $settingModel->get('keywords')
 			])
 			->append('</li><li>')
 			->label($this->_language->get('robots'),
@@ -169,7 +169,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getRobotArray(),
 			[
-				filter_var(Db::getSetting('robots'), FILTER_VALIDATE_INT)
+				filter_var($settingModel->get('robots'), FILTER_VALIDATE_INT)
 			],
 			[
 				'id' => 'robots',
@@ -177,7 +177,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->append('</li></ul></fieldset>')
 
-			/* contact set */
+			/* contact fieldset */
 
 			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-set-accordion">')
 			->append('<legend class="rs-admin-js-title-accordion rs-admin-title-accordion">' . $this->_language->get('contact') . '</legend>')
@@ -190,7 +190,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			[
 				'id' => 'email',
 				'name' => 'email',
-				'value' => Db::getSetting('email')
+				'value' => $settingModel->get('email')
 			])
 			->append('</li><li>')
 			->label($this->_language->get('subject'),
@@ -201,7 +201,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			[
 				'id' => 'subject',
 				'name' => 'subject',
-				'value' => Db::getSetting('subject')
+				'value' => $settingModel->get('subject')
 			])
 			->append('</li><li>')
 			->label($this->_language->get('notification'),
@@ -210,7 +210,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				intval(Db::getSetting('notification'))
+				intval($settingModel->get('notification'))
 			],
 			[
 				'id' => 'notification',
@@ -218,7 +218,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->append('</li></ul></fieldset>')
 
-			/* formatting set */
+			/* formatting fieldset */
 
 			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-set-accordion">')
 			->append('<legend class="rs-admin-js-title-accordion rs-admin-title-accordion">' . $this->_language->get('formatting') . '</legend>')
@@ -231,7 +231,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			[
 				'id' => 'charset',
 				'name' => 'charset',
-				'value' => Db::getSetting('charset')
+				'value' => $settingModel->get('charset')
 			])
 			->append('</li><li>')
 			->label($this->_language->get('divider'),
@@ -242,7 +242,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			[
 				'id' => 'divider',
 				'name' => 'divider',
-				'value' => Db::getSetting('divider')
+				'value' => $settingModel->get('divider')
 			])
 			->append('</li><li>')
 			->label($this->_language->get('time'),
@@ -251,7 +251,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getTimeArray(),
 			[
-				Db::getSetting('time')
+				$settingModel->get('time')
 			],
 			[
 				'id' => 'time',
@@ -264,7 +264,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getDateArray(),
 			[
-				Db::getSetting('date')
+				$settingModel->get('date')
 			],
 			[
 				'id' => 'date',
@@ -272,7 +272,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->append('</li></ul></fieldset>')
 
-			/* contents set */
+			/* contents fieldset */
 
 			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-set-accordion">')
 			->append('<legend class="rs-admin-js-title-accordion rs-admin-title-accordion">' . $this->_language->get('contents') . '</legend>')
@@ -283,7 +283,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getContentArray('articles'),
 			[
-				Db::getSetting('homepage')
+				$settingModel->get('homepage')
 			],
 			[
 				'id' => 'homepage',
@@ -298,7 +298,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			[
 				'id' => 'limit',
 				'name' => 'limit',
-				'value' => Db::getSetting('limit')
+				'value' => $settingModel->get('limit')
 			])
 			->append('</li><li>')
 			->label($this->_language->get('order'),
@@ -307,7 +307,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getOrderArray(),
 			[
-				Db::getSetting('order')
+				$settingModel->get('order')
 			],
 			[
 				'id' => 'order',
@@ -320,7 +320,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				intval(Db::getSetting('pagination'))
+				intval($settingModel->get('pagination'))
 			],
 			[
 				'id' => 'pagination',
@@ -328,7 +328,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->append('</li></ul></fieldset>')
 
-			/* users set */
+			/* users fieldset */
 
 			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-set-accordion">')
 			->append('<legend class="rs-admin-js-title-accordion rs-admin-title-accordion">' . $this->_language->get('users') . '</legend>')
@@ -339,7 +339,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				intval(Db::getSetting('registration'))
+				intval($settingModel->get('registration'))
 			],
 			[
 				'id' => 'registration',
@@ -352,7 +352,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				intval(Db::getSetting('verification'))
+				intval($settingModel->get('verification'))
 			],
 			[
 				'id' => 'verification',
@@ -365,7 +365,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				intval(Db::getSetting('recovery'))
+				intval($settingModel->get('recovery'))
 			],
 			[
 				'id' => 'recovery',
@@ -373,7 +373,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->append('</li></ul></fieldset>')
 
-			/* security set */
+			/* security fieldset */
 
 			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-set-accordion">')
 			->append('<legend class="rs-admin-js-title-accordion rs-admin-title-accordion">' . $this->_language->get('security') . '</legend>')
@@ -384,7 +384,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				intval(Db::getSetting('moderation'))
+				intval($settingModel->get('moderation'))
 			],
 			[
 				'id' => 'moderation',
@@ -397,7 +397,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getCaptchaArray(),
 			[
-				intval(Db::getSetting('captcha'))
+				intval($settingModel->get('captcha'))
 			],
 			[
 				'id' => 'captcha',

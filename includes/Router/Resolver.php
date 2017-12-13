@@ -25,18 +25,14 @@ class Resolver extends Parameter
 		[
 			'up',
 			'down',
+			'sort',
+			'enable',
+			'disabled',
 			'publish',
 			'unpublish',
-			'enable',
-			'disable',
 			'install',
 			'uninstall',
-			'delete',
-			'process'
-		],
-		'edit' =>
-		[
-			'update'
+			'delete'
 		]
 	];
 
@@ -45,7 +41,7 @@ class Resolver extends Parameter
 	 *
 	 * @since 2.4.0
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
 	public function getLite()
@@ -58,7 +54,7 @@ class Resolver extends Parameter
 	 *
 	 * @since 2.4.0
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
 	public function getFull()
@@ -73,10 +69,10 @@ class Resolver extends Parameter
 	 *
 	 * @param string $type type of the route
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	protected function _getRoute($type = 'lite')
+	protected function _getRoute(string $type = 'lite')
 	{
 		$output = null;
 		$adminParameter = $this->getAdmin();
@@ -91,10 +87,6 @@ class Resolver extends Parameter
 		if (in_array($adminParameter, $this->_resolverArray['view']))
 		{
 			$output = 'admin/view/' . $tableParameter;
-		}
-		else if (in_array($adminParameter, $this->_resolverArray['edit']))
-		{
-			$output = 'admin/edit/' . $tableParameter;
 		}
 
 		/* else general route */

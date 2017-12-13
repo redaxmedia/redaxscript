@@ -11,31 +11,26 @@
  *    1.7 css transform
  *    1.8 css transition
  *    1.9 css viewport units
- *    1.10 cookies
- *    1.11 draggable
- *    1.12 geolocation
- *    1.13 form
- *    1.14 fullscreen
- *    1.15 history
- *    1.16 index db
- *    1.17 input
- *    1.18 native json
- *    1.19 post message
- *    1.20 speech
- *    1.21 svg
- *    1.22 touch
- *    1.23 vibrate
- *    1.24 webgl
- *    1.25 webp
- *    1.26 websql
- *    1.27 websocket
- *    1.28 webstorage
- *    1.29 webworker
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
+ *      1.10 cookies
+ *      1.11 draggable
+ *      1.12 geolocation
+ *      1.13 form
+ *      1.14 fullscreen
+ *      1.15 history
+ *      1.16 index db
+ *      1.17 input
+ *      1.18 native json
+ *      1.19 post message
+ *      1.20 speech
+ *      1.21 svg
+ *      1.22 touch
+ *      1.23 vibrate
+ *      1.24 webgl
+ *      1.25 webp
+ *      1.26 websql
+ *      1.27 websocket
+ *      1.28 webstorage
+ *      1.29 webworker
  */
 
 (function (doc, docElement, win, nav)
@@ -44,11 +39,11 @@
 
 	win.rs = win.rs || {};
 
-	/* @section 1. support */
+	/** @section 1. support */
 
 	rs.support =
 	{
-		/* @section 1.1 application cache */
+		/** @section 1.1 application cache */
 
 		applicationCache: function ()
 		{
@@ -59,7 +54,7 @@
 			return false;
 		}(),
 
-		/* @section 1.2 battery */
+		/** @section 1.2 battery */
 
 		battery: function ()
 		{
@@ -70,7 +65,7 @@
 			return false;
 		}(),
 
-		/* @section 1.3 canvas */
+		/** @section 1.3 canvas */
 
 		canvas: function ()
 		{
@@ -81,7 +76,7 @@
 			return false;
 		}(),
 
-		/* @section 1.4 check validity */
+		/** @section 1.4 check validity */
 
 		checkValidity: function ()
 		{
@@ -92,7 +87,7 @@
 			return false;
 		}(),
 
-		/* @section 1.5 css flexbox */
+		/** @section 1.5 css flexbox */
 
 		cssFlexbox: function ()
 		{
@@ -103,7 +98,7 @@
 			return false;
 		}(),
 
-		/* @section 1.6 css pointer events */
+		/** @section 1.6 css pointer events */
 
 		cssPointerEvents: function ()
 		{
@@ -117,7 +112,7 @@
 			return false;
 		}(),
 
-		/* @section 1.7 css transform */
+		/** @section 1.7 css transform */
 
 		cssTransform: function ()
 		{
@@ -143,7 +138,7 @@
 			return false;
 		}(),
 
-		/* @section 1.8 css transition */
+		/** @section 1.8 css transition */
 
 		cssTransition: function ()
 		{
@@ -169,7 +164,7 @@
 			return false;
 		}(),
 
-		/* @section 1.9 css viewport units */
+		/** @section 1.9 css viewport units */
 
 		cssViewportUnits: (function ()
 		{
@@ -191,7 +186,7 @@
 			return false;
 		})(),
 
-		/* @section 1.10 cookies */
+		/** @section 1.10 cookies */
 
 		cookies: function ()
 		{
@@ -202,7 +197,7 @@
 			return false;
 		}(),
 
-		/* @section 1.11 draggable */
+		/** @section 1.11 draggable */
 
 		draggable: function ()
 		{
@@ -213,7 +208,7 @@
 			return false;
 		}(),
 
-		/* @section 1.12 geolocation */
+		/** @section 1.12 geolocation */
 
 		geolocation: function ()
 		{
@@ -224,7 +219,7 @@
 			return false;
 		}(),
 
-		/* @section 1.13 form */
+		/** @section 1.13 form */
 
 		form: function ()
 		{
@@ -251,7 +246,7 @@
 			return output;
 		}(),
 
-		/* @section 1.14 fullscreen */
+		/** @section 1.14 fullscreen */
 
 		fullscreen: function ()
 		{
@@ -262,7 +257,7 @@
 			return false;
 		}(),
 
-		/* @section 1.15 history */
+		/** @section 1.15 history */
 
 		history: function ()
 		{
@@ -273,7 +268,7 @@
 			return false;
 		}(),
 
-		/* @section 1.16 index db */
+		/** @section 1.16 index db */
 
 		indexedDB: function ()
 		{
@@ -284,7 +279,7 @@
 			return false;
 		}(),
 
-		/* @section 1.17 input */
+		/** @section 1.17 input */
 
 		input: function ()
 		{
@@ -344,7 +339,7 @@
 			return output;
 		}(),
 
-		/* @section 1.18 native json */
+		/** @section 1.18 native json */
 
 		nativeJSON: function ()
 		{
@@ -355,7 +350,7 @@
 			return false;
 		}(),
 
-		/* @section 1.19 post message */
+		/** @section 1.19 post message */
 
 		postMessage: function ()
 		{
@@ -366,7 +361,7 @@
 			return false;
 		}(),
 
-		/* @section 1.20 speech */
+		/** @section 1.20 speech */
 
 		speech: function ()
 		{
@@ -377,7 +372,7 @@
 			return false;
 		}(),
 
-		/* @section 1.21 svg */
+		/** @section 1.21 svg */
 
 		svg: function ()
 		{
@@ -388,7 +383,7 @@
 			return false;
 		}(),
 
-		/* @section 1.22 touch */
+		/** @section 1.22 touch */
 
 		touch: function ()
 		{
@@ -399,7 +394,7 @@
 			return false;
 		}(),
 
-		/* @section 1.23 vibrate */
+		/** @section 1.23 vibrate */
 
 		vibrate: function ()
 		{
@@ -410,7 +405,7 @@
 			return false;
 		}(),
 
-		/* @section 1.24 webgl */
+		/** @section 1.24 webgl */
 
 		webGL: function ()
 		{
@@ -421,7 +416,7 @@
 			return false;
 		}(),
 
-		/* @section 1.25 webp */
+		/** @section 1.25 webp */
 
 		webP: function ()
 		{
@@ -432,7 +427,7 @@
 			return false;
 		}(),
 
-		/* @section 1.26 websql */
+		/** @section 1.26 websql */
 
 		webSQL: function ()
 		{
@@ -443,7 +438,7 @@
 			return false;
 		}(),
 
-		/* @section 1.27 websocket */
+		/** @section 1.27 websocket */
 
 		webSocket: function ()
 		{
@@ -454,7 +449,7 @@
 			return false;
 		}(),
 
-		/* @section 1.28 webstorage */
+		/** @section 1.28 webstorage */
 
 		webStorage: function ()
 		{
@@ -465,7 +460,7 @@
 			return false;
 		}(),
 
-		/* @section 1.29 webworker */
+		/** @section 1.29 webworker */
 
 		webWorker: function ()
 		{

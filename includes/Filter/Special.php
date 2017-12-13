@@ -23,7 +23,7 @@ class Special implements FilterInterface
 	 * @return string
 	 */
 
-	public function sanitize($special = null)
+	public function sanitize(string $special = null) : string
 	{
 		return preg_replace('/[^a-zA-Z0-9]/i', null, $special);
 	}

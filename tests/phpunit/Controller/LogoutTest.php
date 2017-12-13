@@ -60,7 +60,7 @@ class LogoutTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerProcess()
+	public function providerProcess() : array
 	{
 		return $this->getProvider('tests/provider/Controller/logout_process.json');
 	}
@@ -76,7 +76,7 @@ class LogoutTest extends TestCaseAbstract
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($authArray = [], $expect = null)
+	public function testProcess(array $authArray = [], string $expect = null)
 	{
 		/* setup */
 

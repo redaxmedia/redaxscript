@@ -68,7 +68,7 @@ class GroupFormTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerRender()
+	public function providerRender() : array
 	{
 		return $this->getProvider('tests/provider/Admin/View/group_form_render.json');
 	}
@@ -79,13 +79,13 @@ class GroupFormTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $registryArray
-	 * @param integer $groupId
+	 * @param int $groupId
 	 * @param array $expectArray
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($registryArray = [], $groupId = null, $expectArray = [])
+	public function testRender(array $registryArray = [], int $groupId = null, array $expectArray = [])
 	{
 		/* setup */
 

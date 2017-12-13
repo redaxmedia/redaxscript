@@ -24,12 +24,12 @@ class ModuleForm extends ViewAbstract implements ViewInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param integer $moduleId identifier of the module
+	 * @param int|bool $moduleId identifier of the module
 	 *
 	 * @return string
 	 */
 
-	public function render($moduleId = null)
+	public function render(int $moduleId = null) : string
 	{
 		$output = Module\Hook::trigger('adminModuleFormStart');
 		$module = Db::forTablePrefix('modules')->whereIdIs($moduleId)->findOne();
@@ -48,8 +48,14 @@ class ModuleForm extends ViewAbstract implements ViewInterface
 		[
 			'form' =>
 			[
-				'action' => $this->_registry->get('parameterRoute') . ($module->id ? 'admin/process/modules/' . $module->id : 'admin/process/modules'),
 				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-component-tab rs-admin-form-default rs-admin-fn-clearfix'
+			],
+			'button' =>
+			[
+				'save' =>
+				[
+					'name' => get_class()
+				]
 			],
 			'link' =>
 			[
@@ -184,10 +190,10 @@ class ModuleForm extends ViewAbstract implements ViewInterface
 	 *
 	 * @param array $docsFilesystemArray
 	 *
-	 * @return object
+	 * @return string
 	 */
 
-	protected function _renderList($docsFilesystemArray = [])
+	protected function _renderList(array $docsFilesystemArray = []) : string
 	{
 		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
 		$tabCounter = 1;
@@ -240,7 +246,6 @@ class ModuleForm extends ViewAbstract implements ViewInterface
 				->attr('href', $tabRoute . '#tab-' . $tabCounter++)
 				->text($this->_language->get('customize'))
 			);
-		$listElement->html($outputItem);
-		return $listElement;
+		return $listElement->html($outputItem)->render();
 	}
 }

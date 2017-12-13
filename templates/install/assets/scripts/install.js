@@ -3,18 +3,13 @@
  *
  * 1. install
  * 2. init
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
 (function ($)
 {
 	'use strict';
 
-	/* @section 1. install */
+	/** @section 1. install */
 
 	$.fn.install = function (options)
 	{
@@ -65,7 +60,7 @@
 		});
 	};
 
-	/* @section 2. init */
+	/** @section 2. init */
 
 	$(function ()
 	{

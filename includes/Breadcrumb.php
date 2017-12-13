@@ -77,7 +77,7 @@ class Breadcrumb
 	 * @return string
 	 */
 
-	public function __toString()
+	public function __toString() : string
 	{
 		return $this->render();
 	}
@@ -90,15 +90,16 @@ class Breadcrumb
 	 * @param array $optionArray options of the breadcrumb
 	 */
 
-	public function init($optionArray = [])
+	public function init(array $optionArray = [])
 	{
+		$settingModel = new Model\Setting();
 		if (is_array($optionArray))
 		{
 			$this->_optionArray = array_merge($this->_optionArray, $optionArray);
 		}
 		if (!$this->_optionArray['divider'])
 		{
-			$this->_optionArray['divider'] = Db::getSetting('divider') ? Db::getSetting('divider') : null;
+			$this->_optionArray['divider'] = $settingModel->get('divider');
 		}
 		$this->_create();
 	}
@@ -111,7 +112,7 @@ class Breadcrumb
 	 * @return array
 	 */
 
-	public function getArray()
+	public function getArray() : array
 	{
 		return $this->_breadcrumbArray;
 	}
@@ -124,7 +125,7 @@ class Breadcrumb
 	 * @return string
 	 */
 
-	public function render()
+	public function render() : string
 	{
 		$output = Module\Hook::trigger('breadcrumbStart');
 
@@ -200,10 +201,10 @@ class Breadcrumb
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param integer $key key of the item
+	 * @param int $key key of the item
 	 */
 
-	protected function _create($key = 0)
+	protected function _create(int $key = 0)
 	{
 		$aliasValidator = new Validator\Alias();
 		$title = $this->_registry->get('useTitle');
@@ -260,10 +261,10 @@ class Breadcrumb
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param integer $key key of the item
+	 * @param int $key key of the item
 	 */
 
-	protected function _createAdmin($key = 0)
+	protected function _createAdmin(int $key = 0)
 	{
 		$adminParameter = $this->_registry->get('adminParameter');
 		$tableParameter = $this->_registry->get('tableParameter');
@@ -288,7 +289,7 @@ class Breadcrumb
 			$key++;
 			$this->_breadcrumbArray[$key]['title'] = $this->_language->get($adminParameter);
 
-			/* set route */
+			/* set the route */
 
 			if ($adminParameter !== $lastParameter)
 			{
@@ -310,10 +311,10 @@ class Breadcrumb
 	 *
 	 * @since 2.1.0
 	 *
-	 * @param integer $key
+	 * @param int $key
 	 */
 
-	protected function _createContent($key = 0)
+	protected function _createContent(int $key = 0)
 	{
 		$firstParameter = $this->_registry->get('firstParameter');
 		$secondParameter = $this->_registry->get('secondParameter');
@@ -327,7 +328,7 @@ class Breadcrumb
 
 		$this->_breadcrumbArray[$key]['title'] = Db::forTablePrefix($firstTable)->where('alias', $firstParameter)->findOne()->title;
 
-		/* set route */
+		/* set the route */
 
 		if ($firstParameter !== $lastParameter)
 		{
@@ -341,7 +342,7 @@ class Breadcrumb
 			$key++;
 			$this->_breadcrumbArray[$key]['title'] = Db::forTablePrefix($secondTable)->where('alias', $secondParameter)->findOne()->title;
 
-			/* set route */
+			/* set the route */
 
 			if ($secondParameter !== $lastParameter)
 			{

@@ -47,10 +47,10 @@ class Script extends HeadAbstract
 	 *
 	 * @param string $source
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function appendFile($source = null)
+	public function appendFile(string $source = null) : self
 	{
 		$this->append('src', $source);
 		return $this;
@@ -63,10 +63,10 @@ class Script extends HeadAbstract
 	 *
 	 * @param string $source
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function prependFile($source = null)
+	public function prependFile(string $source = null) : self
 	{
 		$this->prepend('src', $source);
 		return $this;
@@ -79,10 +79,10 @@ class Script extends HeadAbstract
 	 *
 	 * @param string $source
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function removeFile($source = null)
+	public function removeFile(string $source = null) : self
 	{
 		$this->remove('src', $source);
 		return $this;
@@ -95,10 +95,10 @@ class Script extends HeadAbstract
 	 *
 	 * @param string $inline
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function appendInline($inline = null)
+	public function appendInline(string $inline = null) : self
 	{
 		self::$_inline .= $inline;
 		return $this;
@@ -111,10 +111,10 @@ class Script extends HeadAbstract
 	 *
 	 * @param string $inline
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function prependInline($inline = null)
+	public function prependInline(string $inline = null) : self
 	{
 		self::$_inline = $inline . self::$_inline;
 		return $this;
@@ -128,10 +128,10 @@ class Script extends HeadAbstract
 	 * @param string $key
 	 * @param string|array $value
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function transportVar($key = null, $value = null)
+	public function transportVar(string $key = null, $value = null) : self
 	{
 		$transport = new Asset\Transport(Registry::getInstance(), Language::getInstance());
 		$inline = $transport->render($key, $value);
@@ -146,10 +146,10 @@ class Script extends HeadAbstract
 	 *
 	 * @param array $optionArray
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function concat($optionArray = [])
+	public function concat(array $optionArray = []) : self
 	{
 		$optionArray = array_merge(self::$_optionArray, $optionArray);
 		$loader = new Asset\Loader(Registry::getInstance());
@@ -168,7 +168,7 @@ class Script extends HeadAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
 	public function render()
@@ -216,10 +216,10 @@ class Script extends HeadAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function clear()
+	public function clear() : self
 	{
 		parent::clear();
 		self::$_inline = null;

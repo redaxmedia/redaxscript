@@ -1,11 +1,11 @@
 <?php
 namespace Redaxscript\Modules\DirectoryLister;
 
-use Redaxscript\Db;
 use Redaxscript\Filesystem;
 use Redaxscript\Filter;
 use Redaxscript\Head;
 use Redaxscript\Html;
+use Redaxscript\Model;
 
 /**
  * simple directory lister
@@ -31,7 +31,7 @@ class DirectoryLister extends Config
 		'alias' => 'DirectoryLister',
 		'author' => 'Redaxmedia',
 		'description' => 'Simple directory lister',
-		'version' => '3.2.3'
+		'version' => '3.3.0'
 	];
 
 	/**
@@ -53,7 +53,7 @@ class DirectoryLister extends Config
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array
+	 * @return array|bool
 	 */
 
 	public function adminPanelNotification()
@@ -72,7 +72,7 @@ class DirectoryLister extends Config
 	 * @return string
 	 */
 
-	public function render($directory = null, $optionArray = [])
+	public function render(string $directory = null, array $optionArray = []) : string
 	{
 		$output = null;
 		$outputItem = null;
@@ -141,7 +141,7 @@ class DirectoryLister extends Config
 	 * @return string
 	 */
 
-	protected function _renderParent($rootDirectory = null, $parentDirectory = null, $optionArray = [])
+	protected function _renderParent(string $rootDirectory = null, string $parentDirectory = null, array $optionArray = []) : string
 	{
 		$queryString = $rootDirectory !== $parentDirectory ? '&directory=' . $parentDirectory : null;
 
@@ -180,9 +180,10 @@ class DirectoryLister extends Config
 	 * @return string
 	 */
 
-	protected function _renderItem($directory = null, $optionArray = [])
+	protected function _renderItem(string $directory = null, array $optionArray = []) : string
 	{
 		$outputItem = null;
+		$settingModel = new Model\Setting();
 
 		/* html elements */
 
@@ -217,7 +218,7 @@ class DirectoryLister extends Config
 			$path = $directory . DIRECTORY_SEPARATOR . $value;
 			$fileExtension = pathinfo($path, PATHINFO_EXTENSION);
 			$text = $this->_replace($value, $fileExtension, $optionArray['replace']);
-			$textDate = date(Db::getSetting('date'), filectime($path));
+			$textDate = date($settingModel->get('date'), filectime($path));
 			$isDir = is_dir($path);
 			$isFile = is_file($path) && is_array($this->_configArray['extension']) && array_key_exists($fileExtension, $this->_configArray['extension']);
 

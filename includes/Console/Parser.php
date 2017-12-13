@@ -75,13 +75,13 @@ class Parser
 	}
 
 	/**
-	 * get item from arguments
+	 * get the value from arguments
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string|array|boolean
+	 * @return string|array|bool
 	 */
 
 	public function getArgument($key = null)
@@ -98,13 +98,13 @@ class Parser
 	}
 
 	/**
-	 * get item from options
+	 * get the value from options
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string|array|boolean
+	 * @return string|array|bool
 	 */
 
 	public function getOption($key = null)
@@ -121,12 +121,12 @@ class Parser
 	}
 
 	/**
-	 * set item to arguments
+	 * set the value to arguments
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param string $key key of the item
-	 * @param string|integer $value value of the item
+	 * @param string|int $value value of the item
 	 */
 
 	public function setArgument($key = null, $value = null)
@@ -135,12 +135,12 @@ class Parser
 	}
 
 	/**
-	 * set item to options
+	 * set the value to options
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param string $key key of the item
-	 * @param string|integer $value value of the item
+	 * @param string|int $value value of the item
 	 */
 
 	public function setOption($key = null, $value = null)
@@ -187,12 +187,12 @@ class Parser
 	 *
 	 * @param string $option raw option to be parsed
 	 * @param string $next raw next to be parsed
-	 * @param integer $offset offset of the raw option
+	 * @param int $offset offset of the raw option
 	 *
 	 * @return array
 	 */
 
-	protected function _parseOption($option = null, $next = null, $offset = null)
+	protected function _parseOption($option = null, $next = null, $offset = null) : array
 	{
 		$equalPosition = strpos($option, '=');
 		if ($equalPosition)

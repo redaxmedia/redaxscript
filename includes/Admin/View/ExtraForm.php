@@ -23,12 +23,12 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param integer $extraId identifier of the extra
+	 * @param int|bool $extraId identifier of the extra
 	 *
 	 * @return string
 	 */
 
-	public function render($extraId = null)
+	public function render(int $extraId = null) : string
 	{
 		$output = Module\Hook::trigger('adminExtraFormStart');
 		$extra = Db::forTablePrefix('extras')->whereIdIs($extraId)->findOne();
@@ -47,8 +47,18 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 		[
 			'form' =>
 			[
-				'action' => $this->_registry->get('parameterRoute') . ($extra->id ? 'admin/process/extras/' . $extra->id : 'admin/process/extras'),
 				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-component-tab rs-admin-form-default rs-admin-fn-clearfix'
+			],
+			'button' =>
+			[
+				'create' =>
+				[
+					'name' => get_class()
+				],
+				'save' =>
+				[
+					'name' => get_class()
+				]
 			],
 			'link' =>
 			[
@@ -276,10 +286,10 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 	 *
 	 * @since 3.2.0
 	 *
-	 * @return object
+	 * @return string
 	 */
 
-	protected function _renderList()
+	protected function _renderList() : string
 	{
 		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
 
@@ -319,7 +329,6 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 				->attr('href', $tabRoute . '#tab-3')
 				->text($this->_language->get('customize'))
 			);
-		$listElement->html($outputItem);
-		return $listElement;
+		return $listElement->html($outputItem)->render();
 	}
 }

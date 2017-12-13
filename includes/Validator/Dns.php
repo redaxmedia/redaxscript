@@ -22,7 +22,7 @@ class Dns implements ValidatorInterface
 	 * @param string $host host of the domain
 	 * @param string $type optional domain type
 	 *
-	 * @return integer
+	 * @return int
 	 */
 
 	public function validate($host = null, $type = 'A')

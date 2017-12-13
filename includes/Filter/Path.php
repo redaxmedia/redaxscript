@@ -24,7 +24,7 @@ class Path implements FilterInterface
 	 * @return string
 	 */
 
-	public function sanitize($path = null, $separator = DIRECTORY_SEPARATOR)
+	public function sanitize(string $path = null, string $separator = DIRECTORY_SEPARATOR) : string
 	{
 		$output = urldecode($path);
 		$output = str_replace(

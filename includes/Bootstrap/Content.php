@@ -2,6 +2,7 @@
 namespace Redaxscript\Bootstrap;
 
 use Redaxscript\Db;
+use Redaxscript\Model;
 use Redaxscript\Validator;
 
 /**
@@ -32,7 +33,7 @@ class Content extends BootstrapAbstract
 	}
 
 	/**
-	 * set content
+	 * set the content
 	 *
 	 * @since 3.1.0
 	 */
@@ -43,7 +44,7 @@ class Content extends BootstrapAbstract
 		$secondParameter = $this->_registry->get('secondParameter');
 		$fullRoute = $this->_registry->get('fullRoute');
 
-		/* set by root */
+		/* set by the root */
 
 		if (!$fullRoute || ($firstParameter === 'admin' && !$secondParameter))
 		{
@@ -51,7 +52,7 @@ class Content extends BootstrapAbstract
 			$this->_setIdByRoot();
 		}
 
-		/* else set by parameter */
+		/* else set by the parameter */
 
 		else
 		{
@@ -61,24 +62,25 @@ class Content extends BootstrapAbstract
 	}
 
 	/**
-	 * set table by root
+	 * set the table by root
 	 *
 	 * @since 3.1.0
 	 */
 
 	protected function _setTableByRoot()
 	{
-		$homepage = Db::getSetting('homepage');
+		$settingModel = new Model\Setting();
+		$homepage = $settingModel->get('homepage');
 		$table = $homepage > 0 ? 'articles' : 'categories';
 
-		/* set registry */
+		/* set the registry */
 
 		$this->_registry->set('firstTable', $table);
 		$this->_registry->set('lastTable', $table);
 	}
 
 	/**
-	 * set table by parameter
+	 * set the table by parameter
 	 *
 	 * @since 3.1.0
 	 */
@@ -89,29 +91,30 @@ class Content extends BootstrapAbstract
 		$secondParameter = $this->_registry->get('secondParameter');
 		$thirdParameter = $this->_registry->get('thirdParameter');
 		$lastParameter = $this->_registry->get('lastParameter');
+		$contentModel = new Model\Content();
 
-		/* set registry */
+		/* set the registry */
 
 		if ($firstParameter)
 		{
-			$this->_registry->set('firstTable', query_table($firstParameter));
+			$this->_registry->set('firstTable', $contentModel->getTableByAlias($firstParameter));
 			if ($this->_registry->get('firstTable'))
 			{
-				$this->_registry->set('secondTable', query_table($secondParameter));
+				$this->_registry->set('secondTable', $contentModel->getTableByAlias($secondParameter));
 			}
 			if ($this->_registry->get('secondTable'))
 			{
-				$this->_registry->set('thirdTable', query_table($thirdParameter));
+				$this->_registry->set('thirdTable', $contentModel->getTableByAlias($thirdParameter));
 			}
 			if ($this->_registry->get('lastParameter'))
 			{
-				$this->_registry->set('lastTable', query_table($lastParameter));
+				$this->_registry->set('lastTable', $contentModel->getTableByAlias($lastParameter));
 			}
 		}
 	}
 
 	/**
-	 * set id
+	 * set the id
 	 *
 	 * @since 3.1.0
 	 *
@@ -131,7 +134,7 @@ class Content extends BootstrapAbstract
 				->id;
 		}
 
-		/* set registry */
+		/* set the registry */
 
 		if ($firstParameter === 'admin' || $aliasValidator->validate($firstParameter, Validator\Alias::MODE_DEFAULT) === Validator\ValidatorInterface::FAILED)
 		{
@@ -149,16 +152,20 @@ class Content extends BootstrapAbstract
 	}
 
 	/**
-	 * set id by root
+	 * set the id by root
 	 *
-	 * @since 3.1.0
+	 * @since 3.3.0
 	 */
 
 	protected function _setIdByRoot()
 	{
+		$settingModel = new Model\Setting();
+		$order = $settingModel->get('order');
 		$lastTable = $this->_registry->get('lastTable');
-		$order = Db::getSetting('order');
 		$result = Db::forTablePrefix($lastTable);
+
+		/* handle order */
+
 		if ($order === 'asc')
 		{
 			$lastRank = $result->min('rank');
@@ -167,6 +174,9 @@ class Content extends BootstrapAbstract
 		{
 			$lastRank = $result->max('rank');
 		}
+
+		/* last rank */
+
 		if ($lastRank)
 		{
 			$this->_setId(
@@ -178,7 +188,7 @@ class Content extends BootstrapAbstract
 	}
 
 	/**
-	 * set id by parameter
+	 * set the id by parameter
 	 *
 	 * @since 3.1.0
 	 */
@@ -197,7 +207,7 @@ class Content extends BootstrapAbstract
 	}
 
 	/**
-	 * set content error
+	 * set the content error
 	 *
 	 * @since 3.1.0
 	 */

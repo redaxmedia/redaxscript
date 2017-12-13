@@ -36,7 +36,7 @@ class FileTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerCreate()
+	public function providerCreate() : array
 	{
 		return $this->getProvider('tests/provider/Filesystem/file_create.json');
 	}
@@ -49,7 +49,7 @@ class FileTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerReadAndWrite()
+	public function providerReadAndWrite() : array
 	{
 		return $this->getProvider('tests/provider/Filesystem/file_read_and_write.json');
 	}
@@ -62,7 +62,7 @@ class FileTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerRemove()
+	public function providerRemove() : array
 	{
 		return $this->getProvider('tests/provider/Filesystem/file_remove.json');
 	}
@@ -73,14 +73,14 @@ class FileTest extends TestCaseAbstract
 	 * @since 3.2.0
 	 *
 	 * @param string $root
-	 * @param boolean $recursive
+	 * @param bool $recursive
 	 * @param string $file
 	 * @param array $expectArray
 	 *
 	 * @dataProvider providerCreate
 	 */
 
-	public function testCreate($root = null, $recursive = null, $file = null, $expectArray = [])
+	public function testCreate(string $root = null, bool $recursive = null, string $file = null, array $expectArray = [])
 	{
 		/* setup */
 
@@ -103,7 +103,7 @@ class FileTest extends TestCaseAbstract
 	 * @since 3.2.0
 	 *
 	 * @param string $root
-	 * @param boolean $recursive
+	 * @param bool $recursive
 	 * @param string $file
 	 * @param string $content
 	 * @param array $expectArray
@@ -111,7 +111,7 @@ class FileTest extends TestCaseAbstract
 	 * @dataProvider providerReadAndWrite
 	 */
 
-	public function testReadAndWrite($root = null, $recursive = null, $file = null, $content = null, $expectArray = [])
+	public function testReadAndWrite(string $root = null, bool $recursive = null, string $file = null, string $content = null, array $expectArray = [])
 	{
 		/* setup */
 
@@ -138,14 +138,14 @@ class FileTest extends TestCaseAbstract
 	 * @since 3.2.0
 	 *
 	 * @param string $root
-	 * @param boolean $recursive
+	 * @param bool $recursive
 	 * @param string $file
 	 * @param array $expectArray
 	 *
 	 * @dataProvider providerRemove
 	 */
 
-	public function testRemove($root = null, $recursive = null, $file = null, $expectArray = [])
+	public function testRemove(string $root = null, bool $recursive = null, string $file = null, array $expectArray = [])
 	{
 		/* setup */
 

@@ -1,0 +1,27 @@
+[
+	[
+		{},
+		{},
+		"<ul class=\"rs-list-articles\"><li><a href=\"category-one/article-one\">Article One</a></li><li><a href=\"category-two/article-two\">Article Two</a></li><li><a href=\"article-three\">Article Three</a></li></ul>"
+	],
+	[
+		{
+			"articleId": 1
+		},
+		{},
+		"<ul class=\"rs-list-articles\"><li class=\"rs-item-active\"><a href=\"category-one/article-one\">Article One</a></li><li><a href=\"category-two/article-two\">Article Two</a></li><li><a href=\"article-three\">Article Three</a></li></ul>"
+	],
+	[
+		{
+			"articleId": 2
+		},
+		{
+			"className":
+			{
+				"list": "rs-list-sidebar",
+				"active": "rs-item-active"
+			}
+		},
+		"<ul class=\"rs-list-sidebar\"><li><a href=\"category-one/article-one\">Article One</a></li><li class=\"rs-item-active\"><a href=\"category-two/article-two\">Article Two</a></li><li><a href=\"article-three\">Article Three</a></li></ul>"
+	]
+]

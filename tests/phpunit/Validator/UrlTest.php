@@ -25,7 +25,7 @@ class UrlTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerUrl()
+	public function providerUrl() : array
 	{
 		return $this->getProvider('tests/provider/Validator/url.json');
 	}
@@ -36,12 +36,12 @@ class UrlTest extends TestCaseAbstract
 	 * @since 2.2.0
 	 *
 	 * @param string $url
-	 * @param integer $expect
+	 * @param int $expect
 	 *
 	 * @dataProvider providerUrl
 	 */
 
-	public function testUrl($url = null, $expect = null)
+	public function testUrl(string $url = null, int $expect = null)
 	{
 		/* setup */
 

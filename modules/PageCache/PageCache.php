@@ -27,7 +27,7 @@ class PageCache extends Config
 		'alias' => 'PageCache',
 		'author' => 'Redaxmedia',
 		'description' => 'Simple page cache',
-		'version' => '3.2.3'
+		'version' => '3.3.0'
 	];
 
 	/**
@@ -35,7 +35,7 @@ class PageCache extends Config
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array
+	 * @return array|bool
 	 */
 
 	public function adminPanelNotification()
@@ -56,7 +56,7 @@ class PageCache extends Config
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array|boolean
+	 * @return array|bool
 	 */
 
 	public function renderTemplate()

@@ -21,7 +21,7 @@ class Token extends ServerAbstract
 	 * @return string
 	 */
 
-	public function getOutput()
+	public function getOutput() : string
 	{
 		$host = new Host($this->_request);
 		$output = sha1(session_id() . $this->_request->getServer('REMOTE_ADDR') . $this->_request->getServer('HTTP_USER_AGENT') . $host->getOutput());

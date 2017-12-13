@@ -10,21 +10,16 @@
  * 3. quote
  * 4. code
  * 5. readmore
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. content */
+/** @section 1. content */
 
 .rs-content
 {
 	word-wrap: break-word;
 }
 
-/* @section 1.1 title */
+/** @section 1.1 title */
 
 .rs-title-content
 {
@@ -43,7 +38,7 @@
 	margin-top: 1em;
 }
 
-/* @section 1.2 box */
+/** @section 1.2 box */
 
 .rs-box-content
 {
@@ -62,9 +57,9 @@
 	margin-top: 1em;
 }
 
-/* @section 2. comment */
+/** @section 2. comment */
 
-/* @section 2.1 title */
+/** @section 2.1 title */
 
 .rs-title-comment
 {
@@ -82,14 +77,14 @@
 	}
 }
 
-/* @section 2.2 box */
+/** @section 2.2 box */
 
 .rs-box-comment
 {
 	font-size: 1.25em;
 }
 
-/* @section 3. quote */
+/** @section 3. quote */
 
 .rs-quote-default
 {
@@ -115,7 +110,7 @@
 	}
 }
 
-/* @section 4. code */
+/** @section 4. code */
 
 .rs-code-default
 {
@@ -132,7 +127,7 @@
 	}
 }
 
-/* @section 5. readmore */
+/** @section 5. readmore */
 
 .rs-link-readmore
 {

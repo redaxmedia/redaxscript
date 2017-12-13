@@ -60,7 +60,7 @@ class ExtraFormTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerRender()
+	public function providerRender() : array
 	{
 		return $this->getProvider('tests/provider/Admin/View/extra_form_render.json');
 	}
@@ -71,13 +71,13 @@ class ExtraFormTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $registryArray
-	 * @param integer $extraId
+	 * @param int $extraId
 	 * @param array $expectArray
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($registryArray = [], $extraId = null, $expectArray = [])
+	public function testRender(array $registryArray = [], int $extraId = null, array $expectArray = [])
 	{
 		/* setup */
 

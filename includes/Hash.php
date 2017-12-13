@@ -24,7 +24,7 @@ class Hash
 	/**
 	 * plain raw
 	 *
-	 * @var string|integer
+	 * @var string|int
 	 */
 
 	protected $_raw;
@@ -55,7 +55,7 @@ class Hash
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param string|integer $raw plain raw
+	 * @param string|int $raw plain raw
 	 */
 
 	public function init($raw = null)
@@ -71,6 +71,8 @@ class Hash
 	 * get the raw
 	 *
 	 * @since 2.6.0
+	 *
+	 * @return string|int
 	 */
 
 	public function getRaw()
@@ -82,9 +84,11 @@ class Hash
 	 * get the hash
 	 *
 	 * @since 2.6.0
+	 *
+	 * @return string
 	 */
 
-	public function getHash()
+	public function getHash() : string
 	{
 		return $this->_hash;
 	}
@@ -94,13 +98,13 @@ class Hash
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param string|integer $raw plain raw
+	 * @param string|int $raw plain raw
 	 * @param string $hash salted hash
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
-	public function validate($raw = null, $hash = null)
+	public function validate($raw = null, string $hash = null) : bool
 	{
 		return function_exists('password_hash') ? password_verify($raw, $hash) : $hash === hash('sha512', $raw . $this->_config->get('salt'));
 	}

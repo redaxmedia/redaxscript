@@ -1,8 +1,8 @@
 <?php
 namespace Redaxscript\View;
 
-use Redaxscript\Db;
 use Redaxscript\Html;
+use Redaxscript\Model;
 use Redaxscript\Module;
 
 /**
@@ -22,14 +22,15 @@ class CommentForm extends ViewAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param integer $articleId identifier of the article
+	 * @param int $articleId identifier of the article
 	 *
 	 * @return string
 	 */
 
-	public function render($articleId = null)
+	public function render(int $articleId = null) : string
 	{
 		$output = Module\Hook::trigger('commentFormStart');
+		$settingModel = new Model\Setting();
 
 		/* html elements */
 
@@ -43,6 +44,10 @@ class CommentForm extends ViewAbstract
 		$formElement = new Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[
+			'form' =>
+			[
+				'class' => 'rs-js-validate-form rs-form-default rs-form-comment'
+			],
 			'button' =>
 			[
 				'submit' =>
@@ -52,7 +57,7 @@ class CommentForm extends ViewAbstract
 			]
 		],
 		[
-			'captcha' => Db::getSetting('captcha') > 0
+			'captcha' => $settingModel->get('captcha') > 0
 		]);
 
 		/* create the form */
@@ -109,7 +114,7 @@ class CommentForm extends ViewAbstract
 				'required' => 'required'
 			])
 			->append('</li>');
-		if (Db::getSetting('captcha') > 0)
+		if ($settingModel->get('captcha') > 0)
 		{
 			$formElement
 				->append('<li>')
@@ -117,7 +122,7 @@ class CommentForm extends ViewAbstract
 				->append('</li>');
 		}
 		$formElement->append('</ul></fieldset>');
-		if (Db::getSetting('captcha') > 0)
+		if ($settingModel->get('captcha') > 0)
 		{
 			$formElement->captcha('solution');
 		}

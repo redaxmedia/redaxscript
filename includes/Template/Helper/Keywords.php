@@ -2,6 +2,7 @@
 namespace Redaxscript\Template\Helper;
 
 use Redaxscript\Db;
+use Redaxscript\Model;
 
 /**
  * helper class to provide a keywords helper
@@ -25,10 +26,11 @@ class Keywords extends HelperAbstract
 
 	public function process()
 	{
+		$settingModel = new Model\Setting();
 		$lastTable = $this->_registry->get('lastTable');
 		$lastId = $this->_registry->get('lastId');
 		$useKeywords = $this->_registry->get('useKeywords');
-		$settingKeywords = Db::getSetting('keywords');
+		$settingKeywords = $settingModel->get('keywords');
 
 		/* find keywords */
 

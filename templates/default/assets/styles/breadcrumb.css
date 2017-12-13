@@ -2,14 +2,9 @@
  * @tableofcontents
  *
  * 1. breadcrumb
- *
- * @since 3.2.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. breadcrumb */
+/** @section 1. breadcrumb */
 
 .rs-list-breadcrumb
 {

@@ -29,7 +29,7 @@ class Auth extends BootstrapAbstract
 	}
 
 	/**
-	 * set user
+	 * set the user
 	 *
 	 * @since 3.1.0
 	 */
@@ -39,7 +39,7 @@ class Auth extends BootstrapAbstract
 		$auth = new BaseAuth($this->_request);
 		$auth->init();
 
-		/* set registry */
+		/* set the registry */
 
 		if ($auth->getStatus())
 		{
@@ -53,7 +53,7 @@ class Auth extends BootstrapAbstract
 	}
 
 	/**
-	 * set permission
+	 * set the permission
 	 *
 	 * @since 3.1.0
 	 */
@@ -63,7 +63,7 @@ class Auth extends BootstrapAbstract
 		$auth = new BaseAuth($this->_request);
 		$auth->init();
 
-		/* set registry */
+		/* set the registry */
 
 		if ($auth->getStatus())
 		{
@@ -94,7 +94,7 @@ class Auth extends BootstrapAbstract
 	}
 
 	/**
-	 * set table
+	 * set the table
 	 *
 	 * @since 3.1.0
 	 */
@@ -103,7 +103,7 @@ class Auth extends BootstrapAbstract
 	{
 		$tableParameter = $this->_registry->get('tableParameter');
 
-		/* set registry */
+		/* set the registry */
 
 		$this->_registry->set('tableNew', $this->_registry->get($tableParameter . 'New'));
 		$this->_registry->set('tableInstall', $this->_registry->get($tableParameter . 'Install'));

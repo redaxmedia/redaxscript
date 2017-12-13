@@ -30,7 +30,7 @@ class Demo extends Config
 		'alias' => 'Demo',
 		'author' => 'Redaxmedia',
 		'description' => 'Enable demo login',
-		'version' => '3.2.3'
+		'version' => '3.3.0'
 	];
 
 	/**
@@ -80,7 +80,7 @@ class Demo extends Config
 	 *
 	 * @since 3.0.0
 	 *
-	 * return array
+	 * @return array|bool
 	 */
 
 	public function adminPanelNotification()
@@ -118,13 +118,13 @@ class Demo extends Config
 			'users'
 		];
 
-		/* set user */
+		/* set the user */
 
 		$auth->setUser('name', 'Demo');
 		$auth->setUser('user', 'demo');
 		$auth->setUser('email', 'demo@localhost');
 
-		/* set permission */
+		/* set the permission */
 
 		foreach ($tableArray as $value)
 		{

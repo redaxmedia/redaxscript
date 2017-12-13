@@ -2,6 +2,7 @@
 namespace Redaxscript\Bootstrap;
 
 use Redaxscript\Db;
+use Redaxscript\Model;
 
 /**
  * children class to boot the config
@@ -18,16 +19,20 @@ class Config
 	/**
 	 * automate run
 	 *
-	 * @since 3.1.0
+	 * @since 3.3.0
 	 */
 
 	protected function _autorun()
 	{
+		$settingModel = new Model\Setting();
+
+		/* function exists */
+
 		if (function_exists('ini_set'))
 		{
 			if (Db::getStatus() === 2)
 			{
-				ini_set('default_charset', Db::getSetting('charset'));
+				ini_set('default_charset', $settingModel->get('charset'));
 			}
 			if (error_reporting() === 0)
 			{

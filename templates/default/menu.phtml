@@ -12,14 +12,20 @@
 		<span><?php echo Tag::getLanguage('categories'); ?></span>
 		<?php echo Tag::navigation('categories',
 		[
-			'class' => 'rs-list-menu-children',
+			'className' =>
+			[
+				'list' => 'rs-list-menu-children'
+			],
 			'limit' => 5
 		]); ?>
 	</li><li>
 		<span><?php echo Tag::getLanguage('articles'); ?></span>
 		<?php echo Tag::navigation('articles',
 		[
-			'class' => 'rs-list-menu-children',
+			'className' =>
+			[
+				'list' => 'rs-list-menu-children'
+			],
 			'limit' => 5
 		]); ?>
 	</li>

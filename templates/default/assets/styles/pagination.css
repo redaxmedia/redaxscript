@@ -4,14 +4,9 @@
  * 1. pagination
  * 2. query
  *    2.1 medium max
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. pagination */
+/** @section 1. pagination */
 
 .rs-list-pagination
 {
@@ -93,9 +88,9 @@
 	}
 }
 
-/* @section 2. query */
+/** @section 2. query */
 
-/* @section 2.1 medium max */
+/** @section 2.1 medium max */
 
 @media (--media-medium-max)
 {

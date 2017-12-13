@@ -10,16 +10,11 @@
  * 3. info
  * 4. warning
  * 5. error
- *
- * @since 3.2.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. note */
+/** @section 1. note */
 
-/* @section 1.1 title */
+/** @section 1.1 title */
 
 .rs-admin-title-note
 {
@@ -31,7 +26,7 @@
 	}
 }
 
-/* @section 1.2 box */
+/** @section 1.2 box */
 
 .rs-admin-box-note
 {
@@ -59,7 +54,7 @@
 	}
 }
 
-/* @section 1.3 list */
+/** @section 1.3 list */
 
 .rs-admin-list-note
 {
@@ -71,14 +66,14 @@
 	}
 }
 
-/* @section 1.4 button */
+/** @section 1.4 button */
 
 .rs-admin-button-note
 {
 	@extend %rs-admin-button;
 }
 
-/* @section 2. success */
+/** @section 2. success */
 
 .rs-admin-is-success
 {
@@ -104,7 +99,7 @@
 	}
 }
 
-/* @section 3. info */
+/** @section 3. info */
 
 .rs-admin-is-info
 {
@@ -130,7 +125,7 @@
 	}
 }
 
-/* @section 4. warning */
+/** @section 4. warning */
 
 .rs-admin-is-warning
 {
@@ -156,7 +151,7 @@
 	}
 }
 
-/* @section 5. error */
+/** @section 5. error */
 
 .rs-admin-is-error
 {

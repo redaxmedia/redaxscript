@@ -24,7 +24,7 @@ class AutoloaderTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerFilePath()
+	public function providerFilePath() : array
 	{
 		return $this->getProvider('tests/provider/autoloader_file_path.json');
 	}
@@ -62,7 +62,7 @@ class AutoloaderTest extends TestCaseAbstract
 	 * @dataProvider providerFilePath
 	 */
 
-	public function testFilePath($className = null, $expect = null)
+	public function testFilePath(string $className = null, string $expect = null)
 	{
 		/* actual */
 

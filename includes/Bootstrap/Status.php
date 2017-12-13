@@ -26,7 +26,7 @@ class Status extends BootstrapAbstract
 	{
 		$auth = new BaseAuth($this->_request);
 
-		/* set registry */
+		/* set the registry */
 
 		if ($auth->getStatus())
 		{

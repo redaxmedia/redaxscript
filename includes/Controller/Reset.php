@@ -7,6 +7,7 @@ use Redaxscript\Hash;
 use Redaxscript\Html\Element;
 use Redaxscript\Mailer;
 use Redaxscript\Messenger;
+use Redaxscript\Model;
 use Redaxscript\Filter;
 use Redaxscript\Validator;
 
@@ -31,7 +32,7 @@ class Reset extends ControllerAbstract
 	 * @return string
 	 */
 
-	public function process()
+	public function process() : string
 	{
 		$specialFilter = new Filter\Special();
 
@@ -111,7 +112,7 @@ class Reset extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _success()
+	protected function _success() : string
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
@@ -130,7 +131,7 @@ class Reset extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _error($errorArray = [])
+	protected function _error(array $errorArray = []) : string
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
@@ -149,7 +150,7 @@ class Reset extends ControllerAbstract
 	 * @return array
 	 */
 
-	protected function _validate($postArray = [], $user = null)
+	protected function _validate(array $postArray = [], $user = null) : array
 	{
 		$captchaValidator = new Validator\Captcha();
 
@@ -186,20 +187,13 @@ class Reset extends ControllerAbstract
 	 *
 	 * @param array $resetArray array of the reset
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
-	protected function _reset($resetArray = [])
+	protected function _reset(array $resetArray = []) : bool
 	{
-		return Db::forTablePrefix('users')
-			->where(
-			[
-				'id' => $resetArray['id'],
-				'status' => 1
-			])
-			->findOne()
-			->set('password', $resetArray['password'])
-			->save();
+		$userModel = new Model\User();
+		return $userModel->resetPasswordByArray($resetArray);
 	}
 
 	/**
@@ -209,11 +203,12 @@ class Reset extends ControllerAbstract
 	 *
 	 * @param array $mailArray array of the mail
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
-	protected function _mail($mailArray = [])
+	protected function _mail(array $mailArray = []) : bool
 	{
+		$settingModel = new Model\Setting();
 		$urlReset = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . 'login';
 
 		/* html elements */
@@ -222,8 +217,7 @@ class Reset extends ControllerAbstract
 		$linkElement
 			->init('a',
 			[
-				'href' => $urlReset,
-				'class' => 'link-result'
+				'href' => $urlReset
 			])
 			->text($urlReset);
 
@@ -235,7 +229,7 @@ class Reset extends ControllerAbstract
 		];
 		$fromArray =
 		[
-			Db::getSetting('author') => Db::getSetting('email')
+			$settingModel->get('author') => $settingModel->get('email')
 		];
 		$subject = $this->_language->get('password_new');
 		$bodyArray =

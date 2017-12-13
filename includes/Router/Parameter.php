@@ -6,7 +6,7 @@ use Redaxscript\Server;
 use Redaxscript\Request;
 
 /**
- * parent class to get parameter
+ * parent class to get the parameter
  *
  * @since 2.4.0
  *
@@ -72,7 +72,7 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return string|boolean
+	 * @return string|bool
 	 */
 
 	public function getFirst()
@@ -85,7 +85,7 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return integer|boolean
+	 * @return int|bool
 	 */
 
 	public function getFirstSub()
@@ -98,7 +98,7 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return string|boolean
+	 * @return string|bool
 	 */
 
 	public function getSecond()
@@ -111,7 +111,7 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return integer|boolean
+	 * @return int|bool
 	 */
 
 	public function getSecondSub()
@@ -124,7 +124,7 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return string|boolean
+	 * @return string|bool
 	 */
 
 	public function getThird()
@@ -137,7 +137,7 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return integer|boolean
+	 * @return int|bool
 	 */
 
 	public function getThirdSub()
@@ -150,7 +150,7 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return string|boolean
+	 * @return string|bool
 	 */
 
 	public function getFourth()
@@ -163,7 +163,7 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return string|boolean
+	 * @return int|bool
 	 */
 
 	public function getFourthSub()
@@ -176,7 +176,7 @@ class Parameter
 	 *
 	 * @since 2.4.0
 	 *
-	 * @return string|boolean
+	 * @return string|bool
 	 */
 
 	public function getLast()
@@ -196,7 +196,7 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return integer|boolean
+	 * @return int|bool
 	 */
 
 	public function getLastSub()
@@ -216,7 +216,7 @@ class Parameter
 	 *
 	 * @since 2.4.0
 	 *
-	 * @return string|boolean
+	 * @return string|bool
 	 */
 
 	public function getAdmin()
@@ -233,7 +233,7 @@ class Parameter
 	 *
 	 * @since 2.4.0
 	 *
-	 * @return string|boolean
+	 * @return string|bool
 	 */
 
 	public function getTable()
@@ -250,7 +250,7 @@ class Parameter
 	 *
 	 * @since 2.4.0
 	 *
-	 * @return string|boolean
+	 * @return string|bool
 	 */
 
 	public function getAlias()
@@ -267,7 +267,7 @@ class Parameter
 	 *
 	 * @since 2.4.0
 	 *
-	 * @return string|boolean
+	 * @return int|bool
 	 */
 
 	public function getId()
@@ -284,7 +284,7 @@ class Parameter
 	 *
 	 * @since 2.4.0
 	 *
-	 * @return string|boolean
+	 * @return string|bool
 	 */
 
 	public function getToken()
@@ -302,12 +302,12 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @param integer $key
+	 * @param int $key
 	 *
-	 * @return string|boolean
+	 * @return string|bool
 	 */
 
-	protected function _getParameter($key = null)
+	protected function _getParameter(int $key = null)
 	{
 		if (is_array($this->_parameterArray) && array_key_exists($key, $this->_parameterArray) && !is_numeric($this->_parameterArray[$key]))
 		{
@@ -321,12 +321,12 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @param integer $key
+	 * @param int $key
 	 *
-	 * @return integer|boolean
+	 * @return int|bool
 	 */
 
-	protected function _getParameterSub($key = null)
+	protected function _getParameterSub(int $key = null)
 	{
 		if (is_array($this->_parameterArray) && array_key_exists($key, $this->_parameterArray) && is_numeric($this->_parameterArray[$key]))
 		{

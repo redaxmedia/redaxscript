@@ -36,7 +36,7 @@ class DirectoryTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerCreate()
+	public function providerCreate() : array
 	{
 		return $this->getProvider('tests/provider/Filesystem/directory_create.json');
 	}
@@ -49,7 +49,7 @@ class DirectoryTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerRemove()
+	public function providerRemove() : array
 	{
 		return $this->getProvider('tests/provider/Filesystem/directory_remove.json');
 	}
@@ -62,7 +62,7 @@ class DirectoryTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerClear()
+	public function providerClear() : array
 	{
 		return $this->getProvider('tests/provider/Filesystem/directory_clear.json');
 	}
@@ -73,14 +73,14 @@ class DirectoryTest extends TestCaseAbstract
 	 * @since 3.2.0
 	 *
 	 * @param string $root
-	 * @param boolean $recursive
+	 * @param bool $recursive
 	 * @param string $directory
 	 * @param array $expectArray
 	 *
 	 * @dataProvider providerCreate
 	 */
 
-	public function testCreate($root = null, $recursive = null, $directory = null, $expectArray = [])
+	public function testCreate(string $root = null, bool $recursive = null, string $directory = null, array $expectArray = [])
 	{
 		/* setup */
 
@@ -103,14 +103,14 @@ class DirectoryTest extends TestCaseAbstract
 	 * @since 3.2.0
 	 *
 	 * @param string $root
-	 * @param boolean $recursive
+	 * @param bool $recursive
 	 * @param string $directory
 	 * @param array $expectArray
 	 *
 	 * @dataProvider providerRemove
 	 */
 
-	public function testRemove($root = null,  $recursive = null, $directory = null, $expectArray = [])
+	public function testRemove(string $root = null, bool $recursive = null, string $directory = null, array $expectArray = [])
 	{
 		/* setup */
 
@@ -134,13 +134,13 @@ class DirectoryTest extends TestCaseAbstract
 	 * @since 3.2.0
 	 *
 	 * @param string $root
-	 * @param boolean $recursive
+	 * @param bool $recursive
 	 * @param array $expectArray
 	 *
 	 * @dataProvider providerClear
 	 */
 
-	public function testClear($root = null,  $recursive = null, $expectArray = [])
+	public function testClear(string $root = null, bool $recursive = null, array $expectArray = [])
 	{
 		/* setup */
 

@@ -25,10 +25,10 @@
 	],
 	[
 		"invalid",
-		null
+		false
 	],
 	[
 		"",
-		null
+		false
 	]
 ]

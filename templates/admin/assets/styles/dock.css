@@ -4,16 +4,11 @@
  * 1. dock
  *    1.1 box
  *    1.2 link
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. dock */
+/** @section 1. dock */
 
-/* @section 1.1 box */
+/** @section 1.1 box */
 
 .rs-admin-box-dock
 {
@@ -22,7 +17,7 @@
 	font: bold 0.875rem var(--rs-admin-font-primary);
 }
 
-/* @section 1.2 link */
+/** @section 1.2 link */
 
 .rs-admin-link-dock
 {

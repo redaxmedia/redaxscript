@@ -3,18 +3,13 @@
  *
  * 1. syntax highlighter
  * 2. init
- *
- * @since 2.6.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
 (function ($, hljs)
 {
 	'use strict';
 
-	/* @section 1. syntax highlighter */
+	/** @section 1. syntax highlighter */
 
 	$.fn.syntaxHighlighter = function (options)
 	{
@@ -40,7 +35,7 @@
 		});
 	};
 
-	/* @section 2. init */
+	/** @section 2. init */
 
 	$(function ()
 	{

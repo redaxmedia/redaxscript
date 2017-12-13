@@ -2,7 +2,6 @@
 namespace Redaxscript\Tests\Controller;
 
 use Redaxscript\Controller;
-use Redaxscript\Db;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -44,8 +43,9 @@ class RegisterTest extends TestCaseAbstract
 			'adminPassword' => 'test',
 			'adminEmail' => 'test@test.com'
 		]);
-		Db::setSetting('captcha', 1);
-		Db::setSetting('notification', 1);
+		$setting = $this->settingFactory();
+		$setting->set('captcha', 1);
+		$setting->set('notification', 1);
 	}
 
 	/**
@@ -69,7 +69,7 @@ class RegisterTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerProcess()
+	public function providerProcess() : array
 	{
 		return $this->getProvider('tests/provider/Controller/register_process.json');
 	}
@@ -82,7 +82,7 @@ class RegisterTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerProcessFailure()
+	public function providerProcessFailure() : array
 	{
 		return $this->getProvider('tests/provider/Controller/register_process_failure.json');
 	}
@@ -99,7 +99,7 @@ class RegisterTest extends TestCaseAbstract
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($postArray = [], $hashArray = [], $expect = null)
+	public function testProcess(array $postArray = [], array $hashArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -129,7 +129,7 @@ class RegisterTest extends TestCaseAbstract
 	 * @dataProvider providerProcessFailure
 	 */
 
-	public function testProcessFailure($postArray = [], $hashArray = [], $method = null, $expect = null)
+	public function testProcessFailure(array $postArray = [], array $hashArray = [], string $method = null, string $expect = null)
 	{
 		/* setup */
 

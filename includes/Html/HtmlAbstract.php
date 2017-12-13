@@ -28,10 +28,10 @@ abstract class HtmlAbstract
 	 *
 	 * @param string $html html to set
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function html($html = null)
+	public function html(string $html = null) : self
 	{
 		$this->_html = $html;
 		return $this;
@@ -44,10 +44,10 @@ abstract class HtmlAbstract
 	 *
 	 * @param string $html html to append
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function append($html = null)
+	public function append(string $html = null) : self
 	{
 		$this->_html .= $html;
 		return $this;
@@ -60,10 +60,10 @@ abstract class HtmlAbstract
 	 *
 	 * @param string $html html to prepend
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function prepend($html = null)
+	public function prepend(string $html = null) : self
 	{
 		$this->_html = $html . $this->_html;
 		return $this;
@@ -74,10 +74,10 @@ abstract class HtmlAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function clear()
+	public function clear() : self
 	{
 		$this->html(null);
 		return $this;

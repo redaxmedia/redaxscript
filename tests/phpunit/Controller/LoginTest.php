@@ -44,7 +44,8 @@ class LoginTest extends TestCaseAbstract
 			'adminPassword' => 'test',
 			'adminEmail' => 'test@test.com'
 		]);
-		Db::setSetting('captcha', 1);
+		$setting = $this->settingFactory();
+		$setting->set('captcha', 1);
 	}
 
 	/**
@@ -68,7 +69,7 @@ class LoginTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerProcess()
+	public function providerProcess() : array
 	{
 		return $this->getProvider('tests/provider/Controller/login_process.json');
 	}
@@ -81,7 +82,7 @@ class LoginTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerProcessFailure()
+	public function providerProcessFailure() : array
 	{
 		return $this->getProvider('tests/provider/Controller/login_process_failure.json');
 	}
@@ -99,7 +100,7 @@ class LoginTest extends TestCaseAbstract
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($postArray = [], $hashArray = [], $userArray = [], $expect = null)
+	public function testProcess(array $postArray = [], array $hashArray = [], array $userArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -135,7 +136,7 @@ class LoginTest extends TestCaseAbstract
 	 * @dataProvider providerProcessFailure
 	 */
 
-	public function testProcessFailure($postArray = [], $hashArray = [], $userArray = [], $method = null, $expect = null)
+	public function testProcessFailure(array $postArray = [], array $hashArray = [], array $userArray = [], string $method = null, string $expect = null)
 	{
 		/* setup */
 

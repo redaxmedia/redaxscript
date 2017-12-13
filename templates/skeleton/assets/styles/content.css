@@ -3,14 +3,9 @@
  *
  * 1. content
  * 2. comment
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. content */
+/** @section 1. content */
 
 .rs-content
 {
@@ -24,7 +19,7 @@
 	margin-top: 1em;
 }
 
-/* @section 2. comment */
+/** @section 2. comment */
 
 .rs-title-comment
 {

@@ -2,14 +2,9 @@
  * @tableofcontents
  *
  * 1. sidebar
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. sidebar */
+/** @section 1. sidebar */
 
 .rs-sidebar
 {
@@ -37,8 +32,13 @@
 		padding-left: 0.5em;
 	}
 
-	& .rs-item-active .rs-list-children
+	& .rs-item-active
 	{
-		display: block;
+		font-weight: bold;
+
+		& .rs-list-children
+		{
+			display: block;
+		}
 	}
 }

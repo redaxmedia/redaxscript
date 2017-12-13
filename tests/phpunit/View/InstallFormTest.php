@@ -24,7 +24,7 @@ class InstallFormTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerRender()
+	public function providerRender() : array
 	{
 		return $this->getProvider('tests/provider/View/install_form_render.json');
 	}
@@ -39,7 +39,7 @@ class InstallFormTest extends TestCaseAbstract
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($expectArray = [])
+	public function testRender(array $expectArray = [])
 	{
 		/* setup */
 

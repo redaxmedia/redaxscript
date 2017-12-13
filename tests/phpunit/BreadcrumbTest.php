@@ -13,8 +13,6 @@ use Redaxscript\Db;
  * @category Tests
  * @author Henry Ruhs
  * @author Gary Aylward
- *
- * @requires extension mysqli
  */
 
 class BreadcrumbTest extends TestCaseAbstract
@@ -96,7 +94,7 @@ class BreadcrumbTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerGetArray()
+	public function providerGetArray() : array
 	{
 		return $this->getProvider('tests/provider/breadcrumb_get_array.json');
 	}
@@ -109,7 +107,7 @@ class BreadcrumbTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerRender()
+	public function providerRender() : array
 	{
 		return $this->getProvider('tests/provider/breadcrumb_render.json');
 	}
@@ -125,7 +123,7 @@ class BreadcrumbTest extends TestCaseAbstract
 	 * @dataProvider providerGetArray
 	 */
 
-	public function testGetArray($registryArray = [], $expectArray = [])
+	public function testGetArray(array $registryArray = [], array $expectArray = [])
 	{
 		/* setup */
 
@@ -153,7 +151,7 @@ class BreadcrumbTest extends TestCaseAbstract
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($registryArray = [], $expect = null)
+	public function testRender(array $registryArray = [], string $expect = null)
 	{
 		/* setup */
 

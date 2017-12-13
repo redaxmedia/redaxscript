@@ -57,7 +57,18 @@ class DbTest extends TestCaseAbstract
 			[
 				'title' => 'Article One',
 				'alias' => 'article-one',
+				'language' => 'en',
 				'category' => 1
+			])
+			->save();
+		Db::forTablePrefix('articles')
+			->create()
+			->set(
+			[
+				'title' => 'Article Two',
+				'alias' => 'article-two',
+				'language' => 'de',
+				'category' => 2
 			])
 			->save();
 	}
@@ -85,7 +96,7 @@ class DbTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerInit()
+	public function providerInit() : array
 	{
 		return $this->getProvider('tests/provider/db_init.json');
 	}
@@ -98,7 +109,7 @@ class DbTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerLanguage()
+	public function providerLanguage() : array
 	{
 		return $this->getProvider('tests/provider/db_language.json');
 	}
@@ -262,15 +273,11 @@ class DbTest extends TestCaseAbstract
 	 * @dataProvider providerLanguage
 	 */
 
-	public function testWhereLanguageIs($language = null, $expect = null)
+	public function testWhereLanguageIs(string $language = null, string $expect = null)
 	{
-		/* setup */
-
-		Db::forTablePrefix('articles')->where('alias', 'article-one')->findOne()->set('language', $language)->save();
-
 		/* actual */
 
-		$actual = Db::forTablePrefix('articles')->whereLanguageIs('en')->findOne()->alias;
+		$actual = Db::forTablePrefix('articles')->whereLanguageIs($language)->findOne()->alias;
 
 		/* compare */
 
@@ -289,51 +296,14 @@ class DbTest extends TestCaseAbstract
 
 		$expectArray =
 		[
-			1
+			1,
+			2
 		];
 		$actualArray = Db::forTablePrefix('articles')->findFlatArray();
 
 		/* compare */
 
 		$this->assertEquals($expectArray, $actualArray);
-	}
-
-	/**
-	 * testGetAndSetSetting
-	 *
-	 * @since 2.2.0
-	 */
-
-	public function testGetAndSetSetting()
-	{
-		/* setup */
-
-		Db::setSetting('charset', 'utf-8');
-
-		/* actual */
-
-		$actual = Db::getSetting('charset');
-
-		/* compare */
-
-		$this->assertEquals('utf-8', $actual);
-	}
-
-	/**
-	 * testGetSettingInvalid
-	 *
-	 * @since 2.2.0
-	 */
-
-	public function testGetSettingInvalid()
-	{
-		/* actual */
-
-		$actual = Db::getSetting('invalidKey');
-
-		/* compare */
-
-		$this->assertFalse($actual);
 	}
 
 	/**

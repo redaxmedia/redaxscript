@@ -13,7 +13,7 @@ use Redaxscript\Module;
  * @author Henry Ruhs
  */
 
-class TestDummy extends Module\Module
+class TestDummy extends Module\Notification
 {
 	/**
 	 * array of the module
@@ -27,7 +27,7 @@ class TestDummy extends Module\Module
 		'alias' => 'TestDummy',
 		'author' => 'Redaxmedia',
 		'description' => 'Test Dummy',
-		'version' => '3.2.3'
+		'version' => '3.3.0'
 	];
 
 	/**
@@ -35,7 +35,7 @@ class TestDummy extends Module\Module
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return array
+	 * @return array|bool
 	 */
 
 	public function adminPanelNotification()
@@ -49,13 +49,13 @@ class TestDummy extends Module\Module
 	 *
 	 * @since 3.1.0
 	 *
-	 * @param integer $firstNumber
-	 * @param integer $secondNumber
+	 * @param int $firstNumber
+	 * @param int $secondNumber
 	 *
-	 * @return integer
+	 * @return int
 	 */
 
-	public function render($firstNumber = 1, $secondNumber = 1)
+	public function render(int $firstNumber = 1, int $secondNumber = 1) : int
 	{
 		return $firstNumber + $secondNumber;
 	}

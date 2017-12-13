@@ -28,7 +28,7 @@ class SocialSharer extends Config
 		'alias' => 'SocialSharer',
 		'author' => 'Redaxmedia',
 		'description' => 'Integrate a social sharer',
-		'version' => '3.2.3'
+		'version' => '3.3.0'
 	];
 
 	/**
@@ -36,7 +36,7 @@ class SocialSharer extends Config
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string|boolean
+	 * @return string|bool
 	 */
 
 	public function contentFragmentEnd()
@@ -83,7 +83,7 @@ class SocialSharer extends Config
 	 * @return string
 	 */
 
-	public function render($url = null)
+	public function render(string $url = null) : string
 	{
 		$outputItem = null;
 		if ($url)

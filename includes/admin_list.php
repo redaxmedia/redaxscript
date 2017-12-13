@@ -167,7 +167,8 @@ function admin_contents_list()
 					}
 					else
 					{
-						$route = build_route($tableParameter, $id);
+						$contentModel = new Redaxscript\Model\Content();
+						$route = $contentModel->getRouteByTableAndId($tableParameter, $id);
 					}
 				}
 				else
@@ -620,6 +621,7 @@ function admin_users_list()
 			}
 			else
 			{
+				$settingModel = new Redaxscript\Model\Setting();
 				$minute_ago = date('Y-m-d H:i:s', strtotime('-1 minute'));
 				$day_ago = date('Y-m-d H:i:s', strtotime('-1 day'));
 				if ($last > $minute_ago)
@@ -628,12 +630,12 @@ function admin_users_list()
 				}
 				else if ($last > $day_ago)
 				{
-					$time = date(Redaxscript\Db::getSetting('time'), strtotime($last));
+					$time = date($settingModel->get('time'), strtotime($last));
 					$output .= $language->get('today') . ' ' . $language->get('at') . ' ' . $time;
 				}
 				else
 				{
-					$date = date(Redaxscript\Db::getSetting('date'), strtotime($last));
+					$date = date($settingModel->get('date'), strtotime($last));
 					$output .= $date;
 				}
 			}

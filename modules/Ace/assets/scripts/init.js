@@ -2,14 +2,9 @@
  * @tableofcontents
  *
  * 1. ace
- *
- * @since 2.6.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. ace */
+/** @section 1. ace */
 
 rs.modules.ace =
 {

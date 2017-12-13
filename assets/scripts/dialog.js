@@ -9,18 +9,13 @@
  * 2. confirm link
  * 3. prevent unload
  * 4. init
- *
- * @since 2.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
 (function ($)
 {
 	'use strict';
 
-	/* @section 1. dialog */
+	/** @section 1. dialog */
 
 	$.fn.dialog = function (options)
 	{
@@ -44,7 +39,7 @@
 
 		var dialog = {};
 
-		/* @section 1.1 open */
+		/** @section 1.1 open */
 
 		dialog.open = function ()
 		{
@@ -83,7 +78,7 @@
 			rs.flags.modal = true;
 		};
 
-		/* @section 1.2 listen */
+		/** @section 1.2 listen */
 
 		dialog.listen = function ()
 		{
@@ -127,7 +122,7 @@
 			});
 		};
 
-		/* @section 1.3 close */
+		/** @section 1.3 close */
 
 		dialog.close = function ()
 		{
@@ -135,7 +130,7 @@
 			rs.flags.modal = false;
 		};
 
-		/* @section 1.4 init */
+		/** @section 1.4 init */
 
 		dialog.init = function ()
 		{
@@ -162,7 +157,7 @@
 		dialog.init();
 	};
 
-	/* @section 2. confirm link */
+	/** @section 2. confirm link */
 
 	$.fn.confirmLink = function ()
 	{
@@ -203,7 +198,7 @@
 		});
 	};
 
-	/* @section 3. prevent unload */
+	/** @section 3. prevent unload */
 
 	$.fn.preventUnload = function (options)
 	{
@@ -230,7 +225,7 @@
 		});
 	};
 
-	/* @section 4. init */
+	/** @section 4. init */
 
 	$(function ()
 	{

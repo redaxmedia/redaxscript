@@ -2,14 +2,9 @@
  * @tableofcontents
  *
  * 1. analytics
- *
- * @since 2.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. analytics */
+/** @section 1. analytics */
 
 rs.modules.analytics =
 {

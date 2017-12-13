@@ -7,18 +7,13 @@
  *    1.3 listen
  *    1.4 init
  * 2. init
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
 (function ($)
 {
 	'use strict';
 
-	/* @section 1. social sharer */
+	/** @section 1. social sharer */
 
 	$.fn.socialSharer = function (options)
 	{
@@ -38,7 +33,7 @@
 					links: $(this).find('a')
 				};
 
-			/* @section 1.1 fetch data */
+			/** @section 1.1 fetch data */
 
 			socialSharer.fetchData = function ()
 			{
@@ -61,7 +56,7 @@
 				});
 			};
 
-			/* @section 1.2 process data */
+			/** @section 1.2 process data */
 
 			socialSharer.processData = function (data)
 			{
@@ -84,7 +79,7 @@
 				}
 			};
 
-			/* @section 1.3 listen */
+			/** @section 1.3 listen */
 
 			socialSharer.listen = function ()
 			{
@@ -103,7 +98,7 @@
 				});
 			};
 
-			/* @section 1.4 init */
+			/** @section 1.4 init */
 
 			socialSharer.init = function ()
 			{
@@ -120,7 +115,7 @@
 		});
 	};
 
-	/* @section 2. init */
+	/** @section 2. init */
 
 	$(function ()
 	{

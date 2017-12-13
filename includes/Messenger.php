@@ -80,10 +80,10 @@ class Messenger
 	 *
 	 * @param array $optionArray options of the messenger
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function init($optionArray = [])
+	public function init(array $optionArray = []) : self
 	{
 		if (is_array($optionArray))
 		{
@@ -100,10 +100,10 @@ class Messenger
 	 * @param string $text text of the action
 	 * @param string $url absolute url of the action
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function setUrl($text = null, $url = null)
+	public function setUrl(string $text = null, string $url = null) : self
 	{
 		if (strlen($text) && strlen($url))
 		{
@@ -122,10 +122,10 @@ class Messenger
 	 * @param string $text text of the action
 	 * @param string $route relative route of the action
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function setRoute($text = null, $route = null)
+	public function setRoute(string $text = null, string $route = null) : self
 	{
 		if (strlen($text) && strlen($route))
 		{
@@ -141,12 +141,12 @@ class Messenger
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param integer $timeout timeout of the redirect
+	 * @param int>null $timeout timeout of the redirect
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function doRedirect($timeout = 2)
+	public function doRedirect($timeout = 2) : self
 	{
 		$this->_actionArray['redirect'] = $timeout;
 		return $this;
@@ -163,7 +163,7 @@ class Messenger
 	 * @return string
 	 */
 
-	public function success($message = null, $title = null)
+	public function success($message = null, string $title = null) : string
 	{
 		return $this->render('success', $message, $title);
 	}
@@ -179,7 +179,7 @@ class Messenger
 	 * @return string
 	 */
 
-	public function info($message = null, $title = null)
+	public function info($message = null, string $title = null) : string
 	{
 		return $this->render('info', $message, $title);
 	}
@@ -195,7 +195,7 @@ class Messenger
 	 * @return string
 	 */
 
-	public function warning($message = null, $title = null)
+	public function warning($message = null, string $title = null) : string
 	{
 		return $this->render('warning', $message, $title);
 	}
@@ -211,7 +211,7 @@ class Messenger
 	 * @return string
 	 */
 
-	public function error($message = null, $title = null)
+	public function error($message = null, string $title = null) : string
 	{
 		return $this->render('error', $message, $title);
 	}
@@ -228,7 +228,7 @@ class Messenger
 	 * @return string
 	 */
 
-	public function render($type = null, $message = null, $title = null)
+	public function render(string $type = null, $message = null, string $title = null) : string
 	{
 		$output = Module\Hook::trigger('messengerStart');
 
@@ -294,10 +294,10 @@ class Messenger
 	 *
 	 * @param string $type type of the flash
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	protected function _renderAction($type = null)
+	protected function _renderAction(string $type = null)
 	{
 		$output = null;
 		if ($this->_actionArray['text'] && ($this->_actionArray['route'] || $this->_actionArray['url']))

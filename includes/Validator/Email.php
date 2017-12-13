@@ -20,9 +20,9 @@ class Email implements ValidatorInterface
 	 * @since 2.2.0
 	 *
 	 * @param string $email email address
-	 * @param boolean $dns optional validate dns
+	 * @param bool $dns optional validate dns
 	 *
-	 * @return integer
+	 * @return int
 	 */
 
 	public function validate($email = null, $dns = true)

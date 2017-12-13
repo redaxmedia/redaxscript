@@ -5,9 +5,9 @@
 			"lastTable": "categories",
 			"lastId": 1
 		},
-		null,
-		null,
-		null,
+		{},
+		{},
+		{},
 		"default"
 	],
 	[
@@ -19,8 +19,8 @@
 		{
 			"t": "invalid"
 		},
-		null,
-		null,
+		{},
+		{},
 		"default"
 	],
 	[
@@ -35,7 +35,7 @@
 		{
 			"template": "default"
 		},
-		null,
+		{},
 		"wide"
 	],
 	[
@@ -44,11 +44,11 @@
 			"lastTable": "categories",
 			"lastId": 1
 		},
-		null,
+		{},
 		{
 			"template": "wide"
 		},
-		null,
+		{},
 		"wide"
 	],
 	[
@@ -57,8 +57,8 @@
 			"lastTable": "categories",
 			"lastId": 1
 		},
-		null,
-		null,
+		{},
+		{},
 		{
 			"template": "wide"
 		},
@@ -70,8 +70,8 @@
 			"lastTable": "categories",
 			"lastId": 1
 		},
-		null,
-		null,
+		{},
+		{},
 		{
 			"template": "wide"
 		},
@@ -83,9 +83,9 @@
 			"lastTable": "articles",
 			"lastId": 1
 		},
-		null,
-		null,
-		null,
+		{},
+		{},
+		{},
 		"wide"
 	]
 ]

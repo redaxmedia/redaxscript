@@ -3,18 +3,13 @@
  *
  * 1. call home
  * 2. init
- *
- * @since 2.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
 (function ($, ga)
 {
 	'use strict';
 
-	/* @section 1. call home */
+	/** @section 1. call home */
 
 	$.fn.callHome = function (options)
 	{
@@ -45,7 +40,7 @@
 		}
 	};
 
-	/* @section 2. init */
+	/** @section 2. init */
 
 	$(function ()
 	{

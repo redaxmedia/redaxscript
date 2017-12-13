@@ -26,7 +26,7 @@ class SearchForm extends ViewAbstract
 	 * @return string
 	 */
 
-	public function render($table = null)
+	public function render(string $table = null) : string
 	{
 		$output = Module\Hook::trigger('searchFormStart');
 

@@ -15,16 +15,11 @@
  *    4.2 down
  *    4.3 right
  *    4.4 left
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. fade */
+/** @section 1. fade */
 
-/* @section 1.1 in */
+/** @section 1.1 in */
 
 @keyframes fade-in
 {
@@ -39,7 +34,7 @@
 	}
 }
 
-/* @section 1.2 out */
+/** @section 1.2 out */
 
 @keyframes fade-out
 {
@@ -54,9 +49,9 @@
 	}
 }
 
-/* @section 2. rotate */
+/** @section 2. rotate */
 
-/* @section 2.1 right */
+/** @section 2.1 right */
 
 @keyframes rotate-right
 {
@@ -71,7 +66,7 @@
 	}
 }
 
-/* @section 2.2 left */
+/** @section 2.2 left */
 
 @keyframes rotate-left
 {
@@ -86,9 +81,9 @@
 	}
 }
 
-/* @section 3. scale */
+/** @section 3. scale */
 
-/* @section 3.1 in */
+/** @section 3.1 in */
 
 @keyframes scale-in
 {
@@ -103,7 +98,7 @@
 	}
 }
 
-/* @section 3.2 out */
+/** @section 3.2 out */
 
 @keyframes scale-out
 {
@@ -118,9 +113,9 @@
 	}
 }
 
-/* @section 4. move */
+/** @section 4. move */
 
-/* @section 4.1 up */
+/** @section 4.1 up */
 
 @keyframes move-up
 {
@@ -135,7 +130,7 @@
 	}
 }
 
-/* @section 4.2 down */
+/** @section 4.2 down */
 
 @keyframes move-down
 {
@@ -150,7 +145,7 @@
 	}
 }
 
-/* @section 4.3 right */
+/** @section 4.3 right */
 
 @keyframes move-right
 {
@@ -165,7 +160,7 @@
 	}
 }
 
-/* @section 4.4 left */
+/** @section 4.4 left */
 
 @keyframes move-left
 {

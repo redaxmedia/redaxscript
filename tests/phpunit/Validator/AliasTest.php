@@ -25,7 +25,7 @@ class AliasTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerAlias()
+	public function providerAlias() : array
 	{
 		return $this->getProvider('tests/provider/Validator/alias.json');
 	}
@@ -36,13 +36,13 @@ class AliasTest extends TestCaseAbstract
 	 * @since 2.2.0
 	 *
 	 * @param string $alias
-	 * @param integer $mode
-	 * @param integer $expect
+	 * @param int $mode
+	 * @param int $expect
 	 *
 	 * @dataProvider providerAlias
 	 */
 
-	public function testAlias($alias = null, $mode = null, $expect = null)
+	public function testAlias(string $alias = null, int $mode = null, int $expect = null)
 	{
 		/* setup */
 

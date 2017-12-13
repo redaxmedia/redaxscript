@@ -2,14 +2,9 @@
  * @tableofcontents
  *
  * 1. query
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. query */
+/** @section 1. query */
 
 @custom-media --media-small-max (max-width: 29.999em);
 @custom-media --media-small-min (min-width: 30em);

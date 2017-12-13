@@ -27,7 +27,7 @@ class Tinymce extends Config
 		'alias' => 'Tinymce',
 		'author' => 'Redaxmedia',
 		'description' => 'JavaScript powered WYSIWYG editor',
-		'version' => '3.2.3',
+		'version' => '3.3.0',
 		'access' => '1'
 	];
 
@@ -44,7 +44,7 @@ class Tinymce extends Config
 			$script = Head\Script::getInstance();
 			$script
 				->init('foot')
-				->appendFile('https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.3/tinymce.min.js')
+				->appendFile('https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.7.4/tinymce.min.js')
 				->appendFile('modules/Tinymce/assets/scripts/init.js')
 				->appendFile('modules/Tinymce/dist/scripts/tinymce.min.js');
 
@@ -63,7 +63,7 @@ class Tinymce extends Config
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array
+	 * @return array|bool
 	 */
 
 	public function adminPanelNotification()
@@ -84,7 +84,7 @@ class Tinymce extends Config
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array|boolean
+	 * @return array|bool
 	 */
 
 	protected function _upload()

@@ -37,7 +37,7 @@ class LinkTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerAppend()
+	public function providerAppend() : array
 	{
 		return $this->getProvider('tests/provider/Head/link_append.json');
 	}
@@ -50,7 +50,7 @@ class LinkTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerPrepend()
+	public function providerPrepend() : array
 	{
 		return $this->getProvider('tests/provider/Head/link_prepend.json');
 	}
@@ -63,7 +63,7 @@ class LinkTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerRemove()
+	public function providerRemove() : array
 	{
 		return $this->getProvider('tests/provider/Head/link_remove.json');
 	}
@@ -76,7 +76,7 @@ class LinkTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerConcat()
+	public function providerConcat() : array
 	{
 		return $this->getProvider('tests/provider/Head/link_concat.json');
 	}
@@ -93,7 +93,7 @@ class LinkTest extends TestCaseAbstract
 	 * @dataProvider providerAppend
 	 */
 
-	public function testAppend($coreArray = [], $moduleArray = [], $expect = null)
+	public function testAppend(array $coreArray = [], array $moduleArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -135,7 +135,7 @@ class LinkTest extends TestCaseAbstract
 	 * @dataProvider providerPrepend
 	 */
 
-	public function testPrepend($coreArray = [], $moduleArray = [], $expect = null)
+	public function testPrepend(array $coreArray = [], array $moduleArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -177,7 +177,7 @@ class LinkTest extends TestCaseAbstract
 	 * @dataProvider providerRemove
 	 */
 
-	public function testRemove($coreArray = [], $deleteFile = null, $expect = null)
+	public function testRemove(array $coreArray = [], string $deleteFile = null, string $expect = null)
 	{
 		/* setup */
 
@@ -212,7 +212,7 @@ class LinkTest extends TestCaseAbstract
 	 * @dataProvider providerConcat
 	 */
 
-	public function testConcat($concatArray = [], $expect = null)
+	public function testConcat(array $concatArray = [], string $expect = null)
 	{
 		/* setup */
 

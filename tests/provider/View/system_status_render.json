@@ -3,7 +3,7 @@
 		{
 			"dbStatus": 0,
 			"phpOs": "linux",
-			"phpVersion": "5.5.0",
+			"phpStatus": true,
 			"driverArray":
 			[
 				"mssql",
@@ -25,7 +25,7 @@
 		{
 			"dbStatus": 2,
 			"phpOs": "winnt",
-			"phpVersion": "5.5.0",
+			"phpStatus": true,
 			"driverArray":
 			[
 				"mssql",
@@ -47,7 +47,7 @@
 		{
 			"dbStatus": 2,
 			"phpOs": "linux",
-			"phpVersion": "5.5.0",
+			"phpStatus": true,
 			"driverArray":
 			[
 				"mssql",

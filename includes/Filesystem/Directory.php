@@ -21,12 +21,12 @@ class Directory extends File
 	 * @since 3.2.0
 	 *
 	 * @param string $directory name of the directory
-	 * @param integer $mode file access mode
+	 * @param int $mode file access mode
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
-	public function createDirectory($directory = null, $mode = 0777)
+	public function createDirectory(string $directory = null, int $mode = 0777) : bool
 	{
 		$path = $this->_root . DIRECTORY_SEPARATOR . $directory;
 		return !is_dir($path) && mkdir($path, $mode);
@@ -39,10 +39,10 @@ class Directory extends File
 	 *
 	 * @param string $directory name of the directory
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
-	public function removeDirectory($directory = null)
+	public function removeDirectory(string $directory = null) : bool
 	{
 		if ($directory)
 		{
@@ -58,10 +58,10 @@ class Directory extends File
 	 *
 	 * @since 3.2.0
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
-	public function clearDirectory()
+	public function clearDirectory() : bool
 	{
 		return $this->_remove($this->_root);
 	}
@@ -70,11 +70,17 @@ class Directory extends File
 	 * remove the directory
 	 *
 	 * @param string $directory name of the directory
+	 *
+	 * @return bool
 	 */
 
-	protected function _remove($directory = null)
+	protected function _remove(string $directory = null) : bool
 	{
+		$output = false;
 		$iterator = $this->_scan($directory);
+
+		/* handle recursive */
+
 		if ($this->_recursive)
 		{
 			$iterator = new RecursiveIteratorIterator($iterator, RecursiveIteratorIterator::CHILD_FIRST);
@@ -85,7 +91,8 @@ class Directory extends File
 		foreach ($iterator as $item)
 		{
 			$path = $item->getPathName();
-			$item->isDir() ? rmdir($path) : unlink($path);
+			$output = $item->isDir() ? rmdir($path) : unlink($path);
 		}
+		return $output;
 	}
 }

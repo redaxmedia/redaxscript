@@ -5,14 +5,9 @@
  *    1.1 head and foot
  *    1.2 body
  * 2. wrapper table
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. table default */
+/** @section 1. table default */
 
 .rs-table-default
 {
@@ -26,7 +21,7 @@
 		padding: 0.5em 1em;
 	}
 
-	/* @section 1.1 head and foot */
+	/** @section 1.1 head and foot */
 
 	& caption,
 	& th,
@@ -36,7 +31,7 @@
 		color: gray(255);
 	}
 
-	/* @section 1.2 body */
+	/** @section 1.2 body */
 
 	& tbody
 	{
@@ -49,7 +44,7 @@
 	}
 }
 
-/* @section 2. wrapper table */
+/** @section 2. wrapper table */
 
 .rs-wrapper-table
 {

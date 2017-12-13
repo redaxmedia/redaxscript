@@ -28,7 +28,7 @@ class Maps extends Config
 		'alias' => 'Maps',
 		'author' => 'Redaxmedia',
 		'description' => 'Integrate Google Maps',
-		'version' => '3.2.3'
+		'version' => '3.3.0'
 	];
 
 	/**
@@ -64,14 +64,14 @@ class Maps extends Config
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param integer $latitude
-	 * @param integer $longitude
-	 * @param integer $zoom
+	 * @param int $latitude
+	 * @param int $longitude
+	 * @param int $zoom
 	 *
 	 * @return string
 	 */
 
-	public function render($latitude = 0, $longitude = 0, $zoom = 1)
+	public function render(int $latitude = 0, int $longitude = 0, int $zoom = 1) : string
 	{
 		$mapElement = new Html\Element();
 		$mapElement->init('div',

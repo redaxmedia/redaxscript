@@ -3,18 +3,13 @@
  *
  * 1. experiments
  * 2. init
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
 (function ($, cxApi)
 {
 	'use strict';
 
-	/* @section 1. experiments */
+	/** @section 1. experiments */
 
 	$.fn.experiments = function ()
 	{
@@ -35,7 +30,7 @@
 		}
 	};
 
-	/* @section 2. init */
+	/** @section 2. init */
 
 	$(function ()
 	{

@@ -1,8 +1,8 @@
 <?php
 namespace Redaxscript\Html;
 
-use Redaxscript\Db;
 use DOMDocument;
+use Redaxscript\Model;
 
 /**
  * parent class to purify html against xss
@@ -66,14 +66,15 @@ class Purifier
 	 * @since 3.0.0
 	 *
 	 * @param string $html html to be purified
-	 * @param boolean $filter optional filter
+	 * @param bool $filter optional filter
 	 *
 	 * @return string
 	 */
 
-	public function purify($html = null, $filter = true)
+	public function purify(string $html = null, bool $filter = true)
 	{
-		$charset = Db::getSetting('charset');
+		$settingModel = new Model\Setting();
+		$charset = $settingModel->get('charset');
 		$html = mb_convert_encoding($html, 'html-entities', $charset);
 
 		/* filter html */
@@ -92,7 +93,7 @@ class Purifier
 	 *
 	 * @param string|object $html html to be processed
 	 *
-	 * @return string|boolean
+	 * @return string|bool
 	 */
 
 	protected function _process($html = null)

@@ -105,9 +105,10 @@ class HelperTest extends TestCaseAbstract
 				'category' => $categoryThree->id
 			])
 			->save();
-		Db::setSetting('title', 'Setting');
-		Db::setSetting('description', 'Setting');
-		Db::setSetting('keywords', 'Setting');
+		$setting = $this->settingFactory();
+		$setting->set('title', 'Setting');
+		$setting->set('description', 'Setting');
+		$setting->set('keywords', 'Setting');
 	}
 
 	/**
@@ -131,7 +132,7 @@ class HelperTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerGetTitle()
+	public function providerGetTitle() : array
 	{
 		return $this->getProvider('tests/provider/Template/helper_get_title.json');
 	}
@@ -144,7 +145,7 @@ class HelperTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerGetCanonical()
+	public function providerGetCanonical() : array
 	{
 		return $this->getProvider('tests/provider/Template/helper_get_canonical.json');
 	}
@@ -157,7 +158,7 @@ class HelperTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerGetDescription()
+	public function providerGetDescription() : array
 	{
 		return $this->getProvider('tests/provider/Template/helper_get_description.json');
 	}
@@ -170,7 +171,7 @@ class HelperTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerGetKeywords()
+	public function providerGetKeywords() : array
 	{
 		return $this->getProvider('tests/provider/Template/helper_get_keywords.json');
 	}
@@ -183,7 +184,7 @@ class HelperTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerGetRobots()
+	public function providerGetRobots() : array
 	{
 		return $this->getProvider('tests/provider/Template/helper_get_robots.json');
 	}
@@ -196,7 +197,7 @@ class HelperTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerGetSubset()
+	public function providerGetSubset() : array
 	{
 		return $this->getProvider('tests/provider/Template/helper_get_subset.json');
 	}
@@ -209,7 +210,7 @@ class HelperTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerGetDirection()
+	public function providerGetDirection() : array
 	{
 		return $this->getProvider('tests/provider/Template/helper_get_direction.json');
 	}
@@ -222,7 +223,7 @@ class HelperTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerGetClass()
+	public function providerGetClass() : array
 	{
 		return $this->getProvider('tests/provider/Template/helper_get_class.json');
 	}
@@ -238,7 +239,7 @@ class HelperTest extends TestCaseAbstract
 	 * @dataProvider providerGetTitle
 	 */
 
-	public function testGetTitle($registryArray = [], $expect = null)
+	public function testGetTitle(array $registryArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -264,7 +265,7 @@ class HelperTest extends TestCaseAbstract
 	 * @dataProvider providerGetCanonical
 	 */
 
-	public function testCanonical($registryArray = [], $expect = null)
+	public function testCanonical(array $registryArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -290,7 +291,7 @@ class HelperTest extends TestCaseAbstract
 	 * @dataProvider providerGetDescription
 	 */
 
-	public function testGetDescription($registryArray = [], $expect = null)
+	public function testGetDescription(array $registryArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -316,7 +317,7 @@ class HelperTest extends TestCaseAbstract
 	 * @dataProvider providerGetKeywords
 	 */
 
-	public function testGetKeywords($registryArray = [], $expect = null)
+	public function testGetKeywords(array $registryArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -342,7 +343,7 @@ class HelperTest extends TestCaseAbstract
 	 * @dataProvider providerGetRobots
 	 */
 
-	public function testGetRobots($registryArray = [], $expect = null)
+	public function testGetRobots(array $registryArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -389,7 +390,7 @@ class HelperTest extends TestCaseAbstract
 	 * @dataProvider providerGetSubset
 	 */
 
-	public function testGetSubset($registryArray = [], $expect = null)
+	public function testGetSubset(array $registryArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -415,7 +416,7 @@ class HelperTest extends TestCaseAbstract
 	 * @dataProvider providerGetDirection
 	 */
 
-	public function testGetDirection($registryArray = [], $expect = null)
+	public function testGetDirection(array $registryArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -441,7 +442,7 @@ class HelperTest extends TestCaseAbstract
 	 * @dataProvider providerGetClass
 	 */
 
-	public function testGetClass($registryArray = [], $expect = null)
+	public function testGetClass(array $registryArray = [], string $expect = null)
 	{
 		/* setup */
 

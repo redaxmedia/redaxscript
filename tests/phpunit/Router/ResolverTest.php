@@ -24,7 +24,7 @@ class ResolverTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerResolver()
+	public function providerResolver() : array
 	{
 		return $this->getProvider('tests/provider/Router/resolver.json');
 	}
@@ -40,7 +40,7 @@ class ResolverTest extends TestCaseAbstract
 	 * @dataProvider providerResolver
 	 */
 
-	public function testGetLite($route = null, $expectArray = [])
+	public function testGetLite(string $route = null, array $expectArray = [])
 	{
 		/* setup */
 
@@ -68,7 +68,7 @@ class ResolverTest extends TestCaseAbstract
 	 * @dataProvider providerResolver
 	 */
 
-	public function testGetFull($route = null, $expectArray = [])
+	public function testGetFull(string $route = null, array $expectArray = [])
 	{
 		/* setup */
 

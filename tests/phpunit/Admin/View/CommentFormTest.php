@@ -60,7 +60,7 @@ class CommentFormTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerRender()
+	public function providerRender() : array
 	{
 		return $this->getProvider('tests/provider/Admin/View/comment_form_render.json');
 	}
@@ -71,13 +71,13 @@ class CommentFormTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $registryArray
-	 * @param integer $commentId
+	 * @param int $commentId
 	 * @param array $expectArray
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($registryArray = [], $commentId = null, $expectArray = [])
+	public function testRender(array $registryArray = [], int $commentId = null, array $expectArray = [])
 	{
 		/* setup */
 

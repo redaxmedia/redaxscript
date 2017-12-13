@@ -5,14 +5,9 @@
  * 2. query
  *    2.1 small min
  *    2.2 large min
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. install */
+/** @section 1. install */
 
 .rs-install-body
 {
@@ -44,9 +39,9 @@
 	text-transform: uppercase;
 }
 
-/* @section 2. query */
+/** @section 2. query */
 
-/* @section 2.1 small min */
+/** @section 2.1 small min */
 
 @media (--media-small-min)
 {
@@ -68,7 +63,7 @@
 	}
 }
 
-/* @section 2.2 large min */
+/** @section 2.2 large min */
 
 @media (--media-medium-min)
 {

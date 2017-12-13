@@ -3,7 +3,7 @@ namespace Redaxscript\Modules\Archive;
 
 use Redaxscript\Db;
 use Redaxscript\Html;
-use Redaxscript\Validator;
+use Redaxscript\Model;
 
 /**
  * generate a archive tree
@@ -29,7 +29,7 @@ class Archive extends Config
 		'alias' => 'Archive',
 		'author' => 'Redaxmedia',
 		'description' => 'Generate a archive tree',
-		'version' => '3.2.3'
+		'version' => '3.3.0'
 	];
 
 	/**
@@ -40,9 +40,11 @@ class Archive extends Config
 	 * @return string
 	 */
 
-	public function render()
+	public function render() : string
 	{
 		$output = null;
+		$outputItem = null;
+		$articleModel = new Model\Article();
 
 		/* html elements */
 
@@ -53,6 +55,8 @@ class Archive extends Config
 		]);
 		$linkElement = new Html\Element();
 		$linkElement->init('a');
+		$itemElement = new Html\Element();
+		$itemElement->init('li');
 		$listElement = new Html\Element();
 		$listElement->init('ul',
 		[
@@ -61,66 +65,38 @@ class Archive extends Config
 
 		/* query articles */
 
-		$articles = Db::forTablePrefix('articles')
-			->where('status', 1)
-			->whereLanguageIs($this->_registry->get('language'))
-			->orderByDesc('date')
-			->findMany();
+		$monthArray = $this->_getArticleByMonthArray();
 
 		/* process articles */
 
-		if (!$articles)
+		if (!$monthArray)
 		{
 			$error = $this->_language->get('article_no') . $this->_language->get('point');
 		}
 		else
 		{
-			$accessValidator = new Validator\Access();
-			$accessDeny = 0;
-			$lastDate = 0;
-			foreach ($articles as $value)
+			foreach ($monthArray as $key => $articles)
 			{
-				if ($accessValidator->validate($value->access, $this->_registry->get('myGroups')) === Validator\ValidatorInterface::PASSED)
+				/* collect item output */
+
+				foreach ($articles as $value)
 				{
-					$month = date('n', strtotime($value->date));
-					$year = date('Y', strtotime($value->date));
-					$currentDate = $month + $year;
-
-					/* collect output */
-
-					if ($lastDate <> $currentDate)
-					{
-						$output .= $titleElement->text($this->_language->get($month - 1, '_month') . ' ' . $year);
-					}
-					$lastDate = $currentDate;
-
-					/* collect item output */
-
-					$outputItem = '<li>';
-					$outputItem .= $linkElement
-						->attr(
-						[
-							'href' => $this->_registry->get('parameterRoute') . build_route('articles', $value->id),
-							'title' => $value->description ? $value->description : $value->title
-						])
-						->text($value->title);
-					$outputItem .= '</li>';
-
-					/* collect list output */
-
-					$output .= $listElement->html($outputItem);
+					$outputItem .= $itemElement
+						->copy()
+						->html($linkElement
+							->copy()
+							->attr('href', $this->_registry->get('parameterRoute') . $articleModel->getRouteById($value->id))
+							->text($value->title)
+						);
 				}
-				else
-				{
-					$accessDeny++;
-				}
-			}
 
-			/* handle access */
+				/* collect output */
 
-			if (count($articles) === $accessDeny)
-			{
-				$error = $this->_language->get('access_no') . $this->_language->get('point');
+				$month = date('n', strtotime($key));
+				$year = date('Y', strtotime($key));
+				$output .= $titleElement->text($titleElement->text($this->_language->get($month - 1, '_month') . ' ' . $year));
+				$output .= $listElement->html($outputItem);
+				$outputItem = null;
 			}
 		}
 
@@ -128,8 +104,38 @@ class Archive extends Config
 
 		if ($error)
 		{
-			$output = $listElement->html('<li>' . $error . '</li>');
+			$output = $listElement->html(
+				$itemElement->html($error)
+			);
 		}
 		return $output;
+	}
+
+	/**
+	 * get article by month array
+	 *
+	 * @since 3.3.0
+	 *
+	 * @return array
+	 */
+
+	protected function _getArticleByMonthArray() : array
+	{
+		$monthArray = [];
+		$articles = Db::forTablePrefix('articles')
+			->where('status', 1)
+			->whereLanguageIs($this->_registry->get('language'))
+			->whereNull('access')
+			->orderByDesc('date')
+			->findMany();
+
+		/* process article */
+
+		foreach ($articles as $value)
+		{
+			$dateKey = date('Y-m', strtotime($value->date));
+			$monthArray[$dateKey][] = $value;
+		}
+		return $monthArray;
 	}
 }

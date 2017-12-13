@@ -42,7 +42,7 @@ class Module extends TagAbstract
 	 * @return string
 	 */
 
-	public function process($content = null)
+	public function process(string $content = null) : string
 	{
 		$output = str_replace($this->_optionArray['search'], $this->_optionArray['delimiter'], $content);
 		$partArray = array_filter(explode($this->_optionArray['delimiter'], $output));
@@ -90,10 +90,10 @@ class Module extends TagAbstract
 	 * @param string $moduleName
 	 * @param array $parameterArray
 	 *
-	 * @return string
+	 * @return string|bool
 	 */
 
-	protected function _call($moduleName = null, $parameterArray = [])
+	protected function _call(string $moduleName = null, array $parameterArray = [])
 	{
 		$moduleClass = $this->_optionArray['namespace'] . '\\' . $moduleName . '\\' . $moduleName;
 		$methodName = 'render';

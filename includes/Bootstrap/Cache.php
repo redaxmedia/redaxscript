@@ -26,7 +26,7 @@ class Cache extends BootstrapAbstract
 		$filterBoolean = new Filter\Boolean();
 		$noCache = $filterBoolean->sanitize($this->_request->getQuery('no-cache'));
 
-		/* set registry */
+		/* set the registry */
 
 		$this->_registry->set('noCache', false);
 		if ($this->_registry->get('loggedIn') === $this->_registry->get('token') || $noCache)

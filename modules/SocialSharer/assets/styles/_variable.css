@@ -4,18 +4,13 @@
  * 1. variable
  *    1.1 color
  *    1.2 font
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. variable */
+/** @section 1. variable */
 
 :root
 {
-	/* @section 1.1 color */
+	/** @section 1.1 color */
 
 	--rs-color-facebook: #3b5998;
 	--rs-color-googleplus: #d34836;
@@ -24,7 +19,7 @@
 	--rs-color-linkedin: #007bb6;
 	--rs-color-stumbleupon: #f74425;
 
-	/* @section 1.2 font */
+	/** @section 1.2 font */
 
 	--rs-font-icon-social-sharer: 'icon social sharer';
 }

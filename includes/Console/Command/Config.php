@@ -74,7 +74,7 @@ class Config extends CommandAbstract
 						],
 						'db-env' =>
 						[
-							'description' => 'Get variable from ENV'
+							'description' => 'Get the variable from ENV'
 						]
 					]
 				],
@@ -159,10 +159,10 @@ class Config extends CommandAbstract
 	 *
 	 * @param array $optionArray
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
-	protected function _set($optionArray = [])
+	protected function _set(array $optionArray = [])
 	{
 		$dbType = $this->prompt('db-type', $optionArray);
 		$dbHost = $this->prompt('db-host', $optionArray);
@@ -187,10 +187,10 @@ class Config extends CommandAbstract
 	 *
 	 * @param array $optionArray
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
-	protected function _parse($optionArray = [])
+	protected function _parse(array $optionArray = [])
 	{
 		$dbUrl = $this->prompt('db-url', $optionArray);
 		$dbUrl = $optionArray['db-env'] ? getenv($dbUrl) : $dbUrl;
@@ -207,7 +207,7 @@ class Config extends CommandAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
 	protected function _lock()

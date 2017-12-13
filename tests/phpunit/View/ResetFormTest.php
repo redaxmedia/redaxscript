@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Tests\View;
 
-use Redaxscript\Db;
 use Redaxscript\Tests\TestCaseAbstract;
 use Redaxscript\View;
 
@@ -36,7 +35,8 @@ class ResetFormTest extends TestCaseAbstract
 				'adminPassword' => 'test',
 				'adminEmail' => 'test@test.com'
 			]);
-		Db::setSetting('captcha', 1);
+		$setting = $this->settingFactory();
+		$setting->set('captcha', 1);
 	}
 
 	/**
@@ -60,7 +60,7 @@ class ResetFormTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerRender()
+	public function providerRender() : array
 	{
 		return $this->getProvider('tests/provider/View/reset_form_render.json');
 	}
@@ -75,7 +75,7 @@ class ResetFormTest extends TestCaseAbstract
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($expectArray = [])
+	public function testRender(array $expectArray = [])
 	{
 		/* setup */
 

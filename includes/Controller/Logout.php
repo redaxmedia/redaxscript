@@ -25,7 +25,7 @@ class Logout extends ControllerAbstract
 	 * @return string
 	 */
 
-	public function process()
+	public function process() : string
 	{
 		$auth = new Auth($this->_request);
 		$auth->init();
@@ -47,7 +47,7 @@ class Logout extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _success()
+	protected function _success() : string
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
@@ -64,7 +64,7 @@ class Logout extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _error()
+	protected function _error() : string
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger

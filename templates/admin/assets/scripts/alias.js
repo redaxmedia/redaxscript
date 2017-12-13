@@ -3,18 +3,13 @@
  *
  * 1. alias
  * 2. init
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
 (function ($, getSlug)
 {
 	'use strict';
 
-	/* @section 1. alias */
+	/** @section 1. alias */
 
 	$.fn.alias = function (options)
 	{
@@ -60,7 +55,7 @@
 		});
 	};
 
-	/* @section 2. init */
+	/** @section 2. init */
 
 	$(function ()
 	{

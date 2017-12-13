@@ -20,10 +20,10 @@ class Boolean implements FilterInterface
 	 *
 	 * @param string $boolean boolean
 	 *
-	 * @return boolean
+	 * @return bool|null
 	 */
 
-	public function sanitize($boolean = null)
+	public function sanitize(string $boolean = null)
 	{
 		return filter_var($boolean, FILTER_VALIDATE_BOOLEAN,
 		[

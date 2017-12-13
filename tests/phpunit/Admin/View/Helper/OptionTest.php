@@ -99,7 +99,7 @@ class OptionTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerOption()
+	public function providerOption() : array
 	{
 		return $this->getProvider('tests/provider/Admin/View/Helper/option.json');
 	}
@@ -114,7 +114,7 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetToggleArray($expectArray = [])
+	public function testGetToggleArray(array $expectArray = [])
 	{
 		/* setup */
 
@@ -139,7 +139,7 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetVisibleArray($expectArray = [])
+	public function testGetVisibleArray(array $expectArray = [])
 	{
 		/* setup */
 
@@ -164,7 +164,7 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetRobotArray($expectArray = [])
+	public function testGetRobotArray(array $expectArray = [])
 	{
 		/* setup */
 
@@ -189,7 +189,7 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetTimeArray($expectArray = [])
+	public function testGetTimeArray(array $expectArray = [])
 	{
 		/* setup */
 
@@ -214,7 +214,7 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetDateArray($expectArray = [])
+	public function testGetDateArray(array $expectArray = [])
 	{
 		/* setup */
 
@@ -239,7 +239,7 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetOrderArray($expectArray = [])
+	public function testGetOrderArray(array $expectArray = [])
 	{
 		/* setup */
 
@@ -264,7 +264,7 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetCaptchaArray($expectArray = [])
+	public function testGetCaptchaArray(array $expectArray = [])
 	{
 		/* setup */
 
@@ -289,7 +289,7 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetPermissionArray($expectArray = [])
+	public function testGetPermissionArray(array $expectArray = [])
 	{
 		/* setup */
 
@@ -321,7 +321,7 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetLanguageArray($expectArray = [])
+	public function testGetLanguageArray(array $expectArray = [])
 	{
 		/* setup */
 
@@ -346,7 +346,7 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetTemplateArray($expectArray = [])
+	public function testGetTemplateArray(array $expectArray = [])
 	{
 		/* setup */
 
@@ -371,7 +371,7 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetContentArray($expectArray = [])
+	public function testGetContentArray(array $expectArray = [])
 	{
 		/* setup */
 
@@ -399,7 +399,7 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerOption
 	 */
 
-	public function testGetAccessArray($expectArray = [])
+	public function testGetAccessArray(array $expectArray = [])
 	{
 		/* setup */
 

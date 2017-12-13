@@ -5,7 +5,7 @@
 		},
 		0,
 		{
-			"start": "<h2 class=\"rs-admin-title-content\">New user</h2><form class=\"rs-admin-js-tab rs-admin-js-validate-form rs-admin-component-tab rs-admin-form-default rs-admin-fn-clearfix\" method=\"post\" action=\"admin/process/users\">",
+			"start": "<h2 class=\"rs-admin-title-content\">New user</h2><form class=\"rs-admin-js-tab rs-admin-js-validate-form rs-admin-component-tab rs-admin-form-default rs-admin-fn-clearfix\" method=\"post\">",
 			"end": "<a class=\"rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large\" href=\"admin\">Cancel</a></form>"
 		}
 	],
@@ -15,8 +15,8 @@
 		},
 		0,
 		{
-			"start": "<h2 class=\"rs-admin-title-content\">New user</h2><form class=\"rs-admin-js-tab rs-admin-js-validate-form rs-admin-component-tab rs-admin-form-default rs-admin-fn-clearfix\" method=\"post\" action=\"admin/process/users\">",
-			"end": "<a class=\"rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large\" href=\"admin\">Cancel</a><button class=\"rs-admin-js-create rs-admin-button-default rs-admin-button-create rs-admin-button-large\" name=\"new\" type=\"submit\" value=\"create\">Create</button></form>"
+			"start": "<h2 class=\"rs-admin-title-content\">New user</h2><form class=\"rs-admin-js-tab rs-admin-js-validate-form rs-admin-component-tab rs-admin-form-default rs-admin-fn-clearfix\" method=\"post\">",
+			"end": "<a class=\"rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large\" href=\"admin\">Cancel</a><button class=\"rs-admin-js-create rs-admin-button-default rs-admin-button-create rs-admin-button-large\" name=\"Redaxscript\\Admin\\View\\UserForm\" type=\"submit\" value=\"create\">Create</button></form>"
 		}
 	],
 	[
@@ -26,7 +26,7 @@
 		},
 		1,
 		{
-			"start": "<h2 class=\"rs-admin-title-content\">User One</h2><form class=\"rs-admin-js-tab rs-admin-js-validate-form rs-admin-component-tab rs-admin-form-default rs-admin-fn-clearfix\" method=\"post\" action=\"admin/process/users/1\">",
+			"start": "<h2 class=\"rs-admin-title-content\">User One</h2><form class=\"rs-admin-js-tab rs-admin-js-validate-form rs-admin-component-tab rs-admin-form-default rs-admin-fn-clearfix\" method=\"post\">",
 			"end": "<a class=\"rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large\" href=\"admin\">Cancel</a></form>"
 		}
 	],
@@ -39,8 +39,8 @@
 		},
 		2,
 		{
-			"start": "<h2 class=\"rs-admin-title-content\">User Two</h2><form class=\"rs-admin-js-tab rs-admin-js-validate-form rs-admin-component-tab rs-admin-form-default rs-admin-fn-clearfix\" method=\"post\" action=\"admin/process/users/2\">",
-			"end": "<a class=\"rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large\" href=\"admin/view/users\">Cancel</a><a class=\"rs-admin-js-delete rs-admin-button-default rs-admin-button-delete rs-admin-button-large\" href=\"admin/delete/users/2/ffd845f78510f02580d329127bab3dd1aa7f4453\">Delete</a><button class=\"rs-admin-js-save rs-admin-button-default rs-admin-button-save rs-admin-button-large\" name=\"edit\" type=\"submit\" value=\"save\">Save</button></form>"
+			"start": "<h2 class=\"rs-admin-title-content\">User Two</h2><form class=\"rs-admin-js-tab rs-admin-js-validate-form rs-admin-component-tab rs-admin-form-default rs-admin-fn-clearfix\" method=\"post\">",
+			"end": "<a class=\"rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large\" href=\"admin/view/users\">Cancel</a><a class=\"rs-admin-js-delete rs-admin-button-default rs-admin-button-delete rs-admin-button-large\" href=\"admin/delete/users/2/ffd845f78510f02580d329127bab3dd1aa7f4453\">Delete</a><button class=\"rs-admin-js-save rs-admin-button-default rs-admin-button-save rs-admin-button-large\" name=\"Redaxscript\\Admin\\View\\UserForm\" type=\"submit\" value=\"save\">Save</button></form>"
 		}
 	]
 ]

@@ -24,7 +24,7 @@ class UrlTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerUrl()
+	public function providerUrl() : array
 	{
 		return $this->getProvider('tests/provider/Filter/url.json');
 	}
@@ -40,7 +40,7 @@ class UrlTest extends TestCaseAbstract
 	 * @dataProvider providerUrl
 	 */
 
-	public function testUrl($url = null, $expect = null)
+	public function testUrl(string $url = null, string $expect = null)
 	{
 		/* setup */
 

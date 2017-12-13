@@ -3,16 +3,11 @@
  *
  * 1. table default
  *    1.1. query
- *       1.1.1 medium max
+ *      1.1.1 medium max
  * 2. wrapper table
- *
- * @since 3.2.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. table default */
+/** @section 1. table default */
 
 %table-default
 {
@@ -31,9 +26,9 @@
 	}
 }
 
-/* @section 1.1. query */
+/** @section 1.1. query */
 
-/* @section 1.1.1 medium max */
+/** @section 1.1.1 medium max */
 
 @media (--media-medium-max)
 {
@@ -47,7 +42,7 @@
 	}
 }
 
-/* @section 2. wrapper table */
+/** @section 2. wrapper table */
 
 %wrapper-table
 {

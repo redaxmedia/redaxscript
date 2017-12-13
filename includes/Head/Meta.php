@@ -21,7 +21,7 @@ class Meta extends HeadAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
 	public function render()

@@ -24,7 +24,7 @@ class Captcha implements ValidatorInterface
 	 * @param string $task plain task
 	 * @param string $hash hashed solution
 	 *
-	 * @return integer
+	 * @return int
 	 */
 
 	public function validate($task = null, $hash = null)

@@ -2,6 +2,7 @@
 namespace Redaxscript\Template\Helper;
 
 use Redaxscript\Db;
+use Redaxscript\Model;
 
 /**
  * helper class to provide a description helper
@@ -25,10 +26,11 @@ class Description extends HelperAbstract
 
 	public function process()
 	{
+		$settingModel = new Model\Setting();
 		$lastTable = $this->_registry->get('lastTable');
 		$lastId = $this->_registry->get('lastId');
 		$useDescription = $this->_registry->get('useDescription');
-		$settingDescription = Db::getSetting('description');
+		$settingDescription = $settingModel->get('description');
 
 		/* find description */
 

@@ -52,10 +52,10 @@ class Loader
 	 *
 	 * @param array $collectionArray
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function init($collectionArray = [])
+	public function init(array $collectionArray = []) : self
 	{
 		if (is_array($collectionArray))
 		{
@@ -72,7 +72,7 @@ class Loader
 	 * @return array
 	 */
 
-	public function getCollectionArray()
+	public function getCollectionArray() : array
 	{
 		return $this->_collectionArray;
 	}
@@ -85,7 +85,7 @@ class Loader
 	 * @param array $collectionArray
 	 */
 
-	public function setCollectionArray($collectionArray = [])
+	public function setCollectionArray(array $collectionArray = [])
 	{
 		$this->_collectionArray = $collectionArray;
 	}
@@ -98,10 +98,10 @@ class Loader
 	 * @param array $optionArray
 	 * @param array $rewriteArray
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function concat($optionArray = [], $rewriteArray = [])
+	public function concat(array $optionArray = [], array $rewriteArray = []) : self
 	{
 		$collectionArray = $this->getCollectionArray();
 		$bundleArray = [];
@@ -172,7 +172,7 @@ class Loader
 	 * @return string
 	 */
 
-	protected function _getContent($bundleArray = [], $rewriteArray = [])
+	protected function _getContent(array $bundleArray = [], array $rewriteArray = []) : string
 	{
 		$output = null;
 

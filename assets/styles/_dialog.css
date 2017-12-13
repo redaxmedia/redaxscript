@@ -4,16 +4,11 @@
  * 1. dialog
  *    1.1 overlay
  *    1.2 component
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. dialog */
+/** @section 1. dialog */
 
-/* @section 1.1 overlay */
+/** @section 1.1 overlay */
 
 %overlay-dialog
 {
@@ -25,7 +20,7 @@
 	z-index: 1000;
 }
 
-/* @section 1.2 component */
+/** @section 1.2 component */
 
 %component-dialog
 {

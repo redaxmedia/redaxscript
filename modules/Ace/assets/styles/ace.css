@@ -2,14 +2,9 @@
  * @tableofcontents
  *
  * 1. ace
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. ace */
+/** @section 1. ace */
 
 :root .ace_editor
 {

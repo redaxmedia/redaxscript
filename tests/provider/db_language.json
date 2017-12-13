@@ -1,14 +1,14 @@
 [
 	[
 		null,
-		"article-one"
-	],
-	[
-		"de",
 		null
 	],
 	[
 		"en",
 		"article-one"
+	],
+	[
+		"de",
+		"article-two"
 	]
 ]

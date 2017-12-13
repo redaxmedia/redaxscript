@@ -103,7 +103,7 @@ class ContentTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerContent()
+	public function providerContent() : array
 	{
 		return $this->getProvider('tests/provider/Bootstrap/content.json');
 	}
@@ -120,13 +120,14 @@ class ContentTest extends TestCaseAbstract
 	 * @dataProvider providerContent
 	 */
 
-	public function testContent($registryArray = [], $settingArray = [], $expectArray = [])
+	public function testContent(array $registryArray = [], array $settingArray = [], array $expectArray = [])
 	{
 		/* setup */
 
 		$this->_registry->init($registryArray);
-		Db::setSetting('homepage', $settingArray['homepage']);
-		Db::setSetting('order', $settingArray['order']);
+		$setting = $this->settingFactory();
+		$setting->set('homepage', $settingArray['homepage']);
+		$setting->set('order', $settingArray['order']);
 		new Bootstrap\Content($this->_registry, $this->_request);
 
 		/* actual */

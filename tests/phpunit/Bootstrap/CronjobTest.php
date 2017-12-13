@@ -53,7 +53,7 @@ class CronjobTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerCronjob()
+	public function providerCronjob() : array
 	{
 		return $this->getProvider('tests/provider/Bootstrap/cronjob.json');
 	}
@@ -65,12 +65,12 @@ class CronjobTest extends TestCaseAbstract
 	 *
 	 * @param array $registryArray
 	 * @param array $sessionArray
-	 * @param boolean $expect
+	 * @param bool $expect
 	 *
 	 * @dataProvider providerCronjob
 	 */
 
-	public function testCronjob($registryArray = [], $sessionArray = [], $expect = null)
+	public function testCronjob(array $registryArray = [], array $sessionArray = [], bool $expect = null)
 	{
 		/* setup */
 

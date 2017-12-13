@@ -24,7 +24,7 @@ class EmailTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerEmail()
+	public function providerEmail() : array
 	{
 		return $this->getProvider('tests/provider/Filter/email.json');
 	}
@@ -40,7 +40,7 @@ class EmailTest extends TestCaseAbstract
 	 * @dataProvider providerEmail
 	 */
 
-	public function testEmail($email = null, $expect = null)
+	public function testEmail(string $email = null, string $expect = null)
 	{
 		/* setup */
 

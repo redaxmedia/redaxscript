@@ -1,0 +1,18 @@
+[
+	[
+		"article-one",
+		1
+	],
+	[
+		"article-two",
+		2
+	],
+	[
+		"article-three",
+		3
+	],
+	[
+		"invalid",
+		null
+	]
+]

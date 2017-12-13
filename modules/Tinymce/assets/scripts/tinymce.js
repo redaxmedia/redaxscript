@@ -4,18 +4,13 @@
  * 1. tinymce
  *    1.1 file picker
  * 2. init
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
 (function ($, tinymce)
 {
 	'use strict';
 
-	/* @section 1. tinymce */
+	/** @section 1. tinymce */
 
 	$.fn.tinymce = function (options)
 	{
@@ -72,7 +67,7 @@
 		tinymce.init(options);
 	};
 
-	/* @section 1.1 file picker */
+	/** @section 1.1 file picker */
 
 	$.fn.tinymceFilePicker = function(callback)
 	{
@@ -100,7 +95,7 @@
 			.trigger('click');
 	};
 
-	/* @section 2. init */
+	/** @section 2. init */
 
 	$(function ()
 	{

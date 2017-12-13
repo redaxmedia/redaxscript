@@ -45,10 +45,10 @@ class Title implements HeadInterface
 	 *
 	 * @param string $text
 	 *
-	 * @return string|boolean
+	 * @return string|bool
 	 */
 
-	public function render($text = null)
+	public function render(string $text = null)
 	{
 		$titleElement = new Html\Element();
 		$titleElement->init();

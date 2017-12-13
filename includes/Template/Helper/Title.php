@@ -2,6 +2,7 @@
 namespace Redaxscript\Template\Helper;
 
 use Redaxscript\Db;
+use Redaxscript\Model;
 
 /**
  * helper class to provide a title helper
@@ -25,11 +26,12 @@ class Title extends HelperAbstract
 
 	public function process()
 	{
+		$settingModel = new Model\Setting();
 		$lastTable = $this->_registry->get('lastTable');
 		$lastId = $this->_registry->get('lastId');
 		$useTitle = $this->_registry->get('useTitle');
-		$settingDivider = Db::getSetting('divider');
-		$settingTitle = Db::getSetting('title');
+		$settingDivider = $settingModel->get('divider');
+		$settingTitle = $settingModel->get('title');
 
 		/* find title */
 

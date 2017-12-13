@@ -40,7 +40,7 @@ class Template extends TagAbstract
 	 * @return string
 	 */
 
-	public function process($content = null)
+	public function process(string $content = null) : string
 	{
 		$output = str_replace($this->_optionArray['search'], $this->_optionArray['delimiter'], $content);
 		$partArray = array_filter(explode($this->_optionArray['delimiter'], $output));
@@ -84,10 +84,10 @@ class Template extends TagAbstract
 	 * @param string $methodName
 	 * @param array $parameterArray
 	 *
-	 * @return string|boolean
+	 * @return string|bool
 	 */
 
-	protected function _call($methodName = null, $parameterArray = [])
+	protected function _call(string $methodName = null, array $parameterArray = [])
 	{
 		$templateClass = $this->_optionArray['namespace'];
 		if (method_exists($templateClass, $methodName))

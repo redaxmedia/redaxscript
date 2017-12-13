@@ -24,7 +24,7 @@ class PasswordTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerPassword()
+	public function providerPassword() : array
 	{
 		return $this->getProvider('tests/provider/Validator/password.json');
 	}
@@ -36,12 +36,12 @@ class PasswordTest extends TestCaseAbstract
 	 *
 	 * @param string $password
 	 * @param array $hashArray
-	 * @param integer $expect
+	 * @param int $expect
 	 *
 	 * @dataProvider providerPassword
 	 */
 
-	public function testPassword($password = null, $hashArray = [], $expect = null)
+	public function testPassword(string $password = null, array $hashArray = [], int $expect = null)
 	{
 		/* setup */
 

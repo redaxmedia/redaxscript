@@ -33,7 +33,7 @@ class Login implements ValidatorInterface
 	 *
 	 * @param string $login login
 	 *
-	 * @return integer
+	 * @return int
 	 */
 
 	public function validate($login = null)

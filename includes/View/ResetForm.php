@@ -24,7 +24,7 @@ class ResetForm extends ViewAbstract
 	 * @return string
 	 */
 
-	public function render()
+	public function render() : string
 	{
 		$output = Module\Hook::trigger('resetFormStart');
 

@@ -36,7 +36,7 @@ class FilesystemTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerGetIterator()
+	public function providerGetIterator() : array
 	{
 		return $this->getProvider('tests/provider/Filesystem/filesystem_get_iterator.json');
 	}
@@ -49,7 +49,7 @@ class FilesystemTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerGetArray()
+	public function providerGetArray() : array
 	{
 		return $this->getProvider('tests/provider/Filesystem/filesystem_get_array.json');
 	}
@@ -62,7 +62,7 @@ class FilesystemTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerGetSortArray()
+	public function providerGetSortArray() : array
 	{
 		return $this->getProvider('tests/provider/Filesystem/filesystem_get_sort_array.json');
 	}
@@ -73,14 +73,14 @@ class FilesystemTest extends TestCaseAbstract
 	 * @since 3.2.0
 	 *
 	 * @param string $root
-	 * @param boolean $recursive
+	 * @param bool $recursive
 	 * @param array $filterArray
 	 * @param array $expectArray
 	 *
 	 * @dataProvider providerGetIterator
 	 */
 
-	public function testGetIterator($root = null, $recursive = false, $filterArray = [], $expectArray = [])
+	public function testGetIterator(string $root = null, bool $recursive = false, array $filterArray = [], array $expectArray = [])
 	{
 		/* setup */
 
@@ -114,14 +114,14 @@ class FilesystemTest extends TestCaseAbstract
 	 * @since 3.2.0
 	 *
 	 * @param string $root
-	 * @param boolean $recursive
+	 * @param bool $recursive
 	 * @param array $filterArray
 	 * @param array $expectArray
 	 *
 	 * @dataProvider providerGetArray
 	 */
 
-	public function testGetArray($root = null, $recursive = false, $filterArray = [], $expectArray = [])
+	public function testGetArray(string $root = null, bool $recursive = false, array $filterArray = [], array $expectArray = [])
 	{
 		/* setup */
 
@@ -143,14 +143,14 @@ class FilesystemTest extends TestCaseAbstract
 	 * @since 3.2.0
 	 *
 	 * @param string $root
-	 * @param boolean $recursive
+	 * @param bool $recursive
 	 * @param array $filterArray
 	 * @param array $expectArray
 	 *
 	 * @dataProvider providerGetSortArray
 	 */
 
-	public function testSortGetArray($root = null, $recursive = false, $filterArray = [], $expectArray = [])
+	public function testSortGetArray(string $root = null, bool $recursive = false, array $filterArray = [], array $expectArray = [])
 	{
 		/* setup */
 

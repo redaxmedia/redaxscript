@@ -3,14 +3,9 @@
  *
  * 1. alias
  * 2. panel
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. alias */
+/** @section 1. alias */
 
 rs.plugins.alias =
 {
@@ -26,7 +21,7 @@ rs.plugins.alias =
 	}
 };
 
-/* @section 2. panel */
+/** @section 2. panel */
 
 rs.plugins.panel =
 {

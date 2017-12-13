@@ -7,18 +7,13 @@
  * 4. validate form
  * 5. validate search
  * 6. init
- *
- * @since 2.2.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
 (function ($)
 {
 	'use strict';
 
-	/* @section 1. auto resize */
+	/** @section 1. auto resize */
 
 	$.fn.autoResize = function (options)
 	{
@@ -66,7 +61,7 @@
 		});
 	};
 
-	/* @section 2. enable indent */
+	/** @section 2. enable indent */
 
 	$.fn.enableIndent = function (options)
 	{
@@ -163,7 +158,7 @@
 		});
 	};
 
-	/* @section 3. unmask password */
+	/** @section 3. unmask password */
 
 	$.fn.unmaskPassword = function (options)
 	{
@@ -196,7 +191,7 @@
 		});
 	};
 
-	/* @section 4. validate form */
+	/** @section 4. validate form */
 
 	$.fn.validateForm = function (options)
 	{
@@ -356,7 +351,7 @@
 		});
 	};
 
-	/* @section 5. validate search */
+	/** @section 5. validate search */
 
 	$.fn.validateSearch = function (options)
 	{
@@ -405,7 +400,7 @@
 		});
 	};
 
-	/* @section 6. init */
+	/** @section 6. init */
 
 	$(function ()
 	{

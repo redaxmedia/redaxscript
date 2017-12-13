@@ -6,14 +6,9 @@
  * 3. query
  *    3.1 medium min
  *    3.2 print
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. general */
+/** @section 1. general */
 
 .rs-body
 {
@@ -30,7 +25,7 @@
 	margin-top: 1em;
 }
 
-/* @section 2. wrapper */
+/** @section 2. wrapper */
 
 .rs-wrapper
 {
@@ -39,9 +34,9 @@
 	width: 90%;
 }
 
-/* @section 3. query */
+/** @section 3. query */
 
-/* @section 3.1 medium min */
+/** @section 3.1 medium min */
 
 @media (--media-medium-min)
 {
@@ -62,7 +57,7 @@
 	}
 }
 
-/* @section 3.2 print */
+/** @section 3.2 print */
 
 @media print
 {

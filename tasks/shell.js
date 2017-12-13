@@ -1,8 +1,8 @@
-module.exports = function (grunt)
+module.exports = grunt =>
 {
 	'use strict';
 
-	var config =
+	const config =
 	{
 		phpstanRoot:
 		{
@@ -43,6 +43,10 @@ module.exports = function (grunt)
 		phpunitParallel:
 		{
 			command: 'vendor/bin/paratest --processes=10 --configuration=phpunit.xml ' + grunt.option.flags()
+		},
+		phpServer:
+		{
+			command: 'php -S 127.0.0.1:8000'
 		},
 		removeBuild:
 		{

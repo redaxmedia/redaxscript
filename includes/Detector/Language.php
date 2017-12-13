@@ -2,6 +2,7 @@
 namespace Redaxscript\Detector;
 
 use Redaxscript\Db;
+use Redaxscript\Model;
 
 /**
  * children class to detect the required language
@@ -23,6 +24,7 @@ class Language extends DetectorAbstract
 
 	protected function _autorun()
 	{
+		$settingModel = new Model\Setting();
 		$dbStatus = $this->_registry->get('dbStatus');
 		$lastTable = $this->_registry->get('lastTable');
 		$lastId = $this->_registry->get('lastId');
@@ -34,7 +36,7 @@ class Language extends DetectorAbstract
 			'query' => $this->_request->getQuery('l'),
 			'session' => $this->_request->getSession('language'),
 			'contents' => $lastTable ? Db::forTablePrefix($lastTable)->whereIdIs($lastId)->findOne()->language : null,
-			'settings' => $dbStatus === 2 ? Db::getSetting('language') : null,
+			'settings' => $dbStatus === 2 ? $settingModel->get('language') : null,
 			'browser' => substr($this->_request->getServer('HTTP_ACCEPT_LANGUAGE'), 0, 2),
 			'fallback' => 'en'
 		], 'language', 'languages/' . $this->_filePlaceholder . '.json');

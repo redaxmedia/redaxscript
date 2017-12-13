@@ -4,17 +4,21 @@ platform:
 - x64
 
 environment:
- MSSQL_VERSION: 4.1.5
+ MSSQL_VERSION: v5.1.1-preview
  PAPERCUT_VERSION: 4.8.0.1
  matrix:
- - PHP_VERSION_PATCH: 7.0.17
+ - PHP_VERSION_PATCH: 7.0.26
    PHP_VERSION_MINOR: 7.0
    PHP_PATH: C:\tools\php70
    SQLSRV_FILE: php_pdo_sqlsrv_7_nts.dll
- - PHP_VERSION_PATCH: 7.1.3
+ - PHP_VERSION_PATCH: 7.1.12
    PHP_VERSION_MINOR: 7.1
    PHP_PATH: C:\tools\php71
    SQLSRV_FILE: php_pdo_sqlsrv_71_nts.dll
+ - PHP_VERSION_PATCH: 7.2.0
+   PHP_VERSION_MINOR: 7.2
+   PHP_PATH: C:\tools\php72
+   SQLSRV_FILE: php_pdo_sqlsrv_72_nts.dll
 
 matrix:
  fast_finish: true
@@ -38,9 +42,9 @@ install:
 - echo extension=php_mbstring.dll >> %PHP_PATH%\php.ini
 - echo extension=php_openssl.dll >> %PHP_PATH%\php.ini
 - echo extension=%SQLSRV_FILE% >> %PHP_PATH%\php.ini
-- appveyor DownloadFile https://github.com/Microsoft/msphpsql/releases/download/%MSSQL_VERSION%-Windows/%PHP_VERSION_MINOR%.zip
-- 7z x %PHP_VERSION_MINOR%.zip
-- copy %PHP_VERSION_MINOR%\x64 %PHP_PATH%\ext
+- appveyor DownloadFile https://github.com/Microsoft/msphpsql/releases/download/%MSSQL_VERSION%/Windows-%PHP_VERSION_MINOR%.zip
+- 7z x Windows-%PHP_VERSION_MINOR%.zip
+- copy Windows-%PHP_VERSION_MINOR%\x64 %PHP_PATH%\ext
 - appveyor DownloadFile https://github.com/ChangemakerStudios/Papercut/releases/download/%PAPERCUT_VERSION%/PapercutService.%PAPERCUT_VERSION%.zip
 - 7z x PapercutService.%PAPERCUT_VERSION%.zip -oPapercutService
 - PapercutService\Papercut.Service.exe install --sudo

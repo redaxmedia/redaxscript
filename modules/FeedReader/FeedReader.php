@@ -29,7 +29,7 @@ class FeedReader extends Config
 		'alias' => 'FeedReader',
 		'author' => 'Redaxmedia',
 		'description' => 'Read external RSS and Atom feeds',
-		'version' => '3.2.3'
+		'version' => '3.3.0'
 	];
 
 	/**
@@ -37,7 +37,7 @@ class FeedReader extends Config
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array
+	 * @return array|bool
 	 */
 
 	public function adminPanelNotification()
@@ -70,7 +70,7 @@ class FeedReader extends Config
 	 * @return string
 	 */
 
-	public function render($url = null, $optionArray = [])
+	public function render(string $url = null, array $optionArray = []) : string
 	{
 		$counter = 0;
 		$output = null;

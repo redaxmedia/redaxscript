@@ -2,14 +2,9 @@
  * @tableofcontents
  *
  * 1. tinymce
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. tinymce */
+/** @section 1. tinymce */
 
 rs.modules.tinymce =
 {
@@ -29,6 +24,7 @@ rs.modules.tinymce =
 		short_ended_elements: 'readmore',
 		forced_root_block: false,
 		file_picker_callback: true,
-		file_browser_callback_types: 'image'
+		file_browser_callback_types: 'image',
+		branding: false
 	}
 };

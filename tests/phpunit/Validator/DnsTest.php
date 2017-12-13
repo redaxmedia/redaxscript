@@ -25,7 +25,7 @@ class DnsTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerDns()
+	public function providerDns() : array
 	{
 		return $this->getProvider('tests/provider/Validator/dns.json');
 	}
@@ -37,12 +37,12 @@ class DnsTest extends TestCaseAbstract
 	 *
 	 * @param string $host
 	 * @param string $type
-	 * @param integer $expect
+	 * @param int $expect
 	 *
 	 * @dataProvider providerDns
 	 */
 
-	public function testDns($host = null, $type = null, $expect = null)
+	public function testDns(string $host = null, string $type = null, int $expect = null)
 	{
 		/* setup */
 

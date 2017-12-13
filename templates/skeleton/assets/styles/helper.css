@@ -3,21 +3,16 @@
  *
  * 1. clearfix
  * 2. redirect
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. clearfix */
+/** @section 1. clearfix */
 
 .rs-fn-clearfix
 {
 	@extend %fn-clearfix;
 }
 
-/* @section 2. redirect */
+/** @section 2. redirect */
 
 .rs-meta-redirect
 {

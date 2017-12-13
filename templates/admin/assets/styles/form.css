@@ -4,14 +4,9 @@
  * 1. form default
  * 2. query
  *    2.1 small min
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. form default */
+/** @section 1. form default */
 
 .rs-admin-form-default
 {
@@ -44,9 +39,9 @@
 	}
 }
 
-/* @section 2. query */
+/** @section 2. query */
 
-/* @section 2.1 small min */
+/** @section 2.1 small min */
 
 @media (--media-small-min)
 {

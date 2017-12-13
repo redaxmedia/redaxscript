@@ -58,7 +58,7 @@ class FormTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerCreate()
+	public function providerCreate() : array
 	{
 		return $this->getProvider('tests/provider/Html/form_create.json');
 	}
@@ -71,7 +71,7 @@ class FormTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerLegend()
+	public function providerLegend() : array
 	{
 		return $this->getProvider('tests/provider/Html/form_legend.json');
 	}
@@ -84,7 +84,7 @@ class FormTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerLabel()
+	public function providerLabel() : array
 	{
 		return $this->getProvider('tests/provider/Html/form_label.json');
 	}
@@ -97,7 +97,7 @@ class FormTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerInput()
+	public function providerInput() : array
 	{
 		return $this->getProvider('tests/provider/Html/form_input.json');
 	}
@@ -110,7 +110,7 @@ class FormTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerTextarea()
+	public function providerTextarea() : array
 	{
 		return $this->getProvider('tests/provider/Html/form_textarea.json');
 	}
@@ -123,7 +123,7 @@ class FormTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerSelect()
+	public function providerSelect() : array
 	{
 		return $this->getProvider('tests/provider/Html/form_select.json');
 	}
@@ -136,7 +136,7 @@ class FormTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerSelectRange()
+	public function providerSelectRange() : array
 	{
 		return $this->getProvider('tests/provider/Html/form_select_range.json');
 	}
@@ -149,7 +149,7 @@ class FormTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerCaptcha()
+	public function providerCaptcha() : array
 	{
 		return $this->getProvider('tests/provider/Html/form_captcha.json');
 	}
@@ -162,7 +162,7 @@ class FormTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerToken()
+	public function providerToken() : array
 	{
 		return $this->getProvider('tests/provider/Html/form_token.json');
 	}
@@ -175,7 +175,7 @@ class FormTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerButton()
+	public function providerButton() : array
 	{
 		return $this->getProvider('tests/provider/Html/form_button.json');
 	}
@@ -188,7 +188,7 @@ class FormTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerLink()
+	public function providerLink() : array
 	{
 		return $this->getProvider('tests/provider/Html/form_link.json');
 	}
@@ -205,7 +205,7 @@ class FormTest extends TestCaseAbstract
 	 * @dataProvider providerCreate
 	 */
 
-	public function testCreate($attributeArray = [], $optionArray = [], $expect = null)
+	public function testCreate(array $attributeArray = [], array $optionArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -233,7 +233,7 @@ class FormTest extends TestCaseAbstract
 	 * @dataProvider providerLegend
 	 */
 
-	public function testLegend($text = null, $attributeArray = [], $expect = null)
+	public function testLegend(string $text = null, array $attributeArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -262,7 +262,7 @@ class FormTest extends TestCaseAbstract
 	 * @dataProvider providerLabel
 	 */
 
-	public function testLabel($text = null, $attributeArray = [], $expect = null)
+	public function testLabel(string $text = null, array $attributeArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -291,7 +291,7 @@ class FormTest extends TestCaseAbstract
 	 * @dataProvider providerInput
 	 */
 
-	public function testInput($method = null, $attributeArray = [], $expect = null)
+	public function testInput(string $method = null, array $attributeArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -319,7 +319,7 @@ class FormTest extends TestCaseAbstract
 	 * @dataProvider providerTextarea
 	 */
 
-	public function testTextarea($attributeArray = [], $expect = null)
+	public function testTextarea(array $attributeArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -344,12 +344,12 @@ class FormTest extends TestCaseAbstract
 	 * @param array $optionArray
 	 * @param array $selectArray
 	 * @param array $attributeArray
-	 * @param array $expect
+	 * @param string $expect
 	 *
 	 * @dataProvider providerSelect
 	 */
 
-	public function testSelect($optionArray = [], $selectArray = [], $attributeArray = [], $expect = null)
+	public function testSelect(array $optionArray = [], array $selectArray = [], array $attributeArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -380,7 +380,7 @@ class FormTest extends TestCaseAbstract
 
 	 */
 
-	public function testSelectRange($rangeArray = [], $selectArray = [], $attributeArray = [], $expect = null)
+	public function testSelectRange(array $rangeArray = [], array $selectArray = [], array $attributeArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -407,7 +407,7 @@ class FormTest extends TestCaseAbstract
 	 * @dataProvider providerCaptcha
 	 */
 
-	public function testCaptcha($expectArray = [])
+	public function testCaptcha(array $expectArray = [])
 	{
 		/* setup */
 
@@ -439,7 +439,7 @@ class FormTest extends TestCaseAbstract
 	 * @dataProvider providerToken
 	 */
 
-	public function testToken($registryArray = [], $expect = null)
+	public function testToken(array $registryArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -470,7 +470,7 @@ class FormTest extends TestCaseAbstract
 	 * @dataProvider providerButton
 	 */
 
-	public function testButton($method = null, $text = null, $attributeArray = [], $expect = null)
+	public function testButton(string $method = null, string $text = null, array $attributeArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -500,7 +500,7 @@ class FormTest extends TestCaseAbstract
 	 * @dataProvider providerLink
 	 */
 
-	public function testLink($method = null, $text = null, $attributeArray = [], $expect = null)
+	public function testLink(string $method = null, string $text = null, array $attributeArray = [], string $expect = null)
 	{
 		/* setup */
 

@@ -88,7 +88,7 @@ class Installer
 	 * @param string $directory name of the directory
 	 */
 
-	public function init($directory = 'database')
+	public function init(string $directory = 'database')
 	{
 		$this->_directory = $directory;
 	}
@@ -123,7 +123,7 @@ class Installer
 	 * @param array $optionArray options of the installation
 	 */
 
-	public function insertData($optionArray = [])
+	public function insertData(array $optionArray = [])
 	{
 		$this->insertCategories($optionArray);
 		$this->insertArticles($optionArray);
@@ -143,7 +143,7 @@ class Installer
 	 * @param array $optionArray options of the installation
 	 */
 
-	public function insertCategories($optionArray = [])
+	public function insertCategories(array $optionArray = [])
 	{
 		Db::forTablePrefix('categories')
 			->create()
@@ -165,7 +165,7 @@ class Installer
 	 * @param array $optionArray options of the installation
 	 */
 
-	public function insertArticles($optionArray = [])
+	public function insertArticles(array $optionArray = [])
 	{
 		Db::forTablePrefix('articles')
 			->create()
@@ -190,7 +190,7 @@ class Installer
 	 * @param array $optionArray options of the installation
 	 */
 
-	public function insertExtras($optionArray = [])
+	public function insertExtras(array $optionArray = [])
 	{
 		$extrasArray =
 		[
@@ -262,7 +262,7 @@ class Installer
 	 * @param array $optionArray options of the installation
 	 */
 
-	public function insertComments($optionArray = [])
+	public function insertComments(array $optionArray = [])
 	{
 		Db::forTablePrefix('comments')
 			->create()
@@ -322,7 +322,7 @@ class Installer
 	 * @param array $optionArray options of the installation
 	 */
 
-	public function insertUsers($optionArray = [])
+	public function insertUsers(array $optionArray = [])
 	{
 		$passwordHash = new Hash($this->_config);
 		$passwordHash->init($optionArray['adminPassword']);
@@ -368,7 +368,7 @@ class Installer
 	 * @param array $optionArray options of the installation
 	 */
 
-	public function insertSettings($optionArray = [])
+	public function insertSettings(array $optionArray = [])
 	{
 		$settingArray =
 		[

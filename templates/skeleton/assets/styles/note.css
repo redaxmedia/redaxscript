@@ -6,23 +6,18 @@
  *    1.2 box
  *    1.3 list
  *    1.4 button
- *
- * @since 3.2.1
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. note */
+/** @section 1. note */
 
-/* @section 1.1 title */
+/** @section 1.1 title */
 
 .rs-title-note
 {
 	margin-bottom: 0.5em;
 }
 
-/* @section 1.2 box */
+/** @section 1.2 box */
 
 .rs-box-note
 {
@@ -33,14 +28,14 @@
 	}
 }
 
-/* @section 1.3 list */
+/** @section 1.3 list */
 
 .rs-list-note li
 {
 	list-style: inside decimal;
 }
 
-/* @section 1.4 button */
+/** @section 1.4 button */
 
 .rs-button-note
 {

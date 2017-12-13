@@ -24,7 +24,7 @@ class SearchTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerSearch()
+	public function providerSearch() : array
 	{
 		return $this->getProvider('tests/provider/Filter/search.json');
 	}
@@ -40,7 +40,7 @@ class SearchTest extends TestCaseAbstract
 	 * @dataProvider providerSearch
 	 */
 
-	public function testAlias($search = null, $expect = null)
+	public function testAlias(string $search = null, string $expect = null)
 	{
 		/* setup */
 

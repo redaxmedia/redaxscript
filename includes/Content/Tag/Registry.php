@@ -39,7 +39,7 @@ class Registry extends TagAbstract
 	 * @return string
 	 */
 
-	public function process($content = null)
+	public function process(string $content = null) : string
 	{
 		$output = str_replace($this->_optionArray['search'], $this->_optionArray['delimiter'], $content);
 		$partArray = array_filter(explode($this->_optionArray['delimiter'], $output));

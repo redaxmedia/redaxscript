@@ -36,7 +36,7 @@ class Helper
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return string|bool
 	 */
 
 	public static function getCanonical()
@@ -95,7 +95,7 @@ class Helper
 	 * @return array
 	 */
 
-	public static function getTransport()
+	public static function getTransport() : array
 	{
 		$transport = new Asset\Transport(Registry::getInstance(), Language::getInstance());
 		return $transport->getArray();

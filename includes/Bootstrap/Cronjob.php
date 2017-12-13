@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Bootstrap;
 
+use Redaxscript\Model;
 use Redaxscript\Module;
 
 /**
@@ -26,7 +27,7 @@ class Cronjob extends BootstrapAbstract
 		$this->_registry->set('now', date('Y-m-d H:i:s'));
 		$this->_registry->set('cronUpdate', false);
 
-		/* set update */
+		/* set the update */
 
 		if (!$this->_request->getSession('nextUpdate'))
 		{
@@ -35,7 +36,7 @@ class Cronjob extends BootstrapAbstract
 			$this->_registry->set('cronUpdate', true);
 		}
 
-		/* reset update */
+		/* reset the update */
 
 		if ($this->_request->getSession('nextUpdate') < $this->_registry->get('now'))
 		{
@@ -49,10 +50,18 @@ class Cronjob extends BootstrapAbstract
 			Module\Hook::trigger('cronUpdate');
 			if ($this->_registry->get('dbStatus') === 2)
 			{
-				future_update('categories');
-				future_update('articles');
-				future_update('comments');
-				future_update('extras');
+				$categoryModel = new Model\Category();
+				$articleModel = new Model\Article();
+				$commentModel = new Model\Comment();
+				$extraModel = new Model\Extra();
+				$now = $this->_registry->get('now');
+
+				/* publish by date */
+
+				$categoryModel->publishByDate($now);
+				$articleModel->publishByDate($now);
+				$commentModel->publishByDate($now);
+				$extraModel->publishByDate($now);
 			}
 		}
 	}

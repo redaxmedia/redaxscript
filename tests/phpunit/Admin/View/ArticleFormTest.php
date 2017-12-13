@@ -60,7 +60,7 @@ class ArticleFormTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerRender()
+	public function providerRender() : array
 	{
 		return $this->getProvider('tests/provider/Admin/View/article_form_render.json');
 	}
@@ -71,13 +71,13 @@ class ArticleFormTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $registryArray
-	 * @param integer $articleId
+	 * @param int $articleId
 	 * @param array $expectArray
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($registryArray = [], $articleId = null, $expectArray = [])
+	public function testRender(array $registryArray = [], int $articleId = null, array $expectArray = [])
 	{
 		/* setup */
 

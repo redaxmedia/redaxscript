@@ -24,7 +24,7 @@ class ElementTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerCreate()
+	public function providerCreate() : array
 	{
 		return $this->getProvider('tests/provider/Html/element_create.json');
 	}
@@ -37,7 +37,7 @@ class ElementTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerAttr()
+	public function providerAttr() : array
 	{
 		return $this->getProvider('tests/provider/Html/element_attr.json');
 	}
@@ -50,7 +50,7 @@ class ElementTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerClass()
+	public function providerClass() : array
 	{
 		return $this->getProvider('tests/provider/Html/element_class.json');
 	}
@@ -63,7 +63,7 @@ class ElementTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerVal()
+	public function providerVal() : array
 	{
 		return $this->getProvider('tests/provider/Html/element_val.json');
 	}
@@ -76,7 +76,7 @@ class ElementTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerText()
+	public function providerText() : array
 	{
 		return $this->getProvider('tests/provider/Html/element_text.json');
 	}
@@ -93,7 +93,7 @@ class ElementTest extends TestCaseAbstract
 	 * @dataProvider providerCreate
 	 */
 
-	public function testCreate($tag = null, $attributeArray = [], $expect = null)
+	public function testCreate(string $tag = null, array $attributeArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -138,13 +138,13 @@ class ElementTest extends TestCaseAbstract
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param array $attribute
+	 * @param array $attributeArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerAttr
 	 */
 
-	public function testAttr($attribute = [], $expect = null)
+	public function testAttr(array $attributeArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -153,7 +153,7 @@ class ElementTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $element->attr($attribute[0], $attribute[1])->removeAttr($attribute[2])->render();
+		$actual = $element->attr($attributeArray[0], $attributeArray[1])->removeAttr($attributeArray[2])->render();
 
 		/* compare */
 
@@ -165,13 +165,13 @@ class ElementTest extends TestCaseAbstract
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param array $className
+	 * @param array $classNameArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerClass
 	 */
 
-	public function testClass($className = [], $expect = null)
+	public function testClass(array $classNameArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -180,7 +180,7 @@ class ElementTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $element->addClass($className[0])->addClass($className[1])->removeClass($className[2])->render();
+		$actual = $element->addClass($classNameArray[0])->addClass($classNameArray[1])->removeClass($classNameArray[2])->render();
 
 		/* compare */
 
@@ -192,13 +192,13 @@ class ElementTest extends TestCaseAbstract
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param array $value
+	 * @param string $value
 	 * @param string $expect
 	 *
 	 * @dataProvider providerVal
 	 */
 
-	public function testVal($value = null, $expect = null)
+	public function testVal(string $value = null, string $expect = null)
 	{
 		/* setup */
 
@@ -225,7 +225,7 @@ class ElementTest extends TestCaseAbstract
 	 * @dataProvider providerText
 	 */
 
-	public function testText($text = null, $expect = null)
+	public function testText($text = null, string $expect = null)
 	{
 		/* setup */
 

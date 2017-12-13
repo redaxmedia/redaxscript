@@ -1,6 +1,8 @@
 parameters:
 	bootstrap: includes\bootstrap.php
 	excludes_analyse:
+	- console.php
+	- includes/Admin/Router/Router.php
 	- includes/Admin/View
 	- includes/Asset/Transport.php
 	- includes/Bootstrap/Cache.php
@@ -44,15 +46,20 @@ parameters:
 	- includes/Html/Form.php
 	- includes/Html/HtmlAbstract.php
 	- includes/Html/Purifier.php
-	- includes/Module/Hook.php
+	- includes/Template/Tag.php
+	- includes/Request.php
 	- includes/Router/Parameter.php
+	- includes/Router/Router.php
+	- includes/Router/RouterAbstract.php
+	- includes/Model/Setting.php
+	- includes/Module/Hook.php
 	- includes/Template/Helper/Canonical.php
-	- includes/Template/Helper/Client.php
 	- includes/Template/Helper/Description.php
 	- includes/Template/Helper/Keywords.php
 	- includes/Template/Helper/Robots.php
 	- includes/Template/Helper/Title.php
 	- includes/Template/Tag.php
+	- includes/Navigation
 	- includes/Validator/Alias.php
 	- includes/Validator/Captcha.php
 	- includes/Validator/Dns.php
@@ -71,34 +78,25 @@ parameters:
 	- includes/admin_admin.php
 	- includes/admin_list.php
 	- includes/admin_query.php
-	- includes/admin_router.php
 	- includes/Auth.php
-	- includes/bootstrap.php
 	- includes/Breadcrumb.php
-	- includes/comments.php
 	- includes/Config.php
-	- includes/contents.php
 	- includes/Db.php
 	- includes/Hash.php
 	- includes/Installer.php
 	- includes/Mailer.php
 	- includes/Messenger.php
-	- includes/navigation.php
-	- includes/query.php
-	- includes/router.php
+	- includes/Singleton.php
 	- includes/admin_admin.php
 	- includes/admin_list.php
 	- includes/admin_query.php
-	- includes/admin_router.php
 	- includes/comments.php
 	- includes/contents.php
-	- includes/navigation.php
-	- includes/query.php
-	- includes/router.php
 	- modules/Archive
 	- modules/CallHome
 	- modules/Contact
 	- modules/Demo
+	- modules/Debugger
 	- modules/DirectoryLister
 	- modules/FeedGenerator
 	- modules/FeedReader
@@ -108,7 +106,3 @@ parameters:
 	- modules/Preview
 	- modules/Sitemap
 	- modules/SocialSharer
-	- modules/TestDummy
-	- modules/Tinymce
-	- modules/Validator
-	- console.php

@@ -1,8 +1,8 @@
-module.exports = function ()
+module.exports = () =>
 {
 	'use strict';
 
-	var config =
+	const config =
 	{
 		base:
 		{
@@ -76,6 +76,14 @@ module.exports = function ()
 				'modules/Ace/assets/styles/_ace.css'
 			],
 			dest: 'modules/Ace/dist/styles/ace.min.css'
+		},
+		moduleDebugger:
+		{
+			src:
+			[
+				'modules/Debugger/assets/styles/_debugger.css'
+			],
+			dest: 'modules/Debugger/dist/styles/debugger.min.css'
 		},
 		moduleDirectoryLister:
 		{

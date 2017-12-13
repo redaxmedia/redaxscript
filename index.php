@@ -26,11 +26,7 @@ if ($registry->get('dbStatus') < 2 && is_file('install.php'))
 Module\Hook::trigger('renderStart');
 if ($registry->get('renderBreak'))
 {
-	return;
-}
-if ($registry->get('routerBreak'))
-{
-	$registry->set('contentError', false);
+	exit;
 }
 if ($registry->get('contentError'))
 {

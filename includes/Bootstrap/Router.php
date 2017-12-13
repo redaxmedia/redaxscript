@@ -28,7 +28,7 @@ class Router extends BootstrapAbstract
 	}
 
 	/**
-	 * set parameter
+	 * set the parameter
 	 *
 	 * @since 3.1.0
 	 */
@@ -38,7 +38,7 @@ class Router extends BootstrapAbstract
 		$parameter = new BaseRouter\Parameter($this->_request);
 		$parameter->init();
 
-		/* set registry */
+		/* set the registry */
 
 		$this->_registry->set('firstParameter', $parameter->getFirst());
 		$this->_registry->set('firstSubParameter', $parameter->getFirstSub());
@@ -59,7 +59,7 @@ class Router extends BootstrapAbstract
 	}
 
 	/**
-	 * set route
+	 * set the route
 	 *
 	 * @since 3.1.0
 	 */
@@ -72,7 +72,7 @@ class Router extends BootstrapAbstract
 		$resolver = new BaseRouter\Resolver($this->_request);
 		$resolver->init();
 
-		/* set registry */
+		/* set the registry */
 
 		$this->_registry->set('liteRoute', $resolver->getLite());
 		$this->_registry->set('fullRoute', $resolver->getFull());

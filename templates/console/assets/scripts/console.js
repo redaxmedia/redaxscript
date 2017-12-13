@@ -3,18 +3,13 @@
  *
  * 1. console
  * 2. init
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
 (function (doc, win, $)
 {
 	'use strict';
 
-	/* @section 1. console */
+	/** @section 1. console */
 
 	$.fn.console = function (options)
 	{
@@ -79,7 +74,7 @@
 		});
 	};
 
-	/* @section 2. init */
+	/** @section 2. init */
 
 	$(function ()
 	{

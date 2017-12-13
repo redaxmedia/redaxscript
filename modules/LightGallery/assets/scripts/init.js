@@ -2,14 +2,9 @@
  * @tableofcontents
  *
  * 1. light gallery
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. light gallery */
+/** @section 1. light gallery */
 
 rs.modules.lightGallery =
 {

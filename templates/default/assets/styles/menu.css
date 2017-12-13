@@ -6,16 +6,11 @@
  * 2. query
  *    2.1 medium min
  *    2.2 medium max
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. menu */
+/** @section 1. menu */
 
-/* @section 1.1 list */
+/** @section 1.1 list */
 
 .rs-list-menu
 {
@@ -35,9 +30,9 @@
 	}
 }
 
-/* @section 2. query */
+/** @section 2. query */
 
-/* @section 2.1 medium min */
+/** @section 2.1 medium min */
 
 @media (--media-medium-min)
 {
@@ -103,7 +98,7 @@
 	}
 }
 
-/* @section 2.2 medium max */
+/** @section 2.2 medium max */
 
 @media (--media-medium-max)
 {

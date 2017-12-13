@@ -95,7 +95,7 @@ class Transport
 	 * @return array
 	 */
 
-	public function getArray()
+	public function getArray() : array
 	{
 		$transportArray =
 		[
@@ -125,7 +125,7 @@ class Transport
 	 * @return string
 	 */
 
-	public function render($key = null, $value = null)
+	public function render(string $key = null, $value = null) : string
 	{
 		$output = null;
 		if (is_array($value))

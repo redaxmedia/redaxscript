@@ -4,21 +4,16 @@
  * 1. menu
  *    1.1 medium min
  *    1.2 medium max
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. menu */
+/** @section 1. menu */
 
 %fn-status-menu
 {
 	display: none;
 }
 
-/* @section 1.1 medium min */
+/** @section 1.1 medium min */
 
 @media (--media-medium-min)
 {
@@ -29,7 +24,7 @@
 	}
 }
 
-/* @section 1.2 medium max */
+/** @section 1.2 medium max */
 
 @media (--media-medium-max)
 {

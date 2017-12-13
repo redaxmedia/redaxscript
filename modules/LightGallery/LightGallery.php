@@ -29,7 +29,7 @@ class LightGallery extends Config
 		'alias' => 'LightGallery',
 		'author' => 'Redaxmedia',
 		'description' => 'Javascript powered light gallery',
-		'version' => '3.2.3'
+		'version' => '3.3.0'
 	];
 
 	/**
@@ -37,7 +37,7 @@ class LightGallery extends Config
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array
+	 * @return array|bool
 	 */
 
 	public function adminPanelNotification()
@@ -58,7 +58,7 @@ class LightGallery extends Config
 		$link = Head\Link::getInstance();
 		$link
 			->init()
-			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.3.9/css/lightgallery.min.css')
+			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.5/css/lightgallery.min.css')
 			->appendFile('modules/LightGallery/dist/styles/light-gallery.min.css');
 
 		/* script */
@@ -66,7 +66,7 @@ class LightGallery extends Config
 		$script = Head\Script::getInstance();
 		$script
 			->init('foot')
-			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.3.9/js/lightgallery.min.js')
+			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.5/js/lightgallery.min.js')
 			->appendFile('modules/LightGallery/assets/scripts/init.js')
 			->appendFile('modules/LightGallery/dist/scripts/light-gallery.min.js');
 	}
@@ -82,7 +82,7 @@ class LightGallery extends Config
 	 * @return string
 	 */
 
-	public function render($directory = null, $optionArray = [])
+	public function render(string $directory = null, array $optionArray = []) : string
 	{
 		$output = null;
 		$outputItem = null;
@@ -142,7 +142,7 @@ class LightGallery extends Config
 	 * @return string
 	 */
 
-	public function _renderItem($directory = null, $optionArray = [])
+	public function _renderItem($directory = null, array $optionArray = [])
 	{
 		$outputItem = null;
 
@@ -227,7 +227,7 @@ class LightGallery extends Config
 	 * @param array $optionArray
 	 */
 
-	protected function _createThumb($directory = null, $optionArray = [])
+	protected function _createThumb($directory = null, array $optionArray = [])
 	{
 		/* gallery filesystem */
 
@@ -317,7 +317,7 @@ class LightGallery extends Config
 	 * @return array
 	 */
 
-	protected function _calcDist($sourceArray = [], $optionArray = [])
+	protected function _calcDist($sourceArray = [], array $optionArray = [])
 	{
 		$distArray['height'] = is_array($optionArray) && array_key_exists('height', $optionArray) ? $optionArray['height'] : $this->_configArray['height'];
 		$distArray['quality'] = is_array($optionArray) && array_key_exists('quality', $optionArray) ? $optionArray['quality'] : $this->_configArray['quality'];

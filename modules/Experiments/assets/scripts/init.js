@@ -2,14 +2,9 @@
  * @tableofcontents
  *
  * 1. experiments
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. experiments */
+/** @section 1. experiments */
 
 rs.modules.experiments =
 {

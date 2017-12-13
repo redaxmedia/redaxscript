@@ -3,18 +3,13 @@
  *
  * 1. key shortcut
  * 2. init
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
 (function ($)
 {
 	'use strict';
 
-	/* @section 1. key shortcut */
+	/** @section 1. key shortcut */
 
 	$.fn.keyShortcut = function (options)
 	{
@@ -94,7 +89,7 @@
 		});
 	};
 
-	/* @section 2. init */
+	/** @section 2. init */
 
 	$(function ()
 	{

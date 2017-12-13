@@ -11,16 +11,11 @@
  *    2.4 xlarge min
  *    2.5 large min or medium min and retina
  *    2.6 large min and retina
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. teaser */
+/** @section 1. teaser */
 
-/* @section 1.1 component */
+/** @section 1.1 component */
 
 .rs-component-teaser
 {
@@ -43,7 +38,7 @@
 	}
 }
 
-/* @section 1.2 title */
+/** @section 1.2 title */
 
 .rs-title-teaser
 {
@@ -65,9 +60,9 @@
 	}
 }
 
-/* @section 2. query */
+/** @section 2. query */
 
-/* @section 2.1 medium min */
+/** @section 2.1 medium min */
 
 @media (--media-medium-min)
 {
@@ -84,7 +79,7 @@
 	}
 }
 
-/* @section 2.2 medium min or retina */
+/** @section 2.2 medium min or retina */
 
 @media (--media-medium-min), (--media-retina)
 {
@@ -102,7 +97,7 @@
 	}
 }
 
-/* @section 2.3 large min */
+/** @section 2.3 large min */
 
 @media (--media-large-min)
 {
@@ -112,7 +107,7 @@
 	}
 }
 
-/* @section 2.4 xlarge min */
+/** @section 2.4 xlarge min */
 
 @media (--media-xlarge-min)
 {
@@ -122,7 +117,7 @@
 	}
 }
 
-/* @section 2.5 large min or medium min and retina */
+/** @section 2.5 large min or medium min and retina */
 
 @media (--media-large-min), (--media-medium-min) and (--media-retina)
 {
@@ -140,7 +135,7 @@
 	}
 }
 
-/* @section 2.6 large min and retina */
+/** @section 2.6 large min and retina */
 
 @media (--media-large-min) and (--media-retina)
 {

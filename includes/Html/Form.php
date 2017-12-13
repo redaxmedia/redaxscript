@@ -269,10 +269,10 @@ class Form extends HtmlAbstract
 	 * @param string $method name of the method
 	 * @param array $argumentArray arguments of the method
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function __call($method = null, $argumentArray = [])
+	public function __call(string $method = null, array $argumentArray = []) : self
 	{
 		/* input */
 
@@ -305,7 +305,7 @@ class Form extends HtmlAbstract
 	 * @return string
 	 */
 
-	public function __toString()
+	public function __toString() : string
 	{
 		return $this->render();
 	}
@@ -318,10 +318,10 @@ class Form extends HtmlAbstract
 	 * @param array $attributeArray attributes of the form
 	 * @param array $optionArray options of the form
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function init($attributeArray = [], $optionArray = [])
+	public function init($attributeArray = [], array $optionArray = []) : self
 	{
 		if (is_array($attributeArray))
 		{
@@ -350,10 +350,10 @@ class Form extends HtmlAbstract
 	 * @param string $html html of the legend
 	 * @param array $attributeArray attributes of the legend
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function legend($html = null, $attributeArray = [])
+	public function legend(string $html = null, array $attributeArray = []) : self
 	{
 		if (is_array($attributeArray))
 		{
@@ -379,10 +379,10 @@ class Form extends HtmlAbstract
 	 * @param string $html html of the label
 	 * @param array $attributeArray attributes of the label
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function label($html = null, $attributeArray = [])
+	public function label(string $html = null, array $attributeArray = []) : self
 	{
 		if (is_array($attributeArray))
 		{
@@ -407,10 +407,10 @@ class Form extends HtmlAbstract
 	 *
 	 * @param array $attributeArray attributes of the textarea
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function textarea($attributeArray = [])
+	public function textarea(array $attributeArray = []) : self
 	{
 		if (is_array($attributeArray))
 		{
@@ -438,10 +438,10 @@ class Form extends HtmlAbstract
 	 * @param array $selectArray values to be selected
 	 * @param array $attributeArray attributes of the select
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function select($optionArray = [], $selectArray = [], $attributeArray = [])
+	public function select(array $optionArray = [], array $selectArray = [], array $attributeArray = []) : self
 	{
 		if (is_array($attributeArray))
 		{
@@ -468,10 +468,10 @@ class Form extends HtmlAbstract
 	 * @param array $selectArray values to be selected
 	 * @param array $attributeArray attributes of the select
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function selectRange($rangeArray = [], $selectArray = [], $attributeArray = [])
+	public function selectRange(array $rangeArray = [], array $selectArray = [], array $attributeArray = []) : self
 	{
 		$this->select(range($rangeArray['min'], $rangeArray['max']), $selectArray, $attributeArray);
 		return $this;
@@ -484,10 +484,10 @@ class Form extends HtmlAbstract
 	 *
 	 * @param string $type type of the captcha
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function captcha($type = null)
+	public function captcha(string $type = null) : self
 	{
 		/* task */
 
@@ -533,10 +533,10 @@ class Form extends HtmlAbstract
 	 *
 	 * @since 2.6.0
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function token()
+	public function token() : self
 	{
 		$token = $this->_registry->get('token');
 		if ($token)
@@ -558,7 +558,7 @@ class Form extends HtmlAbstract
 	 * @return string
 	 */
 
-	public function render()
+	public function render() : string
 	{
 		$output = Module\Hook::trigger('formStart');
 		$formElement = new Element();
@@ -579,10 +579,10 @@ class Form extends HtmlAbstract
 	 * @param string $type type of the input
 	 * @param array $attributeArray attributes of the input
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	protected function _createInput($type = 'text', $attributeArray = [])
+	protected function _createInput(string $type = 'text', array $attributeArray = []) : self
 	{
 		if (is_array($attributeArray))
 		{
@@ -607,10 +607,10 @@ class Form extends HtmlAbstract
 	 * @param array $optionArray option of the select
 	 * @param array $selectArray values to be selected
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	protected function _createOption($optionArray = [], $selectArray = [])
+	protected function _createOption(array $optionArray = [], array $selectArray = [])
 	{
 		$output = null;
 		$optionElement = new Element();
@@ -647,10 +647,10 @@ class Form extends HtmlAbstract
 	 * @param string $text text of the button
 	 * @param array $attributeArray attributes of the button
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	protected function _createButton($type = null, $text = null, $attributeArray = [])
+	protected function _createButton(string $type = null, string $text = null, $attributeArray = []) : self
 	{
 		if (is_array($attributeArray))
 		{
@@ -677,10 +677,10 @@ class Form extends HtmlAbstract
 	 * @param string $text text of the link
 	 * @param array $attributeArray attributes of the link
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	protected function _createLink($type = null, $text = null, $attributeArray = [])
+	protected function _createLink(string $type = null, string $text = null, $attributeArray = []) : self
 	{
 		if (is_array($attributeArray))
 		{

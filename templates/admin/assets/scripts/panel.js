@@ -3,18 +3,13 @@
  *
  * 1. panel
  * 2. init
- *
- * @since 2.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
 (function ($)
 {
 	'use strict';
 
-	/* @section 1. panel */
+	/** @section 1. panel */
 
 	$.fn.panel = function (options)
 	{
@@ -122,7 +117,7 @@
 		});
 	};
 
-	/* @section 2. init */
+	/** @section 2. init */
 
 	$(function ()
 	{

@@ -26,7 +26,7 @@ class Detector extends BootstrapAbstract
 		$detectorLanguage = new BaseDetector\Language($this->_registry, $this->_request);
 		$detectorTemplate = new BaseDetector\Template($this->_registry, $this->_request);
 
-		/* set registry */
+		/* set the registry */
 
 		$this->_registry->set('language', $detectorLanguage->getOutput());
 		$this->_registry->set('template', $detectorTemplate->getOutput());

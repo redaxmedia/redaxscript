@@ -20,7 +20,7 @@ class Console extends ConsoleAbstract
 	 *
 	 * @param string $mode name of the mode
 	 *
-	 * @return string|boolean
+	 * @return string|bool
 	 */
 
 	public function init($mode = null)

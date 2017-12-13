@@ -19,6 +19,7 @@ function contents()
 	$config = Redaxscript\Config::getInstance();
 	$output = Redaxscript\Module\Hook::trigger('contentStart');
 	$aliasValidator = new Redaxscript\Validator\Alias();
+	$settingModel = new Redaxscript\Model\Setting();
 	$lastId = $registry->get('lastId');
 	$lastTable = $registry->get('lastTable');
 	$categoryId = $registry->get('categoryId');
@@ -85,7 +86,7 @@ function contents()
 		if ($result)
 		{
 			$num_rows = count($result);
-			$sub_maximum = ceil($num_rows / Redaxscript\Db::getSetting('limit'));
+			$sub_maximum = ceil($num_rows / $settingModel->get('limit'));
 			$sub_active = $registry->get('lastSubParameter');
 
 			/* sub parameter */
@@ -96,10 +97,10 @@ function contents()
 			}
 			else
 			{
-				$offset_string = ($sub_active - 1) * Redaxscript\Db::getSetting('limit') . ', ';
+				$offset_string = ($sub_active - 1) * $settingModel->get('limit') . ', ';
 			}
 		}
-		$articles->limit($offset_string . Redaxscript\Db::getSetting('limit'));
+		$articles->limit($offset_string . $settingModel->get('limit'));
 	}
 	else
 	{
@@ -126,6 +127,7 @@ function contents()
 
 	else if ($result)
 	{
+		$articleModel = new Redaxscript\Model\Article();
 		$accessValidator = new Redaxscript\Validator\Access();
 		foreach ($result as $r)
 		{
@@ -147,7 +149,7 @@ function contents()
 				}
 				if ($lastTable == 'categories' || !$registry->get('fullRoute') || $aliasValidator->validate($firstParameter, Redaxscript\Validator\Alias::MODE_DEFAULT) == Redaxscript\Validator\ValidatorInterface::PASSED)
 				{
-					$route = build_route('articles', $id);
+					$route = $articleModel->getRouteById($id);
 				}
 
 				/* parser */
@@ -239,7 +241,8 @@ function contents()
 
 			else if ($comments > 0)
 			{
-				$route = build_route('articles', $articleId);
+				$articleModel = new Redaxscript\Model\Article();
+				$route = $articleModel->getRouteById($articleId);
 				comments($articleId, $route);
 
 				/* comment form */
@@ -255,9 +258,10 @@ function contents()
 
 	/* call pagination as needed */
 
-	if ($sub_maximum > 1 && Redaxscript\Db::getSetting('pagination') == 1)
+	if ($sub_maximum > 1 && $settingModel->get('pagination') == 1)
 	{
-		$route = build_route('categories', $categoryId);
+		$categoryModel = new Redaxscript\Model\Category();
+		$route = $categoryModel->getRouteById($categoryId);
 		pagination($sub_active, $sub_maximum, $route);
 	}
 }
@@ -407,7 +411,7 @@ function extras($filter)
  * @author Henry Ruhs
  *
  * @param string $table
- * @param integer $id
+ * @param int $id
  * @param string $author
  * @param string $date
  *
@@ -418,8 +422,9 @@ function byline($table, $id, $author, $date)
 {
 	$language = Redaxscript\Language::getInstance();
 	$output = Redaxscript\Module\Hook::trigger('bylineStart');
-	$time = date(Redaxscript\Db::getSetting('time'), strtotime($date));
-	$date = date(Redaxscript\Db::getSetting('date'), strtotime($date));
+	$settingModel = new Redaxscript\Model\Setting();
+	$time = date($settingModel->get('time'), strtotime($date));
+	$date = date($settingModel->get('date'), strtotime($date));
 	if ($table == 'articles')
 	{
 		$comments_total = Redaxscript\Db::forTablePrefix('comments')->where('article', $id)->count();
@@ -447,7 +452,7 @@ function byline($table, $id, $author, $date)
 
 	if ($comments_total)
 	{
-		$output .= '<span class="rs-text-divider">' . Redaxscript\Db::getSetting('divider') . '</span><span class="rs-text-total">' . $comments_total . ' ';
+		$output .= '<span class="rs-text-divider">' . $settingModel->get('divider') . '</span><span class="rs-text-total">' . $comments_total . ' ';
 		if ($comments_total == 1)
 		{
 			$output .= $language->get('comment');
@@ -473,8 +478,8 @@ function byline($table, $id, $author, $date)
  * @category Content
  * @author Henry Ruhs
  *
- * @param integer $sub_active
- * @param integer $sub_maximum
+ * @param int $sub_active
+ * @param int $sub_maximum
  * @param string $route
  */
 

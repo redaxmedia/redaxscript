@@ -1,8 +1,8 @@
-module.exports = function ()
+module.exports = () =>
 {
 	'use strict';
 
-	var config =
+	const config =
 	{
 		database:
 		{
@@ -52,8 +52,9 @@ module.exports = function ()
 		options:
 		{
 			namespace: 'rs',
-			loglevel: 'info',
-			haltonerror: true
+			selector: '*:not([class*="<?"]):not([class*="?>"])',
+			logLevel: 'info',
+			haltOnError: true
 		}
 	};
 

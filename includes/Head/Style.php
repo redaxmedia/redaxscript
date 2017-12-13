@@ -32,7 +32,7 @@ class Style extends Singleton implements HeadInterface
 	 * @return string
 	 */
 
-	public function __toString()
+	public function __toString() : string
 	{
 		return $this->render();
 	}
@@ -44,10 +44,10 @@ class Style extends Singleton implements HeadInterface
 	 *
 	 * @param string $inline
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function appendInline($inline = null)
+	public function appendInline(string $inline = null) : self
 	{
 		self::$_inline .= $inline;
 		return $this;
@@ -60,10 +60,10 @@ class Style extends Singleton implements HeadInterface
 	 *
 	 * @param string $inline
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function prependInline($inline = null)
+	public function prependInline(string $inline = null) : self
 	{
 		self::$_inline = $inline . self::$_inline;
 		return $this;
@@ -77,7 +77,7 @@ class Style extends Singleton implements HeadInterface
 	 * @return string
 	 */
 
-	public function render()
+	public function render() : string
 	{
 		$output = null;
 
@@ -103,10 +103,10 @@ class Style extends Singleton implements HeadInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function clear()
+	public function clear() : self
 	{
 		self::$_inline = null;
 		return $this;

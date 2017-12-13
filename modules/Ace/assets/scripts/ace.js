@@ -3,18 +3,13 @@
  *
  * 1. ace
  * 2. init
- *
- * @since 2.6.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
 (function ($, ace)
 {
 	'use strict';
 
-	/* @section 1. ace */
+	/** @section 1. ace */
 
 	$.fn.ace = function (options)
 	{
@@ -36,7 +31,7 @@
 			$('<div>').attr('id', 'editor').insertBefore(textarea);
 			editor = ace.edit('editor');
 
-			/* set options */
+			/* set the options */
 
 			editor.setOptions(options.ace);
 
@@ -53,7 +48,7 @@
 		});
 	};
 
-	/* @section 2. init */
+	/** @section 2. init */
 
 	$(function ()
 	{

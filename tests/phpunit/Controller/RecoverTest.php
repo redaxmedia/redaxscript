@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Tests\Controller;
 
-use Redaxscript\Db;
 use Redaxscript\Controller;
 use Redaxscript\Tests\TestCaseAbstract;
 
@@ -44,7 +43,8 @@ class RecoverTest extends TestCaseAbstract
 			'adminPassword' => 'test',
 			'adminEmail' => 'test@test.com'
 		]);
-		Db::setSetting('captcha', 1);
+		$setting = $this->settingFactory();
+		$setting->set('captcha', 1);
 	}
 
 	/**
@@ -68,7 +68,7 @@ class RecoverTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerProcess()
+	public function providerProcess() : array
 	{
 		return $this->getProvider('tests/provider/Controller/recover_process.json');
 	}
@@ -81,7 +81,7 @@ class RecoverTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerProcessFailure()
+	public function providerProcessFailure() : array
 	{
 		return $this->getProvider('tests/provider/Controller/recover_process_failure.json');
 	}
@@ -98,7 +98,7 @@ class RecoverTest extends TestCaseAbstract
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($postArray = [], $hashArray = [], $expect = null)
+	public function testProcess(array $postArray = [], array $hashArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -128,7 +128,7 @@ class RecoverTest extends TestCaseAbstract
 	 * @dataProvider providerProcessFailure
 	 */
 
-	public function testProcessFailure($postArray = [], $hashArray = [], $method = null, $expect = null)
+	public function testProcessFailure(array $postArray = [], array $hashArray = [], string $method = null, string $expect = null)
 	{
 		/* setup */
 

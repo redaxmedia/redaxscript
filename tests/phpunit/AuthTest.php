@@ -82,7 +82,7 @@ class AuthTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerGetPermission()
+	public function providerGetPermission() : array
 	{
 		return $this->getProvider('tests/provider/auth_get_permission.json');
 	}
@@ -95,7 +95,7 @@ class AuthTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerGetFilter()
+	public function providerGetFilter() : array
 	{
 		return $this->getProvider('tests/provider/auth_get_filter.json');
 	}
@@ -186,7 +186,7 @@ class AuthTest extends TestCaseAbstract
 	 * @dataProvider providerGetPermission
 	 */
 
-	public function testGetPermission($method = null, $typeArray = [], $groups = null)
+	public function testGetPermission(string $method = null, $typeArray = [], string $groups = null)
 	{
 		/* setup */
 
@@ -208,12 +208,12 @@ class AuthTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param string $groups
-	 * @param boolean $expect
+	 * @param bool $expect
 	 *
 	 * @dataProvider providerGetFilter
 	 */
 
-	public function testGetFilter($groups = null, $expect = null)
+	public function testGetFilter(string $groups = null, bool $expect = null)
 	{
 		/* setup */
 

@@ -3,12 +3,8 @@ filter:
  - includes/admin_admin.php
  - includes/admin_list.php
  - includes/admin_query.php
- - includes/admin_router.php
  - includes/comments.php
  - includes/contents.php
- - includes/navigation.php
- - includes/query.php
- - includes/router.php
 
 tools:
  external_code_coverage: true

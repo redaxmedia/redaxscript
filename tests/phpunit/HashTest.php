@@ -23,7 +23,7 @@ class HashTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerHash()
+	public function providerHash() : array
 	{
 		return $this->getProvider('tests/provider/hash.json');
 	}
@@ -38,7 +38,7 @@ class HashTest extends TestCaseAbstract
 	 * @dataProvider providerHash
 	 */
 
-	public function testInit($raw = null)
+	public function testInit(string $raw = null)
 	{
 		/* setup */
 
@@ -60,7 +60,7 @@ class HashTest extends TestCaseAbstract
 	 * @dataProvider providerHash
 	 */
 
-	public function testGetRaw($raw = null)
+	public function testGetRaw(string $raw = null)
 	{
 		/* setup */
 
@@ -88,7 +88,7 @@ class HashTest extends TestCaseAbstract
 	 * @dataProvider providerHash
 	 */
 
-	public function testGetHash($raw = null, $hashArray = [])
+	public function testGetHash(string $raw = null, array $hashArray = [])
 	{
 		/* setup */
 
@@ -123,7 +123,7 @@ class HashTest extends TestCaseAbstract
 	 * @dataProvider providerHash
 	 */
 
-	public function testValidate($raw = null, $hashArray = [])
+	public function testValidate(string $raw = null, array $hashArray = [])
 	{
 		/* setup */
 

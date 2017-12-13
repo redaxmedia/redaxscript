@@ -21,7 +21,7 @@ class Directory extends ServerAbstract
 	 * @return string
 	 */
 
-	public function getOutput()
+	public function getOutput() : string
 	{
 		$output = dirname($this->_request->getServer('SCRIPT_NAME'));
 		return $output;

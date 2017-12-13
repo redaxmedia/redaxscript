@@ -1,9 +1,9 @@
 <?php
 namespace Redaxscript\Controller;
 
-use Redaxscript\Db;
-use Redaxscript\Messenger;
 use Redaxscript\Filter;
+use Redaxscript\Messenger;
+use Redaxscript\Model;
 use Redaxscript\Validator;
 use Redaxscript\View;
 
@@ -41,7 +41,7 @@ class Search extends ControllerAbstract
 	 * @return string
 	 */
 
-	public function process()
+	public function process() : string
 	{
 		$searchFilter = new Filter\Search();
 		$secondParameter = $searchFilter->sanitize($this->_registry->get('secondParameter'));
@@ -75,7 +75,8 @@ class Search extends ControllerAbstract
 		$resultArray = $this->_search(
 		[
 			'table' => $queryArray['table'],
-			'search' => $queryArray['search']
+			'search' => $queryArray['search'],
+			'language' => $this->_registry->get('language')
 		]);
 
 		/* handle info */
@@ -112,7 +113,7 @@ class Search extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _renderResult($resultArray = [])
+	protected function _renderResult(array $resultArray = []) : string
 	{
 		$searchList = new View\ResultList($this->_registry, $this->_language);
 		return $searchList->render($resultArray);
@@ -128,7 +129,7 @@ class Search extends ControllerAbstract
 	 * @return string
 	 */
 
-	protected function _info($infoArray = [])
+	protected function _info(array $infoArray = [])  : string
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
@@ -147,7 +148,7 @@ class Search extends ControllerAbstract
 	 * @return array
 	 */
 
-	protected function _validate($queryArray = [], $resultArray = [])
+	protected function _validate(array $queryArray = [], array $resultArray = []) : array
 	{
 		$searchValidator = new Validator\Search();
 
@@ -178,8 +179,9 @@ class Search extends ControllerAbstract
 	 * @return array
 	 */
 
-	protected function _search($searchArray = [])
+	protected function _search(array $searchArray = []) : array
 	{
+		$searchModel = new Model\Search();
 		$resultArray = [];
 
 		/* process table */
@@ -188,57 +190,9 @@ class Search extends ControllerAbstract
 		{
 			foreach ($searchArray['table'] as $table)
 			{
-				$resultArray[$table] = Db::forTablePrefix($table)
-					->whereLikeMany($this->_getColumnArray($table), $this->_getLikeArray($table, $searchArray['search']))
-					->where('status', 1)
-					->whereLanguageIs($this->_registry->get('language'))
-					->orderByDesc('date')
-					->findMany();
+				$resultArray[$table] = $searchModel->getByTable($table, $searchArray['search'], $searchArray['language']);
 			}
 		}
 		return $resultArray;
-	}
-
-	/**
-	 * get the column array
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param string $table name of the table
-	 *
-	 * @return array
-	 */
-
-	protected function _getColumnArray($table = null)
-	{
-		return array_filter(
-		[
-			$table === 'categories' || $table === 'articles' ? 'title' : null,
-			$table === 'categories' || $table === 'articles' ? 'description' : null,
-			$table === 'categories' || $table === 'articles' ? 'keywords' : null,
-			$table === 'articles' || $table === 'comments' ? 'text' : null
-		]);
-	}
-
-	/**
-	 * get the like array
-	 *
-	 * @since 3.1.0
-	 *
-	 * @param string $table name of the table
-	 * @param array $search value of the search
-	 *
-	 * @return array
-	 */
-
-	protected function _getLikeArray($table = null, $search = null)
-	{
-		return array_filter(
-		[
-			$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
-			$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
-			$table === 'categories' || $table === 'articles' ? '%' . $search . '%' : null,
-			$table === 'articles' || $table === 'comments' ? '%' . $search . '%' : null
-		]);
 	}
 }

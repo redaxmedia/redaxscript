@@ -23,12 +23,12 @@ class CategoryForm extends ViewAbstract implements ViewInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param integer $categoryId identifier of the category
+	 * @param int|bool $categoryId identifier of the category
 	 *
 	 * @return string
 	 */
 
-	public function render($categoryId = null)
+	public function render(int $categoryId = null) : string
 	{
 		$output = Module\Hook::trigger('adminCategoryFormStart');
 		$category = Db::forTablePrefix('categories')->whereIdIs($categoryId)->findOne();
@@ -47,8 +47,18 @@ class CategoryForm extends ViewAbstract implements ViewInterface
 		[
 			'form' =>
 			[
-				'action' => $this->_registry->get('parameterRoute') . ($category->id ? 'admin/process/categories/' . $category->id : 'admin/process/categories'),
 				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-component-tab rs-admin-form-default rs-admin-fn-clearfix'
+			],
+			'button' =>
+			[
+				'create' =>
+				[
+					'name' => get_class()
+				],
+				'save' =>
+				[
+					'name' => get_class()
+				]
 			],
 			'link' =>
 			[
@@ -292,10 +302,10 @@ class CategoryForm extends ViewAbstract implements ViewInterface
 	 *
 	 * @since 3.2.0
 	 *
-	 * @return object
+	 * @return string
 	 */
 
-	protected function _renderList()
+	protected function _renderList() : string
 	{
 		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
 
@@ -335,7 +345,6 @@ class CategoryForm extends ViewAbstract implements ViewInterface
 				->attr('href', $tabRoute . '#tab-3')
 				->text($this->_language->get('customize'))
 			);
-		$listElement->html($outputItem);
-		return $listElement;
+		return $listElement->html($outputItem)->render();
 	}
 }

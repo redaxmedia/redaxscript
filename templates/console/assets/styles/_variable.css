@@ -4,22 +4,17 @@
  * 1. variable
  *    1.1 base color
  *    1.2 font
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. variable */
+/** @section 1. variable */
 
 :root
 {
-	/* @section 1.1 base color */
+	/** @section 1.1 base color */
 
 	--rs-console-color-primary: #300a24;
 
-	/* @section 1.2 font */
+	/** @section 1.2 font */
 
 	--rs-console-font-primary: 'ubuntu mono', monospace, arial, sans-serif;
 }

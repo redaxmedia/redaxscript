@@ -4,22 +4,17 @@
  * 1. panel
  *    1.1 list
  *    1.2 notification
- *       1.2.1 counter
- *       1.2.2 list
+ *      1.2.1 counter
+ *      1.2.2 list
  * 2. query
  *    2.1 medium min
  *    2.2 medium min and large max
  *    2.3 medium max
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. panel */
+/** @section 1. panel */
 
-/* @section 1.1 list */
+/** @section 1.1 list */
 
 .rs-admin-list-panel
 {
@@ -143,9 +138,9 @@
 	display: none;
 }
 
-/* @section 1.2 notification */
+/** @section 1.2 notification */
 
-/* @section 1.2.1 counter */
+/** @section 1.2.1 counter */
 
 .rs-admin-text-notification
 {
@@ -188,7 +183,7 @@
 	background: var(--rs-admin-color-error);
 }
 
-/* @section 1.2.2 list */
+/** @section 1.2.2 list */
 
 .rs-admin-list-panel-notification
 {
@@ -224,9 +219,9 @@
 	}
 }
 
-/* @section 2. query */
+/** @section 2. query */
 
-/* @section 2.1 medium min */
+/** @section 2.1 medium min */
 
 @media (--media-medium-min)
 {
@@ -283,7 +278,7 @@
 	}
 }
 
-/* @section 2.2 medium min and large max */
+/** @section 2.2 medium min and large max */
 
 @media (--media-medium-min) and (--media-large-max)
 {
@@ -293,7 +288,7 @@
 	}
 }
 
-/* @section 2.3 medium max */
+/** @section 2.3 medium max */
 
 @media (--media-medium-max)
 {

@@ -55,7 +55,8 @@ class CommentTest extends TestCaseAbstract
 
 			])
 			->save();
-		Db::setSetting('captcha', 1);
+		$setting = $this->settingFactory();
+		$setting->set('captcha', 1);
 	}
 
 	/**
@@ -79,7 +80,7 @@ class CommentTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerProcess()
+	public function providerProcess() : array
 	{
 		return $this->getProvider('tests/provider/Controller/comment_process.json');
 	}
@@ -92,7 +93,7 @@ class CommentTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerProcessFailure()
+	public function providerProcessFailure() : array
 	{
 		return $this->getProvider('tests/provider/Controller/comment_process_failure.json');
 	}
@@ -110,14 +111,15 @@ class CommentTest extends TestCaseAbstract
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess($postArray = [], $hashArray = [], $settingArray = [], $expect = null)
+	public function testProcess(array $postArray = [], array $hashArray = [], array $settingArray = [], string $expect = null)
 	{
 		/* setup */
 
-		Db::setSetting('notification', $settingArray['notification']);
-		Db::setSetting('moderation', $settingArray['moderation']);
 		$this->_request->set('post', $postArray);
 		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
+		$setting = $this->settingFactory();
+		$setting->set('notification', $settingArray['notification']);
+		$setting->set('moderation', $settingArray['moderation']);
 		$commentController = new Controller\Comment($this->_registry, $this->_request, $this->_language);
 
 		/* actual */
@@ -143,14 +145,15 @@ class CommentTest extends TestCaseAbstract
 	 * @dataProvider providerProcessFailure
 	 */
 
-	public function testProcessFailure($postArray = [], $hashArray = [], $settingArray = [], $method = null, $expect = null)
+	public function testProcessFailure(array $postArray = [], array $hashArray = [], array $settingArray = [], string $method = null, string $expect = null)
 	{
 		/* setup */
 
-		Db::setSetting('notification', $settingArray['notification']);
-		Db::setSetting('moderation', $settingArray['moderation']);
 		$this->_request->set('post', $postArray);
 		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
+		$setting = $this->settingFactory();
+		$setting->set('notification', $settingArray['notification']);
+		$setting->set('moderation', $settingArray['moderation']);
 		$stub = $this
 			->getMockBuilder('Redaxscript\Controller\Comment')
 			->setConstructorArgs(

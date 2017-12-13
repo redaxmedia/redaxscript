@@ -26,7 +26,7 @@ class RouterTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerRouter()
+	public function providerRouter() : array
 	{
 		return $this->getProvider('tests/provider/Bootstrap/router.json');
 	}
@@ -43,7 +43,7 @@ class RouterTest extends TestCaseAbstract
 	 * @dataProvider providerRouter
 	 */
 
-	public function testRouter($route = null, $registryArray = [], $expectArray = [])
+	public function testRouter(string $route = null, array $registryArray = [], array $expectArray = [])
 	{
 		/* setup */
 

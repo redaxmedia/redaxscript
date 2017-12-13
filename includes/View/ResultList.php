@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\View;
 
-use Redaxscript\Db;
+use Redaxscript\Model;
 use Redaxscript\Html;
 use Redaxscript\Module;
 use Redaxscript\Validator;
@@ -29,10 +29,12 @@ class ResultList extends ViewAbstract
 	 * @return string
 	 */
 
-	public function render($resultArray = [])
+	public function render(array $resultArray = []) : string
 	{
 		$output = Module\Hook::trigger('resultListStart');
 		$accessValidator = new Validator\Access();
+		$contentModel = new Model\Content();
+		$settingModel = new Model\Setting();
 
 		/* html elements */
 
@@ -72,9 +74,9 @@ class ResultList extends ViewAbstract
 				{
 					if ($accessValidator->validate($result->access, $this->_registry->get('myGroups')) === Validator\ValidatorInterface::PASSED)
 					{
-						$textDate = date(Db::getSetting('date'), strtotime($value->date));
+						$textDate = date($settingModel->get('date'), strtotime($value->date));
 						$linkElement
-							->attr('href', $this->_registry->get('parameterRoute') . build_route($table, $value->id))
+							->attr('href', $this->_registry->get('parameterRoute') . $contentModel->getRouteByTableAndId($table, $value->id))
 							->text($value->title ? $value->title : $value->author);
 						$textElement->text($textDate);
 						$outputItem .= $itemElement->html($linkElement . $textElement);

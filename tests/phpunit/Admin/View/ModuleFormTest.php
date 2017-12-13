@@ -57,7 +57,7 @@ class ModuleFormTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerRender()
+	public function providerRender() : array
 	{
 		return $this->getProvider('tests/provider/Admin/View/module_form_render.json');
 	}
@@ -68,13 +68,13 @@ class ModuleFormTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $registryArray
-	 * @param integer $moduleId
+	 * @param int $moduleId
 	 * @param array $expectArray
 	 *
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($registryArray = [], $moduleId = null, $expectArray = [])
+	public function testRender(array $registryArray = [], int $moduleId = null, array $expectArray = [])
 	{
 		/* setup */
 

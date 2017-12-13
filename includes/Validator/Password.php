@@ -24,7 +24,7 @@ class Password implements ValidatorInterface
 	 * @param string $password plain password
 	 * @param string $hash hashed password
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
 	public function validate($password = null, $hash = null)

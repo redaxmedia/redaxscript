@@ -3,16 +3,11 @@
  *
  * 1. redirect
  *    1.1 overlay
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. redirect */
+/** @section 1. redirect */
 
-/* @section 1.1 overlay */
+/** @section 1.1 overlay */
 
 %overlay-redirect
 {

@@ -38,7 +38,7 @@ class LoaderTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerConcat()
+	public function providerConcat() : array
 	{
 		return $this->getProvider('tests/provider/Asset/loader_concat.json');
 	}
@@ -51,7 +51,7 @@ class LoaderTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerRewrite()
+	public function providerRewrite() : array
 	{
 		return $this->getProvider('tests/provider/Asset/loader_rewrite.json');
 	}
@@ -68,7 +68,7 @@ class LoaderTest extends TestCaseAbstract
 	 * @dataProvider providerConcat
 	 */
 
-	public function testConcat($registryArray = [], $collectionArray = [], $expectArray = [])
+	public function testConcat(array $registryArray = [], array $collectionArray = [], array $expectArray = [])
 	{
 		/* setup */
 
@@ -107,7 +107,7 @@ class LoaderTest extends TestCaseAbstract
 	 * @dataProvider providerRewrite
 	 */
 
-	public function testRewrite($collectionArray = [], $rewriteArray = [], $expect = null)
+	public function testRewrite(array $collectionArray = [], array $rewriteArray = [], string $expect = null)
 	{
 		/* setup */
 

@@ -19,12 +19,12 @@ class File extends Filesystem
 	 * @since 3.2.0
 	 *
 	 * @param string $file name of the file
-	 * @param integer $mode file access mode
+	 * @param int $mode file access mode
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
-	public function createFile($file = null, $mode = 0777)
+	public function createFile(string $file = null, int $mode = 0777) : bool
 	{
 		$path = $this->_root . DIRECTORY_SEPARATOR . $file;
 		return !is_file($path) && touch($path) && chmod($path, $mode);
@@ -37,10 +37,10 @@ class File extends Filesystem
 	 *
 	 * @param string $file name of the file
 	 *
-	 * @return string|boolean
+	 * @return string|bool
 	 */
 
-	public function readFile($file = null)
+	public function readFile(string $file = null)
 	{
 		$path = $this->_root . DIRECTORY_SEPARATOR . $file;
 		if (is_file($path))
@@ -60,7 +60,7 @@ class File extends Filesystem
 	 * @return string
 	 */
 
-	public function renderFile($file = null)
+	public function renderFile(string $file = null) : string
 	{
 		$path = $this->_root . DIRECTORY_SEPARATOR . $file;
 		ob_start();
@@ -79,10 +79,10 @@ class File extends Filesystem
 	 * @param string $file name of the file
 	 * @param string $content content of the file
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
-	public function writeFile($file = null, $content = null)
+	public function writeFile(string $file = null, string $content = null) : bool
 	{
 		$path = $this->_root . DIRECTORY_SEPARATOR . $file;
 		return strlen($content) && file_put_contents($path, $content) > 0;
@@ -95,10 +95,10 @@ class File extends Filesystem
 	 *
 	 * @param string $file name of the file
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
-	public function removeFile($file = null)
+	public function removeFile(string $file = null) : bool
 	{
 		$path = $this->_root . DIRECTORY_SEPARATOR . $file;
 		return is_file($path) && unlink($path);

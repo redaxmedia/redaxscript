@@ -23,7 +23,7 @@ class MessengerTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerSuccess()
+	public function providerSuccess() : array
 	{
 		return $this->getProvider('tests/provider/messenger_success.json');
 	}
@@ -36,7 +36,7 @@ class MessengerTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerInfo()
+	public function providerInfo() : array
 	{
 		return $this->getProvider('tests/provider/messenger_info.json');
 	}
@@ -49,7 +49,7 @@ class MessengerTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerWarning()
+	public function providerWarning() : array
 	{
 		return $this->getProvider('tests/provider/messenger_warning.json');
 	}
@@ -62,7 +62,7 @@ class MessengerTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerError()
+	public function providerError() : array
 	{
 		return $this->getProvider('tests/provider/messenger_error.json');
 	}
@@ -75,7 +75,7 @@ class MessengerTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerRender()
+	public function providerRender() : array
 	{
 		return $this->getProvider('tests/provider/messenger_render.json');
 	}
@@ -92,7 +92,7 @@ class MessengerTest extends TestCaseAbstract
 	 * @dataProvider providerSuccess
 	 */
 
-	public function testSuccess($success = null, $actionArray = [], $expect = null)
+	public function testSuccess($success = null, $actionArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -120,7 +120,7 @@ class MessengerTest extends TestCaseAbstract
 	 * @dataProvider providerInfo
 	 */
 
-	public function testInfo($info = null, $actionArray = [], $expect = null)
+	public function testInfo($info = null, $actionArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -148,7 +148,7 @@ class MessengerTest extends TestCaseAbstract
 	 * @dataProvider providerWarning
 	 */
 
-	public function testWarning($warning = null, $actionArray = [], $expect = null)
+	public function testWarning($warning = null, $actionArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -176,7 +176,7 @@ class MessengerTest extends TestCaseAbstract
 	 * @dataProvider providerError
 	 */
 
-	public function testError($error = null, $actionArray = [], $expect = null)
+	public function testError($error = null, $actionArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -204,7 +204,7 @@ class MessengerTest extends TestCaseAbstract
 	 * @dataProvider providerRender
 	 */
 
-	public function testRender($render = null, $actionArray = [], $expect = null)
+	public function testRender($render = null, $actionArray = [], string $expect = null)
 	{
 		/* setup */
 

@@ -21,7 +21,7 @@ class Root extends ServerAbstract
 	 * @return string
 	 */
 
-	public function getOutput()
+	public function getOutput() : string
 	{
 		$protocol = new Protocol($this->_request);
 		$host = new Host($this->_request);

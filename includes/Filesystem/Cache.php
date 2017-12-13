@@ -37,10 +37,10 @@ class Cache
 	 * @param string $directory name of the directory
 	 * @param string $extension extension of the cached files
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function init($directory = null, $extension = null)
+	public function init(string $directory = null, string $extension = null) : self
 	{
 		if (strlen($directory))
 		{
@@ -68,7 +68,7 @@ class Cache
 	 * @return string
 	 */
 
-	public function getPath($bundle = null, $separator = DIRECTORY_SEPARATOR)
+	public function getPath($bundle = null, string $separator = DIRECTORY_SEPARATOR) : string
 	{
 		return $this->_directory . $separator . $this->_getFile($bundle);
 	}
@@ -81,10 +81,10 @@ class Cache
 	 * @param string|array $bundle key or collection of the bundle
 	 * @param string $content content of the bundle
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function store($bundle = null, $content = null)
+	public function store($bundle = null, string $content = null) : self
 	{
 		if ($bundle)
 		{
@@ -102,7 +102,7 @@ class Cache
 	 *
 	 * @param string|array $bundle key or collection of the bundle
 	 *
-	 * @return string|boolean
+	 * @return string|bool
 	 */
 
 	public function retrieve($bundle = null)
@@ -122,12 +122,12 @@ class Cache
 	 * @since 3.0.0
 	 *
 	 * @param string|array $bundle key or collection of the bundle
-	 * @param integer $lifetime lifetime of the bundle
+	 * @param int $lifetime lifetime of the bundle
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
-	public function validate($bundle = null, $lifetime = 3600)
+	public function validate($bundle = null, int $lifetime = 3600) : bool
 	{
 		if ($bundle)
 		{
@@ -143,10 +143,10 @@ class Cache
 	 *
 	 * @param string|array $bundle key or collection of the bundle
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function clear($bundle = null)
+	public function clear($bundle = null) : self
 	{
 		$cacheFilesystem = new Directory();
 		$cacheFilesystem->init($this->_directory);
@@ -166,12 +166,12 @@ class Cache
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param integer $lifetime lifetime of the bundle
+	 * @param int $lifetime lifetime of the bundle
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function clearInvalid($lifetime = 3600)
+	public function clearInvalid(int $lifetime = 3600) : self
 	{
 		$cacheFile = new File();
 		$cacheFile->init($this->_directory);
@@ -199,7 +199,7 @@ class Cache
 	 * @return string
 	 */
 
-	protected function _getFile($bundle = null)
+	protected function _getFile($bundle = null) : string
 	{
 		return sha1(implode('-', (array)$bundle)) . '.' . $this->_extension;
 	}
@@ -210,12 +210,12 @@ class Cache
 	 * @since 3.2.0
 	 *
 	 * @param string $file name of the file
-	 * @param integer $lifetime lifetime of the file
+	 * @param int $lifetime lifetime of the file
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 
-	protected function _validateFile($file = null, $lifetime = 3600)
+	protected function _validateFile(string $file = null, int $lifetime = 3600) : bool
 	{
 		$path = $this->_directory . DIRECTORY_SEPARATOR . $file;
 		return is_file($path) && filesize($path) && filemtime($path) > time() - $lifetime;

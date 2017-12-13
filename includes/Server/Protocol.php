@@ -21,7 +21,7 @@ class Protocol extends ServerAbstract
 	 * @return string
 	 */
 
-	public function getOutput()
+	public function getOutput() : string
 	{
 		$output = $this->_request->getServer('HTTPS') === 'off' || !$this->_request->getServer('HTTPS') ? 'http' : 'https';
 		return $output;

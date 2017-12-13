@@ -280,7 +280,7 @@ function admin_panel_list()
  * @author Henry Ruhs
  *
  * @param string $table
- * @param integer $id
+ * @param int $id
  * @return string
  */
 
@@ -327,9 +327,9 @@ function admin_dock($table, $id)
  *
  * @param string $type
  * @param string $table
- * @param integer $id
+ * @param int $id
  * @param string $alias
- * @param integer $status
+ * @param int $status
  * @param string $new
  * @param string $edit
  * @param string $delete

@@ -25,7 +25,7 @@ class LoginTest extends TestCaseAbstract
 	 * @return array
 	 */
 
-	public function providerLogin()
+	public function providerLogin() : array
 	{
 		return $this->getProvider('tests/provider/Validator/login.json');
 	}
@@ -36,12 +36,12 @@ class LoginTest extends TestCaseAbstract
 	 * @since 2.2.0
 	 *
 	 * @param string $login
-	 * @param integer $expect
+	 * @param int $expect
 	 *
 	 * @dataProvider providerLogin
 	 */
 
-	public function testLogin($login = null, $expect = null)
+	public function testLogin(string $login = null, int $expect = null)
 	{
 		/* setup */
 

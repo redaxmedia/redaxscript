@@ -44,7 +44,7 @@ class Readmore extends TagAbstract
 	 * @return string
 	 */
 
-	public function process($content = null, $route = null)
+	public function process(string $content = null, string $route = null) : string
 	{
 		$output = str_replace($this->_optionArray['search'], null, $content);
 		$position = strpos($content, $this->_optionArray['search'][0]);

@@ -2,14 +2,9 @@
  * @tableofcontents
  *
  * 1. sidebar
- *
- * @since 3.0.0
- *
- * @package Redaxscript
- * @author Henry Ruhs
  */
 
-/* @section 1. sidebar */
+/** @section 1. sidebar */
 
 .rs-sidebar
 {

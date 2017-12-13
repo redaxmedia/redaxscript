@@ -34,10 +34,14 @@ class Client extends HelperAbstract
 	 * @return array
 	 */
 
-	public function process()
+	public function process() : array
 	{
+		$clientArray = [];
 		$browserArray = $this->_getBrowserArray();
 		$deviceArray = $this->_getDeviceArray();
+
+		/* browser and device */
+
 		if (is_array($browserArray) && is_array($deviceArray))
 		{
 			$clientArray = array_unique(array_merge(
@@ -56,7 +60,7 @@ class Client extends HelperAbstract
 	 * @return array
 	 */
 
-	protected function _getBrowserArray()
+	protected function _getBrowserArray() : array
 	{
 		return
 		[
@@ -71,7 +75,7 @@ class Client extends HelperAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array|boolean
+	 * @return array|bool
 	 */
 
 	protected function _getDeviceArray()

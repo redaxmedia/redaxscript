@@ -63,7 +63,7 @@ class Element extends HtmlAbstract
 	 * @return string
 	 */
 
-	public function __toString()
+	public function __toString() : string
 	{
 		return $this->render();
 	}
@@ -76,10 +76,10 @@ class Element extends HtmlAbstract
 	 * @param string $tag tag of the element
 	 * @param array $attributeArray attributes of the element
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function init($tag = null, $attributeArray = [])
+	public function init(string $tag = null, array $attributeArray = []) : self
 	{
 		$this->_tag = strtolower($tag);
 
@@ -97,26 +97,26 @@ class Element extends HtmlAbstract
 	 *
 	 * @since 2.2.0
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function copy()
+	public function copy() : self
 	{
 		return clone $this;
 	}
 
 	/**
-	 * set attribute to the element
+	 * set the attribute to element
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string|array $attribute name or set of attributes
+	 * @param string|array $attribute key or array of attributes
 	 * @param string $value value of the attribute
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function attr($attribute = null, $value = null)
+	public function attr($attribute = null, string $value = null) : self
 	{
 		if (is_array($attribute))
 		{
@@ -130,16 +130,16 @@ class Element extends HtmlAbstract
 	}
 
 	/**
-	 * remove attribute from the element
+	 * remove the attribute from element
 	 *
 	 * @since 2.2.0
 	 *
 	 * @param string $attribute name of attributes
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function removeAttr($attribute = null)
+	public function removeAttr(string $attribute = null) : self
 	{
 		if (is_array($this->_attributeArray) && array_key_exists($attribute, $this->_attributeArray))
 		{
@@ -149,32 +149,32 @@ class Element extends HtmlAbstract
 	}
 
 	/**
-	 * add class to the element
+	 * add the class to element
 	 *
 	 * @since 2.2.0
 	 *
 	 * @param string $className name of the classes
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function addClass($className = null)
+	public function addClass(string $className = null) : self
 	{
 		$this->_editClass($className, 'add');
 		return $this;
 	}
 
 	/**
-	 * remove class from the element
+	 * remove the class from element
 	 *
 	 * @since 2.2.0
 	 *
 	 * @param string $className name of the classes
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function removeClass($className = null)
+	public function removeClass(string $className = null) : self
 	{
 		$this->_editClass($className, 'remove');
 		return $this;
@@ -189,7 +189,7 @@ class Element extends HtmlAbstract
 	 * @param string $type add or remove
 	 */
 
-	protected function _editClass($className = null, $type = null)
+	protected function _editClass(string $className = null, string $type = null)
 	{
 		$classArray = array_filter(explode(' ', $className));
 		if (is_array($this->_attributeArray) && array_key_exists('class', $this->_attributeArray))
@@ -218,32 +218,32 @@ class Element extends HtmlAbstract
 	}
 
 	/**
-	 * set value to the element
+	 * set the value to element
 	 *
 	 * @since 2.2.0
 	 *
 	 * @param string $value value of the element
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function val($value = null)
+	public function val(string $value = null) : self
 	{
 		$this->_attributeArray['value'] = trim($value);
 		return $this;
 	}
 
 	/**
-	 * set text to the element
+	 * set the text to element
 	 *
 	 * @since 2.2.0
 	 *
 	 * @param string $text text of the element
 	 *
-	 * @return $this
+	 * @return self
 	 */
 
-	public function text($text = null)
+	public function text(string $text = null) : self
 	{
 		if (strip_tags($text))
 		{
@@ -260,7 +260,7 @@ class Element extends HtmlAbstract
 	 * @return string
 	 */
 
-	public function render()
+	public function render() : string
 	{
 		$output = '<' . $this->_tag;
 

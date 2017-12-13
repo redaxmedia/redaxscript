@@ -131,7 +131,7 @@ class Hook
 	 * @return array
 	 */
 
-	public static function getModuleArray()
+	public static function getModuleArray() : array
 	{
 		return self::$_moduleArray;
 	}
@@ -144,13 +144,13 @@ class Hook
 	 * @return array
 	 */
 
-	public static function getEventArray()
+	public static function getEventArray() : array
 	{
 		return self::$_eventArray;
 	}
 
 	/**
-	 * collect from module hook
+	 * collect from the module hook
 	 *
 	 * @since 3.2.0
 	 *
@@ -160,7 +160,7 @@ class Hook
 	 * @return array
 	 */
 
-	public static function collect($eventName = null, $parameterArray = [])
+	public static function collect($eventName = null, $parameterArray = []) : array
 	{
 		$outputArray = [];
 
@@ -185,7 +185,7 @@ class Hook
 	 * @param string $eventName name of the module event
 	 * @param array $parameterArray parameter of the module hook
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
 	public static function trigger($eventName = null, $parameterArray = [])
@@ -214,7 +214,7 @@ class Hook
 	 * @param string $eventName
 	 * @param array $parameterArray
 	 *
-	 * @return string|boolean
+	 * @return string|bool
 	 */
 
 	protected static function _call($moduleName = null, $eventName = null, $parameterArray = [])

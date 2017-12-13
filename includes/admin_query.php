@@ -383,8 +383,7 @@ function admin_process()
 
 		/* show error */
 
-		echo $messenger->setRoute($language->get('back'), $route)->error($error, $language->get('error_occurred'));
-		return;
+		return $messenger->setRoute($language->get('back'), $route)->error($error, $language->get('error_occurred'));
 	}
 
 	/* handle success */
@@ -417,11 +416,11 @@ function admin_process()
 
 	/* process */
 
-	switch (true)
+	switch ($registry->get('adminParameter'))
 	{
 		/* query new */
 
-		case $_POST['new']:
+		case 'new':
 			Redaxscript\Db::forTablePrefix($registry->get('tableParameter'))
 				->create()
 				->set($r)
@@ -429,13 +428,11 @@ function admin_process()
 
 			/* show success */
 
-			echo $messenger->setRoute($language->get('continue'), $route)->doRedirect()->success($language->get('operation_completed'));
-
-			return;
+			return $messenger->setRoute($language->get('continue'), $route)->doRedirect()->success($language->get('operation_completed'));
 
 		/* query edit */
 
-		case $_POST['edit']:
+		case 'edit':
 			Redaxscript\Db::forTablePrefix($registry->get('tableParameter'))
 				->whereIdIs($registry->get('idParameter'))
 				->findOne()
@@ -516,8 +513,7 @@ function admin_process()
 
 			/* show success */
 
-			echo $messenger->setRoute($language->get('continue'), $route)->doRedirect()->success($language->get('operation_completed'));
-			return;
+			return $messenger->setRoute($language->get('continue'), $route)->doRedirect()->success($language->get('operation_completed'));
 	}
 }
 
@@ -567,7 +563,7 @@ function admin_move()
 	/* show success */
 
 	$messenger = new Redaxscript\Admin\Messenger($registry);
-	echo $messenger->setRoute($language->get('continue'), 'admin/view/' . $tableParameter)->doRedirect()->success($language->get('operation_completed'));
+	return $messenger->setRoute($language->get('continue'), 'admin/view/' . $tableParameter)->doRedirect()->success($language->get('operation_completed'));
 }
 
 /**
@@ -659,7 +655,7 @@ function admin_sort()
 	/* show success */
 
 	$messenger = new Redaxscript\Admin\Messenger($registry);
-	echo $messenger->setRoute($language->get('continue'), 'admin/view/' . $tableParameter)->doRedirect()->success($language->get('operation_completed'));
+	return $messenger->setRoute($language->get('continue'), 'admin/view/' . $tableParameter)->doRedirect()->success($language->get('operation_completed'));
 }
 
 /**
@@ -672,7 +668,7 @@ function admin_sort()
  * @category Admin
  * @author Henry Ruhs
  *
- * @param string $input
+ * @param int $input
  */
 
 function admin_status($input)
@@ -724,7 +720,7 @@ function admin_status($input)
 	/* show success */
 
 	$messenger = new Redaxscript\Admin\Messenger($registry);
-	echo $messenger->setRoute($language->get('continue'), 'admin/view/' . $tableParameter)->doRedirect()->success($language->get('operation_completed'));
+	return $messenger->setRoute($language->get('continue'), 'admin/view/' . $tableParameter)->doRedirect()->success($language->get('operation_completed'));
 }
 
 /**
@@ -776,7 +772,7 @@ function admin_install()
 	/* show success */
 
 	$messenger = new Redaxscript\Admin\Messenger($registry);
-	echo $messenger->setRoute($language->get('continue'), 'admin/view/' . $tableParameter . '#' . $aliasParameter)->doRedirect()->success($language->get('operation_completed'));
+	return $messenger->setRoute($language->get('continue'), 'admin/view/' . $tableParameter . '#' . $aliasParameter)->doRedirect()->success($language->get('operation_completed'));
 }
 
 /**
@@ -795,6 +791,7 @@ function admin_delete()
 	$registry = Redaxscript\Registry::getInstance();
 	$request = Redaxscript\Request::getInstance();
 	$language = Redaxscript\Language::getInstance();
+	$settingModel = new Redaxscript\Model\Setting();
 	$tableParameter = $registry->get('tableParameter');
 	$idParameter = $registry->get('idParameter');
 	if ($tableParameter == 'categories' || $tableParameter == 'articles' || $tableParameter == 'extras' || $tableParameter == 'comments' || $tableParameter == 'groups' || $tableParameter == 'users')
@@ -826,7 +823,7 @@ function admin_delete()
 		$categoryChildren->findMany()->delete();
 		$articleChildren->findMany()->delete();
 
-		/* reset extras */
+		/* reset the extras */
 
 		Redaxscript\Db::forTablePrefix('extras')
 			->whereIn('category', $categoryArray)
@@ -844,7 +841,7 @@ function admin_delete()
 			->findMany()
 			->delete();
 
-		/* reset extras */
+		/* reset the extras */
 
 		Redaxscript\Db::forTablePrefix('extras')
 			->where('article', $idParameter)
@@ -852,9 +849,9 @@ function admin_delete()
 			->set('article', 0)
 			->save();
 
-		/* reset homepage */
+		/* reset the homepage */
 
-		if ($idParameter == Redaxscript\Db::getSetting('homepage'))
+		if ($idParameter == $settingModel->get('homepage'))
 		{
 			Redaxscript\Db::forTablePrefix('settings')
 				->where('name', 'homepage')
@@ -869,7 +866,7 @@ function admin_delete()
 	if ($tableParameter == 'users' && $idParameter == $registry->get('myId'))
 	{
 		$logoutController = new Redaxscript\Controller\Logout($registry, $request, $language);
-		echo $logoutController->process();
+		return $logoutController->process();
 	}
 
 	/* handle success */
@@ -885,7 +882,7 @@ function admin_delete()
 		/* show success */
 
 		$messenger = new Redaxscript\Admin\Messenger($registry);
-		echo $messenger->setRoute($language->get('continue'), $route)->doRedirect()->success($language->get('operation_completed'));
+		return $messenger->setRoute($language->get('continue'), $route)->doRedirect()->success($language->get('operation_completed'));
 	}
 }
 
@@ -955,7 +952,7 @@ function admin_update()
 		/* show success */
 
 		$messenger = new Redaxscript\Admin\Messenger($registry);
-		echo $messenger->setRoute($language->get('continue'), 'admin/edit/settings')->doRedirect()->success($language->get('operation_completed'));
+		return $messenger->setRoute($language->get('continue'), 'admin/edit/settings')->doRedirect()->success($language->get('operation_completed'));
 	}
 }
 

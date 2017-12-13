@@ -1,4 +1,4 @@
-module.exports = function (grunt)
+module.exports =  grunt =>
 {
 	'use strict';
 
@@ -16,10 +16,13 @@ module.exports = function (grunt)
 		formatJSON: require('./tasks/format_json')(grunt),
 		uglify: require('./tasks/uglify')(grunt),
 		postcss: require('./tasks/postcss')(grunt),
+		tocgen: require('./tasks/tocgen')(grunt),
 		webfont: require('./tasks/webfont')(grunt),
 		shell: require('./tasks/shell')(grunt),
 		rename: require('./tasks/rename')(grunt),
-		svgmin: require('./tasks/svgmin')(grunt)
+		svgmin: require('./tasks/svgmin')(grunt),
+		parallel: require('./tasks/parallel')(grunt),
+		watch: require('./tasks/watch')(grunt)
 	});
 
 	/* load tasks */
@@ -43,6 +46,7 @@ module.exports = function (grunt)
 		'htmlhint',
 		'phpcs',
 		'phpcpd',
+		'phpstan',
 		'languagelint'
 	]);
 	grunt.registerTask('stylelint',
@@ -83,8 +87,13 @@ module.exports = function (grunt)
 	[
 		'shell:phpunitParallel'
 	]);
+	grunt.registerTask('phpserver',
+	[
+		'shell:phpServer'
+	]);
 	grunt.registerTask('optimize',
 	[
+		'tocgen',
 		'svgmin'
 	]);
 	grunt.registerTask('build',
@@ -107,6 +116,7 @@ module.exports = function (grunt)
 		'postcss:templateInstall',
 		'postcss:templateSkeleton',
 		'postcss:moduleAce',
+		'postcss:moduleDebugger',
 		'postcss:moduleDirectoryLister',
 		'postcss:moduleFeedReader',
 		'postcss:moduleLightGallery',
@@ -131,5 +141,10 @@ module.exports = function (grunt)
 		'uglify:moduleSocialSharer',
 		'uglify:moduleSyntaxHighlighter',
 		'uglify:moduleTinymce'
+	]);
+	grunt.registerTask('serve',
+	[
+		'build',
+		'parallel:serve'
 	]);
 };
