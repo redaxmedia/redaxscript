@@ -49,9 +49,9 @@ class Template extends NavigationAbstract
 
 		$listElement = new Html\Element();
 		$listElement->init('ul',
-			[
-				'class' => $this->_optionArray['className']['list']
-			]);
+		[
+			'class' => $this->_optionArray['className']['list']
+		]);
 		$itemElement = new Html\Element();
 		$itemElement->init('li');
 		$linkElement = new Html\Element();
