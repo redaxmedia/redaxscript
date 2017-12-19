@@ -91,6 +91,10 @@ module.exports =  grunt =>
 	[
 		'shell:phpServer'
 	]);
+	grunt.registerTask('openbrowser',
+	[
+		'shell:openBrowser'
+	]);
 	grunt.registerTask('optimize',
 	[
 		'tocgen',

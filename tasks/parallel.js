@@ -9,7 +9,8 @@ module.exports = () =>
 			tasks:
 			[
 				'phpserver',
-				'watch'
+				'watch',
+				'openbrowser'
 			]
 		},
 		options:

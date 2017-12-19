@@ -48,6 +48,10 @@ module.exports = grunt =>
 		{
 			command: 'php -S 127.0.0.1:8000'
 		},
+		openBrowser:
+		{
+			command: 'opn http://localhost:8000'
+		},
 		removeBuild:
 		{
 			command: 'rm -rf build'
