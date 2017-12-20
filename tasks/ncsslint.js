@@ -48,13 +48,6 @@ module.exports = () =>
 			{
 				path: 'templates/skeleton/*.phtml'
 			}
-		},
-		options:
-		{
-			namespace: 'rs',
-			selector: '*:not([class*="<?"]):not([class*="?>"])',
-			logLevel: 'info',
-			haltOnError: true
 		}
 	};
 

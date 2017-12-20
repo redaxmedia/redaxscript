@@ -28,7 +28,7 @@
 		"grunt-jscs": "3.0.1",
 		"grunt-json-format": "2.0.1",
 		"grunt-jsonlint": "1.1.0",
-		"grunt-ncss-linter": "1.5.0",
+		"grunt-ncss-linter": "1.6.0",
 		"grunt-parallel": "0.5.1",
 		"grunt-phpcs": "0.4.0",
 		"grunt-postcss": "0.9.0",

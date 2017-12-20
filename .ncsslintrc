@@ -1,0 +1,7 @@
+{
+	"namespace": "rs",
+	"selector": "*:not([class*=\"<?\"]):not([class*=\"?>\"])",
+	"logLevel": "info",
+	"haltOnError": true,
+	"haltOnWarn": true
+}
