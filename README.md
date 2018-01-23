@@ -13,7 +13,6 @@ Redaxscript
 [![License](https://img.shields.io/packagist/l/redaxscript/redaxscript.svg)](https://packagist.org/packages/redaxscript/redaxscript)
 [![Gitter Chat](https://img.shields.io/gitter/room/redaxmedia/redaxscript.svg)](https://gitter.im/redaxmedia/redaxscript)
 [![Facebook Chat](https://img.shields.io/badge/chat-on_facebook-0084ff.svg)](https://m.me/redaxscript)
-[![GitHub Stats](https://img.shields.io/badge/github-stats-ff5500.svg)](https://githubstats.com/redaxscript/redaxscript)
 
 
 Demo
