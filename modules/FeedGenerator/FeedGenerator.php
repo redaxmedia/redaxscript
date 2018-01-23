@@ -2,6 +2,7 @@
 namespace Redaxscript\Modules\FeedGenerator;
 
 use Redaxscript\Db;
+use Redaxscript\Header;
 use Redaxscript\Model;
 use Redaxscript\Module;
 use XMLWriter;
@@ -46,7 +47,7 @@ class FeedGenerator extends Module\Module
 		if ($firstParamter === 'feed' && ($secondParameter === 'articles' || $secondParameter === 'comments'))
 		{
 			$this->_registry->set('renderBreak', true);
-			header('content-type: application/atom+xml');
+			Header::contentType('application/atom+xml');
 			echo $this->render($secondParameter);
 		}
 	}

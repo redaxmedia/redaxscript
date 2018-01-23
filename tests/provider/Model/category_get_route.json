@@ -1,0 +1,18 @@
+[
+	[
+		1,
+		"category-one"
+	],
+	[
+		2,
+		"category-two"
+	],
+	[
+		3,
+		"category-two/category-three"
+	],
+	[
+		0,
+		null
+	]
+]

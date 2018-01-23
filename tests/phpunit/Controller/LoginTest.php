@@ -93,14 +93,13 @@ class LoginTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $postArray
-	 * @param array $hashArray
 	 * @param array $userArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess(array $postArray = [], array $hashArray = [], array $userArray = [], string $expect = null)
+	public function testProcess(array $postArray = [], array $userArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -110,7 +109,6 @@ class LoginTest extends TestCaseAbstract
 			->set('status', $userArray['status'])
 			->save();
 		$this->_request->set('post', $postArray);
-		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
 		$loginController = new Controller\Login($this->_registry, $this->_request, $this->_language);
 
 		/* actual */
@@ -128,7 +126,6 @@ class LoginTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $postArray
-	 * @param array $hashArray
 	 * @param array $userArray
 	 * @param string $method
 	 * @param string $expect
@@ -136,7 +133,7 @@ class LoginTest extends TestCaseAbstract
 	 * @dataProvider providerProcessFailure
 	 */
 
-	public function testProcessFailure(array $postArray = [], array $hashArray = [], array $userArray = [], string $method = null, string $expect = null)
+	public function testProcessFailure(array $postArray = [], array $userArray = [], string $method = null, string $expect = null)
 	{
 		/* setup */
 
@@ -146,7 +143,6 @@ class LoginTest extends TestCaseAbstract
 			->set('status', $userArray['status'])
 			->save();
 		$this->_request->set('post', $postArray);
-		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
 		$stub = $this
 			->getMockBuilder('Redaxscript\Controller\Login')
 			->setConstructorArgs(

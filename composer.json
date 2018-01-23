@@ -3,7 +3,7 @@
 	"description": "A modern, ultra lightweight and rocket fast Content Management System",
 	"version": "3.3.0",
 	"homepage": "https://redaxscript.com",
-	"license": "GPL-3.0",
+	"license": "GPL-3.0-only",
 	"require":
 	{
 		"j4mie/idiorm": "v1.5.3",

@@ -156,10 +156,10 @@ abstract class TestCaseAbstract extends PHPUnit\Framework\TestCase
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $actual
+	 * @param mixed $actual
 	 */
 
-	public function assertString(string $actual = null)
+	public function assertString($actual = null)
 	{
 		$this->assertTrue(is_string($actual));
 	}
@@ -169,10 +169,10 @@ abstract class TestCaseAbstract extends PHPUnit\Framework\TestCase
 	 *
 	 * @since 3.1.0
 	 *
-	 * @param int $actual
+	 * @param mixed $actual
 	 */
 
-	public function assertNumber(int $actual = null)
+	public function assertNumber($actual = null)
 	{
 		$this->assertTrue(is_numeric($actual));
 	}
@@ -182,7 +182,7 @@ abstract class TestCaseAbstract extends PHPUnit\Framework\TestCase
 	 *
 	 * @since 3.1.0
 	 *
-	 * @param object $actual
+	 * @param mixed $actual
 	 */
 
 	public function assertObject($actual = null)
@@ -218,5 +218,18 @@ abstract class TestCaseAbstract extends PHPUnit\Framework\TestCase
 	public function normalizeNewline(string $actual = null) : string
 	{
 		return str_replace(PHP_EOL, chr(10), $actual);
+	}
+
+	/**
+	 * getHeaderArray
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+
+	public function getHeaderArray()
+	{
+		return function_exists('xdebug_get_headers') ? xdebug_get_headers() : $this->markTestSkipped();
 	}
 }

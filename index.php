@@ -7,7 +7,7 @@ include_once('includes' . DIRECTORY_SEPARATOR . 'bootstrap.php');
 
 /* header */
 
-header_remove('x-powered-by');
+Header::init();
 
 /* get instance */
 
@@ -17,7 +17,7 @@ $registry = Registry::getInstance();
 
 if ($registry->get('dbStatus') < 2 && is_file('install.php'))
 {
-	header('location: install.php');
+	Header::doRedirect('install.php');
 	exit;
 }
 
@@ -30,7 +30,7 @@ if ($registry->get('renderBreak'))
 }
 if ($registry->get('contentError'))
 {
-	header('http/1.0 404 not found');
+	Header::statusCode(404);
 }
 
 /* template */
@@ -38,7 +38,7 @@ if ($registry->get('contentError'))
 $templateArray = Module\Hook::collect('renderTemplate');
 if (is_array($templateArray) && array_key_exists('header', $templateArray))
 {
-	header($templateArray['header']);
+	Header::add($templateArray['header']);
 }
 if (is_array($templateArray) && array_key_exists('content', $templateArray))
 {

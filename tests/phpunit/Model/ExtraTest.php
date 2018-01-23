@@ -81,8 +81,8 @@ class ExtraTest extends TestCaseAbstract
 			->create()
 			->set(
 			[
-				'title' => 'Extra Fifth',
-				'alias' => 'extra-fifth',
+				'title' => 'Extra Five',
+				'alias' => 'extra-five',
 				'rank' => 5,
 				'status' => 2,
 				'date' => '2037-01-01 00:00:00'

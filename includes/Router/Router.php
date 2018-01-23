@@ -3,6 +3,7 @@ namespace Redaxscript\Router;
 
 use Redaxscript\Controller;
 use Redaxscript\Filter;
+use Redaxscript\Header;
 use Redaxscript\Messenger;
 use Redaxscript\Model;
 use Redaxscript\Module;
@@ -24,9 +25,11 @@ class Router extends RouterAbstract
 	 * route the header
 	 *
 	 * @since 3.3.0
+	 *
+	 * @return bool
 	 */
 
-	public function routeHeader()
+	public function routeHeader() : bool
 	{
 		Module\Hook::trigger('routeHeader');
 
@@ -35,15 +38,16 @@ class Router extends RouterAbstract
 		if ($this->_registry->get('routerBreak'))
 		{
 			$this->_registry->set('contentError', false);
-			exit();
+			return true;
 		}
 
 		/* handle post */
 
 		if ($this->_request->getPost('Redaxscript\View\SearchForm'))
 		{
-			$this->_redirectSearch();
+			return $this->_redirectSearch();
 		}
+		return false;
 	}
 
 	/**
@@ -51,7 +55,7 @@ class Router extends RouterAbstract
 	 *
 	 * @since 3.3.0
 	 *
-	 * @return string|null
+	 * @return string|bool
 	 */
 
 	public function routeContent()
@@ -116,9 +120,7 @@ class Router extends RouterAbstract
 		{
 			return $this->_renderInstall();
 		}
-		ob_start();
-		contents();
-		return ob_get_clean();
+		return false;
 	}
 
 	/**
@@ -140,7 +142,7 @@ class Router extends RouterAbstract
 	 * @since 3.3.0
 	 */
 
-	protected function _redirectSearch()
+	protected function _redirectSearch() : bool
 	{
 		$aliasFilter = new Filter\Alias();
 		$root = $this->_registry->get('root');
@@ -154,8 +156,7 @@ class Router extends RouterAbstract
 
 		/* redirect */
 
-		header('location: ' . $root . '/' . $parameterRoute . 'search' . $tableString . '/' . $search);
-		exit;
+		return Header::doRedirect($root . '/' . $parameterRoute . 'search' . $tableString . '/' . $search);
 	}
 
 	/**

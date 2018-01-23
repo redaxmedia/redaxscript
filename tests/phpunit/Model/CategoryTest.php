@@ -6,7 +6,7 @@ use Redaxscript\Model;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
- * ArticleTest
+ * CategoryTest
  *
  * @since 3.3.0
  *
@@ -15,7 +15,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @author Henry Ruhs
  */
 
-class ArticleTest extends TestCaseAbstract
+class CategoryTest extends TestCaseAbstract
 {
 	/**
 	 * setUp
@@ -53,59 +53,18 @@ class ArticleTest extends TestCaseAbstract
 				'title' => 'Category Two',
 				'alias' => 'category-two',
 				'rank' => 2,
-				'status' => 1
-			])
-			->save();
-		Db::forTablePrefix('articles')
-			->create()
-			->set(
-			[
-				'title' => 'Article One',
-				'alias' => 'article-one',
-				'category' => $categoryOne->id,
-				'rank' => 1,
-				'status' => 1
-			])
-			->save();
-		Db::forTablePrefix('articles')
-			->create()
-			->set(
-			[
-				'title' => 'Article Two',
-				'alias' => 'article-two',
-				'category' => $categoryTwo->id,
-				'rank' => 2,
-				'status' => 1
-			])
-			->save();
-		Db::forTablePrefix('articles')
-			->create()
-			->set(
-			[
-				'title' => 'Article Three',
-				'alias' => 'article-three',
-				'rank' => 3,
-				'status' => 1
-			])
-			->save();
-		Db::forTablePrefix('articles')
-			->create()
-			->set(
-			[
-				'title' => 'Article Four',
-				'alias' => 'article-four',
-				'rank' => 4,
 				'status' => 2,
 				'date' => '2036-01-01 00:00:00'
 			])
 			->save();
-		Db::forTablePrefix('articles')
-			->create()
+		$categoryThree = Db::forTablePrefix('categories')->create();
+		$categoryThree
 			->set(
 			[
-				'title' => 'Article Five',
-				'alias' => 'article-five',
-				'rank' => 5,
+				'title' => 'Category Three',
+				'alias' => 'category-three',
+				'parent' => $categoryTwo->id,
+				'rank' => 3,
 				'status' => 2,
 				'date' => '2037-01-01 00:00:00'
 			])
@@ -126,42 +85,42 @@ class ArticleTest extends TestCaseAbstract
 	}
 
 	/**
-	 * providerArticleGetId
+	 * providerCategoryGetId
 	 *
 	 * @since 3.3.0
 	 *
 	 * @return array
 	 */
 
-	public function providerArticleGetId() : array
+	public function providerCategoryGetId() : array
 	{
-		return $this->getProvider('tests/provider/Model/article_get_id.json');
+		return $this->getProvider('tests/provider/Model/category_get_id.json');
 	}
 
 	/**
-	 * providerArticleGetRoute
+	 * providerCategoryGetRoute
 	 *
 	 * @since 3.3.0
 	 *
 	 * @return array
 	 */
 
-	public function providerArticleGetRoute() : array
+	public function providerCategoryGetRoute() : array
 	{
-		return $this->getProvider('tests/provider/Model/article_get_route.json');
+		return $this->getProvider('tests/provider/Model/category_get_route.json');
 	}
 
 	/**
-	 * providerArticlePublishDate
+	 * providerCategoryPublishDate
 	 *
 	 * @since 3.3.0
 	 *
 	 * @return array
 	 */
 
-	public function providerArticlePublishDate() : array
+	public function providerCategoryPublishDate() : array
 	{
-		return $this->getProvider('tests/provider/Model/article_publish_date.json');
+		return $this->getProvider('tests/provider/Model/category_publish_date.json');
 	}
 
 	/**
@@ -172,18 +131,18 @@ class ArticleTest extends TestCaseAbstract
 	 * @param string $alias
 	 * @param int $expect
 	 *
-	 * @dataProvider providerArticleGetId
+	 * @dataProvider providerCategoryGetId
 	 */
 
 	public function testGetIdByAlias(string $alias = null, int $expect = null)
 	{
 		/* setup */
 
-		$articleModel = new Model\Article();
+		$categoryModel = new Model\Category();
 
 		/* actual */
 
-		$actual = $articleModel->getIdByAlias($alias);
+		$actual = $categoryModel->getIdByAlias($alias);
 
 		/* compare */
 
@@ -198,18 +157,18 @@ class ArticleTest extends TestCaseAbstract
 	 * @param int $id
 	 * @param string $expect
 	 *
-	 * @dataProvider providerArticleGetRoute
+	 * @dataProvider providerCategoryGetRoute
 	 */
 
 	public function testGetRouteById(int $id = null, string $expect = null)
 	{
 		/* setup */
 
-		$articleModel = new Model\Article();
+		$categoryModel = new Model\Category();
 
 		/* actual */
 
-		$actual = $articleModel->getRouteById($id);
+		$actual = $categoryModel->getRouteById($id);
 
 		/* compare */
 
@@ -224,18 +183,18 @@ class ArticleTest extends TestCaseAbstract
 	 * @param string $date
 	 * @param int $expect
 	 *
-	 * @dataProvider providerArticlePublishDate
+	 * @dataProvider providerCategoryPublishDate
 	 */
 
 	public function testPublishByDate(string $date = null, int $expect = null)
 	{
 		/* setup */
 
-		$articleModel = new Model\Article();
+		$categoryModel = new Model\Category();
 
 		/* actual */
 
-		$actual = $articleModel->publishByDate($date);
+		$actual = $categoryModel->publishByDate($date);
 
 		/* compare */
 

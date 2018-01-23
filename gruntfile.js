@@ -1,4 +1,4 @@
-module.exports =  grunt =>
+module.exports = grunt =>
 {
 	'use strict';
 

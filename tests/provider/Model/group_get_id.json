@@ -1,0 +1,18 @@
+[
+	[
+		"group-one",
+		1
+	],
+	[
+		"group-two",
+		2
+	],
+	[
+		"group-three",
+		3
+	],
+	[
+		"invalid",
+		null
+	]
+]

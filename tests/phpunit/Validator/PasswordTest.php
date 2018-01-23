@@ -35,13 +35,13 @@ class PasswordTest extends TestCaseAbstract
 	 * @since 2.6.0
 	 *
 	 * @param string $password
-	 * @param array $hashArray
+	 * @param string $hash
 	 * @param int $expect
 	 *
 	 * @dataProvider providerPassword
 	 */
 
-	public function testPassword(string $password = null, array $hashArray = [], int $expect = null)
+	public function testPassword(string $password = null, string $hash = null, int $expect = null)
 	{
 		/* setup */
 
@@ -49,7 +49,7 @@ class PasswordTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $validator->validate($password, function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
+		$actual = $validator->validate($password, $hash);
 
 		/* compare */
 

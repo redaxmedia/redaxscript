@@ -3,12 +3,9 @@
 		{
 			"user": null,
 			"password": null,
-			"task": 1
+			"task": 1,
+			"hash": null
 		},
-		[
-			null,
-			null
-		],
 		{
 			"status": 1
 		},
@@ -18,12 +15,9 @@
 		{
 			"user": "invalid",
 			"password": "invalid",
-			"task": 1
+			"task": 1,
+			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
 		},
-		[
-			"$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u",
-			"4dff4ea340f0a823f15d3f4f01ab62eae0e5da579ccb851f8db9dfe84c58b2b37b89903a740e1ee172da793a6e79d560e5f7f9bd058a12a280433ed6fa46510a"
-		],
 		{
 			"status": 1
 		},
@@ -33,12 +27,9 @@
 		{
 			"user": "test",
 			"password": "invalid",
-			"task": 1
+			"task": 1,
+			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
 		},
-		[
-			"$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u",
-			"4dff4ea340f0a823f15d3f4f01ab62eae0e5da579ccb851f8db9dfe84c58b2b37b89903a740e1ee172da793a6e79d560e5f7f9bd058a12a280433ed6fa46510a"
-		],
 		{
 			"status": 1
 		},
@@ -48,12 +39,9 @@
 		{
 			"user": "test",
 			"password": "test",
-			"task": 1
+			"task": 1,
+			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
 		},
-		[
-			"$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u",
-			"4dff4ea340f0a823f15d3f4f01ab62eae0e5da579ccb851f8db9dfe84c58b2b37b89903a740e1ee172da793a6e79d560e5f7f9bd058a12a280433ed6fa46510a"
-		],
 		{
 			"status": 0
 		},
@@ -63,12 +51,9 @@
 		{
 			"user": "test",
 			"password": "test",
-			"task": 1
+			"task": 1,
+			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
 		},
-		[
-			"$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u",
-			"4dff4ea340f0a823f15d3f4f01ab62eae0e5da579ccb851f8db9dfe84c58b2b37b89903a740e1ee172da793a6e79d560e5f7f9bd058a12a280433ed6fa46510a"
-		],
 		{
 			"status": 1
 		},
@@ -78,12 +63,9 @@
 		{
 			"user": "test@test.com",
 			"password": "test",
-			"task": 1
+			"task": 1,
+			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
 		},
-		[
-			"$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u",
-			"4dff4ea340f0a823f15d3f4f01ab62eae0e5da579ccb851f8db9dfe84c58b2b37b89903a740e1ee172da793a6e79d560e5f7f9bd058a12a280433ed6fa46510a"
-		],
 		{
 			"status": 1
 		},

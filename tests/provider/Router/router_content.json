@@ -1,0 +1,126 @@
+[
+	[
+		{},
+		{},
+		{},
+		false
+	],
+	[
+		{
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{},
+		{
+			"token": "invalid"
+		},
+		true
+	],
+	[
+		{
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{},
+		{
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"Redaxscript\\View\\CommentForm": true
+		},
+		true
+	],
+	[
+		{
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{},
+		{
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"Redaxscript\\View\\LoginForm": true
+		},
+		true
+	],
+	[
+		{
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{},
+		{
+			"id": 1,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"Redaxscript\\View\\ResetForm": true
+		},
+		true
+	],
+	[
+		{
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{},
+		{
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"Redaxscript\\View\\RecoverForm": true
+		},
+		true
+	],
+	[
+		{
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{},
+		{
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"Redaxscript\\View\\RegisterForm": true
+		},
+		true
+	],
+	[
+		{
+			"file": "install.php",
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{},
+		{
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"Redaxscript\\View\\InstallForm": true
+		},
+		true
+	],
+	[
+		{},
+		{
+			"p": "search"
+		},
+		{},
+		true
+	],
+	[
+		{},
+		{
+			"p": "login"
+		},
+		{},
+		true
+	],
+	[
+		{},
+		{
+			"p": "logout"
+		},
+		{},
+		true
+	],
+	[
+		{},
+		{
+			"p": "register"
+		},
+		{},
+		true
+	],
+	[
+		{
+			"file": "install.php"
+		},
+		{},
+		{},
+		true
+	]
+]

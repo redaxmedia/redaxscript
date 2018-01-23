@@ -2,6 +2,7 @@
 namespace Redaxscript\Modules\Tinymce;
 
 use Redaxscript\Head;
+use Redaxscript\Header;
 
 /**
  * javascript powered wysiwyg editor
@@ -103,7 +104,7 @@ class Tinymce extends Config
 				]);
 			}
 		}
-		header('http/1.0 404 not found');
+		Header::statusCode(404);
 		return false;
 	}
 }

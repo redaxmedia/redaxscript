@@ -104,19 +104,17 @@ class CommentTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $postArray
-	 * @param array $hashArray
 	 * @param array $settingArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess(array $postArray = [], array $hashArray = [], array $settingArray = [], string $expect = null)
+	public function testProcess(array $postArray = [], array $settingArray = [], string $expect = null)
 	{
 		/* setup */
 
 		$this->_request->set('post', $postArray);
-		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
 		$setting = $this->settingFactory();
 		$setting->set('notification', $settingArray['notification']);
 		$setting->set('moderation', $settingArray['moderation']);
@@ -137,7 +135,6 @@ class CommentTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $postArray
-	 * @param array $hashArray
 	 * @param array $settingArray
 	 * @param string $method
 	 * @param string $expect
@@ -145,12 +142,11 @@ class CommentTest extends TestCaseAbstract
 	 * @dataProvider providerProcessFailure
 	 */
 
-	public function testProcessFailure(array $postArray = [], array $hashArray = [], array $settingArray = [], string $method = null, string $expect = null)
+	public function testProcessFailure(array $postArray = [], array $settingArray = [], string $method = null, string $expect = null)
 	{
 		/* setup */
 
 		$this->_request->set('post', $postArray);
-		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
 		$setting = $this->settingFactory();
 		$setting->set('notification', $settingArray['notification']);
 		$setting->set('moderation', $settingArray['moderation']);

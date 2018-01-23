@@ -98,18 +98,16 @@ class ResetTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $postArray
-	 * @param array $hashArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerProcess
 	 */
 
-	public function testProcess(array $postArray = [], array $hashArray = [], string $expect = null)
+	public function testProcess(array $postArray = [], string $expect = null)
 	{
 		/* setup */
 
 		$this->_request->set('post', $postArray);
-		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
 		$resetController = new Controller\Reset($this->_registry, $this->_request, $this->_language);
 
 		/* actual */
@@ -127,19 +125,17 @@ class ResetTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $postArray
-	 * @param array $hashArray
 	 * @param string $method
 	 * @param string $expect
 	 *
 	 * @dataProvider providerProcessFailure
 	 */
 
-	public function testProcessFailure(array $postArray = [], array $hashArray = [], string $method = null, string $expect = null)
+	public function testProcessFailure(array $postArray = [], string $method = null, string $expect = null)
 	{
 		/* setup */
 
 		$this->_request->set('post', $postArray);
-		$this->_request->setPost('solution', function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
 		$stub = $this
 			->getMockBuilder('Redaxscript\Controller\Reset')
 			->setConstructorArgs(

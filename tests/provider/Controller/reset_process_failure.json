@@ -3,12 +3,9 @@
 		{
 			"id": 1,
 			"password": "a94a8fe5ccb19ba61c4c0873d391e987982fbbd3",
-			"task": 1
+			"task": 1,
+			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
 		},
-		[
-			"$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u",
-			"4dff4ea340f0a823f15d3f4f01ab62eae0e5da579ccb851f8db9dfe84c58b2b37b89903a740e1ee172da793a6e79d560e5f7f9bd058a12a280433ed6fa46510a"
-		],
 		"_mail",
 		"<h2 class=\"rs-title-note rs-is-error\">An error occurred</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-error\">Email sending failed</div><a href=\"login/recover\" class=\"rs-button-note rs-is-error\">Back</a>"
 	]

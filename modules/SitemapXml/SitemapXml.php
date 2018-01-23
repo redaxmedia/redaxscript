@@ -2,6 +2,7 @@
 namespace Redaxscript\Modules\SitemapXml;
 
 use Redaxscript\Db;
+use Redaxscript\Header;
 use Redaxscript\Model;
 use Redaxscript\Module;
 use XMLWriter;
@@ -44,7 +45,7 @@ class SitemapXml extends Module\Module
 		if ($this->_registry->get('firstParameter') === 'sitemap-xml')
 		{
 			$this->_registry->set('renderBreak', true);
-			header('content-type: application/xml');
+			Header::contentType('application/xml');
 			echo $this->render();
 		}
 	}

@@ -204,6 +204,12 @@
 			<file>tests/phpunit/HashTest.php</file>
 		</testsuite>
 
+		<!-- header -->
+
+		<testsuite name="header">
+			<file>tests/phpunit/HeaderTest.php</file>
+		</testsuite>
+
 		<!-- installer -->
 
 		<testsuite name="installer">

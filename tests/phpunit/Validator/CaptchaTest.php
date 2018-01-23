@@ -70,13 +70,13 @@ class CaptchaTest extends TestCaseAbstract
 	 * @since 2.6.0
 	 *
 	 * @param string $task
-	 * @param array $hashArray
+	 * @param string $hash
 	 * @param int $expect
 	 *
 	 * @dataProvider providerCaptcha
 	 */
 
-	public function testCaptcha(string $task = null, array $hashArray = [], int $expect = null)
+	public function testCaptcha(string $task = null, string $hash = null, int $expect = null)
 	{
 		/* setup */
 
@@ -84,7 +84,7 @@ class CaptchaTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $validator->validate($task, function_exists('password_verify') ? $hashArray[0] : $hashArray[1]);
+		$actual = $validator->validate($task, $hash);
 
 		/* compare */
 

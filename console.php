@@ -7,7 +7,7 @@ include_once('includes' . DIRECTORY_SEPARATOR . 'bootstrap.php');
 
 /* header */
 
-header_remove('x-powered-by');
+Header::init();
 
 /* get instance */
 
@@ -54,6 +54,6 @@ else if ($config->get('env') !== 'production' || $accessValidator->validate('1',
 }
 else
 {
-	header('http/1.0 403 forbidden');
+	Header::statusCode(403);
 	exit;
 }

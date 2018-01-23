@@ -296,7 +296,8 @@ class Tag
 	{
 		$router = new Router\Router(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		$router->init();
-		return $router->routeContent();
+		$content = $router->routeContent();
+		return $content ? $content : self::_migrate('contents');
 	}
 
 	/**

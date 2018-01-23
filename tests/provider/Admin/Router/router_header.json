@@ -1,0 +1,14 @@
+[
+	[
+		{},
+		{},
+		false
+	],
+	[
+		{
+			"adminRouterBreak": true
+		},
+		{},
+		true
+	]
+]

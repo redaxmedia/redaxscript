@@ -32,7 +32,7 @@ class Router extends RouterAbstract
 		if ($this->_registry->get('adminRouterBreak'))
 		{
 			$this->_registry->set('contentError', false);
-			exit();
+			return true;
 		}
 	}
 
@@ -41,7 +41,7 @@ class Router extends RouterAbstract
 	 *
 	 * @since 3.3.0
 	 *
-	 * @return string|null
+	 * @return string|bool
 	 */
 
 	public function routeContent()
@@ -150,6 +150,7 @@ class Router extends RouterAbstract
 				return admin_install();
 			}
 		}
+		return false;
 	}
 
 	/**
