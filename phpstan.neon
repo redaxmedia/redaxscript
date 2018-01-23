@@ -1,7 +1,6 @@
 parameters:
 	bootstrap: includes\bootstrap.php
 	excludes_analyse:
-	- console.php
 	- includes/Admin/Router/Router.php
 	- includes/Admin/View
 	- includes/Asset/Transport.php
@@ -75,9 +74,6 @@ parameters:
 	- includes/View/ResultList.php
 	- includes/View/SearchForm.php
 	- includes/View/SystemStatus.php
-	- includes/admin_admin.php
-	- includes/admin_list.php
-	- includes/admin_query.php
 	- includes/Auth.php
 	- includes/Breadcrumb.php
 	- includes/Config.php
@@ -106,3 +102,4 @@ parameters:
 	- modules/Preview
 	- modules/Sitemap
 	- modules/SocialSharer
+	- console.php

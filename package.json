@@ -15,7 +15,7 @@
 	},
 	"devDependencies":
 	{
-		"autoprefixer": "7.2.4",
+		"autoprefixer": "7.2.5",
 		"colorguard": "1.2.1",
 		"cssnano": "3.10.0",
 		"grunt": "1.0.1",
@@ -28,7 +28,7 @@
 		"grunt-jscs": "3.0.1",
 		"grunt-json-format": "2.0.1",
 		"grunt-jsonlint": "1.1.0",
-		"grunt-ncss-linter": "1.6.1",
+		"grunt-ncss-linter": "1.6.2",
 		"grunt-parallel": "0.5.1",
 		"grunt-phpcs": "0.4.0",
 		"grunt-postcss": "0.9.0",
