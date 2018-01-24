@@ -130,7 +130,7 @@ class Router extends RouterAbstract
 	 * @return bool
 	 */
 
-	protected function _tokenGuard()
+	protected function _tokenGuard() : bool
 	{
 		return $this->_request->getPost() && $this->_request->getPost('token') !== $this->_registry->get('token');
 	}

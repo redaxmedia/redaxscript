@@ -163,7 +163,7 @@ class Router extends RouterAbstract
 	 * @return bool
 	 */
 
-	protected function _tokenGuard()
+	protected function _tokenGuard() : bool
 	{
 		$adminParameter = $this->getAdmin();
 		$tokenParameter = $this->getToken();
@@ -191,7 +191,7 @@ class Router extends RouterAbstract
 	 * @return bool
 	 */
 
-	protected function _routeGuard()
+	protected function _routeGuard() : bool
 	{
 		$adminParameter = $this->getAdmin();
 		$tableParameter = $this->getTable();
@@ -254,7 +254,7 @@ class Router extends RouterAbstract
 	 * @return bool
 	 */
 
-	protected function _authGuard()
+	protected function _authGuard() : bool
 	{
 		$adminParameter = $this->getAdmin();
 		$tableParameter = $this->getTable();
