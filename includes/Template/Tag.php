@@ -280,7 +280,11 @@ class Tag
 		{
 			$adminRouter = new Admin\Router\Router(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 			$adminRouter->init();
-			return $adminRouter->routeContent();
+			$adminContent = $adminRouter->routeContent();
+			if ($adminContent !== true)
+			{
+				return $adminContent;
+			}
 		}
 	}
 
@@ -297,7 +301,10 @@ class Tag
 		$router = new Router\Router(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		$router->init();
 		$content = $router->routeContent();
-		return $content ? $content : self::_migrate('contents');
+		if ($content !== true)
+		{
+			return $content ? $content : self::_migrate('contents');
+		}
 	}
 
 	/**

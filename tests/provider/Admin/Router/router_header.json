@@ -1,6 +1,8 @@
 [
 	[
-		{},
+		{
+			"adminRouterBreak": false
+		},
 		{},
 		false
 	],

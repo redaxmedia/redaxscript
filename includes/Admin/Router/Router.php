@@ -21,9 +21,11 @@ class Router extends RouterAbstract
 	 * route the header
 	 *
 	 * @since 3.3.0
+	 *
+	 * @return bool
 	 */
 
-	public function routeHeader()
+	public function routeHeader() : bool
 	{
 		Module\Hook::trigger('adminRouteHeader');
 
@@ -32,8 +34,8 @@ class Router extends RouterAbstract
 		if ($this->_registry->get('adminRouterBreak'))
 		{
 			$this->_registry->set('contentError', false);
-			return true;
 		}
+		return $this->_registry->get('adminRouterBreak');
 	}
 
 	/**
@@ -150,7 +152,7 @@ class Router extends RouterAbstract
 				return admin_install();
 			}
 		}
-		return false;
+		return $this->_registry->get('adminRouterBreak');
 	}
 
 	/**

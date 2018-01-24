@@ -38,7 +38,6 @@ class Router extends RouterAbstract
 		if ($this->_registry->get('routerBreak'))
 		{
 			$this->_registry->set('contentError', false);
-			return true;
 		}
 
 		/* handle post */
@@ -47,7 +46,7 @@ class Router extends RouterAbstract
 		{
 			return $this->_redirectSearch();
 		}
-		return false;
+		return $this->_registry->get('routerBreak');
 	}
 
 	/**
@@ -120,7 +119,7 @@ class Router extends RouterAbstract
 		{
 			return $this->_renderInstall();
 		}
-		return false;
+		return $this->_registry->get('routerBreak');
 	}
 
 	/**
