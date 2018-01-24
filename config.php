@@ -1,8 +1,8 @@
 <?php
 return
 [
-	'dbType' => 'sqlite',
-	'dbHost' => '5a688317b16a8.sqlite',
+	'dbType' => null,
+	'dbHost' => null,
 	'dbPrefix' => null,
 	'dbName' => null,
 	'dbUser' => null,

@@ -4,14 +4,17 @@
 	"version": "3.3.0",
 	"homepage": "https://redaxscript.com",
 	"license": "GPL-3.0",
-	"author": {
+	"author":
+	{
 		"name": "Henry Ruhs",
 		"url": "https://redaxmedia.com"
 	},
-	"bugs": {
+	"bugs":
+	{
 		"url": "https://github.com/redaxscript/redaxscript/issues"
 	},
-	"devDependencies": {
+	"devDependencies":
+	{
 		"autoprefixer": "7.2.5",
 		"colorguard": "1.2.1",
 		"cssnano": "3.10.0",
@@ -52,7 +55,8 @@
 		"stylelint": "8.4.0",
 		"stylelint-order": "0.8.0"
 	},
-	"scripts": {
+	"scripts":
+	{
 		"phpunit-mssql": "DB_URL=mssql://sa:tPSCp0G0mZ@127.0.0.1/test grunt phpunit",
 		"phpunit-mysql": "DB_URL=mysql://root:test@127.0.0.1/test grunt phpunit",
 		"phpunit-pgsql": "DB_URL=postgres://postgres:test@127.0.0.1/test grunt phpunit",
