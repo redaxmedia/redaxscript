@@ -138,10 +138,10 @@ class DirectoryLister extends Config
 	 * @param string $parentDirectory
 	 * @param array $optionArray
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	protected function _renderParent(string $rootDirectory = null, string $parentDirectory = null, array $optionArray = []) : string
+	protected function _renderParent(string $rootDirectory = null, string $parentDirectory = null, array $optionArray = [])
 	{
 		$queryString = $rootDirectory !== $parentDirectory ? '&directory=' . $parentDirectory : null;
 
@@ -177,10 +177,10 @@ class DirectoryLister extends Config
 	 * @param string $directory
 	 * @param array $optionArray
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	protected function _renderItem(string $directory = null, array $optionArray = []) : string
+	protected function _renderItem(string $directory = null, array $optionArray = [])
 	{
 		$outputItem = null;
 		$settingModel = new Model\Setting();
