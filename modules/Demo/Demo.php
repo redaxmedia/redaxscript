@@ -34,12 +34,12 @@ class Demo extends Config
 	];
 
 	/**
-	 * renderStart
+	 * routeHeader
 	 *
-	 * @since 2.4.0
+	 * @since 3.3.0
 	 */
 
-	public function renderStart()
+	public function routeHeader()
 	{
 		if ($this->_registry->get('firstParameter') === 'demo')
 		{
@@ -62,12 +62,12 @@ class Demo extends Config
 	}
 
 	/**
-	 * routerStart
+	 * routeContent
 	 *
-	 * @since 3.0.0
+	 * @since 3.3.0
 	 */
 
-	public function routerStart()
+	public function routeContent()
 	{
 		if ($this->_registry->get('firstParameter') === 'demo' && $this->_registry->get('secondParameter') === 'login')
 		{

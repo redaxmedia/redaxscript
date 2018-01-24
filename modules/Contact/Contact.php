@@ -36,16 +36,29 @@ class Contact extends Module\Module
 	];
 
 	/**
-	 * routerStart
+	 * routeHeader
 	 *
-	 * @since 3.0.0
+	 * @since 3.3.0
 	 */
 
-	public function routerStart()
+	public function routeHeader()
 	{
 		if ($this->_request->getPost(get_class()) === 'submit')
 		{
 			$this->_request->set('routerBreak', true);
+		}
+	}
+
+	/**
+	 * routeContent
+	 *
+	 * @since 3.3.0
+	 */
+
+	public function routeContent()
+	{
+		if ($this->_request->getPost(get_class()) === 'submit')
+		{
 			echo $this->process();
 		}
 	}

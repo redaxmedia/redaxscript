@@ -34,12 +34,12 @@ class Preview extends Module\Module
 	];
 
 	/**
-	 * renderStart
+	 * routeHeader
 	 *
-	 * @since 2.2.0
+	 * @since 3.3.0
 	 */
 
-	public function renderStart()
+	public function routeHeader()
 	{
 		if ($this->_registry->get('firstParameter') === 'preview')
 		{
@@ -57,12 +57,12 @@ class Preview extends Module\Module
 	}
 
 	/**
-	 * routerStart
+	 * routeContent
 	 *
-	 * @since 3.0.0
+	 * @since 3.3.0
 	 */
 
-	public function routerStart()
+	public function routeContent()
 	{
 		if ($this->_registry->get('firstParameter') === 'preview')
 		{
