@@ -139,6 +139,8 @@ class Router extends RouterAbstract
 	 * redirect the search
 	 *
 	 * @since 3.3.0
+	 *
+	 * @return bool
 	 */
 
 	protected function _redirectSearch() : bool
