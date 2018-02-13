@@ -7,7 +7,7 @@ Redaxscript
 [![Build Status](https://img.shields.io/appveyor/ci/redaxmedia/redaxscript.svg)](https://ci.appveyor.com/project/redaxmedia/redaxscript)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/redaxscript/redaxscript.svg)](https://scrutinizer-ci.com/g/redaxscript/redaxscript)
 [![Coverage Status](https://img.shields.io/coveralls/redaxscript/redaxscript.svg)](https://coveralls.io/r/redaxscript/redaxscript)
-[![Latest Stable Version](https://img.shields.io/packagist/v/redaxscript/redaxscript.svg)](https://packagist.org/packages/redaxscript/redaxscript)
+[![Packagist Version](https://img.shields.io/packagist/v/redaxscript/redaxscript.svg)](https://packagist.org/packages/redaxscript/redaxscript)
 [![License](https://img.shields.io/packagist/l/redaxscript/redaxscript.svg)](https://packagist.org/packages/redaxscript/redaxscript)
 [![Gitter Chat](https://img.shields.io/gitter/room/redaxmedia/redaxscript.svg)](https://gitter.im/redaxmedia/redaxscript)
 [![Facebook Chat](https://img.shields.io/badge/chat-on_facebook-0084ff.svg)](https://m.me/redaxscript)
