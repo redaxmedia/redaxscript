@@ -26,16 +26,17 @@ class OptionTest extends TestCaseAbstract
 	public function setUp()
 	{
 		parent::setUp();
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawCreate();
-		$installer->insertSettings(
+		$optionArray =
 		[
 			'adminName' => 'Test',
 			'adminUser' => 'test',
 			'adminPassword' => 'test',
 			'adminEmail' => 'test@test.com'
-		]);
+		];
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		$installer->insertSettings($optionArray);
 		Db::forTablePrefix('articles')
 			->create()
 			->set(

@@ -15,12 +15,27 @@
 			"p": "admin/edit/categories/1"
 		},
 		{
-			"token": "invalid"
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
 		},
 		true
 	],
 	[
 		{
+			"token": false
+		},
+		{
+			"p": "admin/edit/categories/1"
+		},
+		{
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		true
+	],
+	[
+		{
+			"tableEdit": true,
+			"tableParameter": "categories",
+			"idParameter": 1,
 			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
 		},
 		{
@@ -34,6 +49,9 @@
 	],
 	[
 		{
+			"tableEdit": true,
+			"tableParameter": "articles",
+			"idParameter": 1,
 			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
 		},
 		{
@@ -47,6 +65,9 @@
 	],
 	[
 		{
+			"tableEdit": true,
+			"tableParameter": "extras",
+			"idParameter": 1,
 			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
 		},
 		{
@@ -60,6 +81,9 @@
 	],
 	[
 		{
+			"tableEdit": true,
+			"tableParameter": "comments",
+			"idParameter": 1,
 			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
 		},
 		{
@@ -73,54 +97,15 @@
 	],
 	[
 		{
+			"tableDelete": true,
+			"tableParameter": "categories",
+			"idParameter": 1,
 			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
 		},
 		{
-			"p": "admin/edit/users/1"
+			"p": "admin/delete/categories/1/ffd845f78510f02580d329127bab3dd1aa7f4453"
 		},
-		{
-			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
-			"Redaxscript\\Admin\\View\\UserForm": true
-		},
-		true
-	],
-	[
-		{
-			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
-		},
-		{
-			"p": "admin/edit/groups/1"
-		},
-		{
-			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
-			"Redaxscript\\Admin\\View\\GroupForm": true
-		},
-		true
-	],
-	[
-		{
-			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
-		},
-		{
-			"p": "admin/edit/modules/1"
-		},
-		{
-			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
-			"Redaxscript\\Admin\\View\\ModuleForm": true
-		},
-		true
-	],
-	[
-		{
-			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
-		},
-		{
-			"p": "admin/edit/settings"
-		},
-		{
-			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
-			"Redaxscript\\Admin\\View\\SettingForm": true
-		},
+		{},
 		true
 	]
 ]

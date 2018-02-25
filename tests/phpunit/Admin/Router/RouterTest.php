@@ -25,23 +25,18 @@ class RouterTest extends TestCaseAbstract
 	public function setUp()
 	{
 		parent::setUp();
+		$optionArray =
+		[
+			'adminName' => 'Test',
+			'adminUser' => 'test',
+			'adminPassword' => 'test',
+			'adminEmail' => 'test@test.com'
+		];
 		$installer = $this->installerFactory();
 		$installer->init();
 		$installer->rawCreate();
-		$installer->insertSettings(
-		[
-			'adminName' => 'Test',
-			'adminUser' => 'test',
-			'adminPassword' => 'test',
-			'adminEmail' => 'test@test.com'
-		]);
-		$installer->insertUsers(
-		[
-			'adminName' => 'Test',
-			'adminUser' => 'test',
-			'adminPassword' => 'test',
-			'adminEmail' => 'test@test.com'
-		]);
+		$installer->insertSettings($optionArray);
+		$installer->insertUsers($optionArray);
 	}
 
 	/**
@@ -101,6 +96,12 @@ class RouterTest extends TestCaseAbstract
 
 		$this->_registry->init($registryArray);
 		$this->_request->set('post', $postArray);
+		$this->_request->set('server',
+		[
+			'HTTP_HOST' => 'localhost',
+			'HTTP_USER_AGENT' => 'redaxscript',
+			'REMOTE_ADDR' => 'localhost'
+		]);
 		$router = new Admin\Router\Router($this->_registry, $this->_request, $this->_language, $this->_config);
 		$router->init();
 

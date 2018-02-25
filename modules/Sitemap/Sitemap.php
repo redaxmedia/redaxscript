@@ -29,7 +29,7 @@ class Sitemap extends Config
 		'alias' => 'Sitemap',
 		'author' => 'Redaxmedia',
 		'description' => 'Generate a sitemap tree',
-		'version' => '3.3.0'
+		'version' => '3.3.1'
 	];
 
 	/**

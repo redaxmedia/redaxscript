@@ -27,16 +27,17 @@ class ParserTest extends TestCaseAbstract
 	public function setUp()
 	{
 		parent::setUp();
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawCreate();
-		$installer->insertSettings(
+		$optionArray =
 		[
 			'adminName' => 'Test',
 			'adminUser' => 'test',
 			'adminPassword' => 'test',
 			'adminEmail' => 'test@test.com'
-		]);
+		];
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		$installer->insertSettings($optionArray);
 		$testDummy = new TestDummy\TestDummy($this->_registry, $this->_request, $this->_language, $this->_config);
 		$testDummy->install();
 	}

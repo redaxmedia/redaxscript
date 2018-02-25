@@ -29,7 +29,7 @@ class LightGallery extends Config
 		'alias' => 'LightGallery',
 		'author' => 'Redaxmedia',
 		'description' => 'Javascript powered light gallery',
-		'version' => '3.3.0'
+		'version' => '3.3.1'
 	];
 
 	/**
@@ -58,7 +58,7 @@ class LightGallery extends Config
 		$link = Head\Link::getInstance();
 		$link
 			->init()
-			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.5/css/lightgallery.min.css')
+			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.7/css/lightgallery.min.css')
 			->appendFile('modules/LightGallery/dist/styles/light-gallery.min.css');
 
 		/* script */
@@ -66,7 +66,7 @@ class LightGallery extends Config
 		$script = Head\Script::getInstance();
 		$script
 			->init('foot')
-			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.5/js/lightgallery.min.js')
+			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.7/js/lightgallery.min.js')
 			->appendFile('modules/LightGallery/assets/scripts/init.js')
 			->appendFile('modules/LightGallery/dist/scripts/light-gallery.min.js');
 	}

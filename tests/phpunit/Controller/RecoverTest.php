@@ -26,23 +26,18 @@ class RecoverTest extends TestCaseAbstract
 	public function setUp()
 	{
 		parent::setUp();
+		$optionArray =
+		[
+			'adminName' => 'Test',
+			'adminUser' => 'test',
+			'adminPassword' => 'test',
+			'adminEmail' => 'test@test.com'
+		];
 		$installer = $this->installerFactory();
 		$installer->init();
 		$installer->rawCreate();
-		$installer->insertSettings(
-		[
-			'adminName' => 'Test',
-			'adminUser' => 'test',
-			'adminPassword' => 'test',
-			'adminEmail' => 'test@test.com'
-		]);
-		$installer->insertUsers(
-		[
-			'adminName' => 'Test',
-			'adminUser' => 'test',
-			'adminPassword' => 'test',
-			'adminEmail' => 'test@test.com'
-		]);
+		$installer->insertSettings($optionArray);
+		$installer->insertUsers($optionArray);
 		$setting = $this->settingFactory();
 		$setting->set('captcha', 1);
 	}

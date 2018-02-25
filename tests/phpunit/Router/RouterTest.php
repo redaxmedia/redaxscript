@@ -25,23 +25,18 @@ class RouterTest extends TestCaseAbstract
 	public function setUp()
 	{
 		parent::setUp();
+		$optionArray =
+		[
+			'adminName' => 'Test',
+			'adminUser' => 'test',
+			'adminPassword' => 'test',
+			'adminEmail' => 'test@test.com'
+		];
 		$installer = $this->installerFactory();
 		$installer->init();
 		$installer->rawCreate();
-		$installer->insertSettings(
-		[
-			'adminName' => 'Test',
-			'adminUser' => 'test',
-			'adminPassword' => 'test',
-			'adminEmail' => 'test@test.com'
-		]);
-		$installer->insertUsers(
-		[
-			'adminName' => 'Test',
-			'adminUser' => 'test',
-			'adminPassword' => 'test',
-			'adminEmail' => 'test@test.com'
-		]);
+		$installer->insertSettings($optionArray);
+		$installer->insertUsers($optionArray);
 	}
 
 	/**
@@ -121,18 +116,22 @@ class RouterTest extends TestCaseAbstract
 	 * @param array $registryArray
 	 * @param array $queryArray
 	 * @param array $postArray
+	 * @param array $settingArray
 	 * @param bool $expect
 	 *
 	 * @dataProvider providerContent
 	 */
 
-	public function testContent(array $registryArray = [], array $queryArray = [], array $postArray = [], bool $expect = null)
+	public function testContent(array $registryArray = [], array $queryArray = [], array $postArray = [], array $settingArray = [], bool $expect = null)
 	{
 		/* setup */
 
 		$this->_registry->init($registryArray);
 		$this->_request->set('get', $queryArray);
 		$this->_request->set('post', $postArray);
+		$setting = $this->settingFactory();
+		$setting->set('recovery', $settingArray['recovery']);
+		$setting->set('registration', $settingArray['registration']);
 		$router = new Router\Router($this->_registry, $this->_request, $this->_language, $this->_config);
 		$router->init();
 

@@ -28,16 +28,20 @@ class TagTest extends TestCaseAbstract
 	public function setUp()
 	{
 		parent::setUp();
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawCreate();
-		$installer->insertSettings(
+		$optionArray =
 		[
 			'adminName' => 'Test',
 			'adminUser' => 'test',
 			'adminPassword' => 'test',
 			'adminEmail' => 'test@test.com'
-		]);
+		];
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		$installer->insertCategories($optionArray);
+		$installer->insertArticles($optionArray);
+		$installer->insertComments($optionArray);
+		$installer->insertSettings($optionArray);
 	}
 
 	/**
@@ -379,5 +383,90 @@ class TagTest extends TestCaseAbstract
 		/* compare */
 
 		$this->assertInstanceOf('Redaxscript\Db', $actual);
+	}
+
+	/**
+	 * testNavigationCategories
+	 *
+	 * @since 3.3.1
+	 */
+
+	public function testNavigationCategories()
+	{
+		/* actual */
+
+		$actual = Template\Tag::navigation('categories');
+
+		/* compare */
+
+		$this->assertInstanceOf('Redaxscript\Navigation\Category', $actual);
+	}
+
+	/**
+	 * testNavigationArticles
+	 *
+	 * @since 3.3.1
+	 */
+
+	public function testNavigationArticles()
+	{
+		/* actual */
+
+		$actual = Template\Tag::navigation('articles');
+
+		/* compare */
+
+		$this->assertInstanceOf('Redaxscript\Navigation\Article', $actual);
+	}
+
+	/**
+	 * testNavigationComments
+	 *
+	 * @since 3.3.1
+	 */
+
+	public function testNavigationComments()
+	{
+		/* actual */
+
+		$actual = Template\Tag::navigation('comments');
+
+		/* compare */
+
+		$this->assertInstanceOf('Redaxscript\Navigation\Comment', $actual);
+	}
+
+	/**
+	 * testNavigationLanguages
+	 *
+	 * @since 3.3.1
+	 */
+
+	public function testNavigationLanguages()
+	{
+		/* actual */
+
+		$actual = Template\Tag::navigation('languages');
+
+		/* compare */
+
+		$this->assertInstanceOf('Redaxscript\Navigation\Language', $actual);
+	}
+
+	/**
+	 * testNavigationTemplates
+	 *
+	 * @since 3.3.1
+	 */
+
+	public function testNavigationTemplates()
+	{
+		/* actual */
+
+		$actual = Template\Tag::navigation('templates');
+
+		/* compare */
+
+		$this->assertInstanceOf('Redaxscript\Navigation\Template', $actual);
 	}
 }

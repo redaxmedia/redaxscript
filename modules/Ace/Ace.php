@@ -28,7 +28,7 @@ class Ace extends Module\Module
 		'alias' => 'Ace',
 		'author' => 'Redaxmedia',
 		'description' => 'JavaScript powered code editor',
-		'version' => '3.3.0'
+		'version' => '3.3.1'
 	];
 
 	/**
@@ -53,7 +53,7 @@ class Ace extends Module\Module
 			$script = Head\Script::getInstance();
 			$script
 				->init('foot')
-				->appendFile('https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js')
+				->appendFile('https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.1/ace.js')
 				->appendFile('modules/Ace/assets/scripts/init.js')
 				->appendFile('modules/Ace/dist/scripts/ace.min.js');
 		}

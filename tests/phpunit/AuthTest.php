@@ -26,16 +26,17 @@ class AuthTest extends TestCaseAbstract
 	public function setUp()
 	{
 		parent::setUp();
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawCreate();
-		$installer->insertUsers(
+		$optionArray =
 		[
 			'adminName' => 'Test',
 			'adminUser' => 'test',
 			'adminPassword' => 'test',
 			'adminEmail' => 'test@test.com'
-		]);
+		];
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		$installer->insertUsers($optionArray);
 		Db::forTablePrefix('users')
 			->whereIdIs(1)
 			->findOne()

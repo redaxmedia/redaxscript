@@ -8,7 +8,7 @@ module.exports = () =>
 		{
 			src:
 			[
-				'templates/admin/assets/styles/icon.tpl'
+				'templates/admin/assets/styles/icon.css'
 			],
 			dest: 'templates/admin/assets/styles/_icon.css'
 		},
@@ -16,7 +16,7 @@ module.exports = () =>
 		{
 			src:
 			[
-				'templates/default/assets/styles/icon.tpl'
+				'templates/default/assets/styles/icon.css'
 			],
 			dest: 'templates/default/assets/styles/_icon.css'
 		},
@@ -24,7 +24,7 @@ module.exports = () =>
 		{
 			src:
 			[
-				'modules/DirectoryLister/assets/styles/icon.tpl'
+				'modules/DirectoryLister/assets/styles/icon.css'
 			],
 			dest: 'modules/DirectoryLister/assets/styles/_icon.css'
 		},
@@ -32,7 +32,7 @@ module.exports = () =>
 		{
 			src:
 			[
-				'modules/SocialSharer/assets/styles/icon.tpl'
+				'modules/SocialSharer/assets/styles/icon.css'
 			],
 			dest: 'modules/SocialSharer/assets/styles/_icon.css'
 		}

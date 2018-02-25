@@ -155,7 +155,9 @@ module.exports = () =>
 			[
 				'assets/styles/*.css',
 				'templates/*/assets/styles/*.css',
-				'modules/*/assets/styles/*.css'
+				'!templates/*/assets/styles/_template.css',
+				'modules/*/assets/styles/*.css',
+				'!modules/*/assets/styles/_template.css'
 			],
 			options:
 			{
@@ -175,9 +177,10 @@ module.exports = () =>
 			[
 				'assets/styles/*.css',
 				'!assets/styles/_query.css',
-				'!assets/styles/normalize.css',
 				'templates/*/assets/styles/*.css',
-				'modules/*/assets/styles/*.css'
+				'!templates/*/assets/styles/_template.css',
+				'modules/*/assets/styles/*.css',
+				'!modules/*/assets/styles/_template.css'
 			],
 			options:
 			{
@@ -215,7 +218,10 @@ module.exports = () =>
 			processors:
 			[
 				require('postcss-import'),
-				require('postcss-custom-properties'),
+				require('postcss-custom-properties')(
+				{
+					preserve: false
+				}),
 				require('postcss-custom-media'),
 				require('postcss-custom-selectors'),
 				require('postcss-nesting'),

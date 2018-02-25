@@ -28,7 +28,7 @@ class Tinymce extends Config
 		'alias' => 'Tinymce',
 		'author' => 'Redaxmedia',
 		'description' => 'JavaScript powered WYSIWYG editor',
-		'version' => '3.3.0',
+		'version' => '3.3.1',
 		'access' => '1'
 	];
 
@@ -45,7 +45,7 @@ class Tinymce extends Config
 			$script = Head\Script::getInstance();
 			$script
 				->init('foot')
-				->appendFile('https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.7.4/tinymce.min.js')
+				->appendFile('https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.7.6/tinymce.min.js')
 				->appendFile('modules/Tinymce/assets/scripts/init.js')
 				->appendFile('modules/Tinymce/dist/scripts/tinymce.min.js');
 

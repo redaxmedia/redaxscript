@@ -32,17 +32,18 @@ class DbTest extends TestCaseAbstract
 	public function setUp()
 	{
 		parent::setUp();
-		$this->_configArray = $this->_config->get();
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawCreate();
-		$installer->insertSettings(
+		$optionArray =
 		[
 			'adminName' => 'Test',
 			'adminUser' => 'test',
 			'adminPassword' => 'test',
 			'adminEmail' => 'test@test.com'
-		]);
+		];
+		$this->_configArray = $this->_config->get();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		$installer->insertSettings($optionArray);
 		Db::forTablePrefix('categories')
 			->create()
 			->set(

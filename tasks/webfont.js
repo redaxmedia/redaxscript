@@ -33,7 +33,7 @@ module.exports = () =>
 			options:
 			{
 				destCss: 'templates/admin/assets/styles',
-				template: 'templates/admin/assets/styles/_icon.tpl'
+				template: 'templates/admin/assets/styles/_template.css'
 			}
 		},
 		templateDefault:
@@ -58,7 +58,7 @@ module.exports = () =>
 			options:
 			{
 				destCss: 'templates/default/assets/styles',
-				template: 'templates/default/assets/styles/_icon.tpl'
+				template: 'templates/default/assets/styles/_template.css'
 			}
 		},
 		moduleDirectoryLister:
@@ -73,7 +73,7 @@ module.exports = () =>
 			options:
 			{
 				destCss: 'modules/DirectoryLister/assets/styles',
-				template: 'modules/DirectoryLister/assets/styles/_icon.tpl'
+				template: 'modules/DirectoryLister/assets/styles/_template.css'
 			}
 		},
 		moduleSocialSharer:
@@ -91,7 +91,7 @@ module.exports = () =>
 			options:
 			{
 				destCss: 'modules/SocialSharer/assets/styles',
-				template: 'modules/SocialSharer/assets/styles/_icon.tpl'
+				template: 'modules/SocialSharer/assets/styles/_template.css'
 			}
 		},
 		options:

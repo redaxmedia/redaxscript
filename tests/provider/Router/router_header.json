@@ -12,5 +12,14 @@
 		},
 		{},
 		true
+	],
+	[
+		{
+			"routerBreak": false
+		},
+		{
+			"Redaxscript\\View\\SearchForm": true
+		},
+		false
 	]
 ]
