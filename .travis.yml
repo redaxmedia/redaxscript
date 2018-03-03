@@ -45,7 +45,7 @@ script:
 - DB_URL=sqlite://test.sqlite grunt phpunit --coverage-clover=build/sqlite.xml
 
 after_success:
-- vendor/bin/coveralls -v
+- vendor/bin/coveralls
 - wget https://scrutinizer-ci.com/ocular.phar
 - php ocular.phar code-coverage:upload --format=php-clover build/sqlite.xml
 
