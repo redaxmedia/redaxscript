@@ -28,7 +28,7 @@ class LiveReload extends Config
 		'alias' => 'LiveReload',
 		'author' => 'Redaxmedia',
 		'description' => 'Launch a local PHP server with live reload',
-		'version' => '3.3.1'
+		'version' => '3.3.2'
 	];
 
 	/**

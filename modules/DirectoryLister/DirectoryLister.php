@@ -31,7 +31,7 @@ class DirectoryLister extends Config
 		'alias' => 'DirectoryLister',
 		'author' => 'Redaxmedia',
 		'description' => 'Simple directory lister',
-		'version' => '3.3.1'
+		'version' => '3.3.2'
 	];
 
 	/**

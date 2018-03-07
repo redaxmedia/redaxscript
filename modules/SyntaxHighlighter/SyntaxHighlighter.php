@@ -28,7 +28,7 @@ class SyntaxHighlighter extends Module\Module
 		'alias' => 'SyntaxHighlighter',
 		'author' => 'Redaxmedia',
 		'description' => 'JavaScript powered syntax highlighter',
-		'version' => '3.3.1'
+		'version' => '3.3.2'
 	];
 
 	/**

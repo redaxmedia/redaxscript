@@ -209,7 +209,7 @@ function admin_process()
 			$user = $r['user'] = Redaxscript\Db::forTablePrefix($tableParameter)->where('id', $idParameter)->findOne()->user;
 		}
 		$password_check = $password_confirm = 1;
-		if ($_POST['edit'] && !$_POST['password'] && !$_POST['password_confirm'] || $_POST['delete'])
+		if (!$_POST['password'] && !$_POST['password_confirm'])
 		{
 			$password_check = 0;
 		}
@@ -224,7 +224,7 @@ function admin_process()
 			$passwordHash->init($password);
 			$r['password'] = $passwordHash->getHash();
 		}
-		if ($_POST['new'])
+		if ($registry->get('adminParameter') === 'new')
 		{
 			$r['first'] = $r['last'] = $registry->get('now');
 		}

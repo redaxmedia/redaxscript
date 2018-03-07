@@ -27,7 +27,7 @@ class TestDummy extends Module\Notification
 		'alias' => 'TestDummy',
 		'author' => 'Redaxmedia',
 		'description' => 'Test Dummy',
-		'version' => '3.3.1'
+		'version' => '3.3.2'
 	];
 
 	/**

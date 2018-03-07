@@ -243,9 +243,7 @@ class GroupForm extends ViewAbstract implements ViewInterface
 			],
 			[
 				'id' => 'settings',
-				'name' => 'settings[]',
-				'multiple' => 'multiple',
-				'size' => count($helperOption->getPermissionArray('settings'))
+				'name' => 'settings'
 			])
 			->append('</li></ul></fieldset>')
 

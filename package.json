@@ -1,7 +1,7 @@
 {
 	"name": "redaxscript",
 	"description": "A modern, ultra lightweight and rocket fast Content Management System",
-	"version": "3.3.1",
+	"version": "3.3.2",
 	"homepage": "https://redaxscript.com",
 	"license": "GPL-3.0",
 	"author":
@@ -15,7 +15,7 @@
 	},
 	"devDependencies":
 	{
-		"autoprefixer": "8.0.0",
+		"autoprefixer": "8.1.0",
 		"colorguard": "1.2.1",
 		"cssnano": "3.10.0",
 		"grunt": "1.0.2",
@@ -34,7 +34,7 @@
 		"grunt-postcss": "0.9.0",
 		"grunt-shell": "2.1.0",
 		"grunt-svgmin": "5.0.0",
-		"grunt-tocgen": "1.0.4",
+		"grunt-tocgen": "1.0.5",
 		"grunt-webfont": "1.7.1",
 		"icomoon-free-npm": "0.0.0",
 		"load-grunt-tasks": "3.5.2",
