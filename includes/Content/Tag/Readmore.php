@@ -49,7 +49,7 @@ class Readmore extends TagAbstract
 		$output = str_replace($this->_optionArray['search'], null, $content);
 		$position = strpos($content, $this->_optionArray['search'][0]);
 
-		/* html elements */
+		/* html element */
 
 		$linkElement = new Html\Element();
 		$linkElement->init('a',

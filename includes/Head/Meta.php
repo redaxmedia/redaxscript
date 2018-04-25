@@ -24,11 +24,11 @@ class Meta extends HeadAbstract
 	 * @return string|null
 	 */
 
-	public function render()
+	public function render() : ?string
 	{
 		$output = null;
 
-		/* html elements */
+		/* html element */
 
 		$metaElement = new Html\Element();
 		$metaElement->init('meta');
@@ -36,8 +36,6 @@ class Meta extends HeadAbstract
 		/* handle collection */
 
 		$collectionArray = $this->_getCollectionArray();
-		$collectionKeys = array_keys($collectionArray);
-		$lastKey = end($collectionKeys);
 
 		/* process collection */
 
@@ -48,10 +46,6 @@ class Meta extends HeadAbstract
 				$output .= $metaElement
 					->copy()
 					->attr($attribute);
-				if ($key !== $lastKey)
-				{
-					$output .= PHP_EOL;
-				}
 			}
 		}
 		$this->clear();

@@ -82,9 +82,7 @@ class DbTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
+		$this->dropDatabase();
 		$this->_config->set('dbType', $this->_configArray['dbType']);
 		$this->_config->set('dbPassword', $this->_configArray['dbPassword']);
 	}
@@ -158,23 +156,6 @@ class DbTest extends TestCaseAbstract
 		/* compare */
 
 		$this->assertEquals(2, $actual);
-	}
-
-	/**
-	 * testRawInstance
-	 *
-	 * @since 2.4.0
-	 */
-
-	public function testRawInstance()
-	{
-		/* actual */
-
-		$actual = Db::rawInstance()->getDb();
-
-		/* compare */
-
-		$this->assertInstanceOf('PDO', $actual);
 	}
 
 	/**
@@ -283,28 +264,6 @@ class DbTest extends TestCaseAbstract
 		/* compare */
 
 		$this->assertEquals($expect, $actual);
-	}
-
-	/**
-	 * testFindFlatArray
-	 *
-	 * @since 2.4.0
-	 */
-
-	public function testFindFlatArray()
-	{
-		/* expect and actual */
-
-		$expectArray =
-		[
-			1,
-			2
-		];
-		$actualArray = Db::forTablePrefix('articles')->findFlatArray();
-
-		/* compare */
-
-		$this->assertEquals($expectArray, $actualArray);
 	}
 
 	/**

@@ -32,15 +32,19 @@ class NotificationTest extends TestCaseAbstract
 			'name' => 'Test Dummy',
 			'alias' => 'TestDummy'
 		]);
-		$module->setNotification('error', 'testValue');
+		$module->setNotification('error', 'Error');
 
 		/* actual */
 
 		$actualArray = $module->getNotification('error');
 
+		/* teardown */
+
+		$module->clearNotification('error');
+
 		/* compare */
 
-		$this->assertEquals('testValue', $actualArray['Test Dummy'][0]);
+		$this->assertEquals('Error', $actualArray['Test Dummy'][0]);
 	}
 
 	/**
@@ -59,17 +63,22 @@ class NotificationTest extends TestCaseAbstract
 			'name' => 'Test Dummy',
 			'alias' => 'TestDummy'
 		]);
-		$module->setNotification('success', 'testValue');
-		$module->setNotification('error', 'testValue');
+		$module->setNotification('success', 'Success');
+		$module->setNotification('error', 'Error');
 
 		/* actual */
 
 		$actualArray = $module->getNotification();
 
+		/* teardown */
+
+		$module->clearNotification('success');
+		$module->clearNotification('error');
+
 		/* compare */
 
-		$this->assertArrayHasKey('success', $actualArray);
-		$this->assertArrayHasKey('error', $actualArray);
+		$this->assertEquals('Error', $actualArray['error']['Test Dummy'][0]);
+		$this->assertEquals('Success', $actualArray['success']['Test Dummy'][0]);
 	}
 
 	/**

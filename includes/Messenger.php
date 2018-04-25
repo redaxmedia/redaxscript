@@ -50,12 +50,12 @@ class Messenger
 			'list' => 'rs-list-note',
 			'link' => 'rs-button-note',
 			'redirect' => 'rs-meta-redirect',
-			'noteArray' =>
+			'note' =>
 			[
 				'success' => 'rs-is-success',
-				'info' => 'rs-is-info',
 				'warning' => 'rs-is-warning',
-				'error' => 'rs-is-error'
+				'error' => 'rs-is-error',
+				'info' => 'rs-is-info'
 			]
 		]
 	];
@@ -232,35 +232,37 @@ class Messenger
 	{
 		$output = Module\Hook::trigger('messengerStart');
 
-		/* html elements */
+		/* html element */
 
+		$element = new Html\Element();
 		if ($title)
 		{
-			$titleElement = new Html\Element();
-			$titleElement
+			$titleElement = $element
+				->copy()
 				->init('h2',
 				[
-					'class' => $this->_optionArray['className']['title'] . ' ' . $this->_optionArray['className']['noteArray'][$type]
+					'class' => $this->_optionArray['className']['title'] . ' ' . $this->_optionArray['className']['note'][$type]
 				])
 				->text($title);
 		}
-		$boxElement = new Html\Element();
-		$boxElement->init('div',
-		[
-			'class' => $this->_optionArray['className']['box'] . ' ' . $this->_optionArray['className']['noteArray'][$type]
-		]);
+		$boxElement = $element
+			->copy()
+			->init('div',
+			[
+				'class' => $this->_optionArray['className']['box'] . ' ' . $this->_optionArray['className']['note'][$type]
+			]);
 
 		/* create a list */
 
 		if (is_array($message) && count($message) > 1)
 		{
-			$listElement = new Html\Element();
-			$listElement->init('ul',
-			[
-				'class' => $this->_optionArray['className']['list']
-			]);
-			$itemElement = new Html\Element();
-			$itemElement->init('li');
+			$listElement = $element
+				->copy()
+				->init('ul',
+				[
+					'class' => $this->_optionArray['className']['list']
+				]);
+			$itemElement = $element->copy()->init('li');
 
 			/* collect item output */
 
@@ -297,17 +299,18 @@ class Messenger
 	 * @return string|null
 	 */
 
-	protected function _renderAction(string $type = null)
+	protected function _renderAction(string $type = null) : ?string
 	{
 		$output = null;
 		if ($this->_actionArray['text'] && ($this->_actionArray['route'] || $this->_actionArray['url']))
 		{
-			$linkElement = new Html\Element();
-			$output .= $linkElement
+			$element = new Html\Element();
+			$output .= $element
+				->copy()
 				->init('a',
 				[
 					'href' => $this->_actionArray['route'] ? $this->_registry->get('parameterRoute') . $this->_actionArray['route'] : $this->_actionArray['url'],
-					'class' => $this->_optionArray['className']['link'] . ' ' . $this->_optionArray['className']['noteArray'][$type]
+					'class' => $this->_optionArray['className']['link'] . ' ' . $this->_optionArray['className']['note'][$type]
 				])
 				->text($this->_actionArray['text']);
 
@@ -315,13 +318,14 @@ class Messenger
 
 			if (is_numeric($this->_actionArray['redirect']))
 			{
-				$metaElement = new Html\Element();
-				$output .= $metaElement->init('meta',
-				[
-					'class' => $this->_actionArray['redirect'] === 0 ? $this->_optionArray['className']['redirect'] : null,
-					'content' => $this->_actionArray['redirect'] . ';url=' . $this->_actionArray['url'] ,
-					'http-equiv' => 'refresh'
-				]);
+				$output .= $element
+					->copy()
+					->init('meta',
+					[
+						'class' => $this->_actionArray['redirect'] === 0 ? $this->_optionArray['className']['redirect'] : null,
+						'content' => $this->_actionArray['redirect'] . ';url=' . $this->_actionArray['url'] ,
+						'http-equiv' => 'refresh'
+					]);
 			}
 		}
 		return $output;

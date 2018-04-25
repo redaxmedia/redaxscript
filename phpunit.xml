@@ -26,14 +26,6 @@
 				<file>console.php</file>
 				<file>index.php</file>
 				<file>install.php</file>
-
-				<!-- deprecated -->
-
-				<file>includes/admin_admin.php</file>
-				<file>includes/admin_list.php</file>
-				<file>includes/admin_query.php</file>
-				<file>includes/comments.php</file>
-				<file>includes/contents.php</file>
 			</exclude>
 		</whitelist>
 	</filter>
@@ -172,12 +164,6 @@
 
 		<testsuite name="autoload">
 			<file>tests/phpunit/AutoloaderTest.php</file>
-		</testsuite>
-
-		<!-- breadcrumb -->
-
-		<testsuite name="breadcrumb">
-			<file>tests/phpunit/BreadcrumbTest.php</file>
 		</testsuite>
 
 		<!-- captcha -->

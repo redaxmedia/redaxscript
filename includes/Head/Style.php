@@ -81,7 +81,7 @@ class Style extends Singleton implements HeadInterface
 	{
 		$output = null;
 
-		/* html elements */
+		/* html element */
 
 		$styleElement = new Html\Element();
 		$styleElement->init('style');

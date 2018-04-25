@@ -20,23 +20,23 @@ class Comment
 	 *
 	 * @since 3.3.0
 	 *
-	 * @param int $commentId
+	 * @param int $commentId identifier of the comment
 	 *
 	 * @return string|null
 	 */
 
-	public function getRouteById(int $commentId = null)
+	public function getRouteById(int $commentId = null) : ?string
 	{
 		$route = null;
 		$commentArray = Db::forTablePrefix('comments')
-			->tableAlias('m')
-			->leftJoinPrefix('articles', 'm.article = a.id', 'a')
+			->tableAlias('d')
+			->leftJoinPrefix('articles', 'd.article = a.id', 'a')
 			->leftJoinPrefix('categories', 'a.category = c.id', 'c')
 			->leftJoinPrefix('categories', 'c.parent = p.id', 'p')
 			->select('p.alias', 'parent_alias')
 			->select('c.alias', 'category_alias')
 			->select('a.alias', 'article_alias')
-			->where('m.id', $commentId)
+			->where('d.id', $commentId)
 			->findArray();
 
 		/* build route */

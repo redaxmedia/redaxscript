@@ -30,7 +30,7 @@ class RecoverForm extends ViewAbstract
 		$output = Module\Hook::trigger('recoverFormStart');
 		$settingModel = new Model\Setting();
 
-		/* html elements */
+		/* html element */
 
 		$titleElement = new Html\Element();
 		$titleElement

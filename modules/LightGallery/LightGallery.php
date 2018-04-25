@@ -29,18 +29,18 @@ class LightGallery extends Config
 		'alias' => 'LightGallery',
 		'author' => 'Redaxmedia',
 		'description' => 'Javascript powered light gallery',
-		'version' => '3.3.2'
+		'version' => '4.0.0'
 	];
 
 	/**
-	 * adminPanelNotification
+	 * adminNotification
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array|bool
 	 */
 
-	public function adminPanelNotification()
+	public function adminNotification()
 	{
 		return $this->getNotification();
 	}
@@ -87,7 +87,7 @@ class LightGallery extends Config
 		$output = null;
 		$outputItem = null;
 
-		/* html elements */
+		/* html element */
 
 		$listElement = new Html\Element();
 		$listElement->init('ul',
@@ -146,17 +146,17 @@ class LightGallery extends Config
 	{
 		$outputItem = null;
 
-		/* html elements */
+		/* html element */
 
-		$imageElement = new Html\Element();
-		$imageElement->init('img',
-		[
-			'class' => $this->_configArray['className']['image']
-		]);
-		$linkElement = new Html\Element();
-		$linkElement->init('a');
-		$itemElement = new Html\Element();
-		$itemElement->init('li');
+		$element = new Html\Element();
+		$itemElement = $element->copy()->init('li');
+		$linkElement = $element->copy()->init('a');
+		$imageElement = $element
+			->copy()
+			->init('img',
+			[
+				'class' => $this->_configArray['className']['image']
+			]);
 
 		/* gallery filesystem */
 

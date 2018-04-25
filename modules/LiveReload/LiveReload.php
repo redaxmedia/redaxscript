@@ -28,7 +28,7 @@ class LiveReload extends Config
 		'alias' => 'LiveReload',
 		'author' => 'Redaxmedia',
 		'description' => 'Launch a local PHP server with live reload',
-		'version' => '3.3.2'
+		'version' => '4.0.0'
 	];
 
 	/**
@@ -47,14 +47,14 @@ class LiveReload extends Config
 	}
 
 	/**
-	 * adminPanelNotification
+	 * adminNotification
 	 *
 	 * @since 3.3.0
 	 *
 	 * @return array|bool
 	 */
 
-	public function adminPanelNotification()
+	public function adminNotification()
 	{
 		$reader = new Reader();
 		$content = $reader->load($this->_configArray['url']);

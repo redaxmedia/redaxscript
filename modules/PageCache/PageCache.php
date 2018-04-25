@@ -27,18 +27,18 @@ class PageCache extends Config
 		'alias' => 'PageCache',
 		'author' => 'Redaxmedia',
 		'description' => 'Simple page cache',
-		'version' => '3.3.2'
+		'version' => '4.0.0'
 	];
 
 	/**
-	 * adminPanelNotification
+	 * adminNotification
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array|bool
 	 */
 
-	public function adminPanelNotification()
+	public function adminNotification()
 	{
 		if (!is_dir($this->_configArray['cacheDirectory']) && !mkdir($this->_configArray['cacheDirectory']))
 		{

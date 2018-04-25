@@ -45,7 +45,7 @@ class Setting
 	}
 
 	/**
-	 * get all setting
+	 * get all
 	 *
 	 * @since 3.3.0
 	 *

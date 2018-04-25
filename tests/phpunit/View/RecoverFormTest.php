@@ -48,9 +48,7 @@ class RecoverFormTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
+		$this->dropDatabase();
 	}
 
 	/**

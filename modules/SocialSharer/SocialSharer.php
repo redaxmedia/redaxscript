@@ -28,7 +28,7 @@ class SocialSharer extends Config
 		'alias' => 'SocialSharer',
 		'author' => 'Redaxmedia',
 		'description' => 'Integrate a social sharer',
-		'version' => '3.3.2'
+		'version' => '4.0.0'
 	];
 
 	/**
@@ -88,20 +88,22 @@ class SocialSharer extends Config
 		$outputItem = null;
 		if ($url)
 		{
-			/* html elements */
+			/* html element */
 
-			$linkElement = new Html\Element();
-			$linkElement->init('a',
-			[
-				'target' => '_blank'
-			]);
-			$itemElement = new Html\Element();
-			$itemElement->init('li');
-			$listElement = new Html\Element();
-			$listElement->init('ul',
-			[
-				'class' => $this->_configArray['className']['list']
-			]);
+			$element = new Html\Element();
+			$listElement = $element
+				->copy()
+				->init('ul',
+				[
+					'class' => $this->_configArray['className']['list']
+				]);
+			$itemElement = $element->copy()->init('li');
+			$linkElement = $element
+				->copy()
+				->init('a',
+				[
+					'target' => '_blank'
+				]);
 
 			/* process network */
 

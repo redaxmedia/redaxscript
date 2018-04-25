@@ -20,14 +20,14 @@ class Category
 	 *
 	 * @since 3.3.0
 	 *
-	 * @param string $categoryAlias
+	 * @param string $categoryAlias alias of the category
 	 *
-	 * @return int
+	 * @return int|null
 	 */
 
-	public function getIdByAlias(string $categoryAlias = null) : int
+	public function getIdByAlias(string $categoryAlias = null) : ?int
 	{
-		return Db::forTablePrefix('categories')->select('id')->where('alias', $categoryAlias)->findOne()->id | 0;
+		return Db::forTablePrefix('categories')->select('id')->where('alias', $categoryAlias)->findOne()->id;
 	}
 
 	/**
@@ -35,12 +35,12 @@ class Category
 	 *
 	 * @since 3.3.0
 	 *
-	 * @param int $categoryId
+	 * @param int $categoryId identifier of the category
 	 *
 	 * @return string|null
 	 */
 
-	public function getRouteById(int $categoryId = null)
+	public function getRouteById(int $categoryId = null) : ?string
 	{
 		$route = null;
 		$categoryArray = Db::forTablePrefix('categories')
@@ -58,6 +58,19 @@ class Category
 			$route = implode('/', array_filter($categoryArray[0]));
 		}
 		return $route;
+	}
+
+	/**
+	 * get all
+	 *
+	 * @since 3.3.0
+	 *
+	 * @return object
+	 */
+
+	public function getAll()
+	{
+		return Db::forTablePrefix('categories')->findMany();
 	}
 
 	/**

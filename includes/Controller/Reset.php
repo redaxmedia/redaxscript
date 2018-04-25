@@ -210,7 +210,7 @@ class Reset extends ControllerAbstract
 		$settingModel = new Model\Setting();
 		$urlReset = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . 'login';
 
-		/* html elements */
+		/* html element */
 
 		$linkElement = new Element();
 		$linkElement

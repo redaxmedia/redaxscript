@@ -3,25 +3,29 @@ namespace Redaxscript;
 
 $registry = Registry::getInstance();
 $language = Language::getInstance();
-$listElement = new Html\Element();
-$listElement->init('ul',
-[
-	'class' => $admin ? 'rs-admin-js-list-tab rs-admin-list-tab' : 'rs-js-list-tab rs-list-tab'
-]);
-$boxElement = new Html\Element();
-$boxElement->init('div',
-[
-	'class' => $admin ? 'rs-admin-js-box-tab rs-admin-box-tab' : 'rs-js-box-tab rs-box-tab'
-]);
-$itemElement = new Html\Element();
-$itemElement->init('li');
-$linkElement = new Html\Element();
-$linkElement->init('a');
-$setElement = new Html\Element();
-$setElement->init('div',
-[
-	'class' => $admin ? 'rs-admin-js-set-tab rs-admin-set-tab' : 'rs-js-set-tab rs-set-tab'
-]);
+$element = new Html\Element();
+$setElement = $element
+	->copy()
+	->init('div',
+	[
+		'class' => $admin ? 'rs-admin-js-set-tab rs-admin-set-tab' : 'rs-js-set-tab rs-set-tab'
+	]);
+$boxElement = $element
+	->copy()
+	->init('div',
+	[
+		'class' => $admin ? 'rs-admin-js-box-tab rs-admin-box-tab' : 'rs-js-box-tab rs-box-tab'
+	]);
+$listElement = $element
+	->copy()
+	->init('ul',
+	[
+		'class' => $admin ? 'rs-admin-js-list-tab rs-admin-list-tab' : 'rs-js-list-tab rs-list-tab'
+	]);
+
+$itemElement = $element->copy()->init('li');
+$linkElement = $element->copy()->init('a');
+
 $outputItem = null;
 $outputBox = null;
 ?>

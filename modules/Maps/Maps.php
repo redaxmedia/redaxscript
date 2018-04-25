@@ -28,7 +28,7 @@ class Maps extends Config
 		'alias' => 'Maps',
 		'author' => 'Redaxmedia',
 		'description' => 'Integrate Google Maps',
-		'version' => '3.3.2'
+		'version' => '4.0.0'
 	];
 
 	/**

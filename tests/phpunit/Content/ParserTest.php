@@ -2,8 +2,7 @@
 namespace Redaxscript\Tests\Content;
 
 use Redaxscript\Content;
-use Redaxscript\Module\Hook;
-use Redaxscript\Modules\TestDummy;
+use Redaxscript\Module;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -38,8 +37,7 @@ class ParserTest extends TestCaseAbstract
 		$installer->init();
 		$installer->rawCreate();
 		$installer->insertSettings($optionArray);
-		$testDummy = new TestDummy\TestDummy($this->_registry, $this->_request, $this->_language, $this->_config);
-		$testDummy->install();
+		$this->installTestDummy();
 	}
 
 	/**
@@ -50,11 +48,8 @@ class ParserTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$testDummy = new TestDummy\TestDummy($this->_registry, $this->_request, $this->_language, $this->_config);
-		$testDummy->uninstall();
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
+		$this->uninstallTestDummy();
+		$this->dropDatabase();
 	}
 
 	/**
@@ -206,8 +201,8 @@ class ParserTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		Hook::construct($this->_registry, $this->_request, $this->_language, $this->_config);
-		Hook::init();
+		Module\Hook::construct($this->_registry, $this->_request, $this->_language, $this->_config);
+		Module\Hook::init();
 		$parser = new Content\Parser($this->_registry, $this->_request, $this->_language, $this->_config);
 		$parser->process($content);
 

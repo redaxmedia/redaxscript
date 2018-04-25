@@ -1,27 +1,27 @@
 {
 	"name": "redaxscript/redaxscript",
 	"description": "A modern, ultra lightweight and rocket fast Content Management System",
-	"version": "3.3.2",
+	"version": "4.0.0",
 	"homepage": "https://redaxscript.com",
 	"license": "GPL-3.0-only",
 	"require":
 	{
-		"j4mie/idiorm": "v1.5.4",
-		"php": "^7.0"
+		"j4mie/idiorm": "v1.5.5",
+		"php": "^7.1"
 	},
 	"require-dev":
 	{
-		"brianium/paratest": "1.0.1",
-		"drupal/coder": "8.2.12",
+		"brianium/paratest": "dev-master",
 		"fbourigault/composer-mkdir": "2.0.0",
-		"johnkary/phpunit-speedtrap": "2.0.0-BETA1",
+		"johnkary/phpunit-speedtrap": "3.0.0",
 		"mikey179/vfsStream": "1.6.5",
-		"phpstan/phpstan": "0.9.1",
-		"phpunit/phpunit": "6.5.5",
-		"satooshi/php-coveralls": "1.0.1",
-		"sebastian/phpcpd": "3.0.1",
+		"phpstan/phpstan": "0.9.2",
+		"phpunit/phpunit": "7.0.2",
+		"redaxmedia/php-coding-standard": "1.0.0",
+		"satooshi/php-coveralls": "2.0.0",
+		"sebastian/phpcpd": "4.0.0",
 		"slowprog/composer-copy-file": "0.2.1",
-		"squizlabs/php_codesniffer": "2.9.1"
+		"squizlabs/php_codesniffer": "3.2.3"
 	},
 	"scripts":
 	{
@@ -39,8 +39,7 @@
 	{
 		"copy-file":
 		{
-			"vendor/j4mie/idiorm/idiorm.php": "libraries/ORM.php",
-			"vendor/drupal/coder/coder_sniffer/Drupal": "vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Drupal"
+			"vendor/j4mie/idiorm/idiorm.php": "libraries/ORM.php"
 		},
 		"fbourigault-composer-mkdir":
 		[

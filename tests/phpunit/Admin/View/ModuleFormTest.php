@@ -2,7 +2,6 @@
 namespace Redaxscript\Tests\Admin\View;
 
 use Redaxscript\Admin;
-use Redaxscript\Modules\TestDummy;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -26,11 +25,8 @@ class ModuleFormTest extends TestCaseAbstract
 	public function setUp()
 	{
 		parent::setUp();
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawCreate();
-		$testDummy = new TestDummy\TestDummy($this->_registry, $this->_request, $this->_language, $this->_config);
-		$testDummy->install();
+		$this->createDatabase();
+		$this->installTestDummy();
 	}
 
 	/**
@@ -41,11 +37,8 @@ class ModuleFormTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$testDummy = new TestDummy\TestDummy($this->_registry, $this->_request, $this->_language, $this->_config);
-		$testDummy->uninstall();
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
+		$this->uninstallTestDummy();
+		$this->dropDatabase();
 	}
 
 

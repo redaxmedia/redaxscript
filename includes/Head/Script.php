@@ -171,11 +171,11 @@ class Script extends HeadAbstract
 	 * @return string|null
 	 */
 
-	public function render()
+	public function render() : ?string
 	{
 		$output = null;
 
-		/* html elements */
+		/* html element */
 
 		$scriptElement = new Html\Element();
 		$scriptElement->init('script');
@@ -183,8 +183,6 @@ class Script extends HeadAbstract
 		/* handle collection */
 
 		$collectionArray = $this->_getCollectionArray();
-		$collectionKeys = array_keys($collectionArray);
-		$lastKey = end($collectionKeys);
 
 		/* process collection */
 
@@ -193,10 +191,6 @@ class Script extends HeadAbstract
 			$output .= $scriptElement
 				->copy()
 				->attr($attribute);
-			if ($key !== $lastKey || self::$_inline)
-			{
-				$output .= PHP_EOL;
-			}
 		}
 
 		/* collect inline */

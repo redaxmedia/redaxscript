@@ -30,7 +30,7 @@ class Preview extends Module\Module
 		'alias' => 'Preview',
 		'author' => 'Redaxmedia',
 		'description' => 'Preview template elements',
-		'version' => '3.3.2'
+		'version' => '4.0.0'
 	];
 
 	/**
@@ -126,25 +126,26 @@ class Preview extends Module\Module
 		$secondParameter = $this->_registry->get('secondParameter');
 		$parameterRoute = $this->_registry->get('parameterRoute');
 
-		/* html elements */
+		/* html element */
 
-		$linkElement = new Html\Element();
-		$linkElement
+		$element = new Html\Element();
+		$linkElement = $element
+			->copy()
 			->init('a',
 			[
 				'href' => $secondParameter === $alias ? $parameterRoute . 'preview#' . $alias : $parameterRoute . 'preview/' . $alias
 			])
 			->text($secondParameter === $alias ? $this->_language->get('back') : $alias);
-		$titleElement = new Html\Element();
-		$titleElement
+		$titleElement = $element
+			->copy()
 			->init('h2',
 			[
 				'class' => 'rs-title-preview',
 				'id' => $alias
 			])
 			->html($linkElement);
-		$boxElement = new Html\Element();
-		$boxElement
+		$boxElement = $element
+			->copy()
 			->init('div',
 			[
 				'class' => 'rs-is-preview rs-fn-clearfix'

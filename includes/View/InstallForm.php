@@ -19,18 +19,18 @@ class InstallForm extends ViewAbstract
 	/**
 	 * render the view
 	 *
-	 * @param array $optionArray options of the form
+	 * @param array $installArray
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return string
 	 */
 
-	public function render(array $optionArray = []) : string
+	public function render(array $installArray = []) : string
 	{
 		$output = Module\Hook::trigger('installFormStart');
 
-		/* html elements */
+		/* html element */
 
 		$titleElement = new Html\Element();
 		$titleElement
@@ -75,7 +75,7 @@ class InstallForm extends ViewAbstract
 				])
 				->select($this->_registry->get('driverArray'),
 				[
-					$optionArray['dbType']
+					$installArray['dbType']
 				],
 				[
 					'id' => 'db-type',
@@ -98,7 +98,7 @@ class InstallForm extends ViewAbstract
 				'id' => 'db-host',
 				'name' => 'db-host',
 				'required' => 'required',
-				'value' => $optionArray['dbHost']
+				'value' => $installArray['dbHost']
 			])
 			->append('</li><li>')
 			->label($this->_language->get('name'),
@@ -110,7 +110,7 @@ class InstallForm extends ViewAbstract
 				'id' => 'db-name',
 				'name' => 'db-name',
 				'required' => 'required',
-				'value' => $optionArray['dbName']
+				'value' => $installArray['dbName']
 			])
 			->append('</li><li>')
 			->label($this->_language->get('user'),
@@ -122,7 +122,7 @@ class InstallForm extends ViewAbstract
 				'id' => 'db-user',
 				'name' => 'db-user',
 				'required' => 'required',
-				'value' => $optionArray['dbUser']
+				'value' => $installArray['dbUser']
 			])
 			->append('</li><li>')
 			->label($this->_language->get('password'),
@@ -133,7 +133,7 @@ class InstallForm extends ViewAbstract
 			[
 				'id' => 'db-password',
 				'name' => 'db-password',
-				'value' => $optionArray['dbPassword']
+				'value' => $installArray['dbPassword']
 			])
 			->append('</li><li>')
 			->label($this->_language->get('prefix'),
@@ -144,7 +144,7 @@ class InstallForm extends ViewAbstract
 			[
 				'id' => 'db-prefix',
 				'name' => 'db-prefix',
-				'value' => $optionArray['dbPrefix']
+				'value' => $installArray['dbPrefix']
 			])
 			->append('</li></ul></fieldset>')
 
@@ -162,7 +162,7 @@ class InstallForm extends ViewAbstract
 				'id' => 'admin-name',
 				'name' => 'admin-name',
 				'required' => 'required',
-				'value' => $optionArray['adminName']
+				'value' => $installArray['adminName']
 			])
 			->append('</li><li>')
 			->label($this->_language->get('user'),
@@ -175,7 +175,7 @@ class InstallForm extends ViewAbstract
 				'name' => 'admin-user',
 				'pattern' => '[a-zA-Z0-9]{1,30}',
 				'required' => 'required',
-				'value' => $optionArray['adminUser']
+				'value' => $installArray['adminUser']
 			])
 			->append('</li><li>')
 			->label($this->_language->get('password'),
@@ -188,7 +188,7 @@ class InstallForm extends ViewAbstract
 				'name' => 'admin-password',
 				'pattern' => '[a-zA-Z0-9]{1,30}',
 				'required' => 'required',
-				'value' => $optionArray['adminPassword']
+				'value' => $installArray['adminPassword']
 			])
 			->append('</li><li>')
 			->label($this->_language->get('email'),
@@ -200,7 +200,7 @@ class InstallForm extends ViewAbstract
 				'id' => 'admin-email',
 				'name' => 'admin-email',
 				'required' => 'required',
-				'value' => $optionArray['adminEmail']
+				'value' => $installArray['adminEmail']
 			])
 			->append('</li></ul></fieldset>')
 			->hidden(

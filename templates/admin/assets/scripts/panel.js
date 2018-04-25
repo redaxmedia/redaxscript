@@ -25,7 +25,6 @@
 		return this.each(function ()
 		{
 			var panelList = $(this),
-				panelItem = panelList.children('li'),
 				panelItemAll = panelList.find('li'),
 				panelChildren = panelItemAll.children('ul'),
 				panelLink = panelList.find('a'),
@@ -40,11 +39,11 @@
 					thatChildren = thatItem.children('ul'),
 					thatClosest = thatItem.closest(options.element.panelItem),
 					thatRelated = thatClosest.find('ul'),
-					panelFloat = panelItem.css('float');
+					panelDisplay = panelList.css('display');
 
 				/* exception for narrow panel */
 
-				if (panelFloat === 'none')
+				if (panelDisplay === 'block')
 				{
 					/* premature teminate mouseenter */
 

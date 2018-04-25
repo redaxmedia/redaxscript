@@ -20,13 +20,13 @@ class Group
 	 *
 	 * @since 3.3.0
 	 *
-	 * @param string $groupAlias
+	 * @param string $groupAlias alias of the group
 	 *
-	 * @return int
+	 * @return int|null
 	 */
 
-	public function getIdByAlias(string $groupAlias = null) : int
+	public function getIdByAlias(string $groupAlias = null) : ?int
 	{
-		return Db::forTablePrefix('groups')->select('id')->where('alias', $groupAlias)->findOne()->id | 0;
+		return Db::forTablePrefix('groups')->select('id')->where('alias', $groupAlias)->findOne()->id;
 	}
 }

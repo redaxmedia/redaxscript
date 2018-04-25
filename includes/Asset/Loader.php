@@ -132,6 +132,23 @@ class Loader
 
 		/* cache as needed */
 
+		$this->_handleCache($rewriteArray, $bundleArray, $restArray, $optionArray);
+		return $this;
+	}
+
+	/**
+	 * handle the cache
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param array $rewriteArray
+	 * @param array $bundleArray
+	 * @param array $restArray
+	 * @param array $optionArray
+	 */
+
+	public function _handleCache(array $rewriteArray = [], array $bundleArray = [], array $restArray = [], array $optionArray = [])
+	{
 		$cacheFilesystem = new Filesystem\Cache();
 		$cacheFilesystem->init($optionArray['directory'], $optionArray['extension']);
 
@@ -158,7 +175,6 @@ class Loader
 			$content = $this->_getContent($bundleArray, $rewriteArray);
 			$cacheFilesystem->store($bundleArray, $content);
 		}
-		return $this;
 	}
 
 	/**

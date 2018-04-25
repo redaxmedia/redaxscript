@@ -12,6 +12,6 @@
 			}
 		],
 		"assets/scripts/two.js",
-		"<script src=\"assets/scripts/one.js\"></script>\n<script src=\"assets/scripts/three.js\"></script>"
+		"<script src=\"assets/scripts/one.js\"></script><script src=\"assets/scripts/three.js\"></script>"
 	]
 ]

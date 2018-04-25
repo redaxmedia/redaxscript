@@ -20,14 +20,14 @@ class Article
 	 *
 	 * @since 3.3.0
 	 *
-	 * @param string $articleAlias
+	 * @param string $articleAlias alias of the article
 	 *
-	 * @return int
+	 * @return int|null
 	 */
 
-	public function getIdByAlias(string $articleAlias = null) : int
+	public function getIdByAlias(string $articleAlias = null) : ?int
 	{
-		return Db::forTablePrefix('articles')->select('id')->where('alias', $articleAlias)->findOne()->id | 0;
+		return Db::forTablePrefix('articles')->select('id')->where('alias', $articleAlias)->findOne()->id;
 	}
 
 	/**
@@ -35,12 +35,12 @@ class Article
 	 *
 	 * @since 3.3.0
 	 *
-	 * @param int $articleId
+	 * @param int $articleId identifier of the article
 	 *
 	 * @return string|null
 	 */
 
-	public function getRouteById(int $articleId = null)
+	public function getRouteById(int $articleId = null) : ?string
 	{
 		$route = null;
 		$articleArray = Db::forTablePrefix('articles')

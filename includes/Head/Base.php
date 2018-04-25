@@ -61,11 +61,11 @@ class Base implements HeadInterface
 
 	public function render() : string
 	{
-		$titleElement = new Html\Element();
-		$titleElement->init('base',
+		$baseElement = new Html\Element();
+		$baseElement->init('base',
 		[
 			'href' => $this->_registry->get('root') . '/'
 		]);
-		return $titleElement->render();
+		return $baseElement->render();
 	}
 }

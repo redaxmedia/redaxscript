@@ -12,7 +12,7 @@ use Redaxscript\Module;
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category Admin
+ * @category View
  * @author Henry Ruhs
  */
 
@@ -34,14 +34,15 @@ class CategoryForm extends ViewAbstract implements ViewInterface
 		$category = Db::forTablePrefix('categories')->whereIdIs($categoryId)->findOne();
 		$helperOption = new Helper\Option($this->_language);
 
-		/* html elements */
+		/* html element */
 
 		$titleElement = new Html\Element();
-		$titleElement->init('h2',
-		[
-			'class' => 'rs-admin-title-content',
-		]);
-		$titleElement->text($category->title ? $category->title : $this->_language->get('category_new'));
+		$titleElement
+			->init('h2',
+			[
+				'class' => 'rs-admin-title-content',
+			])
+			->text($category->title ? $category->title : $this->_language->get('category_new'));
 		$formElement = new AdminForm($this->_registry, $this->_language);
 		$formElement->init(
 		[
@@ -309,17 +310,17 @@ class CategoryForm extends ViewAbstract implements ViewInterface
 	{
 		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
 
-		/* html elements */
+		/* html element */
 
-		$linkElement = new Html\Element();
-		$linkElement->init('a');
-		$itemElement = new Html\Element();
-		$itemElement->init('li');
-		$listElement = new Html\Element();
-		$listElement->init('ul',
-		[
-			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
-		]);
+		$element = new Html\Element();
+		$listElement = $element
+			->copy()
+			->init('ul',
+			[
+				'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
+			]);
+		$itemElement = $element->copy()->init('li');
+		$linkElement = $element->copy()->init('a');
 
 		/* collect item output */
 

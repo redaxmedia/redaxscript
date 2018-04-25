@@ -51,9 +51,7 @@ class MailerTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
+		$this->dropDatabase();
 	}
 
 	/**

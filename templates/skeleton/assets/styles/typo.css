@@ -1,19 +1,10 @@
 /**
  * @tableofcontents
  *
- * 1. tag styling
- * 2. link default
+ * 1. link default
  */
 
-/** @section 1. tag styling */
-
-a
-{
-	color: inherit;
-	text-decoration: none;
-}
-
-/** @section 2. link default */
+/** @section 1. link default */
 
 .rs-link-default
 {

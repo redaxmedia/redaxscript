@@ -1,15 +1,18 @@
 <?php
 namespace Redaxscript\Admin\Template;
 
+use Redaxscript\Admin\View\Helper;
+use Redaxscript\Language;
+use Redaxscript\Registry;
 use Redaxscript\Template\Tag as BaseTag;
 
 /**
  * parent class to provide admin template tags
  *
- * @since 3.0.0
+ * @since 4.0.0
  *
  * @package Redaxscript
- * @category Admin
+ * @category Template
  * @author Henry Ruhs
  */
 
@@ -18,15 +21,17 @@ class Tag extends BaseTag
 	/**
 	 * panel
 	 *
-	 * @since 3.0.0
+	 * @since 4.0.0
 	 *
-	 * @return string|null
+	 * @param array $optionArray options of the panel
 	 *
-	 * @codeCoverageIgnore
+	 * @return string
 	 */
 
-	public static function panel()
+	public static function panel(array $optionArray = []) : string
 	{
-		return self::_migrate('admin_panel_list');
+		$panel = new Helper\Panel(Registry::getInstance(), Language::getInstance());
+		$panel->init($optionArray);
+		return $panel->render();
 	}
 }

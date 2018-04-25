@@ -28,7 +28,7 @@ class Disqus extends Config
 		'alias' => 'Disqus',
 		'author' => 'Redaxmedia',
 		'description' => 'Replace comments with disqus',
-		'version' => '3.3.2'
+		'version' => '4.0.0'
 	];
 
 	/**
