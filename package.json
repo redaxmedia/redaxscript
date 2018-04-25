@@ -57,11 +57,11 @@
 	},
 	"scripts":
 	{
-		"phpunit-mssql": "DB_URL=mssql://sa:tPSCp0G0mZ@127.0.0.1/test grunt phpunit",
+		"phpunit-mssql": "DB_URL=mssql://sa:test@127.0.0.1/test grunt phpunit",
 		"phpunit-mysql": "DB_URL=mysql://root:test@127.0.0.1/test grunt phpunit",
 		"phpunit-pgsql": "DB_URL=postgres://postgres:test@127.0.0.1/test grunt phpunit",
 		"phpunit-sqlite": "DB_URL=sqlite://test.sqlite grunt phpunit",
-		"phpunit-mssql-docker": "DB_URL=mssql://sa:tPSCp0G0mZ@mssql/test grunt phpunit",
+		"phpunit-mssql-docker": "DB_URL=mssql://sa:test@mssql/test grunt phpunit",
 		"phpunit-mysql-docker": "DB_URL=mysql://root:test@mysql/test grunt phpunit",
 		"phpunit-pgsql-docker": "DB_URL=postgres://postgres:test@pgsql/test grunt phpunit",
 		"phpunit-sqlite-docker": "DB_URL=sqlite://test.sqlite grunt phpunit"
