@@ -31,11 +31,10 @@ class LoginForm extends ViewAbstract
 		$outputLegend = null;
 		$settingModel = new Model\Setting();
 
-		/* html element */
+		/* html elements */
 
-		$element = new Html\Element();
-		$titleElement = $element
-			->copy()
+		$titleElement = new Html\Element();
+		$titleElement
 			->init('h2',
 			[
 				'class' => 'rs-title-content'
@@ -43,12 +42,11 @@ class LoginForm extends ViewAbstract
 			->text($this->_language->get('login'));
 		if ($settingModel->get('recovery'))
 		{
-			$linkElement = $element
-				->copy()
-				->init('a',
-				[
-					'href' => $this->_registry->get('parameterRoute') . 'login/recover'
-				]);
+			$linkElement = new Html\Element();
+			$linkElement->init('a',
+			[
+				'href' => $this->_registry->get('parameterRoute') . 'login/recover'
+			]);
 			$outputLegend = $linkElement->text($this->_language->get('recovery_question') . $this->_language->get('question_mark'));
 		}
 		$formElement = new Html\Form($this->_registry, $this->_language);

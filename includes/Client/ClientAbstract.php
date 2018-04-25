@@ -28,7 +28,7 @@ abstract class ClientAbstract
 	/**
 	 * output of the client
 	 *
-	 * @var string
+	 * @var mixed
 	 */
 
 	protected $_output;

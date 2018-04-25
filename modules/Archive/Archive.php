@@ -29,7 +29,7 @@ class Archive extends Config
 		'alias' => 'Archive',
 		'author' => 'Redaxmedia',
 		'description' => 'Generate a archive tree',
-		'version' => '4.0.0'
+		'version' => '3.3.2'
 	];
 
 	/**
@@ -44,30 +44,28 @@ class Archive extends Config
 	{
 		$output = null;
 		$outputItem = null;
-		$error = null;
 		$articleModel = new Model\Article();
 
-		/* html element */
+		/* html elements */
 
-		$element = new Html\Element();
-		$titleElement = $element
-			->copy()
-			->init('h3',
-			[
-				'class' => $this->_configArray['className']['title']
-			]);
-		$listElement = $element
-			->copy()
-			->init('ul',
-			[
-				'class' => $this->_configArray['className']['list']
-			]);
-		$itemElement = $element->copy()->init('li');
-		$linkElement = $element->copy()->init('a');
+		$titleElement = new Html\Element();
+		$titleElement->init('h3',
+		[
+			'class' => $this->_configArray['className']['title']
+		]);
+		$linkElement = new Html\Element();
+		$linkElement->init('a');
+		$itemElement = new Html\Element();
+		$itemElement->init('li');
+		$listElement = new Html\Element();
+		$listElement->init('ul',
+		[
+			'class' => $this->_configArray['className']['list']
+		]);
 
 		/* query articles */
 
-		$monthArray = $this->_getMonthArrayByLanguage($this->_registry->get('language'));
+		$monthArray = $this->_getArticleByMonthArray();
 
 		/* process articles */
 
@@ -114,21 +112,19 @@ class Archive extends Config
 	}
 
 	/**
-	 * get month array by language
+	 * get article by month array
 	 *
 	 * @since 3.3.0
-	 *
-	 * @param string $language
 	 *
 	 * @return array
 	 */
 
-	protected function _getMonthArrayByLanguage(string $language = null) : array
+	protected function _getArticleByMonthArray() : array
 	{
 		$monthArray = [];
 		$articles = Db::forTablePrefix('articles')
 			->where('status', 1)
-			->whereLanguageIs($language)
+			->whereLanguageIs($this->_registry->get('language'))
 			->whereNull('access')
 			->orderByDesc('date')
 			->findMany();

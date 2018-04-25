@@ -1,21 +1,13 @@
 <?php
-namespace Redaxscript\View\Helper;
-
-use Redaxscript\Db;
-use Redaxscript\Html;
-use Redaxscript\Language;
-use Redaxscript\Module;
-use Redaxscript\Model;
-use Redaxscript\Registry;
-use Redaxscript\Validator;
+namespace Redaxscript;
 
 /**
- * helper class to create a breadcrumb navigation
+ * parent class to create a breadcrumb navigation
  *
  * @since 2.1.0
  *
  * @package Redaxscript
- * @category View
+ * @category Breadcrumb
  * @author Henry Ruhs
  * @author Gary Aylward
  */
@@ -137,17 +129,17 @@ class Breadcrumb
 	{
 		$output = Module\Hook::trigger('breadcrumbStart');
 
-		/* html element */
+		/* html elements */
 
-		$element = new Html\Element();
-		$listElement = $element
-			->copy()
-			->init('ul',
-			[
-				'class' => $this->_optionArray['className']['list']
-			]);
-		$itemElement = $element->copy()->init('li');
-		$linkElement = $element->copy()->init('a');
+		$listElement = new Html\Element();
+		$listElement->init('ul',
+		[
+			'class' => $this->_optionArray['className']['list']
+		]);
+		$itemElement = new Html\Element();
+		$itemElement->init('li');
+		$linkElement = new Html\Element();
+		$linkElement->init('a');
 
 		/* breadcrumb keys */
 

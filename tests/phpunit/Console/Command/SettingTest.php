@@ -46,7 +46,9 @@ class SettingTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$this->dropDatabase();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
 		$this->_request->setServer('argv', null);
 	}
 

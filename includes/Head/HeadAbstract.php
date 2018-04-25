@@ -56,10 +56,10 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return self
+	 * @return $this
 	 */
 
-	public function init(string $namespace = null) : self
+	public function init(string $namespace = null)
 	{
 		self::$_namespace = get_called_class();
 		if ($namespace)
@@ -77,10 +77,10 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	 * @param string|array $attribute key or array of attributes
 	 * @param string $value value of the attribute
 	 *
-	 * @return self
+	 * @return $this
 	 */
 
-	public function append($attribute = null, string $value = null) : self
+	public function append($attribute = null, string $value = null)
 	{
 		$collectionArray = $this->_getCollectionArray();
 		if (is_array($attribute))
@@ -106,10 +106,10 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	 * @param string|array $attribute key or array of attributes
 	 * @param string $value value of the attribute
 	 *
-	 * @return self
+	 * @return $this
 	 */
 
-	public function prepend($attribute = null, string $value = null) : self
+	public function prepend($attribute = null, string $value = null)
 	{
 		$collectionArray = $this->_getCollectionArray();
 		if (is_array($attribute))
@@ -135,10 +135,10 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	 * @param string $attribute name of attribute
 	 * @param string $value value of the attribute
 	 *
-	 * @return self
+	 * @return $this
 	 */
 
-	public function remove(string $attribute = null, string $value = null) : self
+	public function remove(string $attribute = null, string $value = null)
 	{
 		$collectionArray = $this->_getCollectionArray();
 		if (is_array($collectionArray))
@@ -160,7 +160,7 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return self
+	 * @return $this
 	 */
 
 	public function clear()

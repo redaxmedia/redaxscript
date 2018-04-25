@@ -18,7 +18,7 @@ class Alias implements FilterInterface
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string $alias content and user alias
+	 * @param string $alias alias for routes and users
 	 *
 	 * @return string
 	 */

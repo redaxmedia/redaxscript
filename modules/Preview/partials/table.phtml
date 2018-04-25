@@ -1,70 +1,74 @@
 <?php
 namespace Redaxscript;
 
+$registry = Registry::getInstance();
 $language = Language::getInstance();
+$tableElement = new Html\Element();
+$tableElement->init('table',
+[
+	'class' => $admin ? 'rs-admin-table-default' : 'rs-table-default'
+]);
+$theadElement = new Html\Element();
+$theadElement->init('thead');
+$tfootElement = new Html\Element();
+$tfootElement->init('tfoot');
+$tbodyElement = new Html\Element();
+$tbodyElement->init('tbody');
+$captionElement = new Html\Element();
+$captionElement->init('caption');
+$thElement = new Html\Element();
+$thElement->init('th');
+$tdElement = new Html\Element();
+$tdElement->init('td');
 $outputHead = null;
-$outputBody = null;
 $outputFoot = null;
-$element = new Html\Element();
-$wrapperElement = $element
-	->copy()
-	->init('div',
-	[
-		'class' => $admin ? 'rs-admin-wrapper-table' : 'rs-wrapper-table'
-	]);
-$tableElement = $element
-	->copy()
-	->init('table',
-	[
-		'class' => $admin ? 'rs-admin-table-default' : 'rs-table-default'
-	]);
-$theadElement = $element->copy()->init('thead');
-$tbodyElement = $element->copy()->init('tbody');
-$tfootElement = $element->copy()->init('tfoot');
-$captionElement = $element
-	->copy()
-	->init('caption')
-	->text($language->get('preview', '_preview'));
-$trElement = $element->copy()->init('tr');
-$thElement = $element->copy()->init('th');
-$tdElement = $element->copy()->init('td');
+$outputBody = null;
 ?>
 
 <!-- content -->
 
 <?php for ($i = 1; $i < 6; $i++): ?>
 
-	<?php $outputHead .= $thElement->text($language->get($i, '_number')); ?>
-	<?php $outputBody .= $tdElement->text($language->get('preview', '_preview')); ?>
-	<?php $outputFoot .= $tdElement->text($language->get($i, '_number')); ?>
+	<?php $outputHead .= $thElement
+		->copy()
+		->addClass($admin ? 'rs-admin-is-size-1of5' : 'rs-is-size1of5')
+		->text($language->get($i, '_number')); ?>
+
+	<?php $outputFoot .= $tdElement
+		->text($language->get($i, '_number')); ?>
+
+	<?php $outputBody .= $tdElement
+		->text($language->get('preview', '_preview')); ?>
 
 <?php endfor; ?>
 
-<?php $outputHead = $theadElement->html(
-	$trElement->html($outputHead)
-);
-?>
-
-<?php $outputBody = $tbodyElement->html(
-	$trElement->html($outputBody) .
-	$trElement->html($outputBody) .
-	$trElement->html($outputBody)
-);
-?>
-
-<?php $outputFoot = $tfootElement->html(
-	$trElement->html($outputFoot)
-);
-?>
-
 <!-- table -->
 
-<?php echo $wrapperElement->copy()->html(
-	$tableElement->html($outputHead . $outputBody .	$outputFoot)
-); ?>
+<div class="<?php echo $admin ? 'rs-admin-wrapper-table' : 'rs-wrapper-table'; ?>">
+
+	<?php echo $tableElement->html(
+		$theadElement->html('<tr>' . $outputHead . '</tr>') .
+		$tbodyElement->html(
+			'<tr>' . $outputBody . '</tr>' .
+			'<tr>' . $outputBody . '</tr>' .
+			'<tr>' . $outputBody . '</tr>'
+		) .
+        $tfootElement->html('<tr>' . $outputFoot . '</tr>')
+	); ?>
+
+</div>
 
 <!-- table with caption -->
 
-<?php echo $wrapperElement->copy()->html(
-	$tableElement->html($captionElement . $outputBody)
-); ?>
+<div class="<?php echo $admin ? 'rs-admin-wrapper-table' : 'rs-wrapper-table'; ?>">
+
+	<?php echo $tableElement->html(
+		$captionElement->text('Caption') .
+		$tbodyElement->html(
+			'<tr>' . $outputBody . '</tr>' .
+			'<tr>' . $outputBody . '</tr>' .
+			'<tr>' . $outputBody . '</tr>'
+		)
+	); ?>
+
+</div>

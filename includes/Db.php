@@ -16,7 +16,8 @@ use PDOException;
  *
  * @method $this _addJoinSource(string $operator, string $table, string|array $constraint, string $tableAlias)
  * @method $this _addOrderBy(string $column, string $value)
- * @method $this _addWhere(string $clause, string|array $value)
+ * @method $this _addWhere(string $clause, array $valueArray)
+ * @method _setupDb(string $connection)
  */
 
 class Db extends ORM
@@ -131,6 +132,23 @@ class Db extends ORM
 	}
 
 	/**
+	 * raw instance helper
+	 *
+	 * @since 2.4.0
+	 *
+	 * @param string $table name of the table
+	 * @param string $connection which connection to use
+	 *
+	 * @return self
+	 */
+
+	public static function rawInstance(string $table = null, string $connection = self::DEFAULT_CONNECTION) : self
+	{
+		self::_setupDb($connection);
+		return new self($table);
+	}
+
+	/**
 	 * count table with prefix
 	 *
 	 * @since 3.1.0
@@ -191,6 +209,7 @@ class Db extends ORM
 
 	public static function forTablePrefix(string $table = null, string $connection = self::DEFAULT_CONNECTION) : self
 	{
+		self::_setupDb($connection);
 		return new self(self::$_config->get('dbPrefix') . $table, [], $connection);
 	}
 
@@ -224,7 +243,7 @@ class Db extends ORM
 
 	public function whereLikeMany(array $columnArray = [], array $likeArray = []) : self
 	{
-		return $this->_addWhere('(' . implode($columnArray, ' LIKE ? OR ') . ' LIKE ?)', $likeArray);
+		return $this->_addWhere('(' . implode($columnArray, ' LIKE ? OR ') . ' LIKE ? )', $likeArray);
 	}
 
 	/**
@@ -239,7 +258,30 @@ class Db extends ORM
 
 	public function whereLanguageIs(string $language = null) : self
 	{
-		return $this->_addWhere('(language = ? OR language IS NULL)', $language);
+		return $this->_addWhere('(language = \'' . $language . '\' OR language IS NULL)');
+	}
+
+	/**
+	 * find a flat array
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $key key of the item
+	 *
+	 * @return array
+	 */
+
+	public function findFlatArray(string $key = 'id') : array
+	{
+		$flatArray = [];
+		foreach ($this->findArray() as $valueArray)
+		{
+			if (is_array($valueArray) && array_key_exists($key, $valueArray))
+			{
+				$flatArray[] = $valueArray[$key];
+			}
+		}
+		return $flatArray;
 	}
 
 	/**

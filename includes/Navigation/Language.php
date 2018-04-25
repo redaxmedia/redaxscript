@@ -45,17 +45,17 @@ class Language extends NavigationAbstract
 		$output = Module\Hook::trigger('navigationLanguageStart');
 		$outputItem = null;
 
-		/* html element */
+		/* html elements */
 
-		$element = new Html\Element();
-		$listElement = $element
-			->copy()
-			->init('ul',
-			[
-				'class' => $this->_optionArray['className']['list']
-			]);
-		$itemElement = $element->copy()->init('li');
-		$linkElement = $element->copy()->init('a');
+		$listElement = new Html\Element();
+		$listElement->init('ul',
+		[
+			'class' => $this->_optionArray['className']['list']
+		]);
+		$itemElement = new Html\Element();
+		$itemElement->init('li');
+		$linkElement = new Html\Element();
+		$linkElement->init('a');
 
 		/* languages directory */
 

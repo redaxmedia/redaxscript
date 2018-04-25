@@ -46,6 +46,11 @@
 		margin-left: 0.125rem;
 	}
 
+	& a
+	{
+		color: inherit;
+	}
+
 	& .rs-item-active
 	{
 		background: gray(200);

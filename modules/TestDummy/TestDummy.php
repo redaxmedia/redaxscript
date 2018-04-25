@@ -27,38 +27,20 @@ class TestDummy extends Module\Notification
 		'alias' => 'TestDummy',
 		'author' => 'Redaxmedia',
 		'description' => 'Test Dummy',
-		'version' => '4.0.0'
+		'version' => '3.3.2'
 	];
 
 	/**
-	 * adminNotification
+	 * adminPanelNotification
 	 *
 	 * @since 3.1.0
 	 *
 	 * @return array|bool
 	 */
 
-	public function adminNotification()
+	public function adminPanelNotification()
 	{
-		$notificationArray =
-		[
-			'success' =>
-			[
-				'text' => 'Success',
-				'attr' =>
-				[
-					'href' => 'http://localhost',
-					'target' => '_blank'
-				]
-			],
-			'warning' => 'Warning',
-			'error' => 'Error',
-			'info' => 'Info'
-		];
-		foreach ($notificationArray as $key => $message)
-		{
-			$this->setNotification($key, $message);
-		}
+		$this->setNotification('info', 'Test Dummy');
 		return $this->getNotification();
 	}
 

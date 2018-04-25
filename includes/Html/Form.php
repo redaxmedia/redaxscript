@@ -609,7 +609,7 @@ class Form extends HtmlAbstract
 	 * @return string|null
 	 */
 
-	protected function _createOption(array $optionArray = [], array $selectArray = []) : ?string
+	protected function _createOption(array $optionArray = [], array $selectArray = [])
 	{
 		$output = null;
 		$optionElement = new Element();

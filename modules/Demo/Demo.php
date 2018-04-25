@@ -30,7 +30,7 @@ class Demo extends Config
 		'alias' => 'Demo',
 		'author' => 'Redaxmedia',
 		'description' => 'Enable demo login',
-		'version' => '4.0.0'
+		'version' => '3.3.2'
 	];
 
 	/**
@@ -76,14 +76,14 @@ class Demo extends Config
 	}
 
 	/**
-	 * adminNotification
+	 * adminPanelNotification
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array|bool
 	 */
 
-	public function adminNotification()
+	public function adminPanelNotification()
 	{
 		$auth = new Auth($this->_request);
 		$auth->init();

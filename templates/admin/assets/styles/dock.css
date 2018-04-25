@@ -14,7 +14,6 @@
 {
 	background: gray(30);
 	color: gray(185);
-	display: flex;
 	font: bold 0.875rem var(--rs-admin-font-primary);
 }
 
@@ -23,7 +22,7 @@
 .rs-admin-link-dock
 {
 	box-sizing: border-box;
-	flex: 1;
+	float: left;
 	line-height: 3.5em;
 	overflow: hidden;
 	padding: 0 1em;
@@ -32,6 +31,7 @@
 	text-overflow: ellipsis;
 	text-transform: uppercase;
 	white-space: nowrap;
+	width: 33.33%;
 
 	&:hover
 	{

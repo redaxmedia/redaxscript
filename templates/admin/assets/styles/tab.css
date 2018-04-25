@@ -36,6 +36,11 @@
 		margin-left: 0.125rem;
 	}
 
+	& a
+	{
+		color: inherit;
+	}
+
 	& .rs-admin-item-active
 	{
 		background: gray(230);

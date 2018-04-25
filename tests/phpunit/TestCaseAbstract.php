@@ -7,7 +7,6 @@ use Redaxscript\Db;
 use Redaxscript\Installer;
 use Redaxscript\Language;
 use Redaxscript\Model;
-use Redaxscript\Modules\TestDummy;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 use ReflectionClass;
@@ -85,7 +84,7 @@ abstract class TestCaseAbstract extends PHPUnit\Framework\TestCase
 	}
 
 	/**
-	 * settingFactory
+	 * installerFactory
 	 *
 	 * @since 3.3.0
 	 *
@@ -95,60 +94,6 @@ abstract class TestCaseAbstract extends PHPUnit\Framework\TestCase
 	public function settingFactory() : Model\Setting
 	{
 		return new Model\Setting();
-	}
-
-	/**
-	 * createDatabase
-	 *
-	 * @since 4.0.0
-	 */
-
-	public function createDatabase()
-	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawCreate();
-	}
-
-	/**
-	 * dropDatabase
-	 *
-	 * @since 4.0.0
-	 */
-
-	public function dropDatabase()
-	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * installTestDummy
-	 *
-	 * @since 4.0.0
-	 */
-
-	public function installTestDummy()
-	{
-		$testDummy = new TestDummy\TestDummy($this->_registry, $this->_request, $this->_language, $this->_config);
-		$testDummy->install();
-	}
-
-	/**
-	 * uninstallTestDummy
-	 *
-	 * @since 4.0.0
-	 */
-
-	public function uninstallTestDummy()
-	{
-		$testDummy = new TestDummy\TestDummy($this->_registry, $this->_request, $this->_language, $this->_config);
-		$testDummy->clearNotification('success');
-		$testDummy->clearNotification('warning');
-		$testDummy->clearNotification('error');
-		$testDummy->clearNotification('info');
-		$testDummy->uninstall();
 	}
 
 	/**

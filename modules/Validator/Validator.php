@@ -27,19 +27,19 @@ class Validator extends Config
 		'alias' => 'Validator',
 		'author' => 'Redaxmedia',
 		'description' => 'HTML validator for developers',
-		'version' => '4.0.0',
+		'version' => '3.3.2',
 		'access' => '1'
 	];
 
 	/**
-	 * adminNotification
+	 * adminPanelNotification
 	 *
 	 * @since 3.0.1
 	 *
 	 * @return array|bool
 	 */
 
-	public function adminNotification()
+	public function adminPanelNotification()
 	{
 		if ($this->_registry->get('firstParameter') !== 'admin')
 		{

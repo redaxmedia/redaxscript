@@ -12,10 +12,16 @@
 {
 	border-radius: 0.125em;
 	box-sizing: border-box;
+	cursor: pointer;
 	display: inline-block;
 	font: bold 1em var(--rs-admin-font-secondary);
 	line-height: 2.5em;
 	padding: 0 1em;
+
+	&[disabled]
+	{
+		pointer-events: none;
+	}
 }
 
 /** @section 2. query */

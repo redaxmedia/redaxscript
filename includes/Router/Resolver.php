@@ -23,6 +23,9 @@ class Resolver extends Parameter
 	[
 		'view' =>
 		[
+			'up',
+			'down',
+			'sort',
 			'enable',
 			'disabled',
 			'publish',
@@ -41,7 +44,7 @@ class Resolver extends Parameter
 	 * @return string|null
 	 */
 
-	public function getLite() : ?string
+	public function getLite()
 	{
 		return $this->_getRoute('lite');
 	}
@@ -54,7 +57,7 @@ class Resolver extends Parameter
 	 * @return string|null
 	 */
 
-	public function getFull() : ?string
+	public function getFull()
 	{
 		return $this->_getRoute('full');
 	}
@@ -69,7 +72,7 @@ class Resolver extends Parameter
 	 * @return string|null
 	 */
 
-	protected function _getRoute(string $type = 'lite') : ?string
+	protected function _getRoute(string $type = 'lite')
 	{
 		$output = null;
 		$adminParameter = $this->getAdmin();

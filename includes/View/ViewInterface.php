@@ -17,6 +17,8 @@ interface ViewInterface
 	 * render the view
 	 *
 	 * @since 3.0.0
+	 *
+	 * @return string
 	 */
 
 	public function render();

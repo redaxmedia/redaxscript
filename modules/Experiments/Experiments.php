@@ -27,7 +27,7 @@ class Experiments extends Config
 		'alias' => 'Experiments',
 		'author' => 'Redaxmedia',
 		'description' => 'Integrate Google Experiments',
-		'version' => '4.0.0'
+		'version' => '3.3.2'
 	];
 
 	/**

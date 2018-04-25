@@ -45,7 +45,7 @@ class Module
 	 *
 	 * @since 3.3.0
 	 *
-	 * @param string $moduleAlias alias of the module
+	 * @param string $moduleAlias
 	 *
 	 * @return bool
 	 */

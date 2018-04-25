@@ -6,12 +6,12 @@ use Redaxscript\Filesystem;
 use Redaxscript\Language;
 
 /**
- * helper class to create various options
+ * helper class to provide various options
  *
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category View
+ * @category Admin
  * @author Henry Ruhs
  */
 

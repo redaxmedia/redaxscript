@@ -30,7 +30,7 @@ class RegisterForm extends ViewAbstract
 		$output = Module\Hook::trigger('registerFormStart');
 		$settingModel = new Model\Setting();
 
-		/* html element */
+		/* html elements */
 
 		$titleElement = new Html\Element();
 		$titleElement

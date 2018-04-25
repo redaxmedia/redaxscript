@@ -1,9 +1,8 @@
 <?php
-namespace Redaxscript\Tests\View\Helper;
+namespace Redaxscript\Tests;
 
+use Redaxscript\Breadcrumb;
 use Redaxscript\Db;
-use Redaxscript\Tests\TestCaseAbstract;
-use Redaxscript\View\Helper\Breadcrumb;
 
 /**
  * BreadcrumbTest
@@ -83,7 +82,9 @@ class BreadcrumbTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$this->dropDatabase();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
 	}
 
 	/**
@@ -96,7 +97,7 @@ class BreadcrumbTest extends TestCaseAbstract
 
 	public function providerGetArray() : array
 	{
-		return $this->getProvider('tests/provider/View/Helper/breadcrumb_get_array.json');
+		return $this->getProvider('tests/provider/breadcrumb_get_array.json');
 	}
 
 	/**
@@ -109,7 +110,7 @@ class BreadcrumbTest extends TestCaseAbstract
 
 	public function providerRender() : array
 	{
-		return $this->getProvider('tests/provider/View/Helper/breadcrumb_render.json');
+		return $this->getProvider('tests/provider/breadcrumb_render.json');
 	}
 
 	/**

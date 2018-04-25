@@ -191,7 +191,7 @@ class Recover extends ControllerAbstract
 		$settingModel = new Model\Setting();
 		$urlReset = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . 'login/reset/' . sha1($mailArray['password']) . '/' . $mailArray['id'];
 
-		/* html element */
+		/* html elements */
 
 		$linkElement = new Html\Element();
 		$linkElement

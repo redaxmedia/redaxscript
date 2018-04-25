@@ -32,7 +32,7 @@ class Contact extends Module\Module
 		'alias' => 'Contact',
 		'author' => 'Redaxmedia',
 		'description' => 'Simple contact form',
-		'version' => '4.0.0'
+		'version' => '3.3.2'
 	];
 
 	/**
@@ -321,19 +321,20 @@ class Contact extends Module\Module
 	{
 		$settingModel = new Model\Setting();
 
-		/* html element */
+		/* html elements */
 
-		$element = new Html\Element();
-		$linkEmail = $element
-			->copy()
-			->init('a',
+		$linkElement = new Html\Element();
+		$linkElement->init('a');
+		$linkEmail = $linkElement->copy();
+		$linkEmail
+			->attr(
 			[
 				'href' => 'mailto:' . $mailArray['email']
 			])
 			->text($mailArray['email']);
-		$linkUrl = $element
-			->copy()
-			->init('a',
+		$linkUrl = $linkElement->copy();
+		$linkUrl
+			->attr(
 			[
 				'href' => $mailArray['url']
 			])

@@ -49,7 +49,6 @@
 
 	&:checked + .rs-has-menu
 	{
-		box-sizing: border-box;
 		min-height: 100vh;
 		padding-bottom: 5em;
 

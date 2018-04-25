@@ -47,7 +47,9 @@ class ArticleFormTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$this->dropDatabase();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
 	}
 
 	/**

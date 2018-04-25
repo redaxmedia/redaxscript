@@ -28,7 +28,7 @@ class ConsoleForm extends ViewAbstract
 	{
 		$output = Module\Hook::trigger('consoleFormStart');
 
-		/* html element */
+		/* html elements */
 
 		$formElement = new Html\Form($this->_registry, $this->_language);
 		$formElement->init(

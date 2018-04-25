@@ -5,6 +5,7 @@ use Redaxscript\Admin;
 use Redaxscript\Db;
 use Redaxscript\Config;
 use Redaxscript\Console;
+use Redaxscript\Breadcrumb;
 use Redaxscript\Filesystem;
 use Redaxscript\Head;
 use Redaxscript\Language;
@@ -114,15 +115,13 @@ class Tag
 	 *
 	 * @since 2.3.0
 	 *
-	 * @param array $optionArray options of the breadcrumb
-	 *
 	 * @return string
 	 */
 
-	public static function breadcrumb(array $optionArray = []) : string
+	public static function breadcrumb() : string
 	{
-		$breadcrumb = new View\Helper\Breadcrumb(Registry::getInstance(), Language::getInstance());
-		$breadcrumb->init($optionArray);
+		$breadcrumb = new Breadcrumb(Registry::getInstance(), Language::getInstance());
+		$breadcrumb->init();
 		return $breadcrumb->render();
 	}
 
@@ -164,7 +163,7 @@ class Tag
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $table name of the table
+	 * @param string $table
 	 *
 	 * @return string
 	 */
@@ -274,14 +273,18 @@ class Tag
 	 * @return string|null
 	 */
 
-	protected static function _renderAdminContent()
+	protected function _renderAdminContent()
 	{
 		$registry = Registry::getInstance();
 		if ($registry->get('token') === $registry->get('loggedIn'))
 		{
 			$adminRouter = new Admin\Router\Router(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 			$adminRouter->init();
-			return $adminRouter->routeContent();
+			$adminContent = $adminRouter->routeContent();
+			if ($adminContent !== true)
+			{
+				return $adminContent;
+			}
 		}
 	}
 
@@ -293,35 +296,35 @@ class Tag
 	 * @return string|null
 	 */
 
-	protected static function _renderContent()
+	protected function _renderContent()
 	{
 		$router = new Router\Router(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		$router->init();
-		$routerContent = $router->routeContent();
-		if ($routerContent)
+		$content = $router->routeContent();
+		if ($content !== true)
 		{
-			return $routerContent;
+			return $content ? $content : self::_migrate('contents');
 		}
-		$content = new View\Content(Registry::getInstance(), Language::getInstance());
-		return $content->render();
 	}
 
 	/**
 	 * extra
 	 *
-	 * @since 4.0.0
+	 * @since 2.3.0
 	 *
-	 * @param string $extraAlias alias of the extra
-	 * @param array $optionArray options of the extra
+	 * @param string $filter
 	 *
 	 * @return string|null
 	 */
 
-	public static function extra(string $extraAlias = null, array $optionArray = [])
+	public static function extra($filter = null)
 	{
-		$extra = new View\Extra(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
-		$extra->init($optionArray);
-		return $extra->render($extraAlias);
+		// @codeCoverageIgnoreStart
+		return self::_migrate('extras',
+		[
+			$filter
+		]);
+		// @codeCoverageIgnoreEnd
 	}
 
 	/**
@@ -368,13 +371,13 @@ class Tag
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $type type of the navigation
-	 * @param array $optionArray options of the navigation
+	 * @param string $type
+	 * @param array $optionArray
 	 *
 	 * @return string|null
 	 */
 
-	public static function navigation(string $type = null, array $optionArray = [])
+	public static function navigation($type = null, array $optionArray = [])
 	{
 		if ($type == 'articles')
 		{
@@ -406,5 +409,38 @@ class Tag
 			$navigation->init($optionArray);
 			return $navigation;
 		}
+	}
+
+	/**
+	 * migrate
+	 *
+	 * @since 2.3.0
+	 *
+	 * @param string $function
+	 * @param array $parameterArray
+	 *
+	 * @return string|null
+	 */
+
+	protected static function _migrate($function = null, $parameterArray = [])
+	{
+		// @codeCoverageIgnoreStart
+		ob_start();
+
+		/* call with parameter */
+
+		if (is_array($parameterArray))
+		{
+			call_user_func_array($function, $parameterArray);
+		}
+
+		/* else simple call */
+
+		else
+		{
+			call_user_func($function);
+		}
+		return ob_get_clean();
+		// @codeCoverageIgnoreEnd
 	}
 }

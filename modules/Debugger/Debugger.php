@@ -30,7 +30,7 @@ class Debugger extends Module\Module
 		'alias' => 'Debugger',
 		'author' => 'Redaxmedia',
 		'description' => 'Debugger',
-		'version' => '4.0.0'
+		'version' => '3.3.2'
 	];
 
 	/**
@@ -68,34 +68,30 @@ class Debugger extends Module\Module
 	{
 		$debuggerArray = $this->_getArray();
 
-		/* html element */
+		/* html elements */
 
-		$element = new Html\Element();
-		$sectionElement = $element
-			->copy()
-			->init('section',
-			[
-				'class' => 'rs-section-debugger'
-			]);
-		$boxElement = $element
-			->copy()
-			->init('div',
-			[
-				'class' => 'rs-box-debugger'
-			]);
-		$titleElement = $element
-			->copy()
-			->init('h2',
-			[
-				'class' => 'rs-title-debugger'
-			]);
-		$listElement = $element
-			->copy()
-			->init('ul',
-			[
-				'class' => 'rs-list-debugger'
-			]);
-		$itemElement = $element->copy()->init('li');
+		$sectionElement = new Html\Element();
+		$sectionElement->init('section',
+		[
+			'class' => 'rs-section-debugger'
+		]);
+		$boxElement = new Html\Element();
+		$boxElement->init('div',
+		[
+			'class' => 'rs-box-debugger'
+		]);
+		$titleElement = new Html\Element();
+		$titleElement->init('h2',
+		[
+			'class' => 'rs-title-debugger'
+		]);
+		$listElement = new Html\Element();
+		$listElement->init('ul',
+		[
+			'class' => 'rs-list-debugger'
+		]);
+		$itemElement = new Html\Element();
+		$itemElement->init('li');
 
 		/* process debugger */
 

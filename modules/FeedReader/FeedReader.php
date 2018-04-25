@@ -29,18 +29,18 @@ class FeedReader extends Config
 		'alias' => 'FeedReader',
 		'author' => 'Redaxmedia',
 		'description' => 'Read external RSS and Atom feeds',
-		'version' => '4.0.0'
+		'version' => '3.3.2'
 	];
 
 	/**
-	 * adminNotification
+	 * adminPanelNotification
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array|bool
 	 */
 
-	public function adminNotification()
+	public function adminPanelNotification()
 	{
 		return $this->getNotification();
 	}
@@ -75,27 +75,23 @@ class FeedReader extends Config
 		$counter = 0;
 		$output = null;
 
-		/* html element */
+		/* html elements */
 
-		$element = new Html\Element();
-		$titleElement = $element
-			->copy()
-			->init('h3',
-			[
-				'class' => $this->_configArray['className']['title']
-			]);
-		$boxElement = $element
-			->copy()
-			->init('div',
-			[
-				'class' => $this->_configArray['className']['box']
-			]);
-		$linkElement = $element
-			->copy()
-			->init('a',
-			[
-				'target' => '_blank'
-			]);
+		$titleElement = new Html\Element();
+		$titleElement->init('h3',
+		[
+			'class' => $this->_configArray['className']['title']
+		]);
+		$linkElement = new Html\Element();
+		$linkElement->init('a',
+		[
+			'target' => '_blank'
+		]);
+		$boxElement = new Html\Element();
+		$boxElement->init('div',
+		[
+			'class' => $this->_configArray['className']['box']
+		]);
 
 		/* load result */
 

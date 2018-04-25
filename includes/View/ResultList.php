@@ -36,34 +36,30 @@ class ResultList extends ViewAbstract
 		$contentModel = new Model\Content();
 		$settingModel = new Model\Setting();
 
-		/* html element */
+		/* html elements */
 
-		$element = new Html\Element();
-		$titleElement = $element
-			->copy()
-			->init('h2',
-			[
-				'class' => 'rs-title-result'
-			]);
-		$listElement = $element
-			->copy()
-			->init('ol',
-			[
-				'class' => 'rs-list-result'
-			]);
-		$itemElement = $element->copy()->init('li');
-		$linkElement = $element
-			->copy()
-			->init('a',
-			[
-				'class' => 'rs-link-result'
-			]);
-		$textElement = $element
-			->copy()
-			->init('span',
-			[
-				'class' => 'rs-text-result-date'
-			]);
+		$titleElement = new Html\Element();
+		$titleElement->init('h2',
+		[
+			'class' => 'rs-title-result'
+		]);
+		$listElement = new Html\Element();
+		$listElement->init('ol',
+		[
+			'class' => 'rs-list-result'
+		]);
+		$itemElement = new Html\Element();
+		$itemElement->init('li');
+		$linkElement = new Html\Element();
+		$linkElement->init('a',
+		[
+			'class' => 'rs-link-result'
+		]);
+		$textElement = new Html\Element();
+		$textElement->init('span',
+		[
+			'class' => 'rs-text-result-date'
+		]);
 
 		/* process result */
 

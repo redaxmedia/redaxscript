@@ -40,7 +40,7 @@ class Mailer
 	/**
 	 * body of the email
 	 *
-	 * @var string|array
+	 * @var mixed
 	 */
 
 	protected $_body;

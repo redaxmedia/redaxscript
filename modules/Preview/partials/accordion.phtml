@@ -2,25 +2,21 @@
 namespace Redaxscript;
 
 $language = Language::getInstance();
-$element = new Html\Element();
-$setElement = $element
-	->copy()
-	->init('div',
-	[
-		'class' => $admin ? 'rs-admin-js-set-accordion rs-admin-set-accordion' : 'rs-js-set-accordion rs-set-accordion'
-	]);
-$titleElement = $element
-	->copy()
-	->init('h3',
-	[
-		'class' => $admin ? 'rs-admin-js-title-accordion rs-admin-title-accordion' : 'rs-js-title-accordion rs-title-accordion'
-	]);
-$boxElement = $element
-	->copy()
-	->init('div',
-	[
-		'class' => $admin ? 'rs-admin-js-box-accordion rs-admin-box-accordion' : 'rs-js-box-accordion rs-box-accordion'
-	]);
+$setElement = new Html\Element();
+$setElement->init('div',
+[
+	'class' => $admin ? 'rs-admin-js-set-accordion rs-admin-set-accordion' : 'rs-js-set-accordion rs-set-accordion'
+]);
+$titleElement = new Html\Element();
+$titleElement->init('h3',
+[
+	'class' => $admin ? 'rs-admin-js-title-accordion rs-admin-title-accordion' : 'rs-js-title-accordion rs-title-accordion'
+]);
+$boxElement = new Html\Element();
+$boxElement->init('div',
+[
+	'class' => $admin ? 'rs-admin-js-box-accordion rs-admin-box-accordion' : 'rs-js-box-accordion rs-box-accordion'
+]);
 ?>
 
 <!-- accordion -->

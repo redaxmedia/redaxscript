@@ -18,12 +18,12 @@ class Boolean implements FilterInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $boolean
+	 * @param string $boolean boolean
 	 *
 	 * @return bool|null
 	 */
 
-	public function sanitize(string $boolean = null) : ?bool
+	public function sanitize(string $boolean = null)
 	{
 		return filter_var($boolean, FILTER_VALIDATE_BOOLEAN,
 		[

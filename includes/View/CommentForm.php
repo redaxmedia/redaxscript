@@ -32,7 +32,7 @@ class CommentForm extends ViewAbstract
 		$output = Module\Hook::trigger('commentFormStart');
 		$settingModel = new Model\Setting();
 
-		/* html element */
+		/* html elements */
 
 		$titleElement = new Html\Element();
 		$titleElement

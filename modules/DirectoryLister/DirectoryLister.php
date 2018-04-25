@@ -31,7 +31,7 @@ class DirectoryLister extends Config
 		'alias' => 'DirectoryLister',
 		'author' => 'Redaxmedia',
 		'description' => 'Simple directory lister',
-		'version' => '4.0.0'
+		'version' => '3.3.2'
 	];
 
 	/**
@@ -49,14 +49,14 @@ class DirectoryLister extends Config
 	}
 
 	/**
-	 * adminNotification
+	 * adminPanelNotification
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array|bool
 	 */
 
-	public function adminNotification()
+	public function adminPanelNotification()
 	{
 		return $this->getNotification();
 	}
@@ -72,12 +72,12 @@ class DirectoryLister extends Config
 	 * @return string|null
 	 */
 
-	public function render(string $directory = null, array $optionArray = []) : ?string
+	public function render(string $directory = null, array $optionArray = [])
 	{
 		$output = null;
 		$outputItem = null;
 
-		/* html element */
+		/* html elements */
 
 		$listElement = new Html\Element();
 		$listElement->init('ul',
@@ -141,20 +141,19 @@ class DirectoryLister extends Config
 	 * @return string|null
 	 */
 
-	protected function _renderParent(string $rootDirectory = null, string $parentDirectory = null, array $optionArray = []) : ?string
+	protected function _renderParent(string $rootDirectory = null, string $parentDirectory = null, array $optionArray = [])
 	{
 		$queryString = $rootDirectory !== $parentDirectory ? '&directory=' . $parentDirectory : null;
 
-		/* html element */
+		/* html elements */
 
-		$element = new Html\Element();
-		$itemElement = $element->copy()->init('li');
-		$linkElement = $element
-			->copy()
-			->init('a',
-			[
-				'class' => $this->_configArray['className']['link']
-			]);
+		$linkElement = new Html\Element();
+		$linkElement->init('a',
+		[
+			'class' => $this->_configArray['className']['link']
+		]);
+		$itemElement = new Html\Element();
+		$itemElement->init('li');
 
 		/* collect item output */
 
@@ -181,33 +180,30 @@ class DirectoryLister extends Config
 	 * @return string|null
 	 */
 
-	protected function _renderItem(string $directory = null, array $optionArray = []) : ?string
+	protected function _renderItem(string $directory = null, array $optionArray = [])
 	{
 		$outputItem = null;
 		$settingModel = new Model\Setting();
 
-		/* html element */
+		/* html elements */
 
-		$element = new Html\Element();
-		$itemElement = $element->copy()->init('li');
-		$linkElement = $element
-			->copy()
-			->init('a',
-			[
-				'class' => $this->_configArray['className']['link']
-			]);
-		$textSizeElement = $element
-			->copy()
-			->init('span',
-			[
-				'class' => $this->_configArray['className']['textSize']
-			]);
-		$textDateElement = $element
-			->copy()
-			->init('span',
-			[
-				'class' => $this->_configArray['className']['textDate']
-			]);
+		$linkElement = new Html\Element();
+		$linkElement->init('a',
+		[
+			'class' => $this->_configArray['className']['link']
+		]);
+		$textSizeElement = new Html\Element();
+		$textSizeElement->init('span',
+		[
+			'class' => $this->_configArray['className']['textSize']
+		]);
+		$textDateElement = new Html\Element();
+		$textDateElement->init('span',
+		[
+			'class' => $this->_configArray['className']['textDate']
+		]);
+		$itemElement = new Html\Element();
+		$itemElement->init('li');
 
 		/* lister filesystem */
 

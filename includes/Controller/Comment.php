@@ -254,26 +254,27 @@ class Comment extends ControllerAbstract
 		$settingModel = new Model\Setting();
 		$urlArticle = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $mailArray['route'];
 
-		/* html element */
+		/* html elements */
 
-		$element = new Html\Element();
-		$linkEmail = $element
-			->copy()
-			->init('a',
+		$linkElement = new Html\Element();
+		$linkElement->init('a');
+		$linkEmail = $linkElement->copy();
+		$linkEmail
+			->attr(
 			[
 				'href' => 'mailto:' . $mailArray['email']
 			])
 			->text($mailArray['email']);
-		$linkUrl = $element
-			->copy()
-			->init('a',
+		$linkUrl = $linkElement->copy();
+		$linkUrl
+			->attr(
 			[
 				'href' => $mailArray['url']
 			])
 			->text($mailArray['url'] ? $mailArray['url'] : $this->_language->get('none'));
-		$linkArticle = $element
-			->copy()
-			->init('a',
+		$linkArticle = $linkElement->copy();
+		$linkArticle
+			->attr(
 			[
 				'href' => $urlArticle
 			])

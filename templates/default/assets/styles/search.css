@@ -34,6 +34,7 @@
 {
 	background: transparent;
 	color: var(--rs-color-tertiary);
+	cursor: pointer;
 	flex-basis: 2em;
 	flex-shrink: 0;
 	height: 2em;

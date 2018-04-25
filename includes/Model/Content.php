@@ -18,23 +18,23 @@ class Content
 	 *
 	 * @since 3.3.0
 	 *
-	 * @param string $contentAlias alias of the content
+	 * @param string $alias
 	 *
 	 * @return string|null
 	 */
 
-	public function getTableByAlias(string $contentAlias = null) : ?string
+	public function getTableByAlias(string $alias = null)
 	{
 		$table = null;
 		$categoryModel = new Category();
-		if ($categoryModel->getIdByAlias($contentAlias))
+		if ($categoryModel->getIdByAlias($alias) > 0)
 		{
 			$table = 'categories';
 		}
 		else
 		{
 			$articleModel = new Article();
-			if ($articleModel->getIdByAlias($contentAlias))
+			if ($articleModel->getIdByAlias($alias) > 0)
 			{
 				$table = 'articles';
 			}
@@ -47,13 +47,13 @@ class Content
 	 *
 	 * @since 3.3.0
 	 *
-	 * @param string $table name of the table
-	 * @param int $contentId identifier of the content
+	 * @param string $table
+	 * @param int $contentId
 	 *
 	 * @return string|null
 	 */
 
-	public function getRouteByTableAndId(string $table = null, int $contentId = null) : ?string
+	public function getRouteByTableAndId(string $table = null, int $contentId = null)
 	{
 		$route = null;
 

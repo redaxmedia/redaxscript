@@ -162,7 +162,7 @@ class Hook
 
 	public static function collect($eventName = null, $parameterArray = []) : array
 	{
-		$collectArray = [];
+		$outputArray = [];
 
 		/* process modules */
 
@@ -171,10 +171,10 @@ class Hook
 			$callArray = self::_call($moduleName, $eventName, $parameterArray);
 			if (is_array($callArray))
 			{
-				$collectArray = array_merge($collectArray, $callArray);
+				$outputArray = array_merge($outputArray, $callArray);
 			}
 		}
-		return $collectArray;
+		return $outputArray;
 	}
 
 	/**
@@ -188,7 +188,7 @@ class Hook
 	 * @return string|null
 	 */
 
-	public static function trigger($eventName = null, $parameterArray = []) : ?string
+	public static function trigger($eventName = null, $parameterArray = [])
 	{
 		$output = null;
 

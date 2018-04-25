@@ -11,4 +11,9 @@
 	color: gray(30);
 	font-size: 2em;
 	margin: 1em 0;
+
+	a
+	{
+		color: inherit;
+	}
 }

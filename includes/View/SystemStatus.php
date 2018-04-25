@@ -20,10 +20,10 @@ class SystemStatus extends ViewAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string|null
+	 * @return string
 	 */
 
-	public function render() : ?string
+	public function render()
 	{
 		$output = null;
 

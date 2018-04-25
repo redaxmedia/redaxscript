@@ -11,8 +11,14 @@
 %rs-button
 {
 	box-sizing: border-box;
+	cursor: pointer;
 	display: inline-block;
 	padding: 0.5em;
+
+	&[disabled]
+	{
+		pointer-events: none;
+	}
 }
 
 /** @section 2. query */

@@ -9,7 +9,7 @@ use Redaxscript\Template\Helper as BaseHelper;
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category Template
+ * @category Admin
  * @author Henry Ruhs
  */
 

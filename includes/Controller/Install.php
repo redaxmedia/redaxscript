@@ -446,7 +446,7 @@ class Install extends ControllerAbstract
 	{
 		$settingModel = new Model\Setting();
 
-		/* html element */
+		/* html elements */
 
 		$linkElement = new Html\Element();
 		$linkElement

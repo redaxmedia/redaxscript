@@ -28,7 +28,7 @@ class ResetForm extends ViewAbstract
 	{
 		$output = Module\Hook::trigger('resetFormStart');
 
-		/* html element */
+		/* html elements */
 
 		$titleElement = new Html\Element();
 		$titleElement

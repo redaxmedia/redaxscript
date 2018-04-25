@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Navigation;
 
+use IdiormResultSet as DbResultSet;
 use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Model;
@@ -69,30 +70,30 @@ class Category extends NavigationAbstract
 	 *
 	 * @since 3.3.0
 	 *
-	 * @param object $categories
+	 * @param DbResultSet $categories
 	 * @param array $optionArray
 	 *
 	 * @return string|null
 	 */
 
-	protected function renderList($categories = null, array $optionArray = []) : ?string
+	protected function renderList(DbResultSet $categories = null, array $optionArray = [])
 	{
 		$output = null;
 		$outputItem = null;
 		$contentModel = new Model\Content();
 		$accessValidator = new Validator\Access();
 
-		/* html element */
+		/* html elements */
 
-		$element = new Html\Element();
-		$listElement = $element
-			->copy()
-			->init('ul',
-			[
-				'class' => $optionArray['className']['list']
-			]);
-		$itemElement = $element->copy()->init('li');
-		$linkElement = $element->copy()->init('a');
+		$listElement = new Html\Element();
+		$listElement->init('ul',
+		[
+			'class' => $optionArray['className']['list']
+		]);
+		$itemElement = new Html\Element();
+		$itemElement->init('li');
+		$linkElement = new Html\Element();
+		$linkElement->init('a');
 
 		/* collect item output */
 

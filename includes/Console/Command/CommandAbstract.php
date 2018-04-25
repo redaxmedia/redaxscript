@@ -36,7 +36,7 @@ abstract class CommandAbstract extends ConsoleAbstract
 
 	public function prompt($key = null, $promptArray = [])
 	{
-		return array_key_exists($key, $promptArray) || array_key_exists('no-interaction', $promptArray) ? $promptArray[$key] : readline($key . ':');
+		return array_key_exists($key, $promptArray) || array_key_exists('no-interaction', $promptArray) ? $promptArray[$key] : function_exists('readline') && readline($key . ':');
 	}
 
 	/**

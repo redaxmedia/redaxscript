@@ -1,6 +1,0 @@
-[
-	[
-		{},
-		"<ul class=\"rs-admin-list-notification\"><li class=\"rs-admin-item-notification rs-admin-item-note rs-admin-is-success\"><h3 class=\"rs-admin-title-notification\">Test Dummy</h3><a class=\"rs-admin-link-notification\" href=\"http://localhost\" target=\"_blank\">Success</a></li><li class=\"rs-admin-item-notification rs-admin-item-note rs-admin-is-warning\"><h3 class=\"rs-admin-title-notification\">Test Dummy</h3><span class=\"rs-admin-text-notification\">Warning</span></li><li class=\"rs-admin-item-notification rs-admin-item-note rs-admin-is-error\"><h3 class=\"rs-admin-title-notification\">Test Dummy</h3><span class=\"rs-admin-text-notification\">Error</span></li><li class=\"rs-admin-item-notification rs-admin-item-note rs-admin-is-info\"><h3 class=\"rs-admin-title-notification\">Test Dummy</h3><span class=\"rs-admin-text-notification\">Info</span></li></ul>"
-	]
-]

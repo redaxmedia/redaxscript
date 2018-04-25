@@ -9,7 +9,7 @@ use Redaxscript\View\ViewAbstract as BaseViewAbstract;
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category View
+ * @category Admin
  * @author Henry Ruhs
  */
 

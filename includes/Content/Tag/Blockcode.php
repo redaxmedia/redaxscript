@@ -50,7 +50,7 @@ class Blockcode extends TagAbstract
 		$output = str_replace($this->_optionArray['search'], $this->_optionArray['delimiter'], $content);
 		$partArray = array_filter(explode($this->_optionArray['delimiter'], $output));
 
-		/* html element */
+		/* html elements */
 
 		$preElement = new Html\Element();
 		$preElement->init('pre',

@@ -1,3 +1,11 @@
+filter:
+ excluded_paths:
+ - includes/admin_admin.php
+ - includes/admin_list.php
+ - includes/admin_query.php
+ - includes/comments.php
+ - includes/contents.php
+
 tools:
  external_code_coverage: true
  php_analyzer: true

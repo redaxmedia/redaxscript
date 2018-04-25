@@ -57,13 +57,12 @@ class ExtraTest extends TestCaseAbstract
 				'status' => 1
 			])
 			->save();
-		$extraThree = Db::forTablePrefix('extras')
+		Db::forTablePrefix('extras')
 			->create()
 			->set(
 			[
 				'title' => 'Extra Three',
 				'alias' => 'extra-three',
-				'language' => 'en',
 				'rank' => 3,
 				'status' => 1
 			])
@@ -74,29 +73,7 @@ class ExtraTest extends TestCaseAbstract
 			[
 				'title' => 'Extra Four',
 				'alias' => 'extra-four',
-				'language' => 'de',
-				'sibling' => $extraThree->id,
-				'rank' => 4
-			])
-			->save();
-		Db::forTablePrefix('extras')
-			->create()
-			->set(
-			[
-				'title' => 'Extra Five',
-				'alias' => 'extra-five',
-				'language' => 'fr',
-				'sibling' => $extraThree->id,
-				'rank' => 5
-			])
-			->save();
-		Db::forTablePrefix('extras')
-			->create()
-			->set(
-			[
-				'title' => 'Extra Six',
-				'alias' => 'extra-six',
-				'rank' => 6,
+				'rank' => 4,
 				'status' => 2,
 				'date' => '2036-01-01 00:00:00'
 			])
@@ -105,9 +82,9 @@ class ExtraTest extends TestCaseAbstract
 			->create()
 			->set(
 			[
-				'title' => 'Extra Seven',
-				'alias' => 'extra-seven',
-				'rank' => 7,
+				'title' => 'Extra Five',
+				'alias' => 'extra-five',
+				'rank' => 5,
 				'status' => 2,
 				'date' => '2037-01-01 00:00:00'
 			])
@@ -122,105 +99,22 @@ class ExtraTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$this->dropDatabase();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
 	}
 
 	/**
-	 * providerGetResult
-	 *
-	 * @since 4.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerGetResult() : array
-	{
-		return $this->getProvider('tests/provider/Model/extra_get_result.json');
-	}
-
-	/**
-	 * providerGetResultAlias
-	 *
-	 * @since 4.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerGetResultAlias() : array
-	{
-		return $this->getProvider('tests/provider/Model/extra_get_result_alias.json');
-	}
-
-	/**
-	 * providerPublishDate
+	 * providerExtraPublishDate
 	 *
 	 * @since 3.3.0
 	 *
 	 * @return array
 	 */
 
-	public function providerPublishDate() : array
+	public function providerExtraPublishDate() : array
 	{
 		return $this->getProvider('tests/provider/Model/extra_publish_date.json');
-	}
-
-	/**
-	 * testGetResultByLanguage
-	 *
-	 * @since 4.0.0
-	 *
-	 * @param string $language
-	 * @param array $expectArray
-	 *
-	 * @dataProvider providerGetResult
-	 */
-
-	public function testGetResultByLanguage(string $language = null, array $expectArray = null)
-	{
-		/* setup */
-
-		$extraModel = new Model\Extra();
-
-		/* actual */
-
-		$extraArray = $extraModel->getResultByLanguage($language);
-		$actualArray = [];
-
-		/* process extra */
-
-		foreach ($extraArray as $key => $value)
-		{
-			$actualArray[] = $value->alias;
-		}
-		$this->assertEquals($expectArray, $actualArray);
-	}
-
-	/**
-	 * testGetResultByAliasAndLanguage
-	 *
-	 * @since 4.0.0
-	 *
-	 * @param string $extraAlias
-	 * @param string $language
-	 * @param string $expect
-	 *
-	 * @dataProvider providerGetResultAlias
-	 */
-
-	public function testGetResultByAliasAndLanguage(string $extraAlias = null, string $language = null, string $expect = null)
-	{
-		/* setup */
-
-		$extraModel = new Model\Extra();
-
-		/* actual */
-
-		$actualArray = $extraModel->getResultByAliasAndLanguage($extraAlias, $language);
-
-		/* compare */
-
-		$this->markTestSkipped('implement sibling handling in model');
-		$this->assertEquals($expect, $actualArray['alias']);
 	}
 
 	/**
@@ -231,7 +125,7 @@ class ExtraTest extends TestCaseAbstract
 	 * @param string $date
 	 * @param int $expect
 	 *
-	 * @dataProvider providerPublishDate
+	 * @dataProvider providerExtraPublishDate
 	 */
 
 	public function testPublishByDate(string $date = null, int $expect = null)

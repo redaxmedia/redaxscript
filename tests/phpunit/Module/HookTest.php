@@ -2,6 +2,7 @@
 namespace Redaxscript\Tests\Module;
 
 use Redaxscript\Module;
+use Redaxscript\Modules\TestDummy;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -25,8 +26,11 @@ class HookTest extends TestCaseAbstract
 	public function setUp()
 	{
 		parent::setUp();
-		$this->createDatabase();
-		$this->installTestDummy();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		$testDummy = new TestDummy\TestDummy($this->_registry, $this->_request, $this->_language, $this->_config);
+		$testDummy->install();
 	}
 
 	/**
@@ -37,21 +41,11 @@ class HookTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$this->uninstallTestDummy();
-		$this->dropDatabase();
-	}
-
-	/**
-	 * providerCollect
-	 *
-	 * @since 4.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerCollect() : array
-	{
-		return $this->getProvider('tests/provider/Module/hook_collect.json');
+		$testDummy = new TestDummy\TestDummy($this->_registry, $this->_request, $this->_language, $this->_config);
+		$testDummy->uninstall();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
 	}
 
 	/**
@@ -103,13 +97,9 @@ class HookTest extends TestCaseAbstract
 	 * testCollect
 	 *
 	 * @since 2.4.0
-	 *
-	 * @param array $expectArray
-	 *
-	 * @dataProvider providerCollect
 	 */
 
-	public function testCollect(array $expectArray = [])
+	public function testCollect()
 	{
 		/* setup */
 
@@ -118,11 +108,11 @@ class HookTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actualArray = Module\Hook::collect('adminNotification');
+		$actualArray = Module\Hook::collect('adminPanelNotification');
 
 		/* compare */
 
-		$this->assertEquals($expectArray, $actualArray);
+		$this->assertEquals('Test Dummy', $actualArray['info']['Test Dummy'][0]);
 	}
 
 	/**

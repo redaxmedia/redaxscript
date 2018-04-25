@@ -28,7 +28,7 @@ class Tinymce extends Config
 		'alias' => 'Tinymce',
 		'author' => 'Redaxmedia',
 		'description' => 'JavaScript powered WYSIWYG editor',
-		'version' => '4.0.0',
+		'version' => '3.3.2',
 		'access' => '1'
 	];
 
@@ -60,14 +60,14 @@ class Tinymce extends Config
 	}
 
 	/**
-	 * adminNotification
+	 * adminPanelNotification
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array|bool
 	 */
 
-	public function adminNotification()
+	public function adminPanelNotification()
 	{
 		if (!is_dir($this->_configArray['uploadDirectory']) && !mkdir($this->_configArray['uploadDirectory']))
 		{

@@ -27,7 +27,9 @@ class CronjobTest extends TestCaseAbstract
 	public function setUp()
 	{
 		parent::setUp();
-		$this->createDatabase();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
 	}
 
 	/**
@@ -38,7 +40,9 @@ class CronjobTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$this->dropDatabase();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
 	}
 
 	/**

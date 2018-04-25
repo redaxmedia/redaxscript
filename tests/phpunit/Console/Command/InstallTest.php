@@ -2,6 +2,7 @@
 namespace Redaxscript\Tests\Console\Command;
 
 use Redaxscript\Console\Command;
+use Redaxscript\Modules\TestDummy;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -24,7 +25,9 @@ class InstallTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$this->dropDatabase();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
 		$this->_request->setServer('argv', null);
 	}
 
@@ -123,7 +126,9 @@ class InstallTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->createDatabase();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
 		$this->_request->setServer('argv',
 		[
 			'console.php',
@@ -140,7 +145,8 @@ class InstallTest extends TestCaseAbstract
 
 		/* teardown */
 
-		$this->uninstallTestDummy();
+		$testDummy = new TestDummy\TestDummy($this->_registry, $this->_request, $this->_language, $this->_config);
+		$testDummy->uninstall();
 
 		/* compare */
 
@@ -157,7 +163,9 @@ class InstallTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->createDatabase();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
 		$this->_request->setServer('argv',
 		[
 			'console.php',
