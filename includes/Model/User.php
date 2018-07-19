@@ -1,8 +1,6 @@
 <?php
 namespace Redaxscript\Model;
 
-use Redaxscript\Db;
-
 /**
  * parent class to provide the user model
  *
@@ -13,8 +11,59 @@ use Redaxscript\Db;
  * @author Henry Ruhs
  */
 
-class User
+class User extends ModelAbstract
 {
+	/**
+	 * name of the table
+	 *
+	 * @var string
+	 */
+
+	protected $_table = 'users';
+
+	/**
+	 * get the user by user
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param string $user name of the user
+	 *
+	 * @return object
+	 */
+
+	public function getByUser(string $user = null)
+	{
+		return $this->query()->where('user', $user)->findOne();
+	}
+
+	/**
+	 * get the user by user or email
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param string $user name of the user
+	 * @param string $email email of the user
+	 *
+	 * @return object
+	 */
+
+	public function getByUserOrEmail(string $user = null, string $email = null)
+	{
+		return $this
+			->query()
+			->whereAnyIs(
+			[
+				[
+					'user' => $user
+				],
+				[
+					'email' => $email
+				]
+			])
+			->where('status', 1)
+			->findOne();
+	}
+
 	/**
 	 * create the user by array
 	 *
@@ -27,7 +76,7 @@ class User
 
 	public function createByArray(array $createArray = []) : bool
 	{
-		return Db::forTablePrefix('users')
+		return $this->query()
 			->create()
 			->set(
 			[
@@ -43,22 +92,22 @@ class User
 	}
 
 	/**
-	 * reset the password by array
+	 * reset the password by id
 	 *
 	 * @since 3.3.0
 	 *
-	 * @param array $resetArray
+	 * @param int $userId identifier of the user
+	 * @param string $password
 	 *
 	 * @return bool
 	 */
 
-	public function resetPasswordByArray(array $resetArray) : bool
+	public function resetPasswordById(int $userId = null, string $password = null) : bool
 	{
-		return Db::forTablePrefix('users')
-			->whereIdIs($resetArray['id'])
-			->where('status', 1)
+		return $this->query()
+			->whereIdIs($userId)
 			->findOne()
-			->set('password', $resetArray['password'])
+			->set('password', $password)
 			->save();
 	}
 }

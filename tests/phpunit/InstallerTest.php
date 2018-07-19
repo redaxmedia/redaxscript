@@ -12,6 +12,8 @@ use Redaxscript\Installer;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Installer
  */
 
 class InstallerTest extends TestCaseAbstract
@@ -69,7 +71,7 @@ class InstallerTest extends TestCaseAbstract
 		$actualGroups = Db::forTablePrefix('groups')->count();
 		$actualUsers = Db::forTablePrefix('users')->count();
 		$actualSettings = Db::forTablePrefix('settings')->count();
-		if (is_dir('modules/CallHome') && is_dir('modules/Validator'))
+		if (is_dir('modules/CallHome') && is_dir('modules/FormValidator') && is_dir('modules/HtmlValidator'))
 		{
 			$actualModules = Db::forTablePrefix('modules')->count();
 		}
@@ -83,9 +85,9 @@ class InstallerTest extends TestCaseAbstract
 		$this->assertEquals(2, $actualGroups);
 		$this->assertEquals(1, $actualUsers);
 		$this->assertEquals(25, $actualSettings);
-		if (is_dir('modules/CallHome') && is_dir('modules/Validator'))
+		if (is_dir('modules/CallHome') && is_dir('modules/FormValidator') && is_dir('modules/HtmlValidator'))
 		{
-			$this->assertEquals(2, $actualModules);
+			$this->assertEquals(3, $actualModules);
 		}
 	}
 

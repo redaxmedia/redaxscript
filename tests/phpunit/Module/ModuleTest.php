@@ -13,6 +13,8 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Module\Module
  */
 
 class ModuleTest extends TestCaseAbstract
@@ -26,9 +28,7 @@ class ModuleTest extends TestCaseAbstract
 	public function setUp()
 	{
 		parent::setUp();
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawCreate();
+		$this->createDatabase();
 	}
 
 	/**
@@ -39,9 +39,7 @@ class ModuleTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
+		$this->dropDatabase();
 	}
 
 	/**

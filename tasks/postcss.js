@@ -4,31 +4,6 @@ module.exports = () =>
 
 	const config =
 	{
-		base:
-		{
-			src:
-			[
-				'assets/styles/_base.css'
-			],
-			dest: 'dist/styles/base.min.css',
-			options:
-			{
-				processors:
-				[
-					require('postcss-import'),
-					require('postcss-harmonize'),
-					require('autoprefixer')(
-					{
-						browsers: 'last 2 versions'
-					}),
-					require('cssnano')(
-					{
-						autoprefixer: false,
-						discardUnused: false
-					})
-				]
-			}
-		},
 		templateAdmin:
 		{
 			src:
@@ -76,14 +51,6 @@ module.exports = () =>
 				'modules/Ace/assets/styles/_ace.css'
 			],
 			dest: 'modules/Ace/dist/styles/ace.min.css'
-		},
-		moduleDebugger:
-		{
-			src:
-			[
-				'modules/Debugger/assets/styles/_debugger.css'
-			],
-			dest: 'modules/Debugger/dist/styles/debugger.min.css'
 		},
 		moduleDirectoryLister:
 		{
@@ -234,8 +201,8 @@ module.exports = () =>
 				}),
 				require('cssnano')(
 				{
-					autoprefixer: false,
 					colormin: false,
+					reduceIdents: false,
 					zindex: false
 				})
 			]

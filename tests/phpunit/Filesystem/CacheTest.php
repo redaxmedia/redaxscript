@@ -13,6 +13,8 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Filesystem\Cache
  */
 
 class CacheTest extends TestCaseAbstract
@@ -29,19 +31,6 @@ class CacheTest extends TestCaseAbstract
 	}
 
 	/**
-	 * providerStore
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerStore() : array
-	{
-		return $this->getProvider('tests/provider/Filesystem/cache_store.json');
-	}
-
-	/**
 	 * testStore
 	 *
 	 * @since 3.0.0
@@ -49,7 +38,7 @@ class CacheTest extends TestCaseAbstract
 	 * @param array $bundleArray
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerStore
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testStore(array $bundleArray = [], array $expectArray = [])
@@ -57,7 +46,7 @@ class CacheTest extends TestCaseAbstract
 		/* setup */
 
 		$cache = new Filesystem\Cache();
-		$cache->init(Stream::url('root/test'), 'cache');
+		$cache->init(Stream::url('root' . DIRECTORY_SEPARATOR . 'test'), 'cache');
 
 		/* process bundle */
 
@@ -68,7 +57,7 @@ class CacheTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actualArray = scandir(Stream::url('root/test'));
+		$actualArray = scandir(Stream::url('root' . DIRECTORY_SEPARATOR . 'test'));
 
 		/* compare */
 

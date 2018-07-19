@@ -10,6 +10,8 @@ namespace Redaxscript\Tests;
  * @category Tests
  * @author Henry Ruhs
  * @author Gary Aylward
+ *
+ * @covers Redaxscript\Registry
  */
 
 class RegistryTest extends TestCaseAbstract

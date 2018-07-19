@@ -1,40 +1,16 @@
-/**
- * @tableofcontents
- *
- * 1. alias
- * 2. panel
- */
-
-/** @section 1. alias */
-
-rs.plugins.alias =
+rs.templates.admin =
 {
-	init: true,
-	dependency: typeof getSlug === 'function',
-	selector: 'form input.rs-admin-js-alias-input, form input.rs-admin-js-alias-output',
-	options:
+	alias:
 	{
-		element:
+		init: true,
+		dependency: typeof window.getSlug === 'function',
+		config:
 		{
-			related: 'input.rs-admin-js-alias-output'
+			selector: 'form input.rs-admin-js-alias-input, form input.rs-admin-js-alias-output',
+			element:
+			{
+				output: 'input.rs-admin-js-alias-output'
+			}
 		}
-	}
-};
-
-/** @section 2. panel */
-
-rs.plugins.panel =
-{
-	init: true,
-	selector: 'ul.rs-admin-js-list-panel',
-	options:
-	{
-		element:
-		{
-			panelItem: 'li.rs-admin-js-item-panel'
-		},
-		timeout: 1000,
-		duration: 200,
-		vibrate: 100
 	}
 };

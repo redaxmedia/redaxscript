@@ -8,21 +8,21 @@ module.exports = () =>
 		{
 			src:
 			[
-				'assets/**/*.{css,js}'
+				'assets/**/*.css'
 			]
 		},
 		templates:
 		{
 			src:
 			[
-				'templates/**/assets/**/*.{css,js}'
+				'templates/**/assets/**/*.css'
 			]
 		},
 		modules:
 		{
 			src:
 			[
-				'modules/**/assets/**/*.{css,js}'
+				'modules/**/assets/**/*.css'
 			]
 		}
 	};

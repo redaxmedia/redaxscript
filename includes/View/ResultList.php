@@ -35,31 +35,36 @@ class ResultList extends ViewAbstract
 		$accessValidator = new Validator\Access();
 		$contentModel = new Model\Content();
 		$settingModel = new Model\Setting();
+		$parameterRoute = $this->_registry->get('parameterRoute');
 
-		/* html elements */
+		/* html element */
 
-		$titleElement = new Html\Element();
-		$titleElement->init('h2',
-		[
-			'class' => 'rs-title-result'
-		]);
-		$listElement = new Html\Element();
-		$listElement->init('ol',
-		[
-			'class' => 'rs-list-result'
-		]);
-		$itemElement = new Html\Element();
-		$itemElement->init('li');
-		$linkElement = new Html\Element();
-		$linkElement->init('a',
-		[
-			'class' => 'rs-link-result'
-		]);
-		$textElement = new Html\Element();
-		$textElement->init('span',
-		[
-			'class' => 'rs-text-result-date'
-		]);
+		$element = new Html\Element();
+		$titleElement = $element
+			->copy()
+			->init('h2',
+			[
+				'class' => 'rs-title-result'
+			]);
+		$listElement = $element
+			->copy()
+			->init('ol',
+			[
+				'class' => 'rs-list-result'
+			]);
+		$itemElement = $element->copy()->init('li');
+		$linkElement = $element
+			->copy()
+			->init('a',
+			[
+				'class' => 'rs-link-result'
+			]);
+		$textElement = $element
+			->copy()
+			->init('span',
+			[
+				'class' => 'rs-text-result-date'
+			]);
 
 		/* process result */
 
@@ -72,11 +77,11 @@ class ResultList extends ViewAbstract
 
 				foreach ($result as $value)
 				{
-					if ($accessValidator->validate($result->access, $this->_registry->get('myGroups')) === Validator\ValidatorInterface::PASSED)
+					if ($accessValidator->validate($result->access, $this->_registry->get('myGroups')))
 					{
 						$textDate = date($settingModel->get('date'), strtotime($value->date));
 						$linkElement
-							->attr('href', $this->_registry->get('parameterRoute') . $contentModel->getRouteByTableAndId($table, $value->id))
+							->attr('href', $parameterRoute . $contentModel->getRouteByTableAndId($table, $value->id))
 							->text($value->title ? $value->title : $value->author);
 						$textElement->text($textDate);
 						$outputItem .= $itemElement->html($linkElement . $textElement);

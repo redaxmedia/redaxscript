@@ -16,7 +16,6 @@
 	& a
 	{
 		background: gray(0, 0.8);
-		border-radius: 0.125em;
 		color: gray(255);
 		display: block;
 		padding: 0.5em 1em;

@@ -31,7 +31,7 @@ if (php_sapi_name() === 'cli')
 
 /* restrict access */
 
-else if ($config->get('env') !== 'production' || $accessValidator->validate('1', $registry->get('myGroups')) === Validator\ValidatorInterface::PASSED)
+else if ($config->get('env') !== 'production' || $accessValidator->validate('1', $registry->get('myGroups')))
 {
 	/* ajax request */
 
@@ -49,7 +49,8 @@ else if ($config->get('env') !== 'production' || $accessValidator->validate('1',
 
 	else
 	{
-		include_once('templates' . DIRECTORY_SEPARATOR . 'console' . DIRECTORY_SEPARATOR . 'index.phtml');
+		set_include_path('templates');
+		include_once('console' . DIRECTORY_SEPARATOR . 'index.phtml');
 	}
 }
 else

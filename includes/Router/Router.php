@@ -170,7 +170,7 @@ class Router extends RouterAbstract
 
 	protected function _processSearch() : string
 	{
-		$searchController = new Controller\Search($this->_registry, $this->_request, $this->_language);
+		$searchController = new Controller\Search($this->_registry, $this->_request, $this->_language, $this->_config);
 		return $searchController->process();
 	}
 
@@ -184,7 +184,7 @@ class Router extends RouterAbstract
 
 	protected function _processComment() : string
 	{
-		$commentController = new Controller\Comment($this->_registry, $this->_request, $this->_language);
+		$commentController = new Controller\Comment($this->_registry, $this->_request, $this->_language, $this->_config);
 		return $commentController->process();
 	}
 
@@ -198,7 +198,7 @@ class Router extends RouterAbstract
 
 	protected function _processLogin() : string
 	{
-		$loginController = new Controller\Login($this->_registry, $this->_request, $this->_language);
+		$loginController = new Controller\Login($this->_registry, $this->_request, $this->_language, $this->_config);
 		return $loginController->process();
 	}
 
@@ -212,7 +212,7 @@ class Router extends RouterAbstract
 
 	protected function _processReset() : string
 	{
-		$resetController = new Controller\Reset($this->_registry, $this->_request, $this->_language);
+		$resetController = new Controller\Reset($this->_registry, $this->_request, $this->_language, $this->_config);
 		return $resetController->process();
 	}
 
@@ -226,7 +226,7 @@ class Router extends RouterAbstract
 
 	protected function _processRecover() : string
 	{
-		$recoverController = new Controller\Recover($this->_registry, $this->_request, $this->_language);
+		$recoverController = new Controller\Recover($this->_registry, $this->_request, $this->_language, $this->_config);
 		return $recoverController->process();
 	}
 
@@ -240,7 +240,7 @@ class Router extends RouterAbstract
 
 	protected function _processRegister() : string
 	{
-		$registerController = new Controller\Register($this->_registry, $this->_request, $this->_language);
+		$registerController = new Controller\Register($this->_registry, $this->_request, $this->_language, $this->_config);
 		return $registerController->process();
 	}
 
@@ -254,7 +254,7 @@ class Router extends RouterAbstract
 
 	protected function _processLogout() : string
 	{
-		$logoutController = new Controller\Logout($this->_registry, $this->_request, $this->_language);
+		$logoutController = new Controller\Logout($this->_registry, $this->_request, $this->_language, $this->_config);
 		return $logoutController->process();
 	}
 

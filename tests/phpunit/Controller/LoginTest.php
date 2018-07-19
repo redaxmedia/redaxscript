@@ -14,6 +14,9 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @category Tests
  * @author Henry Ruhs
  * @author Balázs Szilágyi
+ *
+ * @covers Redaxscript\Controller\ControllerAbstract
+ * @covers Redaxscript\Controller\Login
  */
 
 class LoginTest extends TestCaseAbstract
@@ -51,35 +54,7 @@ class LoginTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerProcess
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerProcess() : array
-	{
-		return $this->getProvider('tests/provider/Controller/login_process.json');
-	}
-
-	/**
-	 * providerProcessFailure
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerProcessFailure() : array
-	{
-		return $this->getProvider('tests/provider/Controller/login_process_failure.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -91,7 +66,7 @@ class LoginTest extends TestCaseAbstract
 	 * @param array $userArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerProcess
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testProcess(array $postArray = [], array $userArray = [], string $expect = null)
@@ -104,7 +79,7 @@ class LoginTest extends TestCaseAbstract
 			->set('status', $userArray['status'])
 			->save();
 		$this->_request->set('post', $postArray);
-		$loginController = new Controller\Login($this->_registry, $this->_request, $this->_language);
+		$loginController = new Controller\Login($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
@@ -125,7 +100,7 @@ class LoginTest extends TestCaseAbstract
 	 * @param string $method
 	 * @param string $expect
 	 *
-	 * @dataProvider providerProcessFailure
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testProcessFailure(array $postArray = [], array $userArray = [], string $method = null, string $expect = null)
@@ -144,7 +119,8 @@ class LoginTest extends TestCaseAbstract
 			[
 				$this->_registry,
 				$this->_request,
-				$this->_language
+				$this->_language,
+				$this->_config
 			])
 			->setMethods(
 			[

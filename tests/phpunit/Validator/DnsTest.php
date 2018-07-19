@@ -13,23 +13,12 @@ use Redaxscript\Validator;
  * @category Tests
  * @author Henry Ruhs
  * @author Sven Weingartner
+ *
+ * @covers Redaxscript\Validator\Dns
  */
 
 class DnsTest extends TestCaseAbstract
 {
-	/**
-	 * providerDns
-	 *
-	 * @since 2.2.0
-	 *
-	 * @return array
-	 */
-
-	public function providerDns() : array
-	{
-		return $this->getProvider('tests/provider/Validator/dns.json');
-	}
-
 	/**
 	 * testDns
 	 *
@@ -37,12 +26,12 @@ class DnsTest extends TestCaseAbstract
 	 *
 	 * @param string $host
 	 * @param string $type
-	 * @param int $expect
+	 * @param bool $expect
 	 *
-	 * @dataProvider providerDns
+	 * @dataProvider providerAutoloader
 	 */
 
-	public function testDns(string $host = null, string $type = null, int $expect = null)
+	public function testDns(string $host = null, string $type = null, bool $expect = null)
 	{
 		/* setup */
 

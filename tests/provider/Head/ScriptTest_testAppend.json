@@ -1,0 +1,22 @@
+[
+	[
+		[
+			{
+				"src": "assets/scripts/one.js",
+				"async": "async"
+			},
+			{
+				"src": "assets/scripts/two.js"
+			}
+		],
+		{
+			"src": "assets/scripts/three.js"
+		},
+		"<script src=\"assets/scripts/one.js\" async=\"async\"></script><script src=\"assets/scripts/two.js\"></script><script src=\"assets/scripts/three.js\"></script>"
+	],
+	[
+		[],
+		[],
+		"<!-- Redaxscript\\Head\\Script\\Append -->"
+	]
+]

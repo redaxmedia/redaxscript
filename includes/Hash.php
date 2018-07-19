@@ -96,6 +96,6 @@ class Hash
 
 	protected function _create()
 	{
-		$this->_hash = password_hash($this->_raw, PASSWORD_DEFAULT);
+		$this->_hash = password_hash($this->_raw, defined('PASSWORD_ARGON2I') ? constant('PASSWORD_ARGON2I') : PASSWORD_DEFAULT);
 	}
 }

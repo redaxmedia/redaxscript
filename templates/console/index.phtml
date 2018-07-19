@@ -1,12 +1,12 @@
 <?php namespace Redaxscript\Template; ?>
 
 <!DOCTYPE html>
-<html lang="<?php echo Tag::getRegistry('language'); ?>" dir="<?php echo Helper::getDirection(); ?>" class="<?php echo Helper::getClass('rs-is-'); ?>">
+<html lang="<?php echo Helper::getRegistry('language'); ?>" dir="<?php echo Helper::getDirection(); ?>" class="<?php echo Helper::getClass('rs-is-'); ?>">
 
 	<!-- head -->
 
 	<head>
-		<?php echo Tag::partial('templates/console/head.phtml'); ?>
+		<?php echo Tag::partial('console/head.phtml'); ?>
 	</head>
 
 	<!-- body -->
@@ -16,11 +16,11 @@
 		<!-- main -->
 
 		<main id="main" class="rs-console-main">
-			<?php echo Tag::partial('templates/console/content.phtml'); ?>
+			<?php echo Tag::partial('console/content.phtml'); ?>
 		</main>
 
 		<!-- foot script -->
 
-		<?php echo Tag::partial('templates/console/script.phtml'); ?>
+		<?php echo Tag::partial('console/script.phtml'); ?>
 	</body>
 </html>

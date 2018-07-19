@@ -23,8 +23,8 @@ class Registry extends TagAbstract
 	[
 		'search' =>
 		[
-			'<registry>',
-			'</registry>'
+			'<rs-registry>',
+			'</rs-registry>'
 		],
 		'delimiter' => '@@@'
 	];

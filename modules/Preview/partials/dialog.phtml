@@ -2,28 +2,32 @@
 namespace Redaxscript;
 
 $language = Language::getInstance();
-$titleElement = new Html\Element();
-$titleElement->init('h3',
-[
-	'class' => $admin ? 'rs-admin-title-dialog' : 'rs-title-dialog'
-]);
-$boxElement = new Html\Element();
-$boxElement->init('div',
-[
-	'class' => $admin ? 'rs-admin-box-dialog' : 'rs-box-dialog'
-]);
-$textElement = new Html\Element();
-$textElement->init('p');
-$inputElement = new Html\Element();
-$inputElement->init('input',
-[
-	'class' => $admin ? 'rs-admin-field-default' : 'rs-field-default'
-]);
-$buttonElement = new Html\Element();
-$buttonElement->init('button',
-[
-	'class' => $admin ? 'rs-admin-button-default' : 'rs-button-default'
-]);
+$element = new Html\Element();
+$titleElement = $element
+	->copy()
+	->init('h3',
+	[
+		'class' => $admin ? 'rs-admin-title-dialog' : 'rs-title-dialog'
+	]);
+$boxElement = $element
+	->copy()
+	->init('div',
+	[
+		'class' => $admin ? 'rs-admin-box-dialog' : 'rs-box-dialog'
+	]);
+$textElement = $element->copy()->init('p');
+$inputElement = $element
+	->copy()
+	->init('input',
+	[
+		'class' => $admin ? 'rs-admin-field-default' : 'rs-field-default'
+	]);
+$buttonElement = $element
+	->copy()
+	->init('button',
+	[
+		'class' => $admin ? 'rs-admin-button-default' : 'rs-button-default'
+	]);
 ?>
 
 <!-- confirm -->

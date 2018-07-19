@@ -1,0 +1,18 @@
+[
+	[
+		{
+			"groupsNew": false,
+			"groupsEdit": false,
+			"groupsDelete": false
+		},
+		"<h2 class=\"rs-admin-title-content\">Groups</h2><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default\"><thead><tr><th>Name</th><th>Alias</th></tr></thead><tbody><tr><td>Group One</td><td>group-one</td></tr></tbody><tfoot><tr><td>Name</td><td>Alias</td></tr></tfoot></table></div>"
+	],
+	[
+		{
+			"groupsNew": true,
+			"groupsEdit": false,
+			"groupsDelete": false
+		},
+		"<h2 class=\"rs-admin-title-content\">Groups</h2><a class=\"rs-admin-button-default rs-admin-button-create\" href=\"admin/new/groups\">New group</a><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default\"><thead><tr><th>Name</th><th>Alias</th></tr></thead><tbody><tr><td>Group One</td><td>group-one</td></tr></tbody><tfoot><tr><td>Name</td><td>Alias</td></tr></tfoot></table></div>"
+	]
+]

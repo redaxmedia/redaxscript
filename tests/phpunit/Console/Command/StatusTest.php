@@ -12,6 +12,9 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Console\Command\CommandAbstract
+ * @covers Redaxscript\Console\Command\Status
  */
 
 class StatusTest extends TestCaseAbstract

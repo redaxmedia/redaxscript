@@ -1,8 +1,6 @@
 <?php
 namespace Redaxscript\Model;
 
-use Redaxscript\Db;
-
 /**
  * parent class to provide the module model
  *
@@ -13,8 +11,16 @@ use Redaxscript\Db;
  * @author Henry Ruhs
  */
 
-class Module
+class Module extends ModelAbstract
 {
+	/**
+	 * name of the table
+	 *
+	 * @var string
+	 */
+
+	protected $_table = 'modules';
+
 	/**
 	 * create the module by array
 	 *
@@ -27,7 +33,7 @@ class Module
 
 	public function createByArray(array $createArray = []) : bool
 	{
-		return Db::forTablePrefix('modules')
+		return $this->query()
 			->create()
 			->set(
 			[
@@ -35,7 +41,8 @@ class Module
 				'alias' => $createArray['alias'],
 				'author' => $createArray['author'],
 				'description' => $createArray['description'],
-				'version' => $createArray['version']
+				'version' => $createArray['version'],
+				'access' => $createArray['access']
 			])
 			->save();
 	}
@@ -45,13 +52,13 @@ class Module
 	 *
 	 * @since 3.3.0
 	 *
-	 * @param string $moduleAlias
+	 * @param string $moduleAlias alias of the module
 	 *
 	 * @return bool
 	 */
 
 	public function deleteByAlias(string $moduleAlias = null) : bool
 	{
-		return Db::forTablePrefix('modules')->where('alias', $moduleAlias)->deleteMany();
+		return $this->query()->where('alias', $moduleAlias)->deleteMany();
 	}
 }

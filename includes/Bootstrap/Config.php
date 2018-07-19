@@ -14,7 +14,7 @@ use Redaxscript\Model;
  * @author Henry Ruhs
  */
 
-class Config
+class Config extends BootstrapAbstract
 {
 	/**
 	 * automate run
@@ -39,6 +39,7 @@ class Config
 				ini_set('display_startup_errors', 0);
 				ini_set('display_errors', 0);
 			}
+			ini_set('include_path', 'includes');
 			ini_set('mbstring.substitute_character', 0);
 			ini_set('session.use_trans_sid', 0);
 			ini_set('url_rewriter.tags', 0);

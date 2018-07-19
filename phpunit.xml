@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<phpunit convertErrorsToExceptions="true" convertWarningsToExceptions="true" bootstrap="tests/phpunit/bootstrap.php">
+<phpunit forceCoversAnnotation="true" convertErrorsToExceptions="true" convertWarningsToExceptions="true" bootstrap="tests/phpunit/bootstrap.php">
 
 	<!-- listeners -->
 
@@ -26,14 +26,6 @@
 				<file>console.php</file>
 				<file>index.php</file>
 				<file>install.php</file>
-
-				<!-- deprecated -->
-
-				<file>includes/admin_admin.php</file>
-				<file>includes/admin_list.php</file>
-				<file>includes/admin_query.php</file>
-				<file>includes/comments.php</file>
-				<file>includes/contents.php</file>
 			</exclude>
 		</whitelist>
 	</filter>
@@ -168,16 +160,10 @@
 			<file>tests/phpunit/AuthTest.php</file>
 		</testsuite>
 
-		<!-- autoload -->
+		<!-- autoloader -->
 
-		<testsuite name="autoload">
+		<testsuite name="autoloader">
 			<file>tests/phpunit/AutoloaderTest.php</file>
-		</testsuite>
-
-		<!-- breadcrumb -->
-
-		<testsuite name="breadcrumb">
-			<file>tests/phpunit/BreadcrumbTest.php</file>
 		</testsuite>
 
 		<!-- captcha -->

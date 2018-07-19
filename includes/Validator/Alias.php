@@ -15,28 +15,12 @@ namespace Redaxscript\Validator;
 class Alias implements ValidatorInterface
 {
 	/**
-	 * general validate mode
-	 *
-	 * @const integer
-	 */
-
-	const MODE_GENERAL = 0;
-
-	/**
-	 * default validate mode
-	 *
-	 * @const integer
-	 */
-
-	const MODE_DEFAULT = 1;
-
-	/**
-	 * array of default alias
+	 * array of system alias
 	 *
 	 * @var array
 	 */
 
-	protected $_defaultArray =
+	protected $_systemArray =
 	[
 		'admin',
 		'login',
@@ -50,37 +34,24 @@ class Alias implements ValidatorInterface
 	/**
 	 * validate the alias
 	 *
-	 * @since 2.2.0
+	 * @since 4.0.0
 	 *
 	 * @param string $alias alias for routes and users
-	 * @param int $mode switch between general and default validation
+	 * @param string $mode switch between general and default validation
 	 *
-	 * @return int
+	 * @return bool
 	 */
 
-	public function validate($alias = null, $mode = 0)
+	public function validate(string $alias = null, string $mode = 'general') : bool
 	{
-		$output = ValidatorInterface::FAILED;
-
-		/* validate general alias */
-
-		if ($mode === self::MODE_GENERAL)
+		if ($mode === 'general')
 		{
-			if (preg_match('/[^a-z0-9-]/i', $alias) || is_numeric($alias))
-			{
-				$output = ValidatorInterface::PASSED;
-			}
+			return is_numeric($alias) || preg_match('/[^a-z0-9-]/i', $alias);
 		}
-
-		/* validate default alias */
-
-		else if ($mode === self::MODE_DEFAULT)
+		if ($mode === 'system')
 		{
-			if (in_array($alias, $this->_defaultArray))
-			{
-				$output = ValidatorInterface::PASSED;
-			}
+			return in_array($alias, $this->_systemArray);
 		}
-		return $output;
+		return false;
 	}
 }

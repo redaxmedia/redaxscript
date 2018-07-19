@@ -30,7 +30,7 @@ class SearchForm extends ViewAbstract
 	{
 		$output = Module\Hook::trigger('searchFormStart');
 
-		/* html elements */
+		/* html element */
 
 		$formElement = new Html\Form($this->_registry, $this->_language);
 		$formElement->init(

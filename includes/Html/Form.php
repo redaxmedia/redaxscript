@@ -161,7 +161,7 @@ class Form extends HtmlAbstract
 			],
 			'password' =>
 			[
-				'class' => 'rs-js-unmask-password rs-field-default rs-field-password',
+				'class' => 'rs-field-default rs-field-password',
 				'type' => 'password'
 			],
 			'radio' =>
@@ -328,7 +328,7 @@ class Form extends HtmlAbstract
 		}
 		if (is_array($optionArray))
 		{
-			$this->_optionArray = array_merge($this->_optionArray, $optionArray);
+			$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
 		}
 
 		/* captcha */
@@ -609,7 +609,7 @@ class Form extends HtmlAbstract
 	 * @return string|null
 	 */
 
-	protected function _createOption(array $optionArray = [], array $selectArray = [])
+	protected function _createOption(array $optionArray = [], array $selectArray = []) : ?string
 	{
 		$output = null;
 		$optionElement = new Element();

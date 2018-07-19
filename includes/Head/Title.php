@@ -50,10 +50,9 @@ class Title implements HeadInterface
 
 	public function render(string $text = null)
 	{
-		$titleElement = new Html\Element();
-		$titleElement->init();
 		if ($text)
 		{
+			$titleElement = new Html\Element();
 			return $titleElement
 				->init('title')
 				->text($text)

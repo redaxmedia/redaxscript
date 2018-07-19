@@ -14,6 +14,9 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @category Tests
  * @author Henry Ruhs
  *
+ * @covers Redaxscript\Bootstrap\Auth
+ * @covers Redaxscript\Bootstrap\BootstrapAbstract
+ *
  * @runTestsInSeparateProcesses
  */
 
@@ -50,22 +53,7 @@ class AuthTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerAuth
-	 *
-	 * @since 3.1.0
-	 *
-	 * @return array
-	 */
-
-	public function providerAuth() : array
-	{
-		return $this->getProvider('tests/provider/Bootstrap/auth.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -76,7 +64,7 @@ class AuthTest extends TestCaseAbstract
 	 * @param int $userId
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerAuth
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testAuth(int $userId = null, array $expectArray = [])

@@ -1,12 +1,14 @@
 <?php
 namespace Redaxscript\Tests;
 
-use PHPUnit;
+use function file_exists;
+use PHPUnitProviderAutoloader;
 use Redaxscript\Config;
 use Redaxscript\Db;
 use Redaxscript\Installer;
 use Redaxscript\Language;
 use Redaxscript\Model;
+use Redaxscript\Modules\TestDummy;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 use ReflectionClass;
@@ -21,7 +23,7 @@ use ReflectionClass;
  * @author Henry Ruhs
  */
 
-abstract class TestCaseAbstract extends PHPUnit\Framework\TestCase
+abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstract
 {
 	/**
 	 * instance of the registry class
@@ -56,6 +58,14 @@ abstract class TestCaseAbstract extends PHPUnit\Framework\TestCase
 	protected $_config;
 
 	/**
+	 * namespace of the testing suite
+	 *
+	 * @var string
+	 */
+
+	protected $_testNamespace = __NAMESPACE__;
+
+	/**
 	 * setUp
 	 *
 	 * @since 3.1.0
@@ -84,7 +94,7 @@ abstract class TestCaseAbstract extends PHPUnit\Framework\TestCase
 	}
 
 	/**
-	 * installerFactory
+	 * settingFactory
 	 *
 	 * @since 3.3.0
 	 *
@@ -97,19 +107,76 @@ abstract class TestCaseAbstract extends PHPUnit\Framework\TestCase
 	}
 
 	/**
-	 * getProvider
+	 * createDatabase
 	 *
-	 * @since 2.2.0
-	 *
-	 * @param string $url
-	 *
-	 * @return array
+	 * @since 4.0.0
 	 */
 
-	public function getProvider(string $url = null) : array
+	public function createDatabase()
 	{
-		$content = file_get_contents($url);
-		return json_decode($content, true);
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+	}
+
+	/**
+	 * dropDatabase
+	 *
+	 * @since 4.0.0
+	 */
+
+	public function dropDatabase()
+	{
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawDrop();
+	}
+
+	/**
+	 * installTestDummy
+	 *
+	 * @since 4.0.0
+	 */
+
+	public function installTestDummy()
+	{
+		$testDummy = new TestDummy\TestDummy($this->_registry, $this->_request, $this->_language, $this->_config);
+		$testDummy->install();
+	}
+
+	/**
+	 * uninstallTestDummy
+	 *
+	 * @since 4.0.0
+	 */
+
+	public function uninstallTestDummy()
+	{
+		$testDummy = new TestDummy\TestDummy($this->_registry, $this->_request, $this->_language, $this->_config);
+		$testDummy->clearNotification('success');
+		$testDummy->clearNotification('warning');
+		$testDummy->clearNotification('error');
+		$testDummy->clearNotification('info');
+		$testDummy->uninstall();
+	}
+
+	/**
+	 * getJSON
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param string $file
+	 *
+	 * @return array|null
+	 */
+
+	public function getJSON(string $file = null)
+	{
+		if (file_exists($file))
+		{
+			$content = file_get_contents($file);
+			return json_decode($content, true);
+		}
 	}
 
 	/**
@@ -125,8 +192,8 @@ abstract class TestCaseAbstract extends PHPUnit\Framework\TestCase
 
 	public function getProperty($object = null, string $property = null)
 	{
-		$reflectionObject = new ReflectionClass($object);
-		$reflectionProperty = $reflectionObject->getProperty($property);
+		$reflection = new ReflectionClass($object);
+		$reflectionProperty = $reflection->getProperty($property);
 		$reflectionProperty->setAccessible(true);
 		return $reflectionProperty->getValue($object);
 	}
@@ -145,8 +212,8 @@ abstract class TestCaseAbstract extends PHPUnit\Framework\TestCase
 
 	public function callMethod($object = null, string $method = null, array $argumentArray = [])
 	{
-		$reflectionObject = new ReflectionClass($object);
-		$reflectionMethod = $reflectionObject->getMethod($method);
+		$reflection = new ReflectionClass($object);
+		$reflectionMethod = $reflection->getMethod($method);
 		$reflectionMethod->setAccessible(true);
 		return $reflectionMethod->invokeArgs($object, $argumentArray);
 	}
@@ -225,11 +292,27 @@ abstract class TestCaseAbstract extends PHPUnit\Framework\TestCase
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array
+	 * @return array|null
 	 */
 
 	public function getHeaderArray()
 	{
 		return function_exists('xdebug_get_headers') ? xdebug_get_headers() : $this->markTestSkipped();
+	}
+
+	/**
+	 * skipOnEnv
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param string|null $env
+	 */
+
+	public function skipOnEnv(string $env = null)
+	{
+		if (getenv($env))
+		{
+			$this->markTestSkipped();
+		}
 	}
 }

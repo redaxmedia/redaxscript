@@ -13,6 +13,9 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Admin\View\GroupForm
+ * @covers Redaxscript\Admin\View\ViewAbstract
  */
 
 class GroupFormTest extends TestCaseAbstract
@@ -55,22 +58,7 @@ class GroupFormTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerRender
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerRender() : array
-	{
-		return $this->getProvider('tests/provider/Admin/View/group_form_render.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -82,7 +70,7 @@ class GroupFormTest extends TestCaseAbstract
 	 * @param int $groupId
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerRender
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testRender(array $registryArray = [], int $groupId = null, array $expectArray = [])

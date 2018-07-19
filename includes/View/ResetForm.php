@@ -28,7 +28,7 @@ class ResetForm extends ViewAbstract
 	{
 		$output = Module\Hook::trigger('resetFormStart');
 
-		/* html elements */
+		/* html element */
 
 		$titleElement = new Html\Element();
 		$titleElement
@@ -59,11 +59,10 @@ class ResetForm extends ViewAbstract
 		/* create the form */
 
 		$formElement
-			->append('<fieldset>')
 			->legend()
 			->append('<li><ul>')
 			->captcha('task')
-			->append('</li></ul></fieldset>')
+			->append('</li></ul>')
 			->hidden(
 			[
 				'name' => 'password',

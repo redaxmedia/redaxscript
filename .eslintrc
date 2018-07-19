@@ -1,0 +1,24 @@
+{
+	"env":
+	{
+		"browser": true,
+		"es6": true,
+		"mocha": true,
+		"node": true
+	},
+	"globals":
+	{
+		"rs": true
+	},
+	"extends":
+	[
+		"eslint-config-redaxmedia"
+	],
+	"parserOptions":
+	{
+		"ecmaFeatures":
+		{
+			"experimentalObjectRestSpread": true
+		}
+	}
+}

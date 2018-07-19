@@ -1,0 +1,173 @@
+[
+	[
+		{
+			"categoriesEdit": false,
+			"categoriesDelete": false,
+			"token": false
+		},
+		{
+			"table": "categories",
+			"id": 1,
+			"alias": "test",
+			"status": 1
+		},
+		null
+	],
+	[
+		{
+			"categoriesEdit": true,
+			"categoriesDelete": false,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{
+			"table": "categories",
+			"id": 1,
+			"alias": "test",
+			"status": 1
+		},
+		"<ul class=\"rs-admin-list-control\"><li class=\"rs-admin-item-control rs-admin-item-unpublish\"><a href=\"admin/unpublish/categories/1/ffd845f78510f02580d329127bab3dd1aa7f4453\">Unpublish</a></li><li class=\"rs-admin-item-control rs-admin-item-edit\"><a href=\"admin/edit/categories/1\">Edit</a></li></ul>"
+	],
+	[
+		{
+			"categoriesEdit": false,
+			"categoriesDelete": true,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{
+			"table": "categories",
+			"id": 1,
+			"alias": "test",
+			"status": 1
+		},
+		"<ul class=\"rs-admin-list-control\"><li class=\"rs-admin-item-control rs-admin-item-delete\"><a class=\"rs-admin-js-confirm\" href=\"admin/delete/categories/1/ffd845f78510f02580d329127bab3dd1aa7f4453\">Delete</a></li></ul>"
+	],
+	[
+		{
+			"categoriesEdit": true,
+			"categoriesDelete": true,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{
+			"table": "categories",
+			"id": 1,
+			"alias": "test",
+			"status": 0
+		},
+		"<ul class=\"rs-admin-list-control\"><li class=\"rs-admin-item-control rs-admin-item-publish\"><a href=\"admin/publish/categories/1/ffd845f78510f02580d329127bab3dd1aa7f4453\">Publish</a></li><li class=\"rs-admin-item-control rs-admin-item-edit\"><a href=\"admin/edit/categories/1\">Edit</a></li><li class=\"rs-admin-item-control rs-admin-item-delete\"><a class=\"rs-admin-js-confirm\" href=\"admin/delete/categories/1/ffd845f78510f02580d329127bab3dd1aa7f4453\">Delete</a></li></ul>"
+	],
+	[
+		{
+			"categoriesEdit": true,
+			"categoriesDelete": true,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{
+			"table": "categories",
+			"id": 1,
+			"alias": "test",
+			"status": 2
+		},
+		"<ul class=\"rs-admin-list-control\"><li class=\"rs-admin-item-control rs-admin-item-future-posting\"><span>Future posting</span></li><li class=\"rs-admin-item-control rs-admin-item-edit\"><a href=\"admin/edit/categories/1\">Edit</a></li><li class=\"rs-admin-item-control rs-admin-item-delete\"><a class=\"rs-admin-js-confirm\" href=\"admin/delete/categories/1/ffd845f78510f02580d329127bab3dd1aa7f4453\">Delete</a></li></ul>"
+	],
+	[
+		{
+			"usersEdit": false,
+			"usersDelete": false,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{
+			"table": "users",
+			"id": 1,
+			"alias": "test",
+			"status": 1
+		},
+		null
+	],
+	[
+		{
+			"usersEdit": true,
+			"usersDelete": true,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{
+			"table": "users",
+			"id": 1,
+			"alias": "test",
+			"status": 1
+		},
+		"<ul class=\"rs-admin-list-control\"><li class=\"rs-admin-item-control rs-admin-item-edit\"><a href=\"admin/edit/users/1\">Edit</a></li></ul>"
+	],
+	[
+		{
+			"usersEdit": true,
+			"usersDelete": false,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{
+			"table": "users",
+			"id": 2,
+			"alias": "test",
+			"status": 1
+		},
+		"<ul class=\"rs-admin-list-control\"><li class=\"rs-admin-item-control rs-admin-item-disable\"><a href=\"admin/disable/users/2/ffd845f78510f02580d329127bab3dd1aa7f4453\">Disable</a></li><li class=\"rs-admin-item-control rs-admin-item-edit\"><a href=\"admin/edit/users/2\">Edit</a></li></ul>"
+	],
+	[
+		{
+			"usersEdit": true,
+			"usersDelete": false,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{
+			"table": "users",
+			"id": 2,
+			"alias": "test",
+			"status": 0
+		},
+		"<ul class=\"rs-admin-list-control\"><li class=\"rs-admin-item-control rs-admin-item-enable\"><a href=\"admin/enable/users/2/ffd845f78510f02580d329127bab3dd1aa7f4453\">Enable</a></li><li class=\"rs-admin-item-control rs-admin-item-edit\"><a href=\"admin/edit/users/2\">Edit</a></li></ul>"
+	],
+	[
+		{
+			"modulesInstall": false,
+			"modulesEdit": false,
+			"modulesUninstall": false,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{
+			"table": "modules",
+			"id": null,
+			"alias": "test",
+			"status": null
+		},
+		null
+	],
+	[
+		{
+			"modulesInstall": true,
+			"modulesEdit": false,
+			"modulesUninstall": false,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{
+			"table": "modules",
+			"id": null,
+			"alias": "test",
+			"status": null
+		},
+		"<ul class=\"rs-admin-list-control\"><li class=\"rs-admin-item-control rs-admin-item-install\"><a href=\"admin/install/modules/test/ffd845f78510f02580d329127bab3dd1aa7f4453\">Install</a></li></ul>"
+	],
+	[
+		{
+			"modulesInstall": false,
+			"modulesEdit": false,
+			"modulesUninstall": true,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{
+			"table": "modules",
+			"id": 1,
+			"alias": "test",
+			"status": 1
+		},
+		"<ul class=\"rs-admin-list-control\"><li class=\"rs-admin-item-control rs-admin-item-uninstall\"><a href=\"admin/uninstall/modules/test/ffd845f78510f02580d329127bab3dd1aa7f4453\">Uninstall</a></li></ul>"
+	]
+]

@@ -11,23 +11,12 @@ use Redaxscript\Hash;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Hash
  */
 
 class HashTest extends TestCaseAbstract
 {
-	/**
-	 * providerHash
-	 *
-	 * @since 2.6.0
-	 *
-	 * @return array
-	 */
-
-	public function providerHash() : array
-	{
-		return $this->getProvider('tests/provider/hash.json');
-	}
-
 	/**
 	 * testInit
 	 *
@@ -35,7 +24,7 @@ class HashTest extends TestCaseAbstract
 	 *
 	 * @param string $raw
 	 *
-	 * @dataProvider providerHash
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testInit(string $raw = null)
@@ -57,7 +46,7 @@ class HashTest extends TestCaseAbstract
 	 *
 	 * @param string $raw
 	 *
-	 * @dataProvider providerHash
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testGetRaw(string $raw = null)
@@ -85,7 +74,7 @@ class HashTest extends TestCaseAbstract
 	 * @param string $raw
 	 * @param array $hashArray
 	 *
-	 * @dataProvider providerHash
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testGetHash(string $raw = null, array $hashArray = [])
@@ -97,7 +86,7 @@ class HashTest extends TestCaseAbstract
 
 		/* expect and actual */
 
-		$expect = $hashArray[0];
+		$expect = defined('PASSWORD_ARGON2I') ?  $hashArray['argon2i'][0] : $hashArray['default'][0];
 		$actual = $hash->getHash();
 
 		/* compare */
@@ -113,7 +102,7 @@ class HashTest extends TestCaseAbstract
 	 * @param string $raw
 	 * @param array $hashArray
 	 *
-	 * @dataProvider providerHash
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testValidate(string $raw = null, array $hashArray = [])
@@ -125,7 +114,7 @@ class HashTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $hash->validate($raw, $hashArray[1]);
+		$actual = $hash->validate($raw, defined('PASSWORD_ARGON2I') ? $hashArray['argon2i'][1] : $hashArray['default'][1]);
 
 		/* compare */
 

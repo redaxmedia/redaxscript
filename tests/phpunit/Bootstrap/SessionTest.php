@@ -13,24 +13,14 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @category Tests
  * @author Henry Ruhs
  *
+ * @covers Redaxscript\Bootstrap\BootstrapAbstract
+ * @covers Redaxscript\Bootstrap\Session
+ *
  * @runTestsInSeparateProcesses
  */
 
 class SessionTest extends TestCaseAbstract
 {
-	/**
-	 * providerSession
-	 *
-	 * @since 3.1.0
-	 *
-	 * @return array
-	 */
-
-	public function providerSession() : array
-	{
-		return $this->getProvider('tests/provider/Bootstrap/session.json');
-	}
-
 	/**
 	 * testSession
 	 *
@@ -38,7 +28,7 @@ class SessionTest extends TestCaseAbstract
 	 *
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerSession
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testSession(array $expectArray = [])

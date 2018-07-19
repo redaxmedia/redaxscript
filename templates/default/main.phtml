@@ -2,36 +2,30 @@
 
 <!-- main -->
 
-<main id="main" class="rs-main rs-fn-clearfix">
+<main id="main" class="rs-main">
 
 	<!-- teaser -->
 
-	<?php if (!Tag::getRegistry('adminParameter')): ?>
-		<?php echo Tag::extraRaw()
-			->where(
-			[
-				'alias' => 'teaser',
-				'category' => Tag::getRegistry('categoryId')
-			])
-			->findOne()
-			->text; ?>
+	<?php if (!Helper::getRegistry('adminParameter')): ?>
+		<?php include('default/helper/teaser.php'); ?>
+		<?php echo $teaser; ?>
 	<?php endif; ?>
 
 	<!-- error -->
 
-	<?php if (Tag::getRegistry('contentError')): ?>
-		<div class="rs-wrapper rs-wrapper-page rs-fn-clearfix">
-			<?php echo Tag::partial('templates/default/error.phtml'); ?>
+	<?php if (Helper::getRegistry('contentError')): ?>
+		<div class="rs-wrapper rs-wrapper-page">
+			<?php echo Tag::partial('default/error.phtml'); ?>
 		</div>
 
 	<!-- else content and sidebar -->
 
 	<?php else: ?>
-		<div class="rs-wrapper rs-wrapper-page rs-has-sidebar rs-fn-clearfix">
+		<div class="rs-wrapper rs-wrapper-page rs-has-sidebar">
 			<?php echo Tag::partial(
 			[
-				'templates/default/content.phtml',
-				'templates/default/sidebar.phtml'
+				'default/content.phtml',
+				'default/sidebar.phtml'
 			]); ?>
 		</div>
 	<?php endif; ?>

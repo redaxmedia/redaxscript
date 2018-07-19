@@ -52,7 +52,8 @@ module.exports = () =>
 		},
 		options:
 		{
-			livereload: 7000
+			livereload: 7000,
+			spawn: false
 		}
 	};
 

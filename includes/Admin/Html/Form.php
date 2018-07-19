@@ -9,7 +9,7 @@ use Redaxscript\Html\Form as BaseForm;
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category Admin
+ * @category Html
  * @author Henry Ruhs
  *
  * @method $this create(string $text = null, array $attributeArray = [])
@@ -120,7 +120,7 @@ class Form extends BaseForm
 			],
 			'password' =>
 			[
-				'class' => 'rs-admin-js-unmask-password rs-admin-field-default rs-admin-field-password',
+				'class' => 'rs-admin-field-default rs-admin-field-password',
 				'type' => 'password'
 			],
 			'radio' =>
@@ -187,7 +187,7 @@ class Form extends BaseForm
 				'class' => 'rs-admin-js-save rs-admin-button-default rs-admin-button-save rs-admin-button-large',
 				'name' => 'edit',
 				'type' => 'submit',
-				'value' => 'save'
+				'value' => 'update'
 			],
 			'create' =>
 			[

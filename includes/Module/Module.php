@@ -2,7 +2,6 @@
 namespace Redaxscript\Module;
 
 use Redaxscript\Config;
-use Redaxscript\Db;
 use Redaxscript\Installer;
 use Redaxscript\Language;
 use Redaxscript\Model;
@@ -59,11 +58,7 @@ class Module
 	 * @var array
 	 */
 
-	protected static $_moduleArray =
-	[
-		'status' => 1,
-		'access' => null
-	];
+	protected static $_moduleArray = [];
 
 	/**
 	 * constructor of the class
@@ -92,7 +87,7 @@ class Module
 	 * @param array $moduleArray custom module setup
 	 */
 
-	public function init($moduleArray = [])
+	public function init(array $moduleArray = [])
 	{
 		/* merge module setup */
 
@@ -137,8 +132,8 @@ class Module
 				$installer->init($directory);
 				$installer->rawCreate();
 			}
-			Db::clearCache();
-			return Db::forTablePrefix('modules')->where('alias', static::$_moduleArray['alias'])->count() === 1;
+			$moduleModel->clearCache();
+			return $moduleModel->query()->where('alias', static::$_moduleArray['alias'])->count() === 1;
 		}
 		return false;
 	}
@@ -167,8 +162,8 @@ class Module
 				$installer->init($directory);
 				$installer->rawDrop();
 			}
-			Db::clearCache();
-			return Db::forTablePrefix('modules')->where('alias', static::$_moduleArray['alias'])->count() === 0;
+			$moduleModel->clearCache();
+			return $moduleModel->query()->where('alias', static::$_moduleArray['alias'])->count() === 0;
 		}
 		return false;
 	}

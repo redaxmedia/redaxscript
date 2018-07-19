@@ -6,15 +6,14 @@ module.exports = grunt =>
 
 	grunt.initConfig(
 	{
-		jscs: require('./tasks/jscs')(grunt),
-		jshint: require('./tasks/jshint')(grunt),
+		eslint: require('./tasks/eslint')(grunt),
 		jsonlint: require('./tasks/jsonlint')(grunt),
 		ncsslint: require('./tasks/ncsslint')(grunt),
 		htmlhint: require('./tasks/htmlhint')(grunt),
 		phpcs: require('./tasks/phpcs')(grunt),
 		diffJSON: require('./tasks/diff_json')(grunt),
 		formatJSON: require('./tasks/format_json')(grunt),
-		uglify: require('./tasks/uglify')(grunt),
+		babel: require('./tasks/babel')(grunt),
 		postcss: require('./tasks/postcss')(grunt),
 		tocgen: require('./tasks/tocgen')(grunt),
 		webfont: require('./tasks/webfont')(grunt),
@@ -31,21 +30,21 @@ module.exports = grunt =>
 
 	/* rename tasks */
 
-	grunt.task.renameTask('json-format', 'formatJSON');
+	grunt.renameTask('json-format', 'formatJSON');
 
 	/* register tasks */
 
 	grunt.registerTask('default',
 	[
-		'jscs',
-		'jshint',
+		'eslint',
 		'jsonlint',
 		'stylelint',
 		'colorguard',
 		'ncsslint',
 		'htmlhint',
-		'phpcs',
 		'phpcpd',
+		'phpmd',
+		'phpcs',
 		'phpstan',
 		'languagelint'
 	]);
@@ -78,6 +77,12 @@ module.exports = grunt =>
 		'shell:phpstanRoot',
 		'shell:phpstanBase',
 		'shell:phpstanModules'
+	]);
+	grunt.registerTask('phpmd',
+	[
+		'shell:phpmdRoot',
+		'shell:phpmdBase',
+		'shell:phpmdModules'
 	]);
 	grunt.registerTask('phpunit',
 	[
@@ -113,14 +118,12 @@ module.exports = grunt =>
 	]);
 	grunt.registerTask('build-styles',
 	[
-		'postcss:base',
 		'postcss:templateAdmin',
 		'postcss:templateConsole',
 		'postcss:templateDefault',
 		'postcss:templateInstall',
 		'postcss:templateSkeleton',
 		'postcss:moduleAce',
-		'postcss:moduleDebugger',
 		'postcss:moduleDirectoryLister',
 		'postcss:moduleFeedReader',
 		'postcss:moduleLightGallery',
@@ -132,19 +135,10 @@ module.exports = grunt =>
 	]);
 	grunt.registerTask('build-scripts',
 	[
-		'uglify:base',
-		'uglify:templateAdmin',
-		'uglify:templateConsole',
-		'uglify:templateInstall',
-		'uglify:moduleAce',
-		'uglify:moduleAnalytics',
-		'uglify:moduleCallHome',
-		'uglify:moduleExperiments',
-		'uglify:moduleLightGallery',
-		'uglify:moduleMaps',
-		'uglify:moduleSocialSharer',
-		'uglify:moduleSyntaxHighlighter',
-		'uglify:moduleTinymce'
+		'babel:templateAdmin',
+		'babel:templateConsole',
+		'babel:templateInstall',
+		'babel:moduleFormValidator'
 	]);
 	grunt.registerTask('serve',
 	[

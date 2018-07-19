@@ -1,10 +1,38 @@
 /**
  * @tableofcontents
  *
- * 1. code
+ * 1. content
+ *    1.1 title
+ * 2. documentation
+ *    2.1 text
+ *    2.2 code
  */
 
-/** @section 1. code */
+/** @section 1. content */
+
+/** @section 1.1 title */
+
+.rs-admin-title-content
+{
+	color: gray(30);
+	font: bold 2rem var(--rs-admin-font-primary);
+	margin: 1em 0;
+}
+
+/** @section 2. documentation */
+
+/** @section 2.1 text */
+
+.rs-admin-text-documentation
+{
+	& + .rs-admin-code-default,
+	& + .rs-admin-list-default
+	{
+		margin-top: 1em;
+	}
+}
+
+/** @section 2.2 code */
 
 .rs-admin-code-default
 {
@@ -18,15 +46,6 @@
 
 	& + .rs-admin-code-default,
 	& + .rs-admin-text-documentation
-	{
-		margin-top: 1em;
-	}
-}
-
-.rs-admin-text-documentation
-{
-	& + .rs-admin-code-default,
-	& + .rs-admin-list-default
 	{
 		margin-top: 1em;
 	}

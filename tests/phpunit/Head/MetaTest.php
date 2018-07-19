@@ -13,36 +13,13 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @category Tests
  * @author Henry Ruhs
  * @author Balázs Szilágyi
+ *
+ * @covers Redaxscript\Head\HeadAbstract
+ * @covers Redaxscript\Head\Meta
  */
 
 class MetaTest extends TestCaseAbstract
 {
-	/**
-	 * providerAppend
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerAppend() : array
-	{
-		return $this->getProvider('tests/provider/Head/meta_append.json');
-	}
-
-	/**
-	 * providerPrepend
-	 *
-	 * @since 3.1.0
-	 *
-	 * @return array
-	 */
-
-	public function providerPrepend() : array
-	{
-		return $this->getProvider('tests/provider/Head/meta_prepend.json');
-	}
-
 	/**
 	 * testAppend
 	 *
@@ -51,7 +28,7 @@ class MetaTest extends TestCaseAbstract
 	 * @param array $metaArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerAppend
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testAppend(array $metaArray = [], string $expect = null)
@@ -85,7 +62,7 @@ class MetaTest extends TestCaseAbstract
 	 * @param array $metaArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerPrepend
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testPrepend(array $metaArray = [], string $expect = null)

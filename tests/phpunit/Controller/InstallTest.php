@@ -14,9 +14,11 @@ use org\bovigo\vfs\vfsStreamWrapper as StreamWrapper;
  *
  * @package Redaxscript
  * @category Tests
- *
  * @author Henry Ruhs
  * @author Balázs Szilágyi
+ *
+ * @covers Redaxscript\Controller\ControllerAbstract
+ * @covers Redaxscript\Controller\Install
  */
 
 class InstallTest extends TestCaseAbstract
@@ -43,74 +45,7 @@ class InstallTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerProcess
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerProcess() : array
-	{
-		return $this->getProvider('tests/provider/Controller/install_process.json');
-	}
-
-	/**
-	 * providerProcessFailure
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerProcessFailure() : array
-	{
-		return $this->getProvider('tests/provider/Controller/install_process_failure.json');
-	}
-
-	/**
-	 * providerValidateDatabase
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerValidateDatabase() : array
-	{
-		return $this->getProvider('tests/provider/Controller/install_validate_database.json');
-	}
-
-	/**
-	 * providerValidateAccount
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerValidateAccount() : array
-	{
-		return $this->getProvider('tests/provider/Controller/install_validate_account.json');
-	}
-
-	/**
-	 * providerInstall
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerInstall() : array
-	{
-		return $this->getProvider('tests/provider/Controller/install_install.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -121,7 +56,7 @@ class InstallTest extends TestCaseAbstract
 	 * @param array $postArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerProcess
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testProcess(array $postArray = [], string $expect = null)
@@ -135,7 +70,7 @@ class InstallTest extends TestCaseAbstract
 		$postArray['db-password'] = $postArray['db-password'] === '%CURRENT%' ? $this->_config->get('dbPassword') : $postArray['db-password'];
 		$postArray['db-prefix'] = $postArray['db-prefix'] === '%CURRENT%' ? $this->_config->get('dbPrefix') : $postArray['db-prefix'];
 		$this->_request->set('post', $postArray);
-		$this->_config->init(Stream::url('root/config.php'));
+		$this->_config->init(Stream::url('root' . DIRECTORY_SEPARATOR . 'config.php'));
 		$controllerInstall = new Controller\Install($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
@@ -148,6 +83,35 @@ class InstallTest extends TestCaseAbstract
 	}
 
 	/**
+	 * testValidateDatabase
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $postArray
+	 * @param array $expectArray
+	 *
+	 * @dataProvider providerAutoloader
+	 */
+
+	public function testValidateDatabase(array $postArray = [], array $expectArray = [])
+	{
+		/* setup */
+
+		$controllerInstall = new Controller\Install($this->_registry, $this->_request, $this->_language, $this->_config);
+
+		/* actual */
+
+		$actualArray = $this->callMethod($controllerInstall, '_validateDatabase',
+		[
+			$postArray
+		]);
+
+		/* compare */
+
+		$this->assertEquals($expectArray, $actualArray);
+	}
+
+	/**
 	 * testProcessFailure
 	 *
 	 * @since 3.0.0
@@ -156,7 +120,7 @@ class InstallTest extends TestCaseAbstract
 	 * @param string $method
 	 * @param string $expect
 	 *
-	 * @dataProvider providerProcessFailure
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testProcessFailure(array $postArray = [], string $method = null, string $expect = null)
@@ -170,7 +134,7 @@ class InstallTest extends TestCaseAbstract
 		$postArray['db-password'] = $this->_config->get('dbPassword');
 		$postArray['db-prefix'] = $this->_config->get('dbPrefix');
 		$this->_request->set('post', $postArray);
-		$this->_config->init(Stream::url('root/config.php'));
+		$this->_config->init(Stream::url('root' . DIRECTORY_SEPARATOR . 'config.php'));
 		$stub = $this
 			->getMockBuilder('Redaxscript\Controller\Install')
 			->setConstructorArgs(
@@ -203,35 +167,6 @@ class InstallTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testValidateDatabase
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param array $postArray
-	 * @param array $expectArray
-	 *
-	 * @dataProvider providerValidateDatabase
-	 */
-
-	public function testValidateDatabase(array $postArray = [], array $expectArray = [])
-	{
-		/* setup */
-
-		$controllerInstall = new Controller\Install($this->_registry, $this->_request, $this->_language, $this->_config);
-
-		/* actual */
-
-		$actualArray = $this->callMethod($controllerInstall, '_validateDatabase',
-		[
-			$postArray
-		]);
-
-		/* compare */
-
-		$this->assertEquals($expectArray, $actualArray);
-	}
-
-	/**
 	 * testValidateAccount
 	 *
 	 * @since 3.0.0
@@ -239,7 +174,7 @@ class InstallTest extends TestCaseAbstract
 	 * @param array $postArray
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerValidateAccount
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testValidateAccount(array $postArray = [], array $expectArray = [])
@@ -268,7 +203,7 @@ class InstallTest extends TestCaseAbstract
 	 * @param array $installArray
 	 * @param bool $expect
 	 *
-	 * @dataProvider providerInstall
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testInstall(array $installArray = [], bool $expect = null)

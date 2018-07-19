@@ -1,0 +1,14 @@
+<?php
+namespace Redaxscript;
+
+$preElement = new Html\Element();
+$preElement->init('pre',
+[
+	'class' => $admin ? 'rs-admin-js-code rs-admin-code-default' : 'rs-js-code rs-code-default'
+]);
+
+echo $preElement->html(
+'if ($code)
+{
+	return true;
+}');

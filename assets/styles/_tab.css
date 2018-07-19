@@ -1,0 +1,51 @@
+/**
+ * @tableofcontents
+ *
+ * 1. tab
+ *    1.1 medium min
+ *    1.2 medium max
+ */
+
+/** @section 1. tab */
+
+%fn-content-tab,
+%fn-status-tab
+{
+	display: none;
+}
+
+%fn-checked-content-tab
+{
+	display: block;
+}
+
+/** @section 1.1 medium min */
+
+@media (--media-medium-min)
+{
+	%fn-tab
+	{
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	%fn-toggle-tab
+	{
+		order: -1;
+	}
+
+	%fn-content-tab
+	{
+		flex-basis: 100%;
+	}
+}
+
+/** @section 1.2 medium max */
+
+@media (--media-medium-max)
+{
+	%fn-toggle-tab
+	{
+		display: block;
+	}
+}

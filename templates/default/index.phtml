@@ -1,15 +1,15 @@
 <?php namespace Redaxscript\Template; ?>
 
 <!DOCTYPE html>
-<html lang="<?php echo Tag::getRegistry('language'); ?>" dir="<?php echo Helper::getDirection(); ?>" class="<?php echo Helper::getClass('rs-is-'); ?>">
+<html lang="<?php echo Helper::getRegistry('language'); ?>" dir="<?php echo Helper::getDirection(); ?>" class="<?php echo Helper::getClass('rs-is-'); ?>">
 
 	<!-- head -->
 
 	<head>
 		<?php echo Tag::partial(
 		[
-			'templates/admin/head.phtml',
-			'templates/default/head.phtml'
+			'admin/head.phtml',
+			'default/head.phtml'
 		]); ?>
 	</head>
 
@@ -18,16 +18,16 @@
 	<body class="rs-body">
 		<?php $body = Tag::partial(
 		[
-			'templates/default/header.phtml',
-			'templates/default/main.phtml',
-			'templates/default/footer.phtml',
-			'templates/admin/script.phtml',
-			'templates/default/script.phtml'
+			'default/header.phtml',
+			'default/main.phtml',
+			'default/footer.phtml',
+			'admin/script.phtml',
+			'default/script.phtml'
 		]); ?>
 		<?php echo Tag::partial(
 		[
-			'templates/admin/panel.phtml',
-			'templates/default/menu-status.phtml'
+			'admin/panel.phtml',
+			'default/menu-status.phtml'
 		]); ?>
 		<div class="rs-has-menu">
 			<?php echo $body; ?>

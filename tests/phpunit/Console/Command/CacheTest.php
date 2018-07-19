@@ -12,6 +12,9 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Console\Command\Cache
+ * @covers Redaxscript\Console\Command\CommandAbstract
  */
 
 class CacheTest extends TestCaseAbstract

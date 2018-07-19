@@ -12,23 +12,12 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Router\Resolver
  */
 
 class ResolverTest extends TestCaseAbstract
 {
-	/**
-	 * providerResolver
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerResolver() : array
-	{
-		return $this->getProvider('tests/provider/Router/resolver.json');
-	}
-
 	/**
 	 * testGetLite
 	 *
@@ -37,7 +26,7 @@ class ResolverTest extends TestCaseAbstract
 	 * @param string $route
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerResolver
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testGetLite(string $route = null, array $expectArray = [])
@@ -65,7 +54,7 @@ class ResolverTest extends TestCaseAbstract
 	 * @param string $route
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerResolver
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testGetFull(string $route = null, array $expectArray = [])

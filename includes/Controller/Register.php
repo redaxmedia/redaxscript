@@ -1,12 +1,10 @@
 <?php
 namespace Redaxscript\Controller;
 
-use Redaxscript\Db;
 use Redaxscript\Filter;
 use Redaxscript\Hash;
 use Redaxscript\Html;
 use Redaxscript\Mailer;
-use Redaxscript\Messenger;
 use Redaxscript\Model;
 use Redaxscript\Validator;
 
@@ -33,37 +31,26 @@ class Register extends ControllerAbstract
 
 	public function process() : string
 	{
-		$specialFilter = new Filter\Special();
-		$emailFilter = new Filter\Email();
+		$passwordHash = new Hash();
+		$passwordHash->init(uniqid());
+		$groupModel = new Model\Group();
+		$settingModel = new Model\Setting();
+		$postArray = $this->_normalizePost($this->_sanitizePost());
+		$validateArray = $this->_validatePost($postArray);
 
-		/* process post */
+		/* validate post */
 
-		$postArray =
-		[
-			'name' => $specialFilter->sanitize($this->_request->getPost('name')),
-			'user' => $specialFilter->sanitize($this->_request->getPost('user')),
-			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
-			'task' => $this->_request->getPost('task'),
-			'solution' => $this->_request->getPost('solution')
-		];
-
-		/* handle error */
-
-		$messageArray = $this->_validate($postArray);
-		if ($messageArray)
+		if ($validateArray)
 		{
 			return $this->_error(
 			[
-				'message' => $messageArray
+				'route' => 'register',
+				'message' => $validateArray
 			]);
 		}
 
-		/* handle success */
+		/* handle create */
 
-		$groupModel = new Model\Group();
-		$settingModel = new Model\Setting();
-		$passwordHash = new Hash();
-		$passwordHash->init(uniqid());
 		$createArray =
 		[
 			'name' => $postArray['name'],
@@ -71,9 +58,20 @@ class Register extends ControllerAbstract
 			'password' => $passwordHash->getHash(),
 			'email' => $postArray['email'],
 			'language' => $this->_registry->get('language'),
-			'groups' => $groupModel->getIdByAlias('members'),
+			'groups' => $groupModel->getByAlias('members')->id,
 			'status' => $settingModel->get('verification') ? 0 : 1
 		];
+		if (!$this->_create($createArray))
+		{
+			return $this->_error(
+			[
+				'route' => 'register',
+				'message' => $this->_language->get('something_wrong')
+			]);
+		}
+
+		/* handle mail */
+
 		$mailArray =
 		[
 			'name' => $postArray['name'],
@@ -81,71 +79,52 @@ class Register extends ControllerAbstract
 			'password' => $passwordHash->getRaw(),
 			'email' => $postArray['email']
 		];
-
-		/* create */
-
-		if (!$this->_create($createArray))
-		{
-			return $this->_error(
-			[
-				'message' => $this->_language->get('something_wrong')
-			]);
-		}
-
-		/* mail */
-
 		if (!$this->_mail($mailArray))
 		{
 			return $this->_error(
 			[
+				'route' => 'register',
 				'message' => $this->_language->get('email_failed')
 			]);
 		}
+
+		/* handle success */
+
 		return $this->_success(
 		[
+			'route' => 'login',
+			'timeout' => 2,
 			'message' => $settingModel->get('verification') ? $this->_language->get('registration_verification') : $this->_language->get('registration_sent')
 		]);
 	}
 
 	/**
-	 * show the success
+	 * sanitize the post
 	 *
-	 * @since 3.0.0
+	 * @since 4.0.0
 	 *
-	 * @param array $successArray array of the success
-	 *
-	 * @return string
+	 * @return array
 	 */
 
-	protected function _success(array $successArray = []) : string
+	protected function _sanitizePost() : array
 	{
-		$messenger = new Messenger($this->_registry);
-		return $messenger
-			->setRoute($this->_language->get('login'), 'login')
-			->doRedirect()
-			->success($successArray['message'], $this->_language->get('operation_completed'));
+		$specialFilter = new Filter\Special();
+		$emailFilter = new Filter\Email();
+
+		/* sanitize post */
+
+		return
+		[
+			'name' => $specialFilter->sanitize($this->_request->getPost('name')),
+			'user' => $specialFilter->sanitize($this->_request->getPost('user')),
+			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
+			'task' => $this->_request->getPost('task'),
+			'solution' => $this->_request->getPost('solution')
+		];
 	}
 
 	/**
-	 * show the error
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param array $errorArray
-	 *
-	 * @return string
-	 */
-
-	protected function _error(array $errorArray = []) : string
-	{
-		$messenger = new Messenger($this->_registry);
-		return $messenger
-			->setRoute($this->_language->get('back'), 'register')
-			->error($errorArray['message'], $this->_language->get('error_occurred'));
-	}
-
-	/**
-	 * validate
+	 * validate the post
 	 *
 	 * @since 3.0.0
 	 *
@@ -154,45 +133,46 @@ class Register extends ControllerAbstract
 	 * @return array
 	 */
 
-	protected function _validate(array $postArray = []) : array
+	protected function _validatePost(array $postArray = []) : array
 	{
 		$loginValidator = new Validator\Login();
 		$emailValidator = new Validator\Email();
 		$captchaValidator = new Validator\Captcha();
 		$settingModel = new Model\Setting();
+		$userModel = new Model\User();
+		$validateArray = [];
 
 		/* validate post */
 
-		$messageArray = [];
 		if (!$postArray['name'])
 		{
-			$messageArray[] = $this->_language->get('name_empty');
+			$validateArray[] = $this->_language->get('name_empty');
 		}
 		if (!$postArray['user'])
 		{
-			$messageArray[] = $this->_language->get('user_empty');
+			$validateArray[] = $this->_language->get('user_empty');
 		}
-		else if ($loginValidator->validate($postArray['user']) === Validator\ValidatorInterface::FAILED)
+		else if (!$loginValidator->validate($postArray['user']))
 		{
-			$messageArray[] = $this->_language->get('user_incorrect');
+			$validateArray[] = $this->_language->get('user_incorrect');
 		}
-		else if (Db::forTablePrefix('users')->where('user', $postArray['user'])->findOne()->id)
+		else if ($userModel->query()->where('user', $postArray['user'])->findOne()->id)
 		{
-			$messageArray[] = $this->_language->get('user_exists');
+			$validateArray[] = $this->_language->get('user_exists');
 		}
 		if (!$postArray['email'])
 		{
-			$messageArray[] = $this->_language->get('email_empty');
+			$validateArray[] = $this->_language->get('email_empty');
 		}
-		else if ($emailValidator->validate($postArray['email']) === Validator\ValidatorInterface::FAILED)
+		else if (!$emailValidator->validate($postArray['email']))
 		{
-			$messageArray[] = $this->_language->get('email_incorrect');
+			$validateArray[] = $this->_language->get('email_incorrect');
 		}
-		if ($settingModel->get('captcha') > 0 && $captchaValidator->validate($postArray['task'], $postArray['solution']) === Validator\ValidatorInterface::FAILED)
+		if ($settingModel->get('captcha') > 0 && !$captchaValidator->validate($postArray['task'], $postArray['solution']))
 		{
-			$messageArray[] = $this->_language->get('captcha_incorrect');
+			$validateArray[] = $this->_language->get('captcha_incorrect');
 		}
-		return $messageArray;
+		return $validateArray;
 	}
 
 	/**
@@ -226,7 +206,7 @@ class Register extends ControllerAbstract
 		$settingModel = new Model\Setting();
 		$urlLogin = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . 'login';
 
-		/* html elements */
+		/* html element */
 
 		$linkElement = new Html\Element();
 		$linkElement

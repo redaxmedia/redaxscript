@@ -353,10 +353,15 @@ class Installer
 			$callHome = new Modules\CallHome\CallHome($this->_registry, $this->_request, $this->_language, $this->_config);
 			$callHome->install();
 		}
-		if (is_dir('modules' . DIRECTORY_SEPARATOR . 'Validator'))
+		if (is_dir('modules' . DIRECTORY_SEPARATOR . 'FormValidator'))
 		{
-			$validator = new Modules\Validator\Validator($this->_registry, $this->_request, $this->_language, $this->_config);
-			$validator->install();
+			$htmlValidator = new Modules\FormValidator\FormValidator($this->_registry, $this->_request, $this->_language, $this->_config);
+			$htmlValidator->install();
+		}
+		if (is_dir('modules' . DIRECTORY_SEPARATOR . 'HtmlValidator'))
+		{
+			$htmlValidator = new Modules\HtmlValidator\HtmlValidator($this->_registry, $this->_request, $this->_language, $this->_config);
+			$htmlValidator->install();
 		}
 	}
 

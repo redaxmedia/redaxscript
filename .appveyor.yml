@@ -7,10 +7,6 @@ environment:
  MSSQL_VERSION: v5.1.1-preview
  PAPERCUT_VERSION: 4.8.0.1
  matrix:
- - PHP_VERSION_PATCH: 7.0.26
-   PHP_VERSION_MINOR: 7.0
-   PHP_PATH: C:\tools\php70
-   SQLSRV_FILE: php_pdo_sqlsrv_7_nts.dll
  - PHP_VERSION_PATCH: 7.1.12
    PHP_VERSION_MINOR: 7.1
    PHP_PATH: C:\tools\php71

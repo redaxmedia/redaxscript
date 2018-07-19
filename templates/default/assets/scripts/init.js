@@ -1,7 +1,6 @@
-/**
- * @tableofcontents
- *
- * 1. init
- */
+/* webp support */
 
-/** @section 1. init */
+if (document.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') > -1)
+{
+	document.documentElement.classList.add('rs-has-webp');
+}

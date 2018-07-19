@@ -17,31 +17,16 @@ class Dns implements ValidatorInterface
 	/**
 	 * validate the dns
 	 *
-	 * @since 2.2.0
+	 * @since 4.0.0
 	 *
 	 * @param string $host host of the domain
 	 * @param string $type optional domain type
 	 *
-	 * @return int
+	 * @return bool
 	 */
 
-	public function validate($host = null, $type = 'A')
+	public function validate(string $host = null, string $type = 'a') : bool
 	{
-		$output = ValidatorInterface::FAILED;
-
-		/* validate dns */
-
-		if ($host)
-		{
-			if (function_exists('checkdnsrr') && !checkdnsrr($host, $type))
-			{
-				$output = ValidatorInterface::FAILED;
-			}
-			else
-			{
-				$output = ValidatorInterface::PASSED;
-			}
-		}
-		return $output;
+		return function_exists('checkdnsrr') ? checkdnsrr($host, $type) : true;
 	}
 }

@@ -9,6 +9,8 @@ namespace Redaxscript\Tests;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Language
  */
 
 class LanguageTest extends TestCaseAbstract

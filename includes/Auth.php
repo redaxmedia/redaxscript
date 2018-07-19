@@ -10,12 +10,12 @@ namespace Redaxscript;
  * @category Auth
  * @author Henry Ruhs
  *
- * @method mixed getPermissionNew(string $type)
- * @method mixed getPermissionInstall(string $type)
- * @method mixed getPermissionEdit(string $type)
- * @method mixed getPermissionDelete(string $type)
- * @method mixed getPermissionUninstall(string $type)
- * @method mixed getFilter()
+ * @method bool getPermissionNew(string $type)
+ * @method bool getPermissionInstall(string $type)
+ * @method bool getPermissionEdit(string $type)
+ * @method bool getPermissionDelete(string $type)
+ * @method bool getPermissionUninstall(string $type)
+ * @method bool getFilter()
  */
 
 class Auth
@@ -215,7 +215,7 @@ class Auth
 
 			/* process groups */
 
-			foreach ($group as $key => $value)
+			foreach ($group as $value)
 			{
 				foreach ($value as $keySub => $valueSub)
 				{

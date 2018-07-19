@@ -13,6 +13,8 @@ use Redaxscript\Validator;
  * @category Tests
  * @author Henry Ruhs
  * @author Sven Weingartner
+ *
+ * @covers Redaxscript\Validator\Captcha
  */
 
 class CaptchaTest extends TestCaseAbstract
@@ -47,22 +49,7 @@ class CaptchaTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerCaptcha
-	 *
-	 * @since 2.2.0
-	 *
-	 * @return array
-	 */
-
-	public function providerCaptcha() : array
-	{
-		return $this->getProvider('tests/provider/Validator/captcha.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -72,12 +59,12 @@ class CaptchaTest extends TestCaseAbstract
 	 *
 	 * @param string $task
 	 * @param string $hash
-	 * @param int $expect
+	 * @param bool $expect
 	 *
-	 * @dataProvider providerCaptcha
+	 * @dataProvider providerAutoloader
 	 */
 
-	public function testCaptcha(string $task = null, string $hash = null, int $expect = null)
+	public function testCaptcha(string $task = null, string $hash = null, bool $expect = null)
 	{
 		/* setup */
 

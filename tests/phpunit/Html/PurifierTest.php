@@ -1,5 +1,5 @@
 <?php
-namespace Redaxscript\Tests\Filter;
+namespace Redaxscript\Tests\Html;
 
 use Redaxscript\Html;
 use Redaxscript\Tests\TestCaseAbstract;
@@ -12,6 +12,8 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Html\Purifier
  */
 
 class PurifierTest extends TestCaseAbstract
@@ -46,36 +48,21 @@ class PurifierTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
+		$this->dropDatabase();
 	}
 
 	/**
-	 * providerPurifier
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerPurifier() : array
-	{
-		return $this->getProvider('tests/provider/Html/purifier.json');
-	}
-
-	/**
-	 * testPurifier
+	 * testPurify
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param string $html
 	 * @param string $expect
 	 *
-	 * @dataProvider providerPurifier
+	 * @dataProvider providerAutoloader
 	 */
 
-	public function testPurifier(string $html = null, string $expect = null)
+	public function testPurify(string $html = null, string $expect = null)
 	{
 		/* setup */
 

@@ -90,15 +90,15 @@ class Captcha
 	 * @param int $mode captcha operator mode
 	 */
 
-	public function init(int $mode = 0)
+	public function init(int $mode = null)
 	{
-		$settingModel = new Model\Setting();
 		if (is_numeric($mode))
 		{
 			$this->_mode = $mode;
 		}
 		else
 		{
+			$settingModel = new Model\Setting();
 			$this->_mode = (int)$settingModel->get('captcha');
 		}
 		$this->_create();

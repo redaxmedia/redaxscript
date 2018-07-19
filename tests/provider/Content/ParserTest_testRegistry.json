@@ -1,0 +1,9 @@
+[
+	[
+		{
+			"testKey": "testValue"
+		},
+		"<rs-registry>testKey</rs-registry>",
+		"testValue"
+	]
+]

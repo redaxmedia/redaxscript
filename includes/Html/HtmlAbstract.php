@@ -14,7 +14,7 @@ namespace Redaxscript\Html;
 abstract class HtmlAbstract
 {
 	/**
-	 * html of the element
+	 * value of the html
 	 *
 	 * @var string
 	 */

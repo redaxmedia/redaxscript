@@ -12,6 +12,8 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Admin\Html\Form
  */
 
 class FormTest extends TestCaseAbstract
@@ -46,22 +48,7 @@ class FormTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerCreate
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerCreate() : array
-	{
-		return $this->getProvider('tests/provider/Admin/Html/form_create.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -73,7 +60,7 @@ class FormTest extends TestCaseAbstract
 	 * @param array $optionArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerCreate
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testCreate(array $attributeArray = [], array $optionArray = [], string $expect = null)

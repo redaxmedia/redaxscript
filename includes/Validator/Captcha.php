@@ -18,25 +18,17 @@ class Captcha implements ValidatorInterface
 	/**
 	 * validate the captcha
 	 *
-	 * @since 2.2.0
+	 * @since 4.0.0
 	 *
 	 * @param string $task plain task
 	 * @param string $hash hashed solution
 	 *
-	 * @return int
+	 * @return bool
 	 */
 
-	public function validate($task = null, $hash = null)
+	public function validate(string $task = null, string $hash = null) : bool
 	{
-		$output = ValidatorInterface::FAILED;
 		$captchaHash = new Hash();
-
-		/* validate captcha */
-
-		if ($task && $captchaHash->validate($task, $hash))
-		{
-			$output = ValidatorInterface::PASSED;
-		}
-		return $output;
+		return $captchaHash->validate($task, $hash);
 	}
 }

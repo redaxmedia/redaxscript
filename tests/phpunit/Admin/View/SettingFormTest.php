@@ -12,6 +12,9 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Admin\View\SettingForm
+ * @covers Redaxscript\Admin\View\ViewAbstract
  */
 
 class SettingFormTest extends TestCaseAbstract
@@ -36,7 +39,7 @@ class SettingFormTest extends TestCaseAbstract
 		$installer->init();
 		$installer->rawCreate();
 		$installer->insertSettings($optionArray);
-}
+	}
 
 	/**
 	 * tearDown
@@ -46,22 +49,7 @@ class SettingFormTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerRender
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerRender() : array
-	{
-		return $this->getProvider('tests/provider/Admin/View/setting_form_render.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -71,7 +59,7 @@ class SettingFormTest extends TestCaseAbstract
 	 *
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerRender
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testRender(array $expectArray = [])

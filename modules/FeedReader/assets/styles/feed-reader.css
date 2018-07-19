@@ -1,50 +1,17 @@
 /**
  * @tableofcontents
  *
- * 1. box feed reader
- * 2. title feed reader
- * 3. space between elements
+ * 1. box
  */
 
-/** @section 1. box feed reader */
+/** @section 1. box */
 
 .rs-box-feed-reader
 {
-	background: #eee;
-	padding: 1em 1.5em;
 	white-space: pre-line;
-}
 
-.rs-box-feed-reader a
-{
-	text-decoration: underline;
-}
-
-/** @section 2. title feed reader */
-
-.rs-title-feed-reader
-{
-	background: linear-gradient(#ccc, #b9b9b9);
-	border: 1px solid #a5a5a5;
-	border-radius: 0.125em 0.125em 0 0;
-	font: 1.5em/1.75em 'pt sans narrow', 'trebuchet ms', arial;
-	padding: 0 0.75em;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
-}
-
-.rs-title-feed-reader a:hover
-{
-	text-decoration: underline;
-}
-
-.rs-title-feed-reader .rs-title-second
-{
-	float: right;
-}
-
-/** @section 3. space between elements */
-
-.rs-box-feed-reader + .rs-title-feed-reader
-{
-	margin-top: 2em;
+	& a
+	{
+		text-decoration: underline;
+	}
 }

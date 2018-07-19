@@ -2,7 +2,11 @@
  * @tableofcontents
  *
  * 1. clearfix
- * 2. redirect
+ * 2. accordion
+ * 3. dropdown
+ * 4. panel
+ * 5. redirect
+ * 6. tab
  */
 
 /** @section 1. clearfix */
@@ -12,9 +16,77 @@
 	@extend %fn-clearfix;
 }
 
-/** @section 2. redirect */
+/** @section 2. accordion */
+
+.rs-admin-fn-content-accordion
+{
+	@extend %fn-content-accordion;
+}
+
+.rs-admin-fn-status-accordion
+{
+	@extend %fn-status-accordion;
+
+	&:checked + .rs-admin-fn-toggle-accordion + .rs-admin-fn-content-accordion
+	{
+		@extend %fn-checked-content-accordion;
+	}
+}
+
+/** @section 3. dropdown */
+
+.rs-admin-fn-dropdown
+{
+	@extend %fn-dropdown;
+}
+
+/** @section 4. panel */
+
+.rs-admin-fn-content-panel
+{
+	@extend %fn-content-panel;
+}
+
+.rs-admin-fn-status-panel
+{
+	@extend %fn-status-panel;
+
+	&:checked + .rs-admin-fn-toggle-panel + .rs-admin-fn-content-panel
+	{
+		@extend %fn-checked-content-panel;
+	}
+}
+
+/** @section 5. redirect */
 
 .rs-admin-meta-redirect
 {
 	@extend %overlay-redirect;
+}
+
+/** @section 6. tab */
+
+.rs-admin-fn-tab
+{
+	@extend %fn-tab;
+}
+
+.rs-admin-fn-toggle-tab
+{
+	@extend %fn-toggle-tab;
+}
+
+.rs-admin-fn-content-tab
+{
+	@extend %fn-content-tab;
+}
+
+.rs-admin-fn-status-tab
+{
+	@extend %fn-status-tab;
+
+	&:checked + .rs-admin-fn-toggle-tab + .rs-admin-fn-content-tab
+	{
+		@extend %fn-checked-content-tab;
+	}
 }

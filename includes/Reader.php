@@ -133,11 +133,7 @@ class Reader
 			[
 				CURLOPT_RETURNTRANSFER => true,
 				CURLOPT_FOLLOWLOCATION => true,
-				CURLOPT_URL => $url,
-				CURLOPT_HTTPHEADER =>
-				[
-					'User-Agent: Redaxscript'
-				]
+				CURLOPT_URL => $url
 			];
 			$curl = curl_init();
 			curl_setopt_array($curl, $optionArray);

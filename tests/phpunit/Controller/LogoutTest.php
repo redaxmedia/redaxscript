@@ -14,6 +14,9 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @category Tests
  * @author Henry Ruhs
  * @author Balázs Szilágyi
+ *
+ * @covers Redaxscript\Controller\ControllerAbstract
+ * @covers Redaxscript\Controller\Logout
  */
 
 class LogoutTest extends TestCaseAbstract
@@ -48,22 +51,7 @@ class LogoutTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerProcess
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerProcess() : array
-	{
-		return $this->getProvider('tests/provider/Controller/logout_process.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -74,7 +62,7 @@ class LogoutTest extends TestCaseAbstract
 	 * @param array $authArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerProcess
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testProcess(array $authArray = [], string $expect = null)
@@ -82,7 +70,7 @@ class LogoutTest extends TestCaseAbstract
 		/* setup */
 
 		$auth = new Auth($this->_request);
-		$logoutController = new Controller\Logout($this->_registry, $this->_request, $this->_language);
+		$logoutController = new Controller\Logout($this->_registry, $this->_request, $this->_language, $this->_config);
 		if ($authArray['login'])
 		{
 			$auth->login(1);

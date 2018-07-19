@@ -8,7 +8,7 @@
 
 .rs-admin-list-control
 {
-	font: bold 0.875rem var(--rs-admin-font-primary);
+	font: bold 0.75rem var(--rs-admin-font-secondary);
 	margin-left: -0.25em;
 	margin-top: 1em;
 

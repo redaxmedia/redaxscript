@@ -1,6 +1,6 @@
 .idea
 build
-dist
+cache
 libraries
 node_modules
 vendor

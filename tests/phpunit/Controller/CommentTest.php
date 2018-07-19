@@ -14,6 +14,9 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @category Tests
  * @author Henry Ruhs
  * @author Balázs Szilágyi
+ *
+ * @covers Redaxscript\Controller\Comment
+ * @covers Redaxscript\Controller\ControllerAbstract
  */
 
 class CommentTest extends TestCaseAbstract
@@ -68,35 +71,7 @@ class CommentTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerProcess
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerProcess() : array
-	{
-		return $this->getProvider('tests/provider/Controller/comment_process.json');
-	}
-
-	/**
-	 * providerProcessFailure
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerProcessFailure() : array
-	{
-		return $this->getProvider('tests/provider/Controller/comment_process_failure.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -108,7 +83,7 @@ class CommentTest extends TestCaseAbstract
 	 * @param array $settingArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerProcess
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testProcess(array $postArray = [], array $settingArray = [], string $expect = null)
@@ -119,7 +94,7 @@ class CommentTest extends TestCaseAbstract
 		$setting = $this->settingFactory();
 		$setting->set('notification', $settingArray['notification']);
 		$setting->set('moderation', $settingArray['moderation']);
-		$commentController = new Controller\Comment($this->_registry, $this->_request, $this->_language);
+		$commentController = new Controller\Comment($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
@@ -140,7 +115,7 @@ class CommentTest extends TestCaseAbstract
 	 * @param string $method
 	 * @param string $expect
 	 *
-	 * @dataProvider providerProcessFailure
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testProcessFailure(array $postArray = [], array $settingArray = [], string $method = null, string $expect = null)
@@ -157,7 +132,8 @@ class CommentTest extends TestCaseAbstract
 			[
 				$this->_registry,
 				$this->_request,
-				$this->_language
+				$this->_language,
+				$this->_config
 			])
 			->setMethods(
 			[

@@ -12,23 +12,13 @@ use Redaxscript\View;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\View\InstallForm
+ * @covers Redaxscript\View\ViewAbstract
  */
 
 class InstallFormTest extends TestCaseAbstract
 {
-	/**
-	 * providerRender
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerRender() : array
-	{
-		return $this->getProvider('tests/provider/View/install_form_render.json');
-	}
-
 	/**
 	 * testRender
 	 *
@@ -36,7 +26,7 @@ class InstallFormTest extends TestCaseAbstract
 	 *
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerRender
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testRender(array $expectArray = [])

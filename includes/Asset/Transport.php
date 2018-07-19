@@ -122,10 +122,10 @@ class Transport
 	 * @param string $key
 	 * @param string|array $value
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public function render(string $key = null, $value = null) : string
+	public function render(string $key = null, $value = null) : ?string
 	{
 		$output = null;
 		if (is_array($value))
@@ -135,7 +135,7 @@ class Transport
 				$output .= 'window.' . $key . '.' . $keyChildren . ' = ' . json_encode($valueChildren) . ';';
 			}
 		}
-		else
+		else if ($value)
 		{
 			$output = 'window.' . $key . ' = ' . json_encode($value) . ';';
 		}

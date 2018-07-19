@@ -19,18 +19,18 @@ class InstallForm extends ViewAbstract
 	/**
 	 * render the view
 	 *
-	 * @param array $optionArray options of the form
+	 * @param array $installArray
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return string
 	 */
 
-	public function render(array $optionArray = []) : string
+	public function render(array $installArray = []) : string
 	{
 		$output = Module\Hook::trigger('installFormStart');
 
-		/* html elements */
+		/* html element */
 
 		$titleElement = new Html\Element();
 		$titleElement
@@ -44,7 +44,7 @@ class InstallForm extends ViewAbstract
 		[
 			'form' =>
 			[
-				'class' => 'rs-js-accordion rs-js-validate-form rs-install-js-form rs-component-accordion rs-form-default rs-install-form-default'
+				'class' => 'rs-js-validate-form rs-install-js-form rs-component-accordion rs-form-default rs-install-form-default'
 			],
 			'button' =>
 			[
@@ -60,11 +60,21 @@ class InstallForm extends ViewAbstract
 
 		$formElement
 
-			/* database fieldset */
+			/* database */
 
-			->append('<fieldset class="rs-js-set-accordion rs-js-set-active rs-set-accordion rs-set-active">')
-			->append('<legend class="rs-js-title-accordion rs-js-title-active rs-title-accordion rs-title-active">' . $this->_language->get('database_setup') . '</legend>')
-			->append('<ul class="rs-js-box-accordion rs-js-box-active rs-box-accordion rs-box-active">');
+			->radio(
+			[
+				'id' => get_class() . '\Database',
+				'class' => 'rs-fn-status-accordion',
+				'name' => get_class() . '\Accordion',
+				'checked' => 'checked'
+			])
+			->label($this->_language->get('database_setup'),
+			[
+				'class' => 'rs-fn-toggle-accordion rs-label-accordion',
+				'for' => get_class() . '\Database'
+			])
+			->append('<ul class="rs-fn-content-accordion rs-box-accordion"><li>');
 		if ($this->_registry->get('driverArray'))
 		{
 			$formElement
@@ -75,7 +85,7 @@ class InstallForm extends ViewAbstract
 				])
 				->select($this->_registry->get('driverArray'),
 				[
-					$optionArray['dbType']
+					$installArray['dbType']
 				],
 				[
 					'id' => 'db-type',
@@ -91,14 +101,10 @@ class InstallForm extends ViewAbstract
 			])
 			->text(
 			[
-				'data-sqlite' => uniqid() . '.sqlite',
-				'data-mssql' => 'localhost',
-				'data-mysql' => 'localhost',
-				'data-pgsql' => 'localhost',
 				'id' => 'db-host',
 				'name' => 'db-host',
 				'required' => 'required',
-				'value' => $optionArray['dbHost']
+				'value' => $installArray['dbHost']
 			])
 			->append('</li><li>')
 			->label($this->_language->get('name'),
@@ -110,7 +116,7 @@ class InstallForm extends ViewAbstract
 				'id' => 'db-name',
 				'name' => 'db-name',
 				'required' => 'required',
-				'value' => $optionArray['dbName']
+				'value' => $installArray['dbName']
 			])
 			->append('</li><li>')
 			->label($this->_language->get('user'),
@@ -122,7 +128,7 @@ class InstallForm extends ViewAbstract
 				'id' => 'db-user',
 				'name' => 'db-user',
 				'required' => 'required',
-				'value' => $optionArray['dbUser']
+				'value' => $installArray['dbUser']
 			])
 			->append('</li><li>')
 			->label($this->_language->get('password'),
@@ -133,7 +139,7 @@ class InstallForm extends ViewAbstract
 			[
 				'id' => 'db-password',
 				'name' => 'db-password',
-				'value' => $optionArray['dbPassword']
+				'value' => $installArray['dbPassword']
 			])
 			->append('</li><li>')
 			->label($this->_language->get('prefix'),
@@ -144,15 +150,24 @@ class InstallForm extends ViewAbstract
 			[
 				'id' => 'db-prefix',
 				'name' => 'db-prefix',
-				'value' => $optionArray['dbPrefix']
+				'value' => $installArray['dbPrefix']
 			])
-			->append('</li></ul></fieldset>')
+			->append('</li></ul>')
 
-			/* account fieldset */
+			/* account */
 
-			->append('<fieldset class="rs-js-set-accordion rs-set-accordion">')
-			->append('<legend class="rs-js-title-accordion rs-title-accordion">' . $this->_language->get('account_create') . '</legend>')
-			->append('<ul class="rs-js-box-accordion rs-box-accordion"><li>')
+			->radio(
+			[
+				'id' => get_class() . '\Account',
+				'class' => 'rs-fn-status-accordion',
+				'name' => get_class() . '\Accordion'
+			])
+			->label($this->_language->get('account_create'),
+			[
+				'class' => 'rs-fn-toggle-accordion rs-label-accordion',
+				'for' => get_class() . '\Account'
+			])
+			->append('<ul class="rs-fn-content-accordion rs-box-accordion"><li>')
 			->label($this->_language->get('name'),
 			[
 				'for' => 'name'
@@ -162,7 +177,7 @@ class InstallForm extends ViewAbstract
 				'id' => 'admin-name',
 				'name' => 'admin-name',
 				'required' => 'required',
-				'value' => $optionArray['adminName']
+				'value' => $installArray['adminName']
 			])
 			->append('</li><li>')
 			->label($this->_language->get('user'),
@@ -175,7 +190,7 @@ class InstallForm extends ViewAbstract
 				'name' => 'admin-user',
 				'pattern' => '[a-zA-Z0-9]{1,30}',
 				'required' => 'required',
-				'value' => $optionArray['adminUser']
+				'value' => $installArray['adminUser']
 			])
 			->append('</li><li>')
 			->label($this->_language->get('password'),
@@ -188,7 +203,7 @@ class InstallForm extends ViewAbstract
 				'name' => 'admin-password',
 				'pattern' => '[a-zA-Z0-9]{1,30}',
 				'required' => 'required',
-				'value' => $optionArray['adminPassword']
+				'value' => $installArray['adminPassword']
 			])
 			->append('</li><li>')
 			->label($this->_language->get('email'),
@@ -200,9 +215,9 @@ class InstallForm extends ViewAbstract
 				'id' => 'admin-email',
 				'name' => 'admin-email',
 				'required' => 'required',
-				'value' => $optionArray['adminEmail']
+				'value' => $installArray['adminEmail']
 			])
-			->append('</li></ul></fieldset>')
+			->append('</li></ul>')
 			->hidden(
 			[
 				'name' => 'db-salt',

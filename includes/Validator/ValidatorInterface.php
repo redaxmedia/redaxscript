@@ -15,22 +15,6 @@ namespace Redaxscript\Validator;
 interface ValidatorInterface
 {
 	/**
-	 * status passed
-	 *
-	 * @const bool
-	 */
-
-	const PASSED = true;
-
-	/**
-	 * status failed
-	 *
-	 * @const bool
-	 */
-
-	const FAILED = false;
-
-	/**
 	 * validate the value
 	 *
 	 * @since 2.2.0

@@ -14,6 +14,8 @@ use org\bovigo\vfs\vfsStreamWrapper as StreamWrapper;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Mailer
  */
 
 class MailerTest extends TestCaseAbstract
@@ -51,22 +53,7 @@ class MailerTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerMailer
-	 *
-	 * @since 2.2.0
-	 *
-	 * @return array
-	 */
-
-	public function providerMailer() : array
-	{
-		return $this->getProvider('tests/provider/mailer.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -77,12 +64,12 @@ class MailerTest extends TestCaseAbstract
 	 * @param array $toArray
 	 * @param array $fromArray
 	 * @param string $subject
-	 * @param mixed $body
+	 * @param string|array $body
 	 *
-	 * @dataProvider providerMailer
+	 * @dataProvider providerAutoloader
 	 */
 
-	public function testSend($toArray = [], $fromArray = [], string $subject = null, $body = null)
+	public function testSend(array $toArray = [], array $fromArray = [], string $subject = null, $body = null)
 	{
 		/* setup */
 
@@ -106,19 +93,20 @@ class MailerTest extends TestCaseAbstract
 	 * @param array $toArray
 	 * @param array $fromArray
 	 * @param string $subject
-	 * @param mixed $body
+	 * @param string|array $body
 	 *
 	 * @requires OS Linux
-	 * @dataProvider providerMailer
+	 *
+	 * @dataProvider providerAutoloader
 	 */
 
-	public function testSendAttachment($toArray = [], $fromArray = [], string $subject = null, $body = null)
+	public function testSendAttachment(array $toArray = [], array $fromArray = [], string $subject = null, $body = null)
 	{
 		/* setup */
 
 		$attachmentArray =
 		[
-			Stream::url('root/attachment.zip')
+			Stream::url('root' . DIRECTORY_SEPARATOR . 'attachment.zip')
 		];
 		$mailer = new Mailer();
 		$mailer->init($toArray, $fromArray, $subject, $body, $attachmentArray);

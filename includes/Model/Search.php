@@ -16,7 +16,7 @@ use Redaxscript\Db;
 class Search
 {
 	/**
-	 * get by the table
+	 * get the search by table
 	 *
 	 * @since 3.3.0
 	 *
@@ -30,15 +30,15 @@ class Search
 	public function getByTable(string $table = null, string $search = null, string $language = null)
 	{
 		return Db::forTablePrefix($table)
-			->whereLikeMany($this->_buildColumnArray($table), $this->_buildLikeArray($table, $search))
-			->where('status', 1)
+			->whereLikeMany($this->_createColumnArray($table), $this->_createLikeArray($table, $search))
 			->whereLanguageIs($language)
+			->where('status', 1)
 			->orderByDesc('date')
 			->findMany();
 	}
 
 	/**
-	 * build the column array
+	 * create the column array
 	 *
 	 * @since 3.3.0
 	 *
@@ -47,7 +47,7 @@ class Search
 	 * @return array
 	 */
 
-	protected function _buildColumnArray(string $table = null) : array
+	protected function _createColumnArray(string $table = null) : array
 	{
 		return array_filter(
 		[
@@ -59,7 +59,7 @@ class Search
 	}
 
 	/**
-	 * build the like array
+	 * create the like array
 	 *
 	 * @since 3.3.0
 	 *
@@ -69,7 +69,7 @@ class Search
 	 * @return array
 	 */
 
-	protected function _buildLikeArray(string $table = null, string $search = null) : array
+	protected function _createLikeArray(string $table = null, string $search = null) : array
 	{
 		return array_filter(
 		[

@@ -4,5 +4,6 @@
 
 <article id="content" class="rs-content">
 	<?php echo Tag::breadcrumb(); ?>
-	<?php echo Tag::content(); ?>
+	<?php $content = Tag::content(); ?>
+	<?php echo $content ? $content : Tag::article() . Tag::partial('default/comment.phtml'); ?>
 </article>

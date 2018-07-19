@@ -156,6 +156,14 @@
 	font-weight: normal;
 }
 
+%rs-admin-icon-subdirectory-arrow-right
+{
+	content: '\f101';
+	font-family: var(--rs-admin-font-icon);
+	font-style: normal;
+	font-weight: normal;
+}
+
 %rs-admin-icon-notifications
 {
 	content: '\1f514';

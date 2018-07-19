@@ -13,6 +13,8 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Admin\View\Helper\Option
  */
 
 class OptionTest extends TestCaseAbstract
@@ -87,22 +89,7 @@ class OptionTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerOption
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerOption() : array
-	{
-		return $this->getProvider('tests/provider/Admin/View/Helper/option.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -112,7 +99,7 @@ class OptionTest extends TestCaseAbstract
 	 *
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerOption
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testGetToggleArray(array $expectArray = [])
@@ -137,7 +124,7 @@ class OptionTest extends TestCaseAbstract
 	 *
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerOption
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testGetVisibleArray(array $expectArray = [])
@@ -162,7 +149,7 @@ class OptionTest extends TestCaseAbstract
 	 *
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerOption
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testGetRobotArray(array $expectArray = [])
@@ -187,7 +174,7 @@ class OptionTest extends TestCaseAbstract
 	 *
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerOption
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testGetTimeArray(array $expectArray = [])
@@ -212,7 +199,7 @@ class OptionTest extends TestCaseAbstract
 	 *
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerOption
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testGetDateArray(array $expectArray = [])
@@ -237,7 +224,7 @@ class OptionTest extends TestCaseAbstract
 	 *
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerOption
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testGetOrderArray(array $expectArray = [])
@@ -262,7 +249,7 @@ class OptionTest extends TestCaseAbstract
 	 *
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerOption
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testGetCaptchaArray(array $expectArray = [])
@@ -287,7 +274,7 @@ class OptionTest extends TestCaseAbstract
 	 *
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerOption
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testGetPermissionArray(array $expectArray = [])
@@ -319,7 +306,7 @@ class OptionTest extends TestCaseAbstract
 	 *
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerOption
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testGetLanguageArray(array $expectArray = [])
@@ -344,7 +331,7 @@ class OptionTest extends TestCaseAbstract
 	 *
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerOption
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testGetTemplateArray(array $expectArray = [])
@@ -369,7 +356,7 @@ class OptionTest extends TestCaseAbstract
 	 *
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerOption
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testGetContentArray(array $expectArray = [])
@@ -397,7 +384,7 @@ class OptionTest extends TestCaseAbstract
 	 *
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerOption
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testGetAccessArray(array $expectArray = [])

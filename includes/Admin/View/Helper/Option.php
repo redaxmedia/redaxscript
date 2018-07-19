@@ -6,12 +6,12 @@ use Redaxscript\Filesystem;
 use Redaxscript\Language;
 
 /**
- * helper class to provide various options
+ * helper class to create various options
  *
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category Admin
+ * @category View
  * @author Henry Ruhs
  */
 
@@ -291,7 +291,7 @@ class Option
 		foreach ($content as $value)
 		{
 			$contentKey = $value->title . ' (' . $value->id . ')';
-			$contentArray[$contentKey] = intval($value->id);
+			$contentArray[$contentKey] = (int)$value->id;
 		}
 		return $contentArray;
 	}
@@ -315,7 +315,7 @@ class Option
 
 		foreach ($access as $value)
 		{
-			$accessArray[$value->name] = intval($value->id);
+			$accessArray[$value->name] = (int)$value->id;
 		}
 		return $accessArray;
 	}

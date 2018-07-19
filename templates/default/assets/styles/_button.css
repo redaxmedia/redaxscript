@@ -13,11 +13,11 @@
 	border-radius: 0.125em;
 	box-shadow: 0 -0.125em 0 0 gray(0, 0.2) inset, 0 0.125em 0.125em gray(0, 0.2);
 	box-sizing: border-box;
-	cursor: pointer;
 	display: inline-block;
 	font-weight: bold;
 	line-height: 2.5em;
 	padding: 0 1em;
+	text-align: center;
 	transition: transform 0.1s, box-shadow 0.1s;
 
 	&:active
@@ -29,7 +29,6 @@
 	&[disabled]
 	{
 		opacity: 0.5;
-		pointer-events: none;
 	}
 }
 
@@ -41,7 +40,6 @@
 {
 	%rs-button
 	{
-		text-align: center;
 		width: 100%;
 	}
 }

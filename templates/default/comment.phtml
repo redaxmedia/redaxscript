@@ -1,0 +1,11 @@
+<?php namespace Redaxscript\Template; ?>
+
+<!-- comment -->
+
+<?php $articleId = Helper::getRegistry('articleId'); ?>
+<?php if ($articleId): ?>
+	<section class="rs-section-comment">
+		<?php echo Tag::comment($articleId); ?>
+		<?php echo Tag::commentForm($articleId); ?>
+	</section>
+<?php endif; ?>

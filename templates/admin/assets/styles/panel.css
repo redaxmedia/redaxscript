@@ -4,12 +4,9 @@
  * 1. panel
  *    1.1 list
  *    1.2 notification
- *      1.2.1 counter
- *      1.2.2 list
  * 2. query
  *    2.1 medium min
- *    2.2 medium min and large max
- *    2.3 medium max
+ *    2.2 medium max
  */
 
 /** @section 1. panel */
@@ -20,11 +17,9 @@
 {
 	color: gray(185);
 	font: bold 1rem var(--rs-admin-font-primary);
-	position: relative;
-	z-index: 1100;
 
-	& .rs-admin-link-panel,
-	& .rs-admin-text-panel
+	& .rs-admin-label-panel,
+	& .rs-admin-link-panel
 	{
 		background: gray(30);
 		cursor: pointer;
@@ -37,78 +32,79 @@
 		white-space: nowrap;
 	}
 
-	& .rs-admin-item-panel .rs-admin-text-panel:hover,
-	& .rs-admin-item-panel .rs-admin-link-panel:hover,
+	& .rs-admin-label-panel:hover,
+	& .rs-admin-link-panel:hover,
 	& .rs-admin-text-panel-group:hover > .rs-admin-link-panel
 	{
 		background: var(--rs-admin-color-primary);
 		color: gray(0);
 	}
 
-	& .rs-admin-item-logout > .rs-admin-link-panel:hover
+	& .rs-admin-item-panel-logout > .rs-admin-link-panel:hover
 	{
 		background: var(--rs-admin-color-secondary);
 	}
 
 	/* icons */
 
-	& .rs-admin-text-content:before,
-	& .rs-admin-text-access:before,
-	& .rs-admin-text-system:before,
-	& .rs-admin-link-profile:before,
-	& .rs-admin-text-notification:before,
-	& .rs-admin-link-logout:before
+	& .rs-admin-label-panel-content,
+	& .rs-admin-label-panel-access,
+	& .rs-admin-label-panel-system,
+	& .rs-admin-link-panel-profile,
+	& .rs-admin-label-panel-notification,
+	& .rs-admin-link-panel-logout
 	{
-		display: inline-block;
-		font-size: 1.75em;
-		margin-right: 0.5em;
-		margin-top: -0.125em;
-		vertical-align: middle;
+		&:before
+		{
+			display: inline-block;
+			font-size: 1.75em;
+			margin-right: 0.5em;
+			vertical-align: top;
+		}
 	}
 
-	& .rs-admin-text-content:before
+	& .rs-admin-label-panel-content:before
 	{
 		@extend %rs-admin-icon-import-contacts;
 	}
 
-	& .rs-admin-text-access:before
+	& .rs-admin-label-panel-access:before
 	{
 		@extend %rs-admin-icon-lock;
 	}
 
-	& .rs-admin-text-system:before
+	& .rs-admin-label-panel-system:before
 	{
 		@extend %rs-admin-icon-settings;
 	}
 
-	& .rs-admin-link-profile:before
+	& .rs-admin-link-panel-profile:before
 	{
 		@extend %rs-admin-icon-person;
 	}
 
-	& .rs-admin-text-notification:before
+	& .rs-admin-label-panel-notification:before
 	{
 		@extend %rs-admin-icon-notifications;
 	}
 
-	& .rs-admin-link-logout:before
+	& .rs-admin-link-panel-logout:before
 	{
 		@extend %rs-admin-icon-power-settings-new;
 	}
 
-	/* link group */
+	/* group */
 
 	& .rs-admin-text-panel-group
 	{
 		display: flex;
-		justify-content: space-between;
 
-		& .rs-admin-link-view
+		& .rs-admin-link-panel-view
 		{
 			flex-grow: 1;
 		}
 
-		& .rs-admin-link-new
+		& .rs-admin-link-panel-new
 		{
 			position: relative;
 			text-indent: -999em;
@@ -133,89 +129,47 @@
 	}
 }
 
-.rs-admin-list-panel-children
-{
-	display: none;
-}
-
 /** @section 1.2 notification */
 
-/** @section 1.2.1 counter */
-
-.rs-admin-text-notification
+.rs-admin-label-panel-notification
 {
 	position: relative;
-}
 
-.rs-admin-text-notification-counter
-{
-	border-radius: 50%;
-	box-shadow: 0 0 0 0.25em gray(30);
-	color: gray(30);
-	font: bold 0.75em/1.5em var(--rs-admin-font-secondary);
-	height: 1.5em;
-	left: 2.5em;
-	position: absolute;
-	text-align: center;
-	top: 0.75em;
-	width: 1.5em;
-}
-
-/* colors */
-
-.rs-admin-has-success .rs-admin-text-notification-counter
-{
-	background: var(--rs-admin-color-success);
-}
-
-.rs-admin-has-info .rs-admin-text-notification-counter
-{
-	background: var(--rs-admin-color-info);
-}
-
-.rs-admin-has-warning .rs-admin-text-notification-counter
-{
-	background: var(--rs-admin-color-warning);
-}
-
-.rs-admin-has-error .rs-admin-text-notification-counter
-{
-	background: var(--rs-admin-color-error);
-}
-
-/** @section 1.2.2 list */
-
-.rs-admin-list-panel-notification
-{
-	background: gray(30);
-	overflow: hidden;
-
-	& .rs-admin-item-panel-notification
+	& .rs-admin-sup-panel-notification
 	{
-		margin: 0.5em;
-		padding: 0.5em;
-	}
+		background: gray(185);
+		border-radius: 50%;
+		box-shadow: 0 0 0 0.25em gray(30);
+		color: gray(30);
+		font: bold 0.75em/1.5em var(--rs-admin-font-secondary);
+		left: 2.5em;
+		line-height: 1.25em;
+		position: absolute;
+		text-align: center;
+		top: 0.75em;
+		width: 1.25em;
 
-	& .rs-admin-title-panel-notification
-	{
-		text-transform: uppercase;
-	}
+		/* colors */
 
-	& .rs-admin-link-panel-notification,
-	& .rs-admin-text-panel-notification
-	{
-		display: block;
-	}
+		&.rs-admin-is-success
+		{
+			background: var(--rs-admin-color-success);
+		}
 
-	& .rs-admin-link-panel-notification + .rs-admin-link-panel-notification,
-	& .rs-admin-text-panel-notification + .rs-admin-text-panel-notification
-	{
-		margin-top: 0.5em;
-	}
+		&.rs-admin-is-info
+		{
+			background: var(--rs-admin-color-info);
+		}
 
-	& .rs-admin-link-panel-notification
-	{
-		text-decoration: underline;
+		&.rs-admin-is-warning
+		{
+			background: var(--rs-admin-color-warning);
+		}
+
+		&.rs-admin-is-error
+		{
+			background: var(--rs-admin-color-error);
+		}
 	}
 }
 
@@ -227,74 +181,30 @@
 {
 	.rs-admin-list-panel
 	{
+		display: flex;
+
 		& > .rs-admin-item-panel
 		{
-			float: left;
-			position: relative;
-		}
+			flex: 1;
+			min-width: 0;
+			z-index: 1100;
 
-		&.rs-admin-has-column1 > .rs-admin-item-panel
-		{
-			width: 100%;
-		}
-
-		&.rs-admin-has-column2 > .rs-admin-item-panel
-		{
-			width: 50%;
-		}
-
-		&.rs-admin-has-column3 > .rs-admin-item-panel
-		{
-			width: 33.33%;
-		}
-
-		&.rs-admin-has-column4 > .rs-admin-item-panel
-		{
-			width: 25%;
-		}
-
-		&.rs-admin-has-column5 > .rs-admin-item-panel
-		{
-			width: 20%;
-		}
-
-		&.rs-admin-has-column6 > .rs-admin-item-panel
-		{
-			width: 16.66%;
-		}
-	}
-
-	.rs-admin-list-panel-children
-	{
-		left: 0;
-		position: absolute;
-		width: 100%;
-
-		& ul
-		{
-			left: 100%;
-			top: 0;
+			& > .rs-admin-list-panel-children
+			{
+				left: 0;
+				right: 0;
+			}
 		}
 	}
 }
 
-/** @section 2.2 medium min and large max */
-
-@media (--media-medium-min) and (--media-large-max)
-{
-	.rs-admin-list-panel-notification
-	{
-		width: 200%;
-	}
-}
-
-/** @section 2.3 medium max */
+/** @section 2.2 medium max */
 
 @media (--media-medium-max)
 {
 	.rs-admin-item-panel
 	{
-		& > .rs-admin-text-panel:after
+		& .rs-admin-label-panel:after
 		{
 			@extend %rs-admin-icon-chevron-right;
 			font-size: 1.75em;
@@ -304,16 +214,9 @@
 			width: 2em;
 		}
 
-		&.rs-admin-item-active > .rs-admin-text-panel:after
+		& .rs-admin-fn-status-panel:checked + .rs-admin-label-panel:after
 		{
 			@extend %rs-admin-icon-expand-more;
 		}
-	}
-
-	.rs-admin-item-active .rs-admin-list-panel-children .rs-admin-link-panel,
-	.rs-admin-item-active .rs-admin-list-panel-children .rs-admin-text-panel,
-	.rs-admin-item-active .rs-admin-list-panel-notification
-	{
-		background: gray(40);
 	}
 }

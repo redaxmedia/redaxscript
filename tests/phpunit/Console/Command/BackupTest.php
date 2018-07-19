@@ -14,6 +14,9 @@ use org\bovigo\vfs\vfsStream as Stream;
  * @category Tests
  * @author Henry Ruhs
  *
+ * @covers Redaxscript\Console\Command\Backup
+ * @covers Redaxscript\Console\Command\CommandAbstract
+ *
  * @requires OS Linux
  */
 
@@ -28,7 +31,7 @@ class BackupTest extends TestCaseAbstract
 	public function setUp()
 	{
 		parent::setUp();
-		Stream::setup('root', 0777, $this->getProvider('tests/provider/Console/console_setup.json'));
+		Stream::setup('root', 0777, $this->getJSON('tests' . DIRECTORY_SEPARATOR . 'provider' . DIRECTORY_SEPARATOR . 'Console' . DIRECTORY_SEPARATOR . 'ConsoleTest_setUp.json'));
 	}
 
 	/**
@@ -80,7 +83,7 @@ class BackupTest extends TestCaseAbstract
 			'backup',
 			'database',
 			'--directory',
-			Stream::url('root/build')
+			Stream::url('root' . DIRECTORY_SEPARATOR . 'build')
 		]);
 		$backupCommand = new Command\Backup($this->_registry, $this->_request, $this->_language, $this->_config);
 

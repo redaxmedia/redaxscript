@@ -14,6 +14,9 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @category Tests
  * @author Henry Ruhs
  * @author Balázs Szilágyi
+ *
+ * @covers Redaxscript\Controller\ControllerAbstract
+ * @covers Redaxscript\Controller\Reset
  */
 
 class ResetTest extends TestCaseAbstract
@@ -56,35 +59,7 @@ class ResetTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerProcess
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerProcess() : array
-	{
-		return $this->getProvider('tests/provider/Controller/reset_process.json');
-	}
-
-	/**
-	 * providerProcessFailure
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerProcessFailure() : array
-	{
-		return $this->getProvider('tests/provider/Controller/reset_process_failure.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -95,7 +70,7 @@ class ResetTest extends TestCaseAbstract
 	 * @param array $postArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerProcess
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testProcess(array $postArray = [], string $expect = null)
@@ -103,7 +78,7 @@ class ResetTest extends TestCaseAbstract
 		/* setup */
 
 		$this->_request->set('post', $postArray);
-		$resetController = new Controller\Reset($this->_registry, $this->_request, $this->_language);
+		$resetController = new Controller\Reset($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
@@ -123,7 +98,7 @@ class ResetTest extends TestCaseAbstract
 	 * @param string $method
 	 * @param string $expect
 	 *
-	 * @dataProvider providerProcessFailure
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testProcessFailure(array $postArray = [], string $method = null, string $expect = null)
@@ -137,7 +112,8 @@ class ResetTest extends TestCaseAbstract
 			[
 				$this->_registry,
 				$this->_request,
-				$this->_language
+				$this->_language,
+				$this->_config
 			])
 			->setMethods(
 			[

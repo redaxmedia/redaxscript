@@ -1,8 +1,6 @@
 <?php
 namespace Redaxscript\Model;
 
-use Redaxscript\Db;
-
 /**
  * parent class to provide the comment model
  *
@@ -13,30 +11,57 @@ use Redaxscript\Db;
  * @author Henry Ruhs
  */
 
-class Comment
+class Comment extends ContentAbstract
 {
+	/**
+	 * name of the table
+	 *
+	 * @var string
+	 */
+
+	protected $_table = 'comments';
+
+	/**
+	 * get the comments by article and language
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param int $articleId identifier of the article
+	 * @param string $language
+	 *
+	 * @return object
+	 */
+
+	public function getByArticleAndLanguage(int $articleId = null, string $language = null)
+	{
+		return $this->query()
+			->where('article', $articleId)
+			->whereLanguageIs($language)
+			->findMany();
+	}
+
 	/**
 	 * get the comment route by id
 	 *
 	 * @since 3.3.0
 	 *
-	 * @param int $commentId
+	 * @param int $commentId identifier of the comment
 	 *
 	 * @return string|null
 	 */
 
-	public function getRouteById(int $commentId = null)
+	public function getRouteById(int $commentId = null) : ?string
 	{
 		$route = null;
-		$commentArray = Db::forTablePrefix('comments')
-			->tableAlias('m')
-			->leftJoinPrefix('articles', 'm.article = a.id', 'a')
+		$commentArray = $this->query()
+			->tableAlias('d')
+			->leftJoinPrefix('articles', 'd.article = a.id', 'a')
 			->leftJoinPrefix('categories', 'a.category = c.id', 'c')
 			->leftJoinPrefix('categories', 'c.parent = p.id', 'p')
 			->select('p.alias', 'parent_alias')
 			->select('c.alias', 'category_alias')
 			->select('a.alias', 'article_alias')
-			->where('m.id', $commentId)
+			->where('d.id', $commentId)
 			->findArray();
 
 		/* build route */
@@ -46,27 +71,6 @@ class Comment
 			$route = implode('/', array_filter($commentArray[0])) . '#comment-' . $commentId;
 		}
 		return $route;
-	}
-
-	/**
-	 * publish each comment by date
-	 *
-	 * @since 3.3.0
-	 *
-	 * @param string $date
-	 *
-	 * @return int
-	 */
-
-	public function publishByDate(string $date = null) : int
-	{
-		return Db::forTablePrefix('comments')
-			->where('status', 2)
-			->whereLt('date', $date)
-			->findMany()
-			->set('status', 1)
-			->save()
-			->count();
 	}
 
 	/**
@@ -81,7 +85,7 @@ class Comment
 
 	public function createByArray(array $createArray = []) : bool
 	{
-		return Db::forTablePrefix('comments')
+		return $this->query()
 			->create()
 			->set(
 			[

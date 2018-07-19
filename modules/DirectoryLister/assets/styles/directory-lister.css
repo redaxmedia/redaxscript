@@ -15,6 +15,12 @@
 
 .rs-list-directory-lister
 {
+	& li
+	{
+		display: flex;
+		justify-content: space-between;
+	}
+
 	& li + li
 	{
 		margin-top: 0.25em;
@@ -58,14 +64,8 @@
 .rs-text-directory-lister
 {
 	display: none;
-	width: 15%;
 
-	&:last-child
-	{
-		text-align: right;
-	}
-
-	&.rs-has-size[data-unit]:after
+	&.rs-is-size:after
 	{
 		content: ' ' attr(data-unit);
 	}
@@ -79,14 +79,11 @@
 {
 	.rs-link-directory-lister
 	{
-		margin-right: 5%;
-		width: 65%;
+		flex-basis: 70%;
 	}
 
-	.rs-link-directory-lister,
 	.rs-text-directory-lister
 	{
-		display: inline-block;
-		vertical-align: top;
+		display: block;
 	}
 }

@@ -14,42 +14,29 @@ namespace Redaxscript\Template\Helper;
 class Client extends HelperAbstract
 {
 	/**
-	 * array of the devices
-	 *
-	 * @var array
-	 */
-
-	protected $_deviceArray =
-	[
-		'mobile' => 'myMobile',
-		'tablet' => 'myTablet',
-		'desktop' => 'myDesktop'
-	];
-
-	/**
 	 * process
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array
+	 * @param string $prefix
+	 *
+	 * @return string
 	 */
 
-	public function process() : array
+	public function process(string $prefix = null)
 	{
-		$clientArray = [];
-		$browserArray = $this->_getBrowserArray();
-		$deviceArray = $this->_getDeviceArray();
+		$clientArray = array_unique(array_merge(
+			$this->_getBrowserArray(),
+			$this->_getDeviceArray()
+		));
 
-		/* browser and device */
+		/* process client */
 
-		if (is_array($browserArray) && is_array($deviceArray))
+		foreach ($clientArray as $key => $value)
 		{
-			$clientArray = array_unique(array_merge(
-				$browserArray,
-				$deviceArray
-			));
+			$clientArray[$key] = $prefix . $value;
 		}
-		return is_array($clientArray) ? $clientArray : [];
+		return implode(' ', $clientArray);
 	}
 
 	/**
@@ -62,12 +49,12 @@ class Client extends HelperAbstract
 
 	protected function _getBrowserArray() : array
 	{
-		return
+		return array_filter(
 		[
 			$this->_registry->get('myBrowser'),
 			$this->_registry->get('myBrowserVersion'),
 			$this->_registry->get('myEngine')
-		];
+		]);
 	}
 
 	/**
@@ -75,23 +62,38 @@ class Client extends HelperAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array|bool
+	 * @return array
 	 */
 
-	protected function _getDeviceArray()
+	protected function _getDeviceArray() : array
 	{
-		foreach ($this->_deviceArray as $system => $value)
+		$myMobile = $this->_registry->get('myMobile');
+		$myTablet = $this->_registry->get('myTablet');
+		$myDesktop = $this->_registry->get('myDesktop');
+		if ($myMobile)
 		{
-			$device = $this->_registry->get($value);
-			if ($device)
-			{
-				return
-				[
-					$system,
-					$device
-				];
-			}
+			return
+			[
+				'mobile',
+				$myMobile
+			];
 		}
-		return false;
+		if ($myTablet)
+		{
+			return
+			[
+				'tablet',
+				$myTablet
+			];
+		}
+		if ($myDesktop)
+		{
+			return
+			[
+				'desktop',
+				$myDesktop
+			];
+		}
+		return [];
 	}
 }

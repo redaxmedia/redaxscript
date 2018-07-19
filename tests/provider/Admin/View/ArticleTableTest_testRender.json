@@ -1,0 +1,18 @@
+[
+	[
+		{
+			"articlesNew": false,
+			"articlesEdit": false,
+			"articlesDelete": false
+		},
+		"<h2 class=\"rs-admin-title-content\">Articles</h2><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default\"><thead><tr><th>Title</th><th>Alias</th><th>Language</th><th>Category</th><th>Rank</th></tr></thead><tbody><tr><td>Article One</td><td>article-one</td><td>All</td><td>Uncategorized</td><td class=\"rs-admin-col-move\"></td></tr></tbody><tfoot><tr><td>Title</td><td>Alias</td><td>Language</td><td>Category</td><td>Rank</td></tr></tfoot></table></div>"
+	],
+	[
+		{
+			"articlesNew": true,
+			"articlesEdit": false,
+			"articlesDelete": false
+		},
+		"<h2 class=\"rs-admin-title-content\">Articles</h2><a class=\"rs-admin-button-default rs-admin-button-create\" href=\"admin/new/articles\">New article</a><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default\"><thead><tr><th>Title</th><th>Alias</th><th>Language</th><th>Category</th><th>Rank</th></tr></thead><tbody><tr><td>Article One</td><td>article-one</td><td>All</td><td>Uncategorized</td><td class=\"rs-admin-col-move\"></td></tr></tbody><tfoot><tr><td>Title</td><td>Alias</td><td>Language</td><td>Category</td><td>Rank</td></tr></tfoot></table></div>"
+	]
+]

@@ -29,18 +29,18 @@ class FeedReader extends Config
 		'alias' => 'FeedReader',
 		'author' => 'Redaxmedia',
 		'description' => 'Read external RSS and Atom feeds',
-		'version' => '3.3.2'
+		'version' => '4.0.0'
 	];
 
 	/**
-	 * adminPanelNotification
+	 * adminNotification
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array|bool
 	 */
 
-	public function adminPanelNotification()
+	public function adminNotification()
 	{
 		return $this->getNotification();
 	}
@@ -72,26 +72,29 @@ class FeedReader extends Config
 
 	public function render(string $url = null, array $optionArray = []) : string
 	{
-		$counter = 0;
 		$output = null;
 
-		/* html elements */
+		/* html element */
 
-		$titleElement = new Html\Element();
-		$titleElement->init('h3',
-		[
-			'class' => $this->_configArray['className']['title']
-		]);
-		$linkElement = new Html\Element();
-		$linkElement->init('a',
-		[
-			'target' => '_blank'
-		]);
-		$boxElement = new Html\Element();
-		$boxElement->init('div',
-		[
-			'class' => $this->_configArray['className']['box']
-		]);
+		$element = new Html\Element();
+		$titleElement = $element
+			->copy()
+			->init('h3',
+			[
+				'class' => $this->_configArray['className']['title']
+			]);
+		$boxElement = $element
+			->copy()
+			->init('div',
+			[
+				'class' => $this->_configArray['className']['box']
+			]);
+		$linkElement = $element
+			->copy()
+			->init('a',
+			[
+				'target' => '_blank'
+			]);
 
 		/* load result */
 
@@ -103,6 +106,7 @@ class FeedReader extends Config
 
 		if ($result)
 		{
+			$counter = 0;
 			foreach ($result as $value)
 			{
 				if ($counter++ < $optionArray['limit'])

@@ -23,8 +23,8 @@ class Template extends TagAbstract
 	[
 		'search' =>
 		[
-			'<template>',
-			'</template>'
+			'<rs-template>',
+			'</rs-template>'
 		],
 		'namespace' => 'Redaxscript\Template\Tag',
 		'delimiter' => '@@@'

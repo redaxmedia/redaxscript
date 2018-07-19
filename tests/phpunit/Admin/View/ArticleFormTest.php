@@ -13,6 +13,9 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Admin\View\ArticleForm
+ * @covers Redaxscript\Admin\View\ViewAbstract
  */
 
 class ArticleFormTest extends TestCaseAbstract
@@ -47,22 +50,7 @@ class ArticleFormTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerRender
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerRender() : array
-	{
-		return $this->getProvider('tests/provider/Admin/View/article_form_render.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -74,7 +62,7 @@ class ArticleFormTest extends TestCaseAbstract
 	 * @param int $articleId
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerRender
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testRender(array $registryArray = [], int $articleId = null, array $expectArray = [])

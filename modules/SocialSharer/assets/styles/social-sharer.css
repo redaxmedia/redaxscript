@@ -13,15 +13,9 @@
 
 .rs-list-social-sharer
 {
+	display: flex;
 	margin-bottom: 2em;
-	margin-left: -1em;
 	margin-top: 1em;
-
-	& li
-	{
-		float: left;
-		margin: 1em;
-	}
 }
 
 /** @section 1.2 link */

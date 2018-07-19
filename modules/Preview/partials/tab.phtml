@@ -1,57 +1,49 @@
 <?php
 namespace Redaxscript;
 
-$registry = Registry::getInstance();
 $language = Language::getInstance();
-$listElement = new Html\Element();
-$listElement->init('ul',
-[
-	'class' => $admin ? 'rs-admin-js-list-tab rs-admin-list-tab' : 'rs-js-list-tab rs-list-tab'
-]);
-$boxElement = new Html\Element();
-$boxElement->init('div',
-[
-	'class' => $admin ? 'rs-admin-js-box-tab rs-admin-box-tab' : 'rs-js-box-tab rs-box-tab'
-]);
-$itemElement = new Html\Element();
-$itemElement->init('li');
-$linkElement = new Html\Element();
-$linkElement->init('a');
-$setElement = new Html\Element();
-$setElement->init('div',
-[
-	'class' => $admin ? 'rs-admin-js-set-tab rs-admin-set-tab' : 'rs-js-set-tab rs-set-tab'
-]);
-$outputItem = null;
-$outputBox = null;
+$element = new Html\Element();
+$inputElement = $element
+	->copy()
+	->init('input',
+	[
+		'class' => $admin ? 'rs-admin-fn-status-tab' : 'rs-fn-status-tab',
+		'type' => 'radio',
+		'name' => $admin ? 'Modules\Preview\Admin\Tab' : 'Modules\Preview\Tab'
+	]);
+$labelElement = $element
+	->copy()
+	->init('label',
+	[
+		'class' => $admin ? 'rs-admin-fn-toggle-tab rs-admin-label-tab' : 'rs-fn-toggle-tab rs-label-tab'
+	]);
+$boxElement = $element
+	->copy()
+	->init('div',
+	[
+		'class' => $admin ? 'rs-admin-fn-content-tab rs-admin-box-tab' : 'rs-fn-content-tab rs-box-tab'
+	]);
 ?>
 
 <!-- tab -->
 
-<div class="<?php echo $admin ? 'rs-admin-js-tab rs-admin-component-tab' : 'rs-js-tab rs-component-tab'; ?>">
+<div class="<?php echo $admin ? 'rs-admin-fn-tab rs-component-tab' : 'rs-admin-fn-tab rs-component-tab'; ?>">
 
 	<?php for ($i = 1; $i < 6; $i++): ?>
 
-		<?php $id = uniqid('tab-') . $i; ?>
-
-		<?php $outputItem .= $itemElement
-				->copy()
-				->addClass($i === 2 ? $admin ? 'rs-admin-js-item-active rs-admin-item-active' : 'rs-js-item-active rs-item-active' : null)
-				->html(
-					$linkElement
-						->attr('href', $registry->get('parameterRoute') . $registry->get('fullRoute') . '#' . $id)
-						->text($language->get($i, '_number'))
-				); ?>
-
-		<?php $outputBox .= $setElement
-				->copy()
-				->addClass($i === 2 ? $admin ? 'rs-admin-js-set-active rs-admin-set-active' : 'rs-js-set-active rs-set-active' : null)
-				->attr('id', $id)
-				->text($language->get($i, '_number')); ?>
+		<?php echo $inputElement
+					->copy()
+					->attr('id', $admin ? 'Modules\Preview\Admin\Tab\\' . $i : 'Modules\Preview\Tab\\' . $i)
+					->attr('checked', $i === 1 ? 'checked' : null)
+					->text($language->get($i, '_number')) .
+				$labelElement
+					->copy()
+					->attr('for', $admin ? 'Modules\Preview\Admin\Tab\\' . $i : 'Modules\Preview\Tab\\' . $i)
+					->text($language->get($i, '_number')) .
+				$boxElement
+					->copy()
+					->text($language->get($i, '_number')); ?>
 
 	<?php endfor; ?>
-
-	<?php echo $listElement->copy()->html($outputItem); ?>
-	<?php echo $boxElement->copy()->html($outputBox); ?>
 
 </div>

@@ -13,35 +13,24 @@ use Redaxscript\Validator;
  * @category Tests
  * @author Henry Ruhs
  * @author Sven Weingartner
+ *
+ * @covers Redaxscript\Validator\Login
  */
 
 class LoginTest extends TestCaseAbstract
 {
-	/**
-	 * providerLogin
-	 *
-	 * @since 2.2.0
-	 *
-	 * @return array
-	 */
-
-	public function providerLogin() : array
-	{
-		return $this->getProvider('tests/provider/Validator/login.json');
-	}
-
 	/**
 	 * testLogin
 	 *
 	 * @since 2.2.0
 	 *
 	 * @param string $login
-	 * @param int $expect
+	 * @param bool $expect
 	 *
-	 * @dataProvider providerLogin
+	 * @dataProvider providerAutoloader
 	 */
 
-	public function testLogin(string $login = null, int $expect = null)
+	public function testLogin(string $login = null, bool $expect = null)
 	{
 		/* setup */
 

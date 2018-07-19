@@ -12,9 +12,9 @@
 
 <?php echo Tag::meta()
 	->init()
-	->append('charset', Tag::getSetting('charset'))
-	->append(['name' => 'author', 'content' => Tag::getSetting('author')])
-	->append(['name' => 'generator', 'content' => Tag::getLanguage('name', '_package') . ' ' . Tag::getLanguage('version', '_package')])
+	->append('charset', Helper::getSetting('charset'))
+	->append(['name' => 'author', 'content' => Helper::getSetting('author')])
+	->append(['name' => 'generator', 'content' => Helper::getLanguage('name', '_package') . ' ' . Helper::getLanguage('version', '_package')])
 	->append(['name' => 'description', 'content' => Helper::getDescription()])
 	->append(['name' => 'keywords', 'content' => Helper::getKeywords()])
 	->append(['name' => 'robots', 'content' => Helper::getRobots()])
@@ -31,7 +31,6 @@
 	->append(['href' => 'templates/default/assets/images/favicon.ico', 'rel' => 'shortcut icon'])
 	->append(['href' => 'templates/default/assets/images/favicon.png', 'rel' => 'apple-touch-icon'])
 	->appendFile('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset())
-	->appendFile('dist/styles/base.min.css')
 	->appendFile('templates/default/dist/styles/default.min.css')
 	->rewrite(
 	[
@@ -48,6 +47,5 @@
 	->init('head')
 	->prependFile('templates/default/assets/scripts/init.js')
 	->prependFile('assets/scripts/init.js')
-	->prependFile('assets/scripts/support.js')
 	->transportVar('rs', Helper::getTransport())
 	->concat(); ?>

@@ -1,8 +1,7 @@
 <?php
 namespace Redaxscript\Admin\View;
 
-use Redaxscript\Admin\Html\Form as AdminForm;
-use Redaxscript\Db;
+use Redaxscript\Admin;
 use Redaxscript\Html;
 use Redaxscript\Module;
 
@@ -12,18 +11,18 @@ use Redaxscript\Module;
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category Admin
+ * @category View
  * @author Henry Ruhs
  */
 
-class ArticleForm extends ViewAbstract implements ViewInterface
+class ArticleForm extends ViewAbstract
 {
 	/**
 	 * render the view
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param int|bool $articleId identifier of the article
+	 * @param int $articleId identifier of the article
 	 *
 	 * @return string
 	 */
@@ -31,23 +30,25 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 	public function render(int $articleId = null) : string
 	{
 		$output = Module\Hook::trigger('adminArticleFormStart');
-		$article = Db::forTablePrefix('articles')->whereIdIs($articleId)->findOne();
+		$articleModel = new Admin\Model\Article();
+		$article = $articleModel->getById($articleId);
 		$helperOption = new Helper\Option($this->_language);
 
-		/* html elements */
+		/* html element */
 
 		$titleElement = new Html\Element();
-		$titleElement->init('h2',
-		[
-			'class' => 'rs-admin-title-content',
-		]);
-		$titleElement->text($article->title ? $article->title : $this->_language->get('article_new'));
-		$formElement = new AdminForm($this->_registry, $this->_language);
+		$titleElement
+			->init('h2',
+			[
+				'class' => 'rs-admin-title-content',
+			])
+			->text($article->title ? $article->title : $this->_language->get('article_new'));
+		$formElement = new Admin\Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[
 			'form' =>
 			[
-				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-component-tab rs-admin-form-default rs-admin-fn-clearfix'
+				'class' => 'rs-admin-js-validate-form rs-admin-fn-tab rs-admin-component-tab rs-admin-form-default'
 			],
 			'button' =>
 			[
@@ -76,12 +77,22 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 		/* create the form */
 
 		$formElement
-			->append($this->_renderList())
-			->append('<div class="rs-admin-js-box-tab rs-admin-box-tab">')
 
-			/* first tab */
+			/* article */
 
-			->append('<fieldset id="tab-1" class="rs-admin-js-set-tab rs-admin-js-set-active rs-admin-set-tab rs-admin-set-active"><ul><li>')
+			->radio(
+			[
+				'id' => get_class() . '\Article',
+				'class' => 'rs-admin-fn-status-tab',
+				'name' => get_class() . '\Tab',
+				'checked' => 'checked'
+			])
+			->label($this->_language->get('article'),
+			[
+				'class' => 'rs-admin-fn-toggle-tab rs-admin-label-tab',
+				'for' => get_class() . '\Article'
+			])
+			->append('<ul class="rs-admin-fn-content-tab rs-admin-box-tab"><li>')
 			->label($this->_language->get('title'),
 			[
 				'for' => 'title'
@@ -116,7 +127,7 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 			])
 			->textarea(
 			[
-				'class' => 'rs-admin-js-auto-resize rs-admin-field-textarea rs-admin-field-small',
+				'class' => 'rs-admin-js-textarea rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'description',
 				'name' => 'description',
 				'rows' => 1,
@@ -129,7 +140,7 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 			])
 			->textarea(
 			[
-				'class' => 'rs-admin-js-auto-resize rs-admin-js-generate-keyword-output rs-admin-field-textarea rs-admin-field-small',
+				'class' => 'rs-admin-js-textarea rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'keywords',
 				'name' => 'keywords',
 				'rows' => 1,
@@ -155,17 +166,28 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 			])
 			->textarea(
 			[
-				'class' => 'rs-admin-js-auto-resize rs-admin-js-generate-keyword-input rs-admin-js-editor-textarea rs-admin-field-textarea',
+				'class' => 'rs-admin-js-textarea rs-admin-field-textarea',
 				'id' => 'text',
 				'name' => 'text',
 				'required' => 'required',
 				'value' => htmlspecialchars($article->text)
 			])
-			->append('</li></ul></fieldset>')
+			->append('</li></ul>')
 
-			/* second tab */
+			/* general */
 
-			->append('<fieldset id="tab-2" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
+			->radio(
+			[
+				'id' => get_class() . '\General',
+				'class' => 'rs-admin-fn-status-tab',
+				'name' => get_class() . '\Tab'
+			])
+			->label($this->_language->get('general'),
+			[
+				'class' => 'rs-admin-fn-toggle-tab rs-admin-label-tab',
+				'for' => get_class() . '\General'
+			])
+			->append('<ul class="rs-admin-fn-content-tab rs-admin-box-tab"><li>')
 			->label($this->_language->get('language'),
 			[
 				'for' => 'language'
@@ -198,10 +220,10 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getContentArray('articles',
 			[
-				intval($article->id)
+				(int)$article->id
 			]),
 			[
-				intval($article->sibling)
+				(int)$article->sibling
 			],
 			[
 				'id' => 'sibling',
@@ -214,24 +236,35 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getContentArray('categories'),
 			[
-				intval($article->category)
+				(int)$article->category
 			],
 			[
 				'id' => 'category',
 				'name' => 'category'
 			])
-			->append('</li></ul></fieldset>')
+			->append('</li></ul>')
 
-			/* last tab */
+			/* customize */
 
-			->append('<fieldset id="tab-3" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
+			->radio(
+			[
+				'id' => get_class() . '\Customize',
+				'class' => 'rs-admin-fn-status-tab',
+				'name' => get_class() . '\Tab'
+			])
+			->label($this->_language->get('customize'),
+			[
+				'class' => 'rs-admin-fn-toggle-tab rs-admin-label-tab',
+				'for' => get_class() . '\Customize'
+			])
+			->append('<ul class="rs-admin-fn-content-tab rs-admin-box-tab"><li>')
 			->label($this->_language->get('headline'),
 			[
 				'for' => 'headline'
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				$article->id ? intval($article->headline) : 1
+				$article->id ? (int)$article->headline : 1
 			],
 			[
 				'id' => 'headline',
@@ -244,7 +277,7 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				$article->id ? intval($article->byline) : 1
+				$article->id ? (int)$article->byline : 1
 			],
 			[
 				'id' => 'byline',
@@ -257,7 +290,7 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				intval($article->comments)
+				(int)$article->comments
 			],
 			[
 				'id' => 'comments',
@@ -270,7 +303,7 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getVisibleArray(),
 			[
-				$article->id ? intval($article->status) : 1
+				$article->id ? (int)$article->status : 1
 			],
 			[
 				'id' => 'status',
@@ -285,7 +318,7 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 			[
 				'id' => 'rank',
 				'name' => 'rank',
-				'value' => $article->id ? intval($article->rank) : Db::forTablePrefix('articles')->max('rank') + 1
+				'value' => $article->id ? (int)$article->rank : $articleModel->query()->max('rank') + 1
 			])
 			->append('</li>');
 		if ($this->_registry->get('groupsEdit'))
@@ -320,8 +353,14 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 				'name' => 'date',
 				'value' => $article->date ? $article->date : null
 			])
-			->append('</li></ul></fieldset></div>')
+			->append('</li></ul>')
+			->hidden(
+			[
+				'name' => 'id',
+				'value' => $article->id
+			])
 			->token()
+			->append('<div class="rs-admin-wrapper-button">')
 			->cancel();
 		if ($article->id)
 		{
@@ -338,62 +377,12 @@ class ArticleForm extends ViewAbstract implements ViewInterface
 		{
 			$formElement->create();
 		}
+		$formElement->append('</div>');
 
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
 		$output .= Module\Hook::trigger('adminArticleFormEnd');
 		return $output;
-	}
-
-	/**
-	 * render the list
-	 *
-	 * @since 3.2.0
-	 *
-	 * @return string
-	 */
-
-	protected function _renderList() : string
-	{
-		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
-
-		/* html elements */
-
-		$linkElement = new Html\Element();
-		$linkElement->init('a');
-		$itemElement = new Html\Element();
-		$itemElement->init('li');
-		$listElement = new Html\Element();
-		$listElement->init('ul',
-		[
-			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
-		]);
-
-		/* collect item output */
-
-		$outputItem = $itemElement
-			->copy()
-			->addClass('rs-admin-js-item-active rs-admin-item-active')
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-1')
-				->text($this->_language->get('article'))
-			);
-		$outputItem .= $itemElement
-			->copy()
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-2')
-				->text($this->_language->get('general'))
-			);
-		$outputItem .= $itemElement
-			->copy()
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-3')
-				->text($this->_language->get('customize'))
-			);
-		return $listElement->html($outputItem)->render();
 	}
 }

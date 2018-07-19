@@ -14,6 +14,9 @@ use org\bovigo\vfs\vfsStream as Stream;
  * @category Tests
  * @author Henry Ruhs
  * @author Balázs Szilágyi
+ *
+ * @covers Redaxscript\Head\HeadAbstract
+ * @covers Redaxscript\Head\Link
  */
 
 class LinkTest extends TestCaseAbstract
@@ -26,59 +29,7 @@ class LinkTest extends TestCaseAbstract
 
 	public function setUp()
 	{
-		Stream::setup('root', 0777, $this->getProvider('tests/provider/Head/link_setup.json'));
-	}
-
-	/**
-	 * providerAppend
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerAppend() : array
-	{
-		return $this->getProvider('tests/provider/Head/link_append.json');
-	}
-
-	/**
-	 * providerPrepend
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerPrepend() : array
-	{
-		return $this->getProvider('tests/provider/Head/link_prepend.json');
-	}
-
-	/**
-	 * providerRemove
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerRemove() : array
-	{
-		return $this->getProvider('tests/provider/Head/link_remove.json');
-	}
-
-	/**
-	 * providerConcat
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerConcat() : array
-	{
-		return $this->getProvider('tests/provider/Head/link_concat.json');
+		Stream::setup('root', 0777, $this->getJSON('tests' . DIRECTORY_SEPARATOR. 'provider' . DIRECTORY_SEPARATOR. 'Head' . DIRECTORY_SEPARATOR. 'LinkTest_setUp.json'));
 	}
 
 	/**
@@ -90,7 +41,7 @@ class LinkTest extends TestCaseAbstract
 	 * @param array $moduleArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerAppend
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testAppend(array $coreArray = [], array $moduleArray = [], string $expect = null)
@@ -132,7 +83,7 @@ class LinkTest extends TestCaseAbstract
 	 * @param array $moduleArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerPrepend
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testPrepend(array $coreArray = [], array $moduleArray = [], string $expect = null)
@@ -174,7 +125,7 @@ class LinkTest extends TestCaseAbstract
 	 * @param string $deleteFile
 	 * @param string $expect
 	 *
-	 * @dataProvider providerRemove
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testRemove(array $coreArray = [], string $deleteFile = null, string $expect = null)
@@ -209,7 +160,7 @@ class LinkTest extends TestCaseAbstract
 	 * @param array $concatArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerConcat
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testConcat(array $concatArray = [], string $expect = null)
@@ -218,7 +169,7 @@ class LinkTest extends TestCaseAbstract
 
 		$optionArray =
 		[
-			'directory' => Stream::url('root/cache/styles')
+			'directory' => Stream::url('root' . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR . 'styles')
 		];
 		$link = Head\Link::getInstance();
 		$link->init('concat');

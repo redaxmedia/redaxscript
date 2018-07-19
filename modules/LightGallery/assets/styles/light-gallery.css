@@ -1,0 +1,20 @@
+/**
+ * @tableofcontents
+ *
+ * 1. list
+ */
+
+/** @section 1. list */
+
+.rs-list-light-gallery
+{
+	display: flex;
+	flex-wrap: wrap;
+
+	& li
+	{
+		flex-basis: 20%;
+		margin-bottom: 0.5em;
+		margin-right: 0.5em;
+	}
+}

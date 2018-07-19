@@ -1,0 +1,28 @@
+/**
+ * @tableofcontents
+ *
+ * 1. panel
+ *    1.1 medium max
+ */
+
+/** @section 1. panel */
+
+%fn-status-panel
+{
+	display: none;
+}
+
+/** @section 1.1 medium max */
+
+@media (--media-medium-max)
+{
+	%fn-content-panel
+	{
+		display: none;
+	}
+
+	%fn-checked-content-panel
+	{
+		display: block;
+	}
+}

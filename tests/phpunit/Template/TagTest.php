@@ -15,6 +15,8 @@ use org\bovigo\vfs\vfsStreamWrapper as StreamWrapper;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ *  * @covers Redaxscript\Template\Tag
  */
 
 class TagTest extends TestCaseAbstract
@@ -52,9 +54,7 @@ class TagTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
+		$this->dropDatabase();
 	}
 
 	/**
@@ -177,82 +177,6 @@ class TagTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testConsoleLine
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function testConsoleLine()
-	{
-		/* setup */
-
-		$this->_request->setPost('argv', 'help');
-
-		/* actual */
-
-		$actual = Template\Tag::consoleLine();
-
-		/* compare */
-
-		$this->assertString($actual);
-	}
-
-	/**
-	 * testConsoleLineInvalid
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function testConsoleLineInvalid()
-	{
-		/* setup */
-
-		$this->_request->setPost('argv', 'invalidCommand');
-
-		/* actual */
-
-		$actual = Template\Tag::consoleLine();
-
-		/* compare */
-
-		$this->assertFalse($actual);
-	}
-
-	/**
-	 * testConsoleForm
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function testConsoleForm()
-	{
-		/* actual */
-
-		$actual = Template\Tag::consoleForm();
-
-		/* compare */
-
-		$this->assertString($actual);
-	}
-
-	/**
-	 * testSearchForm
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function testSearchForm()
-	{
-		/* actual */
-
-		$actual = Template\Tag::searchForm();
-
-		/* compare */
-
-		$this->assertString($actual);
-	}
-
-	/**
 	 * testPartial
 	 *
 	 * @since 2.3.0
@@ -268,121 +192,11 @@ class TagTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = Template\Tag::partial(Stream::url('root/partial.phtml'));
+		$actual = Template\Tag::partial(Stream::url('root' . DIRECTORY_SEPARATOR . 'partial.phtml'));
 
 		/* compare */
 
 		$this->assertString($actual);
-	}
-
-	/**
-	 * testGetRegistry
-	 *
-	 * @since 2.6.0
-	 */
-
-	public function testGetRegistry()
-	{
-		/* setup */
-
-		$this->_registry->set('testKey', 'testValue');
-
-		/* actual */
-
-		$actual = Template\Tag::getRegistry('testKey');
-
-		/* compare */
-
-		$this->assertEquals('testValue', $actual);
-	}
-
-	/**
-	 * testGetLanguage
-	 *
-	 * @since 2.6.0
-	 */
-
-	public function testGetLanguage()
-	{
-		/* setup */
-
-		$this->_language->set('testKey', 'testValue');
-
-		/* actual */
-
-		$actual = Template\Tag::getLanguage('testKey');
-
-		/* compare */
-
-		$this->assertEquals('testValue', $actual);
-	}
-
-	/**
-	 * testGetSetting
-	 *
-	 * @since 2.6.0
-	 */
-
-	public function testGetSetting()
-	{
-		/* actual */
-
-		$actual = Template\Tag::getSetting('charset');
-
-		/* compare */
-
-		$this->assertEquals('utf-8', $actual);
-	}
-
-	/**
-	 * testCategoryRaw
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function testCategoryRaw()
-	{
-		/* actual */
-
-		$actual = Template\Tag::categoryRaw();
-
-		/* compare */
-
-		$this->assertInstanceOf('Redaxscript\Db', $actual);
-	}
-
-	/**
-	 * testArticleRaw
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function testArticleRaw()
-	{
-		/* actual */
-
-		$actual = Template\Tag::articleRaw();
-
-		/* compare */
-
-		$this->assertInstanceOf('Redaxscript\Db', $actual);
-	}
-
-	/**
-	 * testExtraRaw
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function testExtraRaw()
-	{
-		/* actual */
-
-		$actual = Template\Tag::extraRaw();
-
-		/* compare */
-
-		$this->assertInstanceOf('Redaxscript\Db', $actual);
 	}
 
 	/**
@@ -469,4 +283,99 @@ class TagTest extends TestCaseAbstract
 
 		$this->assertInstanceOf('Redaxscript\Navigation\Template', $actual);
 	}
+
+
+	/**
+	 * testConsole
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testConsole()
+	{
+		/* setup */
+
+		$this->_request->setPost('argv', 'help');
+
+		/* actual */
+
+		$actual = Template\Tag::console();
+
+		/* compare */
+
+		$this->assertString($actual);
+	}
+
+	/**
+	 * testConsoleInvalid
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testConsoleInvalid()
+	{
+		/* setup */
+
+		$this->_request->setPost('argv', 'invalidCommand');
+
+		/* actual */
+
+		$actual = Template\Tag::console();
+
+		/* compare */
+
+		$this->assertNull($actual);
+	}
+
+	/**
+	 * testConsoleForm
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testConsoleForm()
+	{
+		/* actual */
+
+		$actual = Template\Tag::consoleForm();
+
+		/* compare */
+
+		$this->assertString($actual);
+	}
+
+	/**
+	 * testCommentForm
+	 *
+	 * @since 4.0.0
+	 */
+
+	public function testCommentForm()
+	{
+		/* actual */
+
+		$actual = Template\Tag::commentForm();
+
+		/* compare */
+
+		$this->assertString($actual);
+	}
+
+	/**
+	 * testSearchForm
+	 *
+	 * @since 3.0.0
+	 */
+
+	public function testSearchForm()
+	{
+		/* actual */
+
+		$actual = Template\Tag::searchForm();
+
+		/* compare */
+
+		$this->assertString($actual);
+	}
+
 }

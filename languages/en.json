@@ -3,7 +3,7 @@
 	{
 		"name": "Redaxscript",
 		"description": "Ultra lightweight Content Management System",
-		"version": "3.3.2",
+		"version": "4.0.0 Alpha",
 		"homepage": "https://redaxscript.com"
 	},
 	"_index":
@@ -130,7 +130,7 @@
 	"sort": "Sort",
 	"new": "New",
 	"view": "View",
-	"readmore": "Read more",
+	"read_more": "Read more",
 	"create": "Create",
 	"edit": "Edit",
 	"delete": "Delete",

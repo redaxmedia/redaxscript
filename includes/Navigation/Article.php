@@ -46,20 +46,20 @@ class Article extends NavigationAbstract
 	{
 		$output = Module\Hook::trigger('navigationArticleStart');
 		$outputItem = null;
-		$contentModel = new Model\Content();
+		$articleModel = new Model\Article();
 		$accessValidator = new Validator\Access();
 
-		/* html elements */
+		/* html element */
 
-		$listElement = new Html\Element();
-		$listElement->init('ul',
-		[
-			'class' => $this->_optionArray['className']['list']
-		]);
-		$itemElement = new Html\Element();
-		$itemElement->init('li');
-		$linkElement = new Html\Element();
-		$linkElement->init('a');
+		$element = new Html\Element();
+		$listElement = $element
+			->copy()
+			->init('ul',
+			[
+				'class' => $this->_optionArray['className']['list']
+			]);
+		$itemElement = $element->copy()->init('li');
+		$linkElement = $element->copy()->init('a');
 
 		/* query articles */
 
@@ -73,16 +73,16 @@ class Article extends NavigationAbstract
 
 		foreach ($articles as $value)
 		{
-			if ($accessValidator->validate($value->access, $this->_registry->get('myGroups')) === Validator\ValidatorInterface::PASSED)
+			if ($accessValidator->validate($value->access, $this->_registry->get('myGroups')))
 			{
 				$outputItem .= $itemElement
 					->copy()
-					->addClass(intval($this->_registry->get('articleId')) === intval($value->id) ? $this->_optionArray['className']['active'] : null)
+					->addClass((int)$this->_registry->get('articleId') === (int)$value->id ? $this->_optionArray['className']['active'] : null)
 					->html($linkElement
 						->copy()
 						->attr(
 						[
-							'href' => $this->_registry->get('parameterRoute') . $contentModel->getRouteByTableAndId('articles', $value->id)
+							'href' => $this->_registry->get('parameterRoute') . $articleModel->getRouteById($value->id)
 						])
 						->text($value->title)
 					);

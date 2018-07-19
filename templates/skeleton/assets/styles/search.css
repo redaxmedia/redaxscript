@@ -2,20 +2,29 @@
  * @tableofcontents
  *
  * 1. search
- *    1.1 field
- *    1.2 button
+ *    1.1 form
+ *    1.2 field
+ *    1.3 button
  */
 
 /** @section 1. search */
 
-/** @section 1.1 field */
+/** @section 1.1 form */
+
+.rs-form-search
+{
+	display: flex;
+}
+
+/** @section 1.2 field */
 
 .rs-field-search
 {
+	flex-basis: 100%;
 	padding: 0.5em;
 }
 
-/** @section 1.2 button */
+/** @section 1.3 button */
 
 .rs-button-search
 {

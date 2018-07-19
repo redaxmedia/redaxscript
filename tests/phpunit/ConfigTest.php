@@ -13,6 +13,8 @@ use org\bovigo\vfs\vfsStreamWrapper as StreamWrapper;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Config
  */
 
 class ConfigTest extends TestCaseAbstract
@@ -54,19 +56,6 @@ class ConfigTest extends TestCaseAbstract
 		$this->_config->set('dbName', $this->_configArray['dbName']);
 		$this->_config->set('dbUser', $this->_configArray['dbUser']);
 		$this->_config->set('dbPassword', $this->_configArray['dbPassword']);
-	}
-
-	/**
-	 * providerParse
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerParse() : array
-	{
-		return $this->getProvider('tests/provider/config_parse.json');
 	}
 
 	/**
@@ -136,14 +125,14 @@ class ConfigTest extends TestCaseAbstract
 	 * @param string $dbUrl
 	 * @param array $configArray
 	 *
-	 * @dataProvider providerParse
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testParse(string $dbUrl = null, $configArray = [])
 	{
 		/* setup */
 
-		$this->_config->init(Stream::url('root/config.php'));
+		$this->_config->init(Stream::url('root' . DIRECTORY_SEPARATOR . 'config.php'));
 		$this->_config->parse($dbUrl);
 
 		/* actual */
@@ -165,7 +154,7 @@ class ConfigTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_config->init(Stream::url('root/config.php'));
+		$this->_config->init(Stream::url('root' . DIRECTORY_SEPARATOR . 'config.php'));
 
 		/* actual */
 

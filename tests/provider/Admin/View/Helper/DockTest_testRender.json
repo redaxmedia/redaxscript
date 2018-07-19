@@ -1,0 +1,54 @@
+[
+	[
+		{
+			"categoriesEdit": false,
+			"categoriesDelete": false,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{
+			"table": "categories",
+			"id": 1
+		},
+		{},
+		null
+	],
+	[
+		{
+			"categoriesEdit": 1,
+			"categoriesDelete": false,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{
+			"table": "categories",
+			"id": 1
+		},
+		{},
+		"<div class=\"rs-admin-wrapper-dock\"><div class=\"rs-admin-js-dock rs-admin-box-dock\"><a href=\"admin/unpublish/categories/1/ffd845f78510f02580d329127bab3dd1aa7f4453\" class=\"rs-admin-link-dock rs-admin-link-unpublish\" data-description=\"Unpublish\">Unpublish</a><a href=\"admin/edit/categories/1\" class=\"rs-admin-link-dock rs-admin-link-edit\" data-description=\"Edit\">Edit</a></div></div>"
+	],
+	[
+		{
+			"categoriesEdit": false,
+			"categoriesDelete": true,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{
+			"table": "categories",
+			"id": 1
+		},
+		{},
+		"<div class=\"rs-admin-wrapper-dock\"><div class=\"rs-admin-js-dock rs-admin-box-dock\"><a href=\"admin/delete/categories/1/ffd845f78510f02580d329127bab3dd1aa7f4453\" class=\"rs-admin-js-confirm rs-admin-link-dock rs-admin-link-delete\" data-description=\"Delete\">Delete</a></div></div>"
+	],
+	[
+		{
+			"categoriesEdit": true,
+			"categoriesDelete": true,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+		},
+		{
+			"table": "categories",
+			"id": 1
+		},
+		{},
+		"<div class=\"rs-admin-wrapper-dock\"><div class=\"rs-admin-js-dock rs-admin-box-dock\"><a href=\"admin/unpublish/categories/1/ffd845f78510f02580d329127bab3dd1aa7f4453\" class=\"rs-admin-link-dock rs-admin-link-unpublish\" data-description=\"Unpublish\">Unpublish</a><a href=\"admin/edit/categories/1\" class=\"rs-admin-link-dock rs-admin-link-edit\" data-description=\"Edit\">Edit</a><a href=\"admin/delete/categories/1/ffd845f78510f02580d329127bab3dd1aa7f4453\" class=\"rs-admin-js-confirm rs-admin-link-dock rs-admin-link-delete\" data-description=\"Delete\">Delete</a></div></div>"
+	]
+]

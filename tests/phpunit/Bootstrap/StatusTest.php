@@ -14,6 +14,9 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @category Tests
  * @author Henry Ruhs
  *
+ * @covers Redaxscript\Bootstrap\BootstrapAbstract
+ * @covers Redaxscript\Bootstrap\Status
+ *
  * @runTestsInSeparateProcesses
  */
 
@@ -50,22 +53,7 @@ class StatusTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerStatus
-	 *
-	 * @since 3.1.0
-	 *
-	 * @return array
-	 */
-
-	public function providerStatus() : array
-	{
-		return $this->getProvider('tests/provider/Bootstrap/status.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -77,7 +65,7 @@ class StatusTest extends TestCaseAbstract
 	 * @param array $registryArray
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerStatus
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testStatus(int $userId = null, array $registryArray = [], array $expectArray = [])

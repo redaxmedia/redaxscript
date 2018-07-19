@@ -78,7 +78,7 @@ abstract class NavigationAbstract implements NavigationInterface
 		$this->_optionArray['order'] = $settingModel->get('order');
 		if (is_array($optionArray))
 		{
-			$this->_optionArray = array_merge($this->_optionArray, $optionArray);
+			$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
 		}
 	}
 

@@ -12,23 +12,12 @@ use Redaxscript\Validator;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Validator\Password
  */
 
 class PasswordTest extends TestCaseAbstract
 {
-	/**
-	 * providerPassword
-	 *
-	 * @since 2.6.0
-	 *
-	 * @return array
-	 */
-
-	public function providerPassword() : array
-	{
-		return $this->getProvider('tests/provider/Validator/password.json');
-	}
-
 	/**
 	 * testPassword
 	 *
@@ -36,12 +25,12 @@ class PasswordTest extends TestCaseAbstract
 	 *
 	 * @param string $password
 	 * @param string $hash
-	 * @param int $expect
+	 * @param bool $expect
 	 *
-	 * @dataProvider providerPassword
+	 * @dataProvider providerAutoloader
 	 */
 
-	public function testPassword(string $password = null, string $hash = null, int $expect = null)
+	public function testPassword(string $password = null, string $hash = null, bool $expect = null)
 	{
 		/* setup */
 

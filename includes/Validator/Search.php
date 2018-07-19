@@ -28,25 +28,16 @@ class Search implements ValidatorInterface
 	/**
 	 * validate the search
 	 *
-	 * @since 3.0.0
+	 * @since 4.0.0
 	 *
 	 * @param string $search search term
-	 * @param string $placeholder search placeholder
 	 *
 	 * @return bool
 	 */
 
-	public function validate($search = null, $placeholder = null)
+	public function validate(string $search = null) : bool
 	{
-		$output = ValidatorInterface::FAILED;
 		$length = strlen($search);
-
-		/* validate search */
-
-		if ($search !== $placeholder && $length >= $this->_rangeArray['min'] && $length <= $this->_rangeArray['max'])
-		{
-			$output = ValidatorInterface::PASSED;
-		}
-		return $output;
+		return $length >= $this->_rangeArray['min'] && $length <= $this->_rangeArray['max'];
 	}
 }

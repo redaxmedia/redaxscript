@@ -65,7 +65,7 @@ class Router extends RouterAbstract
 				{
 					return $this->_errorToken();
 				}
-				if ($this->_routeGuard() || $this->_authGuard())
+				if ($this->_authGuard())
 				{
 					return $this->_errorAccess();
 				}
@@ -75,42 +75,42 @@ class Router extends RouterAbstract
 
 			if (!$adminParameter || $adminParameter == 'view' && $tableParameter == 'users' || $this->_registry->get('cronUpdate'))
 			{
-				admin_last_update();
+				$this->_updateLast();
 			}
 
 			/* handle post */
 
 			if ($this->_request->getPost('Redaxscript\Admin\View\CategoryForm'))
 			{
-				return admin_process();
+				return $this->_processCategory();
 			}
 			if ($this->_request->getPost('Redaxscript\Admin\View\ArticleForm'))
 			{
-				return admin_process();
+				return $this->_processArticle();
 			}
 			if ($this->_request->getPost('Redaxscript\Admin\View\ExtraForm'))
 			{
-				return admin_process();
+				return $this->_processExtra();
 			}
 			if ($this->_request->getPost('Redaxscript\Admin\View\CommentForm'))
 			{
-				return admin_process();
+				return $this->_processComment();
 			}
 			if ($this->_request->getPost('Redaxscript\Admin\View\UserForm'))
 			{
-				return admin_process();
+				return $this->_processUser();
 			}
 			if ($this->_request->getPost('Redaxscript\Admin\View\GroupForm'))
 			{
-				return admin_process();
+				return $this->_processGroup();
 			}
 			if ($this->_request->getPost('Redaxscript\Admin\View\ModuleForm'))
 			{
-				return admin_process();
+				return $this->_processModule();
 			}
 			if ($this->_request->getPost('Redaxscript\Admin\View\SettingForm'))
 			{
-				return admin_update();
+				return $this->_processSetting();
 			}
 
 			/* handle route */
@@ -127,30 +127,7 @@ class Router extends RouterAbstract
 			{
 				return $this->_renderEdit();
 			}
-			if ($adminParameter === 'delete')
-			{
-				return admin_delete();
-			}
-			if ($adminParameter === 'up' || $adminParameter === 'down')
-			{
-				return admin_move();
-			}
-			if ($adminParameter === 'sort')
-			{
-				return admin_sort();
-			}
-			if ($adminParameter === 'publish' || $adminParameter === 'enable')
-			{
-				return admin_status(1);
-			}
-			if ($adminParameter === 'unpublish' || $adminParameter === 'disable')
-			{
-				return admin_status(0);
-			}
-			if ($adminParameter === 'install' || $adminParameter === 'uninstall')
-			{
-				return admin_install();
-			}
+			return $this->_processCommon();
 		}
 		return $this->_registry->get('adminRouterBreak');
 	}
@@ -169,9 +146,6 @@ class Router extends RouterAbstract
 		$tokenParameter = $this->getToken();
 		$tokenArray =
 		[
-			'up',
-			'down',
-			'sort',
 			'enable',
 			'disable',
 			'publish',
@@ -181,69 +155,6 @@ class Router extends RouterAbstract
 			'delete'
 		];
 		return $this->_request->getPost() && $this->_request->getPost('token') !== $this->_registry->get('token') || in_array($adminParameter, $tokenArray) && !$tokenParameter;
-	}
-
-	/**
-	 * route guard
-	 *
-	 * @since 3.3.0
-	 *
-	 * @return bool
-	 */
-
-	protected function _routeGuard() : bool
-	{
-		$adminParameter = $this->getAdmin();
-		$tableParameter = $this->getTable();
-		$idParameter = $this->getId();
-		$aliasParameter = $this->getAlias();
-		$adminArray =
-		[
-			'new',
-			'view',
-			'edit',
-			'up',
-			'down',
-			'sort',
-			'publish',
-			'unpublish',
-			'enable',
-			'disable',
-			'install',
-			'uninstall',
-			'delete'
-		];
-		$tableArray =
-		[
-			'categories',
-			'articles',
-			'extras',
-			'comments',
-			'groups',
-			'users',
-			'modules',
-			'settings'
-		];
-		$idArray =
-		[
-			'edit',
-			'up',
-			'down',
-			'publish',
-			'unpublish',
-			'enable',
-			'disable'
-		];
-		$aliasArray =
-		[
-			'install',
-			'uninstall'
-		];
-		$invalidAdmin = !in_array($adminParameter, $adminArray);
-		$invalidTable = !in_array($tableParameter, $tableArray);
-		$invalidId = in_array($adminParameter, $idArray) && !$idParameter && !$tableParameter === 'settings';
-		$invalidAlias = in_array($adminParameter, $aliasArray) && !$aliasParameter;
-		return $invalidAdmin || $invalidTable || $invalidId || $invalidAlias;
 	}
 
 	/**
@@ -263,9 +174,6 @@ class Router extends RouterAbstract
 		[
 			'edit',
 			'view',
-			'up',
-			'down',
-			'sort',
 			'enable',
 			'disable',
 			'publish',
@@ -281,49 +189,207 @@ class Router extends RouterAbstract
 	}
 
 	/**
-	 * render the view
+	 * update last
 	 *
-	 * @since 3.3.0
+	 * @since 4.00
+	 */
+
+	protected function _updateLast()
+	{
+		$userModel = new Admin\Model\User();
+		$userModel->updateLastById($this->_registry->get('myId'), $this->_registry->get('now'));
+	}
+
+	/**
+	 * process the category
+	 *
+	 * @since 4.00
 	 *
 	 * @return string
 	 */
 
-	protected function _renderView() : string
+	protected function _processCategory() : string
+	{
+		$categoryController = new Admin\Controller\Category($this->_registry, $this->_request, $this->_language, $this->_config);
+		return $categoryController->process($this->_request->getPost('Redaxscript\Admin\View\CategoryForm'));
+	}
+
+	/**
+	 * process the article
+	 *
+	 * @since 4.00
+	 *
+	 * @return string
+	 */
+
+	protected function _processArticle() : string
+	{
+		$articleController = new Admin\Controller\Article($this->_registry, $this->_request, $this->_language, $this->_config);
+		return $articleController->process($this->_request->getPost('Redaxscript\Admin\View\ArticleForm'));
+	}
+
+	/**
+	 * process the extra
+	 *
+	 * @since 4.00
+	 *
+	 * @return string
+	 */
+
+	protected function _processExtra() : string
+	{
+		$extraController = new Admin\Controller\Extra($this->_registry, $this->_request, $this->_language, $this->_config);
+		return $extraController->process($this->_request->getPost('Redaxscript\Admin\View\ExtraForm'));
+	}
+
+	/**
+	 * process the comment
+	 *
+	 * @since 4.00
+	 *
+	 * @return string
+	 */
+
+	protected function _processComment() : string
+	{
+		$commentController = new Admin\Controller\Comment($this->_registry, $this->_request, $this->_language, $this->_config);
+		return $commentController->process($this->_request->getPost('Redaxscript\Admin\View\CommentForm'));
+	}
+
+	/**
+	 * process the user
+	 *
+	 * @since 4.00
+	 *
+	 * @return string
+	 */
+
+	protected function _processUser() : string
+	{
+		$userController = new Admin\Controller\User($this->_registry, $this->_request, $this->_language, $this->_config);
+		return $userController->process($this->_request->getPost('Redaxscript\Admin\View\UserForm'));
+	}
+
+	/**
+	 * process the group
+	 *
+	 * @since 4.00
+	 *
+	 * @return string
+	 */
+
+	protected function _processGroup() : string
+	{
+		$groupController = new Admin\Controller\Group($this->_registry, $this->_request, $this->_language, $this->_config);
+		return $groupController->process($this->_request->getPost('Redaxscript\Admin\View\GroupForm'));
+	}
+
+	/**
+	 * process the module
+	 *
+	 * @since 4.00
+	 *
+	 * @return string
+	 */
+
+	protected function _processModule() : string
+	{
+		$moduleController = new Admin\Controller\Module($this->_registry, $this->_request, $this->_language, $this->_config);
+		return $moduleController->process($this->_request->getPost('Redaxscript\Admin\View\ModuleForm'));
+	}
+
+	/**
+	 * process the setting
+	 *
+	 * @since 4.00
+	 *
+	 * @return string
+	 */
+
+	protected function _processSetting() : string
+	{
+		$settingController = new Admin\Controller\Setting($this->_registry, $this->_request, $this->_language, $this->_config);
+		return $settingController->process($this->_request->getPost('Redaxscript\Admin\View\SettingForm'));
+	}
+
+	/**
+	 * process the common
+	 *
+	 * @since 4.00
+	 *
+	 * @return string
+	 */
+
+	protected function _processCommon()
+	{
+		$adminParameter = $this->getAdmin();
+		$commonArray =
+		[
+			'enable',
+			'disable',
+			'publish',
+			'unpublish',
+			'install',
+			'uninstall',
+			'delete'
+		];
+		if (in_array($adminParameter, $commonArray))
+		{
+			$commonController = new Admin\Controller\Common($this->_registry, $this->_request, $this->_language, $this->_config);
+			return $commonController->process($adminParameter);
+		}
+	}
+
+	/**
+	 * render the view
+	 *
+	 * @since 3.3.0
+	 *
+	 * @return string|bool
+	 */
+
+	protected function _renderView()
 	{
 		$tableParameter = $this->getTable();
 
 		/* handle table */
 
-		ob_start();
 		if ($tableParameter == 'categories')
 		{
-			admin_contents_list();
+			$categoryTable = new Admin\View\CategoryTable($this->_registry, $this->_language);
+			return $categoryTable->render();
 		}
 		if ($tableParameter == 'articles')
 		{
-			admin_contents_list();
+			$articleTable = new Admin\View\ArticleTable($this->_registry, $this->_language);
+			return $articleTable->render();
 		}
 		if ($tableParameter == 'extras')
 		{
-			admin_contents_list();
+			$extraTable = new Admin\View\ExtraTable($this->_registry, $this->_language);
+			return $extraTable->render();
 		}
 		if ($tableParameter == 'comments')
 		{
-			admin_contents_list();
+			$commentTable = new Admin\View\CommentTable($this->_registry, $this->_language);
+			return $commentTable->render();
 		}
 		if ($tableParameter == 'users')
 		{
-			admin_users_list();
+			$userTable = new Admin\View\UserTable($this->_registry, $this->_language);
+			return $userTable->render();
 		}
 		if ($tableParameter == 'groups')
 		{
-			admin_groups_list();
+			$groupTable = new Admin\View\GroupTable($this->_registry, $this->_language);
+			return $groupTable->render();
 		}
 		if ($tableParameter == 'modules')
 		{
-			admin_modules_list();
+			$moduleTable = new Admin\View\ModuleTable($this->_registry, $this->_language);
+			return $moduleTable->render();
 		}
-		return ob_get_clean();
+		return false;
 	}
 
 	/**
@@ -331,10 +397,10 @@ class Router extends RouterAbstract
 	 *
 	 * @since 3.3.0
 	 *
-	 * @return string
+	 * @return string|bool
 	 */
 
-	protected function _renderNew() : string
+	protected function _renderNew()
 	{
 		$tableParameter = $this->getTable();
 
@@ -370,6 +436,7 @@ class Router extends RouterAbstract
 			$groupForm = new Admin\View\GroupForm($this->_registry, $this->_language);
 			return $groupForm->render();
 		}
+		return false;
 	}
 
 	/**
@@ -377,10 +444,10 @@ class Router extends RouterAbstract
 	 *
 	 * @since 3.3.0
 	 *
-	 * @return string
+	 * @return string|bool
 	 */
 
-	protected function _renderEdit() : string
+	protected function _renderEdit()
 	{
 		$tableParameter = $this->getTable();
 		$idParameter = $this->getId();
@@ -427,6 +494,7 @@ class Router extends RouterAbstract
 			$settingForm = new Admin\View\SettingForm($this->_registry, $this->_language);
 			return $settingForm->render();
 		}
+		return false;
 	}
 
 	/**

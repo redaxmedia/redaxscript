@@ -1,19 +1,10 @@
 /**
  * @tableofcontents
  *
- * 1. tag styling
- * 2. link default
+ * 1. link
  */
 
-/** @section 1. tag styling */
-
-a
-{
-	color: inherit;
-	text-decoration: none;
-}
-
-/** @section 2. link default */
+/** @section 1. link */
 
 .rs-link-default
 {
@@ -24,5 +15,10 @@ a
 	&:hover
 	{
 		border-color: var(--rs-color-secondary);
+	}
+
+	& + .rs-link-default
+	{
+		margin-left: 0.5em;
 	}
 }

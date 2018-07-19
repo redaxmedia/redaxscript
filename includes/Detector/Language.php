@@ -39,6 +39,6 @@ class Language extends DetectorAbstract
 			'settings' => $dbStatus === 2 ? $settingModel->get('language') : null,
 			'browser' => substr($this->_request->getServer('HTTP_ACCEPT_LANGUAGE'), 0, 2),
 			'fallback' => 'en'
-		], 'language', 'languages/' . $this->_filePlaceholder . '.json');
+		], 'language', 'languages' . DIRECTORY_SEPARATOR . $this->_filePlaceholder . '.json');
 	}
 }

@@ -17,7 +17,7 @@ class Url implements ValidatorInterface
 	/**
 	 * validate the url
 	 *
-	 * @since 2.2.0
+	 * @since 4.0.0
 	 *
 	 * @param string $url url address
 	 * @param bool $dns optional validate dns
@@ -25,28 +25,14 @@ class Url implements ValidatorInterface
 	 * @return bool
 	 */
 
-	public function validate($url = null, $dns = true)
+	public function validate(string $url = null, bool $dns = true) : bool
 	{
-		$output = ValidatorInterface::FAILED;
-
-		/* validate url */
-
-		if (filter_var($url, FILTER_VALIDATE_URL) !== false)
+		if (filter_var($url, FILTER_VALIDATE_URL))
 		{
-			$output = ValidatorInterface::PASSED;
-
-			/* validate dns */
-
-			if ($dns)
-			{
-				$urlArray = parse_url($url);
-				if (is_array($urlArray) && array_key_exists('host', $urlArray))
-				{
-					$dnsValidator = new Dns();
-					$output = $dnsValidator->validate($urlArray['host']);
-				}
-			}
+			$dnsValidator = new Dns();
+			$urlArray = parse_url($url);
+			return $dns ? $dnsValidator->validate($urlArray['host']) : true;
 		}
-		return $output;
+		return false;
 	}
 }

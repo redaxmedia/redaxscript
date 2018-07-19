@@ -1,0 +1,22 @@
+[
+	[
+		[
+			{
+				"href": "assets/styles/one.css",
+				"media": "all"
+			},
+			{
+				"href": "assets/styles/two.css"
+			}
+		],
+		{
+			"href": "assets/styles/three.css"
+		},
+		"<link href=\"assets/styles/three.css\" rel=\"stylesheet\" /><link href=\"assets\/styles/two.css\" /><link href=\"assets/styles/one.css\" media=\"all\" />"
+	],
+	[
+		[],
+		[],
+		"<!-- Redaxscript\\Head\\Link\\Prepend -->"
+	]
+]

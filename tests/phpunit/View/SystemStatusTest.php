@@ -12,49 +12,13 @@ use Redaxscript\View;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\View\SystemStatus
+ * @covers Redaxscript\View\ViewAbstract
  */
 
 class SystemStatusTest extends TestCaseAbstract
 {
-	/**
-	 * providerRender
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerRender() : array
-	{
-		return $this->getProvider('tests/provider/View/system_status_render.json');
-	}
-
-	/**
-	 * providerError
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerError() : array
-	{
-		return $this->getProvider('tests/provider/View/system_status_validate_error.json');
-	}
-
-	/**
-	 * providerWarning
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerWarning() : array
-	{
-		return $this->getProvider('tests/provider/View/system_status_validate_warning.json');
-	}
-
 	/**
 	 * testRender
 	 *
@@ -63,7 +27,7 @@ class SystemStatusTest extends TestCaseAbstract
 	 * @param array $registryArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerRender
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testRender(array $registryArray = [], string $expect = null)
@@ -83,14 +47,14 @@ class SystemStatusTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testRender
+	 * testValidateError
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param array $registryArray
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerError
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testValidateError(array $registryArray = [], array $expectArray = [])
@@ -110,14 +74,14 @@ class SystemStatusTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testRender
+	 * testValidateWarning
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param array $registryArray
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerWarning
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testValidateWarning(array $registryArray = [], array $expectArray = [])

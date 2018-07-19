@@ -17,7 +17,8 @@ $config = Config::getInstance();
 
 if ($config->get('env') !== 'production')
 {
-	include_once('templates' . DIRECTORY_SEPARATOR . 'install' . DIRECTORY_SEPARATOR . 'index.phtml');
+	set_include_path('templates');
+	include_once('install' . DIRECTORY_SEPARATOR . 'index.phtml');
 }
 else
 {

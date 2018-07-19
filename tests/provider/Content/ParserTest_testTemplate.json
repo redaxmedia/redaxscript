@@ -1,0 +1,14 @@
+[
+	[
+		"<rs-template>breadcrumb<rs-template>",
+		"<ul class=\"rs-list-breadcrumb\"><li>Home</li></ul>"
+	],
+	[
+		"<rs-template>invalid<rs-template>",
+		null
+	],
+	[
+		"<rs-template>{\"invalid\":{\"test\":\"test\"}}<rs-template>",
+		null
+	]
+]

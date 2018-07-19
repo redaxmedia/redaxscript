@@ -13,6 +13,8 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Filesystem\Filesystem
  */
 
 class FilesystemTest extends TestCaseAbstract
@@ -25,46 +27,7 @@ class FilesystemTest extends TestCaseAbstract
 
 	public function setUp()
 	{
-		Stream::setup('root', 0777, $this->getProvider('tests/provider/Filesystem/filesystem_setup.json'));
-	}
-
-	/**
-	 * providerGetIterator
-	 *
-	 * @since 3.2.0
-	 *
-	 * @return array
-	 */
-
-	public function providerGetIterator() : array
-	{
-		return $this->getProvider('tests/provider/Filesystem/filesystem_get_iterator.json');
-	}
-
-	/**
-	 * providerGetArray
-	 *
-	 * @since 3.2.0
-	 *
-	 * @return array
-	 */
-
-	public function providerGetArray() : array
-	{
-		return $this->getProvider('tests/provider/Filesystem/filesystem_get_array.json');
-	}
-
-	/**
-	 * providerGetArray
-	 *
-	 * @since 3.2.0
-	 *
-	 * @return array
-	 */
-
-	public function providerGetSortArray() : array
-	{
-		return $this->getProvider('tests/provider/Filesystem/filesystem_get_sort_array.json');
+		Stream::setup('root', 0777, $this->getJSON('tests' . DIRECTORY_SEPARATOR. 'provider' . DIRECTORY_SEPARATOR. 'Filesystem' . DIRECTORY_SEPARATOR. 'FilesystemTest_setUp.json'));
 	}
 
 	/**
@@ -77,7 +40,7 @@ class FilesystemTest extends TestCaseAbstract
 	 * @param array $filterArray
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerGetIterator
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testGetIterator(string $root = null, bool $recursive = false, array $filterArray = [], array $expectArray = [])
@@ -118,7 +81,7 @@ class FilesystemTest extends TestCaseAbstract
 	 * @param array $filterArray
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerGetArray
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testGetArray(string $root = null, bool $recursive = false, array $filterArray = [], array $expectArray = [])
@@ -138,7 +101,7 @@ class FilesystemTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testSortGetArray
+	 * testGetSortArray
 	 *
 	 * @since 3.2.0
 	 *
@@ -147,10 +110,10 @@ class FilesystemTest extends TestCaseAbstract
 	 * @param array $filterArray
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerGetSortArray
+	 * @dataProvider providerAutoloader
 	 */
 
-	public function testSortGetArray(string $root = null, bool $recursive = false, array $filterArray = [], array $expectArray = [])
+	public function testGetSortArray(string $root = null, bool $recursive = false, array $filterArray = [], array $expectArray = [])
 	{
 		/* setup */
 

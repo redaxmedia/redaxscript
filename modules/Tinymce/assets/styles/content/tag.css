@@ -6,11 +6,11 @@
 
 /** @section 1. tag */
 
-blockcode,
-language,
-module,
-registry,
-template
+rs-code,
+rs-language,
+rs-module,
+rs-registry,
+rs-template
 {
 	&:before,
 	&:after
@@ -19,80 +19,80 @@ template
 	}
 }
 
-readmore
+rs-more
 {
 	border-top: 0.125em dashed gray(0, 0.5);
 	display: block;
 	margin: 1em 0;
 }
 
-template
+rs-template
 {
 	display: block;
 }
 
-blockcode
+rs-code
 {
 	&:before
 	{
-		 content: '<blockcode>';
+		 content: '<rs-code>';
 	}
 
 	&:after
 	{
-		content: '</blockcode>';
+		content: '</rs-code>';
 	}
 }
 
-language
+rs-language
 {
 	&:before
 	{
-		content: '<language>';
+		content: '<rs-language>';
 	}
 
 	&:after
 	{
-		content: '</language>';
+		content: '</rs-language>';
 	}
 }
 
-module
+rs-module
 {
 	&:before
 	{
-		content: '<module>';
+		content: '<rs-module>';
 	}
 
 	&:after
 	{
-		content: '</module>';
+		content: '</rs-module>';
 	}
 }
 
-registry
+rs-registry
 {
 	&:before
 	{
-		content: '<registry>';
+		content: '<rs-registry>';
 	}
 
 	&:after
 	{
-		content: '</registry>';
+		content: '</rs-registry>';
 	}
 }
 
-template
+rs-template
 {
 	&:before
 	{
-		content: '<template>';
+		content: '<rs-template>';
 	}
 
 	&:after
 	{
-		content: '</template>';
+		content: '</rs-template>';
 	}
 }
 

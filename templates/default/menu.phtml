@@ -9,7 +9,7 @@
 
 <ul class="rs-fn-dropdown rs-fn-menu rs-list-menu">
 	<li>
-		<span><?php echo Tag::getLanguage('categories'); ?></span>
+		<span><?php echo Helper::getLanguage('categories'); ?></span>
 		<?php echo Tag::navigation('categories',
 		[
 			'className' =>
@@ -19,7 +19,7 @@
 			'limit' => 5
 		]); ?>
 	</li><li>
-		<span><?php echo Tag::getLanguage('articles'); ?></span>
+		<span><?php echo Helper::getLanguage('articles'); ?></span>
 		<?php echo Tag::navigation('articles',
 		[
 			'className' =>

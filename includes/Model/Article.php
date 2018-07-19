@@ -1,8 +1,6 @@
 <?php
 namespace Redaxscript\Model;
 
-use Redaxscript\Db;
-
 /**
  * parent class to provide the article model
  *
@@ -13,21 +11,48 @@ use Redaxscript\Db;
  * @author Henry Ruhs
  */
 
-class Article
+class Article extends ContentAbstract
 {
 	/**
-	 * get the article id by alias
+	 * name of the table
 	 *
-	 * @since 3.3.0
-	 *
-	 * @param string $articleAlias
-	 *
-	 * @return int
+	 * @var string
 	 */
 
-	public function getIdByAlias(string $articleAlias = null) : int
+	protected $_table = 'articles';
+
+	/**
+	 * get the article by alias
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param string $articleAlias alias of the article
+	 *
+	 * @return object
+	 */
+
+	public function getByAlias(string $articleAlias = null)
 	{
-		return Db::forTablePrefix('articles')->select('id')->where('alias', $articleAlias)->findOne()->id | 0;
+		return $this->query()->where('alias', $articleAlias)->findOne();
+	}
+
+	/**
+	 * get the articles by category and language
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param int $categoryId identifier of the category
+	 * @param string $language
+	 *
+	 * @return object
+	 */
+
+	public function getByCategoryAndLanguage(int $categoryId = null, string $language = null)
+	{
+		return $this->query()
+			->where('category', $categoryId)
+			->whereLanguageIs($language)
+			->findMany();
 	}
 
 	/**
@@ -35,15 +60,15 @@ class Article
 	 *
 	 * @since 3.3.0
 	 *
-	 * @param int $articleId
+	 * @param int $articleId identifier of the article
 	 *
 	 * @return string|null
 	 */
 
-	public function getRouteById(int $articleId = null)
+	public function getRouteById(int $articleId = null) : ?string
 	{
 		$route = null;
-		$articleArray = Db::forTablePrefix('articles')
+		$articleArray = $this->query()
 			->tableAlias('a')
 			->leftJoinPrefix('categories', 'a.category = c.id', 'c')
 			->leftJoinPrefix('categories', 'c.parent = p.id', 'p')
@@ -60,26 +85,5 @@ class Article
 			$route = implode('/', array_filter($articleArray[0]));
 		}
 		return $route;
-	}
-
-	/**
-	 * publish each article by date
-	 *
-	 * @since 3.3.0
-	 *
-	 * @param string $date
-	 *
-	 * @return int
-	 */
-
-	public function publishByDate(string $date = null) : int
-	{
-		return Db::forTablePrefix('articles')
-			->where('status', 2)
-			->whereLt('date', $date)
-			->findMany()
-			->set('status', 1)
-			->save()
-			->count();
 	}
 }

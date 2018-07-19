@@ -46,6 +46,7 @@ if (is_array($templateArray) && array_key_exists('content', $templateArray))
 }
 else
 {
-	include_once('templates' . DIRECTORY_SEPARATOR . $registry->get('template') . DIRECTORY_SEPARATOR . 'index.phtml');
+	set_include_path('templates');
+	include_once($registry->get('template') . DIRECTORY_SEPARATOR . 'index.phtml');
 }
 Module\Hook::trigger('renderEnd');

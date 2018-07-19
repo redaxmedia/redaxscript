@@ -1,0 +1,30 @@
+/**
+ * @tableofcontents
+ *
+ * 1. clearfix
+ * 2. accordion
+ */
+
+/** @section 1. clearfix */
+
+.rs-fn-clearfix
+{
+	@extend %fn-clearfix;
+}
+
+/** @section 2. accordion */
+
+.rs-fn-content-accordion
+{
+	@extend %fn-content-accordion;
+}
+
+.rs-fn-status-accordion
+{
+	@extend %fn-status-accordion;
+
+	&:checked + .rs-fn-toggle-accordion + .rs-fn-content-accordion
+	{
+		@extend %fn-checked-content-accordion;
+	}
+}

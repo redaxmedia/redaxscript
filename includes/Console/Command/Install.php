@@ -146,7 +146,7 @@ class Install extends CommandAbstract
 	protected function _module(array $optionArray = [])
 	{
 		$alias = $this->prompt('alias', $optionArray);
-		$moduleClass = 'Redaxscript\\Modules\\' . $alias . '\\' . $alias;
+		$moduleClass = 'Redaxscript\Modules\\' . $alias . '\\' . $alias;
 
 		/* install */
 

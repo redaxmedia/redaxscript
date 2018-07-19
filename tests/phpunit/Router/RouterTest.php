@@ -12,6 +12,8 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Router\Router
  */
 
 class RouterTest extends TestCaseAbstract
@@ -47,35 +49,7 @@ class RouterTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerHeader
-	 *
-	 * @since 3.3.0
-	 *
-	 * @return array
-	 */
-
-	public function providerHeader() : array
-	{
-		return $this->getProvider('tests/provider/Router/router_header.json');
-	}
-
-	/**
-	 * providerContent
-	 *
-	 * @since 3.3.0
-	 *
-	 * @return array
-	 */
-
-	public function providerContent() : array
-	{
-		return $this->getProvider('tests/provider/Router/router_content.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -87,7 +61,7 @@ class RouterTest extends TestCaseAbstract
 	 * @param array $postArray
 	 * @param bool $expect
 	 *
-	 * @dataProvider providerHeader
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testHeader(array $registryArray = [], array $postArray = [], bool $expect = null)
@@ -119,7 +93,7 @@ class RouterTest extends TestCaseAbstract
 	 * @param array $settingArray
 	 * @param bool $expect
 	 *
-	 * @dataProvider providerContent
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testContent(array $registryArray = [], array $queryArray = [], array $postArray = [], array $settingArray = [], bool $expect = null)

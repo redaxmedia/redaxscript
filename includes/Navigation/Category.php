@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Navigation;
 
-use IdiormResultSet as DbResultSet;
 use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Model;
@@ -70,45 +69,45 @@ class Category extends NavigationAbstract
 	 *
 	 * @since 3.3.0
 	 *
-	 * @param DbResultSet $categories
+	 * @param object $categories
 	 * @param array $optionArray
 	 *
 	 * @return string|null
 	 */
 
-	protected function renderList(DbResultSet $categories = null, array $optionArray = [])
+	protected function renderList($categories = null, array $optionArray = []) : ?string
 	{
 		$output = null;
 		$outputItem = null;
-		$contentModel = new Model\Content();
+		$categoryModel = new Model\Category();
 		$accessValidator = new Validator\Access();
 
-		/* html elements */
+		/* html element */
 
-		$listElement = new Html\Element();
-		$listElement->init('ul',
-		[
-			'class' => $optionArray['className']['list']
-		]);
-		$itemElement = new Html\Element();
-		$itemElement->init('li');
-		$linkElement = new Html\Element();
-		$linkElement->init('a');
+		$element = new Html\Element();
+		$listElement = $element
+			->copy()
+			->init('ul',
+			[
+				'class' => $optionArray['className']['list']
+			]);
+		$itemElement = $element->copy()->init('li');
+		$linkElement = $element->copy()->init('a');
 
 		/* collect item output */
 
 		foreach ($categories as $value)
 		{
-			if ($accessValidator->validate($value->access, $this->_registry->get('myGroups')) === Validator\ValidatorInterface::PASSED && $optionArray['parent'] === intval($value->parent))
+			if ($accessValidator->validate($value->access, $this->_registry->get('myGroups')) && $optionArray['parent'] === (int)$value->parent)
 			{
 				$outputItem .= $itemElement
 					->copy()
-					->addClass(intval($this->_registry->get('categoryId')) === intval($value->id) ? $this->_optionArray['className']['active'] : null)
+					->addClass((int)$this->_registry->get('categoryId') === (int)$value->id ? $this->_optionArray['className']['active'] : null)
 					->html($linkElement
 						->copy()
 						->attr(
 						[
-							'href' => $this->_registry->get('parameterRoute') . $contentModel->getRouteByTableAndId('categories', $value->id)
+							'href' => $this->_registry->get('parameterRoute') . $categoryModel->getRouteById($value->id)
 						])
 						->text($value->title)
 					)
@@ -119,7 +118,7 @@ class Category extends NavigationAbstract
 							'list' => $value->parent ? $optionArray['className']['list'] : $optionArray['className']['children'],
 							'active' => $optionArray['className']['active'],
 						],
-						'parent' => intval($value->id),
+						'parent' => (int)$value->id,
 						'children' => $optionArray['children']
 					]) : null);
 			}

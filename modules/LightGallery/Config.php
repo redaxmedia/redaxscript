@@ -26,7 +26,7 @@ class Config extends Module\Notification
 		'className' =>
 		[
 			'image' => 'rs-image-light-gallery',
-			'list' => 'rs-js-light-gallery rs-list-light-gallery rs-fn-clearfix'
+			'list' => 'rs-js-light-gallery rs-list-light-gallery'
 		],
 		'height' => 200,
 		'quality' => 80,

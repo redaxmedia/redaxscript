@@ -19,5 +19,5 @@ interface NavigationInterface
 	 * @since 3.3.0
 	 */
 
-	public function render() : string;
+	public function render();
 }

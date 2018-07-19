@@ -1,23 +1,16 @@
-/**
- * @tableofcontents
- *
- * 1. install
- */
-
-/** @section 1. install */
-
-rs.plugins.install =
+rs.templates.install =
 {
-	init: true,
-	selector: 'form.rs-install-js-form',
-	options:
+	behavior:
 	{
-		element:
+		init: true,
+		config:
 		{
-			fieldType: '#db-type',
-			fieldRelated: '#db-name, #db-user, #db-password',
-			fieldRequired: '#db-name, #db-user',
-			fieldHost: '#db-host'
+			selector: 'form.rs-install-js-form',
+			element:
+			{
+				fieldType: '#db-type',
+				fieldToggle: '#db-name, #db-user, #db-password'
+			}
 		}
 	}
 };

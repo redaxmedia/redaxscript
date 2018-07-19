@@ -2,18 +2,20 @@
  * @tableofcontents
  *
  * 1. dropdown
+ *    1.1 medium min
  */
 
 /** @section 1. dropdown */
+
+/** @section 1.1 medium min */
 
 @media (--media-medium-min)
 {
 	%fn-dropdown
 	{
-		& li
+		& > li
 		{
 			position: relative;
-			white-space: nowrap;
 
 			&:hover > ul
 			{
@@ -21,40 +23,17 @@
 				pointer-events: all;
 			}
 
-			&:not(:last-child) > ul
-			{
-				left: 0;
-
-				& ul
-				{
-					left: 100%;
-				}
-			}
-
 			&:last-child > ul
 			{
 				right: 0;
-				text-align: right;
-
-				& ul
-				{
-					right: 100%;
-				}
 			}
-		}
 
-		& ul
-		{
-			opacity: 0;
-			pointer-events: none;
-			position: absolute;
-			top: 100%;
-			z-index: 1;
-		}
-
-		& ul ul
-		{
-			top: 0;
+			& > ul
+			{
+				opacity: 0;
+				pointer-events: none;
+				position: absolute;
+			}
 		}
 	}
 }

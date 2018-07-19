@@ -30,11 +30,13 @@ class LoginForm extends ViewAbstract
 		$output = Module\Hook::trigger('loginFormStart');
 		$outputLegend = null;
 		$settingModel = new Model\Setting();
+		$parameterRoute = $this->_registry->get('parameterRoute');
 
-		/* html elements */
+		/* html element */
 
-		$titleElement = new Html\Element();
-		$titleElement
+		$element = new Html\Element();
+		$titleElement = $element
+			->copy()
 			->init('h2',
 			[
 				'class' => 'rs-title-content'
@@ -42,11 +44,12 @@ class LoginForm extends ViewAbstract
 			->text($this->_language->get('login'));
 		if ($settingModel->get('recovery'))
 		{
-			$linkElement = new Html\Element();
-			$linkElement->init('a',
-			[
-				'href' => $this->_registry->get('parameterRoute') . 'login/recover'
-			]);
+			$linkElement = $element
+				->copy()
+				->init('a',
+				[
+					'href' => $parameterRoute . 'login/recover'
+				]);
 			$outputLegend = $linkElement->text($this->_language->get('recovery_question') . $this->_language->get('question_mark'));
 		}
 		$formElement = new Html\Form($this->_registry, $this->_language);
@@ -71,7 +74,6 @@ class LoginForm extends ViewAbstract
 		/* create the form */
 
 		$formElement
-			->append('<fieldset>')
 			->legend($outputLegend)
 			->append('<ul><li>')
 			->label('* ' . $this->_language->get('user'),
@@ -106,7 +108,7 @@ class LoginForm extends ViewAbstract
 				->captcha('task')
 				->append('</li>');
 		}
-		$formElement->append('</ul></fieldset>');
+		$formElement->append('</ul>');
 		if ($settingModel->get('captcha') > 0)
 		{
 			$formElement->captcha('solution');

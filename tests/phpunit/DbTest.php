@@ -11,6 +11,8 @@ use Redaxscript\Db;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Db
  */
 
 class DbTest extends TestCaseAbstract
@@ -82,37 +84,9 @@ class DbTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
+		$this->dropDatabase();
 		$this->_config->set('dbType', $this->_configArray['dbType']);
 		$this->_config->set('dbPassword', $this->_configArray['dbPassword']);
-	}
-
-	/**
-	 * providerInit
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerInit() : array
-	{
-		return $this->getProvider('tests/provider/db_init.json');
-	}
-
-	/**
-	 * providerLanguage
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerLanguage() : array
-	{
-		return $this->getProvider('tests/provider/db_language.json');
 	}
 
 	/**
@@ -122,7 +96,7 @@ class DbTest extends TestCaseAbstract
 	 *
 	 * @param array $configArray
 	 *
-	 * @dataProvider providerInit
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testInit($configArray = [])
@@ -158,23 +132,6 @@ class DbTest extends TestCaseAbstract
 		/* compare */
 
 		$this->assertEquals(2, $actual);
-	}
-
-	/**
-	 * testRawInstance
-	 *
-	 * @since 2.4.0
-	 */
-
-	public function testRawInstance()
-	{
-		/* actual */
-
-		$actual = Db::rawInstance()->getDb();
-
-		/* compare */
-
-		$this->assertInstanceOf('PDO', $actual);
 	}
 
 	/**
@@ -271,7 +228,7 @@ class DbTest extends TestCaseAbstract
 	 * @param string $language
 	 * @param string $expect
 	 *
-	 * @dataProvider providerLanguage
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testWhereLanguageIs(string $language = null, string $expect = null)
@@ -283,28 +240,6 @@ class DbTest extends TestCaseAbstract
 		/* compare */
 
 		$this->assertEquals($expect, $actual);
-	}
-
-	/**
-	 * testFindFlatArray
-	 *
-	 * @since 2.4.0
-	 */
-
-	public function testFindFlatArray()
-	{
-		/* expect and actual */
-
-		$expectArray =
-		[
-			1,
-			2
-		];
-		$actualArray = Db::forTablePrefix('articles')->findFlatArray();
-
-		/* compare */
-
-		$this->assertEquals($expectArray, $actualArray);
 	}
 
 	/**

@@ -1,9 +1,0 @@
-[
-	[
-		{
-			"testKey": "testValue"
-		},
-		"<registry>testKey</registry>",
-		"testValue"
-	]
-]

@@ -2,8 +2,7 @@
 namespace Redaxscript\Tests\Content;
 
 use Redaxscript\Content;
-use Redaxscript\Module\Hook;
-use Redaxscript\Modules\TestDummy;
+use Redaxscript\Module;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -14,6 +13,17 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Content\Parser
+ * @covers Redaxscript\Content\ParserAbstract
+ * @covers Redaxscript\Content\Tag\Code
+ * @covers Redaxscript\Content\Tag\Language
+ * @covers Redaxscript\Content\Tag\Module
+ * @covers Redaxscript\Content\Tag\More
+ * @covers Redaxscript\Content\Tag\Registry
+ * @covers Redaxscript\Content\Tag\TagAbstract
+ * @covers Redaxscript\Content\Tag\TagInterface
+ * @covers Redaxscript\Content\Tag\Template
  */
 
 class ParserTest extends TestCaseAbstract
@@ -38,8 +48,7 @@ class ParserTest extends TestCaseAbstract
 		$installer->init();
 		$installer->rawCreate();
 		$installer->insertSettings($optionArray);
-		$testDummy = new TestDummy\TestDummy($this->_registry, $this->_request, $this->_language, $this->_config);
-		$testDummy->install();
+		$this->installTestDummy();
 	}
 
 	/**
@@ -50,103 +59,22 @@ class ParserTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$testDummy = new TestDummy\TestDummy($this->_registry, $this->_request, $this->_language, $this->_config);
-		$testDummy->uninstall();
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
+		$this->uninstallTestDummy();
+		$this->dropDatabase();
 	}
 
 	/**
-	 * providerBlockcode
-	 *
-	 * @since 2.5.0
-	 *
-	 * @return array
-	 */
-
-	public function providerBlockcode() : array
-	{
-		return $this->getProvider('tests/provider/Content/parser_blockcode.json');
-	}
-
-	/**
-	 * providerLanguage
-	 *
-	 * @since 2.5.0
-	 *
-	 * @return array
-	 */
-
-	public function providerLanguage() : array
-	{
-		return $this->getProvider('tests/provider/Content/parser_language.json');
-	}
-
-	/**
-	 * providerModule
-	 *
-	 * @since 2.5.0
-	 *
-	 * @return array
-	 */
-
-	public function providerModule() : array
-	{
-		return $this->getProvider('tests/provider/Content/parser_module.json');
-	}
-
-	/**
-	 * providerReadmore
-	 *
-	 * @since 2.5.0
-	 *
-	 * @return array
-	 */
-
-	public function providerReadmore() : array
-	{
-		return $this->getProvider('tests/provider/Content/parser_readmore.json');
-	}
-
-	/**
-	 * providerRegistry
-	 *
-	 * @since 2.5.0
-	 *
-	 * @return array
-	 */
-
-	public function providerRegistry() : array
-	{
-		return $this->getProvider('tests/provider/Content/parser_registry.json');
-	}
-
-	/**
-	 * providerTemplate
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerTemplate() : array
-	{
-		return $this->getProvider('tests/provider/Content/parser_template.json');
-	}
-
-	/**
-	 * testBlockcode
+	 * testCode
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param string $content
 	 * @param string $expect
 	 *
-	 * @dataProvider providerBlockcode
+	 * @dataProvider providerAutoloader
 	 */
 
-	public function testBlockcode(string $content = null, string $expect = null)
+	public function testCode(string $content = null, string $expect = null)
 	{
 		/* setup */
 
@@ -171,7 +99,7 @@ class ParserTest extends TestCaseAbstract
 	 * @param string $content
 	 * @param string $expect
 	 *
-	 * @dataProvider providerLanguage
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testLanguage(string $language = null, string $content = null, string $expect = null)
@@ -199,15 +127,15 @@ class ParserTest extends TestCaseAbstract
 	 * @param string $content
 	 * @param string $expect
 	 *
-	 * @dataProvider providerModule
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testModule(string $content = null, string $expect = null)
 	{
 		/* setup */
 
-		Hook::construct($this->_registry, $this->_request, $this->_language, $this->_config);
-		Hook::init();
+		Module\Hook::construct($this->_registry, $this->_request, $this->_language, $this->_config);
+		Module\Hook::init();
 		$parser = new Content\Parser($this->_registry, $this->_request, $this->_language, $this->_config);
 		$parser->process($content);
 
@@ -221,7 +149,7 @@ class ParserTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testReadmore
+	 * testMore
 	 *
 	 * @since 3.0.0
 	 *
@@ -230,10 +158,10 @@ class ParserTest extends TestCaseAbstract
 	 * @param string $route
 	 * @param string $expect
 	 *
-	 * @dataProvider providerReadmore
+	 * @dataProvider providerAutoloader
 	 */
 
-	public function testReadmore(array $registryArray = [], string $content = null, string $route = null, string $expect = null)
+	public function testMore(array $registryArray = [], string $content = null, string $route = null, string $expect = null)
 	{
 		/* setup */
 
@@ -259,7 +187,7 @@ class ParserTest extends TestCaseAbstract
 	 * @param string $content
 	 * @param string $expect
 	 *
-	 * @dataProvider providerRegistry
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testRegistry(array $registryArray = [], string $content = null, string $expect = null)
@@ -287,7 +215,7 @@ class ParserTest extends TestCaseAbstract
 	 * @param string $content
 	 * @param string $expect
 	 *
-	 * @dataProvider providerTemplate
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testTemplate(string $content = null, string $expect = null)

@@ -32,14 +32,10 @@
 		font-size: 1.25em;
 	}
 
-	& .rs-text-about
+	& .rs-wrapper
 	{
-		float: left;
-	}
-
-	& .rs-link-login
-	{
-		float: right;
+		display: flex;
+		justify-content: space-between;
 	}
 }
 

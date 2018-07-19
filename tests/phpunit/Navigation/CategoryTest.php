@@ -13,6 +13,8 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Navigation\Category
  */
 
 class CategoryTest extends TestCaseAbstract
@@ -80,22 +82,7 @@ class CategoryTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerRender
-	 *
-	 * @since 3.3.0
-	 *
-	 * @return array
-	 */
-
-	public function providerRender() : array
-	{
-		return $this->getProvider('tests/provider/Navigation/category_render.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -107,7 +94,7 @@ class CategoryTest extends TestCaseAbstract
 	 * @param array $optionArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerRender
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testRender(array $registryArray = [], array $optionArray = [], string $expect = null)

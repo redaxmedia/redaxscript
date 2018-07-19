@@ -13,35 +13,24 @@ use Redaxscript\Validator;
  * @category Tests
  * @author Henry Ruhs
  * @author Sven Weingartner
+ *
+ * @covers Redaxscript\Validator\Url
  */
 
 class UrlTest extends TestCaseAbstract
 {
-	/**
-	 * providerUrl
-	 *
-	 * @since 2.2.0
-	 *
-	 * @return array
-	 */
-
-	public function providerUrl() : array
-	{
-		return $this->getProvider('tests/provider/Validator/url.json');
-	}
-
 	/**
 	 * testUrl
 	 *
 	 * @since 2.2.0
 	 *
 	 * @param string $url
-	 * @param int $expect
+	 * @param bool $expect
 	 *
-	 * @dataProvider providerUrl
+	 * @dataProvider providerAutoloader
 	 */
 
-	public function testUrl(string $url = null, int $expect = null)
+	public function testUrl(string $url = null, bool $expect = null)
 	{
 		/* setup */
 

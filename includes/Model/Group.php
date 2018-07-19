@@ -1,8 +1,6 @@
 <?php
 namespace Redaxscript\Model;
 
-use Redaxscript\Db;
-
 /**
  * parent class to provide the group model
  *
@@ -13,20 +11,28 @@ use Redaxscript\Db;
  * @author Henry Ruhs
  */
 
-class Group
+class Group extends ModelAbstract
 {
 	/**
-	 * get the group id by alias
+	 * name of the table
 	 *
-	 * @since 3.3.0
-	 *
-	 * @param string $groupAlias
-	 *
-	 * @return int
+	 * @var string
 	 */
 
-	public function getIdByAlias(string $groupAlias = null) : int
+	protected $_table = 'groups';
+
+	/**
+	 * get the group by alias
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param string $groupAlias alias of the extra
+	 *
+	 * @return object
+	 */
+
+	public function getByAlias(string $groupAlias = null)
 	{
-		return Db::forTablePrefix('groups')->select('id')->where('alias', $groupAlias)->findOne()->id | 0;
+		return $this->query()->where('alias', $groupAlias)->findOne();
 	}
 }

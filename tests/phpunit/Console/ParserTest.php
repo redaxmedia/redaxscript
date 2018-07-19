@@ -12,6 +12,8 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Console\Parser
  */
 
 class ParserTest extends TestCaseAbstract
@@ -25,32 +27,6 @@ class ParserTest extends TestCaseAbstract
 	public function tearDown()
 	{
 		$this->_request->setServer('argv', null);
-	}
-
-	/**
-	 * providerGetArgument
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerGetArgument() : array
-	{
-		return $this->getProvider('tests/provider/Console/parser_get_argument.json');
-	}
-
-	/**
-	 * providerGetOption
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerGetOption() : array
-	{
-		return $this->getProvider('tests/provider/Console/parser_get_option.json');
 	}
 
 	/**
@@ -101,7 +77,7 @@ class ParserTest extends TestCaseAbstract
 	 * @param array $argumentArray
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerGetArgument
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testGetArgument($argumentArray = [], array $expectArray = [])
@@ -173,7 +149,7 @@ class ParserTest extends TestCaseAbstract
 	 * @param array $argumentArray
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerGetOption
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testGetOption($argumentArray = [], array $expectArray = [])

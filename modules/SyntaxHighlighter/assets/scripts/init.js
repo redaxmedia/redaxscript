@@ -1,12 +1,4 @@
-/**
- * @tableofcontents
- *
- * 1. syntax highlighter
- */
-
-/** @section 1. syntax highlighter */
-
-rs.modules.syntaxHighlighter =
+rs.modules.SyntaxHighlighter =
 {
 	init: true,
 	dependency: typeof hljs === 'object',

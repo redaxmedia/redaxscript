@@ -38,7 +38,7 @@
 
 	/* teaser */
 
-	--rs-image-teaser: 973;
+	--rs-image-teaser: 974;
 
 	/* jpg */
 
@@ -52,7 +52,7 @@
 	--rs-url-teaser-small-webp: url('https://cdn.redaxscript.com/unsplash/var(--rs-image-teaser)/small.webp');
 	--rs-url-teaser-medium-webp: url('https://cdn.redaxscript.com/unsplash/var(--rs-image-teaser)/medium.webp');
 	--rs-url-teaser-large-webp: url('https://cdn.redaxscript.com/unsplash/var(--rs-image-teaser)/large.webp');
-	--rs-url-teaser-ultra-webp: url('https://cdn.redaxscript.com/unsplash/var(--rs-image-teaser)ultra.webp');
+	--rs-url-teaser-ultra-webp: url('https://cdn.redaxscript.com/unsplash/var(--rs-image-teaser)/ultra.webp');
 
 	/* branding */
 

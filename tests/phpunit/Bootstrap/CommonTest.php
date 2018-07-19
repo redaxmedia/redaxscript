@@ -13,49 +13,26 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @category Tests
  * @author Henry Ruhs
  *
+ * @covers Redaxscript\Bootstrap\Common
+ * @covers Redaxscript\Bootstrap\BootstrapAbstract
+ *
  * @runTestsInSeparateProcesses
  */
 
 class CommonTest extends TestCaseAbstract
 {
 	/**
-	 * providerCommonServer
-	 *
-	 * @since 3.2.3
-	 *
-	 * @return array
-	 */
-
-	public function providerCommonServer() : array
-	{
-		return $this->getProvider('tests/provider/Bootstrap/common_server.json');
-	}
-
-	/**
-	 * providerCommonClient
-	 *
-	 * @since 3.2.3
-	 *
-	 * @return array
-	 */
-
-	public function providerCommonClient() : array
-	{
-		return $this->getProvider('tests/provider/Bootstrap/common_client.json');
-	}
-
-	/**
-	 * testCommonServer
+	 * testServer
 	 *
 	 * @since 3.2.3
 	 *
 	 * @param string $userAgent
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerCommonServer
+	 * @dataProvider providerAutoloader
 	 */
 
-	public function testCommonServer(string $userAgent = null, array $expectArray = [])
+	public function testServer(string $userAgent = null, array $expectArray = [])
 	{
 		/* setup */
 
@@ -84,17 +61,17 @@ class CommonTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testCommonClient
+	 * testClient
 	 *
 	 * @since 3.2.3
 	 *
 	 * @param string $userAgent
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerCommonClient
+	 * @dataProvider providerAutoloader
 	 */
 
-	public function testCommonClient(string $userAgent = null, array $expectArray = [])
+	public function testClient(string $userAgent = null, array $expectArray = [])
 	{
 		/* setup */
 
@@ -119,12 +96,12 @@ class CommonTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testCommonDriver
+	 * testDriver
 	 *
 	 * @since 3.2.3
 	 */
 
-	public function testCommonDriver()
+	public function testDriver()
 	{
 		/* setup */
 
@@ -140,12 +117,12 @@ class CommonTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testCommonModule
+	 * testModule
 	 *
 	 * @since 3.2.3
 	 */
 
-	public function testCommonModule()
+	public function testModule()
 	{
 		/* setup */
 
@@ -170,12 +147,12 @@ class CommonTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testCommonPhp
+	 * testPhp
 	 *
 	 * @since 3.2.3
 	 */
 
-	public function testCommonPhp()
+	public function testPhp()
 	{
 		/* setup */
 

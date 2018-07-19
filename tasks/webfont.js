@@ -26,6 +26,7 @@ module.exports = () =>
 				'node_modules/material-design-icons/navigation/svg/production/ic_chevron_right_24px.svg',
 				'node_modules/material-design-icons/navigation/svg/production/ic_expand_less_24px.svg',
 				'node_modules/material-design-icons/navigation/svg/production/ic_expand_more_24px.svg',
+				'node_modules/material-design-icons/navigation/svg/production/ic_subdirectory_arrow_right_24px.svg',
 				'node_modules/material-design-icons/social/svg/production/ic_notifications_24px.svg',
 				'node_modules/material-design-icons/social/svg/production/ic_person_24px.svg'
 			],
@@ -130,7 +131,7 @@ module.exports = () =>
 				'vpn-key': 0x2386,
 				'warning': 0x0021
 			},
-			rename: function (name)
+			rename: name =>
 			{
 				return require('path')
 					.basename(name)

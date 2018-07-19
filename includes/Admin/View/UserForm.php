@@ -1,8 +1,7 @@
 <?php
 namespace Redaxscript\Admin\View;
 
-use Redaxscript\Admin\Html\Form as AdminForm;
-use Redaxscript\Db;
+use Redaxscript\Admin;
 use Redaxscript\Html;
 use Redaxscript\Module;
 
@@ -12,18 +11,18 @@ use Redaxscript\Module;
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category Admin
+ * @category View
  * @author Henry Ruhs
  */
 
-class UserForm extends ViewAbstract implements ViewInterface
+class UserForm extends ViewAbstract
 {
 	/**
 	 * render the view
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param int|bool $userId identifier of the user
+	 * @param int $userId identifier of the user
 	 *
 	 * @return string
 	 */
@@ -31,23 +30,25 @@ class UserForm extends ViewAbstract implements ViewInterface
 	public function render(int $userId = null) : string
 	{
 		$output = Module\Hook::trigger('adminUserFormStart');
-		$user = Db::forTablePrefix('users')->whereIdIs($userId)->findOne();
+		$userModel = new Admin\Model\User();
+		$user = $userModel->getById($userId);
 		$helperOption = new Helper\Option($this->_language);
 
-		/* html elements */
+		/* html element */
 
 		$titleElement = new Html\Element();
-		$titleElement->init('h2',
-		[
-			'class' => 'rs-admin-title-content',
-		]);
-		$titleElement->text($user->name ? $user->name : $this->_language->get('user_new'));
-		$formElement = new AdminForm($this->_registry, $this->_language);
+		$titleElement
+			->init('h2',
+			[
+				'class' => 'rs-admin-title-content',
+			])
+			->text($user->name ? $user->name : $this->_language->get('user_new'));
+		$formElement = new Admin\Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[
 			'form' =>
 			[
-				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-component-tab rs-admin-form-default rs-admin-fn-clearfix'
+				'class' => 'rs-admin-js-validate-form rs-admin-fn-tab rs-admin-component-tab rs-admin-form-default'
 			],
 			'button' =>
 			[
@@ -76,12 +77,22 @@ class UserForm extends ViewAbstract implements ViewInterface
 		/* create the form */
 
 		$formElement
-			->append($this->_renderList($user->id))
-			->append('<div class="rs-admin-js-box-tab rs-admin-box-tab">')
 
-			/* first tab */
+			/* user */
 
-			->append('<fieldset id="tab-1" class="rs-admin-js-set-tab rs-admin-js-set-active rs-admin-set-tab rs-admin-set-active"><ul><li>')
+			->radio(
+			[
+				'id' => get_class() . '\User',
+				'class' => 'rs-admin-fn-status-tab',
+				'name' => get_class() . '\Tab',
+				'checked' => 'checked'
+			])
+			->label($this->_language->get('user'),
+			[
+				'class' => 'rs-admin-fn-toggle-tab rs-admin-label-tab',
+				'for' => get_class() . '\User'
+			])
+			->append('<ul class="rs-admin-fn-content-tab rs-admin-box-tab"><li>')
 			->label($this->_language->get('name'),
 			[
 				'for' => 'name'
@@ -115,6 +126,19 @@ class UserForm extends ViewAbstract implements ViewInterface
 		}
 		$formElement
 			->append('<li>')
+			->label($this->_language->get('description'),
+			[
+				'for' => 'description'
+			])
+			->textarea(
+			[
+				'class' => 'rs-admin-js-textarea rs-admin-field-textarea rs-admin-field-small',
+				'id' => 'description',
+				'name' => 'description',
+				'rows' => 1,
+				'value' => $user->description
+			])
+			->append('</li><li>')
 			->label($this->_language->get('password'),
 			[
 				'for' => 'password'
@@ -148,24 +172,22 @@ class UserForm extends ViewAbstract implements ViewInterface
 				'required' => 'required',
 				'value' => $user->email
 			])
-			->append('</li><li>')
-			->label($this->_language->get('description'),
-			[
-				'for' => 'description'
-			])
-			->textarea(
-			[
-				'class' => 'rs-admin-js-auto-resize rs-admin-field-textarea rs-admin-field-small',
-				'id' => 'description',
-				'name' => 'description',
-				'rows' => 1,
-				'value' => $user->description
-			])
-			->append('</li></ul></fieldset>')
+			->append('</li></ul>')
 
-			/* second tab */
+			/* general */
 
-			->append('<fieldset id="tab-2" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
+			->radio(
+			[
+				'id' => get_class() . '\General',
+				'class' => 'rs-admin-fn-status-tab',
+				'name' => get_class() . '\Tab'
+			])
+			->label($this->_language->get('general'),
+			[
+				'class' => 'rs-admin-fn-toggle-tab rs-admin-label-tab',
+				'for' => get_class() . '\General'
+			])
+			->append('<ul class="rs-admin-fn-content-tab rs-admin-box-tab"><li>')
 			->label($this->_language->get('language'),
 			[
 				'for' => 'language'
@@ -178,21 +200,32 @@ class UserForm extends ViewAbstract implements ViewInterface
 				'id' => 'language',
 				'name' => 'language'
 			])
-			->append('</li></ul></fieldset>');
-
-			/* last tab */
-
+			->append('</li></ul>');
 		if (!$user->id || $user->id > 1)
 		{
 			$formElement
-				->append('<fieldset id="tab-3" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
+
+				/* customize */
+
+				->radio(
+				[
+					'id' => get_class() . '\Customize',
+					'class' => 'rs-admin-fn-status-tab',
+					'name' => get_class() . '\Tab'
+				])
+				->label($this->_language->get('customize'),
+				[
+					'class' => 'rs-admin-fn-toggle-tab rs-admin-label-tab',
+					'for' => get_class() . '\Customize'
+				])
+				->append('<ul class="rs-admin-fn-content-tab rs-admin-box-tab"><li>')
 				->label($this->_language->get('status'),
 				[
 					'for' => 'status'
 				])
 				->select($helperOption->getToggleArray(),
 				[
-					$user->id ? intval($user->status) : 1
+					$user->id ? (int)$user->status : 1
 				],
 				[
 					'id' => 'status',
@@ -219,11 +252,16 @@ class UserForm extends ViewAbstract implements ViewInterface
 					])
 					->append('</li>');
 			}
-			$formElement->append('</ul></fieldset>');
+			$formElement->append('</ul>');
 		}
 		$formElement
-			->append('</div>')
+			->hidden(
+			[
+				'name' => 'id',
+				'value' => $user->id
+			])
 			->token()
+			->append('<div class="rs-admin-wrapper-button">')
 			->cancel();
 		if ($user->id)
 		{
@@ -240,67 +278,12 @@ class UserForm extends ViewAbstract implements ViewInterface
 		{
 			$formElement->create();
 		}
+		$formElement->append('</div>');
 
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
 		$output .= Module\Hook::trigger('adminUserFormEnd');
 		return $output;
-	}
-
-	/**
-	 * render the list
-	 *
-	 * @since 3.2.0
-	 *
-	 * @param int $userId identifier of the user
-	 *
-	 * @return string
-	 */
-
-	protected function _renderList(int $userId = null) : string
-	{
-		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
-
-		/* html elements */
-
-		$linkElement = new Html\Element();
-		$linkElement->init('a');
-		$itemElement = new Html\Element();
-		$itemElement->init('li');
-		$listElement = new Html\Element();
-		$listElement->init('ul',
-		[
-			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
-		]);
-
-		/* collect item output */
-
-		$outputItem = $itemElement
-			->copy()
-			->addClass('rs-admin-js-item-active rs-admin-item-active')
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-1')
-				->text($this->_language->get('user'))
-			);
-		$outputItem .= $itemElement
-			->copy()
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-2')
-				->text($this->_language->get('general'))
-			);
-		if (!$userId || $userId > 1)
-		{
-			$outputItem .= $itemElement
-				->copy()
-				->html($linkElement
-					->copy()
-					->attr('href', $tabRoute . '#tab-3')
-					->text($this->_language->get('customize'))
-				);
-		}
-		return $listElement->html($outputItem)->render();
 	}
 }

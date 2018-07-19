@@ -25,8 +25,8 @@ class Module extends TagAbstract
 	[
 		'search' =>
 		[
-			'<module>',
-			'</module>'
+			'<rs-module>',
+			'</rs-module>'
 		],
 		'namespace' => 'Redaxscript\Modules',
 		'delimiter' => '@@@'

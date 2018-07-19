@@ -2,27 +2,16 @@ module.exports = grunt =>
 {
 	'use strict';
 
+	const run = command => process.platform === 'win32' ? 'powershell ' + command : command;
 	const config =
 	{
-		phpstanRoot:
-		{
-			command: 'vendor/bin/phpstan analyse --configuration=phpstan.neon --level 7 --no-progress *.php'
-		},
-		phpstanBase:
-		{
-			command: 'vendor/bin/phpstan analyse --configuration=phpstan.neon --level 7 --no-progress includes'
-		},
-		phpstanModules:
-		{
-			command: 'vendor/bin/phpstan analyse --configuration=phpstan.neon --level 7 --no-progress modules'
-		},
 		phpcpdRoot:
 		{
-			command: 'vendor/bin/phpcpd *.php'
+			command: run('vendor/bin/phpcpd console.php index.php install.php')
 		},
 		phpcpdBase:
 		{
-			command: 'vendor/bin/phpcpd includes',
+			command: run('vendor/bin/phpcpd includes'),
 			options:
 			{
 				failOnError: false
@@ -30,19 +19,47 @@ module.exports = grunt =>
 		},
 		phpcpdModules:
 		{
-			command: 'vendor/bin/phpcpd modules',
+			command: run('vendor/bin/phpcpd modules'),
 			options:
 			{
 				failOnError: false
 			}
 		},
+		phpstanRoot:
+		{
+			command: run('vendor/bin/phpstan analyse console.php index.php install.php --configuration=phpstan.neon --level 4 --no-progress')
+		},
+		phpstanBase:
+		{
+			command: run('vendor/bin/phpstan analyse includes --configuration=phpstan.neon --level 0 --no-progress')
+		},
+		phpstanModules:
+		{
+			command: run('vendor/bin/phpstan analyse modules --configuration=phpstan.neon --level 1 --no-progress')
+		},
+		phpmdRoot:
+		{
+			command: run('vendor/bin/phpmd console.php,index.php,install.php text unusedcode')
+		},
+		phpmdBase:
+		{
+			command: run('vendor/bin/phpmd includes text unusedcode'),
+			options:
+			{
+				failOnError: false
+			}
+		},
+		phpmdModules:
+		{
+			command: run('vendor/bin/phpmd modules text unusedcode')
+		},
 		phpunit:
 		{
-			command: 'vendor/bin/phpunit --configuration=phpunit.xml ' + grunt.option.flags()
+			command: run('vendor/bin/phpunit ' + grunt.option.flags())
 		},
 		phpunitParallel:
 		{
-			command: 'vendor/bin/paratest --processes=10 --configuration=phpunit.xml ' + grunt.option.flags()
+			command: run('vendor/bin/paratest --processes=10 ' + grunt.option.flags())
 		},
 		phpServer:
 		{
@@ -54,7 +71,7 @@ module.exports = grunt =>
 		},
 		removeBuild:
 		{
-			command: 'rm -rf build'
+			command: 'del-cli build'
 		},
 		options:
 		{

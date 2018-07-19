@@ -12,23 +12,12 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Filter\Alias
  */
 
 class AliasTest extends TestCaseAbstract
 {
-	/**
-	 * providerAlias
-	 *
-	 * @since 2.2.0
-	 *
-	 * @return array
-	 */
-
-	public function providerAlias() : array
-	{
-		return $this->getProvider('tests/provider/Filter/alias.json');
-	}
-
 	/**
 	 * testAlias
 	 *
@@ -37,7 +26,7 @@ class AliasTest extends TestCaseAbstract
 	 * @param string $alias
 	 * @param string $expect
 	 *
-	 * @dataProvider providerAlias
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testAlias(string $alias = null, string $expect = null)

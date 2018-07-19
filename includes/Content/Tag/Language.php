@@ -23,8 +23,8 @@ class Language extends TagAbstract
 	[
 		'search' =>
 		[
-			'<language>',
-			'</language>'
+			'<rs-language>',
+			'</rs-language>'
 		],
 		'delimiter' => '@@@'
 	];

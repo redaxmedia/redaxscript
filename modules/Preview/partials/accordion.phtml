@@ -2,41 +2,47 @@
 namespace Redaxscript;
 
 $language = Language::getInstance();
-$setElement = new Html\Element();
-$setElement->init('div',
-[
-	'class' => $admin ? 'rs-admin-js-set-accordion rs-admin-set-accordion' : 'rs-js-set-accordion rs-set-accordion'
-]);
-$titleElement = new Html\Element();
-$titleElement->init('h3',
-[
-	'class' => $admin ? 'rs-admin-js-title-accordion rs-admin-title-accordion' : 'rs-js-title-accordion rs-title-accordion'
-]);
-$boxElement = new Html\Element();
-$boxElement->init('div',
-[
-	'class' => $admin ? 'rs-admin-js-box-accordion rs-admin-box-accordion' : 'rs-js-box-accordion rs-box-accordion'
-]);
+$element = new Html\Element();
+$inputElement = $element
+	->copy()
+	->init('input',
+	[
+		'class' => $admin ? 'rs-admin-fn-status-accordion' : 'rs-fn-status-accordion',
+		'type' => 'radio',
+		'name' => $admin ? 'Modules\Preview\Admin\Accordion' : 'Modules\Preview\Accordion'
+	]);
+$labelElement = $element
+	->copy()
+	->init('label',
+	[
+		'class' => $admin ? 'rs-admin-fn-toggle-accordion rs-admin-label-accordion' : 'rs-fn-toggle-accordion rs-label-accordion'
+	]);
+$boxElement = $element
+	->copy()
+	->init('div',
+	[
+		'class' => $admin ? 'rs-admin-fn-content-accordion rs-admin-box-accordion' : 'rs-fn-content-accordion rs-box-accordion'
+	]);
 ?>
 
 <!-- accordion -->
 
-<div class="<?php echo $admin ? 'rs-admin-js-accordion rs-admin-component-accordion' : 'rs-js-accordion rs-component-accordion'; ?>">
+<div class="<?php echo $admin ? 'rs-admin-component-accordion' : 'rs-component-accordion'; ?>">
 
 	<?php for ($i = 1; $i < 6; $i++): ?>
 
-		<?php echo $setElement
-				->copy()
-				->addClass($i === 2 ? $admin ? 'rs-admin-js-set-active rs-admin-set-active' : 'rs-js-set-active rs-set-active' : null)
-				->html(
-					$titleElement
+		<?php echo $inputElement
 						->copy()
-						->addClass($i === 2 ? $admin ? 'rs-admin-js-title-active rs-admin-title-active' : 'rs-js-title-active rs-title-active' : null)
-						->text($language->get($i, '_number')) . $boxElement
+						->attr('id', $admin ? 'Modules\Preview\Admin\Accordion\\' . $i : 'Modules\Preview\Accordion\\' . $i)
+						->attr('checked', $i === 1 ? 'checked' : null)
+						->text($language->get($i, '_number')) .
+					$labelElement
 						->copy()
-						->addClass($i === 2 ? $admin ? 'rs-admin-js-box-active rs-admin-box-active' : 'rs-js-box-active rs-box-active' : null)
-						->text($language->get($i, '_number'))
-		); ?>
+						->attr('for', $admin ? 'Modules\Preview\Admin\Accordion\\' . $i : 'Modules\Preview\Accordion\\' . $i)
+						->text($language->get($i, '_number')) .
+					$boxElement
+						->copy()
+						->text($language->get($i, '_number')); ?>
 
 	<?php endfor; ?>
 

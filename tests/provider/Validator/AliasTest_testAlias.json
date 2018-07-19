@@ -1,0 +1,37 @@
+[
+	[
+		"123",
+		"general",
+		true
+	],
+	[
+		"abc",
+		"general",
+		false
+	],
+	[
+		"abc ",
+		"general",
+		true
+	],
+	[
+		"ab-c",
+		"system",
+		false
+	],
+	[
+		"ab_c",
+		"system",
+		false
+	],
+	[
+		"login",
+		"system",
+		true
+	],
+	[
+		"invalid",
+		"system",
+		false
+	]
+]

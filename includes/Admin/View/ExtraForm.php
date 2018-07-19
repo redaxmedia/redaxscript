@@ -1,8 +1,7 @@
 <?php
 namespace Redaxscript\Admin\View;
 
-use Redaxscript\Admin\Html\Form as AdminForm;
-use Redaxscript\Db;
+use Redaxscript\Admin;
 use Redaxscript\Html;
 use Redaxscript\Module;
 
@@ -12,18 +11,18 @@ use Redaxscript\Module;
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category Admin
+ * @category View
  * @author Henry Ruhs
  */
 
-class ExtraForm extends ViewAbstract implements ViewInterface
+class ExtraForm extends ViewAbstract
 {
 	/**
 	 * render the view
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param int|bool $extraId identifier of the extra
+	 * @param int $extraId identifier of the extra
 	 *
 	 * @return string
 	 */
@@ -31,23 +30,25 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 	public function render(int $extraId = null) : string
 	{
 		$output = Module\Hook::trigger('adminExtraFormStart');
-		$extra = Db::forTablePrefix('extras')->whereIdIs($extraId)->findOne();
+		$extraModel = new Admin\Model\Extra();
+		$extra = $extraModel->getById($extraId);
 		$helperOption = new Helper\Option($this->_language);
 
-		/* html elements */
+		/* html element */
 
 		$titleElement = new Html\Element();
-		$titleElement->init('h2',
-		[
-			'class' => 'rs-admin-title-content',
-		]);
-		$titleElement->text($extra->title ? $extra->title : $this->_language->get('extra_new'));
-		$formElement = new AdminForm($this->_registry, $this->_language);
+		$titleElement
+			->init('h2',
+			[
+				'class' => 'rs-admin-title-content',
+			])
+			->text($extra->title ? $extra->title : $this->_language->get('extra_new'));
+		$formElement = new Admin\Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[
 			'form' =>
 			[
-				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-component-tab rs-admin-form-default rs-admin-fn-clearfix'
+				'class' => 'rs-admin-js-validate-form rs-admin-fn-tab rs-admin-component-tab rs-admin-form-default'
 			],
 			'button' =>
 			[
@@ -76,12 +77,22 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 		/* create the form */
 
 		$formElement
-			->append($this->_renderList())
-			->append('<div class="rs-admin-js-box-tab rs-admin-box-tab">')
 
-			/* first tab */
+			/* extra */
 
-			->append('<fieldset id="tab-1" class="rs-admin-js-set-tab rs-admin-js-set-active rs-admin-set-tab rs-admin-set-active"><ul><li>')
+			->radio(
+			[
+				'id' => get_class() . '\Extra',
+				'class' => 'rs-admin-fn-status-tab',
+				'name' => get_class() . '\Tab',
+				'checked' => 'checked'
+			])
+			->label($this->_language->get('extra'),
+			[
+				'class' => 'rs-admin-fn-toggle-tab rs-admin-label-tab',
+				'for' => get_class() . '\Extra'
+			])
+			->append('<ul class="rs-admin-fn-content-tab rs-admin-box-tab"><li>')
 			->label($this->_language->get('title'),
 			[
 				'for' => 'title'
@@ -116,17 +127,28 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 			])
 			->textarea(
 			[
-				'class' => 'rs-admin-js-auto-resize rs-admin-js-generate-keyword-input rs-admin-js-editor-textarea rs-admin-field-textarea',
+				'class' => 'rs-admin-js-textarea rs-admin-field-textarea',
 				'id' => 'text',
 				'name' => 'text',
 				'required' => 'required',
 				'value' => htmlspecialchars($extra->text)
 			])
-			->append('</li></ul></fieldset>')
+			->append('</li></ul>')
 
-			/* second tab */
+			/* general */
 
-			->append('<fieldset id="tab-2" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
+			->radio(
+			[
+				'id' => get_class() . '\General',
+				'class' => 'rs-admin-fn-status-tab',
+				'name' => get_class() . '\Tab'
+			])
+			->label($this->_language->get('general'),
+			[
+				'class' => 'rs-admin-fn-toggle-tab rs-admin-label-tab',
+				'for' => get_class() . '\General'
+			])
+			->append('<ul class="rs-admin-fn-content-tab rs-admin-box-tab"><li>')
 			->label($this->_language->get('language'),
 			[
 				'for' => 'language'
@@ -146,10 +168,10 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getContentArray('extras',
 			[
-				intval($extra->id)
+				(int)$extra->id
 			]),
 			[
-				intval($extra->sibling)
+				(int)$extra->sibling
 			],
 			[
 				'id' => 'sibling',
@@ -162,7 +184,7 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getContentArray('categories'),
 			[
-				intval($extra->category)
+				(int)$extra->category
 			],
 			[
 				'id' => 'category',
@@ -175,24 +197,35 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getContentArray('articles'),
 			[
-				intval($extra->article)
+				(int)$extra->article
 			],
 			[
 				'id' => 'article',
 				'name' => 'article'
 			])
-			->append('</li></ul></fieldset>')
+			->append('</li></ul>')
 
-			/* last tab */
+			/* customize */
 
-			->append('<fieldset id="tab-3" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
+			->radio(
+			[
+				'id' => get_class() . '\Customize',
+				'class' => 'rs-admin-fn-status-tab',
+				'name' => get_class() . '\Tab'
+			])
+			->label($this->_language->get('customize'),
+			[
+				'class' => 'rs-admin-fn-toggle-tab rs-admin-label-tab',
+				'for' => get_class() . '\Customize'
+			])
+			->append('<ul class="rs-admin-fn-content-tab rs-admin-box-tab"><li>')
 			->label($this->_language->get('headline'),
 			[
 				'for' => 'headline'
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				$extra->id ? intval($extra->headline) : 1
+				$extra->id ? (int)$extra->headline : 1
 			],
 			[
 				'id' => 'headline',
@@ -205,7 +238,7 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getVisibleArray(),
 			[
-				$extra->id ? intval($extra->status) : 1
+				$extra->id ? (int)$extra->status : 1
 			],
 			[
 				'id' => 'status',
@@ -220,7 +253,7 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 			[
 				'id' => 'rank',
 				'name' => 'rank',
-				'value' => $extra->id ? intval($extra->rank) : Db::forTablePrefix('extras')->max('rank') + 1
+				'value' => $extra->id ? (int)$extra->rank : $extraModel->query()->max('rank') + 1
 			])
 			->append('</li>');
 		if ($this->_registry->get('groupsEdit'))
@@ -255,8 +288,14 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 				'name' => 'date',
 				'value' => $extra->date ? $extra->date : null
 			])
-			->append('</li></ul></fieldset></div>')
+			->append('</li></ul>')
+			->hidden(
+			[
+				'name' => 'id',
+				'value' => $extra->id
+			])
 			->token()
+			->append('<div class="rs-admin-wrapper-button">')
 			->cancel();
 		if ($extra->id)
 		{
@@ -273,62 +312,12 @@ class ExtraForm extends ViewAbstract implements ViewInterface
 		{
 			$formElement->create();
 		}
+		$formElement->append('</div>');
 
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
 		$output .= Module\Hook::trigger('adminExtraFormEnd');
 		return $output;
-	}
-
-	/**
-	 * render the list
-	 *
-	 * @since 3.2.0
-	 *
-	 * @return string
-	 */
-
-	protected function _renderList() : string
-	{
-		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
-
-		/* html elements */
-
-		$linkElement = new Html\Element();
-		$linkElement->init('a');
-		$itemElement = new Html\Element();
-		$itemElement->init('li');
-		$listElement = new Html\Element();
-		$listElement->init('ul',
-		[
-			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
-		]);
-
-		/* collect item output */
-
-		$outputItem = $itemElement
-			->copy()
-			->addClass('rs-admin-js-item-active rs-admin-item-active')
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-1')
-				->text($this->_language->get('extra'))
-			);
-		$outputItem .= $itemElement
-			->copy()
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-2')
-				->text($this->_language->get('general'))
-			);
-		$outputItem .= $itemElement
-			->copy()
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-3')
-				->text($this->_language->get('customize'))
-			);
-		return $listElement->html($outputItem)->render();
 	}
 }

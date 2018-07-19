@@ -2,9 +2,4 @@
 
 <!-- foot script -->
 
-<?php echo Tag::script()
-	->init('foot')
-	->prependFile('assets/scripts/fallback.js')
-	->prependFile('https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
-	->appendFile('dist/scripts/base.min.js')
-	->concat(); ?>
+<?php echo Tag::script()->init('foot'); ?>

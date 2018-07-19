@@ -126,27 +126,22 @@ class Content extends BootstrapAbstract
 		$aliasValidator = new Validator\Alias();
 		$firstParameter = $this->_registry->get('firstParameter');
 		$lastTable = $this->_registry->get('lastTable');
-		if ($lastTable)
-		{
-			$id = Db::forTablePrefix($lastTable)
-				->where($whereArray)
-				->findOne()
-				->id;
-		}
 
 		/* set the registry */
 
-		if ($firstParameter === 'admin' || $aliasValidator->validate($firstParameter, Validator\Alias::MODE_DEFAULT) === Validator\ValidatorInterface::FAILED)
+		if ($firstParameter === 'admin' || !$aliasValidator->validate($firstParameter, 'system'))
 		{
 			if ($lastTable === 'categories')
 			{
-				$this->_registry->set('categoryId', $id);
-				$this->_registry->set('lastId', $id);
+				$category = Db::forTablePrefix('categories')->where($whereArray)->findOne();
+				$this->_registry->set('categoryId', $category->id);
+				$this->_registry->set('lastId', $category->id);
 			}
 			if ($lastTable === 'articles')
 			{
-				$this->_registry->set('articleId', $id);
-				$this->_registry->set('lastId', $id);
+				$article = Db::forTablePrefix('articles')->where($whereArray)->findOne();
+				$this->_registry->set('articleId', $article->id);
+				$this->_registry->set('lastId', $article->id);
 			}
 		}
 	}
@@ -217,7 +212,7 @@ class Content extends BootstrapAbstract
 		$aliasValidator = new Validator\Alias();
 		$lastId = $this->_registry->get('lastId');
 		$firstParameter = $this->_registry->get('firstParameter');
-		$contentError = !$lastId && $aliasValidator->validate($firstParameter, Validator\Alias::MODE_DEFAULT) === Validator\ValidatorInterface::FAILED;
+		$contentError = !$lastId && !$aliasValidator->validate($firstParameter, 'system');
 		$this->_registry->set('contentError', $contentError);
 	}
 }

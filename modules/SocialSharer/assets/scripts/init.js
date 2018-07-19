@@ -1,12 +1,4 @@
-/**
- * @tableofcontents
- *
- * 1. social sharer
- */
-
-/** @section 1. social sharer */
-
-rs.modules.socialSharer =
+rs.modules.SocialSharer =
 {
 	init: true,
 	selector: 'ul.rs-js-social-sharer',

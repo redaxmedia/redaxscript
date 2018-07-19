@@ -13,24 +13,14 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @category Tests
  * @author Henry Ruhs
  *
+ * @covers Redaxscript\Bootstrap\BootstrapAbstract
+ * @covers Redaxscript\Bootstrap\Detector
+ *
  * @runTestsInSeparateProcesses
  */
 
 class DetectorTest extends TestCaseAbstract
 {
-	/**
-	 * providerDetector
-	 *
-	 * @since 3.1.0
-	 *
-	 * @return array
-	 */
-
-	public function providerDetector() : array
-	{
-		return $this->getProvider('tests/provider/Bootstrap/detector.json');
-	}
-
 	/**
 	 * testDetector
 	 *
@@ -38,7 +28,7 @@ class DetectorTest extends TestCaseAbstract
 	 *
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerDetector
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testDetector(array $expectArray = [])

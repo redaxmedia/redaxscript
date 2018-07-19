@@ -12,35 +12,24 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Filter\Search
  */
 
 class SearchTest extends TestCaseAbstract
 {
 	/**
-	 * providerSearch
-	 *
-	 * @since 3.1.0
-	 *
-	 * @return array
-	 */
-
-	public function providerSearch() : array
-	{
-		return $this->getProvider('tests/provider/Filter/search.json');
-	}
-
-	/**
-	 * testAlias
+	 * testSearch
 	 *
 	 * @since 3.1.0
 	 *
 	 * @param string $search
 	 * @param string $expect
 	 *
-	 * @dataProvider providerSearch
+	 * @dataProvider providerAutoloader
 	 */
 
-	public function testAlias(string $search = null, string $expect = null)
+	public function testSearch(string $search = null, string $expect = null)
 	{
 		/* setup */
 

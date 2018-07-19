@@ -1,13 +1,5 @@
-/**
- * @tableofcontents
- *
- * 1. experiments
- */
-
-/** @section 1. experiments */
-
-rs.modules.experiments =
+rs.modules.Experiments =
 {
 	init: rs.registry.loggedIn !== rs.registry.token,
-	dependency: typeof cxApi === 'object'
+	dependency: typeof window.cxApi === 'object'
 };

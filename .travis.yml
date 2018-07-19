@@ -1,53 +1,71 @@
 language: php
 
-php:
-- 7.0
-- 7.1
-- 7.2
-- nightly
-
-matrix:
- fast_finish: true
- allow_failures:
- - php: nightly
-
-services:
-- mysql
-- postgresql
+php: 7.1
 
 before_install:
 - composer global require hirak/prestissimo
 
-install:
-- sudo apt-get update
-- sudo apt-get install libxml2-dev
-- composer self-update
-- composer install
-- gem install mime-types -v 2.6.2
-- gem install mailcatcher
-- nvm install 7
-- npm install --global grunt-cli
-- npm install
+jobs:
+ include:
+ - &lint
+   env:
+   - TYPE=lint
 
-before_script:
-- echo sendmail_path=/usr/bin/env catchmail --smtp-ip 127.0.0.1 --smtp-port 1025 -f test@test.com >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-- mysql -u root -e 'create database test'
-- mysqladmin -u root password test
-- psql -U postgres -c 'create database test'
-- psql -U postgres -c 'alter user postgres with password '\'test\'
-- mkdir build
+   install:
+   - nvm install 9
+   - npm install --global grunt-cli
+   - npm install
+   - composer self-update
+   - composer install
+   script:
+   - grunt
 
-script:
-- grunt
-- mailcatcher
-- DB_URL=mysql://root:test@127.0.0.1/test grunt phpunit --coverage-clover=build/mysql.xml
-- DB_URL=postgres://postgres:test@127.0.0.1/test grunt phpunit --coverage-clover=build/pgsql.xml
-- DB_URL=sqlite://test.sqlite grunt phpunit --coverage-clover=build/sqlite.xml
+ - &test
+   env:
+   - TYPE=test
 
-after_success:
-- vendor/bin/coveralls
-- wget https://scrutinizer-ci.com/ocular.phar
-- php ocular.phar code-coverage:upload --format=php-clover build/sqlite.xml
+   services:
+   - mysql
+   - postgresql
+
+   install:
+   - composer self-update
+   - composer install
+   - gem install mailcatcher
+
+   before_script:
+   - echo sendmail_path=/usr/bin/env catchmail --smtp-ip 127.0.0.1 --smtp-port 1025 -f test@test.com >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+   - mysql -u root -e 'create database test'
+   - mysqladmin -u root password test
+   - psql -U postgres -c 'create database test'
+   - psql -U postgres -c 'alter user postgres with password '\'test\'
+
+   script:
+   - mailcatcher
+   - DB_URL=mysql://root:test@127.0.0.1/test vendor/bin/phpunit
+   - DB_URL=postgres://postgres:test@127.0.0.1/test vendor/bin/phpunit
+   - DB_URL=sqlite://test.sqlite vendor/bin/phpunit
+
+ - <<: *test
+   php: 7.2
+
+ - <<: *test
+   php: nightly
+
+ - <<: *test
+   env:
+   - TYPE=report
+
+   script:
+   - mailcatcher
+   - DB_URL=mysql://root:test@127.0.0.1/test vendor/bin/phpunit --coverage-clover=build/mysql.xml
+   - DB_URL=postgres://postgres:test@127.0.0.1/test vendor/bin/phpunit --coverage-clover=build/pgsql.xml
+   - DB_URL=sqlite://test.sqlite vendor/bin/phpunit --coverage-clover=build/sqlite.xml
+
+   after_success:
+   - vendor/bin/php-coveralls
+   - wget https://scrutinizer-ci.com/ocular.phar
+   - php ocular.phar code-coverage:upload --format=php-clover build/sqlite.xml
 
 notifications:
  email:

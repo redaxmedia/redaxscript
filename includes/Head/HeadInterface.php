@@ -17,8 +17,6 @@ interface HeadInterface
 	 * render the tag
 	 *
 	 * @since 3.0.0
-	 *
-	 * @return string|null
 	 */
 
 	public function render();

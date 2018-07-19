@@ -12,23 +12,12 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Filter\Boolean
  */
 
 class BooleanTest extends TestCaseAbstract
 {
-	/**
-	 * providerBoolean
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerBoolean() : array
-	{
-		return $this->getProvider('tests/provider/Filter/boolean.json');
-	}
-
 	/**
 	 * testBoolean
 	 *
@@ -37,7 +26,7 @@ class BooleanTest extends TestCaseAbstract
 	 * @param string $boolean
 	 * @param bool $expect
 	 *
-	 * @dataProvider providerBoolean
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testBoolean(string $boolean = null, bool $expect = null)

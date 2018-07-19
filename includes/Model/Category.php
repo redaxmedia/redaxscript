@@ -1,8 +1,6 @@
 <?php
 namespace Redaxscript\Model;
 
-use Redaxscript\Db;
-
 /**
  * parent class to provide the category model
  *
@@ -13,21 +11,29 @@ use Redaxscript\Db;
  * @author Henry Ruhs
  */
 
-class Category
+class Category extends ContentAbstract
 {
 	/**
-	 * get the category id by alias
+	 * name of the table
 	 *
-	 * @since 3.3.0
-	 *
-	 * @param string $categoryAlias
-	 *
-	 * @return int
+	 * @var string
 	 */
 
-	public function getIdByAlias(string $categoryAlias = null) : int
+	protected $_table = 'categories';
+
+	/**
+	 * get the category by alias
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param string $categoryAlias alias of the category
+	 *
+	 * @return object
+	 */
+
+	public function getByAlias(string $categoryAlias = null)
 	{
-		return Db::forTablePrefix('categories')->select('id')->where('alias', $categoryAlias)->findOne()->id | 0;
+		return $this->query()->where('alias', $categoryAlias)->findOne();
 	}
 
 	/**
@@ -35,15 +41,15 @@ class Category
 	 *
 	 * @since 3.3.0
 	 *
-	 * @param int $categoryId
+	 * @param int $categoryId identifier of the category
 	 *
 	 * @return string|null
 	 */
 
-	public function getRouteById(int $categoryId = null)
+	public function getRouteById(int $categoryId = null) : ?string
 	{
 		$route = null;
-		$categoryArray = Db::forTablePrefix('categories')
+		$categoryArray = $this->query()
 			->tableAlias('c')
 			->leftJoinPrefix('categories', 'c.parent = p.id', 'p')
 			->select('p.alias', 'parent_alias')
@@ -58,26 +64,5 @@ class Category
 			$route = implode('/', array_filter($categoryArray[0]));
 		}
 		return $route;
-	}
-
-	/**
-	 * publish each category by date
-	 *
-	 * @since 3.3.0
-	 *
-	 * @param string $date
-	 *
-	 * @return int
-	 */
-
-	public function publishByDate(string $date = null) : int
-	{
-		return Db::forTablePrefix('categories')
-			->where('status', 2)
-			->whereLt('date', $date)
-			->findMany()
-			->set('status', 1)
-			->save()
-			->count();
 	}
 }

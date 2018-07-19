@@ -1,8 +1,6 @@
 <?php
 namespace Redaxscript\Model;
 
-use Redaxscript\Db;
-
 /**
  * parent class to provide the extra model
  *
@@ -13,26 +11,28 @@ use Redaxscript\Db;
  * @author Henry Ruhs
  */
 
-class Extra
+class Extra extends ContentAbstract
 {
 	/**
-	 * publish each extra by date
+	 * name of the table
 	 *
-	 * @since 3.3.0
-	 *
-	 * @param string $date
-	 *
-	 * @return int
+	 * @var string
 	 */
 
-	public function publishByDate(string $date = null) : int
+	protected $_table = 'extras';
+
+	/**
+	 * get the extra by alias
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param string $extraAlias alias of the extra
+	 *
+	 * @return object
+	 */
+
+	public function getByAlias(string $extraAlias = null)
 	{
-		return Db::forTablePrefix('extras')
-			->where('status', 2)
-			->whereLt('date', $date)
-			->findMany()
-			->set('status', 1)
-			->save()
-			->count();
+		return $this->query()->where('alias', $extraAlias)->findOne();
 	}
 }

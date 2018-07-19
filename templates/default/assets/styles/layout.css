@@ -14,7 +14,7 @@
 .rs-body
 {
 	background: gray(255);
-	color: var(--rs-color-tertiary);
+	color: gray(70);
 	font: 1em var(--rs-font-primary);
 }
 
@@ -22,7 +22,6 @@
 {
 	background: gray(255);
 	margin-bottom: 5em;
-	min-height: 20em;
 }
 
 /** @section 2. wrapper */
@@ -64,17 +63,18 @@
 
 	.rs-has-sidebar
 	{
+		align-items: flex-start;
+		display: flex;
+
 		& .rs-content
 		{
-			float: left;
-			width: 70%;
+			flex-basis: 100%;
 		}
 
 		& .rs-sidebar
 		{
-			float: right;
-			margin-left: 2%;
-			width: 28%;
+			flex-basis: 25em;
+			margin-left: 1.5em;
 		}
 	}
 }
@@ -85,7 +85,6 @@
 {
 	.rs-body
 	{
-		background: gray(255);
 		color: gray(0);
 	}
 

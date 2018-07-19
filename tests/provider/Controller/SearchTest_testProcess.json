@@ -1,0 +1,74 @@
+[
+	[
+		{
+			"firstParameter": null,
+			"secondParameter": null,
+			"thirdParameter": null,
+			"root": "http://localhost"
+		},
+		"<h2 class=\"rs-title-note rs-is-info\">Something went wrong</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-info\">Input is incorrect</div><a href=\"http://localhost\" class=\"rs-button-note rs-is-info\">Back</a>"
+	],
+	[
+		{
+			"firstParameter": "search",
+			"secondParameter": null,
+			"thirdParameter": "One",
+			"root": "http://localhost"
+		},
+		"<h2 class=\"rs-title-note rs-is-info\">Something went wrong</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-info\">Input is incorrect</div><a href=\"http://localhost\" class=\"rs-button-note rs-is-info\">Back</a>"
+	],
+	[
+		{
+			"firstParameter": "search",
+			"secondParameter": "articles",
+			"thirdParameter": null,
+			"root": "http://localhost"
+		},
+		"<h2 class=\"rs-title-note rs-is-info\">Something went wrong</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-info\">No results for your search query</div><a href=\"http://localhost\" class=\"rs-button-note rs-is-info\">Back</a>"
+	],
+	[
+		{
+			"firstParameter": "search",
+			"secondParameter": "three",
+			"thirdParameter": null,
+			"root": "http://localhost"
+		},
+		"<h2 class=\"rs-title-note rs-is-info\">Something went wrong</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-info\">No results for your search query</div><a href=\"http://localhost\" class=\"rs-button-note rs-is-info\">Back</a>"
+	],
+	[
+		{
+			"firstParameter": "search",
+			"secondParameter": "One",
+			"thirdParameter": null,
+			"root": "http://localhost"
+		},
+		"<h2 class=\"rs-title-result\">Categories</h2><ol class=\"rs-list-result\"><li><a class=\"rs-link-result\" href=\"category-one\">Category One</a><span class=\"rs-text-result-date\"></span></li></ol><h2 class=\"rs-title-result\">Articles</h2><ol class=\"rs-list-result\"><li><a class=\"rs-link-result\" href=\"category-one/article-one\">Article One</a><span class=\"rs-text-result-date\"></span></li></ol><h2 class=\"rs-title-result\">Comments</h2><ol class=\"rs-list-result\"><li><a class=\"rs-link-result\" href=\"category-one/article-one#comment-1\">Comment One</a><span class=\"rs-text-result-date\"></span></li></ol>"
+	],
+	[
+		{
+			"firstParameter": "search",
+			"secondParameter": "categories",
+			"thirdParameter": "Category",
+			"root": "http://localhost"
+		},
+		"<h2 class=\"rs-title-result\">Categories</h2><ol class=\"rs-list-result\"><li><a class=\"rs-link-result\" href=\"category-two\">Category Two</a><span class=\"rs-text-result-date\"></span></li><li><a class=\"rs-link-result\" href=\"category-one\">Category One</a><span class=\"rs-text-result-date\"></span></li></ol>"
+	],
+	[
+		{
+			"firstParameter": "search",
+			"secondParameter": "articles",
+			"thirdParameter": "Article",
+			"root": "http://localhost"
+		},
+		"<h2 class=\"rs-title-result\">Articles</h2><ol class=\"rs-list-result\"><li><a class=\"rs-link-result\" href=\"category-one/article-two\">Article Two</a><span class=\"rs-text-result-date\"></span></li><li><a class=\"rs-link-result\" href=\"category-one/article-one\">Article One</a><span class=\"rs-text-result-date\"></span></li></ol>"
+	],
+	[
+		{
+			"firstParameter": "search",
+			"secondParameter": "comments",
+			"thirdParameter": "Comment",
+			"root": "http://localhost"
+		},
+		"<h2 class=\"rs-title-result\">Comments</h2><ol class=\"rs-list-result\"><li><a class=\"rs-link-result\" href=\"category-one/article-one#comment-2\">Comment Two</a><span class=\"rs-text-result-date\"></span></li><li><a class=\"rs-link-result\" href=\"category-one/article-one#comment-1\">Comment One</a><span class=\"rs-text-result-date\"></span></li></ol>"
+	]
+]

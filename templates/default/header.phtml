@@ -9,23 +9,23 @@
 
 			<!-- title -->
 
-			<?php if (Tag::getSetting('title')): ?>
+			<?php if (Helper::getSetting('title')): ?>
 				<h1 class="rs-title-header">
-					<a href="<?php echo Tag::getRegistry('root'); ?>">
-						<?php echo Tag::getSetting('title'); ?>
+					<a href="<?php echo Helper::getRegistry('root'); ?>">
+						<?php echo Helper::getSetting('title'); ?>
 					</a>
 				</h1>
 			<?php endif; ?>
 
 			<!-- description -->
 
-			<?php if (Tag::getSetting('description')): ?>
-				<span class="rs-text-header" title="<?php echo Tag::getSetting('description'); ?>"><?php echo Tag::getSetting('description'); ?></span>
+			<?php if (Helper::getSetting('description')): ?>
+				<span class="rs-text-header" title="<?php echo Helper::getSetting('description'); ?>"><?php echo Helper::getSetting('description'); ?></span>
 			<?php endif; ?>
 		</div>
 
 		<!-- menu -->
 
-		<?php echo Tag::partial('templates/default/menu.phtml'); ?>
+		<?php echo Tag::partial('default/menu.phtml'); ?>
 	</section>
 </header>

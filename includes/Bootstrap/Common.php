@@ -90,7 +90,7 @@ class Common extends BootstrapAbstract
 
 		/* process driver */
 
-		foreach (PDO::getAvailableDrivers() as $key => $driver)
+		foreach (PDO::getAvailableDrivers() as $driver)
 		{
 			$driver = $driver === 'sqlsrv' ? 'mssql' : $driver;
 			if (is_dir('database' . DIRECTORY_SEPARATOR . $driver))

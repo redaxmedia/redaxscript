@@ -14,6 +14,9 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @category Tests
  * @author Henry Ruhs
  * @author Balázs Szilágyi
+ *
+ * @covers Redaxscript\Controller\ControllerAbstract
+ * @covers Redaxscript\Controller\Search
  */
 
 class SearchTest extends TestCaseAbstract
@@ -129,22 +132,7 @@ class SearchTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerProcess
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerProcess() : array
-	{
-		return $this->getProvider('tests/provider/Controller/search_process.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -155,7 +143,7 @@ class SearchTest extends TestCaseAbstract
 	 * @param array $registryArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerProcess
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testProcess(array $registryArray = [], string $expect = null)
@@ -163,7 +151,7 @@ class SearchTest extends TestCaseAbstract
 		/* setup */
 
 		$this->_registry->init($registryArray);
-		$searchController = new Controller\Search($this->_registry, $this->_request, $this->_language);
+		$searchController = new Controller\Search($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 

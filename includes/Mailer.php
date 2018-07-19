@@ -40,7 +40,7 @@ class Mailer
 	/**
 	 * body of the email
 	 *
-	 * @var mixed
+	 * @var string|array
 	 */
 
 	protected $_body;
@@ -90,7 +90,7 @@ class Mailer
 	 *
 	 * @since 2.4.0
 	 *
-	 * @param array $toArray array of  the recipient
+	 * @param array $toArray array of the recipient
 	 * @param array $fromArray array of the sender
 	 * @param string $subject subject of the email
 	 * @param string|array $body body of the email

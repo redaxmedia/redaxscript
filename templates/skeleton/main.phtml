@@ -2,23 +2,23 @@
 
 <!-- main -->
 
-<main id="main" class="rs-main rs-fn-clearfix">
+<main id="main" class="rs-main">
 
 	<!-- error -->
 
-	<?php if (Tag::getRegistry('contentError')): ?>
-		<div class="rs-wrapper rs-fn-clearfix">
-			<?php echo Tag::partial('templates/skeleton/error.phtml'); ?>
+	<?php if (Helper::getRegistry('contentError')): ?>
+		<div class="rs-wrapper">
+			<?php echo Tag::partial('skeleton/error.phtml'); ?>
 		</div>
 
 	<!-- else content and sidebar -->
 
 	<?php else: ?>
-		<div class="rs-wrapper rs-has-sidebar rs-fn-clearfix">
+		<div class="rs-wrapper rs-has-sidebar">
 			<?php echo Tag::partial(
 			[
-				'templates/skeleton/content.phtml',
-				'templates/skeleton/sidebar.phtml'
+				'skeleton/content.phtml',
+				'skeleton/sidebar.phtml'
 			]); ?>
 		</div>
 	<?php endif; ?>

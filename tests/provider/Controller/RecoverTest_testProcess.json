@@ -1,0 +1,34 @@
+[
+	[
+		{
+			"email": null,
+			"task": 1,
+			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
+		},
+		"<h2 class=\"rs-title-note rs-is-error\">An error occurred</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-error\">Email is empty</div><a href=\"login/recover\" class=\"rs-button-note rs-is-error\">Back</a>"
+	],
+	[
+		{
+			"email": "test@test",
+			"task": 1,
+			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
+		},
+		"<h2 class=\"rs-title-note rs-is-error\">An error occurred</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-error\">Email is incorrect</div><a href=\"login/recover\" class=\"rs-button-note rs-is-error\">Back</a>"
+	],
+	[
+		{
+			"email": "invalid@test.com",
+			"task": 1,
+			"hash": null
+		},
+		"<h2 class=\"rs-title-note rs-is-error\">An error occurred</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-error\"><ul class=\"rs-list-note\"><li>Email is unknown</li><li>Captcha is incorrect</li></ul></div><a href=\"login/recover\" class=\"rs-button-note rs-is-error\">Back</a>"
+	],
+	[
+		{
+			"email": "test@test.com",
+			"task": 1,
+			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
+		},
+		"<h2 class=\"rs-title-note rs-is-success\">Operation completed successfully</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-success\">Test: Your account information has been successfully sent</div><a href=\"login\" class=\"rs-button-note rs-is-success\">Continue</a><meta content=\"2;url=/login\" http-equiv=\"refresh\" />"
+	]
+]

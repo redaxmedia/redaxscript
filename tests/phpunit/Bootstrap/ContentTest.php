@@ -14,6 +14,9 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @category Tests
  * @author Henry Ruhs
  *
+ * @covers Redaxscript\Bootstrap\BootstrapAbstract
+ * @covers Redaxscript\Bootstrap\Content
+ *
  * @runTestsInSeparateProcesses
  */
 
@@ -91,22 +94,7 @@ class ContentTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerContent
-	 *
-	 * @since 3.1.0
-	 *
-	 * @return array
-	 */
-
-	public function providerContent() : array
-	{
-		return $this->getProvider('tests/provider/Bootstrap/content.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -118,7 +106,7 @@ class ContentTest extends TestCaseAbstract
 	 * @param array $settingArray
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerContent
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testContent(array $registryArray = [], array $settingArray = [], array $expectArray = [])

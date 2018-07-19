@@ -13,24 +13,14 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @category Tests
  * @author Henry Ruhs
  *
+ * @covers Redaxscript\Bootstrap\BootstrapAbstract
+ * @covers Redaxscript\Bootstrap\Router
+ *
  * @runTestsInSeparateProcesses
  */
 
 class RouterTest extends TestCaseAbstract
 {
-	/**
-	 * providerRouter
-	 *
-	 * @since 3.1.0
-	 *
-	 * @return array
-	 */
-
-	public function providerRouter() : array
-	{
-		return $this->getProvider('tests/provider/Bootstrap/router.json');
-	}
-
 	/**
 	 * testRouter
 	 *
@@ -40,7 +30,7 @@ class RouterTest extends TestCaseAbstract
 	 * @param array $registryArray
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerRouter
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testRouter(string $route = null, array $registryArray = [], array $expectArray = [])

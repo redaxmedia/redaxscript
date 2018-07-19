@@ -9,7 +9,7 @@
  *    2.2 box
  * 3. quote
  * 4. code
- * 5. readmore
+ * 5. more
  */
 
 /** @section 1. content */
@@ -55,6 +55,11 @@
 {
 	font-style: italic;
 	margin-top: 1em;
+
+	& span + span:before
+	{
+		content: ' ';
+	}
 }
 
 /** @section 2. comment */
@@ -102,7 +107,7 @@
 		{
 			color: gray(0, 0.1);
 			content: '\201d';
-			font: 7em/1em var(--rs-font-quote);
+			font: 6em/1em var(--rs-font-quote);
 			left: -0.5em;
 			position: absolute;
 			top: -0.125em;
@@ -127,9 +132,9 @@
 	}
 }
 
-/** @section 5. readmore */
+/** @section 5. more */
 
-.rs-link-readmore
+.rs-link-more
 {
 	background: var(--rs-color-quaternary);
 	border-radius: 0.125em;
@@ -145,7 +150,7 @@
 	}
 }
 
-.rs-box-content .rs-link-readmore
+.rs-box-content .rs-link-more
 {
 	margin-top: 0.5em;
 }

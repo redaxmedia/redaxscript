@@ -25,10 +25,10 @@ class Config extends Module\Notification
 	[
 		'className' =>
 		[
-			'list' => 'rs-list-directory-lister rs-fn-clearfix',
+			'list' => 'rs-list-directory-lister',
 			'link' => 'rs-link-directory-lister',
-			'textSize' => 'rs-text-directory-lister rs-has-size',
-			'textDate' => 'rs-text-directory-lister rs-has-date',
+			'textSize' => 'rs-text-directory-lister rs-is-size',
+			'textDate' => 'rs-text-directory-lister rs-is-date',
 			'types' =>
 			[
 				'directory' => 'rs-is-directory',

@@ -42,17 +42,16 @@
 {
 	.rs-has-sidebar
 	{
+		display: flex;
+
 		& .rs-content
 		{
-			float: left;
-			width: 70%;
+			flex-basis: 100%;
 		}
 
 		& .rs-sidebar
 		{
-			float: right;
-			margin-left: 2%;
-			width: 28%;
+			margin-left: 1em;
 		}
 	}
 }
@@ -61,12 +60,6 @@
 
 @media print
 {
-	.rs-body
-	{
-		background: gray(255);
-		color: gray(0);
-	}
-
 	.rs-footer,
 	.rs-header,
 	.rs-sidebar

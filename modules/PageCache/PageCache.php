@@ -4,7 +4,7 @@ namespace Redaxscript\Modules\PageCache;
 use Redaxscript\Filesystem;
 
 /**
- * simple page cache
+ * high performance caching for pages
  *
  * @since 3.0.0
  *
@@ -26,19 +26,19 @@ class PageCache extends Config
 		'name' => 'Page Cache',
 		'alias' => 'PageCache',
 		'author' => 'Redaxmedia',
-		'description' => 'Simple page cache',
-		'version' => '3.3.2'
+		'description' => 'High performance caching for pages',
+		'version' => '4.0.0'
 	];
 
 	/**
-	 * adminPanelNotification
+	 * adminNotification
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return array|bool
 	 */
 
-	public function adminPanelNotification()
+	public function adminNotification()
 	{
 		if (!is_dir($this->_configArray['cacheDirectory']) && !mkdir($this->_configArray['cacheDirectory']))
 		{
@@ -93,7 +93,7 @@ class PageCache extends Config
 		else
 		{
 			$rawFilesystem = new Filesystem\File();
-			$rawFilesystem->init('templates/' . $this->_registry->get('template'));
+			$rawFilesystem->init('templates' . DIRECTORY_SEPARATOR . $this->_registry->get('template'));
 			$raw = $rawFilesystem->renderFile('index.phtml');
 			$content = preg_replace('/' . $token . '/', $this->_configArray['tokenPlaceholder'], $raw);
 			$cacheFilesystem->store($bundle, $this->_compress($content));

@@ -1,17 +1,9 @@
-/**
- * @tableofcontents
- *
- * 1. light gallery
- */
-
-/** @section 1. light gallery */
-
-rs.modules.lightGallery =
+rs.modules.LightGallery =
 {
 	init: true,
 	selector: 'ul.rs-js-light-gallery',
 	options:
 	{
-		selector: 'a'
+		element: 'a'
 	}
 };

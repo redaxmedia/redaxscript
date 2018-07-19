@@ -1,19 +1,17 @@
 /**
  * @tableofcontents
  *
- * 1. title
+ * 1. link
  */
 
-/** @section 1. title */
+/** @section 1. link */
 
-.rs-admin-title-content
+.rs-admin-link-default
 {
-	color: gray(30);
-	font-size: 2em;
-	margin: 1em 0;
+	text-decoration: underline;
 
-	a
+	& + .rs-admin-link-default
 	{
-		color: inherit;
+		margin-left: 0.5em;
 	}
 }

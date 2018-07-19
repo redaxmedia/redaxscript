@@ -12,23 +12,12 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Filter\Path
  */
 
 class PathTest extends TestCaseAbstract
 {
-	/**
-	 * providerPath
-	 *
-	 * @since 2.6.0
-	 *
-	 * @return array
-	 */
-
-	public function providerPath() : array
-	{
-		return $this->getProvider('tests/provider/Filter/path.json');
-	}
-
 	/**
 	 * testPath
 	 *
@@ -37,7 +26,7 @@ class PathTest extends TestCaseAbstract
 	 * @param string $path
 	 * @param string $expect
 	 *
-	 * @dataProvider providerPath
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testPath(string $path = null, string $expect = null)

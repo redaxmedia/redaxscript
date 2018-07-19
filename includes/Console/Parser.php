@@ -162,7 +162,7 @@ class Parser
 		$argumentKey = 0;
 		if (is_array($argumentArray))
 		{
-			foreach ($argumentArray as $key => $value)
+			foreach ($argumentArray as $value)
 			{
 				$next = next($argumentArray);
 				if (substr($value, 0, 1) === '-')

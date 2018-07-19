@@ -12,6 +12,8 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Html\Form
  */
 
 class FormTest extends TestCaseAbstract
@@ -46,152 +48,7 @@ class FormTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerCreate
-	 *
-	 * @since 2.6.0
-	 *
-	 * @return array
-	 */
-
-	public function providerCreate() : array
-	{
-		return $this->getProvider('tests/provider/Html/form_create.json');
-	}
-
-	/**
-	 * providerLegend
-	 *
-	 * @since 2.6.0
-	 *
-	 * @return array
-	 */
-
-	public function providerLegend() : array
-	{
-		return $this->getProvider('tests/provider/Html/form_legend.json');
-	}
-
-	/**
-	 * providerLabel
-	 *
-	 * @since 2.6.0
-	 *
-	 * @return array
-	 */
-
-	public function providerLabel() : array
-	{
-		return $this->getProvider('tests/provider/Html/form_label.json');
-	}
-
-	/**
-	 * providerInput
-	 *
-	 * @since 2.6.0
-	 *
-	 * @return array
-	 */
-
-	public function providerInput() : array
-	{
-		return $this->getProvider('tests/provider/Html/form_input.json');
-	}
-
-	/**
-	 * providerTextarea
-	 *
-	 * @since 2.6.0
-	 *
-	 * @return array
-	 */
-
-	public function providerTextarea() : array
-	{
-		return $this->getProvider('tests/provider/Html/form_textarea.json');
-	}
-
-	/**
-	 * providerSelect
-	 *
-	 * @since 2.6.0
-	 *
-	 * @return array
-	 */
-
-	public function providerSelect() : array
-	{
-		return $this->getProvider('tests/provider/Html/form_select.json');
-	}
-
-	/**
-	 * providerSelectRange
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerSelectRange() : array
-	{
-		return $this->getProvider('tests/provider/Html/form_select_range.json');
-	}
-
-	/**
-	 * providerCaptcha
-	 *
-	 * @since 2.6.0
-	 *
-	 * @return array
-	 */
-
-	public function providerCaptcha() : array
-	{
-		return $this->getProvider('tests/provider/Html/form_captcha.json');
-	}
-
-	/**
-	 * providerToken
-	 *
-	 * @since 2.6.0
-	 *
-	 * @return array
-	 */
-
-	public function providerToken() : array
-	{
-		return $this->getProvider('tests/provider/Html/form_token.json');
-	}
-
-	/**
-	 * providerButton
-	 *
-	 * @since 2.6.0
-	 *
-	 * @return array
-	 */
-
-	public function providerButton() : array
-	{
-		return $this->getProvider('tests/provider/Html/form_button.json');
-	}
-
-	/**
-	 * providerLink
-	 *
-	 * @since 2.6.0
-	 *
-	 * @return array
-	 */
-
-	public function providerLink() : array
-	{
-		return $this->getProvider('tests/provider/Html/form_link.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -203,7 +60,7 @@ class FormTest extends TestCaseAbstract
 	 * @param array $optionArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerCreate
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testCreate(array $attributeArray = [], array $optionArray = [], string $expect = null)
@@ -231,7 +88,7 @@ class FormTest extends TestCaseAbstract
 	 * @param array $attributeArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerLegend
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testLegend(string $text = null, array $attributeArray = [], string $expect = null)
@@ -260,7 +117,7 @@ class FormTest extends TestCaseAbstract
 	 * @param array $attributeArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerLabel
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testLabel(string $text = null, array $attributeArray = [], string $expect = null)
@@ -289,7 +146,7 @@ class FormTest extends TestCaseAbstract
 	 * @param array $attributeArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerInput
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testInput(string $method = null, array $attributeArray = [], string $expect = null)
@@ -317,7 +174,7 @@ class FormTest extends TestCaseAbstract
 	 * @param array $attributeArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerTextarea
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testTextarea(array $attributeArray = [], string $expect = null)
@@ -347,7 +204,7 @@ class FormTest extends TestCaseAbstract
 	 * @param array $attributeArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerSelect
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testSelect(array $optionArray = [], array $selectArray = [], array $attributeArray = [], string $expect = null)
@@ -377,7 +234,7 @@ class FormTest extends TestCaseAbstract
 	 * @param array $attributeArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerSelectRange
+	 * @dataProvider providerAutoloader
 
 	 */
 
@@ -405,7 +262,7 @@ class FormTest extends TestCaseAbstract
 	 *
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerCaptcha
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testCaptcha(array $expectArray = [])
@@ -437,7 +294,7 @@ class FormTest extends TestCaseAbstract
 	 * @param array $registryArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerToken
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testToken(array $registryArray = [], string $expect = null)
@@ -468,7 +325,7 @@ class FormTest extends TestCaseAbstract
 	 * @param array $attributeArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerButton
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testButton(string $method = null, string $text = null, array $attributeArray = [], string $expect = null)
@@ -498,7 +355,7 @@ class FormTest extends TestCaseAbstract
 	 * @param array $attributeArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerLink
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testLink(string $method = null, string $text = null, array $attributeArray = [], string $expect = null)

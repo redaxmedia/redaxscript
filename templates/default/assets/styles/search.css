@@ -25,6 +25,7 @@
 .rs-field-search
 {
 	flex-grow: 1;
+	min-width: 0;
 	padding: 0 0.5em;
 }
 
@@ -34,7 +35,6 @@
 {
 	background: transparent;
 	color: var(--rs-color-tertiary);
-	cursor: pointer;
 	flex-basis: 2em;
 	flex-shrink: 0;
 	height: 2em;

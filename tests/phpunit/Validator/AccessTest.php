@@ -13,23 +13,12 @@ use Redaxscript\Validator;
  * @category Tests
  * @author Henry Ruhs
  * @author Sven Weingartner
+ *
+ * @covers Redaxscript\Validator\Access
  */
 
 class AccessTest extends TestCaseAbstract
 {
-	/**
-	 * providerAccess
-	 *
-	 * @since 2.2.0
-	 *
-	 * @return array
-	 */
-
-	public function providerAccess() : array
-	{
-		return $this->getProvider('tests/provider/Validator/access.json');
-	}
-
 	/**
 	 * testAccess
 	 *
@@ -37,12 +26,12 @@ class AccessTest extends TestCaseAbstract
 	 *
 	 * @param string $access
 	 * @param string $groups
-	 * @param int $expect
+	 * @param bool $expect
 	 *
-	 * @dataProvider providerAccess
+	 * @dataProvider providerAutoloader
 	 */
 
-	public function testAccess(string $access = null, string $groups = null, int $expect = null)
+	public function testAccess(string $access = null, string $groups = null, bool $expect = null)
 	{
 		/* setup */
 

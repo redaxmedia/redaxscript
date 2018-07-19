@@ -11,6 +11,8 @@ use Redaxscript\Header;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Header
  */
 
 class HeaderTest extends TestCaseAbstract

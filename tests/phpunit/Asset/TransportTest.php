@@ -12,23 +12,12 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Asset\Transport
  */
 
 class TransportTest extends TestCaseAbstract
 {
-	/**
-	 * providerRender
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerRender() : array
-	{
-		return $this->getProvider('tests/provider/Asset/transport_render.json');
-	}
-
 	/**
 	 * testGetArray
 	 *
@@ -62,7 +51,7 @@ class TransportTest extends TestCaseAbstract
 	 * @param array $transportArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerRender
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testRender($transportArray = [], string $expect = null)

@@ -30,7 +30,7 @@ class CallHome extends Module\Notification
 		'alias' => 'CallHome',
 		'author' => 'Redaxmedia',
 		'description' => 'Provide version and news updates',
-		'version' => '3.3.2'
+		'version' => '4.0.0'
 	];
 
 	/**
@@ -53,14 +53,14 @@ class CallHome extends Module\Notification
 	}
 
 	/**
-	 * adminPanelNotification
+	 * adminNotification
 	 *
 	 * @since 3.0.1
 	 *
 	 * @return array|bool
 	 */
 
-	public function adminPanelNotification()
+	public function adminNotification()
 	{
 		$reader = new Reader();
 		$aliasFilter = new Filter\Alias();

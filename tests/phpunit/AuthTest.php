@@ -13,6 +13,8 @@ use Redaxscript\Server;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Auth
  */
 
 class AuthTest extends TestCaseAbstract
@@ -70,35 +72,7 @@ class AuthTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerGetPermission
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerGetPermission() : array
-	{
-		return $this->getProvider('tests/provider/auth_get_permission.json');
-	}
-
-	/**
-	 * providerGetFilter
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerGetFilter() : array
-	{
-		return $this->getProvider('tests/provider/auth_get_filter.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -184,7 +158,7 @@ class AuthTest extends TestCaseAbstract
 	 * @param array $typeArray
 	 * @param string $groups
 	 *
-	 * @dataProvider providerGetPermission
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testGetPermission(string $method = null, $typeArray = [], string $groups = null)
@@ -211,7 +185,7 @@ class AuthTest extends TestCaseAbstract
 	 * @param string $groups
 	 * @param bool $expect
 	 *
-	 * @dataProvider providerGetFilter
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testGetFilter(string $groups = null, bool $expect = null)

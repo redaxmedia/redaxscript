@@ -13,6 +13,9 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @category Tests
  * @author Henry Ruhs
  * @author Balázs Szilágyi
+ *
+ * @covers Redaxscript\Controller\ControllerAbstract
+ * @covers Redaxscript\Controller\Recover
  */
 
 class RecoverTest extends TestCaseAbstract
@@ -50,35 +53,7 @@ class RecoverTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerProcess
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerProcess() : array
-	{
-		return $this->getProvider('tests/provider/Controller/recover_process.json');
-	}
-
-	/**
-	 * providerProcessFailure
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerProcessFailure() : array
-	{
-		return $this->getProvider('tests/provider/Controller/recover_process_failure.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -89,7 +64,7 @@ class RecoverTest extends TestCaseAbstract
 	 * @param array $postArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerProcess
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testProcess(array $postArray = [], string $expect = null)
@@ -97,7 +72,7 @@ class RecoverTest extends TestCaseAbstract
 		/* setup */
 
 		$this->_request->set('post', $postArray);
-		$recoverController = new Controller\Recover($this->_registry, $this->_request, $this->_language);
+		$recoverController = new Controller\Recover($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
@@ -117,7 +92,7 @@ class RecoverTest extends TestCaseAbstract
 	 * @param string $method
 	 * @param string $expect
 	 *
-	 * @dataProvider providerProcessFailure
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testProcessFailure(array $postArray = [], string $method = null, string $expect = null)
@@ -131,7 +106,8 @@ class RecoverTest extends TestCaseAbstract
 			[
 				$this->_registry,
 				$this->_request,
-				$this->_language
+				$this->_language,
+				$this->_config
 			])
 			->setMethods(
 			[

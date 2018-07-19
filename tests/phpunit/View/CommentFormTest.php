@@ -12,6 +12,9 @@ use Redaxscript\View;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\View\CommentForm
+ * @covers Redaxscript\View\ViewAbstract
  */
 
 class CommentFormTest extends TestCaseAbstract
@@ -48,22 +51,7 @@ class CommentFormTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerRender
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerRender() : array
-	{
-		return $this->getProvider('tests/provider/View/comment_form_render.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -74,7 +62,7 @@ class CommentFormTest extends TestCaseAbstract
 	 * @param string $articleId
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerRender
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testRender(string $articleId = null, array $expectArray = [])

@@ -2,7 +2,6 @@
 namespace Redaxscript\Tests\Admin\View;
 
 use Redaxscript\Admin;
-use Redaxscript\Modules\TestDummy;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -13,6 +12,9 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Admin\View\ModuleForm
+ * @covers Redaxscript\Admin\View\ViewAbstract
  */
 
 class ModuleFormTest extends TestCaseAbstract
@@ -26,11 +28,8 @@ class ModuleFormTest extends TestCaseAbstract
 	public function setUp()
 	{
 		parent::setUp();
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawCreate();
-		$testDummy = new TestDummy\TestDummy($this->_registry, $this->_request, $this->_language, $this->_config);
-		$testDummy->install();
+		$this->createDatabase();
+		$this->installTestDummy();
 	}
 
 	/**
@@ -41,25 +40,8 @@ class ModuleFormTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$testDummy = new TestDummy\TestDummy($this->_registry, $this->_request, $this->_language, $this->_config);
-		$testDummy->uninstall();
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-
-	/**
-	 * providerRender
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerRender() : array
-	{
-		return $this->getProvider('tests/provider/Admin/View/module_form_render.json');
+		$this->uninstallTestDummy();
+		$this->dropDatabase();
 	}
 
 	/**
@@ -71,7 +53,7 @@ class ModuleFormTest extends TestCaseAbstract
 	 * @param int $moduleId
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerRender
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testRender(array $registryArray = [], int $moduleId = null, array $expectArray = [])

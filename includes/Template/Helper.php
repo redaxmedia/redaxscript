@@ -4,6 +4,7 @@ namespace Redaxscript\Template;
 use Redaxscript\Asset;
 use Redaxscript\Registry;
 use Redaxscript\Language;
+use Redaxscript\Model;
 
 /**
  * helper class to provide template helpers
@@ -17,6 +18,55 @@ use Redaxscript\Language;
 
 class Helper
 {
+	/**
+	 * get the registry
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $key
+	 *
+	 * @return string|array|bool
+	 */
+
+	public static function getRegistry($key = null)
+	{
+		$registry = Registry::getInstance();
+		return $registry->get($key);
+	}
+
+	/**
+	 * get the language
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $key
+	 * @param string $index
+	 *
+	 * @return string|array|bool
+	 */
+
+	public static function getLanguage($key = null, $index = null)
+	{
+		$language = Language::getInstance();
+		return $language->get($key, $index);
+	}
+
+	/**
+	 * get the setting
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param string $key
+	 *
+	 * @return string|bool
+	 */
+
+	public static function getSetting($key = null)
+	{
+		$settingModel = new Model\Setting();
+		return $settingModel->get($key);
+	}
+
 	/**
 	 * get the title
 	 *
@@ -139,17 +189,9 @@ class Helper
 	 * @return string
 	 */
 
-	public static function getClass($prefix = null)
+	public static function getClass(string $prefix = null)
 	{
 		$client = new Helper\Client(Registry::getInstance());
-		$clientArray = $client->process();
-
-		/* process client */
-
-		foreach ($clientArray as $key => $value)
-		{
-			$clientArray[$key] = $prefix . $value;
-		}
-		return implode(' ', $clientArray);
+		return $client->process($prefix);
 	}
 }

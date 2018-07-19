@@ -2,21 +2,21 @@
 
 <!-- main -->
 
-<main id="main" class="rs-main rs-fn-clearfix">
+<main id="main" class="rs-main">
 
 	<!-- page -->
 
-	<div class="rs-wrapper rs-wrapper-page rs-fn-clearfix">
+	<div class="rs-wrapper rs-wrapper-page">
 
 		<!-- error -->
 
-		<?php if (Tag::getRegistry('contentError')): ?>
-			<?php echo Tag::partial('templates/default/error.phtml'); ?>
+		<?php if (Helper::getRegistry('contentError')): ?>
+			<?php echo Tag::partial('default/error.phtml'); ?>
 
 		<!-- else content -->
 
 		<?php else: ?>
-			<?php echo Tag::partial('templates/default/content.phtml'); ?>
+			<?php echo Tag::partial('default/content.phtml'); ?>
 		<?php endif; ?>
 	</div>
 </main>

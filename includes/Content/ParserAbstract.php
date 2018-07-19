@@ -58,10 +58,10 @@ abstract class ParserAbstract
 
 	protected $_namespaceArray =
 	[
-		'Redaxscript\Content\Tag\Blockcode',
+		'Redaxscript\Content\Tag\Code',
 		'Redaxscript\Content\Tag\Language',
 		'Redaxscript\Content\Tag\Module',
-		'Redaxscript\Content\Tag\Readmore',
+		'Redaxscript\Content\Tag\More',
 		'Redaxscript\Content\Tag\Registry',
 		'Redaxscript\Content\Tag\Template'
 	];

@@ -18,7 +18,7 @@ class Password implements ValidatorInterface
 	/**
 	 * validate the password
 	 *
-	 * @since 2.6.0
+	 * @since 4.0.0
 	 *
 	 * @param string $password plain password
 	 * @param string $hash hashed password
@@ -26,17 +26,9 @@ class Password implements ValidatorInterface
 	 * @return bool
 	 */
 
-	public function validate($password = null, $hash = null)
+	public function validate(string $password = null, string $hash = null) : bool
 	{
-		$output = ValidatorInterface::FAILED;
 		$passwordHash = new Hash();
-
-		/* validate password */
-
-		if ($password && $passwordHash->validate($password, $hash))
-		{
-			$output = ValidatorInterface::PASSED;
-		}
-		return $output;
+		return $password && $passwordHash->validate($password, $hash);
 	}
 }

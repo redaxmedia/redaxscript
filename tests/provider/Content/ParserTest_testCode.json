@@ -1,0 +1,14 @@
+[
+	[
+		"hello <rs-code>world</rs-code>",
+		"hello <pre class=\"rs-js-code rs-code-default\">world</pre>"
+	],
+	[
+		"hello <rs-code><strong>world</strong></rs-code>",
+		"hello <pre class=\"rs-js-code rs-code-default\">&lt;strong&gt;world&lt;/strong&gt;</pre>"
+	],
+	[
+		"hello <rs-code>&lt;strong&gt;world&lt;/strong&gt;</rs-code>",
+		"hello <pre class=\"rs-js-code rs-code-default\">&lt;strong&gt;world&lt;/strong&gt;</pre>"
+	]
+]

@@ -2,7 +2,6 @@
 namespace Redaxscript\Controller;
 
 use Redaxscript\Auth;
-use Redaxscript\Messenger;
 
 /**
  * children class to process the logout request
@@ -30,45 +29,25 @@ class Logout extends ControllerAbstract
 		$auth = new Auth($this->_request);
 		$auth->init();
 
-		/* handle success */
+		/* handle logout */
 
 		if ($auth->logout())
 		{
-			return $this->_success();
+			return $this->_success(
+			[
+				'route' => 'login',
+				'timeout' => 0,
+				'message' => $this->_language->get('logged_out'),
+				'title' => $this->_language->get('goodbye')
+			]);
 		}
-		return $this->_error();
-	}
 
-	/**
-	 * show the success
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return string
-	 */
+		/* handle error */
 
-	protected function _success() : string
-	{
-		$messenger = new Messenger($this->_registry);
-		return $messenger
-			->setRoute($this->_language->get('continue'), 'login')
-			->doRedirect(0)
-			->success($this->_language->get('logged_out'), $this->_language->get('goodbye'));
-	}
-
-	/**
-	 * show the error
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return string
-	 */
-
-	protected function _error() : string
-	{
-		$messenger = new Messenger($this->_registry);
-		return $messenger
-			->setRoute($this->_language->get('back'), 'login')
-			->error($this->_language->get('something_wrong'), $this->_language->get('error_occurred'));
+		return $this->_error(
+		[
+			'route' => 'login',
+			'message' => $this->_language->get('something_wrong')
+		]);
 	}
 }

@@ -11,75 +11,12 @@ use Redaxscript\Messenger;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Messenger
  */
 
 class MessengerTest extends TestCaseAbstract
 {
-	/**
-	 * providerSuccess
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerSuccess() : array
-	{
-		return $this->getProvider('tests/provider/messenger_success.json');
-	}
-
-	/**
-	 * providerInfo
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerInfo() : array
-	{
-		return $this->getProvider('tests/provider/messenger_info.json');
-	}
-
-	/**
-	 * providerWarning
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerWarning() : array
-	{
-		return $this->getProvider('tests/provider/messenger_warning.json');
-	}
-
-	/**
-	 * providerError
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerError() : array
-	{
-		return $this->getProvider('tests/provider/messenger_error.json');
-	}
-
-	/**
-	 * providerRender
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerRender() : array
-	{
-		return $this->getProvider('tests/provider/messenger_render.json');
-	}
-
 	/**
 	 * testSuccess
 	 *
@@ -89,7 +26,7 @@ class MessengerTest extends TestCaseAbstract
 	 * @param array $actionArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerSuccess
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testSuccess($success = null, $actionArray = [], string $expect = null)
@@ -117,7 +54,7 @@ class MessengerTest extends TestCaseAbstract
 	 * @param array $actionArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerInfo
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testInfo($info = null, $actionArray = [], string $expect = null)
@@ -145,7 +82,7 @@ class MessengerTest extends TestCaseAbstract
 	 * @param array $actionArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerWarning
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testWarning($warning = null, $actionArray = [], string $expect = null)
@@ -173,7 +110,7 @@ class MessengerTest extends TestCaseAbstract
 	 * @param array $actionArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerError
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testError($error = null, $actionArray = [], string $expect = null)
@@ -201,7 +138,7 @@ class MessengerTest extends TestCaseAbstract
 	 * @param array $actionArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerRender
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testRender($render = null, $actionArray = [], string $expect = null)

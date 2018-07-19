@@ -25,8 +25,8 @@ class Config extends Module\Notification
 	[
 		'className' =>
 		[
-			'title' => 'rs-title-feed-reader rs-fn-clearfix',
-			'box' => 'rs-box-feed-reader'
+			'title' => 'rs-title-content rs-title-feed-reader',
+			'box' => 'rs-box-content rs-box-feed-reader'
 		]
 	];
 }

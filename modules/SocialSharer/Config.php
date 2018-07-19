@@ -26,7 +26,7 @@ class Config extends Module\Module
 		'className' =>
 		[
 			'link' => 'rs-link-social-sharer',
-			'list' => 'rs-js-social-sharer rs-list-social-sharer rs-fn-clearfix'
+			'list' => 'rs-js-social-sharer rs-list-social-sharer'
 		],
 		'network' =>
 		[

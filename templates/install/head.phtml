@@ -6,7 +6,7 @@
 
 <!-- title -->
 
-<?php echo Tag::title(Tag::getLanguage('installation')); ?>
+<?php echo Tag::title(Helper::getLanguage('installation')); ?>
 
 <!-- meta -->
 
@@ -25,8 +25,6 @@
 	->append(['href' => 'templates/default/assets/images/favicon.ico', 'rel' => 'shortcut icon'])
 	->append(['href' => 'templates/default/assets/images/favicon.png', 'rel' => 'apple-touch-icon'])
 	->appendFile('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset())
-	->appendFile('dist/styles/base.min.css')
-	->appendFile('templates/default/dist/styles/default.min.css')
 	->appendFile('templates/install/dist/styles/install.min.css')
 	->rewrite(
 	[
@@ -38,7 +36,7 @@
 
 <?php echo Tag::script()
 	->init('head')
-	->appendFile('assets/scripts/init.js')
-	->appendFile('templates/install/assets/scripts/init.js')
+	->prependFile('templates/install/assets/scripts/init.js')
+	->prependFile('assets/scripts/init.js')
 	->transportVar('rs', Helper::getTransport())
 	->concat(); ?>

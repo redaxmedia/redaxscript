@@ -11,14 +11,9 @@
 %rs-button
 {
 	box-sizing: border-box;
-	cursor: pointer;
 	display: inline-block;
 	padding: 0.5em;
-
-	&[disabled]
-	{
-		pointer-events: none;
-	}
+	text-align: center;
 }
 
 /** @section 2. query */
@@ -29,7 +24,6 @@
 {
 	%rs-button
 	{
-		text-align: center;
 		width: 100%;
 	}
 }

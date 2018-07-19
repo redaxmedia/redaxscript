@@ -19,6 +19,16 @@
 	margin-top: 1em;
 }
 
+.rs-box-byline
+{
+	margin-top: 1em;
+
+	& span + span:before
+	{
+		content: ' ';
+	}
+}
+
 /** @section 2. comment */
 
 .rs-title-comment

@@ -5,13 +5,21 @@ use Redaxscript\Server;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
- * ClientTest
+ * ServerTest
  *
  * @since 2.4.0
  *
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Server\Directory
+ * @covers Redaxscript\Server\File
+ * @covers Redaxscript\Server\Host
+ * @covers Redaxscript\Server\Protocol
+ * @covers Redaxscript\Server\Root
+ * @covers Redaxscript\Server\ServerAbstract
+ * @covers Redaxscript\Server\Token
  */
 
 class ServerTest extends TestCaseAbstract

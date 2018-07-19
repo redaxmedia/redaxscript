@@ -12,23 +12,12 @@ use Redaxscript\Autoloader;
  * @category Tests
  * @author Henry Ruhs
  * @author Sven Weingartner
+ *
+ * @covers Redaxscript\Autoloader
  */
 
 class AutoloaderTest extends TestCaseAbstract
 {
-	/**
-	 * providerFilePath
-	 *
-	 * @since 2.2.0
-	 *
-	 * @return array
-	 */
-
-	public function providerFilePath() : array
-	{
-		return $this->getProvider('tests/provider/autoloader_file_path.json');
-	}
-
 	/**
 	 * testInit
 	 *
@@ -59,7 +48,7 @@ class AutoloaderTest extends TestCaseAbstract
 	 * @param string $className
 	 * @param string $expect
 	 *
-	 * @dataProvider providerFilePath
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testFilePath(string $className = null, string $expect = null)

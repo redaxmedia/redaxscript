@@ -1,9 +1,8 @@
 <?php
 namespace Redaxscript\Admin\View;
 
-use Redaxscript\Admin\Html\Form as AdminForm;
+use Redaxscript\Admin;
 use Redaxscript\Html;
-use Redaxscript\Model;
 use Redaxscript\Module;
 
 /**
@@ -12,11 +11,11 @@ use Redaxscript\Module;
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category Admin
+ * @category View
  * @author Henry Ruhs
  */
 
-class SettingForm extends ViewAbstract implements ViewInterface
+class SettingForm extends ViewAbstract
 {
 	/**
 	 * render the view
@@ -29,23 +28,24 @@ class SettingForm extends ViewAbstract implements ViewInterface
 	public function render() : string
 	{
 		$output = Module\Hook::trigger('adminSettingFormStart');
-		$settingModel = new Model\Setting();
+		$settingModel = new Admin\Model\Setting();
 		$helperOption = new Helper\Option($this->_language);
 
-		/* html elements */
+		/* html element */
 
 		$titleElement = new Html\Element();
-		$titleElement->init('h2',
-		[
-			'class' => 'rs-admin-title-content',
-		]);
-		$titleElement->text($this->_language->get('settings'));
-		$formElement = new AdminForm($this->_registry, $this->_language);
+		$titleElement
+			->init('h2',
+			[
+				'class' => 'rs-admin-title-content',
+			])
+			->text($this->_language->get('settings'));
+		$formElement = new Admin\Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[
 			'form' =>
 			[
-				'class' => 'rs-admin-js-accordion rs-admin-js-validate-form rs-admin-component-accordion rs-admin-form-default rs-admin-fn-clearfix'
+				'class' => 'rs-admin-js-validate-form rs-admin-component-accordion rs-admin-form-default'
 			],
 			'button' =>
 			[
@@ -67,11 +67,21 @@ class SettingForm extends ViewAbstract implements ViewInterface
 
 		$formElement
 
-			/* general fieldset */
+			/* general */
 
-			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-js-set-active rs-admin-set-accordion rs-admin-set-active">')
-			->append('<legend class="rs-admin-js-title-accordion rs-admin-js-title-active rs-admin-title-accordion rs-admin-title-active">' . $this->_language->get('general') . '</legend>')
-			->append('<ul class="rs-admin-js-box-accordion rs-admin-js-box-active rs-admin-box-accordion rs-admin-box-accordion rs-admin-box-active"><li>')
+			->radio(
+			[
+				'id' => get_class() . '\General',
+				'class' => 'rs-admin-fn-status-accordion',
+				'name' => get_class() . '\Accordion',
+				'checked' => 'checked'
+			])
+			->label($this->_language->get('general'),
+			[
+				'class' => 'rs-admin-fn-toggle-accordion rs-admin-label-accordion',
+				'for' => get_class() . '\General'
+			])
+			->append('<ul class="rs-admin-fn-content-accordion rs-admin-box-accordion"><li>')
 			->label($this->_language->get('language'),
 			[
 				'for' => 'language'
@@ -97,13 +107,22 @@ class SettingForm extends ViewAbstract implements ViewInterface
 				'id' => 'template',
 				'name' => 'template'
 			])
-			->append('</li></ul></fieldset>')
+			->append('</li></ul>')
 
-			/* metadata fieldset */
+			/* metadata */
 
-			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-set-accordion">')
-			->append('<legend class="rs-admin-js-title-accordion rs-admin-title-accordion">' . $this->_language->get('metadata') . '</legend>')
-			->append('<ul class="rs-admin-js-box-accordion rs-admin-box-accordion rs-admin-box-accordion"><li>')
+			->radio(
+			[
+				'id' => get_class() . '\Metadata',
+				'class' => 'rs-admin-fn-status-accordion',
+				'name' => get_class() . '\Accordion'
+			])
+			->label($this->_language->get('metadata'),
+			[
+				'class' => 'rs-admin-fn-toggle-accordion rs-admin-label-accordion',
+				'for' => get_class() . '\Metadata'
+			])
+			->append('<ul class="rs-admin-fn-content-accordion rs-admin-box-accordion"><li>')
 			->label($this->_language->get('title'),
 			[
 				'for' => 'title'
@@ -143,7 +162,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->textarea(
 			[
-				'class' => 'rs-admin-js-auto-resize rs-admin-field-textarea rs-admin-field-small',
+				'class' => 'rs-admin-js-textarea rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'description',
 				'name' => 'description',
 				'rows' => 1,
@@ -156,7 +175,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->textarea(
 			[
-				'class' => 'rs-admin-js-auto-resize rs-admin-field-textarea rs-admin-field-small',
+				'class' => 'rs-admin-js-textarea rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'keywords',
 				'name' => 'keywords',
 				'rows' => 1,
@@ -175,13 +194,22 @@ class SettingForm extends ViewAbstract implements ViewInterface
 				'id' => 'robots',
 				'name' => 'robots'
 			])
-			->append('</li></ul></fieldset>')
+			->append('</li></ul>')
 
-			/* contact fieldset */
+			/* contact */
 
-			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-set-accordion">')
-			->append('<legend class="rs-admin-js-title-accordion rs-admin-title-accordion">' . $this->_language->get('contact') . '</legend>')
-			->append('<ul class="rs-admin-js-box-accordion rs-admin-box-accordion rs-admin-box-accordion"><li>')
+			->radio(
+			[
+				'id' => get_class() . '\Contact',
+				'class' => 'rs-admin-fn-status-accordion',
+				'name' => get_class() . '\Accordion'
+			])
+			->label($this->_language->get('contact'),
+			[
+				'class' => 'rs-admin-fn-toggle-accordion rs-admin-label-accordion',
+				'for' => get_class() . '\Contact'
+			])
+			->append('<ul class="rs-admin-fn-content-accordion rs-admin-box-accordion"><li>')
 			->label($this->_language->get('email'),
 			[
 				'for' => 'email'
@@ -210,19 +238,28 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				intval($settingModel->get('notification'))
+				(int)$settingModel->get('notification')
 			],
 			[
 				'id' => 'notification',
 				'name' => 'notification'
 			])
-			->append('</li></ul></fieldset>')
+			->append('</li></ul>')
 
-			/* formatting fieldset */
+			/* formatting */
 
-			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-set-accordion">')
-			->append('<legend class="rs-admin-js-title-accordion rs-admin-title-accordion">' . $this->_language->get('formatting') . '</legend>')
-			->append('<ul class="rs-admin-js-box-accordion rs-admin-box-accordion rs-admin-box-accordion"><li>')
+			->radio(
+			[
+				'id' => get_class() . '\Formatting',
+				'class' => 'rs-admin-fn-status-accordion',
+				'name' => get_class() . '\Accordion'
+			])
+			->label($this->_language->get('formatting'),
+			[
+				'class' => 'rs-admin-fn-toggle-accordion rs-admin-label-accordion',
+				'for' => get_class() . '\Formatting'
+			])
+			->append('<ul class="rs-admin-fn-content-accordion rs-admin-box-accordion"><li>')
 			->label($this->_language->get('charset'),
 			[
 				'for' => 'charset'
@@ -270,13 +307,22 @@ class SettingForm extends ViewAbstract implements ViewInterface
 				'id' => 'date',
 				'name' => 'date'
 			])
-			->append('</li></ul></fieldset>')
+			->append('</li></ul>')
 
-			/* contents fieldset */
+			/* contents */
 
-			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-set-accordion">')
-			->append('<legend class="rs-admin-js-title-accordion rs-admin-title-accordion">' . $this->_language->get('contents') . '</legend>')
-			->append('<ul class="rs-admin-js-box-accordion rs-admin-box-accordion rs-admin-box-accordion"><li>')
+			->radio(
+			[
+				'id' => get_class() . '\Contents',
+				'class' => 'rs-admin-fn-status-accordion',
+				'name' => get_class() . '\Accordion'
+			])
+			->label($this->_language->get('contents'),
+			[
+				'class' => 'rs-admin-fn-toggle-accordion rs-admin-label-accordion',
+				'for' => get_class() . '\Contents'
+			])
+			->append('<ul class="rs-admin-fn-content-accordion rs-admin-box-accordion"><li>')
 			->label($this->_language->get('homepage'),
 			[
 				'for' => 'homepage'
@@ -320,26 +366,35 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				intval($settingModel->get('pagination'))
+				(int)$settingModel->get('pagination')
 			],
 			[
 				'id' => 'pagination',
 				'name' => 'pagination'
 			])
-			->append('</li></ul></fieldset>')
+			->append('</li></ul>')
 
-			/* users fieldset */
+			/* users */
 
-			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-set-accordion">')
-			->append('<legend class="rs-admin-js-title-accordion rs-admin-title-accordion">' . $this->_language->get('users') . '</legend>')
-			->append('<ul class="rs-admin-js-box-accordion rs-admin-box-accordion rs-admin-box-accordion"><li>')
+			->radio(
+			[
+				'id' => get_class() . '\Users',
+				'class' => 'rs-admin-fn-status-accordion',
+				'name' => get_class() . '\Accordion'
+			])
+			->label($this->_language->get('users'),
+			[
+				'class' => 'rs-admin-fn-toggle-accordion rs-admin-label-accordion',
+				'for' => get_class() . '\Users'
+			])
+			->append('<ul class="rs-admin-fn-content-accordion rs-admin-box-accordion"><li>')
 			->label($this->_language->get('registration'),
 			[
 				'for' => 'registration'
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				intval($settingModel->get('registration'))
+				(int)$settingModel->get('registration')
 			],
 			[
 				'id' => 'registration',
@@ -352,7 +407,7 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				intval($settingModel->get('verification'))
+				(int)$settingModel->get('verification')
 			],
 			[
 				'id' => 'verification',
@@ -365,26 +420,35 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				intval($settingModel->get('recovery'))
+				(int)$settingModel->get('recovery')
 			],
 			[
 				'id' => 'recovery',
 				'name' => 'recovery'
 			])
-			->append('</li></ul></fieldset>')
+			->append('</li></ul>')
 
-			/* security fieldset */
+			/* security */
 
-			->append('<fieldset class="rs-admin-js-set-accordion rs-admin-set-accordion">')
-			->append('<legend class="rs-admin-js-title-accordion rs-admin-title-accordion">' . $this->_language->get('security') . '</legend>')
-			->append('<ul class="rs-admin-js-box-accordion rs-admin-box-accordion rs-admin-box-accordion"><li>')
+			->radio(
+			[
+				'id' => get_class() . '\Security',
+				'class' => 'rs-admin-fn-status-accordion',
+				'name' => get_class() . '\Accordion'
+			])
+			->label($this->_language->get('security'),
+			[
+				'class' => 'rs-admin-fn-toggle-accordion rs-admin-label-accordion',
+				'for' => get_class() . '\Security'
+			])
+			->append('<ul class="rs-admin-fn-content-accordion rs-admin-box-accordion"><li>')
 			->label($this->_language->get('moderation'),
 			[
 				'for' => 'moderation'
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				intval($settingModel->get('moderation'))
+				(int)$settingModel->get('moderation')
 			],
 			[
 				'id' => 'moderation',
@@ -397,16 +461,18 @@ class SettingForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getCaptchaArray(),
 			[
-				intval($settingModel->get('captcha'))
+				(int)$settingModel->get('captcha')
 			],
 			[
 				'id' => 'captcha',
 				'name' => 'captcha'
 			])
-			->append('</li></ul></fieldset>')
+			->append('</li></ul>')
 			->token()
+			->append('<div class="rs-admin-wrapper-button">')
 			->cancel()
-			->save();
+			->save()
+			->append('</div>');
 
 		/* collect output */
 

@@ -147,11 +147,11 @@ class Link extends HeadAbstract
 	 * @return string|null
 	 */
 
-	public function render()
+	public function render() : ?string
 	{
 		$output = null;
 
-		/* html elements */
+		/* html element */
 
 		$linkElement = new Html\Element();
 		$linkElement->init('link');
@@ -159,22 +159,16 @@ class Link extends HeadAbstract
 		/* handle collection */
 
 		$collectionArray = $this->_getCollectionArray();
-		$collectionKeys = array_keys($collectionArray);
-		$lastKey = end($collectionKeys);
 
 		/* process collection */
 
-		foreach ($collectionArray as $key => $attribute)
+		foreach ($collectionArray as $attribute)
 		{
 			if ($attribute['href'])
 			{
 				$output .= $linkElement
 					->copy()
 					->attr($attribute);
-				if ($key !== $lastKey)
-				{
-					$output .= PHP_EOL;
-				}
 			}
 		}
 		$this->clear();

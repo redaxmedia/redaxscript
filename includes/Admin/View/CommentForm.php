@@ -1,8 +1,7 @@
 <?php
 namespace Redaxscript\Admin\View;
 
-use Redaxscript\Admin\Html\Form as AdminForm;
-use Redaxscript\Db;
+use Redaxscript\Admin;
 use Redaxscript\Html;
 use Redaxscript\Module;
 
@@ -12,18 +11,18 @@ use Redaxscript\Module;
  * @since 3.0.0
  *
  * @package Redaxscript
- * @category Admin
+ * @category View
  * @author Henry Ruhs
  */
 
-class CommentForm extends ViewAbstract implements ViewInterface
+class CommentForm extends ViewAbstract
 {
 	/**
 	 * render the view
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param int|bool $commentId identifier of the comment
+	 * @param int $commentId identifier of the comment
 	 *
 	 * @return string
 	 */
@@ -31,23 +30,25 @@ class CommentForm extends ViewAbstract implements ViewInterface
 	public function render(int $commentId = null) : string
 	{
 		$output = Module\Hook::trigger('adminCommentFormStart');
-		$comment = Db::forTablePrefix('comments')->whereIdIs($commentId)->findOne();
+		$commentModel = new Admin\Model\Comment();
+		$comment = $commentModel->getById($commentId);
 		$helperOption = new Helper\Option($this->_language);
 
-		/* html elements */
+		/* html element */
 
 		$titleElement = new Html\Element();
-		$titleElement->init('h2',
-		[
-			'class' => 'rs-admin-title-content',
-		]);
-		$titleElement->text($comment->author ? $comment->author : $this->_language->get('comment_new'));
-		$formElement = new AdminForm($this->_registry, $this->_language);
+		$titleElement
+			->init('h2',
+			[
+				'class' => 'rs-admin-title-content',
+			])
+			->text($comment->author ? $comment->author : $this->_language->get('comment_new'));
+		$formElement = new Admin\Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[
 			'form' =>
 			[
-				'class' => 'rs-admin-js-tab rs-admin-js-validate-form rs-admin-component-tab rs-admin-form-default rs-admin-fn-clearfix'
+				'class' => 'rs-admin-js-validate-form rs-admin-fn-tab rs-admin-component-tab rs-admin-form-default'
 			],
 			'button' =>
 			[
@@ -76,38 +77,22 @@ class CommentForm extends ViewAbstract implements ViewInterface
 		/* create the form */
 
 		$formElement
-			->append($this->_renderList())
-			->append('<div class="rs-admin-js-box-tab rs-admin-box-tab">')
 
-			/* first tab */
+			/* comment */
 
-			->append('<fieldset id="tab-1" class="rs-admin-js-set-tab rs-admin-js-set-active rs-admin-set-tab rs-admin-set-active"><ul><li>')
-			->label('* ' . $this->_language->get('author'),
+			->radio(
 			[
-				'for' => 'author'
+				'id' => get_class() . '\Comment',
+				'class' => 'rs-admin-fn-status-tab',
+				'name' => get_class() . '\Tab',
+				'checked' => 'checked'
 			])
-			->text(
+			->label($this->_language->get('comment'),
 			[
-				'id' => 'author',
-				'name' => 'author',
-				'readonly' => 'readonly',
-				'required' => 'required',
-				'value' => $comment->author ? $comment->author : $this->_registry->get('myName')
+				'class' => 'rs-admin-fn-toggle-tab rs-admin-label-tab',
+				'for' => get_class() . '\Comment'
 			])
-			->append('</li><li>')
-			->label('* ' . $this->_language->get('email'),
-			[
-				'for' => 'email'
-			])
-			->email(
-			[
-				'id' => 'email',
-				'name' => 'email',
-				'readonly' => 'readonly',
-				'required' => 'required',
-				'value' => $comment->email ? $comment->email : $this->_registry->get('myEmail')
-			])
-			->append('</li><li>')
+			->append('<ul class="rs-admin-fn-content-tab rs-admin-box-tab"><li>')
 			->label($this->_language->get('url'),
 			[
 				'for' => 'url'
@@ -130,11 +115,22 @@ class CommentForm extends ViewAbstract implements ViewInterface
 				'required' => 'required',
 				'value' => htmlspecialchars($comment->text)
 			])
-			->append('</li></ul></fieldset>')
+			->append('</li></ul>')
 
-			/* second tab */
+			/* general */
 
-			->append('<fieldset id="tab-2" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
+			->radio(
+			[
+				'id' => get_class() . '\General',
+				'class' => 'rs-admin-fn-status-tab',
+				'name' => get_class() . '\Tab'
+				])
+			->label($this->_language->get('general'),
+			[
+				'class' => 'rs-admin-fn-toggle-tab rs-admin-label-tab',
+				'for' => get_class() . '\General'
+			])
+			->append('<ul class="rs-admin-fn-content-tab rs-admin-box-tab"><li>')
 			->label($this->_language->get('language'),
 			[
 				'for' => 'language'
@@ -154,24 +150,35 @@ class CommentForm extends ViewAbstract implements ViewInterface
 			])
 			->select($helperOption->getContentArray('articles'),
 			[
-				intval($comment->article)
+				(int)$comment->article
 			],
 			[
 				'id' => 'article',
 				'name' => 'article'
 			])
-			->append('</li></ul></fieldset>')
+			->append('</li></ul>')
 
-			/* last tab */
+			/* customize */
 
-			->append('<fieldset id="tab-3" class="rs-admin-js-set-tab rs-admin-set-tab"><ul><li>')
+			->radio(
+			[
+				'id' => get_class() . '\Customize',
+				'class' => 'rs-admin-fn-status-tab',
+				'name' => get_class() . '\Tab'
+			])
+			->label($this->_language->get('customize'),
+			[
+				'class' => 'rs-admin-fn-toggle-tab rs-admin-label-tab',
+				'for' => get_class() . '\Customize'
+			])
+			->append('<ul class="rs-admin-fn-content-tab rs-admin-box-tab"><li>')
 			->label($this->_language->get('status'),
 			[
 				'for' => 'status'
 			])
 			->select($helperOption->getVisibleArray(),
 			[
-				$comment->id ? intval($comment->status) : 1
+				$comment->id ? (int)$comment->status : 1
 			],
 			[
 				'id' => 'status',
@@ -186,7 +193,7 @@ class CommentForm extends ViewAbstract implements ViewInterface
 			[
 				'id' => 'rank',
 				'name' => 'rank',
-				'value' => $comment->id ? intval($comment->rank) : Db::forTablePrefix('comments')->max('rank') + 1
+				'value' => $comment->id ? (int)$comment->rank : $commentModel->query()->max('rank') + 1
 			])
 			->append('</li>');
 		if ($this->_registry->get('groupsEdit'))
@@ -221,8 +228,14 @@ class CommentForm extends ViewAbstract implements ViewInterface
 				'name' => 'date',
 				'value' => $comment->date ? $comment->date : null
 			])
-			->append('</li></ul></fieldset></div>')
+			->append('</li></ul>')
+			->hidden(
+			[
+				'name' => 'id',
+				'value' => $comment->id
+			])
 			->token()
+			->append('<div class="rs-admin-wrapper-button">')
 			->cancel();
 		if ($comment->id)
 		{
@@ -239,62 +252,12 @@ class CommentForm extends ViewAbstract implements ViewInterface
 		{
 			$formElement->create();
 		}
+		$formElement->append('</div>');
 
 		/* collect output */
 
 		$output .= $titleElement . $formElement;
 		$output .= Module\Hook::trigger('adminCommentFormEnd');
 		return $output;
-	}
-
-	/**
-	 * render the list
-	 *
-	 * @since 3.2.0
-	 *
-	 * @return string
-	 */
-
-	protected function _renderList() : string
-	{
-		$tabRoute = $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
-
-		/* html elements */
-
-		$linkElement = new Html\Element();
-		$linkElement->init('a');
-		$itemElement = new Html\Element();
-		$itemElement->init('li');
-		$listElement = new Html\Element();
-		$listElement->init('ul',
-		[
-			'class' => 'rs-admin-js-list-tab rs-admin-list-tab'
-		]);
-
-		/* collect item output */
-
-		$outputItem = $itemElement
-			->copy()
-			->addClass('rs-admin-js-item-active rs-admin-item-active')
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-1')
-				->text($this->_language->get('comment'))
-			);
-		$outputItem .= $itemElement
-			->copy()
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-2')
-				->text($this->_language->get('general'))
-			);
-		$outputItem .= $itemElement
-			->copy()
-			->html($linkElement
-				->copy()
-				->attr('href', $tabRoute . '#tab-3')
-				->text($this->_language->get('customize'))
-			);
-		return $listElement->html($outputItem)->render();
 	}
 }

@@ -21,11 +21,10 @@
 {
 	background: center / cover;
 	box-sizing: border-box;
-	padding: 5em 0;
 	padding: 10vw 0;
 }
 
-.rs-is-load
+.rs-is-ready
 {
 	& .rs-component-teaser
 	{
@@ -83,7 +82,7 @@
 
 @media (--media-medium-min), (--media-retina)
 {
-	.rs-is-load
+	.rs-is-ready
 	{
 		& .rs-component-teaser
 		{
@@ -121,7 +120,7 @@
 
 @media (--media-large-min), (--media-medium-min) and (--media-retina)
 {
-	.rs-is-load
+	.rs-is-ready
 	{
 		& .rs-component-teaser
 		{
@@ -139,7 +138,7 @@
 
 @media (--media-large-min) and (--media-retina)
 {
-	.rs-is-load
+	.rs-is-ready
 	{
 		& .rs-component-teaser
 		{

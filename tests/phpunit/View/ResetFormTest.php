@@ -12,6 +12,9 @@ use Redaxscript\View;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\View\ResetForm
+ * @covers Redaxscript\View\ViewAbstract
  */
 
 class ResetFormTest extends TestCaseAbstract
@@ -48,22 +51,7 @@ class ResetFormTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerRender
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerRender() : array
-	{
-		return $this->getProvider('tests/provider/View/reset_form_render.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -73,7 +61,7 @@ class ResetFormTest extends TestCaseAbstract
 	 *
 	 * @param array $expectArray
 	 *
-	 * @dataProvider providerRender
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testRender(array $expectArray = [])

@@ -13,6 +13,10 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Detector\DetectorAbstract
+ * @covers Redaxscript\Detector\Language
+ * @covers Redaxscript\Detector\Template
  */
 
 class DetectorTest extends TestCaseAbstract
@@ -65,35 +69,7 @@ class DetectorTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerLanguage
-	 *
-	 * @since 2.1.0
-	 *
-	 * @return array
-	 */
-
-	public function providerLanguage() : array
-	{
-		return $this->getProvider('tests/provider/Detector/language.json');
-	}
-
-	/**
-	 * providerTemplate
-	 *
-	 * @since 2.1.0
-	 *
-	 * @return array
-	 */
-
-	public function providerTemplate() : array
-	{
-		return $this->getProvider('tests/provider/Detector/template.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -108,7 +84,7 @@ class DetectorTest extends TestCaseAbstract
 	 * @param array $settingArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerLanguage
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testLanguage(array $registryArray = [], array $queryArray = [], array $sessionArray = [], array $serverArray = [], array $settingArray = [], string $expect = null)
@@ -143,7 +119,7 @@ class DetectorTest extends TestCaseAbstract
 	 * @param array $settingArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerTemplate
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testTemplate(array $registryArray = [], array $queryArray = [], array $sessionArray = [], array $settingArray = [], string $expect = null)

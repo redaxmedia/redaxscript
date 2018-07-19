@@ -13,6 +13,9 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Console\Command\CommandAbstract
+ * @covers Redaxscript\Console\Command\Uninstall
  */
 
 class UninstallTest extends TestCaseAbstract
@@ -26,9 +29,7 @@ class UninstallTest extends TestCaseAbstract
 	public function setUp()
 	{
 		parent::setUp();
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawCreate();
+		$this->createDatabase();
 	}
 
 	/**
@@ -39,9 +40,7 @@ class UninstallTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
+		$this->dropDatabase();
 		$this->_request->setServer('argv', null);
 	}
 

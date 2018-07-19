@@ -12,6 +12,8 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Filter\Html
  */
 
 class HtmlTest extends TestCaseAbstract
@@ -46,22 +48,7 @@ class HtmlTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerHtml
-	 *
-	 * @since 2.2.0
-	 *
-	 * @return array
-	 */
-
-	public function providerHtml() : array
-	{
-		return $this->getProvider('tests/provider/Filter/html.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -72,7 +59,7 @@ class HtmlTest extends TestCaseAbstract
 	 * @param string $html
 	 * @param string $expect
 	 *
-	 * @dataProvider providerHtml
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testHtml(string $html = null, string $expect = null)

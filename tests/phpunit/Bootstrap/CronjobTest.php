@@ -13,6 +13,9 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @category Tests
  * @author Henry Ruhs
  *
+ * @covers Redaxscript\Bootstrap\BootstrapAbstract
+ * @covers Redaxscript\Bootstrap\Cronjob
+ *
  * @runTestsInSeparateProcesses
  */
 
@@ -27,9 +30,7 @@ class CronjobTest extends TestCaseAbstract
 	public function setUp()
 	{
 		parent::setUp();
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawCreate();
+		$this->createDatabase();
 	}
 
 	/**
@@ -40,22 +41,7 @@ class CronjobTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerCronjob
-	 *
-	 * @since 3.1.0
-	 *
-	 * @return array
-	 */
-
-	public function providerCronjob() : array
-	{
-		return $this->getProvider('tests/provider/Bootstrap/cronjob.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -67,7 +53,7 @@ class CronjobTest extends TestCaseAbstract
 	 * @param array $sessionArray
 	 * @param bool $expect
 	 *
-	 * @dataProvider providerCronjob
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testCronjob(array $registryArray = [], array $sessionArray = [], bool $expect = null)

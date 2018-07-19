@@ -2,14 +2,11 @@
 namespace Redaxscript\Template;
 
 use Redaxscript\Admin;
-use Redaxscript\Db;
 use Redaxscript\Config;
 use Redaxscript\Console;
-use Redaxscript\Breadcrumb;
 use Redaxscript\Filesystem;
 use Redaxscript\Head;
 use Redaxscript\Language;
-use Redaxscript\Model;
 use Redaxscript\Navigation;
 use Redaxscript\Registry;
 use Redaxscript\Request;
@@ -52,7 +49,7 @@ class Tag
 	 * @return string|bool
 	 */
 
-	public static function title($text = null)
+	public static function title(string $text = null)
 	{
 		$title = new Head\Title(Registry::getInstance());
 		return $title->render($text);
@@ -115,63 +112,16 @@ class Tag
 	 *
 	 * @since 2.3.0
 	 *
+	 * @param array $optionArray options of the breadcrumb
+	 *
 	 * @return string
 	 */
 
-	public static function breadcrumb() : string
+	public static function breadcrumb(array $optionArray = []) : string
 	{
-		$breadcrumb = new Breadcrumb(Registry::getInstance(), Language::getInstance());
-		$breadcrumb->init();
+		$breadcrumb = new View\Helper\Breadcrumb(Registry::getInstance(), Language::getInstance());
+		$breadcrumb->init($optionArray);
 		return $breadcrumb->render();
-	}
-
-	/**
-	 * console line
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return string|bool
-	 */
-
-	public static function consoleLine()
-	{
-		$console = new Console\Console(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
-		$output = $console->init('template');
-		if (strlen($output))
-		{
-			return htmlentities($output);
-		}
-		return false;
-	}
-
-	/**
-	 * console form
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return string
-	 */
-
-	public static function consoleForm() : string
-	{
-		$consoleForm = new View\ConsoleForm(Registry::getInstance(), Language::getInstance());
-		return $consoleForm->render();
-	}
-
-	/**
-	 * search form
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param string $table
-	 *
-	 * @return string
-	 */
-
-	public static function searchForm($table = null) : string
-	{
-		$searchForm = new View\SearchForm(Registry::getInstance(), Language::getInstance());
-		return $searchForm->render($table);
 	}
 
 	/**
@@ -191,7 +141,7 @@ class Tag
 		/* template filesystem */
 
 		$templateFilesystem = new Filesystem\File();
-		$templateFilesystem->init('.');
+		$templateFilesystem->init('templates');
 
 		/* process partial */
 
@@ -203,58 +153,9 @@ class Tag
 	}
 
 	/**
-	 * get the registry
-	 *
-	 * @since 2.6.0
-	 *
-	 * @param string $key
-	 *
-	 * @return string|bool
-	 */
-
-	public static function getRegistry($key = null)
-	{
-		$registry = Registry::getInstance();
-		return $registry->get($key);
-	}
-
-	/**
-	 * get the language
-	 *
-	 * @since 2.6.0
-	 *
-	 * @param string $key
-	 * @param string $index
-	 *
-	 * @return string|bool
-	 */
-
-	public static function getLanguage($key = null, $index = null)
-	{
-		$language = Language::getInstance();
-		return $language->get($key, $index);
-	}
-
-	/**
-	 * get the setting
-	 *
-	 * @since 2.6.0
-	 *
-	 * @param string $key
-	 *
-	 * @return string|bool
-	 */
-
-	public static function getSetting($key = null)
-	{
-		$settingModel = new Model\Setting();
-		return $settingModel->get($key);
-	}
-
-	/**
 	 * content
 	 *
-	 * @since 2.3.0
+	 * @since 4.0.0
 	 *
 	 * @return string|null
 	 */
@@ -273,97 +174,84 @@ class Tag
 	 * @return string|null
 	 */
 
-	protected function _renderAdminContent()
+	protected static function _renderAdminContent()
 	{
 		$registry = Registry::getInstance();
 		if ($registry->get('token') === $registry->get('loggedIn'))
 		{
 			$adminRouter = new Admin\Router\Router(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 			$adminRouter->init();
-			$adminContent = $adminRouter->routeContent();
-			if ($adminContent !== true)
-			{
-				return $adminContent;
-			}
+			return $adminRouter->routeContent();
 		}
 	}
 
 	/**
 	 * render the content
 	 *
-	 * @since 2.3.0
+	 * @since 4.0.0
 	 *
 	 * @return string|null
 	 */
 
-	protected function _renderContent()
+	protected static function _renderContent()
 	{
 		$router = new Router\Router(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		$router->init();
-		$content = $router->routeContent();
-		if ($content !== true)
-		{
-			return $content ? $content : self::_migrate('contents');
-		}
+		return $router->routeContent();
+	}
+
+	/**
+	 * article
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param int $categoryId identifier of the category
+	 * @param array $optionArray options of the content
+	 *
+	 * @return string|null
+	 */
+
+	public static function article(int $categoryId = null, array $optionArray = [])
+	{
+		$article = new View\Article(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		$article->init($optionArray);
+		return $article->render($categoryId);
+	}
+
+	/**
+	 * comment
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param int $articleId identifier of the article
+	 * @param array $optionArray options of the comment
+	 *
+	 * @return string|null
+	 */
+
+	public static function comment(int $articleId = null, array $optionArray = [])
+	{
+		$comment = new View\Comment(Registry::getInstance(), Language::getInstance());
+		$comment->init($optionArray);
+		return $comment->render($articleId);
 	}
 
 	/**
 	 * extra
 	 *
-	 * @since 2.3.0
+	 * @since 4.0.0
 	 *
-	 * @param string $filter
+	 * @param int $extraId identifier of the extra
+	 * @param array $optionArray options of the extra
 	 *
 	 * @return string|null
 	 */
 
-	public static function extra($filter = null)
+	public static function extra(int $extraId = null, array $optionArray = [])
 	{
-		// @codeCoverageIgnoreStart
-		return self::_migrate('extras',
-		[
-			$filter
-		]);
-		// @codeCoverageIgnoreEnd
-	}
-
-	/**
-	 * category raw
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return Db
-	 */
-
-	public static function categoryRaw()
-	{
-		return Db::forTablePrefix('categories');
-	}
-
-	/**
-	 * article raw
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return Db
-	 */
-
-	public static function articleRaw() : Db
-	{
-		return Db::forTablePrefix('articles');
-	}
-
-	/**
-	 * extra raw
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return Db
-	 */
-
-	public static function extraRaw() : Db
-	{
-		return Db::forTablePrefix('extras');
+		$extra = new View\Extra(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		$extra->init($optionArray);
+		return $extra->render($extraId);
 	}
 
 	/**
@@ -371,13 +259,13 @@ class Tag
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $type
-	 * @param array $optionArray
+	 * @param string $type type of the navigation
+	 * @param array $optionArray options of the navigation
 	 *
 	 * @return string|null
 	 */
 
-	public static function navigation($type = null, array $optionArray = [])
+	public static function navigation(string $type = null, array $optionArray = [])
 	{
 		if ($type == 'articles')
 		{
@@ -412,35 +300,66 @@ class Tag
 	}
 
 	/**
-	 * migrate
+	 * console
 	 *
-	 * @since 2.3.0
-	 *
-	 * @param string $function
-	 * @param array $parameterArray
+	 * @since 3.0.0
 	 *
 	 * @return string|null
 	 */
 
-	protected static function _migrate($function = null, $parameterArray = [])
+	public static function console()
 	{
-		// @codeCoverageIgnoreStart
-		ob_start();
-
-		/* call with parameter */
-
-		if (is_array($parameterArray))
+		$console = new Console\Console(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+		$output = $console->init('template');
+		if (strlen($output))
 		{
-			call_user_func_array($function, $parameterArray);
+			return htmlentities($output);
 		}
+	}
 
-		/* else simple call */
+	/**
+	 * console form
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
 
-		else
-		{
-			call_user_func($function);
-		}
-		return ob_get_clean();
-		// @codeCoverageIgnoreEnd
+	public static function consoleForm() : string
+	{
+		$consoleForm = new View\ConsoleForm(Registry::getInstance(), Language::getInstance());
+		return $consoleForm->render();
+	}
+
+	/**
+	 * comment form
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param int $articleId identifier of the article
+	 *
+	 * @return string
+	 */
+
+	public static function commentForm(int $articleId = null) : string
+	{
+		$commentForm = new View\CommentForm(Registry::getInstance(), Language::getInstance());
+		return $commentForm->render($articleId);
+	}
+
+	/**
+	 * search form
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $table name of the table
+	 *
+	 * @return string
+	 */
+
+	public static function searchForm(string $table = null) : string
+	{
+		$searchForm = new View\SearchForm(Registry::getInstance(), Language::getInstance());
+		return $searchForm->render($table);
 	}
 }

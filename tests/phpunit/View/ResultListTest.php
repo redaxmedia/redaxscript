@@ -15,6 +15,9 @@ use Redaxscript\View;
  * @category Tests
  * @author Henry Ruhs
  * @author Balázs Szilágyi
+ *
+ * @covers Redaxscript\View\ResultList
+ * @covers Redaxscript\View\ViewAbstract
  */
 
 class ResultListTest extends TestCaseAbstract
@@ -78,22 +81,7 @@ class ResultListTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
-	}
-
-	/**
-	 * providerRender
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function providerRender() : array
-	{
-		return $this->getProvider('tests/provider/View/result_list_render.json');
+		$this->dropDatabase();
 	}
 
 	/**
@@ -104,7 +92,7 @@ class ResultListTest extends TestCaseAbstract
 	 * @param array $searchArray
 	 * @param string $expect
 	 *
-	 * @dataProvider providerRender
+	 * @dataProvider providerAutoloader
 	 */
 
 	public function testRender($searchArray = [], string $expect = null)
@@ -112,7 +100,7 @@ class ResultListTest extends TestCaseAbstract
 		/* setup */
 
 		$resultList = new View\ResultList($this->_registry, $this->_language);
-		$controllerSearch = new Controller\Search($this->_registry, $this->_request, $this->_language);
+		$controllerSearch = new Controller\Search($this->_registry, $this->_request, $this->_language, $this->_config);
 		$resultArray = $this->callMethod($controllerSearch, '_search',
 		[
 			$searchArray

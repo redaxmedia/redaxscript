@@ -11,17 +11,7 @@
 	background: var(--rs-console-color-primary);
 	color: gray(255);
 	font: 1em var(--rs-console-font-primary);
-	margin: 0.25em;
-}
-
-.rs-console-box-default,
-.rs-console-label-default
-{
-	&::selection
-	{
-		background: gray(255);
-		color: var(--rs-console-color-primary);
-	}
+	padding: 0.25em;
 }
 
 .rs-console-box-default
@@ -29,19 +19,20 @@
 	white-space: pre-wrap;
 }
 
-.rs-console-label-default
+.rs-console-form-default
 {
-	float: left;
+	display: flex;
+	overflow: hidden;
+}
 
-	&:after
-	{
-		content: '\00a0';
-	}
+.rs-console-label-default:after
+{
+	content: '\00a0';
 }
 
 .rs-console-field-text
 {
 	background: transparent;
 	color: inherit;
-	float: left;
+	flex-basis: 100%;
 }

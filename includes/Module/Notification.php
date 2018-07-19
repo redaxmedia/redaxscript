@@ -53,9 +53,23 @@ class Notification extends Module
 	 * @param string|array $message message of the notification
 	 */
 
-	public function setNotification($type = null, $message = null)
+	public function setNotification(string $type = null, $message = null)
 	{
 		$moduleName = static::$_moduleArray['name'];
 		static::$_notificationArray[$type][$moduleName][] = $message;
+	}
+
+	/**
+	 * clear the notification
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $type type of the notification
+	 */
+
+	public function clearNotification(string $type = null)
+	{
+		$moduleName = static::$_moduleArray['name'];
+		static::$_notificationArray[$type][$moduleName] = null;
 	}
 }

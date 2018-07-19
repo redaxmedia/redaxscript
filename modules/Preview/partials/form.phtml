@@ -8,7 +8,7 @@ $i = 0;
 $formElement = $admin ? new Admin\Html\Form($registry, $language) : new Html\Form($registry, $language);
 $formElement
 	->init()
-	->append('<fieldset><ul><li>')
+	->append('<ul><li>')
 	->label($language->get(++$i, '_number'),
 	[
 		'for' => $id . $i
@@ -32,41 +32,41 @@ $formElement
 	])
 	->append('</li><li>')
 	->label($language->get(++$i, '_number'),
-    [
-        'for' => $id . $i
-    ])
+	[
+		'for' => $id . $i
+	])
 	->select(
-    [
-        1,
-        2,
-        3,
-        4
-    ],
-    [
-        2
-    ],
-    [
-        'id' => $id . $i
-    ])
+	[
+		1,
+		2,
+		3,
+		4
+	],
+	[
+		2
+	],
+	[
+		'id' => $id . $i
+	])
 	->append('</li><li>')
 	->label($language->get(++$i, '_number'),
-    [
-        'for' => $id . $i
-    ])
+	[
+		'for' => $id . $i
+	])
 	->select(
-    [
-        1,
-        2,
-        3,
-        4
-    ],
-    [
-        2
-    ],
-    [
-        'disabled' => 'disabled',
-        'id' => $id . $i
-    ])
+	[
+		1,
+		2,
+		3,
+		4
+	],
+	[
+		2
+	],
+	[
+		'disabled' => 'disabled',
+		'id' => $id . $i
+	])
 	->append('</li><li>')
 	->label($language->get(++$i, '_number'),
 	[
@@ -80,7 +80,7 @@ $formElement
 	[
 		2,
 		3
-    ],
+	],
 	[
 		'id' => $id . $i,
 		'multiple' => 'multiple',
@@ -97,10 +97,10 @@ $formElement
 		'min' => 1,
 		'max' => 4
 	],
-    [
-        2,
-        3
-    ],
+	[
+		2,
+		3
+	],
 	[
 		'disabled' => 'disabled',
 		'id' => $id . $i,
@@ -139,7 +139,7 @@ $formElement
 		'id' => $id . $i,
 		'required' => 'required'
 	])
-	->append('</li></ul></fieldset>')
+	->append('</li></ul>')
 	->submit()
 	->reset();
 ?>

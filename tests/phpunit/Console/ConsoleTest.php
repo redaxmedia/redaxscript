@@ -12,6 +12,9 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Console\Console
+ * @covers Redaxscript\Console\ConsoleAbstract
  */
 
 class ConsoleTest extends TestCaseAbstract

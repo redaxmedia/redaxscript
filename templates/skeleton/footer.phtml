@@ -3,16 +3,16 @@
 <!-- footer -->
 
 <footer id="footer" class="rs-footer">
-	<div class="rs-wrapper rs-fn-clearfix">
+	<div class="rs-wrapper">
 		<span class="rs-text-about">
 			<span class="rs-text-powered-by">
-				<?php echo Tag::getLanguage('powered_by'); ?>
+				<?php echo Helper::getLanguage('powered_by'); ?>
 			</span>
-			<a href="<?php echo Tag::getLanguage('homepage', '_package'); ?>" class="rs-link-footer">
-				<?php echo Tag::getLanguage('name', '_package'); ?>
+			<a href="<?php echo Helper::getLanguage('homepage', '_package'); ?>" class="rs-link-footer">
+				<?php echo Helper::getLanguage('name', '_package'); ?>
 			</a>
-			<?php echo Tag::getLanguage('version', '_package'); ?>
+			<?php echo Helper::getLanguage('version', '_package'); ?>
 		</span>
-		<a class="rs-link-login" href="<?php echo Tag::getRegistry('parameterRoute'); ?>login"><?php echo Tag::getLanguage('login'); ?></a>
+		<a class="rs-link-login" href="<?php echo Helper::getRegistry('parameterRoute'); ?>login"><?php echo Helper::getLanguage('login'); ?></a>
 	</div>
 </footer>

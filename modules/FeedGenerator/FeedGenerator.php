@@ -31,7 +31,7 @@ class FeedGenerator extends Module\Module
 		'alias' => 'FeedGenerator',
 		'author' => 'Redaxmedia',
 		'description' => 'Generate Atom feeds from content',
-		'version' => '3.3.2'
+		'version' => '4.0.0'
 	];
 
 	/**

@@ -12,6 +12,9 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
+ *
+ * @covers Redaxscript\Console\Command\CommandAbstract
+ * @covers Redaxscript\Console\Command\Setting
  */
 
 class SettingTest extends TestCaseAbstract
@@ -46,9 +49,7 @@ class SettingTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
-		$installer = $this->installerFactory();
-		$installer->init();
-		$installer->rawDrop();
+		$this->dropDatabase();
 		$this->_request->setServer('argv', null);
 	}
 
