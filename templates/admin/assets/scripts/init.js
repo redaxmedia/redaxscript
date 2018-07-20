@@ -6,9 +6,10 @@ rs.templates.admin =
 		dependency: typeof window.getSlug === 'function',
 		config:
 		{
-			selector: 'form input.rs-admin-js-alias-input, form input.rs-admin-js-alias-output',
+			selector: 'form.rs-admin-js-alias',
 			element:
 			{
+				input: 'input.rs-admin-js-alias-input',
 				output: 'input.rs-admin-js-alias-output'
 			}
 		}

@@ -9,10 +9,19 @@ rs.modules.FormValidator.validate = config =>
 
 		form.querySelectorAll(CONFIG.element).forEach(fieldValue =>
 		{
+			const validateArray =
+			[
+				'input',
+				'validate'
+			];
+
 			fieldValue.classList.add(CONFIG.className.fieldNote);
-			fieldValue.addEventListener('input', () =>
+			validateArray.forEach(event =>
 			{
-				fieldValue.validity.valid ? fieldValue.classList.remove(CONFIG.className.isError) : fieldValue.classList.add(CONFIG.className.isError);
+				fieldValue.addEventListener(event, () =>
+				{
+					fieldValue.validity.valid ? fieldValue.classList.remove(CONFIG.className.isError) : fieldValue.classList.add(CONFIG.className.isError);
+				});
 			});
 			fieldValue.addEventListener('invalid', () =>
 			{
