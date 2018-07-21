@@ -17,6 +17,7 @@ use PDOException;
  * @method $this _addJoinSource(string $operator, string $table, string|array $constraint, string $tableAlias)
  * @method $this _addOrderBy(string $column, string $value)
  * @method $this _addWhere(string $clause, string|array $value)
+ * @method $this _setupDb(string $connection)
  */
 
 class Db extends ORM
@@ -98,6 +99,23 @@ class Db extends ORM
 			'caching_auto_clear' => true,
 			'return_result_sets' => true
 		]);
+	}
+
+	/**
+	 * raw instance helper
+	 *
+	 * @since 2.4.0
+	 *
+	 * @param string $table name of the table
+	 * @param string $connection which connection to use
+	 *
+	 * @return self
+	 */
+
+	public static function rawInstance(string $table = null, string $connection = self::DEFAULT_CONNECTION) : self
+	{
+		self::_setupDb($connection);
+		return new self($table);
 	}
 
 	/**
