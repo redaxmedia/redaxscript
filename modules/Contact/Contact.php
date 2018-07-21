@@ -137,7 +137,6 @@ class Contact extends Module\Module
 			])
 			->textarea(
 			[
-				'class' => 'rs-js-textarea rs-field-textarea',
 				'id' => 'text',
 				'name' => 'text',
 				'required' => 'required'

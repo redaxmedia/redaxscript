@@ -4,7 +4,7 @@ rs.modules.Tinymce =
 	dependency: typeof window.tinymce === 'object',
 	config:
 	{
-		selector: 'form textarea.rs-admin-js-editor-textarea',
+		selector: 'form textarea.rs-admin-js-editor',
 		plugins: 'autolink code fullscreen image imagetools link media table visualblocks',
 		body_class: 'rs-body',
 		content_css: rs.baseURL + 'templates/' + rs.registry.template + '/dist/styles/' + rs.registry.template + '.min.css',
