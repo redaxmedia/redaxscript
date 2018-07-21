@@ -118,23 +118,6 @@ class DbTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testgetInstance
-	 *
-	 * @since 4.0.0
-	 */
-
-	public function testgetInstance()
-	{
-		/* actual */
-
-		$actual = Db::getInstance()->getDb();
-
-		/* compare */
-
-		$this->assertInstanceOf('PDO', $actual);
-	}
-
-	/**
 	 * testGetStatus
 	 *
 	 * @since 2.4.0

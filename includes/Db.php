@@ -101,21 +101,6 @@ class Db extends ORM
 	}
 
 	/**
-	 * get instance
-	 *
-	 * @since 4.0.0
-	 *
-	 * @param string $table name of the table
-	 *
-	 * @return self
-	 */
-
-	public static function getInstance(string $table = null) : self
-	{
-		return new self($table);
-	}
-
-	/**
 	 * get the database status
 	 *
 	 * @since 3.1.0
