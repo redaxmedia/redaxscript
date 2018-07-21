@@ -5,7 +5,7 @@ use Redaxscript\Head;
 use Redaxscript\Module;
 
 /**
- * validate the form data
+ * validate the form
  *
  * @since 4.0.0
  *
@@ -27,7 +27,7 @@ class FormValidator extends Module\Module
 		'name' => 'Form Validator',
 		'alias' => 'FormValidator',
 		'author' => 'Redaxmedia',
-		'description' => 'Validate the form data',
+		'description' => 'Validate the form',
 		'version' => '4.0.0'
 	];
 

@@ -5,7 +5,7 @@ use Redaxscript\Head;
 use Redaxscript\Module;
 
 /**
- * Adjust the textarea to fit content
+ * adjust the textarea to fit content
  *
  * @since 4.0.0
  *
