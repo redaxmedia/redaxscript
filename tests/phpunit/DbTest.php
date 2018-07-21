@@ -118,16 +118,16 @@ class DbTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testRawInstance
+	 * testgetInstance
 	 *
-	 * @since 2.4.0
+	 * @since 4.0.0
 	 */
 
-	public function testRawInstance()
+	public function testgetInstance()
 	{
 		/* actual */
 
-		$actual = Db::rawInstance()->getDb();
+		$actual = Db::getInstance()->getDb();
 
 		/* compare */
 
