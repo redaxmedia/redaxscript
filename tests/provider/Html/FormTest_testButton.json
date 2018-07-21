@@ -3,7 +3,7 @@
 		"button",
 		null,
 		{},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><button class=\"rs-js-button rs-button-default\" type=\"button\">Ok</button></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><button class=\"rs-js-button rs-button-default\" type=\"button\">Ok</button></form>"
 	],
 	[
 		"button",
@@ -11,13 +11,13 @@
 		{
 			"class": "rs-test"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><button class=\"rs-test\" type=\"button\">test</button></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><button class=\"rs-test\" type=\"button\">test</button></form>"
 	],
 	[
 		"reset",
 		null,
 		{},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><button class=\"rs-js-reset rs-button-default rs-button-reset\" type=\"reset\">Reset</button></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><button class=\"rs-js-reset rs-button-default rs-button-reset\" type=\"reset\">Reset</button></form>"
 	],
 	[
 		"reset",
@@ -25,13 +25,13 @@
 		{
 			"class": "rs-test"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><button class=\"rs-test\" type=\"reset\">test</button></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><button class=\"rs-test\" type=\"reset\">test</button></form>"
 	],
 	[
 		"submit",
 		null,
 		{},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><button class=\"rs-js-button rs-button-default rs-button-submit\" type=\"submit\" value=\"submit\">Submit</button></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><button class=\"rs-js-button rs-button-default rs-button-submit\" type=\"submit\" value=\"submit\">Submit</button></form>"
 	],
 	[
 		"submit",
@@ -39,12 +39,12 @@
 		{
 			"class": "rs-test"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><button class=\"rs-test\" type=\"submit\" value=\"submit\">test</button></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><button class=\"rs-test\" type=\"submit\" value=\"submit\">test</button></form>"
 	],
 	[
 		"invalid",
 		null,
 		{},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"></form>"
 	]
 ]

@@ -71,10 +71,7 @@ class InstallerTest extends TestCaseAbstract
 		$actualGroups = Db::forTablePrefix('groups')->count();
 		$actualUsers = Db::forTablePrefix('users')->count();
 		$actualSettings = Db::forTablePrefix('settings')->count();
-		if (is_dir('modules/CallHome') && is_dir('modules/FormValidator') && is_dir('modules/HtmlValidator'))
-		{
-			$actualModules = Db::forTablePrefix('modules')->count();
-		}
+		$actualModules = Db::forTablePrefix('modules')->count();
 
 		/* compare */
 
@@ -85,10 +82,7 @@ class InstallerTest extends TestCaseAbstract
 		$this->assertEquals(2, $actualGroups);
 		$this->assertEquals(1, $actualUsers);
 		$this->assertEquals(25, $actualSettings);
-		if (is_dir('modules/CallHome') && is_dir('modules/FormValidator') && is_dir('modules/HtmlValidator'))
-		{
-			$this->assertEquals(3, $actualModules);
-		}
+		$this->assertEquals(4, $actualModules);
 	}
 
 	/**

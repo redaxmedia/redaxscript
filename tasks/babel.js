@@ -36,6 +36,14 @@ module.exports = () =>
 			],
 			dest: 'modules/FormValidator/dist/scripts/form-validator.min.js'
 		},
+		moduleTextareaResizer:
+		{
+			src:
+			[
+				'modules/TextareaResizer/assets/scripts/textarea-resizer.js'
+			],
+			dest: 'modules/TextareaResizer/dist/scripts/textarea-resizer.min.js'
+		},
 		options:
 		{
 			presets:

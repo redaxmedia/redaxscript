@@ -55,7 +55,7 @@ class Form extends BaseForm
 	[
 		'form' =>
 		[
-			'class' => 'rs-admin-js-validate-form rs-admin-form-default',
+			'class' => 'rs-admin-js-validate rs-admin-form-default',
 			'method' => 'post'
 		],
 		'legend' =>
@@ -72,7 +72,7 @@ class Form extends BaseForm
 		],
 		'textarea' =>
 		[
-			'class' => 'rs-admin-field-textarea',
+			'class' => 'rs-admin-js-resize rs-admin-field-textarea',
 			'cols' => 100,
 			'rows' => 5
 		],

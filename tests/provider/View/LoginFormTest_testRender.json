@@ -1,7 +1,7 @@
 [
 	[
 		{
-			"start": "<h2 class=\"rs-title-content\">Login</h2><form class=\"rs-js-validate-form rs-form-default rs-form-login\" method=\"post\">",
+			"start": "<h2 class=\"rs-title-content\">Login</h2><form class=\"rs-js-validate rs-form-default rs-form-login\" method=\"post\">",
 			"end": "<button class=\"rs-js-button rs-button-default rs-button-submit\" type=\"submit\" value=\"submit\" name=\"Redaxscript\\View\\LoginForm\">Submit</button></form>"
 		}
 	]

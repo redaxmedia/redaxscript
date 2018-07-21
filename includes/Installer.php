@@ -178,7 +178,7 @@ class Installer
 				'category' => 1,
 				'comments' => 1,
 				'rank' => 1
-				])
+			])
 			->save();
 	}
 
@@ -348,20 +348,27 @@ class Installer
 
 	public function insertModules()
 	{
-		if (is_dir('modules' . DIRECTORY_SEPARATOR . 'CallHome'))
+		$moduleArray =
+		[
+			'CallHome',
+			'FormValidator',
+			'HtmlValidator',
+			'TextareaResizer'
+		];
+
+		/* process module */
+
+		foreach ($moduleArray as $alias)
 		{
-			$callHome = new Modules\CallHome\CallHome($this->_registry, $this->_request, $this->_language, $this->_config);
-			$callHome->install();
-		}
-		if (is_dir('modules' . DIRECTORY_SEPARATOR . 'FormValidator'))
-		{
-			$htmlValidator = new Modules\FormValidator\FormValidator($this->_registry, $this->_request, $this->_language, $this->_config);
-			$htmlValidator->install();
-		}
-		if (is_dir('modules' . DIRECTORY_SEPARATOR . 'HtmlValidator'))
-		{
-			$htmlValidator = new Modules\HtmlValidator\HtmlValidator($this->_registry, $this->_request, $this->_language, $this->_config);
-			$htmlValidator->install();
+			$moduleClass = 'Redaxscript\Modules\\' . $alias . '\\' . $alias;
+
+			/* install */
+
+			if (class_exists($moduleClass))
+			{
+				$module = new $moduleClass($this->_registry, $this->_request, $this->_language, $this->_config);
+				$module->install();
+			}
 		}
 	}
 

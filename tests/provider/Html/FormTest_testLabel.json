@@ -2,13 +2,13 @@
 	[
 		null,
 		{},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><label class=\"rs-label-default\"></label></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><label class=\"rs-label-default\"></label></form>"
 	],
 	[
 		"<span>test</span>",
 		{
 			"class": "rs-test"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><label class=\"rs-test\"><span>test</span></label></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><label class=\"rs-test\"><span>test</span></label></form>"
 	]
 ]

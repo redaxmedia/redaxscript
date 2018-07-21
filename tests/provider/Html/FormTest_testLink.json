@@ -3,7 +3,7 @@
 		"cancel",
 		null,
 		{},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><a class=\"rs-js-cancel rs-button-default rs-button-cancel\" href=\"javascript:history.back()\">Cancel</a></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><a class=\"rs-js-cancel rs-button-default rs-button-cancel\" href=\"javascript:history.back()\">Cancel</a></form>"
 	],
 	[
 		"cancel",
@@ -11,6 +11,6 @@
 		{
 			"class": "rs-test"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><a class=\"rs-test\" href=\"javascript:history.back()\">test</a></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><a class=\"rs-test\" href=\"javascript:history.back()\">test</a></form>"
 	]
 ]

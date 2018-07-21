@@ -48,7 +48,7 @@ class ExtraForm extends ViewAbstract
 		[
 			'form' =>
 			[
-				'class' => 'rs-admin-js-validate-form rs-admin-js-alias rs-admin-fn-tab rs-admin-component-tab rs-admin-form-default'
+				'class' => 'rs-admin-js-validate rs-admin-js-alias rs-admin-fn-tab rs-admin-component-tab rs-admin-form-default'
 			],
 			'button' =>
 			[
@@ -127,7 +127,6 @@ class ExtraForm extends ViewAbstract
 			])
 			->textarea(
 			[
-				'class' => 'rs-admin-js-textarea rs-admin-field-textarea',
 				'id' => 'text',
 				'name' => 'text',
 				'required' => 'required',

@@ -5,7 +5,7 @@ rs.modules.FormValidator =
 		init: true,
 		config:
 		{
-			selector: 'form.rs-js-validate-form',
+			selector: 'form.rs-js-validate',
 			element: '[required]',
 			className:
 			{
@@ -19,7 +19,7 @@ rs.modules.FormValidator =
 		init: rs.registry.loggedIn === rs.registry.token,
 		config:
 		{
-			selector: 'form.rs-admin-js-validate-form',
+			selector: 'form.rs-admin-js-validate',
 			element: '[required]',
 			className:
 			{

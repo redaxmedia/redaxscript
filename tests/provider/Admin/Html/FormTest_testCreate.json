@@ -2,7 +2,7 @@
 	[
 		{},
 		{},
-		"<form class=\"rs-admin-js-validate-form rs-admin-form-default\" method=\"post\"></form>"
+		"<form class=\"rs-admin-js-validate rs-admin-form-default\" method=\"post\"></form>"
 	],
 	[
 		{
@@ -15,6 +15,6 @@
 		{
 			"captcha": true
 		},
-		"<form class=\"rs-admin-js-validate-form rs-admin-form-default\" method=\"get\" name=\"test\"></form>"
+		"<form class=\"rs-admin-js-validate rs-admin-form-default\" method=\"get\" name=\"test\"></form>"
 	]
 ]

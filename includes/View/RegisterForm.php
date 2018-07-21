@@ -44,7 +44,7 @@ class RegisterForm extends ViewAbstract
 		[
 			'form' =>
 			[
-				'class' => 'rs-js-validate-form rs-form-default rs-form-register'
+				'class' => 'rs-js-validate rs-form-default rs-form-register'
 			],
 			'button' =>
 			[

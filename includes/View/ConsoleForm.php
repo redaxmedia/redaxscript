@@ -27,6 +27,7 @@ class ConsoleForm extends ViewAbstract
 	public function render() : string
 	{
 		$output = Module\Hook::trigger('consoleFormStart');
+		$myUser = $this->_registry->get('myUser');
 
 		/* html element */
 
@@ -35,10 +36,9 @@ class ConsoleForm extends ViewAbstract
 		[
 			'form' =>
 			[
-				'class' => 'rs-console-js-form rs-console-form-default'
+				'class' => 'rs-console-js-behavior rs-console-form-default'
 			]
 		]);
-		$myUser = $this->_registry->get('myUser');
 		$outputLabel = $myUser ? $myUser . '@' : null;
 		$outputLabel .= $this->_registry->get('host') . ':~$';
 

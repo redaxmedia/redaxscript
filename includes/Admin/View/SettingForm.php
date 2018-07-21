@@ -45,7 +45,7 @@ class SettingForm extends ViewAbstract
 		[
 			'form' =>
 			[
-				'class' => 'rs-admin-js-validate-form rs-admin-component-accordion rs-admin-form-default'
+				'class' => 'rs-admin-js-validate rs-admin-component-accordion rs-admin-form-default'
 			],
 			'button' =>
 			[
@@ -162,7 +162,7 @@ class SettingForm extends ViewAbstract
 			])
 			->textarea(
 			[
-				'class' => 'rs-admin-js-textarea rs-admin-field-textarea rs-admin-field-small',
+				'class' => 'rs-admin-js-resize rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'description',
 				'name' => 'description',
 				'rows' => 1,
@@ -175,7 +175,7 @@ class SettingForm extends ViewAbstract
 			])
 			->textarea(
 			[
-				'class' => 'rs-admin-js-textarea rs-admin-field-textarea rs-admin-field-small',
+				'class' => 'rs-admin-js-resize rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'keywords',
 				'name' => 'keywords',
 				'rows' => 1,

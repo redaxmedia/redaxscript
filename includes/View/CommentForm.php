@@ -46,7 +46,7 @@ class CommentForm extends ViewAbstract
 		[
 			'form' =>
 			[
-				'class' => 'rs-js-validate-form rs-form-default rs-form-comment'
+				'class' => 'rs-js-validate rs-form-default rs-form-comment'
 			],
 			'button' =>
 			[
@@ -107,7 +107,6 @@ class CommentForm extends ViewAbstract
 			])
 			->textarea(
 			[
-				'class' => 'rs-js-auto-resize rs-js-editor-textarea rs-field-textarea',
 				'id' => 'text',
 				'name' => 'text',
 				'required' => 'required'

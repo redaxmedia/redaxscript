@@ -2,210 +2,210 @@
 	[
 		"checkbox",
 		{},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-checkbox\" type=\"checkbox\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-checkbox\" type=\"checkbox\" /></form>"
 	],
 	[
 		"checkbox",
 		{
 			"class": "rs-test"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"checkbox\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"checkbox\" /></form>"
 	],
 	[
 		"color",
 		{},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-color\" type=\"color\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-color\" type=\"color\" /></form>"
 	],
 	[
 		"color",
 		{
 			"class": "rs-test"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"color\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"color\" /></form>"
 	],
 	[
 		"date",
 		{},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-date\" type=\"date\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-date\" type=\"date\" /></form>"
 	],
 	[
 		"date",
 		{
 			"class": "rs-test"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"date\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"date\" /></form>"
 	],
 	[
 		"datetime",
 		{},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-date\" type=\"datetime-local\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-date\" type=\"datetime-local\" /></form>"
 	],
 	[
 		"datetime",
 		{
 			"class": "rs-test"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"datetime-local\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"datetime-local\" /></form>"
 	],
 	[
 		"email",
 		{},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-email\" type=\"email\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-email\" type=\"email\" /></form>"
 	],
 	[
 		"email",
 		{
 			"class": "rs-test"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"email\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"email\" /></form>"
 	],
 	[
 		"file",
 		{},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-file\" type=\"file\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-file\" type=\"file\" /></form>"
 	],
 	[
 		"file",
 		{
 			"class": "rs-test"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"file\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"file\" /></form>"
 	],
 	[
 		"hidden",
 		{},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-hidden\" type=\"hidden\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-hidden\" type=\"hidden\" /></form>"
 	],
 	[
 		"hidden",
 		{
 			"class": "rs-test"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"hidden\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"hidden\" /></form>"
 	],
 	[
 		"number",
 		{},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-number\" type=\"number\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-number\" type=\"number\" /></form>"
 	],
 	[
 		"number",
 		{
 			"class": "rs-test"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"number\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"number\" /></form>"
 	],
 	[
 		"password",
 		{},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-password\" type=\"password\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-password\" type=\"password\" /></form>"
 	],
 	[
 		"password",
 		{
 			"class": "rs-test"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"password\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"password\" /></form>"
 	],
 	[
 		"radio",
 		{},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-radio\" type=\"radio\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-radio\" type=\"radio\" /></form>"
 	],
 	[
 		"radio",
 		{
 			"class": "rs-test"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"radio\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"radio\" /></form>"
 	],
 	[
 		"range",
 		{},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-range\" type=\"range\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-range\" type=\"range\" /></form>"
 	],
 	[
 		"range",
 		{
 			"class": "rs-test"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"range\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"range\" /></form>"
 	],
 	[
 		"search",
 		{},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-js-search rs-field-search\" type=\"search\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-js-search rs-field-search\" type=\"search\" /></form>"
 	],
 	[
 		"search",
 		{
 			"class": "rs-test"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"search\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"search\" /></form>"
 	],
 	[
 		"tel",
 		{},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-tel\" type=\"tel\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-tel\" type=\"tel\" /></form>"
 	],
 	[
 		"tel",
 		{
 			"class": "rs-test"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"tel\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"tel\" /></form>"
 	],
 	[
 		"time",
 		{},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-date\" type=\"time\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-date\" type=\"time\" /></form>"
 	],
 	[
 		"time",
 		{
 			"class": "rs-test"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"time\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"time\" /></form>"
 	],
 	[
 		"text",
 		{},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-text\" type=\"text\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-text\" type=\"text\" /></form>"
 	],
 	[
 		"text",
 		{
 			"class": "rs-test"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"text\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"text\" /></form>"
 	],
 	[
 		"url",
 		{},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-url\" type=\"url\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-url\" type=\"url\" /></form>"
 	],
 	[
 		"url",
 		{
 			"class": "rs-test"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"url\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"url\" /></form>"
 	],
 	[
 		"week",
 		{},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-date\" type=\"week\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-date\" type=\"week\" /></form>"
 	],
 	[
 		"week",
 		{
 			"class": "rs-test"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"week\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-test\" type=\"week\" /></form>"
 	],
 	[
 		"invalid",
 		{},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"></form>"
 	]
 ]

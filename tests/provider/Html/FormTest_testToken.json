@@ -3,12 +3,12 @@
 		{
 			"token": null
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"></form>"
 	],
 	[
 		{
 			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
 		},
-		"<form class=\"rs-js-validate-form rs-form-default\" method=\"post\"><input class=\"rs-field-hidden\" type=\"hidden\" name=\"token\" value=\"ffd845f78510f02580d329127bab3dd1aa7f4453\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-hidden\" type=\"hidden\" name=\"token\" value=\"ffd845f78510f02580d329127bab3dd1aa7f4453\" /></form>"
 	]
 ]

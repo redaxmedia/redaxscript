@@ -57,7 +57,7 @@ class LoginForm extends ViewAbstract
 		[
 			'form' =>
 			[
-				'class' => 'rs-js-validate-form rs-form-default rs-form-login'
+				'class' => 'rs-js-validate rs-form-default rs-form-login'
 			],
 			'button' =>
 			[

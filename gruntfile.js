@@ -138,7 +138,8 @@ module.exports = grunt =>
 		'babel:templateAdmin',
 		'babel:templateConsole',
 		'babel:templateInstall',
-		'babel:moduleFormValidator'
+		'babel:moduleFormValidator',
+		'babel:moduleTextareaResizer'
 	]);
 	grunt.registerTask('serve',
 	[

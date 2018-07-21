@@ -10,7 +10,7 @@ rs.templates.console.behavior.listen = config =>
 
 	form.addEventListener('submit', event =>
 	{
-		box.innerText += label.innerText + ' ' + field.value + CONFIG.eol;
+		box.innerHTML += label.innerText + ' ' + field.value + CONFIG.eol;
 		fetch(location.href,
 		{
 			method: 'POST',
@@ -25,7 +25,7 @@ rs.templates.console.behavior.listen = config =>
 		.then(response => response.text())
 		.then(response =>
 		{
-			box.innerText += response;
+			box.innerHTML += response;
 			window.scrollTo(0, document.body.scrollHeight);
 		});
 		form.reset();

@@ -96,7 +96,7 @@ class Form extends HtmlAbstract
 	[
 		'form' =>
 		[
-			'class' => 'rs-js-validate-form rs-form-default',
+			'class' => 'rs-js-validate rs-form-default',
 			'method' => 'post'
 		],
 		'legend' =>
@@ -113,7 +113,7 @@ class Form extends HtmlAbstract
 		],
 		'textarea' =>
 		[
-			'class' => 'rs-field-textarea',
+			'class' => 'rs-js-resize rs-field-textarea',
 			'cols' => 100,
 			'rows' => 5
 		],

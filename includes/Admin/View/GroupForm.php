@@ -48,7 +48,7 @@ class GroupForm extends ViewAbstract
 		[
 			'form' =>
 			[
-				'class' => 'rs-admin-js-validate-form rs-admin-fn-tab rs-admin-component-tab rs-admin-form-default'
+				'class' => 'rs-admin-js-validate rs-admin-fn-tab rs-admin-component-tab rs-admin-form-default'
 			],
 			'button' =>
 			[
@@ -125,7 +125,7 @@ class GroupForm extends ViewAbstract
 			])
 			->textarea(
 			[
-				'class' => 'rs-admin-js-textarea rs-admin-field-textarea rs-admin-field-small',
+				'class' => 'rs-admin-js-resize rs-admin-field-textarea rs-admin-field-small',
 				'id' => 'description',
 				'name' => 'description',
 				'rows' => 1,

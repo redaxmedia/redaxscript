@@ -44,7 +44,7 @@ class RecoverForm extends ViewAbstract
 		[
 			'form' =>
 			[
-				'class' => 'rs-js-validate-form rs-form-default rs-form-recover'
+				'class' => 'rs-js-validate rs-form-default rs-form-recover'
 			],
 			'button' =>
 			[
