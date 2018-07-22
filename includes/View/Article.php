@@ -113,11 +113,12 @@ class Article extends ViewAbstract
 	 * @since 4.0.0
 	 *
 	 * @param int $categoryId identifier of the category
+	 * @param int $articleId identifier of the article
 	 *
 	 * @return string
 	 */
 
-	public function render(int $categoryId = null) : string
+	public function render(int $categoryId = null, int $articleId = null) : string
 	{
 		$output = Module\Hook::trigger('articleStart');
 		$accessValidator = new Validator\Access();
@@ -154,7 +155,18 @@ class Article extends ViewAbstract
 
 		/* query articles */
 
-		$articles = $categoryId ? $articleModel->getByCategoryAndLanguage($categoryId, $language) : $articleModel->getByLanguage($language);
+		if ($articleId)
+		{
+			$articles = $articleModel->getByIdAndLanguage($articleId, $language);
+		}
+		else if ($categoryId)
+		{
+			$articles = $articleModel->getByCategoryAndLanguage($categoryId, $language);
+		}
+		else
+		{
+			$articles = $articleModel->getByLanguage();
+		}
 
 		/* process articles */
 

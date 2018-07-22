@@ -206,16 +206,17 @@ class Tag
 	 * @since 4.0.0
 	 *
 	 * @param int $categoryId identifier of the category
+	 * @param int $articleId identifier of the article
 	 * @param array $optionArray options of the content
 	 *
 	 * @return string|null
 	 */
 
-	public static function article(int $categoryId = null, array $optionArray = [])
+	public static function article(int $categoryId = null, int $articleId = null, array $optionArray = [])
 	{
 		$article = new View\Article(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		$article->init($optionArray);
-		return $article->render($categoryId);
+		return $article->render($categoryId, $articleId);
 	}
 
 	/**
