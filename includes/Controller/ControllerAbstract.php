@@ -84,7 +84,7 @@ abstract class ControllerAbstract implements ControllerInterface
 	{
 		return array_map(function($value)
 		{
-			return $value === 'select' || $value === '' ? null : $value;
+			return $value === 'select' || !strlen($value) ? null : $value;
 		}, $postArray);
 	}
 
