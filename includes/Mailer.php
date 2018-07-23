@@ -241,19 +241,15 @@ class Mailer
 	 * @return bool
 	 */
 
-	public function send()
+	public function send() : bool
 	{
-		$output = false;
-		if (function_exists('mail'))
+		foreach ($this->_toArray as $to)
 		{
-			foreach ($this->_toArray as $to)
+			if (!function_exists('mail') || !mail($to, $this->_subjectString, $this->_bodyString, $this->_headerString))
 			{
-				if ($to)
-				{
-					$output = mail($to, $this->_subjectString, $this->_bodyString, $this->_headerString);
-				}
-			}
+				return false;
+			};
 		}
-		return $output;
+		return true;
 	}
 }

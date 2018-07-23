@@ -57,26 +57,21 @@ class Directory extends File
 	 * clear the directory
 	 *
 	 * @since 3.2.0
-	 *
-	 * @return bool
 	 */
 
-	public function clearDirectory() : bool
+	public function clearDirectory()
 	{
-		return $this->_remove($this->_root);
+		$this->_remove($this->_root);
 	}
 
 	/**
 	 * remove the directory
 	 *
 	 * @param string $directory name of the directory
-	 *
-	 * @return bool
 	 */
 
-	protected function _remove(string $directory = null) : bool
+	protected function _remove(string $directory = null)
 	{
-		$output = false;
 		$iterator = $this->_scan($directory);
 
 		/* handle recursive */
@@ -91,8 +86,7 @@ class Directory extends File
 		foreach ($iterator as $item)
 		{
 			$path = $item->getPathName();
-			$output = $item->isDir() ? rmdir($path) : unlink($path);
+			$item->isDir() ? rmdir($path) : unlink($path);
 		}
-		return $output;
 	}
 }

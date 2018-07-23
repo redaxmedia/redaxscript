@@ -59,11 +59,11 @@ class Setting extends BaseModel\Setting
 
 		foreach ($settingArray as $key => $value)
 		{
-			return $this->query()
-				->where('name', $key)
-				->findOne()
-				->set('value', $value)
-				->save();
+			if (!$this->set($key, $value))
+			{
+				return false;
+			}
 		}
+		return true;
 	}
 }
