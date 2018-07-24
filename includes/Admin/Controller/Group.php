@@ -81,7 +81,6 @@ class Group extends ControllerAbstract
 			$updateArray =
 			[
 				'name' => $postArray['name'],
-				'alias' => $postArray['alias'],
 				'description' => $postArray['description'],
 				'categories' => $postArray['categories'],
 				'articles' => $postArray['articles'],
@@ -170,17 +169,20 @@ class Group extends ControllerAbstract
 		{
 			$validateArray[] = $this->_language->get('name_empty');
 		}
-		if (!$postArray['alias'])
+		if (!$postArray['id'])
 		{
-			$validateArray[] = $this->_language->get('alias_empty');
-		}
-		else if ($aliasValidator->validate($postArray['alias'], 'general'))
-		{
-			$validateArray[] = $this->_language->get('alias_incorrect');
-		}
-		else if ($groupModel->getByAlias($postArray['alias'])->id !== $groupModel->getById($postArray['id'])->id)
-		{
-			$validateArray[] = $this->_language->get('alias_exists');
+			if (!$postArray['alias'])
+			{
+				$validateArray[] = $this->_language->get('alias_empty');
+			}
+			else if ($aliasValidator->validate($postArray['alias'], 'general'))
+			{
+				$validateArray[] = $this->_language->get('alias_incorrect');
+			}
+			else if ($groupModel->getByAlias($postArray['alias'])->id !== $groupModel->getById($postArray['id'])->id)
+			{
+				$validateArray[] = $this->_language->get('alias_exists');
+			}
 		}
 		return $validateArray;
 	}

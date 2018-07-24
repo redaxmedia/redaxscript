@@ -156,17 +156,20 @@ class User extends ControllerAbstract
 		{
 			$validateArray[] = $this->_language->get('name_empty');
 		}
-		if (!$postArray['user'])
-		{
-			$validateArray[] = $this->_language->get('user_empty');
-		}
-		else if ($loginValidator->validate($postArray['user'], 'general'))
-		{
-			$validateArray[] = $this->_language->get('user_incorrect');
-		}
-		else if ($userModel->getByUser($postArray['user'])->id !== $userModel->getById($postArray['id'])->id)
-		{
-			$validateArray[] = $this->_language->get('user_exists');
+		if (!$postArray['id'])
+        {
+			if (!$postArray['user'])
+			{
+				$validateArray[] = $this->_language->get('user_empty');
+			}
+			else if ($loginValidator->validate($postArray['user']))
+			{
+				$validateArray[] = $this->_language->get('user_incorrect');
+			}
+			else if ($userModel->getByUser($postArray['user'])->id !== $userModel->getById($postArray['id'])->id)
+			{
+				$validateArray[] = $this->_language->get('user_exists');
+			}
 		}
 		if (!$postArray['password'])
 		{

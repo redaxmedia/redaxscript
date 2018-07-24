@@ -105,20 +105,27 @@ class GroupForm extends ViewAbstract
 				'required' => 'required',
 				'value' => $group->name
 			])
-			->append('</li><li>')
-			->label($this->_language->get('alias'),
-			[
-				'for' => 'alias'
-			])
-			->text(
-			[
-				'id' => 'alias',
-				'name' => 'alias',
-				'pattern' => '[a-zA-Z0-9-]+',
-				'required' => 'required',
-				'value' => $group->alias
-			])
-			->append('</li><li>')
+			->append('</li>');
+		if (!$group->id)
+        {
+        	$formElement
+				->append('<li>')
+				->label($this->_language->get('alias'),
+				[
+					'for' => 'alias'
+				])
+				->text(
+				[
+					'id' => 'alias',
+					'name' => 'alias',
+					'pattern' => '[a-zA-Z0-9-]+',
+					'required' => 'required',
+					'value' => $group->alias
+				])
+				->append('</li>');
+		}
+		$formElement
+			->append('<li>')
 			->label($this->_language->get('description'),
 			[
 				'for' => 'description'

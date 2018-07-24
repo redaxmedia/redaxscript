@@ -62,7 +62,6 @@ class User extends BaseModel\User
 			->set(
 			[
 				'name' => $updateArray['name'],
-				'user' => $updateArray['user'],
 				'description' => $updateArray['description'],
 				'password' => $updateArray['password'],
 				'email' => $updateArray['email'],

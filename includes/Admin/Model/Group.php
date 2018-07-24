@@ -67,7 +67,6 @@ class Group extends BaseModel\Group
 			->set(
 			[
 				'name' => $updateArray['name'],
-				'alias' => $updateArray['alias'],
 				'description' => $updateArray['description'],
 				'categories' => $updateArray['categories'],
 				'articles' => $updateArray['articles'],
