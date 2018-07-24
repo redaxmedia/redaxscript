@@ -1,10 +1,10 @@
 <?php
 return
 [
-	'dbType' => 'sqlite',
-	'dbHost' => 'test2.sqlite',
+	'dbType' => null,
+	'dbHost' => null,
 	'dbPrefix' => null,
 	'dbName' => null,
-	'dbUser' => 'test',
-	'dbPassword' => 'test'
+	'dbUser' => null,
+	'dbPassword' => null
 ];
