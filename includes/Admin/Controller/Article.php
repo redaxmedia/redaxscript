@@ -161,7 +161,7 @@ class Article extends ControllerAbstract
 			'status' => $specialFilter->sanitize($this->_request->getPost('status')),
 			'rank' => $specialFilter->sanitize($this->_request->getPost('rank')),
 			'access' => $specialFilter->sanitize($this->_request->getPost('access')),
-			'date' => $this->_request->getPost('date')
+			'date' => strtotime($this->_request->getPost('date'))
 		];
 	}
 

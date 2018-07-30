@@ -2,6 +2,7 @@
 namespace Redaxscript\Admin\View;
 
 use Redaxscript\Admin;
+use Redaxscript\Dater;
 use Redaxscript\Html;
 use Redaxscript\Module;
 
@@ -30,9 +31,11 @@ class ArticleForm extends ViewAbstract
 	public function render(int $articleId = null) : string
 	{
 		$output = Module\Hook::trigger('adminArticleFormStart');
+		$helperOption = new Helper\Option($this->_language);
 		$articleModel = new Admin\Model\Article();
 		$article = $articleModel->getById($articleId);
-		$helperOption = new Helper\Option($this->_language);
+		$dater = new Dater();
+		$dater->init($article->date);
 
 		/* html element */
 
@@ -350,7 +353,7 @@ class ArticleForm extends ViewAbstract
 			[
 				'id' => 'date',
 				'name' => 'date',
-				'value' => $article->date ? $article->date : null
+				'value' => $dater->formatField()
 			])
 			->append('</li></ul>')
 			->hidden(

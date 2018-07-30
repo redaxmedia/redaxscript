@@ -1,16 +1,16 @@
 CREATE TABLE IF NOT EXISTS /* %PREFIX% */extras (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	title varchar(255) DEFAULT NULL,
-	alias varchar(255) DEFAULT NULL,
-	author varchar(255) DEFAULT NULL,
-	text longtext DEFAULT NULL,
-	language char(2) DEFAULT NULL,
-	sibling int(10) DEFAULT NULL,
-	category int(10) DEFAULT NULL,
-	article int(10) DEFAULT NULL,
+	title varchar(255),
+	alias varchar(255),
+	author varchar(255),
+	text longtext,
+	language char(2),
+	sibling int(10),
+	category int(10),
+	article int(10),
 	headline int(1) DEFAULT 1,
 	status int(1) DEFAULT 1,
-	rank int(10) DEFAULT NULL,
-	access varchar(255) DEFAULT NULL,
-	date timestamp DEFAULT CURRENT_TIMESTAMP
+	rank int(10),
+	access varchar(255),
+	date int(15)
 );

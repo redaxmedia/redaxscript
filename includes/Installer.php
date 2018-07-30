@@ -145,6 +145,7 @@ class Installer
 
 	public function insertCategories(array $optionArray = [])
 	{
+		$now = $this->_registry->get('now');
 		Db::forTablePrefix('categories')
 			->create()
 			->set(
@@ -152,7 +153,8 @@ class Installer
 				'title' => 'Home',
 				'alias' => 'home',
 				'author' => $optionArray['adminUser'],
-				'rank' => 1
+				'rank' => 1,
+				'date' => $now
 			])
 			->save();
 	}
@@ -167,6 +169,7 @@ class Installer
 
 	public function insertArticles(array $optionArray = [])
 	{
+		$now = $this->_registry->get('now');
 		Db::forTablePrefix('articles')
 			->create()
 			->set(
@@ -177,7 +180,8 @@ class Installer
 				'text' => file_get_contents('database' . DIRECTORY_SEPARATOR . 'html' . DIRECTORY_SEPARATOR . 'articles' . DIRECTORY_SEPARATOR . 'welcome.phtml'),
 				'category' => 1,
 				'comments' => 1,
-				'rank' => 1
+				'rank' => 1,
+				'date' => $now
 			])
 			->save();
 	}
@@ -192,6 +196,7 @@ class Installer
 
 	public function insertExtras(array $optionArray = [])
 	{
+		$now = $this->_registry->get('now');
 		$extrasArray =
 		[
 			'categories' =>
@@ -248,7 +253,8 @@ class Installer
 					'category' => $value['category'],
 					'headline' => $value['headline'],
 					'status' => $value['status'],
-					'rank' => ++$extrasRank
+					'rank' => ++$extrasRank,
+					'date' => $now
 				])
 				->save();
 		}
@@ -264,6 +270,7 @@ class Installer
 
 	public function insertComments(array $optionArray = [])
 	{
+		$now = $this->_registry->get('now');
 		Db::forTablePrefix('comments')
 			->create()
 			->set(
@@ -272,7 +279,8 @@ class Installer
 				'email' => $optionArray['adminEmail'],
 				'text' => file_get_contents('database' . DIRECTORY_SEPARATOR . 'html' . DIRECTORY_SEPARATOR . 'comments' . DIRECTORY_SEPARATOR . 'hello.phtml'),
 				'article' => 1,
-				'rank' => 1
+				'rank' => 1,
+				'date' => $now
 			])
 			->save();
 	}
@@ -397,6 +405,7 @@ class Installer
 			'notification' => 0,
 			'charset' => 'utf-8',
 			'divider' => ' - ',
+			'zone' => 'Europe/Berlin',
 			'time' => 'H:i',
 			'date' => 'd.m.Y',
 			'homepage' => 0,

@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\FeedGenerator;
 
+use Redaxscript\Dater;
 use Redaxscript\Db;
 use Redaxscript\Header;
 use Redaxscript\Model;
@@ -67,9 +68,9 @@ class FeedGenerator extends Module\Module
 		/* query result */
 
 		$resultArray[$table] = Db::forTablePrefix($table)
-			->where('status', 1)
-			->whereNull('access')
 			->whereLanguageIs($this->_registry->get('language'))
+			->whereNull('access')
+			->where('status', 1)
 			->orderGlobal('rank')
 			->findMany();
 
@@ -89,6 +90,8 @@ class FeedGenerator extends Module\Module
 		$writer = new XMLWriter();
 		$contentModel = new Model\Content();
 		$settingModel = new Model\Setting();
+		$dater = new Dater();
+		$dater->init($this->_registry->get('now'));
 
 		/* prepare href */
 
@@ -113,7 +116,7 @@ class FeedGenerator extends Module\Module
 		$writer->endElement();
 		$writer->writeElement('id', $href);
 		$writer->writeElement('title', $settingModel->get('title'));
-		$writer->writeElement('updated', date('c', strtotime($this->_registry->get('now'))));
+		$writer->writeElement('updated', $dater->getDateTime()->format('c'));
 		$writer->startElement('author');
 		$writer->writeElement('name', $settingModel->get('author'));
 		$writer->endElement();
@@ -124,10 +127,11 @@ class FeedGenerator extends Module\Module
 		{
 			foreach ($result as $value)
 			{
+				$dater->init($value->date);
 				$writer->startElement('entry');
 				$writer->writeElement('id', $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $contentModel->getRouteByTableAndId($table, $value->id));
 				$writer->writeElement('title', $value->title);
-				$writer->writeElement('updated', date('c', strtotime($value->date)));
+				$writer->writeElement('updated', $dater->getDateTime()->format('c'));
 				$writer->writeElement('content', strip_tags($value->text));
 				$writer->endElement();
 			}

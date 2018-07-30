@@ -30,7 +30,17 @@ class CronjobTest extends TestCaseAbstract
 	public function setUp()
 	{
 		parent::setUp();
-		$this->createDatabase();
+		$optionArray =
+		[
+			'adminName' => 'Test',
+			'adminUser' => 'test',
+			'adminPassword' => 'test',
+			'adminEmail' => 'test@test.com'
+		];
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		$installer->insertSettings($optionArray);
 	}
 
 	/**

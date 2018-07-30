@@ -282,6 +282,19 @@ class SettingForm extends ViewAbstract
 				'value' => $settingModel->get('divider')
 			])
 			->append('</li><li>')
+			->label($this->_language->get('zone'),
+			[
+				'for' => 'zone'
+			])
+			->select($helperOption->getZoneArray(),
+			[
+				$settingModel->get('zone')
+			],
+			[
+				'id' => 'zone',
+				'name' => 'zone'
+			])
+			->append('</li><li>')
 			->label($this->_language->get('time'),
 			[
 				'for' => 'time'

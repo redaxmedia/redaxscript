@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Bootstrap;
 
+use Redaxscript\Dater;
 use Redaxscript\Model;
 use Redaxscript\Module;
 
@@ -24,15 +25,16 @@ class Cronjob extends BootstrapAbstract
 
 	protected function _autorun()
 	{
-		$this->_registry->set('now', date('Y-m-d H:i:s'));
+		$dater = new Dater();
+		$dater->init();
+		$this->_registry->set('now', $dater->getDateTime()->getTimeStamp());
 		$this->_registry->set('cronUpdate', false);
 
 		/* set the update */
 
 		if (!$this->_request->getSession('nextUpdate'))
 		{
-			$nextUpdate = date('Y-m-d H:i:s', strtotime('+1 minute'));
-			$this->_request->setSession('nextUpdate', $nextUpdate);
+			$this->_request->setSession('nextUpdate', $dater->getDateTime()->modify('+1 minute')->getTimeStamp());
 			$this->_registry->set('cronUpdate', true);
 		}
 

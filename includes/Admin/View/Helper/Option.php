@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Admin\View\Helper;
 
+use DateTimeZone;
 use Redaxscript\Db;
 use Redaxscript\Filesystem;
 use Redaxscript\Language;
@@ -92,6 +93,19 @@ class Option
 			$this->_language->get('follow_no') => 5,
 			$this->_language->get('none') => 0
 		];
+	}
+
+	/**
+	 * get the zone array
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return array
+	 */
+
+	public function getZoneArray() : array
+	{
+		return DateTimeZone::listIdentifiers();
 	}
 
 	/**

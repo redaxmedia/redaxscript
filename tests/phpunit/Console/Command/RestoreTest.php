@@ -42,6 +42,7 @@ class RestoreTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
+		$this->dropDatabase();
 		$this->_request->setServer('argv', null);
 	}
 

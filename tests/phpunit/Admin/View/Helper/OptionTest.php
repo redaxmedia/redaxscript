@@ -168,6 +168,27 @@ class OptionTest extends TestCaseAbstract
 	}
 
 	/**
+	 * testGetZoneArray
+	 *
+	 * @since 4.0.0
+	 */
+
+	public function testGetZoneArray()
+	{
+		/* setup */
+
+		$helperOption = new Helper\Option($this->_language);
+
+		/* actual */
+
+		$actualArray = $helperOption->getZoneArray();
+
+		/* compare */
+
+		$this->assertContains('UTC', $actualArray);
+	}
+
+	/**
 	 * testGetTimeArray
 	 *
 	 * @since 3.0.0

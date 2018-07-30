@@ -29,17 +29,7 @@ class User extends BaseModel\User
 	{
 		return $this->query()
 			->create()
-			->set(
-			[
-				'name' => $createArray['name'],
-				'user' => $createArray['user'],
-				'description' => $createArray['description'],
-				'password' => $createArray['password'],
-				'email' => $createArray['email'],
-				'language' => $createArray['language'],
-				'status' => $createArray['status'],
-				'groups' => $createArray['groups']
-			])
+			->set($createArray)
 			->save();
 	}
 
@@ -59,16 +49,7 @@ class User extends BaseModel\User
 		return $this->query()
 			->whereIdIs($userId)
 			->findOne()
-			->set(
-			[
-				'name' => $updateArray['name'],
-				'description' => $updateArray['description'],
-				'password' => $updateArray['password'],
-				'email' => $updateArray['email'],
-				'language' => $updateArray['language'],
-				'status' => $updateArray['status'],
-				'groups' => $updateArray['groups']
-			])
+			->set($updateArray)
 			->save();
 	}
 
@@ -77,13 +58,13 @@ class User extends BaseModel\User
 	 *
 	 * @since 4.0.0
 	 *
-	 * @param string $userId id of the user
-	 * @param string $date
+	 * @param int $userId id of the user
+	 * @param int $date timestamp of the date
 	 *
 	 * @return bool
 	 */
 
-	public function updateLastById(string $userId = null, string $date = null)
+	public function updateLastById(int $userId = null, int $date = null)
 	{
 		return $this->query()
 			->where('id', $userId)

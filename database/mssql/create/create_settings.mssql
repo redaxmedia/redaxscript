@@ -2,7 +2,7 @@ IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = '/* {c
 BEGIN
 	CREATE TABLE /* %PREFIX% */settings (
 		id int PRIMARY KEY IDENTITY,
-		name nvarchar(255) NULL,
-		value nvarchar(255) NULL
+		name nvarchar(255),
+		value nvarchar(255)
 	);
 END

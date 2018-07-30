@@ -31,13 +31,7 @@ class Module extends BaseModel\Module
 		return $this->query()
 			->whereIdIs($moduleId)
 			->findOne()
-			->set(
-			[
-				'name' => $updateArray['name'],
-				'description' => $updateArray['description'],
-				'status' => $updateArray['status'],
-				'access' => $updateArray['access']
-			])
+			->set($updateArray)
 			->save();
 	}
 

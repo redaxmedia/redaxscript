@@ -2,6 +2,7 @@
 namespace Redaxscript\Admin\View;
 
 use Redaxscript\Admin;
+use Redaxscript\Dater;
 use Redaxscript\Html;
 use Redaxscript\Module;
 
@@ -30,9 +31,11 @@ class ExtraForm extends ViewAbstract
 	public function render(int $extraId = null) : string
 	{
 		$output = Module\Hook::trigger('adminExtraFormStart');
+		$helperOption = new Helper\Option($this->_language);
 		$extraModel = new Admin\Model\Extra();
 		$extra = $extraModel->getById($extraId);
-		$helperOption = new Helper\Option($this->_language);
+		$dater = new Dater();
+		$dater->init($extra->date);
 
 		/* html element */
 
@@ -285,7 +288,7 @@ class ExtraForm extends ViewAbstract
 			[
 				'id' => 'date',
 				'name' => 'date',
-				'value' => $extra->date ? $extra->date : null
+				'value' => $dater->formatField()
 			])
 			->append('</li></ul>')
 			->hidden(

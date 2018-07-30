@@ -1,18 +1,38 @@
 [
 	[
 		{
+			"now": 1483261800,
 			"usersNew": false,
 			"usersEdit": false,
 			"usersDelete": false
 		},
-		"<h2 class=\"rs-admin-title-content\">Users</h2><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default\"><thead><tr><th>Name</th><th>User</th><th>Groups</th></tr></thead><tbody><tr><td>User One</td><td>user-one</td><td><a class=\"rs-admin-link-default\" href=\"admin/edit/groups/1\">Administrators</a></td></tr></tbody><tfoot><tr><td>Name</td><td>User</td><td>Groups</td></tr></tfoot></table></div>"
+		"<h2 class=\"rs-admin-title-content\">Users</h2><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default\"><thead><tr><th>Name</th><th>User</th><th>Session</th><th>Groups</th></tr></thead><tbody><tr><td>User One</td><td>user-one</td><td>Online</td><td><a class=\"rs-admin-link-default\" href=\"admin/edit/groups/1\">Administrators</a></td></tr></tbody><tfoot><tr><td>Name</td><td>User</td><td>Session</td><td>Groups</td></tr></tfoot></table></div>"
 	],
 	[
 		{
+			"now": 1483261860,
+			"usersNew": false,
+			"usersEdit": false,
+			"usersDelete": false
+		},
+		"<h2 class=\"rs-admin-title-content\">Users</h2><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default\"><thead><tr><th>Name</th><th>User</th><th>Session</th><th>Groups</th></tr></thead><tbody><tr><td>User One</td><td>user-one</td><td>Today at 10:10</td><td><a class=\"rs-admin-link-default\" href=\"admin/edit/groups/1\">Administrators</a></td></tr></tbody><tfoot><tr><td>Name</td><td>User</td><td>Session</td><td>Groups</td></tr></tfoot></table></div>"
+	],
+	[
+		{
+			"now": 1483348200,
+			"usersNew": false,
+			"usersEdit": false,
+			"usersDelete": false
+		},
+		"<h2 class=\"rs-admin-title-content\">Users</h2><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default\"><thead><tr><th>Name</th><th>User</th><th>Session</th><th>Groups</th></tr></thead><tbody><tr><td>User One</td><td>user-one</td><td>01.01.2017</td><td><a class=\"rs-admin-link-default\" href=\"admin/edit/groups/1\">Administrators</a></td></tr></tbody><tfoot><tr><td>Name</td><td>User</td><td>Session</td><td>Groups</td></tr></tfoot></table></div>"
+	],
+	[
+		{
+			"now": 1483261800,
 			"usersNew": true,
 			"usersEdit": false,
 			"usersDelete": false
 		},
-		"<h2 class=\"rs-admin-title-content\">Users</h2><a class=\"rs-admin-button-default rs-admin-button-create\" href=\"admin/new/users\">New user</a><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default\"><thead><tr><th>Name</th><th>User</th><th>Groups</th></tr></thead><tbody><tr><td>User One</td><td>user-one</td><td><a class=\"rs-admin-link-default\" href=\"admin/edit/groups/1\">Administrators</a></td></tr></tbody><tfoot><tr><td>Name</td><td>User</td><td>Groups</td></tr></tfoot></table></div>"
+		"<h2 class=\"rs-admin-title-content\">Users</h2><a class=\"rs-admin-button-default rs-admin-button-create\" href=\"admin/new/users\">New user</a><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default\"><thead><tr><th>Name</th><th>User</th><th>Session</th><th>Groups</th></tr></thead><tbody><tr><td>User One</td><td>user-one</td><td>Online</td><td><a class=\"rs-admin-link-default\" href=\"admin/edit/groups/1\">Administrators</a></td></tr></tbody><tfoot><tr><td>Name</td><td>User</td><td>Session</td><td>Groups</td></tr></tfoot></table></div>"
 	]
 ]

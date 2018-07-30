@@ -1,8 +1,8 @@
 <?php
 namespace Redaxscript\View\Helper;
 
+use Redaxscript\Dater;
 use Redaxscript\Html;
-use Redaxscript\Model;
 use Redaxscript\Module;
 use Redaxscript\View\ViewAbstract;
 
@@ -56,16 +56,17 @@ class Byline extends ViewAbstract
 	 *
 	 * @since 4.0.0
 	 *
-	 * @param string $date
+	 * @param int $date timestamp of the date
 	 * @param string $author name of the author
 	 *
 	 * @return string
 	 */
 
-	public function render(string $date = null, string $author = null) : string
+	public function render(int $date = null, string $author = null) : string
 	{
 		$output = Module\Hook::trigger('bylineStart');
-		$settingModel = new Model\Setting();
+		$dater = new Dater();
+		$dater->init($date);
 
 		/* html element */
 
@@ -110,7 +111,7 @@ class Byline extends ViewAbstract
 				$textElement
 					->copy()
 					->addClass($this->_optionArray['className']['text']['date'])
-					->text(date($settingModel->get('date'), strtotime($date))) .
+					->text($dater->formatDate()) .
 				$textElement
 					->copy()
 					->addClass($this->_optionArray['className']['text']['at'])
@@ -118,7 +119,7 @@ class Byline extends ViewAbstract
 				$textElement
 					->copy()
 					->addClass($this->_optionArray['className']['text']['time'])
-					->text(date($settingModel->get('time'), strtotime($date)))
+					->text($dater->formatTime())
 			);
 		}
 		$output .= $boxElement . Module\Hook::trigger('bylineEnd');

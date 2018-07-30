@@ -29,16 +29,25 @@ class UserTableTest extends TestCaseAbstract
 	public function setUp()
 	{
 		parent::setUp();
+		$optionArray =
+		[
+			'adminName' => 'Test',
+			'adminUser' => 'test',
+			'adminPassword' => 'test',
+			'adminEmail' => 'test@test.com'
+		];
 		$installer = $this->installerFactory();
 		$installer->init();
 		$installer->rawCreate();
+		$installer->insertSettings($optionArray);
 		Db::forTablePrefix('users')
 			->create()
 			->set(
 			[
 				'name' => 'User One',
 				'user' => 'user-one',
-				'groups' => '1'
+				'groups' => '1',
+				'last' => 1483261800
 			])
 			->save();
 		Db::forTablePrefix('groups')

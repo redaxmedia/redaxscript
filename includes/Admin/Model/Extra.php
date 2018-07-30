@@ -29,22 +29,7 @@ class Extra extends BaseModel\Extra
 	{
 		return $this->query()
 			->create()
-			->set(
-			[
-				'title' => $createArray['title'],
-				'alias' => $createArray['alias'],
-				'author' => $createArray['author'],
-				'text' => $createArray['text'],
-				'language' => $createArray['language'],
-				'sibling' => $createArray['sibling'],
-				'category' => $createArray['category'],
-				'article' => $createArray['article'],
-				'headline' => $createArray['headline'],
-				'status' => $createArray['status'],
-				'rank' => $createArray['rank'],
-				'access' => $createArray['access'],
-				'date' => $createArray['date']
-			])
+			->set($createArray)
 			->save();
 	}
 
@@ -64,22 +49,7 @@ class Extra extends BaseModel\Extra
 		return $this->query()
 			->whereIdIs($extraId)
 			->findOne()
-			->set(
-			[
-				'title' => $updateArray['title'],
-				'alias' => $updateArray['alias'],
-				'author' => $updateArray['author'],
-				'text' => $updateArray['text'],
-				'language' => $updateArray['language'],
-				'sibling' => $updateArray['sibling'],
-				'category' => $updateArray['category'],
-				'article' => $updateArray['article'],
-				'headline' => $updateArray['headline'],
-				'status' => $updateArray['status'],
-				'rank' => $updateArray['rank'],
-				'access' => $updateArray['access'],
-				'date' => $updateArray['date']
-			])
+			->set($updateArray)
 			->save();
 	}
 

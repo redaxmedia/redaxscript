@@ -29,23 +29,7 @@ class Category extends BaseModel\Category
 	{
 		return $this->query()
 			->create()
-			->set(
-			[
-				'title' => $createArray['title'],
-				'alias' => $createArray['alias'],
-				'author' => $createArray['author'],
-				'description' => $createArray['description'],
-				'keywords' => $createArray['keywords'],
-				'robots' => $createArray['robots'],
-				'language' => $createArray['language'],
-				'template' => $createArray['template'],
-				'sibling' => $createArray['sibling'],
-				'parent' => $createArray['parent'],
-				'status' => $createArray['status'],
-				'rank' => $createArray['rank'],
-				'access' => $createArray['access'],
-				'date' => $createArray['date']
-			])
+			->set($createArray)
 			->save();
 	}
 
@@ -65,23 +49,7 @@ class Category extends BaseModel\Category
 		return $this->query()
 			->whereIdIs($categoryId)
 			->findOne()
-			->set(
-			[
-				'title' => $updateArray['title'],
-				'alias' => $updateArray['alias'],
-				'author' => $updateArray['author'],
-				'description' => $updateArray['description'],
-				'keywords' => $updateArray['keywords'],
-				'robots' => $updateArray['robots'],
-				'language' => $updateArray['language'],
-				'template' => $updateArray['template'],
-				'sibling' => $updateArray['sibling'],
-				'parent' => $updateArray['parent'],
-				'status' => $updateArray['status'],
-				'rank' => $updateArray['rank'],
-				'access' => $updateArray['access'],
-				'date' => $updateArray['date']
-			])
+			->set($updateArray)
 			->save();
 	}
 

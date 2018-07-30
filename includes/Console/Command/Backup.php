@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Console\Command;
 
+use Redaxscript\Dater;
 use Redaxscript\Console\Parser;
 use Redaxscript\Filesystem;
 
@@ -81,14 +82,15 @@ class Backup extends CommandAbstract
 
 	protected function _database(array $optionArray = [])
 	{
+		$dater = new Dater();
+		$dater->init();
 		$dbType = $this->_config->get('dbType');
 		$dbHost = $this->_config->get('dbHost');
 		$dbName = $this->_config->get('dbName');
 		$dbUser = $this->_config->get('dbUser');
 		$dbPassword = $this->_config->get('dbPassword');
 		$directory = $this->prompt('directory', $optionArray);
-		$date = date('Y_m_d_H:i:s');
-		$file = $dbName ? $dbName . '_' . $date . '.' . $dbType : $date . '.' . $dbType;
+		$file = $dbName ? $dbName . '_' . $dater->formatDate() . '_' . $dater->formatTime() . '.' . $dbType : $dater->formatDate() . '_' . $dater->formatTime() . '.' . $dbType;
 
 		/* backup filesystem */
 

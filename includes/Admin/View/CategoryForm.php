@@ -2,6 +2,7 @@
 namespace Redaxscript\Admin\View;
 
 use Redaxscript\Admin;
+use Redaxscript\Dater;
 use Redaxscript\Html;
 use Redaxscript\Module;
 
@@ -30,9 +31,11 @@ class CategoryForm extends ViewAbstract
 	public function render(int $categoryId = null) : string
 	{
 		$output = Module\Hook::trigger('adminCategoryFormStart');
+		$helperOption = new Helper\Option($this->_language);
 		$categoryModel = new Admin\Model\Category();
 		$category = $categoryModel->getById($categoryId);
-		$helperOption = new Helper\Option($this->_language);
+		$dater = new Dater();
+		$dater->init($category->date);
 
 		/* html element */
 
@@ -302,7 +305,7 @@ class CategoryForm extends ViewAbstract
 			[
 				'id' => 'date',
 				'name' => 'date',
-				'value' => $category->date ? $category->date : null
+				'value' => $dater->formatField()
 			])
 			->append('</li></ul>')
 			->hidden(

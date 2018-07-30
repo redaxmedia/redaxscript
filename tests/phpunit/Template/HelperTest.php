@@ -70,7 +70,6 @@ class HelperTest extends TestCaseAbstract
 			->save();
 		$categoryThree = Db::forTablePrefix('categories')->create();
 		$categoryThree
-			->create()
 			->set(
 			[
 				'title' => 'Category Three',

@@ -73,7 +73,7 @@ class User extends ControllerAbstract
 
 		if ($action === 'update')
 		{
-			$updateArray =
+			$updateFullArray =
 			[
 				'name' => $postArray['name'],
 				'user' => $postArray['user'],
@@ -84,7 +84,16 @@ class User extends ControllerAbstract
 				'status' => $postArray['status'],
 				'groups' => $postArray['groups']
 			];
-			if ($this->_update($postArray['id'], $updateArray))
+			$updateLiteArray =
+			[
+				'name' => $postArray['name'],
+				'user' => $postArray['user'],
+				'description' => $postArray['description'],
+				'password' => $postArray['password'],
+				'email' => $postArray['email'],
+				'language' => $postArray['language']
+			];
+			if ($this->_update($postArray['id'], $postArray['id'] > 1 ? $updateFullArray : $updateLiteArray))
 			{
 				return $this->_success(
 				[

@@ -87,15 +87,7 @@ class Comment extends ContentAbstract
 	{
 		return $this->query()
 			->create()
-			->set(
-			[
-				'author' => $createArray['author'],
-				'email' => $createArray['email'],
-				'url' => $createArray['url'],
-				'text' => $createArray['text'],
-				'language' => $createArray['language'],
-				'article' => $createArray['article']
-			])
+			->set($createArray)
 			->save();
 	}
 }

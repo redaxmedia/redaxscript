@@ -29,19 +29,7 @@ class Comment extends BaseModel\Comment
 	{
 		return $this->query()
 			->create()
-			->set(
-			[
-				'author' => $createArray['author'],
-				'email' => $createArray['email'],
-				'url' => $createArray['url'],
-				'text' => $createArray['text'],
-				'language' => $createArray['language'],
-				'article' => $createArray['article'],
-				'status' => $createArray['status'],
-				'rank' => $createArray['rank'],
-				'access' => $createArray['access'],
-				'date' => $createArray['date']
-			])
+			->set($createArray)
 			->save();
 	}
 
@@ -61,19 +49,7 @@ class Comment extends BaseModel\Comment
 		return $this->query()
 			->whereIdIs($commentId)
 			->findOne()
-			->set(
-			[
-				'author' => $updateArray['author'],
-				'email' => $updateArray['email'],
-				'url' => $updateArray['url'],
-				'text' => $updateArray['text'],
-				'language' => $updateArray['language'],
-				'article' => $updateArray['article'],
-				'status' => $updateArray['status'],
-				'rank' => $updateArray['rank'],
-				'access' => $updateArray['access'],
-				'date' => $updateArray['date']
-			])
+			->set($updateArray)
 			->save();
 	}
 

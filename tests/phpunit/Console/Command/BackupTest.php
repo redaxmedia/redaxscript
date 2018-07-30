@@ -18,6 +18,7 @@ use org\bovigo\vfs\vfsStream as Stream;
  * @covers Redaxscript\Console\Command\CommandAbstract
  *
  * @requires OS Linux
+ * @requires PHP 7.2
  */
 
 class BackupTest extends TestCaseAbstract
@@ -31,6 +32,17 @@ class BackupTest extends TestCaseAbstract
 	public function setUp()
 	{
 		parent::setUp();
+		$optionArray =
+		[
+			'adminName' => 'Test',
+			'adminUser' => 'test',
+			'adminPassword' => 'test',
+			'adminEmail' => 'test@test.com'
+		];
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		$installer->insertSettings($optionArray);
 		Stream::setup('root', 0777, $this->getJSON('tests' . DIRECTORY_SEPARATOR . 'provider' . DIRECTORY_SEPARATOR . 'Console' . DIRECTORY_SEPARATOR . 'ConsoleTest_setUp.json'));
 	}
 
@@ -42,6 +54,7 @@ class BackupTest extends TestCaseAbstract
 
 	public function tearDown()
 	{
+		$this->dropDatabase();
 		$this->_request->setServer('argv', null);
 	}
 

@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS /* %PREFIX% */settings (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	name varchar(255) DEFAULT NULL,
-	value varchar(255) DEFAULT NULL
+	name varchar(255),
+	value varchar(255)
 );

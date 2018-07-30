@@ -1,13 +1,13 @@
 CREATE TABLE IF NOT EXISTS /* %PREFIX% */comments (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	author varchar(255) DEFAULT NULL,
-	email varchar(255) DEFAULT NULL,
-	url varchar(255) DEFAULT NULL,
-	text longtext DEFAULT NULL,
-	language char(2) DEFAULT NULL,
-	article int(10) DEFAULT NULL,
+	author varchar(255),
+	email varchar(255),
+	url varchar(255),
+	text longtext,
+	language char(2),
+	article int(10),
 	status int(1) DEFAULT 1,
-	rank int(10) DEFAULT NULL,
-	access varchar(255) DEFAULT NULL,
-	date timestamp DEFAULT CURRENT_TIMESTAMP
+	rank int(10),
+	access varchar(255),
+	date int(15)
 );

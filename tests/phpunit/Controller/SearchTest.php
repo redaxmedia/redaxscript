@@ -30,16 +30,24 @@ class SearchTest extends TestCaseAbstract
 	public function setUp()
 	{
 		parent::setUp();
+		$optionArray =
+		[
+			'adminName' => 'Test',
+			'adminUser' => 'test',
+			'adminPassword' => 'test',
+			'adminEmail' => 'test@test.com'
+		];
 		$installer = $this->installerFactory();
 		$installer->init();
 		$installer->rawCreate();
+		$installer->insertSettings($optionArray);
 		$categoryOne = Db::forTablePrefix('categories')->create();
 		$categoryOne
 			->set(
 			[
 				'title' => 'Category One',
 				'alias' => 'category-one',
-				'date' => '2016-01-01 00:00:00'
+				'date' => 1451602800
 			])
 			->save();
 		Db::forTablePrefix('categories')
@@ -48,7 +56,7 @@ class SearchTest extends TestCaseAbstract
 			[
 				'title' => 'Category Two',
 				'alias' => 'category-two',
-				'date' => '2016-02-01 00:00:00'
+				'date' => 1454281200
 			])
 			->save();
 		Db::forTablePrefix('categories')
@@ -58,7 +66,7 @@ class SearchTest extends TestCaseAbstract
 				'title' => 'Category Three',
 				'alias' => 'category-three',
 				'status' => 0,
-				'date' => '2016-03-01 00:00:00'
+				'date' => 1456786800
 			])
 			->save();
 		$articleOne = Db::forTablePrefix('articles')->create();
@@ -68,7 +76,7 @@ class SearchTest extends TestCaseAbstract
 				'title' => 'Article One',
 				'alias' => 'article-one',
 				'category' => $categoryOne->id,
-				'date' => '2016-01-01 00:00:00'
+				'date' => 1451602800
 			])
 			->save();
 		Db::forTablePrefix('articles')
@@ -78,7 +86,7 @@ class SearchTest extends TestCaseAbstract
 				'title' => 'Article Two',
 				'alias' => 'article-two',
 				'category' => $categoryOne->id,
-				'date' => '2016-02-01 00:00:00'
+				'date' => 1454281200
 			])
 			->save();
 		Db::forTablePrefix('articles')
@@ -88,7 +96,7 @@ class SearchTest extends TestCaseAbstract
 				'title' => 'Article Three',
 				'alias' => 'article-three',
 				'status' => 0,
-				'date' => '2016-03-01 00:00:00'
+				'date' => 1456786800
 			])
 			->save();
 		Db::forTablePrefix('comments')
@@ -98,7 +106,7 @@ class SearchTest extends TestCaseAbstract
 				'author' => 'Comment One',
 				'text' => 'Comment One',
 				'article' => $articleOne->id,
-				'date' => '2016-01-01 00:00:00'
+				'date' => 1451602800
 			])
 			->save();
 		Db::forTablePrefix('comments')
@@ -108,7 +116,7 @@ class SearchTest extends TestCaseAbstract
 				'author' => 'Comment Two',
 				'text' => 'Comment Two',
 				'article' => $articleOne->id,
-				'date' => '2016-02-01 00:00:00'
+				'date' => 1454281200
 			])
 			->save();
 		Db::forTablePrefix('comments')
@@ -119,7 +127,7 @@ class SearchTest extends TestCaseAbstract
 				'text' => 'Comment Three',
 				'article' => $articleOne->id,
 				'status' => 0,
-				'date' => '2016-03-01 00:00:00'
+				'date' => 1456786800
 			])
 			->save();
 	}

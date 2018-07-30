@@ -123,6 +123,7 @@ class Setting extends ControllerAbstract
 			'notification' => $specialFilter->sanitize($this->_request->getPost('notification')),
 			'charset' => $this->_request->getPost('charset'),
 			'divider' => $this->_request->getPost('divider'),
+			'zone' => $this->_request->getPost('zone'),
 			'time' => $this->_request->getPost('time'),
 			'date' => $this->_request->getPost('date'),
 			'homepage' => $specialFilter->sanitize($this->_request->getPost('homepage')),

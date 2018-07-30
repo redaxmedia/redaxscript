@@ -27,37 +27,7 @@ class Setting extends BaseModel\Setting
 
 	public function updateByArray(array $updateArray = []) : bool
 	{
-		$settingArray =
-		[
-			'language' => $updateArray['language'],
-			'template' => $updateArray['template'],
-			'title' => $updateArray['title'],
-			'author' => $updateArray['author'],
-			'copyright' => $updateArray['copyright'],
-			'description' => $updateArray['description'],
-			'keywords' => $updateArray['keywords'],
-			'robots' => $updateArray['robots'],
-			'email' => $updateArray['email'],
-			'subject' => $updateArray['subject'],
-			'notification' => $updateArray['notification'],
-			'charset' => $updateArray['charset'],
-			'divider' => $updateArray['divider'],
-			'time' => $updateArray['time'],
-			'date' => $updateArray['date'],
-			'homepage' => $updateArray['homepage'],
-			'limit' => $updateArray['limit'],
-			'order' => $updateArray['order'],
-			'pagination' => $updateArray['pagination'],
-			'moderation' => $updateArray['moderation'],
-			'registration' => $updateArray['registration'],
-			'verification' => $updateArray['verification'],
-			'recovery' => $updateArray['recovery'],
-			'captcha' => $updateArray['captcha']
-		];
-
-		/* process setting */
-
-		foreach ($settingArray as $key => $value)
+		foreach ($updateArray as $key => $value)
 		{
 			if (!$this->set($key, $value))
 			{

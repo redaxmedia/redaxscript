@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\SitemapXml;
 
+use Redaxscript\Dater;
 use Redaxscript\Db;
 use Redaxscript\Header;
 use Redaxscript\Model;
@@ -63,16 +64,16 @@ class SitemapXml extends Module\Module
 		/* query categories */
 
 		$categories = Db::forTablePrefix('categories')
-			->where('status', 1)
 			->whereNull('access')
+			->where('status', 1)
 			->orderByAsc('rank')
 			->findMany();
 
 		/* query articles */
 
 		$articles = Db::forTablePrefix('articles')
-			->where('status', 1)
 			->whereNull('access')
+			->where('status', 1)
 			->orderByAsc('rank')
 			->findMany();
 
@@ -94,6 +95,7 @@ class SitemapXml extends Module\Module
 		$categoryModel = new Model\Category();
 		$articleModel = new Model\Article();
 		$settingModel = new Model\Setting();
+		$dater = new Dater();
 
 		/* write xml */
 
@@ -111,9 +113,10 @@ class SitemapXml extends Module\Module
 
 		foreach ($categories as $value)
 		{
+			$dater->init($value->date);
 			$writer->startElement('url');
 			$writer->writeElement('loc', $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $categoryModel->getRouteById($value->id));
-			$writer->writeElement('lastmod', date('c', strtotime($value->date)));
+			$writer->writeElement('lastmod', $dater->getDateTime()->format('c'));
 			$writer->endElement();
 		}
 
@@ -121,9 +124,10 @@ class SitemapXml extends Module\Module
 
 		foreach ($articles as $value)
 		{
+			$dater->init($value->date);
 			$writer->startElement('url');
 			$writer->writeElement('loc', $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $articleModel->getRouteById($value->id));
-			$writer->writeElement('lastmod', date('c', strtotime($value->date)));
+			$writer->writeElement('lastmod', $dater->getDateTime()->format('c'));
 			$writer->endElement();
 		}
 		$writer->endElement();

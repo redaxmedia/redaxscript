@@ -52,8 +52,8 @@ class Category extends NavigationAbstract
 		/* query articles */
 
 		$query = Db::forTablePrefix('categories')
-			->where('status', 1)
 			->whereLanguageIs($this->_registry->get('language'))
+			->where('status', 1)
 			->limit($this->_optionArray['limit']);
 		$categories = $this->_optionArray['order'] === 'asc' ? $query->orderByAsc('rank')->findMany() : $query->orderByDesc('rank')->findMany();
 

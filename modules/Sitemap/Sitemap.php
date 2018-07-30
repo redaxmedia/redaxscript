@@ -126,9 +126,9 @@ class Sitemap extends Config
 	{
 		$categoryArray = [];
 		$articles = Db::forTablePrefix('articles')
-			->where('status', 1)
 			->whereLanguageIs($language)
 			->whereNull('access')
+			->where('status', 1)
 			->orderByDesc('category')
 			->findMany();
 

@@ -29,27 +29,7 @@ class Article extends BaseModel\Article
 	{
 		return $this->query()
 			->create()
-			->set(
-			[
-				'title' => $createArray['title'],
-				'alias' => $createArray['alias'],
-				'author' => $createArray['author'],
-				'description' => $createArray['description'],
-				'keywords' => $createArray['keywords'],
-				'robots' => $createArray['robots'],
-				'text' => $createArray['text'],
-				'language' => $createArray['language'],
-				'template' => $createArray['template'],
-				'sibling' => $createArray['sibling'],
-				'category' => $createArray['category'],
-				'headline' => $createArray['headline'],
-				'byline' => $createArray['byline'],
-				'comments' => $createArray['comments'],
-				'status' => $createArray['status'],
-				'rank' => $createArray['rank'],
-				'access' => $createArray['access'],
-				'date' => $createArray['date']
-			])
+			->set($createArray)
 			->save();
 	}
 
@@ -69,27 +49,7 @@ class Article extends BaseModel\Article
 		return $this->query()
 			->whereIdIs($articleId)
 			->findOne()
-			->set(
-			[
-				'title' => $updateArray['title'],
-				'alias' => $updateArray['alias'],
-				'author' => $updateArray['author'],
-				'description' => $updateArray['description'],
-				'keywords' => $updateArray['keywords'],
-				'robots' => $updateArray['robots'],
-				'text' => $updateArray['text'],
-				'language' => $updateArray['language'],
-				'template' => $updateArray['template'],
-				'sibling' => $updateArray['sibling'],
-				'category' => $updateArray['category'],
-				'headline' => $updateArray['headline'],
-				'byline' => $updateArray['byline'],
-				'comments' => $updateArray['comments'],
-				'status' => $updateArray['status'],
-				'rank' => $updateArray['rank'],
-				'access' => $updateArray['access'],
-				'date' => $updateArray['date']
-			])
+			->set($updateArray)
 			->save();
 	}
 

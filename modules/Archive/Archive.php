@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\Archive;
 
+use Redaxscript\Dater;
 use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Model;
@@ -46,6 +47,7 @@ class Archive extends Config
 		$outputItem = null;
 		$error = null;
 		$articleModel = new Model\Article();
+		$dater = new Dater();
 
 		/* html element */
 
@@ -79,8 +81,6 @@ class Archive extends Config
 		{
 			foreach ($monthArray as $key => $articles)
 			{
-				/* collect item output */
-
 				foreach ($articles as $value)
 				{
 					$outputItem .= $itemElement
@@ -94,9 +94,8 @@ class Archive extends Config
 
 				/* collect output */
 
-				$month = date('n', strtotime($key));
-				$year = date('Y', strtotime($key));
-				$output .= $titleElement->text($titleElement->text($this->_language->get($month - 1, '_month') . ' ' . $year));
+				$dater->init(strtotime($key));
+				$output .= $titleElement->text($this->_language->get($dater->getDateTime()->format('n') - 1, '_month') . ' ' . $dater->getDateTime()->format('Y'));
 				$output .= $listElement->html($outputItem);
 				$outputItem = null;
 			}
@@ -126,10 +125,11 @@ class Archive extends Config
 	protected function _getMonthArrayByLanguage(string $language = null) : array
 	{
 		$monthArray = [];
+		$dater = new Dater();
 		$articles = Db::forTablePrefix('articles')
-			->where('status', 1)
 			->whereLanguageIs($language)
 			->whereNull('access')
+			->where('status', 1)
 			->orderByDesc('date')
 			->findMany();
 
@@ -137,7 +137,8 @@ class Archive extends Config
 
 		foreach ($articles as $value)
 		{
-			$dateKey = date('Y-m', strtotime($value->date));
+			$dater->init($value->date);
+			$dateKey = $dater->getDateTime()->format('Y-m');
 			$monthArray[$dateKey][] = $value;
 		}
 		return $monthArray;

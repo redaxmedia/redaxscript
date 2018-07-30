@@ -2,17 +2,17 @@ IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = '/* {c
 BEGIN
 	CREATE TABLE /* %PREFIX% */groups (
 		id int PRIMARY KEY IDENTITY,
-		name nvarchar(255) NULL,
-		alias nvarchar(255) NULL,
-		description nvarchar(255) NULL,
-		categories nvarchar(255) NULL,
-		articles nvarchar(255) NULL,
-		extras nvarchar(255) NULL,
-		comments nvarchar(255) NULL,
-		groups nvarchar(255) NULL,
-		users nvarchar(255) NULL,
-		modules nvarchar(255) NULL,
-		settings int NULL,
+		name nvarchar(255),
+		alias nvarchar(255),
+		description nvarchar(255),
+		categories nvarchar(255),
+		articles nvarchar(255),
+		extras nvarchar(255),
+		comments nvarchar(255),
+		groups nvarchar(255),
+		users nvarchar(255),
+		modules nvarchar(255),
+		settings int,
 		filter int DEFAULT 1,
 		status int DEFAULT 1
 	);

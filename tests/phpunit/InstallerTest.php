@@ -81,7 +81,7 @@ class InstallerTest extends TestCaseAbstract
 		$this->assertEquals(1, $actualComments);
 		$this->assertEquals(2, $actualGroups);
 		$this->assertEquals(1, $actualUsers);
-		$this->assertEquals(25, $actualSettings);
+		$this->assertEquals(26, $actualSettings);
 		$this->assertEquals(4, $actualModules);
 	}
 

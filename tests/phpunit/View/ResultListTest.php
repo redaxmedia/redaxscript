@@ -48,7 +48,7 @@ class ResultListTest extends TestCaseAbstract
 			[
 				'title' => 'Category One',
 				'alias' => 'category-one',
-				'date' => '2017-01-01 00:00:00'
+				'date' => 1483225200
 			])
 			->save();
 		$articleOne = Db::forTablePrefix('articles')->create();
@@ -58,7 +58,7 @@ class ResultListTest extends TestCaseAbstract
 				'title' => 'Article One',
 				'alias' => 'article-one',
 				'category' => $categoryOne->id,
-				'date' => '2017-01-01 00:00:00'
+				'date' => 1483225200
 			])
 			->save();
 		Db::forTablePrefix('comments')
@@ -68,7 +68,7 @@ class ResultListTest extends TestCaseAbstract
 				'author' => 'Comment One',
 				'text' => 'Comment One',
 				'article' => $articleOne->id,
-				'date' => '2016-01-01 00:00:00'
+				'date' => 1451602800
 			])
 			->save();
 	}

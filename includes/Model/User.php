@@ -78,16 +78,7 @@ class User extends ModelAbstract
 	{
 		return $this->query()
 			->create()
-			->set(
-			[
-				'name' => $createArray['name'],
-				'user' => $createArray['user'],
-				'email' => $createArray['email'],
-				'password' => $createArray['password'],
-				'language' => $createArray['language'],
-				'groups' => $createArray['groups'],
-				'status' => $createArray['status']
-			])
+			->set($createArray)
 			->save();
 	}
 

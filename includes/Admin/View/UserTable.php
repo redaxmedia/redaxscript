@@ -2,6 +2,7 @@
 namespace Redaxscript\Admin\View;
 
 use Redaxscript\Admin;
+use Redaxscript\Dater;
 use Redaxscript\Html;
 use Redaxscript\Module;
 
@@ -80,6 +81,7 @@ class UserTable extends ViewAbstract
 		[
 			'name' => $this->_language->get('name'),
 			'user' => $this->_language->get('user'),
+			'session' => $this->_language->get('session'),
 			'groups' => $this->_language->get('groups')
 		];
 		$adminControl = new Helper\Control($this->_registry, $this->_language);
@@ -123,14 +125,14 @@ class UserTable extends ViewAbstract
 		{
 			foreach ($users as $key => $value)
 			{
-				$groupArray = array_map('intval', explode(',', $value->groups));
 				$outputBody .= $trElement
 					->copy()
 					->addClass(!$value->status ? 'rs-admin-is-disabled' : null)
 					->html(
 						$tdElement->copy()->html($value->name . $adminControl->render('users', $value->id, $value->alias, $value->status)) .
 						$tdElement->copy()->text($value->user) .
-						$tdElement->copy()->html($this->_renderGroup($groupArray))
+						$tdElement->copy()->text($this->_renderSession($value->last)) .
+						$tdElement->copy()->html($this->_renderGroup($value->groups))
 					);
 			}
 		}
@@ -162,19 +164,50 @@ class UserTable extends ViewAbstract
 	}
 
 	/**
-	 * render the group
+	 * render the session
 	 *
 	 * @since 4.0.0
 	 *
-	 * @param array $groupArray
+	 * @param string $last
 	 *
 	 * @return string
 	 */
 
-	protected function _renderGroup(array $groupArray = []) : string
+	protected function _renderSession(string $last = null) : string
+	{
+		$daterLast = new Dater();
+		$daterLast->init($last);
+		$daterNow = new Dater();
+		$daterNow->init($this->_registry->get('now'));
+
+		/* handle session */
+
+		if ($daterLast->getDateTime() > $daterNow->getDateTime()->modify('-1 minute'))
+		{
+			return $this->_language->get('online');
+		}
+		if ($daterLast->getDateTime() > $daterNow->getDateTime()->modify('+1 minute -1 day'))
+		{
+			return $this->_language->get('today') . ' ' . $this->_language->get('at') . ' ' . $daterLast->formatTime();
+		}
+		return $daterLast->formatDate();
+	}
+
+	/**
+	 * render the group
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param string groups
+	 *
+	 * @return string
+	 */
+
+	protected function _renderGroup(string $groups = null) : string
 	{
 		$output = null;
 		$groupModel = new Admin\Model\Group();
+		$groupArray = array_map('intval', explode(',', $groups));
 
 		/* html element */
 

@@ -1,11 +1,11 @@
 <?php
 namespace Redaxscript\Modules\DirectoryLister;
 
+use Redaxscript\Dater;
 use Redaxscript\Filesystem;
 use Redaxscript\Filter;
 use Redaxscript\Head;
 use Redaxscript\Html;
-use Redaxscript\Model;
 
 /**
  * list the files of a directory
@@ -184,7 +184,7 @@ class DirectoryLister extends Config
 	protected function _renderItem(string $directory = null, array $optionArray = []) : ?string
 	{
 		$outputItem = null;
-		$settingModel = new Model\Setting();
+		$dater = new Dater();
 
 		/* html element */
 
@@ -222,9 +222,9 @@ class DirectoryLister extends Config
 			$path = $directory . DIRECTORY_SEPARATOR . $value;
 			$fileExtension = pathinfo($path, PATHINFO_EXTENSION);
 			$text = $this->_replace($value, $fileExtension, $optionArray['replace']);
-			$textDate = date($settingModel->get('date'), filectime($path));
 			$isDir = is_dir($path);
 			$isFile = is_file($path) && is_array($this->_configArray['extension']) && array_key_exists($fileExtension, $this->_configArray['extension']);
+			$dater->init(filectime($path));
 
 			/* handle directory */
 
@@ -243,10 +243,7 @@ class DirectoryLister extends Config
 							->addClass($this->_configArray['className']['types']['directory'])
 							->text($text)
 					)
-					->append(
-						$textSizeElement
-							->copy()
-					);
+					->append($textSizeElement);
 			}
 
 			/* else handle file */
@@ -274,14 +271,14 @@ class DirectoryLister extends Config
 							->copy()
 							->attr('data-unit', $this->_configArray['size']['unit'])
 							->text($textSize)
-				);
+					);
 			}
 			if ($isDir || $isFile)
 			{
 				$outputItem .= $itemElement
 					->append($textDateElement
 						->copy()
-						->text($textDate)
+						->text($dater->formatDate())
 					);
 			}
 		}

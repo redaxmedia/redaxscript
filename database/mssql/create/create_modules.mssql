@@ -2,12 +2,12 @@ IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = '/* {c
 BEGIN
 	CREATE TABLE /* %PREFIX% */modules (
 		id int PRIMARY KEY IDENTITY,
-		name nvarchar(255) NULL,
-		alias nvarchar(255) NULL,
-		author nvarchar(255) NULL,
-		description nvarchar(255) NULL,
-		version nvarchar(255) NULL,
+		name nvarchar(255),
+		alias nvarchar(255),
+		author nvarchar(255),
+		description nvarchar(255),
+		version nvarchar(255),
 		status int DEFAULT 1,
-		access nvarchar(255) NULL
+		access nvarchar(255)
 	);
 END

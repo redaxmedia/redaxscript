@@ -2,6 +2,7 @@
 namespace Redaxscript\Admin\View;
 
 use Redaxscript\Admin;
+use Redaxscript\Dater;
 use Redaxscript\Html;
 use Redaxscript\Module;
 
@@ -30,9 +31,11 @@ class CommentForm extends ViewAbstract
 	public function render(int $commentId = null) : string
 	{
 		$output = Module\Hook::trigger('adminCommentFormStart');
+		$helperOption = new Helper\Option($this->_language);
 		$commentModel = new Admin\Model\Comment();
 		$comment = $commentModel->getById($commentId);
-		$helperOption = new Helper\Option($this->_language);
+		$dater = new Dater();
+		$dater->init($comment->date);
 
 		/* html element */
 
@@ -226,7 +229,7 @@ class CommentForm extends ViewAbstract
 			[
 				'id' => 'date',
 				'name' => 'date',
-				'value' => $comment->date ? $comment->date : null
+				'value' => $dater->formatField()
 			])
 			->append('</li></ul>')
 			->hidden(

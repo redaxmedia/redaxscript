@@ -64,8 +64,8 @@ abstract class ContentAbstract extends ModelAbstract
 	public function publishByDate(string $date = null) : int
 	{
 		return $this->query()
-			->where('status', 2)
 			->whereLt('date', $date)
+			->where('status', 2)
 			->findMany()
 			->set('status', 1)
 			->save()

@@ -78,7 +78,7 @@ class Group extends ControllerAbstract
 
 		if ($action === 'update')
 		{
-			$updateArray =
+			$updateFullArray =
 			[
 				'name' => $postArray['name'],
 				'description' => $postArray['description'],
@@ -93,7 +93,12 @@ class Group extends ControllerAbstract
 				'filter' => $postArray['filter'],
 				'status' => $postArray['status']
 			];
-			if ($this->_update($postArray['id'], $updateArray))
+			$updateLiteArray =
+			[
+				'name' => $postArray['name'],
+				'description' => $postArray['description']
+			];
+			if ($this->_update($postArray['id'], $postArray['id'] > 1 ? $updateFullArray : $updateLiteArray))
 			{
 				return $this->_success(
 				[

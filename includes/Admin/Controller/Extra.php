@@ -146,7 +146,7 @@ class Extra extends ControllerAbstract
 			'status' => $specialFilter->sanitize($this->_request->getPost('status')),
 			'rank' => $specialFilter->sanitize($this->_request->getPost('rank')),
 			'access' => $specialFilter->sanitize($this->_request->getPost('access')),
-			'date' => $this->_request->getPost('date')
+			'date' => strtotime($this->_request->getPost('date'))
 		];
 	}
 
@@ -180,7 +180,7 @@ class Extra extends ControllerAbstract
 		{
 			$validateArray[] = $this->_language->get('alias_incorrect');
 		}
-		else if ($extraModel->getByAlias($postArray['alias'])->id)
+		else if ($extraModel->getByAlias($postArray['alias'])->id !== $extraModel->getById($postArray['id'])->id)
 		{
 			$validateArray[] = $this->_language->get('alias_exists');
 		}

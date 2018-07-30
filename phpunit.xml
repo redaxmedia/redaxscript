@@ -178,6 +178,12 @@
 			<file>tests/phpunit/ConfigTest.php</file>
 		</testsuite>
 
+		<!-- dater -->
+
+		<testsuite name="dater">
+			<file>tests/phpunit/DaterTest.php</file>
+		</testsuite>
+
 		<!-- db -->
 
 		<testsuite name="db">

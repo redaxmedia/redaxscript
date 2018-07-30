@@ -61,24 +61,30 @@ class Group extends BaseModel\Group
 
 	public function updateByIdAndArray(int $groupId = null, array $updateArray = []) : bool
 	{
+		$liteArray =
+		[
+			'name' => $updateArray['name'],
+			'description' => $updateArray['description']
+		];
+		$fullArray =
+		[
+			'name' => $updateArray['name'],
+			'description' => $updateArray['description'],
+			'categories' => $updateArray['categories'],
+			'articles' => $updateArray['articles'],
+			'extras' => $updateArray['extras'],
+			'comments' => $updateArray['comments'],
+			'groups' => $updateArray['groups'],
+			'users' => $updateArray['users'],
+			'modules' => $updateArray['modules'],
+			'settings' => $updateArray['settings'],
+			'filter' => $updateArray['filter'],
+			'status' => $updateArray['status']
+		];
 		return $this->query()
 			->whereIdIs($groupId)
 			->findOne()
-			->set(
-			[
-				'name' => $updateArray['name'],
-				'description' => $updateArray['description'],
-				'categories' => $updateArray['categories'],
-				'articles' => $updateArray['articles'],
-				'extras' => $updateArray['extras'],
-				'comments' => $updateArray['comments'],
-				'groups' => $updateArray['groups'],
-				'users' => $updateArray['users'],
-				'modules' => $updateArray['modules'],
-				'settings' => $updateArray['settings'],
-				'filter' => $updateArray['filter'],
-				'status' => $updateArray['status']
-			])
+			->set($groupId > 1 ? $fullArray : $liteArray)
 			->save();
 	}
 

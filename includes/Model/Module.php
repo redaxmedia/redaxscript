@@ -35,15 +35,7 @@ class Module extends ModelAbstract
 	{
 		return $this->query()
 			->create()
-			->set(
-			[
-				'name' => $createArray['name'],
-				'alias' => $createArray['alias'],
-				'author' => $createArray['author'],
-				'description' => $createArray['description'],
-				'version' => $createArray['version'],
-				'access' => $createArray['access']
-			])
+			->set($createArray)
 			->save();
 	}
 

@@ -204,7 +204,11 @@ class Auth
 		if ($user->user && $user->password)
 		{
 			$groupArray = array_map('intval', explode(',', $user->groups));
-			$group = Db::forTablePrefix('groups')->whereIdIn($groupArray)->where('status', 1)->select($this->_typeArray)->findArray();
+			$group = Db::forTablePrefix('groups')
+				->whereIdIn($groupArray)
+				->where('status', 1)
+				->select($this->_typeArray)
+				->findArray();
 
 			/* set the filter */
 
