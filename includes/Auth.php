@@ -204,27 +204,30 @@ class Auth
 		if ($user->user && $user->password)
 		{
 			$groupArray = (array)json_decode($user->groups);
-			$group = Db::forTablePrefix('groups')
-				->whereIdIn($groupArray)
-				->where('status', 1)
-				->select($this->_typeArray)
-				->findArray();
-
-			/* set the filter */
-
-			$this->setPermission('filter',
-			[
-				1
-			]);
-
-			/* process groups */
-
-			foreach ($group as $value)
+			if ($groupArray)
 			{
-				foreach ($value as $keySub => $valueSub)
+				$groups = Db::forTablePrefix('groups')
+					->whereIdIn($groupArray)
+					->where('status', 1)
+					->select($this->_typeArray)
+					->findArray();
+
+				/* set the filter */
+
+				$this->setPermission('filter',
+				[
+					1
+				]);
+
+				/* process groups */
+
+				foreach ($groups as $value)
 				{
-					$valueArray = (array)json_decode($valueSub);
-					$this->setPermission($keySub, $valueArray);
+					foreach ($value as $keySub => $valueSub)
+					{
+						$valueArray = (array)json_decode($valueSub);
+						$this->setPermission($keySub, $valueArray);
+					}
 				}
 			}
 

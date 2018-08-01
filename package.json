@@ -15,12 +15,12 @@
 	},
 	"devDependencies":
 	{
-		"@babel/core": "7.0.0-beta.54",
-		"@babel/preset-env": "7.0.0-beta.54",
-		"autoprefixer": "9.0.0",
+		"@babel/core": "7.0.0-beta.55",
+		"@babel/preset-env": "7.0.0-beta.55",
+		"autoprefixer": "9.0.2",
 		"babel-preset-minify": "0.4.3",
 		"colorguard": "1.2.1",
-		"cssnano": "4.0.3",
+		"cssnano": "4.0.5",
 		"del-cli": "1.1.0",
 		"eslint-config-redaxmedia": "1.0.1",
 		"grunt": "1.0.3",
@@ -45,7 +45,7 @@
 		"load-grunt-tasks": "4.0.0",
 		"material-design-icons": "3.0.1",
 		"opn-cli": "3.1.0",
-		"postcss": "7.0.0",
+		"postcss": "7.0.2",
 		"postcss-color-function": "4.0.1",
 		"postcss-color-gray": "4.1.0",
 		"postcss-custom-media": "6.0.0",
@@ -56,7 +56,7 @@
 		"postcss-nesting": "6.0.0",
 		"postcss-reporter": "5.0.0",
 		"stylefmt": "6.0.2",
-		"stylelint": "9.3.0",
+		"stylelint": "9.4.0",
 		"stylelint-config-redaxmedia": "1.0.0"
 	},
 	"scripts":

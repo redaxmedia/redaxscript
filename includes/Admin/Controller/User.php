@@ -76,7 +76,6 @@ class User extends ControllerAbstract
 			$updateFullArray =
 			[
 				'name' => $postArray['name'],
-				'user' => $postArray['user'],
 				'description' => $postArray['description'],
 				'password' => $postArray['password'],
 				'email' => $postArray['email'],
@@ -87,7 +86,6 @@ class User extends ControllerAbstract
 			$updateLiteArray =
 			[
 				'name' => $postArray['name'],
-				'user' => $postArray['user'],
 				'description' => $postArray['description'],
 				'password' => $postArray['password'],
 				'email' => $postArray['email'],
