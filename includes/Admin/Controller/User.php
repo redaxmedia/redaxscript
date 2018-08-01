@@ -139,7 +139,7 @@ class User extends ControllerAbstract
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
 			'language' => $specialFilter->sanitize($this->_request->getPost('language')),
 			'status' => $specialFilter->sanitize($this->_request->getPost('status')),
-			'groups' => implode(', ', (array)$this->_request->getPost('groups'))
+			'groups' => json_encode($this->_request->getPost('groups'))
 		];
 	}
 

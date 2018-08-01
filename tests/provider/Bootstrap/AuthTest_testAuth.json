@@ -46,7 +46,7 @@
 			"myUser": "test",
 			"myEmail": "test@test.com",
 			"myLanguage": null,
-			"myGroups": "1",
+			"myGroups": "[1]",
 			"categoriesNew": true,
 			"categoriesEdit": true,
 			"categoriesDelete": true,

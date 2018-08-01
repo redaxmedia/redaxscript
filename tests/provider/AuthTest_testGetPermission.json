@@ -27,7 +27,7 @@
 			"modules": false,
 			"settings": false
 		},
-		"2"
+		"[2]"
 	],
 	[
 		"getPermissionNew",
@@ -42,7 +42,7 @@
 			"modules": false,
 			"settings": false
 		},
-		"1"
+		"[1]"
 	],
 	[
 		"getPermissionNew",
@@ -57,7 +57,7 @@
 			"modules": false,
 			"settings": false
 		},
-		"1, 2"
+		"[1,2]"
 	],
 	[
 		"getPermissionInstall",
@@ -87,7 +87,7 @@
 			"modules": false,
 			"settings": false
 		},
-		"2"
+		"[2]"
 	],
 	[
 		"getPermissionInstall",
@@ -102,7 +102,7 @@
 			"modules": true,
 			"settings": false
 		},
-		"1"
+		"[1]"
 	],
 	[
 		"getPermissionInstall",
@@ -117,7 +117,7 @@
 			"modules": true,
 			"settings": false
 		},
-		"1, 2"
+		"[1,2]"
 	],
 	[
 		"getPermissionEdit",
@@ -147,22 +147,7 @@
 			"modules": false,
 			"settings": false
 		},
-		"2"
-	],
-	[
-		"getPermissionEdit",
-		{
-			"invalid": null,
-			"categories": true,
-			"articles": true,
-			"extras": true,
-			"comments": true,
-			"groups": true,
-			"users": true,
-			"modules": true,
-			"settings": true
-		},
-		"1"
+		"[2]"
 	],
 	[
 		"getPermissionEdit",
@@ -177,7 +162,22 @@
 			"modules": true,
 			"settings": true
 		},
-		"1, 2"
+		"[1]"
+	],
+	[
+		"getPermissionEdit",
+		{
+			"invalid": null,
+			"categories": true,
+			"articles": true,
+			"extras": true,
+			"comments": true,
+			"groups": true,
+			"users": true,
+			"modules": true,
+			"settings": true
+		},
+		"[1,2]"
 	],
 	[
 		"getPermissionDelete",
@@ -207,7 +207,7 @@
 			"modules": false,
 			"settings": false
 		},
-		"2"
+		"[2]"
 	],
 	[
 		"getPermissionDelete",
@@ -222,7 +222,7 @@
 			"modules": false,
 			"settings": false
 		},
-		"1"
+		"[1]"
 	],
 	[
 		"getPermissionDelete",
@@ -237,7 +237,7 @@
 			"modules": false,
 			"settings": false
 		},
-		"1, 2"
+		"[1,2]"
 	],
 	[
 		"getPermissionUninstall",
@@ -267,7 +267,7 @@
 			"modules": false,
 			"settings": false
 		},
-		"2"
+		"[2]"
 	],
 	[
 		"getPermissionUninstall",
@@ -282,7 +282,7 @@
 			"modules": true,
 			"settings": false
 		},
-		"1"
+		"[1]"
 	],
 	[
 		"getPermissionUninstall",
@@ -297,6 +297,6 @@
 			"modules": true,
 			"settings": false
 		},
-		"1, 2"
+		"[1,2]"
 	]
 ]

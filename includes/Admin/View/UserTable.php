@@ -207,7 +207,7 @@ class UserTable extends ViewAbstract
 	{
 		$output = null;
 		$groupModel = new Admin\Model\Group();
-		$groupArray = array_map('intval', explode(',', $groups));
+		$groupArray = (array)json_decode($groups);
 
 		/* html element */
 

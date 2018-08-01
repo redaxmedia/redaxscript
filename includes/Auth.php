@@ -203,7 +203,7 @@ class Auth
 
 		if ($user->user && $user->password)
 		{
-			$groupArray = array_map('intval', explode(',', $user->groups));
+			$groupArray = (array)json_decode($user->groups);
 			$group = Db::forTablePrefix('groups')
 				->whereIdIn($groupArray)
 				->where('status', 1)
@@ -223,7 +223,7 @@ class Auth
 			{
 				foreach ($value as $keySub => $valueSub)
 				{
-					$valueArray = array_map('intval', explode(',', $valueSub));
+					$valueArray = (array)json_decode($valueSub);
 					$this->setPermission($keySub, $valueArray);
 				}
 			}

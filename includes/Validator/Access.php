@@ -20,15 +20,15 @@ class Access implements ValidatorInterface
 	 * @since 4.0.0
 	 *
 	 * @param string $access content related access
-	 * @param string|bool $groups groups of the user
+	 * @param string $groups groups of the user
 	 *
 	 * @return bool
 	 */
 
-	public function validate($access = null, $groups = null) : bool
+	public function validate(string $access = null, string $groups = null) : bool
 	{
-		$accessArray = explode(',', $access);
-		$groupArray = explode(',', $groups);
+		$accessArray = (array)json_decode($access);
+		$groupArray = (array)json_decode($groups);
 		return !$access || in_array(1, $groupArray) || array_intersect($accessArray, $groupArray);
 	}
 }

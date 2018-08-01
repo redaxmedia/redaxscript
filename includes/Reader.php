@@ -46,7 +46,7 @@ class Reader
 
 	public function getArray() : array
 	{
-		return json_decode(json_encode($this->_dataObject ? $this->_dataObject : []), true);
+		return json_decode(json_encode((array)$this->_dataObject), true);
 	}
 
 	/**

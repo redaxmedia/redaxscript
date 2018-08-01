@@ -114,11 +114,10 @@ class Cache extends CommandAbstract
 	{
 		$directory = $this->prompt('directory', $optionArray);
 		$extension = $this->prompt('extension', $optionArray);
-		$bundle = array_filter(explode(',', $optionArray['bundle']));
 		if (is_dir($directory))
 		{
 			$cacheFilesystem = new Filesystem\Cache();
-			return is_object($cacheFilesystem->init($directory, $extension)->clear($bundle));
+			return is_object($cacheFilesystem->init($directory, $extension)->clear($optionArray['bundle']));
 		}
 		return false;
 	}

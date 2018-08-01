@@ -241,7 +241,7 @@ class UserForm extends ViewAbstract
 						'for' => 'groups'
 					])
 					->select($helperOption->getAccessArray('groups'),
-					explode(',', $user->groups),
+					(array)json_decode($user->groups),
 					[
 						'id' => 'groups',
 						'name' => 'groups[]',

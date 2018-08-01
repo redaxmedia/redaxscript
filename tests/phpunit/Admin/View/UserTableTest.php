@@ -46,7 +46,7 @@ class UserTableTest extends TestCaseAbstract
 			[
 				'name' => 'User One',
 				'user' => 'user-one',
-				'groups' => '1',
+				'groups' => '[1]',
 				'last' => 1483261800
 			])
 			->save();
