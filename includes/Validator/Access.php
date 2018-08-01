@@ -27,8 +27,8 @@ class Access implements ValidatorInterface
 
 	public function validate($access = null, $groups = null) : bool
 	{
-		$accessArray = array_filter(explode(',', $access));
-		$groupArray = array_filter(explode(',', $groups));
+		$accessArray = explode(',', $access);
+		$groupArray = explode(',', $groups);
 		return !$access || in_array(1, $groupArray) || array_intersect($accessArray, $groupArray);
 	}
 }

@@ -30,7 +30,7 @@ class Email implements ValidatorInterface
 		if (filter_var($email, FILTER_VALIDATE_EMAIL))
 		{
 			$dnsValidator = new Dns();
-			$emailArray = array_filter(explode('@', $email));
+			$emailArray = explode('@', $email);
 			return $dns ? $dnsValidator->validate($emailArray[1], 'mx') : true;
 		}
 		return false;

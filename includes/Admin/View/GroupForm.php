@@ -162,9 +162,7 @@ class GroupForm extends ViewAbstract
 					'for' => 'categories'
 				])
 				->select($helperOption->getPermissionArray(),
-				[
-					$group->categories
-				],
+				explode(',', $group->categories),
 				[
 					'id' => 'categories',
 					'name' => 'categories[]',
@@ -177,9 +175,7 @@ class GroupForm extends ViewAbstract
 					'for' => 'articles'
 				])
 				->select($helperOption->getPermissionArray(),
-				[
-					$group->articles
-				],
+				explode(',', $group->articles),
 				[
 					'id' => 'articles',
 					'name' => 'articles[]',
@@ -192,9 +188,7 @@ class GroupForm extends ViewAbstract
 					'for' => 'extras'
 				])
 				->select($helperOption->getPermissionArray(),
-				[
-					$group->extras
-				],
+				explode(',', $group->extras),
 				[
 					'id' => 'extras',
 					'name' => 'extras[]',
@@ -207,9 +201,7 @@ class GroupForm extends ViewAbstract
 					'for' => 'comments'
 				])
 				->select($helperOption->getPermissionArray(),
-				[
-					$group->comments
-				],
+				explode(',', $group->comments),
 				[
 					'id' => 'comments',
 					'name' => 'comments[]',
@@ -222,9 +214,7 @@ class GroupForm extends ViewAbstract
 					'for' => 'groups'
 				])
 				->select($helperOption->getPermissionArray(),
-				[
-					$group->groups
-				],
+				explode(',', $group->groups),
 				[
 					'id' => 'groups',
 					'name' => 'groups[]',
@@ -237,9 +227,7 @@ class GroupForm extends ViewAbstract
 					'for' => 'users'
 				])
 				->select($helperOption->getPermissionArray(),
-				[
-					$group->users
-				],
+				explode(',', $group->users),
 				[
 					'id' => 'users',
 					'name' => 'users[]',
@@ -252,9 +240,7 @@ class GroupForm extends ViewAbstract
 					'for' => 'modules'
 				])
 				->select($helperOption->getPermissionArray('modules'),
-				[
-					$group->modules
-				],
+				explode(',', $group->modules),
 				[
 					'id' => 'modules',
 					'name' => 'modules[]',
