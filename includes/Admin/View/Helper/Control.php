@@ -120,21 +120,6 @@ class Control extends ViewAbstract
 				);
 		}
 
-		/* collect uninstall */
-
-		if ($this->_hasPermission($table, 'uninstall') && $this->_showAction($table, 'uninstall', $id))
-		{
-			$outputItem .= $itemElement
-				->copy()
-				->addClass('rs-admin-item-uninstall')
-				->html(
-					$linkElement
-						->copy()
-						->attr('href', $parameterRoute . 'admin/uninstall/' . $table . '/' . $alias . '/' . $token)
-						->text($this->_language->get('uninstall'))
-				);
-		}
-
 		/* collect edit */
 
 		if ($this->_hasPermission($table, 'edit') && $this->_showAction($table, 'edit', $id))
@@ -163,6 +148,21 @@ class Control extends ViewAbstract
 						->addClass('rs-admin-js-confirm')
 						->attr('href', $parameterRoute . 'admin/delete/' . $table . '/' . $id . '/' . $token)
 						->text($this->_language->get('delete'))
+				);
+		}
+
+		/* collect uninstall */
+
+		if ($this->_hasPermission($table, 'uninstall') && $this->_showAction($table, 'uninstall', $id))
+		{
+			$outputItem .= $itemElement
+				->copy()
+				->addClass('rs-admin-item-uninstall')
+				->html(
+					$linkElement
+						->copy()
+						->attr('href', $parameterRoute . 'admin/uninstall/' . $table . '/' . $alias . '/' . $token)
+						->text($this->_language->get('uninstall'))
 				);
 		}
 

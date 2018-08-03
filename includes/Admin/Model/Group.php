@@ -29,22 +29,7 @@ class Group extends BaseModel\Group
 	{
 		return $this->query()
 			->create()
-			->set(
-			[
-				'name' => $createArray['name'],
-				'alias' => $createArray['alias'],
-				'description' => $createArray['description'],
-				'categories' => $createArray['categories'],
-				'articles' => $createArray['articles'],
-				'extras' => $createArray['extras'],
-				'comments' => $createArray['comments'],
-				'groups' => $createArray['groups'],
-				'users' => $createArray['users'],
-				'modules' => $createArray['modules'],
-				'settings' => $createArray['settings'],
-				'filter' => $createArray['filter'],
-				'status' => $createArray['status']
-			])
+			->set($createArray)
 			->save();
 	}
 
@@ -61,30 +46,10 @@ class Group extends BaseModel\Group
 
 	public function updateByIdAndArray(int $groupId = null, array $updateArray = []) : bool
 	{
-		$liteArray =
-		[
-			'name' => $updateArray['name'],
-			'description' => $updateArray['description']
-		];
-		$fullArray =
-		[
-			'name' => $updateArray['name'],
-			'description' => $updateArray['description'],
-			'categories' => $updateArray['categories'],
-			'articles' => $updateArray['articles'],
-			'extras' => $updateArray['extras'],
-			'comments' => $updateArray['comments'],
-			'groups' => $updateArray['groups'],
-			'users' => $updateArray['users'],
-			'modules' => $updateArray['modules'],
-			'settings' => $updateArray['settings'],
-			'filter' => $updateArray['filter'],
-			'status' => $updateArray['status']
-		];
 		return $this->query()
 			->whereIdIs($groupId)
 			->findOne()
-			->set($groupId > 1 ? $fullArray : $liteArray)
+			->set($updateArray)
 			->save();
 	}
 

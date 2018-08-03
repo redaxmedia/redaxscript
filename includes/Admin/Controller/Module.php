@@ -53,7 +53,7 @@ class Module extends ControllerAbstract
 				'status' => $postArray['status'],
 				'access' => $postArray['access']
 			];
-			if ($this->_update($postArray['module'], $updateArray))
+			if ($this->_update($postArray['id'], $updateArray))
 			{
 				return $this->_success(
 				[
