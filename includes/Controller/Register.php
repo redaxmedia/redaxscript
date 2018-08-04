@@ -65,8 +65,7 @@ class Register extends ControllerAbstract
 		{
 			return $this->_error(
 			[
-				'route' => 'register',
-				'message' => $this->_language->get('something_wrong')
+				'route' => 'register'
 			]);
 		}
 

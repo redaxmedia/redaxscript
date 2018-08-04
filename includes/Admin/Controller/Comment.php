@@ -67,8 +67,7 @@ class Comment extends ControllerAbstract
 				return $this->_success(
 				[
 					'route' => 'admin/view/comments#' . $postArray['alias'],
-					'timeout' => 2,
-					'message' => $this->_language->get('operation_completed')
+					'timeout' => 2
 				]);
 			}
 		}
@@ -93,8 +92,7 @@ class Comment extends ControllerAbstract
 				return $this->_success(
 				[
 					'route' => 'admin/view/comments#' . $postArray['alias'],
-					'timeout' => 2,
-					'message' => $this->_language->get('operation_completed')
+					'timeout' => 2
 				]);
 			}
 		}
@@ -103,8 +101,7 @@ class Comment extends ControllerAbstract
 
 		return $this->_error(
 		[
-			'route' => $postArray['id'] ? 'admin/edit/comments/' . $postArray['id'] : 'admin/new/comments',
-			'message' => $this->_language->get('something_wrong')
+			'route' => $postArray['id'] ? 'admin/edit/comments/' . $postArray['id'] : 'admin/new/comments'
 		]);
 	}
 

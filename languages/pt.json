@@ -185,6 +185,7 @@
 	"password": "Senha",
 	"password_new": "Nova senha",
 	"password_confirm": "Confirmar senha",
+	"password_mismatch": "Password confirmation mismatch",
 	"password_incorrect": "Senha incorreta",
 	"password_empty": "Senha está vazia",
 	"password_reset": "Redefinir senha",

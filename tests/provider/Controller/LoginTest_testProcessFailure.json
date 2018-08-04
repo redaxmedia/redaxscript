@@ -10,6 +10,6 @@
 			"status": 1
 		},
 		"_login",
-		"<h2 class=\"rs-title-note rs-is-error\">An error occurred</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-error\">Something went wrong</div><a href=\"login\" class=\"rs-button-note rs-is-error\">Back</a>"
+		"<h2 class=\"rs-title-note rs-is-error\">Error</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-error\">Something went wrong</div><a href=\"login\" class=\"rs-button-note rs-is-error\">Back</a>"
 	]
 ]

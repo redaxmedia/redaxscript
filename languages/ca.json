@@ -185,6 +185,7 @@
 	"password": "Contrasenya",
 	"password_new": "Nova contrasenya",
 	"password_confirm": "Confirma la contrasenya",
+	"password_mismatch": "Password confirmation mismatch",
 	"password_incorrect": "La contrasenya és incorrecta",
 	"password_empty": "La contrasenya està buida",
 	"password_reset": "Reinicia la contrasenya",

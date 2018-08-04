@@ -2,6 +2,7 @@
 namespace Redaxscript\Admin\Controller;
 
 use Redaxscript\Admin;
+use Redaxscript\Hash;
 use Redaxscript\Filter;
 use Redaxscript\Validator;
 
@@ -31,6 +32,7 @@ class User extends ControllerAbstract
 	{
 		$postArray = $this->_normalizePost($this->_sanitizePost());
 		$validateArray = $this->_validatePost($postArray);
+		$passwordHash = new Hash();
 
 		/* validate post */
 
@@ -47,12 +49,13 @@ class User extends ControllerAbstract
 
 		if ($action === 'create')
 		{
+			$passwordHash->init($postArray['password']);
 			$createArray =
 			[
 				'name' => $postArray['name'],
 				'user' => $postArray['user'],
 				'description' => $postArray['description'],
-				'password' => $postArray['password'],
+				'password' => $passwordHash->getHash(),
 				'email' => $postArray['email'],
 				'language' => $postArray['language'],
 				'status' => $postArray['status'],
@@ -63,8 +66,7 @@ class User extends ControllerAbstract
 				return $this->_success(
 				[
 					'route' => 'admin/view/users#' . $postArray['user'],
-					'timeout' => 2,
-					'message' => $this->_language->get('operation_completed')
+					'timeout' => 2
 				]);
 			}
 		}
@@ -77,7 +79,6 @@ class User extends ControllerAbstract
 			[
 				'name' => $postArray['name'],
 				'description' => $postArray['description'],
-				'password' => $postArray['password'],
 				'email' => $postArray['email'],
 				'language' => $postArray['language'],
 				'status' => $postArray['status'],
@@ -87,17 +88,20 @@ class User extends ControllerAbstract
 			[
 				'name' => $postArray['name'],
 				'description' => $postArray['description'],
-				'password' => $postArray['password'],
 				'email' => $postArray['email'],
 				'language' => $postArray['language']
 			];
+			if ($postArray['password'])
+			{
+				$passwordHash->init($postArray['password']);
+				$updateFullArray['password'] = $updateLiteArray['password'] = $passwordHash->getHash();
+			}
 			if ($this->_update($postArray['id'], $postArray['id'] > 1 ? $updateFullArray : $updateLiteArray))
 			{
 				return $this->_success(
 				[
 					'route' => 'admin/view/users#' . $postArray['user'],
-					'timeout' => 2,
-					'message' => $this->_language->get('operation_completed')
+					'timeout' => 2
 				]);
 			}
 		}
@@ -106,8 +110,7 @@ class User extends ControllerAbstract
 
 		return $this->_error(
 		[
-			'route' => $postArray['id'] ? 'admin/edit/users/' . $postArray['id'] : 'admin/new/users',
-			'message' => $this->_language->get('something_wrong')
+			'route' => $postArray['id'] ? 'admin/edit/users/' . $postArray['id'] : 'admin/new/users'
 		]);
 	}
 
@@ -178,13 +181,28 @@ class User extends ControllerAbstract
 			{
 				$validateArray[] = $this->_language->get('user_exists');
 			}
-			if (!$postArray['password'] || !$postArray['password_confirm'])
+			if (!$postArray['password'])
 			{
 				$validateArray[] = $this->_language->get('password_empty');
 			}
 			else if (!$loginValidator->validate($postArray['password']))
 			{
 				$validateArray[] = $this->_language->get('password_incorrect');
+			}
+			else if ($postArray['password'] !== $postArray['password_confirm'])
+			{
+				$validateArray[] = $this->_language->get('password_mismatch');
+			}
+		}
+		else if ($postArray['password'])
+		{
+			if (!$loginValidator->validate($postArray['password']))
+			{
+				$validateArray[] = $this->_language->get('password_incorrect');
+			}
+			else if ($postArray['password'] !== $postArray['password_confirm'])
+			{
+				$validateArray[] = $this->_language->get('password_mismatch');
 			}
 		}
 		if (!$emailValidator->validate($postArray['email']))

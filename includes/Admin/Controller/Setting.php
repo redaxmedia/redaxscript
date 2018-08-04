@@ -78,8 +78,7 @@ class Setting extends ControllerAbstract
 				return $this->_success(
 				[
 					'route' => 'admin',
-					'timeout' => 2,
-					'message' => $this->_language->get('operation_completed')
+					'timeout' => 2
 				]);
 			}
 		}
@@ -88,8 +87,7 @@ class Setting extends ControllerAbstract
 
 		return $this->_error(
 		[
-			'route' => 'admin/edit/settings',
-			'message' => $this->_language->get('something_wrong')
+			'route' => 'admin/edit/settings'
 		]);
 	}
 

@@ -185,6 +185,7 @@
 	"password": "Contraseña",
 	"password_new": "Nueva contraseña",
 	"password_confirm": "Confirmar contraseña",
+	"password_mismatch": "Password confirmation mismatch",
 	"password_incorrect": "Contraseña incorrecta",
 	"password_empty": "Contraseña vacía",
 	"password_reset": "Cambiar contraseña",

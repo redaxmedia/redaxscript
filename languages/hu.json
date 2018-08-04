@@ -185,6 +185,7 @@
 	"password": "Jelszó",
 	"password_new": "Új jelszó",
 	"password_confirm": "Jelszó megerősítése",
+	"password_mismatch": "Password confirmation mismatch",
 	"password_incorrect": "Érvénytelen jelszó",
 	"password_empty": "Üres jelszó mező",
 	"password_reset": "Új jelszó",

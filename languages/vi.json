@@ -185,6 +185,7 @@
 	"password": "Mật khẩu",
 	"password_new": "Mật khẩu mới",
 	"password_confirm": "Xác nhận mật khẩu",
+	"password_mismatch": "Password confirmation mismatch",
 	"password_incorrect": "Mật khẩu không đúng",
 	"password_empty": "Mật khẩu rỗng",
 	"password_reset": "Lấy lại mật khẩu",

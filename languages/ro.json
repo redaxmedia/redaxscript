@@ -185,6 +185,7 @@
 	"password": "Parolă",
 	"password_new": "Parolă nouă",
 	"password_confirm": "Confirmare parolă",
+	"password_mismatch": "Password confirmation mismatch",
 	"password_incorrect": "Parola este incorectă",
 	"password_empty": "Parola este necompletată",
 	"password_reset": "Resetare parolă",

@@ -104,7 +104,7 @@ abstract class ControllerAbstract implements ControllerInterface
 		return $messenger
 			->setRoute($this->_language->get('continue'), $successArray['route'])
 			->doRedirect($successArray['timeout'])
-			->success($successArray['message'], $successArray['title'] ? $successArray['title'] : $this->_language->get('operation_completed'));
+			->success($successArray['message'] ? $successArray['message'] : $this->_language->get('operation_completed'), $successArray['title'] ? $successArray['title'] : $this->_language->get('success'));
 	}
 
 	/**
@@ -123,7 +123,7 @@ abstract class ControllerAbstract implements ControllerInterface
 		return $messenger
 			->setRoute($this->_language->get('continue'), $infoArray['route'])
 			->doRedirect($infoArray['timeout'])
-			->warning($infoArray['message'], $infoArray['title']);
+			->warning($infoArray['message'] ? $infoArray['message'] : $this->_language->get('something_wrong'), $infoArray['title'] ? $infoArray['title'] : $this->_language->get('info'));
 	}
 
 	/**
@@ -142,7 +142,7 @@ abstract class ControllerAbstract implements ControllerInterface
 		return $messenger
 			->setRoute($this->_language->get('continue'), $warningArray['route'])
 			->doRedirect($warningArray['timeout'])
-			->warning($warningArray['message'], $warningArray['title'] ? $warningArray['title'] : $this->_language->get('operation_completed'));
+			->warning($warningArray['message'] ? $warningArray['message'] : $this->_language->get('something_wrong'), $warningArray['title'] ? $warningArray['title'] : $this->_language->get('warning'));
 	}
 
 	/**
@@ -160,6 +160,6 @@ abstract class ControllerAbstract implements ControllerInterface
 		$messenger = new Messenger($this->_registry);
 		return $messenger
 			->setRoute($this->_language->get('back'), $errorArray['route'])
-			->error($errorArray['message'], $errorArray['title'] ? $errorArray['title'] : $this->_language->get('error_occurred'));
+			->error($errorArray['message'] ? $errorArray['message'] : $this->_language->get('something_wrong'), $errorArray['title'] ? $errorArray['title'] : $this->_language->get('error'));
 	}
 }

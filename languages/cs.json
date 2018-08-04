@@ -185,6 +185,7 @@
 	"password": "Heslo",
 	"password_new": "Nové heslo",
 	"password_confirm": "Potvrdit heslo",
+	"password_mismatch": "Password confirmation mismatch",
 	"password_incorrect": "Heslo je neplatné",
 	"password_empty": "Heslo je prázdné",
 	"password_reset": "Resetovat heslo",

@@ -185,6 +185,7 @@
 	"password": "Hasło",
 	"password_new": "Nowe hasło",
 	"password_confirm": "Potwierdź hasło",
+	"password_mismatch": "Password confirmation mismatch",
 	"password_incorrect": "Hasło jest niepoprawne",
 	"password_empty": "Hasło jest puste",
 	"password_reset": "Reset hasła",

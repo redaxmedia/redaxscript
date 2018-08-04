@@ -185,6 +185,7 @@
 	"password": "密码",
 	"password_new": "新密码",
 	"password_confirm": "确认密码",
+	"password_mismatch": "Password confirmation mismatch",
 	"password_incorrect": "密码错误",
 	"password_empty": "密码为空",
 	"password_reset": "重设密码",

@@ -185,6 +185,7 @@
 	"password": "Kata Sandi",
 	"password_new": "Kata Sandi Baru",
 	"password_confirm": "Konfirmasi Kata Sandi",
+	"password_mismatch": "Password confirmation mismatch",
 	"password_incorrect": "Kata Sandi Tidak Tepat",
 	"password_empty": "Kata Sandi kosong",
 	"password_reset": "Setel ulang kata sandi",

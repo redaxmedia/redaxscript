@@ -227,6 +227,7 @@
 	"password": "Password",
 	"password_new": "New password",
 	"password_confirm": "Confirm password",
+	"password_mismatch": "Password confirmation mismatch",
 	"password_incorrect": "Password is incorrect",
 	"password_empty": "Password is empty",
 	"password_reset": "Password reset",

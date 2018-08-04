@@ -185,6 +185,7 @@
 	"password": "პაროლი",
 	"password_new": "ახალი პაროლი",
 	"password_confirm": "გაიმეორე პაროლი",
+	"password_mismatch": "Password confirmation mismatch",
 	"password_incorrect": "პაროლი არასწორია",
 	"password_empty": "პაროლის ველი ცარიელია",
 	"password_reset": "პაროლის შეცვლა",

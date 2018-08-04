@@ -185,6 +185,7 @@
 	"password": "كلمة المرور",
 	"password_new": "كلمة المرور الجديدة",
 	"password_confirm": "تأكيد كلمة المرور",
+	"password_mismatch": "Password confirmation mismatch",
 	"password_incorrect": "كلمة المرور غير صحيحة",
 	"password_empty": "حقل كلمة المرور فارغ",
 	"password_reset": "اعادة تعيين كلمة المرور",

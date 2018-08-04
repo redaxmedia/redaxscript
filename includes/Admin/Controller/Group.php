@@ -68,8 +68,7 @@ class Group extends ControllerAbstract
 				return $this->_success(
 				[
 					'route' => 'admin/view/groups#' . $postArray['alias'],
-					'timeout' => 2,
-					'message' => $this->_language->get('operation_completed')
+					'timeout' => 2
 				]);
 			}
 		}
@@ -103,8 +102,7 @@ class Group extends ControllerAbstract
 				return $this->_success(
 				[
 					'route' => 'admin/view/groups#' . $postArray['alias'],
-					'timeout' => 2,
-					'message' => $this->_language->get('operation_completed')
+					'timeout' => 2
 				]);
 			}
 		}
@@ -113,8 +111,7 @@ class Group extends ControllerAbstract
 
 		return $this->_error(
 		[
-			'route' => $postArray['id'] ? 'admin/edit/groups/' . $postArray['id'] : 'admin/new/groups',
-			'message' => $this->_language->get('something_wrong')
+			'route' => $postArray['id'] ? 'admin/edit/groups/' . $postArray['id'] : 'admin/new/groups'
 		]);
 	}
 

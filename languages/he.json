@@ -185,6 +185,7 @@
 	"password": "סיסמה",
 	"password_new": "סיסמה חדשה",
 	"password_confirm": "אשר סיסמה",
+	"password_mismatch": "Password confirmation mismatch",
 	"password_incorrect": "סיסמה שגויה",
 	"password_empty": "סיסמה ריקה",
 	"password_reset": "אתחול סיסמה",

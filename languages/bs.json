@@ -185,6 +185,7 @@
 	"password": "Lozinka",
 	"password_new": "Nova lozinka",
 	"password_confirm": "Potvrdi lozinku",
+	"password_mismatch": "Password confirmation mismatch",
 	"password_incorrect": "Lozinka je pogrešna",
 	"password_empty": "Lozinka je prazna",
 	"password_reset": "Resetuj lozinku",

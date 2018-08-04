@@ -185,6 +185,7 @@
 	"password": "Wachtwoord",
 	"password_new": "Nieuw wachtwoord",
 	"password_confirm": "Bevestig wachtwoord",
+	"password_mismatch": "Password confirmation mismatch",
 	"password_incorrect": "Wachtwoord is onjuist",
 	"password_empty": "Wachtwoord is leeg",
 	"password_reset": "Wachtwoord gereset",

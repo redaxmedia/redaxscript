@@ -91,7 +91,7 @@ class Hash
 	/**
 	 * create a salted hash
 	 *
-	 * @since 2.6.0
+	 * @since 4.0.0
 	 */
 
 	protected function _create()

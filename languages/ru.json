@@ -185,6 +185,7 @@
 	"password": "Пароль",
 	"password_new": "Новый пароль",
 	"password_confirm": "Подтвердите пароль",
+	"password_mismatch": "Password confirmation mismatch",
 	"password_incorrect": "Неправильный пароль",
 	"password_empty": "Пароль пуст",
 	"password_reset": "Сброс пароля",

@@ -185,6 +185,7 @@
 	"password": "Kata Laluan",
 	"password_new": "Kata laluan baharu",
 	"password_confirm": "Pengesahan kata lalauan",
+	"password_mismatch": "Password confirmation mismatch",
 	"password_incorrect": "Kata laluan tidak tepat",
 	"password_empty": "Kata laluan tidak diisi",
 	"password_reset": "Tetapkan semula kata laluan",

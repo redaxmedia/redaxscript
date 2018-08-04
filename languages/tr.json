@@ -185,6 +185,7 @@
 	"password": "Sifre",
 	"password_new": "Yeni sifre",
 	"password_confirm": "Sifreyi yeniden yazin",
+	"password_mismatch": "Password confirmation mismatch",
 	"password_incorrect": "Hatali sifre",
 	"password_empty": "Sifre kismi bos",
 	"password_reset": "Sifreyi yenile",

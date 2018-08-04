@@ -185,6 +185,7 @@
 	"password": "パスワード",
 	"password_new": "新しいパスワード",
 	"password_confirm": "パスワード（確認）",
+	"password_mismatch": "Password confirmation mismatch",
 	"password_incorrect": "パスワードが正しくありません",
 	"password_empty": "パスワードが空です",
 	"password_reset": "パスワードをリセットする",

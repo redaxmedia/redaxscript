@@ -75,8 +75,7 @@ class Article extends ControllerAbstract
 				return $this->_success(
 				[
 					'route' => 'admin/view/articles#' . $postArray['alias'],
-					'timeout' => 2,
-					'message' => $this->_language->get('operation_completed')
+					'timeout' => 2
 				]);
 			}
 		}
@@ -111,8 +110,7 @@ class Article extends ControllerAbstract
 				return $this->_success(
 				[
 					'route' => 'admin/view/articles#' . $postArray['alias'],
-					'timeout' => 2,
-					'message' => $this->_language->get('operation_completed')
+					'timeout' => 2
 				]);
 			}
 		}
@@ -121,8 +119,7 @@ class Article extends ControllerAbstract
 
 		return $this->_error(
 		[
-			'route' => $postArray['id'] ? 'admin/edit/articles/' . $postArray['id'] : 'admin/new/articles',
-			'message' => $this->_language->get('something_wrong')
+			'route' => $postArray['id'] ? 'admin/edit/articles/' . $postArray['id'] : 'admin/new/articles'
 		]);
 	}
 

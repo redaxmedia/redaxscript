@@ -185,6 +185,7 @@
 	"password": "رمز عبور",
 	"password_new": "رمز عبور جدید",
 	"password_confirm": "تکرار رمز عبور",
+	"password_mismatch": "Password confirmation mismatch",
 	"password_incorrect": "رمز عبور صحیح نیست",
 	"password_empty": "رمز عبور خالی است",
 	"password_reset": "بازیابی رمز عبور",

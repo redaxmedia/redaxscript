@@ -63,8 +63,7 @@ class Comment extends ControllerAbstract
 		{
 			return $this->_error(
 			[
-				'route' => $route,
-				'message' => $this->_language->get('something_wrong')
+				'route' => $route
 			]);
 		}
 

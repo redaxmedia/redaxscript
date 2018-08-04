@@ -58,8 +58,7 @@ class Module extends ControllerAbstract
 				return $this->_success(
 				[
 					'route' => 'admin/view/modules#' . $postArray['alias'],
-					'timeout' => 2,
-					'message' => $this->_language->get('operation_completed')
+					'timeout' => 2
 				]);
 			}
 		}
@@ -68,8 +67,7 @@ class Module extends ControllerAbstract
 
 		return $this->_error(
 		[
-			'route' => $postArray['id'] ? 'admin/edit/modules/' . $postArray['id'] : 'admin/view/modules',
-			'message' => $this->_language->get('something_wrong')
+			'route' => $postArray['id'] ? 'admin/edit/modules/' . $postArray['id'] : 'admin/view/modules'
 		]);
 	}
 

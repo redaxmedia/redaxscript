@@ -40,8 +40,7 @@ class Common extends ControllerAbstract
 				return $this->_success(
 				[
 					'route' => 'admin/view/' . $table,
-					'timeout' => 0,
-					'message' => $this->_language->get('operation_completed')
+					'timeout' => 0
 				]);
 			};
 		}
@@ -55,8 +54,7 @@ class Common extends ControllerAbstract
 				return $this->_success(
 				[
 					'route' => 'admin/view/' . $table,
-					'timeout' => 0,
-					'message' => $this->_language->get('operation_completed')
+					'timeout' => 0
 				]);
 			};
 		}
@@ -70,8 +68,7 @@ class Common extends ControllerAbstract
 				return $this->_success(
 				[
 					'route' => 'admin/view/' . $table,
-					'timeout' => 0,
-					'message' => $this->_language->get('operation_completed')
+					'timeout' => 0
 				]);
 			};
 		}
@@ -85,8 +82,7 @@ class Common extends ControllerAbstract
 				return $this->_success(
 				[
 					'route' => 'admin/view/' . $table,
-					'timeout' => 0,
-					'message' => $this->_language->get('operation_completed')
+					'timeout' => 0
 				]);
 			};
 		}
@@ -100,8 +96,7 @@ class Common extends ControllerAbstract
 				return $this->_success(
 				[
 					'route' => 'admin/view/' . $table,
-					'timeout' => 0,
-					'message' => $this->_language->get('operation_completed')
+					'timeout' => 0
 				]);
 			};
 		}
@@ -115,8 +110,7 @@ class Common extends ControllerAbstract
 				return $this->_success(
 				[
 					'route' => 'admin/view/' . $table,
-					'timeout' => 0,
-					'message' => $this->_language->get('operation_completed')
+					'timeout' => 0
 				]);
 			};
 		}
@@ -130,8 +124,7 @@ class Common extends ControllerAbstract
 				return $this->_success(
 				[
 					'route' => 'admin/view/' . $table,
-					'timeout' => 0,
-					'message' => $this->_language->get('operation_completed')
+					'timeout' => 0
 				]);
 			};
 		}
@@ -140,8 +133,7 @@ class Common extends ControllerAbstract
 
 		return $this->_error(
 		[
-			'route' => 'admin',
-			'message' => $this->_language->get('something_wrong')
+			'route' => 'admin'
 		]);
 	}
 

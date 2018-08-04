@@ -185,6 +185,7 @@
 	"password": "Pašreizējā parole",
 	"password_new": "Jaunā parole",
 	"password_confirm": "Jaunā parole vēlreiz",
+	"password_mismatch": "Password confirmation mismatch",
 	"password_incorrect": "Nepareiza parole",
 	"password_empty": "Tukša parole",
 	"password_reset": "Atiestatīt paroli",

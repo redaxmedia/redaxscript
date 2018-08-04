@@ -185,6 +185,7 @@
 	"password": "Salasõna",
 	"password_new": "Uus salasõna",
 	"password_confirm": "Kinnita salasõna",
+	"password_mismatch": "Password confirmation mismatch",
 	"password_incorrect": "Salasõna on vale",
 	"password_empty": "Salasõna puudub",
 	"password_reset": "Taasta salasõna",

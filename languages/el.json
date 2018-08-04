@@ -185,6 +185,7 @@
 	"password": "Κωδικός",
 	"password_new": "Νέος κωδικός",
 	"password_confirm": "Επιβεβαίωση κωδικού",
+	"password_mismatch": "Password confirmation mismatch",
 	"password_incorrect": "Ο κωδικός είναι λάθος",
 	"password_empty": "Ο κωδικός είναι κενός",
 	"password_reset": "Επαναφορά κωδικού",

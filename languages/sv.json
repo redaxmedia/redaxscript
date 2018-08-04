@@ -185,6 +185,7 @@
 	"password": "Lösenord",
 	"password_new": "Nytt lösenord",
 	"password_confirm": "Bekräfta lösenord",
+	"password_mismatch": "Password confirmation mismatch",
 	"password_incorrect": "Lösenordet är felaktigt",
 	"password_empty": "Lösenordet är tomt",
 	"password_reset": "Återställ lösenord",

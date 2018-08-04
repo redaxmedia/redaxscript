@@ -59,8 +59,7 @@ class Reset extends ControllerAbstract
 		{
 			return $this->_error(
 			[
-				'route' => 'login/recover',
-				'message' => $this->_language->get('something_wrong')
+				'route' => 'login/recover'
 			]);
 		}
 

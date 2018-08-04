@@ -46,8 +46,7 @@ class Logout extends ControllerAbstract
 
 		return $this->_error(
 		[
-			'route' => 'login',
-			'message' => $this->_language->get('something_wrong')
+			'route' => 'login'
 		]);
 	}
 }

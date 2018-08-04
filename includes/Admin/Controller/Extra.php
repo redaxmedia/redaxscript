@@ -70,8 +70,7 @@ class Extra extends ControllerAbstract
 				return $this->_success(
 				[
 					'route' => 'admin/view/extras#' . $postArray['alias'],
-					'timeout' => 2,
-					'message' => $this->_language->get('operation_completed')
+					'timeout' => 2
 				]);
 			}
 		}
@@ -101,8 +100,7 @@ class Extra extends ControllerAbstract
 				return $this->_success(
 				[
 					'route' => 'admin/view/extras#' . $postArray['alias'],
-					'timeout' => 2,
-					'message' => $this->_language->get('operation_completed')
+					'timeout' => 2
 				]);
 			}
 		}
@@ -111,8 +109,7 @@ class Extra extends ControllerAbstract
 
 		return $this->_error(
 		[
-			'route' => $postArray['id'] ? 'admin/edit/extras/' . $postArray['id'] : 'admin/new/extras',
-			'message' => $this->_language->get('something_wrong')
+			'route' => $postArray['id'] ? 'admin/edit/extras/' . $postArray['id'] : 'admin/new/extras'
 		]);
 	}
 
