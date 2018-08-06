@@ -6,7 +6,7 @@
 			"modulesUninstall": false
 		},
 		{
-			"start": "<h2 class=\"rs-admin-title-content\">Modules</h2><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default\"><thead><tr><th>Name</th><th>Alias</th><th>Version</th></tr></thead><tbody><tr><td>Test Dummy</td><td>TestDummy</td><td>4.0.0</td></tr>",
+			"start": "<h2 class=\"rs-admin-title-content\">Modules</h2><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default\"><thead><tr><th>Name</th><th>Alias</th><th>Version</th></tr></thead><tbody><tr id=\"row-1\"><td>Test Dummy</td><td>TestDummy</td><td>4.0.0</td></tr>",
 			"end": "</tbody><tfoot><tr><td>Name</td><td>Alias</td><td>Version</td></tr></tfoot></table></div>"
 		}
 	]
