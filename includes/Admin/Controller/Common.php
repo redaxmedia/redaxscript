@@ -39,7 +39,7 @@ class Common extends ControllerAbstract
 			{
 				return $this->_success(
 				[
-					'route' => 'admin/view/' . $table,
+					'route' => $this->_getRoute($table, $id),
 					'timeout' => 0
 				]);
 			};
@@ -53,7 +53,7 @@ class Common extends ControllerAbstract
 			{
 				return $this->_success(
 				[
-					'route' => 'admin/view/' . $table,
+					'route' => $this->_getRoute($table, $id),
 					'timeout' => 0
 				]);
 			};
@@ -67,7 +67,7 @@ class Common extends ControllerAbstract
 			{
 				return $this->_success(
 				[
-					'route' => 'admin/view/' . $table,
+					'route' => $this->_getRoute($table, $id),
 					'timeout' => 0
 				]);
 			};
@@ -81,7 +81,7 @@ class Common extends ControllerAbstract
 			{
 				return $this->_success(
 				[
-					'route' => 'admin/view/' . $table,
+					'route' => $this->_getRoute($table, $id),
 					'timeout' => 0
 				]);
 			};
@@ -95,7 +95,7 @@ class Common extends ControllerAbstract
 			{
 				return $this->_success(
 				[
-					'route' => 'admin/view/' . $table,
+					'route' => $this->_getRoute($table),
 					'timeout' => 0
 				]);
 			};
@@ -109,7 +109,7 @@ class Common extends ControllerAbstract
 			{
 				return $this->_success(
 				[
-					'route' => 'admin/view/' . $table,
+					'route' => $this->_getRoute($table),
 					'timeout' => 0
 				]);
 			};
@@ -123,7 +123,7 @@ class Common extends ControllerAbstract
 			{
 				return $this->_success(
 				[
-					'route' => 'admin/view/' . $table,
+					'route' => $this->_getRoute($table, $id),
 					'timeout' => 0
 				]);
 			};
@@ -133,7 +133,7 @@ class Common extends ControllerAbstract
 
 		return $this->_error(
 		[
-			'route' => 'admin'
+			'route' => $this->_getRoute($table, $id)
 		]);
 	}
 
@@ -359,5 +359,32 @@ class Common extends ControllerAbstract
 			return $userModel->deleteById($id);
 		}
 		return false;
+	}
+
+	/**
+	 * get route
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param string $table name of the table
+	 * @param int $id identifier of the item
+	 *
+	 * @return string
+	 */
+
+	public function _getRoute(string $table = null, int $id = null) : string
+	{
+		if ($this->_registry->get($table . 'Edit'))
+		{
+			if ($id)
+			{
+				return 'admin/view/' . $table . '#row-' . $id;
+			}
+			if ($table)
+			{
+				return 'admin/view/' . $table;
+			}
+		}
+		return 'admin';
 	}
 }

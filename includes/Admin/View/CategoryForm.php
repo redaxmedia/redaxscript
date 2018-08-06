@@ -284,9 +284,7 @@ class CategoryForm extends ViewAbstract
 					'for' => 'access'
 				])
 				->select($helperOption->getAccessArray('groups'),
-				[
-					$category->access
-				],
+				(array)json_decode($category->access),
 				[
 					'id' => 'access',
 					'name' => 'access[]',

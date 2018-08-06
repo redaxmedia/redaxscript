@@ -267,9 +267,7 @@ class ExtraForm extends ViewAbstract
 					'for' => 'access'
 				])
 				->select($helperOption->getAccessArray('groups'),
-				[
-					$extra->access
-				],
+				(array)json_decode($extra->access),
 				[
 					'id' => 'access',
 					'name' => 'access[]',

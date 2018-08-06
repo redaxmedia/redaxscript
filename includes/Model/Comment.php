@@ -78,7 +78,7 @@ class Comment extends ContentAbstract
 	 *
 	 * @since 3.3.0
 	 *
-	 * @param array $createArray
+	 * @param array $createArray array of the create
 	 *
 	 * @return bool
 	 */

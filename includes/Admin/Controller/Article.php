@@ -40,7 +40,7 @@ class Article extends ControllerAbstract
 		{
 			return $this->_error(
 			[
-				'route' => $postArray['id'] ? 'admin/edit/articles/' . $postArray['id'] : 'admin/new/articles',
+				'route' => $this->_getErrorRoute($postArray),
 				'message' => $validateArray
 			]);
 		}
@@ -74,7 +74,7 @@ class Article extends ControllerAbstract
 			{
 				return $this->_success(
 				[
-					'route' => 'admin/view/articles#' . $postArray['alias'],
+					'route' => $this->_getSuccessRoute($postArray),
 					'timeout' => 2
 				]);
 			}
@@ -109,7 +109,7 @@ class Article extends ControllerAbstract
 			{
 				return $this->_success(
 				[
-					'route' => 'admin/view/articles#' . $postArray['alias'],
+					'route' => $this->_getSuccessRoute($postArray),
 					'timeout' => 2
 				]);
 			}
@@ -119,7 +119,7 @@ class Article extends ControllerAbstract
 
 		return $this->_error(
 		[
-			'route' => $postArray['id'] ? 'admin/edit/articles/' . $postArray['id'] : 'admin/new/articles'
+			'route' => $this->_getErrorRoute($postArray)
 		]);
 	}
 
@@ -157,7 +157,7 @@ class Article extends ControllerAbstract
 			'comments' => $specialFilter->sanitize($this->_request->getPost('comments')),
 			'status' => $specialFilter->sanitize($this->_request->getPost('status')),
 			'rank' => $specialFilter->sanitize($this->_request->getPost('rank')),
-			'access' => $specialFilter->sanitize($this->_request->getPost('access')),
+			'access' => json_encode($this->_request->getPost('access')),
 			'date' => strtotime($this->_request->getPost('date'))
 		];
 	}
@@ -226,7 +226,7 @@ class Article extends ControllerAbstract
 	 * @since 4.0.0
 	 *
 	 * @param int $articleId identifier of the article
-	 * @param array $updateArray
+	 * @param array $updateArray array of the update
 	 *
 	 * @return bool
 	 */
@@ -235,5 +235,52 @@ class Article extends ControllerAbstract
 	{
 		$articleModel = new Admin\Model\Article();
 		return $articleModel->updateByIdAndArray($articleId, $updateArray);
+	}
+
+	/**
+	 * get success route
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param array $postArray array of the post
+	 *
+	 * @return string
+	 */
+
+	protected function _getSuccessRoute(array $postArray = []) : string
+	{
+		if ($this->_registry->get('articlesEdit') && $postArray['id'])
+		{
+			return 'admin/view/articles#row-' . $postArray['id'];
+		}
+		if ($this->_registry->get('articlesEdit') && $postArray['alias'])
+		{
+			$articleModel = new Admin\Model\Article();
+			return 'admin/view/articles#row-' . $articleModel->getByAlias($postArray['alias'])->id;
+		}
+		return 'admin';
+	}
+
+	/**
+	 * get error route
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param array $postArray array of the post
+	 *
+	 * @return string
+	 */
+
+	protected function _getErrorRoute(array $postArray = []) : string
+	{
+		if ($this->_registry->get('articlesEdit') && $postArray['id'])
+		{
+			return 'admin/edit/articles/' . $postArray['id'];
+		}
+		if ($this->_registry->get('articlesNew'))
+		{
+			return 'admin/new/articles';
+		}
+		return 'admin';
 	}
 }

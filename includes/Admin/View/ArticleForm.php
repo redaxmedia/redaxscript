@@ -332,9 +332,7 @@ class ArticleForm extends ViewAbstract
 					'for' => 'access'
 				])
 				->select($helperOption->getAccessArray('groups'),
-				[
-					$article->access
-				],
+				(array)json_decode($article->access),
 				[
 					'id' => 'access',
 					'name' => 'access[]',

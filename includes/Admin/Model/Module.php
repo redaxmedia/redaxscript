@@ -21,7 +21,7 @@ class Module extends BaseModel\Module
 	 * @since 4.0.0
 	 *
 	 * @param int $moduleId identifier of the module
-	 * @param array $updateArray
+	 * @param array $updateArray array of the update
 	 *
 	 * @return bool
 	 */

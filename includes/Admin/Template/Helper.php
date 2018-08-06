@@ -4,7 +4,7 @@ namespace Redaxscript\Admin\Template;
 use Redaxscript\Template\Helper as BaseHelper;
 
 /**
- * helper class to provide admin template helpers
+ * helper class to provide admin template helper
  *
  * @since 3.0.0
  *

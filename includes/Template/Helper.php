@@ -7,7 +7,7 @@ use Redaxscript\Language;
 use Redaxscript\Model;
 
 /**
- * helper class to provide template helpers
+ * helper class to provide template helper
  *
  * @since 3.0.0
  *

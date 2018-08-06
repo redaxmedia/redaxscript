@@ -20,7 +20,7 @@ class Setting extends BaseModel\Setting
 	 *
 	 * @since 4.0.0
 	 *
-	 * @param array $updateArray
+	 * @param array $updateArray array of the update
 	 *
 	 * @return bool
 	 */

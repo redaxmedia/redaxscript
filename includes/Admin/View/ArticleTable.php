@@ -128,6 +128,7 @@ class ArticleTable extends ViewAbstract
 			{
 				$outputBody .= $trElement
 					->copy()
+					->attr('id', 'row-' . $value->id)
 					->addClass(!$value->status ? 'rs-admin-is-disabled' : null)
 					->html(
 						$tdElement->copy()->html($value->title . $adminControl->render('articles', $value->id, $value->alias, $value->status)) .

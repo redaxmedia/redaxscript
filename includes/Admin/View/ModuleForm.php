@@ -185,9 +185,7 @@ class ModuleForm extends ViewAbstract
 					'for' => 'access'
 				])
 				->select($helperOption->getAccessArray('groups'),
-				[
-					$module->access
-				],
+				(array)json_decode($module->access),
 				[
 					'id' => 'access',
 					'name' => 'access[]',

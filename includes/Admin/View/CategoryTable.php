@@ -126,6 +126,7 @@ class CategoryTable extends ViewAbstract
 			{
 				$outputBody .= $trElement
 					->copy()
+					->attr('id', 'row-' . $value->id)
 					->addClass($value->parent ? 'rs-admin-has-parent' : null)
 					->addClass(!$value->status ? 'rs-admin-is-disabled' : null)
 					->html(

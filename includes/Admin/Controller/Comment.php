@@ -40,7 +40,7 @@ class Comment extends ControllerAbstract
 		{
 			return $this->_error(
 			[
-				'route' => $postArray['id'] ? 'admin/edit/comments/' . $postArray['id'] : 'admin/new/comments',
+				'route' => $this->_getErrorRoute($postArray),
 				'message' => $validateArray
 			]);
 		}
@@ -66,7 +66,7 @@ class Comment extends ControllerAbstract
 			{
 				return $this->_success(
 				[
-					'route' => 'admin/view/comments#' . $postArray['alias'],
+					'route' => $this->_getSuccessRoute($postArray),
 					'timeout' => 2
 				]);
 			}
@@ -91,7 +91,7 @@ class Comment extends ControllerAbstract
 			{
 				return $this->_success(
 				[
-					'route' => 'admin/view/comments#' . $postArray['alias'],
+					'route' => $this->_getSuccessRoute($postArray),
 					'timeout' => 2
 				]);
 			}
@@ -101,7 +101,7 @@ class Comment extends ControllerAbstract
 
 		return $this->_error(
 		[
-			'route' => $postArray['id'] ? 'admin/edit/comments/' . $postArray['id'] : 'admin/new/comments'
+			'route' => $this->_getErrorRoute($postArray)
 		]);
 	}
 
@@ -130,7 +130,7 @@ class Comment extends ControllerAbstract
 			'article' => $specialFilter->sanitize($this->_request->getPost('article')),
 			'status' => $specialFilter->sanitize($this->_request->getPost('status')),
 			'rank' => $specialFilter->sanitize($this->_request->getPost('rank')),
-			'access' => $specialFilter->sanitize($this->_request->getPost('access')),
+			'access' => json_encode($this->_request->getPost('access')),
 			'date' => strtotime($this->_request->getPost('date'))
 		];
 	}
@@ -180,7 +180,7 @@ class Comment extends ControllerAbstract
 	 * @since 4.0.0
 	 *
 	 * @param int $commentId identifier of the comment
-	 * @param array $updateArray
+	 * @param array $updateArray array of the update
 	 *
 	 * @return bool
 	 */
@@ -189,5 +189,51 @@ class Comment extends ControllerAbstract
 	{
 		$commentModel = new Admin\Model\Comment();
 		return $commentModel->updateByIdAndArray($commentId, $updateArray);
+	}
+
+	/**
+	 * get success route
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param array $postArray array of the post
+	 *
+	 * @return string
+	 */
+
+	protected function _getSuccessRoute(array $postArray = []) : string
+	{
+		if ($this->_registry->get('commentsEdit'))
+		{
+			if ($postArray['id'])
+			{
+				return 'admin/view/comments#row-' . $postArray['id'];
+			}
+			return 'admin/view/comments';
+		}
+		return 'admin';
+	}
+
+	/**
+	 * get error route
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param array $postArray array of the post
+	 *
+	 * @return string
+	 */
+
+	protected function _getErrorRoute(array $postArray = []) : string
+	{
+		if ($this->_registry->get('commentsEdit') && $postArray['id'])
+		{
+			return 'admin/edit/comments/' . $postArray['id'];
+		}
+		if ($this->_registry->get('commentsNew'))
+		{
+			return 'admin/new/comments';
+		}
+		return 'admin';
 	}
 }

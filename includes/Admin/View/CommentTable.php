@@ -127,6 +127,7 @@ class CommentTable extends ViewAbstract
 			{
 				$outputBody .= $trElement
 					->copy()
+					->attr('id', 'row-' . $value->id)
 					->addClass(!$value->status ? 'rs-admin-is-disabled' : null)
 					->html(
 						$tdElement->copy()->html($value->author . $adminControl->render('comments', $value->id, $value->alias, $value->status)) .
@@ -148,7 +149,7 @@ class CommentTable extends ViewAbstract
 					$tdElement
 						->copy()
 						->attr('colspan', count($tableArray))
-						->text($this->_language->get('article_no'))
+						->text($this->_language->get('comment_no'))
 				);
 		}
 

@@ -208,9 +208,7 @@ class CommentForm extends ViewAbstract
 					'for' => 'access'
 				])
 				->select($helperOption->getAccessArray('groups'),
-				[
-					$comment->access
-				],
+				(array)json_decode($comment->access),
 				[
 					'id' => 'access',
 					'name' => 'access[]',

@@ -20,7 +20,7 @@ class Group extends BaseModel\Group
 	 *
 	 * @since 4.0.0
 	 *
-	 * @param array $createArray
+	 * @param array $createArray array of the create
 	 *
 	 * @return bool
 	 */
@@ -39,7 +39,7 @@ class Group extends BaseModel\Group
 	 * @since 4.0.0
 	 *
 	 * @param int $groupId identifier of the group
-	 * @param array $updateArray
+	 * @param array $updateArray array of the update
 	 *
 	 * @return bool
 	 */

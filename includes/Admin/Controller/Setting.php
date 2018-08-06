@@ -164,7 +164,7 @@ class Setting extends ControllerAbstract
 	 *
 	 * @since 4.0.0
 	 *
-	 * @param array $updateArray
+	 * @param array $updateArray array of the update
 	 *
 	 * @return bool
 	 */
