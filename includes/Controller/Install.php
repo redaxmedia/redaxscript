@@ -6,7 +6,6 @@ use Redaxscript\Filter;
 use Redaxscript\Html;
 use Redaxscript\Installer;
 use Redaxscript\Mailer;
-use Redaxscript\Messenger;
 use Redaxscript\Model;
 use Redaxscript\Validator;
 
@@ -426,7 +425,7 @@ class Install extends ControllerAbstract
 
 	protected function _success(array $successArray = []) : string
 	{
-		$messenger = new Messenger($this->_registry);
+		$messenger = $this->_messengerFactory();
 		return $messenger
 			->setUrl($this->_language->get('home'), $successArray['url'])
 			->doRedirect()
@@ -445,7 +444,7 @@ class Install extends ControllerAbstract
 
 	protected function _warning(array $warningArray = []) : string
 	{
-		$messenger = new Messenger($this->_registry);
+		$messenger = $this->_messengerFactory();
 		return $messenger
 			->setUrl($this->_language->get('home'), $warningArray['url'])
 			->doRedirect()
@@ -464,7 +463,7 @@ class Install extends ControllerAbstract
 
 	protected function _error(array $errorArray = []) : string
 	{
-		$messenger = new Messenger($this->_registry);
+		$messenger = $this->_messengerFactory();
 		return $messenger
 			->setUrl($this->_language->get('back'), $errorArray['url'])
 			->error($errorArray['message'], $errorArray['title']);

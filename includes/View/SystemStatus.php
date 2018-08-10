@@ -52,38 +52,6 @@ class SystemStatus extends ViewAbstract
 	}
 
 	/**
-	 * show the error
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param array $errorArray
-	 *
-	 * @return string
-	 */
-
-	protected function _error(array $errorArray = []) : string
-	{
-		$messenger = new Messenger($this->_registry);
-		return $messenger->error($errorArray['message']);
-	}
-
-	/**
-	 * show the warning
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param array $warningArray
-	 *
-	 * @return string
-	 */
-
-	protected function _warning(array $warningArray = []) : string
-	{
-		$messenger = new Messenger($this->_registry);
-		return $messenger->warning($warningArray['message']);
-	}
-
-	/**
 	 * validate the error
 	 *
 	 * @since 3.0.0
@@ -151,5 +119,50 @@ class SystemStatus extends ViewAbstract
 			}
 		}
 		return $messageArray;
+	}
+
+	/**
+	 * messenger factory
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return Messenger
+	 */
+
+	protected function _messengerFactory()
+	{
+		return new Messenger($this->_registry);
+	}
+
+	/**
+	 * show the error
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $errorArray
+	 *
+	 * @return string
+	 */
+
+	protected function _error(array $errorArray = []) : string
+	{
+		$messenger = $this->_messengerFactory();
+		return $messenger->error($errorArray['message']);
+	}
+
+	/**
+	 * show the warning
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $warningArray
+	 *
+	 * @return string
+	 */
+
+	protected function _warning(array $warningArray = []) : string
+	{
+		$messenger = $this->_messengerFactory();
+		return $messenger->warning($warningArray['message']);
 	}
 }

@@ -71,6 +71,19 @@ abstract class ControllerAbstract implements ControllerInterface
 	}
 
 	/**
+	 * messenger factory
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return Messenger
+	 */
+
+	protected function _messengerFactory()
+	{
+		return new Messenger($this->_registry);
+	}
+
+	/**
 	 * normalize the post
 	 *
 	 * @since 4.0.0
@@ -100,7 +113,7 @@ abstract class ControllerAbstract implements ControllerInterface
 
 	protected function _success(array $successArray = []) : string
 	{
-		$messenger = new Messenger($this->_registry);
+		$messenger = $this->_messengerFactory();
 		return $messenger
 			->setRoute($this->_language->get('continue'), $successArray['route'])
 			->doRedirect($successArray['timeout'])
@@ -119,7 +132,7 @@ abstract class ControllerAbstract implements ControllerInterface
 
 	protected function _info(array $infoArray = []) : string
 	{
-		$messenger = new Messenger($this->_registry);
+		$messenger = $this->_messengerFactory();
 		return $messenger
 			->setRoute($this->_language->get('continue'), $infoArray['route'])
 			->doRedirect($infoArray['timeout'])
@@ -138,7 +151,7 @@ abstract class ControllerAbstract implements ControllerInterface
 
 	protected function _warning(array $warningArray = []) : string
 	{
-		$messenger = new Messenger($this->_registry);
+		$messenger = $this->_messengerFactory();
 		return $messenger
 			->setRoute($this->_language->get('continue'), $warningArray['route'])
 			->doRedirect($warningArray['timeout'])
@@ -157,7 +170,7 @@ abstract class ControllerAbstract implements ControllerInterface
 
 	protected function _error(array $errorArray = []) : string
 	{
-		$messenger = new Messenger($this->_registry);
+		$messenger = $this->_messengerFactory();
 		return $messenger
 			->setRoute($this->_language->get('back'), $errorArray['route'])
 			->error($errorArray['message'] ? $errorArray['message'] : $this->_language->get('something_wrong'), $errorArray['title'] ? $errorArray['title'] : $this->_language->get('error'));

@@ -2,7 +2,6 @@
 namespace Redaxscript\Controller;
 
 use Redaxscript\Filter;
-use Redaxscript\Messenger;
 use Redaxscript\Model;
 use Redaxscript\Validator;
 use Redaxscript\View;
@@ -195,7 +194,7 @@ class Search extends ControllerAbstract
 
 	protected function _info(array $infoArray = []) : string
 	{
-		$messenger = new Messenger($this->_registry);
+		$messenger = $this->_messengerFactory();
 		return $messenger
 			->setUrl($this->_language->get('back'), $this->_registry->get('root'))
 			->info($infoArray['message'], $this->_language->get('something_wrong'));

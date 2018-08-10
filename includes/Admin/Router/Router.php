@@ -498,6 +498,19 @@ class Router extends RouterAbstract
 	}
 
 	/**
+	 * messenger factory
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return Admin\Messenger
+	 */
+
+	protected function _messengerFactory()
+	{
+		return new Admin\Messenger($this->_registry);
+	}
+
+	/**
 	 * show the token error
 	 *
 	 * @since 3.3.0
@@ -507,7 +520,7 @@ class Router extends RouterAbstract
 
 	protected function _errorToken() : string
 	{
-		$messenger = new Admin\Messenger($this->_registry);
+		$messenger = $this->_messengerFactory();
 		return $messenger
 			->setRoute($this->_language->get('back'), 'admin')
 			->error($this->_language->get('token_incorrect'), $this->_language->get('error_occurred'));
@@ -523,7 +536,7 @@ class Router extends RouterAbstract
 
 	protected function _errorAccess() : string
 	{
-		$messenger = new Admin\Messenger($this->_registry);
+		$messenger = $this->_messengerFactory();
 		return $messenger
 			->setRoute($this->_language->get('back'), 'admin')
 			->error($this->_language->get('access_no'), $this->_language->get('error_occurred'));
