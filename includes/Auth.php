@@ -260,6 +260,7 @@ class Auth
 		if ($this->getStatus())
 		{
 			$this->_setAuth();
+			$this->_request->setSession('language', null);
 			return !$this->getStatus();
 		}
 		return false;
@@ -377,10 +378,7 @@ class Auth
 				'user' => $userArray,
 				'permission' => $permissionArray
 			]);
-			if ($userArray['language'])
-			{
-				$this->_request->setSession('language', $userArray['language']);
-			}
+			$this->_request->setSession('language', $userArray['language']);
 		}
 	}
 

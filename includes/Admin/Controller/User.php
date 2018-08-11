@@ -2,6 +2,7 @@
 namespace Redaxscript\Admin\Controller;
 
 use Redaxscript\Admin;
+use Redaxscript\Auth;
 use Redaxscript\Hash;
 use Redaxscript\Filter;
 use Redaxscript\Validator;
@@ -33,6 +34,7 @@ class User extends ControllerAbstract
 		$postArray = $this->_normalizePost($this->_sanitizePost());
 		$validateArray = $this->_validatePost($postArray);
 		$passwordHash = new Hash();
+		$myId = $this->_registry->get('myId');
 
 		/* validate post */
 
@@ -98,6 +100,10 @@ class User extends ControllerAbstract
 			}
 			if ($this->_update($postArray['id'], $postArray['id'] > 1 ? $updateFullArray : $updateLiteArray))
 			{
+				if ($postArray['id'] === $myId)
+				{
+					$this->_refresh($postArray);
+				}
 				return $this->_success(
 				[
 					'route' => $this->_getSuccessRoute($postArray),
@@ -243,6 +249,24 @@ class User extends ControllerAbstract
 	{
 		$userModel = new Admin\Model\User();
 		return $userModel->updateByIdAndArray($userId, $updateArray);
+	}
+
+	/**
+	 * refresh the auth
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param array $refreshArray array of the update
+	 */
+
+	public function _refresh(array $refreshArray = [])
+	{
+		$auth = new Auth($this->_request);
+		$auth->init();
+		$auth->setUser('name', $refreshArray['name']);
+		$auth->setUser('email', $refreshArray['email']);
+		$auth->setUser('language', $refreshArray['language']);
+		$auth->save();
 	}
 
 	/**
