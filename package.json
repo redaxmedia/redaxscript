@@ -55,6 +55,7 @@
 		"postcss-import": "11.1.0",
 		"postcss-nesting": "6.0.0",
 		"postcss-reporter": "5.0.0",
+		"postcss-rtl": "1.3.2",
 		"stylefmt": "6.0.2",
 		"stylelint": "9.4.0",
 		"stylelint-config-redaxmedia": "1.0.0"
