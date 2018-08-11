@@ -24,6 +24,8 @@
 	padding: 10vw 0;
 }
 
+/* rtl:ignore */
+
 .rs-is-ready
 {
 	& .rs-component-teaser
@@ -82,6 +84,8 @@
 
 @media (--media-medium-min), (--media-retina)
 {
+	/* rtl:ignore */
+
 	.rs-is-ready
 	{
 		& .rs-component-teaser
@@ -120,6 +124,8 @@
 
 @media (--media-large-min), (--media-medium-min) and (--media-retina)
 {
+	/* rtl:ignore */
+
 	.rs-is-ready
 	{
 		& .rs-component-teaser
@@ -138,6 +144,8 @@
 
 @media (--media-large-min) and (--media-retina)
 {
+	/* rtl:ignore */
+
 	.rs-is-ready
 	{
 		& .rs-component-teaser
