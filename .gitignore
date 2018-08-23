@@ -1,6 +1,7 @@
 .idea
 build
 cache
+dist
 libraries
 node_modules
 vendor
