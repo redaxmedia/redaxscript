@@ -147,7 +147,8 @@ class UserForm extends ViewAbstract
 			[
 				'id' => 'password',
 				'pattern' => '[a-zA-Z0-9]{1,30}',
-				'name' => 'password'
+				'name' => 'password',
+				'autocomplete' => 'new-password'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('password_confirm'),
@@ -158,7 +159,8 @@ class UserForm extends ViewAbstract
 			[
 				'id' => 'password_confirm',
 				'pattern' => '[a-zA-Z0-9]{1,30}',
-				'name' => 'password_confirm'
+				'name' => 'password_confirm',
+				'autocomplete' => 'new-password'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('email'),
