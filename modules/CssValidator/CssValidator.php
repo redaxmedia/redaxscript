@@ -1,19 +1,19 @@
 <?php
-namespace Redaxscript\Modules\HtmlValidator;
+namespace Redaxscript\Modules\CssValidator;
 
 use Redaxscript\Reader;
 
 /**
- * html validator for developers
+ * css validator for developers
  *
- * @since 2.2.0
+ * @since 4.0.0
  *
  * @package Redaxscript
  * @category Modules
  * @author Henry Ruhs
  */
 
-class HtmlValidator extends Config
+class CssValidator extends Config
 {
 	/**
 	 * array of the module
@@ -23,10 +23,10 @@ class HtmlValidator extends Config
 
 	protected static $_moduleArray =
 	[
-		'name' => 'HTML Validator',
-		'alias' => 'HtmlValidator',
+		'name' => 'CSS Validator',
+		'alias' => 'CssValidator',
 		'author' => 'Redaxmedia',
-		'description' => 'HTML validator for developers',
+		'description' => 'CSS validator for developers',
 		'version' => '4.0.0',
 		'access' => '1'
 	];
@@ -34,7 +34,7 @@ class HtmlValidator extends Config
 	/**
 	 * adminNotification
 	 *
-	 * @since 3.0.1
+	 * @since 4.0.0
 	 *
 	 * @return array|bool
 	 */
@@ -45,29 +45,26 @@ class HtmlValidator extends Config
 		{
 			/* load result */
 
-			$url = $this->_configArray['apiUrl'] . '/?doc=' . $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
+			$url = $this->_configArray['apiUrl'] . '/?uri=' . $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute') . '&profile=' . $this->_configArray['profile'];
 			$reader = new Reader();
-			$result = $reader->loadJSON($url . '&out=json')->getArray();
+			$result = $reader->loadJSON($url . '&output=json')->getArray();
 
 			/* process result */
 
-			if ($result['messages'])
+			if ($result['cssvalidation']['errors'])
 			{
-				foreach ($result['messages'] as $value)
+				foreach ($result['cssvalidation']['errors'] as $value)
 				{
-					if ($value['type'] === 'error')
-					{
-						$message =
+					$message =
+					[
+						'text' => $value['message'],
+						'attr' =>
 						[
-							'text' => $value['message'],
-							'attr' =>
-							[
-								'href' => $url,
-								'target' => '_blank'
-							]
-						];
-						$this->setNotification('error', $message);
-					}
+							'href' => $url,
+							'target' => '_blank'
+						]
+					];
+					$this->setNotification('error', $message);
 				}
 			}
 			if (!$result)

@@ -1,12 +1,12 @@
 <?php
-namespace Redaxscript\Modules\HtmlValidator;
+namespace Redaxscript\Modules\CssValidator;
 
 use Redaxscript\Module;
 
 /**
  * children class to store module configuration
  *
- * @since 3.0.0
+ * @since 4.0.0
  *
  * @package Redaxscript
  * @category Modules
@@ -23,6 +23,7 @@ class Config extends Module\Notification
 
 	protected $_configArray =
 	[
-		'apiUrl' => 'https://validator.w3.org/nu'
+		'apiUrl' => 'http://jigsaw.w3.org/css-validator/validator',
+		'profile' => 'css3svg'
 	];
 }
