@@ -22,7 +22,6 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @covers Redaxscript\Content\Tag\More
  * @covers Redaxscript\Content\Tag\Registry
  * @covers Redaxscript\Content\Tag\TagAbstract
- * @covers Redaxscript\Content\Tag\TagInterface
  * @covers Redaxscript\Content\Tag\Template
  */
 
