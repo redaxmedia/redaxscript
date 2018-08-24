@@ -183,7 +183,7 @@ class Extra extends ControllerAbstract
 		}
 		if (!$postArray['text'])
 		{
-			$validateArray[] = $this->_language->get('text_empty');
+			$validateArray[] = $this->_language->get('extra_empty');
 		}
 		return $validateArray;
 	}

@@ -13,7 +13,7 @@
 			"notification": 0,
 			"moderation": 0
 		},
-		"<h2 class=\"rs-title-note rs-is-error\">Error</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-error\"><ul class=\"rs-list-note\"><li>Author is empty</li><li>Email is empty</li><li>Comment is empty</li><li>Input is incorrect</li><li>Captcha is incorrect</li></ul></div>"
+		"<h2 class=\"rs-title-note rs-is-error\">Error</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-error\"><ul class=\"rs-list-note\"><li>Author is empty</li><li>Email is empty</li><li>Comment is empty</li><li>Article is empty</li><li>Captcha is incorrect</li></ul></div>"
 	],
 	[
 		{
@@ -29,7 +29,7 @@
 			"notification": 1,
 			"moderation": 0
 		},
-		"<h2 class=\"rs-title-note rs-is-error\">Error</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-error\"><ul class=\"rs-list-note\"><li>Email is incorrect</li><li>URL is incorrect</li><li>Comment is empty</li><li>Input is incorrect</li><li>Captcha is incorrect</li></ul></div>"
+		"<h2 class=\"rs-title-note rs-is-error\">Error</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-error\"><ul class=\"rs-list-note\"><li>Email is incorrect</li><li>URL is incorrect</li><li>Comment is empty</li><li>Article is empty</li><li>Captcha is incorrect</li></ul></div>"
 	],
 	[
 		{

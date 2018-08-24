@@ -169,7 +169,7 @@ class Comment extends ControllerAbstract
 		}
 		if (!$postArray['article'])
 		{
-			$validateArray[] = $this->_language->get('input_incorrect');
+			$validateArray[] = $this->_language->get('article_empty');
 		}
 		if ($settingModel->get('captcha') > 0 && !$captchaValidator->validate($postArray['task'], $postArray['solution']))
 		{

@@ -199,7 +199,7 @@ class Article extends ControllerAbstract
 		}
 		if (!$postArray['text'])
 		{
-			$validateArray[] = $this->_language->get('text_empty');
+			$validateArray[] = $this->_language->get('article_empty');
 		}
 		return $validateArray;
 	}
