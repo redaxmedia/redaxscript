@@ -361,6 +361,7 @@ class Installer
 			'CallHome',
 			'FormValidator',
 			'HtmlValidator',
+			'LiveReload',
 			'TextareaResizer'
 		];
 

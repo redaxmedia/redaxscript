@@ -13,9 +13,37 @@ Redaxscript
 [![Facebook Chat](https://img.shields.io/badge/chat-on_facebook-0084ff.svg)](https://m.me/redaxscript)
 
 
-Demo
-----
+Installation
+------------
 
-> Unfortunately, no one can be told what Redaxscript is. You have to see it for yourself.
+Clone the repository:
 
-[![Demo](https://img.shields.io/badge/demo-login-129e5e.svg?style=flat)](https://demo.redaxscript.com/demo/login)
+```
+git clone https://github.com/redaxscript/redaxscript.git
+```
+
+Install the dependencies:
+
+```
+composer install
+```
+
+```
+npm install
+```
+
+
+Usage
+-----
+
+Serve local development server:
+
+```
+grunt serve
+```
+
+Browse your working copy:
+
+```
+http://localhost:8000
+```
