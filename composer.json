@@ -17,13 +17,13 @@
 		"mikey179/vfsStream": "1.6.5",
 		"php-coveralls/php-coveralls": "2.1.0",
 		"phpmd/phpmd": "2.6.0",
-		"phpstan/phpstan": "0.10.1",
-		"phpunit/phpunit": "7.2.6",
+		"phpstan/phpstan": "0.10.3",
+		"phpunit/phpunit": "7.3.2",
 		"redaxmedia/php-coding-standard": "1.1.1",
 		"redaxmedia/phpunit-provider-autoloader": "1.0.0",
 		"sebastian/phpcpd": "4.0.0",
 		"slowprog/composer-copy-file": "0.2.1",
-		"squizlabs/php_codesniffer": "3.3.0"
+		"squizlabs/php_codesniffer": "3.3.1"
 	},
 	"scripts":
 	{
