@@ -19,7 +19,7 @@
 		{
 			"db-type": "%CURRENT%",
 			"db-host": "%CURRENT%",
-			"db-name": "%CURRENT%}",
+			"db-name": "%CURRENT%",
 			"db-user": "%CURRENT%",
 			"db-password": "%CURRENT%",
 			"db-prefix": "%CURRENT%",
@@ -35,7 +35,7 @@
 		{
 			"db-type": "%CURRENT%",
 			"db-host": "%CURRENT%",
-			"db-name": "%CURRENT%}",
+			"db-name": "%CURRENT%",
 			"db-user": "%CURRENT%",
 			"db-password": "%CURRENT%",
 			"db-prefix": "%CURRENT%",
@@ -51,7 +51,7 @@
 		{
 			"db-type": "%CURRENT%",
 			"db-host": "%CURRENT%",
-			"db-name": "%CURRENT%}",
+			"db-name": "%CURRENT%",
 			"db-user": "%CURRENT%",
 			"db-password": "%CURRENT%",
 			"db-prefix": "%CURRENT%",
@@ -67,7 +67,7 @@
 		{
 			"db-type": "%CURRENT%",
 			"db-host": "%CURRENT%",
-			"db-name": "%CURRENT%}",
+			"db-name": "%CURRENT%",
 			"db-user": "%CURRENT%",
 			"db-password": "%CURRENT%",
 			"db-prefix": "%CURRENT%",
@@ -83,7 +83,7 @@
 		{
 			"db-type": "%CURRENT%",
 			"db-host": "%CURRENT%",
-			"db-name": "%CURRENT%}",
+			"db-name": "%CURRENT%",
 			"db-user": "%CURRENT%",
 			"db-password": "%CURRENT%",
 			"db-prefix": "%CURRENT%",
@@ -99,7 +99,7 @@
 		{
 			"db-type": "%CURRENT%",
 			"db-host": "%CURRENT%",
-			"db-name": "%CURRENT%}",
+			"db-name": "%CURRENT%",
 			"db-user": "%CURRENT%",
 			"db-password": "%CURRENT%",
 			"db-prefix": "%CURRENT%",
