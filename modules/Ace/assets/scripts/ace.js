@@ -8,7 +8,7 @@ rs.modules.Ace.execute = config =>
 		textareaList.forEach(textarea =>
 		{
 			const box = document.createElement('div');
-			const editor = ace.edit(box);
+			const editor = window.ace.edit(box);
 			const editorSession = editor.getSession();
 
 			/* handle textarea */
