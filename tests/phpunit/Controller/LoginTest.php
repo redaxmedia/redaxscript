@@ -64,46 +64,13 @@ class LoginTest extends TestCaseAbstract
 	 *
 	 * @param array $postArray
 	 * @param array $userArray
-	 * @param string $expect
-	 *
-	 * @dataProvider providerAutoloader
-	 */
-
-	public function testProcess(array $postArray = [], array $userArray = [], string $expect = null)
-	{
-		/* setup */
-
-		Db::forTablePrefix('users')
-			->whereIdIs(1)
-			->findOne()
-			->set('status', $userArray['status'])
-			->save();
-		$this->_request->set('post', $postArray);
-		$loginController = new Controller\Login($this->_registry, $this->_request, $this->_language, $this->_config);
-
-		/* actual */
-
-		$actual = $loginController->process();
-
-		/* compare */
-
-		$this->assertEquals($expect, $actual);
-	}
-
-	/**
-	 * testProcessFailure
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param array $postArray
-	 * @param array $userArray
 	 * @param string $method
 	 * @param string $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testProcessFailure(array $postArray = [], array $userArray = [], string $method = null, string $expect = null)
+	public function testProcess(array $postArray = [], array $userArray = [], string $method = null, string $expect = null)
 	{
 		/* setup */
 
@@ -113,31 +80,38 @@ class LoginTest extends TestCaseAbstract
 			->set('status', $userArray['status'])
 			->save();
 		$this->_request->set('post', $postArray);
-		$stub = $this
-			->getMockBuilder('Redaxscript\Controller\Login')
-			->setConstructorArgs(
-			[
-				$this->_registry,
-				$this->_request,
-				$this->_language,
-				$this->_config
-			])
-			->setMethods(
-			[
-				$method
-			])
-			->getMock();
+		if ($method)
+		{
+			$loginController = $this
+				->getMockBuilder('Redaxscript\Controller\Login')
+				->setConstructorArgs(
+				[
+					$this->_registry,
+					$this->_request,
+					$this->_language,
+					$this->_config
+				])
+				->setMethods(
+				[
+					$method
+				])
+				->getMock();
 
-		/* override */
+			/* override */
 
-		$stub
-			->expects($this->any())
-			->method($method)
-			->will($this->returnValue(false));
+			$loginController
+				->expects($this->any())
+				->method($method)
+				->will($this->returnValue(false));
+		}
+		else
+		{
+			$loginController = new Controller\Login($this->_registry, $this->_request, $this->_language, $this->_config);
+		}
 
 		/* actual */
 
-		$actual = $stub->process();
+		$actual = $loginController->process();
 
 		/* compare */
 

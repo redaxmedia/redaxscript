@@ -62,69 +62,49 @@ class RecoverTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $postArray
-	 * @param string $expect
-	 *
-	 * @dataProvider providerAutoloader
-	 */
-
-	public function testProcess(array $postArray = [], string $expect = null)
-	{
-		/* setup */
-
-		$this->_request->set('post', $postArray);
-		$recoverController = new Controller\Recover($this->_registry, $this->_request, $this->_language, $this->_config);
-
-		/* actual */
-
-		$actual = $recoverController->process();
-
-		/* compare */
-
-		$this->assertEquals($expect, $actual);
-	}
-
-	/**
-	 * testProcessFailure
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param array $postArray
 	 * @param string $method
 	 * @param string $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testProcessFailure(array $postArray = [], string $method = null, string $expect = null)
+	public function testProcess(array $postArray = [], string $method = null, string $expect = null)
 	{
 		/* setup */
 
 		$this->_request->set('post', $postArray);
-		$stub = $this
-			->getMockBuilder('Redaxscript\Controller\Recover')
-			->setConstructorArgs(
-			[
-				$this->_registry,
-				$this->_request,
-				$this->_language,
-				$this->_config
-			])
-			->setMethods(
-			[
-				$method
-			])
-			->getMock();
+		if ($method)
+		{
+			$recoverController = $this
+				->getMockBuilder('Redaxscript\Controller\Recover')
+				->setConstructorArgs(
+				[
+					$this->_registry,
+					$this->_request,
+					$this->_language,
+					$this->_config
+				])
+				->setMethods(
+				[
+					$method
+				])
+				->getMock();
 
-		/* override */
+			/* override */
 
-		$stub
-			->expects($this->any())
-			->method($method)
-			->will($this->returnValue(false));
+			$recoverController
+				->expects($this->any())
+				->method($method)
+				->will($this->returnValue(false));
+		}
+		else
+		{
+			$recoverController = new Controller\Recover($this->_registry, $this->_request, $this->_language, $this->_config);
+		}
 
 		/* actual */
 
-		$actual = $stub->process();
+		$actual = $recoverController->process();
 
 		/* compare */
 

@@ -68,69 +68,49 @@ class ResetTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $postArray
-	 * @param string $expect
-	 *
-	 * @dataProvider providerAutoloader
-	 */
-
-	public function testProcess(array $postArray = [], string $expect = null)
-	{
-		/* setup */
-
-		$this->_request->set('post', $postArray);
-		$resetController = new Controller\Reset($this->_registry, $this->_request, $this->_language, $this->_config);
-
-		/* actual */
-
-		$actual = $resetController->process();
-
-		/* compare */
-
-		$this->assertEquals($expect, $actual);
-	}
-
-	/**
-	 * testProcessFailure
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param array $postArray
 	 * @param string $method
 	 * @param string $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testProcessFailure(array $postArray = [], string $method = null, string $expect = null)
+	public function testProcess(array $postArray = [], string $method = null, string $expect = null)
 	{
 		/* setup */
 
 		$this->_request->set('post', $postArray);
-		$stub = $this
-			->getMockBuilder('Redaxscript\Controller\Reset')
-			->setConstructorArgs(
-			[
-				$this->_registry,
-				$this->_request,
-				$this->_language,
-				$this->_config
-			])
-			->setMethods(
-			[
-				$method
-			])
-			->getMock();
+		if ($method)
+		{
+			$resetController = $this
+				->getMockBuilder('Redaxscript\Controller\Reset')
+				->setConstructorArgs(
+				[
+					$this->_registry,
+					$this->_request,
+					$this->_language,
+					$this->_config
+				])
+				->setMethods(
+				[
+					$method
+				])
+				->getMock();
 
-		/* override */
+			/* override */
 
-		$stub
-			->expects($this->any())
-			->method($method)
-			->will($this->returnValue(false));
+			$resetController
+				->expects($this->any())
+				->method($method)
+				->will($this->returnValue(false));
+		}
+		else
+		{
+			$resetController = new Controller\Reset($this->_registry, $this->_request, $this->_language, $this->_config);
+		}
 
 		/* actual */
 
-		$actual = $stub->process();
+		$actual = $resetController->process();
 
 		/* compare */
 

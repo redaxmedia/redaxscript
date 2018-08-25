@@ -54,12 +54,13 @@ class InstallTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $postArray
+	 * @param string $method
 	 * @param string $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testProcess(array $postArray = [], string $expect = null)
+	public function testProcess(array $postArray = [], string $method = null, string $expect = null)
 	{
 		/* setup */
 
@@ -71,11 +72,38 @@ class InstallTest extends TestCaseAbstract
 		$postArray['db-prefix'] = $postArray['db-prefix'] === '%CURRENT%' ? $this->_config->get('dbPrefix') : $postArray['db-prefix'];
 		$this->_request->set('post', $postArray);
 		$this->_config->init(Stream::url('root' . DIRECTORY_SEPARATOR . 'config.php'));
-		$controllerInstall = new Controller\Install($this->_registry, $this->_request, $this->_language, $this->_config);
+		if ($method)
+		{
+			$installController = $this
+				->getMockBuilder('Redaxscript\Controller\Install')
+				->setConstructorArgs(
+				[
+					$this->_registry,
+					$this->_request,
+					$this->_language,
+					$this->_config
+				])
+				->setMethods(
+				[
+					$method
+				])
+				->getMock();
+
+			/* override */
+
+			$installController
+				->expects($this->any())
+				->method($method)
+				->will($this->returnValue(false));
+		}
+		else
+		{
+			$installController = new Controller\Install($this->_registry, $this->_request, $this->_language, $this->_config);
+		}
 
 		/* actual */
 
-		$actual = $controllerInstall->process();
+		$actual = $installController->process();
 
 		/* compare */
 
@@ -97,11 +125,11 @@ class InstallTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$controllerInstall = new Controller\Install($this->_registry, $this->_request, $this->_language, $this->_config);
+		$installController = new Controller\Install($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
-		$actualArray = $this->callMethod($controllerInstall, '_validateDatabase',
+		$actualArray = $this->callMethod($installController, '_validateDatabase',
 		[
 			$postArray
 		]);
@@ -109,61 +137,6 @@ class InstallTest extends TestCaseAbstract
 		/* compare */
 
 		$this->assertEquals($expectArray, $actualArray);
-	}
-
-	/**
-	 * testProcessFailure
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param array $postArray
-	 * @param string $method
-	 * @param string $expect
-	 *
-	 * @dataProvider providerAutoloader
-	 */
-
-	public function testProcessFailure(array $postArray = [], string $method = null, string $expect = null)
-	{
-		/* setup */
-
-		$postArray['db-type'] = $this->_config->get('dbType');
-		$postArray['db-host'] = $this->_config->get('dbHost');
-		$postArray['db-name'] = $this->_config->get('dbName');
-		$postArray['db-user'] = $this->_config->get('dbUser');
-		$postArray['db-password'] = $this->_config->get('dbPassword');
-		$postArray['db-prefix'] = $this->_config->get('dbPrefix');
-		$this->_request->set('post', $postArray);
-		$this->_config->init(Stream::url('root' . DIRECTORY_SEPARATOR . 'config.php'));
-		$stub = $this
-			->getMockBuilder('Redaxscript\Controller\Install')
-			->setConstructorArgs(
-			[
-				$this->_registry,
-				$this->_request,
-				$this->_language,
-				$this->_config
-			])
-			->setMethods(
-			[
-				$method
-			])
-			->getMock();
-
-		/* override */
-
-		$stub
-			->expects($this->any())
-			->method($method)
-			->will($this->returnValue(false));
-
-		/* actual */
-
-		$actual = $stub->process();
-
-		/* compare */
-
-		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -181,11 +154,11 @@ class InstallTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$controllerInstall = new Controller\Install($this->_registry, $this->_request, $this->_language, $this->_config);
+		$installController = new Controller\Install($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
-		$actualArray = $this->callMethod($controllerInstall, '_validateAccount',
+		$actualArray = $this->callMethod($installController, '_validateAccount',
 		[
 			$postArray
 		]);
@@ -210,11 +183,11 @@ class InstallTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$controllerInstall = new Controller\Install($this->_registry, $this->_request, $this->_language, $this->_config);
+		$installController = new Controller\Install($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
 
-		$actual = $this->callMethod($controllerInstall, '_install',
+		$actual = $this->callMethod($installController, '_install',
 		[
 			$installArray
 		]);

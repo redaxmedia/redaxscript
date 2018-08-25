@@ -7,12 +7,12 @@
 			"db-user": null,
 			"db-password": null,
 			"db-prefix": null,
-			"db-salt": null,
 			"admin-name": null,
 			"admin-user": null,
 			"admin-email": null,
 			"admin-password": null
 		},
+		null,
 		"<h2 class=\"rs-title-note rs-is-error\">Database</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-error\"><ul class=\"rs-list-note\"><li>Type is empty</li><li>Host is empty</li><li>Name is empty</li><li>User is empty</li></ul></div><a href=\"install.php\" class=\"rs-button-note rs-is-error\">Back</a>"
 	],
 	[
@@ -23,13 +23,93 @@
 			"db-user": "%CURRENT%",
 			"db-password": "%CURRENT%",
 			"db-prefix": "%CURRENT%",
-			"db-salt": null,
 			"admin-name": null,
 			"admin-user": null,
 			"admin-email": null,
 			"admin-password": null
 		},
+		null,
 		"<h2 class=\"rs-title-note rs-is-error\">Account</h2><div class=\"rs-box-note rs-fn-clearfix rs-is-error\"><ul class=\"rs-list-note\"><li>Name is empty</li><li>User is empty</li><li>Password is empty</li><li>Email is empty</li></ul></div><a href=\"install.php\" class=\"rs-button-note rs-is-error\">Back</a>"
+	],
+	[
+		{
+			"db-type": "%CURRENT%",
+			"db-host": "%CURRENT%",
+			"db-name": "%CURRENT%}",
+			"db-user": "%CURRENT%",
+			"db-password": "%CURRENT%",
+			"db-prefix": "%CURRENT%",
+			"admin-name": "Test",
+			"admin-user": "test",
+			"admin-password": "test",
+			"admin-email": "test@test.com"
+		},
+		"_touch",
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-error\">Grant write permission on directory.</div><a href=\"install.php\" class=\"rs-button-note rs-is-error\">Back</a>"
+	],
+	[
+		{
+			"db-type": "%CURRENT%",
+			"db-host": "%CURRENT%",
+			"db-name": "%CURRENT%}",
+			"db-user": "%CURRENT%",
+			"db-password": "%CURRENT%",
+			"db-prefix": "%CURRENT%",
+			"admin-name": "Test",
+			"admin-user": "test",
+			"admin-password": "test",
+			"admin-email": "test@test.com"
+		},
+		"_write",
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-error\">Grant write permission on file: config.php</div><a href=\"install.php\" class=\"rs-button-note rs-is-error\">Back</a>"
+	],
+	[
+		{
+			"db-type": "%CURRENT%",
+			"db-host": "%CURRENT%",
+			"db-name": "%CURRENT%}",
+			"db-user": "%CURRENT%",
+			"db-password": "%CURRENT%",
+			"db-prefix": "%CURRENT%",
+			"admin-name": "Test",
+			"admin-user": "test",
+			"admin-password": "test",
+			"admin-email": "test@test.com"
+		},
+		"_getStatus",
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-error\">Connection to database failed</div><a href=\"install.php\" class=\"rs-button-note rs-is-error\">Back</a>"
+	],
+	[
+		{
+			"db-type": "%CURRENT%",
+			"db-host": "%CURRENT%",
+			"db-name": "%CURRENT%}",
+			"db-user": "%CURRENT%",
+			"db-password": "%CURRENT%",
+			"db-prefix": "%CURRENT%",
+			"admin-name": "Test",
+			"admin-user": "test",
+			"admin-password": "test",
+			"admin-email": "test@test.com"
+		},
+		"_install",
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-error\">Installation failed</div><a href=\"install.php\" class=\"rs-button-note rs-is-error\">Back</a>"
+	],
+	[
+		{
+			"db-type": "%CURRENT%",
+			"db-host": "%CURRENT%",
+			"db-name": "%CURRENT%}",
+			"db-user": "%CURRENT%",
+			"db-password": "%CURRENT%",
+			"db-prefix": "%CURRENT%",
+			"admin-name": "Test",
+			"admin-user": "test",
+			"admin-password": "test",
+			"admin-email": "test@test.com"
+		},
+		"_mail",
+		"<div class=\"rs-box-note rs-fn-clearfix rs-is-warning\">Email sending failed</div><a href=\"index.php\" class=\"rs-button-note rs-is-warning\">Home</a><meta content=\"2;url=index.php\" http-equiv=\"refresh\" />"
 	],
 	[
 		{
@@ -39,12 +119,12 @@
 			"db-user": "%CURRENT%",
 			"db-password": "%CURRENT%",
 			"db-prefix": "%CURRENT%",
-			"db-salt": null,
 			"admin-name": "Test",
 			"admin-user": "test",
 			"admin-password": "test",
 			"admin-email": "test@test.com"
 		},
+		null,
 		"<div class=\"rs-box-note rs-fn-clearfix rs-is-success\">Installation completed successfully</div><a href=\"index.php\" class=\"rs-button-note rs-is-success\">Home</a><meta content=\"2;url=index.php\" http-equiv=\"refresh\" />"
 	]
 ]

@@ -81,44 +81,13 @@ class CommentTest extends TestCaseAbstract
 	 *
 	 * @param array $postArray
 	 * @param array $settingArray
-	 * @param string $expect
-	 *
-	 * @dataProvider providerAutoloader
-	 */
-
-	public function testProcess(array $postArray = [], array $settingArray = [], string $expect = null)
-	{
-		/* setup */
-
-		$this->_request->set('post', $postArray);
-		$setting = $this->settingFactory();
-		$setting->set('notification', $settingArray['notification']);
-		$setting->set('moderation', $settingArray['moderation']);
-		$commentController = new Controller\Comment($this->_registry, $this->_request, $this->_language, $this->_config);
-
-		/* actual */
-
-		$actual = $commentController->process();
-
-		/* compare */
-
-		$this->assertEquals($expect, $actual);
-	}
-
-	/**
-	 * testProcessFailure
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param array $postArray
-	 * @param array $settingArray
 	 * @param string $method
 	 * @param string $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testProcessFailure(array $postArray = [], array $settingArray = [], string $method = null, string $expect = null)
+	public function testProcess(array $postArray = [], array $settingArray = [], string $method = null, string $expect = null)
 	{
 		/* setup */
 
@@ -126,31 +95,38 @@ class CommentTest extends TestCaseAbstract
 		$setting = $this->settingFactory();
 		$setting->set('notification', $settingArray['notification']);
 		$setting->set('moderation', $settingArray['moderation']);
-		$stub = $this
-			->getMockBuilder('Redaxscript\Controller\Comment')
-			->setConstructorArgs(
-			[
-				$this->_registry,
-				$this->_request,
-				$this->_language,
-				$this->_config
-			])
-			->setMethods(
-			[
-				$method
-			])
-			->getMock();
+		if ($method)
+		{
+			$commentController = $this
+				->getMockBuilder('Redaxscript\Controller\Comment')
+				->setConstructorArgs(
+				[
+					$this->_registry,
+					$this->_request,
+					$this->_language,
+					$this->_config
+				])
+				->setMethods(
+				[
+					$method
+				])
+				->getMock();
 
-		/* override */
+			/* override */
 
-		$stub
-			->expects($this->any())
-			->method($method)
-			->will($this->returnValue(false));
+			$commentController
+				->expects($this->any())
+				->method($method)
+				->will($this->returnValue(false));
+		}
+		else
+		{
+			$commentController = new Controller\Comment($this->_registry, $this->_request, $this->_language, $this->_config);
+		}
 
 		/* actual */
 
-		$actual = $stub->process();
+		$actual = $commentController->process();
 
 		/* compare */
 
