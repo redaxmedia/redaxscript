@@ -4,8 +4,11 @@ rs.modules.Ace =
 	dependency: typeof window.ace === 'object',
 	config:
 	{
-		selector: 'form textarea.rs-admin-js-editor',
-		mode: 'ace/mode/html',
-		maxLines: Infinity
+		selector: 'textarea.rs-admin-js-editor',
+		ace:
+		{
+			mode: 'ace/mode/html',
+			maxLines: Infinity
+		}
 	}
 };

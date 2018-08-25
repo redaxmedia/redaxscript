@@ -28,6 +28,14 @@ module.exports = () =>
 			],
 			dest: 'templates/install/dist/scripts/install.min.js'
 		},
+		moduleAce:
+		{
+			src:
+			[
+				'modules/Ace/assets/scripts/ace.js'
+			],
+			dest: 'modules/Ace/dist/scripts/ace.min.js'
+		},
 		moduleFormValidator:
 		{
 			src:

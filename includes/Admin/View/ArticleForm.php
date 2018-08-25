@@ -169,6 +169,7 @@ class ArticleForm extends ViewAbstract
 			])
 			->textarea(
 			[
+				'class' => 'rs-admin-js-editor rs-admin-js-resize rs-admin-field-textarea',
 				'id' => 'text',
 				'name' => 'text',
 				'required' => 'required',

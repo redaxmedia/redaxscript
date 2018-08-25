@@ -138,6 +138,7 @@ module.exports = grunt =>
 		'babel:templateAdmin',
 		'babel:templateConsole',
 		'babel:templateInstall',
+		'babel:moduleAce',
 		'babel:moduleFormValidator',
 		'babel:moduleTextareaResizer'
 	]);

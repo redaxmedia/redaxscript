@@ -50,7 +50,7 @@ rs.templates.admin.alias.generate = config =>
 
 /* run as needed */
 
-if (rs.templates.admin.alias.init)
+if (rs.templates.admin.alias.init && rs.templates.admin.alias.dependency)
 {
 	rs.templates.admin.alias.generate(rs.templates.admin.alias.config);
 }

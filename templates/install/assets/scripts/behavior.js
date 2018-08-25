@@ -3,7 +3,8 @@ rs.templates.install.behavior.listen = config =>
 	const CONFIG = {...rs.templates.install.behavior.config, ...config};
 	const form = document.querySelector(CONFIG.selector);
 	const fieldType = form.querySelector(CONFIG.element.fieldType);
-	const fieldToggle = form.querySelectorAll(CONFIG.element.fieldToggle);
+	const fieldToggleList = form.querySelectorAll(CONFIG.element.fieldToggle);
+	const changeEvent = new Event('change');
 
 	form.setAttribute('novalidate', 'novalidate');
 
@@ -11,9 +12,9 @@ rs.templates.install.behavior.listen = config =>
 
 	fieldType.addEventListener('change', () =>
 	{
-		fieldToggle.forEach(field => field.parentElement.style.display = fieldType.value === 'sqlite' ? 'none' : null);
+		fieldToggleList.forEach(field => field.parentElement.style.display = fieldType.value === 'sqlite' ? 'none' : null);
 	});
-	fieldType.dispatchEvent(new Event('change'));
+	fieldType.dispatchEvent(changeEvent);
 };
 
 /* run as needed */

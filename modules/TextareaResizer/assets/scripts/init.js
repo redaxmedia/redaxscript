@@ -3,7 +3,7 @@ rs.modules.TextareaResizer =
 	frontend:
 	{
 		init: true,
-		dependency: typeof window.autosize === 'object',
+		dependency: typeof window.autosize === 'function',
 		config:
 		{
 			selector: 'textarea.rs-js-resize',
@@ -12,7 +12,7 @@ rs.modules.TextareaResizer =
 	backend:
 	{
 		init: rs.registry.loggedIn === rs.registry.token,
-		dependency: typeof window.autosize === 'object',
+		dependency: typeof window.autosize === 'function',
 		config:
 		{
 			selector: 'textarea.rs-admin-js-resize'
