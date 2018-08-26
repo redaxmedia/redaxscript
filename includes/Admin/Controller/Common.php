@@ -4,7 +4,7 @@ namespace Redaxscript\Admin\Controller;
 use Redaxscript\Admin;
 
 /**
- * children class to handle common tasks
+ * children class to handle common
  *
  * @since 4.0.0
  *

@@ -55,7 +55,7 @@ class RegisterForm extends ViewAbstract
 			]
 		],
 		[
-			'captcha' => $settingModel->get('captcha') > 0
+			'captcha' => $settingModel->get('captcha')
 		]);
 
 		/* create the form */

@@ -53,7 +53,7 @@ class ResetForm extends ViewAbstract
 			]
 		],
 		[
-			'captcha' => true
+			'captcha' => 1
 		]);
 
 		/* create the form */

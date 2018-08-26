@@ -242,7 +242,7 @@ class Form extends HtmlAbstract
 
 	protected $_optionArray =
 	[
-		'captcha' => false
+		'captcha' => 0
 	];
 
 	/**
@@ -333,7 +333,7 @@ class Form extends HtmlAbstract
 
 		/* captcha */
 
-		if ($this->_optionArray['captcha'])
+		if ($this->_optionArray['captcha'] > 0)
 		{
 			$this->_captcha = new Captcha($this->_language->getInstance());
 			$this->_captcha->init();
@@ -490,7 +490,7 @@ class Form extends HtmlAbstract
 	{
 		/* task */
 
-		if ($this->_optionArray['captcha'] && $type === 'task')
+		if ($this->_optionArray['captcha'] > 0 && $type === 'task')
 		{
 			$this->label('* ' . $this->_captcha->getTask(),
 			[
@@ -511,7 +511,7 @@ class Form extends HtmlAbstract
 
 		/* solution */
 
-		if ($this->_optionArray['captcha'] && $type === 'solution')
+		if ($this->_optionArray['captcha'] > 0 && $type === 'solution')
 		{
 			$captchaHash = new Hash();
 			$captchaHash->init($this->_captcha->getSolution());
