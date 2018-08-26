@@ -4,8 +4,11 @@ rs.modules.CallHome =
 	dependency: typeof window.ga === 'function',
 	config:
 	{
-		id: 'UA-16122280-10',
-		cookieDomain: 'auto',
-		anonymizeIp: true
+		analytics:
+		{
+			trackingId: 'UA-16122280-10',
+			cookieDomain: 'auto',
+			anonymizeIp: true
+		}
 	}
 };

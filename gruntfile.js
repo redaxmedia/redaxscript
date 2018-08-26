@@ -140,6 +140,7 @@ module.exports = grunt =>
 		'babel:templateInstall',
 		'babel:moduleAce',
 		'babel:moduleAnalytics',
+		'babel:moduleCallHome',
 		'babel:moduleFormValidator',
 		'babel:moduleTextareaResizer'
 	]);

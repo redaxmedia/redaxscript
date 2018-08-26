@@ -3,6 +3,7 @@ rs.modules.Analytics.execute = config =>
 	const CONFIG = {...rs.modules.Analytics.config, ...config};
 
 	window.ga('create', CONFIG.analytics);
+	window.ga('send', 'pageview');
 
 	/* handle track */
 

@@ -44,6 +44,14 @@ module.exports = () =>
 			],
 			dest: 'modules/Analytics/dist/scripts/analytics.min.js'
 		},
+		moduleCallHome:
+		{
+			src:
+			[
+				'modules/CallHome/assets/scripts/call-home.js'
+			],
+			dest: 'modules/CallHome/dist/scripts/call-home.min.js'
+		},
 		moduleFormValidator:
 		{
 			src:
