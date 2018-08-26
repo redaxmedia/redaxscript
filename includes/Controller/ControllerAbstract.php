@@ -97,7 +97,7 @@ abstract class ControllerAbstract implements ControllerInterface
 	{
 		return array_map(function($value)
 		{
-			return $value === $this->_language->get('select') || !trim($value) ? null : $value;
+			return $value === $this->_language->get('select') || $value === 'false' || !trim($value) ? null : $value;
 		}, $postArray);
 	}
 

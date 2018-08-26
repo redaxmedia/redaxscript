@@ -133,6 +133,7 @@ class Article extends ControllerAbstract
 
 	protected function _sanitizePost() : array
 	{
+		$numberFilter = new Filter\Number();
 		$aliasFilter = new Filter\Alias();
 		$specialFilter = new Filter\Special();
 		$htmlFilter = new Filter\Html();
@@ -141,22 +142,22 @@ class Article extends ControllerAbstract
 
 		return
 		[
-			'id' => $specialFilter->sanitize($this->_request->getPost('id')),
+			'id' => $numberFilter->sanitize($this->_request->getPost('id')),
 			'title' => $this->_request->getPost('title'),
 			'alias' => $aliasFilter->sanitize($this->_request->getPost('alias')),
 			'description' => $this->_request->getPost('description'),
 			'keywords' => $this->_request->getPost('keywords'),
-			'robots' => $specialFilter->sanitize($this->_request->getPost('robots')),
+			'robots' => $numberFilter->sanitize($this->_request->getPost('robots')),
 			'text' => $htmlFilter->sanitize($this->_request->getPost('text'), $this->_registry->get('filter')),
 			'language' => $specialFilter->sanitize($this->_request->getPost('language')),
 			'template' => $specialFilter->sanitize($this->_request->getPost('template')),
 			'sibling' => $specialFilter->sanitize($this->_request->getPost('sibling')),
 			'category' => $specialFilter->sanitize($this->_request->getPost('category')),
-			'headline' => $specialFilter->sanitize($this->_request->getPost('headline')),
-			'byline' => $specialFilter->sanitize($this->_request->getPost('byline')),
-			'comments' => $specialFilter->sanitize($this->_request->getPost('comments')),
-			'status' => $specialFilter->sanitize($this->_request->getPost('status')),
-			'rank' => $specialFilter->sanitize($this->_request->getPost('rank')),
+			'headline' => $numberFilter->sanitize($this->_request->getPost('headline')),
+			'byline' => $numberFilter->sanitize($this->_request->getPost('byline')),
+			'comments' => $numberFilter->sanitize($this->_request->getPost('comments')),
+			'status' => $numberFilter->sanitize($this->_request->getPost('status')),
+			'rank' => $numberFilter->sanitize($this->_request->getPost('rank')),
 			'access' => json_encode($this->_request->getPost('access')),
 			'date' => strtotime($this->_request->getPost('date'))
 		];

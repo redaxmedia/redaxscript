@@ -130,6 +130,7 @@ class User extends ControllerAbstract
 
 	protected function _sanitizePost() : array
 	{
+		$numberFilter = new Filter\Number();
 		$specialFilter = new Filter\Special();
 		$emailFilter = new Filter\Email();
 
@@ -137,7 +138,7 @@ class User extends ControllerAbstract
 
 		return
 		[
-			'id' => $specialFilter->sanitize($this->_request->getPost('id')),
+			'id' => $numberFilter->sanitize($this->_request->getPost('id')),
 			'name' => $this->_request->getPost('name'),
 			'user' => $this->_request->getPost('user'),
 			'description' => $this->_request->getPost('description'),
@@ -145,7 +146,7 @@ class User extends ControllerAbstract
 			'password_confirm' => $this->_request->getPost('password_confirm'),
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
 			'language' => $specialFilter->sanitize($this->_request->getPost('language')),
-			'status' => $specialFilter->sanitize($this->_request->getPost('status')),
+			'status' => $numberFilter->sanitize($this->_request->getPost('status')),
 			'groups' => json_encode($this->_request->getPost('groups'))
 		];
 	}

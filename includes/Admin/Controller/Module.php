@@ -81,16 +81,16 @@ class Module extends ControllerAbstract
 
 	protected function _sanitizePost() : array
 	{
-		$specialFilter = new Filter\Special();
+		$numberFilter = new Filter\Number();
 
 		/* sanitize post */
 
 		return
 		[
-			'id' => $specialFilter->sanitize($this->_request->getPost('id')),
+			'id' => $numberFilter->sanitize($this->_request->getPost('id')),
 			'name' => $this->_request->getPost('name'),
 			'description' => $this->_request->getPost('description'),
-			'status' => $specialFilter->sanitize($this->_request->getPost('status')),
+			'status' => $numberFilter->sanitize($this->_request->getPost('status')),
 			'access' => json_encode($this->_request->getPost('access'))
 		];
 	}

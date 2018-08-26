@@ -107,6 +107,7 @@ class Register extends ControllerAbstract
 
 	protected function _sanitizePost() : array
 	{
+		$numberFilter = new Filter\Number();
 		$specialFilter = new Filter\Special();
 		$emailFilter = new Filter\Email();
 
@@ -117,7 +118,7 @@ class Register extends ControllerAbstract
 			'name' => $specialFilter->sanitize($this->_request->getPost('name')),
 			'user' => $specialFilter->sanitize($this->_request->getPost('user')),
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
-			'task' => $this->_request->getPost('task'),
+			'task' => $numberFilter->sanitize($this->_request->getPost('task')),
 			'solution' => $this->_request->getPost('solution')
 		];
 	}

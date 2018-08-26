@@ -75,6 +75,7 @@ class Login extends ControllerAbstract
 
 	protected function _sanitizePost() : array
 	{
+		$numberFilter = new Filter\Number();
 		$specialFilter = new Filter\Special();
 		$emailFilter = new Filter\Email();
 		$emailValidator = new Validator\Email();
@@ -87,7 +88,7 @@ class Login extends ControllerAbstract
 			'email' => $emailValidator->validate($this->_request->getPost('user')) ? $emailFilter->sanitize($this->_request->getPost('user')) : null,
 			'user' => $loginValidator->validate($this->_request->getPost('user')) ? $specialFilter->sanitize($this->_request->getPost('user')) : null,
 			'password' => $specialFilter->sanitize($this->_request->getPost('password')),
-			'task' => $this->_request->getPost('task'),
+			'task' => $numberFilter->sanitize($this->_request->getPost('task')),
 			'solution' => $this->_request->getPost('solution')
 		];
 	}

@@ -101,6 +101,7 @@ class Setting extends ControllerAbstract
 
 	protected function _sanitizePost() : array
 	{
+		$numberFilter = new Filter\Number();
 		$specialFilter = new Filter\Special();
 		$emailFilter = new Filter\Email();
 
@@ -115,24 +116,24 @@ class Setting extends ControllerAbstract
 			'copyright' => $this->_request->getPost('copyright'),
 			'description' => $this->_request->getPost('description'),
 			'keywords' => $this->_request->getPost('keywords'),
-			'robots' => $specialFilter->sanitize($this->_request->getPost('robots')),
+			'robots' => $numberFilter->sanitize($this->_request->getPost('robots')),
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
 			'subject' => $this->_request->getPost('subject'),
-			'notification' => $specialFilter->sanitize($this->_request->getPost('notification')),
+			'notification' => $numberFilter->sanitize($this->_request->getPost('notification')),
 			'charset' => $this->_request->getPost('charset'),
 			'divider' => $this->_request->getPost('divider'),
 			'zone' => $this->_request->getPost('zone'),
 			'time' => $this->_request->getPost('time'),
 			'date' => $this->_request->getPost('date'),
-			'homepage' => $specialFilter->sanitize($this->_request->getPost('homepage')),
-			'limit' => $specialFilter->sanitize($this->_request->getPost('limit')),
+			'homepage' => $numberFilter->sanitize($this->_request->getPost('homepage')),
+			'limit' => $numberFilter->sanitize($this->_request->getPost('limit')),
 			'order' => $specialFilter->sanitize($this->_request->getPost('order')),
-			'pagination' => $specialFilter->sanitize($this->_request->getPost('pagination')),
-			'moderation' => $specialFilter->sanitize($this->_request->getPost('moderation')),
-			'registration' => $specialFilter->sanitize($this->_request->getPost('registration')),
-			'verification' => $specialFilter->sanitize($this->_request->getPost('verification')),
-			'recovery' => $specialFilter->sanitize($this->_request->getPost('recovery')),
-			'captcha' => $specialFilter->sanitize($this->_request->getPost('captcha'))
+			'pagination' => $numberFilter->sanitize($this->_request->getPost('pagination')),
+			'moderation' => $numberFilter->sanitize($this->_request->getPost('moderation')),
+			'registration' => $numberFilter->sanitize($this->_request->getPost('registration')),
+			'verification' => $numberFilter->sanitize($this->_request->getPost('verification')),
+			'recovery' => $numberFilter->sanitize($this->_request->getPost('recovery')),
+			'captcha' => $numberFilter->sanitize($this->_request->getPost('captcha'))
 		];
 	}
 

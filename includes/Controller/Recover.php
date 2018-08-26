@@ -96,6 +96,7 @@ class Recover extends ControllerAbstract
 
 	protected function _sanitizePost() : array
 	{
+		$numberFilter = new Filter\Number();
 		$emailFilter = new Filter\Email();
 
 		/* sanitize post */
@@ -103,7 +104,7 @@ class Recover extends ControllerAbstract
 		return
 		[
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
-			'task' => $this->_request->getPost('task'),
+			'task' => $numberFilter->sanitize($this->_request->getPost('task')),
 			'solution' => $this->_request->getPost('solution')
 		];
 	}

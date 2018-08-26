@@ -108,6 +108,7 @@ class Comment extends ControllerAbstract
 
 	protected function _sanitizePost() : array
 	{
+		$numberFilter = new Filter\Number();
 		$specialFilter = new Filter\Special();
 		$emailFilter = new Filter\Email();
 		$urlFilter = new Filter\Url();
@@ -122,7 +123,7 @@ class Comment extends ControllerAbstract
 			'url' => $urlFilter->sanitize($this->_request->getPost('url')),
 			'text' => $htmlFilter->sanitize($this->_request->getPost('text')),
 			'article' => $specialFilter->sanitize($this->_request->getPost('article')),
-			'task' => $this->_request->getPost('task'),
+			'task' => $numberFilter->sanitize($this->_request->getPost('task')),
 			'solution' => $this->_request->getPost('solution')
 		];
 	}

@@ -123,6 +123,7 @@ class Extra extends ControllerAbstract
 
 	protected function _sanitizePost() : array
 	{
+		$numberFilter = new Filter\Number();
 		$specialFilter = new Filter\Special();
 		$aliasFilter = new Filter\Alias();
 		$htmlFilter = new Filter\Html();
@@ -131,17 +132,17 @@ class Extra extends ControllerAbstract
 
 		return
 		[
-			'id' => $specialFilter->sanitize($this->_request->getPost('id')),
+			'id' => $numberFilter->sanitize($this->_request->getPost('id')),
 			'title' => $this->_request->getPost('title'),
 			'alias' => $aliasFilter->sanitize($this->_request->getPost('alias')),
 			'text' => $htmlFilter->sanitize($this->_request->getPost('text'), $this->_registry->get('filter')),
 			'language' => $specialFilter->sanitize($this->_request->getPost('language')),
-			'sibling' => $specialFilter->sanitize($this->_request->getPost('sibling')),
-			'category' => $specialFilter->sanitize($this->_request->getPost('category')),
-			'article' => $specialFilter->sanitize($this->_request->getPost('article')),
-			'headline' => $specialFilter->sanitize($this->_request->getPost('headline')),
-			'status' => $specialFilter->sanitize($this->_request->getPost('status')),
-			'rank' => $specialFilter->sanitize($this->_request->getPost('rank')),
+			'sibling' => $numberFilter->sanitize($this->_request->getPost('sibling')),
+			'category' => $numberFilter->sanitize($this->_request->getPost('category')),
+			'article' => $numberFilter->sanitize($this->_request->getPost('article')),
+			'headline' => $numberFilter->sanitize($this->_request->getPost('headline')),
+			'status' => $numberFilter->sanitize($this->_request->getPost('status')),
+			'rank' => $numberFilter->sanitize($this->_request->getPost('rank')),
 			'access' => json_encode($this->_request->getPost('access')),
 			'date' => strtotime($this->_request->getPost('date'))
 		];
