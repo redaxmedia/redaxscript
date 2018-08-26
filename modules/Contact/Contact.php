@@ -10,7 +10,7 @@ use Redaxscript\Module;
 use Redaxscript\Validator;
 
 /**
- * offer the visitors to get in touch
+ * simple contact form
  *
  * @since 2.6.0
  *
@@ -32,7 +32,7 @@ class Contact extends Module\Module
 		'name' => 'Contact',
 		'alias' => 'Contact',
 		'author' => 'Redaxmedia',
-		'description' => 'Offer the visitors to get in touch',
+		'description' => 'Simple contact form',
 		'version' => '4.0.0'
 	];
 

@@ -7,7 +7,7 @@ rs.modules.FormValidator.validate = config =>
 	{
 		/* handle validate */
 
-		form.querySelectorAll(CONFIG.element).forEach(fieldValue =>
+		form.querySelectorAll(CONFIG.element).forEach(field =>
 		{
 			const validateArray =
 			[
@@ -15,17 +15,17 @@ rs.modules.FormValidator.validate = config =>
 				'validate'
 			];
 
-			fieldValue.classList.add(CONFIG.className.fieldNote);
-			validateArray.forEach(event =>
+			field.classList.add(CONFIG.className.fieldNote);
+			validateArray.forEach(validateEvent =>
 			{
-				fieldValue.addEventListener(event, () =>
+				field.addEventListener(validateEvent, event =>
 				{
-					fieldValue.validity.valid ? fieldValue.classList.remove(CONFIG.className.isError) : fieldValue.classList.add(CONFIG.className.isError);
+					event.target.validity.valid ? event.target.classList.remove(CONFIG.className.isError) : event.target.classList.add(CONFIG.className.isError);
 				});
 			});
-			fieldValue.addEventListener('invalid', () =>
+			field.addEventListener('invalid', event =>
 			{
-				fieldValue.classList.add(CONFIG.className.isError);
+				event.target.classList.add(CONFIG.className.isError);
 			});
 		});
 
@@ -33,7 +33,7 @@ rs.modules.FormValidator.validate = config =>
 
 		form.addEventListener('reset', () =>
 		{
-			form.querySelectorAll(CONFIG.element).forEach(fieldValue => fieldValue.classList.remove(CONFIG.className.isError));
+			form.querySelectorAll(CONFIG.element).forEach(field => field.classList.remove(CONFIG.className.isError));
 		});
 	}
 };

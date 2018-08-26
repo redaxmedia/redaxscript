@@ -36,6 +36,14 @@ module.exports = () =>
 			],
 			dest: 'modules/Ace/dist/scripts/ace.min.js'
 		},
+		moduleAnalytics:
+		{
+			src:
+			[
+				'modules/Analytics/assets/scripts/analytics.js'
+			],
+			dest: 'modules/Analytics/dist/scripts/analytics.min.js'
+		},
 		moduleFormValidator:
 		{
 			src:
