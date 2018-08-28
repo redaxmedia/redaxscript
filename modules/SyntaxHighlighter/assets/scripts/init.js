@@ -1,16 +1,19 @@
 rs.modules.SyntaxHighlighter =
 {
 	init: true,
-	dependency: typeof hljs === 'object',
-	selector: 'pre.rs-admin-js-code, pre.rs-js-code',
-	options:
+	dependency: typeof window.hljs === 'object',
+	config:
 	{
-		languages:
-		[
-			'css',
-			'html',
-			'js',
-			'php'
-		]
+		selector: 'pre.rs-admin-js-code, pre.rs-js-code',
+		hljs:
+		{
+			languages:
+			[
+				'css',
+				'html',
+				'js',
+				'php'
+			]
+		}
 	}
 };

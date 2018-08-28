@@ -68,6 +68,14 @@ module.exports = () =>
 			],
 			dest: 'modules/FormValidator/dist/scripts/form-validator.min.js'
 		},
+		moduleSyntaxHighlighter:
+		{
+			src:
+			[
+				'modules/SyntaxHighlighter/assets/scripts/syntax-highlighter.js'
+			],
+			dest: 'modules/SyntaxHighlighter/dist/scripts/syntax-highlighter.min.js'
+		},
 		moduleTextareaResizer:
 		{
 			src:

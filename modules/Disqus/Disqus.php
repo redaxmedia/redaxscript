@@ -27,7 +27,7 @@ class Disqus extends Config
 		'name' => 'Disqus',
 		'alias' => 'Disqus',
 		'author' => 'Redaxmedia',
-		'description' => 'Replace comments with disqus',
+		'description' => 'Replace comments with Disqus',
 		'version' => '4.0.0'
 	];
 
@@ -56,7 +56,9 @@ class Disqus extends Config
 	/**
 	 * commentReplace
 	 *
-	 * @since 2.2.0
+	 * @since 4.0.0
+	 *
+	 * @return string
 	*/
 
 	public function commentReplace()
@@ -70,6 +72,6 @@ class Disqus extends Config
 		/* collect output */
 
 		$output = $boxElement;
-		echo $output;
+		return $output;
 	}
 }

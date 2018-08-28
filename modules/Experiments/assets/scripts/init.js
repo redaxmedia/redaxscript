@@ -5,10 +5,10 @@ rs.modules.Experiments =
 	config:
 	{
 		action:
-		{
-			0: () => document.documentElement.classList.add('rs-no-variation'),
-			1: () => document.documentElement.classList.add('rs-is-variation-1'),
-			2: () => document.documentElement.classList.add('rs-is-variation-2')
-		}
+		[
+			() => document.documentElement.classList.add('rs-no-variation'),
+			() => document.documentElement.classList.add('rs-is-variation-1'),
+			() => document.documentElement.classList.add('rs-is-variation-2')
+		]
 	}
 };

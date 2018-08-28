@@ -17,26 +17,29 @@ rs.modules.Analytics.execute = config =>
 	{
 		const elementList = document.querySelectorAll(CONFIG.selector[trackEvent]);
 
-		elementList.forEach(element => element.addEventListener(trackEvent, event =>
+		if (elementList)
 		{
-			const data = event.target.dataset;
-			const category = String(data.category);
-			const action = String(data.action);
-			const label = data.label ? String(data.label) : null;
-			const value = data.value ? String(data.value) : null;
-
-			if (category && action)
+			elementList.forEach(element => element.addEventListener(trackEvent, event =>
 			{
-				window.ga('send',
+				const data = event.target.dataset;
+				const category = String(data.category);
+				const action = String(data.action);
+				const label = data.label ? String(data.label) : null;
+				const value = data.value ? String(data.value) : null;
+
+				if (category && action)
 				{
-					hitType: 'event',
-					eventCategory: category,
-					eventAction: action,
-					eventLabel: label,
-					eventValue: value
-				});
-			}
-		}));
+					window.ga('send',
+					{
+						hitType: 'event',
+						eventCategory: category,
+						eventAction: action,
+						eventLabel: label,
+						eventValue: value
+					});
+				}
+			}));
+		}
 	});
 };
 

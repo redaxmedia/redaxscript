@@ -1,19 +1,16 @@
-<p class="rs-admin-text-documentation">Syntax for your JavaScript to define multiple variations:</p>
+<p class="rs-admin-text-documentation">Syntax to perform one action for each variation:</p>
 
 <pre class="rs-admin-js-code rs-admin-code-default">
-rs.variation =
-[
-	function ()
+rs.modules.Experiments =
+{
+	config:
 	{
-		console.log('original');
-	},
-	function ()
-	{
-		console.log('variation one');
-	},
-	function ()
-	{
-		console.log('variation two');
+		action:
+		[
+			() => console.log('no variation'),
+			() => console.log('variation 1'),
+			() => console.log('variation 2')
+		]
 	}
-];
+}
 </pre>

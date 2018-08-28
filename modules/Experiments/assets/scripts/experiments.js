@@ -11,7 +11,7 @@ rs.modules.Experiments.execute = config =>
 
 	if (typeof CONFIG.action[variation] === 'function')
 	{
-		CONFIG.action[variation](variation);
+		CONFIG.action[variation]();
 	}
 };
 
