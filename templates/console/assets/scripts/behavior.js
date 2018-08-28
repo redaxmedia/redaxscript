@@ -1,6 +1,10 @@
 rs.templates.console.behavior.listen = config =>
 {
-	const CONFIG = {...rs.templates.console.behavior.config, ...config};
+	const CONFIG =
+	{
+		...rs.templates.console.behavior.config,
+		...config
+	};
 	const form = document.querySelector(CONFIG.selector);
 	const box = document.querySelector(CONFIG.element.box);
 	const label = form.querySelector(CONFIG.element.label);

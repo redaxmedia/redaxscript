@@ -1,6 +1,10 @@
 rs.templates.admin.alias.generate = config =>
 {
-	const CONFIG = {...rs.templates.admin.alias.config, ...config};
+	const CONFIG =
+	{
+		...rs.templates.admin.alias.config,
+		...config
+	};
 	const form = document.querySelector(CONFIG.selector);
 
 	if (form)

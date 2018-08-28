@@ -1,6 +1,10 @@
 rs.modules.Ace.execute = config =>
 {
-	const CONFIG = {...rs.modules.Ace.config, ...config};
+	const CONFIG =
+	{
+		...rs.modules.Ace.config,
+		...config
+	};
 	const textareaList = document.querySelectorAll(CONFIG.selector);
 
 	if (textareaList)

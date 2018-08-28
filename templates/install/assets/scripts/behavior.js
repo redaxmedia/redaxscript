@@ -1,6 +1,10 @@
 rs.templates.install.behavior.listen = config =>
 {
-	const CONFIG = {...rs.templates.install.behavior.config, ...config};
+	const CONFIG =
+	{
+		...rs.templates.install.behavior.config,
+		...config
+	};
 	const form = document.querySelector(CONFIG.selector);
 	const fieldType = form.querySelector(CONFIG.element.fieldType);
 	const fieldToggleList = form.querySelectorAll(CONFIG.element.fieldToggle);

@@ -1,6 +1,12 @@
 rs.modules.CallHome.execute = config =>
 {
-	const CONFIG = {...rs.modules.CallHome.config, ...config};
+	const CONFIG =
+	{
+		...rs.modules.CallHome.config,
+		...config
+	};
+
+	/* handle view */
 
 	window.ga('create', CONFIG.analytics);
 	window.ga('send', 'pageview');

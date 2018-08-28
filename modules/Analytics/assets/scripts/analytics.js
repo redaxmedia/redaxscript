@@ -1,6 +1,12 @@
 rs.modules.Analytics.execute = config =>
 {
-	const CONFIG = {...rs.modules.Analytics.config, ...config};
+	const CONFIG =
+	{
+		...rs.modules.Analytics.config,
+		...config
+	};
+
+	/* handle view */
 
 	window.ga('create', CONFIG.analytics);
 	window.ga('send', 'pageview');
@@ -9,9 +15,9 @@ rs.modules.Analytics.execute = config =>
 
 	Object.keys(CONFIG.selector).forEach(trackEvent =>
 	{
-		const element = document.querySelectorAll(CONFIG.selector[trackEvent]);
+		const elementList = document.querySelectorAll(CONFIG.selector[trackEvent]);
 
-		element.addEventListener(trackEvent, event =>
+		elementList.forEach(element => element.addEventListener(trackEvent, event =>
 		{
 			const data = event.target.dataset;
 			const category = String(data.category);
@@ -30,7 +36,7 @@ rs.modules.Analytics.execute = config =>
 					eventValue: value
 				});
 			}
-		});
+		}));
 	});
 };
 

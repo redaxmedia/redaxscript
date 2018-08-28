@@ -6,7 +6,7 @@ rs.modules.Analytics =
 	{
 		selector:
 		{
-			click: 'a.rs-js-track-click button.rs-js-track-click'
+			click: 'a.rs-js-track-click, button.rs-js-track-click'
 		},
 		analytics:
 		{

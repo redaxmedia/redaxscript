@@ -1,6 +1,10 @@
 rs.modules.TextareaResizer.execute = config =>
 {
-	const CONFIG = {...rs.modules.TextareaResizer.config, ...config};
+	const CONFIG =
+	{
+		...rs.modules.TextareaResizer.config,
+		...config
+	};
 	const textareaList = document.querySelectorAll(CONFIG.selector);
 
 	if (textareaList)

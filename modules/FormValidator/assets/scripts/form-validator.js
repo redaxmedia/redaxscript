@@ -1,6 +1,10 @@
 rs.modules.FormValidator.validate = config =>
 {
-	const CONFIG = {...rs.modules.FormValidator.config, ...config};
+	const CONFIG =
+	{
+		...rs.modules.FormValidator.config,
+		...config
+	};
 	const form = document.querySelector(CONFIG.selector);
 
 	if (form)
