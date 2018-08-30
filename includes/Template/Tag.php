@@ -7,6 +7,7 @@ use Redaxscript\Console;
 use Redaxscript\Filesystem;
 use Redaxscript\Head;
 use Redaxscript\Language;
+use Redaxscript\Model;
 use Redaxscript\Navigation;
 use Redaxscript\Registry;
 use Redaxscript\Request;
@@ -190,7 +191,7 @@ class Tag
 	 *
 	 * @since 4.0.0
 	 *
-	 * @return string|null
+	 * @return string|bool
 	 */
 
 	protected static function _renderContent()
@@ -232,9 +233,14 @@ class Tag
 
 	public static function comment(int $articleId = null, array $optionArray = [])
 	{
-		$comment = new View\Comment(Registry::getInstance(), Language::getInstance());
-		$comment->init($optionArray);
-		return $comment->render($articleId);
+		$articleModel = new Model\Article();
+		$article = $articleModel->getById($articleId);
+		if ($article->comments)
+		{
+			$comment = new View\Comment(Registry::getInstance(), Language::getInstance());
+			$comment->init($optionArray);
+			return $comment->render($articleId);
+		}
 	}
 
 	/**
@@ -323,7 +329,7 @@ class Tag
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
 	public static function consoleForm() : string
@@ -342,10 +348,15 @@ class Tag
 	 * @return string
 	 */
 
-	public static function commentForm(int $articleId = null) : string
+	public static function commentForm(int $articleId = null)
 	{
-		$commentForm = new View\CommentForm(Registry::getInstance(), Language::getInstance());
-		return $commentForm->render($articleId);
+		$articleModel = new Model\Article();
+		$article = $articleModel->getById($articleId);
+		if ($article->comments)
+		{
+			$commentForm = new View\CommentForm(Registry::getInstance(), Language::getInstance());
+			return $commentForm->render($articleId);
+		}
 	}
 
 	/**
