@@ -354,7 +354,7 @@ class TagTest extends TestCaseAbstract
 	{
 		/* actual */
 
-		$actual = Template\Tag::commentForm();
+		$actual = Template\Tag::commentForm(1);
 
 		/* compare */
 
