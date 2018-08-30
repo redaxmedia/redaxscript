@@ -87,6 +87,7 @@ class CategoryTable extends ViewAbstract
 		$categoryModel = new Admin\Model\Category();
 		$categories = $categoryModel->getAll();
 		$categoriesTotal = $categories->count();
+		$parameterRoute = $this->_registry->get('parameterRoute');
 
 		/* html element */
 
@@ -102,6 +103,12 @@ class CategoryTable extends ViewAbstract
 			->init('table',
 			[
 				'class' => 'rs-admin-table-default'
+			]);
+		$linkElement = $element
+			->copy()
+			->init('a',
+			[
+				'class' => 'rs-admin-link-default'
 			]);
 		$theadElement = $element->copy()->init('thead');
 		$tbodyElement = $element->copy()->init('tbody');
@@ -130,7 +137,12 @@ class CategoryTable extends ViewAbstract
 					->addClass($value->parent ? 'rs-admin-has-parent' : null)
 					->addClass(!$value->status ? 'rs-admin-is-disabled' : null)
 					->html(
-						$tdElement->copy()->html($value->title . $adminControl->render('categories', $value->id, $value->alias, $value->status)) .
+						$tdElement->copy()->html(
+							$linkElement
+								->attr('href', $parameterRoute . $categoryModel->getRouteById($value->id))
+								->text($value->title) .
+							$adminControl->render('categories', $value->id, $value->alias, $value->status)
+						) .
 						$tdElement->copy()->text($value->alias) .
 						$tdElement->copy()->text($value->language ? $this->_language->get($value->language, '_index') : $this->_language->get('all')) .
 						$tdElement

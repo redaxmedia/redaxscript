@@ -64,7 +64,7 @@ class Comment extends ContentAbstract
 			->where('d.id', $commentId)
 			->findArray();
 
-		/* build route */
+		/* handle route */
 
 		if (is_array($commentArray[0]))
 		{

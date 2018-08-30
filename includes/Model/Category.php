@@ -57,7 +57,7 @@ class Category extends ContentAbstract
 			->where('c.id', $categoryId)
 			->findArray();
 
-		/* build route */
+		/* handle route */
 
 		if (is_array($categoryArray[0]))
 		{

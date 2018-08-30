@@ -78,7 +78,7 @@ class Article extends ContentAbstract
 			->where('a.id', $articleId)
 			->findArray();
 
-		/* build route */
+		/* handle route */
 
 		if (is_array($articleArray[0]))
 		{

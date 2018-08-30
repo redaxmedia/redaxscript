@@ -88,6 +88,7 @@ class CommentTable extends ViewAbstract
 		$commentModel = new Admin\Model\Comment();
 		$comments = $commentModel->getAll();
 		$commentsTotal = $comments->count();
+		$parameterRoute = $this->_registry->get('parameterRoute');
 
 		/* html element */
 
@@ -103,6 +104,12 @@ class CommentTable extends ViewAbstract
 			->init('table',
 			[
 				'class' => 'rs-admin-table-default'
+			]);
+		$linkElement = $element
+			->copy()
+			->init('a',
+			[
+				'class' => 'rs-admin-link-default'
 			]);
 		$theadElement = $element->copy()->init('thead');
 		$tbodyElement = $element->copy()->init('tbody');
@@ -130,7 +137,12 @@ class CommentTable extends ViewAbstract
 					->attr('id', 'row-' . $value->id)
 					->addClass(!$value->status ? 'rs-admin-is-disabled' : null)
 					->html(
-						$tdElement->copy()->html($value->author . $adminControl->render('comments', $value->id, $value->alias, $value->status)) .
+						$tdElement->copy()->html(
+							$linkElement
+								->attr('href', $parameterRoute . $commentModel->getRouteById($value->id))
+								->text($value->author) .
+							$adminControl->render('comments', $value->id, $value->alias, $value->status)
+						) .
 						$tdElement->copy()->text($value->language ? $this->_language->get($value->language, '_index') : $this->_language->get('all')) .
 						$tdElement->copy()->text($value->article ? $articleModel->getById($value->article)->title : $this->_language->get('none')) .
 						$tdElement
