@@ -87,7 +87,7 @@ class ArticleTable extends ViewAbstract
 		$adminControl = new Helper\Control($this->_registry, $this->_language);
 		$categoryModel = new Admin\Model\Category();
 		$articleModel = new Admin\Model\Article();
-		$articles = $articleModel->getAll();
+		$articles = $articleModel->getAllByOrder('rank');
 		$articlesTotal = $articles->count();
 		$parameterRoute = $this->_registry->get('parameterRoute');
 

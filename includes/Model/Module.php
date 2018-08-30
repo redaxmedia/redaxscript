@@ -33,7 +33,8 @@ class Module extends ModelAbstract
 
 	public function createByArray(array $createArray = []) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->create()
 			->set($createArray)
 			->save();

@@ -76,7 +76,8 @@ class User extends ModelAbstract
 
 	public function createByArray(array $createArray = []) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->create()
 			->set($createArray)
 			->save();
@@ -95,7 +96,8 @@ class User extends ModelAbstract
 
 	public function resetPasswordById(int $userId = null, string $password = null) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->whereIdIs($userId)
 			->findOne()
 			->set('password', $password)

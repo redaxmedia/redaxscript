@@ -85,7 +85,7 @@ class CategoryTable extends ViewAbstract
 		];
 		$adminControl = new Helper\Control($this->_registry, $this->_language);
 		$categoryModel = new Admin\Model\Category();
-		$categories = $categoryModel->getAll();
+		$categories = $categoryModel->getAllByOrder('rank');
 		$categoriesTotal = $categories->count();
 		$parameterRoute = $this->_registry->get('parameterRoute');
 

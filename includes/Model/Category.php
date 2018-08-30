@@ -49,7 +49,8 @@ class Category extends ContentAbstract
 	public function getRouteById(int $categoryId = null) : ?string
 	{
 		$route = null;
-		$categoryArray = $this->query()
+		$categoryArray = $this
+			->query()
 			->tableAlias('c')
 			->leftJoinPrefix('categories', 'c.parent = p.id', 'p')
 			->select('p.alias', 'parent_alias')

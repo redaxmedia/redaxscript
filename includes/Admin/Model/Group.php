@@ -27,7 +27,8 @@ class Group extends BaseModel\Group
 
 	public function createByArray(array $createArray = []) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->create()
 			->set($createArray)
 			->save();
@@ -46,7 +47,8 @@ class Group extends BaseModel\Group
 
 	public function updateByIdAndArray(int $groupId = null, array $updateArray = []) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->whereIdIs($groupId)
 			->findOne()
 			->set($updateArray)
@@ -65,7 +67,8 @@ class Group extends BaseModel\Group
 
 	public function enableById(int $groupId = null) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->whereIdIs($groupId)
 			->findOne()
 			->set('status', 1)
@@ -84,7 +87,8 @@ class Group extends BaseModel\Group
 
 	public function disableById(int $groupId = null) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->whereIdIs($groupId)
 			->findOne()
 			->set('status', 0)

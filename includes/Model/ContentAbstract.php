@@ -14,6 +14,21 @@ namespace Redaxscript\Model;
 abstract class ContentAbstract extends ModelAbstract
 {
 	/**
+	 * get all by order
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param string $column name of the column
+	 *
+	 * @return object
+	 */
+
+	public function getAllByOrder(string $column = null)
+	{
+		return $this->query()->orderGlobal($column)->findMany();
+	}
+
+	/**
 	 * get the content by language
 	 *
 	 * @since 4.0.0
@@ -25,7 +40,8 @@ abstract class ContentAbstract extends ModelAbstract
 
 	public function getByLanguage(string $language = null)
 	{
-		return $this->query()
+		return $this
+			->query()
 			->whereLanguageIs($language)
 			->where('status', 1)
 			->findMany();
@@ -44,7 +60,8 @@ abstract class ContentAbstract extends ModelAbstract
 
 	public function getByIdAndLanguage(int $id = null, string $language = null)
 	{
-		return $this->query()
+		return $this
+			->query()
 			->whereIdIs($id)
 			->whereLanguageIs($language)
 			->where('status', 1)
@@ -63,7 +80,8 @@ abstract class ContentAbstract extends ModelAbstract
 
 	public function publishByDate(string $date = null) : int
 	{
-		return $this->query()
+		return $this
+			->query()
 			->whereLt('date', $date)
 			->where('status', 2)
 			->findMany()

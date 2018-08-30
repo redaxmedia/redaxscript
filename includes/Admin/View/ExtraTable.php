@@ -84,7 +84,7 @@ class ExtraTable extends ViewAbstract
 		];
 		$adminControl = new Helper\Control($this->_registry, $this->_language);
 		$extraModel = new Admin\Model\Extra();
-		$extras = $extraModel->getAll();
+		$extras = $extraModel->getAllByOrder('rank');
 		$extrasTotal = $extras->count();
 
 		/* html element */

@@ -27,7 +27,8 @@ class Category extends BaseModel\Category
 
 	public function createByArray(array $createArray = []) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->create()
 			->set($createArray)
 			->save();
@@ -46,7 +47,8 @@ class Category extends BaseModel\Category
 
 	public function updateByIdAndArray(int $categoryId = null, array $updateArray = []) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->whereIdIs($categoryId)
 			->findOne()
 			->set($updateArray)
@@ -65,7 +67,8 @@ class Category extends BaseModel\Category
 
 	public function publishById(int $categoryId = null) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->whereIdIs($categoryId)
 			->findOne()
 			->set('status', 1)
@@ -84,7 +87,8 @@ class Category extends BaseModel\Category
 
 	public function unpublishById(int $categoryId = null) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->whereIdIs($categoryId)
 			->findOne()
 			->set('status', 0)

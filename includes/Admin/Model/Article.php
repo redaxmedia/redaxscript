@@ -27,7 +27,8 @@ class Article extends BaseModel\Article
 
 	public function createByArray(array $createArray = []) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->create()
 			->set($createArray)
 			->save();
@@ -46,7 +47,8 @@ class Article extends BaseModel\Article
 
 	public function updateByIdAndArray(int $articleId = null, array $updateArray = []) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->whereIdIs($articleId)
 			->findOne()
 			->set($updateArray)
@@ -65,7 +67,8 @@ class Article extends BaseModel\Article
 
 	public function publishById(int $articleId = null) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->whereIdIs($articleId)
 			->findOne()
 			->set('status', 1)
@@ -84,7 +87,8 @@ class Article extends BaseModel\Article
 
 	public function unpublishById(int $articleId = null) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->whereIdIs($articleId)
 			->findOne()
 			->set('status', 0)

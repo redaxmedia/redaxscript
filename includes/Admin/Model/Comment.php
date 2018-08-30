@@ -27,7 +27,8 @@ class Comment extends BaseModel\Comment
 
 	public function createByArray(array $createArray = []) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->create()
 			->set($createArray)
 			->save();
@@ -46,7 +47,8 @@ class Comment extends BaseModel\Comment
 
 	public function updateByIdAndArray(int $commentId = null, array $updateArray = []) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->whereIdIs($commentId)
 			->findOne()
 			->set($updateArray)
@@ -65,7 +67,8 @@ class Comment extends BaseModel\Comment
 
 	public function publishById(int $commentId = null) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->whereIdIs($commentId)
 			->findOne()
 			->set('status', 1)
@@ -84,7 +87,8 @@ class Comment extends BaseModel\Comment
 
 	public function unpublishById(int $commentId = null) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->whereIdIs($commentId)
 			->findOne()
 			->set('status', 0)

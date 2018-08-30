@@ -28,7 +28,8 @@ class Module extends BaseModel\Module
 
 	public function updateByIdAndArray(int $moduleId = null, array $updateArray = []) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->whereIdIs($moduleId)
 			->findOne()
 			->set($updateArray)
@@ -47,7 +48,8 @@ class Module extends BaseModel\Module
 
 	public function enableById(int $moduleId = null) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->whereIdIs($moduleId)
 			->findOne()
 			->set('status', 1)
@@ -66,7 +68,8 @@ class Module extends BaseModel\Module
 
 	public function disableById(int $moduleId = null) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->whereIdIs($moduleId)
 			->findOne()
 			->set('status', 0)

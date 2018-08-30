@@ -86,7 +86,7 @@ class CommentTable extends ViewAbstract
 		$adminControl = new Helper\Control($this->_registry, $this->_language);
 		$articleModel = new Admin\Model\Article();
 		$commentModel = new Admin\Model\Comment();
-		$comments = $commentModel->getAll();
+		$comments = $commentModel->getAllByOrder('rank');
 		$commentsTotal = $comments->count();
 		$parameterRoute = $this->_registry->get('parameterRoute');
 

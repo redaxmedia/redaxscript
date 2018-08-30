@@ -32,12 +32,21 @@ class CommentTableTest extends TestCaseAbstract
 		$installer = $this->installerFactory();
 		$installer->init();
 		$installer->rawCreate();
+		$articleOne = Db::forTablePrefix('articles')->create();
+		$articleOne
+			->set(
+			[
+				'title' => 'Article One',
+				'alias' => 'article-one'
+			])
+			->save();
 		Db::forTablePrefix('comments')
 			->create()
 			->set(
 			[
 				'author' => 'Comment One',
 				'text' => 'Comment One',
+				'article' => $articleOne->id
 			])
 			->save();
 	}

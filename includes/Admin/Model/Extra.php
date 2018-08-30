@@ -27,7 +27,8 @@ class Extra extends BaseModel\Extra
 
 	public function createByArray(array $createArray = []) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->create()
 			->set($createArray)
 			->save();
@@ -46,7 +47,8 @@ class Extra extends BaseModel\Extra
 
 	public function updateByIdAndArray(int $extraId = null, array $updateArray = []) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->whereIdIs($extraId)
 			->findOne()
 			->set($updateArray)
@@ -65,7 +67,8 @@ class Extra extends BaseModel\Extra
 
 	public function publishById(int $extraId = null) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->whereIdIs($extraId)
 			->findOne()
 			->set('status', 1)
@@ -84,7 +87,8 @@ class Extra extends BaseModel\Extra
 
 	public function unpublishById(int $extraId = null) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->whereIdIs($extraId)
 			->findOne()
 			->set('status', 0)

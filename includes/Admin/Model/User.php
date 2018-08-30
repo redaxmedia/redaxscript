@@ -27,7 +27,8 @@ class User extends BaseModel\User
 
 	public function createByArray(array $createArray = []) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->create()
 			->set($createArray)
 			->save();
@@ -46,7 +47,8 @@ class User extends BaseModel\User
 
 	public function updateByIdAndArray(int $userId = null, array $updateArray = []) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->whereIdIs($userId)
 			->findOne()
 			->set($updateArray)
@@ -66,7 +68,8 @@ class User extends BaseModel\User
 
 	public function updateLastById(int $userId = null, int $date = null)
 	{
-		return $this->query()
+		return $this
+			->query()
 			->where('id', $userId)
 			->findOne()
 			->set('last', $date)
@@ -85,7 +88,8 @@ class User extends BaseModel\User
 
 	public function enableById(int $userId = null) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->whereIdIs($userId)
 			->findOne()
 			->set('status', 1)
@@ -104,7 +108,8 @@ class User extends BaseModel\User
 
 	public function disableById(int $userId = null) : bool
 	{
-		return $this->query()
+		return $this
+			->query()
 			->whereIdIs($userId)
 			->findOne()
 			->set('status', 0)
