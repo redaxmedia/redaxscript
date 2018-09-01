@@ -77,9 +77,9 @@ class Maps extends Config
 		$mapElement->init('div',
 		[
 			'class' => $this->_configArray['className'],
-			'data-latitude' => is_numeric($latitude) ? $latitude : null,
-			'data-longitude' => is_numeric($longitude) ? $longitude : null,
-			'data-zoom' => is_numeric($zoom) ? $zoom : null
+			'data-latitude' => is_numeric($latitude) ? $latitude : 0,
+			'data-longitude' => is_numeric($longitude) ? $longitude : 0,
+			'data-zoom' => is_numeric($zoom) ? $zoom : 1
 		]);
 
 		/* collect output */

@@ -143,6 +143,7 @@ module.exports = grunt =>
 		'babel:moduleCallHome',
 		'babel:moduleExperiments',
 		'babel:moduleFormValidator',
+		'babel:moduleMaps',
 		'babel:moduleSyntaxHighlighter',
 		'babel:moduleTextareaResizer'
 	]);

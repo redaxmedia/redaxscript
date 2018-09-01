@@ -68,6 +68,14 @@ module.exports = () =>
 			],
 			dest: 'modules/FormValidator/dist/scripts/form-validator.min.js'
 		},
+		moduleMaps:
+		{
+			src:
+			[
+				'modules/Maps/assets/scripts/maps.js'
+			],
+			dest: 'modules/Maps/dist/scripts/maps.min.js'
+		},
 		moduleSyntaxHighlighter:
 		{
 			src:

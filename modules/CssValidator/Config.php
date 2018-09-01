@@ -16,7 +16,7 @@ use Redaxscript\Module;
 class Config extends Module\Notification
 {
 	/**
-	 * array of config
+	 * array of the config
 	 *
 	 * @var array
 	 */

@@ -2,6 +2,6 @@
 	"_validator":
 	{
 		"service_no": "Dienst nicht erreichbar",
-		"document_validate": "Das Dokument validiert nach den angegebenen Standard"
+		"document_validate": "Das Dokument validiert nach dem angegebenen Standard"
 	}
 }

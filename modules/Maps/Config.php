@@ -16,7 +16,7 @@ use Redaxscript\Module;
 class Config extends Module\Module
 {
 	/**
-	 * array of config
+	 * array of the config
 	 *
 	 * @var array
 	 */
@@ -25,6 +25,6 @@ class Config extends Module\Module
 	[
 		'className' => 'rs-js-map rs-component-map',
 		'apiUrl' => 'https://maps.googleapis.com/maps/api/js',
-		'apiKey' => 'AIzaSyApJDayHOmOnVy6OucJXG_cGSHSC_f7NSM'
+		'apiKey' => null
 	];
 }

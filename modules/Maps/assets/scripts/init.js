@@ -4,6 +4,16 @@ rs.modules.Maps =
 	dependency: typeof window.google === 'object' && typeof window.google.maps === 'object',
 	config:
 	{
-		selector: 'div.rs-js-map'
+		selector: 'div.rs-js-map',
+		maps:
+		{
+			zoom: 1,
+			center:
+			{
+				lat: 0,
+				lng: 0
+			}
+		},
+		marker: true
 	}
 };
