@@ -29,7 +29,11 @@ class CommentForm extends ViewAbstract
 
 	public function render(int $articleId = null) : string
 	{
-		$output = Module\Hook::trigger('commentFormStart');
+		if ($this->_registry->get('commentReplace'))
+		{
+			return '<!-- commentReplace -->';
+		}
+		$output = Module\Hook::trigger('commentStart');
 		$settingModel = new Model\Setting();
 
 		/* html element */

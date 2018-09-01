@@ -120,6 +120,10 @@ class Article extends ViewAbstract
 
 	public function render(int $categoryId = null, int $articleId = null) : string
 	{
+		if ($this->_registry->get('articleReplace'))
+		{
+			return Module\Hook::trigger('articleReplace');
+		}
 		$output = Module\Hook::trigger('articleStart');
 		$accessValidator = new Validator\Access();
 		$articleModel = new Model\Article();

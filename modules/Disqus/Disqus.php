@@ -39,18 +39,7 @@ class Disqus extends Config
 
 	public function renderStart()
 	{
-		if ($this->_registry->get('articleId'))
-		{
-			$this->_registry->set('commentReplace', true);
-
-			/* script */
-
-			$script = Head\Script::getInstance();
-			$script
-				->init('foot')
-				->appendFile($this->_configArray['url'])
-				->appendFile('modules/Disqus/assets/scripts/init.js');
-		}
+		$this->_registry->set('commentReplace', true);
 	}
 
 	/**
@@ -63,6 +52,14 @@ class Disqus extends Config
 
 	public function commentReplace()
 	{
+		$script = Head\Script::getInstance();
+		$script
+			->init('foot')
+			->appendFile($this->_configArray['url'])
+			->appendFile('modules/Disqus/assets/scripts/init.js');
+
+		/* html element */
+
 		$boxElement = new Html\Element();
 		$boxElement->init('div',
 		[

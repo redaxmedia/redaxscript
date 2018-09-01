@@ -74,6 +74,10 @@ class Comment extends ViewAbstract
 
 	public function render(int $articleId = null) : string
 	{
+		if ($this->_registry->get('commentReplace'))
+		{
+			return Module\Hook::trigger('commentReplace');
+		}
 		$output = Module\Hook::trigger('commentStart');
 		$accessValidator = new Validator\Access();
 		$commentModel = new Model\Comment();

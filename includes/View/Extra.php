@@ -119,6 +119,10 @@ class Extra extends ViewAbstract
 
 	public function render(int $extraId = null) : string
 	{
+		if ($this->_registry->get('extraReplace'))
+		{
+			return Module\Hook::trigger('extraReplace');
+		}
 		$output = Module\Hook::trigger('extraStart');
 		$accessValidator = new Validator\Access();
 		$extraModel = new Model\Extra();
