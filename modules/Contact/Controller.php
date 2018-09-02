@@ -1,40 +1,37 @@
 <?php
-namespace Redaxscript\Controller;
+namespace Redaxscript\Modules\Contact;
 
+use Redaxscript\Controller\ControllerAbstract;
 use Redaxscript\Html;
+use Redaxscript\Filter;
 use Redaxscript\Mailer;
 use Redaxscript\Model;
-use Redaxscript\Filter;
 use Redaxscript\Validator;
 
 /**
- * children class to process the comment request
+ * children class to process the contact request
  *
- * @since 3.0.0
+ * @since 4.0.0
  *
  * @package Redaxscript
- * @category Controller
+ * @category Modules
  * @author Henry Ruhs
- * @author Balázs Szilágyi
  */
 
-class Comment extends ControllerAbstract
+class Controller extends ControllerAbstract
 {
 	/**
-	 * process the class
+	 * process
 	 *
-	 * @since 3.3.0
+	 * @since 4.0.0
 	 *
 	 * @return string
 	 */
 
 	public function process() : string
 	{
-		$articleModel = new Model\Article();
-		$settingModel = new Model\Setting();
 		$postArray = $this->_normalizePost($this->_sanitizePost());
 		$validateArray = $this->_validatePost($postArray);
-		$route = $postArray['article'] ? $articleModel->getRouteById($postArray['article']) : null;
 
 		/* handle validate */
 
@@ -42,28 +39,7 @@ class Comment extends ControllerAbstract
 		{
 			return $this->_error(
 			[
-				'route' => $route,
 				'message' => $validateArray
-			]);
-		}
-
-		/* handle create */
-
-		$createArray =
-		[
-			'author' => $postArray['author'],
-			'email' => $postArray['email'],
-			'url' => $postArray['url'],
-			'text' => $postArray['text'],
-			'language' => $articleModel->getById($postArray['article'])->language,
-			'article' => $postArray['article'],
-			'status' => $settingModel->get('verification') ? 0 : 1
-		];
-		if (!$this->_create($createArray))
-		{
-			return $this->_error(
-			[
-				'route' => $route
 			]);
 		}
 
@@ -71,30 +47,26 @@ class Comment extends ControllerAbstract
 
 		$mailArray =
 		[
+			'author' => $postArray['author'],
 			'email' => $postArray['email'],
 			'url' => $postArray['url'],
-			'route' => $route,
-			'author' => $postArray['author'],
-			'text' => $postArray['text'],
-			'article' => $articleModel->getById($postArray['article'])->title
+			'text' => $postArray['text']
 		];
-		if (!$this->_mail($mailArray))
+		if ($this->_mail($mailArray))
 		{
-			return $this->_warning(
+			return $this->_success(
 			[
-				'route' => $route,
-				'timeout' => $settingModel->get('notification') ? 2 : 0,
-				'message' => $this->_language->get('email_failed')
+				'route' => $this->_registry->get('liteRoute'),
+				'timeout' => 2,
+				'message' => $this->_language->get('message_sent', '_contact')
 			]);
 		}
 
-		/* handle success */
+		/* handle error */
 
-		return $this->_success(
+		return $this->_error(
 		[
-			'route' => $route,
-			'timeout' => $settingModel->get('notification') ? 2 : 0,
-			'message' => $settingModel->get('moderation') ? $this->_language->get('comment_moderation') : $this->_language->get('comment_sent')
+			'message' => $this->_language->get('email_failed')
 		]);
 	}
 
@@ -121,28 +93,27 @@ class Comment extends ControllerAbstract
 			'author' => $specialFilter->sanitize($this->_request->getPost('author')),
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
 			'url' => $urlFilter->sanitize($this->_request->getPost('url')),
-			'text' => $htmlFilter->sanitize($this->_request->getPost('text')),
-			'article' => $numberFilter->sanitize($this->_request->getPost('article')),
+			'text' => nl2br($htmlFilter->sanitize($this->_request->getPost('text'))),
 			'task' => $numberFilter->sanitize($this->_request->getPost('task')),
 			'solution' => $this->_request->getPost('solution')
 		];
 	}
 
 	/**
-	 * validate the post
+	 * validate
 	 *
-	 * @since 3.3.0
+	 * @since 4.0.0
 	 *
 	 * @param array $postArray array of the post
 	 *
 	 * @return array
 	 */
 
-	protected function _validatePost(array $postArray = []) : array
+	protected function _validatePost($postArray = []) : array
 	{
 		$emailValidator = new Validator\Email();
-		$captchaValidator = new Validator\Captcha();
 		$urlValidator = new Validator\Url();
+		$captchaValidator = new Validator\Captcha();
 		$settingModel = new Model\Setting();
 		$validateArray = [];
 
@@ -158,7 +129,7 @@ class Comment extends ControllerAbstract
 		}
 		else if (!$emailValidator->validate($postArray['email']))
 		{
-			$validateArray[] = $this->_language->get('email_incorrect');
+			$validateArray['email'] = $this->_language->get('email_incorrect');
 		}
 		if ($postArray['url'] && !$urlValidator->validate($postArray['url']))
 		{
@@ -166,11 +137,7 @@ class Comment extends ControllerAbstract
 		}
 		if (!$postArray['text'])
 		{
-			$validateArray[] = $this->_language->get('comment_empty');
-		}
-		if (!$postArray['article'])
-		{
-			$validateArray[] = $this->_language->get('article_empty');
+			$validateArray[] = $this->_language->get('message_empty');
 		}
 		if ($settingModel->get('captcha') > 0 && !$captchaValidator->validate($postArray['task'], $postArray['solution']))
 		{
@@ -180,35 +147,18 @@ class Comment extends ControllerAbstract
 	}
 
 	/**
-	 * create the comment
+	 * mail
 	 *
-	 * @since 3.0.0
+	 * @since 4.0.0
 	 *
-	 * @param array $createArray array of the create
-	 *
-	 * @return bool
-	 */
-
-	protected function _create(array $createArray = []) : bool
-	{
-		$commentModel = new Model\Comment();
-		return $commentModel->createByArray($createArray);
-	}
-
-	/**
-	 * send the mail
-	 *
-	 * @since 3.3.0
-	 *
-	 * @param array $mailArray array of the mail
+	 * @param array $mailArray
 	 *
 	 * @return bool
 	 */
 
-	protected function _mail(array $mailArray = []) : bool
+	protected function _mail($mailArray = []) : bool
 	{
 		$settingModel = new Model\Setting();
-		$urlArticle = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $mailArray['route'];
 
 		/* html element */
 
@@ -227,25 +177,18 @@ class Comment extends ControllerAbstract
 				'href' => $mailArray['url']
 			])
 			->text($mailArray['url'] ? $mailArray['url'] : $this->_language->get('none'));
-		$linkArticle = $element
-			->copy()
-			->init('a',
-			[
-				'href' => $urlArticle
-			])
-			->text($urlArticle);
 
 		/* prepare mail */
 
 		$toArray =
 		[
-			$this->_language->get('author') => $settingModel->get('email')
+			$settingModel->get('author') => $settingModel->get('email')
 		];
 		$fromArray =
 		[
 			$mailArray['author'] => $mailArray['email']
 		];
-		$subject = $this->_language->get('comment_new');
+		$subject = $this->_language->get('contact');
 		$bodyArray =
 		[
 			$this->_language->get('author') . $this->_language->get('colon') . ' ' . $mailArray['author'],
@@ -254,9 +197,7 @@ class Comment extends ControllerAbstract
 			'<br />',
 			$this->_language->get('url') . $this->_language->get('colon') . ' ' . $linkUrl,
 			'<br />',
-			$this->_language->get('article') . $this->_language->get('colon') . ' ' . $linkArticle,
-			'<br />',
-			$this->_language->get('comment') . $this->_language->get('colon') . ' ' . $mailArray['text']
+			$this->_language->get('message') . $this->_language->get('colon') . ' ' . $mailArray['text']
 		];
 
 		/* send mail */
