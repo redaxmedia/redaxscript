@@ -121,6 +121,10 @@ class ModuleTable extends ViewAbstract
 						$tdElement->copy()->text($value->alias) .
 						$tdElement->copy()->text($value->version)
 				);
+				$modulesFilesystemArray = array_diff($modulesFilesystemArray,
+				[
+					$value->alias
+				]);
 			}
 		}
 		if ($modulesFilesystemArray)
