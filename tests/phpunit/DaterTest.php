@@ -89,9 +89,9 @@ class DaterTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actualTime =$dater->formatTime();
-		$actualDate =$dater->formatDate();
-		$actualField =$dater->formatField();
+		$actualTime = $dater->formatTime();
+		$actualDate = $dater->formatDate();
+		$actualField = $dater->formatField();
 
 		/* compare */
 
