@@ -35,6 +35,7 @@ if ($registry->get('contentError'))
 
 /* template */
 
+set_include_path('templates');
 $templateArray = Module\Hook::collect('renderTemplate');
 if (is_array($templateArray) && array_key_exists('header', $templateArray))
 {
@@ -46,7 +47,7 @@ if (is_array($templateArray) && array_key_exists('content', $templateArray))
 }
 else
 {
-	set_include_path('templates');
+
 	include_once($registry->get('template') . DIRECTORY_SEPARATOR . 'index.phtml');
 }
 Module\Hook::trigger('renderEnd');
