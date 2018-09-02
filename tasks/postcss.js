@@ -68,13 +68,13 @@ module.exports = () =>
 			],
 			dest: 'modules/FeedReader/dist/styles/feed-reader.min.css'
 		},
-		moduleLightGallery:
+		moduleGallery:
 		{
 			src:
 			[
-				'modules/LightGallery/assets/styles/_light-gallery.css'
+				'modules/Gallery/assets/styles/_gallery.css'
 			],
-			dest: 'modules/LightGallery/dist/styles/light-gallery.min.css'
+			dest: 'modules/Gallery/dist/styles/gallery.min.css'
 		},
 		modulePreview:
 		{

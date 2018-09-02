@@ -1,5 +1,5 @@
 <?php
-namespace Redaxscript\Modules\LightGallery;
+namespace Redaxscript\Modules\Gallery;
 
 use Redaxscript\Module;
 
@@ -25,16 +25,16 @@ class Config extends Module\Notification
 	[
 		'className' =>
 		[
-			'image' => 'rs-image-light-gallery',
-			'list' => 'rs-js-light-gallery rs-list-light-gallery'
+			'image' => 'rs-image-gallery',
+			'list' => 'rs-js-gallery rs-list-gallery'
 		],
-		'height' => 200,
-		'quality' => 80,
-		'thumbDirectory' => 'thumbs',
 		'allowedCommands' =>
 		[
 			'create',
 			'remove'
-		]
+		],
+		'height' => 200,
+		'quality' => 80,
+		'thumbDirectory' => 'thumbs'
 	];
 }

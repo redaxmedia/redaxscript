@@ -126,7 +126,7 @@ module.exports = grunt =>
 		'postcss:moduleAce',
 		'postcss:moduleDirectoryLister',
 		'postcss:moduleFeedReader',
-		'postcss:moduleLightGallery',
+		'postcss:moduleGallery',
 		'postcss:modulePreview',
 		'postcss:moduleMaps',
 		'postcss:moduleSocialSharer',
@@ -143,6 +143,7 @@ module.exports = grunt =>
 		'babel:moduleCallHome',
 		'babel:moduleExperiments',
 		'babel:moduleFormValidator',
+		'babel:moduleGallery',
 		'babel:moduleMaps',
 		'babel:moduleSyntaxHighlighter',
 		'babel:moduleTextareaResizer'

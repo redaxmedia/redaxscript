@@ -1,0 +1,27 @@
+/**
+ * @tableofcontents
+ *
+ * 1. gallery
+ */
+
+/** @section 1. gallery */
+
+.rs-list-gallery
+{
+	display: flex;
+	flex-wrap: wrap;
+
+	& li
+	{
+		flex-basis: 10%;
+		margin-bottom: 0.25em;
+		margin-right: 0.25em;
+	}
+
+	& img
+	{
+		height: 100%;
+		object-fit: cover;
+		width: 100%;
+	}
+}

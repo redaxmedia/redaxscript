@@ -1,12 +1,12 @@
 <?php
-namespace Redaxscript\Modules\LightGallery;
+namespace Redaxscript\Modules\Gallery;
 
 use Redaxscript\Filesystem;
 use Redaxscript\Head;
 use Redaxscript\Html;
 
 /**
- * javascript powered light gallery
+ * javascript powered gallery
  *
  * @since 3.0.0
  *
@@ -15,7 +15,7 @@ use Redaxscript\Html;
  * @author Henry Ruhs
  */
 
-class LightGallery extends Config
+class Gallery extends Config
 {
 	/**
 	 * array of the module
@@ -25,10 +25,10 @@ class LightGallery extends Config
 
 	protected static $_moduleArray =
 	[
-		'name' => 'Light Gallery',
-		'alias' => 'LightGallery',
+		'name' => 'Gallery',
+		'alias' => 'Gallery',
 		'author' => 'Redaxmedia',
-		'description' => 'Javascript powered light gallery',
+		'description' => 'JavaScript powered gallery',
 		'version' => '4.0.0'
 	];
 
@@ -58,17 +58,30 @@ class LightGallery extends Config
 		$link = Head\Link::getInstance();
 		$link
 			->init()
-			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.7/css/lightgallery.min.css')
-			->appendFile('modules/LightGallery/dist/styles/light-gallery.min.css');
+			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css')
+			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css')
+			->appendFile('modules/Gallery/dist/styles/gallery.min.css');
 
 		/* script */
 
 		$script = Head\Script::getInstance();
 		$script
 			->init('foot')
-			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.7/js/lightgallery.min.js')
-			->appendFile('modules/LightGallery/assets/scripts/init.js')
-			->appendFile('modules/LightGallery/dist/scripts/light-gallery.min.js');
+			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js')
+			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js')
+			->appendFile('modules/Gallery/assets/scripts/init.js')
+			->appendFile('modules/Gallery/dist/scripts/gallery.min.js');
+	}
+
+	/**
+	 * renderEnd
+	 *
+	 * @since 4.0.0
+	 */
+
+	public function renderEnd()
+	{
+		include_once('modules/Gallery/templates/gallery.phtml');
 	}
 
 	/**
@@ -145,6 +158,7 @@ class LightGallery extends Config
 	public function _renderItem($directory = null, array $optionArray = [])
 	{
 		$outputItem = null;
+		$itemCounter = 0;
 
 		/* html element */
 
@@ -180,6 +194,7 @@ class LightGallery extends Config
 		{
 			$imagePath = $directory . DIRECTORY_SEPARATOR . $value;
 			$thumbPath = $directory . DIRECTORY_SEPARATOR . $this->_configArray['thumbDirectory'] . DIRECTORY_SEPARATOR . $value;
+			$imageSize = getimagesize($imagePath);
 
 			/* collect item output */
 
@@ -188,7 +203,13 @@ class LightGallery extends Config
 				->html(
 					$linkElement
 						->copy()
-						->attr('href', $imagePath)
+						->attr(
+						[
+							'href' => $imagePath,
+							'data-index' => $itemCounter++,
+							'data-height' => $imageSize[1],
+							'data-width' => $imageSize[0]
+						])
 						->html(
 							$imageElement
 								->copy()
@@ -302,9 +323,9 @@ class LightGallery extends Config
 
 	protected function _calcSource($imagePath = null)
 	{
-		$sourceArray['dimensions'] = getimagesize($imagePath);
-		$sourceArray['height'] = $sourceArray['dimensions'][1];
-		$sourceArray['width'] = $sourceArray['dimensions'][0];
+		$sourceArray['size'] = getimagesize($imagePath);
+		$sourceArray['height'] = $sourceArray['size'][1];
+		$sourceArray['width'] = $sourceArray['size'][0];
 		return $sourceArray;
 	}
 
