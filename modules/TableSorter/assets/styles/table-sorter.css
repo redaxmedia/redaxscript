@@ -1,0 +1,66 @@
+/**
+ * @tableofcontents
+ *
+ * 1. table sorter
+ */
+
+/** @section 1. table sorter */
+
+.rs-admin-table-default .rs-admin-col-move
+{
+	direction: rtl;
+	padding: 1.25em 0;
+	position: relative;
+	text-indent: -999em;
+
+	&:before,
+	&:after
+	{
+		color: gray(185);
+		font-size: 2em;
+		position: absolute;
+		right: 5%;
+		text-indent: 0;
+	}
+
+	&:before
+	{
+		@extend %rs-admin-icon-expand-less;
+		top: 5%;
+		transition: top 0.1s;
+	}
+
+	&:after
+	{
+		@extend %rs-admin-icon-expand-more;
+		bottom: 5%;
+		transition: bottom 0.1s;
+	}
+
+	&.rs-admin-is-active
+	{
+		cursor: move;
+
+		&:before,
+		&:after
+		{
+			color: gray(70);
+		}
+
+		&:active:before
+		{
+			top: 0;
+		}
+
+		&:active:after
+		{
+			bottom: 0;
+		}
+
+		&:hover:before,
+		&:hover:after
+		{
+			color: var(--rs-admin-color-primary);
+		}
+	}
+}

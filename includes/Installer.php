@@ -358,11 +358,13 @@ class Installer
 	{
 		$moduleArray =
 		[
+			'AliasGenerator',
 			'CallHome',
 			'FormValidator',
 			'HtmlValidator',
 			'LiveReload',
-			'TextareaResizer'
+			'TextareaResizer',
+			'TableSorter'
 		];
 
 		/* process module */

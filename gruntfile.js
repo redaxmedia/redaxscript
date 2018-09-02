@@ -130,15 +130,16 @@ module.exports = grunt =>
 		'postcss:modulePreview',
 		'postcss:moduleMaps',
 		'postcss:moduleSocialSharer',
+		'postcss:moduleTableSorter',
 		'postcss:moduleTinymceContent',
 		'postcss:moduleTinymceSkin'
 	]);
 	grunt.registerTask('build-scripts',
 	[
-		'babel:templateAdmin',
 		'babel:templateConsole',
 		'babel:templateInstall',
 		'babel:moduleAce',
+		'babel:moduleAliasGenerator',
 		'babel:moduleAnalytics',
 		'babel:moduleCallHome',
 		'babel:moduleExperiments',
@@ -146,6 +147,7 @@ module.exports = grunt =>
 		'babel:moduleGallery',
 		'babel:moduleMaps',
 		'babel:moduleSyntaxHighlighter',
+		'babel:moduleTableSorter',
 		'babel:moduleTextareaResizer'
 	]);
 	grunt.registerTask('serve',

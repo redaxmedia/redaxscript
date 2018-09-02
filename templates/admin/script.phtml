@@ -5,9 +5,7 @@
 <?php if (Helper::getRegistry('loggedIn') === Helper::getRegistry('token') && Helper::getRegistry('firstParameter') !== 'logout'): ?>
 	<?php Tag::script()
 		->init('foot')
-		->appendFile('https://cdnjs.cloudflare.com/ajax/libs/speakingurl/14.0.1/speakingurl.min.js')
 		->appendFile('templates/admin/assets/scripts/init.js')
-		->appendFile('templates/admin/dist/scripts/admin.min.js')
 		->concat();
 	?>
 <?php endif; ?>

@@ -4,14 +4,6 @@ module.exports = () =>
 
 	const config =
 	{
-		templateAdmin:
-		{
-			src:
-			[
-				'templates/admin/assets/scripts/alias.js'
-			],
-			dest: 'templates/admin/dist/scripts/admin.min.js'
-		},
 		templateConsole:
 		{
 			src:
@@ -35,6 +27,14 @@ module.exports = () =>
 				'modules/Ace/assets/scripts/ace.js'
 			],
 			dest: 'modules/Ace/dist/scripts/ace.min.js'
+		},
+		moduleAliasGenerator:
+		{
+			src:
+			[
+				'modules/AliasGenerator/assets/scripts/alias-generator.js'
+			],
+			dest: 'modules/AliasGenerator/dist/scripts/alias-generator.min.js'
 		},
 		moduleAnalytics:
 		{
@@ -91,6 +91,14 @@ module.exports = () =>
 				'modules/SyntaxHighlighter/assets/scripts/syntax-highlighter.js'
 			],
 			dest: 'modules/SyntaxHighlighter/dist/scripts/syntax-highlighter.min.js'
+		},
+		moduleTableSorter:
+		{
+			src:
+			[
+				'modules/TableSorter/assets/scripts/table-sorter.js'
+			],
+			dest: 'modules/TableSorter/dist/scripts/table-sorter.min.js'
 		},
 		moduleTextareaResizer:
 		{

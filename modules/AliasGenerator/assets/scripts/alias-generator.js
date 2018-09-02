@@ -1,8 +1,8 @@
-rs.templates.admin.alias.generate = config =>
+rs.modules.AliasGenerator.generate = config =>
 {
 	const CONFIG =
 	{
-		...rs.templates.admin.alias.config,
+		...rs.modules.AliasGenerator.config,
 		...config
 	};
 	const form = document.querySelector(CONFIG.selector);
@@ -54,7 +54,7 @@ rs.templates.admin.alias.generate = config =>
 
 /* run as needed */
 
-if (rs.templates.admin.alias.init && rs.templates.admin.alias.dependency)
+if (rs.modules.AliasGenerator.init && rs.modules.AliasGenerator.dependency)
 {
-	rs.templates.admin.alias.generate(rs.templates.admin.alias.config);
+	rs.modules.AliasGenerator.generate(rs.modules.AliasGenerator.config);
 }

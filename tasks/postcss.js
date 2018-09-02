@@ -100,6 +100,14 @@ module.exports = () =>
 			],
 			dest: 'modules/SocialSharer/dist/styles/social-sharer.min.css'
 		},
+		moduleTableSorter:
+		{
+			src:
+			[
+				'modules/TableSorter/assets/styles/_table-sorter.css'
+			],
+			dest: 'modules/TableSorter/dist/styles/table-sorter.min.css'
+		},
 		moduleTinymceContent:
 		{
 			src:
