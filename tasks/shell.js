@@ -61,7 +61,7 @@ module.exports = grunt =>
 		{
 			command: run('vendor/bin/paratest --processes=10 ' + grunt.option.flags())
 		},
-		phpServer:
+		startServer:
 		{
 			command: 'php -S 127.0.0.1:8000'
 		},

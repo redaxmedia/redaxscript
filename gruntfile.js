@@ -92,11 +92,11 @@ module.exports = grunt =>
 	[
 		'shell:phpunitParallel'
 	]);
-	grunt.registerTask('phpserver',
+	grunt.registerTask('startServer',
 	[
-		'shell:phpServer'
+		'shell:startServer'
 	]);
-	grunt.registerTask('openbrowser',
+	grunt.registerTask('openBrowser',
 	[
 		'shell:openBrowser'
 	]);

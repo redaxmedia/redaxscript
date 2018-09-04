@@ -39,7 +39,10 @@ Usage
 Serve local development server:
 
 ```
-grunt serve
+grunt serve [options]
+
+--O, --open-browser
+--W, --webfont-compat
 ```
 
 Browse your working copy:

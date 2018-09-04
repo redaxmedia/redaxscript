@@ -1,4 +1,4 @@
-module.exports = () =>
+module.exports = grunt =>
 {
 	'use strict';
 
@@ -8,9 +8,8 @@ module.exports = () =>
 		{
 			tasks:
 			[
-				'phpserver',
-				'watch',
-				'openbrowser'
+				'startServer',
+				'watch'
 			]
 		},
 		options:
@@ -19,6 +18,10 @@ module.exports = () =>
 			stream: true
 		}
 	};
+	if (grunt.option('O') || grunt.option('open-browser'))
+	{
+		config.serve.tasks.push('openBrowser');
+	}
 
 	return config;
 };

@@ -1,4 +1,4 @@
-module.exports = () =>
+module.exports = grunt =>
 {
 	'use strict';
 
@@ -144,6 +144,11 @@ module.exports = () =>
 			htmlDemo: false
 		}
 	};
+	if (grunt.option('W') || grunt.option('webfont-compat'))
+	{
+		config.options.engine = 'node';
+		config.options.normalize = true;
+	}
 
 	return config;
 };
