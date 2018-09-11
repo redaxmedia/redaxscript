@@ -31,10 +31,10 @@ abstract class CommandAbstract extends ConsoleAbstract
 	 * @param string $key
 	 * @param array $promptArray
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public function prompt($key = null, $promptArray = [])
+	public function prompt(string $key = null, array $promptArray = []) : ?string
 	{
 		return array_key_exists($key, $promptArray) || array_key_exists('no-interaction', $promptArray) ? $promptArray[$key] : readline($key . ':');
 	}
@@ -44,10 +44,10 @@ abstract class CommandAbstract extends ConsoleAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public function getHelp()
+	public function getHelp() : ?string
 	{
 		$output = null;
 
@@ -78,5 +78,31 @@ abstract class CommandAbstract extends ConsoleAbstract
 			}
 		}
 		return $output;
+	}
+
+	/**
+	 * show the success
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return string
+	 */
+
+	public function success() : string
+	{
+		return PHP_EOL . $this->_language->get('operation_completed') . $this->_language->get('exclamation_mark') . PHP_EOL;
+	}
+
+	/**
+	 * show the error
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return string
+	 */
+
+	public function error() : string
+	{
+		return PHP_EOL . $this->_language->get('something_wrong') . $this->_language->get('exclamation_mark') . PHP_EOL;
 	}
 }

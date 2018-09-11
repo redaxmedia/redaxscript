@@ -84,10 +84,10 @@ class Template extends TagAbstract
 	 * @param string $methodName
 	 * @param array $parameterArray
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	protected function _call(string $methodName = null, array $parameterArray = [])
+	protected function _call(string $methodName = null, array $parameterArray = []) : ?string
 	{
 		$templateClass = $this->_optionArray['namespace'];
 		if (method_exists($templateClass, $methodName))
@@ -99,6 +99,6 @@ class Template extends TagAbstract
 				$methodName
 			], $parameterArray);
 		}
-		return false;
+		return null;
 	}
 }

@@ -155,13 +155,13 @@ class Recover extends ControllerAbstract
 	 *
 	 * @param array $postArray array of the post
 	 *
-	 * @return object
+	 * @return object|null
 	 */
 
-	protected function _getUsers(array $postArray = [])
+	protected function _getUsers(array $postArray = []) : ?object
 	{
 		$userModel = new Model\User();
-		return $userModel
+		$users = $userModel
 			->query()
 			->where(
 			[
@@ -169,6 +169,7 @@ class Recover extends ControllerAbstract
 				'status' => 1
 			])
 			->findMany();
+		return $users ? $users : null;
 	}
 
 	/**

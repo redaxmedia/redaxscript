@@ -93,10 +93,10 @@ class Config extends CommandAbstract
 	 *
 	 * @param string $mode name of the mode
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public function run($mode = null)
+	public function run(string $mode = null) : ?string
 	{
 		$parser = new Parser($this->_request);
 		$parser->init($mode);
@@ -110,15 +110,15 @@ class Config extends CommandAbstract
 		}
 		if ($argumentKey === 'set')
 		{
-			return $this->_set($parser->getOption());
+			return $this->_set($parser->getOption()) ? $this->success() : $this->error();
 		}
 		if ($argumentKey === 'parse')
 		{
-			return $this->_parse($parser->getOption());
+			return $this->_parse($parser->getOption()) ? $this->success() : $this->error();
 		}
 		if ($argumentKey === 'lock')
 		{
-			return $this->_lock();
+			return $this->_lock() ? $this->success() : $this->error();
 		}
 		return $this->getHelp();
 	}
@@ -128,10 +128,10 @@ class Config extends CommandAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	protected function _list()
+	protected function _list() : ?string
 	{
 		$output = null;
 		$configArray = $this->_config->get();
@@ -162,7 +162,7 @@ class Config extends CommandAbstract
 	 * @return bool
 	 */
 
-	protected function _set(array $optionArray = [])
+	protected function _set(array $optionArray = []) : bool
 	{
 		$dbType = $this->prompt('db-type', $optionArray);
 		$dbHost = $this->prompt('db-host', $optionArray);
@@ -189,7 +189,7 @@ class Config extends CommandAbstract
 	 * @return bool
 	 */
 
-	protected function _parse(array $optionArray = [])
+	protected function _parse(array $optionArray = []) : bool
 	{
 		$dbUrl = $this->prompt('db-url', $optionArray);
 		$dbUrl = $optionArray['db-env'] ? getenv($dbUrl) : $dbUrl;
@@ -209,7 +209,7 @@ class Config extends CommandAbstract
 	 * @return bool
 	 */
 
-	protected function _lock()
+	protected function _lock() : bool
 	{
 		$this->_config->set('env', 'production');
 		return $this->_config->write();

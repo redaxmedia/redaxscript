@@ -17,6 +17,12 @@ use Redaxscript\View\ViewAbstract;
 
 class Pagination extends ViewAbstract
 {
+	/**
+	 * options of the pagination
+	 *
+	 * @var array
+	 */
+
 	protected $_optionArray =
 	[
 		'className' =>

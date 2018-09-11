@@ -201,7 +201,7 @@ class Register extends ControllerAbstract
 	 * @return bool
 	 */
 
-	protected function _mail($mailArray = []) : bool
+	protected function _mail(array $mailArray = []) : bool
 	{
 		$settingModel = new Model\Setting();
 		$urlLogin = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . 'login';

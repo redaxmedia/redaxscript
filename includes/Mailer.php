@@ -94,10 +94,10 @@ class Mailer
 	 * @param array $fromArray array of the sender
 	 * @param string $subject subject of the email
 	 * @param string|array $body body of the email
-	 * @param array $attachmentArray array of the attachments
+	 * @param array|null $attachmentArray array of the attachments
 	 */
 
-	public function init($toArray = [], $fromArray = [], $subject = null, $body = null, $attachmentArray = [])
+	public function init(array $toArray = [], array $fromArray = [], string $subject = null, $body = null, ?array $attachmentArray = [])
 	{
 		$this->_toArray = $toArray;
 		$this->_fromArray = $fromArray;

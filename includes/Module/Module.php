@@ -116,7 +116,7 @@ class Module
 	 * @return bool
 	 */
 
-	public function install()
+	public function install() : bool
 	{
 		if (is_array(static::$_moduleArray) && array_key_exists('alias', static::$_moduleArray))
 		{
@@ -146,7 +146,7 @@ class Module
 	 * @return bool
 	 */
 
-	public function uninstall()
+	public function uninstall() : bool
 	{
 		if (is_array(static::$_moduleArray) && array_key_exists('alias', static::$_moduleArray))
 		{

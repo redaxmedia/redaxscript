@@ -78,7 +78,7 @@ abstract class ControllerAbstract implements ControllerInterface
 	 * @return Messenger
 	 */
 
-	protected function _messengerFactory()
+	protected function _messengerFactory() : Messenger
 	{
 		return new Messenger($this->_registry);
 	}
@@ -90,14 +90,14 @@ abstract class ControllerAbstract implements ControllerInterface
 	 *
 	 * @param array $postArray array of the post
 	 *
-	 * @return array
+	 * @return array|null
 	 */
 
-	protected function _normalizePost(array $postArray = [])
+	protected function _normalizePost(array $postArray = []) : ?array
 	{
 		return array_map(function($value)
 		{
-			return $value === $this->_language->get('select') || $value === 'false' || !trim($value) ? null : $value;
+			return $value === $this->_language->get('select') || $value === 'null' || !trim($value) ? null : $value;
 		}, $postArray);
 	}
 

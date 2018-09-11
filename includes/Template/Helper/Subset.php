@@ -45,10 +45,10 @@ class Subset extends HelperAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public function process()
+	public function process() : ?string
 	{
 		$language = $this->_registry->get('language');
 

@@ -17,6 +17,12 @@ use Redaxscript\Module;
 
 class Dock extends ViewAbstract
 {
+	/**
+	 * options of the dock
+	 *
+	 * @var array
+	 */
+
 	protected $_optionArray =
 	[
 		'className' =>

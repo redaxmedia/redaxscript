@@ -76,13 +76,14 @@ class CacheTest extends TestCaseAbstract
 		]);
 		$cacheCommand = new Command\Cache($this->_registry, $this->_request, $this->_language, $this->_config);
 
-		/* actual */
+		/* expect and actual */
 
+		$expect = $cacheCommand->success();
 		$actual = $cacheCommand->run('cli');
 
 		/* compare */
 
-		$this->assertTrue($actual);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -104,13 +105,14 @@ class CacheTest extends TestCaseAbstract
 		]);
 		$cacheCommand = new Command\Cache($this->_registry, $this->_request, $this->_language, $this->_config);
 
-		/* actual */
+		/* expect and actual */
 
+		$expect = $cacheCommand->error();
 		$actual = $cacheCommand->run('cli');
 
 		/* compare */
 
-		$this->assertFalse($actual);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -137,13 +139,14 @@ class CacheTest extends TestCaseAbstract
 		]);
 		$cacheCommand = new Command\Cache($this->_registry, $this->_request, $this->_language, $this->_config);
 
-		/* actual */
+		/* expect and actual */
 
+		$expect = $cacheCommand->success();
 		$actual = $cacheCommand->run('cli');
 
 		/* compare */
 
-		$this->assertTrue($actual);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -165,12 +168,13 @@ class CacheTest extends TestCaseAbstract
 		]);
 		$cacheCommand = new Command\Cache($this->_registry, $this->_request, $this->_language, $this->_config);
 
-		/* actual */
+		/* expect and actual */
 
+		$expect = $cacheCommand->error();
 		$actual = $cacheCommand->run('cli');
 
 		/* compare */
 
-		$this->assertFalse($actual);
+		$this->assertEquals($expect, $actual);
 	}
 }

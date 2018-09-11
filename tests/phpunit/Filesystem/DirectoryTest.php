@@ -1,8 +1,8 @@
 <?php
 namespace Redaxscript\Tests\Filesystem;
 
-use Redaxscript\Filesystem;
 use org\bovigo\vfs\vfsStream as Stream;
+use Redaxscript\Filesystem;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -89,7 +89,6 @@ class DirectoryTest extends TestCaseAbstract
 
 		$this->assertEquals($expectArray, $actualArray);
 	}
-
 
 	/**
 	 * testClear

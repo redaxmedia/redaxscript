@@ -160,7 +160,7 @@ class Hook
 	 * @return array
 	 */
 
-	public static function collect($eventName = null, $parameterArray = []) : array
+	public static function collect(string $eventName = null, array $parameterArray = []) : array
 	{
 		$collectArray = [];
 
@@ -188,7 +188,7 @@ class Hook
 	 * @return string|null
 	 */
 
-	public static function trigger($eventName = null, $parameterArray = []) : ?string
+	public static function trigger(string $eventName = null, array $parameterArray = []) : ?string
 	{
 		$output = null;
 
@@ -214,10 +214,10 @@ class Hook
 	 * @param string $eventName
 	 * @param array $parameterArray
 	 *
-	 * @return string|bool
+	 * @return string|array|null
 	 */
 
-	protected static function _call($moduleName = null, $eventName = null, $parameterArray = [])
+	protected static function _call(string $moduleName = null, string $eventName = null, array $parameterArray = [])
 	{
 		$moduleClass = self::$_namespace . '\\' . $moduleName . '\\' . $moduleName;
 		if (method_exists($moduleClass, $eventName))
@@ -230,6 +230,6 @@ class Hook
 				$eventName
 			], $parameterArray);
 		}
-		return false;
+		return null;
 	}
 }

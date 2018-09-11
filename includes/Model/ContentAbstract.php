@@ -20,12 +20,13 @@ abstract class ContentAbstract extends ModelAbstract
 	 *
 	 * @param string $column name of the column
 	 *
-	 * @return object
+	 * @return object|null
 	 */
 
-	public function getAllByOrder(string $column = null)
+	public function getAllByOrder(string $column = null) : ?object
 	{
-		return $this->query()->orderGlobal($column)->findMany();
+		$items = $this->query()->orderGlobal($column)->findMany();
+		return $items ? $items : null;
 	}
 
 	/**
@@ -35,16 +36,17 @@ abstract class ContentAbstract extends ModelAbstract
 	 *
 	 * @param string $language
 	 *
-	 * @return object
+	 * @return object|null
 	 */
 
-	public function getByLanguage(string $language = null)
+	public function getByLanguage(string $language = null) : ?object
 	{
-		return $this
+		$items = $this
 			->query()
 			->whereLanguageIs($language)
 			->where('status', 1)
 			->findMany();
+		return $items ? $items : null;
 	}
 
 	/**
@@ -55,17 +57,18 @@ abstract class ContentAbstract extends ModelAbstract
 	 * @param int $id
 	 * @param string $language
 	 *
-	 * @return object
+	 * @return object|null
 	 */
 
-	public function getByIdAndLanguage(int $id = null, string $language = null)
+	public function getByIdAndLanguage(int $id = null, string $language = null) : ?object
 	{
-		return $this
+		$items = $this
 			->query()
 			->whereIdIs($id)
 			->whereLanguageIs($language)
 			->where('status', 1)
 			->findMany();
+		return $items ? $items : null;
 	}
 
 	/**

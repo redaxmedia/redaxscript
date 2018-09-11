@@ -143,10 +143,10 @@ class Login extends ControllerAbstract
 	 *
 	 * @param array $postArray array of the post
 	 *
-	 * @return object
+	 * @return object|null
 	 */
 
-	protected function _getUser(array $postArray = [])
+	protected function _getUser(array $postArray = []) : ?object
 	{
 		$userModel = new Model\User();
 		return $userModel->getByUserOrEmail($postArray['user'], $postArray['email']);

@@ -34,10 +34,46 @@
 
 	<testsuites>
 
-		<!-- admin -->
+		<!-- admin controller -->
 
-		<testsuite name="admin">
-			<directory>tests/phpunit/Admin</directory>
+		<testsuite name="admin-controller">
+			<directory>tests/phpunit/Admin/Controller</directory>
+		</testsuite>
+
+		<!-- admin html -->
+
+		<testsuite name="admin-html">
+			<directory>tests/phpunit/Admin/Html</directory>
+		</testsuite>
+
+		<!-- admin model -->
+
+		<testsuite name="admin-model">
+			<directory>tests/phpunit/Admin/Model</directory>
+		</testsuite>
+
+		<!-- admin router -->
+
+		<testsuite name="admin-router">
+			<directory>tests/phpunit/Admin/Router</directory>
+		</testsuite>
+
+		<!-- admin template -->
+
+		<testsuite name="admin-template">
+			<directory>tests/phpunit/Admin/Template</directory>
+		</testsuite>
+
+		<!-- admin view -->
+
+		<testsuite name="admin-view">
+			<directory>tests/phpunit/Admin/View</directory>
+		</testsuite>
+
+		<!-- admin messenger -->
+
+		<testsuite name="admin-messenger">
+			<file>tests/phpunit/Admin/MessengerTest.php</file>
 		</testsuite>
 
 		<!-- asset -->

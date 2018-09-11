@@ -37,7 +37,7 @@ class Alias implements ValidatorInterface
 	 * @since 4.0.0
 	 *
 	 * @param string $alias alias for routes and users
-	 * @param string $mode switch between general and default validation
+	 * @param string $mode general or default validation
 	 *
 	 * @return bool
 	 */

@@ -1,10 +1,10 @@
 <?php
 namespace Redaxscript\Tests;
 
-use Redaxscript\Mailer;
 use org\bovigo\vfs\vfsStream as Stream;
 use org\bovigo\vfs\vfsStreamFile as StreamFile;
 use org\bovigo\vfs\vfsStreamWrapper as StreamWrapper;
+use Redaxscript\Mailer;
 
 /**
  * MailerTest

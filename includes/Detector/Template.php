@@ -31,7 +31,7 @@ class Template extends DetectorAbstract
 
 		/* detect template */
 
-		$this->_detect(
+		$this->_output = $this->_detect(
 		[
 			'query' => $this->_request->getQuery('t'),
 			'session' => $this->_request->getSession('template'),

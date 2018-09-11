@@ -1,8 +1,8 @@
 <?php
 namespace Redaxscript\Modules\AliasGenerator;
 
-use Redaxscript\Module;
 use Redaxscript\Head;
+use Redaxscript\Module;
 
 /**
  * javascript powered alias generator

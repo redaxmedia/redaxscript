@@ -5,11 +5,11 @@ use Redaxscript\Admin;
 use Redaxscript\Config;
 use Redaxscript\Content;
 use Redaxscript\Html;
+use Redaxscript\Language;
 use Redaxscript\Model;
 use Redaxscript\Module;
-use Redaxscript\Request;
 use Redaxscript\Registry;
-use Redaxscript\Language;
+use Redaxscript\Request;
 use Redaxscript\Validator;
 
 /**
@@ -161,7 +161,7 @@ class Extra extends ViewAbstract
 		{
 			if ($accessValidator->validate($value->access, $myGroups))
 			{
-				$output .= Module\Hook::trigger('extraFragmentStart', $value);
+				$output .= Module\Hook::trigger('extraFragmentStart', (array)$value);
 				if ((int)$value->headline === 1)
 				{
 					$output .= $titleElement
@@ -169,7 +169,7 @@ class Extra extends ViewAbstract
 						->text($value->title);
 				}
 				$contentParser->process($value->text);
-				$output .= $boxElement->html($contentParser->getOutput()) . Module\Hook::trigger('extraFragmentEnd', $value);
+				$output .= $boxElement->html($contentParser->getOutput()) . Module\Hook::trigger('extraFragmentEnd', (array)$value);
 
 				/* admin dock */
 

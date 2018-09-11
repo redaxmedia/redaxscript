@@ -7,7 +7,7 @@
 	"require":
 	{
 		"j4mie/idiorm": "v1.5.6",
-		"php": "^7.1"
+		"php": "^7.2"
 	},
 	"require-dev":
 	{
@@ -19,7 +19,7 @@
 		"phpmd/phpmd": "2.6.0",
 		"phpstan/phpstan": "0.10.3",
 		"phpunit/phpunit": "7.3.2",
-		"redaxmedia/php-coding-standard": "1.1.1",
+		"redaxmedia/php-coding-standard": "1.2.0",
 		"redaxmedia/phpunit-provider-autoloader": "1.0.0",
 		"sebastian/phpcpd": "4.0.0",
 		"slowprog/composer-copy-file": "0.2.1",

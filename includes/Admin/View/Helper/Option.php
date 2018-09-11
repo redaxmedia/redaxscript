@@ -189,7 +189,7 @@ class Option
 	 * @return array
 	 */
 
-	public function getPermissionArray($table = null) : array
+	public function getPermissionArray(string $table = null) : array
 	{
 		if ($table === 'modules')
 		{
@@ -287,7 +287,7 @@ class Option
 	 * @return array
 	 */
 
-	public function getContentArray($table = null, $excludeArray = []) : array
+	public function getContentArray(string $table = null, array $excludeArray = []) : array
 	{
 		$query = Db::forTablePrefix($table);
 		if ($excludeArray)
@@ -320,7 +320,7 @@ class Option
 	 * @return array
 	 */
 
-	public function getAccessArray($table = null) : array
+	public function getAccessArray(string $table = null) : array
 	{
 		$access = Db::forTablePrefix($table)->orderByAsc('name')->findMany();
 		$accessArray = [];

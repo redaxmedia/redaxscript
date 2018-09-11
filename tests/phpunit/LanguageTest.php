@@ -106,6 +106,6 @@ class LanguageTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertFalse($actual);
+		$this->assertNull($actual);
 	}
 }

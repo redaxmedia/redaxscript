@@ -80,10 +80,10 @@ class Demo extends Config
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array|bool
+	 * @return array|null
 	 */
 
-	public function adminNotification()
+	public function adminNotification() : ?array
 	{
 		$auth = new Auth($this->_request);
 		$auth->init();
@@ -105,7 +105,7 @@ class Demo extends Config
 	 * @return string
 	 */
 
-	public function process()
+	public function process() : string
 	{
 		$auth = new Auth($this->_request);
 		$tableArray =
@@ -161,7 +161,7 @@ class Demo extends Config
 	 * @return string
 	 */
 
-	protected function _success()
+	protected function _success() : string
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger
@@ -178,7 +178,7 @@ class Demo extends Config
 	 * @return string
 	 */
 
-	protected function _error()
+	protected function _error() : string
 	{
 		$messenger = new Messenger($this->_registry);
 		return $messenger

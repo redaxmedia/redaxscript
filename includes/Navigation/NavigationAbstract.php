@@ -2,8 +2,8 @@
 namespace Redaxscript\Navigation;
 
 use Redaxscript\Language;
-use Redaxscript\Registry;
 use Redaxscript\Model;
+use Redaxscript\Registry;
 
 /**
  * abstract class to create a navigation class

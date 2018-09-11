@@ -44,7 +44,7 @@ class Registry extends Singleton
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string|array|bool
+	 * @return string|array|null
 	 */
 
 	public function get(string $key = null)
@@ -57,7 +57,7 @@ class Registry extends Singleton
 		{
 			return self::$_registryArray;
 		}
-		return false;
+		return null;
 	}
 
 	/**
@@ -66,7 +66,7 @@ class Registry extends Singleton
 	 * @since 2.1.0
 	 *
 	 * @param string $key key of the item
-	 * @param string|array|bool $value value of the item
+	 * @param string|array|null $value value of the item
 	 */
 
 	public function set(string $key = null, $value = null)

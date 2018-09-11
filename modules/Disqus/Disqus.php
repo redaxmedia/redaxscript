@@ -50,7 +50,7 @@ class Disqus extends Config
 	 * @return string
 	*/
 
-	public function commentReplace()
+	public function commentReplace() : string
 	{
 		$script = Head\Script::getInstance();
 		$script

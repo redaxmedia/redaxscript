@@ -2,9 +2,9 @@
 namespace Redaxscript\Router;
 
 use Redaxscript\Config;
+use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
-use Redaxscript\Language;
 
 /**
  * abstract class to create a router class

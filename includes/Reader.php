@@ -18,7 +18,7 @@ class Reader
 	/**
 	 * data object
 	 *
-	 * @var SimpleXMLElement
+	 * @var object
 	 */
 
 	protected $_dataObject;
@@ -28,10 +28,10 @@ class Reader
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return SimpleXMLElement
+	 * @return object
 	 */
 
-	public function getObject()
+	public function getObject() : object
 	{
 		return $this->_dataObject;
 	}
@@ -156,12 +156,12 @@ class Reader
 	 * @since 3.1.0
 	 *
 	 * @param array $dataArray
-	 * @param SimpleXMLElement $dataObject
+	 * @param object $dataObject
 	 *
-	 * @return SimpleXMLElement
+	 * @return object
 	 */
 
-	protected function _convertArrayToObject(array $dataArray = [], $dataObject = null)
+	protected function _convertArrayToObject(array $dataArray = [], object $dataObject = null) : object
 	{
 		if (!is_object($dataObject))
 		{

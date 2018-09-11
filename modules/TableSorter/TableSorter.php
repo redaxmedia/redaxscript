@@ -1,8 +1,8 @@
 <?php
 namespace Redaxscript\Modules\TableSorter;
 
-use Redaxscript\Module;
 use Redaxscript\Head;
+use Redaxscript\Module;
 
 /**
  * javaScript powered table sorter

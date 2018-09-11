@@ -1,11 +1,11 @@
 <?php
 namespace Redaxscript\Tests\Console\Command;
 
-use Redaxscript\Console\Command;
-use Redaxscript\Tests\TestCaseAbstract;
 use org\bovigo\vfs\vfsStream as Stream;
 use org\bovigo\vfs\vfsStreamFile as StreamFile;
 use org\bovigo\vfs\vfsStreamWrapper as StreamWrapper;
+use Redaxscript\Console\Command;
+use Redaxscript\Tests\TestCaseAbstract;
 
 /**
  * ConfigTest
@@ -136,13 +136,14 @@ class ConfigTest extends TestCaseAbstract
 		]);
 		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_language, $this->_config);
 
-		/* actual */
+		/* expect and actual */
 
+		$expect = $configCommand->success();
 		$actual = $configCommand->run('cli');
 
 		/* compare */
 
-		$this->assertTrue($actual);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -165,13 +166,14 @@ class ConfigTest extends TestCaseAbstract
 		]);
 		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_language, $this->_config);
 
-		/* actual */
+		/* expect and actual */
 
+		$expect = $configCommand->error();
 		$actual = $configCommand->run('cli');
 
 		/* compare */
 
-		$this->assertFalse($actual);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -195,13 +197,14 @@ class ConfigTest extends TestCaseAbstract
 		]);
 		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_language, $this->_config);
 
-		/* actual */
+		/* expect and actual */
 
+		$expect = $configCommand->success();
 		$actual = $configCommand->run('cli');
 
 		/* compare */
 
-		$this->assertTrue($actual);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -235,13 +238,14 @@ class ConfigTest extends TestCaseAbstract
 			putenv('DB_URL=' . $dbUrl);
 		}
 
-		/* actual */
+		/* expect and actual */
 
+		$expect = $configCommand->success();
 		$actual = $configCommand->run('cli');
 
 		/* compare */
 
-		$this->assertTrue($actual);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -264,13 +268,14 @@ class ConfigTest extends TestCaseAbstract
 		]);
 		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_language, $this->_config);
 
-		/* actual */
+		/* expect and actual */
 
+		$expect = $configCommand->error();
 		$actual = $configCommand->run('cli');
 
 		/* compare */
 
-		$this->assertFalse($actual);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -292,12 +297,13 @@ class ConfigTest extends TestCaseAbstract
 		]);
 		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_language, $this->_config);
 
-		/* actual */
+		/* expect and actual */
 
+		$expect = $configCommand->success();
 		$actual = $configCommand->run('cli');
 
 		/* compare */
 
-		$this->assertTrue($actual);
+		$this->assertEquals($expect, $actual);
 	}
 }

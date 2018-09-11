@@ -1,9 +1,9 @@
 <?php
 namespace Redaxscript\Tests\Head;
 
+use org\bovigo\vfs\vfsStream as Stream;
 use Redaxscript\Head;
 use Redaxscript\Tests\TestCaseAbstract;
-use org\bovigo\vfs\vfsStream as Stream;
 
 /**
  * LinkTest

@@ -99,7 +99,7 @@ class DbTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testInit($configArray = [])
+	public function testInit(array $configArray = [])
 	{
 		/* setup */
 

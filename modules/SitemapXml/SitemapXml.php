@@ -83,13 +83,17 @@ class SitemapXml extends Module\Module
 	}
 
 	/**
+	 * write xml
+	 *
+	 * @since 2.5.0
+	 *
 	 * @param object $categories
 	 * @param object $articles
 	 *
 	 * @return string
 	 */
 
-	protected function _writeXML($categories = null, $articles = null)
+	protected function _writeXML(object $categories = null, object $articles = null) : string
 	{
 		$writer = new XMLWriter();
 		$categoryModel = new Model\Category();

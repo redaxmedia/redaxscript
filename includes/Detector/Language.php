@@ -31,7 +31,7 @@ class Language extends DetectorAbstract
 
 		/* detect language */
 
-		$this->_detect(
+		$this->_output = $this->_detect(
 		[
 			'query' => $this->_request->getQuery('l'),
 			'session' => $this->_request->getSession('language'),

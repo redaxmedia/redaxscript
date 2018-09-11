@@ -115,6 +115,6 @@ class RouterTest extends TestCaseAbstract
 
 		/* compare */
 
-		$expect ? $this->assertString($actual) : $this->assertFalse($actual);
+		$expect ? $this->assertString($actual) : $this->assertNull($actual);
 	}
 }

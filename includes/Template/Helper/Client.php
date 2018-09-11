@@ -20,10 +20,10 @@ class Client extends HelperAbstract
 	 *
 	 * @param string $prefix
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public function process(string $prefix = null)
+	public function process(string $prefix = null) : ?string
 	{
 		$clientArray = array_unique(array_merge(
 			$this->_getBrowserArray(),

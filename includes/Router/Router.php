@@ -46,7 +46,7 @@ class Router extends RouterAbstract
 		{
 			return $this->_redirectSearch();
 		}
-		return $this->_registry->get('routerBreak');
+		return !!$this->_registry->get('routerBreak');
 	}
 
 	/**
@@ -54,10 +54,10 @@ class Router extends RouterAbstract
 	 *
 	 * @since 3.3.0
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	public function routeContent()
+	public function routeContent() : ?string
 	{
 		Module\Hook::trigger('routeContent');
 		$firstParameter = $this->getFirst();
@@ -119,7 +119,11 @@ class Router extends RouterAbstract
 		{
 			return $this->_renderInstall();
 		}
-		return $this->_registry->get('routerBreak');
+		if ($this->_registry->get('routerBreak'))
+		{
+			return '<!-- routerBreak -->';
+		}
+		return null;
 	}
 
 	/**
@@ -366,7 +370,7 @@ class Router extends RouterAbstract
 	 * @return Messenger
 	 */
 
-	protected function _messengerFactory()
+	protected function _messengerFactory() : Messenger
 	{
 		return new Messenger($this->_registry);
 	}

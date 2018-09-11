@@ -1,11 +1,11 @@
 <?php
 namespace Redaxscript\Controller;
 
+use Redaxscript\Filter;
 use Redaxscript\Hash;
 use Redaxscript\Html\Element;
 use Redaxscript\Mailer;
 use Redaxscript\Model;
-use Redaxscript\Filter;
 use Redaxscript\Validator;
 
 /**
@@ -162,10 +162,10 @@ class Reset extends ControllerAbstract
 	 *
 	 * @param array $postArray array of the post
 	 *
-	 * @return object
+	 * @return object|null
 	 */
 
-	protected function _getUser(array $postArray = [])
+	protected function _getUser(array $postArray = []) : ?object
 	{
 		$userModel = new Model\User();
 		return $userModel->getById($postArray['id']);

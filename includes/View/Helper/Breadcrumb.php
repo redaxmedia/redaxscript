@@ -3,8 +3,8 @@ namespace Redaxscript\View\Helper;
 
 use Redaxscript\Db;
 use Redaxscript\Html;
-use Redaxscript\Module;
 use Redaxscript\Model;
+use Redaxscript\Module;
 use Redaxscript\Validator;
 use Redaxscript\View\ViewAbstract;
 

@@ -147,7 +147,7 @@ class Auth
 	 * @return bool
 	 */
 
-	public function __call($method = null, array $argumentArray = []) : bool
+	public function __call(string $method = null, array $argumentArray = []) : bool
 	{
 		$type = $argumentArray[0];
 		if (is_array($this->_callArray[$type]) && array_key_exists($method, $this->_callArray[$type]))
@@ -273,7 +273,7 @@ class Auth
 	 *
 	 * @param string $key key of the user
 	 *
-	 * @return string|array|bool
+	 * @return string|array|null
 	 */
 
 	public function getUser(string $key = null)
@@ -286,7 +286,7 @@ class Auth
 		{
 			return $this->_userArray;
 		}
-		return false;
+		return null;
 	}
 
 	/**
@@ -295,7 +295,7 @@ class Auth
 	 * @since 3.0.0
 	 *
 	 * @param string $key key of the user
-	 * @param string|array|bool $value value of the user
+	 * @param string|array|null $value value of the user
 	 */
 
 	public function setUser(string $key = null, $value = null)
@@ -310,7 +310,7 @@ class Auth
 	 *
 	 * @param string $key key of the permission
 	 *
-	 * @return string|array|bool
+	 * @return string|array|null
 	 */
 
 	public function getPermission(string $key = null)
@@ -323,7 +323,7 @@ class Auth
 		{
 			return $this->_permissionArray;
 		}
-		return false;
+		return null;
 	}
 
 	/**
@@ -387,10 +387,10 @@ class Auth
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array|bool
+	 * @return array|null
 	 */
 
-	protected function _getAuth()
+	protected function _getAuth() : ?array
 	{
 		$root = new Server\Root($this->_request);
 		return $this->_request->getSession($root->getOutput() . '/auth');
@@ -407,6 +407,6 @@ class Auth
 	protected function _setAuth(array $authArray = [])
 	{
 		$root = new Server\Root($this->_request);
-		return $this->_request->setSession($root->getOutput() . '/auth', $authArray);
+		$this->_request->setSession($root->getOutput() . '/auth', $authArray);
 	}
 }

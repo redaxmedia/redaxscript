@@ -18,6 +18,12 @@ use Redaxscript\Validator;
 
 class Panel extends ViewAbstract
 {
+	/**
+	 * options of the panel
+	 *
+	 * @var array
+	 */
+
 	protected $_optionArray =
 	[
 		'className' =>

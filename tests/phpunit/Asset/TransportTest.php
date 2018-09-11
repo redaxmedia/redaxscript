@@ -54,7 +54,7 @@ class TransportTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRender($transportArray = [], string $expect = null)
+	public function testRender(array $transportArray = [], string $expect = null)
 	{
 		/* setup */
 

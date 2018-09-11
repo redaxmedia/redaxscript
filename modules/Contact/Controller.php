@@ -2,8 +2,8 @@
 namespace Redaxscript\Modules\Contact;
 
 use Redaxscript\Controller\ControllerAbstract;
-use Redaxscript\Html;
 use Redaxscript\Filter;
+use Redaxscript\Html;
 use Redaxscript\Mailer;
 use Redaxscript\Model;
 use Redaxscript\Validator;
@@ -109,7 +109,7 @@ class Controller extends ControllerAbstract
 	 * @return array
 	 */
 
-	protected function _validatePost($postArray = []) : array
+	protected function _validatePost(array $postArray = []) : array
 	{
 		$emailValidator = new Validator\Email();
 		$urlValidator = new Validator\Url();
@@ -156,7 +156,7 @@ class Controller extends ControllerAbstract
 	 * @return bool
 	 */
 
-	protected function _mail($mailArray = []) : bool
+	protected function _mail(array $mailArray = []) : bool
 	{
 		$settingModel = new Model\Setting();
 

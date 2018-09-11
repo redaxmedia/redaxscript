@@ -3,8 +3,8 @@ namespace Redaxscript\Admin\Controller;
 
 use Redaxscript\Admin;
 use Redaxscript\Auth;
-use Redaxscript\Hash;
 use Redaxscript\Filter;
+use Redaxscript\Hash;
 use Redaxscript\Validator;
 
 /**

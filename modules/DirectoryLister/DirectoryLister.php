@@ -53,10 +53,10 @@ class DirectoryLister extends Config
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array|bool
+	 * @return array|null
 	 */
 
-	public function adminNotification()
+	public function adminNotification() : ?array
 	{
 		return $this->getNotification();
 	}
@@ -295,7 +295,7 @@ class DirectoryLister extends Config
 	 * @return string
 	 */
 
-	protected function _replace($text, $fileExtension, $replaceArray)
+	protected function _replace(string $text, string $fileExtension, array $replaceArray) : string
 	{
 		foreach ($replaceArray as $replaceKey => $replaceValue)
 		{

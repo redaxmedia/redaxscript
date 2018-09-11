@@ -1,6 +1,6 @@
 language: php
 
-php: 7.1
+php: 7.2
 
 before_install:
 - composer global require hirak/prestissimo
@@ -45,9 +45,6 @@ jobs:
    - DB_URL=mysql://root:test@127.0.0.1/test vendor/bin/phpunit
    - DB_URL=postgres://postgres:test@127.0.0.1/test vendor/bin/phpunit
    - DB_URL=sqlite://test.sqlite vendor/bin/phpunit
-
- - <<: *test
-   php: 7.2
 
  - <<: *test
    php: nightly

@@ -45,10 +45,10 @@ class Title implements HeadInterface
 	 *
 	 * @param string $text
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	public function render(string $text = null)
+	public function render(string $text = null) : ?string
 	{
 		if ($text)
 		{
@@ -58,6 +58,6 @@ class Title implements HeadInterface
 				->text($text)
 				->render();
 		}
-		return false;
+		return null;
 	}
 }

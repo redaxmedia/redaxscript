@@ -35,7 +35,7 @@ class Router extends RouterAbstract
 		{
 			$this->_registry->set('contentError', false);
 		}
-		return $this->_registry->get('adminRouterBreak');
+		return !!$this->_registry->get('adminRouterBreak');
 	}
 
 	/**
@@ -43,10 +43,10 @@ class Router extends RouterAbstract
 	 *
 	 * @since 3.3.0
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	public function routeContent()
+	public function routeContent() : ?string
 	{
 		Module\Hook::trigger('adminRouteContent');
 		$firstParameter = $this->getFirst();
@@ -129,7 +129,11 @@ class Router extends RouterAbstract
 			}
 			return $this->_processCommon();
 		}
-		return $this->_registry->get('adminRouterBreak');
+		if ($this->_registry->get('adminRouterBreak'))
+		{
+			return '<!-- adminRouterBreak -->';
+		}
+		return null;
 	}
 
 	/**
@@ -317,10 +321,10 @@ class Router extends RouterAbstract
 	 *
 	 * @since 4.00
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	protected function _processCommon()
+	protected function _processCommon() : ?string
 	{
 		$adminParameter = $this->getAdmin();
 		$commonArray =
@@ -338,6 +342,7 @@ class Router extends RouterAbstract
 			$commonController = new Admin\Controller\Common($this->_registry, $this->_request, $this->_language, $this->_config);
 			return $commonController->process($adminParameter);
 		}
+		return null;
 	}
 
 	/**
@@ -345,10 +350,10 @@ class Router extends RouterAbstract
 	 *
 	 * @since 3.3.0
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	protected function _renderView()
+	protected function _renderView() : ?string
 	{
 		$tableParameter = $this->getTable();
 
@@ -389,7 +394,7 @@ class Router extends RouterAbstract
 			$moduleTable = new Admin\View\ModuleTable($this->_registry, $this->_language);
 			return $moduleTable->render();
 		}
-		return false;
+		return null;
 	}
 
 	/**
@@ -397,10 +402,10 @@ class Router extends RouterAbstract
 	 *
 	 * @since 3.3.0
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	protected function _renderNew()
+	protected function _renderNew() : ?string
 	{
 		$tableParameter = $this->getTable();
 
@@ -436,7 +441,7 @@ class Router extends RouterAbstract
 			$groupForm = new Admin\View\GroupForm($this->_registry, $this->_language);
 			return $groupForm->render();
 		}
-		return false;
+		return null;
 	}
 
 	/**
@@ -444,10 +449,10 @@ class Router extends RouterAbstract
 	 *
 	 * @since 3.3.0
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	protected function _renderEdit()
+	protected function _renderEdit() : ?string
 	{
 		$tableParameter = $this->getTable();
 		$idParameter = $this->getId();
@@ -494,7 +499,7 @@ class Router extends RouterAbstract
 			$settingForm = new Admin\View\SettingForm($this->_registry, $this->_language);
 			return $settingForm->render();
 		}
-		return false;
+		return null;
 	}
 
 	/**
@@ -505,7 +510,7 @@ class Router extends RouterAbstract
 	 * @return Admin\Messenger
 	 */
 
-	protected function _messengerFactory()
+	protected function _messengerFactory() : Admin\Messenger
 	{
 		return new Admin\Messenger($this->_registry);
 	}

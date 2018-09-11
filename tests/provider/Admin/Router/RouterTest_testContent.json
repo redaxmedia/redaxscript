@@ -1,6 +1,7 @@
 [
 	[
 		{
+			"filter": false,
 			"adminRouterBreak": false
 		},
 		{},
@@ -21,6 +22,7 @@
 	],
 	[
 		{
+			"filter": false,
 			"tableEdit": true,
 			"tableParameter": "categories",
 			"idParameter": 1,
@@ -37,6 +39,7 @@
 	],
 	[
 		{
+			"filter": false,
 			"tableEdit": true,
 			"tableParameter": "articles",
 			"idParameter": 1,
@@ -53,6 +56,7 @@
 	],
 	[
 		{
+			"filter": false,
 			"tableEdit": true,
 			"tableParameter": "extras",
 			"idParameter": 1,
@@ -69,6 +73,7 @@
 	],
 	[
 		{
+			"filter": false,
 			"tableEdit": true,
 			"tableParameter": "comments",
 			"idParameter": 1,
@@ -85,6 +90,7 @@
 	],
 	[
 		{
+			"filter": false,
 			"tableEdit": true,
 			"tableParameter": "users",
 			"idParameter": 1,
@@ -101,6 +107,7 @@
 	],
 	[
 		{
+			"filter": false,
 			"tableEdit": true,
 			"tableParameter": "groups",
 			"idParameter": 1,
@@ -117,6 +124,7 @@
 	],
 	[
 		{
+			"filter": false,
 			"tableEdit": true,
 			"tableParameter": "modules",
 			"idParameter": 1,
@@ -133,6 +141,7 @@
 	],
 	[
 		{
+			"filter": false,
 			"tableEdit": true,
 			"tableParameter": "settings",
 			"idParameter": 1,

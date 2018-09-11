@@ -129,7 +129,7 @@ class SystemStatus extends ViewAbstract
 	 * @return Messenger
 	 */
 
-	protected function _messengerFactory()
+	protected function _messengerFactory() : Messenger
 	{
 		return new Messenger($this->_registry);
 	}

@@ -9,4 +9,16 @@
 	<!-- inherit from redaxmedia -->
 
 	<rule ref="vendor/redaxmedia/php-coding-standard/phpcs.xml" />
+
+	<!-- exclude from slevomat -->
+
+	<rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingTraversableReturnTypeHintSpecification">
+		<exclude-pattern>*</exclude-pattern>
+	</rule>
+	<rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingTraversableParameterTypeHintSpecification">
+		<exclude-pattern>*</exclude-pattern>
+	</rule>
+	<rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingTraversablePropertyTypeHintSpecification">
+		<exclude-pattern>*</exclude-pattern>
+	</rule>
 </ruleset>

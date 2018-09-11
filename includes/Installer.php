@@ -447,7 +447,7 @@ class Installer
 	 * @param string $type type of the database
 	 */
 
-	protected function _rawExecute($action = null, $type = 'mysql')
+	protected function _rawExecute(string $action = null, string $type = 'mysql')
 	{
 		$actionFilesystem = new Filesystem\File();
 		$actionFilesystem->init($this->_directory . DIRECTORY_SEPARATOR . $type . DIRECTORY_SEPARATOR . $action);

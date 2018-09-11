@@ -59,10 +59,10 @@ class Setting extends CommandAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public function run($mode = null)
+	public function run(string $mode = null) : ?string
 	{
 		$parser = new Parser($this->_request);
 		$parser->init($mode);
@@ -76,7 +76,7 @@ class Setting extends CommandAbstract
 		}
 		if ($argumentKey === 'set')
 		{
-			return $this->_set($parser->getOption());
+			return $this->_set($parser->getOption()) ? $this->success() : $this->error();
 		}
 		return $this->getHelp();
 	}
@@ -86,10 +86,10 @@ class Setting extends CommandAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	protected function _list()
+	protected function _list() : ?string
 	{
 		$output = null;
 		$settingModel = new Model\Setting();
@@ -114,7 +114,7 @@ class Setting extends CommandAbstract
 	 * @return bool
 	 */
 
-	protected function _set(array $optionArray = [])
+	protected function _set(array $optionArray = []) : bool
 	{
 		$settingModel = new Model\Setting();
 		$key = $this->prompt('key', $optionArray);

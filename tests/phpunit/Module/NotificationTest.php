@@ -84,12 +84,12 @@ class NotificationTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testGetInvalidNotification
+	 * testGetInvalid
 	 *
 	 * @since 2.1.0
 	 */
 
-	public function testGetInvalidNotification()
+	public function testGetInvalid()
 	{
 		/* setup */
 
@@ -106,6 +106,6 @@ class NotificationTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertFalse($actual);
+		$this->assertNull($actual);
 	}
 }

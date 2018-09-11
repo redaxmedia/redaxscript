@@ -29,16 +29,17 @@ class Comment extends ContentAbstract
 	 * @param int $articleId identifier of the article
 	 * @param string $language
 	 *
-	 * @return object
+	 * @return object|null
 	 */
 
-	public function getByArticleAndLanguage(int $articleId = null, string $language = null)
+	public function getByArticleAndLanguage(int $articleId = null, string $language = null) : ?object
 	{
-		return $this
+		$comments = $this
 			->query()
 			->where('article', $articleId)
 			->whereLanguageIs($language)
 			->findMany();
+		return $comments ? $comments : null;
 	}
 
 	/**

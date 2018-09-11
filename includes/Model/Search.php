@@ -24,17 +24,18 @@ class Search
 	 * @param string $search value of the search
 	 * @param string $language value of the language
 	 *
-	 * @return object
+	 * @return object|null
 	 */
 
-	public function getByTable(string $table = null, string $search = null, string $language = null)
+	public function getByTable(string $table = null, string $search = null, string $language = null) : ?object
 	{
-		return Db::forTablePrefix($table)
+		$items = Db::forTablePrefix($table)
 			->whereLikeMany($this->_createColumnArray($table), $this->_createLikeArray($table, $search))
 			->whereLanguageIs($language)
 			->where('status', 1)
 			->orderByDesc('date')
 			->findMany();
+		return $items ? $items : null;
 	}
 
 	/**

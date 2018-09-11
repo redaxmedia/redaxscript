@@ -28,11 +28,12 @@ class Group extends ModelAbstract
 	 *
 	 * @param string $groupAlias alias of the extra
 	 *
-	 * @return object
+	 * @return object|null
 	 */
 
-	public function getByAlias(string $groupAlias = null)
+	public function getByAlias(string $groupAlias = null) : ?object
 	{
-		return $this->query()->where('alias', $groupAlias)->findOne();
+		$group = $this->query()->where('alias', $groupAlias)->findOne();
+		return $group ? $group : null;
 	}
 }

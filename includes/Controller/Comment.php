@@ -1,10 +1,10 @@
 <?php
 namespace Redaxscript\Controller;
 
+use Redaxscript\Filter;
 use Redaxscript\Html;
 use Redaxscript\Mailer;
 use Redaxscript\Model;
-use Redaxscript\Filter;
 use Redaxscript\Validator;
 
 /**

@@ -60,7 +60,7 @@ class Parser
 	 * @since 3.0.0
 	 */
 
-	public function init($mode = null)
+	public function init(string $mode = null)
 	{
 		if ($mode === 'cli')
 		{
@@ -81,10 +81,10 @@ class Parser
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string|array|bool
+	 * @return string|array|null
 	 */
 
-	public function getArgument($key = null)
+	public function getArgument(string $key = null)
 	{
 		if (is_array($this->_argumentArray) && array_key_exists($key, $this->_argumentArray))
 		{
@@ -94,7 +94,7 @@ class Parser
 		{
 			return $this->_argumentArray;
 		}
-		return false;
+		return null;
 	}
 
 	/**
@@ -104,10 +104,10 @@ class Parser
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string|array|bool
+	 * @return string|array|null
 	 */
 
-	public function getOption($key = null)
+	public function getOption(string $key = null)
 	{
 		if (is_array($this->_optionArray) && array_key_exists($key, $this->_optionArray))
 		{
@@ -117,7 +117,7 @@ class Parser
 		{
 			return $this->_optionArray;
 		}
-		return false;
+		return null;
 	}
 
 	/**
@@ -129,7 +129,7 @@ class Parser
 	 * @param string|int $value value of the item
 	 */
 
-	public function setArgument($key = null, $value = null)
+	public function setArgument(string $key = null, $value = null)
 	{
 		$this->_argumentArray[$key] = $value;
 	}
@@ -143,7 +143,7 @@ class Parser
 	 * @param string|int $value value of the item
 	 */
 
-	public function setOption($key = null, $value = null)
+	public function setOption(string $key = null, $value = null)
 	{
 		$this->_optionArray[$key] = $value;
 	}
@@ -153,10 +153,10 @@ class Parser
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $argumentArray raw argument to be parsed
+	 * @param array|null $argumentArray raw argument to be parsed
 	 */
 
-	protected function _parseArgument($argumentArray = [])
+	protected function _parseArgument(?array $argumentArray = [])
 	{
 		$doSkip = false;
 		$argumentKey = 0;
@@ -192,7 +192,7 @@ class Parser
 	 * @return array
 	 */
 
-	protected function _parseOption($option = null, $next = null, $offset = null) : array
+	protected function _parseOption(string $option = null, string $next = null, int $offset = null) : array
 	{
 		$equalPosition = strpos($option, '=');
 		if ($equalPosition)

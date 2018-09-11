@@ -2,6 +2,7 @@
 namespace Redaxscript\Html;
 
 use DOMDocument;
+use DOMNode;
 use Redaxscript\Model;
 
 /**
@@ -68,10 +69,10 @@ class Purifier
 	 * @param string $html html to be purified
 	 * @param bool $filter optional filter
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public function purify(string $html = null, bool $filter = true)
+	public function purify(string $html = null, bool $filter = true) : ?string
 	{
 		$settingModel = new Model\Setting();
 		$charset = $settingModel->get('charset');
@@ -93,10 +94,10 @@ class Purifier
 	 *
 	 * @param string|object $html html to be processed
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	protected function _process($html = null)
+	protected function _process($html = null) : ?string
 	{
 		if (is_object($html))
 		{
@@ -122,7 +123,7 @@ class Purifier
 			$this->_process($dom->documentElement);
 			return trim($dom->saveHTML());
 		}
-		return false;
+		return null;
 	}
 
 	/**
@@ -130,10 +131,10 @@ class Purifier
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param object $node document node
+	 * @param DOMNode $node document node
 	 */
 
-	protected function _stripTags($node = null)
+	protected function _stripTags(DOMNode $node = null)
 	{
 		if (!in_array($node->nodeName, $this->_allowedTags))
 		{
@@ -147,10 +148,10 @@ class Purifier
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param object $node document node
+	 * @param DOMNode $node document node
 	 */
 
-	protected function _stripAttributes($node = null)
+	protected function _stripAttributes(DOMNode $node = null)
 	{
 		while ($node->hasAttributes())
 		{
@@ -165,10 +166,10 @@ class Purifier
 	 *
 	 * @param string $html html to be loaded
 	 *
-	 * @return object
+	 * @return DOMDocument
 	 */
 
-	protected function _createDocument($html = null)
+	protected function _createDocument(string $html = null) : DOMDocument
 	{
 		$doc = new DOMDocument();
 		$doc->loadHTML($html, LIBXML_HTML_NODEFDTD | LIBXML_HTML_NOIMPLIED);
@@ -180,12 +181,12 @@ class Purifier
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param object $node document node
+	 * @param DOMNode $node document node
 	 *
-	 * @return object
+	 * @return DOMNode
 	 */
 
-	protected function _createFragment($node = null)
+	protected function _createFragment(DOMNode $node = null) : DOMNode
 	{
 		$fragment = $node->ownerDocument->createDocumentFragment();
 

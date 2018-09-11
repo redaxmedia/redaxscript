@@ -19,6 +19,12 @@ use Redaxscript\Validator;
 
 class Comment extends ViewAbstract
 {
+	/**
+	 * options of the comment
+	 *
+	 * @var array
+	 */
+
 	protected $_optionArray =
 	[
 		'tag' =>
@@ -121,14 +127,14 @@ class Comment extends ViewAbstract
 		{
 			if ($accessValidator->validate($value->access, $myGroups))
 			{
-				$output .= Module\Hook::trigger('commentFragmentStart', $value);
+				$output .= Module\Hook::trigger('commentFragmentStart', (array)$value);
 				$output .= $titleElement
 					->attr('id', 'comment-' . $value->id)
 					->html($value->url ? $linkElement
 						->attr('href', $value->url)
 						->text($value->author) : $value->author
 					);
-				$output .= $boxElement->text($value->text) . $byline->render($value->date) . Module\Hook::trigger('commentFragmentEnd', $value);
+				$output .= $boxElement->text($value->text) . $byline->render($value->date) . Module\Hook::trigger('commentFragmentEnd', (array)$value);
 
 				/* admin dock */
 

@@ -2,8 +2,8 @@
 namespace Redaxscript\View;
 
 use Redaxscript\Dater;
-use Redaxscript\Model;
 use Redaxscript\Html;
+use Redaxscript\Model;
 use Redaxscript\Module;
 use Redaxscript\Validator;
 

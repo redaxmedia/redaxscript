@@ -28,12 +28,13 @@ class Category extends ContentAbstract
 	 *
 	 * @param string $categoryAlias alias of the category
 	 *
-	 * @return object
+	 * @return object|null
 	 */
 
-	public function getByAlias(string $categoryAlias = null)
+	public function getByAlias(string $categoryAlias = null) : ?object
 	{
-		return $this->query()->where('alias', $categoryAlias)->findOne();
+		$category = $this->query()->where('alias', $categoryAlias)->findOne();
+		return $category ? $category : null;
 	}
 
 	/**

@@ -16,27 +16,27 @@ use Redaxscript\Registry;
  * @category Html
  * @author Henry Ruhs
  *
- * @method $this button(string $text = null, array $attributeArray = [])
- * @method $this cancel(string $text = null, array $attributeArray = [])
- * @method $this checkbox(array $attributeArray = [])
- * @method $this color(array $attributeArray = [])
- * @method $this date(array $attributeArray = [])
- * @method $this datetime(array $attributeArray = [])
- * @method $this email(array $attributeArray = [])
- * @method $this file(array $attributeArray = [])
- * @method $this hidden(array $attributeArray = [])
- * @method $this number(array $attributeArray = [])
- * @method $this password(array $attributeArray = [])
- * @method $this radio(array $attributeArray = [])
- * @method $this range(array $attributeArray = [])
- * @method $this reset(string $text = null, array $attributeArray = [])
- * @method $this search(array $attributeArray = [])
- * @method $this submit(string $text = null, array $attributeArray = [])
- * @method $this time(array $attributeArray = [])
- * @method $this tel(array $attributeArray = [])
- * @method $this text(array $attributeArray = [])
- * @method $this url(array $attributeArray = [])
- * @method $this week(array $attributeArray = [])
+ * @method $this button(string $text = null, ?array $attributeArray = [])
+ * @method $this cancel(string $text = null, ?array $attributeArray = [])
+ * @method $this checkbox(?array $attributeArray = [])
+ * @method $this color(?array $attributeArray = [])
+ * @method $this date(?array $attributeArray = [])
+ * @method $this datetime(?array $attributeArray = [])
+ * @method $this email(?array $attributeArray = [])
+ * @method $this file(?array $attributeArray = [])
+ * @method $this hidden(?array $attributeArray = [])
+ * @method $this number(?array $attributeArray = [])
+ * @method $this password(?array $attributeArray = [])
+ * @method $this radio(?array $attributeArray = [])
+ * @method $this range(?array $attributeArray = [])
+ * @method $this reset(string $text = null, ?array $attributeArray = [])
+ * @method $this search(?array $attributeArray = [])
+ * @method $this submit(string $text = null, ?array $attributeArray = [])
+ * @method $this time(?array $attributeArray = [])
+ * @method $this tel(?array $attributeArray = [])
+ * @method $this text(?array $attributeArray = [])
+ * @method $this url(?array $attributeArray = [])
+ * @method $this week(?array $attributeArray = [])
  */
 
 class Form extends HtmlAbstract
@@ -314,13 +314,13 @@ class Form extends HtmlAbstract
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param array $attributeArray attributes of the form
+	 * @param array|null $attributeArray attributes of the form
 	 * @param array $optionArray options of the form
 	 *
 	 * @return self
 	 */
 
-	public function init($attributeArray = [], array $optionArray = []) : self
+	public function init(?array $attributeArray = [], array $optionArray = []) : self
 	{
 		if (is_array($attributeArray))
 		{
@@ -347,12 +347,12 @@ class Form extends HtmlAbstract
 	 * @since 3.0.0
 	 *
 	 * @param string $html html of the legend
-	 * @param array $attributeArray attributes of the legend
+	 * @param array|null $attributeArray attributes of the legend
 	 *
 	 * @return self
 	 */
 
-	public function legend(string $html = null, array $attributeArray = []) : self
+	public function legend(string $html = null, ?array $attributeArray = []) : self
 	{
 		if (is_array($attributeArray))
 		{
@@ -376,12 +376,12 @@ class Form extends HtmlAbstract
 	 * @since 3.0.0
 	 *
 	 * @param string $html html of the label
-	 * @param array $attributeArray attributes of the label
+	 * @param array|null $attributeArray attributes of the label
 	 *
 	 * @return self
 	 */
 
-	public function label(string $html = null, array $attributeArray = []) : self
+	public function label(string $html = null, ?array $attributeArray = []) : self
 	{
 		if (is_array($attributeArray))
 		{
@@ -404,7 +404,7 @@ class Form extends HtmlAbstract
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param array $attributeArray attributes of the textarea
+	 * @param array|null $attributeArray attributes of the textarea
 	 *
 	 * @return self
 	 */
@@ -435,12 +435,12 @@ class Form extends HtmlAbstract
 	 *
 	 * @param array $optionArray option of the select
 	 * @param array $selectArray values to be selected
-	 * @param array $attributeArray attributes of the select
+	 * @param array|null $attributeArray attributes of the select
 	 *
 	 * @return self
 	 */
 
-	public function select(array $optionArray = [], array $selectArray = [], array $attributeArray = []) : self
+	public function select(array $optionArray = [], array $selectArray = [], ?array $attributeArray = []) : self
 	{
 		if (is_array($attributeArray))
 		{
@@ -465,12 +465,12 @@ class Form extends HtmlAbstract
 	 *
 	 * @param array $rangeArray range of the select
 	 * @param array $selectArray values to be selected
-	 * @param array $attributeArray attributes of the select
+	 * @param array|null $attributeArray attributes of the select
 	 *
 	 * @return self
 	 */
 
-	public function selectRange(array $rangeArray = [], array $selectArray = [], array $attributeArray = []) : self
+	public function selectRange(array $rangeArray = [], array $selectArray = [], ?array $attributeArray = []) : self
 	{
 		$this->select(range($rangeArray['min'], $rangeArray['max']), $selectArray, $attributeArray);
 		return $this;
@@ -576,12 +576,12 @@ class Form extends HtmlAbstract
 	 * @since 2.6.0
 	 *
 	 * @param string $type type of the input
-	 * @param array $attributeArray attributes of the input
+	 * @param array|null $attributeArray attributes of the input
 	 *
 	 * @return self
 	 */
 
-	protected function _createInput(string $type = 'text', array $attributeArray = []) : self
+	protected function _createInput(string $type = 'text', ?array $attributeArray = []) : self
 	{
 		if (is_array($attributeArray))
 		{
@@ -644,12 +644,12 @@ class Form extends HtmlAbstract
 	 *
 	 * @param string $type type of the button
 	 * @param string $text text of the button
-	 * @param array $attributeArray attributes of the button
+	 * @param array|null $attributeArray attributes of the button
 	 *
 	 * @return self
 	 */
 
-	protected function _createButton(string $type = null, string $text = null, $attributeArray = []) : self
+	protected function _createButton(string $type = null, string $text = null, ?array $attributeArray = []) : self
 	{
 		if (is_array($attributeArray))
 		{
@@ -674,12 +674,12 @@ class Form extends HtmlAbstract
 	 *
 	 * @param string $type type of the link
 	 * @param string $text text of the link
-	 * @param array $attributeArray attributes of the link
+	 * @param array|null $attributeArray attributes of the link
 	 *
 	 * @return self
 	 */
 
-	protected function _createLink(string $type = null, string $text = null, $attributeArray = []) : self
+	protected function _createLink(string $type = null, string $text = null, ?array $attributeArray = []) : self
 	{
 		if (is_array($attributeArray))
 		{

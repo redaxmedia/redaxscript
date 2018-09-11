@@ -20,10 +20,10 @@ class Console extends ConsoleAbstract
 	 *
 	 * @param string $mode name of the mode
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	public function init($mode = null)
+	public function init(string $mode = null) : ?string
 	{
 		$parser = new Parser($this->_request);
 		$parser->init($mode);
@@ -40,6 +40,6 @@ class Console extends ConsoleAbstract
 				return $command->run($mode);
 			}
 		}
-		return false;
+		return null;
 	}
 }

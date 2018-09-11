@@ -1,8 +1,8 @@
 <?php
 namespace Redaxscript\Tests\Controller;
 
-use Redaxscript\Db;
 use Redaxscript\Controller;
+use Redaxscript\Db;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**

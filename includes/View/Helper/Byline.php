@@ -18,6 +18,12 @@ use Redaxscript\View\ViewAbstract;
 
 class Byline extends ViewAbstract
 {
+	/**
+	 * options of the byline
+	 *
+	 * @var array
+	 */
+
 	protected $_optionArray =
 	[
 		'className' =>

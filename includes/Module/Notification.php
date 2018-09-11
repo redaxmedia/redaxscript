@@ -28,10 +28,10 @@ class Notification extends Module
 	 *
 	 * @param string $type type of the notification
 	 *
-	 * @return array|bool
+	 * @return array|null
 	 */
 
-	public function getNotification($type = null)
+	public function getNotification(string $type = null) : ?array
 	{
 		if (is_array(self::$_notificationArray) && array_key_exists($type, self::$_notificationArray))
 		{
@@ -41,7 +41,7 @@ class Notification extends Module
 		{
 			return self::$_notificationArray;
 		}
-		return false;
+		return null;
 	}
 
 	/**

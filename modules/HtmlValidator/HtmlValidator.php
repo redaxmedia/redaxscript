@@ -36,10 +36,10 @@ class HtmlValidator extends Config
 	 *
 	 * @since 3.0.1
 	 *
-	 * @return array|bool
+	 * @return array|null
 	 */
 
-	public function adminNotification()
+	public function adminNotification() : ?array
 	{
 		if ($this->_registry->get('firstParameter') !== 'admin')
 		{

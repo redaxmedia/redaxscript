@@ -89,7 +89,7 @@ class Autoloader
 	 * @return string
 	 */
 
-	protected function _getFile(string $className = null, string $namespace = null)
+	protected function _getFile(string $className = null, string $namespace = null) : string
 	{
 		$searchArray =
 		[

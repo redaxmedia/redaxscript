@@ -52,10 +52,10 @@ class LiveReload extends Config
 	 *
 	 * @since 3.3.0
 	 *
-	 * @return array|bool
+	 * @return array|null
 	 */
 
-	public function adminNotification()
+	public function adminNotification() : ?array
 	{
 		$reader = new Reader();
 		$content = $reader->load($this->_configArray['url']);

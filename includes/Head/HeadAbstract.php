@@ -163,7 +163,7 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	 * @return self
 	 */
 
-	public function clear()
+	public function clear() : self
 	{
 		$this->_setCollectionArray();
 		return $this;
@@ -191,7 +191,7 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 	 * @param array $collectionArray
 	 */
 
-	protected function _setCollectionArray($collectionArray = [])
+	protected function _setCollectionArray(array $collectionArray = [])
 	{
 		self::$_collectionArray[self::$_namespace] = $collectionArray;
 	}

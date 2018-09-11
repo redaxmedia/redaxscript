@@ -1,8 +1,8 @@
 <?php
 namespace Redaxscript\Console\Command;
 
-use Redaxscript\Dater;
 use Redaxscript\Console\Parser;
+use Redaxscript\Dater;
 use Redaxscript\Filesystem;
 
 /**
@@ -52,10 +52,10 @@ class Backup extends CommandAbstract
 	 *
 	 * @param string $mode name of the mode
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public function run($mode = null)
+	public function run(string $mode = null) : ?string
 	{
 		$parser = new Parser($this->_request);
 		$parser->init($mode);
@@ -65,7 +65,7 @@ class Backup extends CommandAbstract
 		$argumentKey = $parser->getArgument(1);
 		if ($argumentKey === 'database')
 		{
-			return $this->_database($parser->getOption());
+			return $this->_database($parser->getOption()) ? $this->success() : $this->error();
 		}
 		return $this->getHelp();
 	}
@@ -77,10 +77,10 @@ class Backup extends CommandAbstract
 	 *
 	 * @param array $optionArray
 	 *
-	 * @return string
+	 * @return bool
 	 */
 
-	protected function _database(array $optionArray = [])
+	protected function _database(array $optionArray = []) : bool
 	{
 		$dater = new Dater();
 		$dater->init();

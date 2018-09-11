@@ -161,7 +161,7 @@ class AuthTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetPermission(string $method = null, $typeArray = [], string $groups = null)
+	public function testGetPermission(string $method = null, array $typeArray = [], string $groups = null)
 	{
 		/* setup */
 

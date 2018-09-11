@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Tests;
 
-use function file_exists;
 use PHPUnitProviderAutoloader;
 use Redaxscript\Config;
 use Redaxscript\Db;
@@ -12,6 +11,7 @@ use Redaxscript\Modules\TestDummy;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 use ReflectionClass;
+use function file_exists;
 
 /**
  * TestCaseAbstract
@@ -170,7 +170,7 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 * @return array|null
 	 */
 
-	public function getJSON(string $file = null)
+	public function getJSON(string $file = null) : ?array
 	{
 		if (file_exists($file))
 		{
@@ -190,7 +190,7 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 * @return mixed
 	 */
 
-	public function getProperty($object = null, string $property = null)
+	public function getProperty(object $object = null, string $property = null)
 	{
 		$reflection = new ReflectionClass($object);
 		$reflectionProperty = $reflection->getProperty($property);
@@ -210,7 +210,7 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 * @return mixed
 	 */
 
-	public function callMethod($object = null, string $method = null, array $argumentArray = [])
+	public function callMethod(object $object = null, string $method = null, array $argumentArray = [])
 	{
 		$reflection = new ReflectionClass($object);
 		$reflectionMethod = $reflection->getMethod($method);
@@ -295,7 +295,7 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 * @return array|null
 	 */
 
-	public function getHeaderArray()
+	public function getHeaderArray() : ?array
 	{
 		return function_exists('xdebug_get_headers') ? xdebug_get_headers() : $this->markTestSkipped();
 	}

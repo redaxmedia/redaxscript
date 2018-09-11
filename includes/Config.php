@@ -37,7 +37,7 @@ class Config extends Singleton
 	 * @param string $configFile file with config
 	 */
 
-	public function init($configFile = null)
+	public function init(string $configFile = null)
 	{
 		if (is_file($configFile))
 		{
@@ -60,10 +60,10 @@ class Config extends Singleton
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string|array|bool
+	 * @return string|array|null
 	 */
 
-	public function get($key = null)
+	public function get(string $key = null)
 	{
 		if (is_array(self::$_configArray) && array_key_exists($key, self::$_configArray))
 		{
@@ -73,7 +73,7 @@ class Config extends Singleton
 		{
 			return self::$_configArray;
 		}
-		return false;
+		return null;
 	}
 
 	/**
@@ -85,7 +85,7 @@ class Config extends Singleton
 	 * @param string $value value of the item
 	 */
 
-	public function set($key = null, $value = null)
+	public function set(string $key = null, string $value = null)
 	{
 		self::$_configArray[$key] = $value;
 	}
@@ -98,7 +98,7 @@ class Config extends Singleton
 	 * @param string $dbUrl database url to be parsed
 	 */
 
-	public function parse($dbUrl = null)
+	public function parse(string $dbUrl = null)
 	{
 		$dbUrl = parse_url($dbUrl);
 		$this->clear();
@@ -117,7 +117,7 @@ class Config extends Singleton
 	 * @return bool
 	 */
 
-	public function write()
+	public function write() : bool
 	{
 		$configKeys = array_keys(self::$_configArray);
 		$lastKey = end($configKeys);

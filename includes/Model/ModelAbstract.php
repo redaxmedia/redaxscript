@@ -30,12 +30,13 @@ abstract class ModelAbstract
 	 *
 	 * @param int $id
 	 *
-	 * @return object
+	 * @return object|null
 	 */
 
-	public function getById(int $id = null)
+	public function getById(int $id = null) : ?object
 	{
-		return $this->query()->whereIdIs($id)->findOne();
+		$item = $this->query()->whereIdIs($id)->findOne();
+		return $item ? $item : null;
 	}
 
 	/**
@@ -43,12 +44,13 @@ abstract class ModelAbstract
 	 *
 	 * @since 4.0.0
 	 *
-	 * @return object
+	 * @return object|null
 	 */
 
-	public function getAll()
+	public function getAll() : ?object
 	{
-		return $this->query()->findMany();
+		$items = $this->query()->findMany();
+		return $items ? $items : null;
 	}
 
 	/**
@@ -56,10 +58,10 @@ abstract class ModelAbstract
 	 *
 	 * @since 4.0.0
 	 *
-	 * @return object
+	 * @return Db
 	 */
 
-	public function query()
+	public function query() : Db
 	{
 		return Db::forTablePrefix($this->_table);
 	}
@@ -68,12 +70,10 @@ abstract class ModelAbstract
 	 * clear cache for the table
 	 *
 	 * @since 4.0.0
-	 *
-	 * @return object
 	 */
 
 	public function clearCache()
 	{
-		return Db::clearCache($this->_table);
+		Db::clearCache($this->_table);
 	}
 }

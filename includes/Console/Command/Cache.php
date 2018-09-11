@@ -78,10 +78,10 @@ class Cache extends CommandAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public function run($mode = null)
+	public function run(string $mode = null) : ?string
 	{
 		$parser = new Parser($this->_request);
 		$parser->init($mode);
@@ -91,11 +91,11 @@ class Cache extends CommandAbstract
 		$argumentKey = $parser->getArgument(1);
 		if ($argumentKey === 'clear')
 		{
-			return $this->_clear($parser->getOption());
+			return $this->_clear($parser->getOption()) ? $this->success() : $this->error();
 		}
 		if ($argumentKey === 'clear-invalid')
 		{
-			return $this->_clearInvalid($parser->getOption());
+			return $this->_clearInvalid($parser->getOption()) ? $this->success() : $this->error();
 		}
 		return $this->getHelp();
 	}
@@ -110,7 +110,7 @@ class Cache extends CommandAbstract
 	 * @return bool
 	 */
 
-	protected function _clear(array $optionArray = [])
+	protected function _clear(array $optionArray = []) : bool
 	{
 		$directory = $this->prompt('directory', $optionArray);
 		$extension = $this->prompt('extension', $optionArray);
@@ -132,7 +132,7 @@ class Cache extends CommandAbstract
 	 * @return bool
 	 */
 
-	protected function _clearInvalid(array $optionArray = [])
+	protected function _clearInvalid(array $optionArray = []) : bool
 	{
 		$directory = $this->prompt('directory', $optionArray);
 		$extension = $this->prompt('extension', $optionArray);

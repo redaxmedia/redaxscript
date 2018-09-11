@@ -36,17 +36,17 @@ class SocialSharer extends Config
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	public function contentFragmentEnd()
+	public function contentFragmentEnd() : ?string
 	{
 		if ($this->_registry->get('lastTable') === 'articles')
 		{
 			$url = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
 			return $this->render($url);
 		}
-		return false;
+		return null;
 	}
 
 	/**

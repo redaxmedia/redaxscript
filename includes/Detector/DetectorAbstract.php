@@ -74,7 +74,7 @@ abstract class DetectorAbstract
 	 * @return string
 	 */
 
-	public function getOutput()
+	public function getOutput() : string
 	{
 		return $this->_output;
 	}
@@ -87,27 +87,22 @@ abstract class DetectorAbstract
 	 * @param array $setupArray array of detector setup
 	 * @param string $type type of the asset
 	 * @param string $path path to the required file
+	 *
+	 * @return string
 	 */
 
-	protected function _detect($setupArray = [], $type = null, $path = null)
+	protected function _detect(array $setupArray = [], string $type = null, string $path = null) : string
 	{
 		foreach ($setupArray as $key => $value)
 		{
 			$file = str_replace($this->_filePlaceholder, $value, $path);
-
-			/* handle file */
-
 			if (is_file($file))
 			{
-				$this->_output = $value;
-
-				/* store query to session */
-
 				if ($key === 'query')
 				{
 					$this->_request->setSession($type, $value);
 				}
-				break;
+				return $value;
 			}
 		}
 	}

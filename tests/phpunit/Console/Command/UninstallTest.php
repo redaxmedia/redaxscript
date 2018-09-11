@@ -84,13 +84,14 @@ class UninstallTest extends TestCaseAbstract
 		]);
 		$uninstallCommand = new Command\Uninstall($this->_registry, $this->_request, $this->_language, $this->_config);
 
-		/* actual */
+		/* expect and actual */
 
+		$expect = $uninstallCommand->success();
 		$actual = $uninstallCommand->run('cli');
 
 		/* compare */
 
-		$this->assertTrue($actual);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -115,13 +116,14 @@ class UninstallTest extends TestCaseAbstract
 		]);
 		$uninstallCommand = new Command\Uninstall($this->_registry, $this->_request, $this->_language, $this->_config);
 
-		/* actual */
+		/* expect and actual */
 
+		$expect = $uninstallCommand->success();
 		$actual = $uninstallCommand->run('cli');
 
 		/* compare */
 
-		$this->assertTrue($actual);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -143,12 +145,13 @@ class UninstallTest extends TestCaseAbstract
 		]);
 		$uninstallCommand = new Command\Uninstall($this->_registry, $this->_request, $this->_language, $this->_config);
 
-		/* actual */
+		/* expect and actual */
 
+		$expect = $uninstallCommand->error();
 		$actual = $uninstallCommand->run('cli');
 
 		/* compare */
 
-		$this->assertFalse($actual);
+		$this->assertEquals($expect, $actual);
 	}
 }

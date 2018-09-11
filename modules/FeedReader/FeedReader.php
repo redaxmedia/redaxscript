@@ -37,10 +37,10 @@ class FeedReader extends Config
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array|bool
+	 * @return array|null
 	 */
 
-	public function adminNotification()
+	public function adminNotification() : ?array
 	{
 		return $this->getNotification();
 	}

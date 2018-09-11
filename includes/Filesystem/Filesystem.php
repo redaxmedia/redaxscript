@@ -67,7 +67,7 @@ class Filesystem
 	 * @param array $filterArray array to be filtered
 	 */
 
-	public function init(string $root = null, bool $recursive = false, $filterArray = [])
+	public function init(string $root = null, bool $recursive = false, array $filterArray = [])
 	{
 		$this->_root = $root;
 		$this->_recursive = $recursive;
@@ -158,7 +158,7 @@ class Filesystem
 	 * @return Traversable
 	 */
 
-	protected function _filterIterator($iterator = null) : Traversable
+	protected function _filterIterator(Traversable $iterator = null) : Traversable
 	{
 		if ($this->_recursive)
 		{

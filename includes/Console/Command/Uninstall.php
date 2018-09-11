@@ -1,8 +1,8 @@
 <?php
 namespace Redaxscript\Console\Command;
 
-use Redaxscript\Db;
 use Redaxscript\Console\Parser;
+use Redaxscript\Db;
 use Redaxscript\Installer;
 
 /**
@@ -56,10 +56,10 @@ class Uninstall extends CommandAbstract
 	 *
 	 * @param string $mode name of the mode
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public function run($mode = null)
+	public function run(string $mode = null) : ?string
 	{
 		$parser = new Parser($this->_request);
 		$parser->init($mode);
@@ -69,11 +69,11 @@ class Uninstall extends CommandAbstract
 		$argumentKey = $parser->getArgument(1);
 		if ($argumentKey === 'database')
 		{
-			return $this->_database();
+			return $this->_database() ? $this->success() : $this->error();
 		}
 		if ($argumentKey === 'module')
 		{
-			return $this->_module($parser->getOption());
+			return $this->_module($parser->getOption()) ? $this->success() : $this->error();
 		}
 		return $this->getHelp();
 	}
@@ -86,7 +86,7 @@ class Uninstall extends CommandAbstract
 	 * @return bool
 	 */
 
-	protected function _database()
+	protected function _database() : bool
 	{
 		$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
 		$installer->init();
@@ -104,7 +104,7 @@ class Uninstall extends CommandAbstract
 	 * @return bool
 	 */
 
-	protected function _module(array $optionArray = [])
+	protected function _module(array $optionArray = []) : bool
 	{
 		$alias = $this->prompt('alias', $optionArray);
 		$moduleClass = 'Redaxscript\Modules\\' . $alias . '\\' . $alias;

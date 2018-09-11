@@ -28,11 +28,12 @@ class Extra extends ContentAbstract
 	 *
 	 * @param string $extraAlias alias of the extra
 	 *
-	 * @return object
+	 * @return object|null
 	 */
 
-	public function getByAlias(string $extraAlias = null)
+	public function getByAlias(string $extraAlias = null) : ?object
 	{
-		return $this->query()->where('alias', $extraAlias)->findOne();
+		$extra = $this->query()->where('alias', $extraAlias)->findOne();
+		return $extra ? $extra : null;
 	}
 }

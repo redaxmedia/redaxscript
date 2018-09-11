@@ -1,10 +1,10 @@
 <?php
 namespace Redaxscript\Tests\Asset;
 
+use org\bovigo\vfs\vfsStream as Stream;
 use Redaxscript\Asset;
 use Redaxscript\Registry;
 use Redaxscript\Tests\TestCaseAbstract;
-use org\bovigo\vfs\vfsStream as Stream;
 
 /**
  * LoaderTest

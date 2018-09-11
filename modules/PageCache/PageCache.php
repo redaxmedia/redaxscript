@@ -35,10 +35,10 @@ class PageCache extends Config
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array|bool
+	 * @return array|null
 	 */
 
-	public function adminNotification()
+	public function adminNotification() : ?array
 	{
 		if (!is_dir($this->_configArray['cacheDirectory']) && !mkdir($this->_configArray['cacheDirectory']))
 		{
@@ -56,10 +56,10 @@ class PageCache extends Config
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array|bool
+	 * @return array|null
 	 */
 
-	public function renderTemplate()
+	public function renderTemplate() : ?array
 	{
 		/* prevent as needed */
 
@@ -114,7 +114,7 @@ class PageCache extends Config
 	 * @return string
 	 */
 
-	public function _compress($content = null)
+	public function _compress(string $content = null) : string
 	{
 		return function_exists('gzdeflate') ? gzdeflate($content) : $content;
 	}
@@ -129,7 +129,7 @@ class PageCache extends Config
 	 * @return string
 	 */
 
-	public function _uncompress($content = null)
+	public function _uncompress(string $content = null) : string
 	{
 		return function_exists('gzinflate') ? gzinflate($content) : $content;
 	}

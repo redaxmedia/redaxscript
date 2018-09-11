@@ -37,17 +37,17 @@ class File extends Filesystem
 	 *
 	 * @param string $file name of the file
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	public function readFile(string $file = null)
+	public function readFile(string $file = null) : ?string
 	{
 		$path = $this->_root . DIRECTORY_SEPARATOR . $file;
 		if (is_file($path))
 		{
 			return file_get_contents($path);
 		}
-		return false;
+		return null;
 	}
 
 	/**

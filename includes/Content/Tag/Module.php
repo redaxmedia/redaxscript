@@ -90,10 +90,10 @@ class Module extends TagAbstract
 	 * @param string $moduleName
 	 * @param array $parameterArray
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	protected function _call(string $moduleName = null, array $parameterArray = [])
+	protected function _call(string $moduleName = null, array $parameterArray = []) : ?string
 	{
 		$moduleClass = $this->_optionArray['namespace'] . '\\' . $moduleName . '\\' . $moduleName;
 		$methodName = 'render';
@@ -106,6 +106,6 @@ class Module extends TagAbstract
 				$methodName,
 			], $parameterArray);
 		}
-		return false;
+		return null;
 	}
 }

@@ -183,7 +183,6 @@ class ParameterTest extends TestCaseAbstract
 		$this->assertEquals($expectArray['lastSub'], $actualArray['lastSub']);
 	}
 
-
 	/**
 	 * testGetAdmin
 	 *

@@ -189,7 +189,7 @@ class Control extends ViewAbstract
 
 	protected function _hasPermission(string $table = null, string $type = null) : bool
 	{
-		return $this->_registry->get($table . ucfirst($type));
+		return !!$this->_registry->get($table . ucfirst($type));
 	}
 
 	/**

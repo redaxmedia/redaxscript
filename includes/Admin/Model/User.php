@@ -66,7 +66,7 @@ class User extends BaseModel\User
 	 * @return bool
 	 */
 
-	public function updateLastById(int $userId = null, int $date = null)
+	public function updateLastById(int $userId = null, int $date = null) : bool
 	{
 		return $this
 			->query()

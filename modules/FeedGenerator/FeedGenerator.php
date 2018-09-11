@@ -85,7 +85,7 @@ class FeedGenerator extends Module\Module
 	 * @return string
 	 */
 
-	protected function _writeXML($resultArray = [])
+	protected function _writeXML(array $resultArray = []) : string
 	{
 		$writer = new XMLWriter();
 		$contentModel = new Model\Content();

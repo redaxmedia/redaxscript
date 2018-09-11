@@ -1,8 +1,8 @@
 <?php
 namespace Redaxscript\Modules\Analytics;
 
-use Redaxscript\Module;
 use Redaxscript\Head;
+use Redaxscript\Module;
 
 /**
  * integrate google analytics

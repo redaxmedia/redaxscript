@@ -75,7 +75,7 @@ class Category extends NavigationAbstract
 	 * @return string|null
 	 */
 
-	protected function renderList($categories = null, array $optionArray = []) : ?string
+	protected function renderList(object $categories = null, array $optionArray = []) : ?string
 	{
 		$output = null;
 		$outputItem = null;

@@ -52,10 +52,10 @@ abstract class ClientAbstract
 	 *
 	 * @since 2.4.0
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public function getOutput()
+	public function getOutput() : ?string
 	{
 		return $this->_output;
 	}

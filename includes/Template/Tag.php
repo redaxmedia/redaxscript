@@ -47,10 +47,10 @@ class Tag
 	 *
 	 * @param string $text
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	public static function title(string $text = null)
+	public static function title(string $text = null) : ?string
 	{
 		$title = new Head\Title(Registry::getInstance());
 		return $title->render($text);
@@ -135,7 +135,7 @@ class Tag
 	 * @return string|null
 	 */
 
-	public static function partial($partial = null)
+	public static function partial($partial = null) : ?string
 	{
 		$output = null;
 
@@ -161,7 +161,7 @@ class Tag
 	 * @return string|null
 	 */
 
-	public static function content()
+	public static function content() : ?string
 	{
 		$adminContent = self::_renderAdminContent();
 		return $adminContent ? $adminContent : self::_renderContent();
@@ -175,7 +175,7 @@ class Tag
 	 * @return string|null
 	 */
 
-	protected static function _renderAdminContent()
+	protected static function _renderAdminContent() : ?string
 	{
 		$registry = Registry::getInstance();
 		if ($registry->get('token') === $registry->get('loggedIn'))
@@ -184,6 +184,7 @@ class Tag
 			$adminRouter->init();
 			return $adminRouter->routeContent();
 		}
+		return null;
 	}
 
 	/**
@@ -191,10 +192,10 @@ class Tag
 	 *
 	 * @since 4.0.0
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	protected static function _renderContent()
+	protected static function _renderContent() : ?string
 	{
 		$router = new Router\Router(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		$router->init();
@@ -210,10 +211,10 @@ class Tag
 	 * @param int $articleId identifier of the article
 	 * @param array $optionArray options of the content
 	 *
-	 * @return string|null
+	 * @return string
 	 */
 
-	public static function article(int $categoryId = null, int $articleId = null, array $optionArray = [])
+	public static function article(int $categoryId = null, int $articleId = null, array $optionArray = []) : string
 	{
 		$article = new View\Article(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		$article->init($optionArray);
@@ -231,7 +232,7 @@ class Tag
 	 * @return string|null
 	 */
 
-	public static function comment(int $articleId = null, array $optionArray = [])
+	public static function comment(int $articleId = null, array $optionArray = []) : ?string
 	{
 		$articleModel = new Model\Article();
 		$article = $articleModel->getById($articleId);
@@ -241,6 +242,7 @@ class Tag
 			$comment->init($optionArray);
 			return $comment->render($articleId);
 		}
+		return null;
 	}
 
 	/**
@@ -251,10 +253,10 @@ class Tag
 	 * @param int $extraId identifier of the extra
 	 * @param array $optionArray options of the extra
 	 *
-	 * @return string|null
+	 * @return string
 	 */
 
-	public static function extra(int $extraId = null, array $optionArray = [])
+	public static function extra(int $extraId = null, array $optionArray = []) : string
 	{
 		$extra = new View\Extra(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		$extra->init($optionArray);
@@ -272,38 +274,39 @@ class Tag
 	 * @return string|null
 	 */
 
-	public static function navigation(string $type = null, array $optionArray = [])
+	public static function navigation(string $type = null, array $optionArray = []) : ?string
 	{
 		if ($type == 'articles')
 		{
 			$navigation = new Navigation\Article(Registry::getInstance(), Language::getInstance());
 			$navigation->init($optionArray);
-			return $navigation;
+			return $navigation->render();
 		}
 		if ($type == 'categories')
 		{
 			$navigation = new Navigation\Category(Registry::getInstance(), Language::getInstance());
 			$navigation->init($optionArray);
-			return $navigation;
+			return $navigation->render();
 		}
 		if ($type == 'comments')
 		{
 			$navigation = new Navigation\Comment(Registry::getInstance(), Language::getInstance());
 			$navigation->init($optionArray);
-			return $navigation;
+			return $navigation->render();
 		}
 		if ($type == 'languages')
 		{
 			$navigation = new Navigation\Language(Registry::getInstance(), Language::getInstance());
 			$navigation->init($optionArray);
-			return $navigation;
+			return $navigation->render();
 		}
 		if ($type == 'templates')
 		{
 			$navigation = new Navigation\Template(Registry::getInstance(), Language::getInstance());
 			$navigation->init($optionArray);
-			return $navigation;
+			return $navigation->render();
 		}
+		return null;
 	}
 
 	/**
@@ -314,7 +317,7 @@ class Tag
 	 * @return string|null
 	 */
 
-	public static function console()
+	public static function console() : ?string
 	{
 		$console = new Console\Console(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 		$output = $console->init('template');
@@ -322,6 +325,7 @@ class Tag
 		{
 			return htmlentities($output);
 		}
+		return null;
 	}
 
 	/**
@@ -348,7 +352,7 @@ class Tag
 	 * @return string
 	 */
 
-	public static function commentForm(int $articleId = null)
+	public static function commentForm(int $articleId = null) : ?string
 	{
 		$articleModel = new Model\Article();
 		$article = $articleModel->getById($articleId);
@@ -357,6 +361,7 @@ class Tag
 			$commentForm = new View\CommentForm(Registry::getInstance(), Language::getInstance());
 			return $commentForm->render($articleId);
 		}
+		return null;
 	}
 
 	/**

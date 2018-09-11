@@ -1,11 +1,11 @@
 <?php
 namespace Redaxscript\Tests\Controller;
 
-use Redaxscript\Controller;
-use Redaxscript\Tests\TestCaseAbstract;
 use org\bovigo\vfs\vfsStream as Stream;
 use org\bovigo\vfs\vfsStreamFile as StreamFile;
 use org\bovigo\vfs\vfsStreamWrapper as StreamWrapper;
+use Redaxscript\Controller;
+use Redaxscript\Tests\TestCaseAbstract;
 
 /**
  * InstallTest

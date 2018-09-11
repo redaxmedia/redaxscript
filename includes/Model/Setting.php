@@ -28,10 +28,10 @@ class Setting extends ModelAbstract
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	public function get($key = null)
+	public function get(string $key = null) : ?string
 	{
 		$settings = $this->getAll();
 
@@ -47,7 +47,7 @@ class Setting extends ModelAbstract
 				}
 			}
 		}
-		return false;
+		return null;
 	}
 
 	/**

@@ -21,7 +21,7 @@ class Dater
 	/**
 	 * time zone
 	 *
-	 * @var object
+	 * @var DateTimeZone
 	 */
 
 	protected $_timeZone;
@@ -29,7 +29,7 @@ class Dater
 	/**
 	 * date time
 	 *
-	 * @var object
+	 * @var DateTime
 	 */
 
 	protected $_dateTime;
@@ -66,10 +66,10 @@ class Dater
 	 *
 	 * @since 4.0.0
 	 *
-	 * @return object
+	 * @return DateTimeZone
 	 */
 
-	public function getTimeZone()
+	public function getTimeZone() : DateTimeZone
 	{
 		return $this->_timeZone;
 	}
@@ -79,10 +79,10 @@ class Dater
 	 *
 	 * @since 4.0.0
 	 *
-	 * @return object
+	 * @return DateTime
 	 */
 
-	public function getDateTime()
+	public function getDateTime() : DateTime
 	{
 		return $this->_dateTime;
 	}
@@ -95,7 +95,7 @@ class Dater
 	 * @return string
 	 */
 
-	public function formatTime()
+	public function formatTime() : string
 	{
 		$settingModel = new Model\Setting();
 		return $this->getDateTime()->format($settingModel->get('time'));
@@ -109,7 +109,7 @@ class Dater
 	 * @return string
 	 */
 
-	public function formatDate()
+	public function formatDate() : string
 	{
 		$settingModel = new Model\Setting();
 		return $this->getDateTime()->format($settingModel->get('date'));
@@ -123,7 +123,7 @@ class Dater
 	 * @return string
 	 */
 
-	public function formatField()
+	public function formatField() : string
 	{
 		return $this->getDateTime()->format('Y-m-d\TH:i');
 	}

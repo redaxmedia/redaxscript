@@ -93,6 +93,6 @@ class RegistryTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertFalse($actual);
+		$this->assertNull($actual);
 	}
 }

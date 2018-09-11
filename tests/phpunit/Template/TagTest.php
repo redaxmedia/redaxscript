@@ -1,11 +1,11 @@
 <?php
 namespace Redaxscript\Tests\Template;
 
-use Redaxscript\Template;
-use Redaxscript\Tests\TestCaseAbstract;
 use org\bovigo\vfs\vfsStream as Stream;
 use org\bovigo\vfs\vfsStreamFile as StreamFile;
 use org\bovigo\vfs\vfsStreamWrapper as StreamWrapper;
+use Redaxscript\Template;
+use Redaxscript\Tests\TestCaseAbstract;
 
 /**
  * TagTest
@@ -213,7 +213,7 @@ class TagTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertInstanceOf('Redaxscript\Navigation\Category', $actual);
+		$this->assertString($actual);
 	}
 
 	/**
@@ -230,7 +230,7 @@ class TagTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertInstanceOf('Redaxscript\Navigation\Article', $actual);
+		$this->assertString($actual);
 	}
 
 	/**
@@ -247,7 +247,7 @@ class TagTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertInstanceOf('Redaxscript\Navigation\Comment', $actual);
+		$this->assertString($actual);
 	}
 
 	/**
@@ -264,7 +264,7 @@ class TagTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertInstanceOf('Redaxscript\Navigation\Language', $actual);
+		$this->assertString($actual);
 	}
 
 	/**
@@ -281,9 +281,25 @@ class TagTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertInstanceOf('Redaxscript\Navigation\Template', $actual);
+		$this->assertString($actual);
 	}
 
+	/**
+	 * testNavigationTemplates
+	 *
+	 * @since 3.3.1
+	 */
+
+	public function testNavigationInvalid()
+	{
+		/* actual */
+
+		$actual = Template\Tag::navigation('invalid');
+
+		/* compare */
+
+		$this->assertNull($actual);
+	}
 
 	/**
 	 * testConsole

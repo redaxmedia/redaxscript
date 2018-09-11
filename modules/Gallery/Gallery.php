@@ -37,10 +37,10 @@ class Gallery extends Config
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array|bool
+	 * @return array|null
 	 */
 
-	public function adminNotification()
+	public function adminNotification() : ?array
 	{
 		return $this->getNotification();
 	}
@@ -155,7 +155,7 @@ class Gallery extends Config
 	 * @return string
 	 */
 
-	public function _renderItem($directory = null, array $optionArray = [])
+	public function _renderItem(string $directory = null, array $optionArray = []) : string
 	{
 		$outputItem = null;
 		$itemCounter = 0;
@@ -232,7 +232,7 @@ class Gallery extends Config
 	 * @param string $directory
 	 */
 
-	protected function _removeThumb($directory = null)
+	protected function _removeThumb(string $directory = null)
 	{
 		$galleryFilesystem = new Filesystem\Directory();
 		$galleryFilesystem->init($directory, true);
@@ -248,7 +248,7 @@ class Gallery extends Config
 	 * @param array $optionArray
 	 */
 
-	protected function _createThumb($directory = null, array $optionArray = [])
+	protected function _createThumb(string $directory = null, array $optionArray = [])
 	{
 		/* gallery filesystem */
 
@@ -321,7 +321,7 @@ class Gallery extends Config
 	 * @return array
 	 */
 
-	protected function _calcSource($imagePath = null)
+	protected function _calcSource(string $imagePath = null) : array
 	{
 		$sourceArray['size'] = getimagesize($imagePath);
 		$sourceArray['height'] = $sourceArray['size'][1];
@@ -338,7 +338,7 @@ class Gallery extends Config
 	 * @return array
 	 */
 
-	protected function _calcDist($sourceArray = [], array $optionArray = [])
+	protected function _calcDist(array $sourceArray = [], array $optionArray = []) : array
 	{
 		$distArray['height'] = is_array($optionArray) && array_key_exists('height', $optionArray) ? $optionArray['height'] : $this->_configArray['height'];
 		$distArray['quality'] = is_array($optionArray) && array_key_exists('quality', $optionArray) ? $optionArray['quality'] : $this->_configArray['quality'];

@@ -35,10 +35,10 @@ class TestDummy extends Module\Notification
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return array|bool
+	 * @return array|null
 	 */
 
-	public function adminNotification()
+	public function adminNotification() : ?array
 	{
 		$notificationArray =
 		[

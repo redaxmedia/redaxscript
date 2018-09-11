@@ -128,7 +128,7 @@ class ConfigTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testParse(string $dbUrl = null, $configArray = [])
+	public function testParse(string $dbUrl = null, array $configArray = [])
 	{
 		/* setup */
 

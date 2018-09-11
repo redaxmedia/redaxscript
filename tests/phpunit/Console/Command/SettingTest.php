@@ -124,13 +124,14 @@ class SettingTest extends TestCaseAbstract
 		]);
 		$settingCommand = new Command\Setting($this->_registry, $this->_request, $this->_language, $this->_config);
 
-		/* actual */
+		/* expect and actual */
 
+		$expect = $settingCommand->success();
 		$actual = $settingCommand->run('cli');
 
 		/* compare */
 
-		$this->assertTrue($actual);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -152,12 +153,13 @@ class SettingTest extends TestCaseAbstract
 		]);
 		$settingCommand = new Command\Setting($this->_registry, $this->_request, $this->_language, $this->_config);
 
-		/* actual */
+		/* expect and actual */
 
+		$expect = $settingCommand->error();
 		$actual = $settingCommand->run('cli');
 
 		/* compare */
 
-		$this->assertFalse($actual);
+		$this->assertEquals($expect, $actual);
 	}
 }

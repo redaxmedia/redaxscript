@@ -2,9 +2,9 @@
 namespace Redaxscript\Template;
 
 use Redaxscript\Asset;
-use Redaxscript\Registry;
 use Redaxscript\Language;
 use Redaxscript\Model;
+use Redaxscript\Registry;
 
 /**
  * helper class to provide template helper
@@ -25,10 +25,10 @@ class Helper
 	 *
 	 * @param string $key
 	 *
-	 * @return string|array|bool
+	 * @return string|array|null
 	 */
 
-	public static function getRegistry($key = null)
+	public static function getRegistry(string $key = null)
 	{
 		$registry = Registry::getInstance();
 		return $registry->get($key);
@@ -42,10 +42,10 @@ class Helper
 	 * @param string $key
 	 * @param string $index
 	 *
-	 * @return string|array|bool
+	 * @return string|array|null
 	 */
 
-	public static function getLanguage($key = null, $index = null)
+	public static function getLanguage(string $key = null, string $index = null)
 	{
 		$language = Language::getInstance();
 		return $language->get($key, $index);
@@ -58,10 +58,10 @@ class Helper
 	 *
 	 * @param string $key
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	public static function getSetting($key = null)
+	public static function getSetting(string $key = null) : ?string
 	{
 		$settingModel = new Model\Setting();
 		return $settingModel->get($key);
@@ -72,10 +72,10 @@ class Helper
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public static function getTitle()
+	public static function getTitle() : ?string
 	{
 		$title = new Helper\Title(Registry::getInstance());
 		return $title->process();
@@ -86,10 +86,10 @@ class Helper
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	public static function getCanonical()
+	public static function getCanonical() : ?string
 	{
 		$canonical = new Helper\Canonical(Registry::getInstance());
 		return $canonical->process();
@@ -100,10 +100,10 @@ class Helper
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public static function getDescription()
+	public static function getDescription() : ?string
 	{
 		$description = new Helper\Description(Registry::getInstance());
 		return $description->process();
@@ -114,10 +114,10 @@ class Helper
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public static function getKeywords()
+	public static function getKeywords() : ?string
 	{
 		$keywords = new Helper\Keywords(Registry::getInstance());
 		return $keywords->process();
@@ -128,10 +128,10 @@ class Helper
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public static function getRobots()
+	public static function getRobots() : ?string
 	{
 		$robots = new Helper\Robots(Registry::getInstance());
 		return $robots->process();
@@ -156,10 +156,10 @@ class Helper
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public static function getSubset()
+	public static function getSubset() : ?string
 	{
 		$subset = new Helper\Subset(Registry::getInstance());
 		return $subset->process();
@@ -170,10 +170,10 @@ class Helper
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public static function getDirection()
+	public static function getDirection() : ?string
 	{
 		$direction = new Helper\Direction(Registry::getInstance());
 		return $direction->process();
@@ -186,10 +186,10 @@ class Helper
 	 *
 	 * @param string $prefix
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public static function getClass(string $prefix = null)
+	public static function getClass(string $prefix = null) : ?string
 	{
 		$client = new Helper\Client(Registry::getInstance());
 		return $client->process($prefix);

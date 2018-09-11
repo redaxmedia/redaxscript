@@ -1,9 +1,9 @@
 <?php
 namespace Redaxscript\Tests\Console\Command;
 
+use org\bovigo\vfs\vfsStream as Stream;
 use Redaxscript\Console\Command;
 use Redaxscript\Tests\TestCaseAbstract;
-use org\bovigo\vfs\vfsStream as Stream;
 
 /**
  * BackupTest
@@ -100,13 +100,14 @@ class BackupTest extends TestCaseAbstract
 		]);
 		$backupCommand = new Command\Backup($this->_registry, $this->_request, $this->_language, $this->_config);
 
-		/* actual */
+		/* expect and actual */
 
+		$expect = $backupCommand->success();
 		$actual = $backupCommand->run('cli');
 
 		/* compare */
 
-		$this->assertTrue($actual);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -128,12 +129,13 @@ class BackupTest extends TestCaseAbstract
 		]);
 		$backupCommand = new Command\Backup($this->_registry, $this->_request, $this->_language, $this->_config);
 
-		/* actual */
+		/* expect and actual */
 
+		$expect = $backupCommand->error();
 		$actual = $backupCommand->run('cli');
 
 		/* compare */
 
-		$this->assertFalse($actual);
+		$this->assertEquals($expect, $actual);
 	}
 }

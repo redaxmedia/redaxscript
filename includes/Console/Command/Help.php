@@ -43,10 +43,10 @@ class Help extends CommandAbstract
 	 *
 	 * @param string $mode name of the mode
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public function run($mode = null)
+	public function run(string $mode = null) : ?string
 	{
 		$parser = new Parser($this->_request);
 		$parser->init($mode);
@@ -63,10 +63,10 @@ class Help extends CommandAbstract
 	 *
 	 * @param string $argumentKey
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	protected function _list($argumentKey = null)
+	protected function _list(string $argumentKey = null) : ?string
 	{
 		$output = null;
 

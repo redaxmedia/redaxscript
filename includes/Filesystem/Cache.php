@@ -102,10 +102,10 @@ class Cache
 	 *
 	 * @param string|array $bundle key or collection of the bundle
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	public function retrieve($bundle = null)
+	public function retrieve($bundle = null) : ?string
 	{
 		if ($bundle)
 		{
@@ -113,7 +113,7 @@ class Cache
 			$cacheFile->init($this->_directory);
 			return $cacheFile->readFile($this->_getFile($bundle));
 		}
-		return false;
+		return null;
 	}
 
 	/**

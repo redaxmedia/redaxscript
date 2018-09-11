@@ -63,10 +63,10 @@ class Tinymce extends Config
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array|bool
+	 * @return array|null
 	 */
 
-	public function adminNotification()
+	public function adminNotification() : ?array
 	{
 		if (!is_dir($this->_configArray['uploadDirectory']) && !mkdir($this->_configArray['uploadDirectory']))
 		{
@@ -84,10 +84,10 @@ class Tinymce extends Config
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array|bool
+	 * @return array|null
 	 */
 
-	protected function _upload()
+	protected function _upload() : ?array
 	{
 		$filesArray = current($this->_request->getFiles());
 
@@ -104,6 +104,6 @@ class Tinymce extends Config
 			}
 		}
 		Header::statusCode(404);
-		return false;
+		return null;
 	}
 }

@@ -22,14 +22,14 @@ class MessengerTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $success
+	 * @param array $successArray
 	 * @param array $actionArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testSuccess($success = null, $actionArray = [], string $expect = null)
+	public function testSuccess(array $successArray = [], array $actionArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -38,7 +38,7 @@ class MessengerTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $messenger->success($success['message'], $success['title']);
+		$actual = $messenger->success($successArray['message'], $successArray['title']);
 
 		/* compare */
 
@@ -50,14 +50,14 @@ class MessengerTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $info
+	 * @param array $infoArray
 	 * @param array $actionArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testInfo($info = null, $actionArray = [], string $expect = null)
+	public function testInfo(array $infoArray = [], array $actionArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -66,7 +66,7 @@ class MessengerTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $messenger->info($info['message'], $info['title']);
+		$actual = $messenger->info($infoArray['message'], $infoArray['title']);
 
 		/* compare */
 
@@ -78,14 +78,14 @@ class MessengerTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $warning
+	 * @param array $warningArray
 	 * @param array $actionArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testWarning($warning = null, $actionArray = [], string $expect = null)
+	public function testWarning(array $warningArray = [], array $actionArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -94,7 +94,7 @@ class MessengerTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $messenger->warning($warning['message'], $warning['title']);
+		$actual = $messenger->warning($warningArray['message'], $warningArray['title']);
 
 		/* compare */
 
@@ -106,14 +106,14 @@ class MessengerTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $error
+	 * @param array $errorArray
 	 * @param array $actionArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testError($error = null, $actionArray = [], string $expect = null)
+	public function testError(array $errorArray = [], array $actionArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -122,7 +122,7 @@ class MessengerTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $messenger->error($error['message'], $error['title']);
+		$actual = $messenger->error($errorArray['message'], $errorArray['title']);
 
 		/* compare */
 
@@ -134,14 +134,14 @@ class MessengerTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param array $render
+	 * @param array $renderArray
 	 * @param array $actionArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRender($render = null, $actionArray = [], string $expect = null)
+	public function testRender(array $renderArray = [], array $actionArray = [], string $expect = null)
 	{
 		/* setup */
 
@@ -153,7 +153,7 @@ class MessengerTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $messenger->render($render['type'], $render['message'], $render['title']);
+		$actual = $messenger->render($renderArray['type'], $renderArray['message'], $renderArray['title']);
 
 		/* compare */
 

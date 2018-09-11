@@ -166,21 +166,15 @@ class Captcha
 
 	protected function _getOperator() : int
 	{
-		/* switch mode */
-
-		switch ($this->_mode)
+		if ($this->_mode === 2)
 		{
-			case 2:
-				$output = 1;
-				break;
-			case 3:
-				$output = -1;
-				break;
-			default:
-				$output = mt_rand(0, 1) * 2 - 1;
-				break;
+			return 1;
 		}
-		return $output;
+		if ($this->_mode === 3)
+		{
+			return -1;
+		}
+		return mt_rand(0, 1) * 2 - 1;
 	}
 
 	/**

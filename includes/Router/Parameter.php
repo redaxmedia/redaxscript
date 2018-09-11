@@ -2,8 +2,8 @@
 namespace Redaxscript\Router;
 
 use Redaxscript\Filter;
-use Redaxscript\Server;
 use Redaxscript\Request;
+use Redaxscript\Server;
 
 /**
  * parent class to get the parameter
@@ -72,10 +72,10 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	public function getFirst()
+	public function getFirst() : ?string
 	{
 		return $this->_getParameter(0);
 	}
@@ -85,10 +85,10 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return int|bool
+	 * @return int|null
 	 */
 
-	public function getFirstSub()
+	public function getFirstSub() : ?int
 	{
 		return $this->_getParameterSub(1);
 	}
@@ -98,10 +98,10 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	public function getSecond()
+	public function getSecond() : ?string
 	{
 		return $this->_getParameter(1);
 	}
@@ -111,10 +111,10 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return int|bool
+	 * @return int|null
 	 */
 
-	public function getSecondSub()
+	public function getSecondSub() : ?int
 	{
 		return $this->_getParameterSub(2);
 	}
@@ -124,10 +124,10 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	public function getThird()
+	public function getThird() : ?string
 	{
 		return $this->_getParameter(2);
 	}
@@ -137,10 +137,10 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return int|bool
+	 * @return int|null
 	 */
 
-	public function getThirdSub()
+	public function getThirdSub() : ?int
 	{
 		return $this->_getParameterSub(3);
 	}
@@ -150,10 +150,10 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	public function getFourth()
+	public function getFourth() : ?string
 	{
 		return $this->_getParameter(3);
 	}
@@ -163,10 +163,10 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return int|bool
+	 * @return int|null
 	 */
 
-	public function getFourthSub()
+	public function getFourthSub() : ?int
 	{
 		return $this->_getParameterSub(4);
 	}
@@ -176,10 +176,10 @@ class Parameter
 	 *
 	 * @since 2.4.0
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	public function getLast()
+	public function getLast() : ?string
 	{
 		foreach (array_reverse($this->_parameterArray) as $value)
 		{
@@ -188,7 +188,7 @@ class Parameter
 				return $value;
 			}
 		}
-		return false;
+		return null;
 	}
 
 	/**
@@ -196,10 +196,10 @@ class Parameter
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return int|bool
+	 * @return int|null
 	 */
 
-	public function getLastSub()
+	public function getLastSub() : ?int
 	{
 		foreach (array_reverse($this->_parameterArray) as $value)
 		{
@@ -208,7 +208,7 @@ class Parameter
 				return $value;
 			}
 		}
-		return false;
+		return null;
 	}
 
 	/**
@@ -216,16 +216,16 @@ class Parameter
 	 *
 	 * @since 2.4.0
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	public function getAdmin()
+	public function getAdmin() : ?string
 	{
 		if ($this->getFirst() === 'admin' && $this->getSecond())
 		{
 			return $this->getSecond();
 		}
-		return false;
+		return null;
 	}
 
 	/**
@@ -233,16 +233,16 @@ class Parameter
 	 *
 	 * @since 2.4.0
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	public function getTable()
+	public function getTable() : ?string
 	{
 		if ($this->getAdmin() && $this->getThird())
 		{
 			return $this->getThird();
 		}
-		return false;
+		return null;
 	}
 
 	/**
@@ -250,16 +250,16 @@ class Parameter
 	 *
 	 * @since 2.4.0
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	public function getAlias()
+	public function getAlias() : ?string
 	{
 		if ($this->getAdmin() && $this->getFourth())
 		{
 			return $this->getFourth();
 		}
-		return false;
+		return null;
 	}
 
 	/**
@@ -267,16 +267,16 @@ class Parameter
 	 *
 	 * @since 2.4.0
 	 *
-	 * @return int|bool
+	 * @return int|null
 	 */
 
-	public function getId()
+	public function getId() : ?int
 	{
 		if ($this->getTable() && $this->getThirdSub())
 		{
 			return $this->getThirdSub();
 		}
-		return false;
+		return null;
 	}
 
 	/**
@@ -284,17 +284,17 @@ class Parameter
 	 *
 	 * @since 2.4.0
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	public function getToken()
+	public function getToken() : ?string
 	{
 		$token = new Server\Token($this->_request);
 		if ($this->getLast() === $token->getOutput())
 		{
 			return $this->getLast();
 		}
-		return false;
+		return null;
 	}
 
 	/**
@@ -304,16 +304,16 @@ class Parameter
 	 *
 	 * @param int $key
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	protected function _getParameter(int $key = null)
+	protected function _getParameter(int $key = null) : ?string
 	{
 		if (is_array($this->_parameterArray) && array_key_exists($key, $this->_parameterArray) && !is_numeric($this->_parameterArray[$key]))
 		{
 			return $this->_parameterArray[$key];
 		}
-		return false;
+		return null;
 	}
 
 	/**
@@ -323,15 +323,15 @@ class Parameter
 	 *
 	 * @param int $key
 	 *
-	 * @return int|bool
+	 * @return int|null
 	 */
 
-	protected function _getParameterSub(int $key = null)
+	protected function _getParameterSub(int $key = null) : ?int
 	{
 		if (is_array($this->_parameterArray) && array_key_exists($key, $this->_parameterArray) && is_numeric($this->_parameterArray[$key]))
 		{
 			return $this->_parameterArray[$key];
 		}
-		return false;
+		return null;
 	}
 }

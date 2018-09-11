@@ -79,13 +79,14 @@ class InstallTest extends TestCaseAbstract
 		]);
 		$installCommand = new Command\Install($this->_registry, $this->_request, $this->_language, $this->_config);
 
-		/* actual */
+		/* expect and actual */
 
+		$expect = $installCommand->success();
 		$actual = $installCommand->run('cli');
 
 		/* compare */
 
-		$this->assertTrue($actual);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -107,13 +108,14 @@ class InstallTest extends TestCaseAbstract
 		]);
 		$installCommand = new Command\Install($this->_registry, $this->_request, $this->_language, $this->_config);
 
-		/* actual */
+		/* expect and actual */
 
+		$expect = $installCommand->error();
 		$actual = $installCommand->run('cli');
 
 		/* compare */
 
-		$this->assertFalse($actual);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -137,8 +139,9 @@ class InstallTest extends TestCaseAbstract
 		]);
 		$installCommand = new Command\Install($this->_registry, $this->_request, $this->_language, $this->_config);
 
-		/* actual */
+		/* expect and actual */
 
+		$expect = $installCommand->success();
 		$actual = $installCommand->run('cli');
 
 		/* teardown */
@@ -147,7 +150,7 @@ class InstallTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertTrue($actual);
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**
@@ -170,12 +173,13 @@ class InstallTest extends TestCaseAbstract
 		]);
 		$installCommand = new Command\Install($this->_registry, $this->_request, $this->_language, $this->_config);
 
-		/* actual */
+		/* expect and actual */
 
+		$expect = $installCommand->error();
 		$actual = $installCommand->run('cli');
 
 		/* compare */
 
-		$this->assertFalse($actual);
+		$this->assertEquals($expect, $actual);
 	}
 }

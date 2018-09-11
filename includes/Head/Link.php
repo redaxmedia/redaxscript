@@ -197,7 +197,7 @@ class Link extends HeadAbstract
 	 * @param array $rewriteArray
 	 */
 
-	protected function _setRewriteArray($rewriteArray = [])
+	protected function _setRewriteArray(array $rewriteArray = [])
 	{
 		self::$_rewriteArray[self::$_namespace] = $rewriteArray;
 	}

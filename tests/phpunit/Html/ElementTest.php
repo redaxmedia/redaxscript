@@ -156,13 +156,13 @@ class ElementTest extends TestCaseAbstract
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param array $text
+	 * @param string $text
 	 * @param string $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testText($text = null, string $expect = null)
+	public function testText(string $text = null, string $expect = null)
 	{
 		/* setup */
 

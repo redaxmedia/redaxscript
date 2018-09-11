@@ -21,10 +21,10 @@ class Canonical extends HelperAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string|bool
+	 * @return string|null
 	 */
 
-	public function process()
+	public function process() : ?string
 	{
 		$contentModel = new Model\Content();
 		$lastTable = $this->_registry->get('lastTable');

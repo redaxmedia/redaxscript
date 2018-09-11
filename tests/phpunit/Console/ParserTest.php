@@ -80,7 +80,7 @@ class ParserTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetArgument($argumentArray = [], array $expectArray = [])
+	public function testGetArgument(array $argumentArray = [], array $expectArray = [])
 	{
 		/* setup */
 
@@ -116,7 +116,7 @@ class ParserTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertFalse($actual);
+		$this->assertNull($actual);
 	}
 
 	/**
@@ -152,7 +152,7 @@ class ParserTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetOption($argumentArray = [], array $expectArray = [])
+	public function testGetOption(array $argumentArray = [], array $expectArray = [])
 	{
 		/* setup */
 
@@ -188,6 +188,6 @@ class ParserTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertFalse($actual);
+		$this->assertNull($actual);
 	}
 }

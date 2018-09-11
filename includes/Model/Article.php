@@ -28,12 +28,13 @@ class Article extends ContentAbstract
 	 *
 	 * @param string $articleAlias alias of the article
 	 *
-	 * @return object
+	 * @return object|null
 	 */
 
-	public function getByAlias(string $articleAlias = null)
+	public function getByAlias(string $articleAlias = null) : ?object
 	{
-		return $this->query()->where('alias', $articleAlias)->findOne();
+		$article = $this->query()->where('alias', $articleAlias)->findOne();
+		return $article ? $article : null;
 	}
 
 	/**
@@ -44,16 +45,17 @@ class Article extends ContentAbstract
 	 * @param int $categoryId identifier of the category
 	 * @param string $language
 	 *
-	 * @return object
+	 * @return object|null
 	 */
 
-	public function getByCategoryAndLanguage(int $categoryId = null, string $language = null)
+	public function getByCategoryAndLanguage(int $categoryId = null, string $language = null) : ?object
 	{
-		return $this
+		$articles = $this
 			->query()
 			->where('category', $categoryId)
 			->whereLanguageIs($language)
 			->findMany();
+		return $articles ? $articles : null;
 	}
 
 	/**

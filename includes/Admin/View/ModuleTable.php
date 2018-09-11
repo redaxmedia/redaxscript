@@ -2,8 +2,8 @@
 namespace Redaxscript\Admin\View;
 
 use Redaxscript\Admin;
-use Redaxscript\Html;
 use Redaxscript\Filesystem;
+use Redaxscript\Html;
 use Redaxscript\Module;
 
 /**

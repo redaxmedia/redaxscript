@@ -3,6 +3,7 @@ namespace Redaxscript\Admin\Controller;
 
 use Redaxscript\Admin;
 use Redaxscript\Controller\ControllerAbstract as BaseControllerAbstract;
+use Redaxscript\Messenger;
 
 /**
  * abstract class to create a admin controller class
@@ -21,10 +22,10 @@ abstract class ControllerAbstract extends BaseControllerAbstract
 	 *
 	 * @since 4.0.0
 	 *
-	 * @return Admin\Messenger
+	 * @return Messenger
 	 */
 
-	protected function _messengerFactory()
+	protected function _messengerFactory() : Messenger
 	{
 		return new Admin\Messenger($this->_registry);
 	}

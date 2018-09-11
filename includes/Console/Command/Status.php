@@ -59,10 +59,10 @@ class Status extends CommandAbstract
 	 *
 	 * @param string $mode name of the mode
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public function run($mode = null)
+	public function run(string $mode = null) : ?string
 	{
 		$parser = new Parser($this->_request);
 		$parser->init($mode);
@@ -86,10 +86,10 @@ class Status extends CommandAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	protected function _database()
+	protected function _database() : ?string
 	{
 		$output = null;
 		$status = Db::getStatus();
@@ -106,10 +106,10 @@ class Status extends CommandAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	protected function _system()
+	protected function _system() : ?string
 	{
 		$output = null;
 		$statusArray = $this->_getStatusArray();

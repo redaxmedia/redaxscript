@@ -26,10 +26,10 @@ class Language extends Singleton
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string|array|bool $language detected language to process
+	 * @param string $language detected language to process
 	 */
 
-	public function init($language = 'en')
+	public function init(string $language = 'en')
 	{
 		$this->load('languages/en.json');
 
@@ -49,7 +49,7 @@ class Language extends Singleton
 	 * @param string $key key of the item
 	 * @param string $index index of the array
 	 *
-	 * @return string|array|bool
+	 * @return string|array|null
 	 */
 
 	public function get(string $key = null, string $index = null)
@@ -75,7 +75,7 @@ class Language extends Singleton
 		{
 			return $languageArray;
 		}
-		return false;
+		return null;
 	}
 
 	/**
@@ -87,7 +87,7 @@ class Language extends Singleton
 	 * @param string|array $value value of the item
 	 */
 
-	public function set($key = null, $value = null)
+	public function set(string $key = null, $value = null)
 	{
 		self::$_languageArray[$key] = $value;
 	}

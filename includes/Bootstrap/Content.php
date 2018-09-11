@@ -121,7 +121,7 @@ class Content extends BootstrapAbstract
 	 * @param array $whereArray
 	 */
 
-	protected function _setId($whereArray = [])
+	protected function _setId(array $whereArray = [])
 	{
 		$aliasValidator = new Validator\Alias();
 		$firstParameter = $this->_registry->get('firstParameter');

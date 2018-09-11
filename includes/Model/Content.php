@@ -25,21 +25,17 @@ class Content
 
 	public function getTableByAlias(string $contentAlias = null) : ?string
 	{
-		$table = null;
 		$categoryModel = new Category();
 		if ($categoryModel->getByAlias($contentAlias)->id)
 		{
-			$table = 'categories';
+			return 'categories';
 		}
-		else
+		$articleModel = new Article();
+		if ($articleModel->getByAlias($contentAlias)->id)
 		{
-			$articleModel = new Article();
-			if ($articleModel->getByAlias($contentAlias)->id)
-			{
-				$table = 'articles';
-			}
+			return 'articles';
 		}
-		return $table;
+		return null;
 	}
 
 	/**
@@ -55,25 +51,21 @@ class Content
 
 	public function getRouteByTableAndId(string $table = null, int $contentId = null) : ?string
 	{
-		$route = null;
-
-		/* switch table */
-
-		switch ($table)
+		if ($table === 'categories')
 		{
-			case 'categories':
-				$categoryModel = new Category();
-				$route = $categoryModel->getRouteById($contentId);
-				break;
-			case 'articles':
-				$articleModel = new Article();
-				$route = $articleModel->getRouteById($contentId);
-				break;
-			case 'comments':
-				$commentModel = new Comment();
-				$route = $commentModel->getRouteById($contentId);
-				break;
+			$categoryModel = new Category();
+			return $categoryModel->getRouteById($contentId);
 		}
-		return $route;
+		if ($table === 'articles')
+		{
+			$articleModel = new Article();
+			return $articleModel->getRouteById($contentId);
+		}
+		if ($table === 'comments')
+		{
+			$commentModel = new Comment();
+			return $commentModel->getRouteById($contentId);
+		}
+		return null;
 	}
 }

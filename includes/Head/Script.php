@@ -3,8 +3,8 @@ namespace Redaxscript\Head;
 
 use Redaxscript\Asset;
 use Redaxscript\Html;
-use Redaxscript\Registry;
 use Redaxscript\Language;
+use Redaxscript\Registry;
 
 /**
  * children class to create the script tag
@@ -210,13 +210,12 @@ class Script extends HeadAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return self
+	 * @return HeadAbstract
 	 */
 
-	public function clear() : self
+	public function clear() : HeadAbstract
 	{
-		parent::clear();
 		self::$_inline = null;
-		return $this;
+		return parent::clear();
 	}
 }
