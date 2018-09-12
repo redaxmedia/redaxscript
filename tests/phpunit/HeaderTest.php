@@ -131,7 +131,7 @@ class HeaderTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertNumber(1, $actual);
+		$this->assertNumber($actual);
 	}
 
 	/**

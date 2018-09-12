@@ -476,7 +476,6 @@ class Panel extends ViewAbstract
 
 	protected function _renderProfile() : string
 	{
-		$output = null;
 		$parameterRoute = $this->_registry->get('parameterRoute');
 		$myId = $this->_registry->get('myId');
 
@@ -587,7 +586,6 @@ class Panel extends ViewAbstract
 
 	protected function _renderLogout() : string
 	{
-		$output = null;
 		$parameterRoute = $this->_registry->get('parameterRoute');
 
 		/* html element */

@@ -37,7 +37,7 @@
 		<!-- admin controller -->
 
 		<testsuite name="admin-controller">
-			<directory>tests/phpunit/Admin/Controller</directory>
+			<!--<directory>tests/phpunit/Admin/Controller</directory>-->
 		</testsuite>
 
 		<!-- admin html -->
@@ -49,7 +49,7 @@
 		<!-- admin model -->
 
 		<testsuite name="admin-model">
-			<directory>tests/phpunit/Admin/Model</directory>
+			<!--<directory>tests/phpunit/Admin/Model</directory>-->
 		</testsuite>
 
 		<!-- admin router -->
@@ -73,7 +73,7 @@
 		<!-- admin messenger -->
 
 		<testsuite name="admin-messenger">
-			<file>tests/phpunit/Admin/MessengerTest.php</file>
+			<!--<file>tests/phpunit/Admin/MessengerTest.php</file>-->
 		</testsuite>
 
 		<!-- asset -->
