@@ -164,7 +164,6 @@ class Category extends ControllerAbstract
 	{
 		$aliasValidator = new Validator\Alias();
 		$categoryModel = new Admin\Model\Category();
-		$articleModel = new Admin\Model\Article();
 		$validateArray = [];
 
 		/* validate post */
@@ -181,7 +180,7 @@ class Category extends ControllerAbstract
 		{
 			$validateArray[] = $this->_language->get('alias_incorrect');
 		}
-		else if ($articleModel->getByAlias($postArray['alias'])->id || $categoryModel->getByAlias($postArray['alias'])->id !== $categoryModel->getById($postArray['id'])->id)
+		else if (!$categoryModel->isUniqueByIdAndAlias($postArray['id'], $postArray['alias']))
 		{
 			$validateArray[] = $this->_language->get('alias_exists');
 		}

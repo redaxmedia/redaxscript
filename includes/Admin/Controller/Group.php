@@ -181,7 +181,7 @@ class Group extends ControllerAbstract
 			{
 				$validateArray[] = $this->_language->get('alias_incorrect');
 			}
-			else if ($groupModel->getByAlias($postArray['alias'])->id !== $groupModel->getById($postArray['id'])->id)
+			else if (!$groupModel->isUniqueByIdAndAlias($postArray['id'], $postArray['alias']))
 			{
 				$validateArray[] = $this->_language->get('alias_exists');
 			}

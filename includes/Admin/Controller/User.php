@@ -184,7 +184,7 @@ class User extends ControllerAbstract
 			{
 				$validateArray[] = $this->_language->get('user_incorrect');
 			}
-			else if ($userModel->getByUser($postArray['user'])->id !== $userModel->getById($postArray['id'])->id)
+			else if ($userModel->getByUser($postArray['user']))
 			{
 				$validateArray[] = $this->_language->get('user_exists');
 			}

@@ -16,6 +16,23 @@ use Redaxscript\Model as BaseModel;
 class Category extends BaseModel\Category
 {
 	/**
+	 * is unique by id and alias
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param int $categoryId identifier of the category
+	 * @param string $categoryAlias alias of the category
+	 *
+	 * @return bool
+	 */
+
+	public function isUniqueByIdAndAlias(int $categoryId = null, string $categoryAlias = null) : bool
+	{
+		$articleModel = new Article();
+		return !$articleModel->getByAlias($categoryAlias)->id && !$this->getByAlias($categoryAlias)->id || $this->getByAlias($categoryAlias)->id === $this->getById($categoryId)->id;
+	}
+
+	/**
 	 * create the category by array
 	 *
 	 * @since 4.0.0

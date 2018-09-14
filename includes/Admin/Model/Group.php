@@ -16,6 +16,22 @@ use Redaxscript\Model as BaseModel;
 class Group extends BaseModel\Group
 {
 	/**
+	 * is unique by id and alias
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param int $groupId identifier of the group
+	 * @param string $groupAlias alias of the group
+	 *
+	 * @return bool
+	 */
+
+	public function isUniqueByIdAndAlias(int $groupId = null, string $groupAlias = null) : bool
+	{
+		return !$this->getByAlias($groupAlias)->id || $this->getByAlias($groupAlias)->id === $this->getById($groupId)->id;
+	}
+
+	/**
 	 * create the group by array
 	 *
 	 * @since 4.0.0

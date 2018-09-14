@@ -48,7 +48,7 @@ class GroupForm extends ViewAbstract
 		[
 			'form' =>
 			[
-				'class' => 'rs-admin-js-validate rs-admin-fn-tab rs-admin-component-tab rs-admin-form-default'
+				'class' => 'rs-admin-js-validate rs-admin-js-alias rs-admin-fn-tab rs-admin-component-tab rs-admin-form-default'
 			],
 			'button' =>
 			[
@@ -100,6 +100,7 @@ class GroupForm extends ViewAbstract
 			->text(
 			[
 				'autofocus' => 'autofocus',
+				'class' => 'rs-admin-js-alias-input rs-admin-field-default rs-admin-field-text',
 				'id' => 'name',
 				'name' => 'name',
 				'required' => 'required',
@@ -116,6 +117,7 @@ class GroupForm extends ViewAbstract
 				])
 				->text(
 				[
+					'class' => 'rs-admin-js-alias-output rs-admin-field-default rs-admin-field-text',
 					'id' => 'alias',
 					'name' => 'alias',
 					'pattern' => '[a-zA-Z0-9-]+',

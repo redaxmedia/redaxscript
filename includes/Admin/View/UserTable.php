@@ -220,12 +220,19 @@ class UserTable extends ViewAbstract
 
 		/* process groups */
 
-		foreach ($groupArray as $groupId)
+		if ($groupArray)
 		{
-			$output .= $linkElement
-				->copy()
-				->attr('href', $this->_registry->get('parameterRoute') . 'admin/edit/groups/' . $groupId)
-				->text($groupModel->getById($groupId)->name);
+			foreach ($groupArray as $groupId)
+			{
+				$output .= $linkElement
+					->copy()
+					->attr('href', $this->_registry->get('parameterRoute') . 'admin/edit/groups/' . $groupId)
+					->text($groupModel->getById($groupId)->name);
+			}
+		}
+		else
+		{
+			$output = $this->_language->get('none');
 		}
 		return $output;
 	}
