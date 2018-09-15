@@ -9,7 +9,6 @@ jobs:
    - TYPE=lint
 
    before_install:
-   - composer self-update
    - composer global require hirak/prestissimo
 
    install:
@@ -43,7 +42,6 @@ jobs:
    - postgresql
 
    before_install:
-   - composer self-update
    - composer global require hirak/prestissimo
 
    install:
