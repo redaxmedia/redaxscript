@@ -26,48 +26,39 @@ class Config extends Module\Module
 		'className' =>
 		[
 			'link' => 'rs-link-social-sharer',
-			'list' => 'rs-js-social-sharer rs-list-social-sharer'
+			'list' => 'rs-list-social-sharer'
 		],
 		'network' =>
 		[
 			'facebook' =>
 			[
-				'type' => 'facebook',
 				'url' => 'https://facebook.com/sharer.php?u=',
 				'className' => 'rs-link-facebook'
 			],
 			'googleplus' =>
 			[
-				'type' => 'googleplusone',
 				'url' => 'https://plusone.google.com/_/+1/confirm?url=',
-				'className' => 'rs-link-googleplus',
-				'height' => 700
+				'className' => 'rs-link-googleplus'
 			],
 			'twitter' =>
 			[
-				'type' => 'twitter',
 				'url' => 'https://twitter.com/share?url=',
 				'className' => 'rs-link-twitter'
 			],
 			'pinterest' =>
 			[
-				'type' => 'pinterest',
 				'url' => 'https://pinterest.com/pin/create/button/?url=',
-				'className' => 'rs-link-pinterest',
-				'width' => 800
+				'className' => 'rs-link-pinterest'
 			],
 			'linkedin' =>
 			[
-				'type' => 'linkedin',
 				'url' => 'https://linkedin.com/shareArticle?url=',
 				'className' => 'rs-link-linkedin'
 			],
 			'stumbleupon' =>
 			[
-				'type' => 'stumbleupon',
 				'url' => 'https://stumbleupon.com/submit?url=',
-				'className' => 'rs-link-stumbleupon',
-				'height' => 600
+				'className' => 'rs-link-stumbleupon'
 			]
 		]
 	];

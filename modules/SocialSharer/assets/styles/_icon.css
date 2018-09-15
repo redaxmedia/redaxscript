@@ -16,46 +16,35 @@
 {
 	content: '\f101';
 	font-family: var(--rs-font-icon-social-sharer);
-	font-style: normal;
-	font-weight: normal;
 }
 
 %rs-icon-401-facebook
 {
 	content: '\f102';
 	font-family: var(--rs-font-icon-social-sharer);
-	font-style: normal;
-	font-weight: normal;
 }
 
 %rs-icon-407-twitter
 {
 	content: '\f103';
 	font-family: var(--rs-font-icon-social-sharer);
-	font-style: normal;
-	font-weight: normal;
 }
 
 %rs-icon-459-linkedin2
 {
 	content: '\f104';
 	font-family: var(--rs-font-icon-social-sharer);
-	font-style: normal;
-	font-weight: normal;
 }
 
 %rs-icon-463-stumbleupon
 {
 	content: '\f105';
 	font-family: var(--rs-font-icon-social-sharer);
-	font-style: normal;
-	font-weight: normal;
 }
 
 %rs-icon-466-pinterest
 {
 	content: '\f106';
 	font-family: var(--rs-font-icon-social-sharer);
-	font-style: normal;
-	font-weight: normal;
 }
+

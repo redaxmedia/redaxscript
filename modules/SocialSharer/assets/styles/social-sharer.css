@@ -16,6 +16,11 @@
 	display: flex;
 	margin-bottom: 2em;
 	margin-top: 1em;
+
+	& li + li
+	{
+		margin-left: .75em;
+	}
 }
 
 /** @section 1.2 link */
@@ -40,20 +45,6 @@
 		text-align: center;
 		text-indent: 0;
 		top: 0;
-		transition: background 0.1s;
-	}
-
-	&:after
-	{
-		bottom: -2em;
-		color: gray(0, 0.1);
-		content: attr(data-counter);
-		font-weight: bold;
-		left: 0;
-		position: absolute;
-		right: 0;
-		text-align: center;
-		text-indent: 0;
 	}
 }
 

@@ -5,7 +5,7 @@ use Redaxscript\Head;
 use Redaxscript\Html;
 
 /**
- * integrate a social sharer
+ * integrate social sharer
  *
  * @since 3.0.0
  *
@@ -27,19 +27,19 @@ class SocialSharer extends Config
 		'name' => 'Social Sharer',
 		'alias' => 'SocialSharer',
 		'author' => 'Redaxmedia',
-		'description' => 'Integrate a social sharer',
+		'description' => 'Integrate social sharer',
 		'version' => '4.0.0'
 	];
 
 	/**
-	 * contentFragmentEnd
+	 * articleFragmentEnd
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return string|null
 	 */
 
-	public function contentFragmentEnd() : ?string
+	public function articleFragmentEnd() : ?string
 	{
 		if ($this->_registry->get('lastTable') === 'articles')
 		{
@@ -63,14 +63,6 @@ class SocialSharer extends Config
 		$link
 			->init()
 			->appendFile('modules/SocialSharer/dist/styles/social-sharer.min.css');
-
-		/* script */
-
-		$script = Head\Script::getInstance();
-		$script
-			->init('foot')
-			->appendFile('modules/SocialSharer/assets/scripts/init.js')
-			->appendFile('modules/SocialSharer/dist/scripts/social-sharer.min.js');
 	}
 
 	/**
@@ -80,58 +72,52 @@ class SocialSharer extends Config
 	 *
 	 * @param string $url
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public function render(string $url = null) : string
+	public function render(string $url = null) : ?string
 	{
+		$output = null;
 		$outputItem = null;
-		if ($url)
+
+		/* html element */
+
+		$element = new Html\Element();
+		$listElement = $element
+			->copy()
+			->init('ul',
+			[
+				'class' => $this->_configArray['className']['list']
+			]);
+		$itemElement = $element->copy()->init('li');
+		$linkElement = $element
+			->copy()
+			->init('a',
+			[
+				'class' => $this->_configArray['className']['link'],
+				'target' => '_blank'
+			]);
+
+		/* process network */
+
+		foreach ($this->_configArray['network'] as $key => $value)
 		{
-			/* html element */
-
-			$element = new Html\Element();
-			$listElement = $element
-				->copy()
-				->init('ul',
-				[
-					'class' => $this->_configArray['className']['list']
-				]);
-			$itemElement = $element->copy()->init('li');
-			$linkElement = $element
-				->copy()
-				->init('a',
-				[
-					'target' => '_blank'
-				]);
-
-			/* process network */
-
-			foreach ($this->_configArray['network'] as $key => $value)
-			{
-				$outputItem .= $itemElement
-					->clear()
-					->html(
-						$linkElement
-							->attr(
-							[
-								'class' => $this->_configArray['className']['link'] . ' ' . $value['className'],
-								'data-height' => $value['height'],
-								'data-type' => $value['type'],
-								'data-width' => $value['width'],
-								'href' => $value['url'] . $url,
-							])
-							->text($key)
-					);
-			}
-
-			/* collect list output */
-
-			if ($outputItem)
-			{
-				$outputItem = $listElement->html($outputItem);
-			}
+			$outputItem .= $itemElement
+				->html(
+					$linkElement
+						->copy()
+						->addClass($value['className'])
+						->attr('href', $value['url'] . $url)
+						->text($key)
+				);
 		}
-		return $outputItem;
+
+		/* collect output */
+
+		if ($outputItem)
+		{
+			$output = $listElement->html($outputItem);
+		}
+		return $output;
 	}
 }

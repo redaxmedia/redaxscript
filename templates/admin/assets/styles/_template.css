@@ -11,16 +11,14 @@
 	font-family: var(--rs-admin-font-icon);
 	src: url('../../../../templates/admin/dist/fonts/icon.woff2') format('woff2'), url('../../../../templates/admin/dist/fonts/icon.woff') format('woff');
 }
-<% for (let i in glyphs)
+<% glyphs.forEach((value, index) =>
 {
 %>
-%rs-admin-icon-<%=glyphs[i] %>
+%rs-admin-icon-<%=value%>
 {
-	content: '\<%= codepoints[i] %>';
+	content: '\<%=codepoints[index]%>';
 	font-family: var(--rs-admin-font-icon);
-	font-style: normal;
-	font-weight: normal;
 }
 <%
-}
+})
 %>

@@ -11,16 +11,14 @@
 	font-family: var(--rs-font-icon-social-sharer);
 	src: url('../../../../modules/SocialSharer/dist/fonts/icon.woff2') format('woff2'), url('../../../../modules/SocialSharer/dist/fonts/icon.woff') format('woff');
 }
-<% for (var i in glyphs)
+<% glyphs.forEach((value, index) =>
 {
 %>
-%rs-icon-<%=glyphs[i] %>
+%rs-icon-<%=value%>
 {
-	content: '\<%= codepoints[i] %>';
+	content: '\<%=codepoints[index]%>';
 	font-family: var(--rs-font-icon-social-sharer);
-	font-style: normal;
-	font-weight: normal;
 }
 <%
-}
+})
 %>
