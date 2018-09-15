@@ -90,7 +90,7 @@ abstract class CommandAbstract extends ConsoleAbstract
 
 	public function success() : string
 	{
-		return PHP_EOL . $this->_language->get('operation_completed') . $this->_language->get('exclamation_mark') . PHP_EOL;
+		return PHP_EOL . $this->_language->get('operation_completed') . PHP_EOL;
 	}
 
 	/**
@@ -103,6 +103,6 @@ abstract class CommandAbstract extends ConsoleAbstract
 
 	public function error() : string
 	{
-		return PHP_EOL . $this->_language->get('something_wrong') . $this->_language->get('exclamation_mark') . PHP_EOL;
+		return PHP_EOL . $this->_language->get('something_wrong') . PHP_EOL;
 	}
 }

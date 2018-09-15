@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript;
 
-error_reporting(E_ERROR | E_PARSE);
+error_reporting(getenv('DEBUG') ? E_DEPRECATED | E_WARNING | E_ERROR | E_PARSE : 0);
 
 /* include */
 
