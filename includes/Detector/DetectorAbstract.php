@@ -71,10 +71,10 @@ abstract class DetectorAbstract
 	 *
 	 * @since 2.0.0
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public function getOutput() : string
+	public function getOutput() : ?string
 	{
 		return $this->_output;
 	}
