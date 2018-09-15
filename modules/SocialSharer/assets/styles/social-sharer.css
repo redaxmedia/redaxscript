@@ -14,12 +14,14 @@
 .rs-list-social-sharer
 {
 	display: flex;
+	flex-wrap: wrap;
 	margin-bottom: 2em;
-	margin-top: 1em;
+	margin-top: 2em;
 
-	& li + li
+	& li
 	{
-		margin-left: .75em;
+		margin: 0.5em;
+		max-width: 2.5em;
 	}
 }
 
@@ -28,6 +30,7 @@
 .rs-link-social-sharer
 {
 	display: inline-block;
+	height: 2.75em;
 	position: relative;
 	text-indent: -999em;
 	width: 2.75em;
@@ -44,6 +47,11 @@
 		text-align: center;
 		text-indent: 0;
 		top: 0;
+	}
+
+	&:hover:before
+	{
+		background: gray(0, 0.4);
 	}
 }
 
