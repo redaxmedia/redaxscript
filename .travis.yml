@@ -2,21 +2,22 @@ language: php
 
 php: 7.2
 
-before_install:
-- composer global require hirak/prestissimo
-
 jobs:
  include:
  - &lint
    env:
    - TYPE=lint
 
+   before_install:
+   - composer self-update
+   - composer global require hirak/prestissimo
+
    install:
-   - nvm install 9
+   - composer install
+   - nvm install 10
    - npm install --global grunt-cli
    - npm install
-   - composer self-update
-   - composer install
+
    script:
    - grunt
 
@@ -25,11 +26,13 @@ jobs:
    - TYPE=build
 
    install:
-   - nvm install 9
+   - sudo apt-get install lftp fontforge
+   - nvm install 10
    - npm install --global grunt-cli
    - npm install
+
    script:
-   - grunt build --webfont-compat
+   - grunt build
 
  - &test
    env:
@@ -39,8 +42,11 @@ jobs:
    - mysql
    - postgresql
 
-   install:
+   before_install:
    - composer self-update
+   - composer global require hirak/prestissimo
+
+   install:
    - composer install
    - gem install mailcatcher
 
