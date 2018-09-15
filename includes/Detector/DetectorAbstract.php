@@ -88,10 +88,10 @@ abstract class DetectorAbstract
 	 * @param string $type type of the asset
 	 * @param string $path path to the required file
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	protected function _detect(array $setupArray = [], string $type = null, string $path = null) : string
+	protected function _detect(array $setupArray = [], string $type = null, string $path = null) : ?string
 	{
 		foreach ($setupArray as $key => $value)
 		{
@@ -105,5 +105,6 @@ abstract class DetectorAbstract
 				return $value;
 			}
 		}
+		return null;
 	}
 }

@@ -20,6 +20,17 @@ jobs:
    script:
    - grunt
 
+ - &build
+   env:
+   - TYPE=build
+
+   install:
+   - nvm install 9
+   - npm install --global grunt-cli
+   - npm install
+   script:
+   - grunt build
+
  - &test
    env:
    - TYPE=test

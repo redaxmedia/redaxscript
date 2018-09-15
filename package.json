@@ -15,7 +15,7 @@
 	},
 	"devDependencies":
 	{
-		"@babel/core": "7.0.0",
+		"@babel/core": "7.0.1",
 		"@babel/preset-env": "7.0.0",
 		"autoprefixer": "9.1.5",
 		"babel-preset-minify": "0.4.3",
@@ -50,7 +50,7 @@
 		"postcss-color-gray": "4.1.0",
 		"postcss-custom-media": "6.0.0",
 		"postcss-custom-properties": "7.0.0",
-		"postcss-custom-selectors": "5.0.0",
+		"postcss-custom-selectors": "5.1.0",
 		"postcss-extend": "1.0.5",
 		"postcss-import": "12.0.0",
 		"postcss-nesting": "6.0.0",
