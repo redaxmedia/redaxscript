@@ -28,7 +28,6 @@
 .rs-link-social-sharer
 {
 	display: inline-block;
-	height: 2.75em;
 	position: relative;
 	text-indent: -999em;
 	width: 2.75em;
@@ -69,7 +68,7 @@
 
 	/* google plus */
 
-	&.rs-link-googleplus
+	&.rs-link-google-plus
 	{
 		&:before
 		{
@@ -78,7 +77,22 @@
 
 		&:hover:before
 		{
-			background: var(--rs-color-googleplus);
+			background: var(--rs-color-google-plus);
+		}
+	}
+
+	/* telegram */
+
+	&.rs-link-telegram
+	{
+		&:before
+		{
+			@extend %rs-icon-406-telegram;
+		}
+
+		&:hover:before
+		{
+			background: var(--rs-color-telegram);
 		}
 	}
 
@@ -97,48 +111,18 @@
 		}
 	}
 
-	/* pinterest */
+	/* whatsapp */
 
-	&.rs-link-pinterest
+	&.rs-link-whatsapp
 	{
 		&:before
 		{
-			@extend %rs-icon-466-pinterest;
+			@extend %rs-icon-404-whatsapp;
 		}
 
 		&:hover:before
 		{
-			background: var(--rs-color-pinterest);
-		}
-	}
-
-	/* linkedin */
-
-	&.rs-link-linkedin
-	{
-		&:before
-		{
-			@extend %rs-icon-459-linkedin2;
-		}
-
-		&:hover:before
-		{
-			background: var(--rs-color-linkedin);
-		}
-	}
-
-	/* stumbleupon */
-
-	&.rs-link-stumbleupon
-	{
-		&:before
-		{
-			@extend %rs-icon-463-stumbleupon;
-		}
-
-		&:hover:before
-		{
-			background: var(--rs-color-stumbleupon);
+			background: var(--rs-color-whatsapp);
 		}
 	}
 }

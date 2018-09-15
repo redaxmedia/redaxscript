@@ -24,26 +24,21 @@
 	font-family: var(--rs-font-icon-social-sharer);
 }
 
-%rs-icon-407-twitter
+%rs-icon-406-telegram
 {
 	content: '\f103';
 	font-family: var(--rs-font-icon-social-sharer);
 }
 
-%rs-icon-459-linkedin2
+%rs-icon-407-twitter
 {
 	content: '\f104';
 	font-family: var(--rs-font-icon-social-sharer);
 }
 
-%rs-icon-463-stumbleupon
+%rs-icon-404-whatsapp
 {
 	content: '\f105';
 	font-family: var(--rs-font-icon-social-sharer);
 }
 
-%rs-icon-466-pinterest
-{
-	content: '\f106';
-	font-family: var(--rs-font-icon-social-sharer);
-}

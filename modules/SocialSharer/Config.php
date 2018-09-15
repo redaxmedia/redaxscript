@@ -35,30 +35,25 @@ class Config extends Module\Module
 				'url' => 'https://facebook.com/sharer.php?u=',
 				'className' => 'rs-link-facebook'
 			],
-			'googleplus' =>
+			'google-plus' =>
 			[
-				'url' => 'https://plusone.google.com/_/+1/confirm?url=',
-				'className' => 'rs-link-googleplus'
+				'url' => 'https://plus.google.com/share?url=',
+				'className' => 'rs-link-google-plus'
 			],
 			'twitter' =>
 			[
-				'url' => 'https://twitter.com/share?url=',
+				'url' => 'https://twitter.com/intent/tweet?url=',
 				'className' => 'rs-link-twitter'
 			],
-			'pinterest' =>
+			'whatsapp' =>
 			[
-				'url' => 'https://pinterest.com/pin/create/button/?url=',
-				'className' => 'rs-link-pinterest'
+				'url' => 'https://api.whatsapp.com/send?text=',
+				'className' => 'rs-link-whatsapp'
 			],
-			'linkedin' =>
+			'telegram' =>
 			[
-				'url' => 'https://linkedin.com/shareArticle?url=',
-				'className' => 'rs-link-linkedin'
-			],
-			'stumbleupon' =>
-			[
-				'url' => 'https://stumbleupon.com/submit?url=',
-				'className' => 'rs-link-stumbleupon'
+				'url' => 'https://telegram.me/share/url?url=',
+				'className' => 'rs-link-telegram'
 			]
 		]
 	];
