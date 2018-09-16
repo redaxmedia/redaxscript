@@ -148,7 +148,8 @@ module.exports = grunt =>
 		'babel:moduleMaps',
 		'babel:moduleSyntaxHighlighter',
 		'babel:moduleTableSorter',
-		'babel:moduleTextareaResizer'
+		'babel:moduleTextareaResizer',
+		'babel:moduleTinymce'
 	]);
 	grunt.registerTask('serve',
 	[

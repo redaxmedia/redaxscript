@@ -6,98 +6,18 @@
 
 /** @section 1. tag */
 
+/* rtl:ignore */
+
 rs-code,
 rs-language,
 rs-module,
 rs-registry,
 rs-template
 {
-	&:before,
-	&:after
-	{
-		color: gray(0, 0.2);
-	}
-}
-
-rs-more
-{
-	border-top: 0.125em dashed gray(0, 0.5);
+	border: 0.125em dashed gray(0, 0.1);
 	display: block;
-	margin: 1em 0;
-}
-
-rs-template
-{
-	display: block;
-}
-
-rs-code
-{
-	&:before
-	{
-		 content: '<rs-code>';
-	}
-
-	&:after
-	{
-		content: '</rs-code>';
-	}
-}
-
-rs-language
-{
-	&:before
-	{
-		content: '<rs-language>';
-	}
-
-	&:after
-	{
-		content: '</rs-language>';
-	}
-}
-
-rs-module
-{
-	&:before
-	{
-		content: '<rs-module>';
-	}
-
-	&:after
-	{
-		content: '</rs-module>';
-	}
-}
-
-rs-registry
-{
-	&:before
-	{
-		content: '<rs-registry>';
-	}
-
-	&:after
-	{
-		content: '</rs-registry>';
-	}
-}
-
-rs-template
-{
-	&:before
-	{
-		content: '<rs-template>';
-	}
-
-	&:after
-	{
-		content: '</rs-template>';
-	}
-}
-
-[_moz_editor_bogus_node],
-[data-mce-bogus]
-{
-	display: none;
+	margin: 1em;
+	min-height: 1.25em;
+	padding: 1em;
+	white-space: pre-wrap;
 }

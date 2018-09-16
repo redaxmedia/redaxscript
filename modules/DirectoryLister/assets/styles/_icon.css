@@ -16,16 +16,19 @@
 {
 	content: '\f101';
 	font-family: var(--rs-font-icon-directory-lister);
+	font-weight: normal;
 }
 
 %rs-icon-folder
 {
 	content: '\f102';
 	font-family: var(--rs-font-icon-directory-lister);
+	font-weight: normal;
 }
 
 %rs-icon-folder-open
 {
 	content: '\f103';
 	font-family: var(--rs-font-icon-directory-lister);
+	font-weight: normal;
 }

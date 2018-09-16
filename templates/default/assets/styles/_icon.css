@@ -16,70 +16,82 @@
 {
 	content: '\2714';
 	font-family: var(--rs-font-icon);
+	font-weight: normal;
 }
 
 %rs-icon-info
 {
 	content: '\69';
 	font-family: var(--rs-font-icon);
+	font-weight: normal;
 }
 
 %rs-icon-search
 {
 	content: '\2315';
 	font-family: var(--rs-font-icon);
+	font-weight: normal;
 }
 
 %rs-icon-error
 {
 	content: '\274c';
 	font-family: var(--rs-font-icon);
+	font-weight: normal;
 }
 
 %rs-icon-warning
 {
 	content: '\21';
 	font-family: var(--rs-font-icon);
+	font-weight: normal;
 }
 
 %rs-icon-chevron-left
 {
 	content: '\3008';
 	font-family: var(--rs-font-icon);
+	font-weight: normal;
 }
 
 %rs-icon-chevron-right
 {
 	content: '\3009';
 	font-family: var(--rs-font-icon);
+	font-weight: normal;
 }
 
 %rs-icon-first-page
 {
 	content: '\27ea';
 	font-family: var(--rs-font-icon);
+	font-weight: normal;
 }
 
 %rs-icon-last-page
 {
 	content: '\27eb';
 	font-family: var(--rs-font-icon);
+	font-weight: normal;
 }
 
 %rs-icon-add
 {
 	content: '\2b';
 	font-family: var(--rs-font-icon);
+	font-weight: normal;
 }
 
 %rs-icon-remove
 {
 	content: '\2d';
 	font-family: var(--rs-font-icon);
+	font-weight: normal;
 }
 
 %rs-icon-person
 {
 	content: '\26c4';
 	font-family: var(--rs-font-icon);
+	font-weight: normal;
 }

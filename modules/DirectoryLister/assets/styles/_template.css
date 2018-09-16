@@ -18,6 +18,7 @@
 {
 	content: '\<%=codepoints[index]%>';
 	font-family: var(--rs-font-icon-directory-lister);
+	font-weight: normal;
 }
 <%
 })
