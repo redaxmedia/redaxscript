@@ -19,6 +19,11 @@ rs.modules.Tinymce.execute = config =>
 					target: textarea,
 					setup: editor =>
 					{
+						editor.on('change', () =>
+						{
+							window.tinymce.activeEditor.uploadImages();
+							window.tinymce.triggerSave();
+						});
 						CONFIG.tinymce.custom_elements.forEach(element =>
 						{
 							editor.addMenuItem(element,
@@ -34,6 +39,7 @@ rs.modules.Tinymce.execute = config =>
 					},
 					file_picker_callback: callback =>
 					{
+						const reader = new FileReader();
 						const input = document.createElement('input');
 
 						input.setAttribute('type', 'file');
@@ -44,14 +50,13 @@ rs.modules.Tinymce.execute = config =>
 						input.onchange = () =>
 						{
 							const file = this.files[0];
-							const reader = new FileReader();
 
 							/* listen on load */
 
 							reader.onload = () =>
 							{
 								const blobCache = window.tinymce.activeEditor.editorUpload.blobCache;
-								const blobInfo = blobCache.create(Date.now(), file);
+								const blobInfo = blobCache.create('blob-' + Date.now(), file);
 
 								blobCache.add(blobInfo);
 								callback(blobInfo.blobUri(),

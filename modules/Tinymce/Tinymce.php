@@ -84,10 +84,10 @@ class Tinymce extends Config
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array|null
+	 * @return string|null
 	 */
 
-	protected function _upload() : ?array
+	protected function _upload() : ?string
 	{
 		$filesArray = current($this->_request->getFiles());
 
