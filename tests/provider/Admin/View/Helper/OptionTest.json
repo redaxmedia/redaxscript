@@ -13,7 +13,7 @@
 			},
 			"robot":
 			{
-				"Select": null,
+				"Select": "select",
 				"All": 1,
 				"Index": 2,
 				"Follow": 3,
@@ -66,18 +66,18 @@
 			},
 			"language":
 			{
-				"Select": null,
+				"Select": "select",
 				"English": "en",
 				"Deutsch": "de"
 			},
 			"template":
 			{
-				"Select": null,
+				"Select": "select",
 				"default": "default"
 			},
 			"content":
 			{
-				"Select": null,
+				"Select": "select",
 				"Article One (1)": 1,
 				"Article Two (2)": 2
 			},
