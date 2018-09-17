@@ -143,7 +143,10 @@ class DirectoryLister extends Config
 
 	protected function _renderParent(string $rootDirectory = null, string $parentDirectory = null, array $optionArray = []) : ?string
 	{
-		$queryString = $rootDirectory !== $parentDirectory ? '&directory=' . $parentDirectory : null;
+		$queryString = $rootDirectory !== $parentDirectory ? '&' . http_build_query(
+		[
+			'directory' => $parentDirectory
+		]) : null;
 
 		/* html element */
 
@@ -237,7 +240,10 @@ class DirectoryLister extends Config
 							->copy()
 							->attr(
 							[
-								'href' => $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute') . '&directory=' . $path . $optionArray['hash'],
+								'href' => $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute') . '&' . http_build_query(
+								[
+									'directory' => $path . $optionArray['hash']
+								]),
 								'title' => $this->_language->get('directory', '_directory_lister')
 							])
 							->addClass($this->_configArray['className']['types']['directory'])

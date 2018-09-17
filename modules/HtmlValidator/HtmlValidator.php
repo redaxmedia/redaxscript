@@ -45,9 +45,15 @@ class HtmlValidator extends Config
 		{
 			/* load result */
 
-			$url = $this->_configArray['apiUrl'] . '/?doc=' . $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
+			$url = $this->_configArray['apiUrl'] . '?' . http_build_query(
+			[
+				'doc' => $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute')
+			]);
 			$reader = new Reader();
-			$result = $reader->loadJSON($url . '&out=json')->getArray();
+			$result = $reader->loadJSON($url . '&' . http_build_query(
+			[
+				'out' => 'json'
+			]))->getArray();
 
 			/* process result */
 

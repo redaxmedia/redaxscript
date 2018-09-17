@@ -53,7 +53,10 @@ class Maps extends Config
 			$script = Head\Script::getInstance();
 			$script
 				->init('foot')
-				->appendFile($this->_configArray['apiUrl'] . '?key=' . $this->_configArray['apiKey'])
+				->appendFile($this->_configArray['apiUrl'] . '?' . http_build_query(
+				[
+					'key' => $this->_configArray['apiKey']
+				]))
 				->appendFile('modules/Maps/assets/scripts/init.js')
 				->appendFile('modules/Maps/dist/scripts/maps.min.js');
 		}

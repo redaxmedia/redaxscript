@@ -77,7 +77,7 @@ class Router extends BootstrapAbstract
 		$this->_registry->set('liteRoute', $resolver->getLite());
 		$this->_registry->set('fullRoute', $resolver->getFull());
 		$this->_registry->set('parameterRoute', $doRewrite ? '' : '?p=');
-		$this->_registry->set('languageRoute', $doRewrite ? '.' : '&amp;l=');
-		$this->_registry->set('templateRoute', $doRewrite ? '.' : '&amp;t=');
+		$this->_registry->set('languageRoute', $doRewrite ? '.' : '&l=');
+		$this->_registry->set('templateRoute', $doRewrite ? '.' : '&t=');
 	}
 }

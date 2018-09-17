@@ -45,9 +45,16 @@ class CssValidator extends Config
 		{
 			/* load result */
 
-			$url = $this->_configArray['apiUrl'] . '/?uri=' . $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute') . '&profile=' . $this->_configArray['profile'];
+			$url = $this->_configArray['apiUrl'] . '?' . http_build_query(
+			[
+				'uri' => $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute'),
+				'profile' => $this->_configArray['profile']
+			]);
 			$reader = new Reader();
-			$result = $reader->loadJSON($url . '&output=json')->getArray();
+			$result = $reader->loadJSON($url . '&' . http_build_query(
+			[
+				'output' => 'json'
+			]))->getArray();
 
 			/* process result */
 
