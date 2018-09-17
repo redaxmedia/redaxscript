@@ -23,6 +23,13 @@ class Config extends Module\Notification
 
 	protected $_configArray =
 	[
-		'uploadDirectory' => 'upload'
+		'uploadDirectory' => 'upload',
+		'extension' =>
+		[
+			'gif',
+			'jpg',
+			'png',
+			'svg'
+		]
 	];
 }

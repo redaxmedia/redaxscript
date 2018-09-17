@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\Tinymce;
 
+use Redaxscript\Dater;
 use Redaxscript\Head;
 use Redaxscript\Header;
 
@@ -89,19 +90,20 @@ class Tinymce extends Config
 
 	protected function _upload() : ?string
 	{
+		$dater = new Dater();
+		$dater->init();
 		$filesArray = current($this->_request->getFiles());
+		$fileExtention = pathinfo($filesArray['name'], PATHINFO_EXTENSION);
+		$path = $this->_configArray['uploadDirectory'] . DIRECTORY_SEPARATOR . $dater->getDateTime()->getTimestamp() . '.' . $fileExtention;
 
 		/* upload file */
 
-		if (is_uploaded_file($filesArray['tmp_name']))
+		if (in_array($fileExtention, $this->_configArray['extension']) && is_uploaded_file($filesArray['tmp_name']) && move_uploaded_file($filesArray['tmp_name'], $path))
 		{
-			if (move_uploaded_file($filesArray['tmp_name'], $this->_configArray['uploadDirectory'] . DIRECTORY_SEPARATOR . $filesArray['name']))
-			{
-				return json_encode(
-				[
-					'location' => $this->_configArray['uploadDirectory'] . DIRECTORY_SEPARATOR . $filesArray['name']
-				]);
-			}
+			return json_encode(
+			[
+				'location' => $path
+			]);
 		}
 		Header::statusCode(404);
 		return null;
