@@ -19,8 +19,8 @@
 			"liteRoute": null,
 			"fullRoute": null,
 			"parameterRoute": "?p=",
-			"languageRoute": "&amp;l=",
-			"templateRoute": "&amp;t="
+			"languageRoute": "&l=",
+			"templateRoute": "&t="
 		}
 	],
 	[
