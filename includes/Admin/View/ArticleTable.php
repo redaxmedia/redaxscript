@@ -113,7 +113,7 @@ class ArticleTable extends ViewAbstract
 				'class' => 'rs-admin-link-default'
 			]);
 		$theadElement = $element->copy()->init('thead');
-		$tbodyElement = $element->copy()->init('tbody');
+		$tbodyElement = $element->copy()->init('tbody')->addClass('rs-admin-js-sort');
 		$tfootElement = $element->copy()->init('tfoot');
 		$trElement = $element->copy()->init('tr');
 		$thElement = $element->copy()->init('th');

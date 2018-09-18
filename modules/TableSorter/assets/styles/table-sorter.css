@@ -6,6 +6,8 @@
 
 /** @section 1. table sorter */
 
+/** @section 1.1 move */
+
 .rs-admin-table-default .rs-admin-col-move
 {
 	direction: rtl;
@@ -63,4 +65,38 @@
 			color: var(--rs-admin-color-primary);
 		}
 	}
+}
+
+/** @section 1.2 dragula */
+
+.gu-mirror
+{
+	@extend %table-default;
+	background: var(--rs-admin-color-primary-light);
+	color: gray(0);
+	display: table;
+	font: 1.25rem var(--rs-admin-font-primary);
+	position: fixed;
+
+	& caption,
+	& th,
+	& td
+	{
+		padding: 0.5em 1em;
+	}
+}
+
+.gu-hide
+{
+	display: none;
+}
+
+.gu-unselectable
+{
+	user-select: none;
+}
+
+.gu-transit
+{
+	background: gray(200);
 }

@@ -54,6 +54,7 @@ class TableSorter extends Module\Module
 			$script = Head\Script::getInstance();
 			$script
 				->init('foot')
+				->appendFile('https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js')
 				->appendFile('modules/TableSorter/assets/scripts/init.js')
 				->appendFile('modules/TableSorter/dist/scripts/table-sorter.min.js');
 		}
