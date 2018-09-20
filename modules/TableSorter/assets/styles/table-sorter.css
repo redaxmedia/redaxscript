@@ -8,59 +8,39 @@
 
 /** @section 1.1 move */
 
-.rs-admin-table-default .rs-admin-col-move
+.rs-admin-col-move
 {
 	direction: rtl;
 	padding: 1.25em 0;
 	position: relative;
 	text-indent: -999em;
 
-	&:before,
-	&:after
+	&:before
 	{
 		color: gray(185);
-		font-size: 2em;
+		font-size: 1.5em;
 		position: absolute;
-		right: 5%;
+		right: 0.625em;
 		text-indent: 0;
 	}
 
 	&:before
 	{
-		@extend %rs-admin-icon-expand-less;
-		top: 5%;
-		transition: top 0.1s;
-	}
-
-	&:after
-	{
-		@extend %rs-admin-icon-expand-more;
-		bottom: 5%;
-		transition: bottom 0.1s;
+		@extend %rs-admin-icon-reorder;
+		top: 50%;
+		transform: translateY(-50%);
 	}
 
 	&.rs-admin-is-active
 	{
 		cursor: move;
 
-		&:before,
-		&:after
+		&:before
 		{
 			color: gray(70);
 		}
 
-		&:active:before
-		{
-			top: 0;
-		}
-
-		&:active:after
-		{
-			bottom: 0;
-		}
-
-		&:hover:before,
-		&:hover:after
+		&:hover:before
 		{
 			color: var(--rs-admin-color-primary);
 		}
@@ -72,14 +52,13 @@
 .gu-mirror
 {
 	@extend %table-default;
-	background: var(--rs-admin-color-primary-light);
-	color: gray(0);
+	background: gray(230);
+	box-shadow: inset 0 0 0 0.25em var(--rs-admin-color-primary-light);
+	color: gray(70);
 	display: table;
 	font: 1.25rem var(--rs-admin-font-primary);
 	position: fixed;
 
-	& caption,
-	& th,
 	& td
 	{
 		padding: 0.5em 1em;
@@ -91,12 +70,7 @@
 	display: none;
 }
 
-.gu-unselectable
-{
-	user-select: none;
-}
-
 .gu-transit
 {
-	background: gray(200);
+	background: gray(210);
 }

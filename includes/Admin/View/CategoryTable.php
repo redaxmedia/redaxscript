@@ -102,7 +102,7 @@ class CategoryTable extends ViewAbstract
 			->copy()
 			->init('table',
 			[
-				'class' => 'rs-admin-table-default'
+				'class' => 'rs-admin-js-sort rs-admin-table-default'
 			]);
 		$linkElement = $element
 			->copy()

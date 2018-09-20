@@ -5,7 +5,7 @@
 			"extrasEdit": false,
 			"extrasDelete": false
 		},
-		"<h2 class=\"rs-admin-title-content\">Extras</h2><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default\"><thead><tr><th>Title</th><th>Alias</th><th>Rank</th></tr></thead><tbody><tr id=\"row-1\"><td>Extra One</td><td>extra-one</td><td class=\"rs-admin-col-move\"></td></tr></tbody><tfoot><tr><td>Title</td><td>Alias</td><td>Rank</td></tr></tfoot></table></div>"
+		"<h2 class=\"rs-admin-title-content\">Extras</h2><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-js-sort rs-admin-table-default\"><thead><tr><th>Title</th><th>Alias</th><th>Rank</th></tr></thead><tbody><tr id=\"row-1\"><td>Extra One</td><td>extra-one</td><td class=\"rs-admin-col-move\"></td></tr></tbody><tfoot><tr><td>Title</td><td>Alias</td><td>Rank</td></tr></tfoot></table></div>"
 	],
 	[
 		{
@@ -13,6 +13,6 @@
 			"extrasEdit": false,
 			"extrasDelete": false
 		},
-		"<h2 class=\"rs-admin-title-content\">Extras</h2><a class=\"rs-admin-button-default rs-admin-button-create\" href=\"admin/new/extras\">New extra</a><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default\"><thead><tr><th>Title</th><th>Alias</th><th>Rank</th></tr></thead><tbody><tr id=\"row-1\"><td>Extra One</td><td>extra-one</td><td class=\"rs-admin-col-move\"></td></tr></tbody><tfoot><tr><td>Title</td><td>Alias</td><td>Rank</td></tr></tfoot></table></div>"
+		"<h2 class=\"rs-admin-title-content\">Extras</h2><a class=\"rs-admin-button-default rs-admin-button-create\" href=\"admin/new/extras\">New extra</a><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-js-sort rs-admin-table-default\"><thead><tr><th>Title</th><th>Alias</th><th>Rank</th></tr></thead><tbody><tr id=\"row-1\"><td>Extra One</td><td>extra-one</td><td class=\"rs-admin-col-move\"></td></tr></tbody><tfoot><tr><td>Title</td><td>Alias</td><td>Rank</td></tr></tfoot></table></div>"
 	]
 ]

@@ -14,84 +14,84 @@
 
 %rs-icon-check-circle
 {
-	content: '\2714';
+	content: '\f101';
 	font-family: var(--rs-font-icon);
 	font-weight: normal;
 }
 
 %rs-icon-info
 {
-	content: '\69';
+	content: '\f102';
 	font-family: var(--rs-font-icon);
 	font-weight: normal;
 }
 
 %rs-icon-search
 {
-	content: '\2315';
+	content: '\f103';
 	font-family: var(--rs-font-icon);
 	font-weight: normal;
 }
 
 %rs-icon-error
 {
-	content: '\274c';
+	content: '\f104';
 	font-family: var(--rs-font-icon);
 	font-weight: normal;
 }
 
 %rs-icon-warning
 {
-	content: '\21';
+	content: '\f105';
 	font-family: var(--rs-font-icon);
 	font-weight: normal;
 }
 
 %rs-icon-chevron-left
 {
-	content: '\3008';
+	content: '\f106';
 	font-family: var(--rs-font-icon);
 	font-weight: normal;
 }
 
 %rs-icon-chevron-right
 {
-	content: '\3009';
+	content: '\f107';
 	font-family: var(--rs-font-icon);
 	font-weight: normal;
 }
 
 %rs-icon-first-page
 {
-	content: '\27ea';
+	content: '\f108';
 	font-family: var(--rs-font-icon);
 	font-weight: normal;
 }
 
 %rs-icon-last-page
 {
-	content: '\27eb';
+	content: '\f109';
 	font-family: var(--rs-font-icon);
 	font-weight: normal;
 }
 
 %rs-icon-add
 {
-	content: '\2b';
+	content: '\f10a';
 	font-family: var(--rs-font-icon);
 	font-weight: normal;
 }
 
 %rs-icon-remove
 {
-	content: '\2d';
+	content: '\f10b';
 	font-family: var(--rs-font-icon);
 	font-weight: normal;
 }
 
 %rs-icon-person
 {
-	content: '\26c4';
+	content: '\f10c';
 	font-family: var(--rs-font-icon);
 	font-weight: normal;
 }

@@ -104,7 +104,7 @@ class ArticleTable extends ViewAbstract
 			->copy()
 			->init('table',
 			[
-				'class' => 'rs-admin-table-default'
+				'class' => 'rs-admin-js-sort rs-admin-table-default'
 			]);
 		$linkElement = $element
 			->copy()
@@ -113,7 +113,7 @@ class ArticleTable extends ViewAbstract
 				'class' => 'rs-admin-link-default'
 			]);
 		$theadElement = $element->copy()->init('thead');
-		$tbodyElement = $element->copy()->init('tbody')->addClass('rs-admin-js-sort');
+		$tbodyElement = $element->copy()->init('tbody');
 		$tfootElement = $element->copy()->init('tfoot');
 		$trElement = $element->copy()->init('tr');
 		$thElement = $element->copy()->init('th');

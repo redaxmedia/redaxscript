@@ -5,7 +5,7 @@
 			"commentsEdit": false,
 			"commentsDelete": false
 		},
-		"<h2 class=\"rs-admin-title-content\">Comments</h2><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default\"><thead><tr><th>Author</th><th>Language</th><th>Article</th><th>Rank</th></tr></thead><tbody><tr id=\"row-1\"><td><a class=\"rs-admin-link-default\" href=\"article-one#comment-1\">Comment One</a></td><td>All</td><td>Article One</td><td class=\"rs-admin-col-move\"></td></tr></tbody><tfoot><tr><td>Author</td><td>Language</td><td>Article</td><td>Rank</td></tr></tfoot></table></div>"
+		"<h2 class=\"rs-admin-title-content\">Comments</h2><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-js-sort rs-admin-table-default\"><thead><tr><th>Author</th><th>Language</th><th>Article</th><th>Rank</th></tr></thead><tbody><tr id=\"row-1\"><td><a class=\"rs-admin-link-default\" href=\"article-one#comment-1\">Comment One</a></td><td>All</td><td>Article One</td><td class=\"rs-admin-col-move\"></td></tr></tbody><tfoot><tr><td>Author</td><td>Language</td><td>Article</td><td>Rank</td></tr></tfoot></table></div>"
 	],
 	[
 		{
@@ -13,6 +13,6 @@
 			"commentsEdit": false,
 			"commentsDelete": false
 		},
-		"<h2 class=\"rs-admin-title-content\">Comments</h2><a class=\"rs-admin-button-default rs-admin-button-create\" href=\"admin/new/comments\">New comment</a><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default\"><thead><tr><th>Author</th><th>Language</th><th>Article</th><th>Rank</th></tr></thead><tbody><tr id=\"row-1\"><td><a class=\"rs-admin-link-default\" href=\"article-one#comment-1\">Comment One</a></td><td>All</td><td>Article One</td><td class=\"rs-admin-col-move\"></td></tr></tbody><tfoot><tr><td>Author</td><td>Language</td><td>Article</td><td>Rank</td></tr></tfoot></table></div>"
+		"<h2 class=\"rs-admin-title-content\">Comments</h2><a class=\"rs-admin-button-default rs-admin-button-create\" href=\"admin/new/comments\">New comment</a><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-js-sort rs-admin-table-default\"><thead><tr><th>Author</th><th>Language</th><th>Article</th><th>Rank</th></tr></thead><tbody><tr id=\"row-1\"><td><a class=\"rs-admin-link-default\" href=\"article-one#comment-1\">Comment One</a></td><td>All</td><td>Article One</td><td class=\"rs-admin-col-move\"></td></tr></tbody><tfoot><tr><td>Author</td><td>Language</td><td>Article</td><td>Rank</td></tr></tfoot></table></div>"
 	]
 ]

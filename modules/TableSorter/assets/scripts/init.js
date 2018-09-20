@@ -4,10 +4,13 @@ rs.modules.TableSorter =
 	dependency: typeof window.dragula === 'function',
 	config:
 	{
-		selector: 'tbody.rs-admin-js-sort',
+		selector: 'table.rs-admin-js-sort tbody',
 		dragula:
 		{
-			removeOnSpill: true
+			moves: (element, container, handle) =>
+			{
+				return handle.classList.contains('rs-admin-col-move') && handle.classList.contains('rs-admin-is-active');
+			}
 		}
 	}
 };

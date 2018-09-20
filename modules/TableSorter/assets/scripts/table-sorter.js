@@ -15,7 +15,7 @@ rs.modules.TableSorter.execute = config =>
 			[
 				tbody
 			], CONFIG.dragula);
-		})
+		});
 	}
 };
 
