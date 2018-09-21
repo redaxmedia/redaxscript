@@ -43,7 +43,7 @@
 			border-bottom: 0.125rem solid gray(185);
 		}
 
-		& tr.rs-admin-has-parent td:first-child
+		& tr.rs-admin-is-children td:first-child
 		{
 			padding-left: 1.5em;
 

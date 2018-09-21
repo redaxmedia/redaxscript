@@ -134,7 +134,7 @@ class CategoryTable extends ViewAbstract
 				$outputBody .= $trElement
 					->copy()
 					->attr('id', 'row-' . $value->id)
-					->addClass($value->parent ? 'rs-admin-has-parent' : null)
+					->addClass($value->parent ? 'rs-admin-is-children' : null)
 					->addClass(!$value->status ? 'rs-admin-is-disabled' : null)
 					->html(
 						$tdElement->copy()->html(
@@ -148,7 +148,7 @@ class CategoryTable extends ViewAbstract
 						$tdElement
 							->copy()
 							->addClass('rs-admin-col-move')
-							->addClass($categoriesTotal > 1 ? 'rs-admin-is-active' : null)
+							->addClass($categoriesTotal > 1 && !$value->parent ? 'rs-admin-is-active' : null)
 							->text($value->rank)
 				);
 			}
