@@ -148,7 +148,7 @@ class CategoryTable extends ViewAbstract
 						$tdElement
 							->copy()
 							->addClass('rs-admin-col-move')
-							->addClass($categoriesTotal > 1 && !$value->parent ? 'rs-admin-is-active' : null)
+							->addClass($categoriesTotal > 1 ? 'rs-admin-is-active' : null)
 							->text($value->rank)
 				);
 			}
