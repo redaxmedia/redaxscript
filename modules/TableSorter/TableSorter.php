@@ -82,15 +82,33 @@ class TableSorter extends Module\Module
 	protected function _sort() : ?string
 	{
 		$postArray = $this->_sanitizePost();
-		$current = Db::forTablePrefix($postArray['table'])->whereIdIs($postArray['currentId'])->findOne();
 		$previous = Db::forTablePrefix($postArray['table'])->whereIdIs($postArray['previousId'])->findOne();
 		$next = Db::forTablePrefix($postArray['table'])->whereIdIs($postArray['nextId'])->findOne();
+		$current = Db::forTablePrefix($postArray['table'])->whereIdIs($postArray['currentId'])->findOne()->set('rank', $previous ? $previous->rank + 1 : $next->rank - 1);
+		$status = $current->save();
 
-		/* process sort */
+		/* handle response */
 
-		if ($current || $previous || $next)
+		if ($status)
 		{
-			return json_encode($postArray);
+			return json_encode(
+			[
+				'current' =>
+				[
+					'id'=> $current->id,
+					'rank'=> $current->rank
+				],
+				'previous' =>
+				[
+					'id'=> $previous->id,
+					'rank'=> $previous->rank
+				],
+				'next' =>
+				[
+					'id'=> $next->id,
+					'rank'=> $next->rank
+				]
+			]);
 		}
 		Header::statusCode(404);
 		return null;

@@ -96,7 +96,7 @@ class Tinymce extends Config
 		$fileExtention = pathinfo($filesArray['name'], PATHINFO_EXTENSION);
 		$path = $this->_configArray['uploadDirectory'] . DIRECTORY_SEPARATOR . $dater->getDateTime()->getTimestamp() . '.' . $fileExtention;
 
-		/* upload file */
+		/* handle upload */
 
 		if (in_array($fileExtention, $this->_configArray['extension']) && is_uploaded_file($filesArray['tmp_name']) && move_uploaded_file($filesArray['tmp_name'], $path))
 		{
