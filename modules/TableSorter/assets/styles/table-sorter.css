@@ -12,6 +12,7 @@
 {
 	direction: rtl;
 	padding: 1.25em 0;
+	pointer-events: none;
 	position: relative;
 	text-indent: -999em;
 
@@ -33,11 +34,11 @@
 
 	&.rs-admin-is-active
 	{
-		cursor: move;
-
 		&:before
 		{
 			color: gray(70);
+			cursor: move;
+			pointer-events: all;
 		}
 
 		&:hover:before

@@ -79,7 +79,8 @@ class GroupTable extends ViewAbstract
 		$tableArray =
 		[
 			'name' => $this->_language->get('name'),
-			'alias' => $this->_language->get('alias')
+			'alias' => $this->_language->get('alias'),
+			'description' => $this->_language->get('description')
 		];
 		$adminControl = new Helper\Control($this->_registry, $this->_language);
 		$userModel = new Admin\Model\Group();
@@ -128,7 +129,8 @@ class GroupTable extends ViewAbstract
 					->addClass(!$value->status ? 'rs-admin-is-disabled' : null)
 					->html(
 						$tdElement->copy()->html($value->name . $adminControl->render('groups', $value->id, $value->alias, $value->status)) .
-						$tdElement->copy()->text($value->alias)
+						$tdElement->copy()->text($value->alias) .
+						$tdElement->copy()->text($value->description)
 				);
 			}
 		}
