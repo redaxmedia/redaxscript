@@ -236,12 +236,12 @@ class Extra extends ControllerAbstract
 	{
 		if ($this->_registry->get('extrasEdit') && $postArray['id'])
 		{
-			return 'admin/view/extras#row-' . $postArray['id'];
+			return 'admin/view/extras#' . $postArray['id'];
 		}
 		if ($this->_registry->get('extrasEdit') && $postArray['alias'])
 		{
 			$extraModel = new Admin\Model\Extra();
-			return 'admin/view/extras#row-' . $extraModel->getByAlias($postArray['alias'])->id;
+			return 'admin/view/extras#' . $extraModel->getByAlias($postArray['alias'])->id;
 		}
 		return 'admin';
 	}

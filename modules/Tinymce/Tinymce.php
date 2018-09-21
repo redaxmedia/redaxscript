@@ -49,7 +49,7 @@ class Tinymce extends Config
 				->appendFile('modules/Tinymce/assets/scripts/init.js')
 				->appendFile('modules/Tinymce/dist/scripts/tinymce.min.js');
 
-			/* upload */
+			/* handle upload */
 
 			if ($this->_registry->get('firstParameter') === 'tinymce' && $this->_registry->get('secondParameter') === 'upload' && $this->_registry->get('lastParameter') === $this->_registry->get('token'))
 			{

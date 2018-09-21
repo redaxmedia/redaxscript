@@ -149,7 +149,7 @@ class Module extends ControllerAbstract
 	{
 		if ($this->_registry->get('modulesEdit') && $postArray['id'])
 		{
-			return 'admin/view/modules#row-' . $postArray['id'];
+			return 'admin/view/modules#' . $postArray['id'];
 		}
 		return 'admin';
 	}

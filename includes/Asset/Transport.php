@@ -99,7 +99,7 @@ class Transport
 	{
 		$transportArray =
 		[
-			'baseURL' => $this->_registry->get('root') . '/',
+			'baseUrl' => $this->_registry->get('root') . '/',
 			'generator' => $this->_language->get('name', '_package') . ' ' . $this->_language->get('version', '_package'),
 			'language' => $this->_language->get(),
 			'version' => $this->_language->get('version', '_package')

@@ -18,7 +18,7 @@ rs.modules.CallHome.execute = config =>
 		hitType: 'event',
 		eventCategory: 'call-home',
 		eventAction: rs.version,
-		eventLabel: rs.baseURL
+		eventLabel: rs.baseUrl
 	});
 };
 

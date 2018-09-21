@@ -234,12 +234,12 @@ class Category extends ControllerAbstract
 	{
 		if ($this->_registry->get('categoriesEdit') && $postArray['id'])
 		{
-			return 'admin/view/categories#row-' . $postArray['id'];
+			return 'admin/view/categories#' . $postArray['id'];
 		}
 		if ($this->_registry->get('categoriesEdit') && $postArray['alias'])
 		{
 			$categoryModel = new Admin\Model\Category();
-			return 'admin/view/categories#row-' . $categoryModel->getByAlias($postArray['alias'])->id;
+			return 'admin/view/categories#' . $categoryModel->getByAlias($postArray['alias'])->id;
 		}
 		return 'admin';
 	}

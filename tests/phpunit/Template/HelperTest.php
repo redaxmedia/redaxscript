@@ -336,7 +336,7 @@ class HelperTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertArrayHasKey('baseURL', $actualArray);
+		$this->assertArrayHasKey('baseUrl', $actualArray);
 		$this->assertArrayHasKey('generator', $actualArray);
 		$this->assertArrayHasKey('language', $actualArray);
 		$this->assertArrayHasKey('registry', $actualArray);

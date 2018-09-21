@@ -133,7 +133,7 @@ class CategoryTable extends ViewAbstract
 			{
 				$outputBody .= $trElement
 					->copy()
-					->attr('id', 'row-' . $value->id)
+					->attr('id', $value->id)
 					->addClass($value->parent ? 'rs-admin-is-children' : null)
 					->addClass(!$value->status ? 'rs-admin-is-disabled' : null)
 					->html(

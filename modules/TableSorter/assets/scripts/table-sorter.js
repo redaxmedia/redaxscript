@@ -11,10 +11,27 @@ rs.modules.TableSorter.execute = config =>
 	{
 		tbodyList.forEach(tbody =>
 		{
-			window.dragula(
+			const dragula = window.dragula(
 			[
 				tbody
 			], CONFIG.dragula);
+
+			/* handle dragend */
+
+			dragula.on('dragend', element =>
+			{
+				window.fetch(CONFIG.sortUrl,
+				{
+					method: 'POST',
+					body: JSON.stringify(
+					{
+						table: rs.registry.tableParameter,
+						currentId: element.id,
+						previousId: element.previousSibling ? element.previousSibling.id : -1,
+						nextId: element.nextSibling ? element.nextSibling.id : -1
+					})
+				});
+			});
 		});
 	}
 };
