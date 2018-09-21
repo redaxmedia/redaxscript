@@ -62,9 +62,6 @@ jobs:
    - DB_URL=sqlite://test.sqlite vendor/bin/phpunit
 
  - <<: *test
-   php: 7.3RC1
-
- - <<: *test
    php: nightly
 
  - <<: *test
