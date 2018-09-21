@@ -38,6 +38,7 @@ class GroupTableTest extends TestCaseAbstract
 			[
 				'name' => 'Group One',
 				'alias' => 'group-one',
+				'description' => 'Group One'
 			])
 			->save();
 	}
