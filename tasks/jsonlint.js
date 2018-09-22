@@ -17,8 +17,8 @@ module.exports = () =>
 			src:
 			[
 				'.htmlhintrc',
-				'.jscsrc',
-				'.jshintrc',
+				'.eslintrc',
+				'.ncsslintrc',
 				'.stylelintrc'
 			]
 		},
