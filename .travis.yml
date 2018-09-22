@@ -64,6 +64,14 @@ jobs:
  - <<: *test
    php: nightly
 
+ - <<: *mutation
+   env:
+   - TYPE=mutation
+
+   script:
+   - mailcatcher
+   - vendor/bin/infection --threads=10 --min-msi=45
+
  - <<: *test
    env:
    - TYPE=report
