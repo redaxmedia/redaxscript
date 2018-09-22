@@ -13,5 +13,6 @@
 		{
 			"branch": "master"
 		}
-	}
+	},
+	"timeout": 20
 }
