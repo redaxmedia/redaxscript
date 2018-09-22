@@ -92,6 +92,10 @@ module.exports = grunt =>
 	[
 		'shell:phpunitParallel'
 	]);
+	grunt.registerTask('phpunit-mutation',
+	[
+		'shell:phpunitMutation'
+	]);
 	grunt.registerTask('startServer',
 	[
 		'shell:startServer'

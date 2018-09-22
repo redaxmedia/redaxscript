@@ -1,0 +1,18 @@
+{
+	"bootstrap": "tests/phpunit/bootstrap.php",
+    "source":
+    {
+        "directories":
+        [
+            "includes"
+        ]
+    },
+
+	"logs":
+	{
+		"badge":
+		{
+			"branch": "master"
+		}
+	}
+}
