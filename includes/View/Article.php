@@ -169,7 +169,7 @@ class Article extends ViewAbstract
 		}
 		else
 		{
-			$articles = $articleModel->getByLanguage();
+			$articles = $articleModel->getByLanguageAndOrder($language, 'rank');
 		}
 
 		/* process articles */

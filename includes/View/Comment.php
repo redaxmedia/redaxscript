@@ -119,7 +119,7 @@ class Comment extends ViewAbstract
 
 		/* query comments */
 
-		$comments = $articleId ? $commentModel->getByArticleAndLanguage($articleId, $language) : $commentModel->getByLanguage($language);
+		$comments = $articleId ? $commentModel->getByArticleAndLanguage($articleId, $language) : $commentModel->getByLanguageAndOrder($language, 'rank');
 
 		/* process comments */
 

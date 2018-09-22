@@ -30,7 +30,7 @@ rs.modules.TableSorter.execute = config =>
 						previousId: element.previousSibling ? element.previousSibling.id : -1,
 						nextId: element.nextSibling ? element.nextSibling.id : -1
 					})
-				});
+				}).then(() => location.reload());
 			});
 		});
 	}
