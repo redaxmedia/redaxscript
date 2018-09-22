@@ -294,15 +294,15 @@ class Option
 		{
 			$query->whereNotIn('id', $excludeArray);
 		}
-		$content = $query->orderByAsc('title')->findMany();
+		$contents = $query->orderByAsc('title')->findMany();
 		$contentArray =
 		[
 			$this->_language->get('select') => 'select'
 		];
 
-		/* process content */
+		/* process contents */
 
-		foreach ($content as $value)
+		foreach ($contents as $value)
 		{
 			$contentKey = $value->title . ' (' . $value->id . ')';
 			$contentArray[$contentKey] = (int)$value->id;

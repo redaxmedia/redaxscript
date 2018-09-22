@@ -253,7 +253,7 @@ class Panel extends ViewAbstract
 				'name' => get_class() . '\Panel'
 			]);
 
-		/* process content */
+		/* process contents */
 
 		foreach ($contentArray as $type)
 		{

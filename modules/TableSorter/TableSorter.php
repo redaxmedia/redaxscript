@@ -82,33 +82,20 @@ class TableSorter extends Module\Module
 	protected function _sort() : ?string
 	{
 		$postArray = $this->_sanitizePost();
-		$previous = Db::forTablePrefix($postArray['table'])->whereIdIs($postArray['previousId'])->findOne();
-		$next = Db::forTablePrefix($postArray['table'])->whereIdIs($postArray['nextId'])->findOne();
-		$current = Db::forTablePrefix($postArray['table'])->whereIdIs($postArray['currentId'])->findOne()->set('rank', $previous ? $previous->rank + 1 : $next->rank - 1);
-		$status = $current->save();
+		$contents = Db::forTablePrefix($postArray['table'])->where_in('id', $postArray['orderSet'])->findMany();
+
+		/* process contents */
+
+		foreach ($contents as $key => $value)
+		{
+			$value->set('rank', array_search($value->id, $postArray['orderSet']));
+		}
 
 		/* handle response */
 
-		if ($status)
+		if ($contents->save())
 		{
-			return json_encode(
-			[
-				'current' =>
-				[
-					'id'=> $current->id,
-					'rank'=> $current->rank
-				],
-				'previous' =>
-				[
-					'id'=> $previous->id,
-					'rank'=> $previous->rank
-				],
-				'next' =>
-				[
-					'id'=> $next->id,
-					'rank'=> $next->rank
-				]
-			]);
+			return json_encode($postArray['orderSet']);
 		}
 		Header::statusCode(404);
 		return null;
@@ -124,7 +111,6 @@ class TableSorter extends Module\Module
 
 	protected function _sanitizePost() : array
 	{
-		$numberFilter = new Filter\Number();
 		$specialFilter = new Filter\Special();
 		$content = file_get_contents('php://input');
 		$postArray = (array)json_decode($content);
@@ -134,9 +120,7 @@ class TableSorter extends Module\Module
 		return
 		[
 			'table' => $specialFilter->sanitize($postArray['table']),
-			'currentId' => $numberFilter->sanitize($postArray['currentId']),
-			'previousId' => $numberFilter->sanitize($postArray['previousId']),
-			'nextId' => $numberFilter->sanitize($postArray['nextId'])
+			'orderSet' => $postArray['orderSet']
 		];
 	}
 }

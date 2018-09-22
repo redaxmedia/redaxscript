@@ -109,7 +109,7 @@ class SystemStatus extends ViewAbstract
 			$messageArray[] = $this->_language->get('php_os_unsupported');
 		}
 
-		/* process module */
+		/* process modules */
 
 		foreach ($testModuleArray as $value)
 		{

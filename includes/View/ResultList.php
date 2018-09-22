@@ -67,7 +67,7 @@ class ResultList extends ViewAbstract
 				'class' => 'rs-text-result-date'
 			]);
 
-		/* process result */
+		/* process results */
 
 		foreach ($resultArray as $table => $result)
 		{

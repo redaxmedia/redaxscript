@@ -367,7 +367,7 @@ class Installer
 			'TableSorter'
 		];
 
-		/* process module */
+		/* process modules */
 
 		foreach ($moduleArray as $alias)
 		{

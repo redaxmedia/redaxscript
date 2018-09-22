@@ -189,7 +189,7 @@ class Status extends CommandAbstract
 			}
 		}
 
-		/* process module */
+		/* process modules */
 
 		if (is_array($moduleArray))
 		{

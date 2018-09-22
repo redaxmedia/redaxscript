@@ -18,17 +18,17 @@ rs.modules.TableSorter.execute = config =>
 
 			/* handle dragend */
 
-			dragula.on('dragend', element =>
+			dragula.on('dragend', () =>
 			{
+				const childrenList = tbody.childNodes;
+
 				window.fetch(CONFIG.sortUrl,
 				{
 					method: 'POST',
 					body: JSON.stringify(
 					{
 						table: rs.registry.tableParameter,
-						currentId: element.id,
-						previousId: element.previousSibling ? element.previousSibling.id : -1,
-						nextId: element.nextSibling ? element.nextSibling.id : -1
+						orderSet: Object.keys(childrenList).map((childrenValue => childrenList[childrenValue].id))
 					})
 				}).then(() => location.reload());
 			});
