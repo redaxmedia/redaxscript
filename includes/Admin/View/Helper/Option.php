@@ -85,7 +85,7 @@ class Option
 	{
 		return
 		[
-			$this->_language->get('select') => 'select',
+			$this->_language->get('select') => 'null',
 			$this->_language->get('all') => 1,
 			$this->_language->get('index') => 2,
 			$this->_language->get('follow') => 3,
@@ -231,7 +231,7 @@ class Option
 		$languageFilesystemArray = $languageFilesystem->getSortArray();
 		$languageArray =
 		[
-			$this->_language->get('select') => 'select'
+			$this->_language->get('select') => 'null'
 		];
 
 		/* process filesystem */
@@ -264,7 +264,7 @@ class Option
 		$templateFilesystemArray = $templateFilesystem->getSortArray();
 		$templateArray =
 		[
-			$this->_language->get('select') => 'select'
+			$this->_language->get('select') => 'null'
 		];
 
 		/* process filesystem */
@@ -297,7 +297,7 @@ class Option
 		$contents = $query->orderByAsc('title')->findMany();
 		$contentArray =
 		[
-			$this->_language->get('select') => 'select'
+			$this->_language->get('select') => 'null'
 		];
 
 		/* process contents */
