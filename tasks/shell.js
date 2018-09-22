@@ -63,7 +63,7 @@ module.exports = grunt =>
 		},
 		phpunitMutation:
 		{
-			command: run('vendor/bin/infection --threads=10 ' + grunt.option.flags())
+			command: run('vendor/bin/infection --threads=10 --only-covered ' + grunt.option.flags())
 		},
 		startServer:
 		{

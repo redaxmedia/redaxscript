@@ -74,7 +74,7 @@ jobs:
 
    script:
    - mailcatcher
-   - vendor/bin/infection --threads=10
+   - vendor/bin/infection --threads=10 --only-covered
 
  - <<: *test
    env:
