@@ -64,7 +64,7 @@ jobs:
  - <<: *test
    php: nightly
 
-- &mutation
+ - &mutation
    env:
    - TYPE=mutation
 
