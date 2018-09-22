@@ -82,20 +82,20 @@ class TableSorter extends Module\Module
 	protected function _sort() : ?string
 	{
 		$postArray = $this->_sanitizePost();
-		$contents = Db::forTablePrefix($postArray['table'])->where_in('id', $postArray['orderSet'])->findMany();
+		$contents = Db::forTablePrefix($postArray['table'])->whereIn('id', $postArray['rankArray'])->findMany();
 
 		/* process contents */
 
 		foreach ($contents as $key => $value)
 		{
-			$value->set('rank', array_search($value->id, $postArray['orderSet']));
+			$value->set('rank', array_search($value->id, $postArray['rankArray']));
 		}
 
 		/* handle response */
 
 		if ($contents->save())
 		{
-			return json_encode($postArray['orderSet']);
+			return json_encode($postArray['rankArray']);
 		}
 		Header::statusCode(404);
 		return null;
@@ -120,7 +120,7 @@ class TableSorter extends Module\Module
 		return
 		[
 			'table' => $specialFilter->sanitize($postArray['table']),
-			'orderSet' => $postArray['orderSet']
+			'rankArray' => $postArray['rankArray']
 		];
 	}
 }
