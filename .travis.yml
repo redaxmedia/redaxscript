@@ -2,14 +2,14 @@ language: php
 
 php: 7.2
 
+before_install:
+- composer global require hirak/prestissimo
+
 jobs:
  include:
  - &lint
    env:
    - TYPE=lint
-
-   before_install:
-   - composer global require hirak/prestissimo
 
    install:
    - composer install
@@ -41,9 +41,6 @@ jobs:
    - mysql
    - postgresql
 
-   before_install:
-   - composer global require hirak/prestissimo
-
    install:
    - composer install
    - gem install mailcatcher
@@ -66,10 +63,7 @@ jobs:
 
  - &mutation
    env:
-   - TYPE=mutation
-
-   before_install:
-   - composer global require hirak/prestissimo
+   - TYPE=report-mutation-score
 
    install:
    - composer install
@@ -84,7 +78,7 @@ jobs:
 
  - <<: *test
    env:
-   - TYPE=report
+   - TYPE=report-code-coverage
 
    script:
    - mailcatcher
