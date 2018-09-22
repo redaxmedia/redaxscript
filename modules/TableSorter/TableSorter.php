@@ -86,7 +86,7 @@ class TableSorter extends Module\Module
 
 		/* process contents */
 
-		foreach ($contents as $key => $value)
+		foreach ($contents as $value)
 		{
 			$value->set('rank', array_search($value->id, $postArray['rankArray']));
 		}
