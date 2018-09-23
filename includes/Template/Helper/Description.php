@@ -40,7 +40,7 @@ class Description extends HelperAbstract
 		}
 		else if ($lastTable && $lastId)
 		{
-			$content = Db::forTablePrefix($lastTable)->whereIdIs($lastId)->findOne();
+			$content = Db::forTablePrefix($lastTable)->whereIdIs($lastId)->whereNull('access')->findOne();
 			$description = $content->description;
 
 			/* handle parent */
@@ -48,8 +48,11 @@ class Description extends HelperAbstract
 			if (!$description)
 			{
 				$parentId = $content->category ? $content->category : $content->parent;
-				$parent = Db::forTablePrefix('categories')->whereIdIs($parentId)->whereNull('access')->findOne();
-				$description = $parent->description;
+				if ($parentId)
+				{
+					$parent = Db::forTablePrefix('categories')->whereIdIs($parentId)->whereNull('access')->findOne();
+					$description = $parent->description;
+				}
 			}
 		}
 

@@ -69,8 +69,11 @@ class Robots extends HelperAbstract
 			if (!$robots)
 			{
 				$parentId = $content->category ? $content->category : $content->parent;
-				$parent = Db::forTablePrefix('categories')->whereIdIs($parentId)->whereNull('access')->findOne();
-				$robots = $parent->robots;
+				if ($parentId)
+				{
+					$parent = Db::forTablePrefix('categories')->whereIdIs($parentId)->whereNull('access')->findOne();
+					$robots = $parent->robots;
+				}
 			}
 		}
 
