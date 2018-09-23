@@ -13,9 +13,7 @@
 
 	& li
 	{
-		flex-basis: 10%;
 		margin-bottom: 0.25em;
-		margin-right: 0.25em;
 	}
 
 	& img
@@ -23,5 +21,17 @@
 		height: 100%;
 		object-fit: cover;
 		width: 100%;
+	}
+}
+
+/** @section 1.1 query */
+
+/** @section 1.1.1 small min */
+
+@media (--media-small-min)
+{
+	.rs-list-gallery li
+	{
+		margin-right: 0.25em;
 	}
 }

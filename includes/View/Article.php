@@ -169,33 +169,36 @@ class Article extends ViewAbstract
 		}
 		else
 		{
-			$articles = $articleModel->getByLanguageAndOrder($language, 'rank');
+			$articles = null;
 		}
 
 		/* process articles */
 
-		foreach ($articles as $value)
+		if ($articles)
 		{
-			if ($accessValidator->validate($value->access, $myGroups))
+			foreach ($articles as $value)
 			{
-				$output .= Module\Hook::trigger('articleFragmentStart', (array)$value);
-				if ((int)$value->headline === 1)
+				if ($accessValidator->validate($value->access, $myGroups))
 				{
-					$output .= $titleElement
-						->attr('id', 'article-' . $value->alias)
-						->html($lastTable === 'categories' ? $linkElement
-							->attr('href', $parameterRoute . $articleModel->getRouteById($value->id))
-							->text($value->title) : $value->title
-						);
-				}
-				$contentParser->process($value->text);
-				$output .= $boxElement->html($contentParser->getOutput()) . $byline->render($value->date, $value->author) . Module\Hook::trigger('articleFragmentEnd', (array)$value);
+					$output .= Module\Hook::trigger('articleFragmentStart', (array)$value);
+					if ((int)$value->headline === 1)
+					{
+						$output .= $titleElement
+							->attr('id', 'article-' . $value->alias)
+							->html($lastTable === 'categories' ? $linkElement
+								->attr('href', $parameterRoute . $articleModel->getRouteById($value->id))
+								->text($value->title) : $value->title
+							);
+					}
+					$contentParser->process($value->text);
+					$output .= $boxElement->html($contentParser->getOutput()) . $byline->render($value->date, $value->author) . Module\Hook::trigger('articleFragmentEnd', (array)$value);
 
-				/* admin dock */
+					/* admin dock */
 
-				if ($loggedIn === $token && $firstParameter !== 'logout')
-				{
-					$output .= $adminDock->render('articles', $value->id);
+					if ($loggedIn === $token && $firstParameter !== 'logout')
+					{
+						$output .= $adminDock->render('articles', $value->id);
+					}
 				}
 			}
 		}

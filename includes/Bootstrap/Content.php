@@ -157,17 +157,17 @@ class Content extends BootstrapAbstract
 		$settingModel = new Model\Setting();
 		$order = $settingModel->get('order');
 		$lastTable = $this->_registry->get('lastTable');
-		$result = Db::forTablePrefix($lastTable);
+		$content = Db::forTablePrefix($lastTable);
 
 		/* handle order */
 
 		if ($order === 'asc')
 		{
-			$lastRank = $result->min('rank');
+			$lastRank = $content->min('rank');
 		}
 		if ($order === 'desc')
 		{
-			$lastRank = $result->max('rank');
+			$lastRank = $content->max('rank');
 		}
 
 		/* last rank */

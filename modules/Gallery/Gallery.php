@@ -92,10 +92,10 @@ class Gallery extends Config
 	 * @param string $directory
 	 * @param array $optionArray
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public function render(string $directory = null, array $optionArray = []) : string
+	public function render(string $directory = null, array $optionArray = []) : ?string
 	{
 		$output = null;
 		$outputItem = null;
