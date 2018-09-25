@@ -52,7 +52,10 @@ class Script extends HeadAbstract
 
 	public function appendFile(string $source = null) : self
 	{
-		$this->append('src', $source);
+		foreach ((array)$source as $value)
+		{
+			$this->append('src', $value);
+		}
 		return $this;
 	}
 
@@ -68,7 +71,10 @@ class Script extends HeadAbstract
 
 	public function prependFile(string $source = null) : self
 	{
-		$this->prepend('src', $source);
+		foreach ((array)$source as $value)
+		{
+			$this->prepend('src', $value);
+		}
 		return $this;
 	}
 
@@ -84,7 +90,10 @@ class Script extends HeadAbstract
 
 	public function removeFile(string $source = null) : self
 	{
-		$this->remove('src', $source);
+		foreach ((array)$source as $value)
+		{
+			$this->remove('src', $value);
+		}
 		return $this;
 	}
 

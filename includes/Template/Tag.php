@@ -277,9 +277,9 @@ class Tag
 
 	public static function pagination(string $table = null, int $contentId, array $optionArray = []) : ?string
 	{
-		$pagination = new View\Helper\Pagination();
+		$pagination = new View\Helper\Pagination(Registry::getInstance(), Language::getInstance());
 		$pagination->init($optionArray);
-		return $pagination;
+		return $pagination->render();
 	}
 
 	/**

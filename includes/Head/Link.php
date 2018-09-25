@@ -52,11 +52,14 @@ class Link extends HeadAbstract
 
 	public function appendFile(string $reference = null) : self
 	{
-		$this->append(
-		[
-			'href' => $reference,
-			'rel' => 'stylesheet'
-		]);
+		foreach ((array)$reference as $value)
+		{
+			$this->append(
+			[
+				'href' => $value,
+				'rel' => 'stylesheet'
+			]);
+		}
 		return $this;
 	}
 
@@ -72,11 +75,14 @@ class Link extends HeadAbstract
 
 	public function prependFile(string $reference = null) : self
 	{
-		$this->prepend(
-		[
-			'href' => $reference,
-			'rel' => 'stylesheet'
-		]);
+		foreach ((array)$reference as $value)
+		{
+			$this->prepend(
+			[
+				'href' => $value,
+				'rel' => 'stylesheet'
+			]);
+		}
 		return $this;
 	}
 
@@ -92,7 +98,10 @@ class Link extends HeadAbstract
 
 	public function removeFile(string $reference = null) : self
 	{
-		$this->remove('href', $reference);
+		foreach ((array)$reference as $value)
+		{
+			$this->remove('href', $value);
+		}
 		return $this;
 	}
 
