@@ -277,6 +277,11 @@ class Tag
 
 	public static function pagination(string $table = null, int $contentId, array $optionArray = []) : ?string
 	{
+		if ($table === 'articles')
+		{
+			$articleModel = new Model\Article();
+			$article = $articleModel->getById($contentId);
+		}
 		$pagination = new View\Helper\Pagination(Registry::getInstance(), Language::getInstance());
 		$pagination->init($optionArray);
 		return $pagination->render();
