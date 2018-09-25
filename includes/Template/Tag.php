@@ -264,6 +264,25 @@ class Tag
 	}
 
 	/**
+	 * pagination
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param string $table name of the table
+	 * @param int $contentId identifier of the content
+	 * @param array $optionArray options of the pagination
+	 *
+	 * @return string|null
+	 */
+
+	public static function pagination(string $table = null, int $contentId, array $optionArray = []) : ?string
+	{
+		$pagination = new View\Helper\Pagination();
+		$pagination->init($optionArray);
+		return $pagination;
+	}
+
+	/**
 	 * navigation
 	 *
 	 * @since 3.0.0

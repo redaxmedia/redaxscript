@@ -200,6 +200,57 @@ class TagTest extends TestCaseAbstract
 	}
 
 	/**
+	 * testPaginationArticles
+	 *
+	 * @since 4.0.0
+	 */
+
+	public function testPaginationArticles()
+	{
+		/* actual */
+
+		$actual = Template\Tag::pagination('articles', 1);
+
+		/* compare */
+
+		$this->assertString($actual);
+	}
+
+	/**
+	 * testPaginationComments
+	 *
+	 * @since 4.0.0
+	 */
+
+	public function testPaginationComments()
+	{
+		/* actual */
+
+		$actual = Template\Tag::pagination('comments', 1);
+
+		/* compare */
+
+		$this->assertString($actual);
+	}
+
+	/**
+	 * testPaginationInvalid
+	 *
+	 * @since 4.0.0
+	 */
+
+	public function testPaginationInvalid()
+	{
+		/* actual */
+
+		$actual = Template\Tag::pagination('invalid', 1);
+
+		/* compare */
+
+		$this->assertNull($actual);
+	}
+
+	/**
 	 * testNavigationCategories
 	 *
 	 * @since 3.3.1
