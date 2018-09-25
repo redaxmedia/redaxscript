@@ -51,8 +51,11 @@ class SyntaxHighlighter extends Module\Module
 		$script = Head\Script::getInstance();
 		$script
 			->init('foot')
-			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js')
-			->appendFile('modules/SyntaxHighlighter/assets/scripts/init.js')
-			->appendFile('modules/SyntaxHighlighter/dist/scripts/syntax-highlighter.min.js');
+			->appendFile(
+			[
+				'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js',
+				'modules/SyntaxHighlighter/assets/scripts/init.js',
+				'modules/SyntaxHighlighter/dist/scripts/syntax-highlighter.min.js'
+			]);
 	}
 }

@@ -45,9 +45,12 @@ class Tinymce extends Config
 			$script = Head\Script::getInstance();
 			$script
 				->init('foot')
-				->appendFile('https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.8.3/tinymce.min.js')
-				->appendFile('modules/Tinymce/assets/scripts/init.js')
-				->appendFile('modules/Tinymce/dist/scripts/tinymce.min.js');
+				->appendFile(
+				[
+					'https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.8.3/tinymce.min.js',
+					'modules/Tinymce/assets/scripts/init.js',
+					'modules/Tinymce/dist/scripts/tinymce.min.js'
+				]);
 
 			/* handle upload */
 

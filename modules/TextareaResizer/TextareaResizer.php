@@ -42,8 +42,11 @@ class TextareaResizer extends Module\Module
 		$script = Head\Script::getInstance();
 		$script
 			->init('foot')
-			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/autosize.js/4.0.2/autosize.min.js')
-			->appendFile('modules/TextareaResizer/assets/scripts/init.js')
-			->appendFile('modules/TextareaResizer/dist/scripts/textarea-resizer.min.js');
+			->appendFile(
+			[
+				'https://cdnjs.cloudflare.com/ajax/libs/autosize.js/4.0.2/autosize.min.js',
+				'modules/TextareaResizer/assets/scripts/init.js',
+				'modules/TextareaResizer/dist/scripts/textarea-resizer.min.js'
+			]);
 	}
 }

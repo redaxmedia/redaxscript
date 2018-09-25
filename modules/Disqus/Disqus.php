@@ -55,8 +55,11 @@ class Disqus extends Config
 		$script = Head\Script::getInstance();
 		$script
 			->init('foot')
-			->appendFile($this->_configArray['url'])
-			->appendFile('modules/Disqus/assets/scripts/init.js');
+			->appendFile(
+			[
+				$this->_configArray['url'],
+				'modules/Disqus/assets/scripts/init.js'
+			]);
 
 		/* html element */
 

@@ -45,12 +45,12 @@ class Link extends HeadAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $reference
+	 * @param string|array $reference
 	 *
 	 * @return self
 	 */
 
-	public function appendFile(string $reference = null) : self
+	public function appendFile($reference = null) : self
 	{
 		foreach ((array)$reference as $value)
 		{
@@ -68,12 +68,12 @@ class Link extends HeadAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $reference
+	 * @param string|array $reference
 	 *
 	 * @return self
 	 */
 
-	public function prependFile(string $reference = null) : self
+	public function prependFile($reference = null) : self
 	{
 		foreach ((array)$reference as $value)
 		{
@@ -91,12 +91,12 @@ class Link extends HeadAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $reference
+	 * @param string|array $reference
 	 *
 	 * @return self
 	 */
 
-	public function removeFile(string $reference = null) : self
+	public function removeFile($reference = null) : self
 	{
 		foreach ((array)$reference as $value)
 		{

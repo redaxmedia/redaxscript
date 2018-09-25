@@ -43,9 +43,15 @@ class Experiments extends Config
 			$script = Head\Script::getInstance();
 			$script
 				->init('foot')
-				->appendFile('https://google-analytics.com/cx/api.js?experiment=' . $this->_configArray['id'])
-				->appendFile('modules/Experiments/assets/scripts/init.js')
-				->appendFile('modules/Experiments/dist/scripts/experiments.min.js');
+				->appendFile(
+				[
+					'https://google-analytics.com/cx/api.js?' . http_build_query(
+					[
+						'experiment' => $this->_configArray['id']
+					]),
+					'modules/Experiments/assets/scripts/init.js',
+					'modules/Experiments/dist/scripts/experiments.min.js'
+				]);
 		}
 	}
 }

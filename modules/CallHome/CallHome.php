@@ -46,9 +46,12 @@ class CallHome extends Module\Notification
 			$script = Head\Script::getInstance();
 			$script
 				->init('foot')
-				->appendFile('https://google-analytics.com/analytics.js')
-				->appendFile('modules/CallHome/assets/scripts/init.js')
-				->appendFile('modules/CallHome/dist/scripts/call-home.min.js');
+				->appendFile(
+				[
+					'https://google-analytics.com/analytics.js',
+					'modules/CallHome/assets/scripts/init.js',
+					'modules/CallHome/dist/scripts/call-home.min.js'
+				]);
 		}
 	}
 

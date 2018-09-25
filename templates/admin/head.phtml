@@ -6,8 +6,11 @@
 
 	<?php Tag::link()
 		->init('admin')
-		->appendFile('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset())
-		->appendFile('templates/admin/dist/styles/admin.min.css')
+		->appendFile(
+		[
+			'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset(),
+			'templates/admin/dist/styles/admin.min.css'
+		])
 		->rewrite(
 		[
 			'../../../../templates' => '../../templates'

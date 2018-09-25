@@ -24,16 +24,22 @@
 	->init()
 	->append(['href' => 'templates/default/assets/images/favicon.ico', 'rel' => 'shortcut icon'])
 	->append(['href' => 'templates/default/assets/images/favicon.png', 'rel' => 'apple-touch-icon'])
-	->appendFile('https://fonts.googleapis.com/css?family=Ubuntu+Mono:400&amp;subset=' . Helper::getSubset())
-	->appendFile('templates/console/dist/styles/console.min.css')
+	->appendFile(
+	[
+		'https://fonts.googleapis.com/css?family=Ubuntu+Mono:400&amp;subset=' . Helper::getSubset(),
+		'templates/console/dist/styles/console.min.css'
+	])
 	->concat(); ?>
 
 <!-- head script -->
 
 <?php echo Tag::script()
 	->init('head')
-	->prependFile('templates/console/assets/scripts/init.js')
-	->prependFile('assets/scripts/init.js')
+	->prependFile(
+	[
+		'templates/console/assets/scripts/init.js',
+		'assets/scripts/init.js'
+	])
 	->transportVar('rs', Helper::getTransport())
 	->concat();
 ?>

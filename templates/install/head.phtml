@@ -24,8 +24,11 @@
 	->init()
 	->append(['href' => 'templates/default/assets/images/favicon.ico', 'rel' => 'shortcut icon'])
 	->append(['href' => 'templates/default/assets/images/favicon.png', 'rel' => 'apple-touch-icon'])
-	->appendFile('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset())
-	->appendFile('templates/install/dist/styles/install.min.css')
+	->appendFile(
+	[
+		'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset(),
+		'templates/install/dist/styles/install.min.css'
+	])
 	->rewrite(
 	[
 		'../../../../templates' => '../../templates'
@@ -36,7 +39,10 @@
 
 <?php echo Tag::script()
 	->init('head')
-	->prependFile('templates/install/assets/scripts/init.js')
-	->prependFile('assets/scripts/init.js')
+	->prependFile(
+	[
+		'templates/install/assets/scripts/init.js',
+		'assets/scripts/init.js'
+	])
 	->transportVar('rs', Helper::getTransport())
 	->concat(); ?>

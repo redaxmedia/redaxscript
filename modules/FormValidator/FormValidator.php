@@ -42,7 +42,10 @@ class FormValidator extends Module\Module
 		$script = Head\Script::getInstance();
 		$script
 			->init('foot')
-			->appendFile('modules/FormValidator/assets/scripts/init.js')
-			->appendFile('modules/FormValidator/dist/scripts/form-validator.min.js');
+			->appendFile(
+			[
+				'modules/FormValidator/assets/scripts/init.js',
+				'modules/FormValidator/dist/scripts/form-validator.min.js'
+			]);
 	}
 }

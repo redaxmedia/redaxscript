@@ -45,12 +45,12 @@ class Script extends HeadAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $source
+	 * @param string|array $source
 	 *
 	 * @return self
 	 */
 
-	public function appendFile(string $source = null) : self
+	public function appendFile($source = null) : self
 	{
 		foreach ((array)$source as $value)
 		{
@@ -64,12 +64,12 @@ class Script extends HeadAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $source
+	 * @param string|array $source
 	 *
 	 * @return self
 	 */
 
-	public function prependFile(string $source = null) : self
+	public function prependFile($source = null) : self
 	{
 		foreach ((array)$source as $value)
 		{
@@ -83,12 +83,12 @@ class Script extends HeadAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $source
+	 * @param string|array $source
 	 *
 	 * @return self
 	 */
 
-	public function removeFile(string $source = null) : self
+	public function removeFile($source = null) : self
 	{
 		foreach ((array)$source as $value)
 		{

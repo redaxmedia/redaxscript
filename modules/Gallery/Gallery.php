@@ -58,19 +58,25 @@ class Gallery extends Config
 		$link = Head\Link::getInstance();
 		$link
 			->init()
-			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css')
-			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css')
-			->appendFile('modules/Gallery/dist/styles/gallery.min.css');
+			->appendFile(
+			[
+				'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css',
+				'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css',
+				'modules/Gallery/dist/styles/gallery.min.css'
+			]);
 
 		/* script */
 
 		$script = Head\Script::getInstance();
 		$script
 			->init('foot')
-			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js')
-			->appendFile('https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js')
-			->appendFile('modules/Gallery/assets/scripts/init.js')
-			->appendFile('modules/Gallery/dist/scripts/gallery.min.js');
+			->appendFile(
+			[
+				'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js',
+				'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js',
+				'modules/Gallery/assets/scripts/init.js',
+				'modules/Gallery/dist/scripts/gallery.min.js'
+			]);
 	}
 
 	/**

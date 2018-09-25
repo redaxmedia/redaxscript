@@ -28,8 +28,11 @@
 <?php echo Tag::link()
 	->init()
 	->append(['href' => Helper::getCanonical(), 'rel' => 'canonical'])
-	->appendFile('https://fonts.googleapis.com/css?family=Raleway:300,700&amp;subset=' . Helper::getSubset())
-	->appendFile('templates/skeleton/dist/styles/skeleton.min.css')
+	->appendFile(
+	[
+		'https://fonts.googleapis.com/css?family=Raleway:300,700&amp;subset=' . Helper::getSubset(),
+		'templates/skeleton/dist/styles/skeleton.min.css'
+	])
 	->concat(); ?>
 
 <?php echo Tag::link()->init('admin'); ?>
@@ -38,7 +41,10 @@
 
 <?php echo Tag::script()
 	->init('head')
-	->prependFile('templates/skeleton/assets/scripts/init.js')
-	->prependFile('assets/scripts/init.js')
+	->prependFile(
+	[
+		'templates/skeleton/assets/scripts/init.js',
+		'assets/scripts/init.js'
+	])
 	->transportVar('rs', Helper::getTransport())
 	->concat(); ?>

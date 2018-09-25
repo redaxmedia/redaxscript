@@ -45,9 +45,12 @@ class AliasGenerator extends Module\Module
 			$script = Head\Script::getInstance();
 			$script
 				->init('foot')
-				->appendFile('https://cdnjs.cloudflare.com/ajax/libs/speakingurl/14.0.1/speakingurl.min.js')
-				->appendFile('modules/AliasGenerator/assets/scripts/init.js')
-				->appendFile('modules/AliasGenerator/dist/scripts/alias-generator.min.js');
+				->appendFile(
+				[
+					'https://cdnjs.cloudflare.com/ajax/libs/speakingurl/14.0.1/speakingurl.min.js',
+					'modules/AliasGenerator/assets/scripts/init.js',
+					'modules/AliasGenerator/dist/scripts/alias-generator.min.js'
+				]);
 		}
 	}
 }
