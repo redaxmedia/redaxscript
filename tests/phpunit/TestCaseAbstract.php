@@ -187,7 +187,7 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 * @param object $object
 	 * @param string $property
 	 *
-	 * @return mixed
+	 * @return object
 	 */
 
 	public function getProperty(object $object = null, string $property = null)
@@ -207,7 +207,7 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 * @param string $method
 	 * @param array $argumentArray
 	 *
-	 * @return mixed
+	 * @return object
 	 */
 
 	public function callMethod(object $object = null, string $method = null, array $argumentArray = [])
@@ -223,12 +223,12 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param mixed $actual
+	 * @param string|null $actual
 	 */
 
 	public function assertString($actual = null)
 	{
-		$this->assertTrue(is_string($actual));
+		$this->assertInternalType('string', $actual);
 	}
 
 	/**
@@ -236,12 +236,12 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 *
 	 * @since 3.1.0
 	 *
-	 * @param mixed $actual
+	 * @param int|null $actual
 	 */
 
 	public function assertNumber($actual = null)
 	{
-		$this->assertTrue(is_numeric($actual));
+		$this->assertInternalType('integer', $actual);
 	}
 
 	/**
@@ -249,12 +249,12 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 *
 	 * @since 3.1.0
 	 *
-	 * @param mixed $actual
+	 * @param object|null $actual
 	 */
 
 	public function assertObject($actual = null)
 	{
-		$this->assertTrue(is_object($actual));
+		$this->assertInternalType('object', $actual);
 	}
 
 	/**
