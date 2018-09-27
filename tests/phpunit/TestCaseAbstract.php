@@ -190,7 +190,7 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 * @return object
 	 */
 
-	public function getProperty(object $object = null, string $property = null)
+	public function getProperty(object $object = null, string $property = null) : object
 	{
 		$reflection = new ReflectionClass($object);
 		$reflectionProperty = $reflection->getProperty($property);
@@ -210,7 +210,7 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 * @return object
 	 */
 
-	public function callMethod(object $object = null, string $method = null, array $argumentArray = [])
+	public function callMethod(object $object = null, string $method = null, array $argumentArray = []) : object
 	{
 		$reflection = new ReflectionClass($object);
 		$reflectionMethod = $reflection->getMethod($method);
@@ -226,7 +226,7 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 * @param string|null $actual
 	 */
 
-	public function assertString($actual = null)
+	public function assertString(?string $actual = null)
 	{
 		$this->assertInternalType('string', $actual);
 	}
@@ -239,7 +239,7 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 * @param int|null $actual
 	 */
 
-	public function assertNumber($actual = null)
+	public function assertNumber(?int $actual = null)
 	{
 		$this->assertInternalType('integer', $actual);
 	}
@@ -252,7 +252,7 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 * @param object|null $actual
 	 */
 
-	public function assertObject($actual = null)
+	public function assertObject(?object $actual = null)
 	{
 		$this->assertInternalType('object', $actual);
 	}
