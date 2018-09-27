@@ -187,10 +187,10 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 * @param object $object
 	 * @param string $property
 	 *
-	 * @return object
+	 * @return array|object
 	 */
 
-	public function getProperty(object $object = null, string $property = null) : object
+	public function getProperty(object $object = null, string $property = null)
 	{
 		$reflection = new ReflectionClass($object);
 		$reflectionProperty = $reflection->getProperty($property);
@@ -207,10 +207,10 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 * @param string $method
 	 * @param array $argumentArray
 	 *
-	 * @return object
+	 * @return array|object
 	 */
 
-	public function callMethod(object $object = null, string $method = null, array $argumentArray = []) : object
+	public function callMethod(object $object = null, string $method = null, array $argumentArray = [])
 	{
 		$reflection = new ReflectionClass($object);
 		$reflectionMethod = $reflection->getMethod($method);
