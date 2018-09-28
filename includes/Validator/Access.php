@@ -19,7 +19,7 @@ class Access implements ValidatorInterface
 	 *
 	 * @since 4.0.0
 	 *
-	 * @param string $access content related access
+	 * @param string $access access for contents and modules
 	 * @param string $groups groups of the user
 	 *
 	 * @return bool

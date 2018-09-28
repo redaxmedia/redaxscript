@@ -28,7 +28,7 @@ class CssValidator extends Config
 		'author' => 'Redaxmedia',
 		'description' => 'CSS validator for developers',
 		'version' => '4.0.0',
-		'access' => '1'
+		'access' => '[1]'
 	];
 
 	/**
