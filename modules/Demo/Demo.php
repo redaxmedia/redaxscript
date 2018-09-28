@@ -196,7 +196,6 @@ class Demo extends Config
 		$messenger = $this->_messengerFactory();
 		return $messenger
 			->setRoute($this->_language->get('back'), 'login')
-			->doRedirect()
 			->error($this->_language->get('something_wrong'), $this->_language->get('error_occurred'));
 	}
 
