@@ -361,8 +361,6 @@ class Installer
 			'AliasGenerator',
 			'CallHome',
 			'FormValidator',
-			'HtmlValidator',
-			'LiveReload',
 			'TextareaResizer',
 			'TableSorter'
 		];
