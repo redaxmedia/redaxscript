@@ -154,6 +154,19 @@ class Demo extends Config
 	}
 
 	/**
+	 * messenger factory
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return Messenger
+	 */
+
+	protected function _messengerFactory() : Messenger
+	{
+		return new Messenger($this->_registry);
+	}
+
+	/**
 	 * success
 	 *
 	 * @since 3.0.0
@@ -163,7 +176,7 @@ class Demo extends Config
 
 	protected function _success() : string
 	{
-		$messenger = new Messenger($this->_registry);
+		$messenger = $this->_messengerFactory();
 		return $messenger
 			->setRoute($this->_language->get('continue'), 'admin')
 			->doRedirect(0)
@@ -180,7 +193,7 @@ class Demo extends Config
 
 	protected function _error() : string
 	{
-		$messenger = new Messenger($this->_registry);
+		$messenger = $this->_messengerFactory();
 		return $messenger
 			->setRoute($this->_language->get('back'), 'login')
 			->doRedirect()
