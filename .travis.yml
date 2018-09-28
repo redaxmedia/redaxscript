@@ -1,5 +1,4 @@
 dist: xenial
-sudo: required
 
 language: php
 
@@ -24,11 +23,16 @@ jobs:
    - grunt
 
  - &build
+  addons:
+   apt:
+    packages:
+    - lftp
+    - fontforge
+
    env:
    - BUILD
 
    install:
-   - sudo apt-get install lftp fontforge
    - nvm install 10
    - npm install --global grunt-cli
    - npm install
@@ -63,6 +67,11 @@ jobs:
 
  - <<: *test
    php: 7.3.0RC1
+
+   addons:
+    apt:
+     packages:
+	 - libzip4
 
  - <<: *test
    php: nightly
