@@ -23,11 +23,11 @@ jobs:
    - grunt
 
  - &build
-  addons:
-   apt:
-    packages:
-    - lftp
-    - fontforge
+   addons:
+    apt:
+     packages:
+     - lftp
+     - fontforge
 
    env:
    - BUILD
@@ -71,7 +71,7 @@ jobs:
    addons:
     apt:
      packages:
-	 - libzip4
+     - libzip4
 
  - <<: *test
    php: nightly
