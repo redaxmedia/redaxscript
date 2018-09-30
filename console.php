@@ -23,7 +23,7 @@ if (php_sapi_name() === 'cli')
 {
 	$console = new Console\Console($registry, $request, $language, $config);
 	$output = $console->init('cli');
-	if (is_string($output))
+	if (strlen($output))
 	{
 		echo $output;
 	}
@@ -39,9 +39,9 @@ else if ($config->get('env') !== 'production' || $accessValidator->validate('1',
 	{
 		$console = new Console\Console($registry, $request, $language, $config);
 		$output = $console->init('xhr');
-		if (is_string($output))
+		if (strlen($output))
 		{
-			echo htmlentities($output);
+			echo htmlentities($output, ENT_QUOTES);
 		}
 	}
 

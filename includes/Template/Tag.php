@@ -347,7 +347,7 @@ class Tag
 		$output = $console->init('template');
 		if (strlen($output))
 		{
-			return htmlentities($output);
+			return htmlentities($output, ENT_QUOTES);
 		}
 		return null;
 	}
