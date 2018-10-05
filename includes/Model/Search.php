@@ -29,13 +29,12 @@ class Search
 
 	public function getByTable(string $table = null, string $search = null, string $language = null) : ?object
 	{
-		$items = Db::forTablePrefix($table)
+		return Db::forTablePrefix($table)
 			->whereLikeMany($this->_createColumnArray($table), $this->_createLikeArray($table, $search))
 			->whereLanguageIs($language)
 			->where('status', 1)
 			->orderByDesc('date')
-			->findMany();
-		return $items ? $items : null;
+			->findMany() ? : null;
 	}
 
 	/**

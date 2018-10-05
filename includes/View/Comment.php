@@ -36,7 +36,8 @@ class Comment extends ViewAbstract
 		[
 			'title' => 'rs-title-comment',
 			'box' => 'rs-quote-default'
-		]
+		],
+		'orderColumn' => 'rank'
 	];
 
 	/**
@@ -62,10 +63,7 @@ class Comment extends ViewAbstract
 
 	public function init(array $optionArray = [])
 	{
-		if (is_array($optionArray))
-		{
-			$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
-		}
+		$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
 	}
 
 	/**
@@ -87,6 +85,7 @@ class Comment extends ViewAbstract
 		$output = Module\Hook::trigger('commentStart');
 		$accessValidator = new Validator\Access();
 		$commentModel = new Model\Comment();
+		$comments = null;
 		$byline = new Helper\Byline($this->_registry, $this->_language);
 		$byline->init();
 		$adminDock = new Admin\View\Helper\Dock($this->_registry, $this->_language);
@@ -95,6 +94,7 @@ class Comment extends ViewAbstract
 		$loggedIn = $this->_registry->get('loggedIn');
 		$token = $this->_registry->get('token');
 		$firstParameter = $this->_registry->get('firstParameter');
+		$lastSubParameter = $this->_registry->get('lastSubParameter');
 		$myGroups = $this->_registry->get('myGroups');
 
 		/* html element */
@@ -119,7 +119,14 @@ class Comment extends ViewAbstract
 
 		/* query comments */
 
-		$comments = $articleId ? $commentModel->getByArticleAndLanguage($articleId, $language) : $commentModel->getByLanguageAndOrder($language, 'rank');
+		if ($articleId)
+		{
+			$comments = $commentModel->getByArticleAndLanguageAndOrderAndStep($articleId, $language, $this->_optionArray['orderColumn'], $lastSubParameter - 1);
+		}
+		else
+		{
+			$comments = $commentModel->getByLanguageAndOrder($language, $this->_optionArray['orderColumn']);
+		}
 
 		/* process comments */
 

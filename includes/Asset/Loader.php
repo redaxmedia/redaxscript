@@ -57,10 +57,7 @@ class Loader
 
 	public function init(array $collectionArray = []) : self
 	{
-		if (is_array($collectionArray))
-		{
-			$this->_collectionArray = $collectionArray;
-		}
+		$this->_collectionArray = $collectionArray;
 		return $this;
 	}
 

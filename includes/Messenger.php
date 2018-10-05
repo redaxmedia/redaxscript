@@ -85,10 +85,7 @@ class Messenger
 
 	public function init(array $optionArray = []) : self
 	{
-		if (is_array($optionArray))
-		{
-			$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
-		}
+		$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
 		return $this;
 	}
 

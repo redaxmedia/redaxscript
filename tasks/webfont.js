@@ -13,7 +13,6 @@ module.exports = grunt =>
 				'node_modules/material-design-icons/action/svg/production/ic_info_24px.svg',
 				'node_modules/material-design-icons/action/svg/production/ic_lock_24px.svg',
 				'node_modules/material-design-icons/action/svg/production/ic_power_settings_new_24px.svg',
-				'node_modules/material-design-icons/action/svg/production/ic_reorder_24px.svg',
 				'node_modules/material-design-icons/action/svg/production/ic_settings_24px.svg',
 				'node_modules/material-design-icons/action/svg/production/ic_visibility_off_24px.svg',
 				'node_modules/material-design-icons/alert/svg/production/ic_error_24px.svg',
@@ -29,7 +28,8 @@ module.exports = grunt =>
 				'node_modules/material-design-icons/navigation/svg/production/ic_expand_more_24px.svg',
 				'node_modules/material-design-icons/navigation/svg/production/ic_subdirectory_arrow_right_24px.svg',
 				'node_modules/material-design-icons/social/svg/production/ic_notifications_24px.svg',
-				'node_modules/material-design-icons/social/svg/production/ic_person_24px.svg'
+				'node_modules/material-design-icons/social/svg/production/ic_person_24px.svg',
+				'node_modules/mdi-svg/svg/drag-vertical.svg'
 			],
 			dest: 'templates/admin/dist/fonts',
 			options:

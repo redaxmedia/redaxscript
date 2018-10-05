@@ -33,7 +33,6 @@ class Group extends ModelAbstract
 
 	public function getByAlias(string $groupAlias = null) : ?object
 	{
-		$group = $this->query()->where('alias', $groupAlias)->findOne();
-		return $group ? $group : null;
+		return $this->query()->where('alias', $groupAlias)->findOne() ? : null;
 	}
 }

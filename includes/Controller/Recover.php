@@ -161,15 +161,14 @@ class Recover extends ControllerAbstract
 	protected function _getUsers(array $postArray = []) : ?object
 	{
 		$userModel = new Model\User();
-		$users = $userModel
+		return $userModel
 			->query()
 			->where(
 			[
 				'email' => $postArray['email'],
 				'status' => 1
 			])
-			->findMany();
-		return $users ? $users : null;
+			->findMany() ? : null;
 	}
 
 	/**

@@ -33,8 +33,7 @@ class User extends ModelAbstract
 
 	public function getByUser(string $user = null) : ?object
 	{
-		$user = $this->query()->where('user', $user)->findOne();
-		return $user ? $user : null;
+		return $this->query()->where('user', $user)->findOne() ? : null;
 	}
 
 	/**
@@ -50,7 +49,7 @@ class User extends ModelAbstract
 
 	public function getByUserOrEmail(string $user = null, string $email = null) : ?object
 	{
-		$user = $this
+		return $this
 			->query()
 			->whereAnyIs(
 			[
@@ -62,8 +61,7 @@ class User extends ModelAbstract
 				]
 			])
 			->where('status', 1)
-			->findOne();
-		return $user ? $user : null;
+			->findOne() ? : null;
 	}
 
 	/**

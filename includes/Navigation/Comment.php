@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Navigation;
 
-use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Model;
 use Redaxscript\Module;
@@ -30,7 +29,8 @@ class Comment extends NavigationAbstract
 		'className' =>
 		[
 			'list' => 'rs-list-comments'
-		]
+		],
+		'orderColumn' => 'rank'
 	];
 
 	/**
@@ -60,13 +60,15 @@ class Comment extends NavigationAbstract
 		$itemElement = $element->copy()->init('li');
 		$linkElement = $element->copy()->init('a');
 
-		/* query articles */
+		/* query comments */
 
-		$query = Db::forTablePrefix('comments')
+		$comments = $commentModel
+			->query()
 			->whereLanguageIs($this->_registry->get('language'))
 			->where('status', 1)
-			->limit($this->_optionArray['limit']);
-		$comments = $this->_optionArray['order'] === 'asc' ? $query->orderByAsc('rank')->findMany() : $query->orderByDesc('rank')->findMany();
+			->orderBySetting($this->_optionArray['orderColumn'])
+			->limit($this->_optionArray['limit'])
+			->findMany();
 
 		/* collect item output */
 

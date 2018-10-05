@@ -2,19 +2,19 @@
 	[
 		{},
 		{},
-		"<ul class=\"rs-list-categories\"><li><a href=\"category-one\">Category One</a></li><li><a href=\"category-two\">Category Two</a></li></ul>"
+		"<ul class=\"rs-list-categories\"><li><a href=\"category-one\">Category One</a><ul class=\"rs-list-children\"><li><a href=\"category-one/category-three\">Category Three</a></li></ul></li><li><a href=\"category-two\">Category Two</a></li></ul>"
 	],
 	[
 		{
 			"categoryId": 1
 		},
 		{},
-		"<ul class=\"rs-list-categories\"><li class=\"rs-item-active\"><a href=\"category-one\">Category One</a></li><li><a href=\"category-two\">Category Two</a></li></ul>"
+		"<ul class=\"rs-list-categories\"><li class=\"rs-item-active\"><a href=\"category-one\">Category One</a><ul class=\"rs-list-children\"><li><a href=\"category-one/category-three\">Category Three</a></li></ul></li><li><a href=\"category-two\">Category Two</a></li></ul>"
 	],
 	[
 		{},
 		{
-			"parent": 1
+			"parentId": 1
 		},
 		"<ul class=\"rs-list-categories\"><li><a href=\"category-one/category-three\">Category Three</a></li></ul>"
 	],
@@ -28,9 +28,7 @@
 				"list": "rs-list-sidebar",
 				"children": "rs-list-children",
 				"active": "rs-item-active"
-			},
-			"parent": 0,
-			"children": 1
+			}
 		},
 		"<ul class=\"rs-list-sidebar\"><li><a href=\"category-one\">Category One</a><ul class=\"rs-list-children\"><li class=\"rs-item-active\"><a href=\"category-one/category-three\">Category Three</a></li></ul></li><li><a href=\"category-two\">Category Two</a></li></ul>"
 	]

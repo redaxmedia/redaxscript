@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Navigation;
 
-use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Model;
 use Redaxscript\Module;
@@ -31,7 +30,8 @@ class Article extends NavigationAbstract
 		[
 			'list' => 'rs-list-articles',
 			'active' => 'rs-item-active'
-		]
+		],
+		'orderColumn' => 'rank'
 	];
 
 	/**
@@ -63,11 +63,13 @@ class Article extends NavigationAbstract
 
 		/* query articles */
 
-		$query = Db::forTablePrefix('articles')
+		$articles = $articleModel
+			->query()
 			->whereLanguageIs($this->_registry->get('language'))
 			->where('status', 1)
-			->limit($this->_optionArray['limit']);
-		$articles = $this->_optionArray['order'] === 'asc' ? $query->orderByAsc('rank')->findMany() : $query->orderByDesc('rank')->findMany();
+			->orderBySetting($this->_optionArray['orderColumn'])
+			->limit($this->_optionArray['limit'])
+			->findMany();
 
 		/* collect item output */
 

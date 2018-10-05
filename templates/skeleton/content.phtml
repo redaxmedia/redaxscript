@@ -5,6 +5,9 @@
 <article id="content" class="rs-content">
 	<?php echo Tag::breadcrumb(); ?>
 	<?php $content = Tag::content(); ?>
-	<?php echo $content ? $content : Tag::article(Helper::getRegistry('categoryId'), Helper::getRegistry('articleId')) . Tag::partial('default/comment.phtml'); ?>
+	<?php echo $content ? $content : Tag::partial(
+	[
+		'default/article.phtml',
+		'default/comment.phtml'
+	]); ?>
 </article>
-

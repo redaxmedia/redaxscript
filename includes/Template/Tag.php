@@ -268,23 +268,46 @@ class Tag
 	 *
 	 * @since 4.0.0
 	 *
-	 * @param string $table name of the table
-	 * @param int $contentId identifier of the content
+	 * @param string $type type of the pagination
+	 * @param int $parentId identifier of the parent
 	 * @param array $optionArray options of the pagination
 	 *
 	 * @return string|null
 	 */
 
-	public static function pagination(string $table = null, int $contentId, array $optionArray = []) : ?string
+	public static function pagination(string $type = null, int $parentId, array $optionArray = []) : ?string
 	{
-		if ($table === 'articles')
+		$settingModel = new Model\Setting();
+		if ($settingModel->get('pagination'))
 		{
+			$categoryModel = new Model\Category();
 			$articleModel = new Model\Article();
-			$article = $articleModel->getById($contentId);
+			$commentModel = new Model\Comment();
+			$registry = Registry::getInstance();
+			$language = $registry->get('language');
+			$route = null;
+			$total = null;
+			$current = $registry->get('lastSubParameter') ? : 1;
+			if ($type === 'articles')
+			{
+				$articles = $articleModel->getByCategoryAndLanguage($parentId, $language);
+				$route = $categoryModel->getRouteById($parentId);
+				$total = ceil($articles->count() / $settingModel->get('limit'));
+			}
+			if ($type === 'comments')
+			{
+				$comments = $commentModel->getByArticleAndLanguage($parentId, $language);
+				$route = $articleModel->getRouteById($parentId);
+				$total = ceil($comments->count() / $settingModel->get('limit'));
+			}
+			if ($route && $current && $total)
+			{
+				$pagination = new View\Helper\Pagination(Registry::getInstance(), Language::getInstance());
+				$pagination->init($optionArray);
+				return $pagination->render($route, $current, $total);
+			}
 		}
-		$pagination = new View\Helper\Pagination(Registry::getInstance(), Language::getInstance());
-		$pagination->init($optionArray);
-		return $pagination->render();
+		return null;
 	}
 
 	/**

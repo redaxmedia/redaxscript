@@ -243,16 +243,16 @@ class DbTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testOrderGlobal
+	 * testOrderBySetting
 	 *
-	 * @since 2.2.0
+	 * @since 4.0.0
 	 */
 
-	public function testOrderGlobal()
+	public function testOrderBySetting()
 	{
 		/* actual */
 
-		$actual = Db::forTablePrefix('categories')->orderGlobal('rank')->findOne()->alias;
+		$actual = Db::forTablePrefix('categories')->orderBySetting('rank')->findOne()->alias;
 
 		/* compare */
 
@@ -260,16 +260,16 @@ class DbTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testLimitGlobal
+	 * testLimitBySetting
 	 *
-	 * @since 2.2.0
+	 * @since 4.0.0
 	 */
 
-	public function testLimitGlobal()
+	public function testLimitBySetting()
 	{
 		/* actual */
 
-		$actual = Db::forTablePrefix('categories')->limitGlobal()->findOne()->alias;
+		$actual = Db::forTablePrefix('categories')->limitBySetting()->findOne()->alias;
 
 		/* compare */
 

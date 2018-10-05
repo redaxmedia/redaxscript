@@ -243,7 +243,7 @@ class Db extends ORM
 	}
 
 	/**
-	 * order according to global setting
+	 * order by global setting
 	 *
 	 * @since 3.3.0
 	 *
@@ -252,23 +252,26 @@ class Db extends ORM
 	 * @return self
 	 */
 
-	public function orderGlobal(string $column = null) : self
+	public function orderBySetting(string $column = null) : self
 	{
 		$order = self::forTablePrefix('settings')->where('name', 'order')->findOne()->value;
 		return $this->_addOrderBy($column, $order);
 	}
 
 	/**
-	 * limit according to global setting
+	 * limit by global setting
 	 *
 	 * @since 3.3.0
+	 *
+	 * @param int $step step of the offset
 	 *
 	 * @return self
 	 */
 
-	public function limitGlobal() : self
+	public function limitBySetting(int $step = null) : self
 	{
-		$this->_limit = self::forTablePrefix('settings')->where('name', 'limit')->findOne()->value;
+		$limit = self::forTablePrefix('settings')->where('name', 'limit')->findOne()->value;
+		$this->_limit = $step ? $step * $limit . ', ' . $limit : $limit;
 		return $this;
 	}
 }

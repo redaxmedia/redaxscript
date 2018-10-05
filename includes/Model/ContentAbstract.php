@@ -18,59 +18,58 @@ abstract class ContentAbstract extends ModelAbstract
 	 *
 	 * @since 4.0.0
 	 *
-	 * @param string $order name of the column to order
+	 * @param string $orderColumn name of the column to order
 	 *
 	 * @return object|null
 	 */
 
-	public function getAllByOrder(string $order = null) : ?object
+	public function getAllByOrder(string $orderColumn = null) : ?object
 	{
-		$items = $this->query()->orderGlobal($order)->findMany();
-		return $items ? $items : null;
+		return $this->query()->orderBySetting($orderColumn)->findMany() ? : null;
 	}
 
 	/**
-	 * get the content by language
+	 * get the content by language and order
 	 *
 	 * @since 4.0.0
 	 *
 	 * @param string $language
-	 * @param string $order name of the column to order
+	 * @param string $orderColumn name of the column to order
 	 *
 	 * @return object|null
 	 */
 
-	public function getByLanguageAndOrder(string $language = null, string $order = null) : ?object
+	public function getByLanguageAndOrder(string $language = null, string $orderColumn = null) : ?object
 	{
-		$items = $this
+		return $this
 			->query()
 			->whereLanguageIs($language)
 			->where('status', 1)
-			->orderGlobal($order)
-			->findMany();
-		return $items ? $items : null;
+			->orderBySetting($orderColumn)
+			->findMany() ? : null;
 	}
 
 	/**
-	 * get the content by id and language
+	 * get the content by id and language and order
 	 *
 	 * @since 4.0.0
 	 *
 	 * @param int $id
 	 * @param string $language
+	 * @param string $orderColumn name of the column to order
 	 *
 	 * @return object|null
 	 */
 
-	public function getByIdAndLanguage(int $id = null, string $language = null) : ?object
+	public function getByIdAndLanguageAndOrder(int $id = null, string $language = null, string $orderColumn = null) : ?object
 	{
-		$items = $this
+		return $this
 			->query()
 			->whereIdIs($id)
 			->whereLanguageIs($language)
 			->where('status', 1)
-			->findMany();
-		return $items ? $items : null;
+			->orderBySetting($orderColumn)
+			->findMany() ? : null;
 	}
 
 	/**

@@ -86,7 +86,7 @@ class HashTest extends TestCaseAbstract
 
 		/* expect and actual */
 
-		$expect = defined('PASSWORD_ARGON2I') ?  $hashArray['argon2i'][0] : $hashArray['default'][0];
+		$expect = defined('PASSWORD_ARGON2I') ? $hashArray['argon2i'][0] : $hashArray['default'][0];
 		$actual = $hash->getHash();
 
 		/* compare */

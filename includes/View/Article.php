@@ -57,7 +57,8 @@ class Article extends ViewAbstract
 		[
 			'title' => 'rs-title-content',
 			'box' => 'rs-box-content'
-		]
+		],
+		'orderColumn' => 'rank'
 	];
 
 	/**
@@ -101,10 +102,7 @@ class Article extends ViewAbstract
 
 	public function init(array $optionArray = [])
 	{
-		if (is_array($optionArray))
-		{
-			$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
-		}
+		$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
 	}
 
 	/**
@@ -127,6 +125,7 @@ class Article extends ViewAbstract
 		$output = Module\Hook::trigger('articleStart');
 		$accessValidator = new Validator\Access();
 		$articleModel = new Model\Article();
+		$articles = null;
 		$contentParser = new Content\Parser($this->_registry, $this->_request, $this->_language, $this->_config);
 		$byline = new Helper\Byline($this->_registry, $this->_language);
 		$byline->init();
@@ -136,6 +135,7 @@ class Article extends ViewAbstract
 		$loggedIn = $this->_registry->get('loggedIn');
 		$token = $this->_registry->get('token');
 		$firstParameter = $this->_registry->get('firstParameter');
+		$lastSubParameter = $this->_registry->get('lastSubParameter');
 		$lastTable = $this->_registry->get('lastTable');
 		$parameterRoute = $this->_registry->get('parameterRoute');
 		$myGroups = $this->_registry->get('myGroups');
@@ -159,17 +159,13 @@ class Article extends ViewAbstract
 
 		/* query articles */
 
-		if ($articleId)
+		if ($categoryId)
 		{
-			$articles = $articleModel->getByIdAndLanguage($articleId, $language);
+			$articles = $articleModel->getByCategoryAndLanguageAndOrderAndStep($categoryId, $language, $this->_optionArray['orderColumn'], $lastSubParameter - 1);
 		}
-		else if ($categoryId)
+		else if ($articleId)
 		{
-			$articles = $articleModel->getByCategoryAndLanguage($categoryId, $language);
-		}
-		else
-		{
-			$articles = null;
+			$articles = $articleModel->getByIdAndLanguageAndOrder($articleId, $language, $this->_optionArray['orderColumn']);
 		}
 
 		/* process articles */

@@ -33,7 +33,6 @@ class Extra extends ContentAbstract
 
 	public function getByAlias(string $extraAlias = null) : ?object
 	{
-		$extra = $this->query()->where('alias', $extraAlias)->findOne();
-		return $extra ? $extra : null;
+		return $this->query()->where('alias', $extraAlias)->findOne() ? : null;
 	}
 }

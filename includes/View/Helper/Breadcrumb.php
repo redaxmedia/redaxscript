@@ -69,10 +69,7 @@ class Breadcrumb extends ViewAbstract
 	public function init(array $optionArray = [])
 	{
 		$settingModel = new Model\Setting();
-		if (is_array($optionArray))
-		{
-			$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
-		}
+		$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
 		if (!$this->_optionArray['divider'])
 		{
 			$this->_optionArray['divider'] = $settingModel->get('divider');

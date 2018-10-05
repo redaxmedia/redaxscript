@@ -2,7 +2,6 @@
 namespace Redaxscript\Navigation;
 
 use Redaxscript\Language;
-use Redaxscript\Model;
 use Redaxscript\Registry;
 
 /**
@@ -73,13 +72,7 @@ abstract class NavigationAbstract implements NavigationInterface
 
 	public function init(array $optionArray = [])
 	{
-		$settingModel = new Model\Setting();
-		$this->_optionArray['limit'] = $settingModel->get('limit');
-		$this->_optionArray['order'] = $settingModel->get('order');
-		if (is_array($optionArray))
-		{
-			$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
-		}
+		$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
 	}
 
 	/**

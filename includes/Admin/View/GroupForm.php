@@ -108,8 +108,8 @@ class GroupForm extends ViewAbstract
 			])
 			->append('</li>');
 		if (!$group->id)
-        {
-        	$formElement
+		{
+			$formElement
 				->append('<li>')
 				->label($this->_language->get('alias'),
 				[

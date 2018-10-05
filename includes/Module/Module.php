@@ -89,12 +89,7 @@ class Module
 
 	public function init(array $moduleArray = [])
 	{
-		/* merge module setup */
-
-		if (is_array($moduleArray))
-		{
-			static::$_moduleArray = array_merge(static::$_moduleArray, $moduleArray);
-		}
+		static::$_moduleArray = array_merge(static::$_moduleArray, $moduleArray);
 
 		/* load the language */
 

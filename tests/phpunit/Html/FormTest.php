@@ -270,7 +270,7 @@ class FormTest extends TestCaseAbstract
 		/* setup */
 
 		$form = new Html\Form($this->_registry, $this->_language);
-		$form->init(null,
+		$form->init([],
 		[
 			'captcha' => true
 		]);

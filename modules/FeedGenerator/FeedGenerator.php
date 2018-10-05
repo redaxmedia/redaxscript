@@ -71,7 +71,7 @@ class FeedGenerator extends Module\Module
 			->whereLanguageIs($this->_registry->get('language'))
 			->whereNull('access')
 			->where('status', 1)
-			->orderGlobal('rank')
+			->orderBySetting('rank')
 			->findMany();
 
 		/* write xml */

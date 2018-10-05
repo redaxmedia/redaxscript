@@ -57,7 +57,8 @@ class Extra extends ViewAbstract
 		[
 			'title' => 'rs-title-extra',
 			'box' => 'rs-box-extra'
-		]
+		],
+		'orderColumn' => 'rank'
 	];
 
 	/**
@@ -101,10 +102,7 @@ class Extra extends ViewAbstract
 
 	public function init(array $optionArray = [])
 	{
-		if (is_array($optionArray))
-		{
-			$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
-		}
+		$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
 	}
 
 	/**
@@ -126,6 +124,7 @@ class Extra extends ViewAbstract
 		$output = Module\Hook::trigger('extraStart');
 		$accessValidator = new Validator\Access();
 		$extraModel = new Model\Extra();
+		$extras = null;
 		$contentParser = new Content\Parser($this->_registry, $this->_request, $this->_language, $this->_config);
 		$adminDock = new Admin\View\Helper\Dock($this->_registry, $this->_language);
 		$adminDock->init();
@@ -153,7 +152,14 @@ class Extra extends ViewAbstract
 
 		/* query extras */
 
-		$extras = $extraId ? $extraModel->getByIdAndLanguage($extraId, $language) : $extraModel->getByLanguageAndOrder($language, 'rank');
+		if ($extraId)
+		{
+			$extras = $extraModel->getByIdAndLanguageAndOrder($extraId, $language, $this->_optionArray['orderColumn']);
+		}
+		else
+		{
+			$extras = $extraModel->getByLanguageAndOrder($language, $this->_optionArray['orderColumn']);
+		}
 
 		/* process extras */
 

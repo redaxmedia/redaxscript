@@ -34,12 +34,35 @@ class Comment extends ContentAbstract
 
 	public function getByArticleAndLanguage(int $articleId = null, string $language = null) : ?object
 	{
-		$comments = $this
+		return $this
 			->query()
 			->where('article', $articleId)
 			->whereLanguageIs($language)
-			->findMany();
-		return $comments ? $comments : null;
+			->findMany() ? : null;
+	}
+
+	/**
+	 * get the articles by category and language and order and step
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param int $articleId identifier of the article
+	 * @param string $language
+	 * @param string $orderColumn
+	 * @param int $limitStep
+	 *
+	 * @return object|null
+	 */
+
+	public function getByArticleAndLanguageAndOrderAndStep(int $articleId = null, string $language = null, string $orderColumn = null, int $limitStep = null) : ?object
+	{
+		return $this
+			->query()
+			->where('article', $articleId)
+			->whereLanguageIs($language)
+			->orderBySetting($orderColumn)
+			->limitBySetting($limitStep)
+			->findMany() ? : null;
 	}
 
 	/**

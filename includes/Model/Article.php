@@ -33,8 +33,7 @@ class Article extends ContentAbstract
 
 	public function getByAlias(string $articleAlias = null) : ?object
 	{
-		$article = $this->query()->where('alias', $articleAlias)->findOne();
-		return $article ? $article : null;
+		return $this->query()->where('alias', $articleAlias)->findOne() ? : null;
 	}
 
 	/**
@@ -50,12 +49,35 @@ class Article extends ContentAbstract
 
 	public function getByCategoryAndLanguage(int $categoryId = null, string $language = null) : ?object
 	{
-		$articles = $this
+		return $this
 			->query()
 			->where('category', $categoryId)
 			->whereLanguageIs($language)
-			->findMany();
-		return $articles ? $articles : null;
+			->findMany() ? : null;
+	}
+
+	/**
+	 * get the articles by category and language and order and step
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param int $categoryId identifier of the category
+	 * @param string $language
+	 * @param string $orderColumn
+	 * @param int $limitStep
+	 *
+	 * @return object|null
+	 */
+
+	public function getByCategoryAndLanguageAndOrderAndStep(int $categoryId = null, string $language = null, string $orderColumn = null, int $limitStep = null) : ?object
+	{
+		return $this
+			->query()
+			->where('category', $categoryId)
+			->whereLanguageIs($language)
+			->orderBySetting($orderColumn)
+			->limitBySetting($limitStep)
+			->findMany() ? : null;
 	}
 
 	/**

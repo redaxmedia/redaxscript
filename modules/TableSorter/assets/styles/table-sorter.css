@@ -27,7 +27,7 @@
 
 	&:before
 	{
-		@extend %rs-admin-icon-reorder;
+		@extend %rs-admin-icon-drag-vertical;
 		top: 50%;
 		transform: translateY(-50%);
 	}

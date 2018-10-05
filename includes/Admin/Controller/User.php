@@ -175,7 +175,7 @@ class User extends ControllerAbstract
 			$validateArray[] = $this->_language->get('name_empty');
 		}
 		if (!$postArray['id'])
-        {
+		{
 			if (!$postArray['user'])
 			{
 				$validateArray[] = $this->_language->get('user_empty');

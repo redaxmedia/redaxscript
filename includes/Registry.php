@@ -31,10 +31,7 @@ class Registry extends Singleton
 
 	public function init(array $registryArray = [])
 	{
-		if (is_array($registryArray))
-		{
-			self::$_registryArray = array_merge(self::$_registryArray, $registryArray);
-		}
+		self::$_registryArray = array_merge(self::$_registryArray, $registryArray);
 	}
 
 	/**

@@ -47,119 +47,119 @@
 	font-weight: normal;
 }
 
-%rs-admin-icon-reorder
+%rs-admin-icon-settings
 {
 	content: '\f106';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-settings
+%rs-admin-icon-visibility-off
 {
 	content: '\f107';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-visibility-off
+%rs-admin-icon-error
 {
 	content: '\f108';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-error
+%rs-admin-icon-warning
 {
 	content: '\f109';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-warning
+%rs-admin-icon-import-contacts
 {
 	content: '\f10a';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-import-contacts
+%rs-admin-icon-vpn-key
 {
 	content: '\f10b';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-vpn-key
+%rs-admin-icon-add
 {
 	content: '\f10c';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-add
+%rs-admin-icon-clear
 {
 	content: '\f10d';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-clear
+%rs-admin-icon-create
 {
 	content: '\f10e';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-create
+%rs-admin-icon-remove
 {
 	content: '\f10f';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-remove
+%rs-admin-icon-chevron-right
 {
 	content: '\f110';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-chevron-right
+%rs-admin-icon-expand-less
 {
 	content: '\f111';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-expand-less
+%rs-admin-icon-expand-more
 {
 	content: '\f112';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-expand-more
+%rs-admin-icon-subdirectory-arrow-right
 {
 	content: '\f113';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-subdirectory-arrow-right
+%rs-admin-icon-notifications
 {
 	content: '\f114';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-notifications
+%rs-admin-icon-person
 {
 	content: '\f115';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-person
+%rs-admin-icon-drag-vertical
 {
 	content: '\f116';
 	font-family: var(--rs-admin-font-icon);

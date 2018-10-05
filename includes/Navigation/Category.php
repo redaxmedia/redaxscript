@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Navigation;
 
-use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Model;
 use Redaxscript\Module;
@@ -33,8 +32,8 @@ class Category extends NavigationAbstract
 			'children' => 'rs-list-children',
 			'active' => 'rs-item-active'
 		],
-		'parent' => 0,
-		'children' => 0
+		'orderColumn' => 'rank',
+		'parentId' => 0
 	];
 
 	/**
@@ -48,14 +47,17 @@ class Category extends NavigationAbstract
 	public function render() : string
 	{
 		$output = Module\Hook::trigger('navigationCategoryStart');
+		$categoryModel = new Model\Category();
 
-		/* query articles */
+		/* query categories */
 
-		$query = Db::forTablePrefix('categories')
+		$categories = $categoryModel
+			->query()
 			->whereLanguageIs($this->_registry->get('language'))
 			->where('status', 1)
-			->limit($this->_optionArray['limit']);
-		$categories = $this->_optionArray['order'] === 'asc' ? $query->orderByAsc('rank')->findMany() : $query->orderByDesc('rank')->findMany();
+			->orderBySetting($this->_optionArray['orderColumn'])
+			->limit($this->_optionArray['limit'])
+			->findMany();
 
 		/* collect output */
 
@@ -98,7 +100,7 @@ class Category extends NavigationAbstract
 
 		foreach ($categories as $value)
 		{
-			if ($accessValidator->validate($value->access, $this->_registry->get('myGroups')) && $optionArray['parent'] === (int)$value->parent)
+			if ($accessValidator->validate($value->access, $this->_registry->get('myGroups')) && $optionArray['parentId'] === (int)$value->parent)
 			{
 				$outputItem .= $itemElement
 					->copy()
@@ -111,16 +113,15 @@ class Category extends NavigationAbstract
 						])
 						->text($value->title)
 					)
-					->append($optionArray['children'] > 0 ? $this->renderList($categories,
+					->append($this->renderList($categories,
 					[
 						'className' =>
 						[
 							'list' => $value->parent ? $optionArray['className']['list'] : $optionArray['className']['children'],
 							'active' => $optionArray['className']['active'],
 						],
-						'parent' => (int)$value->id,
-						'children' => $optionArray['children']
-					]) : null);
+						'parentId' => (int)$value->id
+					]));
 			}
 		}
 

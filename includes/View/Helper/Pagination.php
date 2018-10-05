@@ -50,10 +50,7 @@ class Pagination extends ViewAbstract
 
 	public function init(array $optionArray = [])
 	{
-		if (is_array($optionArray))
-		{
-			$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
-		};
+		$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
 	}
 
 	/**
@@ -69,11 +66,11 @@ class Pagination extends ViewAbstract
 	 * @return string
 	 */
 
-	public function render(string $route = null, int $current = 1, int $total = 1, int $range = 0) : string
+	public function render(string $route = null, int $current = null, int $total = null, int $range = 0) : string
 	{
 		$output = Module\Hook::trigger('paginationStart');
 		$outputItem = null;
-		$numberArray = $this->_getNumberArray($current, $total, $range);
+		$numberArray = $current && $total ? $this->_getNumberArray($current, $total, $range) : [];
 		$parameterRoute = $this->_registry->get('parameterRoute');
 
 		/* html element */
@@ -135,7 +132,7 @@ class Pagination extends ViewAbstract
 
 		/* next and last */
 
-		if ($current < $total)
+		if ($current && $current < $total)
 		{
 			$outputItem .= $itemElement
 				->copy()
@@ -183,7 +180,7 @@ class Pagination extends ViewAbstract
 	 * @return array
 	 */
 
-	public function _getNumberArray(int $current = 1, int $total = 1, int $range = 0) : array
+	public function _getNumberArray(int $current = null, int $total = null, int $range = 0) : array
 	{
 		$start = $current - $range;
 		$end = $current + $range;

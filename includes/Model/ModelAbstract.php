@@ -35,8 +35,7 @@ abstract class ModelAbstract
 
 	public function getById(int $id = null) : ?object
 	{
-		$item = $this->query()->whereIdIs($id)->findOne();
-		return $item ? $item : null;
+		return $this->query()->whereIdIs($id)->findOne() ? : null;
 	}
 
 	/**
@@ -49,8 +48,7 @@ abstract class ModelAbstract
 
 	public function getAll() : ?object
 	{
-		$items = $this->query()->findMany();
-		return $items ? $items : null;
+		return $this->query()->findMany() ? : null;
 	}
 
 	/**

@@ -314,22 +314,16 @@ class Form extends HtmlAbstract
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param array|null $attributeArray attributes of the form
+	 * @param array $attributeArray attributes of the form
 	 * @param array $optionArray options of the form
 	 *
 	 * @return self
 	 */
 
-	public function init(?array $attributeArray = [], array $optionArray = []) : self
+	public function init(array $attributeArray = [], array $optionArray = []) : self
 	{
-		if (is_array($attributeArray))
-		{
-			$this->_attributeArray = array_replace_recursive($this->_attributeArray, $attributeArray);
-		}
-		if (is_array($optionArray))
-		{
-			$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
-		}
+		$this->_attributeArray = array_replace_recursive($this->_attributeArray, $attributeArray);
+		$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
 
 		/* captcha */
 
@@ -617,21 +611,18 @@ class Form extends HtmlAbstract
 
 		/* process values */
 
-		if (is_array($optionArray))
+		foreach ($optionArray as $key => $value)
 		{
-			foreach ($optionArray as $key => $value)
+			if ($key || $value)
 			{
-				if ($key || $value)
-				{
-					$output .= $optionElement
-						->copy()
-						->attr(
-						[
-							'selected' => is_array($selectArray) && in_array($value, $selectArray) ? 'selected' : null,
-							'value' => $value
-						])
-						->text(is_string($key) ? $key : $value);
-				}
+				$output .= $optionElement
+					->copy()
+					->attr(
+					[
+						'selected' => is_array($selectArray) && in_array($value, $selectArray) ? 'selected' : null,
+						'value' => $value
+					])
+					->text(is_string($key) ? $key : $value);
 			}
 		}
 		return $output;
