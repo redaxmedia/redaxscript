@@ -4,6 +4,8 @@ namespace Redaxscript\Tests\Template;
 use org\bovigo\vfs\vfsStream as Stream;
 use org\bovigo\vfs\vfsStreamFile as StreamFile;
 use org\bovigo\vfs\vfsStreamWrapper as StreamWrapper;
+use Redaxscript\Db;
+use Redaxscript\Model;
 use Redaxscript\Template;
 use Redaxscript\Tests\TestCaseAbstract;
 
@@ -40,10 +42,52 @@ class TagTest extends TestCaseAbstract
 		$installer = $this->installerFactory();
 		$installer->init();
 		$installer->rawCreate();
-		$installer->insertCategories($optionArray);
-		$installer->insertArticles($optionArray);
-		$installer->insertComments($optionArray);
 		$installer->insertSettings($optionArray);
+		Db::forTablePrefix('categories')
+			->create()
+			->set(
+			[
+				'title' => 'Category One',
+				'alias' => 'category-one'
+			])
+			->save();
+		Db::forTablePrefix('articles')
+			->create()
+			->set(
+			[
+				'title' => 'Article One',
+				'alias' => 'article-one',
+				'category' => 1,
+				'comments' => 1
+			])
+			->save();
+		Db::forTablePrefix('articles')
+			->create()
+			->set(
+			[
+				'title' => 'Article Two',
+				'alias' => 'article-two',
+				'category' => 1
+			])
+			->save();
+		Db::forTablePrefix('comments')
+			->create()
+			->set(
+			[
+				'author' => 'Comment One',
+				'text' => 'Comment One',
+				'article' => 1
+			])
+			->save();
+		Db::forTablePrefix('comments')
+			->create()
+			->set(
+			[
+				'author' => 'Comment Two',
+				'text' => 'Comment Two',
+				'article' => 1
+			])
+			->save();
 	}
 
 	/**
@@ -207,6 +251,11 @@ class TagTest extends TestCaseAbstract
 
 	public function testPaginationArticles()
 	{
+		/* setup */
+
+		$settingModel = new Model\Setting();
+		$settingModel->set('limit', 1);
+
 		/* actual */
 
 		$actual = Template\Tag::pagination('articles', 1);
@@ -224,6 +273,11 @@ class TagTest extends TestCaseAbstract
 
 	public function testPaginationComments()
 	{
+		/* setup */
+
+		$settingModel = new Model\Setting();
+		$settingModel->set('limit', 1);
+
 		/* actual */
 
 		$actual = Template\Tag::pagination('comments', 1);

@@ -19,9 +19,9 @@
 	&:before
 	{
 		color: gray(185);
-		font-size: 1.5em;
+		font-size: 1.75em;
 		position: absolute;
-		right: 0.625em;
+		right: 0.5em;
 		text-indent: 0;
 	}
 

@@ -194,14 +194,12 @@ class Auth
 
 	public function login(int $userId = null) : int
 	{
-		$user = Db::forTablePrefix('users')
-			->whereIdIs($userId)
-			->where('status', 1)
-			->findOne();
+		$userModel = new Model\User();
+		$user = $userModel->getById($userId);
 
 		/* handle user */
 
-		if ($user->user && $user->password)
+		if ($user->user && $user->password && $user->status)
 		{
 			$groupArray = (array)json_decode($user->groups);
 			if ($groupArray)

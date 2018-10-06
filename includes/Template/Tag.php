@@ -290,17 +290,15 @@ class Tag
 			$current = $registry->get('lastSubParameter') ? : 1;
 			if ($type === 'articles')
 			{
-				$articles = $articleModel->getByCategoryAndLanguage($parentId, $language);
 				$route = $categoryModel->getRouteById($parentId);
-				$total = ceil($articles->count() / $settingModel->get('limit'));
+				$total = ceil($articleModel->countByCategoryAndLanguage($parentId, $language) / $settingModel->get('limit'));
 			}
 			if ($type === 'comments')
 			{
-				$comments = $commentModel->getByArticleAndLanguage($parentId, $language);
 				$route = $articleModel->getRouteById($parentId);
-				$total = ceil($comments->count() / $settingModel->get('limit'));
+				$total = ceil($commentModel->countByArticleAndLanguage($parentId, $language)  / $settingModel->get('limit'));
 			}
-			if ($route && $current && $total)
+			if ($total > 1)
 			{
 				$pagination = new View\Helper\Pagination(Registry::getInstance(), Language::getInstance());
 				$pagination->init($optionArray);

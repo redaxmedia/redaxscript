@@ -22,23 +22,27 @@ class Comment extends ContentAbstract
 	protected $_table = 'comments';
 
 	/**
-	 * get the comments by article and language
+	 * count the comments by article and language
 	 *
 	 * @since 4.0.0
 	 *
 	 * @param int $articleId identifier of the article
 	 * @param string $language
 	 *
-	 * @return object|null
+	 * @return int|null
 	 */
 
-	public function getByArticleAndLanguage(int $articleId = null, string $language = null) : ?object
+	public function countByArticleAndLanguage(int $articleId = null, string $language = null) : ?int
 	{
 		return $this
 			->query()
-			->where('article', $articleId)
+			->where(
+			[
+				'article' => $articleId,
+				'status' => 1
+			])
 			->whereLanguageIs($language)
-			->findMany() ? : null;
+			->count() ? : null;
 	}
 
 	/**
@@ -58,7 +62,11 @@ class Comment extends ContentAbstract
 	{
 		return $this
 			->query()
-			->where('article', $articleId)
+			->where(
+			[
+				'article' => $articleId,
+				'status' => 1
+			])
 			->whereLanguageIs($language)
 			->orderBySetting($orderColumn)
 			->limitBySetting($limitStep)

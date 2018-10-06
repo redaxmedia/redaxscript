@@ -28,7 +28,6 @@
 
 	& .rs-list-children
 	{
-		display: none;
 		padding-left: 0.5em;
 	}
 
@@ -37,11 +36,6 @@
 		& > a
 		{
 			font-weight: bold;
-		}
-
-		& .rs-list-children
-		{
-			display: block;
 		}
 	}
 }

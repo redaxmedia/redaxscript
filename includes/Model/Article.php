@@ -37,23 +37,27 @@ class Article extends ContentAbstract
 	}
 
 	/**
-	 * get the articles by category and language
+	 * count the articles by category and language
 	 *
 	 * @since 4.0.0
 	 *
 	 * @param int $categoryId identifier of the category
 	 * @param string $language
 	 *
-	 * @return object|null
+	 * @return int|null
 	 */
 
-	public function getByCategoryAndLanguage(int $categoryId = null, string $language = null) : ?object
+	public function countByCategoryAndLanguage(int $categoryId = null, string $language = null) : ?int
 	{
 		return $this
 			->query()
-			->where('category', $categoryId)
+			->where(
+			[
+				'category' => $categoryId,
+				'status' => 1
+			])
 			->whereLanguageIs($language)
-			->findMany() ? : null;
+			->count() ? : null;
 	}
 
 	/**
@@ -73,7 +77,11 @@ class Article extends ContentAbstract
 	{
 		return $this
 			->query()
-			->where('category', $categoryId)
+			->where(
+			[
+				'category' => $categoryId,
+				'status' => 1
+			])
 			->whereLanguageIs($language)
 			->orderBySetting($orderColumn)
 			->limitBySetting($limitStep)
