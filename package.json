@@ -1,7 +1,7 @@
 {
 	"name": "redaxscript",
 	"description": "A modern, ultra lightweight and rocket fast Content Management System",
-	"version": "4.0.0-alpha.2",
+	"version": "4.0.0-alpha.3",
 	"homepage": "https://redaxscript.com",
 	"license": "GPL-3.0",
 	"author":
@@ -43,7 +43,6 @@
 		"harmonize.css": "2.1.0",
 		"icomoon-free-npm": "0.0.0",
 		"load-grunt-tasks": "4.0.0",
-		"material-design-icons": "3.0.1",
 		"mdi-svg": "2.2.43",
 		"opn-cli": "3.1.0",
 		"postcss": "7.0.2",

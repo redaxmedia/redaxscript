@@ -95,7 +95,7 @@
 
 	&.rs-box-note:before
 	{
-		@extend %rs-icon-check-circle;
+		@extend %rs-icon-check-circle-outline;
 	}
 }
 
@@ -120,7 +120,7 @@
 
 	&.rs-box-note:before
 	{
-		@extend %rs-icon-info;
+		@extend %rs-icon-help-circle-outline;
 	}
 }
 
@@ -145,7 +145,7 @@
 
 	&.rs-box-note:before
 	{
-		@extend %rs-icon-warning;
+		@extend %rs-icon-alert-circle-outline;
 	}
 }
 
@@ -170,6 +170,6 @@
 
 	&.rs-box-note:before
 	{
-		@extend %rs-icon-error;
+		@extend %rs-icon-close-circle-outline;
 	}
 }

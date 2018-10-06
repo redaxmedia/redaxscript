@@ -74,7 +74,7 @@
 
 	&:before
 	{
-		@extend %rs-icon-person;
+		@extend %rs-icon-account;
 		font-size: 1.5em;
 		margin-left: -0.125em;
 		margin-right: 0.125em;

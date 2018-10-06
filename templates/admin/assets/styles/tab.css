@@ -71,7 +71,7 @@
 
 		&:after
 		{
-			@extend %rs-admin-icon-add;
+			@extend %rs-admin-icon-plus;
 			flex: 1;
 			font-size: 1.5rem;
 			text-align: right;
@@ -90,7 +90,7 @@
 
 		&:after
 		{
-			@extend %rs-admin-icon-remove;
+			@extend %rs-admin-icon-minus;
 		}
 	}
 }

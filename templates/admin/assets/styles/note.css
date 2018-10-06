@@ -95,7 +95,7 @@
 
 	&.rs-admin-box-note:before
 	{
-		@extend %rs-admin-icon-check-circle;
+		@extend %rs-admin-icon-check-circle-outline;
 	}
 }
 
@@ -121,7 +121,7 @@
 
 	&.rs-admin-box-note:before
 	{
-		@extend %rs-admin-icon-info;
+		@extend %rs-admin-icon-help-circle-outline;
 	}
 }
 
@@ -147,7 +147,7 @@
 
 	&.rs-admin-box-note:before
 	{
-		@extend %rs-admin-icon-warning;
+		@extend %rs-admin-icon-alert-circle-outline;
 	}
 }
 
@@ -173,6 +173,6 @@
 
 	&.rs-admin-box-note:before
 	{
-		@extend %rs-admin-icon-error;
+		@extend %rs-admin-icon-close-circle-outline;
 	}
 }

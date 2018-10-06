@@ -9,87 +9,87 @@
 @font-face
 {
 	font-family: var(--rs-font-icon);
-	src: url('../../../../templates/default/dist/fonts/icon.woff2') format('woff2'), url('../../../../templates/default/dist/fonts/icon.woff') format('woff');
+	src: url('../../../../templates/default/dist/fonts/icon.woff2') format('woff2');
 }
 
-%rs-icon-check-circle
+%rs-icon-account
 {
 	content: '\f101';
 	font-family: var(--rs-font-icon);
 	font-weight: normal;
 }
 
-%rs-icon-info
+%rs-icon-alert-circle-outline
 {
 	content: '\f102';
 	font-family: var(--rs-font-icon);
 	font-weight: normal;
 }
 
-%rs-icon-search
+%rs-icon-check-circle-outline
 {
 	content: '\f103';
 	font-family: var(--rs-font-icon);
 	font-weight: normal;
 }
 
-%rs-icon-error
+%rs-icon-chevron-left
 {
 	content: '\f104';
 	font-family: var(--rs-font-icon);
 	font-weight: normal;
 }
 
-%rs-icon-warning
+%rs-icon-chevron-right
 {
 	content: '\f105';
 	font-family: var(--rs-font-icon);
 	font-weight: normal;
 }
 
-%rs-icon-chevron-left
+%rs-icon-close-circle-outline
 {
 	content: '\f106';
 	font-family: var(--rs-font-icon);
 	font-weight: normal;
 }
 
-%rs-icon-chevron-right
+%rs-icon-help-circle-outline
 {
 	content: '\f107';
 	font-family: var(--rs-font-icon);
 	font-weight: normal;
 }
 
-%rs-icon-first-page
+%rs-icon-magnify
 {
 	content: '\f108';
 	font-family: var(--rs-font-icon);
 	font-weight: normal;
 }
 
-%rs-icon-last-page
+%rs-icon-minus
 {
 	content: '\f109';
 	font-family: var(--rs-font-icon);
 	font-weight: normal;
 }
 
-%rs-icon-add
+%rs-icon-page-first
 {
 	content: '\f10a';
 	font-family: var(--rs-font-icon);
 	font-weight: normal;
 }
 
-%rs-icon-remove
+%rs-icon-page-last
 {
 	content: '\f10b';
 	font-family: var(--rs-font-icon);
 	font-weight: normal;
 }
 
-%rs-icon-person
+%rs-icon-plus
 {
 	content: '\f10c';
 	font-family: var(--rs-font-icon);

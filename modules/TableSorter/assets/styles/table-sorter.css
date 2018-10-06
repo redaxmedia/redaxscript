@@ -2,6 +2,8 @@
  * @tableofcontents
  *
  * 1. table sorter
+ *    1.1 move
+ *    1.2 dragula
  */
 
 /** @section 1. table sorter */
@@ -27,7 +29,7 @@
 
 	&:before
 	{
-		@extend %rs-admin-icon-drag-vertical;
+		@extend %rs-icon-drag-vertical;
 		top: 50%;
 		transform: translateY(-50%);
 	}

@@ -68,7 +68,7 @@
 
 		&:after
 		{
-			@extend %rs-icon-add;
+			@extend %rs-icon-plus;
 			flex: 1;
 			font-size: 1.5rem;
 			text-align: right;
@@ -86,7 +86,7 @@
 
 		&:after
 		{
-			@extend %rs-icon-remove;
+			@extend %rs-icon-minus;
 		}
 	}
 }

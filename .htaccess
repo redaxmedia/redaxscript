@@ -28,7 +28,7 @@
 </ifmodule>
 <ifmodule mod_headers.c>
 	setenv mod_headers on
-	<filesmatch \.(css|ico|jpg|js|svg|png|webp|woff|woff2)$>
+	<filesmatch \.(css|ico|jpg|js|svg|png|webp|woff2)$>
 		header set cache-control max-age=604800
 	</filesmatch>
 </ifmodule>

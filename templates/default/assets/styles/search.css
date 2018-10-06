@@ -49,7 +49,7 @@
 
 	&:after
 	{
-		@extend %rs-icon-search;
+		@extend %rs-icon-magnify;
 		font-size: 1.25em;
 		left: 0;
 		position: absolute;

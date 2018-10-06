@@ -35,6 +35,14 @@ module.exports = () =>
 				'modules/SocialSharer/assets/styles/icon.css'
 			],
 			dest: 'modules/SocialSharer/assets/styles/_icon.css'
+		},
+		moduleTableSorter:
+		{
+			src:
+			[
+				'modules/TableSorter/assets/styles/icon.css'
+			],
+			dest: 'modules/TableSorter/assets/styles/_icon.css'
 		}
 	};
 

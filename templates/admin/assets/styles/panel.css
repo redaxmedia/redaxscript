@@ -65,7 +65,7 @@
 
 	& .rs-admin-label-panel-content:before
 	{
-		@extend %rs-admin-icon-import-contacts;
+		@extend %rs-admin-icon-book-open-variant;
 	}
 
 	& .rs-admin-label-panel-access:before
@@ -80,17 +80,17 @@
 
 	& .rs-admin-link-panel-profile:before
 	{
-		@extend %rs-admin-icon-person;
+		@extend %rs-admin-icon-account;
 	}
 
 	& .rs-admin-label-panel-notification:before
 	{
-		@extend %rs-admin-icon-notifications;
+		@extend %rs-admin-icon-bell;
 	}
 
 	& .rs-admin-link-panel-logout:before
 	{
-		@extend %rs-admin-icon-power-settings-new;
+		@extend %rs-admin-icon-power;
 	}
 
 	/* group */
@@ -117,7 +117,7 @@
 
 			&:after
 			{
-				@extend %rs-admin-icon-add;
+				@extend %rs-admin-icon-plus;
 				font-size: 1.5em;
 				left: 0;
 				position: absolute;
@@ -216,7 +216,7 @@
 
 		& .rs-admin-fn-status-panel:checked + .rs-admin-label-panel:after
 		{
-			@extend %rs-admin-icon-expand-more;
+			@extend %rs-admin-icon-chevron-down;
 		}
 	}
 }

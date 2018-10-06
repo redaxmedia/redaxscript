@@ -9,159 +9,131 @@
 @font-face
 {
 	font-family: var(--rs-admin-font-icon);
-	src: url('../../../../templates/admin/dist/fonts/icon.woff2') format('woff2'), url('../../../../templates/admin/dist/fonts/icon.woff') format('woff');
+	src: url('../../../../templates/admin/dist/fonts/icon.woff2') format('woff2');
 }
 
-%rs-admin-icon-check-circle
+%rs-admin-icon-account
 {
 	content: '\f101';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-delete
+%rs-admin-icon-alert-circle-outline
 {
 	content: '\f102';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-info
+%rs-admin-icon-bell
 {
 	content: '\f103';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-lock
+%rs-admin-icon-book-open-variant
 {
 	content: '\f104';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-power-settings-new
+%rs-admin-icon-check-circle-outline
 {
 	content: '\f105';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-settings
+%rs-admin-icon-chevron-down
 {
 	content: '\f106';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-visibility-off
+%rs-admin-icon-chevron-right
 {
 	content: '\f107';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-error
+%rs-admin-icon-close-circle-outline
 {
 	content: '\f108';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-warning
+%rs-admin-icon-delete
 {
 	content: '\f109';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-import-contacts
+%rs-admin-icon-eye-off
 {
 	content: '\f10a';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-vpn-key
+%rs-admin-icon-help-circle-outline
 {
 	content: '\f10b';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-add
+%rs-admin-icon-lock
 {
 	content: '\f10c';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-clear
+%rs-admin-icon-minus
 {
 	content: '\f10d';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-create
+%rs-admin-icon-pencil
 {
 	content: '\f10e';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-remove
+%rs-admin-icon-plus
 {
 	content: '\f10f';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-chevron-right
+%rs-admin-icon-power
 {
 	content: '\f110';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-expand-less
+%rs-admin-icon-settings
 {
 	content: '\f111';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }
 
-%rs-admin-icon-expand-more
-{
-	content: '\f112';
-	font-family: var(--rs-admin-font-icon);
-	font-weight: normal;
-}
-
 %rs-admin-icon-subdirectory-arrow-right
 {
-	content: '\f113';
-	font-family: var(--rs-admin-font-icon);
-	font-weight: normal;
-}
-
-%rs-admin-icon-notifications
-{
-	content: '\f114';
-	font-family: var(--rs-admin-font-icon);
-	font-weight: normal;
-}
-
-%rs-admin-icon-person
-{
-	content: '\f115';
-	font-family: var(--rs-admin-font-icon);
-	font-weight: normal;
-}
-
-%rs-admin-icon-drag-vertical
-{
-	content: '\f116';
+	content: '\f112';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: normal;
 }

@@ -55,7 +55,7 @@
 
 	&.rs-is-file:before
 	{
-		@extend %rs-icon-insert-drive-file;
+		@extend %rs-icon-file;
 	}
 }
 

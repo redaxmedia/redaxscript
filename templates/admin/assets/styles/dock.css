@@ -61,12 +61,12 @@
 
 		&.rs-admin-link-unpublish:before
 		{
-			@extend %rs-admin-icon-visibility-off;
+			@extend %rs-admin-icon-eye-off;
 		}
 
 		&.rs-admin-link-edit:before
 		{
-			@extend %rs-admin-icon-create;
+			@extend %rs-admin-icon-pencil;
 		}
 
 		&.rs-admin-link-delete:before

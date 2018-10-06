@@ -69,7 +69,7 @@
 
 	& .rs-item-first a:before
 	{
-		@extend %rs-icon-first-page;
+		@extend %rs-icon-page-first;
 	}
 
 	& .rs-item-previous a:before
@@ -84,7 +84,7 @@
 
 	& .rs-item-last a:before
 	{
-		@extend %rs-icon-last-page;
+		@extend %rs-icon-page-last;
 	}
 }
 

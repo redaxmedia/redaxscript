@@ -8,8 +8,8 @@
 
 @font-face
 {
-	font-family: var(--rs-font-icon-social-sharer);
-	src: url('../../../../modules/SocialSharer/dist/fonts/icon.woff2') format('woff2');
+	font-family: var(--rs-font-icon-table-sorter);
+	src: url('../../../../modules/TableSorter/dist/fonts/icon.woff2') format('woff2');
 }
 <% glyphs.forEach((value, index) =>
 {
@@ -17,7 +17,7 @@
 %rs-icon-<%=value%>
 {
 	content: '\<%=codepoints[index]%>';
-	font-family: var(--rs-font-icon-social-sharer);
+	font-family: var(--rs-font-icon-table-sorter);
 	font-weight: normal;
 }
 <%

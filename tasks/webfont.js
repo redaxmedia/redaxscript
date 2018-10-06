@@ -8,28 +8,24 @@ module.exports = grunt =>
 		{
 			src:
 			[
-				'node_modules/material-design-icons/action/svg/production/ic_check_circle_24px.svg',
-				'node_modules/material-design-icons/action/svg/production/ic_delete_24px.svg',
-				'node_modules/material-design-icons/action/svg/production/ic_info_24px.svg',
-				'node_modules/material-design-icons/action/svg/production/ic_lock_24px.svg',
-				'node_modules/material-design-icons/action/svg/production/ic_power_settings_new_24px.svg',
-				'node_modules/material-design-icons/action/svg/production/ic_settings_24px.svg',
-				'node_modules/material-design-icons/action/svg/production/ic_visibility_off_24px.svg',
-				'node_modules/material-design-icons/alert/svg/production/ic_error_24px.svg',
-				'node_modules/material-design-icons/alert/svg/production/ic_warning_24px.svg',
-				'node_modules/material-design-icons/communication/svg/production/ic_import_contacts_24px.svg',
-				'node_modules/material-design-icons/communication/svg/production/ic_vpn_key_24px.svg',
-				'node_modules/material-design-icons/content/svg/production/ic_add_24px.svg',
-				'node_modules/material-design-icons/content/svg/production/ic_clear_24px.svg',
-				'node_modules/material-design-icons/content/svg/production/ic_create_24px.svg',
-				'node_modules/material-design-icons/content/svg/production/ic_remove_24px.svg',
-				'node_modules/material-design-icons/navigation/svg/production/ic_chevron_right_24px.svg',
-				'node_modules/material-design-icons/navigation/svg/production/ic_expand_less_24px.svg',
-				'node_modules/material-design-icons/navigation/svg/production/ic_expand_more_24px.svg',
-				'node_modules/material-design-icons/navigation/svg/production/ic_subdirectory_arrow_right_24px.svg',
-				'node_modules/material-design-icons/social/svg/production/ic_notifications_24px.svg',
-				'node_modules/material-design-icons/social/svg/production/ic_person_24px.svg',
-				'node_modules/mdi-svg/svg/drag-vertical.svg'
+				'node_modules/mdi-svg/svg/account.svg',
+				'node_modules/mdi-svg/svg/alert-circle-outline.svg',
+				'node_modules/mdi-svg/svg/bell.svg',
+				'node_modules/mdi-svg/svg/book-open-variant.svg',
+				'node_modules/mdi-svg/svg/check-circle-outline.svg',
+				'node_modules/mdi-svg/svg/chevron-down.svg',
+				'node_modules/mdi-svg/svg/chevron-right.svg',
+				'node_modules/mdi-svg/svg/close-circle-outline.svg',
+				'node_modules/mdi-svg/svg/delete.svg',
+				'node_modules/mdi-svg/svg/eye-off.svg',
+				'node_modules/mdi-svg/svg/help-circle-outline.svg',
+				'node_modules/mdi-svg/svg/lock.svg',
+				'node_modules/mdi-svg/svg/minus.svg',
+				'node_modules/mdi-svg/svg/pencil.svg',
+				'node_modules/mdi-svg/svg/plus.svg',
+				'node_modules/mdi-svg/svg/power.svg',
+				'node_modules/mdi-svg/svg/settings.svg',
+				'node_modules/mdi-svg/svg/subdirectory-arrow-right.svg'
 			],
 			dest: 'templates/admin/dist/fonts',
 			options:
@@ -42,19 +38,18 @@ module.exports = grunt =>
 		{
 			src:
 			[
-				'node_modules/material-design-icons/action/svg/production/ic_check_circle_24px.svg',
-				'node_modules/material-design-icons/action/svg/production/ic_info_24px.svg',
-				'node_modules/material-design-icons/action/svg/production/ic_search_24px.svg',
-				'node_modules/material-design-icons/alert/svg/production/ic_error_24px.svg',
-				'node_modules/material-design-icons/alert/svg/production/ic_warning_24px.svg',
-				'node_modules/material-design-icons/navigation/svg/production/ic_chevron_left_24px.svg',
-				'node_modules/material-design-icons/navigation/svg/production/ic_chevron_right_24px.svg',
-				'node_modules/material-design-icons/navigation/svg/production/ic_first_page_24px.svg',
-				'node_modules/material-design-icons/navigation/svg/production/ic_last_page_24px.svg',
-				'node_modules/material-design-icons/content/svg/production/ic_add_24px.svg',
-				'node_modules/material-design-icons/content/svg/production/ic_remove_24px.svg',
-				'node_modules/material-design-icons/navigation/svg/production/ic_chevron_right_24px.svg',
-				'node_modules/material-design-icons/social/svg/production/ic_person_24px.svg'
+				'node_modules/mdi-svg/svg/account.svg',
+				'node_modules/mdi-svg/svg/alert-circle-outline.svg',
+				'node_modules/mdi-svg/svg/check-circle-outline.svg',
+				'node_modules/mdi-svg/svg/chevron-left.svg',
+				'node_modules/mdi-svg/svg/chevron-right.svg',
+				'node_modules/mdi-svg/svg/close-circle-outline.svg',
+				'node_modules/mdi-svg/svg/help-circle-outline.svg',
+				'node_modules/mdi-svg/svg/magnify.svg',
+				'node_modules/mdi-svg/svg/minus.svg',
+				'node_modules/mdi-svg/svg/page-first.svg',
+				'node_modules/mdi-svg/svg/page-last.svg',
+				'node_modules/mdi-svg/svg/plus.svg'
 			],
 			dest: 'templates/default/dist/fonts',
 			options:
@@ -67,9 +62,9 @@ module.exports = grunt =>
 		{
 			src:
 			[
-				'node_modules/material-design-icons/editor/svg/production/ic_insert_drive_file_24px.svg',
-				'node_modules/material-design-icons/file/svg/production/ic_folder_24px.svg',
-				'node_modules/material-design-icons/file/svg/production/ic_folder_open_24px.svg'
+				'node_modules/mdi-svg/svg/file.svg',
+				'node_modules/mdi-svg/svg/folder.svg',
+				'node_modules/mdi-svg/svg/folder-open.svg'
 			],
 			dest: 'modules/DirectoryLister/dist/fonts',
 			options:
@@ -95,23 +90,26 @@ module.exports = grunt =>
 				template: 'modules/SocialSharer/assets/styles/_template.css'
 			}
 		},
+		moduleTableSorter:
+		{
+			src:
+			[
+				'node_modules/mdi-svg/svg/drag-vertical.svg'
+			],
+			dest: 'modules/TableSorter/dist/fonts',
+			options:
+			{
+				destCss: 'modules/TableSorter/assets/styles',
+				template: 'modules/TableSorter/assets/styles/_template.css'
+			}
+		},
 		options:
 		{
 			font: 'icon',
 			types:
 			[
-				'woff',
 				'woff2'
 			],
-			rename: name =>
-			{
-				return require('path')
-					.basename(name)
-					.replace('ic_', '')
-					.replace('_24px', '')
-					.split('_')
-					.join('-');
-			},
 			autoHint: false,
 			htmlDemo: false
 		}

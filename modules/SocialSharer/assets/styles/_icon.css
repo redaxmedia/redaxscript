@@ -9,7 +9,7 @@
 @font-face
 {
 	font-family: var(--rs-font-icon-social-sharer);
-	src: url('../../../../modules/SocialSharer/dist/fonts/icon.woff2') format('woff2'), url('../../../../modules/SocialSharer/dist/fonts/icon.woff') format('woff');
+	src: url('../../../../modules/SocialSharer/dist/fonts/icon.woff2') format('woff2');
 }
 
 %rs-icon-396-google-plus

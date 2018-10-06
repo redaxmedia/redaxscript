@@ -1,0 +1,20 @@
+/**
+ * @tableofcontents
+ *
+ * 1. icon
+ */
+
+/** @section 1. icon */
+
+@font-face
+{
+	font-family: var(--rs-font-icon-table-sorter);
+	src: url('../../../../modules/TableSorter/dist/fonts/icon.woff2') format('woff2');
+}
+
+%rs-icon-drag-vertical
+{
+	content: '\f101';
+	font-family: var(--rs-font-icon-table-sorter);
+	font-weight: normal;
+}
