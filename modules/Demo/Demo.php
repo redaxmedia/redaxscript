@@ -34,6 +34,21 @@ class Demo extends Config
 	];
 
 	/**
+	 * renderStart
+	 *
+	 * @since 4.0.0
+	 */
+
+	public function renderStart()
+	{
+		if ($this->_registry->get('firstParameter') === 'module' && $this->_registry->get('secondParameter') === 'demo' && $this->_registry->get('thirdParameter') === 'reinstall')
+		{
+			$this->_registry->set('renderBreak', true);
+			$this->_reinstall();
+		}
+	}
+
+	/**
 	 * routeHeader
 	 *
 	 * @since 3.3.0
@@ -41,23 +56,10 @@ class Demo extends Config
 
 	public function routeHeader()
 	{
-		if ($this->_registry->get('firstParameter') === 'demo')
+		if ($this->_registry->get('firstParameter') === 'module' && $this->_registry->get('secondParameter') === 'demo' && $this->_registry->get('thirdParameter') === 'login')
 		{
-			/* handle login */
-
-			if ($this->_registry->get('secondParameter') === 'login')
-			{
-				$this->_registry->set('useTitle', $this->_language->get('login'));
-				$this->_registry->set('routerBreak', true);
-			}
-
-			/* handle reinstall */
-
-			if ($this->_registry->get('secondParameter') === 'reinstall')
-			{
-				$this->_registry->set('renderBreak', true);
-				$this->_reinstall();
-			}
+			$this->_registry->set('useTitle', $this->_language->get('login'));
+			$this->_registry->set('routerBreak', true);
 		}
 	}
 
@@ -69,7 +71,7 @@ class Demo extends Config
 
 	public function routeContent()
 	{
-		if ($this->_registry->get('firstParameter') === 'demo' && $this->_registry->get('secondParameter') === 'login')
+		if ($this->_registry->get('firstParameter') === 'module' && $this->_registry->get('secondParameter') === 'demo' && $this->_registry->get('thirdParameter') === 'login')
 		{
 			echo $this->process();
 		}

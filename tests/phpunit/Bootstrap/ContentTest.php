@@ -129,8 +129,7 @@ class ContentTest extends TestCaseAbstract
 			'lastTable' => $this->_registry->get('lastTable'),
 			'categoryId' => $this->_registry->get('categoryId'),
 			'articleId' => $this->_registry->get('articleId'),
-			'lastId' => $this->_registry->get('lastId'),
-			'contentError' => $this->_registry->get('contentError')
+			'lastId' => $this->_registry->get('lastId')
 		];
 
 		/* compare */

@@ -9,7 +9,7 @@ use Redaxscript\Module;
 use XMLWriter;
 
 /**
- * generate a sitemap xml
+ * submit xml sitemap to search engines
  *
  * @since 2.2.0
  *
@@ -31,7 +31,7 @@ class SitemapXml extends Module\Module
 		'name' => 'Sitemap XML',
 		'alias' => 'SitemapXml',
 		'author' => 'Redaxmedia',
-		'description' => 'Generate a sitemap XML',
+		'description' => 'Submit XML sitemap to search engines',
 		'version' => '4.0.0'
 	];
 
@@ -43,10 +43,9 @@ class SitemapXml extends Module\Module
 
 	public function renderStart()
 	{
-		if ($this->_registry->get('firstParameter') === 'sitemap-xml')
+		if ($this->_registry->get('firstParameter') === 'module' && $this->_registry->get('secondParameter') === 'sitemap-xml')
 		{
 			$this->_registry->set('renderBreak', true);
-			Header::contentType('application/xml');
 			echo $this->render();
 		}
 	}
@@ -79,6 +78,7 @@ class SitemapXml extends Module\Module
 
 		/* write xml */
 
+		Header::contentType('application/xml');
 		return $this->_writeXML($categories, $articles);
 	}
 
@@ -100,6 +100,8 @@ class SitemapXml extends Module\Module
 		$articleModel = new Model\Article();
 		$settingModel = new Model\Setting();
 		$dater = new Dater();
+		$root = $this->_registry->get('root');
+		$parameterRoute = $this->_registry->get('parameterRoute');
 
 		/* write xml */
 
@@ -110,7 +112,7 @@ class SitemapXml extends Module\Module
 		$writer->startElement('urlset');
 		$writer->writeAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
 		$writer->startElement('url');
-		$writer->writeElement('loc', $this->_registry->get('root'));
+		$writer->writeElement('loc', $root);
 		$writer->endElement();
 
 		/* process categories */
@@ -119,7 +121,7 @@ class SitemapXml extends Module\Module
 		{
 			$dater->init($value->date);
 			$writer->startElement('url');
-			$writer->writeElement('loc', $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $categoryModel->getRouteById($value->id));
+			$writer->writeElement('loc', $root . '/' . $parameterRoute . $categoryModel->getRouteById($value->id));
 			$writer->writeElement('lastmod', $dater->getDateTime()->format('c'));
 			$writer->endElement();
 		}
@@ -130,7 +132,7 @@ class SitemapXml extends Module\Module
 		{
 			$dater->init($value->date);
 			$writer->startElement('url');
-			$writer->writeElement('loc', $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $articleModel->getRouteById($value->id));
+			$writer->writeElement('loc', $root . '/' . $parameterRoute . $articleModel->getRouteById($value->id));
 			$writer->writeElement('lastmod', $dater->getDateTime()->format('c'));
 			$writer->endElement();
 		}

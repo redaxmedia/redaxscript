@@ -19,8 +19,7 @@
 			"lastTable": "articles",
 			"categoryId": false,
 			"articleId": 1,
-			"lastId": 1,
-			"contentError": false
+			"lastId": 1
 		}
 	],
 	[
@@ -43,8 +42,7 @@
 			"lastTable": "categories",
 			"categoryId": 2,
 			"articleId": false,
-			"lastId": 2,
-			"contentError": false
+			"lastId": 2
 		}
 	],
 	[
@@ -67,8 +65,7 @@
 			"lastTable": "categories",
 			"categoryId": 1,
 			"articleId": false,
-			"lastId": 1,
-			"contentError": false
+			"lastId": 1
 		}
 	],
 	[
@@ -91,8 +88,7 @@
 			"lastTable": "categories",
 			"categoryId": 1,
 			"articleId": false,
-			"lastId": 1,
-			"contentError": false
+			"lastId": 1
 		}
 	],
 	[
@@ -115,8 +111,7 @@
 			"lastTable": "articles",
 			"categoryId": false,
 			"articleId": 1,
-			"lastId": 1,
-			"contentError": false
+			"lastId": 1
 		}
 	],
 	[
@@ -139,8 +134,7 @@
 			"lastTable": "categories",
 			"categoryId": 2,
 			"articleId": false,
-			"lastId": 2,
-			"contentError": false
+			"lastId": 2
 		}
 	],
 	[
@@ -163,8 +157,7 @@
 			"lastTable": "articles",
 			"categoryId": false,
 			"articleId": 2,
-			"lastId": 2,
-			"contentError": false
+			"lastId": 2
 		}
 	],
 	[
@@ -187,8 +180,7 @@
 			"lastTable": null,
 			"categoryId": false,
 			"articleId": false,
-			"lastId": false,
-			"contentError": true
+			"lastId": false
 		}
 	],
 	[
@@ -211,8 +203,7 @@
 			"lastTable": null,
 			"categoryId": false,
 			"articleId": false,
-			"lastId": false,
-			"contentError": false
+			"lastId": false
 		}
 	]
 ]

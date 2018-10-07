@@ -34,6 +34,23 @@ class Preview extends Module\Module
 	];
 
 	/**
+	 * renderStart
+	 *
+	 * @since 4.0.0
+	 */
+
+	public function renderStart()
+	{
+		if ($this->_registry->get('firstParameter') === 'module' && $this->_registry->get('secondParameter') === 'preview')
+		{
+			$link = Head\Link::getInstance();
+			$link
+				->init()
+				->appendFile('modules/Preview/dist/styles/preview.min.css');
+		}
+	}
+
+	/**
 	 * routeHeader
 	 *
 	 * @since 3.3.0
@@ -41,18 +58,11 @@ class Preview extends Module\Module
 
 	public function routeHeader()
 	{
-		if ($this->_registry->get('firstParameter') === 'preview')
+		if ($this->_registry->get('firstParameter') === 'module' && $this->_registry->get('secondParameter') === 'preview')
 		{
 			$this->_registry->set('useTitle', $this->_language->get('preview', '_preview'));
 			$this->_registry->set('useDescription', $this->_language->get('description', '_preview'));
 			$this->_registry->set('routerBreak', true);
-
-			/* link */
-
-			$link = Head\Link::getInstance();
-			$link
-				->init()
-				->appendFile('modules/Preview/dist/styles/preview.min.css');
 		}
 	}
 
@@ -64,7 +74,7 @@ class Preview extends Module\Module
 
 	public function routeContent()
 	{
-		if ($this->_registry->get('firstParameter') === 'preview')
+		if ($this->_registry->get('firstParameter') === 'module' && $this->_registry->get('secondParameter') === 'preview')
 		{
 			echo $this->render();
 		}
@@ -83,25 +93,21 @@ class Preview extends Module\Module
 		$output = null;
 		$partialsFilesystem = new Filesystem\File();
 		$partialsFilesystem->init('modules/Preview/partials');
-		$secondParameter = $this->_registry->get('secondParameter');
+		$thirdParameter = $this->_registry->get('thirdParameter');
 		$extension = '.phtml';
 
-		/* collect single */
+		/* collect one */
 
-		if ($secondParameter)
+		if ($thirdParameter)
 		{
-			$output = $this->_renderPartial($secondParameter, $partialsFilesystem->renderFile($secondParameter . $extension));
+			$output = $this->_renderPartial($thirdParameter, $partialsFilesystem->renderFile($thirdParameter . $extension));
 		}
 
-		/* else collect all */
+		/* else all */
 
 		else
 		{
-			$partialsFilesystemArray = $partialsFilesystem->getSortArray();
-
-			/* process filesystem */
-
-			foreach ($partialsFilesystemArray as $value)
+			foreach ($partialsFilesystem->getSortArray() as $value)
 			{
 				$alias = str_replace($extension, '', $value);
 				$output .= $this->_renderPartial($alias, $partialsFilesystem->renderFile($value));
@@ -123,7 +129,7 @@ class Preview extends Module\Module
 
 	protected function _renderPartial(string $alias = null, string $html = null) : string
 	{
-		$secondParameter = $this->_registry->get('secondParameter');
+		$thirdParameter = $this->_registry->get('thirdParameter');
 		$parameterRoute = $this->_registry->get('parameterRoute');
 
 		/* html element */
@@ -133,9 +139,9 @@ class Preview extends Module\Module
 			->copy()
 			->init('a',
 			[
-				'href' => $secondParameter === $alias ? $parameterRoute . 'preview#' . $alias : $parameterRoute . 'preview/' . $alias
+				'href' => $thirdParameter === $alias ? $parameterRoute . 'module/preview#' . $alias : $parameterRoute . 'module/preview/' . $alias
 			])
-			->text($secondParameter === $alias ? $this->_language->get('back') : $alias);
+			->text($thirdParameter === $alias ? $this->_language->get('back') : $alias);
 		$titleElement = $element
 			->copy()
 			->init('h2',

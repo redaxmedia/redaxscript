@@ -65,7 +65,7 @@ class TableSorter extends Module\Module
 
 			/* handle sort */
 
-			if ($this->_registry->get('firstParameter') === 'table-sorter' && $this->_registry->get('secondParameter') === 'sort' && $this->_registry->get('lastParameter') === $this->_registry->get('token'))
+			if ($this->_registry->get('firstParameter') === 'module' && $this->_registry->get('secondParameter') === 'table-sorter' && $this->_registry->get('thirdParameter') === 'sort' && $this->_registry->get('tokenParameter'))
 			{
 				$this->_registry->set('renderBreak', true);
 				echo $this->_sort();
@@ -83,24 +83,28 @@ class TableSorter extends Module\Module
 
 	protected function _sort() : ?string
 	{
-		$postArray = $this->_sanitizePost();
-		$contents = Db::forTablePrefix($postArray['table'])->whereIn('id', $postArray['rankArray'])->findMany();
-
-		/* process contents */
-
-		foreach ($contents as $value)
+		if ($this->_request->getServer('HTTP_X_REQUESTED_WITH') === 'XMLHttpRequest')
 		{
-			$value->set('rank', array_search($value->id, $postArray['rankArray']));
-		}
+			$postArray = $this->_sanitizePost();
+			$contents = Db::forTablePrefix($postArray['table'])->whereIn('id', $postArray['rankArray'])->findMany();
 
-		/* handle response */
+			/* process contents */
 
-		if ($contents->save())
-		{
-			return json_encode($postArray['rankArray']);
+			foreach ($contents as $value)
+			{
+				$value->set('rank', array_search($value->id, $postArray['rankArray']));
+			}
+
+			/* handle response */
+
+			if ($contents->save())
+			{
+				Header::contentType('application/json');
+				return json_encode($postArray['rankArray']);
+			}
 		}
-		Header::statusCode(404);
-		return null;
+		Header::responseCode(404);
+		exit;
 	}
 
 	/**

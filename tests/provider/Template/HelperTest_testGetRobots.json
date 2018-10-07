@@ -2,34 +2,6 @@
 	[
 		{
 			"useRobots": null,
-			"contentError": null,
-			"lastTable": null,
-			"lastId": null
-		},
-		"all"
-	],
-	[
-		{
-			"useRobots": null,
-			"contentError": null,
-			"lastTable": "categories",
-			"lastId": 1
-		},
-		"all"
-	],
-	[
-		{
-			"useRobots": 3,
-			"contentError": null,
-			"lastTable": null,
-			"lastId": null
-		},
-		"follow"
-	],
-	[
-		{
-			"useRobots": null,
-			"contentError": true,
 			"lastTable": null,
 			"lastId": null
 		},
@@ -38,7 +10,22 @@
 	[
 		{
 			"useRobots": null,
-			"contentError": null,
+			"lastTable": "categories",
+			"lastId": 1
+		},
+		"all"
+	],
+	[
+		{
+			"useRobots": 3,
+			"lastTable": null,
+			"lastId": null
+		},
+		"follow"
+	],
+	[
+		{
+			"useRobots": null,
 			"lastTable": "articles",
 			"lastId": 2
 		},
@@ -47,7 +34,6 @@
 	[
 		{
 			"useRobots": null,
-			"contentError": null,
 			"lastTable": "categories",
 			"lastId": 2
 		},
@@ -56,7 +42,6 @@
 	[
 		{
 			"useRobots": null,
-			"contentError": null,
 			"lastTable": "articles",
 			"lastId": 3
 		},
@@ -65,7 +50,6 @@
 	[
 		{
 			"useRobots": null,
-			"contentError": null,
 			"lastTable": "categories",
 			"lastId": 3
 		},

@@ -2,6 +2,7 @@
 namespace Redaxscript\Admin\Router;
 
 use Redaxscript\Admin;
+use Redaxscript\Header;
 use Redaxscript\Module;
 use Redaxscript\Router\RouterAbstract;
 
@@ -28,14 +29,22 @@ class Router extends RouterAbstract
 	public function routeHeader() : bool
 	{
 		Module\Hook::trigger('adminRouteHeader');
+		$adminParameter = $this->getAdmin();
 
 		/* handle break */
 
 		if ($this->_registry->get('adminRouterBreak'))
 		{
-			$this->_registry->set('contentError', false);
+			Header::responseCode(202);
 		}
-		return !!$this->_registry->get('adminRouterBreak');
+
+		/* handle guard */
+
+		if ($adminParameter && ($this->_tokenGuard() || $this->_authGuard()))
+		{
+			Header::responseCode(403);
+		}
+		return (bool)$this->_registry->get('adminRouterBreak');
 	}
 
 	/**

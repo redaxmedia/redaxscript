@@ -29,7 +29,6 @@ class Content extends BootstrapAbstract
 		{
 			$this->_setContent();
 		}
-		$this->_setContentError();
 	}
 
 	/**
@@ -199,20 +198,5 @@ class Content extends BootstrapAbstract
 				'status' => 1
 			]);
 		}
-	}
-
-	/**
-	 * set the content error
-	 *
-	 * @since 3.1.0
-	 */
-
-	protected function _setContentError()
-	{
-		$aliasValidator = new Validator\Alias();
-		$lastId = $this->_registry->get('lastId');
-		$firstParameter = $this->_registry->get('firstParameter');
-		$contentError = !$lastId && !$aliasValidator->validate($firstParameter, 'system');
-		$this->_registry->set('contentError', $contentError);
 	}
 }

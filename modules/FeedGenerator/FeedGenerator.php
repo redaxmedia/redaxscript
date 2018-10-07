@@ -43,13 +43,18 @@ class FeedGenerator extends Module\Module
 
 	public function renderStart()
 	{
-		$firstParamter = $this->_registry->get('firstParameter');
-		$secondParameter = $this->_registry->get('secondParameter');
-		if ($firstParamter === 'feed' && ($secondParameter === 'articles' || $secondParameter === 'comments'))
+		if ($this->_registry->get('firstParameter') === 'module' && $this->_registry->get('secondParameter') === 'feed')
 		{
 			$this->_registry->set('renderBreak', true);
 			Header::contentType('application/atom+xml');
-			echo $this->render($secondParameter);
+			if ($this->_registry->get('thirdParameter') === 'articles')
+			{
+				echo $this->render('articles');
+			}
+			if ($this->_registry->get('thirdParameter') === 'comments')
+			{
+				echo $this->render('comments');
+			}
 		}
 	}
 
@@ -92,10 +97,12 @@ class FeedGenerator extends Module\Module
 		$settingModel = new Model\Setting();
 		$dater = new Dater();
 		$dater->init($this->_registry->get('now'));
+		$root = $this->_registry->get('root');
+		$parameterRoute = $this->_registry->get('parameterRoute');
 
 		/* prepare href */
 
-		$href = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute');
+		$href = $root . '/' . $parameterRoute . $this->_registry->get('fullRoute');
 		if ($this->_request->getQuery('l'))
 		{
 			$href .= $this->_registry->get('languageRoute') . $this->_registry->get('language');
@@ -129,7 +136,7 @@ class FeedGenerator extends Module\Module
 			{
 				$dater->init($value->date);
 				$writer->startElement('entry');
-				$writer->writeElement('id', $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $contentModel->getRouteByTableAndId($table, $value->id));
+				$writer->writeElement('id', $root . '/' . $parameterRoute . $contentModel->getRouteByTableAndId($table, $value->id));
 				$writer->writeElement('title', $value->title);
 				$writer->writeElement('updated', $dater->getDateTime()->format('c'));
 				$writer->writeElement('content', strip_tags($value->text));

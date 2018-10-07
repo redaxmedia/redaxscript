@@ -2,6 +2,7 @@
 namespace Redaxscript\Template;
 
 use Redaxscript\Asset;
+use Redaxscript\Header;
 use Redaxscript\Language;
 use Redaxscript\Model;
 use Redaxscript\Registry;
@@ -193,5 +194,18 @@ class Helper
 	{
 		$client = new Helper\Client(Registry::getInstance());
 		return $client->process($prefix);
+	}
+
+	/**
+	 * get the response code
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return int
+	 */
+
+	public static function getResponseCode() : int
+	{
+		return Header::responseCode();
 	}
 }

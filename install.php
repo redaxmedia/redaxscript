@@ -22,6 +22,6 @@ if ($config->get('env') !== 'production')
 }
 else
 {
-	Header::statusCode(403);
+	Header::responseCode(403);
 	exit;
 }

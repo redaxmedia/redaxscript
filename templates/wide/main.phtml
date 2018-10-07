@@ -10,7 +10,7 @@
 
 		<!-- error -->
 
-		<?php if (Helper::getRegistry('contentError')): ?>
+		<?php if (Helper::getResponseCode() === 404): ?>
 			<?php echo Tag::partial('default/error.phtml'); ?>
 
 		<!-- else content -->

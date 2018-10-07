@@ -45,19 +45,15 @@ class Robots extends HelperAbstract
 		$settingModel = new Model\Setting();
 		$lastTable = $this->_registry->get('lastTable');
 		$lastId = $this->_registry->get('lastId');
-		$contentError = $this->_registry->get('contentError');
 		$useRobots = $this->_registry->get('useRobots');
 		$settingRobots = $settingModel->get('robots');
 
 		/* find robots */
 
+		$robots = 0;
 		if ($useRobots)
 		{
 			$robots = $useRobots;
-		}
-		else if ($contentError)
-		{
-			$robots = 0;
 		}
 		else if ($lastTable && $lastId)
 		{

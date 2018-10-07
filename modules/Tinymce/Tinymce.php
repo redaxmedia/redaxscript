@@ -54,7 +54,7 @@ class Tinymce extends Config
 
 			/* handle upload */
 
-			if ($this->_registry->get('firstParameter') === 'tinymce' && $this->_registry->get('secondParameter') === 'upload' && $this->_registry->get('lastParameter') === $this->_registry->get('token'))
+			if ($this->_registry->get('firstParameter') === 'module' && $this->_registry->get('secondParameter') === 'tinymce' && $this->_registry->get('thirdParameter') === 'upload' && $this->_registry->get('tokenParameter'))
 			{
 				$this->_registry->set('renderBreak', true);
 				echo $this->_upload();
@@ -103,12 +103,13 @@ class Tinymce extends Config
 
 		if (in_array($fileExtention, $this->_configArray['extension']) && is_uploaded_file($filesArray['tmp_name']) && move_uploaded_file($filesArray['tmp_name'], $path))
 		{
+			Header::contentType('application/json');
 			return json_encode(
 			[
 				'location' => $path
 			]);
 		}
-		Header::statusCode(404);
-		return null;
+		Header::responseCode(404);
+		exit;
 	}
 }

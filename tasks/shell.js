@@ -67,7 +67,7 @@ module.exports = grunt =>
 		},
 		startServer:
 		{
-			command: 'php -S 127.0.0.1:8000'
+			command: grunt.option('D') || grunt.option('debug-mode') ? 'DEBUG=true php -S 127.0.0.1:8000' : 'php -S 127.0.0.1:8000'
 		},
 		openBrowser:
 		{

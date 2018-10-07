@@ -6,7 +6,7 @@
 
 	<!-- error -->
 
-	<?php if (Helper::getRegistry('contentError')): ?>
+	<?php if (Helper::getResponseCode() === 404): ?>
 		<div class="rs-wrapper">
 			<?php echo Tag::partial('skeleton/error.phtml'); ?>
 		</div>

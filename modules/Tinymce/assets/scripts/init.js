@@ -31,7 +31,7 @@ rs.modules.Tinymce =
 			short_ended_elements: 'rs-more',
 			content_css: rs.baseUrl + 'templates/' + rs.registry.template + '/dist/styles/' + rs.registry.template + '.min.css',
 			skin_url: rs.baseUrl + 'modules/Tinymce/dist/styles',
-			images_upload_url: rs.registry.parameterRoute + 'tinymce/upload/' + rs.registry.token,
+			images_upload_url: rs.registry.parameterRoute + 'module/tinymce/upload/' + rs.registry.token,
 			forced_root_block: false,
 			branding: false
 		}

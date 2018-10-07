@@ -105,16 +105,16 @@ class Header
 	}
 
 	/**
-	 * status code
+	 * response code
 	 *
-	 * @since 3.3.0
+	 * @since 4.0.0
 	 *
 	 * @param int $code
 	 *
 	 * @return int
 	 */
 
-	public static function statusCode(int $code = null) : int
+	public static function responseCode(int $code = null) : int
 	{
 		return http_response_code($code);
 	}

@@ -55,6 +55,6 @@ else if ($config->get('env') !== 'production' || $accessValidator->validate('1',
 }
 else
 {
-	Header::statusCode(403);
+	Header::responseCode(403);
 	exit;
 }

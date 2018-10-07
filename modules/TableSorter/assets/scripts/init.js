@@ -5,7 +5,8 @@ rs.modules.TableSorter =
 	config:
 	{
 		selector: 'table.rs-admin-js-sort tbody',
-		sortUrl: rs.registry.parameterRoute + 'table-sorter/sort/' + rs.registry.token,
+		sortUrl: rs.registry.parameterRoute + 'module/table-sorter/sort/' + rs.registry.token,
+		reload: true,
 		dragula:
 		{
 			moves: (element, container, handle) =>

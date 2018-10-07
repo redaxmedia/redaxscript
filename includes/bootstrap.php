@@ -27,6 +27,7 @@ $config->init();
 /* database */
 
 Db::construct($config);
+Db::configure('logging', getenv('DEBUG'));
 Db::init();
 
 /* bootstrap */

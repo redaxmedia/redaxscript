@@ -25,6 +25,7 @@ class Alias implements ValidatorInterface
 		'admin',
 		'login',
 		'logout',
+		'module',
 		'search',
 		'recover',
 		'register',

@@ -34,14 +34,16 @@ class Debugger extends Module\Module
 	];
 
 	/**
-	 * init
+	 * init the class
 	 *
-	 * @since 3.3.0
+	 * @since 4.0.0
+	 *
+	 * @param array $moduleArray custom module setup
 	 */
 
-	public function init()
+	public function init(array $moduleArray = [])
 	{
-		Db::configure('logging', true);
+		parent::init($moduleArray);
 	}
 
 	/**

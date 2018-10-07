@@ -13,7 +13,7 @@
 
 	<!-- error -->
 
-	<?php if (Helper::getRegistry('contentError')): ?>
+	<?php if (Helper::getResponseCode() === 404): ?>
 		<div class="rs-wrapper rs-wrapper-page">
 			<?php echo Tag::partial('default/error.phtml'); ?>
 		</div>

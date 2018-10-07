@@ -116,18 +116,18 @@ class HeaderTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testStatusCode
+	 * testResponseCode
 	 *
-	 * @since 3.3.0
+	 * @since 4.0.0
 	 *
 	 * @runInSeparateProcess
 	 */
 
-	public function testStatusCode()
+	public function testResponseCode()
 	{
 		/* actual */
 
-		$actual = Header::statusCode(404);
+		$actual = Header::responseCode(404);
 
 		/* compare */
 

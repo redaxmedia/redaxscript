@@ -7,6 +7,7 @@ use Redaxscript\Header;
 use Redaxscript\Messenger;
 use Redaxscript\Model;
 use Redaxscript\Module;
+use Redaxscript\Validator;
 use Redaxscript\View;
 
 /**
@@ -37,7 +38,28 @@ class Router extends RouterAbstract
 
 		if ($this->_registry->get('routerBreak'))
 		{
-			$this->_registry->set('contentError', false);
+			Header::responseCode(202);
+		}
+
+		/* handle guard */
+
+		if ($this->_tokenGuard())
+		{
+			Header::responseCode(403);
+		}
+
+		/* handle alias */
+
+		if ($this->_aliasGuard())
+		{
+			Header::responseCode(202);
+		}
+
+		/* else handle content */
+
+		else if ($this->_contentGuard())
+		{
+			Header::responseCode(404);
 		}
 
 		/* handle post */
@@ -46,7 +68,8 @@ class Router extends RouterAbstract
 		{
 			return $this->_redirectSearch();
 		}
-		return !!$this->_registry->get('routerBreak');
+
+		return (bool)$this->_registry->get('routerBreak');
 	}
 
 	/**
@@ -137,6 +160,38 @@ class Router extends RouterAbstract
 	protected function _tokenGuard() : bool
 	{
 		return $this->_request->getPost() && $this->_request->getPost('token') !== $this->_registry->get('token');
+	}
+
+	/**
+	 * alias guard
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return bool
+	 */
+
+	protected function _aliasGuard() : bool
+	{
+		$aliasValidator = new Validator\Alias();
+		return $aliasValidator->validate($this->_registry->get('firstParameter'), 'system');
+	}
+
+	/**
+	 * content guard
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return bool
+	 */
+
+	protected function _contentGuard() : bool
+	{
+		$contentModel = new Model\Content();
+		$lastId = $this->_registry->get('lastId');
+		$lastTable = $this->_registry->get('lastTable');
+		$liteRoute = $this->_registry->get('liteRoute');
+		$buildRoute = $contentModel->getRouteByTableAndId($lastTable, $lastId);
+		return !$lastId || ($liteRoute && $liteRoute !== $buildRoute);
 	}
 
 	/**
