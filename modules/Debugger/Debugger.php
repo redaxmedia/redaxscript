@@ -34,19 +34,6 @@ class Debugger extends Module\Module
 	];
 
 	/**
-	 * init the class
-	 *
-	 * @since 4.0.0
-	 *
-	 * @param array $moduleArray custom module setup
-	 */
-
-	public function init(array $moduleArray = [])
-	{
-		parent::init($moduleArray);
-	}
-
-	/**
 	 * renderStart
 	 *
 	 * @since 3.0.0
@@ -60,7 +47,6 @@ class Debugger extends Module\Module
 		$script
 			->init('foot')
 			->appendFile('modules/Debugger/assets/scripts/init.js');
-
 	}
 
 	/**

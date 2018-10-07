@@ -96,15 +96,12 @@ class Preview extends Module\Module
 		$thirdParameter = $this->_registry->get('thirdParameter');
 		$extension = '.phtml';
 
-		/* collect one */
+		/* collect output */
 
 		if ($thirdParameter)
 		{
 			$output = $this->_renderPartial($thirdParameter, $partialsFilesystem->renderFile($thirdParameter . $extension));
 		}
-
-		/* else all */
-
 		else
 		{
 			foreach ($partialsFilesystem->getSortArray() as $value)

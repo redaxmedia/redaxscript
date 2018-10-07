@@ -48,16 +48,13 @@ class Router extends RouterAbstract
 			Header::responseCode(403);
 		}
 
-		/* handle alias */
+		/* handle validator */
 
-		if ($this->_aliasGuard())
+		if ($this->_aliasValidator())
 		{
 			Header::responseCode(202);
 		}
-
-		/* else handle content */
-
-		else if ($this->_contentGuard())
+		else if (!$this->_contentValidator())
 		{
 			Header::responseCode(404);
 		}
@@ -163,35 +160,33 @@ class Router extends RouterAbstract
 	}
 
 	/**
-	 * alias guard
+	 * alias validator
 	 *
 	 * @since 4.0.0
 	 *
 	 * @return bool
 	 */
 
-	protected function _aliasGuard() : bool
+	protected function _aliasValidator() : bool
 	{
 		$aliasValidator = new Validator\Alias();
 		return $aliasValidator->validate($this->_registry->get('firstParameter'), 'system');
 	}
 
 	/**
-	 * content guard
+	 * content validator
 	 *
 	 * @since 4.0.0
 	 *
 	 * @return bool
 	 */
 
-	protected function _contentGuard() : bool
+	protected function _contentValidator() : bool
 	{
 		$contentModel = new Model\Content();
-		$lastId = $this->_registry->get('lastId');
-		$lastTable = $this->_registry->get('lastTable');
 		$liteRoute = $this->_registry->get('liteRoute');
-		$buildRoute = $contentModel->getRouteByTableAndId($lastTable, $lastId);
-		return !$lastId || ($liteRoute && $liteRoute !== $buildRoute);
+		$buildRoute = $contentModel->getRouteByTableAndId($this->_registry->get('lastTable'), $this->_registry->get('lastId'));
+		return !$liteRoute || $liteRoute === $buildRoute;
 	}
 
 	/**
