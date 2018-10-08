@@ -37,7 +37,7 @@ rs.modules.TableSorter.execute = config =>
 					body: JSON.stringify(
 					{
 						table: rs.registry.tableParameter,
-						rankArray: Object.keys(childrenList).map((childrenValue => childrenList[childrenValue].id))
+						rankArray: Object.keys(childrenList).map((childrenValue => childrenList[childrenValue].id.replace('row-', '')))
 					})
 				})
 				.then(() => CONFIG.reload ? location.reload() : null);

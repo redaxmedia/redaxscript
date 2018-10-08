@@ -1,0 +1,18 @@
+[
+	[
+		null,
+		null
+	],
+	[
+		1,
+		"category-one/article-one#comment-1"
+	],
+	[
+		2,
+		"category-one/category-two/article-two#comment-2"
+	],
+	[
+		3,
+		"article-three#comment-3"
+	]
+]

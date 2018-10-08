@@ -100,24 +100,25 @@ class Article extends ContentAbstract
 
 	public function getRouteById(int $articleId = null) : ?string
 	{
-		$route = null;
-		$articleArray = $this
-			->query()
-			->tableAlias('a')
-			->leftJoinPrefix('categories', 'a.category = c.id', 'c')
-			->leftJoinPrefix('categories', 'c.parent = p.id', 'p')
-			->select('p.alias', 'parent_alias')
-			->select('c.alias', 'category_alias')
-			->select('a.alias', 'article_alias')
-			->where('a.id', $articleId)
-			->findArray();
-
-		/* handle route */
-
-		if (is_array($articleArray[0]))
+		if ($articleId)
 		{
-			$route = implode('/', array_filter($articleArray[0]));
+			$routeArray = $this
+				->query()
+				->tableAlias('article')
+				->leftJoinPrefix('categories', 'article.category = category.id', 'category')
+				->leftJoinPrefix('categories', 'category.parent = parent.id', 'parent')
+				->select('parent.alias', 'parentAlias')
+				->select('category.alias', 'categoryAlias')
+				->select('article.alias', 'articleAlias')
+				->select('article.id', 'articleId')
+				->findArray();
+
+			/* handle route */
+
+			$key = array_search($articleId, array_column($routeArray, 'articleId'));
+			array_pop($routeArray[$key]);
+			return implode('/', array_filter($routeArray[$key]));
 		}
-		return $route;
+		return null;
 	}
 }

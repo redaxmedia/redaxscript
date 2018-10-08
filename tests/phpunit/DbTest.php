@@ -46,8 +46,8 @@ class DbTest extends TestCaseAbstract
 		$installer->init();
 		$installer->rawCreate();
 		$installer->insertSettings($optionArray);
-		Db::forTablePrefix('categories')
-			->create()
+		$categoryOne = Db::forTablePrefix('categories')->create();
+		$categoryOne
 			->set(
 			[
 				'title' => 'Category One',
@@ -61,7 +61,7 @@ class DbTest extends TestCaseAbstract
 				'title' => 'Article One',
 				'alias' => 'article-one',
 				'language' => 'en',
-				'category' => 1
+				'category' => $categoryOne->id
 			])
 			->save();
 		Db::forTablePrefix('articles')
@@ -71,7 +71,7 @@ class DbTest extends TestCaseAbstract
 				'title' => 'Article Two',
 				'alias' => 'article-two',
 				'language' => 'de',
-				'category' => 2
+				'category' => $categoryOne->id
 			])
 			->save();
 	}

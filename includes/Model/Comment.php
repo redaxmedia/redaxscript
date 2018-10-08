@@ -85,26 +85,27 @@ class Comment extends ContentAbstract
 
 	public function getRouteById(int $commentId = null) : ?string
 	{
-		$route = null;
-		$commentArray = $this
-			->query()
-			->tableAlias('d')
-			->leftJoinPrefix('articles', 'd.article = a.id', 'a')
-			->leftJoinPrefix('categories', 'a.category = c.id', 'c')
-			->leftJoinPrefix('categories', 'c.parent = p.id', 'p')
-			->select('p.alias', 'parent_alias')
-			->select('c.alias', 'category_alias')
-			->select('a.alias', 'article_alias')
-			->where('d.id', $commentId)
-			->findArray();
-
-		/* handle route */
-
-		if (is_array($commentArray[0]))
+		if ($commentId)
 		{
-			$route = implode('/', array_filter($commentArray[0])) . '#comment-' . $commentId;
+			$routeArray = $this
+				->query()
+				->tableAlias('comment')
+				->leftJoinPrefix('articles', 'comment.article = article.id', 'article')
+				->leftJoinPrefix('categories', 'article.category = category.id', 'category')
+				->leftJoinPrefix('categories', 'category.parent = parent.id', 'parent')
+				->select('parent.alias', 'parent_alias')
+				->select('category.alias', 'categoryAlias')
+				->select('article.alias', 'articleAlias')
+				->select('comment.id', 'commentId')
+				->findArray();
+
+			/* handle route */
+
+			$key = array_search($commentId, array_column($routeArray, 'commentId'));
+			array_pop($routeArray[$key]);
+			return implode('/', array_filter($routeArray[$key])) . '#comment-' . $commentId;
 		}
-		return $route;
+		return null;
 	}
 
 	/**

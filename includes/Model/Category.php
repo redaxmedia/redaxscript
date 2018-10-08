@@ -49,22 +49,23 @@ class Category extends ContentAbstract
 
 	public function getRouteById(int $categoryId = null) : ?string
 	{
-		$route = null;
-		$categoryArray = $this
-			->query()
-			->tableAlias('c')
-			->leftJoinPrefix('categories', 'c.parent = p.id', 'p')
-			->select('p.alias', 'parent_alias')
-			->select('c.alias', 'category_alias')
-			->where('c.id', $categoryId)
-			->findArray();
-
-		/* handle route */
-
-		if (is_array($categoryArray[0]))
+		if ($categoryId)
 		{
-			$route = implode('/', array_filter($categoryArray[0]));
+			$routeArray = $this
+				->query()
+				->tableAlias('category')
+				->leftJoinPrefix('categories', 'category.parent = parent.id', 'parent')
+				->select('parent.alias', 'parentAlias')
+				->select('category.alias', 'categoryAlias')
+				->select('category.id', 'categoryId')
+				->findArray();
+
+			/* handle route */
+
+			$key = array_search($categoryId, array_column($routeArray, 'categoryId'));
+			array_pop($routeArray[$key]);
+			return implode('/', array_filter($routeArray[$key]));
 		}
-		return $route;
+		return null;
 	}
 }

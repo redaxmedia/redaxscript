@@ -43,21 +43,21 @@ class TagTest extends TestCaseAbstract
 		$installer->init();
 		$installer->rawCreate();
 		$installer->insertSettings($optionArray);
-		Db::forTablePrefix('categories')
-			->create()
+		$categoryOne = Db::forTablePrefix('categories')->create();
+		$categoryOne
 			->set(
 			[
 				'title' => 'Category One',
 				'alias' => 'category-one'
 			])
 			->save();
-		Db::forTablePrefix('articles')
-			->create()
+		$articleOne = Db::forTablePrefix('articles')->create();
+		$articleOne
 			->set(
 			[
 				'title' => 'Article One',
 				'alias' => 'article-one',
-				'category' => 1,
+				'category' => $categoryOne->id,
 				'comments' => 1
 			])
 			->save();
@@ -67,7 +67,7 @@ class TagTest extends TestCaseAbstract
 			[
 				'title' => 'Article Two',
 				'alias' => 'article-two',
-				'category' => 1
+				'category' => $categoryOne->id
 			])
 			->save();
 		Db::forTablePrefix('comments')
@@ -76,7 +76,7 @@ class TagTest extends TestCaseAbstract
 			[
 				'author' => 'Comment One',
 				'text' => 'Comment One',
-				'article' => 1
+				'article' => $articleOne->id
 			])
 			->save();
 		Db::forTablePrefix('comments')
@@ -85,7 +85,7 @@ class TagTest extends TestCaseAbstract
 			[
 				'author' => 'Comment Two',
 				'text' => 'Comment Two',
-				'article' => 1
+				'article' => $articleOne->id
 			])
 			->save();
 	}

@@ -114,7 +114,7 @@ class ModuleTable extends ViewAbstract
 			{
 				$outputBody .= $trElement
 					->copy()
-					->attr('id', $value->id)
+					->attr('id', 'row-' . $value->id)
 					->addClass(!$value->status ? 'rs-admin-is-disabled' : null)
 					->html(
 						$tdElement->copy()->html($value->name . $adminControl->render('modules', $value->id, $value->alias, $value->status)) .

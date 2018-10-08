@@ -212,7 +212,7 @@ class Comment extends ControllerAbstract
 		{
 			if ($postArray['id'])
 			{
-				return 'admin/view/comments#' . $postArray['id'];
+				return 'admin/view/comments#row-' . $postArray['id'];
 			}
 			return 'admin/view/comments';
 		}

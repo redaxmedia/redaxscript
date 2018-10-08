@@ -378,7 +378,7 @@ class Common extends ControllerAbstract
 		{
 			if ($id)
 			{
-				return 'admin/view/' . $table . '#' . $id;
+				return 'admin/view/' . $table . '#row-' . $id;
 			}
 			if ($table)
 			{

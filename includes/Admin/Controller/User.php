@@ -284,12 +284,12 @@ class User extends ControllerAbstract
 	{
 		if ($this->_registry->get('usersEdit') && $postArray['id'])
 		{
-			return 'admin/view/users#' . $postArray['id'];
+			return 'admin/view/users#row-' . $postArray['id'];
 		}
 		if ($this->_registry->get('usersEdit') && $postArray['user'])
 		{
 			$userModel = new Admin\Model\User();
-			return 'admin/view/users#' . $userModel->getByUser($postArray['user'])->id;
+			return 'admin/view/users#row-' . $userModel->getByUser($postArray['user'])->id;
 		}
 		return 'admin';
 	}
