@@ -28,17 +28,9 @@ class CategoryTest extends TestCaseAbstract
 	public function setUp()
 	{
 		parent::setUp();
-		$optionArray =
-		[
-			'adminName' => 'Test',
-			'adminUser' => 'test',
-			'adminPassword' => 'test',
-			'adminEmail' => 'test@test.com'
-		];
 		$installer = $this->installerFactory();
 		$installer->init();
 		$installer->rawCreate();
-		$installer->insertSettings($optionArray);
 		$categoryOne = Db::forTablePrefix('categories')->create();
 		$categoryOne
 			->set(
@@ -67,6 +59,32 @@ class CategoryTest extends TestCaseAbstract
 	public function tearDown()
 	{
 		$this->dropDatabase();
+	}
+
+	/**
+	 * testGetByAlias
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param string $categoryAlias
+	 * @param int $expect
+	 *
+	 * @dataProvider providerAutoloader
+	 */
+
+	public function testGetByAlias(string $categoryAlias = null, int $expect = null)
+	{
+		/* setup */
+
+		$categoryModel = new Model\Category();
+
+		/* actual */
+
+		$actual = $categoryModel->getByAlias($categoryAlias)->id;
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**

@@ -296,7 +296,7 @@ class Tag
 			if ($type === 'comments')
 			{
 				$route = $articleModel->getRouteById($parentId);
-				$total = ceil($commentModel->countByArticleAndLanguage($parentId, $language)  / $settingModel->get('limit'));
+				$total = ceil($commentModel->countByArticleAndLanguage($parentId, $language) / $settingModel->get('limit'));
 			}
 			if ($total > 1)
 			{
