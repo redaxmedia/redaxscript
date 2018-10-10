@@ -17,6 +17,8 @@
 {
 	color: gray(185);
 	font: bold 1rem var(--rs-admin-font-primary);
+	position: relative;
+	z-index: 1000;
 
 	& .rs-admin-label-panel,
 	& .rs-admin-link-panel
@@ -187,7 +189,6 @@
 		{
 			flex: 1;
 			min-width: 0;
-			z-index: 1100;
 
 			& > .rs-admin-list-panel-children
 			{
