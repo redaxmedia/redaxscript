@@ -100,6 +100,10 @@ module.exports = grunt =>
 	[
 		'shell:startServer'
 	]);
+	grunt.registerTask('killPort',
+	[
+		'shell:killPort'
+	]);
 	grunt.registerTask('openBrowser',
 	[
 		'shell:openBrowser'
@@ -158,6 +162,7 @@ module.exports = grunt =>
 	grunt.registerTask('serve',
 	[
 		'build',
+		'killPort',
 		'parallel:serve'
 	]);
 };
