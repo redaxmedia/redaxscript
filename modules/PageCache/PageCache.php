@@ -65,7 +65,7 @@ class PageCache extends Config
 
 		if ($this->_request->getPost() || $this->_registry->get('noCache'))
 		{
-			return false;
+			return null;
 		}
 
 		/* cache as needed */
