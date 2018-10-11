@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript;
 
-$teaser = Db::forTablePrefix('extras')
+return Db::forTablePrefix('extras')
 	->where('alias', 'teaser')
 	->findOne()
 	->text;
