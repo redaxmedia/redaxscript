@@ -271,7 +271,7 @@ class Db extends ORM
 	public function limitBySetting(int $step = null) : self
 	{
 		$limit = self::forTablePrefix('settings')->where('name', 'limit')->findOne()->value;
-		$this->_limit = $step ? $step * $limit . ', ' . $limit : $limit;
+		$this->_limit = $step > 0 ? $step * $limit . ',' . $limit : $limit;
 		return $this;
 	}
 }
