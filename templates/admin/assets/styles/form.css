@@ -19,6 +19,7 @@
 	{
 		color: gray(100);
 		display: block;
+		margin-bottom: 0.25em;
 
 		&:after
 		{
