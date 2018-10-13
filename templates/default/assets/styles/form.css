@@ -15,6 +15,16 @@
 		margin-top: 0.5em;
 	}
 
+	& .rs-legend-default
+	{
+		margin-bottom: 1em;
+
+		& a
+		{
+			text-decoration: underline;
+		}
+	}
+
 	& .rs-label-default
 	{
 		display: block;
