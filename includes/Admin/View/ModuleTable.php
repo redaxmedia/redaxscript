@@ -53,10 +53,10 @@ class ModuleTable extends ViewAbstract
 	 *
 	 * @since 4.0.0
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	protected function _renderTable() : string
+	protected function _renderTable() : ?string
 	{
 		$output = null;
 		$outputHead = null;

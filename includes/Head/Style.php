@@ -74,10 +74,10 @@ class Style extends Singleton implements HeadInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public function render() : string
+	public function render() : ?string
 	{
 		$output = null;
 

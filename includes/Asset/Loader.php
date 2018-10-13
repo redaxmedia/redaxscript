@@ -182,10 +182,10 @@ class Loader
 	 * @param array $bundleArray
 	 * @param array $rewriteArray
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	protected function _getContent(array $bundleArray = [], array $rewriteArray = []) : string
+	protected function _getContent(array $bundleArray = [], array $rewriteArray = []) : ?string
 	{
 		$output = null;
 
