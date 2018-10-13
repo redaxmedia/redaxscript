@@ -1,7 +1,7 @@
 {
 	"name": "redaxscript/redaxscript",
 	"description": "A modern, ultra lightweight and rocket fast Content Management System",
-	"version": "4.0.0-alpha.3",
+	"version": "4.0.0-alpha.4",
 	"homepage": "https://redaxscript.com",
 	"license": "GPL-3.0-only",
 	"require":
