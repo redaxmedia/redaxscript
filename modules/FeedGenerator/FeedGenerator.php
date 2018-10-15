@@ -43,10 +43,9 @@ class FeedGenerator extends Module\Module
 
 	public function renderStart()
 	{
-		if ($this->_registry->get('firstParameter') === 'module' && $this->_registry->get('secondParameter') === 'feed')
+		if ($this->_registry->get('firstParameter') === 'module' && $this->_registry->get('secondParameter') === 'feed-generator')
 		{
 			$this->_registry->set('renderBreak', true);
-			Header::contentType('application/atom+xml');
 			if ($this->_registry->get('thirdParameter') === 'articles')
 			{
 				echo $this->render('articles');
@@ -63,12 +62,12 @@ class FeedGenerator extends Module\Module
 	 *
 	 * @since 2.3.0
 	 *
-	 * @param string $table
+	 * @param string $table name of the table
 	 *
 	 * @return string
 	 */
 
-	public function render(string $table = 'articles') : string
+	public function render(string $table = null) : string
 	{
 		/* query result */
 
@@ -81,6 +80,7 @@ class FeedGenerator extends Module\Module
 
 		/* write xml */
 
+		Header::contentType('application/atom+xml');
 		return $this->_writeXML($resultArray);
 	}
 
