@@ -26,8 +26,9 @@ rs.modules.TableSorter.execute = config =>
 			{
 				const childrenList = tbody.childNodes;
 
-				window.fetch(CONFIG.sortUrl,
+				fetch(CONFIG.sortUrl,
 				{
+					credentials: 'same-origin',
 					method: 'POST',
 					headers:
 					{

@@ -17,6 +17,7 @@ rs.templates.console.behavior.listen = config =>
 		box.innerHTML += label.innerText + ' ' + field.value + CONFIG.eol;
 		fetch(location.href,
 		{
+			credentials: 'same-origin',
 			method: 'POST',
 			headers:
 			{
