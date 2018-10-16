@@ -8,13 +8,6 @@ rs.modules.TableSorter.execute = config =>
 	const tbodyList = document.querySelectorAll(CONFIG.selector);
 	const moveList = document.querySelectorAll(CONFIG.element.move);
 
-	if (moveList)
-	{
-		moveList.forEach(move =>
-		{
-			move.addEventListener('touchmove', event => event.preventDefault());
-		});
-	}
 	if (tbodyList)
 	{
 		tbodyList.forEach(tbody =>
@@ -47,6 +40,13 @@ rs.modules.TableSorter.execute = config =>
 				})
 				.then(() => CONFIG.reload ? location.reload() : null);
 			});
+		});
+	}
+	if (moveList)
+	{
+		moveList.forEach(move =>
+		{
+			move.addEventListener('touchmove', event => event.preventDefault());
 		});
 	}
 };

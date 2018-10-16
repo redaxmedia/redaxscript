@@ -132,7 +132,7 @@ class ExtraTable extends ViewAbstract
 						$tdElement->copy()->text($value->alias) .
 						$tdElement
 							->copy()
-							->addClass('rs-admin-col-move')
+							->addClass('rs-admin-js-move rs-admin-col-move')
 							->addClass($extrasTotal > 1 ? 'rs-admin-is-active' : null)
 							->text($value->rank)
 				);

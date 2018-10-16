@@ -147,7 +147,7 @@ class CommentTable extends ViewAbstract
 						$tdElement->copy()->text($value->article ? $articleModel->getById($value->article)->title : $this->_language->get('none')) .
 						$tdElement
 							->copy()
-							->addClass('rs-admin-col-move')
+							->addClass('rs-admin-js-move rs-admin-col-move')
 							->addClass($commentsTotal > 1 ? 'rs-admin-is-active' : null)
 							->text($value->rank)
 				);

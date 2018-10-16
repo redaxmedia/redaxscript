@@ -149,7 +149,7 @@ class ArticleTable extends ViewAbstract
 						$tdElement->copy()->text($value->category ? $categoryModel->getById($value->category)->title : $this->_language->get('uncategorized')) .
 						$tdElement
 							->copy()
-							->addClass('rs-admin-col-move')
+							->addClass('rs-admin-js-move rs-admin-col-move')
 							->addClass($articlesTotal > 1 ? 'rs-admin-is-active' : null)
 							->text($value->rank)
 				);
