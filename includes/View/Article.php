@@ -124,6 +124,7 @@ class Article extends ViewAbstract
 		}
 		$output = Module\Hook::trigger('articleStart');
 		$accessValidator = new Validator\Access();
+		$settingModel = new Model\Setting();
 		$articleModel = new Model\Article();
 		$articles = null;
 		$contentParser = new Content\Parser($this->_registry, $this->_request, $this->_language, $this->_config);
@@ -161,7 +162,14 @@ class Article extends ViewAbstract
 
 		if ($categoryId)
 		{
-			$articles = $articleModel->getByCategoryAndLanguageAndOrderAndStep($categoryId, $language, $this->_optionArray['orderColumn'], $lastSubParameter - 1);
+			if ($settingModel->get('pagination'))
+			{
+				$articles = $articleModel->getByCategoryAndLanguageAndOrderAndStep($categoryId, $language, $this->_optionArray['orderColumn'], $lastSubParameter - 1);
+			}
+			else
+			{
+				$articles = $articleModel->getByCategoryAndLanguageAndOrder($categoryId, $language, $this->_optionArray['orderColumn']);
+			}
 		}
 		else if ($articleId)
 		{

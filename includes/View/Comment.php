@@ -84,6 +84,7 @@ class Comment extends ViewAbstract
 		}
 		$output = Module\Hook::trigger('commentStart');
 		$accessValidator = new Validator\Access();
+		$settingModel = new Model\Setting();
 		$commentModel = new Model\Comment();
 		$comments = null;
 		$byline = new Helper\Byline($this->_registry, $this->_language);
@@ -121,7 +122,14 @@ class Comment extends ViewAbstract
 
 		if ($articleId)
 		{
-			$comments = $commentModel->getByArticleAndLanguageAndOrderAndStep($articleId, $language, $this->_optionArray['orderColumn'], $lastSubParameter - 1);
+			if ($settingModel->get('pagination'))
+			{
+				$comments = $commentModel->getByArticleAndLanguageAndOrderAndStep($articleId, $language, $this->_optionArray['orderColumn'], $lastSubParameter - 1);
+			}
+			else
+			{
+				$comments = $commentModel->getByArticleAndLanguageAndOrder($articleId, $language, $this->_optionArray['orderColumn']);
+			}
 		}
 		else
 		{

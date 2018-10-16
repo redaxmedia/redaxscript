@@ -61,6 +61,32 @@ class Article extends ContentAbstract
 	}
 
 	/**
+	 * get the articles by category and language and order
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param int $categoryId identifier of the category
+	 * @param string $language
+	 * @param string $orderColumn
+	 *
+	 * @return object|null
+	 */
+
+	public function getByCategoryAndLanguageAndOrder(int $categoryId = null, string $language = null, string $orderColumn = null) : ?object
+	{
+		return $this
+			->query()
+			->where(
+			[
+				'category' => $categoryId,
+				'status' => 1
+			])
+			->whereLanguageIs($language)
+			->orderBySetting($orderColumn)
+			->findMany() ? : null;
+	}
+
+	/**
 	 * get the articles by category and language and order and step
 	 *
 	 * @since 4.0.0
