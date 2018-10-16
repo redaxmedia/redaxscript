@@ -11,7 +11,7 @@ rs.modules.FormValidator.validate = config =>
 	{
 		/* handle validate */
 
-		form.querySelectorAll(CONFIG.element).forEach(field =>
+		form.querySelectorAll(CONFIG.element.required).forEach(field =>
 		{
 			const validateArray =
 			[
@@ -37,7 +37,7 @@ rs.modules.FormValidator.validate = config =>
 
 		form.addEventListener('reset', () =>
 		{
-			form.querySelectorAll(CONFIG.element).forEach(field => field.classList.remove(CONFIG.className.isError));
+			form.querySelectorAll(CONFIG.element.required).forEach(field => field.classList.remove(CONFIG.className.isError));
 		});
 	}
 };

@@ -5,6 +5,10 @@ rs.modules.TableSorter =
 	config:
 	{
 		selector: 'table.rs-admin-js-sort tbody',
+		element:
+		{
+			move: 'td.rs-admin-col-move'
+		},
 		sortUrl: rs.registry.parameterRoute + 'module/table-sorter/sort/' + rs.registry.token,
 		reload: true,
 		dragula:

@@ -6,7 +6,10 @@ rs.modules.FormValidator =
 		config:
 		{
 			selector: 'form.rs-js-validate',
-			element: '[required]',
+			element:
+			{
+				required: '[required]'
+			},
 			className:
 			{
 				fieldNote: 'rs-field-note',
@@ -20,7 +23,10 @@ rs.modules.FormValidator =
 		config:
 		{
 			selector: 'form.rs-admin-js-validate',
-			element: '[required]',
+			element:
+			{
+				required: '[required]'
+			},
 			className:
 			{
 				fieldNote: 'rs-admin-field-note',
