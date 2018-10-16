@@ -222,12 +222,12 @@ class Element extends HtmlAbstract
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string $value value of the element
+	 * @param string|int $value value of the element
 	 *
 	 * @return self
 	 */
 
-	public function val(string $value = null) : self
+	public function val($value = null) : self
 	{
 		$this->_attributeArray['value'] = trim($value);
 		return $this;
@@ -236,19 +236,16 @@ class Element extends HtmlAbstract
 	/**
 	 * set the text to element
 	 *
-	 * @since 2.2.0
+	 * @since 4.0.0
 	 *
-	 * @param string $text text of the element
+	 * @param string|int $text text of the element
 	 *
 	 * @return self
 	 */
 
-	public function text(string $text = null) : self
+	public function text($text = null) : self
 	{
-		if (strip_tags($text))
-		{
-			$this->_html = strip_tags($text);
-		}
+		$this->_html = strip_tags($text);
 		return $this;
 	}
 

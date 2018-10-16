@@ -162,20 +162,17 @@ class Content extends BootstrapAbstract
 
 		if ($order === 'asc')
 		{
-			$lastRank = $content->min('rank');
+			$this->_setId(
+			[
+				'rank' => $content->min('rank'),
+				'status' => 1
+			]);
 		}
 		if ($order === 'desc')
 		{
-			$lastRank = $content->max('rank');
-		}
-
-		/* last rank */
-
-		if ($lastRank)
-		{
 			$this->_setId(
 			[
-				'rank' => $lastRank,
+				'rank' => $content->max('rank'),
 				'status' => 1
 			]);
 		}
