@@ -16,7 +16,7 @@
 {
 	@extend %overlay-dialog;
 	animation: fade-in 0.4s;
-	background: gray(0, 0.3);
+	background: gray(0 / 30%);
 }
 
 /** @section 1.2 component */

@@ -11,7 +11,7 @@
 %rs-button
 {
 	border-radius: 0.125em;
-	box-shadow: 0 -0.125em 0 0 gray(0, 0.2) inset, 0 0.125em 0.125em gray(0, 0.2);
+	box-shadow: 0 -0.125em 0 0 gray(0 / 20%) inset, 0 0.125em 0.125em gray(0 / 20%);
 	box-sizing: border-box;
 	display: inline-block;
 	font-weight: bold;
@@ -22,7 +22,7 @@
 
 	&:active
 	{
-		box-shadow: 0 -0.125em 0 0 gray(0, 0.2) inset;
+		box-shadow: 0 -0.125em 0 0 gray(0 / 20%) inset;
 		transform: translateY(0.125em);
 	}
 

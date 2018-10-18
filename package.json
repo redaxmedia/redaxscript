@@ -48,7 +48,7 @@
 		"opn-cli": "3.1.0",
 		"postcss": "7.0.5",
 		"postcss-color-function": "4.0.1",
-		"postcss-color-gray": "4.1.0",
+		"postcss-color-gray": "5.0.0",
 		"postcss-custom-media": "7.0.6",
 		"postcss-custom-properties": "8.0.8",
 		"postcss-custom-selectors": "5.1.2",
