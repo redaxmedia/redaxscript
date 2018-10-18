@@ -13,7 +13,7 @@
 
 .rs-title-result
 {
-	border-left: 0.125em solid gray(0 / 20%);
+	border-left: 0.125em solid gray(0, 0.2);
 	font-size: 2.5em;
 	margin-bottom: 0.75em;
 	margin-top: 1em;

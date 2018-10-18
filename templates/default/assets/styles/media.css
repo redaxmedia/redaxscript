@@ -17,7 +17,7 @@
 {
 	& rect
 	{
-		fill: gray(0 / 10%);
+		fill: gray(0, 0.1);
 	}
 
 	& path

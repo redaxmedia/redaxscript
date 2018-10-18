@@ -48,7 +48,7 @@
 			& > span
 			{
 				border-radius: 0.125em;
-				box-shadow: 0 -0.125em 0 0 gray(0 / 20%) inset;
+				box-shadow: 0 -0.125em 0 0 gray(0, 0.2) inset;
 				line-height: 2.5em;
 			}
 
@@ -186,7 +186,7 @@
 
 	.rs-label-close-menu
 	{
-		background: gray(0 / 80%);
+		background: gray(0, 0.8);
 		transition: opacity 0.2s;
 	}
 }
