@@ -185,7 +185,7 @@ class Article extends ViewAbstract
 				if ($accessValidator->validate($value->access, $myGroups))
 				{
 					$output .= Module\Hook::trigger('articleFragmentStart', (array)$value);
-					if ((int)$value->headline === 1)
+					if ($value->headline)
 					{
 						$output .= $titleElement
 							->attr('id', 'article-' . $value->alias)

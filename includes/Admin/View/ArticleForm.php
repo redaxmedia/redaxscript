@@ -156,7 +156,7 @@ class ArticleForm extends ViewAbstract
 			])
 			->select($helperOption->getRobotArray(),
 			[
-				$article->id ? filter_var($article->robots, FILTER_VALIDATE_INT) : null
+				$article->id ? $article->robots : null
 			],
 			[
 				'id' => 'robots',
@@ -173,7 +173,7 @@ class ArticleForm extends ViewAbstract
 				'id' => 'text',
 				'name' => 'text',
 				'required' => 'required',
-				'value' => htmlspecialchars($article->text)
+				'value' => htmlspecialchars($article->text, ENT_QUOTES)
 			])
 			->append('</li></ul>')
 
@@ -223,10 +223,10 @@ class ArticleForm extends ViewAbstract
 			])
 			->select($helperOption->getContentArray('articles',
 			[
-				(int)$article->id
+				$article->id
 			]),
 			[
-				(int)$article->sibling
+				$article->sibling
 			],
 			[
 				'id' => 'sibling',
@@ -239,7 +239,7 @@ class ArticleForm extends ViewAbstract
 			])
 			->select($helperOption->getContentArray('categories'),
 			[
-				(int)$article->category
+				$article->category
 			],
 			[
 				'id' => 'category',
@@ -267,7 +267,7 @@ class ArticleForm extends ViewAbstract
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				$article->id ? (int)$article->headline : 1
+				$article->id ? $article->headline : 1
 			],
 			[
 				'id' => 'headline',
@@ -280,7 +280,7 @@ class ArticleForm extends ViewAbstract
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				$article->id ? (int)$article->byline : 1
+				$article->id ? $article->byline : 1
 			],
 			[
 				'id' => 'byline',
@@ -293,7 +293,7 @@ class ArticleForm extends ViewAbstract
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				(int)$article->comments
+				$article->comments
 			],
 			[
 				'id' => 'comments',
@@ -306,7 +306,7 @@ class ArticleForm extends ViewAbstract
 			])
 			->select($helperOption->getVisibleArray(),
 			[
-				$article->id ? (int)$article->status : 1
+				$article->id ? $article->status : 1
 			],
 			[
 				'id' => 'status',
@@ -321,7 +321,7 @@ class ArticleForm extends ViewAbstract
 			[
 				'id' => 'rank',
 				'name' => 'rank',
-				'value' => $article->id ? (int)$article->rank : $articleModel->query()->max('rank') + 1
+				'value' => $article->id ? $article->rank : $articleModel->query()->max('rank') + 1
 			])
 			->append('</li>');
 		if ($this->_registry->get('groupsEdit'))

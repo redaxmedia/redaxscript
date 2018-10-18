@@ -188,7 +188,7 @@ class SettingForm extends ViewAbstract
 			])
 			->select($helperOption->getRobotArray(),
 			[
-				filter_var($settingModel->get('robots'), FILTER_VALIDATE_INT)
+				$settingModel->get('robots')
 			],
 			[
 				'id' => 'robots',
@@ -238,7 +238,7 @@ class SettingForm extends ViewAbstract
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				(int)$settingModel->get('notification')
+				$settingModel->get('notification')
 			],
 			[
 				'id' => 'notification',
@@ -379,7 +379,7 @@ class SettingForm extends ViewAbstract
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				(int)$settingModel->get('pagination')
+				$settingModel->get('pagination')
 			],
 			[
 				'id' => 'pagination',
@@ -407,7 +407,7 @@ class SettingForm extends ViewAbstract
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				(int)$settingModel->get('registration')
+				$settingModel->get('registration')
 			],
 			[
 				'id' => 'registration',
@@ -420,7 +420,7 @@ class SettingForm extends ViewAbstract
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				(int)$settingModel->get('verification')
+				$settingModel->get('verification')
 			],
 			[
 				'id' => 'verification',
@@ -433,7 +433,7 @@ class SettingForm extends ViewAbstract
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				(int)$settingModel->get('recovery')
+				$settingModel->get('recovery')
 			],
 			[
 				'id' => 'recovery',
@@ -461,7 +461,7 @@ class SettingForm extends ViewAbstract
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				(int)$settingModel->get('moderation')
+				$settingModel->get('moderation')
 			],
 			[
 				'id' => 'moderation',
@@ -474,7 +474,7 @@ class SettingForm extends ViewAbstract
 			])
 			->select($helperOption->getCaptchaArray(),
 			[
-				(int)$settingModel->get('captcha')
+				$settingModel->get('captcha')
 			],
 			[
 				'id' => 'captcha',

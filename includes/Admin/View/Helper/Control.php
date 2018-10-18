@@ -63,7 +63,7 @@ class Control extends ViewAbstract
 
 		if ($this->_hasPermission($table, 'edit') && $this->_showAction($table, 'enable', $id))
 		{
-			$enableAction = $status === 1 ? 'disable' : 'enable';
+			$enableAction = $status ? 'disable' : 'enable';
 			$outputItem .= $itemElement
 				->copy()
 				->addClass($enableAction === 'disable' ? 'rs-admin-item-disable' : 'rs-admin-item-enable')
@@ -92,7 +92,7 @@ class Control extends ViewAbstract
 			}
 			else
 			{
-				$publishAction = $status === 1 ? 'unpublish' : 'publish';
+				$publishAction = $status ? 'unpublish' : 'publish';
 				$outputItem .= $itemElement
 					->copy()
 					->addClass($publishAction === 'unpublish' ? 'rs-admin-item-unpublish' : 'rs-admin-item-publish')

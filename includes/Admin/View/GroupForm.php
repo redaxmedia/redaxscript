@@ -256,7 +256,7 @@ class GroupForm extends ViewAbstract
 				])
 				->select($helperOption->getPermissionArray('settings'),
 				[
-					(int)$group->settings
+					$group->settings
 				],
 				[
 					'id' => 'settings',
@@ -297,7 +297,7 @@ class GroupForm extends ViewAbstract
 				])
 				->select($helperOption->getToggleArray(),
 				[
-					$group->id ? (int)$group->status : 1
+					$group->id ? $group->status : 1
 				],
 				[
 					'id' => 'status',

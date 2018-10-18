@@ -64,7 +64,7 @@ class Code extends TagAbstract
 		{
 			if ($key % 2)
 			{
-				$partArray[$key] = $preElement->copy()->html(htmlspecialchars($value, null, null, false));
+				$partArray[$key] = $preElement->copy()->html(htmlspecialchars($value, ENT_QUOTES, false, false));
 			}
 		}
 		$output = implode($partArray);

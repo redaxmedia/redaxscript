@@ -134,7 +134,7 @@ class ExtraForm extends ViewAbstract
 				'id' => 'text',
 				'name' => 'text',
 				'required' => 'required',
-				'value' => htmlspecialchars($extra->text)
+				'value' => htmlspecialchars($extra->text, ENT_QUOTES)
 			])
 			->append('</li></ul>')
 
@@ -171,10 +171,10 @@ class ExtraForm extends ViewAbstract
 			])
 			->select($helperOption->getContentArray('extras',
 			[
-				(int)$extra->id
+				$extra->id
 			]),
 			[
-				(int)$extra->sibling
+				$extra->sibling
 			],
 			[
 				'id' => 'sibling',
@@ -187,7 +187,7 @@ class ExtraForm extends ViewAbstract
 			])
 			->select($helperOption->getContentArray('categories'),
 			[
-				(int)$extra->category
+				$extra->category
 			],
 			[
 				'id' => 'category',
@@ -200,7 +200,7 @@ class ExtraForm extends ViewAbstract
 			])
 			->select($helperOption->getContentArray('articles'),
 			[
-				(int)$extra->article
+				$extra->article
 			],
 			[
 				'id' => 'article',
@@ -228,7 +228,7 @@ class ExtraForm extends ViewAbstract
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				$extra->id ? (int)$extra->headline : 1
+				$extra->id ? $extra->headline : 1
 			],
 			[
 				'id' => 'headline',
@@ -241,7 +241,7 @@ class ExtraForm extends ViewAbstract
 			])
 			->select($helperOption->getVisibleArray(),
 			[
-				$extra->id ? (int)$extra->status : 1
+				$extra->id ? $extra->status : 1
 			],
 			[
 				'id' => 'status',
@@ -256,7 +256,7 @@ class ExtraForm extends ViewAbstract
 			[
 				'id' => 'rank',
 				'name' => 'rank',
-				'value' => $extra->id ? (int)$extra->rank : $extraModel->query()->max('rank') + 1
+				'value' => $extra->id ? $extra->rank : $extraModel->query()->max('rank') + 1
 			])
 			->append('</li>');
 		if ($this->_registry->get('groupsEdit'))

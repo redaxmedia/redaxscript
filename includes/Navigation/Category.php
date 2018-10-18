@@ -104,7 +104,7 @@ class Category extends NavigationAbstract
 			{
 				$outputItem .= $itemElement
 					->copy()
-					->addClass((int)$this->_registry->get('categoryId') === (int)$value->id ? $this->_optionArray['className']['active'] : null)
+					->addClass($this->_registry->get('categoryId') === (int)$value->id ? $this->_optionArray['className']['active'] : null)
 					->html($linkElement
 						->copy()
 						->attr(
@@ -113,15 +113,17 @@ class Category extends NavigationAbstract
 						])
 						->text($value->title)
 					)
-					->append($this->renderList($categories,
-					[
-						'className' =>
+					->append(
+						$this->renderList($categories,
 						[
-							'list' => $value->parent ? $optionArray['className']['list'] : $optionArray['className']['children'],
-							'active' => $optionArray['className']['active'],
-						],
-						'parentId' => (int)$value->id
-					]));
+							'className' =>
+							[
+								'list' => $value->parent ? $optionArray['className']['list'] : $optionArray['className']['children'],
+								'active' => $optionArray['className']['active'],
+							],
+							'parentId' => (int)$value->id
+						])
+					);
 			}
 		}
 

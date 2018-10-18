@@ -169,7 +169,7 @@ class ModuleForm extends ViewAbstract
 			])
 			->select($helperOption->getToggleArray(),
 			[
-				(int)$module->status
+				$module->status
 			],
 			[
 				'id' => 'status',

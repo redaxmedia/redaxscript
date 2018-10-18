@@ -91,7 +91,7 @@ class Option
 			$this->_language->get('follow') => 3,
 			$this->_language->get('index_no') => 4,
 			$this->_language->get('follow_no') => 5,
-			$this->_language->get('none') => 0
+			$this->_language->get('none') => 6
 		];
 	}
 
@@ -305,7 +305,7 @@ class Option
 		foreach ($contents as $value)
 		{
 			$contentKey = $value->title . ' (' . $value->id . ')';
-			$contentArray[$contentKey] = (int)$value->id;
+			$contentArray[$contentKey] = $value->id;
 		}
 		return $contentArray;
 	}
@@ -329,7 +329,7 @@ class Option
 
 		foreach ($access as $value)
 		{
-			$accessArray[$value->name] = (int)$value->id;
+			$accessArray[$value->name] = $value->id;
 		}
 		return $accessArray;
 	}

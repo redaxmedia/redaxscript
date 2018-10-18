@@ -65,7 +65,7 @@ class HelperTest extends TestCaseAbstract
 				'alias' => 'category-two',
 				'description' => 'Category Two',
 				'keywords' => 'Category Two',
-				'robots' => 5
+				'robots' => 1
 			])
 			->save();
 		$categoryThree = Db::forTablePrefix('categories')->create();
@@ -94,7 +94,7 @@ class HelperTest extends TestCaseAbstract
 				'alias' => 'article-two',
 				'description' => 'Article Two',
 				'keywords' => 'Article Two',
-				'robots' => 4,
+				'robots' => 0,
 				'category' => $categoryTwo->id
 			])
 			->save();
@@ -116,10 +116,6 @@ class HelperTest extends TestCaseAbstract
 				'category' => $categoryThree->id
 			])
 			->save();
-		$setting = $this->settingFactory();
-		$setting->set('title', 'Setting');
-		$setting->set('description', 'Setting');
-		$setting->set('keywords', 'Setting');
 	}
 
 	/**
@@ -198,16 +194,19 @@ class HelperTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $registryArray
+	 * @param array $settingArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetTitle(array $registryArray = [], string $expect = null)
+	public function testGetTitle(array $registryArray = [], array $settingArray = [], string $expect = null)
 	{
 		/* setup */
 
 		$this->_registry->init($registryArray);
+		$setting = $this->settingFactory();
+		$setting->set('title', $settingArray['title']);
 
 		/* actual */
 
@@ -250,16 +249,19 @@ class HelperTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $registryArray
+	 * @param array $settingArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetDescription(array $registryArray = [], string $expect = null)
+	public function testGetDescription(array $registryArray = [], array $settingArray = [], string $expect = null)
 	{
 		/* setup */
 
 		$this->_registry->init($registryArray);
+		$setting = $this->settingFactory();
+		$setting->set('description', $settingArray['description']);
 
 		/* actual */
 
@@ -276,16 +278,19 @@ class HelperTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $registryArray
+	 * @param array $settingArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetKeywords(array $registryArray = [], string $expect = null)
+	public function testGetKeywords(array $registryArray = [], array $settingArray = [], string $expect = null)
 	{
 		/* setup */
 
 		$this->_registry->init($registryArray);
+		$setting = $this->settingFactory();
+		$setting->set('keywords', $settingArray['keywords']);
 
 		/* actual */
 
@@ -302,16 +307,19 @@ class HelperTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 *
 	 * @param array $registryArray
+	 * @param array $settingArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetRobots(array $registryArray = [], string $expect = null)
+	public function testGetRobots(array $registryArray = [], array $settingArray = [], string $expect = null)
 	{
 		/* setup */
 
 		$this->_registry->init($registryArray);
+		$setting = $this->settingFactory();
+		$setting->set('robots', $settingArray['robots']);
 
 		/* actual */
 

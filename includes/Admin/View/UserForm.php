@@ -227,7 +227,7 @@ class UserForm extends ViewAbstract
 				])
 				->select($helperOption->getToggleArray(),
 				[
-					$user->id ? (int)$user->status : 1
+					$user->id ? $user->status : 1
 				],
 				[
 					'id' => 'status',

@@ -24,12 +24,12 @@ class Robots extends HelperAbstract
 
 	protected static $_robotArray =
 	[
-		'none',
-		'all',
-		'index',
-		'follow',
-		'index_no',
-		'follow_no'
+		1 => 'all',
+		2 => 'index',
+		3 => 'follow',
+		4 => 'index_no',
+		5 => 'follow_no',
+		6 => 'none'
 	];
 
 	/**
@@ -47,10 +47,10 @@ class Robots extends HelperAbstract
 		$lastId = $this->_registry->get('lastId');
 		$useRobots = $this->_registry->get('useRobots');
 		$settingRobots = $settingModel->get('robots');
+		$robots = null;
 
-		/* find robots */
+		/* handle robots */
 
-		$robots = 0;
 		if ($useRobots)
 		{
 			$robots = $useRobots;

@@ -117,7 +117,7 @@ class CommentForm extends ViewAbstract
 				'id' => 'text',
 				'name' => 'text',
 				'required' => 'required',
-				'value' => htmlspecialchars($comment->text)
+				'value' => htmlspecialchars($comment->text, ENT_QUOTES)
 			])
 			->append('</li></ul>')
 
@@ -154,7 +154,7 @@ class CommentForm extends ViewAbstract
 			])
 			->select($helperOption->getContentArray('articles'),
 			[
-				(int)$comment->article
+				$comment->article
 			],
 			[
 				'id' => 'article',
@@ -182,7 +182,7 @@ class CommentForm extends ViewAbstract
 			])
 			->select($helperOption->getVisibleArray(),
 			[
-				$comment->id ? (int)$comment->status : 1
+				$comment->id ? $comment->status : 1
 			],
 			[
 				'id' => 'status',
@@ -197,7 +197,7 @@ class CommentForm extends ViewAbstract
 			[
 				'id' => 'rank',
 				'name' => 'rank',
-				'value' => $comment->id ? (int)$comment->rank : $commentModel->query()->max('rank') + 1
+				'value' => $comment->id ? $comment->rank : $commentModel->query()->max('rank') + 1
 			])
 			->append('</li>');
 		if ($this->_registry->get('groupsEdit'))

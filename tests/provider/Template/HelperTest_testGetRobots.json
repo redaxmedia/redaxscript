@@ -5,7 +5,32 @@
 			"lastTable": null,
 			"lastId": null
 		},
+		{
+			"robots": null
+		},
+		null
+	],
+	[
+		{
+			"useRobots": 6,
+			"lastTable": null,
+			"lastId": null
+		},
+		{
+			"robots": 1
+		},
 		"none"
+	],
+	[
+		{
+			"useRobots": null,
+			"lastTable": null,
+			"lastId": null
+		},
+		{
+			"robots": 1
+		},
+		"all"
 	],
 	[
 		{
@@ -13,46 +38,31 @@
 			"lastTable": "categories",
 			"lastId": 1
 		},
+		{
+			"robots": null
+		},
+		null
+	],
+	[
+		{
+			"useRobots": null,
+			"lastTable": "categories",
+			"lastId": 2
+		},
+		{
+			"robots": null
+		},
 		"all"
 	],
 	[
 		{
-			"useRobots": 3,
-			"lastTable": null,
-			"lastId": null
-		},
-		"follow"
-	],
-	[
-		{
-			"useRobots": null,
-			"lastTable": "articles",
-			"lastId": 2
-		},
-		"index_no"
-	],
-	[
-		{
-			"useRobots": null,
-			"lastTable": "categories",
-			"lastId": 2
-		},
-		"follow_no"
-	],
-	[
-		{
-			"useRobots": null,
-			"lastTable": "articles",
-			"lastId": 3
-		},
-		"follow_no"
-	],
-	[
-		{
 			"useRobots": null,
 			"lastTable": "categories",
 			"lastId": 3
 		},
-		"follow_no"
+		{
+			"robots": null
+		},
+		"all"
 	]
 ]

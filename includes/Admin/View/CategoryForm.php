@@ -156,7 +156,7 @@ class CategoryForm extends ViewAbstract
 			])
 			->select($helperOption->getRobotArray(),
 			[
-				$category->id ? filter_var($category->robots, FILTER_VALIDATE_INT) : null
+				$category->id ? $category->robots : null
 			],
 			[
 				'id' => 'robots',
@@ -210,10 +210,10 @@ class CategoryForm extends ViewAbstract
 			])
 			->select($helperOption->getContentArray('categories',
 			[
-				(int)$category->id
+				$category->id
 			]),
 			[
-				(int)$category->sibling
+				$category->sibling
 			],
 			[
 				'id' => 'sibling',
@@ -226,10 +226,10 @@ class CategoryForm extends ViewAbstract
 			])
 			->select($helperOption->getContentArray('categories',
 			[
-				(int)$category->id
+				$category->id
 			]),
 			[
-				(int)$category->parent
+				$category->parent
 			],
 			[
 				'id' => 'parent',
@@ -257,7 +257,7 @@ class CategoryForm extends ViewAbstract
 			])
 			->select($helperOption->getVisibleArray(),
 			[
-				$category->id ? (int)$category->status : 1
+				$category->id ? $category->status : 1
 			],
 			[
 				'id' => 'status',
@@ -272,7 +272,7 @@ class CategoryForm extends ViewAbstract
 			[
 				'id' => 'rank',
 				'name' => 'rank',
-				'value' => $category->id ? (int)$category->rank : $categoryModel->query()->max('rank') + 1
+				'value' => $category->id ? $category->rank : $categoryModel->query()->max('rank') + 1
 			])
 			->append('</li>');
 		if ($this->_registry->get('groupsEdit'))

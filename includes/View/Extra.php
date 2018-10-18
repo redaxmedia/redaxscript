@@ -168,7 +168,7 @@ class Extra extends ViewAbstract
 			if ($accessValidator->validate($value->access, $myGroups))
 			{
 				$output .= Module\Hook::trigger('extraFragmentStart', (array)$value);
-				if ((int)$value->headline === 1)
+				if ($value->headline)
 				{
 					$output .= $titleElement
 						->attr('id', 'extra-' . $value->alias)

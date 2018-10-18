@@ -356,7 +356,7 @@ class Router extends RouterAbstract
 
 		/* handle login */
 
-		if ((int)$settingModel->get('recovery') === 1)
+		if ($settingModel->get('recovery'))
 		{
 			if ($secondParameter === 'recover')
 			{
@@ -388,7 +388,7 @@ class Router extends RouterAbstract
 	protected function _renderRegister() : string
 	{
 		$settingModel = new Model\Setting();
-		if ((int)$settingModel->get('registration') === 1)
+		if ($settingModel->get('registration'))
 		{
 			$registerForm = new View\RegisterForm($this->_registry, $this->_language);
 			return $registerForm->render();
