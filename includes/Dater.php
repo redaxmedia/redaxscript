@@ -43,9 +43,13 @@ class Dater
 
 	public function init(int $date = null)
 	{
-		$settingModel = new Model\Setting();
-		$zone = $settingModel->get('zone') ? : date_default_timezone_get();
-		$this->_timeZone = new DateTimeZone($zone);
+		$zone = null;
+		if (Db::getStatus() === 2)
+		{
+			$settingModel = new Model\Setting();
+			$zone = $settingModel->get('zone');
+		}
+		$this->_timeZone = new DateTimeZone($zone ? : date_default_timezone_get());
 		$this->_dateTime = new DateTime();
 		$this->_dateTime->setTimezone($this->_timeZone);
 		if ($date)
