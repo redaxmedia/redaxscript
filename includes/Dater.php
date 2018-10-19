@@ -3,7 +3,6 @@ namespace Redaxscript;
 
 use DateTime;
 use DateTimeZone;
-use Exception;
 use Redaxscript\Model;
 
 /**
