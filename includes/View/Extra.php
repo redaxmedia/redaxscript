@@ -131,6 +131,8 @@ class Extra extends ViewAbstract
 		$language = $this->_registry->get('language');
 		$loggedIn = $this->_registry->get('loggedIn');
 		$token = $this->_registry->get('token');
+		$categoryId = $this->_registry->get('categoryId');
+		$articleId = $this->_registry->get('articleId');
 		$firstParameter = $this->_registry->get('firstParameter');
 		$myGroups = $this->_registry->get('myGroups');
 
@@ -165,7 +167,9 @@ class Extra extends ViewAbstract
 
 		foreach ($extras as $value)
 		{
-			if ($accessValidator->validate($value->access, $myGroups))
+			$validateCategory = $categoryId === $value->category || !$value->category;
+			$validateArticle = $articleId === $value->article || !$value->article;
+			if ($accessValidator->validate($value->access, $myGroups) && ($validateCategory || $validateArticle))
 			{
 				$output .= Module\Hook::trigger('extraFragmentStart', (array)$value);
 				if ($value->headline)
