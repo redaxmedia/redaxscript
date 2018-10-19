@@ -67,11 +67,13 @@ class DaterTest extends TestCaseAbstract
 
 		$actualDateTime = $dater->getDateTime();
 		$actualTimeZone = $dater->getTimeZone();
+		$actualTimeStamp = $dater->getDateTime()->getTimestamp();
 
 		/* compare */
 
 		$this->assertInstanceOf('DateTime', $actualDateTime);
 		$this->assertInstanceOf('DateTimeZone', $actualTimeZone);
+		$this->assertNotEquals(0, $actualTimeStamp);
 	}
 
 	/**
