@@ -47,13 +47,18 @@ class HtmlValidator extends Config
 
 			$url = $this->_configArray['apiUrl'] . '?' . http_build_query(
 			[
-				'doc' => $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute')
+				'doc' => $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute'),
+				'checkerrorpages' => 'yes',
+				'out' => 'json'
 			]);
 			$reader = new Reader();
-			$result = $reader->loadJSON($url . '&' . http_build_query(
-			[
-				'out' => 'json'
-			]))->getArray();
+			$result = $reader
+				->loadJSON($url,
+				[
+					CURLOPT_TIMEOUT_MS => 1000,
+					CURLOPT_USERAGENT => $this->_language->get('name', '_package')
+				])
+				->getArray();
 
 			/* process result */
 
@@ -61,7 +66,7 @@ class HtmlValidator extends Config
 			{
 				foreach ($result['messages'] as $value)
 				{
-					if ($value['type'] === 'error')
+					if ($value['type'] === 'error' || $value['type'] === 'non-document-error')
 					{
 						$message =
 						[

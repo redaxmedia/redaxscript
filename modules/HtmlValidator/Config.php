@@ -23,6 +23,6 @@ class Config extends Module\Notification
 
 	protected $_configArray =
 	[
-		'apiUrl' => 'https://validator.w3.org/nu'
+		'apiUrl' => 'https://validator.w3.org/nu/'
 	];
 }

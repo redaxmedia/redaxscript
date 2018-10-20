@@ -85,13 +85,14 @@ class Reader
 	 * @since 3.1.0
 	 *
 	 * @param string $url
+	 * @param array $optionArray
 	 *
 	 * @return self
 	 */
 
-	public function loadJSON(string $url = null) : self
+	public function loadJSON(string $url = null, array $optionArray = []) : self
 	{
-		$content = $this->load($url);
+		$content = $this->load($url, $optionArray);
 		$this->_dataObject = json_decode($content);
 		return $this;
 	}
@@ -102,13 +103,14 @@ class Reader
 	 * @since 3.0.0
 	 *
 	 * @param string $url
+	 * @param array $optionArray
 	 *
 	 * @return self
 	 */
 
-	public function loadXML(string $url = null) : self
+	public function loadXML(string $url = null, array $optionArray = []) : self
 	{
-		$content = $this->load($url);
+		$content = $this->load($url, $optionArray);
 		$this->_dataObject = simplexml_load_string($content);
 		return $this;
 	}
@@ -119,22 +121,23 @@ class Reader
 	 * @since 3.0.0
 	 *
 	 * @param string $url
+	 * @param array $optionArray
 	 *
 	 * @return string
 	 */
 
-	public function load(string $url = null) : string
+	public function load(string $url = null, array $optionArray = []) : string
 	{
-		/* curl */
+		/* remote curl */
 
 		if (function_exists('curl_version') && !is_file($url))
 		{
-			$optionArray =
+			$optionArray = array_replace_recursive($optionArray,
 			[
 				CURLOPT_RETURNTRANSFER => true,
 				CURLOPT_FOLLOWLOCATION => true,
 				CURLOPT_URL => $url
-			];
+			]);
 			$curl = curl_init();
 			curl_setopt_array($curl, $optionArray);
 			$output = curl_exec($curl);
