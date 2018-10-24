@@ -16,12 +16,44 @@ use SimpleXMLElement;
 class Reader
 {
 	/**
+	 * options of the reader
+	 *
+	 * @var array
+	 */
+
+	protected $_optionArray =
+	[
+		'curl' =>
+		[
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_TIMEOUT_MS => 1000
+		]
+	];
+
+	/**
 	 * data object
 	 *
 	 * @var object
 	 */
 
 	protected $_dataObject;
+
+	/**
+	 * init the class
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $optionArray options of the messenger
+	 *
+	 * @return self
+	 */
+
+	public function init(array $optionArray = []) : self
+	{
+		$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
+		return $this;
+	}
 
 	/**
 	 * get the object
@@ -85,14 +117,13 @@ class Reader
 	 * @since 3.1.0
 	 *
 	 * @param string $url
-	 * @param array $optionArray
 	 *
 	 * @return self
 	 */
 
-	public function loadJSON(string $url = null, array $optionArray = []) : self
+	public function loadJSON(string $url = null) : self
 	{
-		$content = $this->load($url, $optionArray);
+		$content = $this->load($url);
 		$this->_dataObject = json_decode($content);
 		return $this;
 	}
@@ -103,14 +134,13 @@ class Reader
 	 * @since 3.0.0
 	 *
 	 * @param string $url
-	 * @param array $optionArray
 	 *
 	 * @return self
 	 */
 
-	public function loadXML(string $url = null, array $optionArray = []) : self
+	public function loadXML(string $url = null) : self
 	{
-		$content = $this->load($url, $optionArray);
+		$content = $this->load($url);
 		$this->_dataObject = simplexml_load_string($content);
 		return $this;
 	}
@@ -121,25 +151,18 @@ class Reader
 	 * @since 3.0.0
 	 *
 	 * @param string $url
-	 * @param array $optionArray
 	 *
 	 * @return string
 	 */
 
-	public function load(string $url = null, array $optionArray = []) : string
+	public function load(string $url = null) : string
 	{
 		/* remote curl */
 
 		if (function_exists('curl_version') && !is_file($url))
 		{
-			$optionArray = array_replace_recursive($optionArray,
-			[
-				CURLOPT_RETURNTRANSFER => true,
-				CURLOPT_FOLLOWLOCATION => true,
-				CURLOPT_URL => $url
-			]);
 			$curl = curl_init();
-			curl_setopt_array($curl, $optionArray);
+			curl_setopt_array($curl, $this->_optionArray['curl']);
 			$output = curl_exec($curl);
 			curl_close($curl);
 		}

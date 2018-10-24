@@ -52,12 +52,8 @@ class CssValidator extends Config
 				'output' => 'json'
 			]);
 			$reader = new Reader();
-			$result = $reader
-				->loadJSON($url,
-				[
-					CURLOPT_TIMEOUT_MS => 1000
-				])
-				->getArray();
+			$reader->init();
+			$result = $reader->loadJSON($url)->getArray();
 
 			/* process result */
 

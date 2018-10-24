@@ -66,6 +66,7 @@ class CallHome extends Module\Notification
 	public function adminNotification() : ?array
 	{
 		$reader = new Reader();
+		$reader->init();
 		$aliasFilter = new Filter\Alias();
 		$version = $aliasFilter->sanitize($this->_language->get('version', '_package'));
 

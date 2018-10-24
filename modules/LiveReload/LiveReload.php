@@ -58,6 +58,7 @@ class LiveReload extends Config
 	public function adminNotification() : ?array
 	{
 		$reader = new Reader();
+		$reader->init();
 		$content = $reader->load($this->_configArray['url']);
 
 		/* handle notification */

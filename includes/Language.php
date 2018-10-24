@@ -103,6 +103,7 @@ class Language extends Singleton
 	public function load($path = null)
 	{
 		$reader = new Reader();
+		$reader->init();
 
 		/* process path */
 

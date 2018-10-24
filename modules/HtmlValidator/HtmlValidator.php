@@ -52,13 +52,14 @@ class HtmlValidator extends Config
 				'out' => 'json'
 			]);
 			$reader = new Reader();
-			$result = $reader
-				->loadJSON($url,
+			$reader->init(
+			[
+				'curl' =>
 				[
-					CURLOPT_TIMEOUT_MS => 1000,
 					CURLOPT_USERAGENT => $this->_language->get('name', '_package')
-				])
-				->getArray();
+				]
+			]);
+			$result = $reader->loadJSON($url)->getArray();
 
 			/* process result */
 

@@ -28,6 +28,7 @@ class ReaderTest extends TestCaseAbstract
 		/* setup */
 
 		$reader = new Reader();
+		$reader->init();
 		$reader->loadJSON('tests' . DIRECTORY_SEPARATOR . 'provider' . DIRECTORY_SEPARATOR . 'ReaderTest.json');
 
 		/* actual */
@@ -62,6 +63,7 @@ class ReaderTest extends TestCaseAbstract
 		/* setup */
 
 		$reader = new Reader();
+		$reader->init();
 		$reader->loadXML('tests' . DIRECTORY_SEPARATOR . 'provider' . DIRECTORY_SEPARATOR . 'ReaderTest.xml');
 
 		/* actual */
@@ -98,6 +100,7 @@ class ReaderTest extends TestCaseAbstract
 		/* setup */
 
 		$reader = new Reader();
+		$reader->init();
 		$reader->loadXML('https://service.redaxscript.com/xml/pad.xml');
 
 		/* actual */

@@ -99,6 +99,7 @@ class FeedReader extends Config
 		/* load result */
 
 		$reader = new Reader();
+		$reader->init();
 		$result = $reader->loadXML($url)->getObject();
 		$result = $result->entry ? $result->entry : $result->channel->item;
 
