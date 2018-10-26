@@ -163,6 +163,7 @@ class Reader
 		{
 			$curl = curl_init();
 			curl_setopt_array($curl, $this->_optionArray['curl']);
+			curl_setopt($curl, CURLOPT_URL, $url);
 			$output = curl_exec($curl);
 			curl_close($curl);
 		}
