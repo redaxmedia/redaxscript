@@ -10,6 +10,7 @@ use Redaxscript\Model;
 use Redaxscript\Module;
 use Redaxscript\Registry;
 use Redaxscript\Request;
+use Redaxscript\Template;
 use Redaxscript\Validator;
 
 /**
@@ -58,7 +59,11 @@ class Article extends ViewAbstract
 			'title' => 'rs-title-content',
 			'box' => 'rs-box-content'
 		],
-		'orderColumn' => 'rank'
+		'orderColumn' => 'rank',
+		'partial' =>
+		[
+			'error' => 'error.phtml'
+		]
 	];
 
 	/**
@@ -178,7 +183,7 @@ class Article extends ViewAbstract
 
 		/* process articles */
 
-		if ($articles)
+		if ($articles->count())
 		{
 			foreach ($articles as $value)
 			{
@@ -205,6 +210,10 @@ class Article extends ViewAbstract
 					}
 				}
 			}
+		}
+		else
+		{
+			$output .= Template\Tag::partial($this->_registry->get('template') . '/' . $this->_optionArray['partial']['error']);
 		}
 		$output .= Module\Hook::trigger('articleEnd');
 		return $output;

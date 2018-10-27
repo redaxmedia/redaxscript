@@ -21,7 +21,7 @@ class Search implements ValidatorInterface
 
 	protected $_rangeArray =
 	[
-		'min' => 3,
+		'min' => 1,
 		'max' => 100
 	];
 
