@@ -5,7 +5,6 @@ use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Model;
 use Redaxscript\Module;
-use Redaxscript\Validator;
 use Redaxscript\View\ViewAbstract;
 
 /**
@@ -180,39 +179,78 @@ class Breadcrumb extends ViewAbstract
 
 	protected function _create(int $key = 0)
 	{
-		$aliasValidator = new Validator\Alias();
 		$title = $this->_registry->get('useTitle');
 		$firstParameter = $this->_registry->get('firstParameter');
+		$secondParameter = $this->_registry->get('secondParameter');
 		$firstTable = $this->_registry->get('firstTable');
 		$fullRoute = $this->_registry->get('fullRoute');
 		$lastId = $this->_registry->get('lastId');
 
-		/* title */
+		/* handle title */
 
 		if ($title)
 		{
 			$this->_breadcrumbArray[$key]['title'] = $title;
 		}
 
-		/* else home */
+		/* handle home */
 
 		else if (!$fullRoute)
 		{
 			$this->_breadcrumbArray[$key]['title'] = $this->_language->get('home');
 		}
 
-		/* else administration */
+		/* handle administration */
 
 		else if ($firstParameter === 'admin')
 		{
 			$this->_createAdmin($key);
 		}
 
-		/* else default alias */
+		/* handle login */
 
-		else if ($firstParameter && $aliasValidator->validate($firstParameter, 'system') && $this->_language->get($firstParameter))
+		else if ($firstParameter === 'login')
 		{
-			$this->_breadcrumbArray[$key]['title'] = $this->_language->get($firstParameter);
+			if ($secondParameter === 'recover')
+			{
+				$this->_breadcrumbArray[$key]['title'] = $this->_language->get('recovery');
+			}
+			else if ($secondParameter === 'reset')
+			{
+				$this->_breadcrumbArray[$key]['title'] = $this->_language->get('reset');
+			}
+			else
+			{
+				$this->_breadcrumbArray[$key]['title'] = $this->_language->get('login');
+			}
+		}
+
+		/* handle logout */
+
+		else if ($firstParameter === 'logout')
+		{
+			$this->_breadcrumbArray[$key]['title'] = $this->_language->get('logout');
+		}
+
+		/* handle register */
+
+		else if ($firstParameter === 'register')
+		{
+			$this->_breadcrumbArray[$key]['title'] = $this->_language->get('registration');
+		}
+
+		/* handle module */
+
+		else if ($firstParameter === 'module')
+		{
+			$this->_breadcrumbArray[$key]['title'] = $this->_language->get('module');
+		}
+
+		/* handle search */
+
+		else if ($firstParameter === 'search')
+		{
+			$this->_breadcrumbArray[$key]['title'] = $this->_language->get('search');
 		}
 
 		/* handle error */
@@ -222,7 +260,7 @@ class Breadcrumb extends ViewAbstract
 			$this->_breadcrumbArray[$key]['title'] = $this->_language->get('error');
 		}
 
-		/* query title from content */
+		/* handle content */
 
 		else if ($firstTable)
 		{

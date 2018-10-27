@@ -24,12 +24,12 @@ class Alias implements ValidatorInterface
 	[
 		'admin',
 		'login',
-		'logout',
-		'module',
-		'search',
 		'recover',
+		'reset',
+		'logout',
 		'register',
-		'reset'
+		'module',
+		'search'
 	];
 
 	/**

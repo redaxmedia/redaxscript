@@ -120,6 +120,116 @@
 	[
 		{
 			"useTitle": null,
+			"fullRoute": "login/recover",
+			"firstParameter": "login",
+			"secondParameter": "recover",
+			"thirdParameter": null,
+			"adminParameter": null,
+			"tableParameter": null,
+			"lastParameter": "recover",
+			"firstTable": null,
+			"secondTable": null,
+			"thirdTable": null,
+			"lastTable": null,
+			"lastId": null
+		},
+		[
+			{
+				"title": "Recovery"
+			}
+		]
+	],
+	[
+		{
+			"useTitle": null,
+			"fullRoute": "login/reset",
+			"firstParameter": "login",
+			"secondParameter": "reset",
+			"thirdParameter": null,
+			"adminParameter": null,
+			"tableParameter": null,
+			"lastParameter": "reset",
+			"firstTable": null,
+			"secondTable": null,
+			"thirdTable": null,
+			"lastTable": null,
+			"lastId": null
+		},
+		[
+			{
+				"title": "Reset"
+			}
+		]
+	],
+	[
+		{
+			"useTitle": null,
+			"fullRoute": "register",
+			"firstParameter": "register",
+			"secondParameter": null,
+			"thirdParameter": null,
+			"adminParameter": null,
+			"tableParameter": null,
+			"lastParameter": "register",
+			"firstTable": null,
+			"secondTable": null,
+			"thirdTable": null,
+			"lastTable": null,
+			"lastId": null
+		},
+		[
+			{
+				"title": "Registration"
+			}
+		]
+	],
+	[
+		{
+			"useTitle": null,
+			"fullRoute": "module",
+			"firstParameter": "module",
+			"secondParameter": null,
+			"thirdParameter": null,
+			"adminParameter": null,
+			"tableParameter": null,
+			"lastParameter": "module",
+			"firstTable": null,
+			"secondTable": null,
+			"thirdTable": null,
+			"lastTable": null,
+			"lastId": null
+		},
+		[
+			{
+				"title": "Module"
+			}
+		]
+	],
+	[
+		{
+			"useTitle": null,
+			"fullRoute": "search",
+			"firstParameter": "search",
+			"secondParameter": null,
+			"thirdParameter": null,
+			"adminParameter": null,
+			"tableParameter": null,
+			"lastParameter": "search",
+			"firstTable": null,
+			"secondTable": null,
+			"thirdTable": null,
+			"lastTable": null,
+			"lastId": null
+		},
+		[
+			{
+				"title": "Search"
+			}
+		]
+	],
+	[
+		{
+			"useTitle": null,
 			"fullRoute": "invalid",
 			"firstParameter": "invalid",
 			"secondParameter": null,
