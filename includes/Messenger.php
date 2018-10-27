@@ -299,6 +299,8 @@ class Messenger
 	protected function _renderAction(string $type = null) : ?string
 	{
 		$output = null;
+		$parameterRoute = $this->_registry->get('parameterRoute');
+		$root = $this->_registry->get('root');
 		if ($this->_actionArray['text'] && ($this->_actionArray['route'] || $this->_actionArray['url']))
 		{
 			$element = new Html\Element();
@@ -306,7 +308,7 @@ class Messenger
 				->copy()
 				->init('a',
 				[
-					'href' => $this->_actionArray['route'] ? $this->_registry->get('parameterRoute') . $this->_actionArray['route'] : $this->_actionArray['url'],
+					'href' => $this->_actionArray['route'] ? $parameterRoute . $this->_actionArray['route'] : $this->_actionArray['url'],
 					'class' => $this->_optionArray['className']['link'] . ' ' . $this->_optionArray['className']['note'][$type]
 				])
 				->text($this->_actionArray['text']);
@@ -320,7 +322,7 @@ class Messenger
 					->init('meta',
 					[
 						'class' => $this->_actionArray['redirect'] === 0 ? $this->_optionArray['className']['redirect'] : null,
-						'content' => $this->_actionArray['redirect'] . ';url=' . ($this->_actionArray['route'] ? $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_actionArray['route'] : $this->_actionArray['url']),
+						'content' => $this->_actionArray['redirect'] . ';url=' . ($this->_actionArray['route'] ? $root . '/' . $parameterRoute . $this->_actionArray['route'] : $this->_actionArray['url']),
 						'http-equiv' => 'refresh'
 					]);
 			}
