@@ -41,11 +41,12 @@ class Content extends BootstrapAbstract
 	{
 		$firstParameter = $this->_registry->get('firstParameter');
 		$secondParameter = $this->_registry->get('secondParameter');
-		$fullRoute = $this->_registry->get('fullRoute');
+		$lastParameter = $this->_registry->get('lastParameter');
+		$lastSubParameter = $this->_registry->get('lastSubParameter');
 
 		/* set by the root */
 
-		if (!$fullRoute || ($firstParameter === 'admin' && !$secondParameter))
+		if ((!$lastParameter && !is_numeric($lastSubParameter)) || ($firstParameter === 'admin' && !$secondParameter))
 		{
 			$this->_setTableByRoot();
 			$this->_setIdByRoot();

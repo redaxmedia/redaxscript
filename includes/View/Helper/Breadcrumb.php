@@ -210,7 +210,7 @@ class Breadcrumb extends ViewAbstract
 
 		/* else default alias */
 
-		else if ($aliasValidator->validate($firstParameter, 'system') && $firstParameter && $this->_language->get($firstParameter))
+		else if ($firstParameter && $aliasValidator->validate($firstParameter, 'system') && $this->_language->get($firstParameter))
 		{
 			$this->_breadcrumbArray[$key]['title'] = $this->_language->get($firstParameter);
 		}

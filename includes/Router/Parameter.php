@@ -55,7 +55,7 @@ class Parameter
 	public function init()
 	{
 		$parameter = $this->_request->getQuery('p');
-		$this->_parameterArray = array_filter(explode('/', $parameter));
+		$this->_parameterArray = array_filter(explode('/', $parameter), 'strlen');
 		if (is_array($this->_parameterArray))
 		{
 			$aliasFilter = new Filter\Alias;

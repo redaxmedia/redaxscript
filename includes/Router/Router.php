@@ -47,6 +47,10 @@ class Router extends RouterAbstract
 		{
 			Header::responseCode(403);
 		}
+		if ($this->_authGuard())
+		{
+			Header::responseCode(403);
+		}
 
 		/* handle validator */
 
@@ -88,6 +92,10 @@ class Router extends RouterAbstract
 		if ($this->_tokenGuard())
 		{
 			return $this->_errorToken();
+		}
+		if ($this->_authGuard())
+		{
+			return $this->_errorAccess();
 		}
 
 		/* handle post */
@@ -160,6 +168,22 @@ class Router extends RouterAbstract
 	}
 
 	/**
+	 * auth guard
+	 *
+	 * @since 3.3.0
+	 *
+	 * @return bool
+	 */
+
+	protected function _authGuard() : bool
+	{
+		$firstParameter = $this->_registry->get('firstParameter');
+		$token = $this->_registry->get('token');
+		$loggedIn = $this->_registry->get('loggedIn');
+		return $token !== $loggedIn && $firstParameter === 'admin';
+	}
+
+	/**
 	 * alias validator
 	 *
 	 * @since 4.0.0
@@ -185,8 +209,9 @@ class Router extends RouterAbstract
 	{
 		$contentModel = new Model\Content();
 		$liteRoute = $this->_registry->get('liteRoute');
+		$fullRoute = $this->_registry->get('fullRoute');
 		$buildRoute = $contentModel->getRouteByTableAndId($this->_registry->get('lastTable'), $this->_registry->get('lastId'));
-		return !$liteRoute || $liteRoute === $buildRoute;
+		return !$fullRoute || $buildRoute === $liteRoute;
 	}
 
 	/**
