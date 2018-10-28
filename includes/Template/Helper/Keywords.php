@@ -31,6 +31,7 @@ class Keywords extends HelperAbstract
 		$lastId = $this->_registry->get('lastId');
 		$useKeywords = $this->_registry->get('useKeywords');
 		$settingKeywords = $settingModel->get('keywords');
+		$keywords = null;
 
 		/* find keywords */
 

@@ -19,19 +19,15 @@ module.exports = grunt =>
 		},
 		phpcpdModules:
 		{
-			command: run('vendor/bin/phpcpd modules'),
-			options:
-			{
-				failOnError: false
-			}
+			command: run('vendor/bin/phpcpd modules')
 		},
 		phpstanRoot:
 		{
-			command: run('vendor/bin/phpstan analyse console.php index.php install.php --configuration=phpstan.neon --level 4 --no-progress')
+			command: run('vendor/bin/phpstan analyse console.php index.php install.php --configuration=phpstan.neon --level 5 --no-progress')
 		},
 		phpstanBase:
 		{
-			command: run('vendor/bin/phpstan analyse includes --configuration=phpstan.neon --level 0 --no-progress')
+			command: run('vendor/bin/phpstan analyse includes --configuration=phpstan.neon --level 1 --no-progress')
 		},
 		phpstanModules:
 		{

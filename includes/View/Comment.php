@@ -86,7 +86,6 @@ class Comment extends ViewAbstract
 		$accessValidator = new Validator\Access();
 		$settingModel = new Model\Setting();
 		$commentModel = new Model\Comment();
-		$comments = null;
 		$byline = new Helper\Byline($this->_registry, $this->_language);
 		$byline->init();
 		$adminDock = new Admin\View\Helper\Dock($this->_registry, $this->_language);

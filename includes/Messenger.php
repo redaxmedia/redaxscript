@@ -232,16 +232,13 @@ class Messenger
 		/* html element */
 
 		$element = new Html\Element();
-		if ($title)
-		{
-			$titleElement = $element
-				->copy()
-				->init('h2',
-				[
-					'class' => $this->_optionArray['className']['title'] . ' ' . $this->_optionArray['className']['note'][$type]
-				])
-				->text($title);
-		}
+		$titleElement = $title ? $element
+			->copy()
+			->init('h2',
+			[
+				'class' => $this->_optionArray['className']['title'] . ' ' . $this->_optionArray['className']['note'][$type]
+			])
+			->text($title) : null;
 		$boxElement = $element
 			->copy()
 			->init('div',
@@ -266,8 +263,9 @@ class Messenger
 			foreach ($message as $value)
 			{
 				$listElement
-					->append($itemElement
-					->text($value));
+					->append(
+						$itemElement->text($value)
+					);
 			}
 			$boxElement->html($listElement);
 		}

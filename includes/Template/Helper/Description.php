@@ -31,6 +31,7 @@ class Description extends HelperAbstract
 		$lastId = $this->_registry->get('lastId');
 		$useDescription = $this->_registry->get('useDescription');
 		$settingDescription = $settingModel->get('description');
+		$description = null;
 
 		/* find description */
 

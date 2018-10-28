@@ -32,6 +32,7 @@ class Title extends HelperAbstract
 		$useTitle = $this->_registry->get('useTitle');
 		$settingDivider = $settingModel->get('divider');
 		$settingTitle = $settingModel->get('title');
+		$title = null;
 
 		/* find title */
 
