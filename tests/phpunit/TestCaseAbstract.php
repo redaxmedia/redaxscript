@@ -11,7 +11,6 @@ use Redaxscript\Modules\TestDummy;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 use ReflectionClass;
-use function file_exists;
 
 /**
  * TestCaseAbstract
@@ -291,11 +290,18 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 * getHeaderArray
 	 *
 	 * @since 3.0.0
+	 *
+	 * @return array|null
 	 */
 
-	public function getHeaderArray()
+	public function getHeaderArray() : ?array
 	{
-		return function_exists('xdebug_get_headers') ? xdebug_get_headers() : $this->markTestSkipped();
+		if (function_exists('xdebug_get_headers'))
+		{
+			return xdebug_get_headers();
+		}
+		$this->markTestSkipped();
+		return null;
 	}
 
 	/**
