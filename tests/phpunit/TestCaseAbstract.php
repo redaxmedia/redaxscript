@@ -291,11 +291,9 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 * getHeaderArray
 	 *
 	 * @since 3.0.0
-	 *
-	 * @return array|null
 	 */
 
-	public function getHeaderArray() : ?array
+	public function getHeaderArray()
 	{
 		return function_exists('xdebug_get_headers') ? xdebug_get_headers() : $this->markTestSkipped();
 	}

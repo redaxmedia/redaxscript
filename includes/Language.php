@@ -71,7 +71,7 @@ class Language extends Singleton
 		{
 			return $languageArray[$key];
 		}
-		else if (!$key)
+		if (!$key)
 		{
 			return $languageArray;
 		}

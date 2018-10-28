@@ -42,7 +42,7 @@ class Common extends ControllerAbstract
 					'route' => $this->_getRoute($table, $id),
 					'timeout' => 0
 				]);
-			};
+			}
 		}
 
 		/* handle unpublish */
@@ -56,7 +56,7 @@ class Common extends ControllerAbstract
 					'route' => $this->_getRoute($table, $id),
 					'timeout' => 0
 				]);
-			};
+			}
 		}
 
 		/* handle enable */
@@ -70,7 +70,7 @@ class Common extends ControllerAbstract
 					'route' => $this->_getRoute($table, $id),
 					'timeout' => 0
 				]);
-			};
+			}
 		}
 
 		/* handle disable */
@@ -84,7 +84,7 @@ class Common extends ControllerAbstract
 					'route' => $this->_getRoute($table, $id),
 					'timeout' => 0
 				]);
-			};
+			}
 		}
 
 		/* handle install */
@@ -98,7 +98,7 @@ class Common extends ControllerAbstract
 					'route' => $this->_getRoute($table),
 					'timeout' => 0
 				]);
-			};
+			}
 		}
 
 		/* handle uninstall */
@@ -112,7 +112,7 @@ class Common extends ControllerAbstract
 					'route' => $this->_getRoute($table),
 					'timeout' => 0
 				]);
-			};
+			}
 		}
 
 		/* handle delete */
@@ -126,7 +126,7 @@ class Common extends ControllerAbstract
 					'route' => $this->_getRoute($table, $id),
 					'timeout' => 0
 				]);
-			};
+			}
 		}
 
 		/* handle error */

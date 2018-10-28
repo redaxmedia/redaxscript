@@ -44,7 +44,7 @@ class SearchForm extends ViewAbstract
 				'submit' =>
 				[
 					'class' => 'rs-button-search',
-					'name' => get_class()
+					'name' => self::class
 				]
 			]
 		]);

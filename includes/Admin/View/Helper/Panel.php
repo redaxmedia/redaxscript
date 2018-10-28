@@ -237,17 +237,17 @@ class Panel extends ViewAbstract
 			->init('label',
 			[
 				'class' => $this->_optionArray['className']['label']['content'],
-				'for' => get_class() . '\Content'
+				'for' => self::class . '\Content'
 			])
 			->text($this->_language->get('contents'));
 		$inputElement = $element
 			->copy()
 			->init('input',
 			[
-				'id' => get_class() . '\Content',
+				'id' => self::class . '\Content',
 				'class' => $this->_optionArray['className']['input'],
 				'type' => 'radio',
-				'name' => get_class() . '\Panel'
+				'name' => self::class . '\Panel'
 			]);
 
 		/* process contents */
@@ -330,17 +330,17 @@ class Panel extends ViewAbstract
 			->init('label',
 			[
 				'class' => $this->_optionArray['className']['label']['access'],
-				'for' => get_class() . '\Access'
+				'for' => self::class . '\Access'
 			])
 			->text($this->_language->get('access'));
 		$inputElement = $element
 			->copy()
 			->init('input',
 			[
-				'id' => get_class() . '\Access',
+				'id' => self::class . '\Access',
 				'class' => $this->_optionArray['className']['input'],
 				'type' => 'radio',
-				'name' => get_class() . '\Panel'
+				'name' => self::class . '\Panel'
 			]);
 
 		/* process access */
@@ -422,17 +422,17 @@ class Panel extends ViewAbstract
 			->init('label',
 			[
 				'class' => $this->_optionArray['className']['label']['system'],
-				'for' => get_class() . '\System'
+				'for' => self::class . '\System'
 			])
 			->text($this->_language->get('system'));
 		$inputElement = $element
 			->copy()
 			->init('input',
 			[
-				'id' => get_class() . '\System',
+				'id' => self::class . '\System',
 				'class' => $this->_optionArray['className']['input'],
 				'type' => 'radio',
-				'name' => get_class() . '\Panel'
+				'name' => self::class . '\Panel'
 			]);
 
 		/* process system */
@@ -535,17 +535,17 @@ class Panel extends ViewAbstract
 			->init('label',
 			[
 				'class' => $this->_optionArray['className']['label']['notification'],
-				'for' => get_class() . '\Notification'
+				'for' => self::class . '\Notification'
 			])
 			->text($this->_language->get('notification'));
 		$inputElement = $element
 			->copy()
 			->init('input',
 			[
-				'id' => get_class() . '\Notification',
+				'id' => self::class . '\Notification',
 				'class' => $this->_optionArray['className']['input'],
 				'type' => 'radio',
-				'name' => get_class() . '\Panel',
+				'name' => self::class . '\Panel',
 				'checked' => 'checked'
 			]);
 		$supElement = $element

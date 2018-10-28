@@ -37,7 +37,7 @@ class Notification extends Module
 		{
 			return self::$_notificationArray[$type];
 		}
-		else if (!$type)
+		if (!$type)
 		{
 			return self::$_notificationArray;
 		}

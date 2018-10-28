@@ -248,7 +248,7 @@ class Mailer
 			if (!function_exists('mail') || !mail($to, $this->_subjectString, $this->_bodyString, $this->_headerString))
 			{
 				return false;
-			};
+			}
 		}
 		return true;
 	}

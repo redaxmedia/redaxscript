@@ -51,7 +51,7 @@ class InstallForm extends ViewAbstract
 				'submit' =>
 				[
 					'class' => 'rs-js-submit rs-button-default rs-is-large rs-is-full',
-					'name' => get_class()
+					'name' => self::class
 				]
 			]
 		]);
@@ -64,15 +64,15 @@ class InstallForm extends ViewAbstract
 
 			->radio(
 			[
-				'id' => get_class() . '\Database',
+				'id' => self::class . '\Database',
 				'class' => 'rs-fn-status-accordion',
-				'name' => get_class() . '\Accordion',
+				'name' => self::class . '\Accordion',
 				'checked' => 'checked'
 			])
 			->label($this->_language->get('database_setup'),
 			[
 				'class' => 'rs-fn-toggle-accordion rs-label-accordion',
-				'for' => get_class() . '\Database'
+				'for' => self::class . '\Database'
 			])
 			->append('<ul class="rs-fn-content-accordion rs-box-accordion"><li>');
 		if ($this->_registry->get('driverArray'))
@@ -158,14 +158,14 @@ class InstallForm extends ViewAbstract
 
 			->radio(
 			[
-				'id' => get_class() . '\Account',
+				'id' => self::class . '\Account',
 				'class' => 'rs-fn-status-accordion',
-				'name' => get_class() . '\Accordion'
+				'name' => self::class . '\Accordion'
 			])
 			->label($this->_language->get('account_create'),
 			[
 				'class' => 'rs-fn-toggle-accordion rs-label-accordion',
-				'for' => get_class() . '\Account'
+				'for' => self::class . '\Account'
 			])
 			->append('<ul class="rs-fn-content-accordion rs-box-accordion"><li>')
 			->label($this->_language->get('name'),

@@ -57,11 +57,11 @@ class CategoryForm extends ViewAbstract
 			[
 				'create' =>
 				[
-					'name' => get_class()
+					'name' => self::class
 				],
 				'save' =>
 				[
-					'name' => get_class()
+					'name' => self::class
 				]
 			],
 			'link' =>
@@ -85,15 +85,15 @@ class CategoryForm extends ViewAbstract
 
 			->radio(
 			[
-				'id' => get_class() . '\Category',
+				'id' => self::class . '\Category',
 				'class' => 'rs-admin-fn-status-tab',
-				'name' => get_class() . '\Tab',
+				'name' => self::class . '\Tab',
 				'checked' => 'checked'
 			])
 			->label($this->_language->get('category'),
 			[
 				'class' => 'rs-admin-fn-toggle-tab rs-admin-label-tab',
-				'for' => get_class() . '\Category'
+				'for' => self::class . '\Category'
 			])
 			->append('<ul class="rs-admin-fn-content-tab rs-admin-box-tab"><li>')
 			->label($this->_language->get('title'),
@@ -168,14 +168,14 @@ class CategoryForm extends ViewAbstract
 
 			->radio(
 			[
-				'id' => get_class() . '\General',
+				'id' => self::class . '\General',
 				'class' => 'rs-admin-fn-status-tab',
-				'name' => get_class() . '\Tab'
+				'name' => self::class . '\Tab'
 			])
 			->label($this->_language->get('general'),
 			[
 				'class' => 'rs-admin-fn-toggle-tab rs-admin-label-tab',
-				'for' => get_class() . '\General'
+				'for' => self::class . '\General'
 			])
 			->append('<ul class="rs-admin-fn-content-tab rs-admin-box-tab"><li>')
 			->label($this->_language->get('language'),
@@ -241,14 +241,14 @@ class CategoryForm extends ViewAbstract
 
 			->radio(
 			[
-				'id' => get_class() . '\Customize',
+				'id' => self::class . '\Customize',
 				'class' => 'rs-admin-fn-status-tab',
-				'name' => get_class() . '\Tab'
+				'name' => self::class . '\Tab'
 			])
 			->label($this->_language->get('customize'),
 			[
 				'class' => 'rs-admin-fn-toggle-tab rs-admin-label-tab',
-				'for' => get_class() . '\Customize'
+				'for' => self::class . '\Customize'
 			])
 			->append('<ul class="rs-admin-fn-content-tab rs-admin-box-tab"><li>')
 			->label($this->_language->get('status'),

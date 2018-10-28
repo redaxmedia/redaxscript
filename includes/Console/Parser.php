@@ -90,7 +90,7 @@ class Parser
 		{
 			return $this->_argumentArray[$key];
 		}
-		else if (!$key)
+		if (!$key)
 		{
 			return $this->_argumentArray;
 		}
@@ -113,7 +113,7 @@ class Parser
 		{
 			return $this->_optionArray[$key];
 		}
-		else if (!$key)
+		if (!$key)
 		{
 			return $this->_optionArray;
 		}
@@ -165,9 +165,9 @@ class Parser
 			foreach ($argumentArray as $value)
 			{
 				$next = next($argumentArray);
-				if (substr($value, 0, 1) === '-')
+				if (strpos($value, '-') === 0)
 				{
-					$offset = substr($value, 0, 2) === '--' ? 2 : 1;
+					$offset = strpos($value, '--') === 0 ? 2 : 1;
 					$optionArray = $this->_parseOption($value, $next, $offset);
 					$doSkip = $optionArray['value'] === $next;
 					$this->setOption($optionArray['key'], $optionArray['value']);
@@ -206,7 +206,7 @@ class Parser
 		return
 		[
 			'key' => substr($option, $offset),
-			'value' => !$next || substr($next, 0, 1) === '-' ? true : $next
+			'value' => !$next || strpos($next, '-') === 0 ? true : $next
 		];
 	}
 }

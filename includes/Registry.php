@@ -50,7 +50,7 @@ class Registry extends Singleton
 		{
 			return self::$_registryArray[$key];
 		}
-		else if (!$key)
+		if (!$key)
 		{
 			return self::$_registryArray;
 		}

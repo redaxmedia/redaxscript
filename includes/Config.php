@@ -69,7 +69,7 @@ class Config extends Singleton
 		{
 			return self::$_configArray[$key];
 		}
-		else if (!$key)
+		if (!$key)
 		{
 			return self::$_configArray;
 		}

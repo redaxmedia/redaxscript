@@ -11,6 +11,6 @@ BEGIN
 		status int DEFAULT 1,
 		rank int,
 		access nvarchar(255),
-		date  int
+		date int
 	);
 END

@@ -141,13 +141,13 @@ class Common extends BootstrapAbstract
 
 	protected function _setPhp()
 	{
-		$phpOs = strtolower(php_uname('s'));
-		$phpVersion = phpversion();
-		if (substr($phpOs, 0, 5) === 'linux')
+		$phpOs = strtolower(PHP_OS);
+		$phpVersion = PHP_VERSION;
+		if (strpos($phpOs, 'linux') === 0)
 		{
 			$this->_registry->set('phpOs', 'linux');
 		}
-		else if (substr($phpOs, 0, 3) === 'win')
+		else if (strpos($phpOs, 'win') === 0)
 		{
 			$this->_registry->set('phpOs', 'windows');
 		}

@@ -55,7 +55,7 @@ class ModuleForm extends ViewAbstract
 			[
 				'save' =>
 				[
-					'name' => get_class()
+					'name' => self::class
 				]
 			],
 			'link' =>
@@ -85,15 +85,15 @@ class ModuleForm extends ViewAbstract
 
 			->radio(
 			[
-				'id' => get_class() . '\Module',
+				'id' => self::class . '\Module',
 				'class' => 'rs-admin-fn-status-tab',
-				'name' => get_class() . '\Tab',
+				'name' => self::class . '\Tab',
 				'checked' => 'checked'
 			])
 			->label($this->_language->get('module'),
 			[
 				'class' => 'rs-admin-fn-toggle-tab rs-admin-label-tab',
-				'for' => get_class() . '\Module'
+				'for' => self::class . '\Module'
 			])
 			->append('<ul class="rs-admin-fn-content-tab rs-admin-box-tab"><li>')
 			->label($this->_language->get('name'),
@@ -133,14 +133,14 @@ class ModuleForm extends ViewAbstract
 
 					->radio(
 					[
-						'id' => get_class() . '\Doc\\' . $fileName,
+						'id' => self::class . '\Doc\\' . $fileName,
 						'class' => 'rs-admin-fn-status-tab',
-						'name' => get_class() . '\Tab'
+						'name' => self::class . '\Tab'
 					])
 					->label($fileName,
 					[
 						'class' => 'rs-admin-fn-toggle-tab rs-admin-label-tab',
-						'for' => get_class() . '\Doc\\' . $fileName,
+						'for' => self::class . '\Doc\\' . $fileName,
 					])
 					->append('<div class="rs-admin-fn-content-tab rs-admin-box-tab">')
 					->append($docsFilesystem->renderFile($file))
@@ -153,14 +153,14 @@ class ModuleForm extends ViewAbstract
 
 			->radio(
 			[
-				'id' => get_class() . '\Customize',
+				'id' => self::class . '\Customize',
 				'class' => 'rs-admin-fn-status-tab',
-				'name' => get_class() . '\Tab'
+				'name' => self::class . '\Tab'
 			])
 			->label($this->_language->get('customize'),
 			[
 				'class' => 'rs-admin-fn-toggle-tab rs-admin-label-tab',
-				'for' => get_class() . '\Customize'
+				'for' => self::class . '\Customize'
 			])
 			->append('<ul class="rs-admin-fn-content-tab rs-admin-box-tab"><li>')
 			->label($this->_language->get('status'),

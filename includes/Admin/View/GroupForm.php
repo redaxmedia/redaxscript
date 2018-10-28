@@ -54,11 +54,11 @@ class GroupForm extends ViewAbstract
 			[
 				'create' =>
 				[
-					'name' => get_class()
+					'name' => self::class
 				],
 				'save' =>
 				[
-					'name' => get_class()
+					'name' => self::class
 				]
 			],
 			'link' =>
@@ -82,15 +82,15 @@ class GroupForm extends ViewAbstract
 
 			->radio(
 			[
-				'id' => get_class() . '\Group',
+				'id' => self::class . '\Group',
 				'class' => 'rs-admin-fn-status-tab',
-				'name' => get_class() . '\Tab',
+				'name' => self::class . '\Tab',
 				'checked' => 'checked'
 			])
 			->label($this->_language->get('group'),
 			[
 				'class' => 'rs-admin-fn-toggle-tab rs-admin-label-tab',
-				'for' => get_class() . '\Group'
+				'for' => self::class . '\Group'
 			])
 			->append('<ul class="rs-admin-fn-content-tab rs-admin-box-tab"><li>')
 			->label($this->_language->get('name'),
@@ -149,14 +149,14 @@ class GroupForm extends ViewAbstract
 
 				->radio(
 				[
-					'id' => get_class() . '\Access',
+					'id' => self::class . '\Access',
 					'class' => 'rs-admin-fn-status-tab',
-					'name' => get_class() . '\Tab'
+					'name' => self::class . '\Tab'
 				])
 				->label($this->_language->get('access'),
 				[
 					'class' => 'rs-admin-fn-toggle-tab rs-admin-label-tab',
-					'for' => get_class() . '\Access'
+					'for' => self::class . '\Access'
 				])
 				->append('<ul class="rs-admin-fn-content-tab rs-admin-box-tab"><li>')
 				->label($this->_language->get('categories'),
@@ -268,14 +268,14 @@ class GroupForm extends ViewAbstract
 
 				->radio(
 				[
-					'id' => get_class() . '\Customize',
+					'id' => self::class . '\Customize',
 					'class' => 'rs-admin-fn-status-tab',
-					'name' => get_class() . '\Tab'
+					'name' => self::class . '\Tab'
 				])
 				->label($this->_language->get('customize'),
 				[
 					'class' => 'rs-admin-fn-toggle-tab rs-admin-label-tab',
-					'for' => get_class() . '\Customize'
+					'for' => self::class . '\Customize'
 				])
 				->append('<ul class="rs-admin-fn-content-tab rs-admin-box-tab"><li>')
 				->label($this->_language->get('filter'),

@@ -70,7 +70,7 @@ class Request extends Singleton
 		{
 			return $requestArray[$key];
 		}
-		else if (!$key)
+		if (!$key)
 		{
 			return $requestArray;
 		}

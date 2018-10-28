@@ -61,7 +61,7 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 
 	public function init(string $namespace = null) : self
 	{
-		self::$_namespace = get_called_class();
+		self::$_namespace = static::class;
 		if ($namespace)
 		{
 			self::$_namespace .= '\\' . ucfirst($namespace);

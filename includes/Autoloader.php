@@ -53,7 +53,7 @@ class Autoloader
 
 		spl_autoload_register(
 		[
-			__CLASS__,
+			self::class,
 			'_load'
 		]);
 	}

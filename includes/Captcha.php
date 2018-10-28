@@ -174,7 +174,7 @@ class Captcha
 		{
 			return -1;
 		}
-		return mt_rand(0, 1) * 2 - 1;
+		return random_int(0, 1) * 2 - 1;
 	}
 
 	/**
@@ -192,8 +192,8 @@ class Captcha
 
 		/* random numbers */
 
-		$a = mt_rand($min + 1, $max);
-		$b = mt_rand($min, $a - 1);
+		$a = random_int($min + 1, $max);
+		$b = random_int($min, $a - 1);
 
 		/* operator */
 

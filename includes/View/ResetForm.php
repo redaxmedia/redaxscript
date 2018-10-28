@@ -48,7 +48,7 @@ class ResetForm extends ViewAbstract
 			[
 				'submit' =>
 				[
-					'name' => get_class()
+					'name' => self::class
 				]
 			]
 		],

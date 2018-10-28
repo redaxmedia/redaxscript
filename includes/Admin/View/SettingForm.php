@@ -51,7 +51,7 @@ class SettingForm extends ViewAbstract
 			[
 				'save' =>
 				[
-					'name' => get_class()
+					'name' => self::class
 				]
 			],
 			'link' =>
@@ -71,15 +71,15 @@ class SettingForm extends ViewAbstract
 
 			->radio(
 			[
-				'id' => get_class() . '\General',
+				'id' => self::class . '\General',
 				'class' => 'rs-admin-fn-status-accordion',
-				'name' => get_class() . '\Accordion',
+				'name' => self::class . '\Accordion',
 				'checked' => 'checked'
 			])
 			->label($this->_language->get('general'),
 			[
 				'class' => 'rs-admin-fn-toggle-accordion rs-admin-label-accordion',
-				'for' => get_class() . '\General'
+				'for' => self::class . '\General'
 			])
 			->append('<ul class="rs-admin-fn-content-accordion rs-admin-box-accordion"><li>')
 			->label($this->_language->get('language'),
@@ -113,14 +113,14 @@ class SettingForm extends ViewAbstract
 
 			->radio(
 			[
-				'id' => get_class() . '\Metadata',
+				'id' => self::class . '\Metadata',
 				'class' => 'rs-admin-fn-status-accordion',
-				'name' => get_class() . '\Accordion'
+				'name' => self::class . '\Accordion'
 			])
 			->label($this->_language->get('metadata'),
 			[
 				'class' => 'rs-admin-fn-toggle-accordion rs-admin-label-accordion',
-				'for' => get_class() . '\Metadata'
+				'for' => self::class . '\Metadata'
 			])
 			->append('<ul class="rs-admin-fn-content-accordion rs-admin-box-accordion"><li>')
 			->label($this->_language->get('title'),
@@ -200,14 +200,14 @@ class SettingForm extends ViewAbstract
 
 			->radio(
 			[
-				'id' => get_class() . '\Contact',
+				'id' => self::class . '\Contact',
 				'class' => 'rs-admin-fn-status-accordion',
-				'name' => get_class() . '\Accordion'
+				'name' => self::class . '\Accordion'
 			])
 			->label($this->_language->get('contact'),
 			[
 				'class' => 'rs-admin-fn-toggle-accordion rs-admin-label-accordion',
-				'for' => get_class() . '\Contact'
+				'for' => self::class . '\Contact'
 			])
 			->append('<ul class="rs-admin-fn-content-accordion rs-admin-box-accordion"><li>')
 			->label($this->_language->get('email'),
@@ -250,14 +250,14 @@ class SettingForm extends ViewAbstract
 
 			->radio(
 			[
-				'id' => get_class() . '\Formatting',
+				'id' => self::class . '\Formatting',
 				'class' => 'rs-admin-fn-status-accordion',
-				'name' => get_class() . '\Accordion'
+				'name' => self::class . '\Accordion'
 			])
 			->label($this->_language->get('formatting'),
 			[
 				'class' => 'rs-admin-fn-toggle-accordion rs-admin-label-accordion',
-				'for' => get_class() . '\Formatting'
+				'for' => self::class . '\Formatting'
 			])
 			->append('<ul class="rs-admin-fn-content-accordion rs-admin-box-accordion"><li>')
 			->label($this->_language->get('charset'),
@@ -326,14 +326,14 @@ class SettingForm extends ViewAbstract
 
 			->radio(
 			[
-				'id' => get_class() . '\Contents',
+				'id' => self::class . '\Contents',
 				'class' => 'rs-admin-fn-status-accordion',
-				'name' => get_class() . '\Accordion'
+				'name' => self::class . '\Accordion'
 			])
 			->label($this->_language->get('contents'),
 			[
 				'class' => 'rs-admin-fn-toggle-accordion rs-admin-label-accordion',
-				'for' => get_class() . '\Contents'
+				'for' => self::class . '\Contents'
 			])
 			->append('<ul class="rs-admin-fn-content-accordion rs-admin-box-accordion"><li>')
 			->label($this->_language->get('homepage'),
@@ -391,14 +391,14 @@ class SettingForm extends ViewAbstract
 
 			->radio(
 			[
-				'id' => get_class() . '\Users',
+				'id' => self::class . '\Users',
 				'class' => 'rs-admin-fn-status-accordion',
-				'name' => get_class() . '\Accordion'
+				'name' => self::class . '\Accordion'
 			])
 			->label($this->_language->get('users'),
 			[
 				'class' => 'rs-admin-fn-toggle-accordion rs-admin-label-accordion',
-				'for' => get_class() . '\Users'
+				'for' => self::class . '\Users'
 			])
 			->append('<ul class="rs-admin-fn-content-accordion rs-admin-box-accordion"><li>')
 			->label($this->_language->get('registration'),
@@ -445,14 +445,14 @@ class SettingForm extends ViewAbstract
 
 			->radio(
 			[
-				'id' => get_class() . '\Security',
+				'id' => self::class . '\Security',
 				'class' => 'rs-admin-fn-status-accordion',
-				'name' => get_class() . '\Accordion'
+				'name' => self::class . '\Accordion'
 			])
 			->label($this->_language->get('security'),
 			[
 				'class' => 'rs-admin-fn-toggle-accordion rs-admin-label-accordion',
-				'for' => get_class() . '\Security'
+				'for' => self::class . '\Security'
 			])
 			->append('<ul class="rs-admin-fn-content-accordion rs-admin-box-accordion"><li>')
 			->label($this->_language->get('moderation'),

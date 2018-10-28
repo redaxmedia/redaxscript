@@ -44,7 +44,7 @@ abstract class Singleton
 
 	public static function getInstance()
 	{
-		$className = get_called_class();
+		$className = static::class;
 
 		/* create instance */
 
@@ -63,7 +63,7 @@ abstract class Singleton
 
 	public static function clearInstance()
 	{
-		$className = get_called_class();
+		$className = static::class;
 		self::$_instance[$className] = null;
 	}
 }

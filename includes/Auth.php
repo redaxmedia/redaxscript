@@ -280,7 +280,7 @@ class Auth
 		{
 			return $this->_userArray[$key];
 		}
-		else if (!$key)
+		if (!$key)
 		{
 			return $this->_userArray;
 		}
@@ -317,7 +317,7 @@ class Auth
 		{
 			return $this->_permissionArray[$key];
 		}
-		else if (!$key)
+		if (!$key)
 		{
 			return $this->_permissionArray;
 		}
