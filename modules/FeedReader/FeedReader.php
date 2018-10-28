@@ -101,7 +101,7 @@ class FeedReader extends Config
 		$reader = new Reader();
 		$reader->init();
 		$result = $reader->loadXML($url)->getObject();
-		$result = $result->entry ? $result->entry : $result->channel->item;
+		$result = $result->entry ? : $result->channel->item;
 
 		/* process result */
 
@@ -113,12 +113,12 @@ class FeedReader extends Config
 				if ($counter++ < $optionArray['limit'])
 				{
 					$linkElement
-							->attr('href', $value->link->attributes()->href ? $value->link->attributes()->href : $value->link)
+							->attr('href', $value->link->attributes()->href ? : $value->link)
 							->text($value->title);
 
 					/* collect output */
 
-					$output .= $titleElement->html($linkElement) . $boxElement->text($value->summary ? $value->summary : $value->description);
+					$output .= $titleElement->html($linkElement) . $boxElement->text($value->summary ? : $value->description);
 				}
 			}
 		}

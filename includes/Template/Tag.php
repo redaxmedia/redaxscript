@@ -164,7 +164,7 @@ class Tag
 	public static function content() : ?string
 	{
 		$adminContent = self::_renderAdminContent();
-		return $adminContent ? $adminContent : self::_renderContent();
+		return $adminContent ? : self::_renderContent();
 	}
 
 	/**

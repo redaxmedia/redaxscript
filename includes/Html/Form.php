@@ -359,7 +359,7 @@ class Form extends HtmlAbstract
 		$legendElement = new Element();
 		$legendElement
 			->init('legend', $attributeArray)
-			->html($html ? $html : $this->_language->get($this->_languageArray['legend']) . $this->_language->get('point'));
+			->html($html ? : $this->_language->get($this->_languageArray['legend']) . $this->_language->get('point'));
 		$this->append($legendElement);
 		return $this;
 	}
@@ -653,7 +653,7 @@ class Form extends HtmlAbstract
 		$buttonElement = new Element();
 		$buttonElement
 			->init('button', $attributeArray)
-			->text($text ? $text : $this->_language->get($this->_languageArray['button'][$type]));
+			->text($text ? : $this->_language->get($this->_languageArray['button'][$type]));
 		$this->append($buttonElement);
 		return $this;
 	}
@@ -683,7 +683,7 @@ class Form extends HtmlAbstract
 		$linkElement = new Element();
 		$linkElement
 			->init('a', $attributeArray)
-			->text($text ? $text : $this->_language->get($this->_languageArray['link'][$type]));
+			->text($text ? : $this->_language->get($this->_languageArray['link'][$type]));
 		$this->append($linkElement);
 		return $this;
 	}

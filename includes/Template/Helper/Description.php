@@ -47,7 +47,7 @@ class Description extends HelperAbstract
 
 			if (!$description)
 			{
-				$parentId = $content->category ? $content->category : $content->parent;
+				$parentId = $content->category ? : $content->parent;
 				if ($parentId)
 				{
 					$parent = Db::forTablePrefix('categories')->whereIdIs($parentId)->whereNull('access')->findOne();

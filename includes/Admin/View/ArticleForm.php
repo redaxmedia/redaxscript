@@ -45,7 +45,7 @@ class ArticleForm extends ViewAbstract
 			[
 				'class' => 'rs-admin-title-content',
 			])
-			->text($article->title ? $article->title : $this->_language->get('article_new'));
+			->text($article->title ? : $this->_language->get('article_new'));
 		$formElement = new Admin\Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[

@@ -45,7 +45,7 @@ class CategoryForm extends ViewAbstract
 			[
 				'class' => 'rs-admin-title-content',
 			])
-			->text($category->title ? $category->title : $this->_language->get('category_new'));
+			->text($category->title ? : $this->_language->get('category_new'));
 		$formElement = new Admin\Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[

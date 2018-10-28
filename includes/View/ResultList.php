@@ -83,7 +83,7 @@ class ResultList extends ViewAbstract
 						$dater->init($value->date);
 						$linkElement
 							->attr('href', $parameterRoute . $contentModel->getRouteByTableAndId($table, $value->id))
-							->text($value->title ? $value->title : $value->author);
+							->text($value->title ? : $value->author);
 						$textElement->text($dater->formatDate());
 						$outputItem .= $itemElement->html($linkElement . $textElement);
 					}

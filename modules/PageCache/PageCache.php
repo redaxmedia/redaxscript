@@ -88,20 +88,17 @@ class PageCache extends Config
 			];
 		}
 
-		/* else store to cache */
+		/* store to cache */
 
-		else
-		{
-			$rawFilesystem = new Filesystem\File();
-			$rawFilesystem->init('templates' . DIRECTORY_SEPARATOR . $this->_registry->get('template'));
-			$raw = $rawFilesystem->renderFile('index.phtml');
-			$content = preg_replace('/' . $token . '/', $this->_configArray['tokenPlaceholder'], $raw);
-			$cacheFilesystem->store($bundle, $this->_compress($content));
-			return
-			[
-				'content' => $raw
-			];
-		}
+		$rawFilesystem = new Filesystem\File();
+		$rawFilesystem->init('templates' . DIRECTORY_SEPARATOR . $this->_registry->get('template'));
+		$raw = $rawFilesystem->renderFile('index.phtml');
+		$content = preg_replace('/' . $token . '/', $this->_configArray['tokenPlaceholder'], $raw);
+		$cacheFilesystem->store($bundle, $this->_compress($content));
+		return
+		[
+			'content' => $raw
+		];
 	}
 
 	/**

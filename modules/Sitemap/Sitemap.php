@@ -136,7 +136,7 @@ class Sitemap extends Config
 
 		foreach ($articles as $value)
 		{
-			$categoryKey = $value->category ? $value->category : 0;
+			$categoryKey = $value->category ? : 0;
 			$categoryArray[$categoryKey][] = $value;
 		}
 		return $categoryArray;

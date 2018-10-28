@@ -42,7 +42,7 @@ class UserForm extends ViewAbstract
 			[
 				'class' => 'rs-admin-title-content',
 			])
-			->text($user->name ? $user->name : $this->_language->get('user_new'));
+			->text($user->name ? : $this->_language->get('user_new'));
 		$formElement = new Admin\Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[

@@ -45,7 +45,7 @@ class CommentForm extends ViewAbstract
 			[
 				'class' => 'rs-admin-title-content',
 			])
-			->text($comment->author ? $comment->author : $this->_language->get('comment_new'));
+			->text($comment->author ? : $this->_language->get('comment_new'));
 		$formElement = new Admin\Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[

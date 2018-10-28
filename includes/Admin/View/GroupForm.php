@@ -42,7 +42,7 @@ class GroupForm extends ViewAbstract
 			[
 				'class' => 'rs-admin-title-content',
 			])
-			->text($group->name ? $group->name : $this->_language->get('group_new'));
+			->text($group->name ? : $this->_language->get('group_new'));
 		$formElement = new Admin\Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[

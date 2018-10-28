@@ -64,7 +64,7 @@ class Category extends ControllerAbstract
 				'status' => $postArray['date'] > $now ? 2 : $postArray['status'],
 				'rank' => $postArray['rank'],
 				'access' => $postArray['access'],
-				'date' => $postArray['date'] ? $postArray['date'] : $now
+				'date' => $postArray['date'] ? : $now
 			];
 			if ($this->_create($createArray))
 			{
@@ -95,7 +95,7 @@ class Category extends ControllerAbstract
 				'status' => $postArray['date'] > $now ? 2 : $postArray['status'],
 				'rank' => $postArray['rank'],
 				'access' => $postArray['access'],
-				'date' => $postArray['date'] ? $postArray['date'] : $now
+				'date' => $postArray['date'] ? : $now
 			];
 			if ($this->_update($postArray['id'], $updateArray))
 			{

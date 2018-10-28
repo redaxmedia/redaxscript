@@ -31,12 +31,12 @@ class Request extends Singleton
 	{
 		self::$_requestArray =
 		[
-			'server' => $_SERVER ? $_SERVER : [],
-			'get' => $_GET ? $_GET : [],
-			'post' => $_POST ? $_POST : [],
-			'files' => $_FILES ? $_FILES : [],
-			'session' => $_SESSION ? $_SESSION : [],
-			'cookie' => $_COOKIE ? $_COOKIE : []
+			'server' => $_SERVER ? : [],
+			'get' => $_GET ? : [],
+			'post' => $_POST ? : [],
+			'files' => $_FILES ? : [],
+			'session' => $_SESSION ? : [],
+			'cookie' => $_COOKIE ? : []
 		];
 	}
 
@@ -273,7 +273,7 @@ class Request extends Singleton
 
 	public function refreshSession()
 	{
-		self::$_requestArray['session'] = $_SESSION ? $_SESSION : [];
+		self::$_requestArray['session'] = $_SESSION ? : [];
 	}
 
 	/**
@@ -284,6 +284,6 @@ class Request extends Singleton
 
 	public function refreshCookie()
 	{
-		self::$_requestArray['cookie'] = $_COOKIE ? $_COOKIE : [];
+		self::$_requestArray['cookie'] = $_COOKIE ? : [];
 	}
 }

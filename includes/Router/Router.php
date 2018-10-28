@@ -431,7 +431,7 @@ class Router extends RouterAbstract
 		$installArray = $this->_request->getSession('installArray');
 		$systemStatus = new View\SystemStatus($this->_registry, $this->_language);
 		$installForm = new View\InstallForm($this->_registry, $this->_language);
-		return $systemStatus->render() . $installForm->render($installArray ? $installArray : []);
+		return $systemStatus->render() . $installForm->render($installArray ? : []);
 	}
 
 	/**

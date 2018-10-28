@@ -34,7 +34,7 @@ class Category extends ContentAbstract
 	public function getByAlias(string $categoryAlias = null) : ?object
 	{
 		$category = $this->query()->where('alias', $categoryAlias)->findOne();
-		return $category ? $category : null;
+		return $category ? : null;
 	}
 
 	/**

@@ -226,7 +226,7 @@ class Comment extends ControllerAbstract
 			[
 				'href' => $mailArray['url']
 			])
-			->text($mailArray['url'] ? $mailArray['url'] : $this->_language->get('none'));
+			->text($mailArray['url'] ? : $this->_language->get('none'));
 		$linkArticle = $element
 			->copy()
 			->init('a',

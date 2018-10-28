@@ -176,7 +176,7 @@ class Controller extends ControllerAbstract
 			[
 				'href' => $mailArray['url']
 			])
-			->text($mailArray['url'] ? $mailArray['url'] : $this->_language->get('none'));
+			->text($mailArray['url'] ? : $this->_language->get('none'));
 
 		/* prepare mail */
 
