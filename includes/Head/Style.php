@@ -22,7 +22,7 @@ class Style extends Singleton implements HeadInterface
 	 * @var string
 	 */
 
-	protected static $_inline = null;
+	protected static $_inline;
 
 	/**
 	 * stringify the style

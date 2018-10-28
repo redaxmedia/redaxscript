@@ -19,7 +19,7 @@ class Element extends HtmlAbstract
 	 * @var string
 	 */
 
-	protected $_tag = null;
+	protected $_tag;
 
 	/**
 	 * array of singleton tags

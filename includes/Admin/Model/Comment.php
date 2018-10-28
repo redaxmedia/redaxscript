@@ -16,25 +16,6 @@ use Redaxscript\Model as BaseModel;
 class Comment extends BaseModel\Comment
 {
 	/**
-	 * create the comment by array
-	 *
-	 * @since 4.0.0
-	 *
-	 * @param array $createArray array of the create
-	 *
-	 * @return bool
-	 */
-
-	public function createByArray(array $createArray = []) : bool
-	{
-		return $this
-			->query()
-			->create()
-			->set($createArray)
-			->save();
-	}
-
-	/**
 	 * update the comment by id and array
 	 *
 	 * @since 4.0.0

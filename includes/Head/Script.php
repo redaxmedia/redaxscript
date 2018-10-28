@@ -38,7 +38,7 @@ class Script extends HeadAbstract
 	 * @var string
 	 */
 
-	protected static $_inline = null;
+	protected static $_inline;
 
 	/**
 	 * append script file

@@ -177,10 +177,7 @@ class Router extends RouterAbstract
 
 	protected function _authGuard() : bool
 	{
-		$firstParameter = $this->_registry->get('firstParameter');
-		$token = $this->_registry->get('token');
-		$loggedIn = $this->_registry->get('loggedIn');
-		return $token !== $loggedIn && $firstParameter === 'admin';
+		return $this->_registry->get('token') !== $this->_registry->get('loggedIn') && $this->_registry->get('firstParameter') === 'admin';
 	}
 
 	/**

@@ -16,25 +16,6 @@ use Redaxscript\Model as BaseModel;
 class User extends BaseModel\User
 {
 	/**
-	 * create the user by array
-	 *
-	 * @since 4.0.0
-	 *
-	 * @param array $createArray array of the create
-	 *
-	 * @return bool
-	 */
-
-	public function createByArray(array $createArray = []) : bool
-	{
-		return $this
-			->query()
-			->create()
-			->set($createArray)
-			->save();
-	}
-
-	/**
 	 * update the user by id and array
 	 *
 	 * @since 4.0.0
