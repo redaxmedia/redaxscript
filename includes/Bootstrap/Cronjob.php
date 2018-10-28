@@ -27,14 +27,14 @@ class Cronjob extends BootstrapAbstract
 	{
 		$dater = new Dater();
 		$dater->init();
-		$this->_registry->set('now', $dater->getDateTime()->getTimeStamp());
+		$this->_registry->set('now', $dater->getDateTime()->getTimestamp());
 		$this->_registry->set('cronUpdate', false);
 
 		/* set the update */
 
 		if (!$this->_request->getSession('nextUpdate'))
 		{
-			$this->_request->setSession('nextUpdate', $dater->getDateTime()->modify('+1 minute')->getTimeStamp());
+			$this->_request->setSession('nextUpdate', $dater->getDateTime()->modify('+1 minute')->getTimestamp());
 			$this->_registry->set('cronUpdate', true);
 		}
 
