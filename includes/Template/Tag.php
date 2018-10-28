@@ -321,31 +321,31 @@ class Tag
 
 	public static function navigation(string $type = null, array $optionArray = []) : ?string
 	{
-		if ($type == 'articles')
+		if ($type === 'articles')
 		{
 			$navigation = new Navigation\Article(Registry::getInstance(), Language::getInstance());
 			$navigation->init($optionArray);
 			return $navigation->render();
 		}
-		if ($type == 'categories')
+		if ($type === 'categories')
 		{
 			$navigation = new Navigation\Category(Registry::getInstance(), Language::getInstance());
 			$navigation->init($optionArray);
 			return $navigation->render();
 		}
-		if ($type == 'comments')
+		if ($type === 'comments')
 		{
 			$navigation = new Navigation\Comment(Registry::getInstance(), Language::getInstance());
 			$navigation->init($optionArray);
 			return $navigation->render();
 		}
-		if ($type == 'languages')
+		if ($type === 'languages')
 		{
 			$navigation = new Navigation\Language(Registry::getInstance(), Language::getInstance());
 			$navigation->init($optionArray);
 			return $navigation->render();
 		}
-		if ($type == 'templates')
+		if ($type === 'templates')
 		{
 			$navigation = new Navigation\Template(Registry::getInstance(), Language::getInstance());
 			$navigation->init($optionArray);
