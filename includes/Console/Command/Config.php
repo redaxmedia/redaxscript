@@ -71,10 +71,6 @@ class Config extends CommandAbstract
 						'db-url' =>
 						[
 							'description' => 'Required database url'
-						],
-						'db-env' =>
-						[
-							'description' => 'Get the variable from ENV'
 						]
 					]
 				],
@@ -192,7 +188,6 @@ class Config extends CommandAbstract
 	protected function _parse(array $optionArray = []) : bool
 	{
 		$dbUrl = $this->prompt('db-url', $optionArray);
-		$dbUrl = $optionArray['db-env'] ? getenv($dbUrl) : $dbUrl;
 		if ($dbUrl)
 		{
 			$this->_config->parse($dbUrl);

@@ -193,50 +193,9 @@ class ConfigTest extends TestCaseAbstract
 			'config',
 			'parse',
 			'--db-url',
-			'mysql://root:test@127.0.0.1/test'
+			'$DB_URL'
 		]);
 		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_language, $this->_config);
-
-		/* expect and actual */
-
-		$expect = $configCommand->success();
-		$actual = $configCommand->run('cli');
-
-		/* compare */
-
-		$this->assertEquals($expect, $actual);
-	}
-
-	/**
-	 * testParseEnv
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function testParseEnv()
-	{
-		/* setup */
-
-		$dbUrl = getenv('DB_URL');
-		putenv('DB_URL=mysql://root:test@127.0.0.1/test');
-		$this->_config->init(Stream::url('root' . DIRECTORY_SEPARATOR . 'config.php'));
-		$this->_request->setServer('argv',
-		[
-			'console.php',
-			'config',
-			'parse',
-			'--db-url',
-			'DB_URL',
-			'--db-env'
-		]);
-		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_language, $this->_config);
-
-		/* restore */
-
-		if ($dbUrl)
-		{
-			putenv('DB_URL=' . $dbUrl);
-		}
 
 		/* expect and actual */
 
