@@ -60,7 +60,7 @@ class ResetForm extends ViewAbstract
 
 		$formElement
 			->legend()
-			->append('<li><ul>')
+			->append('<ul><li>')
 			->captcha('task')
 			->append('</li></ul>')
 			->hidden(
