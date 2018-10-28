@@ -137,8 +137,10 @@ class Status extends CommandAbstract
 
 	protected function _getStatusArray() : array
 	{
+		$phpOs = $this->_registry->get('phpOs');
 		$driverArray = $this->_registry->get('driverArray');
 		$moduleArray = $this->_registry->get('moduleArray');
+		$opcacheArray = $this->_registry->get('opcacheArray');
 		$testOsArray =
 		[
 			'linux',
@@ -162,7 +164,7 @@ class Status extends CommandAbstract
 			'OS' =>
 			[
 				'value' => $this->_registry->get('phpOs'),
-				'status' => in_array($this->_registry->get('phpOs'), $testOsArray) ? 1 : 0
+				'status' => in_array($phpOs, $testOsArray) ? 1 : 0
 			],
 			'PHP' =>
 			[
@@ -173,6 +175,11 @@ class Status extends CommandAbstract
 			[
 				'value' => $this->_registry->get('sessionStatus'),
 				'status' => $this->_registry->get('sessionStatus') ? 1 : 0
+			],
+			'OPCACHE' =>
+			[
+				'value' => $opcacheArray['opcache_enabled'],
+				'status' => $opcacheArray['opcache_enabled'] ? 1 : 0
 			]
 		];
 

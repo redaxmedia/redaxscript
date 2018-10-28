@@ -91,6 +91,8 @@ class SystemStatus extends ViewAbstract
 
 	protected function _validateWarning() : array
 	{
+		$messageArray = [];
+		$phpOs = $this->_registry->get('phpOs');
 		$moduleArray = $this->_registry->get('moduleArray');
 		$testOsArray =
 		[
@@ -103,8 +105,7 @@ class SystemStatus extends ViewAbstract
 			'mod_headers',
 			'mod_rewrite'
 		];
-		$messageArray = [];
-		if (!in_array($this->_registry->get('phpOs'), $testOsArray))
+		if (!in_array($phpOs, $testOsArray))
 		{
 			$messageArray[] = $this->_language->get('php_os_unsupported');
 		}

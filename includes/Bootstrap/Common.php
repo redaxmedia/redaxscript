@@ -30,6 +30,7 @@ class Common extends BootstrapAbstract
 		$this->_setDriver();
 		$this->_setModule();
 		$this->_setPhp();
+		$this->_setOpcache();
 	}
 
 	/**
@@ -152,6 +153,17 @@ class Common extends BootstrapAbstract
 		}
 		$this->_registry->set('phpVersion', $phpVersion);
 		$this->_registry->set('phpStatus', version_compare($phpVersion, '7.0', '>='));
+	}
 
+	/**
+	 * set the opcache
+	 *
+	 * @since 4.0.0
+	 */
+
+	protected function _setOpcache()
+	{
+		$opcacheArray = function_exists('opcache_get_status') ? opcache_get_status(false) : [];
+		$this->_registry->set('opcacheArray', $opcacheArray);
 	}
 }
