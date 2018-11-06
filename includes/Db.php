@@ -131,6 +131,31 @@ class Db extends ORM
 	}
 
 	/**
+	 * set the auto increment
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param string $table name of the table
+	 * @param int $increment value of the auto increment
+	 *
+	 * @return bool
+	 */
+
+	public static function setAutoIncrement(string $table = null, int $increment = 0) : bool
+	{
+		$dbType = self::$_config->get('dbType');
+		$dbPrefix = self::$_config->get('dbPrefix');
+
+		/* mysql */
+
+		if ($dbType === 'mysql')
+		{
+			return self::rawExecute('ALTER TABLE ' . $dbPrefix . $table . ' AUTO_INCREMENT = ' . $increment);
+		}
+		return false;
+	}
+
+	/**
 	 * count table with prefix
 	 *
 	 * @since 3.1.0

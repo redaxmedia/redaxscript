@@ -135,6 +135,23 @@ class DbTest extends TestCaseAbstract
 	}
 
 	/**
+	 * testSetAutoIncrement
+	 *
+	 * @since 4.0.0
+	 */
+
+	public function testSetAutoIncrement()
+	{
+		/* actual */
+
+		$actual = Db::setAutoIncrement('categories', 0);
+
+		/* compare */
+
+		$this->_config->get('dbType') === 'mysql' ? $this->assertTrue($actual) : $this->markTestSkipped();
+	}
+
+	/**
 	 * testCountTablePrefix
 	 *
 	 * @since 2.4.0
