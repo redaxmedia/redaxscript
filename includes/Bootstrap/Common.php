@@ -152,7 +152,7 @@ class Common extends BootstrapAbstract
 			$this->_registry->set('phpOs', 'windows');
 		}
 		$this->_registry->set('phpVersion', $phpVersion);
-		$this->_registry->set('phpStatus', version_compare($phpVersion, '7.0', '>='));
+		$this->_registry->set('phpStatus', version_compare($phpVersion, '7.2', '>='));
 	}
 
 	/**
