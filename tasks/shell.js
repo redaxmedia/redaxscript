@@ -51,15 +51,15 @@ module.exports = grunt =>
 		},
 		phpunit:
 		{
-			command: run('vendor/bin/phpunit ' + grunt.option.flags())
+			command: run('vendor/bin/phpunit')
 		},
 		phpunitParallel:
 		{
-			command: run('vendor/bin/paratest --processes=10 ' + grunt.option.flags())
+			command: run('vendor/bin/paratest --processes=10')
 		},
 		phpunitMutation:
 		{
-			command: run('vendor/bin/infection --threads=10 --only-covered ' + grunt.option.flags())
+			command: run('vendor/bin/infection --threads=10 --only-covered')
 		},
 		startServer:
 		{
