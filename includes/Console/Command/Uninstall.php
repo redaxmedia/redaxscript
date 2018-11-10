@@ -91,7 +91,7 @@ class Uninstall extends CommandAbstract
 	}
 
 	/**
-	 * install the database
+	 * uninstall the database
 	 *
 	 * @since 3.0.0
 	 *
@@ -103,7 +103,8 @@ class Uninstall extends CommandAbstract
 		$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
 		$installer->init();
 		$installer->rawDrop();
-		return Db::getStatus() === 2;
+		Db::clearCache();
+		return Db::getStatus() === 1;
 	}
 
 	/**
