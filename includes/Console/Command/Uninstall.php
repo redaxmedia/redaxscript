@@ -103,7 +103,7 @@ class Uninstall extends CommandAbstract
 		$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
 		$installer->init();
 		$installer->rawDrop();
-		return Db::getStatus() === 1;
+		return Db::getStatus() === 2;
 	}
 
 	/**
