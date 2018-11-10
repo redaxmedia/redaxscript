@@ -50,10 +50,6 @@ class Install extends CommandAbstract
 						'admin-email' =>
 						[
 							'description' => 'Required admin email'
-						],
-						'halt-on-error' =>
-						[
-							'description' => 'Halt on error'
 						]
 					]
 				],
@@ -65,10 +61,6 @@ class Install extends CommandAbstract
 						'alias' =>
 						[
 							'description' => 'Required module alias'
-						],
-						'halt-on-error' =>
-						[
-							'description' => 'Halt on error'
 						]
 					]
 				]

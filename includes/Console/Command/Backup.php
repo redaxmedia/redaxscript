@@ -38,10 +38,6 @@ class Backup extends CommandAbstract
 						'directory' =>
 						[
 							'description' => 'Required directory'
-						],
-						'halt-on-error' =>
-						[
-							'description' => 'Halt on error'
 						]
 					]
 				]

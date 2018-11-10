@@ -41,10 +41,6 @@ class Restore extends CommandAbstract
 						'file' =>
 						[
 							'description' => 'Required file'
-						],
-						'halt-on-error' =>
-						[
-							'description' => 'Halt on error'
 						]
 					]
 				]

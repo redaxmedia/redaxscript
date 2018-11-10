@@ -32,14 +32,7 @@ class Uninstall extends CommandAbstract
 			[
 				'database' =>
 				[
-					'description' => 'Uninstall the database',
-					'optionArray' =>
-					[
-						'halt-on-error' =>
-						[
-							'description' => 'Halt on error'
-						]
-					]
+					'description' => 'Uninstall the database'
 				],
 				'module' =>
 				[
@@ -49,10 +42,6 @@ class Uninstall extends CommandAbstract
 						'alias' =>
 						[
 							'description' => 'Required module alias'
-						],
-						'halt-on-error' =>
-						[
-							'description' => 'Halt on error'
 						]
 					]
 				]

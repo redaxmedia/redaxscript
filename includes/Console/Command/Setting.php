@@ -45,10 +45,6 @@ class Setting extends CommandAbstract
 						'value' =>
 						[
 							'description' => 'Required setting value'
-						],
-						'halt-on-error' =>
-						[
-							'description' => 'Halt on error'
 						]
 					]
 				]

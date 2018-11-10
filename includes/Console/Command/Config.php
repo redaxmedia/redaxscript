@@ -60,10 +60,6 @@ class Config extends CommandAbstract
 						'db-prefix' =>
 						[
 							'description' => 'Optional database prefix'
-						],
-						'halt-on-error' =>
-						[
-							'description' => 'Halt on error'
 						]
 					]
 				],
@@ -75,23 +71,12 @@ class Config extends CommandAbstract
 						'db-url' =>
 						[
 							'description' => 'Required database url'
-						],
-						'halt-on-error' =>
-						[
-							'description' => 'Halt on error'
 						]
 					]
 				],
 				'lock' =>
 				[
-					'description' => 'Lock the production environment',
-					'optionArray' =>
-					[
-						'halt-on-error' =>
-						[
-							'description' => 'Halt on error'
-						]
-					]
+					'description' => 'Lock the production environment'
 				]
 			]
 		]

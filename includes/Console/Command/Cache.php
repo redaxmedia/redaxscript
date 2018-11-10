@@ -45,10 +45,6 @@ class Cache extends CommandAbstract
 						'bundle' =>
 						[
 							'description' => 'Optional key or collection of the bundle'
-						],
-						'halt-on-error' =>
-						[
-							'description' => 'Halt on error'
 						]
 					]
 				],
@@ -68,10 +64,6 @@ class Cache extends CommandAbstract
 						'lifetime' =>
 						[
 							'description' => 'Optional lifetime of the bundle'
-						],
-						'halt-on-error' =>
-						[
-							'description' => 'Halt on error'
 						]
 					]
 				]
