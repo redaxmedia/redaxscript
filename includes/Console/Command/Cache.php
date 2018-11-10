@@ -45,6 +45,10 @@ class Cache extends CommandAbstract
 						'bundle' =>
 						[
 							'description' => 'Optional key or collection of the bundle'
+						],
+						'halt-on-error' =>
+						[
+							'description' => 'Halt on error'
 						]
 					]
 				],
@@ -64,6 +68,10 @@ class Cache extends CommandAbstract
 						'lifetime' =>
 						[
 							'description' => 'Optional lifetime of the bundle'
+						],
+						'halt-on-error' =>
+						[
+							'description' => 'Halt on error'
 						]
 					]
 				]
@@ -89,13 +97,14 @@ class Cache extends CommandAbstract
 		/* run command */
 
 		$argumentKey = $parser->getArgument(1);
+		$haltOnError = (bool)$parser->getOption('halt-on-error');
 		if ($argumentKey === 'clear')
 		{
-			return $this->_clear($parser->getOption()) ? $this->success() : $this->error();
+			return $this->_clear($parser->getOption()) ? $this->success() : $this->error($haltOnError);
 		}
 		if ($argumentKey === 'clear-invalid')
 		{
-			return $this->_clearInvalid($parser->getOption()) ? $this->success() : $this->error();
+			return $this->_clearInvalid($parser->getOption()) ? $this->success() : $this->error($haltOnError);
 		}
 		return $this->getHelp();
 	}

@@ -60,6 +60,10 @@ class Config extends CommandAbstract
 						'db-prefix' =>
 						[
 							'description' => 'Optional database prefix'
+						],
+						'halt-on-error' =>
+						[
+							'description' => 'Halt on error'
 						]
 					]
 				],
@@ -71,12 +75,23 @@ class Config extends CommandAbstract
 						'db-url' =>
 						[
 							'description' => 'Required database url'
+						],
+						'halt-on-error' =>
+						[
+							'description' => 'Halt on error'
 						]
 					]
 				],
 				'lock' =>
 				[
-					'description' => 'Lock the production environment'
+					'description' => 'Lock the production environment',
+					'optionArray' =>
+					[
+						'halt-on-error' =>
+						[
+							'description' => 'Halt on error'
+						]
+					]
 				]
 			]
 		]
@@ -100,21 +115,22 @@ class Config extends CommandAbstract
 		/* run command */
 
 		$argumentKey = $parser->getArgument(1);
+		$haltOnError = (bool)$parser->getOption('halt-on-error');
 		if ($argumentKey === 'list')
 		{
 			return $this->_list();
 		}
 		if ($argumentKey === 'set')
 		{
-			return $this->_set($parser->getOption()) ? $this->success() : $this->error();
+			return $this->_set($parser->getOption()) ? $this->success() : $this->error($haltOnError);
 		}
 		if ($argumentKey === 'parse')
 		{
-			return $this->_parse($parser->getOption()) ? $this->success() : $this->error();
+			return $this->_parse($parser->getOption()) ? $this->success() : $this->error($haltOnError);
 		}
 		if ($argumentKey === 'lock')
 		{
-			return $this->_lock() ? $this->success() : $this->error();
+			return $this->_lock() ? $this->success() : $this->error($haltOnError);
 		}
 		return $this->getHelp();
 	}

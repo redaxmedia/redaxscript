@@ -32,7 +32,14 @@ class Uninstall extends CommandAbstract
 			[
 				'database' =>
 				[
-					'description' => 'Uninstall the database'
+					'description' => 'Uninstall the database',
+					'optionArray' =>
+					[
+						'halt-on-error' =>
+						[
+							'description' => 'Halt on error'
+						]
+					]
 				],
 				'module' =>
 				[
@@ -42,6 +49,10 @@ class Uninstall extends CommandAbstract
 						'alias' =>
 						[
 							'description' => 'Required module alias'
+						],
+						'halt-on-error' =>
+						[
+							'description' => 'Halt on error'
 						]
 					]
 				]
@@ -67,13 +78,14 @@ class Uninstall extends CommandAbstract
 		/* run command */
 
 		$argumentKey = $parser->getArgument(1);
+		$haltOnError = (bool)$parser->getOption('halt-on-error');
 		if ($argumentKey === 'database')
 		{
-			return $this->_database() ? $this->success() : $this->error();
+			return $this->_database() ? $this->success() : $this->error($haltOnError);
 		}
 		if ($argumentKey === 'module')
 		{
-			return $this->_module($parser->getOption()) ? $this->success() : $this->error();
+			return $this->_module($parser->getOption()) ? $this->success() : $this->error($haltOnError);
 		}
 		return $this->getHelp();
 	}

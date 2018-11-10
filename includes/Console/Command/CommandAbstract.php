@@ -98,11 +98,17 @@ abstract class CommandAbstract extends ConsoleAbstract
 	 *
 	 * @since 4.0.0
 	 *
-	 * @return string
+	 * @param bool $haltOnError halt on error flag
+	 *
+	 * @return string|null
 	 */
 
-	public function error() : string
+	public function error(bool $haltOnError = false) : ?string
 	{
-		return $this->_language->get('something_wrong') . PHP_EOL;
+		if ($haltOnError)
+		{
+			exit($this->_language->get('error_occurred') . PHP_EOL);
+		}
+		return $this->_language->get('error_occurred') . PHP_EOL;
 	}
 }

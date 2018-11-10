@@ -45,6 +45,10 @@ class Setting extends CommandAbstract
 						'value' =>
 						[
 							'description' => 'Required setting value'
+						],
+						'halt-on-error' =>
+						[
+							'description' => 'Halt on error'
 						]
 					]
 				]
@@ -70,13 +74,14 @@ class Setting extends CommandAbstract
 		/* run command */
 
 		$argumentKey = $parser->getArgument(1);
+		$haltOnError = (bool)$parser->getOption('halt-on-error');
 		if ($argumentKey === 'list')
 		{
 			return $this->_list();
 		}
 		if ($argumentKey === 'set')
 		{
-			return $this->_set($parser->getOption()) ? $this->success() : $this->error();
+			return $this->_set($parser->getOption()) ? $this->success() : $this->error($haltOnError);
 		}
 		return $this->getHelp();
 	}

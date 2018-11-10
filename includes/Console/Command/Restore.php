@@ -41,6 +41,10 @@ class Restore extends CommandAbstract
 						'file' =>
 						[
 							'description' => 'Required file'
+						],
+						'halt-on-error' =>
+						[
+							'description' => 'Halt on error'
 						]
 					]
 				]
@@ -66,9 +70,10 @@ class Restore extends CommandAbstract
 		/* run command */
 
 		$argumentKey = $parser->getArgument(1);
+		$haltOnError = (bool)$parser->getOption('halt-on-error');
 		if ($argumentKey === 'database')
 		{
-			return $this->_database($parser->getOption()) ? $this->success() : $this->error();
+			return $this->_database($parser->getOption()) ? $this->success() : $this->error($haltOnError);
 		}
 		return $this->getHelp();
 	}
