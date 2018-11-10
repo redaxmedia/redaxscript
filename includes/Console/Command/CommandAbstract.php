@@ -107,7 +107,7 @@ abstract class CommandAbstract extends ConsoleAbstract
 	{
 		if ($haltOnError)
 		{
-			exit($this->_language->get('error_occurred') . PHP_EOL);
+			exit(1);
 		}
 		return $this->_language->get('error_occurred') . PHP_EOL;
 	}
