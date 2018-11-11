@@ -296,20 +296,23 @@ class DirectoryLister extends Config
 	 *
 	 * @param string $text
 	 * @param string $fileExtension
-	 * @param array $replaceArray
+	 * @param array|null $replaceArray
 	 *
 	 * @return string
 	 */
 
-	protected function _replace(string $text, string $fileExtension, array $replaceArray) : string
+	protected function _replace(string $text, string $fileExtension, ?array $replaceArray = []) : string
 	{
-		foreach ($replaceArray as $replaceKey => $replaceValue)
+		if (is_array($replaceArray))
 		{
-			if ($replaceKey === $this->_configArray['replaceKey']['extension'])
+			foreach ($replaceArray as $replaceKey => $replaceValue)
 			{
-				$replaceKey = $fileExtension;
+				if ($replaceKey === $this->_configArray['replaceKey']['extension'])
+				{
+					$replaceKey = $fileExtension;
+				}
+				$text = str_replace($replaceKey, $replaceValue, $text);
 			}
-			$text = str_replace($replaceKey, $replaceValue, $text);
 		}
 		return $text;
 	}
