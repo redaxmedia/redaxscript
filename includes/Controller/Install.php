@@ -8,6 +8,8 @@ use Redaxscript\Installer;
 use Redaxscript\Mailer;
 use Redaxscript\Model;
 use Redaxscript\Validator;
+use function touch;
+use function unlink;
 
 /**
  * children class to process install

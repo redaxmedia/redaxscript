@@ -6,6 +6,7 @@ use Redaxscript\Html;
 use Redaxscript\Mailer;
 use Redaxscript\Model;
 use Redaxscript\Validator;
+use function sha1;
 
 /**
  * children class to process the recover request

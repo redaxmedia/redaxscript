@@ -1,6 +1,9 @@
 <?php
 namespace Redaxscript\Validator;
 
+use function filter_var;
+use function parse_url;
+
 /**
  * children class to validate url
  *

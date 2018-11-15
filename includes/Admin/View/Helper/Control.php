@@ -4,6 +4,8 @@ namespace Redaxscript\Admin\View\Helper;
 use Redaxscript\Admin\View\ViewAbstract;
 use Redaxscript\Html;
 use Redaxscript\Module;
+use function in_array;
+use function ucfirst;
 
 /**
  * helper class to create the admin control

@@ -3,6 +3,8 @@ namespace Redaxscript\Modules\Maps;
 
 use Redaxscript\Head;
 use Redaxscript\Html;
+use function http_build_query;
+use function is_numeric;
 
 /**
  * integrate google maps

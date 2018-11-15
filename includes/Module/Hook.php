@@ -8,6 +8,12 @@ use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 use Redaxscript\Validator;
+use function array_merge;
+use function call_user_func_array;
+use function in_array;
+use function is_array;
+use function method_exists;
+use function strlen;
 
 /**
  * parent class to handle module hooks

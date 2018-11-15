@@ -4,6 +4,10 @@ namespace Redaxscript\Tests\Filesystem;
 use org\bovigo\vfs\vfsStream as Stream;
 use Redaxscript\Filesystem;
 use Redaxscript\Tests\TestCaseAbstract;
+use function is_file;
+use function scandir;
+use function time;
+use function touch;
 
 /**
  * CacheTest

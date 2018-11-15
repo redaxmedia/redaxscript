@@ -2,6 +2,7 @@
 namespace Redaxscript\Tests;
 
 use Redaxscript\Hash;
+use function defined;
 
 /**
  * HashTest

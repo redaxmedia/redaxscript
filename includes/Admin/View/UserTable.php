@@ -5,6 +5,8 @@ use Redaxscript\Admin;
 use Redaxscript\Dater;
 use Redaxscript\Html;
 use Redaxscript\Module;
+use function count;
+use function json_decode;
 
 /**
  * children class to create the admin user table

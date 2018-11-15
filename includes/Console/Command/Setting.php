@@ -3,6 +3,7 @@ namespace Redaxscript\Console\Command;
 
 use Redaxscript\Console\Parser;
 use Redaxscript\Model;
+use function str_pad;
 
 /**
  * children class to execute the setting command

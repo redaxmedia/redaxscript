@@ -3,6 +3,8 @@ namespace Redaxscript\Template\Helper;
 
 use Redaxscript\Db;
 use Redaxscript\Model;
+use function array_key_exists;
+use function is_array;
 
 /**
  * helper class to provide a robots helper

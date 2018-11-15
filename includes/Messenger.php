@@ -1,6 +1,13 @@
 <?php
 namespace Redaxscript;
 
+use function array_key_exists;
+use function array_replace_recursive;
+use function count;
+use function is_array;
+use function is_numeric;
+use function strlen;
+
 /**
  * parent class to create a flash message
  *

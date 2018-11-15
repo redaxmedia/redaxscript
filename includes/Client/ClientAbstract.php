@@ -2,6 +2,12 @@
 namespace Redaxscript\Client;
 
 use Redaxscript\Request;
+use function floor;
+use function stristr;
+use function strlen;
+use function strpos;
+use function strtolower;
+use function substr;
 
 /**
  * abstract class to create a client class

@@ -2,6 +2,7 @@
 namespace Redaxscript\Modules\CssValidator;
 
 use Redaxscript\Reader;
+use function http_build_query;
 
 /**
  * css validator for developers

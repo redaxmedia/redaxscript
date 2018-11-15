@@ -1,6 +1,11 @@
 <?php
 namespace Redaxscript;
 
+use function array_key_exists;
+use function array_merge;
+use function is_array;
+use function is_file;
+
 /**
  * children class to provide the language
  *

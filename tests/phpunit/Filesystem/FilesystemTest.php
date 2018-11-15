@@ -4,6 +4,7 @@ namespace Redaxscript\Tests\Filesystem;
 use org\bovigo\vfs\vfsStream as Stream;
 use Redaxscript\Filesystem;
 use Redaxscript\Tests\TestCaseAbstract;
+use function iterator_count;
 
 /**
  * FilesystemTest

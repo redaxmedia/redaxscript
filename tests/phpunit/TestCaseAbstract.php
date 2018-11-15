@@ -11,6 +11,14 @@ use Redaxscript\Modules\TestDummy;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 use ReflectionClass;
+use function chr;
+use function file_exists;
+use function file_get_contents;
+use function function_exists;
+use function getenv;
+use function json_decode;
+use function str_replace;
+use function xdebug_get_headers;
 
 /**
  * TestCaseAbstract

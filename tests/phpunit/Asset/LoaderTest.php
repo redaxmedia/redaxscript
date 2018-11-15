@@ -5,6 +5,7 @@ use org\bovigo\vfs\vfsStream as Stream;
 use Redaxscript\Asset;
 use Redaxscript\Registry;
 use Redaxscript\Tests\TestCaseAbstract;
+use function file_get_contents;
 
 /**
  * LoaderTest

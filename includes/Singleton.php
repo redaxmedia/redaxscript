@@ -1,6 +1,9 @@
 <?php
 namespace Redaxscript;
 
+use function array_key_exists;
+use function is_array;
+
 /**
  * abstract class to create a singleton class
  *

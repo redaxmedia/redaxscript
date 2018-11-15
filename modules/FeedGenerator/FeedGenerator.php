@@ -7,6 +7,7 @@ use Redaxscript\Header;
 use Redaxscript\Model;
 use Redaxscript\Module;
 use XMLWriter;
+use function strip_tags;
 
 /**
  * generate atom feeds from content

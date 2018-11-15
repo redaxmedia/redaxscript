@@ -4,6 +4,7 @@ namespace Redaxscript\Console\Command;
 use Redaxscript\Console\Parser;
 use Redaxscript\Db;
 use Redaxscript\Installer;
+use function class_exists;
 
 /**
  * children class to execute the install command

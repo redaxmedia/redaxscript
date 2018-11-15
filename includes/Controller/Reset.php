@@ -7,6 +7,8 @@ use Redaxscript\Html\Element;
 use Redaxscript\Mailer;
 use Redaxscript\Model;
 use Redaxscript\Validator;
+use function sha1;
+use function uniqid;
 
 /**
  * children class to process the reset request

@@ -4,6 +4,8 @@ namespace Redaxscript;
 use ORM;
 use PDO;
 use PDOException;
+use function implode;
+use function strstr;
 
 /**
  * children class to handle the database

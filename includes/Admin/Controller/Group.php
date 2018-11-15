@@ -4,6 +4,7 @@ namespace Redaxscript\Admin\Controller;
 use Redaxscript\Admin;
 use Redaxscript\Filter;
 use Redaxscript\Validator;
+use function json_encode;
 
 /**
  * children class to process the admin group request

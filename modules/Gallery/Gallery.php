@@ -4,6 +4,22 @@ namespace Redaxscript\Modules\Gallery;
 use Redaxscript\Filesystem;
 use Redaxscript\Head;
 use Redaxscript\Html;
+use function array_key_exists;
+use function array_reverse;
+use function chmod;
+use function getimagesize;
+use function imagecopyresampled;
+use function imagecreatefromgif;
+use function imagecreatefromjpeg;
+use function imagecreatefrompng;
+use function imagecreatetruecolor;
+use function imagedestroy;
+use function imagejpeg;
+use function is_array;
+use function is_dir;
+use function pathinfo;
+use function round;
+use function strtolower;
 
 /**
  * javascript powered gallery

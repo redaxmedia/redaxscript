@@ -2,6 +2,22 @@
 namespace Redaxscript;
 
 use SimpleXMLElement;
+use function array_replace_recursive;
+use function curl_close;
+use function curl_exec;
+use function curl_init;
+use function curl_setopt;
+use function curl_setopt_array;
+use function file_get_contents;
+use function function_exists;
+use function is_array;
+use function is_file;
+use function is_numeric;
+use function is_object;
+use function json_decode;
+use function json_encode;
+use function method_exists;
+use function simplexml_load_string;
 
 /**
  * parent class to load and convert data

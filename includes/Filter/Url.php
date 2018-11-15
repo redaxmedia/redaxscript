@@ -1,6 +1,9 @@
 <?php
 namespace Redaxscript\Filter;
 
+use function filter_var;
+use function strtolower;
+
 /**
  * children class to filter the url
  *

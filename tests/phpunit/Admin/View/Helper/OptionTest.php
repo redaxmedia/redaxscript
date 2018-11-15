@@ -4,6 +4,7 @@ namespace Redaxscript\Tests\Admin\View\Helper;
 use Redaxscript\Admin\View\Helper;
 use Redaxscript\Db;
 use Redaxscript\Tests\TestCaseAbstract;
+use function array_diff;
 
 /**
  * OptionTest

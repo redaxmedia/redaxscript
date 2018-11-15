@@ -4,6 +4,13 @@ namespace Redaxscript\Router;
 use Redaxscript\Filter;
 use Redaxscript\Request;
 use Redaxscript\Server;
+use function array_filter;
+use function array_key_exists;
+use function array_map;
+use function array_reverse;
+use function explode;
+use function is_array;
+use function is_numeric;
 
 /**
  * parent class to get the parameter

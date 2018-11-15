@@ -2,6 +2,8 @@
 namespace Redaxscript\View;
 
 use Redaxscript\Messenger;
+use function in_array;
+use function is_array;
 
 /**
  * children class to create the system status

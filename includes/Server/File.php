@@ -1,6 +1,8 @@
 <?php
 namespace Redaxscript\Server;
 
+use function basename;
+
 /**
  * children class to get the file
  *

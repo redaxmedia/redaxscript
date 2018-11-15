@@ -5,6 +5,7 @@ use Redaxscript\Asset;
 use Redaxscript\Html;
 use Redaxscript\Language;
 use Redaxscript\Registry;
+use function array_merge;
 
 /**
  * children class to create the script tag

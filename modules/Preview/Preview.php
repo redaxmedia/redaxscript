@@ -5,6 +5,7 @@ use Redaxscript\Filesystem;
 use Redaxscript\Head;
 use Redaxscript\Html;
 use Redaxscript\Module;
+use function str_replace;
 
 /**
  * preview template elements

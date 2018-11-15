@@ -4,6 +4,7 @@ namespace Redaxscript\Admin\View\Helper;
 use Redaxscript\Admin\View\ViewAbstract;
 use Redaxscript\Html;
 use Redaxscript\Module;
+use function array_replace_recursive;
 
 /**
  * helper class to create the admin dock

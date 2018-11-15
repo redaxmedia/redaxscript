@@ -4,6 +4,8 @@ namespace Redaxscript\Admin\Controller;
 use Redaxscript\Admin;
 use Redaxscript\Filter;
 use Redaxscript\Validator;
+use function json_encode;
+use function strtotime;
 
 /**
  * children class to process the admin category request

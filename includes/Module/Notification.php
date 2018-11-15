@@ -1,6 +1,9 @@
 <?php
 namespace Redaxscript\Module;
 
+use function array_key_exists;
+use function is_array;
+
 /**
  * children class to create a module with notification
  *

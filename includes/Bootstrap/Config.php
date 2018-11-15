@@ -3,6 +3,9 @@ namespace Redaxscript\Bootstrap;
 
 use Redaxscript\Db;
 use Redaxscript\Model;
+use function error_reporting;
+use function function_exists;
+use function ini_set;
 
 /**
  * children class to boot the config

@@ -1,6 +1,9 @@
 <?php
 namespace Redaxscript;
 
+use function is_numeric;
+use function random_int;
+
 /**
  * parent class to provide a mathematical task
  *

@@ -1,6 +1,10 @@
 <?php
 namespace Redaxscript\Validator;
 
+use function array_intersect;
+use function in_array;
+use function json_decode;
+
 /**
  * children class to validate access again group
  *

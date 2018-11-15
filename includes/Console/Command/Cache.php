@@ -3,6 +3,9 @@ namespace Redaxscript\Console\Command;
 
 use Redaxscript\Console\Parser;
 use Redaxscript\Filesystem;
+use function is_dir;
+use function is_numeric;
+use function is_object;
 
 /**
  * children class to execute the cache command

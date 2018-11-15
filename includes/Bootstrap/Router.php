@@ -2,6 +2,8 @@
 namespace Redaxscript\Bootstrap;
 
 use Redaxscript\Router as BaseRouter;
+use function in_array;
+use function is_array;
 
 /**
  * children class to boot the router

@@ -2,6 +2,11 @@
 namespace Redaxscript\Console\Command;
 
 use Redaxscript\Console\ConsoleAbstract;
+use function array_key_exists;
+use function is_array;
+use function readline;
+use function str_pad;
+use function str_repeat;
 
 /**
  * abstract class to create a command class

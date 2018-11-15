@@ -3,6 +3,10 @@ namespace Redaxscript\Console\Command;
 
 use Redaxscript\Console\Parser;
 use Redaxscript\Db;
+use function array_key_exists;
+use function in_array;
+use function is_array;
+use function str_pad;
 
 /**
  * children class to execute the status command

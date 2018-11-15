@@ -2,6 +2,13 @@
 namespace Redaxscript\Modules\PageCache;
 
 use Redaxscript\Filesystem;
+use function chmod;
+use function function_exists;
+use function gzdeflate;
+use function gzinflate;
+use function is_dir;
+use function mkdir;
+use function preg_replace;
 
 /**
  * high performance caching for pages

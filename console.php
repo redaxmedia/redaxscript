@@ -1,6 +1,11 @@
 <?php
 namespace Redaxscript;
 
+use function htmlentities;
+use function php_sapi_name;
+use function set_include_path;
+use function strlen;
+
 /* bootstrap */
 
 include_once('includes' . DIRECTORY_SEPARATOR . 'bootstrap.php');

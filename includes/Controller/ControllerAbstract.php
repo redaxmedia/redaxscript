@@ -6,6 +6,7 @@ use Redaxscript\Language;
 use Redaxscript\Messenger;
 use Redaxscript\Registry;
 use Redaxscript\Request;
+use function array_map;
 
 /**
  * abstract class to create a controller class

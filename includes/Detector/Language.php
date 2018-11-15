@@ -3,6 +3,7 @@ namespace Redaxscript\Detector;
 
 use Redaxscript\Db;
 use Redaxscript\Model;
+use function substr;
 
 /**
  * children class to detect the required language

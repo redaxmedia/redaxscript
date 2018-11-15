@@ -5,6 +5,9 @@ use Redaxscript\Filter;
 use Redaxscript\Model;
 use Redaxscript\Validator;
 use Redaxscript\View;
+use function in_array;
+use function is_array;
+use function str_replace;
 
 /**
  * children class to process the search request

@@ -3,6 +3,7 @@ namespace Redaxscript\Tests\Bootstrap;
 
 use Redaxscript\Bootstrap;
 use Redaxscript\Tests\TestCaseAbstract;
+use function putenv;
 
 /**
  * CommonTest

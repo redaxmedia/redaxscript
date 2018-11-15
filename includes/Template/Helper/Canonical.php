@@ -3,6 +3,8 @@ namespace Redaxscript\Template\Helper;
 
 use Redaxscript\Db;
 use Redaxscript\Model;
+use function is_numeric;
+use function is_string;
 
 /**
  * helper class to provide a canonical helper

@@ -5,6 +5,8 @@ use Redaxscript\Admin\View\ViewAbstract;
 use Redaxscript\Html;
 use Redaxscript\Module;
 use Redaxscript\Validator;
+use function array_key_exists;
+use function array_replace_recursive;
 
 /**
  * helper class to create the admin panel

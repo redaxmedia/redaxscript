@@ -1,6 +1,8 @@
 <?php
 namespace Redaxscript\Filter;
 
+use function filter_var;
+
 /**
  * children class to filter the number
  *

@@ -4,6 +4,7 @@ namespace Redaxscript\Navigation;
 use Redaxscript\Filesystem;
 use Redaxscript\Html;
 use Redaxscript\Module;
+use function substr;
 
 /**
  * children class to create the language navigation

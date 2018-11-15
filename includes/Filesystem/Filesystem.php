@@ -8,6 +8,11 @@ use RecursiveCallbackFilterIterator;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use Traversable;
+use function array_merge;
+use function in_array;
+use function is_array;
+use function is_dir;
+use function sort;
 
 /**
  * parent class to handle the filesystem

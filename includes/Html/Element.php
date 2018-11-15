@@ -1,6 +1,21 @@
 <?php
 namespace Redaxscript\Html;
 
+use function array_diff;
+use function array_filter;
+use function array_key_exists;
+use function array_map;
+use function array_merge;
+use function array_unique;
+use function explode;
+use function implode;
+use function in_array;
+use function is_array;
+use function strip_tags;
+use function strlen;
+use function strtolower;
+use function trim;
+
 /**
  * children class to create a element
  *

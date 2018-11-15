@@ -6,6 +6,10 @@ use Redaxscript\Filter;
 use Redaxscript\Head;
 use Redaxscript\Header;
 use Redaxscript\Module;
+use function array_search;
+use function file_get_contents;
+use function json_decode;
+use function json_encode;
 
 /**
  * javaScript powered table sorter

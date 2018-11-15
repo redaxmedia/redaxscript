@@ -1,6 +1,12 @@
 <?php
 namespace Redaxscript;
 
+use function header;
+use function header_remove;
+use function headers_list;
+use function headers_sent;
+use function http_response_code;
+
 /**
  * children class to add and remove the header
  *

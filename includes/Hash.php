@@ -1,6 +1,13 @@
 <?php
 namespace Redaxscript;
 
+use function constant;
+use function defined;
+use function is_numeric;
+use function is_string;
+use function password_hash;
+use function password_verify;
+
 /**
  * parent class to create a salted hash
  *

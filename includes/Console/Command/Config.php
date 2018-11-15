@@ -2,6 +2,9 @@
 namespace Redaxscript\Console\Command;
 
 use Redaxscript\Console\Parser;
+use function str_pad;
+use function str_repeat;
+use function strlen;
 
 /**
  * children class to execute the config command

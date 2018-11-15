@@ -1,6 +1,11 @@
 <?php
 namespace Redaxscript\Console;
 
+use function array_key_exists;
+use function class_exists;
+use function is_array;
+use function is_string;
+
 /**
  * parent class to handle the command line interface
  *

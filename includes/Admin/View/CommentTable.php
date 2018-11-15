@@ -4,6 +4,7 @@ namespace Redaxscript\Admin\View;
 use Redaxscript\Admin;
 use Redaxscript\Html;
 use Redaxscript\Module;
+use function count;
 
 /**
  * children class to create the admin comment table

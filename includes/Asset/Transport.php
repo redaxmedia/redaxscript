@@ -3,6 +3,8 @@ namespace Redaxscript\Asset;
 
 use Redaxscript\Language;
 use Redaxscript\Registry;
+use function is_array;
+use function json_encode;
 
 /**
  * class to transport javascript variables

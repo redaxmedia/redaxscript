@@ -1,6 +1,11 @@
 <?php
 namespace Redaxscript;
 
+use function class_exists;
+use function file_get_contents;
+use function str_replace;
+use function ucfirst;
+
 /**
  * parent class to install the database
  *

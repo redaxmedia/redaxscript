@@ -2,6 +2,11 @@
 namespace Redaxscript\Content\Tag;
 
 use Redaxscript\Html;
+use function array_filter;
+use function explode;
+use function htmlspecialchars;
+use function implode;
+use function str_replace;
 
 /**
  * children class to parse content for code tags

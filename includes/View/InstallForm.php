@@ -3,6 +3,8 @@ namespace Redaxscript\View;
 
 use Redaxscript\Html;
 use Redaxscript\Module;
+use function sha1;
+use function uniqid;
 
 /**
  * children class to create the install form

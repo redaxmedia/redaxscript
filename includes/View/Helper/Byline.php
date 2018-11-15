@@ -5,6 +5,7 @@ use Redaxscript\Dater;
 use Redaxscript\Html;
 use Redaxscript\Module;
 use Redaxscript\View\ViewAbstract;
+use function array_replace_recursive;
 
 /**
  * helper class to create the byline

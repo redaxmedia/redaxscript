@@ -2,6 +2,13 @@
 namespace Redaxscript\Console;
 
 use Redaxscript\Request;
+use function array_filter;
+use function array_key_exists;
+use function explode;
+use function is_array;
+use function next;
+use function strpos;
+use function substr;
 
 /**
  * parent class to parse the command line interface

@@ -2,6 +2,10 @@
 namespace Redaxscript\Filesystem;
 
 use RecursiveIteratorIterator;
+use function is_dir;
+use function mkdir;
+use function rmdir;
+use function unlink;
 
 /**
  * children class to handle a directory in the filesystem

@@ -13,6 +13,9 @@ use Redaxscript\Registry;
 use Redaxscript\Request;
 use Redaxscript\Router;
 use Redaxscript\View;
+use function ceil;
+use function htmlentities;
+use function strlen;
 
 /**
  * parent class to provide template tags

@@ -5,6 +5,7 @@ use Redaxscript\Dater;
 use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Model;
+use function strtotime;
 
 /**
  * generate a archive tree

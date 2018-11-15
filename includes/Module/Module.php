@@ -7,6 +7,10 @@ use Redaxscript\Language;
 use Redaxscript\Model;
 use Redaxscript\Registry;
 use Redaxscript\Request;
+use function array_key_exists;
+use function array_merge;
+use function is_array;
+use function is_dir;
 
 /**
  * parent class to create a module

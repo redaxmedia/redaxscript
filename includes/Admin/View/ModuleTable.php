@@ -5,6 +5,8 @@ use Redaxscript\Admin;
 use Redaxscript\Filesystem;
 use Redaxscript\Html;
 use Redaxscript\Module;
+use function array_diff;
+use function count;
 
 /**
  * children class to create the admin module table

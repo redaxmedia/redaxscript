@@ -1,6 +1,8 @@
 <?php
 namespace Redaxscript\Filter;
 
+use function preg_replace;
+
 /**
  * children class to filter the search
  *

@@ -2,6 +2,7 @@
 namespace Redaxscript\Modules\Experiments;
 
 use Redaxscript\Head;
+use function http_build_query;
 
 /**
  * integrate google experiments

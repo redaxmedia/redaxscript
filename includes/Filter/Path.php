@@ -1,6 +1,12 @@
 <?php
 namespace Redaxscript\Filter;
 
+use function ltrim;
+use function preg_replace;
+use function str_replace;
+use function trim;
+use function urldecode;
+
 /**
  * children class to filter the path
  *

@@ -6,6 +6,13 @@ use Redaxscript\Hash;
 use Redaxscript\Language;
 use Redaxscript\Module;
 use Redaxscript\Registry;
+use function array_key_exists;
+use function array_merge;
+use function array_replace_recursive;
+use function in_array;
+use function is_array;
+use function is_string;
+use function range;
 
 /**
  * children class to create a form

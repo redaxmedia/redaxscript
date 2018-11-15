@@ -1,6 +1,8 @@
 <?php
 namespace Redaxscript\Template\Helper;
 
+use function in_array;
+
 /**
  * helper class to provide a subset helper
  *

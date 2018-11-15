@@ -1,6 +1,16 @@
 <?php
 namespace Redaxscript\Filesystem;
 
+use function filemtime;
+use function filesize;
+use function implode;
+use function is_dir;
+use function is_file;
+use function mkdir;
+use function sha1;
+use function strlen;
+use function time;
+
 /**
  * parent class to handle cached files
  *

@@ -1,6 +1,8 @@
 <?php
 namespace Redaxscript\Validator;
 
+use function strlen;
+
 /**
  * children class to validate search
  *

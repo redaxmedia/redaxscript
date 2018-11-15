@@ -2,6 +2,9 @@
 namespace Redaxscript\Content\Tag;
 
 use Redaxscript\Html;
+use function str_replace;
+use function strpos;
+use function substr;
 
 /**
  * children class to parse content for more tags

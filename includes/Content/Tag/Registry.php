@@ -1,6 +1,11 @@
 <?php
 namespace Redaxscript\Content\Tag;
 
+use function array_filter;
+use function explode;
+use function implode;
+use function str_replace;
+
 /**
  * children class to parse content for registry tags
  *

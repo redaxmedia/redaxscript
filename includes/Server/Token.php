@@ -1,6 +1,9 @@
 <?php
 namespace Redaxscript\Server;
 
+use function session_id;
+use function sha1;
+
 /**
  * children class to get the token
  *

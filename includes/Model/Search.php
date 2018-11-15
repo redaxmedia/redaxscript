@@ -2,6 +2,7 @@
 namespace Redaxscript\Model;
 
 use Redaxscript\Db;
+use function array_filter;
 
 /**
  * parent class to provide the search model

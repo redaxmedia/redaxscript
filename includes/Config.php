@@ -1,6 +1,16 @@
 <?php
 namespace Redaxscript;
 
+use function array_key_exists;
+use function array_keys;
+use function end;
+use function file_put_contents;
+use function is_array;
+use function is_file;
+use function parse_url;
+use function str_replace;
+use function trim;
+
 /**
  * children class to store database config
  *

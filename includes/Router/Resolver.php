@@ -1,6 +1,10 @@
 <?php
 namespace Redaxscript\Router;
 
+use function array_diff;
+use function implode;
+use function in_array;
+
 /**
  * children class to resolve a route
  *

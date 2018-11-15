@@ -4,6 +4,8 @@ namespace Redaxscript\Head;
 use Redaxscript\Asset;
 use Redaxscript\Html;
 use Redaxscript\Registry;
+use function array_merge;
+use function is_array;
 
 /**
  * children class to create the link tag

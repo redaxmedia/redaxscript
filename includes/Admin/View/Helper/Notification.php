@@ -5,6 +5,9 @@ use Redaxscript\Admin\View\ViewInterface;
 use Redaxscript\Html;
 use Redaxscript\Language;
 use Redaxscript\Module;
+use function array_key_exists;
+use function array_replace_recursive;
+use function is_array;
 
 /**
  * helper class to create the admin notification

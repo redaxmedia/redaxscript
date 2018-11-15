@@ -4,6 +4,13 @@ namespace Redaxscript\Bootstrap;
 use PDO;
 use Redaxscript\Client;
 use Redaxscript\Server;
+use function function_exists;
+use function getenv;
+use function is_dir;
+use function opcache_get_status;
+use function strpos;
+use function strtolower;
+use function version_compare;
 
 /**
  * children class to boot the common

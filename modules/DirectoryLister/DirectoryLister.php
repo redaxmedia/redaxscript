@@ -6,6 +6,18 @@ use Redaxscript\Filesystem;
 use Redaxscript\Filter;
 use Redaxscript\Head;
 use Redaxscript\Html;
+use function array_key_exists;
+use function ceil;
+use function dirname;
+use function explode;
+use function filectime;
+use function filesize;
+use function http_build_query;
+use function is_array;
+use function is_dir;
+use function is_file;
+use function pathinfo;
+use function str_replace;
 
 /**
  * list the files of a directory

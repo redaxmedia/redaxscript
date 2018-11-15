@@ -1,6 +1,16 @@
 <?php
 namespace Redaxscript\Filesystem;
 
+use function chmod;
+use function file_get_contents;
+use function file_put_contents;
+use function is_file;
+use function ob_get_clean;
+use function ob_start;
+use function strlen;
+use function touch;
+use function unlink;
+
 /**
  * children class to handle a file in the filesystem
  *

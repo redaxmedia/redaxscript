@@ -1,6 +1,18 @@
 <?php
 namespace Redaxscript;
 
+use function base64_encode;
+use function chunk_split;
+use function current;
+use function function_exists;
+use function implode;
+use function is_array;
+use function is_file;
+use function key;
+use function mail;
+use function trim;
+use function uniqid;
+
 /**
  * parent class to send an mail
  *

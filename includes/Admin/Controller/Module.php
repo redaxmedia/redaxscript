@@ -3,6 +3,7 @@ namespace Redaxscript\Admin\Controller;
 
 use Redaxscript\Admin;
 use Redaxscript\Filter;
+use function json_encode;
 
 /**
  * children class to process the admin module request

@@ -5,6 +5,10 @@ use Redaxscript\Admin;
 use Redaxscript\Filesystem;
 use Redaxscript\Html;
 use Redaxscript\Module;
+use function count;
+use function is_array;
+use function json_decode;
+use function pathinfo;
 
 /**
  * children class to create the module form

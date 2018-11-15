@@ -6,6 +6,7 @@ use Redaxscript\Auth;
 use Redaxscript\Filter;
 use Redaxscript\Hash;
 use Redaxscript\Validator;
+use function json_encode;
 
 /**
  * children class to process the admin user request

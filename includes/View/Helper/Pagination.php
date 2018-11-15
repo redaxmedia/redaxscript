@@ -4,6 +4,10 @@ namespace Redaxscript\View\Helper;
 use Redaxscript\Html;
 use Redaxscript\Module;
 use Redaxscript\View\ViewAbstract;
+use function array_replace_recursive;
+use function max;
+use function min;
+use function range;
 
 /**
  * helper class to create the pagination

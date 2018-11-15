@@ -5,6 +5,7 @@ use Redaxscript\Admin;
 use Redaxscript\Header;
 use Redaxscript\Module;
 use Redaxscript\Router\RouterAbstract;
+use function in_array;
 
 /**
  * parent class to provide the admin router

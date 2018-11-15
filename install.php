@@ -1,6 +1,8 @@
 <?php
 namespace Redaxscript;
 
+use function set_include_path;
+
 /* bootstrap */
 
 include_once('includes' . DIRECTORY_SEPARATOR . 'bootstrap.php');

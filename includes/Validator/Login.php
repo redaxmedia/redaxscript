@@ -1,6 +1,9 @@
 <?php
 namespace Redaxscript\Validator;
 
+use function ctype_alnum;
+use function strlen;
+
 /**
  * children class to validate login
  *

@@ -1,6 +1,9 @@
 <?php
 namespace Redaxscript\Filter;
 
+use function preg_replace;
+use function trim;
+
 /**
  * children class to filter the alias
  *

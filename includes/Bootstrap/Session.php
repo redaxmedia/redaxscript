@@ -1,6 +1,10 @@
 <?php
 namespace Redaxscript\Bootstrap;
 
+use function session_regenerate_id;
+use function session_start;
+use function session_status;
+
 /**
  * children class to boot the session
  *

@@ -5,6 +5,7 @@ use Redaxscript\Auth;
 use Redaxscript\Db;
 use Redaxscript\Installer;
 use Redaxscript\Messenger as Messenger;
+use function is_dir;
 
 /**
  * enable anonymous login

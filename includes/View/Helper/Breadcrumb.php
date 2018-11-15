@@ -6,6 +6,11 @@ use Redaxscript\Html;
 use Redaxscript\Model;
 use Redaxscript\Module;
 use Redaxscript\View\ViewAbstract;
+use function array_key_exists;
+use function array_keys;
+use function array_replace_recursive;
+use function end;
+use function is_array;
 
 /**
  * helper class to create a breadcrumb navigation

@@ -1,6 +1,10 @@
 <?php
 namespace Redaxscript;
 
+use function is_file;
+use function spl_autoload_register;
+use function str_replace;
+
 /**
  * parent class to load required class files
  *

@@ -6,6 +6,7 @@ use Redaxscript\Html;
 use Redaxscript\Model;
 use Redaxscript\Module;
 use Redaxscript\Validator;
+use function array_replace_recursive;
 
 /**
  * children class to create the comment

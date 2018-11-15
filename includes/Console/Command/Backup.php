@@ -4,6 +4,11 @@ namespace Redaxscript\Console\Command;
 use Redaxscript\Console\Parser;
 use Redaxscript\Dater;
 use Redaxscript\Filesystem;
+use function exec;
+use function implode;
+use function is_dir;
+use function is_string;
+use function mkdir;
 
 /**
  * children class to execute the backup command

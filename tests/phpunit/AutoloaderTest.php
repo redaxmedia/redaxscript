@@ -2,6 +2,7 @@
 namespace Redaxscript\Tests;
 
 use Redaxscript\Autoloader;
+use function class_exists;
 
 /**
  * AutoloaderTest

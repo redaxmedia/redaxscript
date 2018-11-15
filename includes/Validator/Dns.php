@@ -1,6 +1,9 @@
 <?php
 namespace Redaxscript\Validator;
 
+use function checkdnsrr;
+use function function_exists;
+
 /**
  * children class to validate domain name service
  *

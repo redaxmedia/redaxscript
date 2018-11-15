@@ -3,6 +3,8 @@ namespace Redaxscript\Detector;
 
 use Redaxscript\Registry;
 use Redaxscript\Request;
+use function is_file;
+use function str_replace;
 
 /**
  * abstract class to create a detector class

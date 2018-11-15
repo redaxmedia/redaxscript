@@ -2,6 +2,7 @@
 namespace Redaxscript\Modules\HtmlValidator;
 
 use Redaxscript\Reader;
+use function http_build_query;
 
 /**
  * html validator for developers

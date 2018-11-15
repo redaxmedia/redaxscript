@@ -1,6 +1,10 @@
 <?php
 namespace Redaxscript\Validator;
 
+use function in_array;
+use function is_numeric;
+use function preg_match;
+
 /**
  * children class to validate general and default alias
  *

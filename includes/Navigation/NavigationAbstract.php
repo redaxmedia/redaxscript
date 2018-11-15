@@ -3,6 +3,7 @@ namespace Redaxscript\Navigation;
 
 use Redaxscript\Language;
 use Redaxscript\Registry;
+use function array_replace_recursive;
 
 /**
  * abstract class to create a navigation class

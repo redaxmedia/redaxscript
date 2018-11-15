@@ -7,6 +7,7 @@ use Redaxscript\Html;
 use Redaxscript\Mailer;
 use Redaxscript\Model;
 use Redaxscript\Validator;
+use function uniqid;
 
 /**
  * children class to process the register request

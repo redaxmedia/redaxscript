@@ -5,6 +5,7 @@ use DateTimeZone;
 use Redaxscript\Db;
 use Redaxscript\Filesystem;
 use Redaxscript\Language;
+use function substr;
 
 /**
  * helper class to create various options

@@ -2,6 +2,15 @@
 namespace Redaxscript\Content\Tag;
 
 use Redaxscript\Module as BaseModule;
+use function array_filter;
+use function call_user_func_array;
+use function explode;
+use function implode;
+use function in_array;
+use function is_array;
+use function json_decode;
+use function method_exists;
+use function str_replace;
 
 /**
  * children class to parse content for module tags

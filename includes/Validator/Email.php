@@ -1,6 +1,9 @@
 <?php
 namespace Redaxscript\Validator;
 
+use function explode;
+use function filter_var;
+
 /**
  * children class to validate email
  *

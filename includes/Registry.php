@@ -1,6 +1,10 @@
 <?php
 namespace Redaxscript;
 
+use function array_key_exists;
+use function array_merge;
+use function is_array;
+
 /**
  * children class to store the registry
  *

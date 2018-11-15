@@ -4,6 +4,10 @@ namespace Redaxscript\Modules\Debugger;
 use Redaxscript\Db;
 use Redaxscript\Head;
 use Redaxscript\Module;
+use function array_filter;
+use function file_get_contents;
+use function is_array;
+use function json_encode;
 
 /**
  * debugger

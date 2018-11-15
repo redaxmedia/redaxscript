@@ -3,6 +3,10 @@ namespace Redaxscript\Asset;
 
 use Redaxscript\Filesystem;
 use Redaxscript\Registry;
+use function file_get_contents;
+use function is_file;
+use function pathinfo;
+use function str_replace;
 
 /**
  * parent class to load and concat assets

@@ -4,6 +4,7 @@ namespace Redaxscript;
 use DateTime;
 use DateTimeZone;
 use Redaxscript\Model;
+use function date_default_timezone_get;
 
 /**
  * parent class to handle the date time

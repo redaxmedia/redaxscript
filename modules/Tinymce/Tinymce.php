@@ -4,6 +4,15 @@ namespace Redaxscript\Modules\Tinymce;
 use Redaxscript\Dater;
 use Redaxscript\Head;
 use Redaxscript\Header;
+use function chmod;
+use function current;
+use function in_array;
+use function is_dir;
+use function is_uploaded_file;
+use function json_encode;
+use function mkdir;
+use function move_uploaded_file;
+use function pathinfo;
 
 /**
  * javascript powered wysiwyg editor

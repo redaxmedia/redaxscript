@@ -7,6 +7,7 @@ use Redaxscript\Html;
 use Redaxscript\Mailer;
 use Redaxscript\Model;
 use Redaxscript\Validator;
+use function nl2br;
 
 /**
  * children class to process the contact request

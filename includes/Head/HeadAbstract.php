@@ -2,6 +2,12 @@
 namespace Redaxscript\Head;
 
 use Redaxscript\Singleton;
+use function array_map;
+use function array_unshift;
+use function is_array;
+use function strlen;
+use function trim;
+use function ucfirst;
 
 /**
  * abstract class to create a head class

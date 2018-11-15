@@ -1,6 +1,12 @@
 <?php
 namespace Redaxscript;
 
+use function array_key_exists;
+use function array_merge;
+use function in_array;
+use function is_array;
+use function json_decode;
+
 /**
  * parent class to authenticate the user
  *

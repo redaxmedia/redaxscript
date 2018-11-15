@@ -1,6 +1,8 @@
 <?php
 namespace Redaxscript\Server;
 
+use function dirname;
+
 /**
  * children class to get the directory
  *

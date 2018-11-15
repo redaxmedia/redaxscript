@@ -11,6 +11,7 @@ use Redaxscript\Module;
 use Redaxscript\Registry;
 use Redaxscript\Request;
 use Redaxscript\Validator;
+use function array_replace_recursive;
 
 /**
  * children class to create the extra

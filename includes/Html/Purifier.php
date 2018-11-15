@@ -4,6 +4,13 @@ namespace Redaxscript\Html;
 use DOMDocument;
 use DOMNode;
 use Redaxscript\Model;
+use function in_array;
+use function is_object;
+use function is_string;
+use function mb_convert_encoding;
+use function range;
+use function strlen;
+use function trim;
 
 /**
  * parent class to purify html against xss

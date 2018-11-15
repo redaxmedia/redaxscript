@@ -2,6 +2,12 @@
 namespace Redaxscript\Console\Command;
 
 use Redaxscript\Console\Parser;
+use function array_key_exists;
+use function array_keys;
+use function class_exists;
+use function end;
+use function is_array;
+use function is_string;
 
 /**
  * children class to execute the help command

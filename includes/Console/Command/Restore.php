@@ -3,6 +3,8 @@ namespace Redaxscript\Console\Command;
 
 use Redaxscript\Console\Parser;
 use Redaxscript\Filesystem;
+use function exec;
+use function is_file;
 
 /**
  * children class to execute the restore command
