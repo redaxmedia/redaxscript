@@ -31,7 +31,7 @@ class Link extends HeadAbstract
 		'directory' => 'cache/styles',
 		'extension' => 'css',
 		'attribute' => 'href',
-		'lifetime' => 86400
+		'lifetime' => 3600
 	];
 
 	/**

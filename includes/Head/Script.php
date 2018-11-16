@@ -30,7 +30,7 @@ class Script extends HeadAbstract
 		'directory' => 'cache/scripts',
 		'extension' => 'js',
 		'attribute' => 'src',
-		'lifetime' => 86400
+		'lifetime' => 3600
 	];
 
 	/**
