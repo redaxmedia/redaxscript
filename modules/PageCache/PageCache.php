@@ -47,13 +47,13 @@ class PageCache extends Config
 
 	public function adminNotification() : ?array
 	{
-		if (!is_dir($this->_configArray['directory']) && !mkdir($this->_configArray['directory']))
+		if (!is_dir($this->_configArray['directory']['pages']) && !mkdir($this->_configArray['directory']['pages']))
 		{
-			$this->setNotification('error', $this->_language->get('directory_not_found') . $this->_language->get('colon') . ' ' . $this->_configArray['directory'] . $this->_language->get('point'));
+			$this->setNotification('error', $this->_language->get('directory_not_found') . $this->_language->get('colon') . ' ' . $this->_configArray['directory']['pages'] . $this->_language->get('point'));
 		}
-		else if (!chmod($this->_configArray['directory'], 0777))
+		else if (!chmod($this->_configArray['directory']['pages'], 0777))
 		{
-			$this->setNotification('error', $this->_language->get('directory_permission_grant') . $this->_language->get('colon') . ' ' . $this->_configArray['directory'] . $this->_language->get('point'));
+			$this->setNotification('error', $this->_language->get('directory_permission_grant') . $this->_language->get('colon') . ' ' . $this->_configArray['directory']['pages'] . $this->_language->get('point'));
 		}
 		return $this->getNotification();
 	}
@@ -68,9 +68,13 @@ class PageCache extends Config
 
 	public function renderTemplate() : ?array
 	{
+		$fileSystem = new Filesystem\Filesystem();
+		$stylesFileSystem = $fileSystem->copy()->init($this->_configArray['directory']['styles']);
+		$scriptsFileSystem = $fileSystem->copy()->init($this->_configArray['directory']['scripts']);
+
 		/* prevent as needed */
 
-		if ($this->_request->getPost() || $this->_registry->get('noCache'))
+		if ($stylesFileSystem->countIterator() === 0 || $scriptsFileSystem->countIterator() === 0 || $this->_request->getPost() || $this->_registry->get('noCache'))
 		{
 			return null;
 		}
@@ -78,7 +82,7 @@ class PageCache extends Config
 		/* cache as needed */
 
 		$cacheFilesystem = new Filesystem\Cache();
-		$cacheFilesystem->init($this->_configArray['directory'], $this->_configArray['extension']);
+		$cacheFilesystem->init($this->_configArray['directory']['pages'], $this->_configArray['extension']);
 		$bundle = $this->_registry->get('root') . $this->_registry->get('fullRoute') . '/' . $this->_registry->get('template') . '/' . $this->_registry->get('language');
 		$token = $this->_registry->get('token');
 

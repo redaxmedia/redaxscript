@@ -12,6 +12,7 @@ use function array_merge;
 use function in_array;
 use function is_array;
 use function is_dir;
+use function iterator_count;
 use function sort;
 
 /**
@@ -70,9 +71,11 @@ class Filesystem
 	 * @param string $root value of the root
 	 * @param bool $recursive recursive flag
 	 * @param array $filterArray array to be filtered
+	 *
+	 * @return self
 	 */
 
-	public function init(string $root = null, bool $recursive = false, array $filterArray = [])
+	public function init(string $root = null, bool $recursive = false, array $filterArray = []) : self
 	{
 		$this->_root = $root;
 		$this->_recursive = $recursive;
@@ -80,6 +83,34 @@ class Filesystem
 		{
 			$this->_filterArray = array_merge($this->_filterArray, $filterArray);
 		}
+		return $this;
+	}
+
+	/**
+	 * copy the filesystem
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return self
+	 */
+
+	public function copy() : self
+	{
+		return clone $this;
+	}
+
+	/**
+	 * count the filesystem iterator
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return int|null
+	 */
+
+	public function countIterator() : ?int
+	{
+		$iterator = $this->getIterator();
+		return $iterator ? iterator_count($iterator) : null;
 	}
 
 	/**

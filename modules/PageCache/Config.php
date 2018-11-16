@@ -23,7 +23,12 @@ class Config extends Module\Notification
 
 	protected $_configArray =
 	[
-		'directory' => 'cache/pages',
+		'directory' =>
+		[
+			'scripts' => 'cache/scripts',
+			'styles' => 'cache/styles',
+			'pages' => 'cache/pages'
+		],
 		'extension' => 'phtml',
 		'lifetime' => 3600,
 		'tokenPlaceholder' => '%TOKEN%'
