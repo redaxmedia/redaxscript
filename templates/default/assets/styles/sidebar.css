@@ -38,4 +38,9 @@
 			font-weight: bold;
 		}
 	}
+
+	& li:not(.rs-item-active) .rs-list-children
+	{
+		display: none;
+	}
 }
