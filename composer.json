@@ -13,7 +13,7 @@
 	{
 		"brianium/paratest": "2.1.0",
 		"fbourigault/composer-mkdir": "2.0.0",
-		"infection/infection": "0.11.4",
+		"infection/infection": "0.10.5",
 		"johnkary/phpunit-speedtrap": "3.0.0",
 		"mikey179/vfsStream": "1.6.5",
 		"php-coveralls/php-coveralls": "2.1.0",
