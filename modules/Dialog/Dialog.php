@@ -95,7 +95,7 @@ class Dialog extends Module\Module
 			}
 			if ($thirdParameter === 'confirm')
 			{
-				echo $dialog->confirm();
+				echo $dialog->confirm($this->_language->get('continue_question', '_dialog') . $this->_language->get('question_mark'));
 			}
 			if ($thirdParameter === 'prompt')
 			{
@@ -109,15 +109,15 @@ class Dialog extends Module\Module
 	 *
 	 * @since 4.0.0
 	 *
-	 * @param string $title
-	 * @param string $message
+	 * @param string $message message of the alert
+	 * @param string $title title of the alert
 	 *
 	 * @return string
 	 */
 
-	public function alert(string $title = null, string $message = null) : string
+	public function alert(string $message = null, string $title = null) : string
 	{
-		return $this->_dialog('alert', $title, $message);
+		return $this->_dialog('alert', $message, $title ? : $this->_language->get('alert', '_dialog'));
 	}
 
 	/**
@@ -125,15 +125,15 @@ class Dialog extends Module\Module
 	 *
 	 * @since 4.0.0
 	 *
-	 * @param string $title
-	 * @param string $message
+	 * @param string $message message of the confirm
+	 * @param string $title title of the confirm
 	 *
 	 * @return string
 	 */
 
-	public function confirm(string $title = null, string $message = null) : string
+	public function confirm(string $message = null, string $title = null) : string
 	{
-		return $this->_dialog('confirm', $title, $message);
+		return $this->_dialog('confirm', $message, $title ? : $this->_language->get('confirm', '_dialog'));
 	}
 
 	/**
@@ -141,15 +141,15 @@ class Dialog extends Module\Module
 	 *
 	 * @since 4.0.0
 	 *
-	 * @param string $title
-	 * @param string $message
+	 * @param string $message message of the prompt
+	 * @param string $title title of the prompt
 	 *
 	 * @return string
 	 */
 
-	public function prompt(string $title = null, string $message = null) : string
+	public function prompt(string $message = null, string $title = null) : string
 	{
-		return $this->_dialog('prompt', $title, $message);
+		return $this->_dialog('prompt', $message, $title ? : $this->_language->get('prompt', '_dialog'));
 	}
 
 	/**
@@ -157,14 +157,14 @@ class Dialog extends Module\Module
 	 *
 	 * @since 4.0.0
 	 *
-	 * @param string $type
-	 * @param string $title
-	 * @param string $message
+	 * @param string $type type of the dialog
+	 * @param string $message message of the dialog
+	 * @param string $title title of the dialog
 	 *
 	 * @return string
 	 */
 
-	protected function _dialog(string $type = null, string $title = null, string $message = null) : string
+	protected function _dialog(string $type = null, string $message = null, string $title = null) : string
 	{
 		$output = null;
 
@@ -189,7 +189,7 @@ class Dialog extends Module\Module
 			[
 				'class' => $this->_optionArray['className']['title']
 			])
-			->text($title ? : $this->_language->get('confirm', '_dialog'));
+			->text($title);
 		$boxElement = $element
 			->copy()
 			->init('div',
@@ -199,7 +199,7 @@ class Dialog extends Module\Module
 		$textElement = $type === 'alert' || $type === 'confirm' ? $element
 			->copy()
 			->init('p')
-			->text($message ? : $this->_language->get('continue_question', '_dialog') . $this->_language->get('question_mark')) : null;
+			->text($message) : null;
 		$fieldElement = $type === 'prompt' ? $element
 			->copy()
 			->init('input',
