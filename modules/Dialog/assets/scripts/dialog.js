@@ -41,9 +41,10 @@ rs.modules.Dialog.create = html =>
 	{
 		if (html)
 		{
-			const dialog = document.createElement('div');
+			let dialog = document.createElement('div');
 
 			dialog.innerHTML = html;
+			dialog = dialog.firstChild;
 			document.body.appendChild(dialog);
 			resolve(dialog);
 		}
