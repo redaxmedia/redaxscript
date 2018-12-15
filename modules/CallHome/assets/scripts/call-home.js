@@ -1,14 +1,14 @@
-rs.modules.CallHome.execute = config =>
+rs.modules.CallHome.process = optionArray =>
 {
-	const CONFIG =
+	const OPTION =
 	{
-		...rs.modules.CallHome.config,
-		...config
+		...rs.modules.CallHome.optionArray,
+		...optionArray
 	};
 
 	/* handle view */
 
-	window.ga('create', CONFIG.analytics);
+	window.ga('create', OPTION.analytics);
 	window.ga('send', 'pageview');
 
 	/* handle track */
@@ -26,5 +26,5 @@ rs.modules.CallHome.execute = config =>
 
 if (rs.modules.CallHome.init && rs.modules.CallHome.dependency)
 {
-	rs.modules.CallHome.execute(rs.modules.CallHome.config);
+	rs.modules.CallHome.process(rs.modules.CallHome.optionArray);
 }

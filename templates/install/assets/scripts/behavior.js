@@ -1,13 +1,13 @@
-rs.templates.install.behavior.listen = config =>
+rs.templates.install.behavior.process = optionArray =>
 {
-	const CONFIG =
+	const OPTION =
 	{
-		...rs.templates.install.behavior.config,
-		...config
+		...rs.templates.install.behavior.optionArray,
+		...optionArray
 	};
-	const form = document.querySelector(CONFIG.selector);
-	const fieldType = form.querySelector(CONFIG.element.fieldType);
-	const fieldToggleList = form.querySelectorAll(CONFIG.element.fieldToggle);
+	const form = document.querySelector(OPTION.selector);
+	const fieldType = form.querySelector(OPTION.element.fieldType);
+	const fieldToggleList = form.querySelectorAll(OPTION.element.fieldToggle);
 	const changeEvent = new Event('change');
 
 	form.setAttribute('novalidate', 'novalidate');
@@ -25,5 +25,5 @@ rs.templates.install.behavior.listen = config =>
 
 if (rs.templates.install.behavior.init)
 {
-	rs.templates.install.behavior.listen(rs.templates.install.behavior.config);
+	rs.templates.install.behavior.process(rs.templates.install.behavior.optionArray);
 }

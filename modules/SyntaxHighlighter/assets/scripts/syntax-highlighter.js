@@ -1,15 +1,15 @@
-rs.modules.SyntaxHighlighter.execute = config =>
+rs.modules.SyntaxHighlighter.process = optionArray =>
 {
-	const CONFIG =
+	const OPTION =
 	{
-		...rs.modules.SyntaxHighlighter.config,
-		...config
+		...rs.modules.SyntaxHighlighter.optionArray,
+		...optionArray
 	};
-	const codeList = document.querySelectorAll(CONFIG.selector);
+	const codeList = document.querySelectorAll(OPTION.selector);
 
 	if (codeList)
 	{
-		window.hljs.configure(CONFIG.hljs);
+		window.hljs.configure(OPTION.hljs);
 		codeList.forEach(code => window.hljs.highlightBlock(code));
 	}
 };
@@ -18,5 +18,5 @@ rs.modules.SyntaxHighlighter.execute = config =>
 
 if (rs.modules.SyntaxHighlighter.init && rs.modules.SyntaxHighlighter.dependency)
 {
-	rs.modules.SyntaxHighlighter.execute(rs.modules.SyntaxHighlighter.config);
+	rs.modules.SyntaxHighlighter.process(rs.modules.SyntaxHighlighter.optionArray);
 }

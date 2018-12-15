@@ -87,6 +87,7 @@ class UserTable extends ViewAbstract
 			'groups' => $this->_language->get('groups')
 		];
 		$adminControl = new Helper\Control($this->_registry, $this->_language);
+		$adminControl->init();
 		$userModel = new Admin\Model\User();
 		$users = $userModel->getAll();
 		$usersTotal = $users->count();

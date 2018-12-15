@@ -88,10 +88,7 @@ class Template extends NavigationAbstract
 
 		/* collect output */
 
-		if ($outputItem)
-		{
-			$output .= $listElement->html($outputItem);
-		}
+		$output .= $listElement->html($outputItem ? : $itemElement->text($this->_language->get('template_no')));
 		$output .= Module\Hook::trigger('navigationTemplateEnd');
 		return $output;
 	}

@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\CssValidator;
 
+use Redaxscript\Module;
 use Redaxscript\Reader;
 use function http_build_query;
 
@@ -14,7 +15,7 @@ use function http_build_query;
  * @author Henry Ruhs
  */
 
-class CssValidator extends Config
+class CssValidator extends Module\Notification
 {
 	/**
 	 * array of the module
@@ -33,6 +34,18 @@ class CssValidator extends Config
 	];
 
 	/**
+	 * array of the option
+	 *
+	 * @var array
+	 */
+
+	protected $_optionArray =
+	[
+		'apiUrl' => 'http://jigsaw.w3.org/css-validator/validator',
+		'profile' => 'css3svg'
+	];
+
+	/**
 	 * adminNotification
 	 *
 	 * @since 4.0.0
@@ -46,14 +59,20 @@ class CssValidator extends Config
 		{
 			/* load result */
 
-			$url = $this->_configArray['apiUrl'] . '?' . http_build_query(
+			$url = $this->_optionArray['apiUrl'] . '?' . http_build_query(
 			[
 				'uri' => $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute'),
-				'profile' => $this->_configArray['profile'],
+				'profile' => $this->_optionArray['profile'],
 				'output' => 'json'
 			]);
 			$reader = new Reader();
-			$reader->init();
+			$reader->init(
+			[
+				'curl' =>
+				[
+					CURLOPT_USERAGENT => $this->_language->get('name', '_package')
+				]
+			]);
 			$result = $reader->loadJSON($url)->getArray();
 
 			/* process result */

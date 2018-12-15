@@ -22,7 +22,7 @@ class Status extends BootstrapAbstract
 	 * @since 3.1.0
 	 */
 
-	protected function _autorun()
+	public function autorun()
 	{
 		$auth = new BaseAuth($this->_request);
 

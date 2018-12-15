@@ -3,10 +3,13 @@ namespace Redaxscript;
 
 $pagination = new View\Helper\Pagination(Registry::getInstance(), Language::getInstance());
 $pagination->init();
-echo $pagination->render('preview/pagination', 5000, 10000);
-echo $pagination->render('preview/pagination', 5000, 10000, 1);
+?>
 
-for ($i = 1; $i < 11; $i++)
-{
-	echo $pagination->render('preview/pagination', $i, 10, 2);
-}
+<!-- pagination -->
+
+<?php echo $pagination->render('module/preview#pagination', 5000, 10000); ?>
+<?php echo $pagination->render('module/preview#pagination', 5000, 10000, 1); ?>
+
+<?php for ($i = 1; $i < 11; $i++): ?>
+	<?php echo $pagination->render('module/preview#pagination', $i, 10, 2); ?>
+<?php endfor; ?>

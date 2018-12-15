@@ -1,0 +1,10 @@
+{
+	"_dialog":
+	{
+		"dialog": "الحوار",
+		"continue_question": "هل تريد الاستمرار",
+		"alert": "تنبيه",
+		"confirm": "تأكيد",
+		"prompt": "مٌوجه"
+	}
+}

@@ -1,5 +1,5 @@
 {
-	"_validator":
+	"_html_validator":
 	{
 		"service_no": "Service not available",
 		"document_validate": "The document validates according to the specified standard"

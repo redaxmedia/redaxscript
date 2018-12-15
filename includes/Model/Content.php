@@ -39,6 +39,32 @@ class Content
 	}
 
 	/**
+	 * get the content by table and id
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param string $table name of the table
+	 * @param int $contentId identifier of the content
+	 *
+	 * @return object|null
+	 */
+
+	public function getByTableAndId(string $table = null, int $contentId = null) : ?object
+	{
+		if ($table === 'categories')
+		{
+			$categoryModel = new Category();
+			return $categoryModel->getById($contentId);
+		}
+		if ($table === 'articles')
+		{
+			$articleModel = new Article();
+			return $articleModel->getById($contentId);
+		}
+		return null;
+	}
+
+	/**
 	 * get the content route by table and id
 	 *
 	 * @since 3.3.0

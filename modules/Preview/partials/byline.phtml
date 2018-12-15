@@ -4,4 +4,8 @@ namespace Redaxscript;
 $registry = Registry::getInstance();
 $byline = new View\Helper\Byline(Registry::getInstance(), Language::getInstance());
 $byline->init();
-echo $byline->render($registry->get('now'), 'admin');
+?>
+
+<!-- byline -->
+
+<?php echo $byline->render($registry->get('now'), 'admin'); ?>

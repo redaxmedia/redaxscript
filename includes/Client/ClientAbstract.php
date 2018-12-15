@@ -18,10 +18,10 @@ use function substr;
  * @category Client
  * @author Henry Ruhs
  *
- * @method protected _autorun()
+ * @method protected autorun()
  */
 
-abstract class ClientAbstract
+abstract class ClientAbstract implements ClientInterface
 {
 	/**
 	 * instance of the request class
@@ -50,7 +50,7 @@ abstract class ClientAbstract
 	public function __construct(Request $request)
 	{
 		$this->_request = $request;
-		$this->_autorun();
+		$this->autorun();
 	}
 
 	/**

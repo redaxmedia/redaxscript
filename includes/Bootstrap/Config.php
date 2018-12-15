@@ -25,7 +25,7 @@ class Config extends BootstrapAbstract
 	 * @since 3.3.0
 	 */
 
-	protected function _autorun()
+	public function autorun()
 	{
 		$settingModel = new Model\Setting();
 

@@ -4,7 +4,8 @@ namespace Redaxscript\Modules\Demo;
 use Redaxscript\Auth;
 use Redaxscript\Db;
 use Redaxscript\Installer;
-use Redaxscript\Messenger as Messenger;
+use Redaxscript\Messenger;
+use Redaxscript\Module;
 use function is_dir;
 
 /**
@@ -17,7 +18,7 @@ use function is_dir;
  * @author Henry Ruhs
  */
 
-class Demo extends Config
+class Demo extends Module\Notification
 {
 	/**
 	 * array of the module
@@ -32,6 +33,22 @@ class Demo extends Config
 		'author' => 'Redaxmedia',
 		'description' => 'Enable demo login',
 		'version' => '4.0.0'
+	];
+
+	/**
+	 * array of the option
+	 *
+	 * @var array
+	 */
+
+	protected $_optionArray =
+	[
+		'modules' =>
+		[
+			'Analytics' => 'Redaxscript\Modules\Analytics\Analytics',
+			'Demo' => 'Redaxscript\Modules\Demo\Demo',
+			'Editor' => 'Redaxscript\Modules\Editor\Editor'
+		]
 	];
 
 	/**
@@ -224,7 +241,7 @@ class Demo extends Config
 
 		/* process modules */
 
-		foreach ($this->_configArray['modules'] as $key => $moduleClass)
+		foreach ($this->_optionArray['modules'] as $key => $moduleClass)
 		{
 			if (is_dir('modules/' . $key))
 			{

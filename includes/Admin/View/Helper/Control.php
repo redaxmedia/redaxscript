@@ -4,6 +4,7 @@ namespace Redaxscript\Admin\View\Helper;
 use Redaxscript\Admin\View\ViewAbstract;
 use Redaxscript\Html;
 use Redaxscript\Module;
+use function array_replace_recursive;
 use function in_array;
 use function ucfirst;
 
@@ -19,6 +20,51 @@ use function ucfirst;
 
 class Control extends ViewAbstract
 {
+	/**
+	 * options of the panel
+	 *
+	 * @var array
+	 */
+
+	protected $_optionArray =
+	[
+		'className' =>
+		[
+			'list' => 'rs-admin-list-control',
+			'item' =>
+			[
+				'control' => 'rs-admin-item-control',
+				'disable' => 'rs-admin-item-disable',
+				'enable' => 'rs-admin-item-enable',
+				'future-posting' => 'rs-admin-item-future-posting',
+				'unpublish' => 'rs-admin-item-unpublish',
+				'publish' => 'rs-admin-item-publish',
+				'edit' => 'rs-admin-item-edit',
+				'delete' => 'rs-admin-item-delete',
+				'install' => 'rs-admin-item-install',
+				'uninstall' => 'rs-admin-item-uninstall'
+			],
+			'link' =>
+			[
+				'delete' => 'rs-admin-js-delete',
+				'uninstall' => 'rs-admin-js-uninstall'
+			]
+		]
+	];
+
+	/**
+	 * init the class
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param array $optionArray options of the panel
+	 */
+
+	public function init(array $optionArray = [])
+	{
+		$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
+	}
+
 	/**
 	 * render the view
 	 *
@@ -46,13 +92,13 @@ class Control extends ViewAbstract
 			->copy()
 			->init('ul',
 			[
-				'class' => 'rs-admin-list-control'
+				'class' => $this->_optionArray['className']['list']
 			]);
 		$itemElement = $element
 			->copy()
 			->init('li',
 			[
-				'class' => 'rs-admin-item-control'
+				'class' => $this->_optionArray['className']['item']['control']
 			]);
 		$linkElement = $element
 			->copy()
@@ -68,7 +114,7 @@ class Control extends ViewAbstract
 			$enableAction = $status ? 'disable' : 'enable';
 			$outputItem .= $itemElement
 				->copy()
-				->addClass($enableAction === 'disable' ? 'rs-admin-item-disable' : 'rs-admin-item-enable')
+				->addClass($enableAction === 'disable' ? $this->_optionArray['className']['item']['disable'] : $this->_optionArray['className']['item']['enable'])
 				->html(
 					$linkElement
 						->copy()
@@ -85,7 +131,7 @@ class Control extends ViewAbstract
 			{
 				$outputItem .= $itemElement
 					->copy()
-					->addClass('rs-admin-item-future-posting')
+					->addClass($this->_optionArray['className']['item']['future-posting'])
 					->html(
 						$textElement
 							->copy()
@@ -97,7 +143,7 @@ class Control extends ViewAbstract
 				$publishAction = $status ? 'unpublish' : 'publish';
 				$outputItem .= $itemElement
 					->copy()
-					->addClass($publishAction === 'unpublish' ? 'rs-admin-item-unpublish' : 'rs-admin-item-publish')
+					->addClass($publishAction === 'unpublish' ? $this->_optionArray['className']['item']['unpublish'] : $this->_optionArray['className']['item']['publish'])
 					->html(
 						$linkElement
 							->copy()
@@ -113,7 +159,7 @@ class Control extends ViewAbstract
 		{
 			$outputItem .= $itemElement
 				->copy()
-				->addClass('rs-admin-item-install')
+				->addClass($this->_optionArray['className']['item']['install'])
 				->html(
 					$linkElement
 						->copy()
@@ -128,7 +174,7 @@ class Control extends ViewAbstract
 		{
 			$outputItem .= $itemElement
 				->copy()
-				->addClass('rs-admin-item-edit')
+				->addClass($this->_optionArray['className']['item']['edit'])
 				->html(
 					$linkElement
 						->copy()
@@ -143,11 +189,11 @@ class Control extends ViewAbstract
 		{
 			$outputItem .= $itemElement
 				->copy()
-				->addClass('rs-admin-item-delete')
+				->addClass($this->_optionArray['className']['item']['delete'])
 				->html(
 					$linkElement
 						->copy()
-						->addClass('rs-admin-js-confirm')
+						->addClass($this->_optionArray['className']['link']['delete'])
 						->attr('href', $parameterRoute . 'admin/delete/' . $table . '/' . $id . '/' . $token)
 						->text($this->_language->get('delete'))
 				);
@@ -159,10 +205,11 @@ class Control extends ViewAbstract
 		{
 			$outputItem .= $itemElement
 				->copy()
-				->addClass('rs-admin-item-uninstall')
+				->addClass($this->_optionArray['className']['item']['uninstall'])
 				->html(
 					$linkElement
 						->copy()
+						->addClass($this->_optionArray['className']['link']['uninstall'])
 						->attr('href', $parameterRoute . 'admin/uninstall/' . $table . '/' . $alias . '/' . $token)
 						->text($this->_language->get('uninstall'))
 				);

@@ -91,10 +91,7 @@ class Comment extends NavigationAbstract
 
 		/* collect output */
 
-		if ($outputItem)
-		{
-			$output .= $listElement->html($outputItem);
-		}
+		$output .= $listElement->html($outputItem ? :  $itemElement->text($this->_language->get('comment_no')));
 		$output .= Module\Hook::trigger('navigationCommentEnd');
 		return $output;
 	}

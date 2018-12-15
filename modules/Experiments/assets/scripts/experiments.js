@@ -1,17 +1,17 @@
-rs.modules.Experiments.execute = config =>
+rs.modules.Experiments.process = optionArray =>
 {
-	const CONFIG =
+	const OPTION =
 	{
-		...rs.modules.Experiments.config,
-		...config
+		...rs.modules.Experiments.optionArray,
+		...optionArray
 	};
 	const variation = window.cxApi.chooseVariation();
 
 	/* run action */
 
-	if (typeof CONFIG.action[variation] === 'function')
+	if (typeof OPTION.action[variation] === 'function')
 	{
-		CONFIG.action[variation]();
+		OPTION.action[variation]();
 	}
 };
 
@@ -19,5 +19,5 @@ rs.modules.Experiments.execute = config =>
 
 if (rs.modules.Experiments.init && rs.modules.Experiments.dependency)
 {
-	rs.modules.Experiments.execute(rs.modules.Experiments.config);
+	rs.modules.Experiments.process(rs.modules.Experiments.optionArray);
 }

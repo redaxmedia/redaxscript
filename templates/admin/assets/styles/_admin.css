@@ -3,7 +3,6 @@
 @import '../../../../assets/styles/_animate.css';
 @import '../../../../assets/styles/_clearfix.css';
 @import '../../../../assets/styles/_dropdown.css';
-@import '../../../../assets/styles/_dialog.css';
 @import '../../../../assets/styles/_panel.css';
 @import '../../../../assets/styles/_redirect.css';
 @import '../../../../assets/styles/_tab.css';
@@ -15,7 +14,6 @@
 @import 'button.css';
 @import 'content.css';
 @import 'control.css';
-@import 'dialog.css';
 @import 'dock.css';
 @import 'field.css';
 @import 'form.css';

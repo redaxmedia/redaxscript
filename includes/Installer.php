@@ -365,6 +365,7 @@ class Installer
 		[
 			'AliasGenerator',
 			'CallHome',
+			'Dialog',
 			'FormValidator',
 			'TextareaResizer',
 			'TableSorter'

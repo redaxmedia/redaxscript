@@ -1,11 +1,11 @@
-rs.modules.Gallery.execute = config =>
+rs.modules.Gallery.process = optionArray =>
 {
-	const CONFIG =
+	const OPTION =
 	{
-		...rs.modules.Gallery.config,
-		...config
+		...rs.modules.Gallery.optionArray,
+		...optionArray
 	};
-	const galleryList = document.querySelectorAll(CONFIG.selector);
+	const galleryList = document.querySelectorAll(OPTION.selector);
 	const imageArray = [];
 
 	if (galleryList)
@@ -27,12 +27,12 @@ rs.modules.Gallery.execute = config =>
 				{
 					/* override config */
 
-					CONFIG.photoswipe.index = Number(event.currentTarget.dataset.index);
+					OPTION.photoswipe.index = Number(event.currentTarget.dataset.index);
 
 					/* handle photo */
 
-					const template = document.querySelector(CONFIG.template);
-					const photoSwipe = new window.PhotoSwipe(template, window.PhotoSwipeUI_Default, imageArray, CONFIG.photoswipe);
+					const template = document.querySelector(OPTION.template);
+					const photoSwipe = new window.PhotoSwipe(template, window.PhotoSwipeUI_Default, imageArray, OPTION.photoswipe);
 
 					photoSwipe.init();
 					event.preventDefault();
@@ -46,5 +46,5 @@ rs.modules.Gallery.execute = config =>
 
 if (rs.modules.Gallery.init && rs.modules.Gallery.dependency)
 {
-	rs.modules.Gallery.execute(rs.modules.Gallery.config);
+	rs.modules.Gallery.process(rs.modules.Gallery.optionArray);
 }

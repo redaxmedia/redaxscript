@@ -1,0 +1,10 @@
+{
+	"_dialog":
+	{
+		"dialog": "Hộp thoại",
+		"continue_question": "Bạn có muốn tiếp tục",
+		"alert": "Cảnh báo",
+		"confirm": "Xác nhận",
+		"prompt": "Nhắc nhở"
+	}
+}

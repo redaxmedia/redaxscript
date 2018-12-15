@@ -3,7 +3,7 @@
  *
  * 1. preview
  *    1.1 dialog
- *    1.2 space between
+ *    1.2 misc
  */
 
 /** @section 1. preview */
@@ -45,7 +45,7 @@
 	}
 }
 
-/** @section 1.2 space between */
+/** @section 1.2 misc */
 
 .rs-is-preview
 {

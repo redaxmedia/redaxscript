@@ -1,0 +1,10 @@
+{
+	"_dialog":
+	{
+		"dialog": "Dialog",
+		"continue_question": "Apakah anda ingin melanjutkan",
+		"alert": "Perhatian",
+		"confirm": "Konfirmasi",
+		"prompt": "Prompt"
+	}
+}

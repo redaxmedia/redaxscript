@@ -13,10 +13,10 @@ use Redaxscript\Request;
  * @category Bootstrap
  * @author Henry Ruhs
  *
- * @method protected _autorun()
+ * @method protected autorun()
  */
 
-abstract class BootstrapAbstract
+abstract class BootstrapAbstract implements BootstrapInterface
 {
 	/**
 	 * instance of the registry class
@@ -47,6 +47,6 @@ abstract class BootstrapAbstract
 	{
 		$this->_registry = $registry;
 		$this->_request = $request;
-		$this->_autorun();
+		$this->autorun();
 	}
 }

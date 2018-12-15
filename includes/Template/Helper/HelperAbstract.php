@@ -13,7 +13,7 @@ use Redaxscript\Registry;
  * @author Henry Ruhs
  */
 
-abstract class HelperAbstract
+abstract class HelperAbstract implements HelperInterface
 {
 	/**
 	 * instance of the registry class

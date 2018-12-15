@@ -1,11 +1,11 @@
-rs.modules.Tinymce.execute = config =>
+rs.modules.Tinymce.process = optionArray =>
 {
-	const CONFIG =
+	const OPTION =
 	{
-		...rs.modules.Tinymce.config,
-		...config
+		...rs.modules.Tinymce.optionArray,
+		...optionArray
 	};
-	const textareaList = document.querySelectorAll(CONFIG.selector);
+	const textareaList = document.querySelectorAll(OPTION.selector);
 
 	if (textareaList)
 	{
@@ -13,7 +13,7 @@ rs.modules.Tinymce.execute = config =>
 		{
 			window.tinymce.init(
 			{
-				...CONFIG.tinymce,
+				...OPTION.tinymce,
 				...
 				{
 					target: textarea,
@@ -24,7 +24,7 @@ rs.modules.Tinymce.execute = config =>
 							window.tinymce.activeEditor.uploadImages();
 							window.tinymce.triggerSave();
 						});
-						CONFIG.tinymce.custom_elements.forEach(element =>
+						OPTION.tinymce.custom_elements.forEach(element =>
 						{
 							editor.addMenuItem(element,
 							{
@@ -47,5 +47,5 @@ rs.modules.Tinymce.execute = config =>
 
 if (rs.modules.Tinymce.init && rs.modules.Tinymce.dependency)
 {
-	rs.modules.Tinymce.execute(rs.modules.Tinymce.config);
+	rs.modules.Tinymce.process(rs.modules.Tinymce.optionArray);
 }

@@ -52,6 +52,14 @@ module.exports = () =>
 			],
 			dest: 'modules/Ace/dist/styles/ace.min.css'
 		},
+		moduleDialog:
+		{
+			src:
+			[
+				'modules/Dialog/assets/styles/_dialog.css'
+			],
+			dest: 'modules/Dialog/dist/styles/dialog.min.css'
+		},
 		moduleDirectoryLister:
 		{
 			src:

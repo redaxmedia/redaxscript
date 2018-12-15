@@ -9,9 +9,4 @@
 .rs-admin-link-default
 {
 	text-decoration: underline;
-
-	& + .rs-admin-link-default
-	{
-		margin-left: 0.5em;
-	}
 }

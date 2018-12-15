@@ -1,12 +1,12 @@
-rs.modules.Maps.execute = config =>
+rs.modules.Maps.process = optionArray =>
 {
-	const CONFIG =
+	const OPTION =
 	{
-		...rs.modules.Maps.config,
-		...config
+		...rs.modules.Maps.optionArray,
+		...optionArray
 	};
 
-	document.querySelectorAll(CONFIG.selector).forEach(map =>
+	document.querySelectorAll(OPTION.selector).forEach(map =>
 	{
 		if (map)
 		{
@@ -19,22 +19,22 @@ rs.modules.Maps.execute = config =>
 
 			if (latitude && longitude)
 			{
-				CONFIG.maps.center = new window.google.maps.LatLng(latitude, longitude);
+				OPTION.maps.center = new window.google.maps.LatLng(latitude, longitude);
 			}
 			if (zoom)
 			{
-				CONFIG.maps.zoom = zoom;
+				OPTION.maps.zoom = zoom;
 			}
 
 			/* handle map */
 
-			const mapInstance = new window.google.maps.Map(map, CONFIG.maps);
+			const mapInstance = new window.google.maps.Map(map, OPTION.maps);
 
-			if (CONFIG.marker)
+			if (OPTION.marker)
 			{
 				new window.google.maps.Marker(
 				{
-					position: CONFIG.maps.center,
+					position: OPTION.maps.center,
 					map: mapInstance
 				});
 			}
@@ -46,5 +46,5 @@ rs.modules.Maps.execute = config =>
 
 if (rs.modules.Maps.init && rs.modules.Maps.dependency)
 {
-	rs.modules.Maps.execute(rs.modules.Maps.config);
+	rs.modules.Maps.process(rs.modules.Maps.optionArray);
 }

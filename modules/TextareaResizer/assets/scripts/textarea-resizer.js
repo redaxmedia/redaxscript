@@ -1,11 +1,11 @@
-rs.modules.TextareaResizer.execute = config =>
+rs.modules.TextareaResizer.process = optionArray =>
 {
-	const CONFIG =
+	const OPTION =
 	{
-		...rs.modules.TextareaResizer.config,
-		...config
+		...rs.modules.TextareaResizer.optionArray,
+		...optionArray
 	};
-	const textareaList = document.querySelectorAll(CONFIG.selector);
+	const textareaList = document.querySelectorAll(OPTION.selector);
 
 	if (textareaList)
 	{
@@ -17,9 +17,9 @@ rs.modules.TextareaResizer.execute = config =>
 
 if (rs.modules.TextareaResizer.frontend.init && rs.modules.TextareaResizer.frontend.dependency)
 {
-	rs.modules.TextareaResizer.execute(rs.modules.TextareaResizer.frontend.config);
+	rs.modules.TextareaResizer.process(rs.modules.TextareaResizer.frontend.optionArray);
 }
 if (rs.modules.TextareaResizer.backend.init && rs.modules.TextareaResizer.backend.dependency)
 {
-	rs.modules.TextareaResizer.execute(rs.modules.TextareaResizer.backend.config);
+	rs.modules.TextareaResizer.process(rs.modules.TextareaResizer.backend.optionArray);
 }

@@ -1,11 +1,11 @@
-rs.modules.Ace.execute = config =>
+rs.modules.Ace.process = optionArray =>
 {
-	const CONFIG =
+	const OPTION =
 	{
-		...rs.modules.Ace.config,
-		...config
+		...rs.modules.Ace.optionArray,
+		...optionArray
 	};
-	const textareaList = document.querySelectorAll(CONFIG.selector);
+	const textareaList = document.querySelectorAll(OPTION.selector);
 
 	if (textareaList)
 	{
@@ -22,7 +22,7 @@ rs.modules.Ace.execute = config =>
 
 			/* handle editor */
 
-			editor.setOptions(CONFIG.ace);
+			editor.setOptions(OPTION.ace);
 			editorSession.setValue(textarea.value);
 			editorSession.on('change', () => textarea.value = editorSession.getValue());
 		});
@@ -33,5 +33,5 @@ rs.modules.Ace.execute = config =>
 
 if (rs.modules.Ace.init && rs.modules.Ace.dependency)
 {
-	rs.modules.Ace.execute(rs.modules.Ace.config);
+	rs.modules.Ace.process(rs.modules.Ace.optionArray);
 }

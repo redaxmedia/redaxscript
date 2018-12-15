@@ -1,16 +1,16 @@
-rs.modules.AliasGenerator.generate = config =>
+rs.modules.AliasGenerator.generate = optionArray =>
 {
-	const CONFIG =
+	const OPTION =
 	{
-		...rs.modules.AliasGenerator.config,
-		...config
+		...rs.modules.AliasGenerator.optionArray,
+		...optionArray
 	};
-	const form = document.querySelector(CONFIG.selector);
+	const form = document.querySelector(OPTION.selector);
 
 	if (form)
 	{
-		const input = form.querySelector(CONFIG.element.input);
-		const output = form.querySelector(CONFIG.element.output);
+		const input = form.querySelector(OPTION.element.input);
+		const output = form.querySelector(OPTION.element.output);
 		const validate = new CustomEvent('validate');
 
 		/* handel input */
@@ -56,5 +56,5 @@ rs.modules.AliasGenerator.generate = config =>
 
 if (rs.modules.AliasGenerator.init && rs.modules.AliasGenerator.dependency)
 {
-	rs.modules.AliasGenerator.generate(rs.modules.AliasGenerator.config);
+	rs.modules.AliasGenerator.generate(rs.modules.AliasGenerator.optionArray);
 }

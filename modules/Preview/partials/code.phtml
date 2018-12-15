@@ -6,9 +6,9 @@ $preElement->init('pre',
 [
 	'class' => $admin ? 'rs-admin-js-code rs-admin-code-default' : 'rs-js-code rs-code-default'
 ]);
+$code = htmlspecialchars(file_get_contents('modules/Preview/partials/code.phtml'));
+?>
 
-echo $preElement->html(
-'if ($code)
-{
-	return true;
-}');
+<!-- code -->
+
+<?php echo $preElement->html($code); ?>

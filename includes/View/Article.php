@@ -129,6 +129,7 @@ class Article extends ViewAbstract
 			return Module\Hook::trigger('articleReplace');
 		}
 		$output = Module\Hook::trigger('articleStart');
+		$outputFragment = null;
 		$accessValidator = new Validator\Access();
 		$settingModel = new Model\Setting();
 		$articleModel = new Model\Article();
@@ -184,38 +185,35 @@ class Article extends ViewAbstract
 
 		/* process articles */
 
-		if ($articles->count())
+		foreach ($articles as $value)
 		{
-			foreach ($articles as $value)
+			if ($accessValidator->validate($value->access, $myGroups))
 			{
-				if ($accessValidator->validate($value->access, $myGroups))
+				$outputFragment .= Module\Hook::trigger('articleFragmentStart', (array)$value);
+				if ($value->headline)
 				{
-					$output .= Module\Hook::trigger('articleFragmentStart', (array)$value);
-					if ($value->headline)
-					{
-						$output .= $titleElement
-							->attr('id', 'article-' . $value->alias)
-							->html($lastTable === 'categories' ? $linkElement
-								->attr('href', $parameterRoute . $articleModel->getRouteById($value->id))
-								->text($value->title) : $value->title
-							);
-					}
-					$contentParser->process($value->text);
-					$output .= $boxElement->html($contentParser->getOutput()) . $byline->render($value->date, $value->author) . Module\Hook::trigger('articleFragmentEnd', (array)$value);
+					$outputFragment .= $titleElement
+						->attr('id', 'article-' . $value->alias)
+						->html($lastTable === 'categories' ? $linkElement
+							->attr('href', $parameterRoute . $articleModel->getRouteById($value->id))
+							->text($value->title) : $value->title
+						);
+				}
+				$contentParser->process($value->text);
+				$outputFragment .= $boxElement->html($contentParser->getOutput()) . $byline->render($value->date, $value->author) . Module\Hook::trigger('articleFragmentEnd', (array)$value);
 
-					/* admin dock */
+				/* admin dock */
 
-					if ($loggedIn === $token && $firstParameter !== 'logout')
-					{
-						$output .= $adminDock->render('articles', $value->id);
-					}
+				if ($loggedIn === $token && $firstParameter !== 'logout')
+				{
+					$outputFragment .= $adminDock->render('articles', $value->id);
 				}
 			}
 		}
-		else
-		{
-			$output .= Template\Tag::partial($this->_registry->get('template') . '/' . $this->_optionArray['partial']['error']);
-		}
+
+		/* collect output */
+
+		$output .= $outputFragment ? : Template\Tag::partial($this->_registry->get('template') . '/' . $this->_optionArray['partial']['error']);
 		$output .= Module\Hook::trigger('articleEnd');
 		return $output;
 	}

@@ -4,6 +4,7 @@ namespace Redaxscript\Modules\Sitemap;
 use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Model;
+use Redaxscript\Module;
 
 /**
  * generate a sitemap
@@ -15,7 +16,7 @@ use Redaxscript\Model;
  * @author Henry Ruhs
  */
 
-class Sitemap extends Config
+class Sitemap extends Module\Module
 {
 	/**
 	 * array of the module
@@ -30,6 +31,21 @@ class Sitemap extends Config
 		'author' => 'Redaxmedia',
 		'description' => 'Generate a sitemap tree',
 		'version' => '4.0.0'
+	];
+
+	/**
+	 * array of the option
+	 *
+	 * @var array
+	 */
+
+	protected $_optionArray =
+	[
+		'className' =>
+		[
+			'title' => 'rs-title-content-sub rs-title-sitemap',
+			'list' => 'rs-list-default rs-list-sitemap'
+		]
 	];
 
 	/**
@@ -54,13 +70,13 @@ class Sitemap extends Config
 			->copy()
 			->init('h3',
 			[
-				'class' => $this->_configArray['className']['title']
+				'class' => $this->_optionArray['className']['title']
 			]);
 		$listElement = $element
 			->copy()
 			->init('ul',
 			[
-				'class' => $this->_configArray['className']['list']
+				'class' => $this->_optionArray['className']['list']
 			]);
 		$itemElement = $element->copy()->init('li');
 		$linkElement = $element->copy()->init('a');

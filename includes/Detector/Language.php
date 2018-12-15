@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Detector;
 
-use Redaxscript\Db;
 use Redaxscript\Model;
 use function substr;
 
@@ -23,23 +22,26 @@ class Language extends DetectorAbstract
 	 * @since 2.1.0
 	 */
 
-	protected function _autorun()
+	public function autorun()
 	{
 		$settingModel = new Model\Setting();
+		$contentModel = new Model\Content();
 		$dbStatus = $this->_registry->get('dbStatus');
 		$lastTable = $this->_registry->get('lastTable');
 		$lastId = $this->_registry->get('lastId');
-
-		/* detect language */
-
-		$this->_output = $this->_detect(
+		$path = 'languages' . DIRECTORY_SEPARATOR . $this->_filePlaceholder . '.json';
+		$setupArray =
 		[
 			'query' => $this->_request->getQuery('l'),
 			'session' => $this->_request->getSession('language'),
-			'contents' => $lastTable ? Db::forTablePrefix($lastTable)->whereIdIs($lastId)->findOne()->language : null,
+			'contents' => $contentModel->getByTableAndId($lastTable, $lastId)->language,
 			'settings' => $dbStatus === 2 ? $settingModel->get('language') : null,
 			'browser' => substr($this->_request->getServer('HTTP_ACCEPT_LANGUAGE'), 0, 2),
 			'fallback' => 'en'
-		], 'language', 'languages' . DIRECTORY_SEPARATOR . $this->_filePlaceholder . '.json');
+		];
+
+		/* detect language */
+
+		$this->_output = $this->_detect('language', $path, $setupArray);
 	}
 }

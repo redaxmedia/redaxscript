@@ -16,9 +16,4 @@
 	{
 		border-color: var(--rs-color-secondary);
 	}
-
-	& + .rs-link-default
-	{
-		margin-left: 0.5em;
-	}
 }

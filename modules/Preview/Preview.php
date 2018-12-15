@@ -35,6 +35,21 @@ class Preview extends Module\Module
 	];
 
 	/**
+	 * array of the option
+	 *
+	 * @var array
+	 */
+
+	protected $_optionArray =
+	[
+		'className' =>
+		[
+			'title' => 'rs-title-preview',
+			'box' => 'rs-is-preview'
+		]
+	];
+
+	/**
 	 * renderStart
 	 *
 	 * @since 4.0.0
@@ -47,7 +62,11 @@ class Preview extends Module\Module
 			$link = Head\Link::getInstance();
 			$link
 				->init()
-				->appendFile('modules/Preview/dist/styles/preview.min.css');
+				->appendFile(
+				[
+					'modules/Dialog/dist/styles/dialog.min.css',
+					'modules/Preview/dist/styles/preview.min.css'
+				]);
 		}
 	}
 
@@ -144,7 +163,7 @@ class Preview extends Module\Module
 			->copy()
 			->init('h2',
 			[
-				'class' => 'rs-title-preview',
+				'class' =>  $this->_optionArray['className']['title'],
 				'id' => $alias
 			])
 			->html($linkElement);
@@ -152,7 +171,7 @@ class Preview extends Module\Module
 			->copy()
 			->init('div',
 			[
-				'class' => 'rs-is-preview'
+				'class' => $this->_optionArray['className']['box'],
 			])
 			->html($html);
 

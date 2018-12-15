@@ -1,0 +1,10 @@
+{
+	"_dialog":
+	{
+		"dialog": "Dialog",
+		"continue_question": "Möchten Sie fortfahren",
+		"alert": "Alarm",
+		"confirm": "Bestätigung",
+		"prompt": "Aufforderung"
+	}
+}

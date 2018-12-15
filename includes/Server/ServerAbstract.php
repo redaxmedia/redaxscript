@@ -9,11 +9,11 @@ use Redaxscript\Request;
  * @since 2.4.0
  *
  * @package Redaxscript
- * @category Client
+ * @category Server
  * @author Henry Ruhs
  */
 
-abstract class ServerAbstract
+abstract class ServerAbstract implements ServerInterface
 {
 	/**
 	 * instance of the request class

@@ -3,7 +3,7 @@ rs.templates.install =
 	behavior:
 	{
 		init: true,
-		config:
+		optionArray:
 		{
 			selector: 'form.rs-install-js-behavior',
 			element:

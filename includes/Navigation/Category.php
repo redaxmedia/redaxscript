@@ -104,7 +104,7 @@ class Category extends NavigationAbstract
 			{
 				$outputItem .= $itemElement
 					->copy()
-					->addClass($this->_registry->get('categoryId') === (int)$value->id ? $this->_optionArray['className']['active'] : null)
+					->addClass((int)$this->_registry->get('categoryId') === (int)$value->id ? $this->_optionArray['className']['active'] : null)
 					->html($linkElement
 						->copy()
 						->attr(
@@ -132,6 +132,12 @@ class Category extends NavigationAbstract
 		if ($outputItem)
 		{
 			$output .= $listElement->html($outputItem);
+		}
+		else if (!$categories->count())
+		{
+			$output .= $listElement->html(
+				$itemElement->text($this->_language->get('category_no'))
+			);
 		}
 		return $output;
 	}

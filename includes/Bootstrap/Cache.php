@@ -21,7 +21,7 @@ class Cache extends BootstrapAbstract
 	 * @since 3.1.0
 	 */
 
-	protected function _autorun()
+	public function autorun()
 	{
 		$filterBoolean = new Filter\Boolean();
 		$noCache = $filterBoolean->sanitize($this->_request->getQuery('no-cache'));

@@ -2,6 +2,7 @@
 namespace Redaxscript\Modules\LiveReload;
 
 use Redaxscript\Head;
+use Redaxscript\Module;
 use Redaxscript\Reader;
 
 /**
@@ -14,7 +15,7 @@ use Redaxscript\Reader;
  * @author Henry Ruhs
  */
 
-class LiveReload extends Config
+class LiveReload extends Module\Notification
 {
 	/**
 	 * array of the module
@@ -33,6 +34,17 @@ class LiveReload extends Config
 	];
 
 	/**
+	 * array of the option
+	 *
+	 * @var array
+	 */
+
+	protected $_optionArray =
+	[
+		'url' => 'http://localhost:7000/livereload.js'
+	];
+
+	/**
 	 * renderStart
 	 *
 	 * @since 3.3.0
@@ -44,7 +56,7 @@ class LiveReload extends Config
 		$script = Head\Script::getInstance();
 		$script
 			->init('foot')
-			->appendFile($this->_configArray['url']);
+			->appendFile($this->_optionArray['url']);
 	}
 
 	/**
@@ -59,7 +71,7 @@ class LiveReload extends Config
 	{
 		$reader = new Reader();
 		$reader->init();
-		$content = $reader->load($this->_configArray['url']);
+		$content = $reader->load($this->_optionArray['url']);
 
 		/* handle notification */
 
@@ -69,7 +81,7 @@ class LiveReload extends Config
 		}
 		else
 		{
-			$this->setNotification('error', $this->_language->get('server_offline', '_live_reload') . $this->_language->get('colon') . ' ' . $this->_configArray['url']);
+			$this->setNotification('error', $this->_language->get('server_offline', '_live_reload') . $this->_language->get('colon') . ' ' . $this->_optionArray['url']);
 		}
 		return $this->getNotification();
 	}

@@ -2,7 +2,7 @@ rs.modules.AliasGenerator =
 {
 	init: true,
 	dependency: typeof window.getSlug === 'function',
-	config:
+	optionArray:
 	{
 		selector: 'form.rs-admin-js-alias',
 		element:

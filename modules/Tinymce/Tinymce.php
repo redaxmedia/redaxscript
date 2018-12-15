@@ -4,6 +4,7 @@ namespace Redaxscript\Modules\Tinymce;
 use Redaxscript\Dater;
 use Redaxscript\Head;
 use Redaxscript\Header;
+use Redaxscript\Module;
 use function chmod;
 use function current;
 use function in_array;
@@ -24,7 +25,7 @@ use function pathinfo;
  * @author Henry Ruhs
  */
 
-class Tinymce extends Config
+class Tinymce extends Module\Notification
 {
 	/**
 	 * array of the module
@@ -39,6 +40,24 @@ class Tinymce extends Config
 		'author' => 'Redaxmedia',
 		'description' => 'JavaScript powered WYSIWYG editor',
 		'version' => '4.0.0'
+	];
+
+	/**
+	 * array of the option
+	 *
+	 * @var array
+	 */
+
+	protected $_optionArray =
+	[
+		'uploadDirectory' => 'upload',
+		'extension' =>
+		[
+			'gif',
+			'jpg',
+			'png',
+			'svg'
+		]
 	];
 
 	/**
@@ -81,13 +100,13 @@ class Tinymce extends Config
 
 	public function adminNotification() : ?array
 	{
-		if (!is_dir($this->_configArray['uploadDirectory']) && !mkdir($this->_configArray['uploadDirectory']))
+		if (!mkdir($uploadDirectory = $this->_optionArray['uploadDirectory']) && !is_dir($uploadDirectory))
 		{
-			$this->setNotification('error', $this->_language->get('directory_not_found') . $this->_language->get('colon') . ' ' . $this->_configArray['uploadDirectory'] . $this->_language->get('point'));
+			$this->setNotification('error', $this->_language->get('directory_not_found') . $this->_language->get('colon') . ' ' . $this->_optionArray['uploadDirectory'] . $this->_language->get('point'));
 		}
-		else if (!chmod($this->_configArray['uploadDirectory'], 0777))
+		else if (!chmod($this->_optionArray['uploadDirectory'], 0777))
 		{
-			$this->setNotification('error', $this->_language->get('directory_permission_grant') . $this->_language->get('colon') . ' ' . $this->_configArray['uploadDirectory'] . $this->_language->get('point'));
+			$this->setNotification('error', $this->_language->get('directory_permission_grant') . $this->_language->get('colon') . ' ' . $this->_optionArray['uploadDirectory'] . $this->_language->get('point'));
 		}
 		return $this->getNotification();
 	}
@@ -106,11 +125,11 @@ class Tinymce extends Config
 		$dater->init();
 		$filesArray = current($this->_request->getFiles());
 		$fileExtention = pathinfo($filesArray['name'], PATHINFO_EXTENSION);
-		$path = $this->_configArray['uploadDirectory'] . DIRECTORY_SEPARATOR . $dater->getDateTime()->getTimestamp() . '.' . $fileExtention;
+		$path = $this->_optionArray['uploadDirectory'] . DIRECTORY_SEPARATOR . $dater->getDateTime()->getTimestamp() . '.' . $fileExtention;
 
 		/* handle upload */
 
-		if (in_array($fileExtention, $this->_configArray['extension']) && is_uploaded_file($filesArray['tmp_name']) && move_uploaded_file($filesArray['tmp_name'], $path))
+		if (in_array($fileExtention, $this->_optionArray['extension']) && is_uploaded_file($filesArray['tmp_name']) && move_uploaded_file($filesArray['tmp_name'], $path))
 		{
 			Header::contentType('application/json');
 			return json_encode(

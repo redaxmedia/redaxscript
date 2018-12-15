@@ -85,6 +85,7 @@ class CategoryTable extends ViewAbstract
 			'rank' => $this->_language->get('rank')
 		];
 		$adminControl = new Helper\Control($this->_registry, $this->_language);
+		$adminControl->init();
 		$categoryModel = new Admin\Model\Category();
 		$categories = $categoryModel->getAllByOrder('rank');
 		$categoriesTotal = $categories->count();

@@ -14,11 +14,9 @@ use function str_replace;
  * @package Redaxscript
  * @category Detector
  * @author Henry Ruhs
- *
- * @method protected _autorun()
  */
 
-abstract class DetectorAbstract
+abstract class DetectorAbstract implements DetectorInterface
 {
 	/**
 	 * instance of the registry class
@@ -65,7 +63,7 @@ abstract class DetectorAbstract
 	{
 		$this->_registry = $registry;
 		$this->_request = $request;
-		$this->_autorun();
+		$this->autorun();
 	}
 
 	/**
@@ -86,14 +84,14 @@ abstract class DetectorAbstract
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param array $setupArray array of detector setup
 	 * @param string $type type of the asset
 	 * @param string $path path to the required file
+	 * @param array $setupArray array of detector setup
 	 *
 	 * @return string|null
 	 */
 
-	protected function _detect(array $setupArray = [], string $type = null, string $path = null) : ?string
+	protected function _detect(string $type = null, string $path = null, array $setupArray = []) : ?string
 	{
 		foreach ($setupArray as $key => $value)
 		{

@@ -1,0 +1,240 @@
+<?php
+namespace Redaxscript\Modules\Dialog;
+
+use Redaxscript\Head;
+use Redaxscript\Html;
+use Redaxscript\Module;
+
+/**
+ * javascript powered dialog
+ *
+ * @since 4.0.0
+ *
+ * @package Redaxscript
+ * @category Modules
+ * @author Henry Ruhs
+ */
+
+class Dialog extends Module\Module
+{
+	/**
+	 * array of the module
+	 *
+	 * @var array
+	 */
+
+	protected static $_moduleArray =
+	[
+		'name' => 'Dialog',
+		'alias' => 'Dialog',
+		'author' => 'Redaxmedia',
+		'description' => 'JavaScript powered dialog',
+		'version' => '4.0.0'
+	];
+
+	/**
+	 * array of the option
+	 *
+	 * @var array
+	 */
+
+	protected $_optionArray =
+	[
+		'className' =>
+		[
+			'overlay' => 'rs-overlay-dialog',
+			'component' => 'rs-component-dialog',
+			'title' => 'rs-title-dialog',
+			'box' => 'rs-box-dialog',
+			'field' => 'rs-field-default rs-field-text',
+			'button' => 'rs-button-default',
+			'buttonOk' => 'js-ok',
+			'buttonCancel' => 'js-cancel'
+		]
+	];
+
+	/**
+	 * renderStart
+	 *
+	 * @since 4.0.0
+	 */
+
+	public function renderStart()
+	{
+		$firstParameter = $this->_registry->get('firstParameter');
+		$secondParameter = $this->_registry->get('secondParameter');
+		$thirdParameter = $this->_registry->get('thirdParameter');
+
+		/* link */
+
+		$link = Head\Link::getInstance();
+		$link
+			->init()
+			->appendFile('modules/Dialog/dist/styles/dialog.min.css');
+
+		/* script */
+
+		$script = Head\Script::getInstance();
+		$script
+			->init('foot')
+			->appendFile(
+			[
+				'modules/Dialog/assets/scripts/init.js',
+				'modules/Dialog/dist/scripts/dialog.min.js'
+			]);
+
+		/* router */
+
+		if ($firstParameter === 'module' && ($secondParameter === 'dialog' || $secondParameter === 'admin-dialog'))
+		{
+			$this->_registry->set('renderBreak', true);
+			$dialog = $secondParameter === 'admin-dialog' ? new Admin\Dialog($this->_registry, $this->_request, $this->_language, $this->_config) : $this;
+			if ($thirdParameter === 'alert')
+			{
+				echo $dialog->alert();
+			}
+			if ($thirdParameter === 'confirm')
+			{
+				echo $dialog->confirm();
+			}
+			if ($thirdParameter === 'prompt')
+			{
+				echo $dialog->confirm();
+			}
+		}
+	}
+
+	/**
+	 * alert
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param string $title
+	 * @param string $message
+	 *
+	 * @return string
+	 */
+
+	public function alert(string $title = null, string $message = null) : string
+	{
+		return $this->_dialog('alert', $title, $message);
+	}
+
+	/**
+	 * confirm
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param string $title
+	 * @param string $message
+	 *
+	 * @return string
+	 */
+
+	public function confirm(string $title = null, string $message = null) : string
+	{
+		return $this->_dialog('confirm', $title, $message);
+	}
+
+	/**
+	 * prompt
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param string $title
+	 * @param string $message
+	 *
+	 * @return string
+	 */
+
+	public function prompt(string $title = null, string $message = null) : string
+	{
+		return $this->_dialog('prompt', $title, $message);
+	}
+
+	/**
+	 * dialog
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param string $type
+	 * @param string $title
+	 * @param string $message
+	 *
+	 * @return string
+	 */
+
+	protected function _dialog(string $type = null, string $title = null, string $message = null) : string
+	{
+		$output = null;
+
+		/* html elements */
+
+		$element = new Html\Element();
+		$overlayElement = $element
+			->copy()
+			->init('div',
+			[
+				'class' => $this->_optionArray['className']['overlay']
+			]);
+		$dialogElement = $element
+			->copy()
+			->init('div',
+			[
+				'class' => $this->_optionArray['className']['component']
+			]);
+		$titleElement = $element
+			->copy()
+			->init('h3',
+			[
+				'class' => $this->_optionArray['className']['title']
+			])
+			->text($title ? : $this->_language->get('confirm', '_dialog'));
+		$boxElement = $element
+			->copy()
+			->init('div',
+			[
+				'class' => $this->_optionArray['className']['box']
+			]);
+		$textElement = $type === 'alert' || $type === 'confirm' ? $element
+			->copy()
+			->init('p')
+			->text($message ? : $this->_language->get('continue_question', '_dialog') . $this->_language->get('question_mark')) : null;
+		$fieldElement = $type === 'prompt' ? $element
+			->copy()
+			->init('input',
+			[
+				'class' => $this->_optionArray['className']['field'],
+				'placeholder' => $message
+			]) : null;
+		$buttonElement = $element
+			->copy()
+			->init('button',
+			[
+				'class' => $this->_optionArray['className']['button']
+			]);
+		$buttonOkElement = $buttonElement
+			->copy()
+			->addClass($this->_optionArray['className']['buttonOk'])
+			->text($this->_language->get('ok'));
+		$buttonCancelElement = $type === 'confirm' || $type === 'prompt' ? $buttonElement
+			->copy()
+			->addClass($this->_optionArray['className']['buttonCancel'])
+			->text($this->_language->get('cancel')) : null;
+
+		/* collect output */
+
+		$output = $overlayElement->html(
+			$dialogElement->html(
+				$titleElement .
+				$boxElement->html(
+					$textElement .
+					$fieldElement .
+					$buttonOkElement .
+					$buttonCancelElement
+				)
+			)
+		);
+		return $output;
+	}
+}

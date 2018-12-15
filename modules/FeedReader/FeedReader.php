@@ -3,6 +3,7 @@ namespace Redaxscript\Modules\FeedReader;
 
 use Redaxscript\Head;
 use Redaxscript\Html;
+use Redaxscript\Module;
 use Redaxscript\Reader;
 
 /**
@@ -15,7 +16,7 @@ use Redaxscript\Reader;
  * @author Henry Ruhs
  */
 
-class FeedReader extends Config
+class FeedReader extends Module\Notification
 {
 	/**
 	 * array of the module
@@ -30,6 +31,21 @@ class FeedReader extends Config
 		'author' => 'Redaxmedia',
 		'description' => 'Read external RSS and Atom feeds',
 		'version' => '4.0.0'
+	];
+
+	/**
+	 * array of the option
+	 *
+	 * @var array
+	 */
+
+	protected $_optionArray =
+	[
+		'className' =>
+		[
+			'title' => 'rs-title-content rs-title-feed-reader',
+			'box' => 'rs-box-content rs-box-feed-reader'
+		]
 	];
 
 	/**
@@ -81,13 +97,13 @@ class FeedReader extends Config
 			->copy()
 			->init('h3',
 			[
-				'class' => $this->_configArray['className']['title']
+				'class' => $this->_optionArray['className']['title']
 			]);
 		$boxElement = $element
 			->copy()
 			->init('div',
 			[
-				'class' => $this->_configArray['className']['box']
+				'class' => $this->_optionArray['className']['box']
 			]);
 		$linkElement = $element
 			->copy()

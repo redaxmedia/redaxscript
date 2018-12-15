@@ -1,0 +1,10 @@
+{
+	"_dialog":
+	{
+		"dialog": "ダイアログ",
+		"continue_question": "続けますか？",
+		"alert": "アラート",
+		"confirm": "確認",
+		"prompt": "プロンプト"
+	}
+}

@@ -76,12 +76,12 @@ class Reader
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return object
+	 * @return object|null
 	 */
 
-	public function getObject() : object
+	public function getObject() : ?object
 	{
-		return $this->_dataObject;
+		return $this->_dataObject ? : null;
 	}
 
 	/**
@@ -89,12 +89,12 @@ class Reader
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return array
+	 * @return array|null
 	 */
 
-	public function getArray() : array
+	public function getArray() : ?array
 	{
-		return json_decode(json_encode((array)$this->_dataObject), true);
+		return json_decode(json_encode($this->_dataObject), true);
 	}
 
 	/**
@@ -120,9 +120,10 @@ class Reader
 
 	public function getXML() : string
 	{
-		if (method_exists($this->getObject(), 'asXML'))
+		$dataObject = $this->getObject();
+		if (method_exists($dataObject, 'asXML'))
 		{
-			return $this->getObject()->asXML();
+			return $dataObject->asXML();
 		}
 		return $this->_convertArrayToObject($this->getArray())->asXML();
 	}

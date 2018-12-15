@@ -2,7 +2,7 @@ rs.modules.Analytics =
 {
 	init: rs.registry.loggedIn !== rs.registry.token,
 	dependency: typeof window.ga === 'function',
-	config:
+	optionArray:
 	{
 		selector:
 		{

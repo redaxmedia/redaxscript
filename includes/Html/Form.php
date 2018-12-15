@@ -226,7 +226,7 @@ class Form extends HtmlAbstract
 			],
 			'submit' =>
 			[
-				'class' => 'rs-js-button rs-button-default rs-button-submit',
+				'class' => 'rs-js-submit rs-button-default rs-button-submit',
 				'type' => 'submit',
 				'value' => 'submit'
 			]

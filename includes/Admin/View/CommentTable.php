@@ -85,6 +85,7 @@ class CommentTable extends ViewAbstract
 			'rank' => $this->_language->get('rank')
 		];
 		$adminControl = new Helper\Control($this->_registry, $this->_language);
+		$adminControl->init();
 		$articleModel = new Admin\Model\Article();
 		$commentModel = new Admin\Model\Comment();
 		$comments = $commentModel->getAllByOrder('rank');

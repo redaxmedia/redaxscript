@@ -26,9 +26,15 @@ $noteArray =
 ];
 ?>
 
-<?php foreach ($noteArray as $value): ?>
+<!-- note field -->
 
-	<?php echo $textElement->copy()->addClass($value); ?>
-	<?php echo $selectElement->copy()->addClass($value); ?>
+<form class="<?php echo $admin ? 'rs-admin-form-default' : 'rs-form-default'; ?>">
 
-<?php endforeach; ?>
+	<?php foreach ($noteArray as $value): ?>
+
+		<?php echo $textElement->copy()->addClass($value); ?>
+		<?php echo $selectElement->copy()->addClass($value); ?>
+
+	<?php endforeach; ?>
+
+</form>

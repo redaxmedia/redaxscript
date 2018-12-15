@@ -3,6 +3,7 @@ namespace Redaxscript\Modules\Disqus;
 
 use Redaxscript\Head;
 use Redaxscript\Html;
+use Redaxscript\Module;
 
 /**
  * replace comments with disqus
@@ -14,7 +15,7 @@ use Redaxscript\Html;
  * @author Henry Ruhs
  */
 
-class Disqus extends Config
+class Disqus extends Module\Module
 {
 	/**
 	 * array of the module
@@ -29,6 +30,18 @@ class Disqus extends Config
 		'author' => 'Redaxmedia',
 		'description' => 'Replace comments with Disqus',
 		'version' => '4.0.0'
+	];
+
+	/**
+	 * array of the option
+	 *
+	 * @var array
+	 */
+
+	protected $_optionArray =
+	[
+		'id' => 'disqus_thread',
+		'url' => 'https://example.disqus.com/embed.js'
 	];
 
 	/**
@@ -57,7 +70,7 @@ class Disqus extends Config
 			->init('foot')
 			->appendFile(
 			[
-				$this->_configArray['url'],
+				$this->_optionArray['url'],
 				'modules/Disqus/assets/scripts/init.js'
 			]);
 
@@ -66,7 +79,7 @@ class Disqus extends Config
 		$boxElement = new Html\Element();
 		$boxElement->init('div',
 		[
-			'id' => $this->_configArray['id']
+			'id' => $this->_optionArray['id']
 		]);
 
 		/* collect output */

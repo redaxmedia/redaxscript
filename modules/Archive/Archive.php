@@ -5,6 +5,7 @@ use Redaxscript\Dater;
 use Redaxscript\Db;
 use Redaxscript\Html;
 use Redaxscript\Model;
+use Redaxscript\Module;
 use function strtotime;
 
 /**
@@ -17,7 +18,7 @@ use function strtotime;
  * @author Henry Ruhs
  */
 
-class Archive extends Config
+class Archive extends Module\Module
 {
 	/**
 	 * array of the module
@@ -32,6 +33,21 @@ class Archive extends Config
 		'author' => 'Redaxmedia',
 		'description' => 'Generate a archive tree',
 		'version' => '4.0.0'
+	];
+
+	/**
+	 * array of the option
+	 *
+	 * @var array
+	 */
+
+	protected $_optionArray =
+	[
+		'className' =>
+		[
+			'title' => 'rs-title-content-sub rs-title-archive',
+			'list' => 'rs-list-default rs-list-archive'
+		]
 	];
 
 	/**
@@ -57,13 +73,13 @@ class Archive extends Config
 			->copy()
 			->init('h3',
 			[
-				'class' => $this->_configArray['className']['title']
+				'class' => $this->_optionArray['className']['title']
 			]);
 		$listElement = $element
 			->copy()
 			->init('ul',
 			[
-				'class' => $this->_configArray['className']['list']
+				'class' => $this->_optionArray['className']['list']
 			]);
 		$itemElement = $element->copy()->init('li');
 		$linkElement = $element->copy()->init('a');

@@ -46,6 +46,8 @@ module.exports = () =>
 		{
 			files:
 			[
+				'includes/**/*.phtml',
+				'modules/**/*.phtml',
 				'includes/**/*.php',
 				'modules/**/*.php'
 			]

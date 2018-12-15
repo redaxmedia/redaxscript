@@ -34,7 +34,7 @@ class Dock extends ViewAbstract
 			[
 				'unpublish' => 'rs-admin-link-dock rs-admin-link-unpublish',
 				'edit' => 'rs-admin-link-dock rs-admin-link-edit',
-				'delete' => 'rs-admin-js-confirm rs-admin-link-dock rs-admin-link-delete'
+				'delete' => 'rs-admin-js-delete rs-admin-link-dock rs-admin-link-delete'
 			]
 		]
 	];

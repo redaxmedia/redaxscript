@@ -52,6 +52,14 @@ module.exports = () =>
 			],
 			dest: 'modules/CallHome/dist/scripts/call-home.min.js'
 		},
+		moduleDialog:
+		{
+			src:
+			[
+				'modules/Dialog/assets/scripts/dialog.js'
+			],
+			dest: 'modules/Dialog/dist/scripts/dialog.min.js'
+		},
 		moduleExperiments:
 		{
 			src:

@@ -1,0 +1,10 @@
+{
+	"_dialog":
+	{
+		"dialog": "Dialog",
+		"continue_question": "Přejete si pokračovat",
+		"alert": "Varování",
+		"confirm": "Potvrdit",
+		"prompt": "Výzva"
+	}
+}

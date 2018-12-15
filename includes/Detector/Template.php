@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Detector;
 
-use Redaxscript\Db;
 use Redaxscript\Model;
 
 /**
@@ -22,22 +21,25 @@ class Template extends DetectorAbstract
 	 * @since 2.1.0
 	 */
 
-	protected function _autorun()
+	public function autorun()
 	{
 		$settingModel = new Model\Setting();
+		$contentModel = new Model\Content();
 		$dbStatus = $this->_registry->get('dbStatus');
 		$lastTable = $this->_registry->get('lastTable');
 		$lastId = $this->_registry->get('lastId');
-
-		/* detect template */
-
-		$this->_output = $this->_detect(
+		$path = 'templates' . DIRECTORY_SEPARATOR . $this->_filePlaceholder . DIRECTORY_SEPARATOR . 'index.phtml';
+		$setupArray =
 		[
 			'query' => $this->_request->getQuery('t'),
 			'session' => $this->_request->getSession('template'),
-			'contents' => $lastTable ? Db::forTablePrefix($lastTable)->whereIdIs($lastId)->findOne()->template : null,
+			'contents' => $contentModel->getByTableAndId($lastTable, $lastId)->template,
 			'settings' => $dbStatus === 2 ? $settingModel->get('template') : null,
 			'fallback' => 'default'
-		], 'template', 'templates' . DIRECTORY_SEPARATOR . $this->_filePlaceholder . DIRECTORY_SEPARATOR . 'index.phtml');
+		];
+
+		/* detect template */
+
+		$this->_output = $this->_detect('template', $path, $setupArray);
 	}
 }

@@ -11,7 +11,7 @@ $linkElement
 	])
 	->text('link');
 $messenger = $admin ? new Admin\Messenger($registry) : new Messenger($registry);
-$messenger->setRoute($language->get('preview', '_preview'), $admin ? 'preview#note-messenger-admin' : 'preview#note-messenger');
+$messenger->setRoute($language->get('preview', '_preview'), $admin ? 'module/preview#note-messenger-admin' : 'module/preview#note-messenger');
 ?>
 
 <!--messenger -->

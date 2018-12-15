@@ -1,0 +1,10 @@
+{
+	"_dialog":
+	{
+		"dialog": "Dialog",
+		"continue_question": "Želite li nastaviti",
+		"alert": "Upozorenje",
+		"confirm": "Potvrdi",
+		"prompt": "Potknuti"
+	}
+}

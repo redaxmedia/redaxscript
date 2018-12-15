@@ -84,6 +84,7 @@ class GroupTable extends ViewAbstract
 			'description' => $this->_language->get('description')
 		];
 		$adminControl = new Helper\Control($this->_registry, $this->_language);
+		$adminControl->init();
 		$userModel = new Admin\Model\Group();
 		$groups = $userModel->getAll();
 		$groupsTotal = $groups->count();

@@ -1,17 +1,17 @@
-rs.modules.FormValidator.validate = config =>
+rs.modules.FormValidator.process = optionArray =>
 {
-	const CONFIG =
+	const OPTION =
 	{
-		...rs.modules.FormValidator.config,
-		...config
+		...rs.modules.FormValidator.optionArray,
+		...optionArray
 	};
-	const form = document.querySelector(CONFIG.selector);
+	const form = document.querySelector(OPTION.selector);
 
 	if (form)
 	{
 		/* handle validate */
 
-		form.querySelectorAll(CONFIG.element.required).forEach(field =>
+		form.querySelectorAll(OPTION.element.required).forEach(field =>
 		{
 			const validateArray =
 			[
@@ -19,17 +19,17 @@ rs.modules.FormValidator.validate = config =>
 				'validate'
 			];
 
-			field.classList.add(CONFIG.className.fieldNote);
+			field.classList.add(OPTION.className.fieldNote);
 			validateArray.forEach(validateEvent =>
 			{
 				field.addEventListener(validateEvent, event =>
 				{
-					event.target.validity.valid ? event.target.classList.remove(CONFIG.className.isError) : event.target.classList.add(CONFIG.className.isError);
+					event.target.validity.valid ? event.target.classList.remove(OPTION.className.isError) : event.target.classList.add(OPTION.className.isError);
 				});
 			});
 			field.addEventListener('invalid', event =>
 			{
-				event.target.classList.add(CONFIG.className.isError);
+				event.target.classList.add(OPTION.className.isError);
 			});
 		});
 
@@ -37,7 +37,7 @@ rs.modules.FormValidator.validate = config =>
 
 		form.addEventListener('reset', () =>
 		{
-			form.querySelectorAll(CONFIG.element.required).forEach(field => field.classList.remove(CONFIG.className.isError));
+			form.querySelectorAll(OPTION.element.required).forEach(field => field.classList.remove(OPTION.className.isError));
 		});
 	}
 };
@@ -46,9 +46,9 @@ rs.modules.FormValidator.validate = config =>
 
 if (rs.modules.FormValidator.frontend.init)
 {
-	rs.modules.FormValidator.validate(rs.modules.FormValidator.frontend.config);
+	rs.modules.FormValidator.process(rs.modules.FormValidator.frontend.optionArray);
 }
 if (rs.modules.FormValidator.backend.init)
 {
-	rs.modules.FormValidator.validate(rs.modules.FormValidator.backend.config);
+	rs.modules.FormValidator.process(rs.modules.FormValidator.backend.optionArray);
 }

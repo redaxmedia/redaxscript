@@ -23,7 +23,7 @@ class Session extends BootstrapAbstract
 	 * @since 3.1.0
 	 */
 
-	protected function _autorun()
+	public function autorun()
 	{
 		session_start();
 		$this->_request->refreshSession();

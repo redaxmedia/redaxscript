@@ -3,7 +3,7 @@ rs.templates.console =
 	behavior:
 	{
 		init: true,
-		config:
+		optionArray:
 		{
 			selector: 'form.rs-console-js-behavior',
 			element:

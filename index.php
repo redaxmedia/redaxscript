@@ -1,8 +1,6 @@
 <?php
 namespace Redaxscript;
 
-use function array_key_exists;
-use function is_array;
 use function is_file;
 use function set_include_path;
 
@@ -38,14 +36,10 @@ if ($registry->get('renderBreak'))
 /* template */
 
 set_include_path('templates');
-$templateArray = Module\Hook::collect('renderTemplate');
-if (is_array($templateArray) && array_key_exists('header', $templateArray))
+$renderTemplate = Module\Hook::trigger('renderTemplate');
+if ($renderTemplate)
 {
-	Header::add($templateArray['header']);
-}
-if (is_array($templateArray) && array_key_exists('content', $templateArray))
-{
-	echo $templateArray['content'];
+	echo $renderTemplate;
 }
 else
 {

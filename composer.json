@@ -1,7 +1,7 @@
 {
 	"name": "redaxscript/redaxscript",
 	"description": "A modern, ultra lightweight and rocket fast Content Management System",
-	"version": "4.0.0-beta.1",
+	"version": "4.0.0-beta.2",
 	"homepage": "https://redaxscript.com",
 	"license": "GPL-3.0-only",
 	"require":
@@ -21,7 +21,7 @@
 		"phpstan/phpstan": "0.10.5",
 		"phpunit/phpunit": "7.4.3",
 		"redaxmedia/php-coding-standard": "1.2.2",
-		"redaxmedia/phpunit-provider-autoloader": "1.0.1",
+		"redaxmedia/phpunit-provider-autoloader": "2.1.0",
 		"sebastian/phpcpd": "4.1.0",
 		"slowprog/composer-copy-file": "0.2.1",
 		"squizlabs/php_codesniffer": "3.3.2"

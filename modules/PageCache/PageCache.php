@@ -2,10 +2,8 @@
 namespace Redaxscript\Modules\PageCache;
 
 use Redaxscript\Filesystem;
+use Redaxscript\Module;
 use function chmod;
-use function function_exists;
-use function gzdeflate;
-use function gzinflate;
 use function is_dir;
 use function mkdir;
 use function preg_replace;
@@ -20,7 +18,7 @@ use function preg_replace;
  * @author Henry Ruhs
  */
 
-class PageCache extends Config
+class PageCache extends Module\Notification
 {
 	/**
 	 * array of the module
@@ -38,6 +36,25 @@ class PageCache extends Config
 	];
 
 	/**
+	 * array of the option
+	 *
+	 * @var array
+	 */
+
+	protected $_optionArray =
+	[
+		'directory' =>
+		[
+			'scripts' => 'cache/scripts',
+			'styles' => 'cache/styles',
+			'pages' => 'cache/pages'
+		],
+		'extension' => 'phtml',
+		'lifetime' => 3600,
+		'tokenPlaceholder' => '%TOKEN%'
+	];
+
+	/**
 	 * adminNotification
 	 *
 	 * @since 3.0.0
@@ -47,13 +64,13 @@ class PageCache extends Config
 
 	public function adminNotification() : ?array
 	{
-		if (!is_dir($this->_configArray['directory']['pages']) && !mkdir($this->_configArray['directory']['pages']))
+		if (!mkdir($pagesDirectory = $this->_optionArray['directory']['pages']) && !is_dir($pagesDirectory))
 		{
-			$this->setNotification('error', $this->_language->get('directory_not_found') . $this->_language->get('colon') . ' ' . $this->_configArray['directory']['pages'] . $this->_language->get('point'));
+			$this->setNotification('error', $this->_language->get('directory_not_found') . $this->_language->get('colon') . ' ' . $this->_optionArray['directory']['pages'] . $this->_language->get('point'));
 		}
-		else if (!chmod($this->_configArray['directory']['pages'], 0777))
+		else if (!chmod($this->_optionArray['directory']['pages'], 0777))
 		{
-			$this->setNotification('error', $this->_language->get('directory_permission_grant') . $this->_language->get('colon') . ' ' . $this->_configArray['directory']['pages'] . $this->_language->get('point'));
+			$this->setNotification('error', $this->_language->get('directory_permission_grant') . $this->_language->get('colon') . ' ' . $this->_optionArray['directory']['pages'] . $this->_language->get('point'));
 		}
 		return $this->getNotification();
 	}
@@ -63,14 +80,14 @@ class PageCache extends Config
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array|null
+	 * @return string|null
 	 */
 
-	public function renderTemplate() : ?array
+	public function renderTemplate() : ?string
 	{
 		$fileSystem = new Filesystem\Filesystem();
-		$stylesFileSystem = $fileSystem->copy()->init($this->_configArray['directory']['styles']);
-		$scriptsFileSystem = $fileSystem->copy()->init($this->_configArray['directory']['scripts']);
+		$stylesFileSystem = $fileSystem->copy()->init($this->_optionArray['directory']['styles']);
+		$scriptsFileSystem = $fileSystem->copy()->init($this->_optionArray['directory']['scripts']);
 
 		/* prevent as needed */
 
@@ -82,21 +99,17 @@ class PageCache extends Config
 		/* cache as needed */
 
 		$cacheFilesystem = new Filesystem\Cache();
-		$cacheFilesystem->init($this->_configArray['directory']['pages'], $this->_configArray['extension']);
+		$cacheFilesystem->init($this->_optionArray['directory']['pages'], $this->_optionArray['extension']);
 		$bundle = $this->_registry->get('root') . $this->_registry->get('fullRoute') . '/' . $this->_registry->get('template') . '/' . $this->_registry->get('language');
 		$token = $this->_registry->get('token');
 
 		/* load from cache */
 
-		if ($cacheFilesystem->validate($bundle, $this->_configArray['lifetime']))
+		if ($cacheFilesystem->validate($bundle, $this->_optionArray['lifetime']))
 		{
-			$raw = $this->_uncompress($cacheFilesystem->retrieve($bundle));
-			$content = preg_replace('/' . $this->_configArray['tokenPlaceholder'] . '/', $token, $raw);
-			return
-			[
-				'header' => function_exists('gzdeflate') ? 'content-encoding: deflate' : null,
-				'content' => $this->_compress($content)
-			];
+			$raw = $cacheFilesystem->retrieve($bundle);
+			$content = preg_replace('/' . $this->_optionArray['tokenPlaceholder'] . '/', $token, $raw);
+			return $content;
 		}
 
 		/* store to cache */
@@ -104,41 +117,8 @@ class PageCache extends Config
 		$rawFilesystem = new Filesystem\File();
 		$rawFilesystem->init('templates' . DIRECTORY_SEPARATOR . $this->_registry->get('template'));
 		$raw = $rawFilesystem->renderFile('index.phtml');
-		$content = preg_replace('/' . $token . '/', $this->_configArray['tokenPlaceholder'], $raw);
-		$cacheFilesystem->store($bundle, $this->_compress($content));
-		return
-		[
-			'content' => $raw
-		];
-	}
-
-	/**
-	 * compress
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param string $content
-	 *
-	 * @return string
-	 */
-
-	public function _compress(string $content = null) : string
-	{
-		return function_exists('gzdeflate') ? gzdeflate($content) : $content;
-	}
-
-	/**
-	 * uncompress
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param string $content
-	 *
-	 * @return string
-	 */
-
-	public function _uncompress(string $content = null) : string
-	{
-		return function_exists('gzinflate') ? gzinflate($content) : $content;
+		$content = preg_replace('/' . $token . '/', $this->_optionArray['tokenPlaceholder'], $raw);
+		$cacheFilesystem->store($bundle, $content);
+		return $raw;
 	}
 }

@@ -4,6 +4,7 @@ namespace Redaxscript\Modules\Gallery;
 use Redaxscript\Filesystem;
 use Redaxscript\Head;
 use Redaxscript\Html;
+use Redaxscript\Module;
 use function array_key_exists;
 use function array_reverse;
 use function chmod;
@@ -31,7 +32,7 @@ use function strtolower;
  * @author Henry Ruhs
  */
 
-class Gallery extends Config
+class Gallery extends Module\Notification
 {
 	/**
 	 * array of the module
@@ -46,6 +47,29 @@ class Gallery extends Config
 		'author' => 'Redaxmedia',
 		'description' => 'JavaScript powered gallery',
 		'version' => '4.0.0'
+	];
+
+	/**
+	 * array of the option
+	 *
+	 * @var array
+	 */
+
+	protected $_optionArray =
+	[
+		'className' =>
+		[
+			'image' => 'rs-image-gallery',
+			'list' => 'rs-js-gallery rs-list-gallery'
+		],
+		'allowedCommands' =>
+		[
+			'create',
+			'remove'
+		],
+		'height' => 200,
+		'quality' => 80,
+		'thumbDirectory' => 'thumbs'
 	];
 
 	/**
@@ -127,7 +151,7 @@ class Gallery extends Config
 		$listElement = new Html\Element();
 		$listElement->init('ul',
 		[
-			'class' => $this->_configArray['className']['list']
+			'class' => $this->_optionArray['className']['list']
 		]);
 
 		/* handle notification */
@@ -150,7 +174,7 @@ class Gallery extends Config
 
 			/* create as needed */
 
-			if ($optionArray['command'] === 'create' || !is_dir($directory . DIRECTORY_SEPARATOR . $this->_configArray['thumbDirectory']))
+			if ($optionArray['command'] === 'create' || !is_dir($directory . DIRECTORY_SEPARATOR . $this->_optionArray['thumbDirectory']))
 			{
 				$this->_createThumb($directory, $optionArray);
 			}
@@ -191,7 +215,7 @@ class Gallery extends Config
 			->copy()
 			->init('img',
 			[
-				'class' => $this->_configArray['className']['image']
+				'class' => $this->_optionArray['className']['image']
 			]);
 
 		/* gallery filesystem */
@@ -199,7 +223,7 @@ class Gallery extends Config
 		$galleryFilesystem = new Filesystem\Filesystem();
 		$galleryFilesystem->init($directory, false,
 		[
-			$this->_configArray['thumbDirectory']
+			$this->_optionArray['thumbDirectory']
 		]);
 		$galleryFilesystemArray = $galleryFilesystem->getSortArray();
 
@@ -215,7 +239,7 @@ class Gallery extends Config
 		foreach ($galleryFilesystemArray as $value)
 		{
 			$imagePath = $directory . DIRECTORY_SEPARATOR . $value;
-			$thumbPath = $directory . DIRECTORY_SEPARATOR . $this->_configArray['thumbDirectory'] . DIRECTORY_SEPARATOR . $value;
+			$thumbPath = $directory . DIRECTORY_SEPARATOR . $this->_optionArray['thumbDirectory'] . DIRECTORY_SEPARATOR . $value;
 			$imageSize = getimagesize($imagePath);
 
 			/* collect item output */
@@ -258,7 +282,7 @@ class Gallery extends Config
 	{
 		$galleryFilesystem = new Filesystem\Directory();
 		$galleryFilesystem->init($directory, true);
-		$galleryFilesystem->removeDirectory($this->_configArray['thumbDirectory']);
+		$galleryFilesystem->removeDirectory($this->_optionArray['thumbDirectory']);
 	}
 
 	/**
@@ -277,16 +301,16 @@ class Gallery extends Config
 		$galleryFilesystem = new Filesystem\Directory();
 		$galleryFilesystem->init($directory, false,
 		[
-			$this->_configArray['thumbDirectory']
+			$this->_optionArray['thumbDirectory']
 		]);
-		$galleryFilesystem->createDirectory($this->_configArray['thumbDirectory']);
+		$galleryFilesystem->createDirectory($this->_optionArray['thumbDirectory']);
 		$galleryFilesystemArray = $galleryFilesystem->getSortArray();
 
 		/* handle notification */
 
-		if (!chmod($directory . DIRECTORY_SEPARATOR . $this->_configArray['thumbDirectory'], 0777))
+		if (!chmod($directory . DIRECTORY_SEPARATOR . $this->_optionArray['thumbDirectory'], 0777))
 		{
-			$this->setNotification('error', $this->_language->get('directory_permission_grant') . $this->_language->get('colon') . ' ' . $directory . DIRECTORY_SEPARATOR . $this->_configArray['thumbDirectory'] . $this->_language->get('point'));
+			$this->setNotification('error', $this->_language->get('directory_permission_grant') . $this->_language->get('colon') . ' ' . $directory . DIRECTORY_SEPARATOR . $this->_optionArray['thumbDirectory'] . $this->_language->get('point'));
 		}
 
 		/* else process filesystem */
@@ -297,7 +321,7 @@ class Gallery extends Config
 			{
 				$imagePath = $directory . DIRECTORY_SEPARATOR . $value;
 				$imageExtension = strtolower(pathinfo($value, PATHINFO_EXTENSION));
-				$thumbPath = $directory . DIRECTORY_SEPARATOR . $this->_configArray['thumbDirectory'] . DIRECTORY_SEPARATOR . $value;
+				$thumbPath = $directory . DIRECTORY_SEPARATOR . $this->_optionArray['thumbDirectory'] . DIRECTORY_SEPARATOR . $value;
 
 				/* switch extension */
 
@@ -362,8 +386,8 @@ class Gallery extends Config
 
 	protected function _calcDist(array $sourceArray = [], array $optionArray = []) : array
 	{
-		$distArray['height'] = is_array($optionArray) && array_key_exists('height', $optionArray) ? $optionArray['height'] : $this->_configArray['height'];
-		$distArray['quality'] = is_array($optionArray) && array_key_exists('quality', $optionArray) ? $optionArray['quality'] : $this->_configArray['quality'];
+		$distArray['height'] = is_array($optionArray) && array_key_exists('height', $optionArray) ? $optionArray['height'] : $this->_optionArray['height'];
+		$distArray['quality'] = is_array($optionArray) && array_key_exists('quality', $optionArray) ? $optionArray['quality'] : $this->_optionArray['quality'];
 
 		/* calculate */
 

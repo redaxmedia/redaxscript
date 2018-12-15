@@ -1,4 +1,4 @@
-rs.modules.Debugger.execute = () =>
+rs.modules.Debugger.process = () =>
 {
 	Object.keys(rs.modules.Debugger.data).forEach(dataValue =>
 	{
@@ -14,5 +14,5 @@ rs.modules.Debugger.execute = () =>
 
 if (rs.modules.Debugger.init)
 {
-	rs.modules.Debugger.execute();
+	rs.modules.Debugger.process();
 }

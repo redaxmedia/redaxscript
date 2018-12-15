@@ -1,0 +1,10 @@
+{
+	"_dialog":
+	{
+		"dialog": "محاوره",
+		"continue_question": "آیا مایل به ادامه هستید",
+		"alert": "هشدار",
+		"confirm": "تائید",
+		"prompt": "فوری"
+	}
+}

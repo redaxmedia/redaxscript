@@ -86,6 +86,7 @@ class ArticleTable extends ViewAbstract
 			'rank' => $this->_language->get('rank')
 		];
 		$adminControl = new Helper\Control($this->_registry, $this->_language);
+		$adminControl->init();
 		$categoryModel = new Admin\Model\Category();
 		$articleModel = new Admin\Model\Article();
 		$articles = $articleModel->getAllByOrder('rank');

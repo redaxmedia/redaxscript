@@ -3,6 +3,7 @@ namespace Redaxscript\Modules\Maps;
 
 use Redaxscript\Head;
 use Redaxscript\Html;
+use Redaxscript\Module;
 use function http_build_query;
 use function is_numeric;
 
@@ -16,7 +17,7 @@ use function is_numeric;
  * @author Henry Ruhs
  */
 
-class Maps extends Config
+class Maps extends Module\Module
 {
 	/**
 	 * array of the module
@@ -31,6 +32,19 @@ class Maps extends Config
 		'author' => 'Redaxmedia',
 		'description' => 'Integrate Google Maps',
 		'version' => '4.0.0'
+	];
+
+	/**
+	 * array of the option
+	 *
+	 * @var array
+	 */
+
+	protected $_optionArray =
+	[
+		'className' => 'rs-js-map rs-component-map',
+		'apiUrl' => 'https://maps.googleapis.com/maps/api/js',
+		'apiKey' => null
 	];
 
 	/**
@@ -57,9 +71,9 @@ class Maps extends Config
 				->init('foot')
 				->appendFile(
 				[
-					$this->_configArray['apiUrl'] . '?' . http_build_query(
+					$this->_optionArray['apiUrl'] . '?' . http_build_query(
 					[
-						'key' => $this->_configArray['apiKey']
+						'key' => $this->_optionArray['apiKey']
 					]),
 					'modules/Maps/assets/scripts/init.js',
 					'modules/Maps/dist/scripts/maps.min.js'
@@ -84,7 +98,7 @@ class Maps extends Config
 		$mapElement = new Html\Element();
 		$mapElement->init('div',
 		[
-			'class' => $this->_configArray['className'],
+			'class' => $this->_optionArray['className'],
 			'data-latitude' => is_numeric($latitude) ? $latitude : 0,
 			'data-longitude' => is_numeric($longitude) ? $longitude : 0,
 			'data-zoom' => is_numeric($zoom) ? $zoom : 1

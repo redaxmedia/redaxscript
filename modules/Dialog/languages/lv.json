@@ -1,0 +1,10 @@
+{
+	"_dialog":
+	{
+		"dialog": "Dialog",
+		"continue_question": "Vēlaties turpināt",
+		"alert": "Brīdinājums",
+		"confirm": "Apstiprināt",
+		"prompt": "Jautājums"
+	}
+}

@@ -1,20 +1,20 @@
-rs.templates.console.behavior.listen = config =>
+rs.templates.console.behavior.process = optionArray =>
 {
-	const CONFIG =
+	const OPTION =
 	{
-		...rs.templates.console.behavior.config,
-		...config
+		...rs.templates.console.behavior.optionArray,
+		...optionArray
 	};
-	const form = document.querySelector(CONFIG.selector);
-	const box = document.querySelector(CONFIG.element.box);
-	const label = form.querySelector(CONFIG.element.label);
-	const field = form.querySelector(CONFIG.element.field);
+	const form = document.querySelector(OPTION.selector);
+	const box = document.querySelector(OPTION.element.box);
+	const label = form.querySelector(OPTION.element.label);
+	const field = form.querySelector(OPTION.element.field);
 
 	/* handel submit */
 
 	form.addEventListener('submit', event =>
 	{
-		box.innerHTML += label.innerText + ' ' + field.value + CONFIG.eol;
+		box.innerHTML += label.innerText + ' ' + field.value + OPTION.eol;
 		fetch(location.href,
 		{
 			credentials: 'same-origin',
@@ -49,5 +49,5 @@ rs.templates.console.behavior.listen = config =>
 
 if (rs.templates.console.behavior.init)
 {
-	rs.templates.console.behavior.listen(rs.templates.console.behavior.config);
+	rs.templates.console.behavior.process(rs.templates.console.behavior.optionArray);
 }

@@ -6,7 +6,7 @@
 </filesmatch>
 <ifmodule mod_deflate.c>
 	setenv mod_deflate on
-	<filesmatch \.(css|ico|jpg|js|svg|png|webp|woff2)$>
+	<filesmatch \.(css|ico|jpg|js|svg|php|png|webp|woff2)$>
 		setoutputfilter deflate
 	</filesmatch>
 </ifmodule>

@@ -9,9 +9,4 @@
 .rs-link-default
 {
 	text-decoration: underline;
-
-	& + .rs-link-default
-	{
-		margin-left: 0.5em;
-	}
 }

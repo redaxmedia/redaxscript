@@ -125,7 +125,7 @@ class Filesystem
 	{
 		if (!$this->_iterator)
 		{
-			$this->updateIterator();
+			$this->refreshIterator();
 		}
 		if ($this->_recursive)
 		{
@@ -174,14 +174,17 @@ class Filesystem
 	}
 
 	/**
-	 * update the filesystem iterator
+	 * refresh the filesystem iterator
 	 *
 	 * @since 3.2.0
+	 *
+	 * @return self
 	 */
 
-	public function updateIterator()
+	public function refreshIterator() : self
 	{
 		$this->_iterator = $this->_filterIterator($this->_scan($this->_root));
+		return $this;
 	}
 
 	/**

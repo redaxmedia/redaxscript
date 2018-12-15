@@ -6,6 +6,7 @@ use Redaxscript\Filesystem;
 use Redaxscript\Filter;
 use Redaxscript\Head;
 use Redaxscript\Html;
+use Redaxscript\Module;
 use function array_key_exists;
 use function ceil;
 use function dirname;
@@ -29,7 +30,7 @@ use function str_replace;
  * @author Henry Ruhs
  */
 
-class DirectoryLister extends Config
+class DirectoryLister extends Module\Notification
 {
 	/**
 	 * array of the module
@@ -44,6 +45,60 @@ class DirectoryLister extends Config
 		'author' => 'Redaxmedia',
 		'description' => 'List the files of a directory',
 		'version' => '4.0.0'
+	];
+
+	/**
+	 * array of the option
+	 *
+	 * @var array
+	 */
+
+	protected $_optionArray =
+	[
+		'className' =>
+		[
+			'list' => 'rs-list-directory-lister',
+			'link' => 'rs-link-directory-lister',
+			'textSize' => 'rs-text-directory-lister rs-is-size',
+			'textDate' => 'rs-text-directory-lister rs-is-date',
+			'types' =>
+			[
+				'directory' => 'rs-is-directory',
+				'directoryParent' => 'rs-is-directory rs-is-parent',
+				'file' => 'rs-is-file',
+				'fileText' => 'rs-is-file rs-is-text',
+				'fileImage' => 'rs-is-file rs-is-image',
+				'fileMusic' => 'rs-is-file rs-is-music',
+				'fileVideo' => 'rs-is-file rs-is-video',
+				'fileArchive' => 'rs-is-file rs-is-archive'
+			]
+		],
+		'size' =>
+		[
+			'unit' => 'kB',
+			'divider' => 1024
+		],
+		'replaceKey' =>
+		[
+			'extension'	=> '{extension}'
+		],
+		'extension' =>
+		[
+			'doc' => 'fileText',
+			'txt' => 'fileText',
+			'gif' => 'fileImage',
+			'jpg' => 'fileImage',
+			'pdf' => 'fileImage',
+			'png' => 'fileImage',
+			'mp3' => 'fileMusic',
+			'wav' => 'fileMusic',
+			'avi' => 'fileVideo',
+			'mov' => 'fileVideo',
+			'mp4' => 'fileVideo',
+			'tar' => 'fileArchive',
+			'rar' => 'fileArchive',
+			'zip' => 'fileArchive'
+		]
 	];
 
 	/**
@@ -94,7 +149,7 @@ class DirectoryLister extends Config
 		$listElement = new Html\Element();
 		$listElement->init('ul',
 		[
-			'class' => $this->_configArray['className']['list']
+			'class' => $this->_optionArray['className']['list']
 		]);
 
 		/* handle option */
@@ -168,7 +223,7 @@ class DirectoryLister extends Config
 			->copy()
 			->init('a',
 			[
-				'class' => $this->_configArray['className']['link']
+				'class' => $this->_optionArray['className']['link']
 			]);
 
 		/* collect item output */
@@ -181,7 +236,7 @@ class DirectoryLister extends Config
 					'href' => $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute') . $queryString . $optionArray['hash'],
 					'title' => $this->_language->get('directory_parent', '_directory_lister')
 				])
-				->addClass($this->_configArray['className']['types']['directoryParent'])
+				->addClass($this->_optionArray['className']['types']['directoryParent'])
 				->text($this->_language->get('directory_parent', '_directory_lister'))
 			);
 		return $outputItem;
@@ -209,19 +264,19 @@ class DirectoryLister extends Config
 			->copy()
 			->init('a',
 			[
-				'class' => $this->_configArray['className']['link']
+				'class' => $this->_optionArray['className']['link']
 			]);
 		$textSizeElement = $element
 			->copy()
 			->init('span',
 			[
-				'class' => $this->_configArray['className']['textSize']
+				'class' => $this->_optionArray['className']['textSize']
 			]);
 		$textDateElement = $element
 			->copy()
 			->init('span',
 			[
-				'class' => $this->_configArray['className']['textDate']
+				'class' => $this->_optionArray['className']['textDate']
 			]);
 
 		/* lister filesystem */
@@ -238,7 +293,7 @@ class DirectoryLister extends Config
 			$fileExtension = pathinfo($path, PATHINFO_EXTENSION);
 			$text = $this->_replace($value, $fileExtension, $optionArray['replace']);
 			$isDir = is_dir($path);
-			$isFile = is_file($path) && is_array($this->_configArray['extension']) && array_key_exists($fileExtension, $this->_configArray['extension']);
+			$isFile = is_file($path) && is_array($this->_optionArray['extension']) && array_key_exists($fileExtension, $this->_optionArray['extension']);
 			$dater->init(filectime($path));
 
 			/* handle directory */
@@ -258,7 +313,7 @@ class DirectoryLister extends Config
 								]),
 								'title' => $this->_language->get('directory', '_directory_lister')
 							])
-							->addClass($this->_configArray['className']['types']['directory'])
+							->addClass($this->_optionArray['className']['types']['directory'])
 							->text($text)
 					)
 					->append($textSizeElement);
@@ -268,8 +323,8 @@ class DirectoryLister extends Config
 
 			else if ($isFile)
 			{
-				$fileType = $this->_configArray['extension'][$fileExtension];
-				$textSize = ceil(filesize($path) / $this->_configArray['size']['divider']);
+				$fileType = $this->_optionArray['extension'][$fileExtension];
+				$textSize = ceil(filesize($path) / $this->_optionArray['size']['divider']);
 				$itemElement
 					->clear()
 					->html(
@@ -281,13 +336,13 @@ class DirectoryLister extends Config
 								'target' => '_blank',
 								'title' => $this->_language->get('file', '_directory_lister')
 							])
-							->addClass($this->_configArray['className']['types'][$fileType])
+							->addClass($this->_optionArray['className']['types'][$fileType])
 							->text($text)
 					)
 					->append(
 						$textSizeElement
 							->copy()
-							->attr('data-unit', $this->_configArray['size']['unit'])
+							->attr('data-unit', $this->_optionArray['size']['unit'])
 							->text($textSize)
 					);
 			}
@@ -319,7 +374,7 @@ class DirectoryLister extends Config
 		{
 			foreach ($replaceArray as $replaceKey => $replaceValue)
 			{
-				if ($replaceKey === $this->_configArray['replaceKey']['extension'])
+				if ($replaceKey === $this->_optionArray['replaceKey']['extension'])
 				{
 					$replaceKey = $fileExtension;
 				}

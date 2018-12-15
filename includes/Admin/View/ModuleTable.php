@@ -71,6 +71,7 @@ class ModuleTable extends ViewAbstract
 			'version' => $this->_language->get('version')
 		];
 		$adminControl = new Helper\Control($this->_registry, $this->_language);
+		$adminControl->init();
 		$moduleModel = new Admin\Model\Module();
 		$modules = $moduleModel->getAll();
 		$modulesTotal = $modules->count();

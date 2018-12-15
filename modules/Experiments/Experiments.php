@@ -2,6 +2,7 @@
 namespace Redaxscript\Modules\Experiments;
 
 use Redaxscript\Head;
+use Redaxscript\Module;
 use function http_build_query;
 
 /**
@@ -14,7 +15,7 @@ use function http_build_query;
  * @author Henry Ruhs
  */
 
-class Experiments extends Config
+class Experiments extends Module\Module
 {
 	/**
 	 * array of the module
@@ -29,6 +30,17 @@ class Experiments extends Config
 		'author' => 'Redaxmedia',
 		'description' => 'Integrate Google Experiments',
 		'version' => '4.0.0'
+	];
+
+	/**
+	 * array of the option
+	 *
+	 * @var array
+	 */
+
+	protected $_optionArray =
+	[
+		'id' => '0000000000000000000000'
 	];
 
 	/**
@@ -48,7 +60,7 @@ class Experiments extends Config
 				[
 					'https://google-analytics.com/cx/api.js?' . http_build_query(
 					[
-						'experiment' => $this->_configArray['id']
+						'experiment' => $this->_optionArray['id']
 					]),
 					'modules/Experiments/assets/scripts/init.js',
 					'modules/Experiments/dist/scripts/experiments.min.js'

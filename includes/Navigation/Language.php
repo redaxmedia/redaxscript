@@ -85,10 +85,7 @@ class Language extends NavigationAbstract
 
 		/* collect output */
 
-		if ($outputItem)
-		{
-			$output .= $listElement->html($outputItem);
-		}
+		$output .= $listElement->html($outputItem ? : $itemElement->text($this->_language->get('language_no')));
 		$output .= Module\Hook::trigger('navigationLanguageEnd');
 		return $output;
 	}

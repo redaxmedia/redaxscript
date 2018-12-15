@@ -3,6 +3,7 @@ namespace Redaxscript\Modules\SocialSharer;
 
 use Redaxscript\Head;
 use Redaxscript\Html;
+use Redaxscript\Module;
 
 /**
  * integrate social sharer
@@ -14,7 +15,7 @@ use Redaxscript\Html;
  * @author Henry Ruhs
  */
 
-class SocialSharer extends Config
+class SocialSharer extends Module\Module
 {
 	/**
 	 * array of the module
@@ -29,6 +30,49 @@ class SocialSharer extends Config
 		'author' => 'Redaxmedia',
 		'description' => 'Integrate social sharer',
 		'version' => '4.0.0'
+	];
+
+	/**
+	 * array of the option
+	 *
+	 * @var array
+	 */
+
+	protected $_optionArray =
+	[
+		'className' =>
+		[
+			'link' => 'rs-link-social-sharer',
+			'list' => 'rs-list-social-sharer'
+		],
+		'network' =>
+		[
+			'facebook' =>
+			[
+				'url' => 'https://facebook.com/sharer.php?u=',
+				'className' => 'rs-link-facebook'
+			],
+			'google-plus' =>
+			[
+				'url' => 'https://plus.google.com/share?url=',
+				'className' => 'rs-link-google-plus'
+			],
+			'twitter' =>
+			[
+				'url' => 'https://twitter.com/intent/tweet?url=',
+				'className' => 'rs-link-twitter'
+			],
+			'whatsapp' =>
+			[
+				'url' => 'https://api.whatsapp.com/send?text=',
+				'className' => 'rs-link-whatsapp'
+			],
+			'telegram' =>
+			[
+				'url' => 'https://telegram.me/share/url?url=',
+				'className' => 'rs-link-telegram'
+			]
+		]
 	];
 
 	/**
@@ -87,20 +131,20 @@ class SocialSharer extends Config
 			->copy()
 			->init('ul',
 			[
-				'class' => $this->_configArray['className']['list']
+				'class' => $this->_optionArray['className']['list']
 			]);
 		$itemElement = $element->copy()->init('li');
 		$linkElement = $element
 			->copy()
 			->init('a',
 			[
-				'class' => $this->_configArray['className']['link'],
+				'class' => $this->_optionArray['className']['link'],
 				'target' => '_blank'
 			]);
 
 		/* process network */
 
-		foreach ($this->_configArray['network'] as $key => $value)
+		foreach ($this->_optionArray['network'] as $key => $value)
 		{
 			$outputItem .= $itemElement
 				->html(

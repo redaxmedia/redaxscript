@@ -1,12 +1,12 @@
-rs.modules.TableSorter.execute = config =>
+rs.modules.TableSorter.process = optionArray =>
 {
-	const CONFIG =
+	const OPTION =
 	{
-		...rs.modules.TableSorter.config,
-		...config
+		...rs.modules.TableSorter.optionArray,
+		...optionArray
 	};
-	const tbodyList = document.querySelectorAll(CONFIG.selector);
-	const moveList = document.querySelectorAll(CONFIG.element.move);
+	const tbodyList = document.querySelectorAll(OPTION.selector);
+	const moveList = document.querySelectorAll(OPTION.element.move);
 
 	if (tbodyList)
 	{
@@ -15,7 +15,7 @@ rs.modules.TableSorter.execute = config =>
 			const dragula = window.dragula(
 			[
 				tbody
-			], CONFIG.dragula);
+			], OPTION.dragula);
 
 			/* handle dragend */
 
@@ -23,7 +23,7 @@ rs.modules.TableSorter.execute = config =>
 			{
 				const childrenList = tbody.childNodes;
 
-				fetch(CONFIG.sortUrl,
+				fetch(OPTION.sortRoute,
 				{
 					credentials: 'same-origin',
 					method: 'POST',
@@ -38,7 +38,7 @@ rs.modules.TableSorter.execute = config =>
 						rankArray: Object.keys(childrenList).map((childrenValue => childrenList[childrenValue].id.replace('row-', '')))
 					})
 				})
-				.then(() => CONFIG.reload ? location.reload() : null);
+				.then(() => OPTION.reload ? location.reload() : null);
 			});
 		});
 	}
@@ -55,5 +55,5 @@ rs.modules.TableSorter.execute = config =>
 
 if (rs.modules.TableSorter.init && rs.modules.TableSorter.dependency)
 {
-	rs.modules.TableSorter.execute(rs.modules.TableSorter.config);
+	rs.modules.TableSorter.process(rs.modules.TableSorter.optionArray);
 }

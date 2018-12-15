@@ -1,0 +1,10 @@
+{
+	"_dialog":
+	{
+		"dialog": "Dialog",
+		"continue_question": "Desea continuar",
+		"alert": "Alerta",
+		"confirm": "Confirmar",
+		"prompt": "Preguntar"
+	}
+}

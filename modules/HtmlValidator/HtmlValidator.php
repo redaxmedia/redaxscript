@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Modules\HtmlValidator;
 
+use Redaxscript\Module;
 use Redaxscript\Reader;
 use function http_build_query;
 
@@ -14,7 +15,7 @@ use function http_build_query;
  * @author Henry Ruhs
  */
 
-class HtmlValidator extends Config
+class HtmlValidator extends Module\Notification
 {
 	/**
 	 * array of the module
@@ -33,6 +34,17 @@ class HtmlValidator extends Config
 	];
 
 	/**
+	 * array of the option
+	 *
+	 * @var array
+	 */
+
+	protected $_optionArray =
+	[
+		'apiUrl' => 'https://validator.w3.org/nu/'
+	];
+
+	/**
 	 * adminNotification
 	 *
 	 * @since 3.0.1
@@ -46,7 +58,7 @@ class HtmlValidator extends Config
 		{
 			/* load result */
 
-			$url = $this->_configArray['apiUrl'] . '?' . http_build_query(
+			$url = $this->_optionArray['apiUrl'] . '?' . http_build_query(
 			[
 				'doc' => $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute'),
 				'checkerrorpages' => 'yes',
@@ -85,11 +97,11 @@ class HtmlValidator extends Config
 			}
 			if (!$result)
 			{
-				$this->setNotification('warning', $this->_language->get('service_no', '_validator') . $this->_language->get('point'));
+				$this->setNotification('warning', $this->_language->get('service_no', '_html_validator') . $this->_language->get('point'));
 			}
 			else if (!$this->getNotification('error'))
 			{
-				$this->setNotification('success', $this->_language->get('document_validate', '_validator') . $this->_language->get('point'));
+				$this->setNotification('success', $this->_language->get('document_validate', '_html_validator') . $this->_language->get('point'));
 			}
 		}
 		return $this->getNotification();

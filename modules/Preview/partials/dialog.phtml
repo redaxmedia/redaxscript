@@ -1,61 +1,14 @@
 <?php
 namespace Redaxscript;
+use Redaxscript\Modules\Dialog;
 
 $language = Language::getInstance();
-$element = new Html\Element();
-$titleElement = $element
-	->copy()
-	->init('h3',
-	[
-		'class' => $admin ? 'rs-admin-title-dialog' : 'rs-title-dialog'
-	]);
-$boxElement = $element
-	->copy()
-	->init('div',
-	[
-		'class' => $admin ? 'rs-admin-box-dialog' : 'rs-box-dialog'
-	]);
-$textElement = $element->copy()->init('p');
-$inputElement = $element
-	->copy()
-	->init('input',
-	[
-		'class' => $admin ? 'rs-admin-field-default' : 'rs-field-default'
-	]);
-$buttonElement = $element
-	->copy()
-	->init('button',
-	[
-		'class' => $admin ? 'rs-admin-button-default' : 'rs-button-default'
-	]);
+$dialog= $admin ? new Dialog\Admin\Dialog(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance()) :	new Dialog\Dialog(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+$message = $language->get('preview', '_preview');
 ?>
 
-<!-- confirm -->
+<!-- dialog -->
 
-<div class="<?php echo $admin ? 'rs-admin-overlay-dialog' : 'rs-overlay-dialog'; ?>">
-	<div class="<?php echo $admin ? 'rs-admin-component-dialog' : 'rs-component-dialog'; ?>">
-
-		<?php echo $titleElement->text($language->get('confirm')); ?>
-		<?php echo $boxElement->html(
-			$textElement->text($language->get('dialog_question') . $language->get('question_mark')) .
-			$buttonElement->copy()->text($language->get('ok')) .
-			$buttonElement->copy()->text($language->get('cancel'))
-		); ?>
-
-	</div>
-</div>
-
-<!-- prompt -->
-
-<div class="<?php echo $admin ? 'rs-admin-overlay-dialog' : 'rs-overlay-dialog'; ?>">
-	<div class="<?php echo $admin ? 'rs-admin-component-dialog' : 'rs-component-dialog'; ?>">
-
-		<?php echo $titleElement->text($language->get('prompt')); ?>
-		<?php echo $boxElement->html(
-			$inputElement .
-			$buttonElement->copy()->text($language->get('ok')) .
-			$buttonElement->copy()->text($language->get('cancel'))
-		); ?>
-
-	</div>
-</div>
+<?php echo $dialog->alert('alert', $message); ?>
+<?php echo $dialog->confirm('confirm', $message); ?>
+<?php echo $dialog->prompt( 'prompt', $message); ?>

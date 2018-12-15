@@ -1,21 +1,21 @@
-rs.modules.Analytics.execute = config =>
+rs.modules.Analytics.process = optionArray =>
 {
-	const CONFIG =
+	const OPTION =
 	{
-		...rs.modules.Analytics.config,
-		...config
+		...rs.modules.Analytics.optionArray,
+		...optionArray
 	};
 
 	/* handle view */
 
-	window.ga('create', CONFIG.analytics);
+	window.ga('create', OPTION.analytics);
 	window.ga('send', 'pageview');
 
 	/* handle track */
 
-	Object.keys(CONFIG.selector).forEach(trackEvent =>
+	Object.keys(OPTION.selector).forEach(trackEvent =>
 	{
-		const elementList = document.querySelectorAll(CONFIG.selector[trackEvent]);
+		const elementList = document.querySelectorAll(OPTION.selector[trackEvent]);
 
 		if (elementList)
 		{
@@ -47,5 +47,5 @@ rs.modules.Analytics.execute = config =>
 
 if (rs.modules.Analytics.init && rs.modules.Analytics.dependency)
 {
-	rs.modules.Analytics.execute(rs.modules.Analytics.config);
+	rs.modules.Analytics.process(rs.modules.Analytics.optionArray);
 }

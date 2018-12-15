@@ -3,7 +3,6 @@
 @import '../../../../assets/styles/_accordion.css';
 @import '../../../../assets/styles/_animate.css';
 @import '../../../../assets/styles/_clearfix.css';
-@import '../../../../assets/styles/_dialog.css';
 @import '../../../../assets/styles/_dropdown.css';
 @import '../../../../assets/styles/_menu.css';
 @import '../../../../assets/styles/_redirect.css';
@@ -16,7 +15,6 @@
 @import 'breadcrumb.css';
 @import 'button.css';
 @import 'content.css';
-@import 'dialog.css';
 @import 'field.css';
 @import 'footer.css';
 @import 'form.css';

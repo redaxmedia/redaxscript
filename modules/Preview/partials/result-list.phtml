@@ -1,8 +1,8 @@
 <?php
 namespace Redaxscript;
 
-$searchList = new View\ResultList(Registry::getInstance(), Language::getInstance());
-echo $searchList->render(
+$resultList = new View\ResultList(Registry::getInstance(), Language::getInstance());
+$resultArray =
 [
 	'categories' =>
 	[
@@ -13,4 +13,9 @@ echo $searchList->render(
 		Db::forTablePrefix('articles')->findOne(),
 		Db::forTablePrefix('articles')->findOne()
 	]
-]);
+];
+?>
+
+<!-- result list -->
+
+<?php echo $resultList->render($resultArray);

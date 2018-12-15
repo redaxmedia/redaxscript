@@ -31,7 +31,7 @@
 		"submit",
 		null,
 		{},
-		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><button class=\"rs-js-button rs-button-default rs-button-submit\" type=\"submit\" value=\"submit\">Submit</button></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><button class=\"rs-js-submit rs-button-default rs-button-submit\" type=\"submit\" value=\"submit\">Submit</button></form>"
 	],
 	[
 		"submit",

@@ -1,0 +1,10 @@
+{
+	"_dialog":
+	{
+		"dialog": "Dialog",
+		"continue_question": "Ønsker du å fortsette",
+		"alert": "Varsle",
+		"confirm": "Bekreft",
+		"prompt": "Spør"
+	}
+}

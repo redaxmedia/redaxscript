@@ -67,7 +67,7 @@ class TableSorter extends Module\Module
 					'modules/TableSorter/dist/scripts/table-sorter.min.js'
 				]);
 
-			/* handle sort */
+			/* router */
 
 			if ($this->_registry->get('firstParameter') === 'module' && $this->_registry->get('secondParameter') === 'table-sorter' && $this->_registry->get('thirdParameter') === 'sort' && $this->_registry->get('tokenParameter'))
 			{

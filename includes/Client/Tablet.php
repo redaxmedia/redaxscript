@@ -19,7 +19,7 @@ class Tablet extends ClientAbstract
 	 * @since 2.4.0
 	 */
 
-	protected function _autorun()
+	public function autorun()
 	{
 		$this->_detect(
 		[
