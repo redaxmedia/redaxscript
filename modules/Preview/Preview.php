@@ -163,7 +163,7 @@ class Preview extends Module\Module
 			->copy()
 			->init('h2',
 			[
-				'class' =>  $this->_optionArray['className']['title'],
+				'class' => $this->_optionArray['className']['title'],
 				'id' => $alias
 			])
 			->html($linkElement);

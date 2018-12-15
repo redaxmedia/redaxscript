@@ -3,7 +3,7 @@ namespace Redaxscript;
 use Redaxscript\Modules\Dialog;
 
 $language = Language::getInstance();
-$dialog= $admin ? new Dialog\Admin\Dialog(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance()) :	new Dialog\Dialog(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+$dialog= $admin ? new Dialog\Admin\Dialog(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance()) : new Dialog\Dialog(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
 $message = $language->get('preview', '_preview');
 ?>
 

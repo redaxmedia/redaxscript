@@ -21,7 +21,7 @@ rs.modules.Dialog =
 		init: rs.registry.loggedIn === rs.registry.token,
 		optionArray:
 		{
-			selector: 'a.rs-admin-js-cancel, a.rs-admin-js-confirm, a.rs-admin-js-delete, a.rs-admin-js-uninstall',
+			selector: 'a.rs-admin-js-cancel, a.rs-admin-js-delete, a.rs-admin-js-uninstall',
 			element:
 			{
 				buttonOk: 'button.js-admin-ok',
