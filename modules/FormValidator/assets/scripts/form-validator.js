@@ -5,39 +5,41 @@ rs.modules.FormValidator.process = optionArray =>
 		...rs.modules.FormValidator.optionArray,
 		...optionArray
 	};
-	const form = document.querySelector(OPTION.selector);
+	const formList = document.querySelectorAll(OPTION.selector);
+	const validateArray =
+	[
+		'input',
+		'validate'
+	];
 
-	if (form)
+	if (formList)
 	{
-		/* handle validate */
-
-		form.querySelectorAll(OPTION.element.required).forEach(field =>
+		formList.forEach(form =>
 		{
-			const validateArray =
-			[
-				'input',
-				'validate'
-			];
+			/* handle validate */
 
-			field.classList.add(OPTION.className.fieldNote);
-			validateArray.forEach(validateEvent =>
+			form.querySelectorAll(OPTION.element.required).forEach(field =>
 			{
-				field.addEventListener(validateEvent, event =>
+				field.classList.add(OPTION.className.fieldNote);
+				validateArray.forEach(validateEvent =>
 				{
-					event.target.validity.valid ? event.target.classList.remove(OPTION.className.isError) : event.target.classList.add(OPTION.className.isError);
+					field.addEventListener(validateEvent, event =>
+					{
+						event.target.validity.valid ? event.target.classList.remove(OPTION.className.isError) : event.target.classList.add(OPTION.className.isError);
+					});
+				});
+				field.addEventListener('invalid', event =>
+				{
+					event.target.classList.add(OPTION.className.isError);
 				});
 			});
-			field.addEventListener('invalid', event =>
+
+			/* handle reset */
+
+			form.addEventListener('reset', () =>
 			{
-				event.target.classList.add(OPTION.className.isError);
+				form.querySelectorAll(OPTION.element.required).forEach(field => field.classList.remove(OPTION.className.isError));
 			});
-		});
-
-		/* handle reset */
-
-		form.addEventListener('reset', () =>
-		{
-			form.querySelectorAll(OPTION.element.required).forEach(field => field.classList.remove(OPTION.className.isError));
 		});
 	}
 };
