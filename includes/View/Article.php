@@ -167,7 +167,11 @@ class Article extends ViewAbstract
 
 		/* query articles */
 
-		if ($categoryId)
+		if ($settingModel->get('homepage'))
+		{
+			$articles = $articleModel->getByIdAndLanguageAndOrder($settingModel->get('homepage'), $language, $this->_optionArray['orderColumn']);
+		}
+		else if ($categoryId)
 		{
 			if ($settingModel->get('pagination'))
 			{

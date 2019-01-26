@@ -21,9 +21,9 @@
 	& a,
 	& span
 	{
-		background: gray(200);
+		background: gray(80);
 		border-radius: 0.125em;
-		color: gray(100);
+		color: gray(40);
 		display: block;
 		line-height: 2em;
 		padding: 0 0.75em;
@@ -34,7 +34,7 @@
 	& a:hover
 	{
 		background: var(--rs-admin-color-primary);
-		color: gray(255);
+		color: gray(100);
 	}
 
 	& .rs-admin-item-delete a:hover,

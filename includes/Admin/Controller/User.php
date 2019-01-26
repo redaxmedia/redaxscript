@@ -101,7 +101,7 @@ class User extends ControllerAbstract
 			}
 			if ($this->_update($postArray['id'], $postArray['id'] > 1 ? $updateFullArray : $updateLiteArray))
 			{
-				if ($postArray['id'] === $myId)
+				if ($postArray['id'] === (int)$myId)
 				{
 					$this->_refresh($postArray);
 				}

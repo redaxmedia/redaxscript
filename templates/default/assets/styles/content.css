@@ -23,7 +23,7 @@
 
 .rs-title-content
 {
-	border-left: 0.125em solid gray(0, 0.2);
+	border-left: 0.125em solid gray(0 / 0.2);
 	color: var(--rs-color-tertiary);
 	font-size: 2.5em;
 	margin-bottom: 0.75em;
@@ -105,7 +105,7 @@
 
 		&:before
 		{
-			color: gray(0, 0.1);
+			color: gray(0 / 0.1);
 			content: '\201d';
 			font: 6em/1em var(--rs-font-quote);
 			left: -0.5em;
@@ -120,7 +120,7 @@
 .rs-code-default
 {
 	background: var(--rs-color-tertiary);
-	color: gray(255);
+	color: gray(100);
 	display: block;
 	font: 0.75em/1.25em var(--rs-font-code);
 	padding: 1em;
@@ -138,7 +138,7 @@
 {
 	background: var(--rs-color-quaternary);
 	border-radius: 0.125em;
-	color: gray(255);
+	color: gray(100);
 	display: inline-block;
 	line-height: 2.5em;
 	padding: 0 1em;

@@ -13,14 +13,14 @@
 
 .rs-body
 {
-	background: gray(255);
-	color: gray(70);
+	background: gray(100);
+	color: gray(30);
 	font: 1em var(--rs-font-primary);
 }
 
 .rs-main
 {
-	background: gray(255);
+	background: gray(100);
 	margin-bottom: 5em;
 }
 

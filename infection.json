@@ -1,5 +1,5 @@
 {
-	"bootstrap": "tests/phpunit/bootstrap.php",
+	"bootstrap": "tests/unit/bootstrap.php",
     "source":
     {
         "directories":

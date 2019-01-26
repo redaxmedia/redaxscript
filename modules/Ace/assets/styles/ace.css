@@ -8,8 +8,8 @@
 
 :root .ace_editor
 {
-	background: gray(240);
-	border: 0.125rem solid gray(215);
+	background: gray(95);
+	border: 0.125rem solid gray(80);
 	border-radius: 0.125em;
 	font-size: 0.875em;
 	min-height: 20em;
@@ -17,7 +17,7 @@
 
 	&.ace_focus
 	{
-		background: gray(255);
-		border-color: gray(185);
+		background: gray(100);
+		border-color: gray(70);
 	}
 }

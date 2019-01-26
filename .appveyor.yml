@@ -47,4 +47,4 @@ install:
 test_script:
 - PapercutService\Papercut.Service.exe start
 - SET DB_URL=mssql://sa:Password12!@(local)\SQL2016/master
-- vendor/bin/phpunit --configuration=phpunit.xml
+- vendor/bin/phpunit

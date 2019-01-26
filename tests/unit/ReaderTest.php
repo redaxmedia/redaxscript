@@ -100,7 +100,13 @@ class ReaderTest extends TestCaseAbstract
 		/* setup */
 
 		$reader = new Reader();
-		$reader->init();
+		$reader->init(
+		[
+			'curl' =>
+			[
+				CURLOPT_TIMEOUT_MS => 5000
+			]
+		]);
 		$reader->loadXML('https://service.redaxscript.com/xml/pad.xml');
 
 		/* actual */

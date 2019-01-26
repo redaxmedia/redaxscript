@@ -4,7 +4,7 @@ namespace Redaxscript\Detector;
 use Redaxscript\Model;
 
 /**
- * children class to detect the required template
+ * children class to detect the current template
  *
  * @since 2.0.0
  *

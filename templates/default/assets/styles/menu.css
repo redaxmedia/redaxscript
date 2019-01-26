@@ -14,7 +14,7 @@
 
 .rs-list-menu
 {
-	color: gray(255);
+	color: gray(100);
 	font: 1.5em/2em var(--rs-font-primary);
 
 	& a,
@@ -48,7 +48,7 @@
 			& > span
 			{
 				border-radius: 0.125em;
-				box-shadow: 0 -0.125em 0 0 gray(0, 0.2) inset;
+				box-shadow: 0 -0.125em 0 0 gray(0 / 0.2) inset;
 				line-height: 2.5em;
 			}
 
@@ -132,7 +132,7 @@
 
 	.rs-label-toggle-menu
 	{
-		color: gray(200);
+		color: gray(80);
 		cursor: pointer;
 		font: 1em arial;
 		height: 2.25em;
@@ -186,7 +186,7 @@
 
 	.rs-label-close-menu
 	{
-		background: gray(0, 0.8);
+		background: gray(0 / 0.8);
 		transition: opacity 0.2s;
 	}
 }

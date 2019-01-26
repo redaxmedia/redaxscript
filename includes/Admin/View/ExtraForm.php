@@ -172,10 +172,7 @@ class ExtraForm extends ViewAbstract
 			[
 				'for' => 'sibling'
 			])
-			->select($helperOption->getContentArray('extras',
-			[
-				$extra->id
-			]),
+			->select($helperOption->getSiblingForExtraArray($extra->id),
 			[
 				$extra->sibling
 			],
@@ -188,7 +185,7 @@ class ExtraForm extends ViewAbstract
 			[
 				'for' => 'category'
 			])
-			->select($helperOption->getContentArray('categories'),
+			->select($helperOption->getCategoryArray(),
 			[
 				$extra->category
 			],
@@ -201,7 +198,7 @@ class ExtraForm extends ViewAbstract
 			[
 				'for' => 'article'
 			])
-			->select($helperOption->getContentArray('articles'),
+			->select($helperOption->getArticleArray(),
 			[
 				$extra->article
 			],
@@ -270,13 +267,13 @@ class ExtraForm extends ViewAbstract
 				[
 					'for' => 'access'
 				])
-				->select($helperOption->getAccessArray('groups'),
+				->select($helperOption->getGroupArray(),
 				(array)json_decode($extra->access),
 				[
 					'id' => 'access',
 					'name' => 'access[]',
 					'multiple' => 'multiple',
-					'size' => count($helperOption->getAccessArray('groups'))
+					'size' => count($helperOption->getGroupArray())
 				])
 				->append('</li>');
 		}

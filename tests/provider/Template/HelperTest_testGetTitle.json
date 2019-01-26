@@ -2,28 +2,205 @@
 	[
 		{
 			"useTitle": null,
+			"firstParameter": null,
+			"secondParameter": null,
+			"adminParameter": null,
+			"tableParameter": null,
 			"lastTable": null,
 			"lastId": null
 		},
 		{
 			"title": null
 		},
-		null
+		"Error"
 	],
 	[
 		{
 			"useTitle": null,
+			"firstParameter": null,
+			"secondParameter": null,
+			"adminParameter": null,
+			"tableParameter": null,
 			"lastTable": null,
 			"lastId": null
 		},
 		{
 			"title": "Setting"
 		},
-		"Setting"
+		"Error - Setting"
+	],
+	[
+		{
+			"useTitle": "Use",
+			"firstParameter": null,
+			"secondParameter": null,
+			"adminParameter": null,
+			"tableParameter": null,
+			"lastTable": null,
+			"lastId": null
+		},
+		{
+			"title": "Setting"
+		},
+		"Use - Setting"
 	],
 	[
 		{
 			"useTitle": null,
+			"firstParameter": "admin",
+			"secondParameter": null,
+			"adminParameter": null,
+			"tableParameter": null,
+			"lastTable": null,
+			"lastId": null
+		},
+		{
+			"title": "Setting"
+		},
+		"Administration - Setting"
+	],
+	[
+		{
+			"useTitle": null,
+			"firstParameter": "admin",
+			"secondParameter": null,
+			"adminParameter": "view",
+			"tableParameter": null,
+			"lastTable": null,
+			"lastId": null
+		},
+		{
+			"title": "Setting"
+		},
+		"Administration - View - Setting"
+	],
+	[
+		{
+			"useTitle": null,
+			"firstParameter": "admin",
+			"secondParameter": null,
+			"adminParameter": "view",
+			"tableParameter": "articles",
+			"lastTable": null,
+			"lastId": null
+		},
+		{
+			"title": "Setting"
+		},
+		"Administration - View - Articles - Setting"
+	],
+	[
+		{
+			"useTitle": null,
+			"firstParameter": "login",
+			"secondParameter": null,
+			"adminParameter": null,
+			"tableParameter": null,
+			"lastTable": null,
+			"lastId": null
+		},
+		{
+			"title": "Setting"
+		},
+		"Login - Setting"
+	],
+	[
+		{
+			"useTitle": null,
+			"firstParameter": "login",
+			"secondParameter": "recover",
+			"adminParameter": null,
+			"tableParameter": null,
+			"lastTable": null,
+			"lastId": null
+		},
+		{
+			"title": "Setting"
+		},
+		"Recovery - Setting"
+	],
+	[
+		{
+			"useTitle": null,
+			"firstParameter": "login",
+			"secondParameter": "reset",
+			"adminParameter": null,
+			"tableParameter": null,
+			"lastTable": null,
+			"lastId": null
+		},
+		{
+			"title": "Setting"
+		},
+		"Reset - Setting"
+	],
+	[
+		{
+			"useTitle": null,
+			"firstParameter": "logout",
+			"secondParameter": null,
+			"adminParameter": null,
+			"tableParameter": null,
+			"lastTable": null,
+			"lastId": null
+		},
+		{
+			"title": "Setting"
+		},
+		"Logout - Setting"
+	],
+	[
+		{
+			"useTitle": null,
+			"firstParameter": "register",
+			"secondParameter": null,
+			"adminParameter": null,
+			"tableParameter": null,
+			"lastTable": null,
+			"lastId": null
+		},
+		{
+			"title": "Setting"
+		},
+		"Registration - Setting"
+	],
+	[
+		{
+			"useTitle": null,
+			"firstParameter": "module",
+			"secondParameter": null,
+			"adminParameter": null,
+			"tableParameter": null,
+			"lastTable": null,
+			"lastId": null
+		},
+		{
+			"title": "Setting"
+		},
+		"Module - Setting"
+	],
+	[
+		{
+			"useTitle": null,
+			"firstParameter": "search",
+			"secondParameter": null,
+			"adminParameter": null,
+			"tableParameter": null,
+			"lastTable": null,
+			"lastId": null
+		},
+		{
+			"title": "Setting"
+		},
+		"Search - Setting"
+	],
+	[
+		{
+			"useTitle": null,
+			"firstParameter": null,
+			"secondParameter": null,
+			"adminParameter": null,
+			"tableParameter": null,
 			"lastTable": "categories",
 			"lastId": 1
 		},
@@ -34,18 +211,11 @@
 	],
 	[
 		{
-			"useTitle": "Use",
-			"lastTable": null,
-			"lastId": null
-		},
-		{
-			"title": "Setting"
-		},
-		"Use"
-	],
-	[
-		{
 			"useTitle": null,
+			"firstParameter": null,
+			"secondParameter": null,
+			"adminParameter": null,
+			"tableParameter": null,
 			"lastTable": "articles",
 			"lastId": 2
 		},
@@ -57,6 +227,10 @@
 	[
 		{
 			"useTitle": null,
+			"firstParameter": null,
+			"secondParameter": null,
+			"adminParameter": null,
+			"tableParameter": null,
 			"lastTable": "categories",
 			"lastId": 2
 		},
@@ -68,6 +242,10 @@
 	[
 		{
 			"useTitle": null,
+			"firstParameter": null,
+			"secondParameter": null,
+			"adminParameter": null,
+			"tableParameter": null,
 			"lastTable": "articles",
 			"lastId": 3
 		},
@@ -79,6 +257,10 @@
 	[
 		{
 			"useTitle": null,
+			"firstParameter": null,
+			"secondParameter": null,
+			"adminParameter": null,
+			"tableParameter": null,
 			"lastTable": "categories",
 			"lastId": 3
 		},

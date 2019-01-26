@@ -5,7 +5,7 @@ use Redaxscript\Model;
 use function substr;
 
 /**
- * children class to detect the required language
+ * children class to detect the current language
  *
  * @since 2.0.0
  *

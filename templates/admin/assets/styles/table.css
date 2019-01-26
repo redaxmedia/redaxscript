@@ -12,7 +12,7 @@
 .rs-admin-table-default
 {
 	@extend %table-default;
-	color: gray(70);
+	color: gray(30);
 	font: 1.25rem var(--rs-admin-font-primary);
 
 	& caption,
@@ -28,19 +28,19 @@
 	& thead tr,
 	& tfoot tr
 	{
-		background: gray(30);
-		color: gray(200);
+		background: gray(10);
+		color: gray(80);
 	}
 
 	/** @section 1.2 body */
 
 	& tbody
 	{
-		background: gray(230);
+		background: gray(90);
 
 		& tr:not(:last-child)
 		{
-			border-bottom: 0.125rem solid gray(185);
+			border-bottom: 0.125rem solid gray(100);
 		}
 
 		& tr.rs-admin-is-children td:first-child
@@ -55,7 +55,7 @@
 
 		& tr.rs-admin-is-disabled
 		{
-			color: gray(185);
+			color: gray(70);
 			text-decoration: line-through;
 		}
 	}

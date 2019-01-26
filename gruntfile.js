@@ -84,25 +84,47 @@ module.exports = grunt =>
 		'shell:phpmdBase',
 		'shell:phpmdModules'
 	]);
-	grunt.registerTask('phpunit',
+	grunt.registerTask('test-unit',
 	[
-		'shell:phpunit'
+		'shell:testUnit'
 	]);
-	grunt.registerTask('phpunit-parallel',
+	grunt.registerTask('test-unit-parallel',
 	[
-		'shell:phpunitParallel'
+		'shell:testUnitParallel'
 	]);
-	grunt.registerTask('phpunit-mutation',
+	grunt.registerTask('test-unit-mutation',
 	[
-		'shell:phpunitMutation'
+		'shell:testUnitMutation'
+	]);
+	grunt.registerTask('test-acceptance',
+	[
+		'shell:createBuild',
+		'shell:testAcceptance',
+		'shell:removeBuild'
+	]);
+	grunt.registerTask('test-acceptance-parallel',
+	[
+		'shell:testAcceptanceParallel'
+	]);
+	grunt.registerTask('startHub',
+	[
+		'shell:startHub'
+	]);
+	grunt.registerTask('stopHub',
+	[
+		'shell:stopHub'
 	]);
 	grunt.registerTask('startServer',
 	[
 		'shell:startServer'
 	]);
-	grunt.registerTask('killPort',
+	grunt.registerTask('stopServer',
 	[
-		'shell:killPort'
+		'shell:stopServer'
+	]);
+	grunt.registerTask('stopWatch',
+	[
+		'shell:stopWatch'
 	]);
 	grunt.registerTask('openBrowser',
 	[
@@ -164,7 +186,8 @@ module.exports = grunt =>
 	grunt.registerTask('serve',
 	[
 		'build',
-		'killPort',
+		'stopServer',
+		'stopWatch',
 		'parallel:serve'
 	]);
 };

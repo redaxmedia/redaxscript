@@ -31,14 +31,14 @@
 
 .rs-box-header
 {
-	color: gray(200);
+	color: gray(80);
 	max-width: 70%;
 	overflow: hidden;
 	white-space: nowrap;
 
 	& a:hover
 	{
-		color: gray(255);
+		color: gray(100);
 	}
 }
 
@@ -46,7 +46,7 @@
 
 .rs-text-header
 {
-	color: gray(170);
+	color: gray(65);
 	display: none;
 	font-weight: bold;
 	margin-left: 0.125em;

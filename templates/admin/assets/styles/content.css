@@ -14,7 +14,7 @@
 
 .rs-admin-title-content
 {
-	color: gray(30);
+	color: gray(10);
 	font: bold 2rem var(--rs-admin-font-primary);
 	margin: 1em 0;
 }
@@ -36,9 +36,9 @@
 
 .rs-admin-code-default
 {
-	background: gray(240);
-	border: 0.125rem solid gray(215);
-	color: gray(100);
+	background: gray(95);
+	border: 0.125rem solid gray(85);
+	color: gray(40);
 	display: block;
 	font: 0.75em/1.25em var(--rs-admin-font-code);
 	padding: 1em;

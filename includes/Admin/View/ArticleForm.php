@@ -159,7 +159,7 @@ class ArticleForm extends ViewAbstract
 			])
 			->select($helperOption->getRobotArray(),
 			[
-				$article->id ? $article->robots : null
+				$article->robots
 			],
 			[
 				'id' => 'robots',
@@ -224,10 +224,7 @@ class ArticleForm extends ViewAbstract
 			[
 				'for' => 'sibling'
 			])
-			->select($helperOption->getContentArray('articles',
-			[
-				$article->id
-			]),
+			->select($helperOption->getSiblingForArticleArray($article->id),
 			[
 				$article->sibling
 			],
@@ -240,7 +237,7 @@ class ArticleForm extends ViewAbstract
 			[
 				'for' => 'category'
 			])
-			->select($helperOption->getContentArray('categories'),
+			->select($helperOption->getCategoryArray(),
 			[
 				$article->category
 			],
@@ -335,13 +332,13 @@ class ArticleForm extends ViewAbstract
 				[
 					'for' => 'access'
 				])
-				->select($helperOption->getAccessArray('groups'),
+				->select($helperOption->getGroupArray(),
 				(array)json_decode($article->access),
 				[
 					'id' => 'access',
 					'name' => 'access[]',
 					'multiple' => 'multiple',
-					'size' => count($helperOption->getAccessArray('groups'))
+					'size' => count($helperOption->getGroupArray())
 				])
 				->append('</li>');
 		}

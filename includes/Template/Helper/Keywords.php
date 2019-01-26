@@ -59,10 +59,6 @@ class Keywords extends HelperAbstract
 
 		/* handle keywords */
 
-		if ($keywords)
-		{
-			return $keywords;
-		}
-		return $settingKeywords;
+		return $keywords ? : $settingKeywords;
 	}
 }

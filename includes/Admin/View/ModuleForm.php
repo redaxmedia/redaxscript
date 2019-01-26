@@ -188,13 +188,13 @@ class ModuleForm extends ViewAbstract
 				[
 					'for' => 'access'
 				])
-				->select($helperOption->getAccessArray('groups'),
+				->select($helperOption->getGroupArray(),
 				(array)json_decode($module->access),
 				[
 					'id' => 'access',
 					'name' => 'access[]',
 					'multiple' => 'multiple',
-					'size' => count($helperOption->getAccessArray('groups'))
+					'size' => count($helperOption->getGroupArray())
 				])
 				->append('</li>');
 		}

@@ -37,9 +37,9 @@
 
 	&:before
 	{
-		background: gray(0, 0.1);
+		background: gray(0 / 0.1);
 		border-radius: 50%;
-		color: gray(255);
+		color: gray(100);
 		font: 1.25em/2.25em 'icon social sharer';
 		left: 0;
 		position: absolute;
@@ -51,7 +51,7 @@
 
 	&:hover:before
 	{
-		background: gray(0, 0.4);
+		background: gray(0 / 0.4);
 	}
 }
 

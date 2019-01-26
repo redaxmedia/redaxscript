@@ -340,7 +340,7 @@ class SettingForm extends ViewAbstract
 			[
 				'for' => 'homepage'
 			])
-			->select($helperOption->getContentArray('articles'),
+			->select($helperOption->getArticleArray(),
 			[
 				$settingModel->get('homepage')
 			],

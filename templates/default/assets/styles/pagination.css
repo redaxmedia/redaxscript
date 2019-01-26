@@ -31,7 +31,7 @@
 	& a
 	{
 		background: var(--rs-color-tertiary);
-		color: gray(255);
+		color: gray(100);
 		transition: background 0.2s;
 
 		&:hover
@@ -42,8 +42,8 @@
 
 	& span
 	{
-		background: gray(230);
-		color: gray(70);
+		background: gray(90);
+		color: gray(30);
 	}
 
 	/* icons */

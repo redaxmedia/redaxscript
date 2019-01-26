@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<phpunit forceCoversAnnotation="true" convertErrorsToExceptions="true" convertWarningsToExceptions="true" bootstrap="tests/acceptance/bootstrap.php">
+
+	<!-- listeners -->
+
+	<listeners>
+		<listener class="JohnKary\PHPUnit\Listener\SpeedTrapListener">
+			<arguments>
+				<array>
+					<element key="slowThreshold">
+						<integer>10000</integer>
+					</element>
+				</array>
+			</arguments>
+		</listener>
+	</listeners>
+
+	<!-- testsuites -->
+
+	<testsuites>
+
+		<!-- installation-->
+
+		<testsuite name="acceptance">
+			<file>tests/acceptance/InstallationTest.php</file>
+		</testsuite>
+
+		<!-- login-->
+
+		<testsuite name="acceptance">
+			<file>tests/acceptance/LoginTest.php</file>
+		</testsuite>
+</testsuites>
+</phpunit>

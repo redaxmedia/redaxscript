@@ -11,5 +11,5 @@
 .mce-item-table th,
 .mce-item-table caption
 {
-	border: 1px dashed gray(0, 0.1);
+	border: 1px dashed gray(0 / 0.1);
 }

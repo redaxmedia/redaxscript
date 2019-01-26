@@ -10,7 +10,7 @@
 {
 	background: var(--rs-color-tertiary);
 	box-sizing: border-box;
-	color: gray(200);
+	color: gray(80);
 	padding: 1em;
 	word-wrap: break-word;
 

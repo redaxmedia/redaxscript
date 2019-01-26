@@ -12,13 +12,13 @@
 .rs-admin-button-default
 {
 	@extend %rs-admin-button;
-	background: gray(50);
-	color: gray(255);
+	background: gray(20);
+	color: gray(100);
 	font-size: 0.875em;
 
 	&:hover
 	{
-		background: gray(70);
+		background: gray(30);
 	}
 
 	&:active
@@ -28,8 +28,8 @@
 
 	&[disabled]
 	{
-		background: gray(200);
-		color: gray(150);
+		background: gray(80);
+		color: gray(60);
 	}
 
 	&.rs-admin-button-create

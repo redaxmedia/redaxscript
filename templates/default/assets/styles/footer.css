@@ -13,7 +13,7 @@
 	background: var(--rs-color-tertiary);
 	bottom: 0;
 	box-sizing: border-box;
-	color: gray(200);
+	color: gray(80);
 	height: 5em;
 	left: 0;
 	padding: 1.5em 0;
@@ -23,7 +23,7 @@
 
 	& a:hover
 	{
-		color: gray(255);
+		color: gray(100);
 	}
 
 	& .rs-text-about,

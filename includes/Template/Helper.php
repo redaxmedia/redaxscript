@@ -78,7 +78,7 @@ class Helper
 
 	public static function getTitle() : ?string
 	{
-		$title = new Helper\Title(Registry::getInstance());
+		$title = new Helper\Title(Registry::getInstance(), Language::getInstance());
 		return $title->process();
 	}
 
@@ -92,7 +92,7 @@ class Helper
 
 	public static function getCanonical() : ?string
 	{
-		$canonical = new Helper\Canonical(Registry::getInstance());
+		$canonical = new Helper\Canonical(Registry::getInstance(), Language::getInstance());
 		return $canonical->process();
 	}
 
@@ -106,7 +106,7 @@ class Helper
 
 	public static function getDescription() : ?string
 	{
-		$description = new Helper\Description(Registry::getInstance());
+		$description = new Helper\Description(Registry::getInstance(), Language::getInstance());
 		return $description->process();
 	}
 
@@ -120,7 +120,7 @@ class Helper
 
 	public static function getKeywords() : ?string
 	{
-		$keywords = new Helper\Keywords(Registry::getInstance());
+		$keywords = new Helper\Keywords(Registry::getInstance(), Language::getInstance());
 		return $keywords->process();
 	}
 
@@ -134,7 +134,7 @@ class Helper
 
 	public static function getRobots() : ?string
 	{
-		$robots = new Helper\Robots(Registry::getInstance());
+		$robots = new Helper\Robots(Registry::getInstance(), Language::getInstance());
 		return $robots->process();
 	}
 
@@ -162,7 +162,7 @@ class Helper
 
 	public static function getSubset() : ?string
 	{
-		$subset = new Helper\Subset(Registry::getInstance());
+		$subset = new Helper\Subset(Registry::getInstance(), Language::getInstance());
 		return $subset->process();
 	}
 
@@ -176,7 +176,7 @@ class Helper
 
 	public static function getDirection() : ?string
 	{
-		$direction = new Helper\Direction(Registry::getInstance());
+		$direction = new Helper\Direction(Registry::getInstance(), Language::getInstance());
 		return $direction->process();
 	}
 
@@ -192,7 +192,7 @@ class Helper
 
 	public static function getClass(string $prefix = null) : ?string
 	{
-		$client = new Helper\Client(Registry::getInstance());
+		$client = new Helper\Client(Registry::getInstance(), Language::getInstance());
 		return $client->process($prefix);
 	}
 

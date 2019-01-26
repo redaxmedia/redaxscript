@@ -20,7 +20,7 @@
 
 	&:before
 	{
-		color: gray(185);
+		color: gray(70);
 		font-size: 1.75em;
 		position: absolute;
 		right: 0.5em;
@@ -38,7 +38,7 @@
 	{
 		&:before
 		{
-			color: gray(70);
+			color: gray(30);
 			cursor: move;
 			pointer-events: all;
 		}
@@ -55,9 +55,9 @@
 .gu-mirror
 {
 	@extend %table-default;
-	background: gray(230);
+	background: gray(90);
 	box-shadow: inset 0 0 0 0.25em var(--rs-admin-color-primary);
-	color: gray(70);
+	color: gray(30);
 	display: table;
 	font: 1.25rem var(--rs-admin-font-primary);
 	position: fixed;
@@ -75,5 +75,5 @@
 
 .gu-transit
 {
-	background: gray(210);
+	background: gray(80);
 }

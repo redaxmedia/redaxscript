@@ -23,14 +23,14 @@
 
 .rs-install-content
 {
-	background: gray(255);
+	background: gray(100);
 	border-radius: 0.125em;
 	padding: 1.5em;
 }
 
 .rs-install-title
 {
-	color: gray(200);
+	color: gray(80);
 	font-size: 3.25em;
 	font-weight: normal;
 	line-height: 1em;
@@ -51,7 +51,7 @@
 
 		&:before
 		{
-			background: var(--rs-url-branding) no-repeat center/ 55%, linear-gradient(to top, gray(230), gray(255));
+			background: var(--rs-url-branding) no-repeat center/ 55%, linear-gradient(to top, gray(90), gray(100));
 			border-radius: 0.05em;
 			content: '';
 			display: inline-block;

@@ -13,7 +13,7 @@
 {
 	@extend %rs-button;
 	background: var(--rs-color-secondary);
-	color: gray(255);
+	color: gray(100);
 	font-size: 0.875em;
 
 	&:hover

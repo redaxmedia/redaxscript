@@ -14,7 +14,7 @@ rs-module,
 rs-registry,
 rs-template
 {
-	border: 0.125em dashed gray(0, 0.1);
+	border: 0.125em dashed gray(0 / 0.1);
 	display: block;
 	margin: 1em;
 	min-height: 1.25em;

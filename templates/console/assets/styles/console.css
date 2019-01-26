@@ -9,7 +9,7 @@
 .rs-console-body
 {
 	background: var(--rs-console-color-primary);
-	color: gray(255);
+	color: gray(100);
 	font: 1em var(--rs-console-font-primary);
 	padding: 0.25em;
 }

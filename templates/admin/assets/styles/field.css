@@ -13,10 +13,10 @@
 .rs-admin-field-select,
 .rs-admin-field-textarea
 {
-	background: gray(240);
-	border: 0.125rem solid gray(215);
+	background: gray(95);
+	border: 0.125rem solid gray(85);
 	border-radius: 0.125em;
-	color: gray(100);
+	color: gray(40);
 	display: block;
 	font: 0.875em var(--rs-admin-font-secondary);
 	padding: 0.5em;
@@ -25,13 +25,13 @@
 
 	&:hover
 	{
-		border-color: gray(170);
+		border-color: gray(65);
 	}
 
 	&:focus
 	{
-		background: gray(255);
-		border-color: gray(185);
+		background: gray(100);
+		border-color: gray(70);
 	}
 
 	&[disabled],

@@ -17,22 +17,13 @@
 
 .rs-admin-label-accordion
 {
-	background: gray(230);
-	color: gray(70);
-	cursor: pointer;
 	display: flex;
 	font-weight: bold;
 	line-height: 2.5em;
 	padding: 0 1em;
 
-	&:hover
-	{
-		background: gray(240);
-	}
-
 	&:after
 	{
-		@extend %rs-admin-icon-plus;
 		flex: 1;
 		font-size: 1.5rem;
 		text-align: right;
@@ -40,14 +31,14 @@
 
 	& ~ .rs-admin-label-accordion
 	{
-		border-top: 0.125rem solid gray(185);
+		margin-top: 0.125rem;
 	}
 }
 
 .rs-admin-fn-status-accordion:checked + .rs-admin-label-accordion
 {
-	background: gray(30);
-	color: gray(200);
+	background: gray(10);
+	color: gray(80);
 
 	&:after
 	{
@@ -55,10 +46,27 @@
 	}
 }
 
+.rs-admin-fn-status-accordion:not(:checked) + .rs-admin-label-accordion
+{
+	background: gray(90);
+	color: gray(30);
+	cursor: pointer;
+
+	&:hover
+	{
+		background: gray(95);
+	}
+
+	&:after
+	{
+		@extend %rs-admin-icon-plus;
+	}
+}
+
 /** @section 1.2 box */
 
 .rs-admin-box-accordion
 {
-	background: gray(230);
+	background: gray(90);
 	padding: 0.5em 1em;
 }

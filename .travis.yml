@@ -24,7 +24,6 @@ jobs:
    addons:
     apt:
      packages:
-     - lftp
      - fontforge
 
    env:
@@ -38,9 +37,9 @@ jobs:
    script:
    - grunt build
 
- - &test
+ - &test-unit
    env:
-   - TEST
+   - TEST=unit
 
    services:
    - mysql
@@ -51,23 +50,48 @@ jobs:
    - gem install mailcatcher
 
    before_script:
-   - echo sendmail_path=/usr/bin/env catchmail --smtp-ip 127.0.0.1 --smtp-port 1025 -f test@test.com >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+   - echo sendmail_path=/usr/bin/env catchmail >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+   - mailcatcher
    - mysql -u root -e 'create database test'
    - mysqladmin -u root password test
    - psql -U postgres -c 'create database test'
    - psql -U postgres -c 'alter user postgres with password '\'test\'
 
    script:
-   - mailcatcher
    - DB_URL=mysql://root:test@127.0.0.1/test vendor/bin/phpunit
    - DB_URL=postgres://postgres:test@127.0.0.1/test vendor/bin/phpunit
    - DB_URL=sqlite://test.sqlite vendor/bin/phpunit
 
- - <<: *test
+ - <<: *test-unit
    php: 7.3
 
- - <<: *test
+ - <<: *test-unit
    php: nightly
+
+ - &test-acceptance
+   addons:
+    apt:
+     packages:
+     - fontforge
+     - google-chrome-stable
+
+   env:
+   - TEST=acceptance
+
+   install:
+   - composer install
+   - nvm install 10
+   - npm install --global grunt-cli
+   - npm install
+
+   before_script:
+   - mkdir build
+   - grunt startHub &
+   - grunt serve &
+   - sleep 60
+
+   script:
+   - vendor/bin/phpunit --configuration=phpunit.acceptance.xml
 
  - &mutation
    env:
@@ -78,18 +102,17 @@ jobs:
    - gem install mailcatcher
 
    before_script:
-   - echo sendmail_path=/usr/bin/env catchmail --smtp-ip 127.0.0.1 --smtp-port 1025 -f test@test.com >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+   - echo sendmail_path=/usr/bin/env catchmail >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+   - mailcatcher
 
    script:
-   - mailcatcher
    - vendor/bin/infection --threads=10 --only-covered
 
- - <<: *test
+ - <<: *test-unit
    env:
    - REPORT=code-coverage
 
    script:
-   - mailcatcher
    - DB_URL=mysql://root:test@127.0.0.1/test vendor/bin/phpunit --coverage-clover=build/mysql.xml
    - DB_URL=postgres://postgres:test@127.0.0.1/test vendor/bin/phpunit --coverage-clover=build/pgsql.xml
    - DB_URL=sqlite://test.sqlite vendor/bin/phpunit --coverage-clover=build/sqlite.xml

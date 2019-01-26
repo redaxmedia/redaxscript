@@ -28,18 +28,18 @@
 	& tfoot td
 	{
 		background: var(--rs-color-tertiary);
-		color: gray(255);
+		color: gray(100);
 	}
 
 	/** @section 1.2 body */
 
 	& tbody
 	{
-		background: gray(200);
+		background: gray(80);
 
 		& tr:not(:last-child)
 		{
-			border-bottom: 0.125rem solid gray(255);
+			border-bottom: 0.125rem solid gray(100);
 		}
 	}
 }

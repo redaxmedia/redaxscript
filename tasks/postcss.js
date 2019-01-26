@@ -209,7 +209,10 @@ module.exports = () =>
 				require('postcss-custom-selectors'),
 				require('postcss-nesting'),
 				require('postcss-extend'),
-				require('postcss-color-gray'),
+				require('postcss-color-gray')(
+				{
+					preserve: false
+				}),
 				require('postcss-color-function'),
 				require('postcss-rtl'),
 				require('autoprefixer')(

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<phpunit forceCoversAnnotation="true" convertErrorsToExceptions="true" convertWarningsToExceptions="true" bootstrap="tests/phpunit/bootstrap.php">
+<phpunit forceCoversAnnotation="true" convertErrorsToExceptions="true" convertWarningsToExceptions="true" bootstrap="tests/unit/bootstrap.php">
 
 	<!-- listeners -->
 
@@ -33,257 +33,256 @@
 	<!-- testsuites -->
 
 	<testsuites>
-
 		<!-- admin controller -->
 
 		<testsuite name="admin-controller">
-			<!--<directory>tests/phpunit/Admin/Controller</directory>-->
+			<!--<directory>tests/unit/Admin/Controller</directory>-->
 		</testsuite>
 
 		<!-- admin html -->
 
 		<testsuite name="admin-html">
-			<directory>tests/phpunit/Admin/Html</directory>
+			<directory>tests/unit/Admin/Html</directory>
 		</testsuite>
 
 		<!-- admin model -->
 
 		<testsuite name="admin-model">
-			<!--<directory>tests/phpunit/Admin/Model</directory>-->
+			<!--<directory>tests/unit/Admin/Model</directory>-->
 		</testsuite>
 
 		<!-- admin router -->
 
 		<testsuite name="admin-router">
-			<directory>tests/phpunit/Admin/Router</directory>
+			<directory>tests/unit/Admin/Router</directory>
 		</testsuite>
 
 		<!-- admin template -->
 
 		<testsuite name="admin-template">
-			<directory>tests/phpunit/Admin/Template</directory>
+			<directory>tests/unit/Admin/Template</directory>
 		</testsuite>
 
 		<!-- admin view -->
 
 		<testsuite name="admin-view">
-			<directory>tests/phpunit/Admin/View</directory>
+			<directory>tests/unit/Admin/View</directory>
 		</testsuite>
 
 		<!-- admin messenger -->
 
 		<testsuite name="admin-messenger">
-			<!--<file>tests/phpunit/Admin/MessengerTest.php</file>-->
+			<!--<file>tests/unit/Admin/MessengerTest.php</file>-->
 		</testsuite>
 
 		<!-- asset -->
 
 		<testsuite name="asset">
-			<directory>tests/phpunit/Asset</directory>
+			<directory>tests/unit/Asset</directory>
 		</testsuite>
 
 		<!-- bootstrap -->
 
 		<testsuite name="bootstrap">
-			<directory>tests/phpunit/Bootstrap</directory>
+			<directory>tests/unit/Bootstrap</directory>
 		</testsuite>
 
 		<!-- client -->
 
 		<testsuite name="client">
-			<directory>tests/phpunit/Client</directory>
+			<directory>tests/unit/Client</directory>
 		</testsuite>
 
 		<!-- console -->
 
 		<testsuite name="console">
-			<directory>tests/phpunit/Console</directory>
+			<directory>tests/unit/Console</directory>
 		</testsuite>
 
 		<!-- content -->
 
 		<testsuite name="content">
-			<file>tests/phpunit/Content/ParserTest.php</file>
+			<file>tests/unit/Content/ParserTest.php</file>
 		</testsuite>
 
 		<!-- controller -->
 
 		<testsuite name="controller">
-			<directory>tests/phpunit/Controller</directory>
+			<directory>tests/unit/Controller</directory>
 		</testsuite>
 
 		<!-- detector -->
 
 		<testsuite name="detector">
-			<directory>tests/phpunit/Detector</directory>
+			<directory>tests/unit/Detector</directory>
 		</testsuite>
 
 		<!-- filesystem -->
 
 		<testsuite name="filesystem">
-			<directory>tests/phpunit/Filesystem</directory>
+			<directory>tests/unit/Filesystem</directory>
 		</testsuite>
 
 		<!-- filter -->
 
 		<testsuite name="filter">
-			<directory>tests/phpunit/Filter</directory>
+			<directory>tests/unit/Filter</directory>
 		</testsuite>
 
 		<!-- head -->
 
 		<testsuite name="head">
-			<directory>tests/phpunit/Head</directory>
+			<directory>tests/unit/Head</directory>
 		</testsuite>
 
 		<!-- html -->
 
 		<testsuite name="html">
-			<directory>tests/phpunit/Html</directory>
+			<directory>tests/unit/Html</directory>
 		</testsuite>
 
 		<!-- navigation -->
 
 		<testsuite name="navigation">
-			<directory>tests/phpunit/Navigation</directory>
+			<directory>tests/unit/Navigation</directory>
 		</testsuite>
 
 		<!-- model -->
 
 		<testsuite name="model">
-			<directory>tests/phpunit/Model</directory>
+			<directory>tests/unit/Model</directory>
 		</testsuite>
 
 		<!-- module -->
 
 		<testsuite name="module">
-			<directory>tests/phpunit/Module</directory>
+			<directory>tests/unit/Module</directory>
 		</testsuite>
 
 		<!-- router -->
 
 		<testsuite name="router">
-			<directory>tests/phpunit/Router</directory>
+			<directory>tests/unit/Router</directory>
 		</testsuite>
 
 		<!-- server -->
 
 		<testsuite name="server">
-			<directory>tests/phpunit/Server</directory>
+			<directory>tests/unit/Server</directory>
 		</testsuite>
 
 		<!-- template -->
 
 		<testsuite name="template">
-			<directory>tests/phpunit/Template</directory>
+			<directory>tests/unit/Template</directory>
 		</testsuite>
 
 		<!-- validator -->
 
 		<testsuite name="validator">
-			<directory>tests/phpunit/Validator</directory>
+			<directory>tests/unit/Validator</directory>
 		</testsuite>
 
 		<!-- view -->
 
 		<testsuite name="view">
-			<directory>tests/phpunit/View</directory>
+			<directory>tests/unit/View</directory>
 		</testsuite>
 
 		<!-- auth -->
 
 		<testsuite name="auth">
-			<file>tests/phpunit/AuthTest.php</file>
+			<file>tests/unit/AuthTest.php</file>
 		</testsuite>
 
 		<!-- autoloader -->
 
 		<testsuite name="autoloader">
-			<file>tests/phpunit/AutoloaderTest.php</file>
+			<file>tests/unit/AutoloaderTest.php</file>
 		</testsuite>
 
 		<!-- captcha -->
 
 		<testsuite name="captcha">
-			<file>tests/phpunit/CaptchaTest.php</file>
+			<file>tests/unit/CaptchaTest.php</file>
 		</testsuite>
 
 		<!-- config -->
 
 		<testsuite name="config">
-			<file>tests/phpunit/ConfigTest.php</file>
+			<file>tests/unit/ConfigTest.php</file>
 		</testsuite>
 
 		<!-- dater -->
 
 		<testsuite name="dater">
-			<file>tests/phpunit/DaterTest.php</file>
+			<file>tests/unit/DaterTest.php</file>
 		</testsuite>
 
 		<!-- db -->
 
 		<testsuite name="db">
-			<file>tests/phpunit/DbTest.php</file>
+			<file>tests/unit/DbTest.php</file>
 		</testsuite>
 
 		<!-- hash -->
 
 		<testsuite name="hash">
-			<file>tests/phpunit/HashTest.php</file>
+			<file>tests/unit/HashTest.php</file>
 		</testsuite>
 
 		<!-- header -->
 
 		<testsuite name="header">
-			<file>tests/phpunit/HeaderTest.php</file>
+			<file>tests/unit/HeaderTest.php</file>
 		</testsuite>
 
 		<!-- installer -->
 
 		<testsuite name="installer">
-			<file>tests/phpunit/InstallerTest.php</file>
+			<file>tests/unit/InstallerTest.php</file>
 		</testsuite>
 
 		<!-- language -->
 
 		<testsuite name="language">
-			<file>tests/phpunit/LanguageTest.php</file>
+			<file>tests/unit/LanguageTest.php</file>
 		</testsuite>
 
 		<!-- mailer -->
 
 		<testsuite name="mailer">
-			<file>tests/phpunit/MailerTest.php</file>
+			<file>tests/unit/MailerTest.php</file>
 		</testsuite>
 
 		<!-- messenger -->
 
 		<testsuite name="messenger">
-			<file>tests/phpunit/MessengerTest.php</file>
+			<file>tests/unit/MessengerTest.php</file>
 		</testsuite>
 
 		<!-- registry -->
 
 		<testsuite name="registry">
-			<file>tests/phpunit/RegistryTest.php</file>
+			<file>tests/unit/RegistryTest.php</file>
 		</testsuite>
 
 		<!-- reader -->
 
 		<testsuite name="reader">
-			<file>tests/phpunit/ReaderTest.php</file>
+			<file>tests/unit/ReaderTest.php</file>
 		</testsuite>
 
 		<!-- request -->
 
 		<testsuite name="request">
-			<file>tests/phpunit/RequestTest.php</file>
+			<file>tests/unit/RequestTest.php</file>
 		</testsuite>
 
 		<!-- singleton -->
 
 		<testsuite name="singleton">
-			<file>tests/phpunit/SingletonTest.php</file>
+			<file>tests/unit/SingletonTest.php</file>
 		</testsuite>
 	</testsuites>
 </phpunit>

@@ -158,7 +158,7 @@ class CategoryForm extends ViewAbstract
 			])
 			->select($helperOption->getRobotArray(),
 			[
-				$category->id ? $category->robots : null
+				$category->robots
 			],
 			[
 				'id' => 'robots',
@@ -210,10 +210,7 @@ class CategoryForm extends ViewAbstract
 			[
 				'for' => 'sibling'
 			])
-			->select($helperOption->getContentArray('categories',
-			[
-				$category->id
-			]),
+			->select($helperOption->getSiblingForCategoryArray($category->id),
 			[
 				$category->sibling
 			],
@@ -226,10 +223,7 @@ class CategoryForm extends ViewAbstract
 			[
 				'for' => 'parent'
 			])
-			->select($helperOption->getContentArray('categories',
-			[
-				$category->id
-			]),
+			->select($helperOption->getParentForCategoryArray($category->id),
 			[
 				$category->parent
 			],
@@ -285,13 +279,13 @@ class CategoryForm extends ViewAbstract
 				[
 					'for' => 'access'
 				])
-				->select($helperOption->getAccessArray('groups'),
+				->select($helperOption->getGroupArray(),
 				(array)json_decode($category->access),
 				[
 					'id' => 'access',
 					'name' => 'access[]',
 					'multiple' => 'multiple',
-					'size' => count($helperOption->getAccessArray('groups'))
+					'size' => count($helperOption->getGroupArray())
 				])
 				->append('</li>');
 		}

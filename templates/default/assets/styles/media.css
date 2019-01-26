@@ -17,11 +17,11 @@
 {
 	& rect
 	{
-		fill: gray(0, 0.1);
+		fill: gray(0 / 0.1);
 	}
 
 	& path
 	{
-		fill: gray(255, 1);
+		fill: gray(100);
 	}
 }

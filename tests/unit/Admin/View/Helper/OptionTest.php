@@ -372,7 +372,7 @@ class OptionTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testGetContentArray
+	 * testGetGroupArray
 	 *
 	 * @since 3.0.0
 	 *
@@ -381,7 +381,7 @@ class OptionTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetContentArray(array $expectArray = [])
+	public function testGetGroupArray(array $expectArray = [])
 	{
 		/* setup */
 
@@ -389,38 +389,10 @@ class OptionTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actualArray = $helperOption->getContentArray('articles',
-		[
-			3,
-		]);
+		$actualArray = $helperOption->getGroupArray();
 
 		/* compare */
 
-		$this->assertEquals($expectArray['content'], $actualArray);
-	}
-
-	/**
-	 * testGetAccessArray
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param array $expectArray
-	 *
-	 * @dataProvider providerAutoloader
-	 */
-
-	public function testGetAccessArray(array $expectArray = [])
-	{
-		/* setup */
-
-		$helperOption = new Helper\Option($this->_language);
-
-		/* actual */
-
-		$actualArray = $helperOption->getAccessArray('groups');
-
-		/* compare */
-
-		$this->assertEquals($expectArray['access'], $actualArray);
+		$this->assertEquals($expectArray['group'], $actualArray);
 	}
 }

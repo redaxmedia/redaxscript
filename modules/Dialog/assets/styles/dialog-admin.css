@@ -16,7 +16,7 @@
 {
 	@extend %overlay-dialog;
 	animation: fade-in 0.4s;
-	background: gray(0, 0.3);
+	background: gray(0 / 0.3);
 }
 
 /** @section 1.2 component */
@@ -43,8 +43,8 @@
 
 .rs-admin-title-dialog
 {
-	background: gray(30);
-	color: gray(200);
+	background: gray(10);
+	color: gray(80);
 	font-size: 1em;
 	font-weight: bold;
 	line-height: 2.5em;
@@ -55,6 +55,6 @@
 
 .rs-admin-box-dialog
 {
-	background: gray(230);
+	background: gray(90);
 	padding: 1em;
 }

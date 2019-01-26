@@ -59,10 +59,6 @@ class Description extends HelperAbstract
 
 		/* handle description */
 
-		if ($description)
-		{
-			return $description;
-		}
-		return $settingDescription;
+		return $description ? : $settingDescription;
 	}
 }

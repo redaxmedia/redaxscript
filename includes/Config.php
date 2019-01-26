@@ -3,8 +3,9 @@ namespace Redaxscript;
 
 use function array_key_exists;
 use function array_keys;
+use function basename;
+use function dirname;
 use function end;
-use function file_put_contents;
 use function is_array;
 use function is_file;
 use function parse_url;
@@ -24,12 +25,12 @@ use function trim;
 class Config extends Singleton
 {
 	/**
-	 * path to config file
+	 * path to the config
 	 *
 	 * @var string
 	 */
 
-	protected static $_configFile = 'config.php';
+	protected static $_configPath = 'config.php';
 
 	/**
 	 * array of the config
@@ -44,19 +45,19 @@ class Config extends Singleton
 	 *
 	 * @since 2.4.0
 	 *
-	 * @param string $configFile file with config
+	 * @param string $configPath path to the config
 	 */
 
-	public function init(string $configFile = null)
+	public function init(string $configPath = null)
 	{
-		if (is_file($configFile))
+		if (is_file($configPath))
 		{
-			self::$_configFile = $configFile;
+			self::$_configPath = $configPath;
 		}
 
 		/* load config */
 
-		$configArray = include(self::$_configFile);
+		$configArray = include(self::$_configPath);
 		if (is_array($configArray))
 		{
 			self::$_configArray = $configArray;
@@ -120,7 +121,7 @@ class Config extends Singleton
 	}
 
 	/**
-	 * write config to file
+	 * write the config
 	 *
 	 * @since 2.4.0
 	 *
@@ -132,7 +133,7 @@ class Config extends Singleton
 		$configKeys = array_keys(self::$_configArray);
 		$lastKey = end($configKeys);
 
-		/* process config */
+		/* collect content */
 
 		$content = '<?php' . PHP_EOL . 'return' . PHP_EOL . '[' . PHP_EOL;
 		foreach (self::$_configArray as $key => $value)
@@ -153,9 +154,9 @@ class Config extends Singleton
 		}
 		$content .= '];';
 
-		/* write to file */
+		/* write content */
 
-		return file_put_contents(self::$_configFile, $content) > 0;
+		return $this->_writeContent($content);
 	}
 
 	/**
@@ -167,5 +168,22 @@ class Config extends Singleton
 	public function clear()
 	{
 		self::$_configArray = [];
+	}
+
+	/**
+	 * write content to file
+	 *
+	 * @since 2.4.0
+	 *
+	 * @param string|null $content
+	 *
+	 * @return bool
+	 */
+
+	protected function _writeContent(string $content = null) : bool
+	{
+		$filesystem = new Filesystem\File();
+		$filesystem->init(dirname(self::$_configPath));
+		return $filesystem->writeFile(basename (self::$_configPath), $content);
 	}
 }

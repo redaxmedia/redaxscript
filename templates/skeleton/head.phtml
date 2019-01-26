@@ -28,6 +28,7 @@
 <?php echo Tag::link()
 	->init()
 	->append(['href' => Helper::getCanonical(), 'rel' => 'canonical'])
+	->append(['href' => 'data:image/png;base64,', 'rel' => 'shortcut icon'])
 	->appendFile(
 	[
 		'https://fonts.googleapis.com/css?family=Raleway:300,700&amp;subset=' . Helper::getSubset(),

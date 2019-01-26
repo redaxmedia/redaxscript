@@ -244,13 +244,13 @@ class UserForm extends ViewAbstract
 					[
 						'for' => 'groups'
 					])
-					->select($helperOption->getAccessArray('groups'),
+					->select($helperOption->getGroupArray(),
 					(array)json_decode($user->groups),
 					[
 						'id' => 'groups',
 						'name' => 'groups[]',
 						'multiple' => 'multiple',
-						'size' => count($helperOption->getAccessArray('groups'))
+						'size' => count($helperOption->getGroupArray())
 					])
 					->append('</li>');
 			}

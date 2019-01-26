@@ -75,13 +75,7 @@
 				"Select": "null",
 				"default": "default"
 			},
-			"content":
-			{
-				"Select": "null",
-				"Article One (1)": 1,
-				"Article Two (2)": 2
-			},
-			"access":
+			"group":
 			{
 				"Group One": 1,
 				"Group Two": 2

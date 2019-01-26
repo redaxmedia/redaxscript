@@ -49,33 +49,57 @@ module.exports = grunt =>
 		{
 			command: run('vendor/bin/phpmd modules text unusedcode')
 		},
-		phpunit:
+		testUnit:
 		{
 			command: run('vendor/bin/phpunit')
 		},
-		phpunitParallel:
+		testUnitParallel:
 		{
 			command: run('vendor/bin/paratest --processes=10')
 		},
-		phpunitMutation:
+		testUnitMutation:
 		{
 			command: run('vendor/bin/infection --threads=10 --only-covered')
 		},
+		testAcceptance:
+		{
+			command: run('vendor/bin/phpunit --configuration=phpunit.acceptance.xml')
+		},
+		testAcceptanceParallel:
+		{
+			command: run('vendor/bin/paratest --processes=10 --configuration=phpunit.acceptance.xml')
+		},
+		startHub:
+		{
+			command: run('docker run --net=host selenium/standalone-chrome-debug:3.141.59-europium')
+		},
+		stopHub:
+		{
+			command: run('kill-port 4444')
+		},
 		startServer:
 		{
-			command: grunt.option('D') || grunt.option('debug-mode') ? 'DEBUG=true php -S localhost:8000' : 'php -S localhost:8000'
+			command: grunt.option('D') || grunt.option('debug-mode') ? run('DEBUG=true php -S localhost:8000') : run('php -S localhost:8000')
 		},
-		killPort:
+		stopServer:
 		{
-			command: 'kill-port 7000 && kill-port 8000'
+			command: run('kill-port 8000')
+		},
+		stopWatch:
+		{
+			command: run('kill-port 7000')
 		},
 		openBrowser:
 		{
-			command: 'opn http://localhost:8000'
+			command: run('opn http://localhost:8000')
+		},
+		createBuild:
+		{
+			command: run('make-dir build')
 		},
 		removeBuild:
 		{
-			command: 'del-cli build'
+			command: run('del build')
 		},
 		options:
 		{

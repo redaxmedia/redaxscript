@@ -15,7 +15,7 @@
 
 .rs-admin-list-panel
 {
-	color: gray(185);
+	color: gray(70);
 	font: bold 1rem var(--rs-admin-font-primary);
 	position: relative;
 	z-index: 1000;
@@ -23,7 +23,7 @@
 	& .rs-admin-label-panel,
 	& .rs-admin-link-panel
 	{
-		background: gray(30);
+		background: gray(10);
 		cursor: pointer;
 		display: block;
 		line-height: 3.5em;
@@ -139,10 +139,10 @@
 
 	& .rs-admin-sup-panel-notification
 	{
-		background: gray(185);
+		background: gray(70);
 		border-radius: 50%;
-		box-shadow: 0 0 0 0.25em gray(30);
-		color: gray(30);
+		box-shadow: 0 0 0 0.25em gray(10);
+		color: gray(10);
 		font: bold 0.75em/1.5em var(--rs-admin-font-secondary);
 		left: 2.5em;
 		line-height: 1.25em;

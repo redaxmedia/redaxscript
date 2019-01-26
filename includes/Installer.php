@@ -411,7 +411,7 @@ class Installer
 			'subject' => $this->_language->get('name', '_package'),
 			'notification' => 0,
 			'charset' => 'utf-8',
-			'divider' => ' - ',
+			'divider' => $this->_language->get('divider'),
 			'zone' => 'Europe/Berlin',
 			'time' => 'H:i',
 			'date' => 'd.m.Y',

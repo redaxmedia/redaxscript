@@ -20,9 +20,7 @@
 
 .rs-label-tab
 {
-	background: var(--rs-color-tertiary);
-	color: gray(255);
-	cursor: pointer;
+	color: gray(100);
 	display: flex;
 	font-weight: bold;
 	line-height: 2.5em;
@@ -33,7 +31,7 @@
 
 .rs-box-tab
 {
-	background: gray(200);
+	background: gray(80);
 	padding: 0.5em 1em;
 }
 
@@ -43,15 +41,21 @@
 
 @media (--media-medium-min)
 {
-	.rs-label-tab
+	.rs-label-tab ~ .rs-label-tab
 	{
-		margin-right: 0.25em;
+		margin-left: 0.25rem;
 	}
 
 	.rs-fn-status-tab:checked + .rs-label-tab
 	{
-		background: gray(200);
-		color: gray(70);
+		background: gray(80);
+		color: gray(30);
+	}
+
+	.rs-fn-status-tab:not(:checked) + .rs-label-tab
+	{
+		background: var(--rs-color-tertiary);
+		cursor: pointer;
 	}
 }
 
@@ -61,14 +65,8 @@
 {
 	.rs-label-tab
 	{
-		&:hover
-		{
-			background: var(--rs-color-primary);
-		}
-
 		&:after
 		{
-			@extend %rs-icon-plus;
 			flex: 1;
 			font-size: 1.5rem;
 			text-align: right;
@@ -76,7 +74,7 @@
 
 		& ~ .rs-label-tab
 		{
-			border-top: 0.125rem solid gray(255);
+			margin-top: 0.125rem;
 		}
 	}
 
@@ -87,6 +85,22 @@
 		&:after
 		{
 			@extend %rs-icon-minus;
+		}
+	}
+
+	.rs-fn-status-tab:not(:checked) + .rs-label-tab
+	{
+		background: var(--rs-color-tertiary);
+		cursor: pointer;
+
+		&:hover
+		{
+			background: var(--rs-color-primary);
+		}
+
+		&:after
+		{
+			@extend %rs-icon-plus;
 		}
 	}
 }

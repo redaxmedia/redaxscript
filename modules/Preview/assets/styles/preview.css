@@ -15,15 +15,15 @@
 
 	& a
 	{
-		background: gray(0, 0.8);
-		color: gray(255);
+		background: gray(0 / 0.8);
+		color: gray(100);
 		display: block;
 		padding: 0.5em 1em;
 	}
 
 	&:hover
 	{
-		background: gray(0, 0.9);
+		background: gray(0 / 0.9);
 	}
 }
 
