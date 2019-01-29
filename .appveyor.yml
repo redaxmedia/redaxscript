@@ -4,7 +4,7 @@ platform:
 - x64
 
 environment:
- MSSQL_VERSION: v5.1.1-preview
+ MSSQL_VERSION: v5.5.0-preview
  PAPERCUT_VERSION: 4.8.0.1
  matrix:
  - PHP_VERSION_PATCH: 7.2.0
