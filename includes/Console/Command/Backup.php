@@ -118,7 +118,7 @@ class Backup extends CommandAbstract
 			}
 			if ($dbType === 'sqlite' && $dbHost)
 			{
-				$command = 'sqlite ' . $dbHost . ' .dump > ' . $dbHost . '.dump';
+				$command = 'sqlite3 ' . $dbHost . ' .dump > ' . $dbHost . '.dump';
 			}
 			exec($command, $outputArray, $error);
 			$content = implode($outputArray, PHP_EOL);

@@ -117,7 +117,7 @@ class Restore extends CommandAbstract
 			}
 			if ($dbType === 'sqlite' && $dbHost)
 			{
-				$command = $content . ' | sqlite ' . $dbHost;
+				$command = $content . ' | sqlite3 ' . $dbHost;
 			}
 			exec($command, $outputArray, $error);
 			return $error === 0;

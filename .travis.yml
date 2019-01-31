@@ -38,11 +38,6 @@ jobs:
    - grunt build
 
  - &test-unit
-   addons:
-    apt:
-     packages:
-     - sqlite
-
    env:
    - TEST=unit
 
