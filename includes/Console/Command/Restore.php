@@ -105,7 +105,7 @@ class Restore extends CommandAbstract
 
 		if (is_file($directory . DIRECTORY_SEPARATOR . $file))
 		{
-			$command = null;
+			$command = ':';
 			$content = $backupFilesystem->readFile($file);
 			if ($dbType === 'mysql' && $dbHost && $dbName && $dbUser && $dbPassword)
 			{
@@ -115,7 +115,7 @@ class Restore extends CommandAbstract
 			{
 				$command = $content . ' | psql --host=' . $dbHost . ' --username=' . $dbUser . ' --password=' . $dbPassword . ' ' . $dbName;
 			}
-			if ($dbType === 'sqlite' && $dbHost)
+			if ($dbType === 'sqlite' && is_file($dbHost))
 			{
 				$command =  'echo ' . $content . ' > ' . $dbHost;
 			}

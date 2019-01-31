@@ -107,6 +107,10 @@ class BackupTest extends TestCaseAbstract
 
 		/* compare */
 
+		if ($this->_config->get('dbType') === 'sqlite' && !is_file($this->_config->get('dbHost')))
+		{
+			$this->markTestSkipped();
+		}
 		$this->assertEquals($expect, $actual);
 	}
 

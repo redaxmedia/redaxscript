@@ -107,7 +107,7 @@ class Backup extends CommandAbstract
 
 		if (is_dir($directory) || is_string($directory) && mkdir($directory))
 		{
-			$command = null;
+			$command = ':';
 			if ($dbType === 'mysql' && $dbHost && $dbName && $dbUser && $dbPassword)
 			{
 				$command = 'mysqldump --host=' . $dbHost . ' --user=' . $dbUser . ' --password=' . $dbPassword . ' ' . $dbName;
@@ -116,7 +116,7 @@ class Backup extends CommandAbstract
 			{
 				$command =  'pg_dump --host=' . $dbHost . ' --username=' . $dbUser . ' --password='. $dbPassword . ' ' . $dbName;
 			}
-			if ($dbType === 'sqlite' && $dbHost)
+			if ($dbType === 'sqlite' && is_file($dbHost))
 			{
 				$command =  'cat ' . $dbHost;
 			}
