@@ -107,18 +107,18 @@ class Backup extends CommandAbstract
 
 		if (is_dir($directory) || is_string($directory) && mkdir($directory))
 		{
-			$command = 'echo not supported';
-			if ($dbType === 'mysql' && $dbHost && $dbName && $dbUser)
+			$command = null;
+			if ($dbType === 'mysql' && $dbHost && $dbName && $dbUser && $dbPassword)
 			{
-				$command = 'mysqldump -u ' . $dbUser . ' -p' . $dbPassword . ' -h ' . $dbHost . ' ' . $dbName;
+				$command = 'mysqldump --host=' . $dbHost . ' --user=' . $dbUser . ' --password=' . $dbPassword . ' ' . $dbName;
 			}
-			if ($dbType === 'pgsql' && $dbHost && $dbName)
+			if ($dbType === 'pgsql' && $dbHost && $dbName && $dbUser && $dbPassword)
 			{
-				$command = 'PGPASSWORD=' . $dbPassword . ' pg_dump -U postgres -h ' . $dbHost . ' ' . $dbName;
+				$command =  'pg_dump --host=' . $dbHost . ' --username=' . $dbUser . ' --password='. $dbPassword . ' ' . $dbName;
 			}
 			if ($dbType === 'sqlite' && $dbHost)
 			{
-				$command = 'sqlite3 ' . $dbHost . ' .dump > ' . $dbHost . '.dump';
+				$command =  'cat ' . $dbHost;
 			}
 			exec($command, $outputArray, $error);
 			$content = implode($outputArray, PHP_EOL);

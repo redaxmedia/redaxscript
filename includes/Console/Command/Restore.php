@@ -105,19 +105,19 @@ class Restore extends CommandAbstract
 
 		if (is_file($directory . DIRECTORY_SEPARATOR . $file))
 		{
-			$command = 'echo not supported';
+			$command = null;
 			$content = $backupFilesystem->readFile($file);
-			if ($dbType === 'mysql' && $dbHost && $dbName && $dbUser)
+			if ($dbType === 'mysql' && $dbHost && $dbName && $dbUser && $dbPassword)
 			{
-				$command = $content . ' | mysql -u ' . $dbUser . ' -p' . $dbPassword . ' -h ' . $dbHost . ' ' . $dbName;
+				$command = $content . ' | mysql --host=' . $dbHost . ' --username=' . $dbUser . ' --password=' . $dbPassword . ' ' . $dbName;
 			}
-			if ($dbType === 'pgsql' && $dbHost && $dbName)
+			if ($dbType === 'pgsql' && $dbHost && $dbName && $dbUser && $dbPassword)
 			{
-				$command = $content . ' | PGPASSWORD=' . $dbPassword . ' psql -U postgres -h ' . $dbHost . ' -d ' . $dbName;
+				$command = $content . ' | psql --host=' . $dbHost . ' --username=' . $dbUser . ' --password=' . $dbPassword . ' ' . $dbName;
 			}
 			if ($dbType === 'sqlite' && $dbHost)
 			{
-				$command = $content . ' | sqlite3 ' . $dbHost;
+				$command =  'echo ' . $content . ' > ' . $dbHost;
 			}
 			exec($command, $outputArray, $error);
 			return $error === 0;
