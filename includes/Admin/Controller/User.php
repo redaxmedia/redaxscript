@@ -35,7 +35,7 @@ class User extends ControllerAbstract
 		$postArray = $this->_normalizePost($this->_sanitizePost());
 		$validateArray = $this->_validatePost($postArray);
 		$passwordHash = new Hash();
-		$myId = $this->_registry->get('myId');
+		$myId = (int)$this->_registry->get('myId');
 
 		/* validate post */
 
@@ -101,7 +101,7 @@ class User extends ControllerAbstract
 			}
 			if ($this->_update($postArray['id'], $postArray['id'] > 1 ? $updateFullArray : $updateLiteArray))
 			{
-				if ($postArray['id'] === (int)$myId)
+				if ($postArray['id'] === $myId)
 				{
 					$this->_refresh($postArray);
 				}

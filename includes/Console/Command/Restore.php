@@ -111,13 +111,13 @@ class Restore extends CommandAbstract
 			{
 				$command = $content . ' | mysql -u ' . $dbUser . ' -p' . $dbPassword . ' -h ' . $dbHost . ' ' . $dbName;
 			}
-			if ($dbType === 'pgsql' && $dbHost & $dbName)
+			if ($dbType === 'pgsql' && $dbHost && $dbName)
 			{
 				$command = $content . ' | PGPASSWORD=' . $dbPassword . ' psql -U postgres -h ' . $dbHost . ' -d ' . $dbName;
 			}
 			if ($dbType === 'sqlite' && $dbHost)
 			{
-				$command = $content . ' | sqlite3 ' . $dbHost;
+				$command = $content . ' | sqlite ' . $dbHost;
 			}
 			exec($command, $outputArray, $error);
 			return $error === 0;
