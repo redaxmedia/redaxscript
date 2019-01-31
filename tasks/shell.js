@@ -79,7 +79,7 @@ module.exports = grunt =>
 		},
 		startServer:
 		{
-			command: grunt.option('D') || grunt.option('debug-mode') ? run('DEBUG=true php -S localhost:8000') : run('php -S localhost:8000')
+			command: grunt.option('D') || grunt.option('debug-mode') ? run('DEBUG=true php -S 0.0.0.0:8000') : run('php -S 0.0.0.0:8000')
 		},
 		stopServer:
 		{
