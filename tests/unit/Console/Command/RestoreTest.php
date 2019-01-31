@@ -92,6 +92,10 @@ class RestoreTest extends TestCaseAbstract
 
 		/* expect and actual */
 
+		if ($this->_config->get('dbType') === 'sqlite')
+		{
+			$this->markTestSkipped();
+		}
 		$expect = $restoreCommand->success();
 		$actual = $restoreCommand->run('cli');
 

@@ -109,11 +109,11 @@ class Restore extends CommandAbstract
 			$content = $backupFilesystem->readFile($file);
 			if ($dbType === 'mysql' && $dbHost && $dbName && $dbUser && $dbPassword)
 			{
-				$command = $content . ' | mysql --host=' . $dbHost . ' --username=' . $dbUser . ' --password=' . $dbPassword . ' ' . $dbName;
+				$command = $content . ' | mysql --host=' . $dbHost . ' --user=' . $dbUser . ' --password=' . $dbPassword . ' ' . $dbName;
 			}
 			if ($dbType === 'pgsql' && $dbHost && $dbName && $dbUser && $dbPassword)
 			{
-				$command = $content . ' | psql --host=' . $dbHost . ' --username=' . $dbUser . ' --password=' . $dbPassword . ' ' . $dbName;
+				$command = 'PGPASSWORD=' . $dbPassword . ' ' . $content . ' | psql --host=' . $dbHost . ' --username=' . $dbUser . ' ' . $dbName;
 			}
 			if ($dbType === 'sqlite' && is_file($dbHost))
 			{

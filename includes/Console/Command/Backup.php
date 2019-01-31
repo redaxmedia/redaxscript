@@ -7,6 +7,7 @@ use Redaxscript\Filesystem;
 use function exec;
 use function implode;
 use function is_dir;
+use function is_file;
 use function is_string;
 use function mkdir;
 
@@ -114,7 +115,7 @@ class Backup extends CommandAbstract
 			}
 			if ($dbType === 'pgsql' && $dbHost && $dbName && $dbUser && $dbPassword)
 			{
-				$command =  'pg_dump --host=' . $dbHost . ' --username=' . $dbUser . ' --password='. $dbPassword . ' ' . $dbName;
+				$command =  'PGPASSWORD=' . $dbPassword . ' pg_dump --host=' . $dbHost . ' --username=' . $dbUser . ' ' . $dbName;
 			}
 			if ($dbType === 'sqlite' && is_file($dbHost))
 			{
