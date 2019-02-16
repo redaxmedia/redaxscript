@@ -197,8 +197,9 @@ class Demo extends Module\Notification
 	protected function _success() : string
 	{
 		$messenger = $this->_messengerFactory();
+		$route = $this->_request->getQuery('redirect') ? : 'admin';
 		return $messenger
-			->setRoute($this->_language->get('continue'), 'admin')
+			->setRoute($this->_language->get('continue'), $route)
 			->doRedirect(0)
 			->success($this->_language->get('logged_in'), $this->_language->get('welcome'));
 	}
