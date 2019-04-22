@@ -44,7 +44,7 @@ class Hash
 	 * @param string|int $raw plain raw
 	 */
 
-	public function init($raw = null)
+	public function init($raw = null) : void
 	{
 		if (is_numeric($raw) || is_string($raw))
 		{
@@ -101,7 +101,7 @@ class Hash
 	 * @since 4.0.0
 	 */
 
-	protected function _create()
+	protected function _create() : void
 	{
 		$this->_hash = password_hash($this->_raw, defined('PASSWORD_ARGON2I') ? constant('PASSWORD_ARGON2I') : PASSWORD_DEFAULT);
 	}

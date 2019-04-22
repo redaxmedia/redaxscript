@@ -114,7 +114,7 @@ class Title extends HelperAbstract
 		}
 		else if ($lastTable && $lastId)
 		{
-			$title = Db::forTablePrefix($lastTable)->whereIdIs($lastId)->findOne()->title;
+			$title = Db::forTablePrefix($lastTable)->whereIdIs($lastId)->whereNull('access')->findOne()->title;
 		}
 
 		/* handle title */

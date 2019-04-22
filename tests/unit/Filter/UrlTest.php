@@ -29,7 +29,7 @@ class UrlTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testUrl(string $url = null, string $expect = null)
+	public function testUrl(string $url = null, string $expect = null) : void
 	{
 		/* setup */
 

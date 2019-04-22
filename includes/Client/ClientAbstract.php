@@ -75,7 +75,7 @@ abstract class ClientAbstract implements ClientInterface
 	 * @param string $type type of the client
 	 */
 
-	protected function _detect(array $setupArray = [], string $type = null)
+	protected function _detect(array $setupArray = [], string $type = null) : void
 	{
 		$userAgent = strtolower($this->_request->getServer('HTTP_USER_AGENT'));
 

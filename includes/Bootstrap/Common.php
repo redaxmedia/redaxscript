@@ -30,7 +30,7 @@ class Common extends BootstrapAbstract
 	 * @since 3.1.0
 	 */
 
-	public function autorun()
+	public function autorun() : void
 	{
 		$this->_setServer();
 		$this->_setClient();
@@ -46,7 +46,7 @@ class Common extends BootstrapAbstract
 	 * @since 3.1.0
 	 */
 
-	protected function _setServer()
+	protected function _setServer() : void
 	{
 		$file = new Server\File($this->_request);
 		$root = new Server\Root($this->_request);
@@ -67,7 +67,7 @@ class Common extends BootstrapAbstract
 	 * @since 3.1.0
 	 */
 
-	protected function _setClient()
+	protected function _setClient() : void
 	{
 		$browser = new Client\Browser($this->_request);
 		$version = new Client\Version($this->_request);
@@ -92,7 +92,7 @@ class Common extends BootstrapAbstract
 	 * @since 3.1.0
 	 */
 
-	protected function _setDriver()
+	protected function _setDriver() : void
 	{
 		$driverArray = [];
 
@@ -115,11 +115,12 @@ class Common extends BootstrapAbstract
 	 * @since 3.1.0
 	 */
 
-	protected function _setModule()
+	protected function _setModule() : void
 	{
 		$moduleArray = function_exists('apache_get_modules') ? apache_get_modules() : [];
 		$fallbackArray =
 		[
+			'mod_brotli',
 			'mod_deflate',
 			'mod_headers',
 			'mod_rewrite'
@@ -146,7 +147,7 @@ class Common extends BootstrapAbstract
 	 * @since 3.2.3
 	 */
 
-	protected function _setPhp()
+	protected function _setPhp() : void
 	{
 		$phpOs = strtolower(PHP_OS);
 		$phpVersion = PHP_VERSION;
@@ -168,7 +169,7 @@ class Common extends BootstrapAbstract
 	 * @since 4.0.0
 	 */
 
-	protected function _setOpcache()
+	protected function _setOpcache() : void
 	{
 		$opcacheArray = function_exists('opcache_get_status') ? opcache_get_status(false) : [];
 		$this->_registry->set('opcacheArray', $opcacheArray);

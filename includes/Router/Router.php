@@ -191,7 +191,7 @@ class Router extends RouterAbstract
 	protected function _aliasValidator() : bool
 	{
 		$aliasValidator = new Validator\Alias();
-		return $aliasValidator->validate($this->_registry->get('firstParameter'), 'system');
+		return $aliasValidator->validate($this->_registry->get('firstParameter'), 'system') && $this->_registry->get('fullRoute') !== 'admin';
 	}
 
 	/**
@@ -205,10 +205,10 @@ class Router extends RouterAbstract
 	protected function _contentValidator() : bool
 	{
 		$contentModel = new Model\Content();
+		$lastId = $this->_registry->get('lastId');
 		$liteRoute = $this->_registry->get('liteRoute');
-		$fullRoute = $this->_registry->get('fullRoute');
-		$buildRoute = $contentModel->getRouteByTableAndId($this->_registry->get('lastTable'), $this->_registry->get('lastId'));
-		return !$fullRoute || $buildRoute === $liteRoute;
+		$buildRoute = $contentModel->getRouteByTableAndId($this->_registry->get('lastTable'), $lastId);
+		return $lastId || ($buildRoute && $buildRoute === $liteRoute);
 	}
 
 	/**

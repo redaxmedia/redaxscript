@@ -30,7 +30,7 @@ class SearchFormTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRender(string $table = null, array $expectArray = [])
+	public function testRender(string $table = null, array $expectArray = []) : void
 	{
 		/* setup */
 

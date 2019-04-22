@@ -1,8 +1,8 @@
 <?php
 namespace Redaxscript;
 
-use function class_exists;
 use function file_get_contents;
+use function method_exists;
 use function str_replace;
 use function ucfirst;
 
@@ -93,7 +93,7 @@ class Installer
 	 * @param string $directory name of the directory
 	 */
 
-	public function init(string $directory = 'database')
+	public function init(string $directory = 'database') : void
 	{
 		$this->_directory = $directory;
 	}
@@ -104,7 +104,7 @@ class Installer
 	 * @since 2.4.0
 	 */
 
-	public function rawCreate()
+	public function rawCreate() : void
 	{
 		$this->_rawExecute('create', $this->_config->get('dbType'));
 	}
@@ -115,7 +115,7 @@ class Installer
 	 * @since 2.4.0
 	 */
 
-	public function rawDrop()
+	public function rawDrop() : void
 	{
 		$this->_rawExecute('drop', $this->_config->get('dbType'));
 	}
@@ -128,7 +128,7 @@ class Installer
 	 * @param array $optionArray options of the installation
 	 */
 
-	public function insertData(array $optionArray = [])
+	public function insertData(array $optionArray = []) : void
 	{
 		$this->insertCategories($optionArray);
 		$this->insertArticles($optionArray);
@@ -148,7 +148,7 @@ class Installer
 	 * @param array $optionArray options of the installation
 	 */
 
-	public function insertCategories(array $optionArray = [])
+	public function insertCategories(array $optionArray = []) : void
 	{
 		$now = $this->_registry->get('now');
 		Db::forTablePrefix('categories')
@@ -172,7 +172,7 @@ class Installer
 	 * @param array $optionArray options of the installation
 	 */
 
-	public function insertArticles(array $optionArray = [])
+	public function insertArticles(array $optionArray = []) : void
 	{
 		$now = $this->_registry->get('now');
 		Db::forTablePrefix('articles')
@@ -199,7 +199,7 @@ class Installer
 	 * @param array $optionArray options of the installation
 	 */
 
-	public function insertExtras(array $optionArray = [])
+	public function insertExtras(array $optionArray = []) : void
 	{
 		$now = $this->_registry->get('now');
 		$extrasArray =
@@ -273,7 +273,7 @@ class Installer
 	 * @param array $optionArray options of the installation
 	 */
 
-	public function insertComments(array $optionArray = [])
+	public function insertComments(array $optionArray = []) : void
 	{
 		$now = $this->_registry->get('now');
 		Db::forTablePrefix('comments')
@@ -296,7 +296,7 @@ class Installer
 	 * @since 3.1.0
 	 */
 
-	public function insertGroups()
+	public function insertGroups() : void
 	{
 		Db::forTablePrefix('groups')
 			->create()
@@ -335,7 +335,7 @@ class Installer
 	 * @param array $optionArray options of the installation
 	 */
 
-	public function insertUsers(array $optionArray = [])
+	public function insertUsers(array $optionArray = []) : void
 	{
 		$passwordHash = new Hash();
 		$passwordHash->init($optionArray['adminPassword']);
@@ -359,7 +359,7 @@ class Installer
 	 * @since 3.1.0
 	 */
 
-	public function insertModules()
+	public function insertModules() : void
 	{
 		$moduleArray =
 		[
@@ -379,7 +379,7 @@ class Installer
 
 			/* install */
 
-			if (class_exists($moduleClass))
+			if (method_exists($moduleClass, 'install'))
 			{
 				$module = new $moduleClass($this->_registry, $this->_request, $this->_language, $this->_config);
 				$module->install();
@@ -395,7 +395,7 @@ class Installer
 	 * @param array $optionArray options of the installation
 	 */
 
-	public function insertSettings(array $optionArray = [])
+	public function insertSettings(array $optionArray = []) : void
 	{
 		$settingArray =
 		[
@@ -411,7 +411,7 @@ class Installer
 			'subject' => $this->_language->get('name', '_package'),
 			'notification' => 0,
 			'charset' => 'utf-8',
-			'divider' => $this->_language->get('divider'),
+			'divider' => ' - ',
 			'zone' => 'Europe/Berlin',
 			'time' => 'H:i',
 			'date' => 'd.m.Y',
@@ -451,7 +451,7 @@ class Installer
 	 * @param string $type type of the database
 	 */
 
-	protected function _rawExecute(string $action = null, string $type = 'mysql')
+	protected function _rawExecute(string $action = null, string $type = 'mysql') : void
 	{
 		$actionFilesystem = new Filesystem\File();
 		$actionFilesystem->init($this->_directory . DIRECTORY_SEPARATOR . $type . DIRECTORY_SEPARATOR . $action);

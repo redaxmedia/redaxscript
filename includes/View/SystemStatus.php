@@ -103,6 +103,7 @@ class SystemStatus extends ViewAbstract
 		];
 		$testModuleArray =
 		[
+			'mod_brotli',
 			'mod_deflate',
 			'mod_headers',
 			'mod_rewrite'

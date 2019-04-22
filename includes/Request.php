@@ -30,7 +30,7 @@ class Request extends Singleton
 	 * @since 2.4.0
 	 */
 
-	public function init()
+	public function init() : void
 	{
 		self::$_requestArray =
 		[
@@ -179,7 +179,7 @@ class Request extends Singleton
 	 * @param string|array|null $value value of the item
 	 */
 
-	public function set(string $key = null, $value = null)
+	public function set(string $key = null, $value = null) : void
 	{
 		self::$_requestArray[$key] = $GLOBALS[$key] = $value;
 	}
@@ -193,7 +193,7 @@ class Request extends Singleton
 	 * @param string|array|null $value value of the item
 	 */
 
-	public function setServer(string $key = null, $value = null)
+	public function setServer(string $key = null, $value = null) : void
 	{
 		self::$_requestArray['server'][$key] = $value;
 	}
@@ -207,7 +207,7 @@ class Request extends Singleton
 	 * @param string|array|null $value value of the item
 	 */
 
-	public function setQuery(string $key = null, $value = null)
+	public function setQuery(string $key = null, $value = null) : void
 	{
 		self::$_requestArray['get'][$key] = $value;
 	}
@@ -221,7 +221,7 @@ class Request extends Singleton
 	 * @param string|array|null $value value of the item
 	 */
 
-	public function setPost(string $key = null, $value = null)
+	public function setPost(string $key = null, $value = null) : void
 	{
 		self::$_requestArray['post'][$key] = $value;
 	}
@@ -235,7 +235,7 @@ class Request extends Singleton
 	 * @param string|array|null $value value of the item
 	 */
 
-	public function setFiles(string $key = null, $value = null)
+	public function setFiles(string $key = null, $value = null) : void
 	{
 		self::$_requestArray['files'][$key] = $value;
 	}
@@ -249,7 +249,7 @@ class Request extends Singleton
 	 * @param string|array|null $value value of the item
 	 */
 
-	public function setSession(string $key = null, $value = null)
+	public function setSession(string $key = null, $value = null) : void
 	{
 		self::$_requestArray['session'][$key] = $_SESSION[$key] = $value;
 	}
@@ -263,7 +263,7 @@ class Request extends Singleton
 	 * @param string|array|null $value value of the item
 	 */
 
-	public function setCookie(string $key = null, $value = null)
+	public function setCookie(string $key = null, $value = null) : void
 	{
 		self::$_requestArray['cookie'][$key] = $_COOKIE[$key] = $value;
 	}
@@ -274,7 +274,7 @@ class Request extends Singleton
 	 * @since 2.6.2
 	 */
 
-	public function refreshSession()
+	public function refreshSession() : void
 	{
 		self::$_requestArray['session'] = $_SESSION ? : [];
 	}
@@ -285,7 +285,7 @@ class Request extends Singleton
 	 * @since 2.6.2
 	 */
 
-	public function refreshCookie()
+	public function refreshCookie() : void
 	{
 		self::$_requestArray['cookie'] = $_COOKIE ? : [];
 	}

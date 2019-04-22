@@ -31,7 +31,7 @@ class DetectorTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testDetector(array $expectArray = [])
+	public function testDetector(array $expectArray = []) : void
 	{
 		/* setup */
 

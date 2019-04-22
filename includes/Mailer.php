@@ -109,7 +109,7 @@ class Mailer
 	 * @param array|null $attachmentArray array of the attachments
 	 */
 
-	public function init(array $toArray = [], array $fromArray = [], string $subject = null, $body = null, ?array $attachmentArray = [])
+	public function init(array $toArray = [], array $fromArray = [], string $subject = null, $body = null, ?array $attachmentArray = []) : void
 	{
 		$this->_toArray = $toArray;
 		$this->_fromArray = $fromArray;
@@ -131,7 +131,7 @@ class Mailer
 	 * @since 2.0.0
 	 */
 
-	protected function _createFromString()
+	protected function _createFromString() : void
 	{
 		/* create from string */
 
@@ -153,7 +153,7 @@ class Mailer
 	 * @since 2.0.0
 	 */
 
-	protected function _createSubjectString()
+	protected function _createSubjectString() : void
 	{
 		$settingModel = new Model\Setting();
 
@@ -180,7 +180,7 @@ class Mailer
 	 * @since 2.0.0
 	 */
 
-	protected function _createBodyString()
+	protected function _createBodyString() : void
 	{
 		$this->_bodyString = is_array($this->_body) ? implode(PHP_EOL, $this->_body) : $this->_body;
 	}
@@ -191,7 +191,7 @@ class Mailer
 	 * @since 2.0.0
 	 */
 
-	protected function _createHeaderString()
+	protected function _createHeaderString() : void
 	{
 		$settingModel = new Model\Setting();
 

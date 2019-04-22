@@ -30,7 +30,7 @@ class Parser extends ParserAbstract
 	 * @param string $route route of the content
 	 */
 
-	public function process(string $content = null, string $route = null)
+	public function process(string $content = null, string $route = null) : void
 	{
 		$this->_output = $content;
 

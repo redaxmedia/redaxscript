@@ -36,7 +36,7 @@ class Contact extends Module\Module
 	 * @since 4.0.0
 	 */
 
-	public function routeHeader()
+	public function routeHeader() : void
 	{
 		if ($this->_request->getPost('Redaxscript\Modules\Contact\Form'))
 		{
@@ -50,7 +50,7 @@ class Contact extends Module\Module
 	 * @since 4.0.0
 	 */
 
-	public function routeContent()
+	public function routeContent() : void
 	{
 		if ($this->_request->getPost('Redaxscript\Modules\Contact\Form'))
 		{

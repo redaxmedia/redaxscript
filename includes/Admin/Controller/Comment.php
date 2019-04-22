@@ -192,7 +192,7 @@ class Comment extends ControllerAbstract
 	 * @return bool
 	 */
 
-	public function _update(int $commentId = null, array $updateArray = []) : bool
+	protected function _update(int $commentId = null, array $updateArray = []) : bool
 	{
 		$commentModel = new Admin\Model\Comment();
 		return $commentModel->updateByIdAndArray($commentId, $updateArray);

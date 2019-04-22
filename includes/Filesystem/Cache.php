@@ -56,13 +56,13 @@ class Cache
 		{
 			$this->_directory = $directory;
 		}
-		if (!is_dir($this->_directory))
-		{
-			mkdir($this->_directory);
-		}
 		if (strlen($extension))
 		{
 			$this->_extension = $extension;
+		}
+		if (!is_dir($this->_directory))
+		{
+			mkdir($this->_directory);
 		}
 		return $this;
 	}

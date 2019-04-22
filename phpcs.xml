@@ -21,4 +21,7 @@
 	<rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingTraversablePropertyTypeHintSpecification">
 		<exclude-pattern>*</exclude-pattern>
 	</rule>
+	<rule ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/TypeHints/TypeHintDeclarationSniff.php">
+		<exclude-pattern>*Interface.php</exclude-pattern>
+	</rule>
 </ruleset>

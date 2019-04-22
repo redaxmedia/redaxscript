@@ -30,7 +30,7 @@ class ElementTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testCreate(string $tag = null, array $attributeArray = [], string $expect = null)
+	public function testCreate(string $tag = null, array $attributeArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -52,7 +52,7 @@ class ElementTest extends TestCaseAbstract
 	 * @since 2.2.0
 	 */
 
-	public function testCopy()
+	public function testCopy() : void
 	{
 		/* setup */
 
@@ -81,7 +81,7 @@ class ElementTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testAttr(array $attributeArray = [], string $expect = null)
+	public function testAttr(array $attributeArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -108,7 +108,7 @@ class ElementTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testClass(array $classNameArray = [], string $expect = null)
+	public function testClass(array $classNameArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -135,7 +135,7 @@ class ElementTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testVal(string $value = null, string $expect = null)
+	public function testVal(string $value = null, string $expect = null) : void
 	{
 		/* setup */
 
@@ -162,7 +162,7 @@ class ElementTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testText(string $text = null, string $expect = null)
+	public function testText(string $text = null, string $expect = null) : void
 	{
 		/* setup */
 

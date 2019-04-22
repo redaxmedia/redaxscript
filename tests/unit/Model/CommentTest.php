@@ -25,7 +25,7 @@ class CommentTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -117,7 +117,7 @@ class CommentTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -133,7 +133,7 @@ class CommentTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetRouteById(int $commentId = null, string $expect = null)
+	public function testGetRouteById(int $commentId = null, string $expect = null) : void
 	{
 		/* setup */
 

@@ -25,7 +25,7 @@ class NotificationTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$this->createDatabase();
@@ -38,7 +38,7 @@ class NotificationTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->uninstallTestDummy();
 		$this->dropDatabase();
@@ -55,7 +55,7 @@ class NotificationTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRender(array $optionArray = [], string $expect = null)
+	public function testRender(array $optionArray = [], string $expect = null) : void
 	{
 		/* setup */
 

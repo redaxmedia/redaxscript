@@ -208,7 +208,7 @@ class Router extends RouterAbstract
 	 * @since 4.00
 	 */
 
-	protected function _updateLast()
+	protected function _updateLast() : void
 	{
 		$userModel = new Admin\Model\User();
 		if ($this->_registry->get('myId'))

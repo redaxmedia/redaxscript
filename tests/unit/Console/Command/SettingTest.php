@@ -25,7 +25,7 @@ class SettingTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -47,7 +47,7 @@ class SettingTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 		$this->_request->setServer('argv', null);
@@ -59,7 +59,7 @@ class SettingTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testNoArgument()
+	public function testNoArgument() : void
 	{
 		/* setup */
 
@@ -81,7 +81,7 @@ class SettingTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testList()
+	public function testList() : void
 	{
 		/* setup */
 
@@ -99,7 +99,7 @@ class SettingTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertString($actual);
+		$this->assertIsString($actual);
 	}
 
 	/**
@@ -108,7 +108,7 @@ class SettingTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testSet()
+	public function testSet() : void
 	{
 		/* setup */
 
@@ -140,7 +140,7 @@ class SettingTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testSetInvalid()
+	public function testSetInvalid() : void
 	{
 		/* setup */
 

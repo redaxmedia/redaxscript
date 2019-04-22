@@ -33,7 +33,7 @@ class Registry extends Singleton
 	 * @param array $registryArray array of the registry
 	 */
 
-	public function init(array $registryArray = [])
+	public function init(array $registryArray = []) : void
 	{
 		self::$_registryArray = array_merge(self::$_registryArray, $registryArray);
 	}
@@ -70,7 +70,7 @@ class Registry extends Singleton
 	 * @param string|array|null $value value of the item
 	 */
 
-	public function set(string $key = null, $value = null)
+	public function set(string $key = null, $value = null) : void
 	{
 		self::$_registryArray[$key] = $value;
 	}

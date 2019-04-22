@@ -25,7 +25,7 @@ class FileTest extends TestCaseAbstract
 	 * @since 3.2.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		Stream::setup('root', 0777, $this->getJSON('tests' . DIRECTORY_SEPARATOR. 'provider' . DIRECTORY_SEPARATOR. 'Filesystem' . DIRECTORY_SEPARATOR. 'FilesystemTest_setUp.json'));
 	}
@@ -43,7 +43,7 @@ class FileTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testCreate(string $root = null, bool $recursive = null, string $file = null, array $expectArray = [])
+	public function testCreate(string $root = null, bool $recursive = null, string $file = null, array $expectArray = []) : void
 	{
 		/* setup */
 
@@ -74,7 +74,7 @@ class FileTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testReadAndWrite(string $root = null, bool $recursive = null, string $file = null, string $content = null, array $expectArray = [])
+	public function testReadAndWrite(string $root = null, bool $recursive = null, string $file = null, string $content = null, array $expectArray = []) : void
 	{
 		/* setup */
 
@@ -108,7 +108,7 @@ class FileTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRemove(string $root = null, bool $recursive = null, string $file = null, array $expectArray = [])
+	public function testRemove(string $root = null, bool $recursive = null, string $file = null, array $expectArray = []) : void
 	{
 		/* setup */
 

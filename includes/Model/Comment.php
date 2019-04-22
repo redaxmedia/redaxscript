@@ -1,11 +1,9 @@
 <?php
 namespace Redaxscript\Model;
 
-use function array_column;
 use function array_filter;
-use function array_pop;
-use function array_search;
 use function implode;
+use function is_array;
 
 /**
  * parent class to provide the comment model
@@ -125,17 +123,18 @@ class Comment extends ContentAbstract
 				->leftJoinPrefix('articles', 'comment.article = article.id', 'article')
 				->leftJoinPrefix('categories', 'article.category = category.id', 'category')
 				->leftJoinPrefix('categories', 'category.parent = parent.id', 'parent')
-				->select('parent.alias', 'parent_alias')
+				->select('parent.alias', 'parentAlias')
 				->select('category.alias', 'categoryAlias')
 				->select('article.alias', 'articleAlias')
-				->select('comment.id', 'commentId')
+				->where('comment.id', $commentId)
 				->findArray();
 
 			/* handle route */
 
-			$key = array_search($commentId, array_column($routeArray, 'commentId'));
-			array_pop($routeArray[$key]);
-			return implode('/', array_filter($routeArray[$key])) . '#comment-' . $commentId;
+			if (is_array($routeArray[0]))
+			{
+				return implode('/', array_filter($routeArray[0])) . '#comment-' . $commentId;
+			}
 		}
 		return null;
 	}

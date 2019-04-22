@@ -24,7 +24,7 @@ class CaptchaTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -46,7 +46,7 @@ class CaptchaTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -57,7 +57,7 @@ class CaptchaTest extends TestCaseAbstract
 	 * @since 2.2.0
 	 */
 
-	public function testGetTask()
+	public function testGetTask() : void
 	{
 		/* setup */
 
@@ -70,7 +70,7 @@ class CaptchaTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertString($task);
+		$this->assertIsString($task);
 	}
 
 	/**
@@ -79,7 +79,7 @@ class CaptchaTest extends TestCaseAbstract
 	 * @since 2.2.0
 	 */
 
-	public function testGetSolution()
+	public function testGetSolution() : void
 	{
 		/* setup */
 
@@ -92,7 +92,7 @@ class CaptchaTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertNumber($solution);
+		$this->assertIsInt($solution);
 	}
 
 	/**
@@ -101,7 +101,7 @@ class CaptchaTest extends TestCaseAbstract
 	 * @since 2.6.0
 	 */
 
-	public function testGetRange()
+	public function testGetRange() : void
 	{
 		/* setup */
 
@@ -124,7 +124,7 @@ class CaptchaTest extends TestCaseAbstract
 	 * @since 2.2.0
 	 */
 
-	public function testPlus()
+	public function testPlus() : void
 	{
 		/* setup */
 
@@ -137,7 +137,7 @@ class CaptchaTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertNumber($actual);
+		$this->assertIsInt($actual);
 	}
 
 	/**
@@ -146,7 +146,7 @@ class CaptchaTest extends TestCaseAbstract
 	 * @since 2.2.0
 	 */
 
-	public function testMinus()
+	public function testMinus() : void
 	{
 		/* setup */
 
@@ -159,6 +159,6 @@ class CaptchaTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertNumber($actual);
+		$this->assertIsInt($actual);
 	}
 }

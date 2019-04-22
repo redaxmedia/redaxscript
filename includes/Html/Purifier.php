@@ -141,7 +141,7 @@ class Purifier
 	 * @param DOMNode $node document node
 	 */
 
-	protected function _stripTags(DOMNode $node = null)
+	protected function _stripTags(DOMNode $node = null) : void
 	{
 		if (!in_array($node->nodeName, $this->_allowedTags))
 		{
@@ -158,7 +158,7 @@ class Purifier
 	 * @param DOMNode $node document node
 	 */
 
-	protected function _stripAttributes(DOMNode $node = null)
+	protected function _stripAttributes(DOMNode $node = null) : void
 	{
 		while ($node->hasAttributes())
 		{

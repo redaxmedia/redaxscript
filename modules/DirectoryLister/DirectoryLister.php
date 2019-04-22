@@ -107,7 +107,7 @@ class DirectoryLister extends Module\Notification
 	 * @since 3.0.0
 	 */
 
-	public function renderStart()
+	public function renderStart() : void
 	{
 		$link = Head\Link::getInstance();
 		$link

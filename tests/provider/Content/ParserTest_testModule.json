@@ -1,11 +1,11 @@
 [
 	[
 		"<rs-module>TestDummy<rs-module>",
-		2
+		"Two"
 	],
 	[
 		"<rs-module>{\"TestDummy\":{\"firstNumber\":2,\"secondNumber\":2}}<rs-module>",
-		4
+		"Four"
 	],
 	[
 		"<rs-module>Invalid<module>",

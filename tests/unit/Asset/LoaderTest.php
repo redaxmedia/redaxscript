@@ -27,7 +27,7 @@ class LoaderTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		Stream::setup('root', 0777, $this->getJSON('tests' . DIRECTORY_SEPARATOR . 'provider' . DIRECTORY_SEPARATOR . 'Asset' . DIRECTORY_SEPARATOR . 'LoaderTest_setUp.json'));
@@ -45,7 +45,7 @@ class LoaderTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testConcat(array $registryArray = [], array $collectionArray = [], array $expectArray = [])
+	public function testConcat(array $registryArray = [], array $collectionArray = [], array $expectArray = []) : void
 	{
 		/* setup */
 
@@ -84,7 +84,7 @@ class LoaderTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRewrite(array $collectionArray = [], array $rewriteArray = [], string $expect = null)
+	public function testRewrite(array $collectionArray = [], array $rewriteArray = [], string $expect = null) : void
 	{
 		/* setup */
 

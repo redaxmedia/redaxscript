@@ -106,7 +106,7 @@ class Article extends ViewAbstract
 	 * @param array $optionArray options of the article
 	 */
 
-	public function init(array $optionArray = [])
+	public function init(array $optionArray = []) : void
 	{
 		$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
 	}
@@ -167,7 +167,7 @@ class Article extends ViewAbstract
 
 		/* query articles */
 
-		if ($settingModel->get('homepage'))
+		if (!$firstParameter && $settingModel->get('homepage'))
 		{
 			$articles = $articleModel->getByIdAndLanguageAndOrder($settingModel->get('homepage'), $language, $this->_optionArray['orderColumn']);
 		}

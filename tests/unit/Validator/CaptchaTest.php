@@ -25,7 +25,7 @@ class CaptchaTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -47,7 +47,7 @@ class CaptchaTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -57,14 +57,14 @@ class CaptchaTest extends TestCaseAbstract
 	 *
 	 * @since 2.6.0
 	 *
-	 * @param string $task
+	 * @param int $task
 	 * @param string $hash
 	 * @param bool $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testCaptcha(string $task = null, string $hash = null, bool $expect = null)
+	public function testCaptcha(int $task = null, string $hash = null, bool $expect = null) : void
 	{
 		/* setup */
 

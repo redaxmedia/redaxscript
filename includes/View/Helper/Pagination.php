@@ -52,7 +52,7 @@ class Pagination extends ViewAbstract
 	 * @param array $optionArray options of the pagination
 	 */
 
-	public function init(array $optionArray = [])
+	public function init(array $optionArray = []) : void
 	{
 		$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
 	}
@@ -184,7 +184,7 @@ class Pagination extends ViewAbstract
 	 * @return array
 	 */
 
-	public function _getNumberArray(int $current = null, int $total = null, int $range = 0) : array
+	protected function _getNumberArray(int $current = null, int $total = null, int $range = 0) : array
 	{
 		$start = $current - $range;
 		$end = $current + $range;

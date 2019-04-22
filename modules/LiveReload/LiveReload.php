@@ -50,7 +50,7 @@ class LiveReload extends Module\Notification
 	 * @since 3.3.0
 	 */
 
-	public function renderStart()
+	public function renderStart() : void
 	{
 		$this->_registry->set('noCache', true);
 		$script = Head\Script::getInstance();

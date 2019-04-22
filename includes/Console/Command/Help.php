@@ -4,10 +4,10 @@ namespace Redaxscript\Console\Command;
 use Redaxscript\Console\Parser;
 use function array_key_exists;
 use function array_keys;
-use function class_exists;
 use function end;
 use function is_array;
 use function is_string;
+use function method_exists;
 
 /**
  * children class to execute the help command
@@ -84,7 +84,7 @@ class Help extends CommandAbstract
 			$lastKey = end($namespaceKeys);
 			foreach ($this->_namespaceArray as $commandKey => $commandClass)
 			{
-				if (class_exists($commandClass))
+				if (method_exists($commandClass, 'getHelp'))
 				{
 					$command = new $commandClass($this->_registry, $this->_request, $this->_language, $this->_config);
 					$output .= $command->getHelp();
@@ -101,7 +101,7 @@ class Help extends CommandAbstract
 		else
 		{
 			$commandClass = $this->_namespaceArray[$argumentKey];
-			if (class_exists($commandClass))
+			if (method_exists($commandClass, 'getHelp'))
 			{
 				$command = new $commandClass($this->_registry, $this->_request, $this->_language, $this->_config);
 				$output .= $command->getHelp();

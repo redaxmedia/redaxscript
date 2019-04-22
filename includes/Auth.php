@@ -175,7 +175,7 @@ class Auth
 	 * @since 3.0.0
 	 */
 
-	public function init()
+	public function init() : void
 	{
 		$authArray = $this->_getAuth();
 		if (is_array($authArray) && array_key_exists('user', $authArray))
@@ -302,7 +302,7 @@ class Auth
 	 * @param string|array|null $value value of the user
 	 */
 
-	public function setUser(string $key = null, $value = null)
+	public function setUser(string $key = null, $value = null) : void
 	{
 		$this->_userArray[$key] = $value;
 	}
@@ -339,7 +339,7 @@ class Auth
 	 * @param array $permissionArray array of the permission
 	 */
 
-	public function setPermission(string $key = null, array $permissionArray = [])
+	public function setPermission(string $key = null, array $permissionArray = []) : void
 	{
 		if (is_array($this->_permissionArray[$key]))
 		{
@@ -368,7 +368,7 @@ class Auth
 	 * @since 3.0.0
 	 */
 
-	public function save()
+	public function save() : void
 	{
 		$userArray = $this->getUser();
 		$permissionArray = $this->getPermission();
@@ -408,7 +408,7 @@ class Auth
 	 * @param array $authArray
 	 */
 
-	protected function _setAuth(array $authArray = [])
+	protected function _setAuth(array $authArray = []) : void
 	{
 		$root = new Server\Root($this->_request);
 		$this->_request->setSession($root->getOutput() . '/auth', $authArray);

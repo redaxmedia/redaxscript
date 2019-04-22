@@ -26,7 +26,7 @@ class ExtraFormTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$installer = $this->installerFactory();
@@ -48,7 +48,7 @@ class ExtraFormTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -65,7 +65,7 @@ class ExtraFormTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRender(array $registryArray = [], int $extraId = null, array $expectArray = [])
+	public function testRender(array $registryArray = [], int $extraId = null, array $expectArray = []) : void
 	{
 		/* setup */
 

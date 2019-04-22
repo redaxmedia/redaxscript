@@ -93,7 +93,7 @@ class Captcha
 	 * @param int $mode captcha operator mode
 	 */
 
-	public function init(int $mode = null)
+	public function init(int $mode = null) : void
 	{
 		if (is_numeric($mode))
 		{
@@ -186,7 +186,7 @@ class Captcha
 	 * @since 2.0.0
 	 */
 
-	protected function _create()
+	protected function _create() : void
 	{
 		/* range */
 

@@ -25,7 +25,7 @@ class ConsoleTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->_request->setServer('argv', null);
 		$this->_request->setPost('argv', null);
@@ -37,7 +37,7 @@ class ConsoleTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testCli()
+	public function testCli() : void
 	{
 		/* setup */
 
@@ -54,7 +54,7 @@ class ConsoleTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertString($actual);
+		$this->assertIsString($actual);
 	}
 
 	/**
@@ -63,7 +63,7 @@ class ConsoleTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testTemplate()
+	public function testTemplate() : void
 	{
 		/* setup */
 
@@ -76,7 +76,7 @@ class ConsoleTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertString($actual);
+		$this->assertIsString($actual);
 	}
 
 	/**
@@ -85,7 +85,7 @@ class ConsoleTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testInvalid()
+	public function testInvalid() : void
 	{
 		/* setup */
 

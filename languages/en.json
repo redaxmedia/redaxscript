@@ -3,7 +3,7 @@
 	{
 		"name": "Redaxscript",
 		"description": "Ultra lightweight Content Management System",
-		"version": "4.0.0 Beta 3",
+		"version": "4.0.0 Beta 4",
 		"homepage": "https://redaxscript.com"
 	},
 	"_index":
@@ -313,7 +313,6 @@
 	"pdo_driver_disabled": "PDO driver is disabled",
 	"apache_module_disabled": "Apache module is disabled",
 	"powered_by": "Powered by",
-	"divider": " - ",
 	"point": ".",
 	"comma": ",",
 	"colon": ":",

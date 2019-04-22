@@ -21,7 +21,7 @@ class Detector extends BootstrapAbstract
 	 * @since 3.1.0
 	 */
 
-	public function autorun()
+	public function autorun() : void
 	{
 		$detectorLanguage = new BaseDetector\Language($this->_registry, $this->_request);
 		$detectorTemplate = new BaseDetector\Template($this->_registry, $this->_request);

@@ -29,7 +29,7 @@ class MessengerTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testSuccess(array $successArray = [], array $actionArray = [], string $expect = null)
+	public function testSuccess(array $successArray = [], array $actionArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -57,7 +57,7 @@ class MessengerTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testInfo(array $infoArray = [], array $actionArray = [], string $expect = null)
+	public function testInfo(array $infoArray = [], array $actionArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -85,7 +85,7 @@ class MessengerTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testWarning(array $warningArray = [], array $actionArray = [], string $expect = null)
+	public function testWarning(array $warningArray = [], array $actionArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -113,7 +113,7 @@ class MessengerTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testError(array $errorArray = [], array $actionArray = [], string $expect = null)
+	public function testError(array $errorArray = [], array $actionArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -141,7 +141,7 @@ class MessengerTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRender(array $renderArray = [], array $actionArray = [], string $expect = null)
+	public function testRender(array $renderArray = [], array $actionArray = [], string $expect = null) : void
 	{
 		/* setup */
 

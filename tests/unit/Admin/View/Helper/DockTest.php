@@ -31,7 +31,7 @@ class DockTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRender(array $registryArray = [], array $renderArray = [], array $optionArray = [], string $expect = null)
+	public function testRender(array $registryArray = [], array $renderArray = [], array $optionArray = [], string $expect = null) : void
 	{
 		/* setup */
 

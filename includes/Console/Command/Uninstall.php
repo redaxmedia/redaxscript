@@ -4,7 +4,7 @@ namespace Redaxscript\Console\Command;
 use Redaxscript\Console\Parser;
 use Redaxscript\Db;
 use Redaxscript\Installer;
-use function class_exists;
+use function method_exists;
 
 /**
  * children class to execute the uninstall command
@@ -114,7 +114,7 @@ class Uninstall extends CommandAbstract
 
 		/* uninstall */
 
-		if (class_exists($moduleClass))
+		if (method_exists($moduleClass, 'install'))
 		{
 			$module = new $moduleClass($this->_registry, $this->_request, $this->_language, $this->_config);
 			return $module->uninstall();

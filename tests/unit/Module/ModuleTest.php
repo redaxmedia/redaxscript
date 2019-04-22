@@ -25,7 +25,7 @@ class ModuleTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$this->createDatabase();
@@ -37,7 +37,7 @@ class ModuleTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -48,7 +48,7 @@ class ModuleTest extends TestCaseAbstract
 	 * @since 2.2.0
 	 */
 
-	public function testInit()
+	public function testInit() : void
 	{
 		/* setup */
 
@@ -65,7 +65,7 @@ class ModuleTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertObject($actual);
+		$this->assertIsObject($actual);
 	}
 
 	/**
@@ -74,7 +74,7 @@ class ModuleTest extends TestCaseAbstract
 	 * @since 2.6.0
 	 */
 
-	public function testInstallAndUninstall()
+	public function testInstallAndUninstall() : void
 	{
 		/* setup */
 

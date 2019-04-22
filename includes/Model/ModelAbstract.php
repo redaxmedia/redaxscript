@@ -70,7 +70,7 @@ abstract class ModelAbstract
 	 * @since 4.0.0
 	 */
 
-	public function clearCache()
+	public function clearCache() : void
 	{
 		Db::clearCache($this->_table);
 	}

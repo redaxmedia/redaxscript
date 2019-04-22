@@ -6,21 +6,14 @@
 	],
 	[
 		{
-			"categoryId": 1
+			"firstParameter": "category-one"
 		},
 		{},
 		"<ul class=\"rs-list-categories\"><li class=\"rs-item-active\"><a href=\"category-one\">Category One</a><ul class=\"rs-list-children\"><li><a href=\"category-one/category-three\">Category Three</a></li></ul></li><li><a href=\"category-two\">Category Two</a></li></ul>"
 	],
 	[
-		{},
 		{
-			"parentId": 1
-		},
-		"<ul class=\"rs-list-categories\"><li><a href=\"category-one/category-three\">Category Three</a></li></ul>"
-	],
-	[
-		{
-			"categoryId": 3
+			"firstParameter": "category-two"
 		},
 		{
 			"className":
@@ -30,6 +23,6 @@
 				"active": "rs-item-active"
 			}
 		},
-		"<ul class=\"rs-list-sidebar\"><li><a href=\"category-one\">Category One</a><ul class=\"rs-list-children\"><li class=\"rs-item-active\"><a href=\"category-one/category-three\">Category Three</a></li></ul></li><li><a href=\"category-two\">Category Two</a></li></ul>"
+		"<ul class=\"rs-list-sidebar\"><li><a href=\"category-one\">Category One</a><ul class=\"rs-list-children\"><li><a href=\"category-one/category-three\">Category Three</a></li></ul></li><li class=\"rs-item-active\"><a href=\"category-two\">Category Two</a></li></ul>"
 	]
 ]

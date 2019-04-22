@@ -31,7 +31,7 @@ class MetaTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testAppend(array $metaArray = [], string $expect = null)
+	public function testAppend(array $metaArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -65,7 +65,7 @@ class MetaTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testPrepend(array $metaArray = [], string $expect = null)
+	public function testPrepend(array $metaArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -94,7 +94,7 @@ class MetaTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testInvalid()
+	public function testInvalid() : void
 	{
 		/* setup */
 

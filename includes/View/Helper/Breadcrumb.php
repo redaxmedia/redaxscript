@@ -70,7 +70,7 @@ class Breadcrumb extends ViewAbstract
 	 * @param array $optionArray options of the breadcrumb
 	 */
 
-	public function init(array $optionArray = [])
+	public function init(array $optionArray = []) : void
 	{
 		$settingModel = new Model\Setting();
 		$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
@@ -182,7 +182,7 @@ class Breadcrumb extends ViewAbstract
 	 * @param int $key key of the item
 	 */
 
-	protected function _create(int $key = 0)
+	protected function _create(int $key = 0) : void
 	{
 		$title = $this->_registry->get('useTitle');
 		$firstParameter = $this->_registry->get('firstParameter');
@@ -281,7 +281,7 @@ class Breadcrumb extends ViewAbstract
 	 * @param int $key key of the item
 	 */
 
-	protected function _createAdmin(int $key = 0)
+	protected function _createAdmin(int $key = 0) : void
 	{
 		$adminParameter = $this->_registry->get('adminParameter');
 		$tableParameter = $this->_registry->get('tableParameter');
@@ -331,7 +331,7 @@ class Breadcrumb extends ViewAbstract
 	 * @param int $key
 	 */
 
-	protected function _createContent(int $key = 0)
+	protected function _createContent(int $key = 0) : void
 	{
 		$firstParameter = $this->_registry->get('firstParameter');
 		$secondParameter = $this->_registry->get('secondParameter');

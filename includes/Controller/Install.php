@@ -324,7 +324,7 @@ class Install extends ControllerAbstract
 	 * @since 3.0.0
 	 */
 
-	protected function _refreshConnection()
+	protected function _refreshConnection() : void
 	{
 		Db::resetDb();
 		Db::init();

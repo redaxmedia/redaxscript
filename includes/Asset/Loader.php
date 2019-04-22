@@ -86,7 +86,7 @@ class Loader
 	 * @param array $collectionArray
 	 */
 
-	public function setCollectionArray(array $collectionArray = [])
+	public function setCollectionArray(array $collectionArray = []) : void
 	{
 		$this->_collectionArray = $collectionArray;
 	}
@@ -148,7 +148,7 @@ class Loader
 	 * @param array $optionArray
 	 */
 
-	public function _handleCache(array $rewriteArray = [], array $bundleArray = [], array $restArray = [], array $optionArray = [])
+	protected function _handleCache(array $rewriteArray = [], array $bundleArray = [], array $restArray = [], array $optionArray = []) : void
 	{
 		$cacheFilesystem = new Filesystem\Cache();
 		$cacheFilesystem->init($optionArray['directory'], $optionArray['extension']);

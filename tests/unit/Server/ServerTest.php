@@ -30,7 +30,7 @@ class ServerTest extends TestCaseAbstract
 	 * @since 2.4.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$this->_request->set('server',
@@ -47,7 +47,7 @@ class ServerTest extends TestCaseAbstract
 	 * @since 2.4.0
 	 */
 
-	public function testDirectory()
+	public function testDirectory() : void
 	{
 		/* setup */
 
@@ -68,7 +68,7 @@ class ServerTest extends TestCaseAbstract
 	 * @since 2.4.0
 	 */
 
-	public function testFile()
+	public function testFile() : void
 	{
 		/* setup */
 
@@ -89,7 +89,7 @@ class ServerTest extends TestCaseAbstract
 	 * @since 2.4.0
 	 */
 
-	public function testHost()
+	public function testHost() : void
 	{
 		/* setup */
 
@@ -110,7 +110,7 @@ class ServerTest extends TestCaseAbstract
 	 * @since 2.4.0
 	 */
 
-	public function testProtocol()
+	public function testProtocol() : void
 	{
 		/* setup */
 
@@ -131,7 +131,7 @@ class ServerTest extends TestCaseAbstract
 	 * @since 2.4.0
 	 */
 
-	public function testRoot()
+	public function testRoot() : void
 	{
 		/* setup */
 
@@ -152,7 +152,7 @@ class ServerTest extends TestCaseAbstract
 	 * @since 2.4.0
 	 */
 
-	public function testToken()
+	public function testToken() : void
 	{
 		/* setup */
 

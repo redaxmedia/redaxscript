@@ -91,7 +91,7 @@ class Module
 	 * @param array $moduleArray custom module setup
 	 */
 
-	public function init(array $moduleArray = [])
+	public function init(array $moduleArray = []) : void
 	{
 		static::$_moduleArray = array_merge(static::$_moduleArray, $moduleArray);
 

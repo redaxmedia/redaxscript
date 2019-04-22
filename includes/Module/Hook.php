@@ -94,7 +94,7 @@ class Hook
 	 * @param Config $config instance of the config class
 	 */
 
-	public static function construct(Registry $registry, Request $request, Language $language, Config $config)
+	public static function construct(Registry $registry, Request $request, Language $language, Config $config) : void
 	{
 		self::$_registry = $registry;
 		self::$_request = $request;
@@ -108,7 +108,7 @@ class Hook
 	 * @since 2.6.0
 	 */
 
-	public static function init()
+	public static function init() : void
 	{
 		$accessValidator = new Validator\Access();
 		$modulesFilesystem = new Filesystem\Filesystem();

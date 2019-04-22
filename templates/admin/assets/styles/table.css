@@ -53,10 +53,14 @@
 			}
 		}
 
+		& tr.rs-admin-is-corrupted
+		{
+			text-decoration: line-through;
+		}
+
 		& tr.rs-admin-is-disabled
 		{
 			color: gray(70);
-			text-decoration: line-through;
 		}
 	}
 }

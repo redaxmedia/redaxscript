@@ -25,7 +25,7 @@ class ArticleTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$installer = $this->installerFactory();
@@ -82,7 +82,7 @@ class ArticleTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -98,7 +98,7 @@ class ArticleTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetByAlias(string $articleAlias = null, int $expect = null)
+	public function testGetByAlias(string $articleAlias = null, int $expect = null) : void
 	{
 		/* setup */
 
@@ -124,7 +124,7 @@ class ArticleTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetRouteById(int $articleId = null, string $expect = null)
+	public function testGetRouteById(int $articleId = null, string $expect = null) : void
 	{
 		/* setup */
 

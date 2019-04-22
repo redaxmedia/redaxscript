@@ -6,7 +6,7 @@ rs.modules.TextareaResizer =
 		dependency: typeof window.autosize === 'function',
 		optionArray:
 		{
-			selector: 'textarea.rs-js-resize',
+			selector: 'textarea.rs-js-resize'
 		}
 	},
 	backend:

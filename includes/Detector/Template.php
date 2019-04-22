@@ -21,7 +21,7 @@ class Template extends DetectorAbstract
 	 * @since 2.1.0
 	 */
 
-	public function autorun()
+	public function autorun() : void
 	{
 		$settingModel = new Model\Setting();
 		$contentModel = new Model\Content();

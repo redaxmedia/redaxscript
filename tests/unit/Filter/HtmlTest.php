@@ -24,7 +24,7 @@ class HtmlTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -46,7 +46,7 @@ class HtmlTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -62,7 +62,7 @@ class HtmlTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testHtml(string $html = null, string $expect = null)
+	public function testHtml(string $html = null, string $expect = null) : void
 	{
 		/* setup */
 

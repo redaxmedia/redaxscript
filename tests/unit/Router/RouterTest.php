@@ -24,7 +24,7 @@ class RouterTest extends TestCaseAbstract
 	 * @since 3.3.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -47,7 +47,7 @@ class RouterTest extends TestCaseAbstract
 	 * @since 3.3.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -64,7 +64,7 @@ class RouterTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testHeader(array $registryArray = [], array $postArray = [], bool $expect = null)
+	public function testHeader(array $registryArray = [], array $postArray = [], bool $expect = null) : void
 	{
 		/* setup */
 
@@ -96,7 +96,7 @@ class RouterTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testContent(array $registryArray = [], array $queryArray = [], array $postArray = [], array $settingArray = [], bool $expect = null)
+	public function testContent(array $registryArray = [], array $queryArray = [], array $postArray = [], array $settingArray = [], bool $expect = null) : void
 	{
 		/* setup */
 
@@ -115,6 +115,6 @@ class RouterTest extends TestCaseAbstract
 
 		/* compare */
 
-		$expect ? $this->assertString($actual) : $this->assertNull($actual);
+		$expect ? $this->assertIsString($actual) : $this->assertNull($actual);
 	}
 }

@@ -23,7 +23,7 @@ class InstallationTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$this->_driver->get('http://localhost:8000/install.php');
@@ -35,7 +35,7 @@ class InstallationTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function testTitle()
+	public function testTitle() : void
 	{
 		/* expect and actual */
 
@@ -53,7 +53,7 @@ class InstallationTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function testBehaviour()
+	public function testBehaviour() : void
 	{
 		/* prepare */
 
@@ -114,7 +114,7 @@ class InstallationTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function testInstall()
+	public function testInstall() : void
 	{
 		/* prepare */
 

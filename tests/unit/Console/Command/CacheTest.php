@@ -25,7 +25,7 @@ class CacheTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->_request->setServer('argv', null);
 	}
@@ -36,7 +36,7 @@ class CacheTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testNoArgument()
+	public function testNoArgument() : void
 	{
 		/* setup */
 
@@ -58,7 +58,7 @@ class CacheTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testClear()
+	public function testClear() : void
 	{
 		/* setup */
 
@@ -92,7 +92,7 @@ class CacheTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testClearFailure()
+	public function testClearFailure() : void
 	{
 		/* setup */
 
@@ -121,7 +121,7 @@ class CacheTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testClearInvalid()
+	public function testClearInvalid() : void
 	{
 		/* setup */
 
@@ -155,7 +155,7 @@ class CacheTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testClearInvalidFailure()
+	public function testClearInvalidFailure() : void
 	{
 		/* setup */
 

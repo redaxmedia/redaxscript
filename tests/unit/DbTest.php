@@ -31,7 +31,7 @@ class DbTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -82,7 +82,7 @@ class DbTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 		$this->_config->set('dbType', $this->_configArray['dbType']);
@@ -99,7 +99,7 @@ class DbTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testInit(array $configArray = [])
+	public function testInit(array $configArray = []) : void
 	{
 		/* setup */
 
@@ -123,7 +123,7 @@ class DbTest extends TestCaseAbstract
 	 * @since 2.4.0
 	 */
 
-	public function testGetStatus()
+	public function testGetStatus() : void
 	{
 		/* actual */
 
@@ -140,7 +140,7 @@ class DbTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function testSetAutoIncrement()
+	public function testSetAutoIncrement() : void
 	{
 		/* actual */
 
@@ -157,7 +157,7 @@ class DbTest extends TestCaseAbstract
 	 * @since 2.4.0
 	 */
 
-	public function testCountTablePrefix()
+	public function testCountTablePrefix() : void
 	{
 		/* actual */
 
@@ -174,7 +174,7 @@ class DbTest extends TestCaseAbstract
 	 * @since 2.2.0
 	 */
 
-	public function testForTablePrefix()
+	public function testForTablePrefix() : void
 	{
 		/* actual */
 
@@ -191,7 +191,7 @@ class DbTest extends TestCaseAbstract
 	 * @since 2.2.0
 	 */
 
-	public function testLeftJoinPrefix()
+	public function testLeftJoinPrefix() : void
 	{
 		/* expect and actual */
 
@@ -219,7 +219,7 @@ class DbTest extends TestCaseAbstract
 	 * @since 2.3.0
 	 */
 
-	public function testWhereLikeMany()
+	public function testWhereLikeMany() : void
 	{
 		/* actual */
 
@@ -248,7 +248,7 @@ class DbTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testWhereLanguageIs(string $language = null, string $expect = null)
+	public function testWhereLanguageIs(string $language = null, string $expect = null) : void
 	{
 		/* actual */
 
@@ -265,7 +265,7 @@ class DbTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function testOrderBySetting()
+	public function testOrderBySetting() : void
 	{
 		/* actual */
 
@@ -282,7 +282,7 @@ class DbTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function testLimitBySetting()
+	public function testLimitBySetting() : void
 	{
 		/* actual */
 

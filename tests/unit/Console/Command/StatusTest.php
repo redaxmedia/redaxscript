@@ -25,7 +25,7 @@ class StatusTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->_request->setServer('argv', null);
 	}
@@ -36,7 +36,7 @@ class StatusTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testNoArgument()
+	public function testNoArgument() : void
 	{
 		/* setup */
 
@@ -58,7 +58,7 @@ class StatusTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testDatabase()
+	public function testDatabase() : void
 	{
 		/* setup */
 
@@ -76,7 +76,7 @@ class StatusTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertString($actual);
+		$this->assertIsString($actual);
 	}
 
 	/**
@@ -85,7 +85,7 @@ class StatusTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testSystem()
+	public function testSystem() : void
 	{
 		/* setup */
 
@@ -116,6 +116,6 @@ class StatusTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertString($actual);
+		$this->assertIsString($actual);
 	}
 }

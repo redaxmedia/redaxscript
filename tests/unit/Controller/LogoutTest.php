@@ -27,7 +27,7 @@ class LogoutTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -49,7 +49,7 @@ class LogoutTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -65,7 +65,7 @@ class LogoutTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testProcess(array $authArray = [], string $expect = null)
+	public function testProcess(array $authArray = [], string $expect = null) : void
 	{
 		/* setup */
 

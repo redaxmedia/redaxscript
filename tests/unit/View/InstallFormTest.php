@@ -29,7 +29,7 @@ class InstallFormTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRender(array $expectArray = [])
+	public function testRender(array $expectArray = []) : void
 	{
 		/* setup */
 

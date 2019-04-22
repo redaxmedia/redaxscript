@@ -24,7 +24,7 @@ class TagTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testPanel()
+	public function testPanel() : void
 	{
 		/* actual */
 
@@ -32,6 +32,6 @@ class TagTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertString($actual);
+		$this->assertIsString($actual);
 	}
 }

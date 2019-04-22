@@ -33,7 +33,7 @@ class PaginationTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRender(string $route = null, int $current = null, int $total = null, int $range = null, array $optionArray = [], string $expect = null)
+	public function testRender(string $route = null, int $current = null, int $total = null, int $range = null, array $optionArray = [], string $expect = null) : void
 	{
 		/* setup */
 

@@ -130,7 +130,7 @@ class Module extends ControllerAbstract
 	 * @return bool
 	 */
 
-	public function _update(int $moduleId = null, array $updateArray = []) : bool
+	protected function _update(int $moduleId = null, array $updateArray = []) : bool
 	{
 		$moduleModel = new Admin\Model\Module();
 		return $moduleModel->updateByIdAndArray($moduleId, $updateArray);

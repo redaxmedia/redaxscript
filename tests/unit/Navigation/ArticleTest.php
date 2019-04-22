@@ -25,7 +25,7 @@ class ArticleTest extends TestCaseAbstract
 	 * @since 3.3.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -99,7 +99,7 @@ class ArticleTest extends TestCaseAbstract
 	 * @since 3.3.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -116,7 +116,7 @@ class ArticleTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRender(array $registryArray = [], array $optionArray = [], string $expect = null)
+	public function testRender(array $registryArray = [], array $optionArray = [], string $expect = null) : void
 	{
 		/* setup */
 

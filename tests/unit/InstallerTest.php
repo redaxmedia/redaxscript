@@ -24,7 +24,7 @@ class InstallerTest extends TestCaseAbstract
 	 * @since 2.4.0
 	 */
 
-	public function testRawCreate()
+	public function testRawCreate() : void
 	{
 		/* setup */
 
@@ -47,7 +47,7 @@ class InstallerTest extends TestCaseAbstract
 	 * @since 2.4.0
 	 */
 
-	public function testInsertData()
+	public function testInsertData() : void
 	{
 		/* setup */
 
@@ -91,7 +91,7 @@ class InstallerTest extends TestCaseAbstract
 	 * @since 2.4.0
 	 */
 
-	public function testRawDrop()
+	public function testRawDrop() : void
 	{
 		/* setup */
 

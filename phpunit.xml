@@ -1,20 +1,6 @@
 <?xml version="1.0"?>
 <phpunit forceCoversAnnotation="true" convertErrorsToExceptions="true" convertWarningsToExceptions="true" bootstrap="tests/unit/bootstrap.php">
 
-	<!-- listeners -->
-
-	<listeners>
-		<listener class="JohnKary\PHPUnit\Listener\SpeedTrapListener">
-			<arguments>
-				<array>
-					<element key="slowThreshold">
-						<integer>1000</integer>
-					</element>
-				</array>
-			</arguments>
-		</listener>
-	</listeners>
-
 	<!-- filter -->
 
 	<filter>
@@ -83,7 +69,7 @@
 
 		<!-- bootstrap -->
 
-		<testsuite name="bootstrap">
+		<testsuite name="_bootstrap">
 			<directory>tests/unit/Bootstrap</directory>
 		</testsuite>
 

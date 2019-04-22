@@ -24,7 +24,7 @@ class FormTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -46,7 +46,7 @@ class FormTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -63,7 +63,7 @@ class FormTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testCreate(array $attributeArray = [], array $optionArray = [], string $expect = null)
+	public function testCreate(array $attributeArray = [], array $optionArray = [], string $expect = null) : void
 	{
 		/* setup */
 

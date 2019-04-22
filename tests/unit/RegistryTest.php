@@ -22,7 +22,7 @@ class RegistryTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testInit()
+	public function testInit() : void
 	{
 		/* setup */
 
@@ -43,7 +43,7 @@ class RegistryTest extends TestCaseAbstract
 	 * @since 2.1.0
 	 */
 
-	public function testGetAndSet()
+	public function testGetAndSet() : void
 	{
 		/* setup */
 
@@ -64,7 +64,7 @@ class RegistryTest extends TestCaseAbstract
 	 * @since 2.2.0
 	 */
 
-	public function testGetAll()
+	public function testGetAll() : void
 	{
 		/* setup */
 
@@ -85,7 +85,7 @@ class RegistryTest extends TestCaseAbstract
 	 * @since 2.1.0
 	 */
 
-	public function testGetInvalid()
+	public function testGetInvalid() : void
 	{
 		/* actual */
 

@@ -26,7 +26,7 @@ class UninstallTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$this->createDatabase();
@@ -38,7 +38,7 @@ class UninstallTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 		$this->_request->setServer('argv', null);
@@ -50,7 +50,7 @@ class UninstallTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testNoArgument()
+	public function testNoArgument() : void
 	{
 		/* setup */
 
@@ -72,7 +72,7 @@ class UninstallTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testDatabase()
+	public function testDatabase() : void
 	{
 		/* setup */
 
@@ -100,7 +100,7 @@ class UninstallTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testModule()
+	public function testModule() : void
 	{
 		/* setup */
 
@@ -132,7 +132,7 @@ class UninstallTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testModuleInvalid()
+	public function testModuleInvalid() : void
 	{
 		/* setup */
 

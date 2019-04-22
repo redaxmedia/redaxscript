@@ -21,7 +21,7 @@ class RequestTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testInit()
+	public function testInit() : void
 	{
 		/* setup */
 
@@ -42,7 +42,7 @@ class RequestTest extends TestCaseAbstract
 	 * @since 2.2.0
 	 */
 
-	public function testAll()
+	public function testAll() : void
 	{
 		/* actual */
 
@@ -59,7 +59,7 @@ class RequestTest extends TestCaseAbstract
 	 * @since 2.2.0
 	 */
 
-	public function testGlobal()
+	public function testGlobal() : void
 	{
 		/* setup */
 
@@ -80,7 +80,7 @@ class RequestTest extends TestCaseAbstract
 	 * @since 2.2.0
 	 */
 
-	public function testServer()
+	public function testServer() : void
 	{
 		/* setup */
 
@@ -101,7 +101,7 @@ class RequestTest extends TestCaseAbstract
 	 * @since 2.2.0
 	 */
 
-	public function testQuery()
+	public function testQuery() : void
 	{
 		/* setup */
 
@@ -122,7 +122,7 @@ class RequestTest extends TestCaseAbstract
 	 * @since 2.2.0
 	 */
 
-	public function testPost()
+	public function testPost() : void
 	{
 		/* setup */
 
@@ -143,7 +143,7 @@ class RequestTest extends TestCaseAbstract
 	 * @since 3.9.0
 	 */
 
-	public function testFiles()
+	public function testFiles() : void
 	{
 		/* setup */
 
@@ -164,7 +164,7 @@ class RequestTest extends TestCaseAbstract
 	 * @since 2.6.2
 	 */
 
-	public function testSession()
+	public function testSession() : void
 	{
 		/* setup */
 
@@ -186,7 +186,7 @@ class RequestTest extends TestCaseAbstract
 	 * @since 2.6.2
 	 */
 
-	public function testCookie()
+	public function testCookie() : void
 	{
 		/* setup */
 
@@ -208,7 +208,7 @@ class RequestTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testGetInvalid()
+	public function testGetInvalid() : void
 	{
 		/* actual */
 

@@ -27,7 +27,7 @@ class DetectorTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -67,7 +67,7 @@ class DetectorTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -87,7 +87,7 @@ class DetectorTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testLanguage(array $registryArray = [], array $queryArray = [], array $sessionArray = [], array $serverArray = [], array $settingArray = [], string $expect = null)
+	public function testLanguage(array $registryArray = [], array $queryArray = [], array $sessionArray = [], array $serverArray = [], array $settingArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -122,7 +122,7 @@ class DetectorTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testTemplate(array $registryArray = [], array $queryArray = [], array $sessionArray = [], array $settingArray = [], string $expect = null)
+	public function testTemplate(array $registryArray = [], array $queryArray = [], array $sessionArray = [], array $settingArray = [], string $expect = null) : void
 	{
 		/* setup */
 

@@ -59,7 +59,7 @@ class Parameter
 	 * @since 2.4.0
 	 */
 
-	public function init()
+	public function init() : void
 	{
 		$parameter = $this->_request->getQuery('p');
 		$this->_parameterArray = array_filter(explode('/', $parameter), 'strlen');

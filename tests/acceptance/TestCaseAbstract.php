@@ -14,7 +14,7 @@ use Redaxscript\Request;
 /**
  * TestCaseAbstract
  *
- * @since 2.2.0
+ * @since 4.0.0
  *
  * @package Redaxscript
  * @category Tests
@@ -77,7 +77,7 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		Db::clearCache();
 		$options = new ChromeOptions();
@@ -101,7 +101,7 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 * @since 4.0.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->_driver->quit();
 	}

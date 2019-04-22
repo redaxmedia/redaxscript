@@ -31,7 +31,7 @@ class SessionTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testSession(array $expectArray = [])
+	public function testSession(array $expectArray = []) : void
 	{
 		/* setup */
 
@@ -47,7 +47,7 @@ class SessionTest extends TestCaseAbstract
 			],
 			'session' =>
 			[
-				'regenerateId' => $this->_request->getSession('regenerateId')
+				'sessionGuard' => $this->_request->getSession('sessionGuard')
 			]
 		];
 

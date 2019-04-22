@@ -84,13 +84,15 @@
 		border-top: 0.5em solid transparent;
 		transform: translateY(-0.25em);
 
-		& li:first-child a
+		& li:first-child a,
+		& li:first-child span
 		{
 			border-top-left-radius: 0.125em;
 			border-top-right-radius: 0.125em;
 		}
 
-		& li:last-child a
+		& li:last-child a,
+		& li:last-child span
 		{
 			border-bottom-left-radius: 0.125em;
 			border-bottom-right-radius: 0.125em;

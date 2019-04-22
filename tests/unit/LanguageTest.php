@@ -21,7 +21,7 @@ class LanguageTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testInit()
+	public function testInit() : void
 	{
 		/* setup */
 
@@ -43,7 +43,7 @@ class LanguageTest extends TestCaseAbstract
 	 * @since 2.4.0
 	 */
 
-	public function testGetAndSet()
+	public function testGetAndSet() : void
 	{
 		/* setup */
 
@@ -64,7 +64,7 @@ class LanguageTest extends TestCaseAbstract
 	 * @since 2.2.0
 	 */
 
-	public function testGetIndex()
+	public function testGetIndex() : void
 	{
 		/* actual */
 
@@ -81,7 +81,7 @@ class LanguageTest extends TestCaseAbstract
 	 * @since 2.2.0
 	 */
 
-	public function testGetAll()
+	public function testGetAll() : void
 	{
 		/* actual */
 
@@ -98,7 +98,7 @@ class LanguageTest extends TestCaseAbstract
 	 * @since 2.2.0
 	 */
 
-	public function testGetInvalid()
+	public function testGetInvalid() : void
 	{
 		/* actual */
 

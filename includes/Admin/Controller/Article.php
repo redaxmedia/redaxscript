@@ -233,7 +233,7 @@ class Article extends ControllerAbstract
 	 * @return bool
 	 */
 
-	public function _update(int $articleId = null, array $updateArray = []) : bool
+	protected function _update(int $articleId = null, array $updateArray = []) : bool
 	{
 		$articleModel = new Admin\Model\Article();
 		return $articleModel->updateByIdAndArray($articleId, $updateArray);

@@ -91,7 +91,7 @@ class Gallery extends Module\Notification
 	 * @since 3.0.0
 	 */
 
-	public function renderStart()
+	public function renderStart() : void
 	{
 		/* link */
 
@@ -125,7 +125,7 @@ class Gallery extends Module\Notification
 	 * @since 4.0.0
 	 */
 
-	public function renderEnd()
+	public function renderEnd() : void
 	{
 		include_once('modules/Gallery/templates/gallery.phtml');
 	}
@@ -201,7 +201,7 @@ class Gallery extends Module\Notification
 	 * @return string|null
 	 */
 
-	public function _renderItem(string $directory = null, array $optionArray = []) : ?string
+	protected function _renderItem(string $directory = null, array $optionArray = []) : ?string
 	{
 		$outputItem = null;
 		$itemCounter = 0;
@@ -278,7 +278,7 @@ class Gallery extends Module\Notification
 	 * @param string $directory
 	 */
 
-	protected function _removeThumb(string $directory = null)
+	protected function _removeThumb(string $directory = null) : void
 	{
 		$galleryFilesystem = new Filesystem\Directory();
 		$galleryFilesystem->init($directory, true);
@@ -294,7 +294,7 @@ class Gallery extends Module\Notification
 	 * @param array $optionArray
 	 */
 
-	protected function _createThumb(string $directory = null, array $optionArray = [])
+	protected function _createThumb(string $directory = null, array $optionArray = []) : void
 	{
 		/* gallery filesystem */
 

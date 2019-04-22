@@ -25,7 +25,7 @@ class Header
 	 * @since 3.3.0
 	 */
 
-	public static function init()
+	public static function init() : void
 	{
 		self::add(
 		[

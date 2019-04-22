@@ -25,7 +25,7 @@ class CategoryTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$installer = $this->installerFactory();
@@ -56,7 +56,7 @@ class CategoryTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -72,7 +72,7 @@ class CategoryTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetByAlias(string $categoryAlias = null, int $expect = null)
+	public function testGetByAlias(string $categoryAlias = null, int $expect = null) : void
 	{
 		/* setup */
 
@@ -98,7 +98,7 @@ class CategoryTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetRouteById(int $categoryId = null, string $expect = null)
+	public function testGetRouteById(int $categoryId = null, string $expect = null) : void
 	{
 		/* setup */
 

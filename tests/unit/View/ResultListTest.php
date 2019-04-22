@@ -28,7 +28,7 @@ class ResultListTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -79,7 +79,7 @@ class ResultListTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -95,7 +95,7 @@ class ResultListTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRender(array $searchArray = [], string $expect = null)
+	public function testRender(array $searchArray = [], string $expect = null) : void
 	{
 		/* setup */
 

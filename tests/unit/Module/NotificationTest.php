@@ -24,7 +24,7 @@ class NotificationTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testGetAndSetNotification()
+	public function testGetAndSetNotification() : void
 	{
 		/* setup */
 
@@ -55,7 +55,7 @@ class NotificationTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testGetAllNotification()
+	public function testGetAllNotification() : void
 	{
 		/* setup */
 
@@ -89,7 +89,7 @@ class NotificationTest extends TestCaseAbstract
 	 * @since 2.1.0
 	 */
 
-	public function testGetInvalid()
+	public function testGetInvalid() : void
 	{
 		/* setup */
 

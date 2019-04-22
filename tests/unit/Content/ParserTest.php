@@ -33,7 +33,7 @@ class ParserTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -56,7 +56,7 @@ class ParserTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->uninstallTestDummy();
 		$this->dropDatabase();
@@ -73,7 +73,7 @@ class ParserTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testCode(string $content = null, string $expect = null)
+	public function testCode(string $content = null, string $expect = null) : void
 	{
 		/* setup */
 
@@ -101,7 +101,7 @@ class ParserTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testLanguage(string $language = null, string $content = null, string $expect = null)
+	public function testLanguage(string $language = null, string $content = null, string $expect = null) : void
 	{
 		/* setup */
 
@@ -129,7 +129,7 @@ class ParserTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testModule(string $content = null, string $expect = null)
+	public function testModule(string $content = null, string $expect = null) : void
 	{
 		/* setup */
 
@@ -160,7 +160,7 @@ class ParserTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testMore(array $registryArray = [], string $content = null, string $route = null, string $expect = null)
+	public function testMore(array $registryArray = [], string $content = null, string $route = null, string $expect = null) : void
 	{
 		/* setup */
 
@@ -189,7 +189,7 @@ class ParserTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRegistry(array $registryArray = [], string $content = null, string $expect = null)
+	public function testRegistry(array $registryArray = [], string $content = null, string $expect = null) : void
 	{
 		/* setup */
 
@@ -217,7 +217,7 @@ class ParserTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testTemplate(string $content = null, string $expect = null)
+	public function testTemplate(string $content = null, string $expect = null) : void
 	{
 		/* setup */
 

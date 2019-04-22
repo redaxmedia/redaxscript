@@ -26,7 +26,7 @@ class UserTableTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -66,7 +66,7 @@ class UserTableTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -82,7 +82,7 @@ class UserTableTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRender(array $registryArray = [], string $expect = null)
+	public function testRender(array $registryArray = [], string $expect = null) : void
 	{
 		/* setup */
 

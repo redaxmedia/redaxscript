@@ -41,7 +41,7 @@ class SitemapXml extends Module\Module
 	 * @since 2.2.0
 	 */
 
-	public function renderStart()
+	public function renderStart() : void
 	{
 		if ($this->_registry->get('firstParameter') === 'module' && $this->_registry->get('secondParameter') === 'sitemap-xml')
 		{

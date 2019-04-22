@@ -57,7 +57,7 @@ class Demo extends Module\Notification
 	 * @since 4.0.0
 	 */
 
-	public function renderStart()
+	public function renderStart() : void
 	{
 		if ($this->_registry->get('firstParameter') === 'module' && $this->_registry->get('secondParameter') === 'demo' && $this->_registry->get('thirdParameter') === 'reinstall')
 		{
@@ -72,7 +72,7 @@ class Demo extends Module\Notification
 	 * @since 3.3.0
 	 */
 
-	public function routeHeader()
+	public function routeHeader() : void
 	{
 		if ($this->_registry->get('firstParameter') === 'module' && $this->_registry->get('secondParameter') === 'demo' && $this->_registry->get('thirdParameter') === 'login')
 		{
@@ -87,7 +87,7 @@ class Demo extends Module\Notification
 	 * @since 3.3.0
 	 */
 
-	public function routeContent()
+	public function routeContent() : void
 	{
 		if ($this->_registry->get('firstParameter') === 'module' && $this->_registry->get('secondParameter') === 'demo' && $this->_registry->get('thirdParameter') === 'login')
 		{
@@ -226,7 +226,7 @@ class Demo extends Module\Notification
 	 * @since 2.4.0
 	 */
 
-	protected function _reinstall()
+	protected function _reinstall() : void
 	{
 		$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
 		$installer->init();

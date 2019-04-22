@@ -26,7 +26,7 @@ class MailerTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -51,7 +51,7 @@ class MailerTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -69,7 +69,7 @@ class MailerTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testSend(array $toArray = [], array $fromArray = [], string $subject = null, $body = null)
+	public function testSend(array $toArray = [], array $fromArray = [], string $subject = null, $body = null) : void
 	{
 		/* setup */
 
@@ -100,7 +100,7 @@ class MailerTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testSendAttachment(array $toArray = [], array $fromArray = [], string $subject = null, $body = null)
+	public function testSendAttachment(array $toArray = [], array $fromArray = [], string $subject = null, $body = null) : void
 	{
 		/* setup */
 

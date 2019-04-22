@@ -10,6 +10,12 @@
 		setoutputfilter deflate
 	</filesmatch>
 </ifmodule>
+<ifmodule mod_brotli.c>
+	setenv mod_brotli on
+	<filesmatch \.(css|ico|jpg|js|svg|php|png|webp|woff2)$>
+		setoutputfilter brotli
+	</filesmatch>
+</ifmodule>
 <ifmodule mod_security.c>
 	secfilterengine off
 	secfilterscanpost off

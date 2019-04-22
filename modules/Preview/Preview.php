@@ -55,7 +55,7 @@ class Preview extends Module\Module
 	 * @since 4.0.0
 	 */
 
-	public function renderStart()
+	public function renderStart() : void
 	{
 		if ($this->_registry->get('firstParameter') === 'module' && $this->_registry->get('secondParameter') === 'preview')
 		{
@@ -76,7 +76,7 @@ class Preview extends Module\Module
 	 * @since 3.3.0
 	 */
 
-	public function routeHeader()
+	public function routeHeader() : void
 	{
 		if ($this->_registry->get('firstParameter') === 'module' && $this->_registry->get('secondParameter') === 'preview')
 		{
@@ -92,7 +92,7 @@ class Preview extends Module\Module
 	 * @since 3.3.0
 	 */
 
-	public function routeContent()
+	public function routeContent() : void
 	{
 		if ($this->_registry->get('firstParameter') === 'module' && $this->_registry->get('secondParameter') === 'preview')
 		{

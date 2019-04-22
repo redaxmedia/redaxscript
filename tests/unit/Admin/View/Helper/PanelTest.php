@@ -24,7 +24,7 @@ class PanelTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$this->createDatabase();
@@ -37,7 +37,7 @@ class PanelTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->uninstallTestDummy();
 		$this->dropDatabase();
@@ -55,7 +55,7 @@ class PanelTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRender(array $registryArray = [], array $optionArray = [], string $expect = null)
+	public function testRender(array $registryArray = [], array $optionArray = [], string $expect = null) : void
 	{
 		/* setup */
 

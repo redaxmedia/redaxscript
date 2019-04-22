@@ -216,7 +216,7 @@ class Category extends ControllerAbstract
 	 * @return bool
 	 */
 
-	public function _update(int $categoryId = null, array $updateArray = []) : bool
+	protected function _update(int $categoryId = null, array $updateArray = []) : bool
 	{
 		$categoryModel = new Admin\Model\Category();
 		return $categoryModel->updateByIdAndArray($categoryId, $updateArray);

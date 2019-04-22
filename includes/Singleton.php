@@ -64,7 +64,7 @@ abstract class Singleton
 	 * @since 3.0.0
 	 */
 
-	public static function clearInstance()
+	public static function clearInstance() : void
 	{
 		$className = static::class;
 		self::$_instance[$className] = null;

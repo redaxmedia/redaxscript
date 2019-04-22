@@ -46,7 +46,7 @@ class Autoloader
 	 * @param string|array $autoload key or collection of the autoload
 	 */
 
-	public function init($autoload = null)
+	public function init($autoload = null) : void
 	{
 		if ($autoload)
 		{
@@ -70,7 +70,7 @@ class Autoloader
 	 * @param string $className name of the class
 	 */
 
-	protected function _load(string $className = null)
+	protected function _load(string $className = null) : void
 	{
 		foreach ($this->_autoloadArray as $namespace => $directory)
 		{

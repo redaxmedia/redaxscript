@@ -25,7 +25,7 @@ class ExtraTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$installer = $this->installerFactory();
@@ -47,7 +47,7 @@ class ExtraTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -63,7 +63,7 @@ class ExtraTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetByAlias(string $extraAlias = null, int $expect = null)
+	public function testGetByAlias(string $extraAlias = null, int $expect = null) : void
 	{
 		/* setup */
 

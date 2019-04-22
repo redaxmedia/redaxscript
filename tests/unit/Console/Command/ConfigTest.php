@@ -36,7 +36,7 @@ class ConfigTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		Stream::setup('root');
@@ -51,7 +51,7 @@ class ConfigTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->_config->set('dbType', $this->_configArray['dbType']);
 		$this->_config->set('dbHost', $this->_configArray['dbHost']);
@@ -69,7 +69,7 @@ class ConfigTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testNoArgument()
+	public function testNoArgument() : void
 	{
 		/* setup */
 
@@ -91,7 +91,7 @@ class ConfigTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testList()
+	public function testList() : void
 	{
 		/* setup */
 
@@ -110,7 +110,7 @@ class ConfigTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertString($actual);
+		$this->assertIsString($actual);
 	}
 
 	/**
@@ -119,7 +119,7 @@ class ConfigTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testSet()
+	public function testSet() : void
 	{
 		/* setup */
 
@@ -152,7 +152,7 @@ class ConfigTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testSetInvalid()
+	public function testSetInvalid() : void
 	{
 		/* setup */
 
@@ -182,7 +182,7 @@ class ConfigTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testParse()
+	public function testParse() : void
 	{
 		/* setup */
 
@@ -213,7 +213,7 @@ class ConfigTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testParseInvalid()
+	public function testParseInvalid() : void
 	{
 		/* setup */
 
@@ -243,7 +243,7 @@ class ConfigTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testLock()
+	public function testLock() : void
 	{
 		/* setup */
 

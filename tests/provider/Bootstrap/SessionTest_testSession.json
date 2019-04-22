@@ -7,7 +7,7 @@
 			},
 			"session":
 			{
-				"regenerateId": true
+				"sessionGuard": true
 			}
 		}
 	]

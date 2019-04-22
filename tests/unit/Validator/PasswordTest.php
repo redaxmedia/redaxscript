@@ -30,7 +30,7 @@ class PasswordTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testPassword(string $password = null, string $hash = null, bool $expect = null)
+	public function testPassword(string $password = null, string $hash = null, bool $expect = null) : void
 	{
 		/* setup */
 

@@ -25,7 +25,7 @@ class CategoryTest extends TestCaseAbstract
 	 * @since 3.3.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -45,7 +45,6 @@ class CategoryTest extends TestCaseAbstract
 			[
 				'title' => 'Category One',
 				'alias' => 'category-one',
-				'parent' => 0,
 				'rank' => 1,
 				'status' => 1
 			])
@@ -56,7 +55,6 @@ class CategoryTest extends TestCaseAbstract
 			[
 				'title' => 'Category Two',
 				'alias' => 'category-two',
-				'parent' => 0,
 				'rank' => 2,
 				'status' => 1
 			])
@@ -80,7 +78,7 @@ class CategoryTest extends TestCaseAbstract
 	 * @since 3.3.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -97,7 +95,7 @@ class CategoryTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRender(array $registryArray = [], array $optionArray = [], string $expect = null)
+	public function testRender(array $registryArray = [], array $optionArray = [], string $expect = null) : void
 	{
 		/* setup */
 

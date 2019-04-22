@@ -24,7 +24,7 @@ class SettingTest extends TestCaseAbstract
 	 * @since 3.3.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -46,7 +46,7 @@ class SettingTest extends TestCaseAbstract
 	 * @since 3.3.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -57,7 +57,7 @@ class SettingTest extends TestCaseAbstract
 	 * @since 3.3.0
 	 */
 
-	public function testGetAndSet()
+	public function testGetAndSet() : void
 	{
 		/* setup */
 
@@ -79,7 +79,7 @@ class SettingTest extends TestCaseAbstract
 	 * @since 3.3.0
 	 */
 
-	public function testGetInvalid()
+	public function testGetInvalid() : void
 	{
 		/* setup */
 

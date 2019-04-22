@@ -39,7 +39,7 @@ class CallHome extends Module\Notification
 	 * @since 3.0.0
 	 */
 
-	public function renderStart()
+	public function renderStart() : void
 	{
 		if ($this->_registry->get('loggedIn') === $this->_registry->get('token') && $this->_registry->get('firstParameter') === 'admin')
 		{

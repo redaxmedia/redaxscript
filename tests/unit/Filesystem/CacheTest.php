@@ -29,7 +29,7 @@ class CacheTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		Stream::setup('root', 0777);
 	}
@@ -45,7 +45,7 @@ class CacheTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testStore(array $bundleArray = [], array $expectArray = [])
+	public function testStore(array $bundleArray = [], array $expectArray = []) : void
 	{
 		/* setup */
 
@@ -74,7 +74,7 @@ class CacheTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testRetrieve()
+	public function testRetrieve() : void
 	{
 		/* setup */
 
@@ -98,7 +98,7 @@ class CacheTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testRetrieveInvalid()
+	public function testRetrieveInvalid() : void
 	{
 		/* setup */
 
@@ -120,7 +120,7 @@ class CacheTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testValidate()
+	public function testValidate() : void
 	{
 		/* setup */
 
@@ -147,7 +147,7 @@ class CacheTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testClear()
+	public function testClear() : void
 	{
 		/* setup */
 
@@ -175,7 +175,7 @@ class CacheTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testClearInvalid()
+	public function testClearInvalid() : void
 	{
 		/* setup */
 

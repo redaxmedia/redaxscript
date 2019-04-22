@@ -27,7 +27,7 @@ class LinkTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		Stream::setup('root', 0777, $this->getJSON('tests' . DIRECTORY_SEPARATOR. 'provider' . DIRECTORY_SEPARATOR. 'Head' . DIRECTORY_SEPARATOR. 'LinkTest_setUp.json'));
 	}
@@ -44,7 +44,7 @@ class LinkTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testAppend(array $coreArray = [], array $moduleArray = [], string $expect = null)
+	public function testAppend(array $coreArray = [], array $moduleArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -86,7 +86,7 @@ class LinkTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testPrepend(array $coreArray = [], array $moduleArray = [], string $expect = null)
+	public function testPrepend(array $coreArray = [], array $moduleArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -128,7 +128,7 @@ class LinkTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRemove(array $coreArray = [], string $deleteFile = null, string $expect = null)
+	public function testRemove(array $coreArray = [], string $deleteFile = null, string $expect = null) : void
 	{
 		/* setup */
 
@@ -163,7 +163,7 @@ class LinkTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testConcat(array $concatArray = [], string $expect = null)
+	public function testConcat(array $concatArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -199,7 +199,7 @@ class LinkTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testRewrite()
+	public function testRewrite() : void
 	{
 		/* setup */
 
@@ -237,7 +237,7 @@ class LinkTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testInvalid()
+	public function testInvalid() : void
 	{
 		/* setup */
 

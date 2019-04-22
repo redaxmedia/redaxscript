@@ -59,6 +59,7 @@ class Comment extends NavigationAbstract
 			]);
 		$itemElement = $element->copy()->init('li');
 		$linkElement = $element->copy()->init('a');
+		$textElement = $element->copy()->init('span');
 
 		/* query comments */
 
@@ -91,7 +92,7 @@ class Comment extends NavigationAbstract
 
 		/* collect output */
 
-		$output .= $listElement->html($outputItem ? :  $itemElement->text($this->_language->get('comment_no')));
+		$output .= $listElement->html($outputItem ? : $itemElement->html($textElement->text($this->_language->get('comment_no'))));
 		$output .= Module\Hook::trigger('navigationCommentEnd');
 		return $output;
 	}

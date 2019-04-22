@@ -28,7 +28,7 @@ class HashTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testInit(string $raw = null)
+	public function testInit(string $raw = null) : void
 	{
 		/* setup */
 
@@ -50,7 +50,7 @@ class HashTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetRaw(string $raw = null)
+	public function testGetRaw(string $raw = null) : void
 	{
 		/* setup */
 
@@ -78,7 +78,7 @@ class HashTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetHash(string $raw = null, array $hashArray = [])
+	public function testGetHash(string $raw = null, array $hashArray = []) : void
 	{
 		/* setup */
 
@@ -106,7 +106,7 @@ class HashTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testValidate(string $raw = null, array $hashArray = [])
+	public function testValidate(string $raw = null, array $hashArray = []) : void
 	{
 		/* setup */
 

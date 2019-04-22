@@ -25,7 +25,7 @@ class AuthTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -70,7 +70,7 @@ class AuthTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -81,7 +81,7 @@ class AuthTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testInit()
+	public function testInit() : void
 	{
 		/* setup */
 
@@ -112,7 +112,7 @@ class AuthTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testLoginAndLogout()
+	public function testLoginAndLogout() : void
 	{
 		/* setup */
 
@@ -133,7 +133,7 @@ class AuthTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testGetUserInvalid()
+	public function testGetUserInvalid() : void
 	{
 		/* setup */
 
@@ -161,7 +161,7 @@ class AuthTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetPermission(string $method = null, array $typeArray = [], string $groups = null)
+	public function testGetPermission(string $method = null, array $typeArray = [], string $groups = null) : void
 	{
 		/* setup */
 
@@ -188,7 +188,7 @@ class AuthTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetFilter(string $groups = null, bool $expect = null)
+	public function testGetFilter(string $groups = null, bool $expect = null) : void
 	{
 		/* setup */
 

@@ -30,7 +30,7 @@ class LoginTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testLogin(string $login = null, bool $expect = null)
+	public function testLogin(string $login = null, bool $expect = null) : void
 	{
 		/* setup */
 

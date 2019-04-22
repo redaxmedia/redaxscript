@@ -204,7 +204,7 @@ class Element extends HtmlAbstract
 	 * @param string $type add or remove
 	 */
 
-	protected function _editClass(string $className = null, string $type = null)
+	protected function _editClass(string $className = null, string $type = null) : void
 	{
 		$classArray = array_filter(explode(' ', $className));
 		if (is_array($this->_attributeArray) && array_key_exists('class', $this->_attributeArray))

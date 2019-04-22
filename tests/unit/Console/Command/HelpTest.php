@@ -25,7 +25,7 @@ class HelpTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->_request->setServer('argv', null);
 	}
@@ -36,7 +36,7 @@ class HelpTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testNoArgument()
+	public function testNoArgument() : void
 	{
 		/* setup */
 
@@ -48,7 +48,7 @@ class HelpTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertString($actual);
+		$this->assertIsString($actual);
 	}
 
 	/**
@@ -57,7 +57,7 @@ class HelpTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testHelp()
+	public function testHelp() : void
 	{
 		/* setup */
 

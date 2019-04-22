@@ -24,7 +24,7 @@ class HookTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$this->createDatabase();
@@ -37,7 +37,7 @@ class HookTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->uninstallTestDummy();
 		$this->dropDatabase();
@@ -49,7 +49,7 @@ class HookTest extends TestCaseAbstract
 	 * @since 2.4.0
 	 */
 
-	public function testGetModuleArray()
+	public function testGetModuleArray() : void
 	{
 		/* setup */
 
@@ -71,7 +71,7 @@ class HookTest extends TestCaseAbstract
 	 * @since 2.4.0
 	 */
 
-	public function testGetEventArray()
+	public function testGetEventArray() : void
 	{
 		/* setup */
 
@@ -98,7 +98,7 @@ class HookTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testCollect(array $expectArray = [])
+	public function testCollect(array $expectArray = []) : void
 	{
 		/* setup */
 
@@ -120,7 +120,7 @@ class HookTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testCollectInvalid()
+	public function testCollectInvalid() : void
 	{
 		/* setup */
 
@@ -142,7 +142,7 @@ class HookTest extends TestCaseAbstract
 	 * @since 2.4.0
 	 */
 
-	public function testTrigger()
+	public function testTrigger() : void
 	{
 		/* setup */
 
@@ -155,7 +155,7 @@ class HookTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals(2, $actual);
+		$this->assertEquals('Two', $actual);
 	}
 
 	/**
@@ -164,7 +164,7 @@ class HookTest extends TestCaseAbstract
 	 * @since 2.4.0
 	 */
 
-	public function testTriggerInvalid()
+	public function testTriggerInvalid() : void
 	{
 		/* setup */
 

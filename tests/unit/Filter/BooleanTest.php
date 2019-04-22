@@ -29,7 +29,7 @@ class BooleanTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testBoolean(string $boolean = null, bool $expect = null)
+	public function testBoolean(string $boolean = null, bool $expect = null) : void
 	{
 		/* setup */
 

@@ -30,7 +30,7 @@ class SystemStatusTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRender(array $registryArray = [], string $expect = null)
+	public function testRender(array $registryArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -57,7 +57,7 @@ class SystemStatusTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testValidateError(array $registryArray = [], array $expectArray = [])
+	public function testValidateError(array $registryArray = [], array $expectArray = []) : void
 	{
 		/* setup */
 
@@ -84,7 +84,7 @@ class SystemStatusTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testValidateWarning(array $registryArray = [], array $expectArray = [])
+	public function testValidateWarning(array $registryArray = [], array $expectArray = []) : void
 	{
 		/* setup */
 

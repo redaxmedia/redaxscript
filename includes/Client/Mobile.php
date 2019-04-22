@@ -19,7 +19,7 @@ class Mobile extends ClientAbstract
 	 * @since 2.4.0
 	 */
 
-	public function autorun()
+	public function autorun() : void
 	{
 		$this->_detect(
 		[

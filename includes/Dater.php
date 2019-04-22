@@ -42,7 +42,7 @@ class Dater
 	 * @param int $date timestamp of the date
 	 */
 
-	public function init(int $date = null)
+	public function init(int $date = null) : void
 	{
 		$zone = null;
 		if (Db::getStatus() === 2)

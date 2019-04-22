@@ -29,7 +29,7 @@ class InstallTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		Stream::setup('root');
@@ -43,7 +43,7 @@ class InstallTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -60,7 +60,7 @@ class InstallTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testProcess(array $postArray = [], string $method = null, string $expect = null)
+	public function testProcess(array $postArray = [], string $method = null, string $expect = null) : void
 	{
 		/* setup */
 
@@ -121,7 +121,7 @@ class InstallTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testValidateDatabase(array $postArray = [], array $expectArray = [])
+	public function testValidateDatabase(array $postArray = [], array $expectArray = []) : void
 	{
 		/* setup */
 
@@ -150,7 +150,7 @@ class InstallTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testValidateAccount(array $postArray = [], array $expectArray = [])
+	public function testValidateAccount(array $postArray = [], array $expectArray = []) : void
 	{
 		/* setup */
 
@@ -179,7 +179,7 @@ class InstallTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testInstall(array $installArray = [], bool $expect = null)
+	public function testInstall(array $installArray = [], bool $expect = null) : void
 	{
 		/* setup */
 

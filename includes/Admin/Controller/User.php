@@ -247,7 +247,7 @@ class User extends ControllerAbstract
 	 * @return bool
 	 */
 
-	public function _update(int $userId = null, array $updateArray = []) : bool
+	protected function _update(int $userId = null, array $updateArray = []) : bool
 	{
 		$userModel = new Admin\Model\User();
 		return $userModel->updateByIdAndArray($userId, $updateArray);
@@ -261,7 +261,7 @@ class User extends ControllerAbstract
 	 * @param array $refreshArray array of the update
 	 */
 
-	public function _refresh(array $refreshArray = [])
+	protected function _refresh(array $refreshArray = []) : void
 	{
 		$auth = new Auth($this->_request);
 		$auth->init();

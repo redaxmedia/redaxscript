@@ -159,6 +159,7 @@ class Status extends CommandAbstract
 		];
 		$testModuleArray =
 		[
+			'mod_brotli',
 			'mod_deflate',
 			'mod_headers',
 			'mod_rewrite'

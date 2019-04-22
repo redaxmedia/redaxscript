@@ -26,7 +26,7 @@ class GroupTableTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$installer = $this->installerFactory();
@@ -49,7 +49,7 @@ class GroupTableTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -65,7 +65,7 @@ class GroupTableTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRender(array $registryArray = [], string $expect = null)
+	public function testRender(array $registryArray = [], string $expect = null) : void
 	{
 		/* setup */
 

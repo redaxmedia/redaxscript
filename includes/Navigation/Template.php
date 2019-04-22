@@ -56,6 +56,7 @@ class Template extends NavigationAbstract
 			]);
 		$itemElement = $element->copy()->init('li');
 		$linkElement = $element->copy()->init('a');
+		$textElement = $element->copy()->init('span');
 
 		/* template directory */
 
@@ -88,7 +89,7 @@ class Template extends NavigationAbstract
 
 		/* collect output */
 
-		$output .= $listElement->html($outputItem ? : $itemElement->text($this->_language->get('template_no')));
+		$output .= $listElement->html($outputItem ? : $itemElement->html($textElement->text($this->_language->get('template_no'))));
 		$output .= Module\Hook::trigger('navigationTemplateEnd');
 		return $output;
 	}

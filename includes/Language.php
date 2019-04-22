@@ -34,7 +34,7 @@ class Language extends Singleton
 	 * @param string $language detected language to process
 	 */
 
-	public function init(string $language = 'en')
+	public function init(string $language = 'en') : void
 	{
 		$this->load('languages/en.json');
 
@@ -92,7 +92,7 @@ class Language extends Singleton
 	 * @param string|array $value value of the item
 	 */
 
-	public function set(string $key = null, $value = null)
+	public function set(string $key = null, $value = null) : void
 	{
 		self::$_languageArray[$key] = $value;
 	}
@@ -105,7 +105,7 @@ class Language extends Singleton
 	 * @param string|array $path single or multiple language path
 	 */
 
-	public function load($path = null)
+	public function load($path = null) : void
 	{
 		$reader = new Reader();
 		$reader->init();

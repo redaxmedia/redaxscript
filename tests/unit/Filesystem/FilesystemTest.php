@@ -26,7 +26,7 @@ class FilesystemTest extends TestCaseAbstract
 	 * @since 3.2.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		Stream::setup('root', 0777, $this->getJSON('tests' . DIRECTORY_SEPARATOR. 'provider' . DIRECTORY_SEPARATOR. 'Filesystem' . DIRECTORY_SEPARATOR. 'FilesystemTest_setUp.json'));
 	}
@@ -44,7 +44,7 @@ class FilesystemTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetIterator(string $root = null, bool $recursive = false, array $filterArray = [], array $expectArray = [])
+	public function testGetIterator(string $root = null, bool $recursive = false, array $filterArray = [], array $expectArray = []) : void
 	{
 		/* setup */
 
@@ -68,7 +68,7 @@ class FilesystemTest extends TestCaseAbstract
 		}
 		else
 		{
-			$this->assertObject($actualIterator);
+			$this->assertIsObject($actualIterator);
 		}
 	}
 
@@ -85,7 +85,7 @@ class FilesystemTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetArray(string $root = null, bool $recursive = false, array $filterArray = [], array $expectArray = [])
+	public function testGetArray(string $root = null, bool $recursive = false, array $filterArray = [], array $expectArray = []) : void
 	{
 		/* setup */
 
@@ -114,7 +114,7 @@ class FilesystemTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetSortArray(string $root = null, bool $recursive = false, array $filterArray = [], array $expectArray = [])
+	public function testGetSortArray(string $root = null, bool $recursive = false, array $filterArray = [], array $expectArray = []) : void
 	{
 		/* setup */
 

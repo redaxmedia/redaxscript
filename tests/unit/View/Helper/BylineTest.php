@@ -24,7 +24,7 @@ class BylineTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -46,7 +46,7 @@ class BylineTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -56,15 +56,15 @@ class BylineTest extends TestCaseAbstract
 	 *
 	 * @since 4.0.0
 	 *
+	 * @param int $date
 	 * @param string $author
-	 * @param string $date
 	 * @param array $optionArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRender(string $author = null, string $date = null, array $optionArray = [], string $expect = null)
+	public function testRender(int $date = null, string $author = null,  array $optionArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -73,7 +73,7 @@ class BylineTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $byline->render($author, $date);
+		$actual = $byline->render($date, $author);
 
 		/* compare */
 

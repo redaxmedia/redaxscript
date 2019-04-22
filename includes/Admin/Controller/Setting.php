@@ -170,7 +170,7 @@ class Setting extends ControllerAbstract
 	 * @return bool
 	 */
 
-	public function _update(array $updateArray = []) : bool
+	protected function _update(array $updateArray = []) : bool
 	{
 		$settingModel = new Admin\Model\Setting();
 		return $settingModel->updateByArray($updateArray);

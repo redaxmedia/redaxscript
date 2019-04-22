@@ -30,7 +30,7 @@ class ConsoleFormTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRender(array $registryArray = [], string $expect = null)
+	public function testRender(array $registryArray = [], string $expect = null) : void
 	{
 		/* setup */
 

@@ -25,7 +25,7 @@ class HeaderTest extends TestCaseAbstract
 	 * @runInSeparateProcess
 	 */
 
-	public function testInit()
+	public function testInit() : void
 	{
 		/* setup */
 
@@ -54,7 +54,7 @@ class HeaderTest extends TestCaseAbstract
 	 * @runInSeparateProcess
 	 */
 
-	public function testAdd()
+	public function testAdd() : void
 	{
 		/* setup */
 
@@ -86,7 +86,7 @@ class HeaderTest extends TestCaseAbstract
 	 * @since 3.3.0
 	 */
 
-	public function testAddInvalid()
+	public function testAddInvalid() : void
 	{
 		/* actual */
 
@@ -104,7 +104,7 @@ class HeaderTest extends TestCaseAbstract
 	 *
 	 */
 
-	public function testRemoveInvalid()
+	public function testRemoveInvalid() : void
 	{
 		/* actual */
 
@@ -123,7 +123,7 @@ class HeaderTest extends TestCaseAbstract
 	 * @runInSeparateProcess
 	 */
 
-	public function testResponseCode()
+	public function testResponseCode() : void
 	{
 		/* actual */
 
@@ -131,7 +131,7 @@ class HeaderTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertNumber($actual);
+		$this->assertIsInt($actual);
 	}
 
 	/**
@@ -142,7 +142,7 @@ class HeaderTest extends TestCaseAbstract
 	 * @runInSeparateProcess
 	 */
 
-	public function testDoRedirect()
+	public function testDoRedirect() : void
 	{
 		/* setup */
 
@@ -169,7 +169,7 @@ class HeaderTest extends TestCaseAbstract
 	 * @runInSeparateProcess
 	 */
 
-	public function testContentType()
+	public function testContentType() : void
 	{
 		/* setup */
 

@@ -29,7 +29,7 @@ class SearchTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testSearch(string $search = null, string $expect = null)
+	public function testSearch(string $search = null, string $expect = null) : void
 	{
 		/* setup */
 

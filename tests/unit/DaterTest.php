@@ -23,7 +23,7 @@ class DaterTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -45,7 +45,7 @@ class DaterTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -56,7 +56,7 @@ class DaterTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function testInit()
+	public function testInit() : void
 	{
 		/* setup */
 
@@ -82,7 +82,7 @@ class DaterTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function testGetFormat()
+	public function testGetFormat() : void
 	{
 		/* setup */
 

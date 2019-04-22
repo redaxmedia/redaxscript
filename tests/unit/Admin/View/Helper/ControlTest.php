@@ -30,7 +30,7 @@ class ControlTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRender(array $registryArray = [], array $renderArray = [], string $expect = null)
+	public function testRender(array $registryArray = [], array $renderArray = [], string $expect = null) : void
 	{
 		/* setup */
 

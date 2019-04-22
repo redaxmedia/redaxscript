@@ -24,7 +24,7 @@ class ParserTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->_request->setServer('argv', null);
 	}
@@ -35,7 +35,7 @@ class ParserTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testInit()
+	public function testInit() : void
 	{
 		/* setup */
 
@@ -53,7 +53,7 @@ class ParserTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testGetAndSetArgument()
+	public function testGetAndSetArgument() : void
 	{
 		/* setup */
 
@@ -80,7 +80,7 @@ class ParserTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetArgument(array $argumentArray = [], array $expectArray = [])
+	public function testGetArgument(array $argumentArray = [], array $expectArray = []) : void
 	{
 		/* setup */
 
@@ -103,7 +103,7 @@ class ParserTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testGetArgumentInvalid()
+	public function testGetArgumentInvalid() : void
 	{
 		/* setup */
 
@@ -125,7 +125,7 @@ class ParserTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testGetAndSetOption()
+	public function testGetAndSetOption() : void
 	{
 		/* setup */
 
@@ -152,7 +152,7 @@ class ParserTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetOption(array $argumentArray = [], array $expectArray = [])
+	public function testGetOption(array $argumentArray = [], array $expectArray = []) : void
 	{
 		/* setup */
 
@@ -175,7 +175,7 @@ class ParserTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testGetOptionInvalid()
+	public function testGetOptionInvalid() : void
 	{
 		/* setup */
 

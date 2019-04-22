@@ -29,7 +29,7 @@ class HtmlTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testHtml(string $html = null, string $expect = null)
+	public function testHtml(string $html = null, string $expect = null) : void
 	{
 		/* setup */
 
@@ -57,7 +57,7 @@ class HtmlTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testAppend(string $html = null, string $append = null, string $expect = null)
+	public function testAppend(string $html = null, string $append = null, string $expect = null) : void
 	{
 		/* setup */
 
@@ -85,7 +85,7 @@ class HtmlTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testPrepend(string $html = null, string $prepend = null, string $expect = null)
+	public function testPrepend(string $html = null, string $prepend = null, string $expect = null) : void
 	{
 		/* setup */
 
@@ -107,7 +107,7 @@ class HtmlTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testClear()
+	public function testClear() : void
 	{
 		/* setup */
 

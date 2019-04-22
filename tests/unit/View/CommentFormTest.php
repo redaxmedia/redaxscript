@@ -25,7 +25,7 @@ class CommentFormTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -49,7 +49,7 @@ class CommentFormTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -59,13 +59,13 @@ class CommentFormTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $articleId
+	 * @param int $articleId
 	 * @param array $expectArray
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRender(string $articleId = null, array $expectArray = [])
+	public function testRender(int $articleId = null, array $expectArray = []) : void
 	{
 		/* setup */
 

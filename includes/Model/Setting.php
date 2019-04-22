@@ -33,21 +33,7 @@ class Setting extends ModelAbstract
 
 	public function get(string $key = null) : ?string
 	{
-		$settings = $this->getAll();
-
-		/* process settings */
-
-		if ($key)
-		{
-			foreach ($settings as $setting)
-			{
-				if ($setting->name === $key)
-				{
-					return $setting->value;
-				}
-			}
-		}
-		return null;
+		return $this->query()->getSetting($key);
 	}
 
 	/**

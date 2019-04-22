@@ -7,6 +7,7 @@ use Redaxscript\Html;
 use Redaxscript\Module;
 use function array_diff;
 use function count;
+use function in_array;
 
 /**
  * children class to create the admin module table
@@ -119,6 +120,7 @@ class ModuleTable extends ViewAbstract
 					->copy()
 					->attr('id', 'row-' . $value->id)
 					->addClass(!$value->status ? 'rs-admin-is-disabled' : null)
+					->addClass(!in_array($value->alias, $modulesFilesystemArray) ? 'rs-admin-is-corrupted' : null)
 					->html(
 						$tdElement->copy()->html($value->name . $adminControl->render('modules', $value->id, $value->alias, $value->status)) .
 						$tdElement->copy()->text($value->description) .

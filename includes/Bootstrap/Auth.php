@@ -21,7 +21,7 @@ class Auth extends BootstrapAbstract
 	 * @since 3.1.0
 	 */
 
-	public function autorun()
+	public function autorun() : void
 	{
 		$this->_setUser();
 		$this->_setPermission();
@@ -34,7 +34,7 @@ class Auth extends BootstrapAbstract
 	 * @since 3.1.0
 	 */
 
-	protected function _setUser()
+	protected function _setUser() : void
 	{
 		$auth = new BaseAuth($this->_request);
 		$auth->init();
@@ -58,7 +58,7 @@ class Auth extends BootstrapAbstract
 	 * @since 3.1.0
 	 */
 
-	protected function _setPermission()
+	protected function _setPermission() : void
 	{
 		$auth = new BaseAuth($this->_request);
 		$auth->init();
@@ -99,7 +99,7 @@ class Auth extends BootstrapAbstract
 	 * @since 3.1.0
 	 */
 
-	protected function _setTable()
+	protected function _setTable() : void
 	{
 		$tableParameter = $this->_registry->get('tableParameter');
 

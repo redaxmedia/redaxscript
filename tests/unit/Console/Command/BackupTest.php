@@ -29,7 +29,7 @@ class BackupTest extends TestCaseAbstract
 	 * @since 3.2.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -52,7 +52,7 @@ class BackupTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 		$this->_request->setServer('argv', null);
@@ -64,7 +64,7 @@ class BackupTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testNoArgument()
+	public function testNoArgument() : void
 	{
 		/* setup */
 
@@ -86,7 +86,7 @@ class BackupTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testDatabase()
+	public function testDatabase() : void
 	{
 		/* setup */
 
@@ -120,7 +120,7 @@ class BackupTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testDatabaseInvalid()
+	public function testDatabaseInvalid() : void
 	{
 		/* setup */
 

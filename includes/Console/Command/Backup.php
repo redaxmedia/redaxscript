@@ -115,11 +115,11 @@ class Backup extends CommandAbstract
 			}
 			if ($dbType === 'pgsql' && $dbHost && $dbName && $dbUser && $dbPassword)
 			{
-				$command =  'PGPASSWORD=' . $dbPassword . ' pg_dump --host=' . $dbHost . ' --username=' . $dbUser . ' ' . $dbName;
+				$command = 'PGPASSWORD=' . $dbPassword . ' pg_dump --host=' . $dbHost . ' --username=' . $dbUser . ' ' . $dbName;
 			}
 			if ($dbType === 'sqlite' && is_file($dbHost))
 			{
-				$command =  'cat ' . $dbHost;
+				$command = 'cat ' . $dbHost;
 			}
 			exec($command, $outputArray, $error);
 			$content = implode($outputArray, PHP_EOL);

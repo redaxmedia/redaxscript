@@ -24,7 +24,7 @@ class TransportTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testGetArray()
+	public function testGetArray() : void
 	{
 		/* setup */
 
@@ -54,7 +54,7 @@ class TransportTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRender(array $transportArray = [], string $expect = null)
+	public function testRender(array $transportArray = [], string $expect = null) : void
 	{
 		/* setup */
 

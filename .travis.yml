@@ -67,6 +67,10 @@ jobs:
 
  - <<: *test-unit
    php: 7.4snapshot
+   addons:
+    apt:
+     packages:
+     - libonig-dev
 
  - &test-acceptance
    addons:
@@ -86,7 +90,7 @@ jobs:
 
    before_script:
    - mkdir build
-   - grunt startHub &
+   - grunt start-hub &
    - grunt serve &
    - sleep 60
 

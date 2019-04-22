@@ -51,7 +51,7 @@ class User extends BaseModel\User
 	{
 		return $this
 			->query()
-			->where('id', $userId)
+			->whereIdIs($userId)
 			->findOne()
 			->set('last', $date)
 			->save();

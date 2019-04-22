@@ -33,7 +33,7 @@ class CommonTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testServer(string $userAgent = null, array $expectArray = [])
+	public function testServer(string $userAgent = null, array $expectArray = []) : void
 	{
 		/* setup */
 
@@ -72,7 +72,7 @@ class CommonTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testClient(string $userAgent = null, array $expectArray = [])
+	public function testClient(string $userAgent = null, array $expectArray = []) : void
 	{
 		/* setup */
 
@@ -102,7 +102,7 @@ class CommonTest extends TestCaseAbstract
 	 * @since 3.2.3
 	 */
 
-	public function testDriver()
+	public function testDriver() : void
 	{
 		/* setup */
 
@@ -123,7 +123,7 @@ class CommonTest extends TestCaseAbstract
 	 * @since 3.2.3
 	 */
 
-	public function testModule()
+	public function testModule() : void
 	{
 		/* setup */
 
@@ -153,7 +153,7 @@ class CommonTest extends TestCaseAbstract
 	 * @since 3.2.3
 	 */
 
-	public function testPhp()
+	public function testPhp() : void
 	{
 		/* setup */
 
@@ -170,8 +170,8 @@ class CommonTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertString($actualArray['phpOs']);
-		$this->assertString($actualArray['phpVersion']);
+		$this->assertIsString($actualArray['phpOs']);
+		$this->assertIsString($actualArray['phpVersion']);
 		$this->assertTrue($actualArray['phpStatus']);
 	}
 }

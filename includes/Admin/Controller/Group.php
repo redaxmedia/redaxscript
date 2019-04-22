@@ -217,7 +217,7 @@ class Group extends ControllerAbstract
 	 * @return bool
 	 */
 
-	public function _update(int $groupId = null, array $updateArray = []) : bool
+	protected function _update(int $groupId = null, array $updateArray = []) : bool
 	{
 		$groupModel = new Admin\Model\Group();
 		return $groupModel->updateByIdAndArray($groupId, $updateArray);

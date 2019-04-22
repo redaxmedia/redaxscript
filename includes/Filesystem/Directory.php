@@ -63,7 +63,7 @@ class Directory extends File
 	 * @since 3.2.0
 	 */
 
-	public function clearDirectory()
+	public function clearDirectory() : void
 	{
 		$this->_remove($this->_root);
 	}
@@ -74,7 +74,7 @@ class Directory extends File
 	 * @param string $directory name of the directory
 	 */
 
-	protected function _remove(string $directory = null)
+	protected function _remove(string $directory = null) : void
 	{
 		$iterator = $this->_scan($directory);
 

@@ -78,7 +78,7 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		Db::clearCache();
 		$this->_registry = Registry::getInstance();
@@ -119,7 +119,7 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 * @since 4.0.0
 	 */
 
-	public function createDatabase()
+	public function createDatabase() : void
 	{
 		$installer = $this->installerFactory();
 		$installer->init();
@@ -132,7 +132,7 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 * @since 4.0.0
 	 */
 
-	public function dropDatabase()
+	public function dropDatabase() : void
 	{
 		$installer = $this->installerFactory();
 		$installer->init();
@@ -145,7 +145,7 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 * @since 4.0.0
 	 */
 
-	public function installTestDummy()
+	public function installTestDummy() : void
 	{
 		$testDummy = new TestDummy\TestDummy($this->_registry, $this->_request, $this->_language, $this->_config);
 		$testDummy->install();
@@ -157,7 +157,7 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 * @since 4.0.0
 	 */
 
-	public function uninstallTestDummy()
+	public function uninstallTestDummy() : void
 	{
 		$testDummy = new TestDummy\TestDummy($this->_registry, $this->_request, $this->_language, $this->_config);
 		$testDummy->clearNotification('success');
@@ -226,45 +226,6 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	}
 
 	/**
-	 * assertString
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param string|null $actual
-	 */
-
-	public function assertString(?string $actual = null)
-	{
-		$this->assertInternalType('string', $actual);
-	}
-
-	/**
-	 * assertNumber
-	 *
-	 * @since 3.1.0
-	 *
-	 * @param int|null $actual
-	 */
-
-	public function assertNumber(?int $actual = null)
-	{
-		$this->assertInternalType('integer', $actual);
-	}
-
-	/**
-	 * assertObject
-	 *
-	 * @since 3.1.0
-	 *
-	 * @param object|null $actual
-	 */
-
-	public function assertObject(?object $actual = null)
-	{
-		$this->assertInternalType('object', $actual);
-	}
-
-	/**
 	 * normalizeSeparator
 	 *
 	 * @since 3.2.0
@@ -320,7 +281,7 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	 * @param string|null $env
 	 */
 
-	public function skipOnEnv(string $env = null)
+	public function skipOnEnv(string $env = null) : void
 	{
 		if (getenv($env))
 		{

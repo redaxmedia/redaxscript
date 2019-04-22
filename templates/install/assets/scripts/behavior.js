@@ -16,7 +16,18 @@ rs.templates.install.behavior.process = optionArray =>
 
 	fieldType.addEventListener('change', () =>
 	{
-		fieldToggleList.forEach(field => field.parentElement.style.display = fieldType.value === 'sqlite' ? 'none' : null);
+		fieldToggleList.forEach(field =>
+		{
+			if (fieldType.value === 'sqlite')
+			{
+				field.value = null;
+				field.parentElement.style.display = 'none';
+			}
+			else
+			{
+				field.parentElement.style.display = null;
+			}
+		});
 	});
 	fieldType.dispatchEvent(changeEvent);
 };

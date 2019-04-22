@@ -23,7 +23,7 @@ class Router extends BootstrapAbstract
 	 * @since 3.1.0
 	 */
 
-	public function autorun()
+	public function autorun() : void
 	{
 		$this->_setParameter();
 		$this->_setRoute();
@@ -35,7 +35,7 @@ class Router extends BootstrapAbstract
 	 * @since 3.1.0
 	 */
 
-	protected function _setParameter()
+	protected function _setParameter() : void
 	{
 		$parameter = new BaseRouter\Parameter($this->_request);
 		$parameter->init();
@@ -66,7 +66,7 @@ class Router extends BootstrapAbstract
 	 * @since 3.1.0
 	 */
 
-	protected function _setRoute()
+	protected function _setRoute() : void
 	{
 		$moduleArray = $this->_registry->get('moduleArray');
 		$file = $this->_registry->get('file');

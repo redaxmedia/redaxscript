@@ -106,27 +106,27 @@ module.exports = grunt =>
 	[
 		'shell:testAcceptanceParallel'
 	]);
-	grunt.registerTask('startHub',
+	grunt.registerTask('start-hub',
 	[
 		'shell:startHub'
 	]);
-	grunt.registerTask('stopHub',
+	grunt.registerTask('stop-hub',
 	[
 		'shell:stopHub'
 	]);
-	grunt.registerTask('startServer',
+	grunt.registerTask('start-server',
 	[
 		'shell:startServer'
 	]);
-	grunt.registerTask('stopServer',
+	grunt.registerTask('stop-server',
 	[
 		'shell:stopServer'
 	]);
-	grunt.registerTask('stopWatch',
+	grunt.registerTask('stop-watch',
 	[
 		'shell:stopWatch'
 	]);
-	grunt.registerTask('openBrowser',
+	grunt.registerTask('open-browser',
 	[
 		'shell:openBrowser'
 	]);
@@ -186,8 +186,8 @@ module.exports = grunt =>
 	grunt.registerTask('serve',
 	[
 		'build',
-		'stopServer',
-		'stopWatch',
+		'stop-server',
+		'stop-watch',
 		'parallel:serve'
 	]);
 };

@@ -26,7 +26,7 @@ class BreadcrumbTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -83,7 +83,7 @@ class BreadcrumbTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -99,7 +99,7 @@ class BreadcrumbTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetArray(array $registryArray = [], array $expectArray = [])
+	public function testGetArray(array $registryArray = [], array $expectArray = []) : void
 	{
 		/* setup */
 
@@ -127,7 +127,7 @@ class BreadcrumbTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRender(array $registryArray = [], string $expect = null)
+	public function testRender(array $registryArray = [], string $expect = null) : void
 	{
 		/* setup */
 

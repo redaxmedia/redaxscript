@@ -59,7 +59,7 @@ class Dialog extends Module\Module
 	 * @since 4.0.0
 	 */
 
-	public function renderStart()
+	public function renderStart() : void
 	{
 		$firstParameter = $this->_registry->get('firstParameter');
 		$secondParameter = $this->_registry->get('secondParameter');

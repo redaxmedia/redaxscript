@@ -35,7 +35,7 @@ class HelperTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -124,7 +124,7 @@ class HelperTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -135,7 +135,7 @@ class HelperTest extends TestCaseAbstract
 	 * @since 2.6.0
 	 */
 
-	public function testGetRegistry()
+	public function testGetRegistry() : void
 	{
 		/* setup */
 
@@ -156,7 +156,7 @@ class HelperTest extends TestCaseAbstract
 	 * @since 2.6.0
 	 */
 
-	public function testGetLanguage()
+	public function testGetLanguage() : void
 	{
 		/* setup */
 
@@ -177,7 +177,7 @@ class HelperTest extends TestCaseAbstract
 	 * @since 2.6.0
 	 */
 
-	public function testGetSetting()
+	public function testGetSetting() : void
 	{
 		/* actual */
 
@@ -200,7 +200,7 @@ class HelperTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetTitle(array $registryArray = [], array $settingArray = [], string $expect = null)
+	public function testGetTitle(array $registryArray = [], array $settingArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -228,7 +228,7 @@ class HelperTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetCanonical(array $registryArray = [], string $expect = null)
+	public function testGetCanonical(array $registryArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -255,7 +255,7 @@ class HelperTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetDescription(array $registryArray = [], array $settingArray = [], string $expect = null)
+	public function testGetDescription(array $registryArray = [], array $settingArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -284,7 +284,7 @@ class HelperTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetKeywords(array $registryArray = [], array $settingArray = [], string $expect = null)
+	public function testGetKeywords(array $registryArray = [], array $settingArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -313,7 +313,7 @@ class HelperTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetRobots(array $registryArray = [], array $settingArray = [], string $expect = null)
+	public function testGetRobots(array $registryArray = [], array $settingArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -336,7 +336,7 @@ class HelperTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testGetTransport()
+	public function testGetTransport() : void
 	{
 		/* actual */
 
@@ -362,7 +362,7 @@ class HelperTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetSubset(array $registryArray = [], string $expect = null)
+	public function testGetSubset(array $registryArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -388,7 +388,7 @@ class HelperTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetDirection(array $registryArray = [], string $expect = null)
+	public function testGetDirection(array $registryArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -414,7 +414,7 @@ class HelperTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetClass(array $registryArray = [], string $expect = null)
+	public function testGetClass(array $registryArray = [], string $expect = null) : void
 	{
 		/* setup */
 

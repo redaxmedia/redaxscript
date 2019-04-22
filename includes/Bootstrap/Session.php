@@ -23,16 +23,16 @@ class Session extends BootstrapAbstract
 	 * @since 3.1.0
 	 */
 
-	public function autorun()
+	public function autorun() : void
 	{
 		session_start();
 		$this->_request->refreshSession();
 
-		/* prevent hijacking */
+		/* session guard */
 
-		if (!$this->_request->getSession('regenerateId'))
+		if (!$this->_request->getSession('sessionGuard'))
 		{
-			$this->_request->setSession('regenerateId', session_regenerate_id());
+			$this->_request->setSession('sessionGuard', session_regenerate_id());
 		}
 		$this->_registry->set('sessionStatus', session_status());
 	}

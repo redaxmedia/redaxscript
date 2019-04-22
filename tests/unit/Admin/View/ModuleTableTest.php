@@ -25,7 +25,7 @@ class ModuleTableTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$this->createDatabase();
@@ -38,7 +38,7 @@ class ModuleTableTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->uninstallTestDummy();
 		$this->dropDatabase();
@@ -55,7 +55,7 @@ class ModuleTableTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRender(array $registryArray = [], array $expectArray = [])
+	public function testRender(array $registryArray = [], array $expectArray = []) : void
 	{
 		/* setup */
 

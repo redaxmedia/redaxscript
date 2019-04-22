@@ -26,7 +26,7 @@ class RecoverTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -51,7 +51,7 @@ class RecoverTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -68,7 +68,7 @@ class RecoverTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testProcess(array $postArray = [], string $method = null, string $expect = null)
+	public function testProcess(array $postArray = [], string $method = null, string $expect = null) : void
 	{
 		/* setup */
 

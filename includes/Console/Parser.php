@@ -67,7 +67,7 @@ class Parser
 	 * @since 3.0.0
 	 */
 
-	public function init(string $mode = null)
+	public function init(string $mode = null) : void
 	{
 		if ($mode === 'cli')
 		{
@@ -136,7 +136,7 @@ class Parser
 	 * @param string|int $value value of the item
 	 */
 
-	public function setArgument(string $key = null, $value = null)
+	public function setArgument(string $key = null, $value = null) : void
 	{
 		$this->_argumentArray[$key] = $value;
 	}
@@ -150,7 +150,7 @@ class Parser
 	 * @param string|int $value value of the item
 	 */
 
-	public function setOption(string $key = null, $value = null)
+	public function setOption(string $key = null, $value = null) : void
 	{
 		$this->_optionArray[$key] = $value;
 	}
@@ -163,7 +163,7 @@ class Parser
 	 * @param array|null $argumentArray raw argument to be parsed
 	 */
 
-	protected function _parseArgument(?array $argumentArray = [])
+	protected function _parseArgument(?array $argumentArray = []) : void
 	{
 		$doSkip = false;
 		$argumentKey = 0;

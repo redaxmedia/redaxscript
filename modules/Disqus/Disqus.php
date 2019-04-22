@@ -50,7 +50,7 @@ class Disqus extends Module\Module
 	 * @since 2.2.0
 	 */
 
-	public function renderStart()
+	public function renderStart() : void
 	{
 		$this->_registry->set('commentReplace', true);
 	}

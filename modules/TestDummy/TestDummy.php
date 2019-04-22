@@ -70,11 +70,11 @@ class TestDummy extends Module\Notification
 	 * @param int $firstNumber
 	 * @param int $secondNumber
 	 *
-	 * @return int
+	 * @return string
 	 */
 
-	public function render(int $firstNumber = 1, int $secondNumber = 1) : int
+	public function render(int $firstNumber = 1, int $secondNumber = 1) : string
 	{
-		return $firstNumber + $secondNumber;
+		return $this->_language->get($firstNumber + $secondNumber, '_number');
 	}
 }

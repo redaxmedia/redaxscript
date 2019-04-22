@@ -28,7 +28,7 @@ class AuthTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -51,7 +51,7 @@ class AuthTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -67,7 +67,7 @@ class AuthTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testAuth(int $userId = null, array $expectArray = [])
+	public function testAuth(int $userId = null, array $expectArray = []) : void
 	{
 		/* setup */
 

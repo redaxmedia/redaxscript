@@ -37,7 +37,7 @@ class TextareaResizer extends Module\Module
 	 * @since 4.0.0
 	 */
 
-	public function renderStart()
+	public function renderStart() : void
 	{
 		$script = Head\Script::getInstance();
 		$script

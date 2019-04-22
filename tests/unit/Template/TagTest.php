@@ -29,7 +29,7 @@ class TagTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -96,7 +96,7 @@ class TagTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -107,7 +107,7 @@ class TagTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testBase()
+	public function testBase() : void
 	{
 		/* actual */
 
@@ -115,7 +115,7 @@ class TagTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertString($actual);
+		$this->assertIsString($actual);
 	}
 
 	/**
@@ -124,7 +124,7 @@ class TagTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testTitle()
+	public function testTitle() : void
 	{
 		/* actual */
 
@@ -132,7 +132,7 @@ class TagTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertString($actual);
+		$this->assertIsString($actual);
 	}
 
 	/**
@@ -141,7 +141,7 @@ class TagTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testLink()
+	public function testLink() : void
 	{
 		/* actual */
 
@@ -158,7 +158,7 @@ class TagTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testMeta()
+	public function testMeta() : void
 	{
 		/* actual */
 
@@ -175,7 +175,7 @@ class TagTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testScript()
+	public function testScript() : void
 	{
 		/* actual */
 
@@ -192,7 +192,7 @@ class TagTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testStyle()
+	public function testStyle() : void
 	{
 		/* actual */
 
@@ -209,7 +209,7 @@ class TagTest extends TestCaseAbstract
 	 * @since 2.3.0
 	 */
 
-	public function testBreadcrumb()
+	public function testBreadcrumb() : void
 	{
 		/* actual */
 
@@ -217,7 +217,7 @@ class TagTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertString($actual);
+		$this->assertIsString($actual);
 	}
 
 	/**
@@ -226,7 +226,7 @@ class TagTest extends TestCaseAbstract
 	 * @since 2.3.0
 	 */
 
-	public function testPartial()
+	public function testPartial() : void
 	{
 		/* setup */
 
@@ -240,7 +240,7 @@ class TagTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertString($actual);
+		$this->assertIsString($actual);
 	}
 
 	/**
@@ -249,7 +249,7 @@ class TagTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function testPaginationArticles()
+	public function testPaginationArticles() : void
 	{
 		/* setup */
 
@@ -262,7 +262,7 @@ class TagTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertString($actual);
+		$this->assertIsString($actual);
 	}
 
 	/**
@@ -271,7 +271,7 @@ class TagTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function testPaginationComments()
+	public function testPaginationComments() : void
 	{
 		/* setup */
 
@@ -284,7 +284,7 @@ class TagTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertString($actual);
+		$this->assertIsString($actual);
 	}
 
 	/**
@@ -293,7 +293,7 @@ class TagTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function testPaginationInvalid()
+	public function testPaginationInvalid() : void
 	{
 		/* actual */
 
@@ -310,7 +310,7 @@ class TagTest extends TestCaseAbstract
 	 * @since 3.3.1
 	 */
 
-	public function testNavigationCategories()
+	public function testNavigationCategories() : void
 	{
 		/* actual */
 
@@ -318,7 +318,7 @@ class TagTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertString($actual);
+		$this->assertIsString($actual);
 	}
 
 	/**
@@ -327,7 +327,7 @@ class TagTest extends TestCaseAbstract
 	 * @since 3.3.1
 	 */
 
-	public function testNavigationArticles()
+	public function testNavigationArticles() : void
 	{
 		/* actual */
 
@@ -335,7 +335,7 @@ class TagTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertString($actual);
+		$this->assertIsString($actual);
 	}
 
 	/**
@@ -344,7 +344,7 @@ class TagTest extends TestCaseAbstract
 	 * @since 3.3.1
 	 */
 
-	public function testNavigationComments()
+	public function testNavigationComments() : void
 	{
 		/* actual */
 
@@ -352,7 +352,7 @@ class TagTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertString($actual);
+		$this->assertIsString($actual);
 	}
 
 	/**
@@ -361,7 +361,7 @@ class TagTest extends TestCaseAbstract
 	 * @since 3.3.1
 	 */
 
-	public function testNavigationLanguages()
+	public function testNavigationLanguages() : void
 	{
 		/* actual */
 
@@ -369,7 +369,7 @@ class TagTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertString($actual);
+		$this->assertIsString($actual);
 	}
 
 	/**
@@ -378,7 +378,7 @@ class TagTest extends TestCaseAbstract
 	 * @since 3.3.1
 	 */
 
-	public function testNavigationTemplates()
+	public function testNavigationTemplates() : void
 	{
 		/* actual */
 
@@ -386,7 +386,7 @@ class TagTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertString($actual);
+		$this->assertIsString($actual);
 	}
 
 	/**
@@ -395,7 +395,7 @@ class TagTest extends TestCaseAbstract
 	 * @since 3.3.1
 	 */
 
-	public function testNavigationInvalid()
+	public function testNavigationInvalid() : void
 	{
 		/* actual */
 
@@ -412,7 +412,7 @@ class TagTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testConsole()
+	public function testConsole() : void
 	{
 		/* setup */
 
@@ -424,7 +424,7 @@ class TagTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertString($actual);
+		$this->assertIsString($actual);
 	}
 
 	/**
@@ -433,7 +433,7 @@ class TagTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testConsoleInvalid()
+	public function testConsoleInvalid() : void
 	{
 		/* setup */
 
@@ -454,7 +454,7 @@ class TagTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testConsoleForm()
+	public function testConsoleForm() : void
 	{
 		/* actual */
 
@@ -462,7 +462,7 @@ class TagTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertString($actual);
+		$this->assertIsString($actual);
 	}
 
 	/**
@@ -471,7 +471,7 @@ class TagTest extends TestCaseAbstract
 	 * @since 4.0.0
 	 */
 
-	public function testCommentForm()
+	public function testCommentForm() : void
 	{
 		/* actual */
 
@@ -479,7 +479,7 @@ class TagTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertString($actual);
+		$this->assertIsString($actual);
 	}
 
 	/**
@@ -488,7 +488,7 @@ class TagTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testSearchForm()
+	public function testSearchForm() : void
 	{
 		/* actual */
 
@@ -496,7 +496,7 @@ class TagTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertString($actual);
+		$this->assertIsString($actual);
 	}
 
 }

@@ -8,24 +8,24 @@ module.exports = grunt =>
 		{
 			src:
 			[
-				'node_modules/mdi-svg/svg/account.svg',
-				'node_modules/mdi-svg/svg/alert-circle-outline.svg',
-				'node_modules/mdi-svg/svg/bell.svg',
-				'node_modules/mdi-svg/svg/book-open-variant.svg',
-				'node_modules/mdi-svg/svg/check-circle-outline.svg',
-				'node_modules/mdi-svg/svg/chevron-down.svg',
-				'node_modules/mdi-svg/svg/chevron-right.svg',
-				'node_modules/mdi-svg/svg/close-circle-outline.svg',
-				'node_modules/mdi-svg/svg/delete.svg',
-				'node_modules/mdi-svg/svg/eye-off.svg',
-				'node_modules/mdi-svg/svg/help-circle-outline.svg',
-				'node_modules/mdi-svg/svg/lock.svg',
-				'node_modules/mdi-svg/svg/minus.svg',
-				'node_modules/mdi-svg/svg/pencil.svg',
-				'node_modules/mdi-svg/svg/plus.svg',
-				'node_modules/mdi-svg/svg/power.svg',
-				'node_modules/mdi-svg/svg/settings.svg',
-				'node_modules/mdi-svg/svg/subdirectory-arrow-right.svg'
+				'node_modules/@mdi/svg/svg/account.svg',
+				'node_modules/@mdi/svg/svg/alert-circle-outline.svg',
+				'node_modules/@mdi/svg/svg/bell.svg',
+				'node_modules/@mdi/svg/svg/book-open-variant.svg',
+				'node_modules/@mdi/svg/svg/check-circle-outline.svg',
+				'node_modules/@mdi/svg/svg/chevron-down.svg',
+				'node_modules/@mdi/svg/svg/chevron-right.svg',
+				'node_modules/@mdi/svg/svg/close-circle-outline.svg',
+				'node_modules/@mdi/svg/svg/delete.svg',
+				'node_modules/@mdi/svg/svg/eye-off.svg',
+				'node_modules/@mdi/svg/svg/help-circle-outline.svg',
+				'node_modules/@mdi/svg/svg/lock.svg',
+				'node_modules/@mdi/svg/svg/minus.svg',
+				'node_modules/@mdi/svg/svg/pencil.svg',
+				'node_modules/@mdi/svg/svg/plus.svg',
+				'node_modules/@mdi/svg/svg/power.svg',
+				'node_modules/@mdi/svg/svg/settings.svg',
+				'node_modules/@mdi/svg/svg/subdirectory-arrow-right.svg'
 			],
 			dest: 'templates/admin/dist/fonts',
 			options:
@@ -38,18 +38,18 @@ module.exports = grunt =>
 		{
 			src:
 			[
-				'node_modules/mdi-svg/svg/account.svg',
-				'node_modules/mdi-svg/svg/alert-circle-outline.svg',
-				'node_modules/mdi-svg/svg/check-circle-outline.svg',
-				'node_modules/mdi-svg/svg/chevron-left.svg',
-				'node_modules/mdi-svg/svg/chevron-right.svg',
-				'node_modules/mdi-svg/svg/close-circle-outline.svg',
-				'node_modules/mdi-svg/svg/help-circle-outline.svg',
-				'node_modules/mdi-svg/svg/magnify.svg',
-				'node_modules/mdi-svg/svg/minus.svg',
-				'node_modules/mdi-svg/svg/page-first.svg',
-				'node_modules/mdi-svg/svg/page-last.svg',
-				'node_modules/mdi-svg/svg/plus.svg'
+				'node_modules/@mdi/svg/svg/account.svg',
+				'node_modules/@mdi/svg/svg/alert-circle-outline.svg',
+				'node_modules/@mdi/svg/svg/check-circle-outline.svg',
+				'node_modules/@mdi/svg/svg/chevron-left.svg',
+				'node_modules/@mdi/svg/svg/chevron-right.svg',
+				'node_modules/@mdi/svg/svg/close-circle-outline.svg',
+				'node_modules/@mdi/svg/svg/help-circle-outline.svg',
+				'node_modules/@mdi/svg/svg/magnify.svg',
+				'node_modules/@mdi/svg/svg/minus.svg',
+				'node_modules/@mdi/svg/svg/page-first.svg',
+				'node_modules/@mdi/svg/svg/page-last.svg',
+				'node_modules/@mdi/svg/svg/plus.svg'
 			],
 			dest: 'templates/default/dist/fonts',
 			options:
@@ -62,9 +62,9 @@ module.exports = grunt =>
 		{
 			src:
 			[
-				'node_modules/mdi-svg/svg/file.svg',
-				'node_modules/mdi-svg/svg/folder.svg',
-				'node_modules/mdi-svg/svg/folder-open.svg'
+				'node_modules/@mdi/svg/svg/file.svg',
+				'node_modules/@mdi/svg/svg/folder.svg',
+				'node_modules/@mdi/svg/svg/folder-open.svg'
 			],
 			dest: 'modules/DirectoryLister/dist/fonts',
 			options:
@@ -94,7 +94,7 @@ module.exports = grunt =>
 		{
 			src:
 			[
-				'node_modules/mdi-svg/svg/drag-vertical.svg'
+				'node_modules/@mdi/svg/svg/drag-vertical.svg'
 			],
 			dest: 'modules/TableSorter/dist/fonts',
 			options:
@@ -114,6 +114,7 @@ module.exports = grunt =>
 			htmlDemo: false
 		}
 	};
+
 	if (grunt.option('W') || grunt.option('webfont-compat'))
 	{
 		config.options.engine = 'node';

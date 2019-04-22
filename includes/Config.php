@@ -48,7 +48,7 @@ class Config extends Singleton
 	 * @param string $configPath path to the config
 	 */
 
-	public function init(string $configPath = null)
+	public function init(string $configPath = null) : void
 	{
 		if (is_file($configPath))
 		{
@@ -96,7 +96,7 @@ class Config extends Singleton
 	 * @param string $value value of the item
 	 */
 
-	public function set(string $key = null, string $value = null)
+	public function set(string $key = null, string $value = null) : void
 	{
 		self::$_configArray[$key] = $value;
 	}
@@ -109,7 +109,7 @@ class Config extends Singleton
 	 * @param string $dbUrl database url to be parsed
 	 */
 
-	public function parse(string $dbUrl = null)
+	public function parse(string $dbUrl = null) : void
 	{
 		$dbUrl = parse_url($dbUrl);
 		$this->clear();
@@ -165,7 +165,7 @@ class Config extends Singleton
 	 * @since 3.0.0
 	 */
 
-	public function clear()
+	public function clear() : void
 	{
 		self::$_configArray = [];
 	}

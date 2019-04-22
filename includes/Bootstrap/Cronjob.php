@@ -23,7 +23,7 @@ class Cronjob extends BootstrapAbstract
 	 * @since 3.1.0
 	 */
 
-	public function autorun()
+	public function autorun() : void
 	{
 		$dater = new Dater();
 		$dater->init();

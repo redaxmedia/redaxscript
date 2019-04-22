@@ -21,7 +21,7 @@ class SingletonTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testGetInstance()
+	public function testGetInstance() : void
 	{
 		/* setup */
 
@@ -42,7 +42,7 @@ class SingletonTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testClearInstance()
+	public function testClearInstance() : void
 	{
 		/* setup */
 

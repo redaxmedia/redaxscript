@@ -62,7 +62,7 @@ class Comment extends ViewAbstract
 	 * @param array $optionArray options of the comment
 	 */
 
-	public function init(array $optionArray = [])
+	public function init(array $optionArray = []) : void
 	{
 		$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
 	}

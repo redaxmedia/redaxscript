@@ -28,7 +28,7 @@ class StatusTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -51,7 +51,7 @@ class StatusTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -68,7 +68,7 @@ class StatusTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testStatus(int $userId = null, array $registryArray = [], array $expectArray = [])
+	public function testStatus(int $userId = null, array $registryArray = [], array $expectArray = []) : void
 	{
 		/* setup */
 

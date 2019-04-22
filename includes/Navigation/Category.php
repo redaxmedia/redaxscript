@@ -32,8 +32,7 @@ class Category extends NavigationAbstract
 			'children' => 'rs-list-children',
 			'active' => 'rs-item-active'
 		],
-		'orderColumn' => 'rank',
-		'parentId' => 0
+		'orderColumn' => 'rank'
 	];
 
 	/**
@@ -54,6 +53,7 @@ class Category extends NavigationAbstract
 		$categories = $categoryModel
 			->query()
 			->whereLanguageIs($this->_registry->get('language'))
+			->whereNull('parent')
 			->where('status', 1)
 			->orderBySetting($this->_optionArray['orderColumn'])
 			->limit($this->_optionArray['limit'])
@@ -61,7 +61,7 @@ class Category extends NavigationAbstract
 
 		/* collect output */
 
-		$output .= $this->renderList($categories, $this->_optionArray);
+		$output .= $this->_renderList($categories);
 		$output .= Module\Hook::trigger('navigationCategoryEnd');
 		return $output;
 	}
@@ -72,12 +72,12 @@ class Category extends NavigationAbstract
 	 * @since 3.3.0
 	 *
 	 * @param object $categories
-	 * @param array $optionArray
+	 * @param int $level
 	 *
 	 * @return string|null
 	 */
 
-	protected function renderList(object $categories = null, array $optionArray = []) : ?string
+	protected function _renderList(object $categories = null, int $level = 0) : ?string
 	{
 		$output = null;
 		$outputItem = null;
@@ -91,20 +91,21 @@ class Category extends NavigationAbstract
 			->copy()
 			->init('ul',
 			[
-				'class' => $optionArray['className']['list']
+				'class' => $level === 0 ? $this->_optionArray['className']['list'] : $this->_optionArray['className']['children']
 			]);
 		$itemElement = $element->copy()->init('li');
 		$linkElement = $element->copy()->init('a');
+		$textElement = $element->copy()->init('span');
 
 		/* collect item output */
 
 		foreach ($categories as $value)
 		{
-			if ($accessValidator->validate($value->access, $this->_registry->get('myGroups')) && $optionArray['parentId'] === (int)$value->parent)
+			if ($accessValidator->validate($value->access, $this->_registry->get('myGroups')))
 			{
 				$outputItem .= $itemElement
 					->copy()
-					->addClass((int)$this->_registry->get('categoryId') === (int)$value->id ? $this->_optionArray['className']['active'] : null)
+					->addClass($this->_registry->get('firstParameter') === $value->alias ? $this->_optionArray['className']['active'] : null)
 					->html($linkElement
 						->copy()
 						->attr(
@@ -114,15 +115,18 @@ class Category extends NavigationAbstract
 						->text($value->title)
 					)
 					->append(
-						$this->renderList($categories,
-						[
-							'className' =>
+						$this->_renderList($categoryModel
+							->query()
+							->whereLanguageIs($this->_registry->get('language'))
+							->where(
 							[
-								'list' => $value->parent ? $optionArray['className']['list'] : $optionArray['className']['children'],
-								'active' => $optionArray['className']['active'],
-							],
-							'parentId' => (int)$value->id
-						])
+								'parent' => $value->id,
+								'status' => 1
+							])
+							->orderBySetting($this->_optionArray['orderColumn'])
+							->limit($this->_optionArray['limit'])
+							->findMany(), ++$level
+						)
 					);
 			}
 		}
@@ -133,11 +137,9 @@ class Category extends NavigationAbstract
 		{
 			$output .= $listElement->html($outputItem);
 		}
-		else if (!$categories->count())
+		else if ($level === 0)
 		{
-			$output .= $listElement->html(
-				$itemElement->text($this->_language->get('category_no'))
-			);
+			$output .= $listElement->html($itemElement->html($textElement->text($this->_language->get('category_no'))));
 		}
 		return $output;
 	}

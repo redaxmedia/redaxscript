@@ -28,7 +28,7 @@ class RestoreTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		Stream::setup('root', 0777, $this->getJSON('tests' . DIRECTORY_SEPARATOR . 'provider' . DIRECTORY_SEPARATOR . 'Console' . DIRECTORY_SEPARATOR . 'ConsoleTest_setUp.json'));
@@ -40,7 +40,7 @@ class RestoreTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 		$this->_request->setServer('argv', null);
@@ -52,7 +52,7 @@ class RestoreTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testNoArgument()
+	public function testNoArgument() : void
 	{
 		/* setup */
 
@@ -74,7 +74,7 @@ class RestoreTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testDatabase()
+	public function testDatabase() : void
 	{
 		/* setup */
 
@@ -110,7 +110,7 @@ class RestoreTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testDatabaseInvalid()
+	public function testDatabaseInvalid() : void
 	{
 		/* setup */
 

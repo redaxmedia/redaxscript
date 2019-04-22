@@ -27,7 +27,7 @@ class ResetTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$optionArray =
@@ -57,7 +57,7 @@ class ResetTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->dropDatabase();
 	}
@@ -74,7 +74,7 @@ class ResetTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testProcess(array $postArray = [], string $method = null, string $expect = null)
+	public function testProcess(array $postArray = [], string $method = null, string $expect = null) : void
 	{
 		/* setup */
 

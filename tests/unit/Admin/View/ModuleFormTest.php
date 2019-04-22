@@ -25,7 +25,7 @@ class ModuleFormTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		$this->createDatabase();
@@ -38,7 +38,7 @@ class ModuleFormTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->uninstallTestDummy();
 		$this->dropDatabase();
@@ -56,7 +56,7 @@ class ModuleFormTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRender(array $registryArray = [], int $moduleId = null, array $expectArray = [])
+	public function testRender(array $registryArray = [], int $moduleId = null, array $expectArray = []) : void
 	{
 		/* setup */
 

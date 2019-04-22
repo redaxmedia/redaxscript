@@ -23,7 +23,7 @@ class ReaderTest extends TestCaseAbstract
 	* @since 3.1.0
 	*/
 
-	public function testLoadAndConvertJSON()
+	public function testLoadAndConvertJSON() : void
 	{
 		/* setup */
 
@@ -48,8 +48,8 @@ class ReaderTest extends TestCaseAbstract
 		$this->assertEquals('2', $actualObject->one{0}->{'@attributes'}->id);
 		$this->assertEquals('3', $actualObject->one{1}->{'@attributes'}->id);
 		$this->assertEquals('4', $actualObject->two->{'@attributes'}->id);
-		$this->assertString($actualJSON);
-		$this->assertString($actualXML);
+		$this->assertIsString($actualJSON);
+		$this->assertIsString($actualXML);
 	}
 
 	/**
@@ -58,7 +58,7 @@ class ReaderTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function testLoadAndConvertXML()
+	public function testLoadAndConvertXML() : void
 	{
 		/* setup */
 
@@ -83,8 +83,8 @@ class ReaderTest extends TestCaseAbstract
 		$this->assertEquals('2', $actualObject->one{0}->attributes()->id);
 		$this->assertEquals('3', $actualObject->one{1}->attributes()->id);
 		$this->assertEquals('4', $actualObject->two->attributes()->id);
-		$this->assertString($actualJSON);
-		$this->assertString($actualXML);
+		$this->assertIsString($actualJSON);
+		$this->assertIsString($actualXML);
 	}
 
 	/**
@@ -95,7 +95,7 @@ class ReaderTest extends TestCaseAbstract
 	 * @requires OS Linux
 	 */
 
-	public function testLoadExternalXML()
+	public function testLoadExternalXML() : void
 	{
 		/* setup */
 
@@ -115,6 +115,6 @@ class ReaderTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertObject($actual);
+		$this->assertIsObject($actual);
 	}
 }

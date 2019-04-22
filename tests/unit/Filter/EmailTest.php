@@ -29,7 +29,7 @@ class EmailTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testEmail(string $email = null, string $expect = null)
+	public function testEmail(string $email = null, string $expect = null) : void
 	{
 		/* setup */
 

@@ -25,7 +25,7 @@ class AutoloaderTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function testInit()
+	public function testInit() : void
 	{
 		/* setup */
 
@@ -34,7 +34,7 @@ class AutoloaderTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actualArray = $this->readAttribute($autoloader, '_autoloadArray');
+		$actualArray = $this->getProperty($autoloader, '_autoloadArray');
 
 		/* compare */
 
@@ -47,12 +47,12 @@ class AutoloaderTest extends TestCaseAbstract
 	 * @since 2.2.0
 	 *
 	 * @param string $className
-	 * @param string $expect
+	 * @param bool $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testFilePath(string $className = null, string $expect = null)
+	public function testFilePath(string $className = null, bool $expect = null) : void
 	{
 		/* actual */
 

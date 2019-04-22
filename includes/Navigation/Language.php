@@ -57,6 +57,7 @@ class Language extends NavigationAbstract
 			]);
 		$itemElement = $element->copy()->init('li');
 		$linkElement = $element->copy()->init('a');
+		$textElement = $element->copy()->init('span');
 
 		/* languages directory */
 
@@ -85,7 +86,7 @@ class Language extends NavigationAbstract
 
 		/* collect output */
 
-		$output .= $listElement->html($outputItem ? : $itemElement->text($this->_language->get('language_no')));
+		$output .= $listElement->html($outputItem ? : $itemElement->html($textElement->text($this->_language->get('language_no'))));
 		$output .= Module\Hook::trigger('navigationLanguageEnd');
 		return $output;
 	}

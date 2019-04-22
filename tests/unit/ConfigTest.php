@@ -33,7 +33,7 @@ class ConfigTest extends TestCaseAbstract
 	 * @since 3.0.0
 	 */
 
-	public function setUp()
+	public function setUp() : void
 	{
 		parent::setUp();
 		Stream::setup('root');
@@ -48,7 +48,7 @@ class ConfigTest extends TestCaseAbstract
 	 * @since 3.1.0
 	 */
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		$this->_config->set('dbType', $this->_configArray['dbType']);
 		$this->_config->set('dbHost', $this->_configArray['dbHost']);
@@ -64,7 +64,7 @@ class ConfigTest extends TestCaseAbstract
 	 * @since 2.4.0
 	 */
 
-	public function testInit()
+	public function testInit() : void
 	{
 		/* setup */
 
@@ -85,7 +85,7 @@ class ConfigTest extends TestCaseAbstract
 	 * @since 2.2.0
 	 */
 
-	public function testGetAndSet()
+	public function testGetAndSet() : void
 	{
 		/* setup */
 
@@ -106,7 +106,7 @@ class ConfigTest extends TestCaseAbstract
 	 * @since 2.2.0
 	 */
 
-	public function testGetAll()
+	public function testGetAll() : void
 	{
 		/* actual */
 
@@ -128,7 +128,7 @@ class ConfigTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testParse(string $dbUrl = null, array $configArray = [])
+	public function testParse(string $dbUrl = null, array $configArray = []) : void
 	{
 		/* setup */
 
@@ -150,7 +150,7 @@ class ConfigTest extends TestCaseAbstract
 	 * @since 2.4.0
 	 */
 
-	public function testWrite()
+	public function testWrite() : void
 	{
 		/* setup */
 

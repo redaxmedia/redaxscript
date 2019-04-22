@@ -37,7 +37,7 @@ class SyntaxHighlighter extends Module\Module
 	 * @since 3.0.0
 	 */
 
-	public function renderStart()
+	public function renderStart() : void
 	{
 		/* link */
 

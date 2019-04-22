@@ -218,7 +218,7 @@ class Extra extends ControllerAbstract
 	 * @return bool
 	 */
 
-	public function _update(int $extraId = null, array $updateArray = []) : bool
+	protected function _update(int $extraId = null, array $updateArray = []) : bool
 	{
 		$extraModel = new Admin\Model\Extra();
 		return $extraModel->updateByIdAndArray($extraId, $updateArray);

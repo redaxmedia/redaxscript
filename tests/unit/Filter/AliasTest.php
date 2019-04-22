@@ -29,7 +29,7 @@ class AliasTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testAlias(string $alias = null, string $expect = null)
+	public function testAlias(string $alias = null, string $expect = null) : void
 	{
 		/* setup */
 
