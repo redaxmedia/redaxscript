@@ -3,7 +3,7 @@
 	"description": "A modern, ultra lightweight and rocket fast Content Management System",
 	"version": "4.0.0-beta.4",
 	"homepage": "https://redaxscript.com",
-	"license": "GPL-3.0",
+	"license": "MIT",
 	"author":
 	{
 		"name": "Henry Ruhs",
