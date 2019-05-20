@@ -42,9 +42,9 @@ Serve local development server:
 ```
 grunt serve [options]
 
---D, --debug-mode
---W, --webfont-compat
---O, --open-browser
+-D, --debug-mode
+-W, --webfont-compat
+-O, --open-browser
 ```
 
 Browse your working copy:
