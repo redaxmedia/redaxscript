@@ -85,17 +85,13 @@ class Comment extends ViewAbstract
 		}
 		$output = Module\Hook::trigger('commentStart');
 		$accessValidator = new Validator\Access();
-		$settingModel = new Model\Setting();
-		$commentModel = new Model\Comment();
 		$byline = new Helper\Byline($this->_registry, $this->_language);
 		$byline->init();
 		$adminDock = new Admin\View\Helper\Dock($this->_registry, $this->_language);
 		$adminDock->init();
-		$language = $this->_registry->get('language');
 		$loggedIn = $this->_registry->get('loggedIn');
 		$token = $this->_registry->get('token');
 		$firstParameter = $this->_registry->get('firstParameter');
-		$lastSubParameter = $this->_registry->get('lastSubParameter');
 		$myGroups = $this->_registry->get('myGroups');
 
 		/* html element */
@@ -117,24 +113,7 @@ class Comment extends ViewAbstract
 			[
 				'class' => $this->_optionArray['className']['box']
 			]);
-
-		/* query comments */
-
-		if ($articleId)
-		{
-			if ($settingModel->get('pagination'))
-			{
-				$comments = $commentModel->getByArticleAndLanguageAndOrderAndStep($articleId, $language, $this->_optionArray['orderColumn'], $lastSubParameter - 1);
-			}
-			else
-			{
-				$comments = $commentModel->getByArticleAndLanguageAndOrder($articleId, $language, $this->_optionArray['orderColumn']);
-			}
-		}
-		else
-		{
-			$comments = $commentModel->getByLanguageAndOrder($language, $this->_optionArray['orderColumn']);
-		}
+		$comments = $this->queryComments($articleId);
 
 		/* process comments */
 
@@ -161,5 +140,35 @@ class Comment extends ViewAbstract
 		}
 		$output .= Module\Hook::trigger('commentEnd');
 		return $output;
+	}
+
+	/**
+	 * query the comments
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param int $articleId identifier of the article
+	 *
+	 * @return object|null
+	 */
+
+	public function queryComments(int $articleId = null) : ?object
+	{
+		$commentModel = new Model\Comment();
+		$settingModel = new Model\Setting();
+		$lastSubParameter = $this->_registry->get('lastSubParameter');
+		$language = $this->_registry->get('language');
+
+		/* query comments */
+
+		if ($articleId)
+		{
+			if ($settingModel->get('pagination'))
+			{
+				return $commentModel->getByArticleAndLanguageAndOrderAndStep($articleId, $language, $this->_optionArray['orderColumn'], $lastSubParameter - 1);
+			}
+			return $commentModel->getByArticleAndLanguageAndOrder($articleId, $language, $this->_optionArray['orderColumn']);
+		}
+		return $commentModel->getByLanguageAndOrder($language, $this->_optionArray['orderColumn']);
 	}
 }

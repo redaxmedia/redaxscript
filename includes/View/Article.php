@@ -131,7 +131,6 @@ class Article extends ViewAbstract
 		$output = Module\Hook::trigger('articleStart');
 		$outputFragment = null;
 		$accessValidator = new Validator\Access();
-		$settingModel = new Model\Setting();
 		$articleModel = new Model\Article();
 		$articles = null;
 		$contentParser = new Content\Parser($this->_registry, $this->_request, $this->_language, $this->_config);
@@ -139,11 +138,9 @@ class Article extends ViewAbstract
 		$byline->init();
 		$adminDock = new Admin\View\Helper\Dock($this->_registry, $this->_language);
 		$adminDock->init();
-		$language = $this->_registry->get('language');
 		$loggedIn = $this->_registry->get('loggedIn');
 		$token = $this->_registry->get('token');
 		$firstParameter = $this->_registry->get('firstParameter');
-		$lastSubParameter = $this->_registry->get('lastSubParameter');
 		$lastTable = $this->_registry->get('lastTable');
 		$parameterRoute = $this->_registry->get('parameterRoute');
 		$myGroups = $this->_registry->get('myGroups');
@@ -164,28 +161,7 @@ class Article extends ViewAbstract
 			[
 				'class' => $this->_optionArray['className']['box']
 			]);
-
-		/* query articles */
-
-		if (!$firstParameter && $settingModel->get('homepage'))
-		{
-			$articles = $articleModel->getByIdAndLanguageAndOrder($settingModel->get('homepage'), $language, $this->_optionArray['orderColumn']);
-		}
-		else if ($categoryId)
-		{
-			if ($settingModel->get('pagination'))
-			{
-				$articles = $articleModel->getByCategoryAndLanguageAndOrderAndStep($categoryId, $language, $this->_optionArray['orderColumn'], $lastSubParameter - 1);
-			}
-			else
-			{
-				$articles = $articleModel->getByCategoryAndLanguageAndOrder($categoryId, $language, $this->_optionArray['orderColumn']);
-			}
-		}
-		else if ($articleId)
-		{
-			$articles = $articleModel->getByIdAndLanguageAndOrder($articleId, $language, $this->_optionArray['orderColumn']);
-		}
+		$articles = $this->queryArticles($categoryId, $articleId);
 
 		/* process articles */
 
@@ -220,5 +196,40 @@ class Article extends ViewAbstract
 		$output .= $outputFragment ? : Template\Tag::partial($this->_registry->get('template') . '/' . $this->_optionArray['partial']['error']);
 		$output .= Module\Hook::trigger('articleEnd');
 		return $output;
+	}
+
+	/**
+	 * query the articles
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param int $categoryId identifier of the category
+	 * @param int $articleId identifier of the article
+	 *
+	 * @return object|null
+	 */
+
+	public function queryArticles(int $categoryId = null, int $articleId = null) : ?object
+	{
+		$articleModel = new Model\Article();
+		$settingModel = new Model\Setting();
+		$lastSubParameter = $this->_registry->get('lastSubParameter');
+		$language = $this->_registry->get('language');
+
+		/* query articles */
+
+		if ($categoryId)
+		{
+			if ($settingModel->get('pagination'))
+			{
+				return $articleModel->getByCategoryAndLanguageAndOrderAndStep($categoryId, $language, $this->_optionArray['orderColumn'], $lastSubParameter - 1);
+			}
+			return $articleModel->getByCategoryAndLanguageAndOrder($categoryId, $language, $this->_optionArray['orderColumn']);
+		}
+		if ($articleId)
+		{
+			return $articleModel->getByIdAndLanguageAndOrder($articleId, $language, $this->_optionArray['orderColumn']);
+		}
+		return $articleModel->getByLanguageAndOrder($language, $this->_optionArray['orderColumn']);
 	}
 }

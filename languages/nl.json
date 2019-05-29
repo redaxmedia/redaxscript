@@ -167,6 +167,7 @@
 	"database_failed": "De verbinding met de database is mislukt",
 	"account": "Account",
 	"account_create": "Account aanmaken",
+	"console": "Console",
 	"installation": "Installatie",
 	"installation_completed": "Installatie succesvol voltooid",
 	"installation_failed": "Installation failed",

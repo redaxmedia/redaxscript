@@ -71,6 +71,9 @@ jobs:
     apt:
      packages:
      - libonig-dev
+   install:
+   - composer install --ignore-platform-reqs
+   - gem install mailcatcher
 
  - &test-acceptance
    addons:

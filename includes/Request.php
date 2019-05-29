@@ -92,7 +92,7 @@ class Request extends Singleton
 
 	public function getServer(string $key = null)
 	{
-		return self::get($key, 'server');
+		return $this->get($key, 'server');
 	}
 
 	/**
@@ -107,7 +107,7 @@ class Request extends Singleton
 
 	public function getQuery(string $key = null)
 	{
-		return self::get($key, 'get');
+		return $this->get($key, 'get');
 	}
 
 	/**
@@ -122,7 +122,7 @@ class Request extends Singleton
 
 	public function getPost(string $key = null)
 	{
-		return self::get($key, 'post');
+		return $this->get($key, 'post');
 	}
 
 	/**
@@ -137,7 +137,7 @@ class Request extends Singleton
 
 	public function getFiles(string $key = null)
 	{
-		return self::get($key, 'files');
+		return $this->get($key, 'files');
 	}
 
 	/**
@@ -152,7 +152,7 @@ class Request extends Singleton
 
 	public function getSession(string $key = null)
 	{
-		return self::get($key, 'session');
+		return $this->get($key, 'session');
 	}
 
 	/**
@@ -167,7 +167,7 @@ class Request extends Singleton
 
 	public function getCookie(string $key = null)
 	{
-		return self::get($key, 'cookie');
+		return $this->get($key, 'cookie');
 	}
 
 	/**

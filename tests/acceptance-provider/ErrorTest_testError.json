@@ -1,0 +1,34 @@
+[
+	[
+		"http://localhost:8000",
+		"Welcome"
+	],
+	[
+		"http://localhost:8000?p=home",
+		"Welcome"
+	],
+	[
+		"http://localhost:8000?p=home/welcome",
+		"Welcome"
+	],
+	[
+		"http://localhost:8000/?p=invalid",
+		"Error"
+	],
+	[
+		"http://localhost:8000/?p=home/invalid",
+		"Error"
+	],
+	[
+		"http://localhost:8000/?p=home/welcome/invalid",
+		"Error"
+	],
+	[
+		"http://localhost:8000/?p=welcome",
+		"Error"
+	],
+	[
+		"http://localhost:8000/?p=invalid/welcome",
+		"Error"
+	]
+]

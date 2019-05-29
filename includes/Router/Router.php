@@ -204,11 +204,7 @@ class Router extends RouterAbstract
 
 	protected function _contentValidator() : bool
 	{
-		$contentModel = new Model\Content();
-		$lastId = $this->_registry->get('lastId');
-		$liteRoute = $this->_registry->get('liteRoute');
-		$buildRoute = $contentModel->getRouteByTableAndId($this->_registry->get('lastTable'), $lastId);
-		return $lastId || ($buildRoute && $buildRoute === $liteRoute);
+		return $this->_registry->get('lastId') > 0;
 	}
 
 	/**

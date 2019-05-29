@@ -4,6 +4,7 @@ namespace Redaxscript;
 use ORM;
 use PDO;
 use PDOException;
+use function array_column;
 use function implode;
 use function strstr;
 
@@ -267,6 +268,21 @@ class Db extends ORM
 	public function whereLanguageIs(string $language = null) : self
 	{
 		return $this->_addWhere('(language = ? OR language IS NULL)', $language);
+	}
+
+	/**
+	 * find the flat array
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param string $column name of the column
+	 *
+	 * @return array
+	 */
+
+	public function findFlatArray(string $column = 'id') : array
+	{
+		return array_column($this->findArray(), $column);
 	}
 
 	/**

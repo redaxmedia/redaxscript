@@ -167,6 +167,7 @@
 	"database_failed": "კავშირი მონაცემთა ბაზასთან ვერ დამყარდა",
 	"account": "Account",
 	"account_create": "ანგარიშის შექმნა",
+	"console": "Console",
 	"installation": "ინსტალაცია",
 	"installation_completed": "ინსტალაცია დასრულდა წარმატებით",
 	"installation_failed": "Installation failed",

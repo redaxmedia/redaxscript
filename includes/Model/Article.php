@@ -78,13 +78,11 @@ class Article extends ContentAbstract
 
 	public function getByCategoryAndLanguageAndOrder(int $categoryId = null, string $language = null, string $orderColumn = null) : ?object
 	{
+		$categoryModel = new Category();
 		return $this
 			->query()
-			->where(
-			[
-				'category' => $categoryId,
-				'status' => 1
-			])
+			->whereIn('category', $categoryModel->getIdArrayBySibling($categoryId))
+			->where('status', 1)
 			->whereLanguageIs($language)
 			->orderBySetting($orderColumn)
 			->findMany() ? : null;
@@ -105,13 +103,11 @@ class Article extends ContentAbstract
 
 	public function getByCategoryAndLanguageAndOrderAndStep(int $categoryId = null, string $language = null, string $orderColumn = null, int $limitStep = null) : ?object
 	{
+		$categoryModel = new Category();
 		return $this
 			->query()
-			->where(
-			[
-				'category' => $categoryId,
-				'status' => 1
-			])
+			->whereIn('category', $categoryModel->getIdArrayBySibling($categoryId))
+			->where('status', 1)
 			->whereLanguageIs($language)
 			->orderBySetting($orderColumn)
 			->limitBySetting($limitStep)

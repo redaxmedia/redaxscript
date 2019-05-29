@@ -291,7 +291,6 @@ class Option
 		return $this->_getContentArray($query);
 	}
 
-
 	/**
 	 * get the article array
 	 *

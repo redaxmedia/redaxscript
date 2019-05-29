@@ -167,6 +167,7 @@
 	"database_failed": "Připojení k databázi selhalo",
 	"account": "Account",
 	"account_create": "Vytvořte svůj účet",
+	"console": "Console",
 	"installation": "Instalace",
 	"installation_completed": "Instalace byla úspěšně dokončena",
 	"installation_failed": "Installation failed",

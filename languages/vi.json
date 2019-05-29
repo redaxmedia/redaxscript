@@ -167,6 +167,7 @@
 	"database_failed": "Kết nối đến cơ sở dữ liệu thất bại",
 	"account": "Account",
 	"account_create": "Tạo tài khoản",
+	"console": "Console",
 	"installation": "Cài đặt",
 	"installation_completed": "Việc cài đặt đã hoàn tất",
 	"installation_failed": "Installation failed",

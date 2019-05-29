@@ -167,6 +167,7 @@
 	"database_failed": "Veritabanina baglanilamadi",
 	"account": "Account",
 	"account_create": "Hesap olustur",
+	"console": "Console",
 	"installation": "Kurulum",
 	"installation_completed": "Kurulum basariyla tamamlandi",
 	"installation_failed": "Installation failed",

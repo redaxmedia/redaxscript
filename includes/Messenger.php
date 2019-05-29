@@ -52,7 +52,7 @@ class Messenger
 	[
 		'className' =>
 		[
-			'box' => ' rs-box-note rs-fn-clearfix',
+			'box' => ' rs-box-note',
 			'title' => 'rs-title-note',
 			'list' => 'rs-list-note',
 			'link' => 'rs-button-note',
@@ -271,7 +271,7 @@ class Messenger
 			{
 				$listElement
 					->append(
-						$itemElement->text($value)
+						$itemElement->html($value)
 					);
 			}
 			$boxElement->html($listElement);

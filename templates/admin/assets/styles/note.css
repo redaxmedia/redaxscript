@@ -31,15 +31,17 @@
 .rs-admin-box-note
 {
 	border-radius: 0.125em;
+	display: flex;
 	font-size: 1.5em;
 	font-weight: bold;
 	padding: 0.5em;
+	white-space: pre;
 
 	&:before
 	{
-		float: left;
+		align-self: center;
 		font-size: 1.25em;
-		width: 1.5em;
+		margin-right: 0.5em;
 	}
 
 	& a
@@ -58,8 +60,6 @@
 
 .rs-admin-list-note
 {
-	float: left;
-
 	& li
 	{
 		list-style: inside decimal;

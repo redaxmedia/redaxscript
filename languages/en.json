@@ -3,7 +3,7 @@
 	{
 		"name": "Redaxscript",
 		"description": "Ultra lightweight Content Management System",
-		"version": "4.0.0 Beta 4",
+		"version": "4.0.0 Beta 5",
 		"homepage": "https://redaxscript.com"
 	},
 	"_index":
@@ -209,6 +209,7 @@
 	"database_failed": "Connection to database failed",
 	"account": "Account",
 	"account_create": "Create your account",
+	"console": "Console",
 	"installation": "Installation",
 	"installation_completed": "Installation completed successfully",
 	"installation_failed": "Installation failed",

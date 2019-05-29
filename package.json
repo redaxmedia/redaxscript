@@ -1,7 +1,7 @@
 {
 	"name": "redaxscript",
 	"description": "A modern, ultra lightweight and rocket fast Content Management System",
-	"version": "4.0.0-beta.4",
+	"version": "4.0.0-beta.5",
 	"homepage": "https://redaxscript.com",
 	"license": "MIT",
 	"author":
@@ -15,8 +15,8 @@
 	},
 	"devDependencies":
 	{
-		"@babel/core": "7.4.3",
-		"@babel/preset-env": "7.4.3",
+		"@babel/core": "7.4.4",
+		"@babel/preset-env": "7.4.4",
 		"@mdi/svg": "3.6.95",
 		"autoprefixer": "9.5.1",
 		"babel-preset-minify": "0.5.0",
@@ -41,13 +41,14 @@
 		"grunt-svgmin": "6.0.0",
 		"grunt-tocgen": "1.1.1",
 		"grunt-webfont": "1.7.2",
-		"harmonize.css": "2.1.2",
+		"harmonize.css": "2.1.3",
 		"icomoon-free-npm": "0.0.0",
-		"kill-port": "1.3.2",
+		"kill-port": "1.5.0",
 		"load-grunt-tasks": "4.0.0",
 		"make-dir-cli": "2.0.0",
-		"opn-cli": "4.1.0",
-		"postcss": "7.0.14",
+		"move.css": "1.0.3",
+		"open-cli": "5.0.0",
+		"postcss": "7.0.16",
 		"postcss-color-function": "4.1.0",
 		"postcss-color-gray": "5.0.0",
 		"postcss-custom-media": "7.0.8",

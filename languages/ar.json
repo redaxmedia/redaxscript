@@ -167,6 +167,7 @@
 	"database_failed": "فشل الاتصال بقاعدة البيانات",
 	"account": "Account",
 	"account_create": "انشاء حسابك",
+	"console": "Console",
 	"installation": "التثبيت",
 	"installation_completed": "تم التثبيت بنجاح",
 	"installation_failed": "Installation failed",

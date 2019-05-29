@@ -29,7 +29,7 @@ class Category extends BaseModel\Category
 	public function isUniqueByIdAndAlias(int $categoryId = null, string $categoryAlias = null) : bool
 	{
 		$articleModel = new Article();
-		return !$articleModel->getByAlias($categoryAlias)->id && !$this->getByAlias($categoryAlias)->id || $this->getByAlias($categoryAlias)->id === $this->getById($categoryId)->id;
+		return !$articleModel->getByAlias($categoryAlias)->id && (!$this->getByAlias($categoryAlias)->id || $this->getByAlias($categoryAlias)->id === $this->getById($categoryId)->id);
 	}
 
 	/**
@@ -84,10 +84,21 @@ class Category extends BaseModel\Category
 
 	public function publishById(int $categoryId = null) : bool
 	{
-		return $this
+		return (bool)$this
 			->query()
-			->whereIdIs($categoryId)
-			->findOne()
+			->whereAnyIs(
+			[
+				[
+					'id' =>	$categoryId
+				],
+				[
+					'parent' => $categoryId
+				],
+				[
+					'sibling' => $categoryId
+				]
+			])
+			->findMany()
 			->set('status', 1)
 			->save();
 	}
@@ -104,10 +115,21 @@ class Category extends BaseModel\Category
 
 	public function unpublishById(int $categoryId = null) : bool
 	{
-		return $this
+		return (bool)$this
 			->query()
-			->whereIdIs($categoryId)
-			->findOne()
+			->whereAnyIs(
+			[
+				[
+					'id' =>	$categoryId
+				],
+				[
+					'parent' => $categoryId
+				],
+				[
+					'sibling' => $categoryId
+				]
+			])
+			->findMany()
 			->set('status', 0)
 			->save();
 	}
@@ -124,6 +146,20 @@ class Category extends BaseModel\Category
 
 	public function deleteById(int $categoryId = null) : bool
 	{
-		return $this->query()->whereIdIs($categoryId)->deleteMany();
+		return $this
+		->query()
+		->whereAnyIs(
+		[
+			[
+				'id' =>	$categoryId
+			],
+			[
+				'parent' => $categoryId
+			],
+			[
+				'sibling' => $categoryId
+			]
+		])
+		->deleteMany();
 	}
 }

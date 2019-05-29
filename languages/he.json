@@ -167,6 +167,7 @@
 	"database_failed": "חיבור למסד הנתונים נכשל",
 	"account": "Account",
 	"account_create": "צור חשבון",
+	"console": "Console",
 	"installation": "התקנה",
 	"installation_completed": "ההתקנה הצליחה",
 	"installation_failed": "Installation failed",

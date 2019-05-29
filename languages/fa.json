@@ -167,6 +167,7 @@
 	"database_failed": "خطا در برقراری ارتباط با دیتابیس",
 	"account": "Account",
 	"account_create": "حساب کاربری خود را ایجاد کنید",
+	"console": "Console",
 	"installation": "نصب",
 	"installation_completed": "عملیات نصب با موفقیت به پایان رسید",
 	"installation_failed": "Installation failed",

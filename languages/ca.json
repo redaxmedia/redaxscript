@@ -167,6 +167,7 @@
 	"database_failed": "La connexió a la base de dades ha fallat",
 	"account": "Account",
 	"account_create": "Crea un compte",
+	"console": "Console",
 	"installation": "Instal·lació",
 	"installation_completed": "La instal·lació sha completat correctament",
 	"installation_failed": "Installation failed",

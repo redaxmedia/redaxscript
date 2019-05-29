@@ -1,22 +1,14 @@
 /**
  * @tableofcontents
  *
- * 1. clearfix
- * 2. accordion
- * 3. dropdown
- * 4. menu
- * 5. redirect
- * 6. tab
+ * 1. accordion
+ * 2. dropdown
+ * 3. menu
+ * 4. redirect
+ * 5. tab
  */
 
-/** @section 1. clearfix */
-
-.rs-fn-clearfix
-{
-	@extend %fn-clearfix;
-}
-
-/** @section 2. accordion */
+/** @section 1. accordion */
 
 .rs-fn-content-accordion
 {
@@ -33,14 +25,14 @@
 	}
 }
 
-/** @section 3. dropdown */
+/** @section 2. dropdown */
 
 .rs-fn-dropdown
 {
 	@extend %fn-dropdown;
 }
 
-/** @section 4. menu */
+/** @section 3. menu */
 
 .rs-has-menu
 {
@@ -84,14 +76,14 @@
 	}
 }
 
-/** @section 5. redirect */
+/** @section 4. redirect */
 
 .rs-meta-redirect
 {
 	@extend %overlay-redirect;
 }
 
-/** @section 6. tab */
+/** @section 5. tab */
 
 .rs-fn-tab
 {

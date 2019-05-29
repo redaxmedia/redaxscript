@@ -1,18 +1,10 @@
 /**
  * @tableofcontents
  *
- * 1. clearfix
- * 2. accordion
+ * 1. accordion
  */
 
-/** @section 1. clearfix */
-
-.rs-fn-clearfix
-{
-	@extend %fn-clearfix;
-}
-
-/** @section 2. accordion */
+/** @section 1. accordion */
 
 .rs-fn-content-accordion
 {

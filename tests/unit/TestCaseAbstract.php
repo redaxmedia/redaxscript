@@ -65,6 +65,14 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 	protected $_config;
 
 	/**
+	 * directory of the provider
+	 *
+	 * @var string
+	 */
+
+	protected $_providerDirectory = 'tests' . DIRECTORY_SEPARATOR . 'unit-provider';
+
+	/**
 	 * namespace of the testing suite
 	 *
 	 * @var string

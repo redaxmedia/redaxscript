@@ -154,12 +154,15 @@ class Common extends ControllerAbstract
 		if ($table === 'categories')
 		{
 			$categoryModel = new Admin\Model\Category();
-			return $categoryModel->publishById($id);
+			$articleModel = new Admin\Model\Article();
+			$commentModel = new Admin\Model\Comment();
+			return $categoryModel->publishById($id) && $articleModel->publishByCategory($id) && $commentModel->publishByCategory($id);
 		}
 		if ($table === 'articles')
 		{
 			$articleModel = new Admin\Model\Article();
-			return $articleModel->publishById($id);
+			$commentModel = new Admin\Model\Comment();
+			return $articleModel->publishById($id) && $commentModel->publishByArticle($id);
 		}
 		if ($table === 'extras')
 		{
@@ -190,12 +193,15 @@ class Common extends ControllerAbstract
 		if ($table === 'categories')
 		{
 			$categoryModel = new Admin\Model\Category();
-			return $categoryModel->unpublishById($id);
+			$articleModel = new Admin\Model\Article();
+			$commentModel = new Admin\Model\Comment();
+			return $categoryModel->unpublishById($id) && $articleModel->unpublishByCategory($id) && $commentModel->unpublishByCategory($id);
 		}
 		if ($table === 'articles')
 		{
 			$articleModel = new Admin\Model\Article();
-			return $articleModel->unpublishById($id);
+			$commentModel = new Admin\Model\Comment();
+			return $articleModel->unpublishById($id) && $commentModel->unpublishByArticle($id);
 		}
 		if ($table === 'extras')
 		{
@@ -338,12 +344,15 @@ class Common extends ControllerAbstract
 		if ($table === 'categories')
 		{
 			$categoryModel = new Admin\Model\Category();
-			return $categoryModel->deleteById($id);
+			$articleModel = new Admin\Model\Article();
+			$commentModel = new Admin\Model\Comment();
+			return $commentModel->deleteByCategory($id) && $articleModel->deleteByCategory($id) && $categoryModel->deleteById($id);
 		}
 		if ($table === 'articles')
 		{
 			$articleModel = new Admin\Model\Article();
-			return $articleModel->deleteById($id);
+			$commentModel = new Admin\Model\Comment();
+			return $commentModel->deleteByArticle($id) && $articleModel->deleteById($id);
 		}
 		if ($table === 'extras')
 		{

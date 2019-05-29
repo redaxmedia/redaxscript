@@ -167,6 +167,7 @@
 	"database_failed": "Conectarea la baza de date a eşuat",
 	"account": "Account",
 	"account_create": "Creează un cont",
+	"console": "Console",
 	"installation": "Instalare",
 	"installation_completed": "Instalarea a avut loc cu succes",
 	"installation_failed": "Installation failed",

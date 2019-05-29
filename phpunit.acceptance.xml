@@ -5,10 +5,34 @@
 
 	<testsuites>
 
+		<!-- console -->
+
+		<testsuite name="console">
+			<file>tests/acceptance/ConsoleTest.php</file>
+		</testsuite>
+
 		<!-- installation -->
 
 		<testsuite name="installation">
 			<file>tests/acceptance/InstallationTest.php</file>
+		</testsuite>
+
+		<!-- content -->
+
+		<testsuite name="content">
+			<file>tests/acceptance/ContentTest.php</file>
+		</testsuite>
+
+		<!-- error -->
+
+		<testsuite name="error">
+			<file>tests/acceptance/ErrorTest.php</file>
+		</testsuite>
+
+		<!-- search -->
+
+		<testsuite name="search">
+			<file>tests/acceptance/SearchTest.php</file>
 		</testsuite>
 
 		<!-- login -->

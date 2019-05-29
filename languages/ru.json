@@ -167,6 +167,7 @@
 	"database_failed": "Ошибка подключения к базе данных",
 	"account": "Account",
 	"account_create": "Создание аккаунта",
+	"console": "Console",
 	"installation": "Установка",
 	"installation_completed": "Установка завершена успешно",
 	"installation_failed": "Installation failed",

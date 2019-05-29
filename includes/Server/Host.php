@@ -23,7 +23,6 @@ class Host extends ServerAbstract
 
 	public function getOutput() : ?string
 	{
-		$output = $this->_request->getServer('HTTP_HOST');
-		return $output;
+		return $this->_request->getServer('HTTP_HOST');
 	}
 }

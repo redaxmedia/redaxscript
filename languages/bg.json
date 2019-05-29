@@ -167,6 +167,7 @@
 	"database_failed": "Грешка в базата данни",
 	"account": "Account",
 	"account_create": "Създаване на акаунт",
+	"console": "Console",
 	"installation": "Инсталация",
 	"installation_completed": "Инсталацията завершена успешно",
 	"installation_failed": "Installation failed",

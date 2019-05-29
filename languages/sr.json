@@ -167,6 +167,7 @@
 	"database_failed": "Spajanje na bazu nije uspelo",
 	"account": "Account",
 	"account_create": "Otvorite svoj korisnički nalog",
+	"console": "Console",
 	"installation": "Instalacija",
 	"installation_completed": "Instalacija završena uspešno",
 	"installation_failed": "Installation failed",

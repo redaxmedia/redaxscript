@@ -167,6 +167,7 @@
 	"database_failed": "データベースの接続に失敗しました",
 	"account": "Account",
 	"account_create": "アカウント作成",
+	"console": "Console",
 	"installation": "インストール",
 	"installation_completed": "インストールは正常に完了しました",
 	"installation_failed": "Installation failed",

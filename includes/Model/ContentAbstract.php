@@ -54,22 +54,47 @@ abstract class ContentAbstract extends ModelAbstract
 	 *
 	 * @since 4.0.0
 	 *
-	 * @param int $id
+	 * @param int $contentId
 	 * @param string $language
 	 * @param string $orderColumn name of the column to order
 	 *
 	 * @return object|null
 	 */
 
-	public function getByIdAndLanguageAndOrder(int $id = null, string $language = null, string $orderColumn = null) : ?object
+	public function getByIdAndLanguageAndOrder(int $contentId = null, string $language = null, string $orderColumn = null) : ?object
 	{
 		return $this
 			->query()
-			->whereIdIs($id)
+			->whereIn('id', $this->getIdArrayBySibling($contentId))
 			->whereLanguageIs($language)
 			->where('status', 1)
 			->orderBySetting($orderColumn)
 			->findMany() ? : null;
+	}
+
+	/**
+	 * get id array by sibling
+	 *
+	 * @param int $siblingId identifier of the content
+	 *
+	 * @return array|null
+	 */
+
+	public function getIdArrayBySibling(int $siblingId = null) : ?array
+	{
+		return $this
+			->query()
+			->select('id')
+			->whereAnyIs(
+			[
+				[
+					'id' => $siblingId
+				],
+				[
+					'sibling' => $siblingId
+				]
+			])
+			->findFlatArray();
 	}
 
 	/**

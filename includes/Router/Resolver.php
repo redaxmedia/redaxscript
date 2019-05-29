@@ -73,7 +73,7 @@ class Resolver extends Parameter
 	 * @return string|null
 	 */
 
-	protected function _getRoute(string $type = 'lite') : ?string
+	protected function _getRoute(string $type = null) : ?string
 	{
 		$output = null;
 		$adminParameter = $this->getAdmin();

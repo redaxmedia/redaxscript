@@ -167,6 +167,7 @@
 	"database_failed": "Kļūda savienojoties ar datu bāzi",
 	"account": "Account",
 	"account_create": "Izveidot kontu",
+	"console": "Console",
 	"installation": "Uzstādīšana",
 	"installation_completed": "Uzstādīšana pabeigta",
 	"installation_failed": "Installation failed",

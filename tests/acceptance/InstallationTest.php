@@ -55,11 +55,11 @@ class InstallationTest extends TestCaseAbstract
 
 	public function testBehaviour() : void
 	{
-		/* prepare */
+		/* setup */
 
 		$formElement = $this->_driver->findElement(WebDriverBy::tagName('form'));
 		$dbHostElement = $formElement->findElement(WebDriverBy::id('db-host'));
-		$dbTypeElement = $formElement->findElement(WebDriverBy::id('db-type'));
+		$dbTypeSelect = new WebDriverSelect($formElement->findElement(WebDriverBy::id('db-type')));
 		$dbNameElement = $formElement->findElement(WebDriverBy::id('db-name'));
 		$dbUserElement = $formElement->findElement(WebDriverBy::id('db-user'));
 		$dbPasswordElement = $formElement->findElement(WebDriverBy::id('db-password'));
@@ -70,10 +70,6 @@ class InstallationTest extends TestCaseAbstract
 		$adminEmailElement = $formElement->findElement(WebDriverBy::id('admin-email'));
 		$labelAccountElement =  $formElement->findElement(WebDriverBy::cssSelector('[for*="Account"]'));
 
-		/* setup */
-
-		$dbTypeSelect = new WebDriverSelect($dbTypeElement);
-
 		/* compare */
 
 		$this->assertFalse($adminNameElement->isDisplayed());
@@ -81,7 +77,7 @@ class InstallationTest extends TestCaseAbstract
 		$this->assertFalse($adminPasswordElement->isDisplayed());
 		$this->assertFalse($adminEmailElement->isDisplayed());
 
-		/* setup and compare */
+		/* interact and compare */
 
 		$dbTypeSelect->selectByValue('sqlite');
 		$this->assertTrue($dbHostElement->isDisplayed());
@@ -90,7 +86,7 @@ class InstallationTest extends TestCaseAbstract
 		$this->assertFalse($dbPasswordElement->isDisplayed());
 		$this->assertTrue($dbPrefixElement->isDisplayed());
 
-		/* setup and compare */
+		/* interact and compare */
 
 		$dbTypeSelect->selectByValue('mysql');
 		$this->assertTrue($dbHostElement->isDisplayed());
@@ -99,7 +95,7 @@ class InstallationTest extends TestCaseAbstract
 		$this->assertTrue($dbPasswordElement->isDisplayed());
 		$this->assertTrue($dbPrefixElement->isDisplayed());
 
-		/* setup and compare */
+		/* interact and compare */
 
 		$labelAccountElement->click();
 		$this->assertTrue($adminNameElement->isDisplayed());
@@ -116,11 +112,11 @@ class InstallationTest extends TestCaseAbstract
 
 	public function testInstall() : void
 	{
-		/* prepare */
+		/* setup */
 
 		$formElement = $this->_driver->findElement(WebDriverBy::tagName('form'));
 		$dbHostElement = $formElement->findElement(WebDriverBy::id('db-host'));
-		$dbTypeElement = $formElement->findElement(WebDriverBy::id('db-type'));
+		$dbTypeSelect = new WebDriverSelect($formElement->findElement(WebDriverBy::id('db-type')));
 		$dbPrefixElement = $formElement->findElement(WebDriverBy::id('db-prefix'));
 		$adminNameElement = $formElement->findElement(WebDriverBy::id('admin-name'));
 		$adminUserElement = $formElement->findElement(WebDriverBy::id('admin-user'));
@@ -128,9 +124,8 @@ class InstallationTest extends TestCaseAbstract
 		$adminEmailElement = $formElement->findElement(WebDriverBy::id('admin-email'));
 		$labelAccountElement =  $formElement->findElement(WebDriverBy::cssSelector('[for*="Account"]'));
 		$buttonElement = $formElement->findElement(WebDriverBy::tagName('button'));
-		$dbTypeSelect = new WebDriverSelect($dbTypeElement);
 
-		/* setup */
+		/* interact */
 
 		$dbTypeSelect->selectByValue('sqlite');
 		$dbHostElement->sendKeys('build/test.sqlite');

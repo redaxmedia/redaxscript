@@ -54,14 +54,14 @@ class LoginTest extends TestCaseAbstract
 
 	public function testLogin() : void
 	{
-		/* prepare */
+		/* setup */
 
 		$formElement = $this->_driver->findElement(WebDriverBy::tagName('form'));
 		$userElement = $formElement->findElement(WebDriverBy::id('user'));
 		$passwordElement = $formElement->findElement(WebDriverBy::id('password'));
 		$buttonElement = $formElement->findElement(WebDriverBy::tagName('button'));
 
-		/* setup */
+		/* interact */
 
 		$userElement->sendKeys('test');
 		$passwordElement->sendKeys('test');

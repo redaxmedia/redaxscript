@@ -123,6 +123,9 @@ class Group extends BaseModel\Group
 
 	public function deleteById(int $groupId = null) : bool
 	{
-		return $this->query()->whereIdIs($groupId)->deleteMany();
+		return $this
+			->query()
+			->whereIdIs($groupId)
+			->deleteMany();
 	}
 }

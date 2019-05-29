@@ -124,12 +124,10 @@ class Extra extends ViewAbstract
 		}
 		$output = Module\Hook::trigger('extraStart');
 		$accessValidator = new Validator\Access();
-		$extraModel = new Model\Extra();
 		$extras = null;
 		$contentParser = new Content\Parser($this->_registry, $this->_request, $this->_language, $this->_config);
 		$adminDock = new Admin\View\Helper\Dock($this->_registry, $this->_language);
 		$adminDock->init();
-		$language = $this->_registry->get('language');
 		$loggedIn = $this->_registry->get('loggedIn');
 		$token = $this->_registry->get('token');
 		$categoryId = $this->_registry->get('categoryId');
@@ -152,17 +150,7 @@ class Extra extends ViewAbstract
 			[
 				'class' => $this->_optionArray['className']['box']
 			]);
-
-		/* query extras */
-
-		if ($extraId)
-		{
-			$extras = $extraModel->getByIdAndLanguageAndOrder($extraId, $language, $this->_optionArray['orderColumn']);
-		}
-		else
-		{
-			$extras = $extraModel->getByLanguageAndOrder($language, $this->_optionArray['orderColumn']);
-		}
+		$extras = $this->queryExtras($extraId);
 
 		/* process extras */
 
@@ -192,5 +180,29 @@ class Extra extends ViewAbstract
 		}
 		$output .= Module\Hook::trigger('extraEnd');
 		return $output;
+	}
+
+	/**
+	 * query the extras
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param int $extraId identifier of the extra
+	 *
+	 * @return object|null
+	 */
+
+	public function queryExtras(int $extraId = null) : ?object
+	{
+		$extraModel = new Model\Extra();
+		$language = $this->_registry->get('language');
+
+		/* query extras */
+
+		if ($extraId)
+		{
+			return $extraModel->getByIdAndLanguageAndOrder($extraId, $language, $this->_optionArray['orderColumn']);
+		}
+		return $extraModel->getByLanguageAndOrder($language, $this->_optionArray['orderColumn']);
 	}
 }

@@ -109,6 +109,9 @@ class User extends BaseModel\User
 
 	public function deleteById(int $userId = null) : bool
 	{
-		return $this->query()->whereIdIs($userId)->deleteMany();
+		return $this
+			->query()
+			->whereIdIs($userId)
+			->deleteMany();
 	}
 }

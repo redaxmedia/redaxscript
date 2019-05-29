@@ -1,0 +1,16 @@
+[
+	[
+		"http://localhost:8000?p=search/home",
+		{
+			"title": "Categories",
+			"link": "Home"
+		}
+	],
+	[
+		"http://localhost:8000?p=search/welcome",
+		{
+			"title": "Articles",
+			"link": "Welcome"
+		}
+	]
+]

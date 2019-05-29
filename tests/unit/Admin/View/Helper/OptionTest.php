@@ -343,7 +343,7 @@ class OptionTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertTrue(!array_diff($expectArray['language'], $actualArray));
+		$this->assertNotTrue(array_diff($expectArray['language'], $actualArray));
 	}
 
 	/**
@@ -368,7 +368,7 @@ class OptionTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertTrue(!array_diff($expectArray['template'], $actualArray));
+		$this->assertNotTrue(array_diff($expectArray['template'], $actualArray));
 	}
 
 	/**

@@ -167,6 +167,7 @@
 	"database_failed": "Tilkobling til databasen feilet",
 	"account": "Account",
 	"account_create": "Opprett en brukerkonto",
+	"console": "Console",
 	"installation": "Installasjon",
 	"installation_completed": "Installasjon fullført",
 	"installation_failed": "Installation failed",

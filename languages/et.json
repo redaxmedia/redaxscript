@@ -167,6 +167,7 @@
 	"database_failed": "Ühendus andmebaasiga puudub",
 	"account": "Account",
 	"account_create": "Registreeru",
+	"console": "Console",
 	"installation": "Installatsioon",
 	"installation_completed": "Installatsioon valmis",
 	"installation_failed": "Installation failed",

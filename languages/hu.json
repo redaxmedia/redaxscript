@@ -167,6 +167,7 @@
 	"database_failed": "Az adatbázissal való kapcsolat során hiba történt",
 	"account": "Account",
 	"account_create": "Felhasználói fiók létrehozása",
+	"console": "Console",
 	"installation": "Telepítés",
 	"installation_completed": "A telepítés sikeresen megtörtént",
 	"installation_failed": "Installation failed",

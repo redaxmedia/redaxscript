@@ -167,6 +167,7 @@
 	"database_failed": "Anslutning till databas misslyckades",
 	"account": "Account",
 	"account_create": "Skapa ditt konto",
+	"console": "Console",
 	"installation": "Installation",
 	"installation_completed": "Installationen slutfördes framgångsrikt",
 	"installation_failed": "Installation failed",

@@ -31,7 +31,7 @@ class RestoreTest extends TestCaseAbstract
 	public function setUp() : void
 	{
 		parent::setUp();
-		Stream::setup('root', 0777, $this->getJSON('tests' . DIRECTORY_SEPARATOR . 'provider' . DIRECTORY_SEPARATOR . 'Console' . DIRECTORY_SEPARATOR . 'ConsoleTest_setUp.json'));
+		Stream::setup('root', 0777, $this->getJSON('tests' . DIRECTORY_SEPARATOR . 'unit-provider' . DIRECTORY_SEPARATOR . 'Console' . DIRECTORY_SEPARATOR . 'ConsoleTest_setUp.json'));
 	}
 
 	/**

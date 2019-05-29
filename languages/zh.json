@@ -167,6 +167,7 @@
 	"database_failed": "连接数据库失败",
 	"account": "Account",
 	"account_create": "创建你的帐户",
+	"console": "Console",
 	"installation": "安装",
 	"installation_completed": "安装已经成功完成",
 	"installation_failed": "Installation failed",

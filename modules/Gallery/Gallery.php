@@ -322,22 +322,21 @@ class Gallery extends Module\Notification
 				$imagePath = $directory . DIRECTORY_SEPARATOR . $value;
 				$imageExtension = strtolower(pathinfo($value, PATHINFO_EXTENSION));
 				$thumbPath = $directory . DIRECTORY_SEPARATOR . $this->_optionArray['thumbDirectory'] . DIRECTORY_SEPARATOR . $value;
+				$image = null;
 
-				/* switch extension */
+				/* handle extension */
 
-				switch ($imageExtension)
+				if ($imageExtension === 'gif')
 				{
-					case 'gif':
-						$image = imagecreatefromgif($imagePath);
-						break;
-					case 'jpg':
-						$image = imagecreatefromjpeg($imagePath);
-						break;
-					case 'png':
-						$image = imagecreatefrompng($imagePath);
-						break;
-					default:
-						$image = null;
+					$image = imagecreatefromgif($imagePath);
+				}
+				if ($imageExtension === 'jpg')
+				{
+					$image = imagecreatefromjpeg($imagePath);
+				}
+				if ($imageExtension === 'png')
+				{
+					$image = imagecreatefrompng($imagePath);
 				}
 
 				/* source and dist */

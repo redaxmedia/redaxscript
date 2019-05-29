@@ -167,6 +167,7 @@
 	"database_failed": "Η σύνδεση με τη βάση δεδομένων απέτυχε",
 	"account": "Account",
 	"account_create": "Δημιουργήστε το λογαριασμό σας",
+	"console": "Console",
 	"installation": "Εγκατάσταση",
 	"installation_completed": "Η εγκατάσταση ολοκληρώθηκε με επιτυχία",
 	"installation_failed": "Installation failed",

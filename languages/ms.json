@@ -167,6 +167,7 @@
 	"database_failed": "Gagal menyambung ke pangkalan data",
 	"account": "Account",
 	"account_create": "Pendaftaran",
+	"console": "Console",
 	"installation": "Pemasangan",
 	"installation_completed": "Pemasangan selesai",
 	"installation_failed": "Installation failed",

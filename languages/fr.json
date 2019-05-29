@@ -167,6 +167,7 @@
 	"database_failed": "Échec de la connexion à la base de données",
 	"account": "Account",
 	"account_create": "Créer votre compte",
+	"console": "Console",
 	"installation": "Installation",
 	"installation_completed": "Installation achevée avec succès",
 	"installation_failed": "Installation failed",

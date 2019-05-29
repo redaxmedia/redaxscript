@@ -55,7 +55,7 @@ class Tag
 
 	public static function title(string $text = null) : ?string
 	{
-		$title = new Head\Title(Registry::getInstance());
+		$title = new Head\Title();
 		return $title->render($text);
 	}
 

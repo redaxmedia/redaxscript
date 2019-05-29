@@ -167,6 +167,7 @@
 	"database_failed": "Koneksi ke basis data gagal",
 	"account": "Account",
 	"account_create": "Buat akun anda",
+	"console": "Console",
 	"installation": "Instalasi",
 	"installation_completed": "Instalasi telah selesai dengan benar",
 	"installation_failed": "Installation failed",

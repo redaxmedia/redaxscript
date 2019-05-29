@@ -83,10 +83,18 @@ class Extra extends BaseModel\Extra
 
 	public function publishById(int $extraId = null) : bool
 	{
-		return $this
+		return (bool)$this
 			->query()
-			->whereIdIs($extraId)
-			->findOne()
+			->whereAnyIs(
+			[
+				[
+					'id' =>	$extraId
+				],
+				[
+					'sibling' => $extraId
+				]
+			])
+			->findMany()
 			->set('status', 1)
 			->save();
 	}
@@ -103,10 +111,18 @@ class Extra extends BaseModel\Extra
 
 	public function unpublishById(int $extraId = null) : bool
 	{
-		return $this
+		return (bool)$this
 			->query()
-			->whereIdIs($extraId)
-			->findOne()
+			->whereAnyIs(
+			[
+				[
+					'id' =>	$extraId
+				],
+				[
+					'sibling' => $extraId
+				]
+			])
+			->findMany()
 			->set('status', 0)
 			->save();
 	}
@@ -123,6 +139,17 @@ class Extra extends BaseModel\Extra
 
 	public function deleteById(int $extraId = null) : bool
 	{
-		return $this->query()->whereIdIs($extraId)->deleteMany();
+		return $this
+			->query()
+			->whereAnyIs(
+			[
+				[
+					'id' =>	$extraId
+				],
+				[
+					'sibling' => $extraId
+				]
+			])
+			->deleteMany();
 	}
 }

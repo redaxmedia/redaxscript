@@ -29,7 +29,7 @@ class Article extends BaseModel\Article
 	public function isUniqueByIdAndAlias(int $articleId = null, string $articleAlias = null) : bool
 	{
 		$categoryModel = new Category();
-		return !$categoryModel->getByAlias($articleAlias)->id && !$this->getByAlias($articleAlias)->id || $this->getByAlias($articleAlias)->id === $this->getById($articleId)->id;
+		return !$categoryModel->getByAlias($articleAlias)->id && (!$this->getByAlias($articleAlias)->id || $this->getByAlias($articleAlias)->id === $this->getById($articleId)->id);
 	}
 
 	/**
@@ -84,10 +84,38 @@ class Article extends BaseModel\Article
 
 	public function publishById(int $articleId = null) : bool
 	{
-		return $this
+		return (bool)$this
 			->query()
-			->whereIdIs($articleId)
-			->findOne()
+			->whereAnyIs(
+			[
+				[
+					'id' =>	$articleId
+				],
+				[
+					'sibling' => $articleId
+				]
+			])
+			->findMany()
+			->set('status', 1)
+			->save();
+	}
+
+	/**
+	 * publish the article by category
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param int $categoryId identifier of the category
+	 *
+	 * @return bool
+	 */
+
+	public function publishByCategory(int $categoryId = null) : bool
+	{
+		return (bool)$this
+			->query()
+			->where('category', $categoryId)
+			->findMany()
 			->set('status', 1)
 			->save();
 	}
@@ -104,10 +132,38 @@ class Article extends BaseModel\Article
 
 	public function unpublishById(int $articleId = null) : bool
 	{
-		return $this
+		return (bool)$this
 			->query()
-			->whereIdIs($articleId)
-			->findOne()
+			->whereAnyIs(
+			[
+				[
+					'id' =>	$articleId
+				],
+				[
+					'sibling' => $articleId
+				]
+			])
+			->findMany()
+			->set('status', 0)
+			->save();
+	}
+
+	/**
+	 * unpublish the article by category
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param int $categoryId identifier of the category
+	 *
+	 * @return bool
+	 */
+
+	public function unpublishByCategory(int $categoryId = null) : bool
+	{
+		return (bool)$this
+			->query()
+			->where('category', $categoryId)
+			->findMany()
 			->set('status', 0)
 			->save();
 	}
@@ -124,6 +180,35 @@ class Article extends BaseModel\Article
 
 	public function deleteById(int $articleId = null) : bool
 	{
-		return $this->query()->whereIdIs($articleId)->deleteMany();
+		return $this
+			->query()
+			->whereAnyIs(
+			[
+				[
+					'id' =>	$articleId
+				],
+				[
+					'sibling' => $articleId
+				]
+			])
+			->deleteMany();
+	}
+
+	/**
+	 * delete the article by category
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param int $categoryId identifier of the category
+	 *
+	 * @return bool
+	 */
+
+	public function deleteByCategory(int $categoryId = null) : bool
+	{
+		return $this
+			->query()
+			->where('category', $categoryId)
+			->deleteMany();
 	}
 }

@@ -59,6 +59,7 @@ class ContentTest extends TestCaseAbstract
 				'title' => 'Category Two',
 				'alias' => 'category-two',
 				'rank' => 2,
+				'parent' => $categoryOne->id,
 				'status' => 1
 			])
 			->save();

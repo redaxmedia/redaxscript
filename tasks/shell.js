@@ -91,7 +91,7 @@ module.exports = grunt =>
 		},
 		openBrowser:
 		{
-			command: run('opn http://localhost:8000')
+			command: run('open-cli http://localhost:8000')
 		},
 		createBuild:
 		{
