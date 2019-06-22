@@ -52,7 +52,8 @@ class LiveReload extends Module\Notification
 
 	public function renderStart() : void
 	{
-		$this->_registry->set('noCache', true);
+		$this->_registry->set('noAssetCache', true);
+		$this->_registry->set('noPageCache', true);
 		$script = Head\Script::getInstance();
 		$script
 			->init('foot')
@@ -77,11 +78,11 @@ class LiveReload extends Module\Notification
 
 		if ($content)
 		{
-			$this->setNotification('success', $this->_language->get('server_online', '_live_reload') . $this->_language->get('point'));
+			$this->setNotification('success', $this->_language->get('_live_reload')['server_online'] . $this->_language->get('point'));
 		}
 		else
 		{
-			$this->setNotification('error', $this->_language->get('server_offline', '_live_reload') . $this->_language->get('colon') . ' ' . $this->_optionArray['url']);
+			$this->setNotification('error', $this->_language->get('_live_reload')['server_offline'] . $this->_language->get('colon') . ' ' . $this->_optionArray['url']);
 		}
 		return $this->getNotification();
 	}

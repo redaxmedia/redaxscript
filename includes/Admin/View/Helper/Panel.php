@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Admin\View\Helper;
 
-use Redaxscript\Admin\View\ViewAbstract;
+use Redaxscript\Admin;
 use Redaxscript\Html;
 use Redaxscript\Module;
 use Redaxscript\Validator;
@@ -18,7 +18,7 @@ use function array_replace_recursive;
  * @author Henry Ruhs
  */
 
-class Panel extends ViewAbstract
+class Panel extends Admin\View\ViewAbstract
 {
 	/**
 	 * options of the panel
@@ -81,11 +81,14 @@ class Panel extends ViewAbstract
 	 * @since 4.0.0
 	 *
 	 * @param array $optionArray options of the panel
+	 *
+	 * @return self
 	 */
 
-	public function init(array $optionArray = []) : void
+	public function init(array $optionArray = []) : self
 	{
 		$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
+		return $this;
 	}
 
 	/**

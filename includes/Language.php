@@ -52,35 +52,30 @@ class Language extends Singleton
 	 * @since 3.0.0
 	 *
 	 * @param string $key key of the item
-	 * @param string $index index of the array
 	 *
 	 * @return string|array|null
 	 */
 
-	public function get(string $key = null, string $index = null)
+	public function get(string $key = null)
 	{
-		/* handle index */
-
-		if (is_array(self::$_languageArray) && array_key_exists($index, self::$_languageArray))
+		if (is_array(self::$_languageArray) && array_key_exists($key, self::$_languageArray))
 		{
-			$languageArray = self::$_languageArray[$index];
-		}
-		else
-		{
-			$languageArray = self::$_languageArray;
-		}
-
-		/* values as needed */
-
-		if (is_array($languageArray) && array_key_exists($key, $languageArray))
-		{
-			return $languageArray[$key];
-		}
-		if (!$key)
-		{
-			return $languageArray;
+			return self::$_languageArray[$key];
 		}
 		return null;
+	}
+
+	/**
+	 * get the array from language
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return string|array|null
+	 */
+
+	public function getArray() : array
+	{
+		return self::$_languageArray;
 	}
 
 	/**

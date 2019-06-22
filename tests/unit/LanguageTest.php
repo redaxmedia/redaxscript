@@ -59,33 +59,16 @@ class LanguageTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testGetIndex
+	 * testGetArray
 	 *
-	 * @since 2.2.0
+	 * @since 4.0.0
 	 */
 
-	public function testGetIndex() : void
+	public function testGetArray() : void
 	{
 		/* actual */
 
-		$actual = $this->_language->get('name', '_package');
-
-		/* compare */
-
-		$this->assertEquals('Redaxscript', $actual);
-	}
-
-	/**
-	 * testGetAll
-	 *
-	 * @since 2.2.0
-	 */
-
-	public function testGetAll() : void
-	{
-		/* actual */
-
-		$actualArray = $this->_language->get();
+		$actualArray = $this->_language->getArray();
 
 		/* compare */
 

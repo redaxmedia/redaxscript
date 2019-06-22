@@ -135,6 +135,20 @@ class Filesystem
 	}
 
 	/**
+	 * refresh the filesystem iterator
+	 *
+	 * @since 3.2.0
+	 *
+	 * @return self
+	 */
+
+	public function refreshIterator() : self
+	{
+		$this->_iterator = $this->_filterIterator($this->_scan($this->_root));
+		return $this;
+	}
+
+	/**
 	 * get the filesystem array
 	 *
 	 * @since 3.2.0
@@ -171,20 +185,6 @@ class Filesystem
 		$filesystemArray = $this->getArray();
 		sort($filesystemArray, $flag);
 		return $filesystemArray;
-	}
-
-	/**
-	 * refresh the filesystem iterator
-	 *
-	 * @since 3.2.0
-	 *
-	 * @return self
-	 */
-
-	public function refreshIterator() : self
-	{
-		$this->_iterator = $this->_filterIterator($this->_scan($this->_root));
-		return $this;
 	}
 
 	/**

@@ -116,8 +116,7 @@ class CommentTest extends TestCaseAbstract
 
 			$commentController
 				->expects($this->any())
-				->method($method)
-				->will($this->returnValue(false));
+				->method($method);
 		}
 		else
 		{

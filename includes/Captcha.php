@@ -206,6 +206,6 @@ class Captcha
 		/* solution and task */
 
 		$this->_solution = $a + $b * $c;
-		$this->_task = $this->_language->get($a, '_number') . ' ' . $this->_language->get($operator) . ' ' . $this->_language->get($b, '_number');
+		$this->_task = $this->_language->get('_number')[$a] . ' ' . $this->_language->get($operator) . ' ' . $this->_language->get('_number')[$b];
 	}
 }

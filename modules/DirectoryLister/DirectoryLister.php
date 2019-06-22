@@ -234,10 +234,10 @@ class DirectoryLister extends Module\Notification
 				->attr(
 				[
 					'href' => $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute') . $queryString . $optionArray['hash'],
-					'title' => $this->_language->get('directory_parent', '_directory_lister')
+					'title' => $this->_language->get('_directory_lister')['directory_parent']
 				])
 				->addClass($this->_optionArray['className']['types']['directoryParent'])
-				->text($this->_language->get('directory_parent', '_directory_lister'))
+				->text($this->_language->get('_directory_lister')['directory_parent'])
 			);
 		return $outputItem;
 	}
@@ -311,7 +311,7 @@ class DirectoryLister extends Module\Notification
 								[
 									'directory' => $path . $optionArray['hash']
 								]),
-								'title' => $this->_language->get('directory', '_directory_lister')
+								'title' => $this->_language->get('_directory_lister')['directory']
 							])
 							->addClass($this->_optionArray['className']['types']['directory'])
 							->text($text)
@@ -334,7 +334,7 @@ class DirectoryLister extends Module\Notification
 							[
 								'href' => $this->_registry->get('root') . '/' . $path,
 								'target' => '_blank',
-								'title' => $this->_language->get('file', '_directory_lister')
+								'title' => $this->_language->get('_directory_lister')['file']
 							])
 							->addClass($this->_optionArray['className']['types'][$fileType])
 							->text($text)

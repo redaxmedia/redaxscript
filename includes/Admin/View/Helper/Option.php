@@ -240,7 +240,7 @@ class Option
 		foreach ($languageFilesystemArray as $value)
 		{
 			$value = substr($value, 0, 2);
-			$languageArray[$this->_language->get($value, '_index')] = $value;
+			$languageArray[$this->_language->get('_language')[$value]] = $value;
 		}
 		return $languageArray;
 	}

@@ -54,11 +54,20 @@ class Registry extends Singleton
 		{
 			return self::$_registryArray[$key];
 		}
-		if (!$key)
-		{
-			return self::$_registryArray;
-		}
 		return null;
+	}
+
+	/**
+	 * get the array from registry
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return array
+	 */
+
+	public function getArray() : array
+	{
+		return self::$_registryArray;
 	}
 
 	/**

@@ -18,7 +18,6 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @covers Redaxscript\Console\Command\CommandAbstract
  *
  * @requires OS Linux
- * @requires PHP 7.2
  */
 
 class BackupTest extends TestCaseAbstract

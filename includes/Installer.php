@@ -401,14 +401,14 @@ class Installer
 		[
 			'language' => null,
 			'template' => null,
-			'title' => $this->_language->get('name', '_package'),
+			'title' => $this->_language->get('_package')['name'],
 			'author' => $optionArray['adminName'],
 			'copyright' => null,
-			'description' => $this->_language->get('description', '_package'),
+			'description' => $this->_language->get('_package')['description'],
 			'keywords' => null,
 			'robots' => 1,
 			'email' => $optionArray['adminEmail'],
-			'subject' => $this->_language->get('name', '_package'),
+			'subject' => $this->_language->get('_package')['name'],
 			'notification' => 0,
 			'charset' => 'utf-8',
 			'divider' => ' - ',
@@ -424,7 +424,7 @@ class Installer
 			'recovery' => 1,
 			'moderation' => 0,
 			'captcha' => 0,
-			'version' => $this->_language->get('version', '_package')
+			'version' => $this->_language->get('_package')['version']
 		];
 
 		/* process settings */

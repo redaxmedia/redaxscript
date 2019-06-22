@@ -28,12 +28,12 @@ class CacheTest extends TestCaseAbstract
 	 *
 	 * @param array $registryArray
 	 * @param array $queryArray
-	 * @param bool $expect
+	 * @param array $expectArray
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testCache(array $registryArray = [], array $queryArray = [], bool $expect = null) : void
+	public function testCache(array $registryArray = [], array $queryArray = [], array $expectArray = null) : void
 	{
 		/* setup */
 
@@ -43,10 +43,14 @@ class CacheTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $this->_registry->get('noCache');
+		$actualArray =
+		[
+			'noAssetCache' => $this->_registry->get('noAssetCache'),
+			'noPageCache' => $this->_registry->get('noAssetCache')
+		];
 
 		/* compare */
 
-		$this->assertEquals($expect, $actual);
+		$this->assertEquals($expectArray, $actualArray);
 	}
 }

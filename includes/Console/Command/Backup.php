@@ -72,7 +72,7 @@ class Backup extends CommandAbstract
 		$haltOnError = (bool)$parser->getOption('halt-on-error');
 		if ($argumentKey === 'database')
 		{
-			return $this->_database($parser->getOption()) ? $this->success() : $this->error($haltOnError);
+			return $this->_database($parser->getOptionArray()) ? $this->success() : $this->error($haltOnError);
 		}
 		return $this->getHelp();
 	}

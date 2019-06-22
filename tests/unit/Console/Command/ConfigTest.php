@@ -42,7 +42,7 @@ class ConfigTest extends TestCaseAbstract
 		Stream::setup('root');
 		$file = new StreamFile('config.php');
 		StreamWrapper::getRoot()->addChild($file);
-		$this->_configArray = $this->_config->get();
+		$this->_configArray = $this->_config->getArray();
 	}
 
 	/**

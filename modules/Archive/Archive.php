@@ -112,7 +112,8 @@ class Archive extends Module\Module
 				/* collect output */
 
 				$dater->init(strtotime($key));
-				$output .= $titleElement->text($this->_language->get($dater->getDateTime()->format('n') - 1, '_month') . ' ' . $dater->getDateTime()->format('Y'));
+				$month = $dater->getDateTime()->format('n') - 1;
+				$output .= $titleElement->text($this->_language->get('_month', $month) . ' ' . $dater->getDateTime()->format('Y'));
 				$output .= $listElement->html($outputItem);
 				$outputItem = null;
 			}

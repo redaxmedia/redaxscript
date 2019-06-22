@@ -93,8 +93,7 @@ class InstallTest extends TestCaseAbstract
 
 			$installController
 				->expects($this->any())
-				->method($method)
-				->will($this->returnValue(false));
+				->method($method);
 		}
 		else
 		{

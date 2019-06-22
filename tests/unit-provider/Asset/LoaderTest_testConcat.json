@@ -1,7 +1,7 @@
 [
 	[
 		{
-			"noCache": true
+			"noAssetCache": true
 		},
 		[
 			{
@@ -24,7 +24,7 @@
 	],
 	[
 		{
-			"noCache": false
+			"noAssetCache": false
 		},
 		[
 			{

@@ -78,7 +78,7 @@ class Setting extends CommandAbstract
 		}
 		if ($argumentKey === 'set')
 		{
-			return $this->_set($parser->getOption()) ? $this->success() : $this->error($haltOnError);
+			return $this->_set($parser->getOptionArray()) ? $this->success() : $this->error($haltOnError);
 		}
 		return $this->getHelp();
 	}

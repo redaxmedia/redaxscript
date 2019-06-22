@@ -6,6 +6,7 @@ rs.modules.Gallery.process = optionArray =>
 		...optionArray
 	};
 	const galleryList = document.querySelectorAll(OPTION.selector);
+	const galleryTemplate = document.querySelector(optionArray.template);
 	const imageArray = [];
 
 	if (galleryList)
@@ -14,6 +15,8 @@ rs.modules.Gallery.process = optionArray =>
 		{
 			gallery.querySelectorAll('a').forEach(link =>
 			{
+				/* collect images */
+
 				imageArray.push(
 				{
 					src: link.href,
@@ -25,14 +28,8 @@ rs.modules.Gallery.process = optionArray =>
 
 				link.addEventListener('click', event =>
 				{
-					/* override config */
-
 					OPTION.photoswipe.index = Number(event.currentTarget.dataset.index);
-
-					/* handle photo */
-
-					const template = document.querySelector(OPTION.template);
-					const photoSwipe = new window.PhotoSwipe(template, window.PhotoSwipeUI_Default, imageArray, OPTION.photoswipe);
+					const photoSwipe = new window.PhotoSwipe(galleryTemplate, OPTION.ui, imageArray, OPTION.photoswipe);
 
 					photoSwipe.init();
 					event.preventDefault();

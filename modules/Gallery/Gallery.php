@@ -93,6 +93,8 @@ class Gallery extends Module\Notification
 
 	public function renderStart() : void
 	{
+		$this->_registry->set('noPageCache', true);
+
 		/* link */
 
 		$link = Head\Link::getInstance();
@@ -100,8 +102,8 @@ class Gallery extends Module\Notification
 			->init()
 			->appendFile(
 			[
-				'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css',
-				'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css',
+				'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe.min.css',
+				'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/default-skin/default-skin.min.css',
 				'modules/Gallery/dist/styles/gallery.min.css'
 			]);
 
@@ -112,20 +114,20 @@ class Gallery extends Module\Notification
 			->init('foot')
 			->appendFile(
 			[
-				'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js',
-				'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js',
+				'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe.js',
+				'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe-ui-default.min.js',
 				'modules/Gallery/assets/scripts/init.js',
 				'modules/Gallery/dist/scripts/gallery.min.js'
 			]);
 	}
 
 	/**
-	 * renderEnd
+	 * templateEnd
 	 *
 	 * @since 4.0.0
 	 */
 
-	public function renderEnd() : void
+	public function templateStart() : void
 	{
 		include_once('modules/Gallery/templates/gallery.phtml');
 	}

@@ -102,9 +102,9 @@ class Transport
 		$transportArray =
 		[
 			'baseUrl' => $this->_registry->get('root') . '/',
-			'generator' => $this->_language->get('name', '_package') . ' ' . $this->_language->get('version', '_package'),
+			'generator' => $this->_language->get('_package')['name'] . ' ' . $this->_language->get('_package')['version'],
 			'language' => $this->_language->get(),
-			'version' => $this->_language->get('version', '_package')
+			'version' => $this->_language->get('_package')['version']
 		];
 
 		/* process registry */

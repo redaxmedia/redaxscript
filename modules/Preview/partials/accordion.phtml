@@ -35,14 +35,14 @@ $boxElement = $element
 						->copy()
 						->attr('id', $admin ? 'Modules\Preview\Admin\Accordion\\' . $i : 'Modules\Preview\Accordion\\' . $i)
 						->attr('checked', $i === 1 ? 'checked' : null)
-						->text($language->get($i, '_number')) .
+						->text($language->get('_number')[$i]) .
 					$labelElement
 						->copy()
 						->attr('for', $admin ? 'Modules\Preview\Admin\Accordion\\' . $i : 'Modules\Preview\Accordion\\' . $i)
-						->text($language->get($i, '_number')) .
+						->text($language->get('_number')[$i]) .
 					$boxElement
 						->copy()
-						->text($language->get($i, '_number')); ?>
+						->text($language->get('_number')[$i]); ?>
 
 	<?php endfor; ?>
 

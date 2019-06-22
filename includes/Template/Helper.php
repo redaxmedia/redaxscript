@@ -41,15 +41,14 @@ class Helper
 	 * @since 2.6.0
 	 *
 	 * @param string $key
-	 * @param string $index
 	 *
 	 * @return string|array|null
 	 */
 
-	public static function getLanguage(string $key = null, string $index = null)
+	public static function getLanguage(string $key = null)
 	{
 		$language = Language::getInstance();
-		return $language->get($key, $index);
+		return $language->get($key);
 	}
 
 	/**

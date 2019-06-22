@@ -8,10 +8,10 @@
 			<span class="rs-text-powered-by">
 				<?php echo Helper::getLanguage('powered_by'); ?>
 			</span>
-			<a href="<?php echo Helper::getLanguage('homepage', '_package'); ?>" class="rs-link-footer">
-				<?php echo Helper::getLanguage('name', '_package'); ?>
+			<a href="<?php echo Helper::getLanguage('_package')['homepage']; ?>" class="rs-link-footer">
+				<?php echo Helper::getLanguage('_package')['name']; ?>
 			</a>
-			<?php echo Helper::getLanguage('version', '_package'); ?>
+			<?php echo Helper::getLanguage('_package')['version']; ?>
 		</span>
 		<a class="rs-link-login" href="<?php echo Helper::getRegistry('parameterRoute'); ?>login"><?php echo Helper::getLanguage('login'); ?></a>
 	</div>

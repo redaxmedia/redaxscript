@@ -95,7 +95,7 @@ class Dialog extends Module\Module
 			}
 			if ($thirdParameter === 'confirm')
 			{
-				echo $dialog->confirm($this->_language->get('continue_question', '_dialog') . $this->_language->get('question_mark'));
+				echo $dialog->confirm($this->_language->get('_dialog')['continue_question'] . $this->_language->get('question_mark'));
 			}
 			if ($thirdParameter === 'prompt')
 			{
@@ -117,7 +117,7 @@ class Dialog extends Module\Module
 
 	public function alert(string $message = null, string $title = null) : string
 	{
-		return $this->_dialog('alert', $message, $title ? : $this->_language->get('alert', '_dialog'));
+		return $this->_dialog('alert', $message, $title ? : $this->_language->get('_dialog')['alert']);
 	}
 
 	/**
@@ -133,7 +133,7 @@ class Dialog extends Module\Module
 
 	public function confirm(string $message = null, string $title = null) : string
 	{
-		return $this->_dialog('confirm', $message, $title ? : $this->_language->get('confirm', '_dialog'));
+		return $this->_dialog('confirm', $message, $title ? : $this->_language->get('_dialog')['confirm']);
 	}
 
 	/**
@@ -149,7 +149,7 @@ class Dialog extends Module\Module
 
 	public function prompt(string $message = null, string $title = null) : string
 	{
-		return $this->_dialog('prompt', $message, $title ? : $this->_language->get('prompt', '_dialog'));
+		return $this->_dialog('prompt', $message, $title ? : $this->_language->get('_dialog')['prompt']);
 	}
 
 	/**

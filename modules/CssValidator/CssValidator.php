@@ -70,7 +70,7 @@ class CssValidator extends Module\Notification
 			[
 				'curl' =>
 				[
-					CURLOPT_USERAGENT => $this->_language->get('name', '_package')
+					CURLOPT_USERAGENT => $this->_language->get('_package')['name']
 				]
 			]);
 			$result = $reader->loadJSON($url)->getArray();
@@ -95,11 +95,11 @@ class CssValidator extends Module\Notification
 			}
 			if (!$result)
 			{
-				$this->setNotification('warning', $this->_language->get('service_no', '_validator') . $this->_language->get('point'));
+				$this->setNotification('warning', $this->_language->get('_validator')['service_no'] . $this->_language->get('point'));
 			}
 			else if (!$this->getNotification('error'))
 			{
-				$this->setNotification('success', $this->_language->get('document_validate', '_validator') . $this->_language->get('point'));
+				$this->setNotification('success', $this->_language->get('_validator')['document_validate'] . $this->_language->get('point'));
 			}
 		}
 		return $this->getNotification();

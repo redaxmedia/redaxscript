@@ -61,7 +61,10 @@ class HtmlValidator extends Module\Notification
 			$url = $this->_optionArray['apiUrl'] . '?' . http_build_query(
 			[
 				'doc' => $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute'),
-				'checkerrorpages' => 'yes',
+				'checkerrorpages' => 'yes'
+			]);
+			$urlJSON = $url . '&' . http_build_query(
+			[
 				'out' => 'json'
 			]);
 			$reader = new Reader();
@@ -69,10 +72,10 @@ class HtmlValidator extends Module\Notification
 			[
 				'curl' =>
 				[
-					CURLOPT_USERAGENT => $this->_language->get('name', '_package')
+					CURLOPT_USERAGENT => $this->_language->get('_package')['name']
 				]
 			]);
-			$result = $reader->loadJSON($url)->getArray();
+			$result = $reader->loadJSON($urlJSON)->getArray();
 
 			/* process result */
 
@@ -97,11 +100,11 @@ class HtmlValidator extends Module\Notification
 			}
 			if (!$result)
 			{
-				$this->setNotification('warning', $this->_language->get('service_no', '_html_validator') . $this->_language->get('point'));
+				$this->setNotification('warning', $this->_language->get('_html_validator')['service_no'] . $this->_language->get('point'));
 			}
 			else if (!$this->getNotification('error'))
 			{
-				$this->setNotification('success', $this->_language->get('document_validate', '_html_validator') . $this->_language->get('point'));
+				$this->setNotification('success', $this->_language->get('_html_validator')['document_validate'] . $this->_language->get('point'));
 			}
 		}
 		return $this->getNotification();

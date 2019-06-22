@@ -7,7 +7,10 @@
 		{
 			"no-cache": null
 		},
-		false
+		{
+			"noAssetCache": false,
+			"noPageCache": false
+		}
 	],
 	[
 		{
@@ -17,16 +20,22 @@
 		{
 			"no-cache": null
 		},
-		true
+		{
+			"noAssetCache": true,
+			"noPageCache": true
+		}
 	],
 	[
 		{
 			"loggedIn": null,
-			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
+			"token": null
 		},
 		{
 			"no-cache": true
 		},
-		true
+		{
+			"noAssetCache": true,
+			"noPageCache": true
+		}
 	]
 ]

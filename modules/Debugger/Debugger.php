@@ -86,13 +86,13 @@ class Debugger extends Module\Module
 		return array_filter(
 		[
 			'database' => $this->_flattenArray(Db::getQueryLog()),
-			'registry' => $this->_flattenArray($this->_registry->get()),
-			'server' => $this->_flattenArray($this->_request->getServer()),
-			'get' => $this->_flattenArray($this->_request->getQuery()),
-			'post' => $this->_flattenArray($this->_request->getPost()),
-			'files' => $this->_flattenArray($this->_request->getFiles()),
-			'session' => $this->_flattenArray($this->_request->getSession()),
-			'cookie' => $this->_flattenArray($this->_request->getCookie()),
+			'registry' => $this->_flattenArray($this->_registry->getArray()),
+			'server' => $this->_flattenArray($this->_request->get('server')),
+			'get' => $this->_flattenArray($this->_request->get('get')),
+			'post' => $this->_flattenArray($this->_request->get('post')),
+			'files' => $this->_flattenArray($this->_request->get('files')),
+			'session' => $this->_flattenArray($this->_request->get('session')),
+			'cookie' => $this->_flattenArray($this->_request->get('cookie'))
 		]);
 	}
 

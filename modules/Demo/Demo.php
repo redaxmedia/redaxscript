@@ -4,8 +4,8 @@ namespace Redaxscript\Modules\Demo;
 use Redaxscript\Auth;
 use Redaxscript\Db;
 use Redaxscript\Installer;
-use Redaxscript\Messenger;
 use Redaxscript\Module;
+use Redaxscript\View;
 use function is_dir;
 
 /**
@@ -178,12 +178,12 @@ class Demo extends Module\Notification
 	 *
 	 * @since 4.0.0
 	 *
-	 * @return Messenger
+	 * @return View\Helper\Messenger
 	 */
 
-	protected function _messengerFactory() : Messenger
+	protected function _messengerFactory() : View\Helper\Messenger
 	{
-		return new Messenger($this->_registry);
+		return new View\Helper\Messenger($this->_registry);
 	}
 
 	/**

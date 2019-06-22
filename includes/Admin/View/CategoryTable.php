@@ -146,7 +146,7 @@ class CategoryTable extends ViewAbstract
 							$adminControl->render('categories', $value->id, $value->alias, $value->status)
 						) .
 						$tdElement->copy()->text($value->alias) .
-						$tdElement->copy()->text($value->language ? $this->_language->get($value->language, '_index') : $this->_language->get('all')) .
+						$tdElement->copy()->text($value->language ? $this->_language->get('_language')[$value->language] : $this->_language->get('all')) .
 						$tdElement
 							->copy()
 							->addClass('rs-admin-js-move rs-admin-col-move')

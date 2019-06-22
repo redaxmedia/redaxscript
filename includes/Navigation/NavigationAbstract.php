@@ -69,11 +69,14 @@ abstract class NavigationAbstract implements NavigationInterface
 	 * @since 3.3.0
 	 *
 	 * @param array $optionArray options of the navigation
+	 *
+	 * @return self
 	 */
 
-	public function init(array $optionArray = []) : void
+	public function init(array $optionArray = []) : self
 	{
 		$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
+		return $this;
 	}
 
 	/**

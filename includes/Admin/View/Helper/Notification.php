@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Admin\View\Helper;
 
-use Redaxscript\Admin\View\ViewInterface;
+use Redaxscript\Admin;
 use Redaxscript\Html;
 use Redaxscript\Language;
 use Redaxscript\Module;
@@ -19,7 +19,7 @@ use function is_array;
  * @author Henry Ruhs
  */
 
-class Notification implements ViewInterface
+class Notification implements Admin\View\ViewInterface
 {
 	/**
 	 * instance of the language class
@@ -81,12 +81,15 @@ class Notification implements ViewInterface
 	 * @since 4.0.0
 	 *
 	 * @param array $optionArray options of the notification
+	 *
+	 * @return self
 	 */
 
-	public function init(array $optionArray = []) : void
+	public function init(array $optionArray = []) : self
 	{
 		$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
 		$this->_notificationArray = Module\Hook::collect('adminNotification');
+		return $this;
 	}
 
 	/**

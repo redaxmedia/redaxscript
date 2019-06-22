@@ -58,6 +58,7 @@ class ParserTest extends TestCaseAbstract
 
 	public function tearDown() : void
 	{
+		$this->_language->init();
 		$this->uninstallTestDummy();
 		$this->dropDatabase();
 	}

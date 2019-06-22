@@ -88,20 +88,29 @@ class Parser
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string|array|null
+	 * @return string|null
 	 */
 
-	public function getArgument(string $key = null)
+	public function getArgument(string $key = null) : ?string
 	{
 		if (is_array($this->_argumentArray) && array_key_exists($key, $this->_argumentArray))
 		{
 			return $this->_argumentArray[$key];
 		}
-		if (!$key)
-		{
-			return $this->_argumentArray;
-		}
 		return null;
+	}
+
+	/**
+	 * get the array from arguments
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return array
+	 */
+
+	public function getArgumentArray() : array
+	{
+		return $this->_argumentArray;
 	}
 
 	/**
@@ -111,20 +120,29 @@ class Parser
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string|array|null
+	 * @return string|null
 	 */
 
-	public function getOption(string $key = null)
+	public function getOption(string $key = null) : ?string
 	{
 		if (is_array($this->_optionArray) && array_key_exists($key, $this->_optionArray))
 		{
 			return $this->_optionArray[$key];
 		}
-		if (!$key)
-		{
-			return $this->_optionArray;
-		}
 		return null;
+	}
+
+	/**
+	 * get the array from options
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return array
+	 */
+
+	public function getOptionArray() : array
+	{
+		return $this->_optionArray;
 	}
 
 	/**

@@ -36,14 +36,15 @@ if ($registry->get('renderBreak'))
 /* template */
 
 set_include_path('templates');
-$renderTemplate = Module\Hook::trigger('renderTemplate');
-if ($renderTemplate)
+$templateReplace = Module\Hook::trigger('templateReplace');
+if ($templateReplace)
 {
-	echo $renderTemplate;
+	echo $templateReplace;
 }
 else
 {
-
+	Module\Hook::trigger('templateStart');
 	include_once($registry->get('template') . DIRECTORY_SEPARATOR . 'index.phtml');
+	Module\Hook::trigger('templateEnd');
 }
 Module\Hook::trigger('renderEnd');

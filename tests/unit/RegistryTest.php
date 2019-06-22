@@ -59,24 +59,24 @@ class RegistryTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testGetAll
+	 * testGetArray
 	 *
-	 * @since 2.2.0
+	 * @since 4.0.0
 	 */
 
-	public function testGetAll() : void
+	public function testGetArray() : void
 	{
 		/* setup */
 
-		$this->_registry->set('testAll', 'testAll');
+		$this->_registry->set('testKey', 'testValue');
 
 		/* actual */
 
-		$actualArray = $this->_registry->get();
+		$actualArray = $this->_registry->getArray();
 
 		/* compare */
 
-		$this->assertArrayHasKey('testAll', $actualArray);
+		$this->assertArrayHasKey('testKey', $actualArray);
 	}
 
 	/**

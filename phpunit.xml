@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<phpunit forceCoversAnnotation="true" convertErrorsToExceptions="true" convertWarningsToExceptions="true" bootstrap="tests/unit/bootstrap.php">
+<phpunit forceCoversAnnotation="true" executionOrder="default" convertErrorsToExceptions="true" convertWarningsToExceptions="true" bootstrap="tests/unit/bootstrap.php">
 
 	<!-- filter -->
 
@@ -22,7 +22,7 @@
 		<!-- admin controller -->
 
 		<testsuite name="admin-controller">
-			<!--<directory>tests/unit/Admin/Controller</directory>-->
+			<directory>tests/unit/Admin/Controller</directory>
 		</testsuite>
 
 		<!-- admin html -->
@@ -34,7 +34,7 @@
 		<!-- admin model -->
 
 		<testsuite name="admin-model">
-			<!--<directory>tests/unit/Admin/Model</directory>-->
+			<directory>tests/unit/Admin/Model</directory>
 		</testsuite>
 
 		<!-- admin router -->
@@ -53,12 +53,6 @@
 
 		<testsuite name="admin-view">
 			<directory>tests/unit/Admin/View</directory>
-		</testsuite>
-
-		<!-- admin messenger -->
-
-		<testsuite name="admin-messenger">
-			<!--<file>tests/unit/Admin/MessengerTest.php</file>-->
 		</testsuite>
 
 		<!-- asset -->
@@ -239,12 +233,6 @@
 
 		<testsuite name="mailer">
 			<file>tests/unit/MailerTest.php</file>
-		</testsuite>
-
-		<!-- messenger -->
-
-		<testsuite name="messenger">
-			<file>tests/unit/MessengerTest.php</file>
 		</testsuite>
 
 		<!-- registry -->

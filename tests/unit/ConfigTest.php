@@ -39,7 +39,7 @@ class ConfigTest extends TestCaseAbstract
 		Stream::setup('root');
 		$file = new StreamFile('config.php');
 		StreamWrapper::getRoot()->addChild($file);
-		$this->_configArray = $this->_config->get();
+		$this->_configArray = $this->_config->getArray();
 	}
 
 	/**
@@ -72,7 +72,7 @@ class ConfigTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actualArray = $this->_config->get();
+		$actualArray = $this->_config->getArray();
 
 		/* compare */
 
@@ -101,16 +101,16 @@ class ConfigTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testGetAll
+	 * testGetArray
 	 *
-	 * @since 2.2.0
+	 * @since 4.0.0
 	 */
 
-	public function testGetAll() : void
+	public function testGetArray() : void
 	{
 		/* actual */
 
-		$actualArray = $this->_config->get();
+		$actualArray = $this->_config->getArray();
 
 		/* compare */
 
@@ -137,7 +137,7 @@ class ConfigTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $this->_config->get();
+		$actual = $this->_config->getArray();
 
 		/* compare */
 

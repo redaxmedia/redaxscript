@@ -41,7 +41,7 @@ class DbTest extends TestCaseAbstract
 			'adminPassword' => 'test',
 			'adminEmail' => 'test@test.com'
 		];
-		$this->_configArray = $this->_config->get();
+		$this->_configArray = $this->_config->getArray();
 		$installer = $this->installerFactory();
 		$installer->init();
 		$installer->rawCreate();

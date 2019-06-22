@@ -44,7 +44,7 @@ class ParserTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEmpty($parser->getArgument());
+		$this->assertEmpty($parser->getArgumentArray());
 	}
 
 	/**
@@ -90,7 +90,7 @@ class ParserTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actualArray = $parser->getArgument();
+		$actualArray = $parser->getArgumentArray();
 
 		/* compare */
 
@@ -162,7 +162,7 @@ class ParserTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actualArray = $parser->getOption();
+		$actualArray = $parser->getOptionArray();
 
 		/* compare */
 

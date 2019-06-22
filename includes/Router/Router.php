@@ -4,7 +4,6 @@ namespace Redaxscript\Router;
 use Redaxscript\Controller;
 use Redaxscript\Filter;
 use Redaxscript\Header;
-use Redaxscript\Messenger;
 use Redaxscript\Model;
 use Redaxscript\Module;
 use Redaxscript\Validator;
@@ -164,7 +163,7 @@ class Router extends RouterAbstract
 
 	protected function _tokenGuard() : bool
 	{
-		return $this->_request->getPost() && $this->_request->getPost('token') !== $this->_registry->get('token');
+		return $this->_request->get('post') && $this->_request->getPost('token') !== $this->_registry->get('token');
 	}
 
 	/**
@@ -435,12 +434,12 @@ class Router extends RouterAbstract
 	 *
 	 * @since 4.0.0
 	 *
-	 * @return Messenger
+	 * @return View\Helper\Messenger
 	 */
 
-	protected function _messengerFactory() : Messenger
+	protected function _messengerFactory() : View\Helper\Messenger
 	{
-		return new Messenger($this->_registry);
+		return new View\Helper\Messenger($this->_registry);
 	}
 
 	/**

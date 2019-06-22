@@ -28,10 +28,12 @@ class Cache extends BootstrapAbstract
 
 		/* set the registry */
 
-		$this->_registry->set('noCache', false);
+		$this->_registry->set('noAssetCache', false);
+		$this->_registry->set('noPageCache', false);
 		if ($this->_registry->get('loggedIn') === $this->_registry->get('token') || $noCache)
 		{
-			$this->_registry->set('noCache', true);
+			$this->_registry->set('noAssetCache', true);
+			$this->_registry->set('noPageCache', true);
 		}
 	}
 }

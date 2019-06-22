@@ -75,6 +75,6 @@ class TestDummy extends Module\Notification
 
 	public function render(int $firstNumber = 1, int $secondNumber = 1) : string
 	{
-		return $this->_language->get($firstNumber + $secondNumber, '_number');
+		return $this->_language->get('_number')[$firstNumber + $secondNumber];
 	}
 }

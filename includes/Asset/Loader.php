@@ -110,7 +110,7 @@ class Loader
 
 		/* prevent as needed */
 
-		if ($this->_registry->get('noCache'))
+		if ($this->_registry->get('noAssetCache'))
 		{
 			return $this;
 		}

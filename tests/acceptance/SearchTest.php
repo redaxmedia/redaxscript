@@ -37,7 +37,7 @@ class SearchTest extends TestCaseAbstract
 	{
 		/* expect and actual */
 
-		$expect = $this->_language->get('search') . ' - ' . $this->_language->get('name', '_package');
+		$expect = $this->_language->get('search') . ' - ' . $this->_language->get('_package')['name'];
 		$actual = $this->_driver->getTitle();
 
 		/* compare */

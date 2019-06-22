@@ -68,7 +68,7 @@ class CallHome extends Module\Notification
 		$reader = new Reader();
 		$reader->init();
 		$aliasFilter = new Filter\Alias();
-		$version = $aliasFilter->sanitize($this->_language->get('version', '_package'));
+		$version = $aliasFilter->sanitize($this->_language->get('_package')['version']);
 
 		/* load result */
 

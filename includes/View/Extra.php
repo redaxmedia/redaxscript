@@ -99,11 +99,14 @@ class Extra extends ViewAbstract
 	 * @since 4.0.0
 	 *
 	 * @param array $optionArray options of the extra
+	 *
+	 * @return self
 	 */
 
-	public function init(array $optionArray = []) : void
+	public function init(array $optionArray = []) : self
 	{
 		$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
+		return $this;
 	}
 
 	/**

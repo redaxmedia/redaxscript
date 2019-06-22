@@ -71,20 +71,29 @@ class Config extends Singleton
 	 *
 	 * @param string $key key of the item
 	 *
-	 * @return string|array|null
+	 * @return string|null
 	 */
 
-	public function get(string $key = null)
+	public function get(string $key = null) : ?string
 	{
 		if (is_array(self::$_configArray) && array_key_exists($key, self::$_configArray))
 		{
 			return self::$_configArray[$key];
 		}
-		if (!$key)
-		{
-			return self::$_configArray;
-		}
 		return null;
+	}
+
+	/**
+	 * get the array from config
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return array
+	 */
+
+	public function getArray() : array
+	{
+		return self::$_configArray;
 	}
 
 	/**

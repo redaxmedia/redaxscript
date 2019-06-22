@@ -15,14 +15,9 @@
 
 	& li
 	{
-		margin-bottom: 0.25em;
-	}
-
-	& img
-	{
-		height: 100%;
-		object-fit: cover;
-		width: 100%;
+		border: 0.5em solid gray(0 / 0.1);
+		line-height: 0;
+		margin-bottom: 0.5em;
 	}
 }
 
@@ -34,6 +29,6 @@
 {
 	.rs-list-gallery li
 	{
-		margin-right: 0.25em;
+		margin-right: 0.5em;
 	}
 }

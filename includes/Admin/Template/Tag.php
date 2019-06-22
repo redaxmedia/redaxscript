@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Admin\Template;
 
-use Redaxscript\Admin\View\Helper;
+use Redaxscript\Admin;
 use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Template\Tag as BaseTag;
@@ -30,8 +30,7 @@ class Tag extends BaseTag
 
 	public static function panel(array $optionArray = []) : string
 	{
-		$panel = new Helper\Panel(Registry::getInstance(), Language::getInstance());
-		$panel->init($optionArray);
-		return $panel->render();
+		$panel = new Admin\View\Helper\Panel(Registry::getInstance(), Language::getInstance());
+		return $panel->init($optionArray)->render();
 	}
 }

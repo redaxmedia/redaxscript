@@ -95,11 +95,11 @@ class Cache extends CommandAbstract
 		$haltOnError = (bool)$parser->getOption('halt-on-error');
 		if ($argumentKey === 'clear')
 		{
-			return $this->_clear($parser->getOption()) ? $this->success() : $this->error($haltOnError);
+			return $this->_clear($parser->getOptionArray()) ? $this->success() : $this->error($haltOnError);
 		}
 		if ($argumentKey === 'clear-invalid')
 		{
-			return $this->_clearInvalid($parser->getOption()) ? $this->success() : $this->error($haltOnError);
+			return $this->_clearInvalid($parser->getOptionArray()) ? $this->success() : $this->error($haltOnError);
 		}
 		return $this->getHelp();
 	}

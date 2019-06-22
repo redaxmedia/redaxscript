@@ -124,8 +124,7 @@ class Tag
 	public static function breadcrumb(array $optionArray = []) : string
 	{
 		$breadcrumb = new View\Helper\Breadcrumb(Registry::getInstance(), Language::getInstance());
-		$breadcrumb->init($optionArray);
-		return $breadcrumb->render();
+		return $breadcrumb->init($optionArray)->render();
 	}
 
 	/**
@@ -220,8 +219,7 @@ class Tag
 	public static function article(int $categoryId = null, int $articleId = null, array $optionArray = []) : string
 	{
 		$article = new View\Article(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
-		$article->init($optionArray);
-		return $article->render($categoryId, $articleId);
+		return $article->init($optionArray)->render($categoryId, $articleId);
 	}
 
 	/**
@@ -242,8 +240,7 @@ class Tag
 		if ($article->comments)
 		{
 			$comment = new View\Comment(Registry::getInstance(), Language::getInstance());
-			$comment->init($optionArray);
-			return $comment->render($articleId);
+			return $comment->init($optionArray)->render($articleId);
 		}
 		return null;
 	}
@@ -262,8 +259,7 @@ class Tag
 	public static function extra(int $extraId = null, array $optionArray = []) : string
 	{
 		$extra = new View\Extra(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
-		$extra->init($optionArray);
-		return $extra->render($extraId);
+		return $extra->init($optionArray)->render($extraId);
 	}
 
 	/**
@@ -304,8 +300,7 @@ class Tag
 			if ($total > 1)
 			{
 				$pagination = new View\Helper\Pagination(Registry::getInstance(), Language::getInstance());
-				$pagination->init($optionArray);
-				return $pagination->render($route, $current, $total);
+				return $pagination->init($optionArray)->render($route, $current, $total);
 			}
 		}
 		return null;
@@ -327,32 +322,27 @@ class Tag
 		if ($type === 'articles')
 		{
 			$navigation = new Navigation\Article(Registry::getInstance(), Language::getInstance());
-			$navigation->init($optionArray);
-			return $navigation->render();
+			return $navigation->init($optionArray)->render();
 		}
 		if ($type === 'categories')
 		{
 			$navigation = new Navigation\Category(Registry::getInstance(), Language::getInstance());
-			$navigation->init($optionArray);
-			return $navigation->render();
+			return $navigation->init($optionArray)->render();
 		}
 		if ($type === 'comments')
 		{
 			$navigation = new Navigation\Comment(Registry::getInstance(), Language::getInstance());
-			$navigation->init($optionArray);
-			return $navigation->render();
+			return $navigation->init($optionArray)->render();
 		}
 		if ($type === 'languages')
 		{
 			$navigation = new Navigation\Language(Registry::getInstance(), Language::getInstance());
-			$navigation->init($optionArray);
-			return $navigation->render();
+			return $navigation->init($optionArray)->render();
 		}
 		if ($type === 'templates')
 		{
 			$navigation = new Navigation\Template(Registry::getInstance(), Language::getInstance());
-			$navigation->init($optionArray);
-			return $navigation->render();
+			return $navigation->init($optionArray)->render();
 		}
 		return null;
 	}

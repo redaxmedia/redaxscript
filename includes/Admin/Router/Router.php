@@ -168,7 +168,7 @@ class Router extends RouterAbstract
 			'uninstall',
 			'delete'
 		];
-		return $this->_request->getPost() && $this->_request->getPost('token') !== $this->_registry->get('token') || in_array($adminParameter, $tokenArray) && !$tokenParameter;
+		return $this->_request->get('post') && $this->_request->getPost('token') !== $this->_registry->get('token') || in_array($adminParameter, $tokenArray) && !$tokenParameter;
 	}
 
 	/**
@@ -520,12 +520,12 @@ class Router extends RouterAbstract
 	 *
 	 * @since 4.0.0
 	 *
-	 * @return Admin\Messenger
+	 * @return Admin\View\Helper\Messenger
 	 */
 
-	protected function _messengerFactory() : Admin\Messenger
+	protected function _messengerFactory() : Admin\View\Helper\Messenger
 	{
-		return new Admin\Messenger($this->_registry);
+		return new Admin\View\Helper\Messenger($this->_registry);
 	}
 
 	/**

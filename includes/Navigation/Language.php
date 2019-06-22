@@ -80,7 +80,7 @@ class Language extends NavigationAbstract
 						'href' => $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute') . $this->_registry->get('languageRoute') . $value,
 						'rel' => 'nofollow'
 					])
-					->text($this->_language->get($value, '_index'))
+					->text($this->_language->get('_language')[$value])
 			);
 		}
 

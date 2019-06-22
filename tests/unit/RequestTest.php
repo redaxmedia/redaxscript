@@ -37,20 +37,42 @@ class RequestTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testAll
+	 * testGet
 	 *
-	 * @since 2.2.0
+	 * @since 4.0.0
 	 */
 
-	public function testAll() : void
+	public function testGet() : void
 	{
 		/* actual */
 
-		$actualArray = $this->_request->get();
+		$actualArray = $this->_request->get('server');
+
+		/* compare */
+
+		$this->assertArrayHasKey('argv', $actualArray);
+	}
+
+	/**
+	 * testGetArray
+	 *
+	 * @since 4.0.0
+	 */
+
+	public function testGetArray() : void
+	{
+		/* actual */
+
+		$actualArray = $this->_request->getArray();
 
 		/* compare */
 
 		$this->assertArrayHasKey('server', $actualArray);
+		$this->assertArrayHasKey('get', $actualArray);
+		$this->assertArrayHasKey('post', $actualArray);
+		$this->assertArrayHasKey('files', $actualArray);
+		$this->assertArrayHasKey('session', $actualArray);
+		$this->assertArrayHasKey('cookie', $actualArray);
 	}
 
 	/**

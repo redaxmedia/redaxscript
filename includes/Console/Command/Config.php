@@ -110,11 +110,11 @@ class Config extends CommandAbstract
 		}
 		if ($argumentKey === 'set')
 		{
-			return $this->_set($parser->getOption()) ? $this->success() : $this->error($haltOnError);
+			return $this->_set($parser->getOptionArray()) ? $this->success() : $this->error($haltOnError);
 		}
 		if ($argumentKey === 'parse')
 		{
-			return $this->_parse($parser->getOption()) ? $this->success() : $this->error($haltOnError);
+			return $this->_parse($parser->getOptionArray()) ? $this->success() : $this->error($haltOnError);
 		}
 		if ($argumentKey === 'lock')
 		{
@@ -134,7 +134,7 @@ class Config extends CommandAbstract
 	protected function _list() : ?string
 	{
 		$output = null;
-		$configArray = $this->_config->get();
+		$configArray = $this->_config->getArray();
 
 		/* process config */
 

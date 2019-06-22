@@ -129,41 +129,7 @@ class Reader
 	}
 
 	/**
-	 * load json from url
-	 *
-	 * @since 3.1.0
-	 *
-	 * @param string $url
-	 *
-	 * @return self
-	 */
-
-	public function loadJSON(string $url = null) : self
-	{
-		$content = $this->load($url);
-		$this->_dataObject = json_decode($content);
-		return $this;
-	}
-
-	/**
-	 * load xml from url
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param string $url
-	 *
-	 * @return self
-	 */
-
-	public function loadXML(string $url = null) : self
-	{
-		$content = $this->load($url);
-		$this->_dataObject = simplexml_load_string($content);
-		return $this;
-	}
-
-	/**
-	 * load from url
+	 * load the content from url
 	 *
 	 * @since 3.0.0
 	 *
@@ -192,6 +158,40 @@ class Reader
 			$output = file_get_contents($url);
 		}
 		return $output;
+	}
+
+	/**
+	 * load the json from url
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param string $url
+	 *
+	 * @return self
+	 */
+
+	public function loadJSON(string $url = null) : self
+	{
+		$content = $this->load($url);
+		$this->_dataObject = json_decode($content);
+		return $this;
+	}
+
+	/**
+	 * load the xml from url
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $url
+	 *
+	 * @return self
+	 */
+
+	public function loadXML(string $url = null) : self
+	{
+		$content = $this->load($url);
+		$this->_dataObject = simplexml_load_string($content);
+		return $this;
 	}
 
 	/**

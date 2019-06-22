@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Tests;
 
-use Redaxscript\Messenger;
+use Redaxscript\View\Helper\Messenger;
 
 /**
  * MessengerTest
@@ -12,7 +12,7 @@ use Redaxscript\Messenger;
  * @category Tests
  * @author Henry Ruhs
  *
- * @covers Redaxscript\Messenger
+ * @covers Redaxscript\View\Helper\Messenger
  */
 
 class MessengerTest extends TestCaseAbstract

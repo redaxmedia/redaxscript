@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\View;
 
-use Redaxscript\Messenger;
+use Redaxscript\View;
 use function in_array;
 use function is_array;
 
@@ -130,12 +130,12 @@ class SystemStatus extends ViewAbstract
 	 *
 	 * @since 4.0.0
 	 *
-	 * @return Messenger
+	 * @return View\Helper\Messenger
 	 */
 
-	protected function _messengerFactory() : Messenger
+	protected function _messengerFactory() : View\Helper\Messenger
 	{
-		return new Messenger($this->_registry);
+		return new View\Helper\Messenger($this->_registry);
 	}
 
 	/**

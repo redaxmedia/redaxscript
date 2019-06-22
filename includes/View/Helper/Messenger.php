@@ -1,6 +1,9 @@
 <?php
-namespace Redaxscript;
+namespace Redaxscript\View\Helper;
 
+use Redaxscript\Html;
+use Redaxscript\Module;
+use Redaxscript\Registry;
 use function array_key_exists;
 use function array_replace_recursive;
 use function count;

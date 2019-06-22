@@ -75,7 +75,7 @@ class Uninstall extends CommandAbstract
 		}
 		if ($argumentKey === 'module')
 		{
-			return $this->_module($parser->getOption()) ? $this->success() : $this->error($haltOnError);
+			return $this->_module($parser->getOptionArray()) ? $this->success() : $this->error($haltOnError);
 		}
 		return $this->getHelp();
 	}

@@ -271,26 +271,35 @@ class Auth
 	}
 
 	/**
-	 * get the user
+	 * get the value from user
 	 *
 	 * @since 3.0.0
 	 *
 	 * @param string $key key of the user
 	 *
-	 * @return string|array|null
+	 * @return string|null
 	 */
 
-	public function getUser(string $key = null)
+	public function getUser(string $key = null) : ?string
 	{
 		if (is_array($this->_userArray) && array_key_exists($key, $this->_userArray))
 		{
 			return $this->_userArray[$key];
 		}
-		if (!$key)
-		{
-			return $this->_userArray;
-		}
 		return null;
+	}
+
+	/**
+	 * get the array from user
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return array
+	 */
+
+	public function getUserArray() : array
+	{
+		return $this->_userArray;
 	}
 
 	/**
@@ -308,7 +317,7 @@ class Auth
 	}
 
 	/**
-	 * get the permission
+	 * get the value from permission
 	 *
 	 * @since 3.0.0
 	 *
@@ -323,11 +332,20 @@ class Auth
 		{
 			return $this->_permissionArray[$key];
 		}
-		if (!$key)
-		{
-			return $this->_permissionArray;
-		}
 		return null;
+	}
+
+	/**
+	 * get the array from permission
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return array
+	 */
+
+	public function getPermissionArray() : array
+	{
+		return $this->_permissionArray;
 	}
 
 	/**
@@ -370,8 +388,8 @@ class Auth
 
 	public function save() : void
 	{
-		$userArray = $this->getUser();
-		$permissionArray = $this->getPermission();
+		$userArray = $this->getUserArray();
+		$permissionArray = $this->getPermissionArray();
 
 		/* set the session */
 

@@ -59,7 +59,7 @@ class Controller extends ControllerAbstract
 			[
 				'route' => $this->_registry->get('liteRoute'),
 				'timeout' => 2,
-				'message' => $this->_language->get('message_sent', '_contact')
+				'message' => $this->_language->get('_contact')['message_sent']
 			]);
 		}
 

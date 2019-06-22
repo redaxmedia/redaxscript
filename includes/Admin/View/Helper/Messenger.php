@@ -1,7 +1,7 @@
 <?php
-namespace Redaxscript\Admin;
+namespace Redaxscript\Admin\View\Helper;
 
-use Redaxscript\Messenger as BaseMessenger;
+use Redaxscript\View\Helper\Messenger as BaseMessenger;
 
 /**
  * parent class to create a admin message

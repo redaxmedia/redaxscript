@@ -16,7 +16,7 @@ module.exports = () =>
 				remove:
 				[
 					'_package',
-					'_index'
+					'_language'
 				]
 			}
 		}

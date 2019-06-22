@@ -24,7 +24,7 @@ $tfootElement = $element->copy()->init('tfoot');
 $captionElement = $element
 	->copy()
 	->init('caption')
-	->text($language->get('preview', '_preview'));
+	->text($language->get('_preview')['preview']);
 $trElement = $element->copy()->init('tr');
 $thElement = $element->copy()->init('th');
 $tdElement = $element->copy()->init('td');
@@ -34,9 +34,9 @@ $tdElement = $element->copy()->init('td');
 
 <?php for ($i = 1; $i < 6; $i++): ?>
 
-	<?php $outputHead .= $thElement->text($language->get($i, '_number')); ?>
-	<?php $outputBody .= $tdElement->text($language->get('preview', '_preview')); ?>
-	<?php $outputFoot .= $tdElement->text($language->get($i, '_number')); ?>
+	<?php $outputHead .= $thElement->text($language->get('_number')[$i]); ?>
+	<?php $outputBody .= $tdElement->text($language->get('_preview')['preview']); ?>
+	<?php $outputFoot .= $tdElement->text($language->get('_number')[$i]); ?>
 
 <?php endfor; ?>
 

@@ -3,9 +3,9 @@ namespace Redaxscript\Controller;
 
 use Redaxscript\Config;
 use Redaxscript\Language;
-use Redaxscript\Messenger;
 use Redaxscript\Registry;
 use Redaxscript\Request;
+use Redaxscript\View;
 use function array_map;
 
 /**
@@ -76,12 +76,12 @@ abstract class ControllerAbstract implements ControllerInterface
 	 *
 	 * @since 4.0.0
 	 *
-	 * @return Messenger
+	 * @return View\Helper\Messenger
 	 */
 
-	protected function _messengerFactory() : Messenger
+	protected function _messengerFactory() : View\Helper\Messenger
 	{
-		return new Messenger($this->_registry);
+		return new View\Helper\Messenger($this->_registry);
 	}
 
 	/**

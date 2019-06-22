@@ -9,7 +9,7 @@ $formElement = $admin ? new Admin\Html\Form($registry, $language) : new Html\For
 $formElement
 	->init()
 	->append('<ul><li>')
-	->label($language->get(++$i, '_number'),
+	->label($language->get('_number')[++$i],
 	[
 		'for' => $id . $i
 	])
@@ -20,7 +20,7 @@ $formElement
 		'required' => 'required'
 	])
 	->append('</li><li>')
-	->label($language->get(++$i, '_number'),
+	->label($language->get('_number')[++$i],
 	[
 		'for' => $id . $i
 	])
@@ -31,7 +31,7 @@ $formElement
 		'placeholder' => 'Placeholder'
 	])
 	->append('</li><li>')
-	->label($language->get(++$i, '_number'),
+	->label($language->get('_number')[++$i],
 	[
 		'for' => $id . $i
 	])
@@ -49,7 +49,7 @@ $formElement
 		'id' => $id . $i
 	])
 	->append('</li><li>')
-	->label($language->get(++$i, '_number'),
+	->label($language->get('_number')[++$i],
 	[
 		'for' => $id . $i
 	])
@@ -68,7 +68,7 @@ $formElement
 		'id' => $id . $i
 	])
 	->append('</li><li>')
-	->label($language->get(++$i, '_number'),
+	->label($language->get('_number')[++$i],
 	[
 		'for' => $id . $i
 	])
@@ -88,7 +88,7 @@ $formElement
 		'size' => 4
 	])
 	->append('</li><li>')
-	->label($language->get(++$i, '_number'),
+	->label($language->get('_number')[++$i],
 	[
 		'for' => $id . $i
 	])
@@ -109,7 +109,7 @@ $formElement
 		'size' => 4
 	])
 	->append('</li><li>')
-	->label($language->get(++$i, '_number'),
+	->label($language->get('_number')[++$i],
 	[
 		'for' => $id . $i
 	])
@@ -119,7 +119,7 @@ $formElement
 		'id' => $id . $i
 	])
 	->append('</li><li>')
-	->label($language->get(++$i, '_number'),
+	->label($language->get('_number')[++$i],
 	[
 		'for' => $id . $i
 	])
@@ -130,7 +130,7 @@ $formElement
 		'id' => $id . $i
 	])
 	->append('</li><li>')
-	->label($language->get(++$i, '_number'),
+	->label($language->get('_number')[++$i],
 	[
 		'for' => $id . $i
 	])

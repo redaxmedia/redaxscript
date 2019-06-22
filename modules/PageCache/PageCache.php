@@ -76,14 +76,14 @@ class PageCache extends Module\Notification
 	}
 
 	/**
-	 * renderTemplate
+	 * templateReplace
 	 *
-	 * @since 3.0.0
+	 * @since 4.0.0
 	 *
 	 * @return string|null
 	 */
 
-	public function renderTemplate() : ?string
+	public function templateReplace() : ?string
 	{
 		$fileSystem = new Filesystem\Filesystem();
 		$stylesFileSystem = $fileSystem->copy()->init($this->_optionArray['directory']['styles']);
@@ -91,7 +91,7 @@ class PageCache extends Module\Notification
 
 		/* prevent as needed */
 
-		if ($stylesFileSystem->countIterator() === 0 || $scriptsFileSystem->countIterator() === 0 || $this->_request->getPost() || $this->_registry->get('noCache'))
+		if ($stylesFileSystem->countIterator() === 0 || $scriptsFileSystem->countIterator() === 0 || $this->_request->getPost() || $this->_registry->get('noPageCache'))
 		{
 			return null;
 		}

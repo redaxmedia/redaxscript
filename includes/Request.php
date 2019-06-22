@@ -49,125 +49,30 @@ class Request extends Singleton
 	 * @since 3.0.0
 	 *
 	 * @param string $key key of the item
-	 * @param string $index index of the array
 	 *
 	 * @return string|array|null
 	 */
 
-	public function get(string $key = null, string $index = null)
+	public function get(string $key = null)
 	{
-		/* handle index */
-
-		if (is_array(self::$_requestArray) && array_key_exists($index, self::$_requestArray))
+		if (is_array(self::$_requestArray) && array_key_exists($key, self::$_requestArray))
 		{
-			$requestArray = self::$_requestArray[$index];
-		}
-		else
-		{
-			$requestArray = self::$_requestArray;
-		}
-
-		/* values as needed */
-
-		if (is_array($requestArray) && array_key_exists($key, $requestArray))
-		{
-			return $requestArray[$key];
-		}
-		if (!$key)
-		{
-			return $requestArray;
+			return self::$_requestArray[$key];
 		}
 		return null;
 	}
 
 	/**
-	 * get the value from server
+	 * get the array from globals
 	 *
-	 * @since 2.2.0
+	 * @since 4.0.0
 	 *
-	 * @param string $key key of the item
-	 *
-	 * @return string|array|null
+	 * @return array
 	 */
 
-	public function getServer(string $key = null)
+	public function getArray() : array
 	{
-		return $this->get($key, 'server');
-	}
-
-	/**
-	 * get the value from query
-	 *
-	 * @since 2.2.0
-	 *
-	 * @param string $key key of the item
-	 *
-	 * @return string|array|null
-	 */
-
-	public function getQuery(string $key = null)
-	{
-		return $this->get($key, 'get');
-	}
-
-	/**
-	 * get the value from post
-	 *
-	 * @since 2.2.0
-	 *
-	 * @param string $key key of the item
-	 *
-	 * @return string|array|null
-	 */
-
-	public function getPost(string $key = null)
-	{
-		return $this->get($key, 'post');
-	}
-
-	/**
-	 * get the value from files
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param string $key key of the item
-	 *
-	 * @return string|array|null
-	 */
-
-	public function getFiles(string $key = null)
-	{
-		return $this->get($key, 'files');
-	}
-
-	/**
-	 * get the value from session
-	 *
-	 * @since 2.2.0
-	 *
-	 * @param string $key key of the item
-	 *
-	 * @return string|array|null
-	 */
-
-	public function getSession(string $key = null)
-	{
-		return $this->get($key, 'session');
-	}
-
-	/**
-	 * get the value from cookie
-	 *
-	 * @since 2.2.0
-	 *
-	 * @param string $key key of the item
-	 *
-	 * @return string|array|null
-	 */
-
-	public function getCookie(string $key = null)
-	{
-		return $this->get($key, 'cookie');
+		return self::$_requestArray;
 	}
 
 	/**
@@ -185,6 +90,25 @@ class Request extends Singleton
 	}
 
 	/**
+	 * get the value from server
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $key key of the item
+	 *
+	 * @return string|array|null
+	 */
+
+	public function getServer(string $key = null)
+	{
+		if (is_array(self::$_requestArray['server']) && array_key_exists($key, self::$_requestArray['server']))
+		{
+			return self::$_requestArray['server'][$key];
+		}
+		return null;
+	}
+
+	/**
 	 * set the value to server
 	 *
 	 * @since 2.2.0
@@ -196,6 +120,25 @@ class Request extends Singleton
 	public function setServer(string $key = null, $value = null) : void
 	{
 		self::$_requestArray['server'][$key] = $value;
+	}
+
+	/**
+	 * get the value from query
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $key key of the item
+	 *
+	 * @return string|array|null
+	 */
+
+	public function getQuery(string $key = null)
+	{
+		if (is_array(self::$_requestArray['get']) && array_key_exists($key, self::$_requestArray['get']))
+		{
+			return self::$_requestArray['get'][$key];
+		}
+		return null;
 	}
 
 	/**
@@ -213,6 +156,25 @@ class Request extends Singleton
 	}
 
 	/**
+	 * get the value from post
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $key key of the item
+	 *
+	 * @return string|array|null
+	 */
+
+	public function getPost(string $key = null)
+	{
+		if (is_array(self::$_requestArray['post']) && array_key_exists($key, self::$_requestArray['post']))
+		{
+			return self::$_requestArray['post'][$key];
+		}
+		return null;
+	}
+
+	/**
 	 * set the value to post
 	 *
 	 * @since 2.2.0
@@ -224,6 +186,25 @@ class Request extends Singleton
 	public function setPost(string $key = null, $value = null) : void
 	{
 		self::$_requestArray['post'][$key] = $value;
+	}
+
+	/**
+	 * get the value from files
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $key key of the item
+	 *
+	 * @return string|array|null
+	 */
+
+	public function getFiles(string $key = null)
+	{
+		if (is_array(self::$_requestArray['files']) && array_key_exists($key, self::$_requestArray['files']))
+		{
+			return self::$_requestArray['files'][$key];
+		}
+		return null;
 	}
 
 	/**
@@ -241,6 +222,25 @@ class Request extends Singleton
 	}
 
 	/**
+	 * get the value from session
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $key key of the item
+	 *
+	 * @return string|array|null
+	 */
+
+	public function getSession(string $key = null)
+	{
+		if (is_array(self::$_requestArray['session']) && array_key_exists($key, self::$_requestArray['session']))
+		{
+			return self::$_requestArray['session'][$key];
+		}
+		return null;
+	}
+
+	/**
 	 * set the value to session
 	 *
 	 * @since 2.2.0
@@ -255,6 +255,36 @@ class Request extends Singleton
 	}
 
 	/**
+	 * refresh the session
+	 *
+	 * @since 2.6.2
+	 */
+
+	public function refreshSession() : void
+	{
+		self::$_requestArray['session'] = $_SESSION ? : [];
+	}
+
+	/**
+	 * get the value from cookie
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $key key of the item
+	 *
+	 * @return string|array|null
+	 */
+
+	public function getCookie(string $key = null)
+	{
+		if (is_array(self::$_requestArray['cookie']) && array_key_exists($key, self::$_requestArray['cookie']))
+		{
+			return self::$_requestArray['cookie'][$key];
+		}
+		return null;
+	}
+
+	/**
 	 * set the value to cookie
 	 *
 	 * @since 2.2.0
@@ -266,17 +296,6 @@ class Request extends Singleton
 	public function setCookie(string $key = null, $value = null) : void
 	{
 		self::$_requestArray['cookie'][$key] = $_COOKIE[$key] = $value;
-	}
-
-	/**
-	 * refresh the session
-	 *
-	 * @since 2.6.2
-	 */
-
-	public function refreshSession() : void
-	{
-		self::$_requestArray['session'] = $_SESSION ? : [];
 	}
 
 	/**

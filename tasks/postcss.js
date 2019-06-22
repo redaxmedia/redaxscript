@@ -215,10 +215,7 @@ module.exports = () =>
 				}),
 				require('postcss-color-function'),
 				require('postcss-rtl'),
-				require('autoprefixer')(
-				{
-					browsers: 'last 2 versions'
-				}),
+				require('autoprefixer'),
 				require('cssnano')(
 				{
 					colormin: false,

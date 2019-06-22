@@ -14,7 +14,7 @@
 	->init()
 	->append('charset', Helper::getSetting('charset'))
 	->append(['name' => 'author', 'content' => Helper::getSetting('author')])
-	->append(['name' => 'generator', 'content' => Helper::getLanguage('name', '_package') . ' ' . Helper::getLanguage('version', '_package')])
+	->append(['name' => 'generator', 'content' => Helper::getLanguage('_package')['name'] . ' ' . Helper::getLanguage('_package')['version']])
 	->append(['name' => 'description', 'content' => Helper::getDescription()])
 	->append(['name' => 'keywords', 'content' => Helper::getKeywords()])
 	->append(['name' => 'robots', 'content' => Helper::getRobots()])

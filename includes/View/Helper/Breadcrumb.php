@@ -68,9 +68,11 @@ class Breadcrumb extends ViewAbstract
 	 * @since 2.6.0
 	 *
 	 * @param array $optionArray options of the breadcrumb
+	 *
+	 * @return self
 	 */
 
-	public function init(array $optionArray = []) : void
+	public function init(array $optionArray = []) : self
 	{
 		$settingModel = new Model\Setting();
 		$this->_optionArray = array_replace_recursive($this->_optionArray, $optionArray);
@@ -79,6 +81,7 @@ class Breadcrumb extends ViewAbstract
 			$this->_optionArray['divider'] = $settingModel->get('divider');
 		}
 		$this->_create();
+		return $this;
 	}
 
 	/**
@@ -132,26 +135,15 @@ class Breadcrumb extends ViewAbstract
 			$route = is_array($valueArray) && array_key_exists('route', $valueArray) ? $valueArray['route'] : null;
 			if ($title)
 			{
-				$itemElement->clear();
-
-				/* append link */
-
-				if ($route)
-				{
-					$itemElement->append(
-						$linkElement
-							->attr('href', $parameterRoute . $route)
-							->text($title)
-					);
-				}
-
-				/* else append text */
-
-				else
-				{
-					$itemElement->text($title);
-				}
-				$listElement->append($itemElement);
+				$listElement->append(
+					$itemElement
+						->clear()
+						->append(
+							$route ? $linkElement
+								->attr('href', $parameterRoute . $route)
+								->text($title) : $title
+						)
+				);
 
 				/* append divider */
 
