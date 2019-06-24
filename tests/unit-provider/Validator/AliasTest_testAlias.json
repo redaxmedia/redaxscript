@@ -15,6 +15,11 @@
 		true
 	],
 	[
+		null,
+		"general",
+		false
+	],
+	[
 		"ab-c",
 		"system",
 		false
@@ -32,6 +37,11 @@
 	[
 		"invalid",
 		"system",
+		false
+	],
+	[
+		"invalid",
+		"invalid",
 		false
 	]
 ]

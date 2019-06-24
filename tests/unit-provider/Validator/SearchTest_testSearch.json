@@ -1,0 +1,22 @@
+[
+	[
+		"abc",
+		true
+	],
+	[
+		"***",
+		true
+	],
+	[
+		null,
+		false
+	],
+	[
+		"a",
+		false
+	],
+	[
+		"ab",
+		false
+	]
+]

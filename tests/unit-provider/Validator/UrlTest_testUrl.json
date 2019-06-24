@@ -16,6 +16,10 @@
 		true
 	],
 	[
+		null,
+		false
+	],
+	[
 		"www.test.com",
 		false
 	],
@@ -41,10 +45,6 @@
 	],
 	[
 		"invalid",
-		false
-	],
-	[
-		null,
 		false
 	]
 ]
