@@ -71,7 +71,17 @@ class ArticleTest extends TestCaseAbstract
 			->set(
 			[
 				'title' => 'Article Three',
-				'alias' => 'article-three'
+				'alias' => 'article-three',
+				'language' => 'en',
+				'category' => $categoryTwo->id
+			])
+			->save();
+		Db::forTablePrefix('articles')
+			->create()
+			->set(
+			[
+				'title' => 'Article Four',
+				'alias' => 'article-four'
 			])
 			->save();
 	}
@@ -107,6 +117,34 @@ class ArticleTest extends TestCaseAbstract
 		/* actual */
 
 		$actual = $articleModel->getByAlias($articleAlias)->id;
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 *
+	 * testCountByCategoryAndLanguage
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param int $categoryId
+	 * @param string $language
+	 * @param int $expect
+	 *
+	 * @dataProvider providerAutoloader
+	 */
+
+	public function testCountByCategoryAndLanguage(int $categoryId = null, string $language = null, int $expect = null) : void
+	{
+		/* setup */
+
+		$articleModel = new Model\Article();
+
+		/* actual */
+
+		$actual = $articleModel->countByCategoryAndLanguage($categoryId, $language);
 
 		/* compare */
 

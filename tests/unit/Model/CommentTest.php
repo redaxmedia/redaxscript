@@ -47,15 +47,6 @@ class CommentTest extends TestCaseAbstract
 				'alias' => 'category-one'
 			])
 			->save();
-		$categoryTwo = Db::forTablePrefix('categories')->create();
-		$categoryTwo
-			->set(
-			[
-				'title' => 'Category Two',
-				'alias' => 'category-two',
-				'parent' => $categoryOne->id
-			])
-			->save();
 		$articleOne = Db::forTablePrefix('articles')->create();
 		$articleOne
 			->set(
@@ -70,16 +61,7 @@ class CommentTest extends TestCaseAbstract
 			->set(
 			[
 				'title' => 'Article Two',
-				'alias' => 'article-two',
-				'category' => $categoryTwo->id
-			])
-			->save();
-		$articleThree = Db::forTablePrefix('articles')->create();
-		$articleThree
-			->set(
-			[
-				'title' => 'Article Three',
-				'alias' => 'article-three'
+				'alias' => 'article-two'
 			])
 			->save();
 		Db::forTablePrefix('comments')
@@ -106,7 +88,8 @@ class CommentTest extends TestCaseAbstract
 			[
 				'author' => 'Comment Three',
 				'text' => 'Comment Three',
-				'article' => $articleThree->id
+				'language' => 'en',
+				'article' => $articleTwo->id
 			])
 			->save();
 	}
@@ -120,6 +103,33 @@ class CommentTest extends TestCaseAbstract
 	public function tearDown() : void
 	{
 		$this->dropDatabase();
+	}
+
+	/**
+	 * testCountByArticleAndLanguage
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param int $articleId
+	 * @param string $language
+	 * @param int $expect
+	 *
+	 * @dataProvider providerAutoloader
+	 */
+
+	public function testCountByArticleAndLanguage(int $articleId = null, string $language = null, int $expect = null) : void
+	{
+		/* setup */
+
+		$commentModel = new Model\Comment();
+
+		/* actual */
+
+		$actual = $commentModel->countByArticleAndLanguage($articleId, $language);
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
 	}
 
 	/**

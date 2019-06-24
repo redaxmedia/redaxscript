@@ -13,6 +13,10 @@
 	],
 	[
 		3,
-		"article-three"
+		"category-one/category-two/article-three"
+	],
+	[
+		4,
+		"article-four"
 	]
 ]
