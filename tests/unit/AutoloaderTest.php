@@ -38,7 +38,7 @@ class AutoloaderTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals('test', $actualArray[0]);
+		$this->assertContains('test', $actualArray);
 	}
 
 	/**

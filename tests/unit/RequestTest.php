@@ -37,20 +37,44 @@ class RequestTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testGet
+	 * testGetAndSet
 	 *
 	 * @since 4.0.0
 	 */
 
-	public function testGet() : void
+	public function testGetAndSet() : void
 	{
+		/* setup */
+
+		$this->_request->set('testKey',
+		[
+			'testValue'
+		]);
+
 		/* actual */
 
-		$actualArray = $this->_request->get('server');
+		$actualArray = $this->_request->get('testKey');
 
 		/* compare */
 
-		$this->assertArrayHasKey('argv', $actualArray);
+		$this->assertContains('testValue', $actualArray);
+	}
+
+	/**
+	 * testGetInvalid
+	 *
+	 * @since 4.0.0
+	 */
+
+	public function testGetInvalid() : void
+	{
+		/* actual */
+
+		$actual = $this->_request->get('invalid');
+
+		/* compare */
+
+		$this->assertNull($actual);
 	}
 
 	/**
@@ -76,33 +100,12 @@ class RequestTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testGlobal
+	 * testGetAndSetServer
 	 *
 	 * @since 2.2.0
 	 */
 
-	public function testGlobal() : void
-	{
-		/* setup */
-
-		$this->_request->set('testKey', 'testValue');
-
-		/* actual */
-
-		$actual = $this->_request->get('testKey');
-
-		/* compare */
-
-		$this->assertEquals('testValue', $actual);
-	}
-
-	/**
-	 * testServer
-	 *
-	 * @since 2.2.0
-	 */
-
-	public function testServer() : void
+	public function testGetAndSetServer() : void
 	{
 		/* setup */
 
@@ -118,12 +121,29 @@ class RequestTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testQuery
+	 * testGetServerInvalid
+	 *
+	 * @since 4.0.0
+	 */
+
+	public function testGetServerInvalid() : void
+	{
+		/* actual */
+
+		$actual = $this->_request->getServer('invalid');
+
+		/* compare */
+
+		$this->assertNull($actual);
+	}
+
+	/**
+	 * testGetAndSetQuery
 	 *
 	 * @since 2.2.0
 	 */
 
-	public function testQuery() : void
+	public function testGetAndSetQuery() : void
 	{
 		/* setup */
 
@@ -139,12 +159,29 @@ class RequestTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testPost
+	 * testGetQueryInvalid
+	 *
+	 * @since 4.0.0
+	 */
+
+	public function testGetQueryInvalid() : void
+	{
+		/* actual */
+
+		$actual = $this->_request->getQuery('invalid');
+
+		/* compare */
+
+		$this->assertNull($actual);
+	}
+
+	/**
+	 * testGetAndSetPost
 	 *
 	 * @since 2.2.0
 	 */
 
-	public function testPost() : void
+	public function testGetAndSetPost() : void
 	{
 		/* setup */
 
@@ -160,12 +197,29 @@ class RequestTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testFiles
+	 * testGetPostInvalid
+	 *
+	 * @since 4.0.0
+	 */
+
+	public function testGetPostInvalid() : void
+	{
+		/* actual */
+
+		$actual = $this->_request->getPost('invalid');
+
+		/* compare */
+
+		$this->assertNull($actual);
+	}
+
+	/**
+	 * testGetAndSetFiles
 	 *
 	 * @since 3.9.0
 	 */
 
-	public function testFiles() : void
+	public function testGetAndSetFiles() : void
 	{
 		/* setup */
 
@@ -181,12 +235,29 @@ class RequestTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testSession
+	 * testGetFilesInvalid
+	 *
+	 * @since 4.0.0
+	 */
+
+	public function testGetFilesInvalid() : void
+	{
+		/* actual */
+
+		$actual = $this->_request->getFiles('invalid');
+
+		/* compare */
+
+		$this->assertNull($actual);
+	}
+
+	/**
+	 * testGetAndSetAndRefreshSession
 	 *
 	 * @since 2.6.2
 	 */
 
-	public function testSession() : void
+	public function testGetAndSetAndRefreshSession() : void
 	{
 		/* setup */
 
@@ -203,12 +274,29 @@ class RequestTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testCookie
+	 * testGetSessionInvalid
+	 *
+	 * @since 4.0.0
+	 */
+
+	public function testGetSessionInvalid() : void
+	{
+		/* actual */
+
+		$actual = $this->_request->getSession('invalid');
+
+		/* compare */
+
+		$this->assertNull($actual);
+	}
+
+	/**
+	 * testGetAndSetAndRefreshCookie
 	 *
 	 * @since 2.6.2
 	 */
 
-	public function testCookie() : void
+	public function testGetAndSetAndRefreshCookie() : void
 	{
 		/* setup */
 
@@ -225,16 +313,16 @@ class RequestTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testGetInvalid
+	 * testGetCookieInvalid
 	 *
-	 * @since 3.0.0
+	 * @since 4.0.0
 	 */
 
-	public function testGetInvalid() : void
+	public function testGetCookieInvalid() : void
 	{
 		/* actual */
 
-		$actual = $this->_request->get('invalidKey');
+		$actual = $this->_request->getCookie('invalid');
 
 		/* compare */
 
