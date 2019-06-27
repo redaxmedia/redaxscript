@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Model;
 
+use PDOException;
 use function array_filter;
 use function implode;
 use function is_array;
@@ -50,32 +51,6 @@ class Comment extends ContentAbstract
 	}
 
 	/**
-	 * get the articles by category and language and order
-	 *
-	 * @since 4.0.0
-	 *
-	 * @param int $articleId identifier of the article
-	 * @param string $language
-	 * @param string $orderColumn
-	 *
-	 * @return object|null
-	 */
-
-	public function getByArticleAndLanguageAndOrder(int $articleId = null, string $language = null, string $orderColumn = null) : ?object
-	{
-		return $this
-			->query()
-			->where(
-			[
-				'article' => $articleId,
-				'status' => 1
-			])
-			->whereLanguageIs($language)
-			->orderBySetting($orderColumn)
-			->findMany() ? : null;
-	}
-
-	/**
 	 * get the articles by category and language and order and step
 	 *
 	 * @since 4.0.0
@@ -90,7 +65,7 @@ class Comment extends ContentAbstract
 
 	public function getByArticleAndLanguageAndOrderAndStep(int $articleId = null, string $language = null, string $orderColumn = null, int $limitStep = null) : ?object
 	{
-		return $this
+		$query = $this
 			->query()
 			->where(
 			[
@@ -98,9 +73,12 @@ class Comment extends ContentAbstract
 				'status' => 1
 			])
 			->whereLanguageIs($language)
-			->orderBySetting($orderColumn)
-			->limitBySetting($limitStep)
-			->findMany() ? : null;
+			->orderBySetting($orderColumn);
+		if ($limitStep)
+		{
+			$query->limitBySetting($limitStep);
+		}
+		return $query->findMany() ? : null;
 	}
 
 	/**
@@ -151,10 +129,17 @@ class Comment extends ContentAbstract
 
 	public function createByArray(array $createArray = []) : bool
 	{
-		return $this
-			->query()
-			->create()
-			->set($createArray)
-			->save();
+		try
+		{
+			return $this
+				->query()
+				->create()
+				->set($createArray)
+				->save();
+		}
+		catch (PDOException $exception)
+		{
+			return false;
+		}
 	}
 }

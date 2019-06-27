@@ -166,11 +166,8 @@ class Comment extends ViewAbstract
 
 		if ($articleId)
 		{
-			if ($settingModel->get('pagination'))
-			{
-				return $commentModel->getByArticleAndLanguageAndOrderAndStep($articleId, $language, $this->_optionArray['orderColumn'], $lastSubParameter - 1);
-			}
-			return $commentModel->getByArticleAndLanguageAndOrder($articleId, $language, $this->_optionArray['orderColumn']);
+			$limitStep = $settingModel->get('pagination') ? $lastSubParameter - 1 : null;
+			return $commentModel->getByArticleAndLanguageAndOrderAndStep($articleId, $language, $this->_optionArray['orderColumn'], $limitStep);
 		}
 		return $commentModel->getByLanguageAndOrder($language, $this->_optionArray['orderColumn']);
 	}

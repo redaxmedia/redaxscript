@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Template\Helper;
 
-use Redaxscript\Db;
 use Redaxscript\Model;
 use function is_numeric;
 use function is_string;
@@ -28,6 +27,7 @@ class Canonical extends HelperAbstract
 
 	public function process() : ?string
 	{
+		$articleModel = new Model\Article();
 		$contentModel = new Model\Content();
 		$lastTable = $this->_registry->get('lastTable');
 		$lastId = $this->_registry->get('lastId');
@@ -39,7 +39,7 @@ class Canonical extends HelperAbstract
 
 		if ($lastTable === 'categories')
 		{
-			$articles = Db::forTablePrefix('articles')->where('category', $lastId);
+			$articles = $articleModel->query()->where('category', $lastId);
 			$articlesTotal = $articles->count();
 			if ($articlesTotal === 1)
 			{

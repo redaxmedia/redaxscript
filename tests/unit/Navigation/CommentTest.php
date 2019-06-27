@@ -15,6 +15,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @author Henry Ruhs
  *
  * @covers Redaxscript\Navigation\Comment
+ * @covers Redaxscript\Navigation\NavigationAbstract
  */
 
 class CommentTest extends TestCaseAbstract

@@ -28,9 +28,17 @@ class ArticleTest extends TestCaseAbstract
 	public function setUp() : void
 	{
 		parent::setUp();
+		$optionArray =
+		[
+			'adminName' => 'Test',
+			'adminUser' => 'test',
+			'adminPassword' => 'test',
+			'adminEmail' => 'test@test.com'
+		];
 		$installer = $this->installerFactory();
 		$installer->init();
 		$installer->rawCreate();
+		$installer->insertSettings($optionArray);
 		$categoryOne = Db::forTablePrefix('categories')->create();
 		$categoryOne
 			->set(
@@ -46,6 +54,15 @@ class ArticleTest extends TestCaseAbstract
 				'title' => 'Category Two',
 				'alias' => 'category-two',
 				'parent' => $categoryOne->id
+			])
+			->save();
+		$categoryTwoSibling = Db::forTablePrefix('categories')->create();
+		$categoryTwoSibling
+			->set(
+			[
+				'title' => 'Category Two Sibling',
+				'alias' => 'category-two-sibling',
+				'sibling' => $categoryTwo->id
 			])
 			->save();
 		Db::forTablePrefix('articles')
@@ -66,7 +83,7 @@ class ArticleTest extends TestCaseAbstract
 				'category' => $categoryTwo->id
 			])
 			->save();
-		Db::forTablePrefix('articles')
+		$articleThree = Db::forTablePrefix('articles')
 			->create()
 			->set(
 			[
@@ -75,6 +92,17 @@ class ArticleTest extends TestCaseAbstract
 				'language' => 'en',
 				'category' => $categoryTwo->id
 			])
+			->save();
+		Db::forTablePrefix('articles')
+			->create()
+			->set(
+				[
+					'title' => 'Article Three Sibling',
+					'alias' => 'article-three-sibling',
+					'language' => 'de',
+					'sibling' => $articleThree->id,
+					'category' => $categoryTwoSibling->id
+				])
 			->save();
 		Db::forTablePrefix('articles')
 			->create()
@@ -149,6 +177,45 @@ class ArticleTest extends TestCaseAbstract
 		/* compare */
 
 		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testGetSiblingByCategoryAndLanguageAndOrderAndStep
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param int $categoryId
+	 * @param string $language
+	 * @param string $orderColumn
+	 * @param int $limitStep
+	 * @param array $expectArray
+	 *
+	 * @dataProvider providerAutoloader
+	 */
+
+	public function testGetSiblingByCategoryAndLanguageAndOrderAndStep(int $categoryId = null, string $language = null, string $orderColumn = null, int $limitStep = null, array $expectArray = []) : void
+	{
+		/* setup */
+
+		$articleModel = new Model\Article();
+		$setting = $this->settingFactory();
+		$setting->set('limit', 1);
+
+		/* actual */
+
+		$actualArray = [];
+		$actualObject = $articleModel->getSiblingByCategoryAndLanguageAndOrderAndStep($categoryId, $language, $orderColumn, $limitStep);
+
+		/* process articles */
+
+		foreach ($actualObject as $value)
+		{
+			$actualArray[] = $value->alias;
+		}
+
+		/* compare */
+
+		$this->assertEquals($expectArray, $actualArray);
 	}
 
 	/**

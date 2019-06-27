@@ -204,7 +204,7 @@ class Extra extends ViewAbstract
 
 		if ($extraId)
 		{
-			return $extraModel->getByIdAndLanguageAndOrder($extraId, $language, $this->_optionArray['orderColumn']);
+			return $extraModel->getSiblingByIdAndLanguageAndOrder($extraId, $language, $this->_optionArray['orderColumn']);
 		}
 		return $extraModel->getByLanguageAndOrder($language, $this->_optionArray['orderColumn']);
 	}

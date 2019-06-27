@@ -313,8 +313,17 @@ class Db extends ORM
 
 	public function limitBySetting(int $step = null) : self
 	{
+		$dbType = self::$_config->get('dbType');
 		$limit = $this->getSetting('limit');
-		$this->_limit = $step > 0 ? $step * $limit . ',' . $limit : $limit;
+		$this->limit($limit);
+		if ($step > 0)
+		{
+			if ($dbType === 'mssql')
+			{
+				return $this;
+			}
+			$this->offset($step * $limit);
+		}
 		return $this;
 	}
 

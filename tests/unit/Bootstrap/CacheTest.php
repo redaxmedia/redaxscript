@@ -33,7 +33,7 @@ class CacheTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testCache(array $registryArray = [], array $queryArray = [], array $expectArray = null) : void
+	public function testCache(array $registryArray = [], array $queryArray = [], array $expectArray = []) : void
 	{
 		/* setup */
 

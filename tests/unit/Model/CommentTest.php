@@ -92,6 +92,16 @@ class CommentTest extends TestCaseAbstract
 				'article' => $articleTwo->id
 			])
 			->save();
+		Db::forTablePrefix('comments')
+			->create()
+			->set(
+			[
+				'author' => 'Comment Four',
+				'text' => 'Comment Four',
+				'language' => 'de',
+				'article' => $articleTwo->id
+			])
+			->save();
 	}
 
 	/**
@@ -133,6 +143,45 @@ class CommentTest extends TestCaseAbstract
 	}
 
 	/**
+	 * testGetByArticleAndLanguageAndOrderAndStep
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param int|null $articleId
+	 * @param string|null $language
+	 * @param string|null $orderColumn
+	 * @param int|null $limitStep
+	 * @param array $expectArray
+	 *
+	 * @dataProvider providerAutoloader
+	 */
+
+	public function testGetByArticleAndLanguageAndOrderAndStep(int $articleId = null, string $language = null, string $orderColumn = null, int $limitStep = null, array $expectArray = []) : void
+	{
+		/* setup */
+
+		$commentModel = new Model\Comment();
+		$setting = $this->settingFactory();
+		$setting->set('limit', 1);
+
+		/* actual */
+
+		$actualArray = [];
+		$actualObject = $commentModel->getByArticleAndLanguageAndOrderAndStep($articleId, $language, $orderColumn, $limitStep);
+
+		/* process comments */
+
+		foreach ($actualObject as $value)
+		{
+			$actualArray[] = $value->author;
+		}
+
+		/* compare */
+
+		$this->assertEquals($expectArray, $actualArray);
+	}
+
+	/**
 	 * testGetRouteById
 	 *
 	 * @since 4.0.0
@@ -152,6 +201,32 @@ class CommentTest extends TestCaseAbstract
 		/* actual */
 
 		$actual = $commentModel->getRouteById($commentId);
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testCreateByArray
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param array $createArray
+	 * @param bool $expect
+	 *
+	 * @dataProvider providerAutoloader
+	 */
+
+	public function testCreateByArray(array $createArray = [], bool $expect = null) : void
+	{
+		/* setup */
+
+		$commentModel = new Model\Comment();
+
+		/* actual */
+
+		$actual = $commentModel->createByArray($createArray);
 
 		/* compare */
 

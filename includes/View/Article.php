@@ -223,15 +223,12 @@ class Article extends ViewAbstract
 
 		if ($categoryId)
 		{
-			if ($settingModel->get('pagination'))
-			{
-				return $articleModel->getByCategoryAndLanguageAndOrderAndStep($categoryId, $language, $this->_optionArray['orderColumn'], $lastSubParameter - 1);
-			}
-			return $articleModel->getByCategoryAndLanguageAndOrder($categoryId, $language, $this->_optionArray['orderColumn']);
+			$limitStep = $settingModel->get('pagination') ? $lastSubParameter - 1 : null;
+			return $articleModel->getSiblingByCategoryAndLanguageAndOrderAndStep($categoryId, $language, $this->_optionArray['orderColumn'], $limitStep);
 		}
 		if ($articleId)
 		{
-			return $articleModel->getByIdAndLanguageAndOrder($articleId, $language, $this->_optionArray['orderColumn']);
+			return $articleModel->getSiblingByIdAndLanguageAndOrder($articleId, $language, $this->_optionArray['orderColumn']);
 		}
 		return $articleModel->getByLanguageAndOrder($language, $this->_optionArray['orderColumn']);
 	}

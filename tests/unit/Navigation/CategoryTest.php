@@ -15,6 +15,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @author Henry Ruhs
  *
  * @covers Redaxscript\Navigation\Category
+ * @covers Redaxscript\Navigation\NavigationAbstract
  */
 
 class CategoryTest extends TestCaseAbstract

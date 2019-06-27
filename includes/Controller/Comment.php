@@ -71,12 +71,12 @@ class Comment extends ControllerAbstract
 
 		$mailArray =
 		[
+			'author' => $postArray['author'],
 			'email' => $postArray['email'],
 			'url' => $postArray['url'],
-			'route' => $route,
-			'author' => $postArray['author'],
 			'text' => $postArray['text'],
-			'article' => $articleModel->getById($postArray['article'])->title
+			'article' => $articleModel->getById($postArray['article'])->title,
+			'route' => $route
 		];
 		if (!$this->_mail($mailArray))
 		{

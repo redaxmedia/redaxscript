@@ -1,0 +1,49 @@
+[
+	[
+		1,
+		null,
+		"rank",
+		null,
+		[
+			"Comment One"
+		]
+	],
+	[
+		2,
+		null,
+		"rank",
+		null,
+		[
+			"Comment Two"
+		]
+	],
+	[
+		2,
+		"en",
+		"rank",
+		null,
+		[
+			"Comment Two",
+			"Comment Three"
+		]
+	],
+	[
+		2,
+		"de",
+		"rank",
+		null,
+		[
+			"Comment Two",
+			"Comment Four"
+		]
+	],
+	[
+		2,
+		"de",
+		"rank",
+		1,
+		[
+			"Comment Four"
+		]
+	]
+]

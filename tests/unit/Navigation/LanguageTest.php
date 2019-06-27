@@ -14,6 +14,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @author Henry Ruhs
  *
  * @covers Redaxscript\Navigation\Language
+ * @covers Redaxscript\Navigation\NavigationAbstract
  */
 
 class LanguageTest extends TestCaseAbstract

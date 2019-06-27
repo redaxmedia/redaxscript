@@ -14,6 +14,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @author Henry Ruhs
  *
  * @covers Redaxscript\Navigation\Template
+ * @covers Redaxscript\Navigation\NavigationAbstract
  */
 
 class TemplateTest extends TestCaseAbstract

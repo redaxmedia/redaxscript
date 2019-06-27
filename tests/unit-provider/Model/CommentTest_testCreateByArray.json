@@ -1,0 +1,23 @@
+[
+	[
+		{
+			"author": "test",
+			"email": "test@test.com",
+			"url": null,
+			"text": "test",
+			"language": null,
+			"article": 1,
+			"status": 1,
+			"rank": 1,
+			"access": null,
+			"date": 1262304000
+		},
+		true
+	],
+	[
+		{
+			"invalid": "invalid"
+		},
+		false
+	]
+]

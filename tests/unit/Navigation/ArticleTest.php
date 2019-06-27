@@ -15,6 +15,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @author Henry Ruhs
  *
  * @covers Redaxscript\Navigation\Article
+ * @covers Redaxscript\Navigation\NavigationAbstract
  */
 
 class ArticleTest extends TestCaseAbstract

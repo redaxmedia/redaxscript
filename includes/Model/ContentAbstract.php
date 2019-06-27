@@ -50,7 +50,7 @@ abstract class ContentAbstract extends ModelAbstract
 	}
 
 	/**
-	 * get the content by id and language and order
+	 * get the sibling by id and language and order
 	 *
 	 * @since 4.0.0
 	 *
@@ -61,11 +61,11 @@ abstract class ContentAbstract extends ModelAbstract
 	 * @return object|null
 	 */
 
-	public function getByIdAndLanguageAndOrder(int $contentId = null, string $language = null, string $orderColumn = null) : ?object
+	public function getSiblingByIdAndLanguageAndOrder(int $contentId = null, string $language = null, string $orderColumn = null) : ?object
 	{
 		return $this
 			->query()
-			->whereIn('id', $this->getIdArrayBySibling($contentId))
+			->whereIn('id', $this->getSiblingArrayById($contentId))
 			->whereLanguageIs($language)
 			->where('status', 1)
 			->orderBySetting($orderColumn)
@@ -73,14 +73,14 @@ abstract class ContentAbstract extends ModelAbstract
 	}
 
 	/**
-	 * get id array by sibling
+	 * get sibling array by id
 	 *
-	 * @param int $siblingId identifier of the content
+	 * @param int $contentId identifier of the content
 	 *
 	 * @return array|null
 	 */
 
-	public function getIdArrayBySibling(int $siblingId = null) : ?array
+	public function getSiblingArrayById(int $contentId = null) : ?array
 	{
 		return $this
 			->query()
@@ -88,10 +88,10 @@ abstract class ContentAbstract extends ModelAbstract
 			->whereAnyIs(
 			[
 				[
-					'id' => $siblingId
+					'id' => $contentId
 				],
 				[
-					'sibling' => $siblingId
+					'sibling' => $contentId
 				]
 			])
 			->findFlatArray();

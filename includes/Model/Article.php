@@ -65,31 +65,7 @@ class Article extends ContentAbstract
 	}
 
 	/**
-	 * get the articles by category and language and order
-	 *
-	 * @since 4.0.0
-	 *
-	 * @param int $categoryId identifier of the category
-	 * @param string $language
-	 * @param string $orderColumn
-	 *
-	 * @return object|null
-	 */
-
-	public function getByCategoryAndLanguageAndOrder(int $categoryId = null, string $language = null, string $orderColumn = null) : ?object
-	{
-		$categoryModel = new Category();
-		return $this
-			->query()
-			->whereIn('category', $categoryModel->getIdArrayBySibling($categoryId))
-			->where('status', 1)
-			->whereLanguageIs($language)
-			->orderBySetting($orderColumn)
-			->findMany() ? : null;
-	}
-
-	/**
-	 * get the articles by category and language and order and step
+	 * get the siblings by category and language and order and step
 	 *
 	 * @since 4.0.0
 	 *
@@ -101,17 +77,20 @@ class Article extends ContentAbstract
 	 * @return object|null
 	 */
 
-	public function getByCategoryAndLanguageAndOrderAndStep(int $categoryId = null, string $language = null, string $orderColumn = null, int $limitStep = null) : ?object
+	public function getSiblingByCategoryAndLanguageAndOrderAndStep(int $categoryId = null, string $language = null, string $orderColumn = null, int $limitStep = null) : ?object
 	{
 		$categoryModel = new Category();
-		return $this
+		$query = $this
 			->query()
-			->whereIn('category', $categoryModel->getIdArrayBySibling($categoryId))
+			->whereIn('category', $categoryModel->getSiblingArrayById($categoryId))
 			->where('status', 1)
 			->whereLanguageIs($language)
-			->orderBySetting($orderColumn)
-			->limitBySetting($limitStep)
-			->findMany() ? : null;
+			->orderBySetting($orderColumn);
+		if ($limitStep)
+		{
+			$query->limitBySetting($limitStep);
+		}
+		return $query->findMany() ? : null;
 	}
 
 	/**
