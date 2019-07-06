@@ -10,7 +10,6 @@ Redaxscript
 [![Coverage Status](https://img.shields.io/coveralls/redaxscript/redaxscript.svg)](https://coveralls.io/r/redaxscript/redaxscript)
 [![Packagist Version](https://img.shields.io/packagist/v/redaxscript/redaxscript.svg)](https://packagist.org/packages/redaxscript/redaxscript)
 [![License](https://img.shields.io/packagist/l/redaxscript/redaxscript.svg)](https://packagist.org/packages/redaxscript/redaxscript)
-[![Gitter Chat](https://img.shields.io/gitter/room/redaxmedia/redaxscript.svg)](https://gitter.im/redaxmedia/redaxscript)
 [![Facebook Chat](https://img.shields.io/badge/chat-on_facebook-0084ff.svg)](https://m.me/redaxscript)
 
 
