@@ -61,6 +61,7 @@ class Setting extends ControllerAbstract
 				'notification' => $postArray['notification'],
 				'charset' => $postArray['charset'],
 				'divider' => $postArray['divider'],
+				'zone' => $postArray['zone'],
 				'time' => $postArray['time'],
 				'date' => $postArray['date'],
 				'homepage' => $postArray['homepage'],
