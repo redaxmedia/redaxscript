@@ -4,21 +4,18 @@
 	"version": "4.0.0",
 	"homepage": "https://redaxscript.com",
 	"license": "MIT",
-	"author":
-	{
+	"author": {
 		"name": "Henry Ruhs",
 		"url": "https://redaxmedia.com"
 	},
-	"bugs":
-	{
+	"bugs": {
 		"url": "https://github.com/redaxscript/redaxscript/issues"
 	},
-	"devDependencies":
-	{
-		"@babel/core": "7.4.5",
-		"@babel/preset-env": "7.4.5",
-		"@mdi/svg": "3.6.95",
-		"autoprefixer": "9.6.0",
+	"devDependencies": {
+		"@babel/core": "7.5.5",
+		"@babel/preset-env": "7.5.5",
+		"@mdi/svg": "3.8.95",
+		"autoprefixer": "9.6.1",
 		"babel-preset-minify": "0.5.0",
 		"colorguard": "1.2.1",
 		"cssnano": "4.1.10",
@@ -29,10 +26,10 @@
 		"grunt-contrib-rename": "0.2.0",
 		"grunt-contrib-watch": "1.1.0",
 		"grunt-diff-json": "0.1.3",
-		"grunt-eslint": "21.0.0",
+		"grunt-eslint": "22.0.0",
 		"grunt-htmlhint": "0.9.13",
 		"grunt-json-format": "2.0.1",
-		"grunt-jsonlint": "1.1.0",
+		"grunt-jsonlint": "2.0.0",
 		"grunt-ncss-linter": "4.1.1",
 		"grunt-parallel": "0.5.1",
 		"grunt-phpcs": "0.4.0",
@@ -52,7 +49,7 @@
 		"postcss-color-function": "4.1.0",
 		"postcss-color-gray": "5.0.0",
 		"postcss-custom-media": "7.0.8",
-		"postcss-custom-properties": "8.0.10",
+		"postcss-custom-properties": "9.0.2",
 		"postcss-custom-selectors": "5.1.2",
 		"postcss-extend": "1.0.5",
 		"postcss-import": "12.0.1",
@@ -60,11 +57,10 @@
 		"postcss-reporter": "6.0.1",
 		"postcss-rtl": "1.3.3",
 		"stylefmt": "6.0.3",
-		"stylelint": "10.0.1",
+		"stylelint": "10.1.0",
 		"stylelint-config-redaxmedia": "1.0.0"
 	},
-	"scripts":
-	{
+	"scripts": {
 		"start": "grunt serve --open-browser",
 		"lint": "grunt",
 		"build": "grunt build",
