@@ -1,0 +1,21 @@
+[
+	[
+		null,
+		null
+	],
+	[
+		"categories",
+		1,
+		"category-one"
+	],
+	[
+		"articles",
+		1,
+		"category-one/article-one"
+	],
+	[
+		"comments",
+		1,
+		"category-one/article-one#comment-1"
+	]
+]
