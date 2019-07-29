@@ -68,7 +68,7 @@ class ContentAbstractTest extends TestCaseAbstract
 				'alias' => 'article-one-brother',
 				'language' => 'fr',
 				'sibling' => $articleOne->id,
-				'rank' => 2
+				'rank' => 3
 			])
 			->save();
 		$articleThree = Db::forTablePrefix('articles')->create();
@@ -78,7 +78,7 @@ class ContentAbstractTest extends TestCaseAbstract
 				'title' => 'Article Two',
 				'alias' => 'article-two',
 				'language' => 'en',
-				'rank' => 3
+				'rank' => 4
 			])
 			->save();
 		Db::forTablePrefix('articles')
@@ -89,7 +89,7 @@ class ContentAbstractTest extends TestCaseAbstract
 				'alias' => 'article-two-sister',
 				'language' => 'de',
 				'sibling' => $articleThree->id,
-				'rank' => 4
+				'rank' => 5
 			])
 			->save();
 		Db::forTablePrefix('articles')
@@ -98,9 +98,9 @@ class ContentAbstractTest extends TestCaseAbstract
 			[
 				'title' => 'Article Three',
 				'alias' => 'article-three',
-				'date' => 1456786800,
-				'rank' => 5,
-				'status' => 2
+				'status' => 2,
+				'rank' => 6,
+				'date' => 1456786800
 			])
 			->save();
 	}

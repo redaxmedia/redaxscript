@@ -1,0 +1,28 @@
+[
+	[
+		"categories",
+		"test",
+		[
+			"%test%",
+			"%test%",
+			"%test%"
+		]
+	],
+	[
+		"articles",
+		"test",
+		[
+			"%test%",
+			"%test%",
+			"%test%",
+			"%test%"
+		]
+	],
+	[
+		"comments",
+		"test",
+		{
+			"3": "%test%"
+		}
+	]
+]

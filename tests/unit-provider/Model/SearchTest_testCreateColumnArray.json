@@ -1,0 +1,25 @@
+[
+	[
+		"categories",
+		[
+			"title",
+			"description",
+			"keywords"
+		]
+	],
+	[
+		"articles",
+		[
+			"title",
+			"description",
+			"keywords",
+			"text"
+		]
+	],
+	[
+		"comments",
+		{
+			"3": "text"
+		}
+	]
+]
