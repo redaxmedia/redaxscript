@@ -13,12 +13,12 @@
 	[
 		"language",
 		[
-			"article-three",
 			"article-one-sister",
 			"article-two-sister",
 			"article-one",
 			"article-two",
-			"article-one-brother"
+			"article-one-brother",
+			"article-three"
 		]
 	]
 ]

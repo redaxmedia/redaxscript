@@ -98,6 +98,7 @@ class ContentAbstractTest extends TestCaseAbstract
 			[
 				'title' => 'Article Three',
 				'alias' => 'article-three',
+				'language' => 'fr',
 				'status' => 2,
 				'rank' => 6,
 				'date' => 1456786800
