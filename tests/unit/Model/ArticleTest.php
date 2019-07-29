@@ -53,6 +53,7 @@ class ArticleTest extends TestCaseAbstract
 			[
 				'title' => 'Category Two',
 				'alias' => 'category-two',
+				'language' => 'en',
 				'parent' => $categoryOne->id
 			])
 			->save();
@@ -60,8 +61,9 @@ class ArticleTest extends TestCaseAbstract
 		$categoryTwoSibling
 			->set(
 			[
-				'title' => 'Category Two Sibling',
-				'alias' => 'category-two-sibling',
+				'title' => 'Category Two Sister',
+				'alias' => 'category-two-sister',
+				'language' => 'de',
 				'sibling' => $categoryTwo->id
 			])
 			->save();
@@ -83,8 +85,8 @@ class ArticleTest extends TestCaseAbstract
 				'category' => $categoryTwo->id
 			])
 			->save();
-		$articleThree = Db::forTablePrefix('articles')
-			->create()
+		$articleThree = Db::forTablePrefix('articles')->create();
+		$articleThree
 			->set(
 			[
 				'title' => 'Article Three',
@@ -97,8 +99,8 @@ class ArticleTest extends TestCaseAbstract
 			->create()
 			->set(
 				[
-					'title' => 'Article Three Sibling',
-					'alias' => 'article-three-sibling',
+					'title' => 'Article Three Sister',
+					'alias' => 'article-three-sister',
 					'language' => 'de',
 					'sibling' => $articleThree->id,
 					'category' => $categoryTwoSibling->id

@@ -23,7 +23,7 @@ abstract class ContentAbstract extends ModelAbstract
 	 * @return object|null
 	 */
 
-	public function getAllByOrder(string $orderColumn = null) : ?object
+	public function getAllByOrder(string $orderColumn = 'rank') : ?object
 	{
 		return $this->query()->orderBySetting($orderColumn)->findMany() ? : null;
 	}
@@ -39,7 +39,7 @@ abstract class ContentAbstract extends ModelAbstract
 	 * @return object|null
 	 */
 
-	public function getByLanguageAndOrder(string $language = null, string $orderColumn = null) : ?object
+	public function getByLanguageAndOrder(string $language = null, string $orderColumn = 'rank') : ?object
 	{
 		return $this
 			->query()
@@ -61,7 +61,7 @@ abstract class ContentAbstract extends ModelAbstract
 	 * @return object|null
 	 */
 
-	public function getSiblingByIdAndLanguageAndOrder(int $contentId = null, string $language = null, string $orderColumn = null) : ?object
+	public function getSiblingByIdAndLanguageAndOrder(int $contentId = null, string $language = null, string $orderColumn = 'rank') : ?object
 	{
 		return $this
 			->query()

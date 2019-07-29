@@ -34,7 +34,7 @@
 		null,
 		[
 			"article-two",
-			"article-three-sibling"
+			"article-three-sister"
 		]
 	],
 	[
@@ -43,7 +43,7 @@
 		"rank",
 		1,
 		[
-			"article-three-sibling"
+			"article-three-sister"
 		]
 	]
 ]

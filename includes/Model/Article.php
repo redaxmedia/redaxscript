@@ -77,7 +77,7 @@ class Article extends ContentAbstract
 	 * @return object|null
 	 */
 
-	public function getSiblingByCategoryAndLanguageAndOrderAndStep(int $categoryId = null, string $language = null, string $orderColumn = null, int $limitStep = null) : ?object
+	public function getSiblingByCategoryAndLanguageAndOrderAndStep(int $categoryId = null, string $language = null, string $orderColumn = 'rank', int $limitStep = null) : ?object
 	{
 		$categoryModel = new Category();
 		$query = $this

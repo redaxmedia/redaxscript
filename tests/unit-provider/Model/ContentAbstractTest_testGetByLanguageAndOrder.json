@@ -1,0 +1,25 @@
+[
+	[
+		"en",
+		"rank",
+		[
+			"article-one",
+			"article-two"
+		]
+	],
+	[
+		"de",
+		"rank",
+		[
+			"article-one-sister",
+			"article-two-sister"
+		]
+	],
+	[
+		"fr",
+		"rank",
+		[
+			"article-one-brother"
+		]
+	]
+]

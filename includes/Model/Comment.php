@@ -63,7 +63,7 @@ class Comment extends ContentAbstract
 	 * @return object|null
 	 */
 
-	public function getByArticleAndLanguageAndOrderAndStep(int $articleId = null, string $language = null, string $orderColumn = null, int $limitStep = null) : ?object
+	public function getByArticleAndLanguageAndOrderAndStep(int $articleId = null, string $language = null, string $orderColumn = 'rank', int $limitStep = null) : ?object
 	{
 		$query = $this
 			->query()

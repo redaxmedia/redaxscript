@@ -295,7 +295,7 @@ class Db extends ORM
 	 * @return self
 	 */
 
-	public function orderBySetting(string $column = null) : self
+	public function orderBySetting(string $column = 'rank') : self
 	{
 		$order = $this->getSetting('order');
 		return $this->_addOrderBy($column, $order);

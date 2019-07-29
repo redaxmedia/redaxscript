@@ -1,0 +1,24 @@
+[
+	[
+		"rank",
+		[
+			"article-one",
+			"article-one-sister",
+			"article-one-brother",
+			"article-two",
+			"article-two-sister",
+			"article-three"
+		]
+	],
+	[
+		"language",
+		[
+			"article-three",
+			"article-one-sister",
+			"article-two-sister",
+			"article-one",
+			"article-two",
+			"article-one-brother"
+		]
+	]
+]
