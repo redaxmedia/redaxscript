@@ -66,7 +66,7 @@ class ResultListTest extends TestCaseAbstract
 			->set(
 			[
 				'author' => 'Comment One',
-				'text' => 'Comment One',
+				'text' => 'comment-one',
 				'article' => $articleOne->id,
 				'date' => 1451602800
 			])

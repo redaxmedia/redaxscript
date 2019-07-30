@@ -37,7 +37,7 @@ class CommentFormTest extends TestCaseAbstract
 			->set(
 			[
 				'author' => 'Comment One',
-				'text' => 'Comment One',
+				'text' => 'comment-one',
 			])
 			->save();
 	}

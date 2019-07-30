@@ -45,7 +45,7 @@ class CommentTableTest extends TestCaseAbstract
 			->set(
 			[
 				'author' => 'Comment One',
-				'text' => 'Comment One',
+				'text' => 'comment-one',
 				'article' => $articleOne->id
 			])
 			->save();

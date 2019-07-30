@@ -1,0 +1,28 @@
+[
+	[
+		"categories",
+		"one",
+		"en",
+		[
+			"category-one"
+		]
+	],
+	[
+		"articles",
+		"article",
+		"en",
+		[
+			"article-one",
+			"article-two"
+		]
+	],
+	[
+		"comments",
+		"comment",
+		"en",
+		[
+			"comment-one",
+			"comment-two"
+		]
+	]
+]

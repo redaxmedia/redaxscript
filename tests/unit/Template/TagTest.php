@@ -75,7 +75,7 @@ class TagTest extends TestCaseAbstract
 			->set(
 			[
 				'author' => 'Comment One',
-				'text' => 'Comment One',
+				'text' => 'comment-one',
 				'article' => $articleOne->id
 			])
 			->save();
@@ -84,7 +84,7 @@ class TagTest extends TestCaseAbstract
 			->set(
 			[
 				'author' => 'Comment Two',
-				'text' => 'Comment Two',
+				'text' => 'comment-two',
 				'article' => $articleOne->id
 			])
 			->save();
