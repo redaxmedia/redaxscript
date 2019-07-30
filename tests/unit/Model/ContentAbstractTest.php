@@ -71,8 +71,8 @@ class ContentAbstractTest extends TestCaseAbstract
 				'rank' => 3
 			])
 			->save();
-		$articleThree = Db::forTablePrefix('articles')->create();
-		$articleThree
+		$articleTwo = Db::forTablePrefix('articles')->create();
+		$articleTwo
 			->set(
 			[
 				'title' => 'Article Two',
@@ -88,7 +88,7 @@ class ContentAbstractTest extends TestCaseAbstract
 				'title' => 'Article Two Sister',
 				'alias' => 'article-two-sister',
 				'language' => 'de',
-				'sibling' => $articleThree->id,
+				'sibling' => $articleTwo->id,
 				'rank' => 5
 			])
 			->save();

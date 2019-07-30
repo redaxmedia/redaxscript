@@ -12,7 +12,7 @@
 		{
 			"firstParameter": "search",
 			"secondParameter": null,
-			"thirdParameter": "One",
+			"thirdParameter": "one",
 			"root": "http://localhost"
 		},
 		"<h2 class=\"rs-title-note rs-is-info\">Something went wrong</h2><div class=\"rs-box-note rs-is-info\">Input is incorrect</div><a href=\"http://localhost\" class=\"rs-button-note rs-is-info\">Back</a>"
@@ -38,7 +38,7 @@
 	[
 		{
 			"firstParameter": "search",
-			"secondParameter": "One",
+			"secondParameter": "one",
 			"thirdParameter": null,
 			"root": "http://localhost"
 		},
@@ -48,7 +48,7 @@
 		{
 			"firstParameter": "search",
 			"secondParameter": "categories",
-			"thirdParameter": "Category",
+			"thirdParameter": "category",
 			"root": "http://localhost"
 		},
 		"<h2 class=\"rs-title-result\">Categories</h2><ol class=\"rs-list-result\"><li><a class=\"rs-link-result\" href=\"category-two\">Category Two</a><span class=\"rs-text-result-date\">01.02.2016</span></li><li><a class=\"rs-link-result\" href=\"category-one\">Category One</a><span class=\"rs-text-result-date\">01.01.2016</span></li></ol>"
@@ -57,7 +57,7 @@
 		{
 			"firstParameter": "search",
 			"secondParameter": "articles",
-			"thirdParameter": "Article",
+			"thirdParameter": "article",
 			"root": "http://localhost"
 		},
 		"<h2 class=\"rs-title-result\">Articles</h2><ol class=\"rs-list-result\"><li><a class=\"rs-link-result\" href=\"category-one/article-two\">Article Two</a><span class=\"rs-text-result-date\">01.02.2016</span></li><li><a class=\"rs-link-result\" href=\"category-one/article-one\">Article One</a><span class=\"rs-text-result-date\">01.01.2016</span></li></ol>"
@@ -66,7 +66,7 @@
 		{
 			"firstParameter": "search",
 			"secondParameter": "comments",
-			"thirdParameter": "Comment",
+			"thirdParameter": "comment",
 			"root": "http://localhost"
 		},
 		"<h2 class=\"rs-title-result\">Comments</h2><ol class=\"rs-list-result\"><li><a class=\"rs-link-result\" href=\"category-one/article-one#comment-2\">Comment Two</a><span class=\"rs-text-result-date\">01.02.2016</span></li><li><a class=\"rs-link-result\" href=\"category-one/article-one#comment-1\">Comment One</a><span class=\"rs-text-result-date\">01.01.2016</span></li></ol>"

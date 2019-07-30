@@ -110,12 +110,11 @@ class CaptchaTest extends TestCaseAbstract
 
 		/* actual */
 
-		$min = $captcha->getMin();
-		$max = $captcha->getMax();
+		$actual = $captcha->getMin() < $captcha->getMax();
 
 		/* compare */
 
-		$this->assertTrue($min < $max);
+		$this->assertTrue($actual);
 	}
 
 	/**

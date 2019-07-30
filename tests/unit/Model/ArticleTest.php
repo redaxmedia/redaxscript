@@ -57,8 +57,8 @@ class ArticleTest extends TestCaseAbstract
 				'parent' => $categoryOne->id
 			])
 			->save();
-		$categoryTwoSibling = Db::forTablePrefix('categories')->create();
-		$categoryTwoSibling
+		$categoryTwoSister = Db::forTablePrefix('categories')->create();
+		$categoryTwoSister
 			->set(
 			[
 				'title' => 'Category Two Sister',
@@ -103,7 +103,7 @@ class ArticleTest extends TestCaseAbstract
 					'alias' => 'article-three-sister',
 					'language' => 'de',
 					'sibling' => $articleThree->id,
-					'category' => $categoryTwoSibling->id
+					'category' => $categoryTwoSister->id
 				])
 			->save();
 		Db::forTablePrefix('articles')
