@@ -48,6 +48,7 @@ class ResultListTest extends TestCaseAbstract
 			[
 				'title' => 'Category One',
 				'alias' => 'category-one',
+				'keywords' => 'category, one',
 				'date' => 1483225200
 			])
 			->save();
@@ -57,6 +58,7 @@ class ResultListTest extends TestCaseAbstract
 			[
 				'title' => 'Article One',
 				'alias' => 'article-one',
+				'keywords' => 'article, one',
 				'category' => $categoryOne->id,
 				'date' => 1483225200
 			])

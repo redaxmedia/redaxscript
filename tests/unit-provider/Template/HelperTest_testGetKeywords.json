@@ -17,9 +17,9 @@
 			"lastId": null
 		},
 		{
-			"keywords": "Setting"
+			"keywords": "setting"
 		},
-		"Setting"
+		"setting"
 	],
 	[
 		{
@@ -28,20 +28,20 @@
 			"lastId": 1
 		},
 		{
-			"keywords": "Setting"
+			"keywords": "setting"
 		},
-		"Setting"
+		"setting"
 	],
 	[
 		{
-			"useKeywords": "Use",
+			"useKeywords": "use",
 			"lastTable": null,
 			"lastId": null
 		},
 		{
-			"keywords": "Setting"
+			"keywords": "setting"
 		},
-		"Use"
+		"use"
 	],
 	[
 		{
@@ -50,9 +50,9 @@
 			"lastId": 2
 		},
 		{
-			"keywords": "Setting"
+			"keywords": "setting"
 		},
-		"Article Two"
+		"article, two"
 	],
 	[
 		{
@@ -61,9 +61,9 @@
 			"lastId": 2
 		},
 		{
-			"keywords": "Setting"
+			"keywords": "setting"
 		},
-		"Category Two"
+		"category, two"
 	],
 	[
 		{
@@ -72,9 +72,9 @@
 			"lastId": 3
 		},
 		{
-			"keywords": "Setting"
+			"keywords": "setting"
 		},
-		"Category Two"
+		"category, two"
 	],
 	[
 		{
@@ -83,8 +83,8 @@
 			"lastId": 3
 		},
 		{
-			"keywords": "Setting"
+			"keywords": "setting"
 		},
-		"Category Two"
+		"category, two"
 	]
 ]

@@ -36,8 +36,7 @@ class ModelAbstractTest extends TestCaseAbstract
 			->set(
 			[
 				'title' => 'Article One',
-				'alias' => 'article-one',
-				'language' => 'en'
+				'alias' => 'article-one'
 			])
 			->save();
 		Db::forTablePrefix('articles')
@@ -45,8 +44,7 @@ class ModelAbstractTest extends TestCaseAbstract
 			->set(
 			[
 				'title' => 'Article Two',
-				'alias' => 'article-two',
-				'language' => 'en'
+				'alias' => 'article-two'
 			])
 			->save();
 	}

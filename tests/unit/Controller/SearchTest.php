@@ -47,6 +47,7 @@ class SearchTest extends TestCaseAbstract
 			[
 				'title' => 'Category One',
 				'alias' => 'category-one',
+				'keywords' => 'category, one',
 				'date' => 1451602800
 			])
 			->save();
@@ -56,6 +57,7 @@ class SearchTest extends TestCaseAbstract
 			[
 				'title' => 'Category Two',
 				'alias' => 'category-two',
+				'keywords' => 'category, two',
 				'date' => 1454281200
 			])
 			->save();
@@ -65,6 +67,7 @@ class SearchTest extends TestCaseAbstract
 			[
 				'title' => 'Category Three',
 				'alias' => 'category-three',
+				'keywords' => 'category, three',
 				'status' => 0,
 				'date' => 1456786800
 			])
@@ -75,6 +78,7 @@ class SearchTest extends TestCaseAbstract
 			[
 				'title' => 'Article One',
 				'alias' => 'article-one',
+				'keywords' => 'article, one',
 				'category' => $categoryOne->id,
 				'date' => 1451602800
 			])
@@ -85,6 +89,7 @@ class SearchTest extends TestCaseAbstract
 			[
 				'title' => 'Article Two',
 				'alias' => 'article-two',
+				'keywords' => 'article, two',
 				'category' => $categoryOne->id,
 				'date' => 1454281200
 			])
@@ -95,6 +100,7 @@ class SearchTest extends TestCaseAbstract
 			[
 				'title' => 'Article Three',
 				'alias' => 'article-three',
+				'keywords' => 'article, three',
 				'status' => 0,
 				'date' => 1456786800
 			])

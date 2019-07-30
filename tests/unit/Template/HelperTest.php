@@ -64,7 +64,7 @@ class HelperTest extends TestCaseAbstract
 				'title' => 'Category Two',
 				'alias' => 'category-two',
 				'description' => 'Category Two',
-				'keywords' => 'Category Two',
+				'keywords' => 'category, two',
 				'robots' => 1
 			])
 			->save();
@@ -93,7 +93,7 @@ class HelperTest extends TestCaseAbstract
 				'title' => 'Article Two',
 				'alias' => 'article-two',
 				'description' => 'Article Two',
-				'keywords' => 'Article Two',
+				'keywords' => 'article, two',
 				'robots' => 0,
 				'category' => $categoryTwo->id
 			])

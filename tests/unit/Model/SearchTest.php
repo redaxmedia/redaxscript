@@ -36,7 +36,8 @@ class SearchTest extends TestCaseAbstract
 			->set(
 			[
 				'title' => 'Category One',
-				'alias' => 'category-one'
+				'alias' => 'category-one',
+				'keywords' => 'category, one'
 			])
 			->save();
 		Db::forTablePrefix('categories')
@@ -44,7 +45,8 @@ class SearchTest extends TestCaseAbstract
 			->set(
 			[
 				'title' => 'Category Two',
-				'alias' => 'category-two'
+				'alias' => 'category-two',
+				'keywords' => 'category, two'
 			])
 			->save();
 		$articleOne = Db::forTablePrefix('articles')->create();
@@ -53,6 +55,7 @@ class SearchTest extends TestCaseAbstract
 			[
 				'title' => 'Article One',
 				'alias' => 'article-one',
+				'keywords' => 'article, one',
 				'category' => $categoryOne->id
 			])
 			->save();
@@ -62,6 +65,7 @@ class SearchTest extends TestCaseAbstract
 			[
 				'title' => 'Article Two',
 				'alias' => 'article-two',
+				'keywords' => 'article, one',
 				'category' => $categoryOne->id
 			])
 			->save();
