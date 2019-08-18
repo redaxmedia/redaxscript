@@ -1,7 +1,7 @@
 [
 	[
 		"checkbox",
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-checkbox\" type=\"checkbox\" /></form>"
 	],
 	[
@@ -13,7 +13,7 @@
 	],
 	[
 		"color",
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-color\" type=\"color\" /></form>"
 	],
 	[
@@ -25,7 +25,7 @@
 	],
 	[
 		"date",
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-date\" type=\"date\" /></form>"
 	],
 	[
@@ -37,7 +37,7 @@
 	],
 	[
 		"datetime",
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-date\" type=\"datetime-local\" /></form>"
 	],
 	[
@@ -49,7 +49,7 @@
 	],
 	[
 		"email",
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-email\" type=\"email\" /></form>"
 	],
 	[
@@ -61,7 +61,7 @@
 	],
 	[
 		"file",
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-file\" type=\"file\" /></form>"
 	],
 	[
@@ -73,7 +73,7 @@
 	],
 	[
 		"hidden",
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-hidden\" type=\"hidden\" /></form>"
 	],
 	[
@@ -85,7 +85,7 @@
 	],
 	[
 		"number",
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-number\" type=\"number\" /></form>"
 	],
 	[
@@ -97,7 +97,7 @@
 	],
 	[
 		"password",
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-password\" type=\"password\" /></form>"
 	],
 	[
@@ -109,7 +109,7 @@
 	],
 	[
 		"radio",
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-radio\" type=\"radio\" /></form>"
 	],
 	[
@@ -121,7 +121,7 @@
 	],
 	[
 		"range",
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-range\" type=\"range\" /></form>"
 	],
 	[
@@ -133,7 +133,7 @@
 	],
 	[
 		"search",
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-js-search rs-field-search\" type=\"search\" /></form>"
 	],
 	[
@@ -145,7 +145,7 @@
 	],
 	[
 		"tel",
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-tel\" type=\"tel\" /></form>"
 	],
 	[
@@ -157,7 +157,7 @@
 	],
 	[
 		"time",
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-date\" type=\"time\" /></form>"
 	],
 	[
@@ -169,7 +169,7 @@
 	],
 	[
 		"text",
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-text\" type=\"text\" /></form>"
 	],
 	[
@@ -181,7 +181,7 @@
 	],
 	[
 		"url",
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-url\" type=\"url\" /></form>"
 	],
 	[
@@ -193,7 +193,7 @@
 	],
 	[
 		"week",
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-date\" type=\"week\" /></form>"
 	],
 	[
@@ -205,7 +205,7 @@
 	],
 	[
 		"invalid",
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"></form>"
 	]
 ]

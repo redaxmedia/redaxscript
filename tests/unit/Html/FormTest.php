@@ -91,7 +91,7 @@ class FormTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testLegend(string $text = null, array $attributeArray = [], string $expect = null) : void
+	public function testLegend(string $text = null, ?array $attributeArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -120,7 +120,7 @@ class FormTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testLabel(string $text = null, array $attributeArray = [], string $expect = null) : void
+	public function testLabel(string $text = null, ?array $attributeArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -149,7 +149,7 @@ class FormTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testInput(string $method = null, array $attributeArray = [], string $expect = null) : void
+	public function testInput(string $method = null, ?array $attributeArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -177,7 +177,7 @@ class FormTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testTextarea(array $attributeArray = [], string $expect = null) : void
+	public function testTextarea(?array $attributeArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -201,13 +201,13 @@ class FormTest extends TestCaseAbstract
 	 *
 	 * @param array $optionArray
 	 * @param array $selectArray
-	 * @param array $attributeArray
+	 * @param array|null $attributeArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testSelect(array $optionArray = [], array $selectArray = [], array $attributeArray = [], string $expect = null) : void
+	public function testSelect(array $optionArray = [], array $selectArray = [], ?array $attributeArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -231,14 +231,14 @@ class FormTest extends TestCaseAbstract
 	 *
 	 * @param array $rangeArray
 	 * @param array $selectArray
-	 * @param array $attributeArray
+	 * @param array|null $attributeArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerAutoloader
 
 	 */
 
-	public function testSelectRange(array $rangeArray = [], array $selectArray = [], array $attributeArray = [], string $expect = null) : void
+	public function testSelectRange(array $rangeArray = [], array $selectArray = [], ?array $attributeArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -322,13 +322,13 @@ class FormTest extends TestCaseAbstract
 	 *
 	 * @param string $method
 	 * @param string $text
-	 * @param array $attributeArray
+	 * @param array|null $attributeArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testButton(string $method = null, string $text = null, array $attributeArray = [], string $expect = null) : void
+	public function testButton(string $method = null, string $text = null, ?array $attributeArray = [], string $expect = null) : void
 	{
 		/* setup */
 
@@ -352,13 +352,13 @@ class FormTest extends TestCaseAbstract
 	 *
 	 * @param string $method
 	 * @param string $text
-	 * @param array $attributeArray
+	 * @param array|null $attributeArray
 	 * @param string $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testLink(string $method = null, string $text = null, array $attributeArray = [], string $expect = null) : void
+	public function testLink(string $method = null, string $text = null, ?array $attributeArray = [], string $expect = null) : void
 	{
 		/* setup */
 

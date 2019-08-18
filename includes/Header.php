@@ -37,6 +37,19 @@ class Header
 	}
 
 	/**
+	 * get the header array
+	 *
+	 * @since 3.3.0
+	 *
+	 * @return array
+	 */
+
+	public static function getArray() : array
+	{
+		return headers_list();
+	}
+
+	/**
 	 * add the header
 	 *
 	 * @since 3.3.0
@@ -95,19 +108,6 @@ class Header
 	public static function isSent() : bool
 	{
 		return headers_sent();
-	}
-
-	/**
-	 * get the header array
-	 *
-	 * @since 3.3.0
-	 *
-	 * @return array
-	 */
-
-	public static function getArray() : array
-	{
-		return headers_list();
 	}
 
 	/**

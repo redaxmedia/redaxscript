@@ -47,6 +47,29 @@ class HeaderTest extends TestCaseAbstract
 	}
 
 	/**
+	 * testGetArray
+	 *
+	 * @since 4.0.0
+	 *
+	 * @runInSeparateProcess
+	 */
+
+	public function testGetArray() : void
+	{
+		/* setup */
+
+		Header::init();
+
+		/* actual */
+
+		$actualArray = Header::getArray();
+
+		/* compare */
+
+		$this->assertIsArray($actualArray);
+	}
+
+	/**
 	 * testAdd
 	 *
 	 * @since 3.3.0
@@ -113,6 +136,25 @@ class HeaderTest extends TestCaseAbstract
 		/* compare */
 
 		$this->assertFalse($actual);
+	}
+
+	/**
+	 * testIsSent
+	 *
+	 * @since 4.0.0
+	 *
+	 * @runInSeparateProcess
+	 */
+
+	public function testIsSent() : void
+	{
+		/* actual */
+
+		$actual = Header::isSent();
+
+		/* compare */
+
+		$this->assertIsBool($actual);
 	}
 
 	/**

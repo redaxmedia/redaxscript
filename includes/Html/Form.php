@@ -273,12 +273,12 @@ class Form extends HtmlAbstract
 	 * @since 2.6.0
 	 *
 	 * @param string $method name of the method
-	 * @param array $argumentArray arguments of the method
+	 * @param array|null $argumentArray arguments of the method
 	 *
 	 * @return self
 	 */
 
-	public function __call(string $method = null, array $argumentArray = []) : self
+	public function __call(string $method = null, ?array $argumentArray = []) : self
 	{
 		/* input */
 
@@ -410,7 +410,7 @@ class Form extends HtmlAbstract
 	 * @return self
 	 */
 
-	public function textarea(array $attributeArray = []) : self
+	public function textarea(?array $attributeArray = []) : self
 	{
 		if (is_array($attributeArray))
 		{

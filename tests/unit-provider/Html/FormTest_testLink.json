@@ -2,7 +2,7 @@
 	[
 		"cancel",
 		null,
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><a class=\"rs-js-cancel rs-button-default rs-button-cancel\" href=\"javascript:history.back()\">Cancel</a></form>"
 	],
 	[

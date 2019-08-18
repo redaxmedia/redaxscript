@@ -2,7 +2,7 @@
 	[
 		"button",
 		null,
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><button class=\"rs-js-button rs-button-default\" type=\"button\">Ok</button></form>"
 	],
 	[
@@ -16,7 +16,7 @@
 	[
 		"reset",
 		null,
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><button class=\"rs-js-reset rs-button-default rs-button-reset\" type=\"reset\">Reset</button></form>"
 	],
 	[
@@ -30,7 +30,7 @@
 	[
 		"submit",
 		null,
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><button class=\"rs-js-submit rs-button-default rs-button-submit\" type=\"submit\" value=\"submit\">Submit</button></form>"
 	],
 	[
@@ -44,7 +44,7 @@
 	[
 		"invalid",
 		null,
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"></form>"
 	]
 ]

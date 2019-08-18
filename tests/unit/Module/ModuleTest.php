@@ -69,7 +69,7 @@ class ModuleTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testInstall
+	 * testInstallAndUninstall
 	 *
 	 * @since 2.6.0
 	 */
@@ -105,5 +105,31 @@ class ModuleTest extends TestCaseAbstract
 		$this->assertEquals(9, $actualTablesInstall);
 		$this->assertEquals(0, $actualModulesUninstall);
 		$this->assertEquals(8, $actualTablesUninstall);
+	}
+
+	/**
+	 * testInstallAndUninstallInvalid
+	 *
+	 * @since 4.0.0
+	 *
+	 * @runInSeparateProcess
+	 */
+
+	public function testInstallAndUninstallInvalid() : void
+	{
+		/* setup */
+
+		$module = new Module\Module($this->_registry, $this->_request, $this->_language, $this->_config);
+		$module->init();
+
+		/* actual */
+
+		$actualInstall = $module->install();
+		$actualUninstall = $module->uninstall();
+
+		/* compare */
+
+		$this->assertFalse($actualInstall);
+		$this->assertFalse($actualUninstall);
 	}
 }

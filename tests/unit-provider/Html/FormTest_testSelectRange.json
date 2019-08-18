@@ -2,7 +2,7 @@
 	[
 		{},
 		{},
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><select class=\"rs-field-select\"></select></form>"
 	],
 	[
@@ -19,7 +19,7 @@
 			"max": 3
 		},
 		{},
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><select class=\"rs-field-select\"><option value=\"1\">1</option><option value=\"2\">2</option><option value=\"3\">3</option></select></form>"
 	],
 	[
@@ -30,7 +30,7 @@
 		[
 			2
 		],
-		{},
+		null,
 		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><select class=\"rs-field-select\"><option value=\"1\">1</option><option selected=\"selected\" value=\"2\">2</option><option value=\"3\">3</option></select></form>"
 	]
 ]
