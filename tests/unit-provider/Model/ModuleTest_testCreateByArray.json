@@ -1,0 +1,12 @@
+[
+	[
+		{
+			"name": "Test Dummy",
+			"alias": "TestDummy",
+			"author": "Redaxmedia",
+			"description": "Test Dummy",
+			"version": "4.0.0"
+		},
+		true
+	]
+]
