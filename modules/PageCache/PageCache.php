@@ -91,7 +91,7 @@ class PageCache extends Module\Notification
 
 		/* prevent as needed */
 
-		if ($stylesFileSystem->countIterator() === 0 || $scriptsFileSystem->countIterator() === 0 || $this->_request->getPost() || $this->_registry->get('noPageCache'))
+		if ($stylesFileSystem->countIterator() === 0 || $scriptsFileSystem->countIterator() === 0 || $this->_request->get('post') || $this->_registry->get('noPageCache'))
 		{
 			return null;
 		}
