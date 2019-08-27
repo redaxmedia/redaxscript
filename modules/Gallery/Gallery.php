@@ -122,17 +122,6 @@ class Gallery extends Module\Notification
 	}
 
 	/**
-	 * templateEnd
-	 *
-	 * @since 4.0.0
-	 */
-
-	public function templateStart() : void
-	{
-		include_once('modules/Gallery/templates/gallery.phtml');
-	}
-
-	/**
 	 * render
 	 *
 	 * @since 3.0.0
@@ -188,6 +177,10 @@ class Gallery extends Module\Notification
 			{
 				$output = $listElement->html($outputItem);
 			}
+
+			/* include template */
+
+			include_once('modules/Gallery/templates/gallery.phtml');
 		}
 		return $output;
 	}
