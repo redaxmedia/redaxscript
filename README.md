@@ -10,7 +10,7 @@ Redaxscript
 [![Coverage Status](https://img.shields.io/coveralls/redaxscript/redaxscript.svg)](https://coveralls.io/r/redaxscript/redaxscript)
 [![Packagist Version](https://img.shields.io/packagist/v/redaxscript/redaxscript.svg)](https://packagist.org/packages/redaxscript/redaxscript)
 [![License](https://img.shields.io/packagist/l/redaxscript/redaxscript.svg)](https://packagist.org/packages/redaxscript/redaxscript)
-[![Facebook Chat](https://img.shields.io/badge/chat-on_facebook-0084ff.svg)](https://m.me/redaxscript)
+[![Telegram Chat](https://img.shields.io/badge/chat-on_telegram-4183c4.svg)](https://t.me/redaxscript)
 
 
 Installation
