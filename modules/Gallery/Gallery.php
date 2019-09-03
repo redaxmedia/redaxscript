@@ -8,6 +8,7 @@ use Redaxscript\Module;
 use function array_key_exists;
 use function array_reverse;
 use function chmod;
+use function file_exists;
 use function getimagesize;
 use function imagecopyresampled;
 use function imagecreatefromgif;
@@ -210,7 +211,8 @@ class Gallery extends Module\Notification
 			->copy()
 			->init('img',
 			[
-				'class' => $this->_optionArray['className']['image']
+				'class' => $this->_optionArray['className']['image'],
+				'loading' => 'lazy'
 			]);
 
 		/* gallery filesystem */
@@ -239,7 +241,7 @@ class Gallery extends Module\Notification
 
 			/* collect item output */
 
-			$outputItem .= $itemElement
+			$outputItem .= file_exists($thumbPath) ? $itemElement
 				->clear()
 				->html(
 					$linkElement
@@ -260,7 +262,7 @@ class Gallery extends Module\Notification
 									'alt' => $value
 								])
 						)
-				);
+				) : null;
 		}
 		return $outputItem;
 	}

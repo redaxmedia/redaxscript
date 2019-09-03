@@ -5,7 +5,7 @@
 	<!-- link -->
 
 	<?php Tag::link()
-		->init('admin')
+		->init()
 		->appendFile(
 		[
 			'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=' . Helper::getSubset(),
@@ -14,7 +14,12 @@
 		->rewrite(
 		[
 			'../../../../templates' => '../../templates'
-		])
-		->concat(); ?>
+		]); ?>
+
+	<!-- head script -->
+
+	<?php Tag::script()
+		->init('head')
+		->appendInline(Helper::getContent('templates/admin/assets/scripts/init.js')); ?>
 <?php endif; ?>
 

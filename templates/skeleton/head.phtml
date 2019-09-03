@@ -29,6 +29,7 @@
 	->init()
 	->append(['href' => Helper::getCanonical(), 'rel' => 'canonical'])
 	->append(['href' => 'data:image/png;base64,', 'rel' => 'shortcut icon'])
+	->append(['href' => 'https://fonts.gstatic.com', 'rel' => 'preconnect'])
 	->appendFile(
 	[
 		'https://fonts.googleapis.com/css?family=Raleway:300,700&amp;subset=' . Helper::getSubset(),
@@ -36,16 +37,14 @@
 	])
 	->concat(); ?>
 
-<?php echo Tag::link()->init('admin'); ?>
-
 <!-- head script -->
 
 <?php echo Tag::script()
 	->init('head')
-	->prependFile(
+	->prependInline(Helper::getContent(
 	[
-		'templates/skeleton/assets/scripts/init.js',
-		'assets/scripts/init.js'
-	])
+		'assets/scripts/init.js',
+		'templates/skeleton/assets/scripts/init.js'
+	]))
 	->transportVar('rs', Helper::getTransport())
 	->concat(); ?>

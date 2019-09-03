@@ -24,6 +24,7 @@
 	->init()
 	->append(['href' => 'templates/default/assets/images/favicon.ico', 'rel' => 'shortcut icon'])
 	->append(['href' => 'templates/default/assets/images/favicon.png', 'rel' => 'apple-touch-icon'])
+	->append(['href' => 'https://fonts.gstatic.com', 'rel' => 'preconnect'])
 	->appendFile(
 	[
 		'https://fonts.googleapis.com/css?family=Ubuntu+Mono:400&amp;subset=' . Helper::getSubset(),
@@ -35,11 +36,11 @@
 
 <?php echo Tag::script()
 	->init('head')
-	->prependFile(
+	->prependInline(Helper::getContent(
 	[
-		'templates/console/assets/scripts/init.js',
-		'assets/scripts/init.js'
-	])
+		'assets/scripts/init.js',
+		'templates/console/assets/scripts/init.js'
+	]))
 	->transportVar('rs', Helper::getTransport())
 	->concat();
 ?>

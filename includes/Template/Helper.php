@@ -6,6 +6,7 @@ use Redaxscript\Header;
 use Redaxscript\Language;
 use Redaxscript\Model;
 use Redaxscript\Registry;
+use function file_get_contents;
 
 /**
  * helper class to provide template helper
@@ -206,5 +207,28 @@ class Helper
 	public static function getResponseCode() : int
 	{
 		return Header::responseCode();
+	}
+
+	/**
+	 * get the content
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param string|array $file
+	 *
+	 * @return string|null
+	 */
+
+	public static function getContent($file = null) : ?string
+	{
+		$output = null;
+
+		/* process file */
+
+		foreach ((array)$file as $value)
+		{
+			$output .= file_get_contents($value);
+		}
+		return $output;
 	}
 }
