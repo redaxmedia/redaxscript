@@ -23,7 +23,6 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @covers Redaxscript\Template\Helper\HelperAbstract
  * @covers Redaxscript\Template\Helper\Keywords
  * @covers Redaxscript\Template\Helper\Robots
- * @covers Redaxscript\Template\Helper\Subset
  * @covers Redaxscript\Template\Helper\Title
  */
 
@@ -349,32 +348,6 @@ class HelperTest extends TestCaseAbstract
 		$this->assertArrayHasKey('language', $actualArray);
 		$this->assertArrayHasKey('registry', $actualArray);
 		$this->assertArrayHasKey('version', $actualArray);
-	}
-
-	/**
-	 * testGetSubset
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param array $registryArray
-	 * @param string $expect
-	 *
-	 * @dataProvider providerAutoloader
-	 */
-
-	public function testGetSubset(array $registryArray = [], string $expect = null) : void
-	{
-		/* setup */
-
-		$this->_registry->init($registryArray);
-
-		/* actual */
-
-		$actual = Template\Helper::getSubset();
-
-		/* compare */
-
-		$this->assertEquals($expect, $actual);
 	}
 
 	/**

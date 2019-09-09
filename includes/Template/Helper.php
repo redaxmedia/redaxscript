@@ -153,20 +153,6 @@ class Helper
 	}
 
 	/**
-	 * get the subset
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return string|null
-	 */
-
-	public static function getSubset() : ?string
-	{
-		$subset = new Helper\Subset(Registry::getInstance(), Language::getInstance());
-		return $subset->process();
-	}
-
-	/**
 	 * get the direction
 	 *
 	 * @since 3.0.0
