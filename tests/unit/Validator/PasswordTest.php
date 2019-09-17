@@ -19,7 +19,7 @@ use Redaxscript\Validator;
 class PasswordTest extends TestCaseAbstract
 {
 	/**
-	 * testPassword
+	 * testValidate
 	 *
 	 * @since 2.6.0
 	 *
@@ -30,7 +30,7 @@ class PasswordTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testPassword(string $password = null, string $hash = null, bool $expect = null) : void
+	public function testValidate(string $password = null, string $hash = null, bool $expect = null) : void
 	{
 		/* setup */
 

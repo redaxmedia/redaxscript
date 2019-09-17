@@ -191,7 +191,7 @@ class Article extends ControllerAbstract
 		{
 			$validateArray[] = $this->_language->get('alias_empty');
 		}
-		else if ($aliasValidator->validate($postArray['alias'], 'general') || $aliasValidator->validate($postArray['alias'], 'system'))
+		else if (!$aliasValidator->validate($postArray['alias'], 'general') || !$aliasValidator->validate($postArray['alias'], 'system'))
 		{
 			$validateArray[] = $this->_language->get('alias_incorrect');
 		}

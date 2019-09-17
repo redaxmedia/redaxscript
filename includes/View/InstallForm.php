@@ -3,6 +3,7 @@ namespace Redaxscript\View;
 
 use Redaxscript\Html;
 use Redaxscript\Module;
+use Redaxscript\Validator;
 use function sha1;
 use function uniqid;
 
@@ -31,6 +32,7 @@ class InstallForm extends ViewAbstract
 	public function render(array $installArray = []) : string
 	{
 		$output = Module\Hook::trigger('installFormStart');
+		$loginValidator = new Validator\Login();
 
 		/* html element */
 
@@ -190,7 +192,7 @@ class InstallForm extends ViewAbstract
 			[
 				'id' => 'admin-user',
 				'name' => 'admin-user',
-				'pattern' => '[a-zA-Z0-9]{1,30}',
+				'pattern' => $loginValidator->getFormPattern(),
 				'required' => 'required',
 				'value' => $installArray['adminUser']
 			])
@@ -203,7 +205,7 @@ class InstallForm extends ViewAbstract
 			[
 				'id' => 'admin-password',
 				'name' => 'admin-password',
-				'pattern' => '[a-zA-Z0-9]{1,30}',
+				'pattern' => $loginValidator->getFormPattern(),
 				'required' => 'required',
 				'value' => $installArray['adminPassword']
 			])

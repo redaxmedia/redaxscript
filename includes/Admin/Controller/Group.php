@@ -39,7 +39,7 @@ class Group extends ControllerAbstract
 		{
 			return $this->_error(
 			[
-				'route' => $postArray['id'] ? 'admin/edit/groups/' . $postArray['id'] : 'admin/new/groups',
+				'route' => $this->_getErrorRoute(),
 				'message' => $validateArray
 			]);
 		}
@@ -178,7 +178,7 @@ class Group extends ControllerAbstract
 			{
 				$validateArray[] = $this->_language->get('alias_empty');
 			}
-			else if ($aliasValidator->validate($postArray['alias'], 'general'))
+			else if (!$aliasValidator->validate($postArray['alias'], 'general'))
 			{
 				$validateArray[] = $this->_language->get('alias_incorrect');
 			}

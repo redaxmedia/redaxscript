@@ -19,7 +19,7 @@ use Redaxscript\Tests\TestCaseAbstract;
 class SpecialTest extends TestCaseAbstract
 {
 	/**
-	 * testSpecial
+	 * testSanitize
 	 *
 	 * @since 2.2.0
 	 *
@@ -29,7 +29,7 @@ class SpecialTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testSpecial(string $special = null, string $expect = null) : void
+	public function testSanitize(string $special = null, string $expect = null) : void
 	{
 		/* setup */
 

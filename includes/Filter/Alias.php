@@ -17,6 +17,26 @@ use function trim;
 class Alias implements FilterInterface
 {
 	/**
+	 * pattern for alias
+	 *
+	 * @var array
+	 */
+
+	protected $_patternArray =
+	[
+		'search' =>
+		[
+			'[^a-zA-Z0-9]',
+			'\s+'
+		],
+		'replace' =>
+		[
+			' ',
+			'-'
+		]
+	];
+
+	/**
 	 * sanitize the alias
 	 *
 	 * @since 2.2.0
@@ -28,8 +48,8 @@ class Alias implements FilterInterface
 
 	public function sanitize(string $alias = null) : string
 	{
-		$output = preg_replace('/[^a-zA-Z0-9]/i', ' ', $alias);
-		$output = preg_replace('/\s+/i', '-', trim($output));
+		$output = preg_replace('/' . $this->_patternArray['search'][0] . '/i', $this->_patternArray['replace'][0], $alias);
+		$output = preg_replace('/' . $this->_patternArray['search'][1] . '/i', $this->_patternArray['replace'][1], trim($output));
 		return $output;
 	}
 }

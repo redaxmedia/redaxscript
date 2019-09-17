@@ -57,7 +57,7 @@ class Content extends BootstrapAbstract
 
 		/* else set by the parameter */
 
-		else if (!$aliasValidator->validate($firstParameter, 'system'))
+		else if ($aliasValidator->validate($firstParameter, 'system'))
 		{
 			$this->_setTableByParameter();
 			$this->_setIdByParameter();

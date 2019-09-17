@@ -1,0 +1,23 @@
+[
+	[
+		{
+			"commentsNew": true,
+			"commentsEdit": true,
+			"filter": true
+		},
+		{
+			"id": 1,
+			"author": "Comment One",
+			"email": null,
+			"url": null,
+			"text": "comment-one",
+			"language": null,
+			"article": 1,
+			"status": null,
+			"rank": null,
+			"access": null,
+			"date": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\">Something went wrong</div><a href=\"admin/edit/comments/1\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+	]
+]

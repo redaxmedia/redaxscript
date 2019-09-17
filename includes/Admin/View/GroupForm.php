@@ -4,6 +4,7 @@ namespace Redaxscript\Admin\View;
 use Redaxscript\Admin;
 use Redaxscript\Html;
 use Redaxscript\Module;
+use Redaxscript\Validator;
 use function count;
 use function json_decode;
 
@@ -34,6 +35,7 @@ class GroupForm extends ViewAbstract
 		$output = Module\Hook::trigger('adminGroupFormStart');
 		$groupModel = new Admin\Model\Group();
 		$group = $groupModel->getById($groupId);
+		$aliasValidator = new Validator\Alias();
 		$helperOption = new Helper\Option($this->_language);
 
 		/* html element */
@@ -122,7 +124,7 @@ class GroupForm extends ViewAbstract
 					'class' => 'rs-admin-js-alias-output rs-admin-field-default rs-admin-field-text',
 					'id' => 'alias',
 					'name' => 'alias',
-					'pattern' => '[a-zA-Z0-9-]+',
+					'pattern' => $aliasValidator->getFormPattern(),
 					'required' => 'required',
 					'value' => $group->alias
 				])

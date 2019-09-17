@@ -19,7 +19,7 @@ use Redaxscript\Tests\TestCaseAbstract;
 class PathTest extends TestCaseAbstract
 {
 	/**
-	 * testPath
+	 * testSanitize
 	 *
 	 * @since 2.6.0
 	 *
@@ -29,7 +29,7 @@ class PathTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testPath(string $path = null, string $expect = null) : void
+	public function testSanitize(string $path = null, string $expect = null) : void
 	{
 		/* setup */
 

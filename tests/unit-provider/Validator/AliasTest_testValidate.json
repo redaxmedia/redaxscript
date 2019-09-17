@@ -7,10 +7,10 @@
 	[
 		"abc",
 		"general",
-		false
+		true
 	],
 	[
-		"abc ",
+		"a-b-c",
 		"general",
 		true
 	],
@@ -20,22 +20,27 @@
 		false
 	],
 	[
-		"ab-c",
-		"system",
+		"***",
+		"general",
 		false
 	],
 	[
-		"ab_c",
-		"system",
+		"12",
+		"general",
 		false
 	],
 	[
-		"login",
+		"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901",
+		"general",
+		false
+	],
+	[
+		"abc",
 		"system",
 		true
 	],
 	[
-		"invalid",
+		"admin",
 		"system",
 		false
 	],

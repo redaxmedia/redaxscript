@@ -5,6 +5,7 @@ use Redaxscript\Admin;
 use Redaxscript\Dater;
 use Redaxscript\Html;
 use Redaxscript\Module;
+use Redaxscript\Validator;
 use function count;
 use function json_decode;
 
@@ -36,6 +37,7 @@ class CategoryForm extends ViewAbstract
 		$helperOption = new Helper\Option($this->_language);
 		$categoryModel = new Admin\Model\Category();
 		$category = $categoryModel->getById($categoryId);
+		$aliasValidator = new Validator\Alias();
 		$dater = new Dater();
 		$dater->init($category->date);
 
@@ -121,7 +123,7 @@ class CategoryForm extends ViewAbstract
 				'class' => 'rs-admin-js-alias-output rs-admin-field-default rs-admin-field-text',
 				'id' => 'alias',
 				'name' => 'alias',
-				'pattern' => '[a-zA-Z0-9-]+',
+				'pattern' => $aliasValidator->getFormPattern(),
 				'required' => 'required',
 				'value' => $category->alias
 			])

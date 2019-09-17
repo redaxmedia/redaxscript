@@ -20,7 +20,28 @@ use Redaxscript\Validator;
 class LoginTest extends TestCaseAbstract
 {
 	/**
-	 * testLogin
+	 * testGetFormPattern
+	 *
+	 * @since 4.1.0
+	 */
+
+	public function testGetFormPattern() : void
+	{
+		/* setup */
+
+		$validator = new Validator\Login();
+
+		/* actual */
+
+		$actual = $validator->getFormPattern();
+
+		/* compare */
+
+		$this->assertEquals('[a-zA-Z0-9-]{3,50}', $actual);
+	}
+
+	/**
+	 * testValidate
 	 *
 	 * @since 2.2.0
 	 *
@@ -30,7 +51,7 @@ class LoginTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testLogin(string $login = null, bool $expect = null) : void
+	public function testValidate(string $login = null, bool $expect = null) : void
 	{
 		/* setup */
 

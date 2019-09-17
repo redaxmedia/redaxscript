@@ -19,7 +19,7 @@ use Redaxscript\Tests\TestCaseAbstract;
 class NumberTest extends TestCaseAbstract
 {
 	/**
-	 * testNumber
+	 * testSanitize
 	 *
 	 * @since 2.2.0
 	 *
@@ -29,7 +29,7 @@ class NumberTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testNumber(string $number = null, int $expect = null) : void
+	public function testSanitize(string $number = null, int $expect = null) : void
 	{
 		/* setup */
 

@@ -146,6 +146,22 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 		$installer->init();
 		$installer->rawDrop();
 	}
+	/**
+	 * getOptionArray
+	 *
+	 * @since 4.1.0
+	 */
+
+	public function getOptionArray() : array
+	{
+		return
+		[
+			'adminName' => 'Test',
+			'adminUser' => 'test',
+			'adminPassword' => 'test',
+			'adminEmail' => 'test@test.com'
+		];
+	}
 
 	/**
 	 * installTestDummy

@@ -4,6 +4,7 @@ namespace Redaxscript\Admin\View;
 use Redaxscript\Admin;
 use Redaxscript\Html;
 use Redaxscript\Module;
+use Redaxscript\Validator;
 use function count;
 use function json_decode;
 
@@ -34,6 +35,7 @@ class UserForm extends ViewAbstract
 		$output = Module\Hook::trigger('adminUserFormStart');
 		$userModel = new Admin\Model\User();
 		$user = $userModel->getById($userId);
+		$loginValidator = new Validator\Login();
 		$helperOption = new Helper\Option($this->_language);
 
 		/* html element */
@@ -120,7 +122,7 @@ class UserForm extends ViewAbstract
 				[
 					'id' => 'user',
 					'name' => 'user',
-					'pattern' => '[a-zA-Z0-9]{1,30}',
+					'pattern' => $loginValidator->getFormPattern(),
 					'required' => 'required',
 					'value' => $user->user
 				])
@@ -148,7 +150,7 @@ class UserForm extends ViewAbstract
 			->password(
 			[
 				'id' => 'password',
-				'pattern' => '[a-zA-Z0-9]{1,30}',
+				'pattern' => $loginValidator->getFormPattern(),
 				'name' => 'password',
 				'autocomplete' => 'new-password'
 			])
@@ -160,7 +162,7 @@ class UserForm extends ViewAbstract
 			->password(
 			[
 				'id' => 'password_confirm',
-				'pattern' => '[a-zA-Z0-9]{1,30}',
+				'pattern' => $loginValidator->getFormPattern(),
 				'name' => 'password_confirm',
 				'autocomplete' => 'new-password'
 			])

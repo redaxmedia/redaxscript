@@ -4,6 +4,7 @@ namespace Redaxscript\View;
 use Redaxscript\Html;
 use Redaxscript\Model;
 use Redaxscript\Module;
+use Redaxscript\Validator;
 
 /**
  * children class to create the register form
@@ -29,6 +30,7 @@ class RegisterForm extends ViewAbstract
 	{
 		$output = Module\Hook::trigger('registerFormStart');
 		$settingModel = new Model\Setting();
+		$loginValidator = new Validator\Login();
 
 		/* html element */
 
@@ -83,7 +85,7 @@ class RegisterForm extends ViewAbstract
 			[
 				'id' => 'user',
 				'name' => 'user',
-				'pattern' => '[a-zA-Z0-9]{1,30}',
+				'pattern' => $loginValidator->getFormPattern(),
 				'required' => 'required'
 			])
 			->append('</li><li>')

@@ -1,0 +1,26 @@
+[
+	[
+		{
+			"categoriesNew": true,
+			"categoriesEdit": true
+		},
+		{
+			"id": null,
+			"title": "Category Two",
+			"alias": "category-two",
+			"author": null,
+			"description": null,
+			"keywords": null,
+			"robots": null,
+			"language": null,
+			"template": null,
+			"sibling": null,
+			"parent": null,
+			"status": null,
+			"rank": null,
+			"access": null,
+			"date": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\">Something went wrong</div><a href=\"admin/new/categories\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+	]
+]

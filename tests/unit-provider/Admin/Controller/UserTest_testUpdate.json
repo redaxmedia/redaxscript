@@ -1,0 +1,142 @@
+[
+	[
+		{
+			"usersNew": false,
+			"usersEdit": false,
+			"myId": 1
+		},
+		{
+			"id": null,
+			"name": null,
+			"user": null,
+			"description": null,
+			"password": null,
+			"password_confirm": null,
+			"email": null,
+			"language": null,
+			"status": null,
+			"groups": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Name is empty</li><li>User is empty</li><li>Password is empty</li><li>Email is incorrect</li></ul></div><a href=\"admin\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+	],
+	[
+		{
+			"usersNew": true,
+			"usersEdit": true,
+			"myId": 1
+		},
+		{
+			"id": null,
+			"name": null,
+			"user": null,
+			"description": null,
+			"password": null,
+			"password_confirm": null,
+			"email": null,
+			"language": null,
+			"status": null,
+			"groups": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Name is empty</li><li>User is empty</li><li>Password is empty</li><li>Email is incorrect</li></ul></div><a href=\"admin/new/users\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+	],
+	[
+		{
+			"usersNew": true,
+			"usersEdit": true,
+			"myId": 1
+		},
+		{
+			"id": 1,
+			"name": null,
+			"user": null,
+			"description": null,
+			"password": null,
+			"password_confirm": null,
+			"email": null,
+			"language": null,
+			"status": null,
+			"groups": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Name is empty</li><li>Email is incorrect</li></ul></div><a href=\"admin/edit/users/1\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+	],
+	[
+		{
+			"usersNew": false,
+			"usersEdit": false,
+			"myId": 1
+		},
+		{
+			"id": 1,
+			"name": null,
+			"user": null,
+			"description": null,
+			"password": 12,
+			"password_confirm": null,
+			"email": null,
+			"language": null,
+			"status": null,
+			"groups": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Name is empty</li><li>Password is incorrect</li><li>Email is incorrect</li></ul></div><a href=\"admin\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+	],
+	[
+		{
+			"usersNew": false,
+			"usersEdit": false,
+			"myId": 1
+		},
+		{
+			"id": 1,
+			"name": null,
+			"user": null,
+			"description": null,
+			"password": "test",
+			"password_confirm": null,
+			"email": null,
+			"language": null,
+			"status": null,
+			"groups": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Name is empty</li><li>Password confirmation mismatch</li><li>Email is incorrect</li></ul></div><a href=\"admin\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+	],
+	[
+		{
+			"usersNew": false,
+			"usersEdit": false,
+			"myId": 1
+		},
+		{
+			"id": 1,
+			"name": "User One",
+			"user": "user-one",
+			"description": null,
+			"password": "test",
+			"password_confirm": "test",
+			"email": "info@redaxmedia.com",
+			"language": null,
+			"status": null,
+			"groups": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-success\">Success</h2><div class=\"rs-admin-box-note rs-admin-is-success\">Operation completed successfully</div><a href=\"admin\" class=\"rs-admin-button-note rs-admin-is-success\">Continue</a><meta content=\"2;url=/admin\" http-equiv=\"refresh\" />"
+	],
+	[
+		{
+			"usersNew": true,
+			"usersEdit": true,
+			"myId": 1
+		},
+		{
+			"id": 1,
+			"name": "User One",
+			"user": "user-one",
+			"description": null,
+			"password": "test",
+			"password_confirm": "test",
+			"email": "info@redaxmedia.com",
+			"language": null,
+			"status": null,
+			"groups": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-success\">Success</h2><div class=\"rs-admin-box-note rs-admin-is-success\">Operation completed successfully</div><a href=\"admin/view/users#row-1\" class=\"rs-admin-button-note rs-admin-is-success\">Continue</a><meta content=\"2;url=/admin/view/users#row-1\" http-equiv=\"refresh\" />"
+	]
+]

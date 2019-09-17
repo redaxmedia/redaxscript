@@ -4,6 +4,7 @@ namespace Redaxscript\View;
 use Redaxscript\Html;
 use Redaxscript\Model;
 use Redaxscript\Module;
+use Redaxscript\Validator;
 
 /**
  * children class to create the login form
@@ -30,6 +31,7 @@ class LoginForm extends ViewAbstract
 		$output = Module\Hook::trigger('loginFormStart');
 		$outputLegend = null;
 		$settingModel = new Model\Setting();
+		$loginValidator = new Validator\Login();
 		$parameterRoute = $this->_registry->get('parameterRoute');
 
 		/* html element */
@@ -85,7 +87,7 @@ class LoginForm extends ViewAbstract
 				'autofocus' => 'autofocus',
 				'id' => 'user',
 				'name' => 'user',
-				'pattern' => '[a-zA-Z0-9]{1,30}',
+				'pattern' => $loginValidator->getFormPattern(),
 				'required' => 'required'
 			])
 			->append('</li><li>')
@@ -97,7 +99,7 @@ class LoginForm extends ViewAbstract
 			[
 				'id' => 'password',
 				'name' => 'password',
-				'pattern' => '[a-zA-Z0-9]{1,30}',
+				'pattern' => $loginValidator->getFormPattern(),
 				'required' => 'required'
 			])
 			->append('</li>');

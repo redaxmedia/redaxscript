@@ -1,0 +1,16 @@
+[
+	[
+		{
+			"modulesInstall": true,
+			"modulesEdit": true
+		},
+		{
+			"id": 1,
+			"name": "Module One",
+			"description": null,
+			"status": null,
+			"access": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\">Something went wrong</div><a href=\"admin/edit/modules/1\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+	]
+]

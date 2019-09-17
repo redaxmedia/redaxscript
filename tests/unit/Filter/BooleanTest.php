@@ -19,7 +19,7 @@ use Redaxscript\Tests\TestCaseAbstract;
 class BooleanTest extends TestCaseAbstract
 {
 	/**
-	 * testBoolean
+	 * testSanitize
 	 *
 	 * @since 3.0.0
 	 *
@@ -29,7 +29,7 @@ class BooleanTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testBoolean(string $boolean = null, bool $expect = null) : void
+	public function testSanitize(string $boolean = null, bool $expect = null) : void
 	{
 		/* setup */
 

@@ -27,13 +27,7 @@ class HtmlTest extends TestCaseAbstract
 	public function setUp() : void
 	{
 		parent::setUp();
-		$optionArray =
-		[
-			'adminName' => 'Test',
-			'adminUser' => 'test',
-			'adminPassword' => 'test',
-			'adminEmail' => 'test@test.com'
-		];
+		$optionArray = $this->getOptionArray();
 		$installer = $this->installerFactory();
 		$installer->init();
 		$installer->rawCreate();
@@ -52,7 +46,7 @@ class HtmlTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testHtml
+	 * testSanitize
 	 *
 	 * @since 2.2.0
 	 *
@@ -62,7 +56,7 @@ class HtmlTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testHtml(string $html = null, string $expect = null) : void
+	public function testSanitize(string $html = null, string $expect = null) : void
 	{
 		/* setup */
 

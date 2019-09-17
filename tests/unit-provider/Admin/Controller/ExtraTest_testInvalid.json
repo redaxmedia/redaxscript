@@ -1,0 +1,26 @@
+[
+	[
+		{
+			"extrasNew": true,
+			"extrasEdit": true,
+			"filter": false
+		},
+		{
+			"id": 1,
+			"title": "Extra One",
+			"alias": "extra-one",
+			"author": null,
+			"text": "Text",
+			"language": null,
+			"sibling": null,
+			"category": null,
+			"article": null,
+			"headline": null,
+			"status": null,
+			"rank": null,
+			"access": null,
+			"date": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\">Something went wrong</div><a href=\"admin/edit/extras/1\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+	]
+]

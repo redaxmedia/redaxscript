@@ -68,7 +68,6 @@ class Router extends RouterAbstract
 		{
 			return $this->_redirectSearch();
 		}
-
 		return (bool)$this->_registry->get('routerBreak');
 	}
 
@@ -85,6 +84,13 @@ class Router extends RouterAbstract
 		Module\Hook::trigger('routeContent');
 		$firstParameter = $this->getFirst();
 		$fileInstall = $this->_registry->get('file') === 'install.php' && $this->_config->get('env') !== 'production';
+
+		/* handle break */
+
+		if ($this->_registry->get('routerBreak'))
+		{
+			return '<!-- routerBreak -->';
+		}
 
 		/* handle guard */
 
@@ -146,10 +152,6 @@ class Router extends RouterAbstract
 		{
 			return $this->_renderInstall();
 		}
-		if ($this->_registry->get('routerBreak'))
-		{
-			return '<!-- routerBreak -->';
-		}
 		return null;
 	}
 
@@ -190,7 +192,7 @@ class Router extends RouterAbstract
 	protected function _aliasValidator() : bool
 	{
 		$aliasValidator = new Validator\Alias();
-		return $aliasValidator->validate($this->_registry->get('firstParameter'), 'system') && $this->_registry->get('fullRoute') !== 'admin';
+		return !$aliasValidator->validate($this->_registry->get('firstParameter'), 'system');
 	}
 
 	/**

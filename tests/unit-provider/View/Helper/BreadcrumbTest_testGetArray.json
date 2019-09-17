@@ -164,6 +164,28 @@
 	[
 		{
 			"useTitle": null,
+			"fullRoute": "logout",
+			"firstParameter": "logout",
+			"secondParameter": null,
+			"thirdParameter": null,
+			"adminParameter": null,
+			"tableParameter": null,
+			"lastParameter": "logout",
+			"firstTable": null,
+			"secondTable": null,
+			"thirdTable": null,
+			"lastTable": null,
+			"lastId": null
+		},
+		[
+			{
+				"title": "Logout"
+			}
+		]
+	],
+	[
+		{
+			"useTitle": null,
 			"fullRoute": "register",
 			"firstParameter": "register",
 			"secondParameter": null,

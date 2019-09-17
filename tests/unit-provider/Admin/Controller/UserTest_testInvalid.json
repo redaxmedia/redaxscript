@@ -1,0 +1,22 @@
+[
+	[
+		{
+			"usersNew": true,
+			"usersEdit": true,
+			"myId": 1
+		},
+		{
+			"id": null,
+			"name": "User Two",
+			"user": "user-two",
+			"description": null,
+			"password": "test",
+			"password_confirm": "test",
+			"email": "test@test.com",
+			"language": null,
+			"status": null,
+			"groups": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\">Something went wrong</div><a href=\"admin/new/users\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+	]
+]

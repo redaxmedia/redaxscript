@@ -20,7 +20,7 @@ use Redaxscript\Validator;
 class DnsTest extends TestCaseAbstract
 {
 	/**
-	 * testDns
+	 * testValidate
 	 *
 	 * @since 2.2.0
 	 *
@@ -31,7 +31,7 @@ class DnsTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testDns(string $host = null, string $type = null, bool $expect = null) : void
+	public function testValidate(string $host = null, string $type = null, bool $expect = null) : void
 	{
 		/* setup */
 

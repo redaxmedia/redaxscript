@@ -37,7 +37,7 @@ class Setting extends ControllerAbstract
 		{
 			return $this->_error(
 			[
-				'route' => 'admin/edit/settings',
+				'route' => $this->_getErrorRoute(),
 				'message' => $validateArray
 			]);
 		}
@@ -88,7 +88,7 @@ class Setting extends ControllerAbstract
 
 		return $this->_error(
 		[
-			'route' => 'admin/edit/settings'
+			'route' => $this->_getErrorRoute()
 		]);
 	}
 
@@ -175,5 +175,22 @@ class Setting extends ControllerAbstract
 	{
 		$settingModel = new Admin\Model\Setting();
 		return $settingModel->updateByArray($updateArray);
+	}
+
+	/**
+	 * get error route
+	 *
+	 * @since 4.1.0
+	 *
+	 * @return string
+	 */
+
+	protected function _getErrorRoute() : string
+	{
+		if ($this->_registry->get('settingsEdit'))
+		{
+			return 'admin/edit/settings';
+		}
+		return 'admin';
 	}
 }

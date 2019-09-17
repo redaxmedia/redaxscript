@@ -1,0 +1,72 @@
+[
+	[
+		{
+			"modulesInstall": false,
+			"modulesEdit": false
+		},
+		{
+			"id": null,
+			"name": null,
+			"description": null,
+			"status": null,
+			"access": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\">Name is empty</div><a href=\"admin\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+	],
+	[
+		{
+			"modulesInstall": true,
+			"modulesEdit": true
+		},
+		{
+			"id": null,
+			"name": null,
+			"description": null,
+			"status": null,
+			"access": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\">Name is empty</div><a href=\"admin/view/modules\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+	],
+	[
+		{
+			"modulesInstall": true,
+			"modulesEdit": true
+		},
+		{
+			"id": 1,
+			"name": null,
+			"description": null,
+			"status": null,
+			"access": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\">Name is empty</div><a href=\"admin/edit/modules/1\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+	],
+	[
+		{
+			"modulesInstall": false,
+			"modulesEdit": false
+		},
+		{
+			"id": 1,
+			"name": "Module One",
+			"description": null,
+			"status": null,
+			"access": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-success\">Success</h2><div class=\"rs-admin-box-note rs-admin-is-success\">Operation completed successfully</div><a href=\"admin\" class=\"rs-admin-button-note rs-admin-is-success\">Continue</a><meta content=\"2;url=/admin\" http-equiv=\"refresh\" />"
+	],
+	[
+		{
+			"modulesInstall": true,
+			"modulesEdit": true
+		},
+		{
+			"id": 1,
+			"name": "Module One",
+			"description": null,
+			"status": null,
+			"access": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-success\">Success</h2><div class=\"rs-admin-box-note rs-admin-is-success\">Operation completed successfully</div><a href=\"admin/view/modules#row-1\" class=\"rs-admin-button-note rs-admin-is-success\">Continue</a><meta content=\"2;url=/admin/view/modules#row-1\" http-equiv=\"refresh\" />"
+	]
+]

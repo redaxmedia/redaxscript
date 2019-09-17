@@ -1,0 +1,30 @@
+[
+	[
+		{
+			"articlesNew": true,
+			"articlesEdit": true,
+			"filter": false
+		},
+		{
+			"id": 1,
+			"title": "Article One",
+			"alias": "article-one",
+			"description": null,
+			"keywords": null,
+			"robots": null,
+			"text": "Text",
+			"language": null,
+			"template": null,
+			"sibling": null,
+			"category": null,
+			"headline": null,
+			"byline": null,
+			"comments": null,
+			"status": null,
+			"rank": null,
+			"access": null,
+			"date": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\">Something went wrong</div><a href=\"admin/edit/articles/1\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+	]
+]

@@ -51,13 +51,7 @@ class InstallerTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$optionArray =
-		[
-			'adminName' => 'Test',
-			'adminUser' => 'test',
-			'adminPassword' => 'test',
-			'adminEmail' => 'test@test.com'
-		];
+		$optionArray = $this->getOptionArray();
 		$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
 		$installer->init();
 		$installer->insertData($optionArray);

@@ -30,32 +30,17 @@ class CommentTest extends TestCaseAbstract
 	public function setUp() : void
 	{
 		parent::setUp();
-		$optionArray =
-		[
-			'adminName' => 'Test',
-			'adminUser' => 'test',
-			'adminPassword' => 'test',
-			'adminEmail' => 'test@test.com'
-		];
+		$optionArray = $this->getOptionArray();
 		$installer = $this->installerFactory();
 		$installer->init();
 		$installer->rawCreate();
 		$installer->insertSettings($optionArray);
-		$categoryOne = Db::forTablePrefix('categories')->create();
-		$categoryOne
-			->set(
-			[
-				'title' => 'Category One',
-				'alias' => 'category-one'
-			])
-			->save();
 		Db::forTablePrefix('articles')
 			->create()
 			->set(
 			[
 				'title' => 'Article One',
-				'alias' => 'article-one',
-				'category' => $categoryOne->id
+				'alias' => 'article-one'
 
 			])
 			->save();

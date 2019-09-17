@@ -20,7 +20,7 @@ use Redaxscript\Validator;
 class EmailTest extends TestCaseAbstract
 {
 	/**
-	 * testEmail
+	 * testValidate
 	 *
 	 * @since 2.2.0
 	 *
@@ -30,7 +30,7 @@ class EmailTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testEmail(string $email = null, bool $expect = null) : void
+	public function testValidate(string $email = null, bool $expect = null) : void
 	{
 		/* setup */
 

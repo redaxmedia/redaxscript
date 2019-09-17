@@ -14,6 +14,7 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @author Henry Ruhs
  *
  * @covers Redaxscript\Router\Router
+ * @covers Redaxscript\Router\RouterAbstract
  */
 
 class RouterTest extends TestCaseAbstract
@@ -27,13 +28,7 @@ class RouterTest extends TestCaseAbstract
 	public function setUp() : void
 	{
 		parent::setUp();
-		$optionArray =
-		[
-			'adminName' => 'Test',
-			'adminUser' => 'test',
-			'adminPassword' => 'test',
-			'adminEmail' => 'test@test.com'
-		];
+		$optionArray = $this->getOptionArray();
 		$installer = $this->installerFactory();
 		$installer->init();
 		$installer->rawCreate();

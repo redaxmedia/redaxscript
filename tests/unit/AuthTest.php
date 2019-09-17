@@ -28,13 +28,7 @@ class AuthTest extends TestCaseAbstract
 	public function setUp() : void
 	{
 		parent::setUp();
-		$optionArray =
-		[
-			'adminName' => 'Test',
-			'adminUser' => 'test',
-			'adminPassword' => 'test',
-			'adminEmail' => 'test@test.com'
-		];
+		$optionArray = $this->getOptionArray();
 		$installer = $this->installerFactory();
 		$installer->init();
 		$installer->rawCreate();
@@ -165,7 +159,11 @@ class AuthTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		Db::forTablePrefix('users')->whereIdIs(1)->findOne()->set('groups', $groups)->save();
+		Db::forTablePrefix('users')
+			->whereIdIs(1)
+			->findOne()
+			->set('groups', $groups)
+			->save();
 		$auth = new Auth($this->_request);
 		$auth->login(1);
 
@@ -192,7 +190,11 @@ class AuthTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		Db::forTablePrefix('users')->whereIdIs(1)->findOne()->set('groups', $groups)->save();
+		Db::forTablePrefix('users')
+			->whereIdIs(1)
+			->findOne()
+			->set('groups', $groups)
+			->save();
 		$auth = new Auth($this->_request);
 		$auth->login(1);
 

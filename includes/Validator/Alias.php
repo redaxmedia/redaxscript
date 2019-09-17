@@ -2,8 +2,8 @@
 namespace Redaxscript\Validator;
 
 use function in_array;
-use function is_numeric;
 use function preg_match;
+use function strlen;
 
 /**
  * children class to validate general and default alias
@@ -18,6 +18,26 @@ use function preg_match;
 
 class Alias implements ValidatorInterface
 {
+	/**
+	 * pattern for login
+	 *
+	 * @var string
+	 */
+
+	protected $_pattern = '[a-z0-9-]';
+
+	/**
+	 * allowed range for alias
+	 *
+	 * @var array
+	 */
+
+	protected $_rangeArray =
+	[
+		'min' => 3,
+		'max' => 100
+	];
+
 	/**
 	 * array of system alias
 	 *
@@ -37,6 +57,19 @@ class Alias implements ValidatorInterface
 	];
 
 	/**
+	 * get the form pattern
+	 *
+	 * @since 4.1.0
+	 *
+	 * @return string
+	 */
+
+	public function getFormPattern() : string
+	{
+		return $this->_pattern . '{' . $this->_rangeArray['min'] . ',' . $this->_rangeArray['max']  . '}';
+	}
+
+	/**
 	 * validate the alias
 	 *
 	 * @since 4.0.0
@@ -51,11 +84,12 @@ class Alias implements ValidatorInterface
 	{
 		if ($mode === 'general')
 		{
-			return is_numeric($alias) || preg_match('/[^a-z0-9-]/i', $alias);
+			$length = strlen($alias);
+			return preg_match('/' . $this->_pattern . '/i', $alias) && $length >= $this->_rangeArray['min'] && $length <= $this->_rangeArray['max'];
 		}
 		if ($mode === 'system')
 		{
-			return in_array($alias, $this->_systemArray);
+			return !in_array($alias, $this->_systemArray);
 		}
 		return false;
 	}

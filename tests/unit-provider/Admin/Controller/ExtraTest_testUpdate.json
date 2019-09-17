@@ -1,0 +1,122 @@
+[
+	[
+		{
+			"extrasNew": false,
+			"extrasEdit": false,
+			"filter": false
+		},
+		{
+			"id": null,
+			"title": null,
+			"alias": null,
+			"author": null,
+			"text": null,
+			"language": null,
+			"sibling": null,
+			"category": null,
+			"article": null,
+			"headline": null,
+			"status": null,
+			"rank": null,
+			"access": null,
+			"date": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Title is empty</li><li>Alias is empty</li><li>Extra is empty</li></ul></div><a href=\"admin\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+	],
+	[
+		{
+			"extrasNew": true,
+			"extrasEdit": true,
+			"filter": false
+		},
+		{
+			"id": null,
+			"title": null,
+			"alias": null,
+			"author": null,
+			"text": null,
+			"language": null,
+			"sibling": null,
+			"category": null,
+			"article": null,
+			"headline": null,
+			"status": null,
+			"rank": null,
+			"access": null,
+			"date": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Title is empty</li><li>Alias is empty</li><li>Extra is empty</li></ul></div><a href=\"admin/new/extras\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+	],
+	[
+		{
+			"extrasNew": true,
+			"extrasEdit": true,
+			"filter": false
+		},
+		{
+			"id": 1,
+			"title": null,
+			"alias": null,
+			"author": null,
+			"text": null,
+			"language": null,
+			"sibling": null,
+			"category": null,
+			"article": null,
+			"headline": null,
+			"status": null,
+			"rank": null,
+			"access": null,
+			"date": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Title is empty</li><li>Alias is empty</li><li>Extra is empty</li></ul></div><a href=\"admin/edit/extras/1\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+	],
+	[
+		{
+			"extrasNew": false,
+			"extrasEdit": false,
+			"filter": false
+		},
+		{
+			"id": 1,
+			"title": "Extra One",
+			"alias": "extra-one",
+			"author": null,
+			"text": "Text",
+			"language": null,
+			"sibling": null,
+			"category": null,
+			"article": null,
+			"headline": null,
+			"status": null,
+			"rank": null,
+			"access": null,
+			"date": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-success\">Success</h2><div class=\"rs-admin-box-note rs-admin-is-success\">Operation completed successfully</div><a href=\"admin\" class=\"rs-admin-button-note rs-admin-is-success\">Continue</a><meta content=\"2;url=/admin\" http-equiv=\"refresh\" />"
+	],
+	[
+		{
+			"extrasNew": true,
+			"extrasEdit": true,
+			"filter": false
+		},
+		{
+			"id": 1,
+			"title": "Extra One",
+			"alias": "extra-one",
+			"author": null,
+			"text": "Text",
+			"language": null,
+			"sibling": null,
+			"category": null,
+			"article": null,
+			"headline": null,
+			"status": null,
+			"rank": null,
+			"access": null,
+			"date": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-success\">Success</h2><div class=\"rs-admin-box-note rs-admin-is-success\">Operation completed successfully</div><a href=\"admin/view/extras#row-1\" class=\"rs-admin-button-note rs-admin-is-success\">Continue</a><meta content=\"2;url=/admin/view/extras#row-1\" http-equiv=\"refresh\" />"
+	]
+]

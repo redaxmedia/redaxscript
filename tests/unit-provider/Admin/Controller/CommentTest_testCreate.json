@@ -1,0 +1,44 @@
+[
+	[
+		{
+			"commentsNew": true,
+			"commentsEdit": true,
+			"filter": true
+		},
+		{
+			"id": null,
+			"author": null,
+			"email": null,
+			"url": null,
+			"text": null,
+			"language": null,
+			"article": null,
+			"status": null,
+			"rank": null,
+			"access": null,
+			"date": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Comment is empty</li><li>Article is empty</li></ul></div><a href=\"admin/new/comments\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+	],
+	[
+		{
+			"commentsNew": true,
+			"commentsEdit": true,
+			"filter": true
+		},
+		{
+			"id": null,
+			"author": "Comment Two",
+			"email": null,
+			"url": null,
+			"text": "comment-two",
+			"language": null,
+			"article": 1,
+			"status": null,
+			"rank": null,
+			"access": null,
+			"date": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-success\">Success</h2><div class=\"rs-admin-box-note rs-admin-is-success\">Operation completed successfully</div><a href=\"admin/view/comments\" class=\"rs-admin-button-note rs-admin-is-success\">Continue</a><meta content=\"2;url=/admin/view/comments\" http-equiv=\"refresh\" />"
+	]
+]

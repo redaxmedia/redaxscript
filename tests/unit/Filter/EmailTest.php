@@ -19,7 +19,7 @@ use Redaxscript\Tests\TestCaseAbstract;
 class EmailTest extends TestCaseAbstract
 {
 	/**
-	 * testEmail
+	 * testSanitize
 	 *
 	 * @since 2.2.0
 	 *
@@ -29,7 +29,7 @@ class EmailTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testEmail(string $email = null, string $expect = null) : void
+	public function testSanitize(string $email = null, string $expect = null) : void
 	{
 		/* setup */
 

@@ -1,0 +1,35 @@
+[
+	[
+		{
+			"settingsEdit": true
+		},
+		{
+			"language": null,
+			"template": null,
+			"title": null,
+			"author": null,
+			"copyright": null,
+			"description": null,
+			"keywords": null,
+			"robots": null,
+			"email": null,
+			"subject": null,
+			"notification": null,
+			"charset": "utf-8",
+			"divider": null,
+			"zone": null,
+			"time": null,
+			"date": null,
+			"homepage": null,
+			"limit": 10,
+			"order": null,
+			"pagination": null,
+			"moderation": null,
+			"registration": null,
+			"verification": null,
+			"recovery": null,
+			"captcha": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\">Something went wrong</div><a href=\"admin/edit/settings\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+	]
+]

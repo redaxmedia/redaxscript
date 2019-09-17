@@ -19,7 +19,7 @@ use Redaxscript\Tests\TestCaseAbstract;
 class AliasTest extends TestCaseAbstract
 {
 	/**
-	 * testAlias
+	 * testSanitize
 	 *
 	 * @since 2.2.0
 	 *
@@ -29,7 +29,7 @@ class AliasTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testAlias(string $alias = null, string $expect = null) : void
+	public function testSanitize(string $alias = null, string $expect = null) : void
 	{
 		/* setup */
 

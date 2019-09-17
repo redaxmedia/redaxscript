@@ -19,7 +19,7 @@ use Redaxscript\Tests\TestCaseAbstract;
 class UrlTest extends TestCaseAbstract
 {
 	/**
-	 * testUrl
+	 * testSanitize
 	 *
 	 * @since 2.2.0
 	 *
@@ -29,7 +29,7 @@ class UrlTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testUrl(string $url = null, string $expect = null) : void
+	public function testSanitize(string $url = null, string $expect = null) : void
 	{
 		/* setup */
 

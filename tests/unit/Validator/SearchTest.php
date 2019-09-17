@@ -19,7 +19,28 @@ use Redaxscript\Validator;
 class SearchTest extends TestCaseAbstract
 {
 	/**
-	 * testSearch
+	 * testGetFormPattern
+	 *
+	 * @since 4.1.0
+	 */
+
+	public function testGetFormPattern() : void
+	{
+		/* setup */
+
+		$validator = new Validator\Search();
+
+		/* actual */
+
+		$actual = $validator->getFormPattern();
+
+		/* compare */
+
+		$this->assertEquals('[a-zA-Z0-9-]{3,100}', $actual);
+	}
+
+	/**
+	 * testValidate
 	 *
 	 * @since 4.0.0
 	 *
@@ -29,7 +50,7 @@ class SearchTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testSearch(string $search = null, bool $expect = null) : void
+	public function testValidate(string $search = null, bool $expect = null) : void
 	{
 		/* setup */
 

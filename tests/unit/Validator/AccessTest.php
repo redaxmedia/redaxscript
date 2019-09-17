@@ -20,7 +20,7 @@ use Redaxscript\Validator;
 class AccessTest extends TestCaseAbstract
 {
 	/**
-	 * testAccess
+	 * testValidate
 	 *
 	 * @since 2.2.0
 	 *
@@ -31,7 +31,7 @@ class AccessTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testAccess(string $access = null, string $groups = null, bool $expect = null) : void
+	public function testValidate(string $access = null, string $groups = null, bool $expect = null) : void
 	{
 		/* setup */
 

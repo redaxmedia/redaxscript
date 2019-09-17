@@ -16,6 +16,14 @@ use function preg_replace;
 class Search implements FilterInterface
 {
 	/**
+	 * pattern for search
+	 *
+	 * @var string
+	 */
+
+	protected $_pattern = '[^a-zA-Z0-9-]';
+
+	/**
 	 * sanitize the search
 	 *
 	 * @since 3.0.0
@@ -27,6 +35,6 @@ class Search implements FilterInterface
 
 	public function sanitize(string $search = null) : string
 	{
-		return preg_replace('/[^a-zA-Z0-9-]/i', null, $search);
+		return preg_replace('/' . $this->_pattern . '/i', null, $search);
 	}
 }

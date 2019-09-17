@@ -1,0 +1,142 @@
+[
+	[
+		{
+			"articlesNew": true,
+			"articlesEdit": true,
+			"filter": false
+		},
+		{
+			"id": null,
+			"title": null,
+			"alias": null,
+			"description": null,
+			"keywords": null,
+			"robots": null,
+			"text": null,
+			"language": null,
+			"template": null,
+			"sibling": null,
+			"category": null,
+			"headline": null,
+			"byline": null,
+			"comments": null,
+			"status": null,
+			"rank": null,
+			"access": null,
+			"date": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Title is empty</li><li>Alias is empty</li><li>Article is empty</li></ul></div><a href=\"admin/new/articles\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+	],
+	[
+		{
+			"articlesNew": true,
+			"articlesEdit": true,
+			"filter": false
+		},
+		{
+			"id": null,
+			"title": null,
+			"alias": "12",
+			"description": null,
+			"keywords": null,
+			"robots": null,
+			"text": null,
+			"language": null,
+			"template": null,
+			"sibling": null,
+			"category": null,
+			"headline": null,
+			"byline": null,
+			"comments": null,
+			"status": null,
+			"rank": null,
+			"access": null,
+			"date": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Title is empty</li><li>Alias is incorrect</li><li>Article is empty</li></ul></div><a href=\"admin/new/articles\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+	],
+	[
+		{
+			"articlesNew": true,
+			"articlesEdit": true,
+			"filter": false
+		},
+		{
+			"id": null,
+			"title": null,
+			"alias": "admin",
+			"description": null,
+			"keywords": null,
+			"robots": null,
+			"text": null,
+			"language": null,
+			"template": null,
+			"sibling": null,
+			"category": null,
+			"headline": null,
+			"byline": null,
+			"comments": null,
+			"status": null,
+			"rank": null,
+			"access": null,
+			"date": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Title is empty</li><li>Alias is incorrect</li><li>Article is empty</li></ul></div><a href=\"admin/new/articles\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+	],
+	[
+		{
+			"articlesNew": true,
+			"articlesEdit": true,
+			"filter": false
+		},
+		{
+			"id": null,
+			"title": null,
+			"alias": "article-one",
+			"description": null,
+			"keywords": null,
+			"robots": null,
+			"text": null,
+			"language": null,
+			"template": null,
+			"sibling": null,
+			"category": null,
+			"headline": null,
+			"byline": null,
+			"comments": null,
+			"status": null,
+			"rank": null,
+			"access": null,
+			"date": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Title is empty</li><li>Alias already exists</li><li>Article is empty</li></ul></div><a href=\"admin/new/articles\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+	],
+	[
+		{
+			"articlesNew": true,
+			"articlesEdit": true,
+			"filter": false
+		},
+		{
+			"id": null,
+			"title": "Article Two",
+			"alias": "article-two",
+			"description": null,
+			"keywords": null,
+			"robots": null,
+			"text": "Text",
+			"language": null,
+			"template": null,
+			"sibling": null,
+			"category": null,
+			"headline": null,
+			"byline": null,
+			"comments": null,
+			"status": null,
+			"rank": null,
+			"access": null,
+			"date": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-success\">Success</h2><div class=\"rs-admin-box-note rs-admin-is-success\">Operation completed successfully</div><a href=\"admin/view/articles#row-2\" class=\"rs-admin-button-note rs-admin-is-success\">Continue</a><meta content=\"2;url=/admin/view/articles#row-2\" http-equiv=\"refresh\" />"
+	]
+]

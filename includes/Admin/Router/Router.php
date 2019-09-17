@@ -67,6 +67,13 @@ class Router extends RouterAbstract
 
 		if ($firstParameter === 'admin')
 		{
+			/* handle break */
+
+			if ($this->_registry->get('adminRouterBreak'))
+			{
+				return '<!-- adminRouterBreak -->';
+			}
+
 			/* handle guard */
 
 			if ($adminParameter)
@@ -138,10 +145,6 @@ class Router extends RouterAbstract
 				return $this->_renderEdit();
 			}
 			return $this->_processCommon();
-		}
-		if ($this->_registry->get('adminRouterBreak'))
-		{
-			return '<!-- adminRouterBreak -->';
 		}
 		return null;
 	}

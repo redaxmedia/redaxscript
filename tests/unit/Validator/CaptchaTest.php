@@ -28,13 +28,7 @@ class CaptchaTest extends TestCaseAbstract
 	public function setUp() : void
 	{
 		parent::setUp();
-		$optionArray =
-		[
-			'adminName' => 'Test',
-			'adminUser' => 'test',
-			'adminPassword' => 'test',
-			'adminEmail' => 'test@test.com'
-		];
+		$optionArray = $this->getOptionArray();
 		$installer = $this->installerFactory();
 		$installer->init();
 		$installer->rawCreate();
@@ -53,7 +47,7 @@ class CaptchaTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testCaptcha
+	 * testValidate
 	 *
 	 * @since 2.6.0
 	 *
@@ -64,7 +58,7 @@ class CaptchaTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testCaptcha(int $task = null, string $hash = null, bool $expect = null) : void
+	public function testValidate(int $task = null, string $hash = null, bool $expect = null) : void
 	{
 		/* setup */
 

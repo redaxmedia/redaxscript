@@ -1,0 +1,25 @@
+[
+	[
+		{
+			"groupsNew": true,
+			"groupsEdit": true
+		},
+		{
+			"id": 1,
+			"name": "Group One",
+			"alias": "group-one",
+			"description": null,
+			"categories": null,
+			"articles": null,
+			"extras": null,
+			"comments": null,
+			"groups": null,
+			"users": null,
+			"modules": null,
+			"settings": null,
+			"filter": null,
+			"status": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\">Something went wrong</div><a href=\"admin/edit/groups/1\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+	]
+]

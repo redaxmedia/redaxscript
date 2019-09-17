@@ -5,6 +5,7 @@ use Redaxscript\Admin;
 use Redaxscript\Dater;
 use Redaxscript\Html;
 use Redaxscript\Module;
+use Redaxscript\Validator;
 use function count;
 use function htmlspecialchars;
 use function json_decode;
@@ -37,6 +38,7 @@ class ArticleForm extends ViewAbstract
 		$helperOption = new Helper\Option($this->_language);
 		$articleModel = new Admin\Model\Article();
 		$article = $articleModel->getById($articleId);
+		$aliasValidator = new Validator\Alias();
 		$dater = new Dater();
 		$dater->init($article->date);
 
@@ -122,7 +124,7 @@ class ArticleForm extends ViewAbstract
 				'class' => 'rs-admin-js-alias-output rs-admin-field-default rs-admin-field-text',
 				'id' => 'alias',
 				'name' => 'alias',
-				'pattern' => '[a-zA-Z0-9-]+',
+				'pattern' => $aliasValidator->getFormPattern(),
 				'required' => 'required',
 				'value' => $article->alias
 			])

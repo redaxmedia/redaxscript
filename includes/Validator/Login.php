@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Validator;
 
-use function ctype_alnum;
+use function preg_match;
 use function strlen;
 
 /**
@@ -18,6 +18,14 @@ use function strlen;
 class Login implements ValidatorInterface
 {
 	/**
+	 * pattern for login
+	 *
+	 * @var string
+	 */
+
+	protected $_pattern = '[a-zA-Z0-9-]';
+
+	/**
 	 * allowed range for login
 	 *
 	 * @var array
@@ -25,9 +33,22 @@ class Login implements ValidatorInterface
 
 	protected $_rangeArray =
 	[
-		'min' => 1,
-		'max' => 30
+		'min' => 3,
+		'max' => 50
 	];
+
+	/**
+	 * get the form pattern
+	 *
+	 * @since 4.1.0
+	 *
+	 * @return string
+	 */
+
+	public function getFormPattern() : string
+	{
+		return $this->_pattern . '{' . $this->_rangeArray['min'] . ',' . $this->_rangeArray['max']  . '}';
+	}
 
 	/**
 	 * validate the login
@@ -42,6 +63,6 @@ class Login implements ValidatorInterface
 	public function validate(string $login = null) : bool
 	{
 		$length = strlen($login);
-		return ctype_alnum($login) && $length >= $this->_rangeArray['min'] && $length <= $this->_rangeArray['max'];
+		return preg_match('/' . $this->_pattern . '/i', $login) && $length >= $this->_rangeArray['min'] && $length <= $this->_rangeArray['max'];
 	}
 }

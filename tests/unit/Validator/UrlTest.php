@@ -20,7 +20,7 @@ use Redaxscript\Validator;
 class UrlTest extends TestCaseAbstract
 {
 	/**
-	 * testUrl
+	 * testValidate
 	 *
 	 * @since 2.2.0
 	 *
@@ -30,7 +30,7 @@ class UrlTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testUrl(string $url = null, bool $expect = null) : void
+	public function testValidate(string $url = null, bool $expect = null) : void
 	{
 		/* setup */
 

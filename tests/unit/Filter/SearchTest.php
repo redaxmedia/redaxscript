@@ -19,7 +19,7 @@ use Redaxscript\Tests\TestCaseAbstract;
 class SearchTest extends TestCaseAbstract
 {
 	/**
-	 * testSearch
+	 * testSanitize
 	 *
 	 * @since 3.1.0
 	 *
@@ -29,7 +29,7 @@ class SearchTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testSearch(string $search = null, string $expect = null) : void
+	public function testSanitize(string $search = null, string $expect = null) : void
 	{
 		/* setup */
 

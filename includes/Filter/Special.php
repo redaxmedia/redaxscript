@@ -16,6 +16,14 @@ use function preg_replace;
 class Special implements FilterInterface
 {
 	/**
+	 * pattern for special
+	 *
+	 * @var string
+	 */
+
+	protected $_pattern = '[^a-zA-Z0-9]';
+
+	/**
 	 * sanitize the special
 	 *
 	 * @since 3.0.0
@@ -27,6 +35,6 @@ class Special implements FilterInterface
 
 	public function sanitize(string $special = null) : string
 	{
-		return preg_replace('/[^a-zA-Z0-9]/i', null, $special);
+		return preg_replace('/' . $this->_pattern . '/i', null, $special);
 	}
 }

@@ -34,13 +34,7 @@ class DbTest extends TestCaseAbstract
 	public function setUp() : void
 	{
 		parent::setUp();
-		$optionArray =
-		[
-			'adminName' => 'Test',
-			'adminUser' => 'test',
-			'adminPassword' => 'test',
-			'adminEmail' => 'test@test.com'
-		];
+		$optionArray = $this->getOptionArray();
 		$this->_configArray = $this->_config->getArray();
 		$installer = $this->installerFactory();
 		$installer->init();
