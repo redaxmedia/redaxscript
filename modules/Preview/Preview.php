@@ -111,8 +111,8 @@ class Preview extends Module\Module
 	public function render() : string
 	{
 		$output = null;
-		$partialsFilesystem = new Filesystem\File();
-		$partialsFilesystem->init('modules/Preview/partials');
+		$templatesFilesystem = new Filesystem\File();
+		$templatesFilesystem->init('modules/Preview/templates');
 		$thirdParameter = $this->_registry->get('thirdParameter');
 		$extension = '.phtml';
 
@@ -120,14 +120,14 @@ class Preview extends Module\Module
 
 		if ($thirdParameter)
 		{
-			$output = $this->_renderPartial($thirdParameter, $partialsFilesystem->renderFile($thirdParameter . $extension));
+			$output = $this->_renderPartial($thirdParameter, $templatesFilesystem->renderFile($thirdParameter . $extension));
 		}
 		else
 		{
-			foreach ($partialsFilesystem->getSortArray() as $value)
+			foreach ($templatesFilesystem->getSortArray() as $value)
 			{
 				$alias = str_replace($extension, '', $value);
-				$output .= $this->_renderPartial($alias, $partialsFilesystem->renderFile($value));
+				$output .= $this->_renderPartial($alias, $templatesFilesystem->renderFile($value));
 			}
 		}
 		return $output;

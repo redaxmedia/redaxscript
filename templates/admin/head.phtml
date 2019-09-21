@@ -2,10 +2,19 @@
 
 <?php if (Helper::getRegistry('loggedIn') === Helper::getRegistry('token') && Helper::getRegistry('firstParameter') !== 'logout'): ?>
 
+	<!-- meta -->
+
+	<?php Tag::meta()
+		->init()
+		->append(['name' => 'theme-color', 'content' => '#1b1b1b'])
+		->append(['name' => 'msapplication-navbutton-color', 'content' => '#1b1b1b'])
+		->append(['name' => 'apple-mobile-web-app-status-bar-stylecontent', 'content' => '#1b1b1b']); ?>
+
 	<!-- link -->
 
 	<?php Tag::link()
 		->init()
+		->append(['href' => 'https://fonts.gstatic.com', 'rel' => 'preconnect'])
 		->appendFile(
 		[
 			'https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700',
