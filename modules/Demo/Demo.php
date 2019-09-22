@@ -18,7 +18,7 @@ use function is_dir;
  * @author Henry Ruhs
  */
 
-class Demo extends Module\Notification
+class Demo extends Module\Metadata
 {
 	/**
 	 * array of the module
@@ -100,10 +100,10 @@ class Demo extends Module\Notification
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array|null
+	 * @return array
 	 */
 
-	public function adminNotification() : ?array
+	public function adminNotification() : array
 	{
 		$auth = new Auth($this->_request);
 		$auth->init();
@@ -114,7 +114,7 @@ class Demo extends Module\Notification
 		{
 			$this->setNotification('success', $this->_language->get('logged_in') . $this->_language->get('point'));
 		}
-		return $this->getNotification();
+		return $this->getNotificationArray();
 	}
 
 	/**

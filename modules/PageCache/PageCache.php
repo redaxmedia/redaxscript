@@ -18,7 +18,7 @@ use function preg_replace;
  * @author Henry Ruhs
  */
 
-class PageCache extends Module\Notification
+class PageCache extends Module\Metadata
 {
 	/**
 	 * array of the module
@@ -59,10 +59,10 @@ class PageCache extends Module\Notification
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array|null
+	 * @return array
 	 */
 
-	public function adminNotification() : ?array
+	public function adminNotification() : array
 	{
 		if (!mkdir($pagesDirectory = $this->_optionArray['directory']['pages']) && !is_dir($pagesDirectory))
 		{
@@ -72,7 +72,7 @@ class PageCache extends Module\Notification
 		{
 			$this->setNotification('error', $this->_language->get('directory_permission_grant') . $this->_language->get('colon') . ' ' . $this->_optionArray['directory']['pages'] . $this->_language->get('point'));
 		}
-		return $this->getNotification();
+		return $this->getNotificationArray();
 	}
 
 	/**

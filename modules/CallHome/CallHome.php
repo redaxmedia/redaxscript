@@ -16,7 +16,7 @@ use Redaxscript\Reader;
  * @author Henry Ruhs
  */
 
-class CallHome extends Module\Notification
+class CallHome extends Module\Metadata
 {
 	/**
 	 * array of the module
@@ -60,10 +60,10 @@ class CallHome extends Module\Notification
 	 *
 	 * @since 3.0.1
 	 *
-	 * @return array|null
+	 * @return array
 	 */
 
-	public function adminNotification() : ?array
+	public function adminNotification() : array
 	{
 		$reader = new Reader();
 		$reader->init();
@@ -96,6 +96,6 @@ class CallHome extends Module\Notification
 				$this->setNotification($type, $message);
 			}
 		}
-		return $this->getNotification();
+		return $this->getNotificationArray();
 	}
 }

@@ -19,6 +19,22 @@ use Redaxscript\Template\Tag as BaseTag;
 class Tag extends BaseTag
 {
 	/**
+	 * dashboard
+	 *
+	 * @since 4.1.0
+	 *
+	 * @param array $optionArray options of the dashboard
+	 *
+	 * @return string
+	 */
+
+	public static function dashboard(array $optionArray = []) : string
+	{
+		$dashboard = new Admin\View\Helper\Dashboard(Registry::getInstance(), Language::getInstance());
+		return $dashboard->init($optionArray)->render();
+	}
+
+	/**
 	 * panel
 	 *
 	 * @since 4.0.0

@@ -17,7 +17,7 @@ use function str_replace;
  * @author Henry Ruhs
  */
 
-class Preview extends Module\Module
+class Preview extends Module\Metadata
 {
 	/**
 	 * array of the module
@@ -68,6 +68,20 @@ class Preview extends Module\Module
 					'modules/Preview/dist/styles/preview.min.css'
 				]);
 		}
+	}
+
+	/**
+	 * adminDashboard
+	 *
+	 * @since 4.1.0
+	 *
+	 * @return array
+	 */
+
+	public function adminDashboard() : array
+	{
+		$this->setDashboard($this->_renderDashboard());
+		return $this->getDashboardArray();
 	}
 
 	/**
@@ -179,5 +193,31 @@ class Preview extends Module\Module
 
 		$output = $titleElement . $boxElement;
 		return $output;
+	}
+
+	/**
+	 * renderDashboard
+	 *
+	 * @since 4.1.0
+	 *
+	 * @return string
+	 */
+
+	protected function _renderDashboard() : string
+	{
+		$parameterRoute = $this->_registry->get('parameterRoute');
+
+		/* html element */
+
+		$element = new Html\Element();
+		$linkElement = $element
+			->copy()
+			->init('a',
+			[
+				'href' => $parameterRoute . 'module/preview/'
+			])
+			->text($this->_language->get('_preview')['preview']);
+
+		return $linkElement;
 	}
 }

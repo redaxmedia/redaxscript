@@ -16,7 +16,7 @@ use Redaxscript\Reader;
  * @author Henry Ruhs
  */
 
-class FeedReader extends Module\Notification
+class FeedReader extends Module\Metadata
 {
 	/**
 	 * array of the module
@@ -53,12 +53,12 @@ class FeedReader extends Module\Notification
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array|null
+	 * @return array
 	 */
 
-	public function adminNotification() : ?array
+	public function adminNotification() : array
 	{
-		return $this->getNotification();
+		return $this->getNotificationArray();
 	}
 
 	/**

@@ -1,0 +1,75 @@
+/**
+ * @tableofcontents
+ *
+ * 1. dashboard
+ *    1.1 list
+ *    1.2 item
+ * 2. query
+ *    2.1 medium min
+ */
+
+/** @section 1. dashboard */
+
+/** @section 1.1 list */
+
+.rs-admin-list-dashboard
+{
+	background: gray(20);
+	display: grid;
+	font: 1.25rem var(--rs-admin-font-primary);
+	grid-auto-flow: dense;
+	grid-gap: 1em;
+	padding: 1em;
+}
+
+/** @section 1.2 item */
+
+.rs-admin-item-dashboard
+{
+	align-items: center;
+	background: gray(10);
+	color: gray(70);
+	display: flex;
+	font-size: 1.25em;
+	font-weight: bold;
+	justify-content: center;
+	padding: 1em;
+	position: relative;
+
+	&:empty:after
+	{
+		@extend %rs-admin-icon-cube-outline;
+		font-size: 3em;
+		left: 50%;
+		position: absolute;
+		top: 50%;
+		transform: translateX(-50%) translateY(-50%);
+	}
+}
+
+/** @section 2. query */
+
+/** @section 2.1 medium min */
+
+@media (--media-medium-min)
+{
+	.rs-admin-list-dashboard
+	{
+		grid-template-columns: repeat(auto-fill, minmax(20em, 1fr));
+	}
+
+	.rs-admin-item-dashboard
+	{
+		height: 5em;
+
+		&[data-column="2"]
+		{
+			grid-column: span 2;
+		}
+
+		&[data-column="3"]
+		{
+			grid-column: span 3;
+		}
+	}
+}

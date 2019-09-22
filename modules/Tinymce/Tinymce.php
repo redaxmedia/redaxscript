@@ -25,7 +25,7 @@ use function pathinfo;
  * @author Henry Ruhs
  */
 
-class Tinymce extends Module\Notification
+class Tinymce extends Module\Metadata
 {
 	/**
 	 * array of the module
@@ -95,10 +95,10 @@ class Tinymce extends Module\Notification
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array|null
+	 * @return array
 	 */
 
-	public function adminNotification() : ?array
+	public function adminNotification() : array
 	{
 		if (!mkdir($uploadDirectory = $this->_optionArray['uploadDirectory']) && !is_dir($uploadDirectory))
 		{
@@ -108,7 +108,7 @@ class Tinymce extends Module\Notification
 		{
 			$this->setNotification('error', $this->_language->get('directory_permission_grant') . $this->_language->get('colon') . ' ' . $this->_optionArray['uploadDirectory'] . $this->_language->get('point'));
 		}
-		return $this->getNotification();
+		return $this->getNotificationArray();
 	}
 
 	/**

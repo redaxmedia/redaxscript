@@ -3,6 +3,7 @@ namespace Redaxscript\Modules\CssValidator;
 
 use Redaxscript\Module;
 use Redaxscript\Reader;
+use function array_key_exists;
 use function http_build_query;
 
 /**
@@ -15,7 +16,7 @@ use function http_build_query;
  * @author Henry Ruhs
  */
 
-class CssValidator extends Module\Notification
+class CssValidator extends Module\Metadata
 {
 	/**
 	 * array of the module
@@ -50,10 +51,10 @@ class CssValidator extends Module\Notification
 	 *
 	 * @since 4.0.0
 	 *
-	 * @return array|null
+	 * @return array
 	 */
 
-	public function adminNotification() : ?array
+	public function adminNotification() : array
 	{
 		if ($this->_registry->get('firstParameter') !== 'admin')
 		{
@@ -97,11 +98,11 @@ class CssValidator extends Module\Notification
 			{
 				$this->setNotification('warning', $this->_language->get('_validator')['service_no'] . $this->_language->get('point'));
 			}
-			else if (!$this->getNotification('error'))
+			else if (!array_key_exists('error', $this->getNotificationArray()))
 			{
 				$this->setNotification('success', $this->_language->get('_validator')['document_validate'] . $this->_language->get('point'));
 			}
 		}
-		return $this->getNotification();
+		return $this->getNotificationArray();
 	}
 }

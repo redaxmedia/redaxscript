@@ -1,0 +1,5 @@
+<?php namespace Redaxscript\Admin\Template; ?>
+
+<?php if (Helper::getRegistry('loggedIn') === Helper::getRegistry('token') && Helper::getRegistry('firstParameter') === 'admin' && !Helper::getRegistry('secondParameter')): ?>
+	<?php echo Tag::dashboard(); ?>
+<?php endif; ?>

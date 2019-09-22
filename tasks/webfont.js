@@ -16,6 +16,7 @@ module.exports = grunt =>
 				'node_modules/@mdi/svg/svg/chevron-down.svg',
 				'node_modules/@mdi/svg/svg/chevron-right.svg',
 				'node_modules/@mdi/svg/svg/close-circle-outline.svg',
+				'node_modules/@mdi/svg/svg/cube-outline.svg',
 				'node_modules/@mdi/svg/svg/delete.svg',
 				'node_modules/@mdi/svg/svg/eye-off.svg',
 				'node_modules/@mdi/svg/svg/help-circle-outline.svg',

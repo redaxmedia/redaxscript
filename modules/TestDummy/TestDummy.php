@@ -13,7 +13,7 @@ use Redaxscript\Module;
  * @author Henry Ruhs
  */
 
-class TestDummy extends Module\Notification
+class TestDummy extends Module\Metadata
 {
 	/**
 	 * array of the module
@@ -27,39 +27,46 @@ class TestDummy extends Module\Notification
 		'alias' => 'TestDummy',
 		'author' => 'Redaxmedia',
 		'description' => 'Test Dummy',
-		'version' => '4.0.0'
+		'version' => '4.1.0'
 	];
+
+	/**
+	 * adminDashboard
+	 *
+	 * @since 4.1.0
+	 *
+	 * @return array
+	 */
+
+	public function adminDashboard() : array
+	{
+		$this->setDashboard('Test Dummy', 2);
+		return $this->getDashboardArray();
+	}
 
 	/**
 	 * adminNotification
 	 *
-	 * @since 3.1.0
+	 * @since 4.1.0
 	 *
-	 * @return array|null
+	 * @return array
 	 */
 
-	public function adminNotification() : ?array
+	public function adminNotification() : array
 	{
-		$notificationArray =
+		$this->setNotification('success',
 		[
-			'success' =>
+			'text' => 'Success',
+			'attr' =>
 			[
-				'text' => 'Success',
-				'attr' =>
-				[
-					'href' => 'http://localhost',
-					'target' => '_blank'
-				]
-			],
-			'warning' => 'Warning',
-			'error' => 'Error',
-			'info' => 'Info'
-		];
-		foreach ($notificationArray as $key => $message)
-		{
-			$this->setNotification($key, $message);
-		}
-		return $this->getNotification();
+				'href' => 'http://localhost',
+				'target' => '_blank'
+			]
+		]);
+		$this->setNotification('warning', 'Warning');
+		$this->setNotification('error', 'Error');
+		$this->setNotification('info', 'Info');
+		return $this->getNotificationArray();
 	}
 
 	/**

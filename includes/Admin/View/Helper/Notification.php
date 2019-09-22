@@ -93,6 +93,19 @@ class Notification implements Admin\View\ViewInterface
 	}
 
 	/**
+	 * get the notification array
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return array
+	 */
+
+	public function getNotificationArray() : array
+	{
+		return $this->_notificationArray;
+	}
+
+	/**
 	 * render the view
 	 *
 	 * @since 4.0.0
@@ -154,9 +167,9 @@ class Notification implements Admin\View\ViewInterface
 							$titleElement->text($notificationKey)
 						)
 						->append(
-							is_array($value) &&
-							array_key_exists('text', $value) &&
-							array_key_exists('attr', $value) ? $linkElement->attr($value['attr'])->text($value['text']) : $textElement->text($value)
+							is_array($value) && array_key_exists('text', $value) && array_key_exists('attr', $value) ?
+								$linkElement->attr($value['attr'])->text($value['text']) :
+								$textElement->text($value)
 						);
 				}
 			}
@@ -166,30 +179,5 @@ class Notification implements Admin\View\ViewInterface
 			$output .= $listElement->html($outputItem);
 		}
 		return $output;
-	}
-
-	/**
-	 * get the meta array
-	 *
-	 * @since 4.0.0
-	 *
-	 * @return array
-	 */
-
-	public function getMetaArray() : array
-	{
-		$metaArray = [];
-
-		/* process notification */
-
-		foreach ($this->_notificationArray as $typeKey => $typeValue)
-		{
-			foreach ($typeValue as $notificationKey => $notificationValue)
-			{
-				$metaArray[$typeKey]++;
-				$metaArray['total']++;
-			}
-		}
-		return $metaArray;
 	}
 }

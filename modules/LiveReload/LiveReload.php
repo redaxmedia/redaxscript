@@ -15,7 +15,7 @@ use Redaxscript\Reader;
  * @author Henry Ruhs
  */
 
-class LiveReload extends Module\Notification
+class LiveReload extends Module\Metadata
 {
 	/**
 	 * array of the module
@@ -65,10 +65,10 @@ class LiveReload extends Module\Notification
 	 *
 	 * @since 3.3.0
 	 *
-	 * @return array|null
+	 * @return array
 	 */
 
-	public function adminNotification() : ?array
+	public function adminNotification() : array
 	{
 		$reader = new Reader();
 		$reader->init();
@@ -84,6 +84,6 @@ class LiveReload extends Module\Notification
 		{
 			$this->setNotification('error', $this->_language->get('_live_reload')['server_offline'] . $this->_language->get('colon') . ' ' . $this->_optionArray['url']);
 		}
-		return $this->getNotification();
+		return $this->getNotificationArray();
 	}
 }

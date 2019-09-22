@@ -33,7 +33,7 @@ use function strtolower;
  * @author Henry Ruhs
  */
 
-class Gallery extends Module\Notification
+class Gallery extends Module\Metadata
 {
 	/**
 	 * array of the module
@@ -78,12 +78,12 @@ class Gallery extends Module\Notification
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array|null
+	 * @return array
 	 */
 
-	public function adminNotification() : ?array
+	public function adminNotification() : array
 	{
-		return $this->getNotification();
+		return $this->getNotificationArray();
 	}
 
 	/**

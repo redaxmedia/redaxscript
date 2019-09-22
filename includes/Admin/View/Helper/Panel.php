@@ -7,6 +7,7 @@ use Redaxscript\Module;
 use Redaxscript\Validator;
 use function array_key_exists;
 use function array_replace_recursive;
+use function count;
 
 /**
  * helper class to create the admin panel
@@ -138,7 +139,10 @@ class Panel extends Admin\View\ViewAbstract
 
 		/* collect output */
 
-		$output .= $listElement->append($outputItem);
+		if ($outputItem)
+		{
+			$output .= $listElement->html($outputItem);
+		}
 		$output .= Module\Hook::trigger('adminPanelEnd');
 		return $output;
 	}
@@ -524,7 +528,8 @@ class Panel extends Admin\View\ViewAbstract
 				'list' => $this->_optionArray['className']['list']['notification']
 			]
 		]);
-		$metaArray = $adminNotification->getMetaArray();
+		$notificationArray = $adminNotification->getNotificationArray();
+		$notificationTotal = 0;
 
 		/* html element */
 
@@ -558,20 +563,20 @@ class Panel extends Admin\View\ViewAbstract
 			->init('sup',
 			[
 				'class' => $this->_optionArray['className']['sup']
-			])
-			->text($metaArray['total']);
+			]);
 
-		/* process meta */
+		/* process notification */
 
-		foreach ($metaArray as $key => $value)
+		foreach ($notificationArray as $key => $value)
 		{
 			$supElement->addClass($this->_optionArray['className']['note'][$key]);
+			$notificationTotal += count($value);
 		}
-		$labelElement->append($supElement);
+		$labelElement->append($supElement->text($notificationTotal));
 
 		/* collect item output */
 
-		if ($metaArray['total'])
+		if ($notificationArray)
 		{
 			$output = $itemElement->html($inputElement . $labelElement . $adminNotification->render());
 		}

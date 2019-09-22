@@ -30,7 +30,7 @@ use function str_replace;
  * @author Henry Ruhs
  */
 
-class DirectoryLister extends Module\Notification
+class DirectoryLister extends Module\Metadata
 {
 	/**
 	 * array of the module
@@ -120,12 +120,12 @@ class DirectoryLister extends Module\Notification
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return array|null
+	 * @return array
 	 */
 
-	public function adminNotification() : ?array
+	public function adminNotification() : array
 	{
-		return $this->getNotification();
+		return $this->getNotificationArray();
 	}
 
 	/**
