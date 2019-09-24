@@ -1,0 +1,14 @@
+{
+	"_reporter":
+	{
+		"categories_publish": "Categories are published",
+		"articles_publish": "Articles are published",
+		"extras_publish": "Extras are published",
+		"comments_publish": "Comments are published",
+		"users_enable": "Users are enabled",
+		"groups_enable": "Groups are enabled",
+		"modules_install": "Modules are installed",
+		"languages_install": "Languages are installed",
+		"templates_install": "Templates are installed"
+	}
+}

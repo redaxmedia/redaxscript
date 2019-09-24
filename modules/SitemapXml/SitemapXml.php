@@ -32,7 +32,7 @@ class SitemapXml extends Module\Module
 		'alias' => 'SitemapXml',
 		'author' => 'Redaxmedia',
 		'description' => 'Submit XML sitemap to search engines',
-		'version' => '4.0.0'
+		'version' => '4.1.0'
 	];
 
 	/**

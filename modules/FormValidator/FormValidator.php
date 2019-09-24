@@ -28,7 +28,7 @@ class FormValidator extends Module\Module
 		'alias' => 'FormValidator',
 		'author' => 'Redaxmedia',
 		'description' => 'Validate the form',
-		'version' => '4.0.0'
+		'version' => '4.1.0'
 	];
 
 	/**

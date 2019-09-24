@@ -31,7 +31,7 @@ class Preview extends Module\Metadata
 		'alias' => 'Preview',
 		'author' => 'Redaxmedia',
 		'description' => 'Preview template elements',
-		'version' => '4.0.0'
+		'version' => '4.1.0'
 	];
 
 	/**
@@ -209,9 +209,8 @@ class Preview extends Module\Metadata
 
 		/* html element */
 
-		$element = new Html\Element();
-		$linkElement = $element
-			->copy()
+		$linkElement = new Html\Element();
+		$linkElement
 			->init('a',
 			[
 				'href' => $parameterRoute . 'module/preview/'

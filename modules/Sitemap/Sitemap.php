@@ -30,7 +30,7 @@ class Sitemap extends Module\Module
 		'alias' => 'Sitemap',
 		'author' => 'Redaxmedia',
 		'description' => 'Generate a sitemap tree',
-		'version' => '4.0.0'
+		'version' => '4.1.0'
 	];
 
 	/**

@@ -30,7 +30,7 @@ class CssValidator extends Module\Metadata
 		'alias' => 'CssValidator',
 		'author' => 'Redaxmedia',
 		'description' => 'CSS validator for developers',
-		'version' => '4.0.0',
+		'version' => '4.1.0',
 		'access' => '[1]'
 	];
 
