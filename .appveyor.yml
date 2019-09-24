@@ -5,9 +5,9 @@ platform:
 
 environment:
  MSSQL_VERSION: v5.6.1
- PAPERCUT_VERSION: 4.8.0.1
+ PAPERCUT_VERSION: 5.5.1
  matrix:
- - PHP_VERSION_PATCH: 7.2.0
+ - PHP_VERSION_PATCH: 7.2.9
    PHP_VERSION_MINOR: 7.2
    PHP_PATH: C:\tools\php72
    SQLSRV_FILE: php_pdo_sqlsrv_72_nts.dll
