@@ -24,7 +24,11 @@
 			'admin/script.phtml',
 			'skeleton/script.phtml'
 		]); ?>
-		<?php echo Tag::partial('admin/panel.phtml'); ?>
+		<?php echo Tag::partial(
+		[
+			'admin/panel.phtml',
+			'admin/dashboard.phtml'
+		]); ?>
 		<?php echo $body; ?>
 	</body>
 </html>
