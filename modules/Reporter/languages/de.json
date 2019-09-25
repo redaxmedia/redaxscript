@@ -1,0 +1,14 @@
+{
+	"_reporter":
+	{
+		"categories_publish": "Kategorien sind veröffentlicht",
+		"articles_publish": "Artikel sind veröffentlicht",
+		"extras_publish": "Extras sind veröffentlicht",
+		"comments_publish": "Kommentare sind veröffentlicht",
+		"users_enable": "Benutzer sind aktiviert",
+		"groups_enable": "Gruppen sind aktiviert",
+		"modules_install": "Module sind installiert",
+		"languages_install": "Sprachen sind installiert",
+		"templates_install": "Vorlagen sind installiert"
+	}
+}

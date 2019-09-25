@@ -16,11 +16,6 @@
 	<!-- body -->
 
 	<body class="rs-body">
-
-		<!-- logic -->
-
-		<input id="menu" class="rs-fn-status-menu" type="checkbox" />
-
 		<?php $body = Tag::partial(
 		[
 			'default/header.phtml',
@@ -29,8 +24,12 @@
 			'admin/script.phtml',
 			'default/script.phtml'
 		]); ?>
-		<?php echo Tag::partial('admin/panel.phtml'); ?>
-		<?php echo Tag::partial('default/menu-status.phtml'); ?>
+		<?php echo Tag::partial(
+		[
+			'admin/panel.phtml',
+			'admin/dashboard.phtml',
+			'default/menu-status.phtml'
+		]); ?>
 		<div class="rs-has-menu">
 			<?php echo $body; ?>
 		</div>
