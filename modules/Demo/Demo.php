@@ -47,7 +47,7 @@ class Demo extends Module\Metadata
 		[
 			'Analytics' => 'Redaxscript\Modules\Analytics\Analytics',
 			'Demo' => 'Redaxscript\Modules\Demo\Demo',
-			'Editor' => 'Redaxscript\Modules\Editor\Editor'
+			'Reporter' => 'Redaxscript\Modules\Reporter\Reporter'
 		]
 	];
 
