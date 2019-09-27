@@ -4,8 +4,10 @@
  * 1. dashboard
  *    1.1 list
  *    1.2 item
+ *    1.3 title
  * 2. query
  *    2.1 medium min
+ *    2.2 medium max
  */
 
 /** @section 1. dashboard */
@@ -32,18 +34,15 @@
 	display: flex;
 	flex-wrap: wrap;
 	font-weight: bold;
+	height: 5em;
 	justify-content: center;
 	padding: 1em;
-	position: relative;
 
 	&:empty:after
 	{
 		@extend %rs-admin-icon-cube-outline;
-		font-size: 3em;
-		left: 50%;
-		position: absolute;
-		top: 50%;
-		transform: translateX(-50%) translateY(-50%);
+		font-size: 2.5em;
+		line-height: 2em;
 	}
 }
 
@@ -70,8 +69,6 @@
 
 	.rs-admin-item-dashboard
 	{
-		height: 5em;
-
 		&[data-column="2"]
 		{
 			grid-column: span 2;
@@ -81,5 +78,15 @@
 		{
 			grid-column: span 3;
 		}
+	}
+}
+
+/** @section 2.2 medium max */
+
+@media (--media-medium-max)
+{
+	.rs-admin-item-dashboard
+	{
+		font-size: 0.75em;
 	}
 }
