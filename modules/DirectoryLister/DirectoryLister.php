@@ -21,7 +21,7 @@ use function pathinfo;
 use function str_replace;
 
 /**
- * list the files of a directory
+ * list files of a directory
  *
  * @since 2.6.0
  *
@@ -43,8 +43,8 @@ class DirectoryLister extends Module\Metadata
 		'name' => 'Directory Lister',
 		'alias' => 'DirectoryLister',
 		'author' => 'Redaxmedia',
-		'description' => 'List the files of a directory',
-		'version' => '4.1.0'
+		'description' => 'List files of a directory',
+		'version' => '4.1.1'
 	];
 
 	/**

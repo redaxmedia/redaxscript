@@ -39,7 +39,7 @@ class Tinymce extends Module\Metadata
 		'alias' => 'Tinymce',
 		'author' => 'Redaxmedia',
 		'description' => 'JavaScript powered WYSIWYG editor',
-		'version' => '4.1.0'
+		'version' => '4.1.1'
 	];
 
 	/**
@@ -75,7 +75,7 @@ class Tinymce extends Module\Metadata
 				->init('foot')
 				->appendFile(
 				[
-					'https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.8.3/tinymce.min.js',
+					'https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.9.6/tinymce.min.js',
 					'modules/Tinymce/assets/scripts/init.js',
 					'modules/Tinymce/dist/scripts/tinymce.min.js'
 				]);

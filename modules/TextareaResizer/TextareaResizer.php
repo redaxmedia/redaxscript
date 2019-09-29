@@ -5,7 +5,7 @@ use Redaxscript\Head;
 use Redaxscript\Module;
 
 /**
- * adjust the textarea to fit content
+ * javascript powered textarea resizer
  *
  * @since 4.0.0
  *
@@ -27,8 +27,8 @@ class TextareaResizer extends Module\Module
 		'name' => 'Textarea Resizer',
 		'alias' => 'TextareaResizer',
 		'author' => 'Redaxmedia',
-		'description' => 'Adjust the textarea to fit content',
-		'version' => '4.1.0'
+		'description' => 'JavaScript powered textarea resizer',
+		'version' => '4.1.1'
 	];
 
 	/**

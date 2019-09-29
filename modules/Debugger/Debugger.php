@@ -10,7 +10,7 @@ use function is_array;
 use function json_encode;
 
 /**
- * debugger
+ * debugger for developers
  *
  * @since 4.0.0
  *
@@ -32,8 +32,8 @@ class Debugger extends Module\Module
 		'name' => 'Debugger',
 		'alias' => 'Debugger',
 		'author' => 'Redaxmedia',
-		'description' => 'Debugger',
-		'version' => '4.1.0',
+		'description' => 'Debugger for developers',
+		'version' => '4.1.1',
 		'access' => '[1]'
 	];
 

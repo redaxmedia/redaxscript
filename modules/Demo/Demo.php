@@ -31,8 +31,8 @@ class Demo extends Module\Metadata
 		'name' => 'Demo',
 		'alias' => 'Demo',
 		'author' => 'Redaxmedia',
-		'description' => 'Enable demo login',
-		'version' => '4.1.0'
+		'description' => 'Enable anonymous login',
+		'version' => '4.1.1'
 	];
 
 	/**

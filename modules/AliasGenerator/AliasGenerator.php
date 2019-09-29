@@ -28,7 +28,7 @@ class AliasGenerator extends Module\Module
 		'alias' => 'AliasGenerator',
 		'author' => 'Redaxmedia',
 		'description' => 'JavaScript powered alias generator',
-		'version' => '4.1.0'
+		'version' => '4.1.1'
 	];
 
 	/**

@@ -12,37 +12,30 @@
 	src: url('../../../../modules/SocialSharer/dist/fonts/icon.woff2') format('woff2');
 }
 
-%rs-icon-396-google-plus
+%rs-icon-401-facebook
 {
 	content: '\f101';
 	font-family: var(--rs-font-icon-social-sharer);
 	font-weight: normal;
 }
 
-%rs-icon-401-facebook
+%rs-icon-406-telegram
 {
 	content: '\f102';
 	font-family: var(--rs-font-icon-social-sharer);
 	font-weight: normal;
 }
 
-%rs-icon-406-telegram
+%rs-icon-407-twitter
 {
 	content: '\f103';
 	font-family: var(--rs-font-icon-social-sharer);
 	font-weight: normal;
 }
 
-%rs-icon-407-twitter
-{
-	content: '\f104';
-	font-family: var(--rs-font-icon-social-sharer);
-	font-weight: normal;
-}
-
 %rs-icon-404-whatsapp
 {
-	content: '\f105';
+	content: '\f104';
 	font-family: var(--rs-font-icon-social-sharer);
 	font-weight: normal;
 }

@@ -6,7 +6,7 @@ use Redaxscript\Module;
 use Redaxscript\Reader;
 
 /**
- * live reload
+ * live reload for developers
  *
  * @since 3.3.0
  *
@@ -28,8 +28,8 @@ class LiveReload extends Module\Metadata
 		'name' => 'Live Reload',
 		'alias' => 'LiveReload',
 		'author' => 'Redaxmedia',
-		'description' => 'Launch a local PHP server with live reload',
-		'version' => '4.1.0',
+		'description' => 'Live reload for developers',
+		'version' => '4.1.1',
 		'access' => '[1]'
 	];
 

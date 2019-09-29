@@ -78,7 +78,6 @@ module.exports = grunt =>
 		{
 			src:
 			[
-				'node_modules/icomoon-free-npm/SVG/396-google-plus.svg',
 				'node_modules/icomoon-free-npm/SVG/401-facebook.svg',
 				'node_modules/icomoon-free-npm/SVG/406-telegram.svg',
 				'node_modules/icomoon-free-npm/SVG/407-twitter.svg',

@@ -1,8 +1,23 @@
-<p class="rs-admin-text-documentation">Syntax for the data attribute powered event tracking:</p>
+<p class="rs-admin-text-documentation">Set data attributes for event tracking:</p>
 
 <pre class="rs-admin-js-code rs-admin-code-default html"><?php echo htmlspecialchars('<a class="rs-js-track-click"
-data-category="{string}"
-data-action="{string}"
-data-label="{string}"
-data-value="{string}">click</a>'); ?>
+	data-category="{string}"
+	data-action="{string}"
+	data-label="{string}"
+	data-value="{string}">click</a>'); ?>
+</pre>
+
+<p class="rs-admin-text-documentation">Define custom events as needed:</p>
+
+<pre class="rs-admin-js-code rs-admin-code-default js">
+rs.modules.Analytics =
+{
+	optionArray:
+	{
+		selector:
+		{
+			focus: 'input.rs-js-track-focus'
+		}
+	}
+}
 </pre>

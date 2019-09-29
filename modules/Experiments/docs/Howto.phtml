@@ -1,4 +1,4 @@
-<p class="rs-admin-text-documentation">Syntax to perform one action for each variation:</p>
+<p class="rs-admin-text-documentation">Define one action for each variation:</p>
 
 <pre class="rs-admin-js-code rs-admin-code-default js">
 rs.modules.Experiments =
@@ -7,7 +7,7 @@ rs.modules.Experiments =
 	{
 		action:
 		[
-			() => console.log('no variation'),
+			() => console.log('variation 0'),
 			() => console.log('variation 1'),
 			() => console.log('variation 2')
 		]

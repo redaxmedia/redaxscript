@@ -74,21 +74,6 @@
 		}
 	}
 
-	/* google plus */
-
-	&.rs-link-google-plus
-	{
-		&:before
-		{
-			@extend %rs-icon-396-google-plus;
-		}
-
-		&:hover:before
-		{
-			background: var(--rs-color-google-plus);
-		}
-	}
-
 	/* telegram */
 
 	&.rs-link-telegram

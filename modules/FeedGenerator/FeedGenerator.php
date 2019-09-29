@@ -10,7 +10,7 @@ use XMLWriter;
 use function strip_tags;
 
 /**
- * generate atom feeds from content
+ * generate atom feeds
  *
  * @since 2.3.0
  *
@@ -32,8 +32,8 @@ class FeedGenerator extends Module\Module
 		'name' => 'Feed Generator',
 		'alias' => 'FeedGenerator',
 		'author' => 'Redaxmedia',
-		'description' => 'Generate Atom feeds from content',
-		'version' => '4.1.0'
+		'description' => 'Generate Atom feeds',
+		'version' => '4.1.1'
 	];
 
 	/**

@@ -29,7 +29,7 @@ class Disqus extends Module\Module
 		'alias' => 'Disqus',
 		'author' => 'Redaxmedia',
 		'description' => 'Replace comments with Disqus',
-		'version' => '4.1.0'
+		'version' => '4.1.1'
 	];
 
 	/**

@@ -8,7 +8,7 @@ use Redaxscript\Module;
 use function str_replace;
 
 /**
- * preview template elements
+ * overview of the elements
  *
  * @since 3.0.0
  *
@@ -30,8 +30,8 @@ class Preview extends Module\Metadata
 		'name' => 'Preview',
 		'alias' => 'Preview',
 		'author' => 'Redaxmedia',
-		'description' => 'Preview template elements',
-		'version' => '4.1.0'
+		'description' => 'Overview of the elements',
+		'version' => '4.1.1'
 	];
 
 	/**
@@ -44,8 +44,16 @@ class Preview extends Module\Metadata
 	[
 		'className' =>
 		[
-			'title' => 'rs-title-preview',
-			'box' => 'rs-is-preview'
+			'dashboard' =>
+			[
+				'title' => 'rs-admin-title-dashboard',
+				'text' => 'rs-admin-text-dashboard'
+			],
+			'preview' =>
+			[
+				'title' => 'rs-title-preview',
+				'box' => 'rs-is-preview',
+			]
 		]
 	];
 
@@ -177,7 +185,7 @@ class Preview extends Module\Metadata
 			->copy()
 			->init('h2',
 			[
-				'class' => $this->_optionArray['className']['title'],
+				'class' => $this->_optionArray['className']['preview']['title'],
 				'id' => $alias
 			])
 			->html($linkElement);
@@ -185,7 +193,7 @@ class Preview extends Module\Metadata
 			->copy()
 			->init('div',
 			[
-				'class' => $this->_optionArray['className']['box'],
+				'class' => $this->_optionArray['className']['preview']['box'],
 			])
 			->html($html);
 
@@ -209,14 +217,29 @@ class Preview extends Module\Metadata
 
 		/* html element */
 
-		$linkElement = new Html\Element();
-		$linkElement
+		$element = new Html\Element();
+		$linkElement = $element
+			->copy()
 			->init('a',
 			[
 				'href' => $parameterRoute . 'module/preview/'
 			])
 			->text($this->_language->get('_preview')['preview']);
+		$titleElement = $element
+			->copy()
+			->init('h3',
+			[
+				'class' => $this->_optionArray['className']['dashboard']['title']
+			])
+			->html($linkElement);
+		$textElement = $element
+			->copy()
+			->init('a',
+			[
+				'class' => $this->_optionArray['className']['dashboard']['text']
+			])
+			->text($this->_language->get('_preview')['description']);
 
-		return $linkElement;
+		return $titleElement . $textElement;
 	}
 }

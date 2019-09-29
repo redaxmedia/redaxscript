@@ -7,7 +7,7 @@ use Redaxscript\Module;
 use Redaxscript\Reader;
 
 /**
- * provide version and news updates
+ * provide version updates and news
  *
  * @since 2.2.0
  *
@@ -29,8 +29,8 @@ class CallHome extends Module\Metadata
 		'name' => 'Call Home',
 		'alias' => 'CallHome',
 		'author' => 'Redaxmedia',
-		'description' => 'Provide version and news updates',
-		'version' => '4.1.0'
+		'description' => 'Provide version updates and news',
+		'version' => '4.1.1'
 	];
 
 	/**

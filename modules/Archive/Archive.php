@@ -32,7 +32,7 @@ class Archive extends Module\Module
 		'alias' => 'Archive',
 		'author' => 'Redaxmedia',
 		'description' => 'Generate a archive tree',
-		'version' => '4.1.0'
+		'version' => '4.1.1'
 	];
 
 	/**

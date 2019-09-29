@@ -29,7 +29,7 @@ class Dialog extends Module\Module
 		'alias' => 'Dialog',
 		'author' => 'Redaxmedia',
 		'description' => 'JavaScript powered dialog',
-		'version' => '4.1.0'
+		'version' => '4.1.1'
 	];
 
 	/**

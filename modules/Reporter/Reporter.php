@@ -30,7 +30,7 @@ class Reporter extends Module\Metadata
 		'alias' => 'Reporter',
 		'author' => 'Redaxmedia',
 		'description' => 'Reports on the dashboard',
-		'version' => '4.1.0'
+		'version' => '4.1.1'
 	];
 
 	/**
@@ -43,8 +43,11 @@ class Reporter extends Module\Metadata
 	[
 		'className' =>
 		[
-			'title' => 'rs-admin-title-dashboard',
-			'text' => 'rs-admin-text-dashboard'
+			'dashboard' =>
+			[
+				'title' => 'rs-admin-title-dashboard',
+				'text' => 'rs-admin-text-dashboard'
+			]
 		]
 	];
 
@@ -98,13 +101,13 @@ class Reporter extends Module\Metadata
 			->copy()
 			->init('h3',
 			[
-				'class' => $this->_optionArray['className']['title']
+				'class' => $this->_optionArray['className']['dashboard']['title']
 			]);
 		$textElement = $element
 			->copy()
 			->init('span',
 			[
-				'class' => $this->_optionArray['className']['text']
+				'class' => $this->_optionArray['className']['dashboard']['text']
 			]);
 
 		/* handle type */
