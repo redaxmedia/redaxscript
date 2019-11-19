@@ -15,7 +15,7 @@
 		"facebook/webdriver": "1.7.1",
 		"fbourigault/composer-mkdir": "2.0.0",
 		"infection/infection": "0.14.1",
-		"mikey179/vfsStream": "1.6.7",
+		"mikey179/vfsstream": "1.6.7",
 		"php-coveralls/php-coveralls": "2.1.0",
 		"phpmd/phpmd": "2.7.0",
 		"phpstan/phpstan": "0.11.16",
