@@ -18,7 +18,7 @@
 		"mikey179/vfsstream": "1.6.8",
 		"php-coveralls/php-coveralls": "2.2.0",
 		"phpmd/phpmd": "2.7.0",
-		"phpstan/phpstan": "0.12.2",
+		"phpstan/phpstan": "0.11.19",
 		"phpunit/phpunit": "8.5.0",
 		"redaxmedia/php-coding-standard": "1.4.0",
 		"redaxmedia/phpunit-provider-autoloader": "3.0.2",
