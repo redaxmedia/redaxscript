@@ -13,7 +13,7 @@ jobs:
 
    install:
    - composer install
-   - nvm install 10
+   - nvm install 12
    - npm install --global grunt-cli
    - npm install
 
@@ -30,7 +30,7 @@ jobs:
    - BUILD
 
    install:
-   - nvm install 10
+   - nvm install 12
    - npm install --global grunt-cli
    - npm install
 
@@ -77,7 +77,7 @@ jobs:
 
    install:
    - composer install
-   - nvm install 10
+   - nvm install 12
    - npm install --global grunt-cli
    - npm install
 
@@ -88,7 +88,7 @@ jobs:
    - sleep 60
 
    script:
-   - vendor/bin/phpunit --configuration=phpunit.acceptance.xml
+   - travis_retry vendor/bin/phpunit --configuration=phpunit.acceptance.xml
 
  - &mutation
    env:

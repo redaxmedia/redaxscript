@@ -33,7 +33,7 @@ rs.modules.Gallery.process = optionArray =>
 
 					photoSwipe.init();
 					event.preventDefault();
-				})
+				});
 			});
 		});
 	}

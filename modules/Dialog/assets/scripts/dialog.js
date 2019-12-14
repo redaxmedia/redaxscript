@@ -30,7 +30,7 @@ rs.modules.Dialog.process = optionArray =>
 						dialog.querySelector(OPTION.element.buttonCancel).addEventListener('click', () => rs.modules.Dialog.destroy(dialog));
 					}));
 				event.preventDefault();
-			})
+			});
 		});
 	}
 };
