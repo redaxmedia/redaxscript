@@ -18,7 +18,7 @@
 {
 	background: gray(20);
 	display: grid;
-	font: 1.25rem var(--rs-admin-font-primary);
+	font: 1.125rem var(--rs-admin-font-primary);
 	grid-auto-flow: dense;
 	grid-gap: 1em;
 	padding: 1em;

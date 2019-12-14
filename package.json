@@ -65,7 +65,7 @@
 	},
 	"scripts":
 	{
-		"start": "grunt serve --open-browser --live-reload",
+		"start": "grunt serve --live-reload --open-browser",
 		"lint": "grunt",
 		"build": "grunt build",
 		"test": "grunt test-unit && grunt test-acceptance"
