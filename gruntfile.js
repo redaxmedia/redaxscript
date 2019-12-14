@@ -186,6 +186,7 @@ module.exports = grunt =>
 	grunt.registerTask('serve',
 	[
 		'build',
+		grunt.option('L') || grunt.option('live-reload') ? 'shell:installLiveReload' : 'shell:uninstallLiveReload',
 		'stop-server',
 		'stop-watch',
 		'parallel:serve'

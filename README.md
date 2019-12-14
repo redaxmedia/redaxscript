@@ -44,6 +44,7 @@ grunt serve [options]
 -D, --debug-mode
 -W, --webfont-compat
 -O, --open-browser
+-L, --live-reload
 ```
 
 Browse your working copy:

@@ -93,6 +93,14 @@ module.exports = grunt =>
 		{
 			command: run('open-cli http://localhost:8000')
 		},
+		installLiveReload:
+		{
+			command: run('php console.php install module --alias=LiveReload')
+		},
+		uninstallLiveReload:
+		{
+			command: run('php console.php uninstall module --alias=LiveReload')
+		},
 		createBuild:
 		{
 			command: run('make-dir build')

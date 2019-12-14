@@ -120,6 +120,5 @@ module.exports = grunt =>
 		config.options.engine = 'node';
 		config.options.normalize = true;
 	}
-
 	return config;
 };

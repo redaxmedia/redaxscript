@@ -1,4 +1,4 @@
-module.exports = () =>
+module.exports = grunt =>
 {
 	'use strict';
 
@@ -54,7 +54,7 @@ module.exports = () =>
 		},
 		options:
 		{
-			livereload: 7000,
+			livereload: grunt.option('L') || grunt.option('live-reload') ? 7000 : false,
 			spawn: false
 		}
 	};
