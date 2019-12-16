@@ -126,6 +126,14 @@ module.exports = grunt =>
 	[
 		'shell:stopWatch'
 	]);
+	grunt.registerTask('install-live-reload',
+	[
+		'shell:installLiveReload'
+	]);
+	grunt.registerTask('uninstall-live-reload',
+	[
+		'shell:uninstallLiveReload'
+	]);
 	grunt.registerTask('open-browser',
 	[
 		'shell:openBrowser'
@@ -183,10 +191,16 @@ module.exports = grunt =>
 		'babel:moduleTextareaResizer',
 		'babel:moduleTinymce'
 	]);
-	grunt.registerTask('serve',
+	grunt.registerTask('serve', grunt.option('L') || grunt.option('live-reload') ?
 	[
 		'build',
-		grunt.option('L') || grunt.option('live-reload') ? 'shell:installLiveReload' : null,
+		'install-live-reload',
+		'stop-server',
+		'stop-watch',
+		'parallel:serve'
+	] :
+	[
+		'build',
 		'stop-server',
 		'stop-watch',
 		'parallel:serve'

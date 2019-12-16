@@ -89,10 +89,6 @@ module.exports = grunt =>
 		{
 			command: run('kill-port 7000')
 		},
-		openBrowser:
-		{
-			command: run('open-cli http://localhost:8000')
-		},
 		installLiveReload:
 		{
 			command: run('php console.php install module --alias=LiveReload')
@@ -100,6 +96,10 @@ module.exports = grunt =>
 		uninstallLiveReload:
 		{
 			command: run('php console.php uninstall module --alias=LiveReload')
+		},
+		openBrowser:
+		{
+			command: run('open-cli http://localhost:8000')
 		},
 		createBuild:
 		{
