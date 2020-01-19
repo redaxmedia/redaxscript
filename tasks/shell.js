@@ -21,18 +21,6 @@ module.exports = grunt =>
 		{
 			command: run('vendor/bin/phpcpd modules')
 		},
-		phpstanRoot:
-		{
-			command: run('vendor/bin/phpstan analyse console.php index.php install.php --configuration=phpstan.neon --level 5 --no-progress')
-		},
-		phpstanBase:
-		{
-			command: run('vendor/bin/phpstan analyse includes --configuration=phpstan.neon --level 1 --no-progress')
-		},
-		phpstanModules:
-		{
-			command: run('vendor/bin/phpstan analyse modules --configuration=phpstan.neon --level 1 --no-progress')
-		},
 		phpmdRoot:
 		{
 			command: run('vendor/bin/phpmd console.php,index.php,install.php text unusedcode')
