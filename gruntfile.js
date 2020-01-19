@@ -45,7 +45,6 @@ module.exports = grunt =>
 		'phpcpd',
 		'phpmd',
 		'phpcs',
-		'phpstan',
 		'languagelint'
 	]);
 	grunt.registerTask('stylelint',
@@ -71,12 +70,6 @@ module.exports = grunt =>
 		'shell:phpcpdRoot',
 		'shell:phpcpdBase',
 		'shell:phpcpdModules'
-	]);
-	grunt.registerTask('phpstan',
-	[
-		'shell:phpstanRoot',
-		'shell:phpstanBase',
-		'shell:phpstanModules'
 	]);
 	grunt.registerTask('phpmd',
 	[
