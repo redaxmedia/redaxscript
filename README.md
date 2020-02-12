@@ -41,10 +41,10 @@ Serve local development server:
 ```
 grunt serve [options]
 
--N, --no-cache
 -L, --live-reload
 -O, --open-browser
 -W, --webfont-compat
+-N, --no-cache
 -D, --debug-mode
 ```
 
