@@ -29,7 +29,7 @@ class LiveReload extends Module\Metadata
 		'alias' => 'LiveReload',
 		'author' => 'Redaxmedia',
 		'description' => 'Live reload for developers',
-		'version' => '4.1.1',
+		'version' => '4.2.0',
 		'access' => '[1]'
 	];
 

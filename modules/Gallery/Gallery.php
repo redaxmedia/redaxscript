@@ -47,7 +47,7 @@ class Gallery extends Module\Metadata
 		'alias' => 'Gallery',
 		'author' => 'Redaxmedia',
 		'description' => 'JavaScript powered gallery',
-		'version' => '4.1.1'
+		'version' => '4.2.0'
 	];
 
 	/**

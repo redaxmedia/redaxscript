@@ -29,7 +29,7 @@ class Experiments extends Module\Module
 		'alias' => 'Experiments',
 		'author' => 'Redaxmedia',
 		'description' => 'Integrate Google Experiments',
-		'version' => '4.1.1'
+		'version' => '4.2.0'
 	];
 
 	/**

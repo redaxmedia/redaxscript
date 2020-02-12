@@ -28,7 +28,7 @@ class TextareaResizer extends Module\Module
 		'alias' => 'TextareaResizer',
 		'author' => 'Redaxmedia',
 		'description' => 'JavaScript powered textarea resizer',
-		'version' => '4.1.1'
+		'version' => '4.2.0'
 	];
 
 	/**

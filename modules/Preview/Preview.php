@@ -31,7 +31,7 @@ class Preview extends Module\Metadata
 		'alias' => 'Preview',
 		'author' => 'Redaxmedia',
 		'description' => 'Overview of the elements',
-		'version' => '4.1.1'
+		'version' => '4.2.0'
 	];
 
 	/**

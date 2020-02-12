@@ -32,7 +32,7 @@ class Demo extends Module\Metadata
 		'alias' => 'Demo',
 		'author' => 'Redaxmedia',
 		'description' => 'Enable anonymous login',
-		'version' => '4.1.1'
+		'version' => '4.2.0'
 	];
 
 	/**

@@ -29,7 +29,7 @@ class SocialSharer extends Module\Module
 		'alias' => 'SocialSharer',
 		'author' => 'Redaxmedia',
 		'description' => 'Integrate social sharer',
-		'version' => '4.1.1'
+		'version' => '4.2.0'
 	];
 
 	/**
