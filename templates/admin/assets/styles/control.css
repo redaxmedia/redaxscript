@@ -8,7 +8,7 @@
 
 .rs-admin-list-control
 {
-	font-size: 1rem;
+	font: 400 1rem var(--rs-admin-font-primary);
 	margin-left: -0.25em;
 	margin-top: 1em;
 

@@ -72,10 +72,6 @@ jobs:
    - TEST=unit
    - COMPAT_MODE=true
 
-   before_install:
-   - composer global require hirak/prestissimo
-   - composer require phpunit/phpunit 9
-
  - &test-acceptance
    addons:
     apt:

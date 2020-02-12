@@ -168,9 +168,9 @@ class ModuleForm extends ViewAbstract
 			])
 			->append('<ul class="rs-admin-fn-content-tab rs-admin-box-tab"><li>')
 			->label($this->_language->get('status'),
-				[
-					'for' => 'status'
-				])
+			[
+				'for' => 'status'
+			])
 			->checkbox($module->status ?
 			[
 				'id' => 'status',

@@ -13,8 +13,7 @@
 	border-radius: 0.125em;
 	box-sizing: border-box;
 	display: inline-block;
-	font-size: 1.25rem;
-	font-weight: 400;
+	font: 400 1.25rem var(--rs-admin-font-primary);
 	line-height: 2.5em;
 	padding: 0 1em;
 	text-align: center;
