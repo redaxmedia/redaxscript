@@ -7,8 +7,10 @@ rs.modules.Ace =
 		selector: 'textarea.rs-admin-js-editor',
 		ace:
 		{
-			mode: 'ace/mode/html',
-			maxLines: Infinity
+			showGutter: false,
+			useSoftTabs: false,
+			maxLines: Infinity,
+			mode: 'ace/mode/html'
 		}
 	}
 };

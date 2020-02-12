@@ -28,7 +28,7 @@ class Ace extends Module\Module
 		'alias' => 'Ace',
 		'author' => 'Redaxmedia',
 		'description' => 'JavaScript powered HTML editor',
-		'version' => '4.1.1'
+		'version' => '4.2.0'
 	];
 
 	/**
@@ -55,7 +55,7 @@ class Ace extends Module\Module
 				->init('foot')
 				->appendFile(
 				[
-					'https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.6/ace.js',
+					'https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.7/ace.js',
 					'modules/Ace/assets/scripts/init.js',
 					'modules/Ace/dist/scripts/ace.min.js'
 				]);
