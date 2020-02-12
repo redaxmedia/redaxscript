@@ -21,8 +21,8 @@
 
 .rs-title-header
 {
-	font-size: 3.25em;
-	font-weight: normal;
+	font-size: 2.125em;
+	font-weight: 300;
 	line-height: 1em;
 	text-transform: uppercase;
 }
@@ -47,8 +47,8 @@
 .rs-text-header
 {
 	color: gray(65);
-	display: none;
-	font-weight: bold;
+	font-size: 1.125em;
+	font-weight: 400;
 	margin-left: 0.125em;
 }
 
@@ -65,13 +65,13 @@
 		justify-content: space-between;
 	}
 
+	.rs-title-header
+	{
+		font-size: 3.5em;
+	}
+
 	.rs-box-header
 	{
 		font-size: 1.25em;
-	}
-
-	.rs-text-header
-	{
-		display: block;
 	}
 }

@@ -65,6 +65,17 @@ jobs:
  - <<: *test-unit
    php: 7.3
 
+ - <<: *test-unit
+   php: 7.4
+
+   env:
+   - TEST=unit
+   - COMPAT_MODE=true
+
+   before_install:
+   - composer global require hirak/prestissimo
+   - composer require phpunit/phpunit 9
+
  - &test-acceptance
    addons:
     apt:

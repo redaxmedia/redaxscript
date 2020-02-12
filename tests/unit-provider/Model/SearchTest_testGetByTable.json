@@ -1,10 +1,10 @@
 [
 	[
 		"categories",
-		"one",
+		"category one",
 		"en",
 		[
-			"category-one"
+			"Category One"
 		]
 	],
 	[
@@ -12,8 +12,8 @@
 		"article",
 		"en",
 		[
-			"article-one",
-			"article-two"
+			"Article One",
+			"Article Two"
 		]
 	],
 	[
@@ -21,8 +21,8 @@
 		"comment",
 		"en",
 		[
-			"comment-one",
-			"comment-two"
+			"Comment One",
+			"Comment Two"
 		]
 	]
 ]

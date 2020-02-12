@@ -168,16 +168,27 @@ class ModuleForm extends ViewAbstract
 			])
 			->append('<ul class="rs-admin-fn-content-tab rs-admin-box-tab"><li>')
 			->label($this->_language->get('status'),
-			[
-				'for' => 'status'
-			])
-			->select($helperOption->getToggleArray(),
-			[
-				$module->status
-			],
+				[
+					'for' => 'status'
+				])
+			->checkbox($module->status ?
 			[
 				'id' => 'status',
+				'class' => 'rs-admin-fn-status-switch',
+				'name' => 'status',
+				'checked' => 'checked'
+			] :
+			[
+				'id' => 'status',
+				'class' => 'rs-admin-fn-status-switch',
 				'name' => 'status'
+			])
+			->label(null,
+			[
+				'class' => 'rs-admin-label-switch',
+				'for' => 'status',
+				'data-on' => $this->_language->get('enable'),
+				'data-off' => $this->_language->get('disable')
 			])
 			->append('</li>');
 		if ($this->_registry->get('groupsEdit'))

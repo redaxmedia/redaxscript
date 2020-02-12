@@ -33,7 +33,7 @@
 
 	/** @section 1.3 font */
 
-	--rs-admin-font-primary: 'open sans condensed', arial, sans-serif;
+	--rs-admin-font-primary: 'yanone kaffeesatz', arial, sans-serif;
 	--rs-admin-font-secondary: arial, sans-serif;
 	--rs-admin-font-code: monospace, arial, sans-serif;
 	--rs-admin-font-icon: 'icon admin';

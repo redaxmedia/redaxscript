@@ -86,19 +86,6 @@ class Article extends ViewAbstract
 	}
 
 	/**
-	 * stringify the article
-	 *
-	 * @since 4.0.0
-	 *
-	 * @return string
-	 */
-
-	public function __toString() : string
-	{
-		return $this->render();
-	}
-
-	/**
 	 * init the class
 	 *
 	 * @since 4.0.0

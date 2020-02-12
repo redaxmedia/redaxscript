@@ -59,7 +59,7 @@ class CommentTest extends TestCaseAbstract
 			->set(
 			[
 				'author' => 'Comment One',
-				'text' => 'comment-one',
+				'text' => 'Comment One',
 				'article' => $articleOne->id,
 				'rank' => 1,
 				'status' => 1
@@ -70,7 +70,7 @@ class CommentTest extends TestCaseAbstract
 			->set(
 			[
 				'author' => 'Comment Two',
-				'text' => 'comment-two',
+				'text' => 'Comment Two',
 				'article' => $articleOne->id,
 				'rank' => 2,
 				'status' => 1
@@ -81,7 +81,7 @@ class CommentTest extends TestCaseAbstract
 			->set(
 			[
 				'author' => 'Comment Three',
-				'text' => 'comment-three',
+				'text' => 'Comment Three',
 				'article' => $articleTwo->id,
 				'rank' => 3,
 				'status' => 1

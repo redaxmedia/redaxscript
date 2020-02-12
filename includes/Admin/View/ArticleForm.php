@@ -267,52 +267,96 @@ class ArticleForm extends ViewAbstract
 			[
 				'for' => 'headline'
 			])
-			->select($helperOption->getToggleArray(),
-			[
-				$article->id ? $article->headline : 1
-			],
+			->checkbox(!$article->id || $article->headline ?
 			[
 				'id' => 'headline',
+				'class' => 'rs-admin-fn-status-switch',
+				'name' => 'headline',
+				'checked' => 'checked'
+			] :
+			[
+				'id' => 'headline',
+				'class' => 'rs-admin-fn-status-switch',
 				'name' => 'headline'
+			])
+			->label(null,
+			[
+				'class' => 'rs-admin-label-switch',
+				'for' => 'headline',
+				'data-on' => $this->_language->get('enable'),
+				'data-off' => $this->_language->get('disable')
 			])
 			->append('</li><li>')
 			->label($this->_language->get('byline'),
 			[
 				'for' => 'byline'
 			])
-			->select($helperOption->getToggleArray(),
-			[
-				$article->id ? $article->byline : 1
-			],
+			->checkbox(!$article->id || $article->byline ?
 			[
 				'id' => 'byline',
+				'class' => 'rs-admin-fn-status-switch',
+				'name' => 'byline',
+				'checked' => 'checked'
+			] :
+			[
+				'id' => 'byline',
+				'class' => 'rs-admin-fn-status-switch',
 				'name' => 'byline'
+			])
+			->label(null,
+			[
+				'class' => 'rs-admin-label-switch',
+				'for' => 'byline',
+				'data-on' => $this->_language->get('enable'),
+				'data-off' => $this->_language->get('disable')
 			])
 			->append('</li><li>')
 			->label($this->_language->get('comments'),
 			[
 				'for' => 'comments'
 			])
-			->select($helperOption->getToggleArray(),
-			[
-				$article->comments
-			],
+			->checkbox($article->comments ?
 			[
 				'id' => 'comments',
+				'class' => 'rs-admin-fn-status-switch',
+				'name' => 'comments',
+				'checked' => 'checked'
+			] :
+			[
+				'id' => 'comments',
+				'class' => 'rs-admin-fn-status-switch',
 				'name' => 'comments'
+			])
+			->label(null,
+			[
+				'class' => 'rs-admin-label-switch',
+				'for' => 'comments',
+				'data-on' => $this->_language->get('enable'),
+				'data-off' => $this->_language->get('disable')
 			])
 			->append('</li><li>')
 			->label($this->_language->get('status'),
 			[
 				'for' => 'status'
 			])
-			->select($helperOption->getVisibleArray(),
-			[
-				$article->id ? $article->status : 1
-			],
+			->checkbox(!$article->id || $article->status ?
 			[
 				'id' => 'status',
+				'class' => 'rs-admin-fn-status-switch',
+				'name' => 'status',
+				'checked' => 'checked'
+			] :
+			[
+				'id' => 'status',
+				'class' => 'rs-admin-fn-status-switch',
 				'name' => 'status'
+			])
+			->label(null,
+			[
+				'class' => 'rs-admin-label-switch',
+				'for' => 'status',
+				'data-on' => $this->_language->get('publish'),
+				'data-off' => $this->_language->get('unpublish')
 			])
 			->append('</li><li>')
 			->label($this->_language->get('rank'),

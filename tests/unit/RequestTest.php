@@ -95,6 +95,7 @@ class RequestTest extends TestCaseAbstract
 		$this->assertArrayHasKey('get', $actualArray);
 		$this->assertArrayHasKey('post', $actualArray);
 		$this->assertArrayHasKey('files', $actualArray);
+		$this->assertArrayHasKey('stream', $actualArray);
 		$this->assertArrayHasKey('session', $actualArray);
 		$this->assertArrayHasKey('cookie', $actualArray);
 	}
@@ -245,6 +246,44 @@ class RequestTest extends TestCaseAbstract
 		/* actual */
 
 		$actual = $this->_request->getFiles('invalid');
+
+		/* compare */
+
+		$this->assertNull($actual);
+	}
+
+	/**
+	 * testGetAndSetServer
+	 *
+	 * @since 4.2.0
+	 */
+
+	public function testGetAndSetStream() : void
+	{
+		/* setup */
+
+		$this->_request->setStream('testKey', 'testValue');
+
+		/* actual */
+
+		$actual = $this->_request->getStream('testKey');
+
+		/* compare */
+
+		$this->assertEquals('testValue', $actual);
+	}
+
+	/**
+	 * testGetStreamInvalid
+	 *
+	 * @since 4.2.0
+	 */
+
+	public function testGetStreamInvalid() : void
+	{
+		/* actual */
+
+		$actual = $this->_request->getStream('invalid');
 
 		/* compare */
 

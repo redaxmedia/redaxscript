@@ -8,7 +8,7 @@ $buttonElement
 	[
 		'class' => $admin ? 'rs-admin-button-default' : 'rs-button-default'
 	])
-	->text($language->get('_preview')['preview']);
+	->text('default');
 ?>
 
 <!-- button -->
@@ -20,10 +20,4 @@ $buttonElement
 <?php echo $buttonElement
 	->copy()
 	->attr('disabled', 'disabled'); ?>
-
-<!-- button large -->
-
-<?php echo $buttonElement
-	->copy()
-	->addClass($admin ? 'rs-admin-is-large' : 'rs-is-large'); ?>
 

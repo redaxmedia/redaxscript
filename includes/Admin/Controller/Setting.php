@@ -102,9 +102,10 @@ class Setting extends ControllerAbstract
 
 	protected function _sanitizePost() : array
 	{
+		$emailFilter = new Filter\Email();
 		$numberFilter = new Filter\Number();
 		$specialFilter = new Filter\Special();
-		$emailFilter = new Filter\Email();
+		$toggleFilter = new Filter\Toggle();
 
 		/* sanitize post */
 
@@ -120,7 +121,7 @@ class Setting extends ControllerAbstract
 			'robots' => $this->_request->getPost('robots'),
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
 			'subject' => $this->_request->getPost('subject'),
-			'notification' => $numberFilter->sanitize($this->_request->getPost('notification')),
+			'notification' => $toggleFilter->sanitize($this->_request->getPost('notification')),
 			'charset' => $this->_request->getPost('charset'),
 			'divider' => $this->_request->getPost('divider'),
 			'zone' => $this->_request->getPost('zone'),
@@ -129,11 +130,11 @@ class Setting extends ControllerAbstract
 			'homepage' => $this->_request->getPost('homepage'),
 			'limit' => $numberFilter->sanitize($this->_request->getPost('limit')),
 			'order' => $specialFilter->sanitize($this->_request->getPost('order')),
-			'pagination' => $numberFilter->sanitize($this->_request->getPost('pagination')),
-			'moderation' => $numberFilter->sanitize($this->_request->getPost('moderation')),
-			'registration' => $numberFilter->sanitize($this->_request->getPost('registration')),
-			'verification' => $numberFilter->sanitize($this->_request->getPost('verification')),
-			'recovery' => $numberFilter->sanitize($this->_request->getPost('recovery')),
+			'pagination' => $toggleFilter->sanitize($this->_request->getPost('pagination')),
+			'moderation' => $toggleFilter->sanitize($this->_request->getPost('moderation')),
+			'registration' => $toggleFilter->sanitize($this->_request->getPost('registration')),
+			'verification' => $toggleFilter->sanitize($this->_request->getPost('verification')),
+			'recovery' => $toggleFilter->sanitize($this->_request->getPost('recovery')),
 			'captcha' => $numberFilter->sanitize($this->_request->getPost('captcha'))
 		];
 	}

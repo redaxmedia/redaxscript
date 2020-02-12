@@ -104,7 +104,7 @@ class SearchTest extends TestCaseAbstract
 			->set(
 			[
 				'author' => 'Comment One',
-				'text' => 'comment-one',
+				'text' => 'Comment One',
 				'article' => $articleOne->id,
 				'date' => 1451602800
 			])
@@ -114,7 +114,7 @@ class SearchTest extends TestCaseAbstract
 			->set(
 			[
 				'author' => 'Comment Two',
-				'text' => 'comment-two',
+				'text' => 'Comment Two',
 				'article' => $articleOne->id,
 				'date' => 1454281200
 			])
@@ -124,7 +124,7 @@ class SearchTest extends TestCaseAbstract
 			->set(
 			[
 				'author' => 'Comment Three',
-				'text' => 'comment-three',
+				'text' => 'Comment Three',
 				'article' => $articleOne->id,
 				'status' => 0,
 				'date' => 1456786800

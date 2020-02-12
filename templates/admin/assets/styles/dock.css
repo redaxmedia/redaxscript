@@ -15,7 +15,7 @@
 	background: gray(10);
 	color: gray(70);
 	display: flex;
-	font: bold 0.875rem var(--rs-admin-font-primary);
+	font: 500 1rem var(--rs-admin-font-primary);
 }
 
 /** @section 1.2 link */
@@ -24,7 +24,7 @@
 {
 	box-sizing: border-box;
 	flex: 1;
-	line-height: 3.5em;
+	line-height: 3em;
 	overflow: hidden;
 	padding: 0 1em;
 	position: relative;
@@ -50,7 +50,7 @@
 
 		&:before
 		{
-			font-size: 1.75em;
+			font-size: 1.5em;
 			left: 0;
 			position: absolute;
 			right: 0;

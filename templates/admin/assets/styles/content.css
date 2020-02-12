@@ -15,8 +15,9 @@
 .rs-admin-title-content
 {
 	color: gray(10);
-	font: bold 2rem var(--rs-admin-font-primary);
-	margin: 1em 0;
+	font: 600 2.5rem var(--rs-admin-font-primary);
+	margin-bottom: 0.5em;
+	margin-top: 1em;
 }
 
 /** @section 2. documentation */
@@ -40,7 +41,7 @@
 	border: 0.125rem solid gray(85);
 	color: gray(40);
 	display: block;
-	font: 0.75em/1.25em var(--rs-admin-font-code);
+	font: 1rem/1.25em var(--rs-admin-font-code);
 	padding: 1em;
 	white-space: pre-wrap;
 

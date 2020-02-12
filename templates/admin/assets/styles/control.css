@@ -8,7 +8,7 @@
 
 .rs-admin-list-control
 {
-	font: bold 0.75rem var(--rs-admin-font-secondary);
+	font-size: 1rem;
 	margin-left: -0.25em;
 	margin-top: 1em;
 
@@ -26,7 +26,7 @@
 		color: gray(40);
 		display: block;
 		line-height: 2.5em;
-		padding: 0 0.75em;
+		padding: 0 1em;
 		text-align: center;
 		white-space: nowrap;
 	}
@@ -34,7 +34,7 @@
 	& a:hover
 	{
 		background: var(--rs-admin-color-primary);
-		color: gray(100);
+		color: gray(0);
 	}
 
 	& .rs-admin-item-delete a:hover,

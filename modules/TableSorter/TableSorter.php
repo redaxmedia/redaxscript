@@ -7,8 +7,6 @@ use Redaxscript\Head;
 use Redaxscript\Header;
 use Redaxscript\Module;
 use function array_search;
-use function file_get_contents;
-use function json_decode;
 use function json_encode;
 
 /**
@@ -122,15 +120,13 @@ class TableSorter extends Module\Module
 	protected function _sanitizePost() : array
 	{
 		$specialFilter = new Filter\Special();
-		$content = file_get_contents('php://input');
-		$postArray = (array)json_decode($content);
 
 		/* sanitize post */
 
 		return
 		[
-			'table' => $specialFilter->sanitize($postArray['table']),
-			'rankArray' => $postArray['rankArray']
+			'table' => $specialFilter->sanitize($this->_request->getStream('table')),
+			'rankArray' => $this->_request->getStream('rankArray')
 		];
 	}
 }

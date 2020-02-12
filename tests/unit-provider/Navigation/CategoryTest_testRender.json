@@ -18,11 +18,11 @@
 		{
 			"className":
 			{
-				"list": "rs-list-sidebar",
-				"children": "rs-list-children",
-				"active": "rs-item-active"
+				"list": "test-list-categories",
+				"children": "test-list-children",
+				"active": "test-item-active"
 			}
 		},
-		"<ul class=\"rs-list-sidebar\"><li><a href=\"category-one\">Category One</a><ul class=\"rs-list-children\"><li><a href=\"category-one/category-three\">Category Three</a></li></ul></li><li class=\"rs-item-active\"><a href=\"category-two\">Category Two</a></li></ul>"
+		"<ul class=\"test-list-categories\"><li><a href=\"category-one\">Category One</a><ul class=\"test-list-children\"><li><a href=\"category-one/category-three\">Category Three</a></li></ul></li><li class=\"test-item-active\"><a href=\"category-two\">Category Two</a></li></ul>"
 	]
 ]

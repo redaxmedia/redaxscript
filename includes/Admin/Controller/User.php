@@ -131,9 +131,10 @@ class User extends ControllerAbstract
 
 	protected function _sanitizePost() : array
 	{
-		$numberFilter = new Filter\Number();
-		$specialFilter = new Filter\Special();
 		$emailFilter = new Filter\Email();
+		$numberFilter = new Filter\Number();
+		$toggleFilter = new Filter\Toggle();
+		$specialFilter = new Filter\Special();
 
 		/* sanitize post */
 
@@ -147,7 +148,7 @@ class User extends ControllerAbstract
 			'password_confirm' => $this->_request->getPost('password_confirm'),
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
 			'language' => $specialFilter->sanitize($this->_request->getPost('language')),
-			'status' => $numberFilter->sanitize($this->_request->getPost('status')),
+			'status' => $toggleFilter->sanitize($this->_request->getPost('status')),
 			'groups' => json_encode($this->_request->getPost('groups'))
 		];
 	}

@@ -253,13 +253,24 @@ class CategoryForm extends ViewAbstract
 			[
 				'for' => 'status'
 			])
-			->select($helperOption->getVisibleArray(),
-			[
-				$category->id ? $category->status : 1
-			],
+			->checkbox(!$category->id || $category->status ?
 			[
 				'id' => 'status',
+				'class' => 'rs-admin-fn-status-switch',
+				'name' => 'status',
+				'checked' => 'checked'
+			] :
+			[
+				'id' => 'status',
+				'class' => 'rs-admin-fn-status-switch',
 				'name' => 'status'
+			])
+			->label(null,
+			[
+				'class' => 'rs-admin-label-switch',
+				'for' => 'status',
+				'data-on' => $this->_language->get('publish'),
+				'data-off' => $this->_language->get('unpublish')
 			])
 			->append('</li><li>')
 			->label($this->_language->get('rank'),

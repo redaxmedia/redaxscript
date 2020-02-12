@@ -12,10 +12,9 @@
 %table-default
 {
 	& caption,
-	& th,
-	& tfoot td
+	& thead,
+	& tfoot
 	{
-		font-weight: bold;
 		text-align: left;
 	}
 

@@ -18,7 +18,7 @@
 {
 	content: '\<%=codepoints[index]%>';
 	font-family: var(--rs-font-icon-social-sharer);
-	font-weight: normal;
+	font-weight: 400;
 }
 <%
 })

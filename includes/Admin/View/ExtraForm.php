@@ -228,26 +228,48 @@ class ExtraForm extends ViewAbstract
 			[
 				'for' => 'headline'
 			])
-			->select($helperOption->getToggleArray(),
-			[
-				$extra->id ? $extra->headline : 1
-			],
+			->checkbox(!$extra->id || $extra->headline ?
 			[
 				'id' => 'headline',
+				'class' => 'rs-admin-fn-status-switch',
+				'name' => 'headline',
+				'checked' => 'checked'
+			] :
+			[
+				'id' => 'headline',
+				'class' => 'rs-admin-fn-status-switch',
 				'name' => 'headline'
+			])
+			->label(null,
+			[
+				'class' => 'rs-admin-label-switch',
+				'for' => 'headline',
+				'data-on' => $this->_language->get('enable'),
+				'data-off' => $this->_language->get('disable')
 			])
 			->append('</li><li>')
 			->label($this->_language->get('status'),
 			[
 				'for' => 'status'
 			])
-			->select($helperOption->getVisibleArray(),
-			[
-				$extra->id ? $extra->status : 1
-			],
+			->checkbox(!$extra->id || $extra->status ?
 			[
 				'id' => 'status',
+				'class' => 'rs-admin-fn-status-switch',
+				'name' => 'status',
+				'checked' => 'checked'
+			] :
+			[
+				'id' => 'status',
+				'class' => 'rs-admin-fn-status-switch',
 				'name' => 'status'
+			])
+			->label(null,
+			[
+				'class' => 'rs-admin-label-switch',
+				'for' => 'status',
+				'data-on' => $this->_language->get('publish'),
+				'data-off' => $this->_language->get('unpublish')
 			])
 			->append('</li><li>')
 			->label($this->_language->get('rank'),

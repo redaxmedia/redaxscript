@@ -12,8 +12,6 @@
 {
 	box-sizing: border-box;
 	display: inline-block;
-	padding: 0.5em;
-	text-align: center;
 }
 
 /** @section 2. query */

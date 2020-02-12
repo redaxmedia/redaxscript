@@ -19,9 +19,9 @@ rs.modules.Analytics.process = optionArray =>
 
 		if (elementList)
 		{
-			elementList.forEach(element => element.addEventListener(trackEvent, event =>
+			elementList.forEach(element => element.addEventListener(trackEvent, () =>
 			{
-				const data = event.target.dataset;
+				const data = element.dataset;
 				const category = String(data.category);
 				const action = String(data.action);
 				const label = data.label ? String(data.label) : null;

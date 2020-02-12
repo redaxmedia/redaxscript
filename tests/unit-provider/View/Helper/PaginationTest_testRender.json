@@ -15,19 +15,19 @@
 		{
 			"className":
 			{
-				"list": "rs-list-test",
+				"list": "test-list-pagination",
 				"item":
 				{
-					"first": "rs-item-first",
-					"previous": "rs-item-previous",
-					"next": "rs-item-next",
-					"last": "rs-item-last",
-					"number": "rs-item-number",
-					"active": "rs-item-active"
+					"first": "test-item-first",
+					"previous": "test-item-previous",
+					"next": "test-item-next",
+					"last": "test-item-last",
+					"number": "test-item-number",
+					"active": "test-item-active"
 				}
 			}
 		},
-		"<ul class=\"rs-list-test\"><li class=\"rs-item-first\"><a href=\"test\">First</a></li><li class=\"rs-item-previous\"><a href=\"test/4999\" rel=\"prev\">Previous</a></li><li class=\"rs-item-number\"><a href=\"test/4999\">4999</a></li><li class=\"rs-item-number rs-item-active\"><span>5000</span></li><li class=\"rs-item-number\"><a href=\"test/5001\">5001</a></li><li class=\"rs-item-next\"><a href=\"test/5001\" rel=\"next\">Next</a></li><li class=\"rs-item-last\"><a href=\"test/10000\">Last</a></li></ul>"
+		"<ul class=\"test-list-pagination\"><li class=\"test-item-first\"><a href=\"test\">First</a></li><li class=\"test-item-previous\"><a href=\"test/4999\" rel=\"prev\">Previous</a></li><li class=\"test-item-number\"><a href=\"test/4999\">4999</a></li><li class=\"test-item-number test-item-active\"><span>5000</span></li><li class=\"test-item-number\"><a href=\"test/5001\">5001</a></li><li class=\"test-item-next\"><a href=\"test/5001\" rel=\"next\">Next</a></li><li class=\"test-item-last\"><a href=\"test/10000\">Last</a></li></ul>"
 	],
 	[
 		"test",

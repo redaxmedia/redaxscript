@@ -2,7 +2,9 @@
 namespace Redaxscript;
 
 use function array_key_exists;
+use function file_get_contents;
 use function is_array;
+use function json_decode;
 
 /**
  * children class to request globals
@@ -38,6 +40,7 @@ class Request extends Singleton
 			'get' => $_GET ? : [],
 			'post' => $_POST ? : [],
 			'files' => $_FILES ? : [],
+			'stream' => self::_loadStream(),
 			'session' => $_SESSION ? : [],
 			'cookie' => $_COOKIE ? : []
 		];
@@ -222,6 +225,39 @@ class Request extends Singleton
 	}
 
 	/**
+	 * get the value from stream
+	 *
+	 * @since 4.2.0
+	 *
+	 * @param string $key key of the item
+	 *
+	 * @return string|array|null
+	 */
+
+	public function getStream(string $key = null)
+	{
+		if (is_array(self::$_requestArray['stream']) && array_key_exists($key, self::$_requestArray['stream']))
+		{
+			return self::$_requestArray['stream'][$key];
+		}
+		return null;
+	}
+
+	/**
+	 * set the value to stream
+	 *
+	 * @since 4.2.0
+	 *
+	 * @param string $key key of the item
+	 * @param string|array|null $value value of the item
+	 */
+
+	public function setStream(string $key = null, $value = null) : void
+	{
+		self::$_requestArray['stream'][$key] = $value;
+	}
+
+	/**
 	 * get the value from session
 	 *
 	 * @since 2.2.0
@@ -307,5 +343,18 @@ class Request extends Singleton
 	public function refreshCookie() : void
 	{
 		self::$_requestArray['cookie'] = $_COOKIE ? : [];
+	}
+
+	/**
+	 * load the stream
+	 *
+	 * @since 4.2.0
+	 *
+	 * @return array
+	 */
+
+	protected function _loadStream() : array
+	{
+		return (array)json_decode(file_get_contents('php://input'));
 	}
 }

@@ -52,12 +52,12 @@
 
 	/* branding */
 
-	--rs-url-branding: url('../../../../templates/default/assets/images/redaxscript.svg');
+	--rs-url-branding: url('../../../../templates/default/assets/images/logo.svg');
 
 	/** @section 1.4 font */
 
-	--rs-font-primary: 'open sans condensed', arial, sans-serif;
+	--rs-font-primary: 'yanone kaffeesatz', arial, sans-serif;
 	--rs-font-code: monospace, arial, sans-serif;
-	--rs-font-quote: georgia, times, serif;
+	--rs-font-quote: 'yanone kaffeesatz', arial, sans-serif;
 	--rs-font-icon: 'icon';
 }

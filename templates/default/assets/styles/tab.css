@@ -22,9 +22,10 @@
 {
 	color: gray(100);
 	display: flex;
-	font-weight: bold;
+	font-weight: 500;
 	line-height: 2.5em;
 	padding: 0 1em;
+	text-transform: uppercase;
 }
 
 /** @section 1.2 box */

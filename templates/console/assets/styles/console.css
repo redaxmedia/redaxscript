@@ -16,12 +16,14 @@
 
 .rs-console-box-default
 {
+	font-size: 1.25em;
 	white-space: pre-wrap;
 }
 
 .rs-console-form-default
 {
 	display: flex;
+	font-size: 1.25em;
 	overflow: hidden;
 }
 

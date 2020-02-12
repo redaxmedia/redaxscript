@@ -4,7 +4,7 @@ namespace Redaxscript;
 use function error_reporting;
 use function getenv;
 
-error_reporting(getenv('DEBUG') ? E_DEPRECATED | E_WARNING | E_ERROR | E_PARSE : 0);
+error_reporting(getenv('DEBUG_MODE') ? E_WARNING | E_ERROR | E_PARSE : 0);
 
 /* include */
 
@@ -30,7 +30,7 @@ $config->init();
 /* database */
 
 Db::construct($config);
-Db::configure('logging', getenv('DEBUG'));
+Db::configure('logging', getenv('DEBUG_MODE'));
 Db::init();
 
 /* bootstrap */

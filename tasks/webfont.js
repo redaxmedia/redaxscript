@@ -12,9 +12,11 @@ module.exports = grunt =>
 				'node_modules/@mdi/svg/svg/alert-circle-outline.svg',
 				'node_modules/@mdi/svg/svg/bell.svg',
 				'node_modules/@mdi/svg/svg/book-open-variant.svg',
+				'node_modules/@mdi/svg/svg/check.svg',
 				'node_modules/@mdi/svg/svg/check-circle-outline.svg',
 				'node_modules/@mdi/svg/svg/chevron-down.svg',
 				'node_modules/@mdi/svg/svg/chevron-right.svg',
+				'node_modules/@mdi/svg/svg/close.svg',
 				'node_modules/@mdi/svg/svg/close-circle-outline.svg',
 				'node_modules/@mdi/svg/svg/cube-outline.svg',
 				'node_modules/@mdi/svg/svg/delete.svg',
@@ -39,7 +41,6 @@ module.exports = grunt =>
 		{
 			src:
 			[
-				'node_modules/@mdi/svg/svg/account.svg',
 				'node_modules/@mdi/svg/svg/alert-circle-outline.svg',
 				'node_modules/@mdi/svg/svg/check-circle-outline.svg',
 				'node_modules/@mdi/svg/svg/chevron-left.svg',

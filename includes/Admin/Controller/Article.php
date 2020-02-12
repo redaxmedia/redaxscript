@@ -135,10 +135,11 @@ class Article extends ControllerAbstract
 
 	protected function _sanitizePost() : array
 	{
-		$numberFilter = new Filter\Number();
 		$aliasFilter = new Filter\Alias();
-		$specialFilter = new Filter\Special();
 		$htmlFilter = new Filter\Html();
+		$numberFilter = new Filter\Number();
+		$specialFilter = new Filter\Special();
+		$toggleFilter = new Filter\Toggle();
 
 		/* sanitize post */
 
@@ -155,10 +156,10 @@ class Article extends ControllerAbstract
 			'template' => $specialFilter->sanitize($this->_request->getPost('template')),
 			'sibling' => $this->_request->getPost('sibling'),
 			'category' => $this->_request->getPost('category'),
-			'headline' => $numberFilter->sanitize($this->_request->getPost('headline')),
-			'byline' => $numberFilter->sanitize($this->_request->getPost('byline')),
-			'comments' => $numberFilter->sanitize($this->_request->getPost('comments')),
-			'status' => $numberFilter->sanitize($this->_request->getPost('status')),
+			'headline' => $toggleFilter->sanitize($this->_request->getPost('headline')),
+			'byline' => $toggleFilter->sanitize($this->_request->getPost('byline')),
+			'comments' => $toggleFilter->sanitize($this->_request->getPost('comments')),
+			'status' => $toggleFilter->sanitize($this->_request->getPost('status')),
 			'rank' => $numberFilter->sanitize($this->_request->getPost('rank')),
 			'access' => json_encode($this->_request->getPost('access')),
 			'date' => strtotime($this->_request->getPost('date'))

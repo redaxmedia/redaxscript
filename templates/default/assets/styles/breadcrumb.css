@@ -8,26 +8,30 @@
 
 .rs-list-breadcrumb
 {
+	background: var(--rs-color-tertiary);
+	border-radius: 0.125em;
+	color: gray(80);
+	display: inline-block;
 	font-size: 1.25em;
-	margin-bottom: 1em;
+	font-weight: 500;
+	padding: 0.5em 1em;
 
 	& li
 	{
 		display: inline-block;
-		position: relative;
-		vertical-align: middle;
 	}
 
 	& .rs-item-divider
 	{
+		position: relative;
 		text-indent: -999em;
-		width: 1em;
+		width: 1.5em;
 
 		&:before
 		{
 			@extend %rs-icon-chevron-right;
 			left: 0;
-			line-height: 1.5em;
+			line-height: 0.875em;
 			position: absolute;
 			right: 0;
 			text-align: center;

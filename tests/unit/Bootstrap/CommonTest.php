@@ -127,9 +127,11 @@ class CommonTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		putenv('REDIRECT_mod_deflate=on');
-		putenv('REDIRECT_mod_headers=on');
-		putenv('REDIRECT_mod_rewrite=on');
+		putenv('REDIRECT_MOD_DEFLATE=on');
+		putenv('REDIRECT_MOD_BROTLI=on');
+		putenv('REDIRECT_MOD_SECURITY=on');
+		putenv('REDIRECT_MOD_REWRITE=on');
+		putenv('REDIRECT_MOD_HEADERS=on');
 		new Bootstrap\Common($this->_registry, $this->_request);
 
 		/* expect and actual */
@@ -137,8 +139,10 @@ class CommonTest extends TestCaseAbstract
 		$expectArray =
 		[
 			'mod_deflate' => true,
-			'mod_headers' => true,
-			'mod_rewrite' => true
+			'mod_brotli' => true,
+			'mod_security' => true,
+			'mod_rewrite' => true,
+			'mod_headers' => true
 		];
 		$actualArray = $this->_registry->get('moduleArray');
 

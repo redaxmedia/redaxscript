@@ -286,26 +286,48 @@ class GroupForm extends ViewAbstract
 				[
 					'for' => 'filter'
 				])
-				->select($helperOption->getToggleArray(),
-				[
-					$group->id ? $group->filter : 1
-				],
+				->checkbox(!$group->id || $group->filter ?
 				[
 					'id' => 'filter',
+					'class' => 'rs-admin-fn-status-switch',
+					'name' => 'filter',
+					'checked' => 'checked'
+				] :
+				[
+					'id' => 'filter',
+					'class' => 'rs-admin-fn-status-switch',
 					'name' => 'filter'
+				])
+				->label(null,
+				[
+					'class' => 'rs-admin-label-switch',
+					'for' => 'filter',
+					'data-on' => $this->_language->get('enable'),
+					'data-off' => $this->_language->get('disable')
 				])
 				->append('</li><li>')
 				->label($this->_language->get('status'),
 				[
 					'for' => 'status'
 				])
-				->select($helperOption->getToggleArray(),
-				[
-					$group->id ? $group->status : 1
-				],
+				->checkbox(!$group->id || $group->status ?
 				[
 					'id' => 'status',
+					'class' => 'rs-admin-fn-status-switch',
+					'name' => 'status',
+					'checked' => 'checked'
+				] :
+				[
+					'id' => 'status',
+					'class' => 'rs-admin-fn-status-switch',
 					'name' => 'status'
+				])
+				->label(null,
+				[
+					'class' => 'rs-admin-label-switch',
+					'for' => 'status',
+					'data-on' => $this->_language->get('enable'),
+					'data-off' => $this->_language->get('disable')
 				])
 				->append('</li></ul>');
 		}

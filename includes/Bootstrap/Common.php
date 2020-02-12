@@ -120,21 +120,22 @@ class Common extends BootstrapAbstract
 		$moduleArray = function_exists('apache_get_modules') ? apache_get_modules() : [];
 		$fallbackArray =
 		[
-			'mod_brotli',
-			'mod_deflate',
-			'mod_headers',
-			'mod_rewrite'
+			'mod_deflate' => 'REDIRECT_MOD_DEFLATE',
+			'mod_brotli' => 'REDIRECT_MOD_BROTLI',
+			'mod_security' => 'REDIRECT_MOD_SECURITY',
+			'mod_rewrite' => 'REDIRECT_MOD_REWRITE',
+			'mod_headers' => 'REDIRECT_MOD_HEADERS'
 		];
 
 		/* process fallback */
 
 		if (!$moduleArray)
 		{
-			foreach ($fallbackArray as $value)
+			foreach ($fallbackArray as $key => $value)
 			{
-				if (getenv('REDIRECT_' . $value) === 'on')
+				if (getenv($value) === 'on')
 				{
-					$moduleArray[$value] = true;
+					$moduleArray[$key] = true;
 				}
 			}
 		}

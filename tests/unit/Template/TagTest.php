@@ -69,7 +69,7 @@ class TagTest extends TestCaseAbstract
 			->set(
 			[
 				'author' => 'Comment One',
-				'text' => 'comment-one',
+				'text' => 'Comment One',
 				'article' => $articleOne->id
 			])
 			->save();
@@ -78,7 +78,7 @@ class TagTest extends TestCaseAbstract
 			->set(
 			[
 				'author' => 'Comment Two',
-				'text' => 'comment-two',
+				'text' => 'Comment Two',
 				'article' => $articleOne->id
 			])
 			->save();
@@ -410,7 +410,7 @@ class TagTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_request->setPost('argv', 'help');
+		$this->_request->setStream('argv', 'help');
 
 		/* actual */
 
@@ -431,7 +431,7 @@ class TagTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_request->setPost('argv', 'invalidCommand');
+		$this->_request->setStream('argv', 'invalidCommand');
 
 		/* actual */
 

@@ -31,28 +31,15 @@ class Comment extends ViewAbstract
 		'tag' =>
 		[
 			'title' => 'h3',
-			'box' => 'blockquote'
+			'box' => 'div'
 		],
 		'className' =>
 		[
 			'title' => 'rs-title-comment',
-			'box' => 'rs-quote-default'
+			'box' => 'rs-box-comment'
 		],
 		'orderColumn' => 'rank'
 	];
-
-	/**
-	 * stringify the comment
-	 *
-	 * @since 4.0.0
-	 *
-	 * @return string
-	 */
-
-	public function __toString() : string
-	{
-		return $this->render();
-	}
 
 	/**
 	 * init the class

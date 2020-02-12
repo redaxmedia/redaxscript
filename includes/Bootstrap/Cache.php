@@ -2,6 +2,7 @@
 namespace Redaxscript\Bootstrap;
 
 use Redaxscript\Filter;
+use function getenv;
 
 /**
  * children class to boot the cache
@@ -24,7 +25,7 @@ class Cache extends BootstrapAbstract
 	public function autorun() : void
 	{
 		$filterBoolean = new Filter\Boolean();
-		$noCache = $filterBoolean->sanitize($this->_request->getQuery('no-cache'));
+		$noCache = $filterBoolean->sanitize($this->_request->getQuery('no-cache')) || getenv('NO_CACHE');
 
 		/* set the registry */
 

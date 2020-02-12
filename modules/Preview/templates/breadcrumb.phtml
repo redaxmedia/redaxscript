@@ -1,0 +1,10 @@
+<?php
+namespace Redaxscript;
+
+$breadcrumb = new View\Helper\Breadcrumb(Registry::getInstance(), Language::getInstance());
+$breadcrumb->init();
+?>
+
+<!-- breadcrumb -->
+
+<?php echo $breadcrumb->render(); ?>

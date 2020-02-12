@@ -15,7 +15,6 @@ use function chr;
 use function file_exists;
 use function file_get_contents;
 use function function_exists;
-use function getenv;
 use function json_decode;
 use function str_replace;
 use function xdebug_get_headers;
@@ -295,21 +294,5 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 		}
 		$this->markTestSkipped();
 		return null;
-	}
-
-	/**
-	 * skipOnEnv
-	 *
-	 * @since 4.0.0
-	 *
-	 * @param string|null $env
-	 */
-
-	public function skipOnEnv(string $env = null) : void
-	{
-		if (getenv($env))
-		{
-			$this->markTestSkipped();
-		}
 	}
 }

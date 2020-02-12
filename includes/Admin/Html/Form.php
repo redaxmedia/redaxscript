@@ -168,30 +168,30 @@ class Form extends BaseForm
 		[
 			'button' =>
 			[
-				'class' => 'rs-admin-js-button rs-admin-button-default rs-admin-button-large',
+				'class' => 'rs-admin-js-button rs-admin-button-default',
 				'type' => 'button'
 			],
 			'reset' =>
 			[
-				'class' => 'rs-admin-js-reset rs-admin-button-default rs-admin-button-reset rs-admin-button-large',
+				'class' => 'rs-admin-js-reset rs-admin-button-default rs-admin-button-reset',
 				'type' => 'reset'
 			],
 			'submit' =>
 			[
-				'class' => 'rs-admin-js-submit rs-admin-button-default rs-admin-button-submit rs-admin-button-large',
+				'class' => 'rs-admin-js-submit rs-admin-button-default rs-admin-button-submit',
 				'type' => 'submit',
 				'value' => 'submit'
 			],
 			'save' =>
 			[
-				'class' => 'rs-admin-js-save rs-admin-button-default rs-admin-button-save rs-admin-button-large',
+				'class' => 'rs-admin-js-save rs-admin-button-default rs-admin-button-save',
 				'name' => 'edit',
 				'type' => 'submit',
 				'value' => 'update'
 			],
 			'create' =>
 			[
-				'class' => 'rs-admin-js-create rs-admin-button-default rs-admin-button-create rs-admin-button-large',
+				'class' => 'rs-admin-js-create rs-admin-button-default rs-admin-button-create',
 				'name' => 'new',
 				'type' => 'submit',
 				'value' => 'create'
@@ -201,16 +201,16 @@ class Form extends BaseForm
 		[
 			'cancel' =>
 			[
-				'class' => 'rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel rs-admin-button-large',
+				'class' => 'rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel',
 				'href' => 'javascript:history.back()'
 			],
 			'delete' =>
 			[
-				'class' => 'rs-admin-js-delete rs-admin-button-default rs-admin-button-delete rs-admin-button-large'
+				'class' => 'rs-admin-js-delete rs-admin-button-default rs-admin-button-delete'
 			],
 			'uninstall' =>
 			[
-				'class' => 'rs-admin-js-uninstall rs-admin-button-default rs-admin-button-uninstall rs-admin-button-large'
+				'class' => 'rs-admin-js-uninstall rs-admin-button-default rs-admin-button-uninstall'
 			]
 		]
 	];

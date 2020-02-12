@@ -15,7 +15,7 @@
 .rs-list-menu
 {
 	color: gray(100);
-	font: 1.5em/2em var(--rs-font-primary);
+	font: 300 1.5em/2em var(--rs-font-primary);
 
 	& a,
 	& span
@@ -136,13 +136,10 @@
 	{
 		color: gray(80);
 		cursor: pointer;
-		font: 1em arial;
-		height: 2.25em;
+		height: 6em;
 		max-width: 5em;
-		padding-top: 3.75em;
 		position: absolute;
 		right: 0;
-		text-align: center;
 		top: 0;
 		width: 25%;
 		z-index: 1000;
@@ -151,12 +148,12 @@
 		&:after
 		{
 			background: var(--rs-color-primary);
-			bottom: 3.75em;
 			content: '';
 			height: 0.25em;
 			left: 25%;
 			position: absolute;
 			right: 25%;
+			top: 50%;
 		}
 	}
 

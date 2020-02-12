@@ -16,7 +16,7 @@
 	background: gray(100);
 	border: 0.125rem solid gray(80);
 	border-radius: 0.125em;
-	padding: 0.25em 0.5em;
+	padding: 0.5em;
 	transition: background 0.2s, border-color 0.2s;
 	width: 100%;
 
@@ -40,7 +40,7 @@
 .rs-field-default,
 .rs-field-select:not([multiple])
 {
-	height: 2.25em;
+	height: 2.5em;
 }
 
 /** @section 2. textarea */

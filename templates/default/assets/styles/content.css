@@ -23,17 +23,17 @@
 
 .rs-title-content
 {
-	border-left: 0.125em solid gray(0 / 0.2);
 	color: var(--rs-color-tertiary);
-	font-size: 2.5em;
-	margin-bottom: 0.75em;
+	font-size: 3em;
+	font-weight: 500;
+	margin-bottom: 0.5em;
 	margin-top: 1em;
-	padding-left: 0.25em;
 }
 
 .rs-title-content-sub
 {
 	font-size: 1.5em;
+	font-weight: 500;
 	margin-bottom: 0.5em;
 	margin-top: 1em;
 }
@@ -42,7 +42,8 @@
 
 .rs-box-content
 {
-	font-size: 1.25em;
+	font-size: 1.5em;
+	font-weight: 300;
 
 	& p:not([class])
 	{
@@ -53,8 +54,8 @@
 
 .rs-box-byline
 {
-	font-style: italic;
-	margin-top: 1em;
+	font-size: 1.125em;
+	margin-top: 2em;
 
 	& span + span:before
 	{
@@ -68,49 +69,38 @@
 
 .rs-title-comment
 {
-	font-size: 1.5em;
+	font-size: 2em;
+	font-weight: 500;
 	margin-bottom: 0.5em;
 	margin-top: 1em;
-
-	&:before
-	{
-		@extend %rs-icon-account;
-		font-size: 1.5em;
-		margin-left: -0.125em;
-		margin-right: 0.125em;
-		vertical-align: middle;
-	}
 }
 
 /** @section 2.2 box */
 
-.rs-box-comment
+.rs-quote-default
 {
-	font-size: 1.25em;
+	font: italic 300 1.25em/1.75em var(--rs-font-quote);
+	margin-bottom: 1em;
+	margin-top: 1em;
 }
 
 /** @section 3. quote */
-
-.rs-quote-default
-{
-	font: italic 1.25em/1.75em var(--rs-font-primary);
-}
 
 @media (--media-medium-min)
 {
 	.rs-quote-default
 	{
-		margin: 1em 1em 1em 3em;
+		margin-left: 3em;
 		position: relative;
 
 		&:before
 		{
-			color: gray(0 / 0.1);
+			color: gray(90);
 			content: '\201d';
-			font: 6em/1em var(--rs-font-quote);
-			left: -0.5em;
+			font: 8.5em var(--rs-font-quote);
+			left: -0.375em;
 			position: absolute;
-			top: -0.125em;
+			top: 0;
 		}
 	}
 }
@@ -122,7 +112,7 @@
 	background: var(--rs-color-tertiary);
 	color: gray(100);
 	display: block;
-	font: 0.75em/1.25em var(--rs-font-code);
+	font: 1rem/1.25em var(--rs-font-code);
 	padding: 1em;
 	white-space: pre-wrap;
 
@@ -136,13 +126,9 @@
 
 .rs-link-more
 {
+	@extend %rs-button;
 	background: var(--rs-color-quaternary);
-	border-radius: 0.125em;
 	color: gray(100);
-	display: inline-block;
-	line-height: 2.5em;
-	padding: 0 1em;
-	transition: background 0.2s;
 
 	&:hover
 	{

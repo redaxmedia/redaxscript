@@ -13,11 +13,11 @@
 
 .rs-title-result
 {
-	border-left: 0.125em solid gray(0 / 0.2);
-	font-size: 2.5em;
-	margin-bottom: 0.75em;
+	color: var(--rs-color-tertiary);
+	font-size: 3em;
+	font-weight: 500;
+	margin-bottom: 0.5em;
 	margin-top: 1em;
-	padding-left: 0.25em;
 }
 
 /** @section 1.2 list */
@@ -33,25 +33,18 @@
 
 		&:before
 		{
-			background: var(--rs-color-tertiary);
+			background: gray(90);
 			border-radius: 0.125em;
-			color: gray(100);
 			content: counter(result, decimal);
 			counter-increment: result;
-			font-weight: bold;
+			font-weight: 500;
 			left: 0;
 			line-height: 2em;
 			position: absolute;
 			text-align: center;
 			top: 50%;
 			transform: translateY(-50%);
-			transition: background 0.2s;
 			width: 2em;
-		}
-
-		&:hover:before
-		{
-			background: var(--rs-color-primary);
 		}
 
 		& + li
@@ -66,13 +59,11 @@
 .rs-link-result
 {
 	color: var(--rs-color-tertiary);
-	font-size: 1.75em;
+	font-size: 2em;
 }
 
 .rs-text-result-date
 {
 	display: block;
-	font-size: 0.875em;
-	font-style: italic;
-	line-height: 1.5em;
+	font-size: 1.125em;
 }

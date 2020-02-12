@@ -147,7 +147,14 @@ class UserForm extends ViewAbstract
 			[
 				'for' => 'password'
 			])
-			->password(
+			->password(!$user->id ?
+			[
+				'id' => 'password',
+				'pattern' => $loginValidator->getFormPattern(),
+				'name' => 'password',
+				'autocomplete' => 'new-password',
+				'required' => 'required'
+			] :
 			[
 				'id' => 'password',
 				'pattern' => $loginValidator->getFormPattern(),
@@ -159,7 +166,14 @@ class UserForm extends ViewAbstract
 			[
 				'for' => 'password_confirm'
 			])
-			->password(
+			->password(!$user->id ?
+			[
+				'id' => 'password_confirm',
+				'pattern' => $loginValidator->getFormPattern(),
+				'name' => 'password_confirm',
+				'autocomplete' => 'new-password',
+				'required' => 'required'
+			] :
 			[
 				'id' => 'password_confirm',
 				'pattern' => $loginValidator->getFormPattern(),
@@ -229,13 +243,24 @@ class UserForm extends ViewAbstract
 				[
 					'for' => 'status'
 				])
-				->select($helperOption->getToggleArray(),
-				[
-					$user->id ? $user->status : 1
-				],
+				->checkbox(!$user->id || $user->status ?
 				[
 					'id' => 'status',
+					'class' => 'rs-admin-fn-status-switch',
+					'name' => 'status',
+					'checked' => 'checked'
+				] :
+				[
+					'id' => 'status',
+					'class' => 'rs-admin-fn-status-switch',
 					'name' => 'status'
+				])
+				->label(null,
+				[
+					'class' => 'rs-admin-label-switch',
+					'for' => 'status',
+					'data-on' => $this->_language->get('enable'),
+					'data-off' => $this->_language->get('disable')
 				])
 				->append('</li>');
 			if ($this->_registry->get('groupsEdit'))

@@ -252,6 +252,11 @@ class Db extends ORM
 
 	public function whereLikeMany(array $columnArray = [], array $likeArray = []) : self
 	{
+		$dbType = self::$_config->get('dbType');
+		if ($dbType === 'pgsql')
+		{
+			return $this->_addWhere('(' . implode($columnArray, ' ILIKE ? OR ') . ' ILIKE ?)', $likeArray);
+		}
 		return $this->_addWhere('(' . implode($columnArray, ' LIKE ? OR ') . ' LIKE ?)', $likeArray);
 	}
 

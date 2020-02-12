@@ -13,7 +13,6 @@
 .rs-field-select,
 .rs-field-textarea
 {
-	padding: 0.5em;
 	width: 100%;
 
 	&[disabled],

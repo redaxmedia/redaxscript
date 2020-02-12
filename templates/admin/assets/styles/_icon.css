@@ -16,131 +16,145 @@
 {
 	content: '\f101';
 	font-family: var(--rs-admin-font-icon);
-	font-weight: normal;
+	font-weight: 400;
 }
 
 %rs-admin-icon-alert-circle-outline
 {
 	content: '\f102';
 	font-family: var(--rs-admin-font-icon);
-	font-weight: normal;
+	font-weight: 400;
 }
 
 %rs-admin-icon-bell
 {
 	content: '\f103';
 	font-family: var(--rs-admin-font-icon);
-	font-weight: normal;
+	font-weight: 400;
 }
 
 %rs-admin-icon-book-open-variant
 {
 	content: '\f104';
 	font-family: var(--rs-admin-font-icon);
-	font-weight: normal;
+	font-weight: 400;
+}
+
+%rs-admin-icon-check
+{
+	content: '\f105';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: 400;
 }
 
 %rs-admin-icon-check-circle-outline
 {
-	content: '\f105';
+	content: '\f106';
 	font-family: var(--rs-admin-font-icon);
-	font-weight: normal;
+	font-weight: 400;
 }
 
 %rs-admin-icon-chevron-down
 {
-	content: '\f106';
+	content: '\f107';
 	font-family: var(--rs-admin-font-icon);
-	font-weight: normal;
+	font-weight: 400;
 }
 
 %rs-admin-icon-chevron-right
 {
-	content: '\f107';
+	content: '\f108';
 	font-family: var(--rs-admin-font-icon);
-	font-weight: normal;
+	font-weight: 400;
+}
+
+%rs-admin-icon-close
+{
+	content: '\f109';
+	font-family: var(--rs-admin-font-icon);
+	font-weight: 400;
 }
 
 %rs-admin-icon-close-circle-outline
 {
-	content: '\f108';
+	content: '\f10a';
 	font-family: var(--rs-admin-font-icon);
-	font-weight: normal;
+	font-weight: 400;
 }
 
 %rs-admin-icon-cube-outline
 {
-	content: '\f109';
+	content: '\f10b';
 	font-family: var(--rs-admin-font-icon);
-	font-weight: normal;
+	font-weight: 400;
 }
 
 %rs-admin-icon-delete
 {
-	content: '\f10a';
+	content: '\f10c';
 	font-family: var(--rs-admin-font-icon);
-	font-weight: normal;
+	font-weight: 400;
 }
 
 %rs-admin-icon-eye-off
 {
-	content: '\f10b';
+	content: '\f10d';
 	font-family: var(--rs-admin-font-icon);
-	font-weight: normal;
+	font-weight: 400;
 }
 
 %rs-admin-icon-help-circle-outline
 {
-	content: '\f10c';
+	content: '\f10e';
 	font-family: var(--rs-admin-font-icon);
-	font-weight: normal;
+	font-weight: 400;
 }
 
 %rs-admin-icon-lock
 {
-	content: '\f10d';
+	content: '\f10f';
 	font-family: var(--rs-admin-font-icon);
-	font-weight: normal;
+	font-weight: 400;
 }
 
 %rs-admin-icon-minus
 {
-	content: '\f10e';
+	content: '\f110';
 	font-family: var(--rs-admin-font-icon);
-	font-weight: normal;
+	font-weight: 400;
 }
 
 %rs-admin-icon-pencil
 {
-	content: '\f10f';
+	content: '\f111';
 	font-family: var(--rs-admin-font-icon);
-	font-weight: normal;
+	font-weight: 400;
 }
 
 %rs-admin-icon-plus
 {
-	content: '\f110';
+	content: '\f112';
 	font-family: var(--rs-admin-font-icon);
-	font-weight: normal;
+	font-weight: 400;
 }
 
 %rs-admin-icon-power
 {
-	content: '\f111';
+	content: '\f113';
 	font-family: var(--rs-admin-font-icon);
-	font-weight: normal;
+	font-weight: 400;
 }
 
 %rs-admin-icon-settings
 {
-	content: '\f112';
+	content: '\f114';
 	font-family: var(--rs-admin-font-icon);
-	font-weight: normal;
+	font-weight: 400;
 }
 
 %rs-admin-icon-subdirectory-arrow-right
 {
-	content: '\f113';
+	content: '\f115';
 	font-family: var(--rs-admin-font-icon);
-	font-weight: normal;
+	font-weight: 400;
 }

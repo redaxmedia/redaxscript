@@ -14,16 +14,10 @@
 	@extend %rs-button;
 	background: var(--rs-color-secondary);
 	color: gray(100);
-	font-size: 0.875em;
 
 	&:hover
 	{
 		background: var(--rs-color-secondary-light);
-	}
-
-	&.rs-is-large
-	{
-		font-size: 1.125em;
 	}
 
 	&.rs-is-full

@@ -2,6 +2,7 @@
 namespace Redaxscript\Tests\Admin\View\Helper;
 
 use Redaxscript\Admin\View\Helper;
+use Redaxscript\Module;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -59,6 +60,8 @@ class PanelTest extends TestCaseAbstract
 	{
 		/* setup */
 
+		Module\Hook::construct($this->_registry, $this->_request, $this->_language, $this->_config);
+		Module\Hook::init();
 		$this->_registry->init($registryArray);
 		$adminPanel = new Helper\Panel($this->_registry, $this->_language);
 		$adminPanel->init($optionArray);
@@ -69,7 +72,6 @@ class PanelTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->skipOnEnv('PARATEST');
 		$this->assertEquals($expect, $actual);
 	}
 }

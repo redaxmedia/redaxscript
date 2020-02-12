@@ -27,13 +27,13 @@
 <?php echo Tag::link()
 	->init()
 	->append(['href' => Helper::getCanonical(), 'rel' => 'canonical'])
-	->append(['href' => 'templates/default/assets/images/favicon.ico', 'rel' => 'shortcut icon'])
-	->append(['href' => 'templates/default/assets/images/favicon.png', 'rel' => 'apple-touch-icon'])
+	->append(['href' => 'templates/default/assets/images/logo.svg', 'rel' => 'shortcut icon'])
+	->append(['href' => 'templates/default/assets/images/logo.svg', 'rel' => 'apple-touch-icon'])
 	->append(['href' => 'https://cdn.redaxscript.com', 'rel' => 'preconnect'])
 	->append(['href' => 'https://fonts.gstatic.com', 'rel' => 'preconnect'])
 	->appendFile(
 	[
-		'https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700',
+		'https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200..700',
 		'templates/default/dist/styles/default.min.css'
 	])
 	->rewrite(

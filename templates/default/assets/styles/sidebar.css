@@ -9,6 +9,7 @@
 .rs-sidebar
 {
 	background: var(--rs-color-tertiary);
+	border-radius: 0.125em;
 	box-sizing: border-box;
 	color: gray(80);
 	padding: 1em;
@@ -16,14 +17,16 @@
 
 	& .rs-title-extra
 	{
-		font-size: 1.625em;
-		margin-bottom: 0.25em;
+		font-size: 2em;
+		font-weight: 500;
+		margin-bottom: 0.5em;
 		margin-top: 1em;
 	}
 
 	& .rs-box-extra
 	{
-		font-size: 1.25em;
+		font-size: 1.5em;
+		font-weight: 300;
 	}
 
 	& .rs-list-children
@@ -35,7 +38,7 @@
 	{
 		& > a
 		{
-			font-weight: bold;
+			font-weight: 500;
 		}
 	}
 

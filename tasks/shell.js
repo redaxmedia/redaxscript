@@ -43,7 +43,7 @@ module.exports = grunt =>
 		},
 		testUnitParallel:
 		{
-			command: run('vendor/bin/paratest --processes=10')
+			command: run('vendor/bin/fastest --xml=phpunit.xml')
 		},
 		testUnitMutation:
 		{
@@ -55,7 +55,7 @@ module.exports = grunt =>
 		},
 		testAcceptanceParallel:
 		{
-			command: run('vendor/bin/paratest --processes=10 --configuration=phpunit.acceptance.xml')
+			command: run('vendor/bin/fastest --xml=phpunit.acceptance.xml')
 		},
 		startHub:
 		{
@@ -67,7 +67,13 @@ module.exports = grunt =>
 		},
 		startServer:
 		{
-			command: grunt.option('D') || grunt.option('debug-mode') ? run('DEBUG=true php -S 0.0.0.0:8000') : run('php -S 0.0.0.0:8000')
+			command: run(
+			[
+				grunt.option('N') || grunt.option('no-cache') ? 'NO_CACHE=true' : '',
+				grunt.option('D') || grunt.option('debug-mode') ? 'DEBUG_MODE=true' : '',
+				'php -S 0.0.0.0:8000'
+			]
+			.join(' '))
 		},
 		stopServer:
 		{

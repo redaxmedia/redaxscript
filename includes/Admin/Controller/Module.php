@@ -83,6 +83,7 @@ class Module extends ControllerAbstract
 	protected function _sanitizePost() : array
 	{
 		$numberFilter = new Filter\Number();
+		$toggleFilter = new Filter\Toggle();
 
 		/* sanitize post */
 
@@ -91,7 +92,7 @@ class Module extends ControllerAbstract
 			'id' => $numberFilter->sanitize($this->_request->getPost('id')),
 			'name' => $this->_request->getPost('name'),
 			'description' => $this->_request->getPost('description'),
-			'status' => $numberFilter->sanitize($this->_request->getPost('status')),
+			'status' => $toggleFilter->sanitize($this->_request->getPost('status')),
 			'access' => json_encode($this->_request->getPost('access'))
 		];
 	}

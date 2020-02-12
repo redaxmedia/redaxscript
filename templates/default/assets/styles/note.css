@@ -18,12 +18,10 @@
 
 .rs-title-note
 {
-	font-size: 2.5em;
-
-	& + .rs-box-note
-	{
-		margin-top: 0.5em;
-	}
+	font-size: 2em;
+	font-weight: 500;
+	margin-bottom: 0.5em;
+	margin-top: 1em;
 }
 
 /** @section 1.2 box */
@@ -33,14 +31,14 @@
 	border-radius: 0.125em;
 	display: flex;
 	font-size: 1.5em;
-	font-weight: bold;
+	line-height: 1.5em;
 	padding: 0.5em;
 	white-space: pre;
 
 	&:before
 	{
 		align-self: center;
-		font-size: 1.25em;
+		font-size: 1.5em;
 		margin-right: 0.5em;
 	}
 

@@ -23,8 +23,8 @@
 			"modulesEdit": false,
 			"modulesUninstall": false,
 			"settingsEdit": false,
-			"myId": false,
-			"myGroups": false
+			"myId": null,
+			"myGroups": null
 		},
 		{},
 		"<ul class=\"rs-admin-fn-dropdown rs-admin-list-panel\"><li class=\"rs-admin-item-panel rs-admin-item-panel-logout\"><a href=\"logout\" class=\"rs-admin-link-panel rs-admin-link-panel-logout\">Logout</a></li></ul>"
@@ -54,7 +54,7 @@
 			"modulesUninstall": false,
 			"settingsEdit": false,
 			"myId": 1,
-			"myGroups": false
+			"myGroups": null
 		},
 		{},
 		"<ul class=\"rs-admin-fn-dropdown rs-admin-list-panel\"><li class=\"rs-admin-item-panel\"><a href=\"admin/edit/users/1\" class=\"rs-admin-link-panel rs-admin-link-panel-profile\">Profile</a></li><li class=\"rs-admin-item-panel rs-admin-item-panel-logout\"><a href=\"logout\" class=\"rs-admin-link-panel rs-admin-link-panel-logout\">Logout</a></li></ul>"
@@ -83,8 +83,8 @@
 			"modulesEdit": false,
 			"modulesUninstall": false,
 			"settingsEdit": false,
-			"myId": false,
-			"myGroups": false
+			"myId": null,
+			"myGroups": null
 		},
 		{},
 		"<ul class=\"rs-admin-fn-dropdown rs-admin-list-panel\"><li class=\"rs-admin-item-panel\"><input id=\"Redaxscript\\Admin\\View\\Helper\\Panel\\Content\" class=\"rs-admin-fn-status-panel\" type=\"radio\" name=\"Redaxscript\\Admin\\View\\Helper\\Panel\\Panel\" /><label class=\"rs-admin-fn-toggle-panel rs-admin-label-panel rs-admin-label-panel-content\" for=\"Redaxscript\\Admin\\View\\Helper\\Panel\\Content\">Contents</label><ul class=\"rs-admin-fn-content-panel rs-admin-list-panel-children\"><li><span class=\"rs-admin-text-panel-group\"><a class=\"rs-admin-link-panel rs-admin-link-panel-view\" href=\"admin/view/categories\">Categories</a></span></li></ul></li><li class=\"rs-admin-item-panel rs-admin-item-panel-logout\"><a href=\"logout\" class=\"rs-admin-link-panel rs-admin-link-panel-logout\">Logout</a></li></ul>"
@@ -113,8 +113,8 @@
 			"modulesEdit": false,
 			"modulesUninstall": false,
 			"settingsEdit": false,
-			"myId": false,
-			"myGroups": false
+			"myId": null,
+			"myGroups": null
 		},
 		{},
 		"<ul class=\"rs-admin-fn-dropdown rs-admin-list-panel\"><li class=\"rs-admin-item-panel\"><input id=\"Redaxscript\\Admin\\View\\Helper\\Panel\\Content\" class=\"rs-admin-fn-status-panel\" type=\"radio\" name=\"Redaxscript\\Admin\\View\\Helper\\Panel\\Panel\" /><label class=\"rs-admin-fn-toggle-panel rs-admin-label-panel rs-admin-label-panel-content\" for=\"Redaxscript\\Admin\\View\\Helper\\Panel\\Content\">Contents</label><ul class=\"rs-admin-fn-content-panel rs-admin-list-panel-children\"><li><span class=\"rs-admin-text-panel-group\"><a class=\"rs-admin-link-panel rs-admin-link-panel-view\" href=\"admin/view/categories\">Categories</a><a class=\"rs-admin-link-panel rs-admin-link-panel-new\" href=\"admin/new/categories\">New</a></span></li></ul></li><li class=\"rs-admin-item-panel rs-admin-item-panel-logout\"><a href=\"logout\" class=\"rs-admin-link-panel rs-admin-link-panel-logout\">Logout</a></li></ul>"
@@ -143,8 +143,8 @@
 			"modulesEdit": false,
 			"modulesUninstall": false,
 			"settingsEdit": false,
-			"myId": false,
-			"myGroups": false
+			"myId": null,
+			"myGroups": null
 		},
 		{},
 		"<ul class=\"rs-admin-fn-dropdown rs-admin-list-panel\"><li class=\"rs-admin-item-panel\"><input id=\"Redaxscript\\Admin\\View\\Helper\\Panel\\Access\" class=\"rs-admin-fn-status-panel\" type=\"radio\" name=\"Redaxscript\\Admin\\View\\Helper\\Panel\\Panel\" /><label class=\"rs-admin-fn-toggle-panel rs-admin-label-panel rs-admin-label-panel-access\" for=\"Redaxscript\\Admin\\View\\Helper\\Panel\\Access\">Access</label><ul class=\"rs-admin-fn-content-panel rs-admin-list-panel-children\"><li><span class=\"rs-admin-text-panel-group\"><a class=\"rs-admin-link-panel rs-admin-link-panel-view\" href=\"admin/view/users\">Users</a></span></li></ul></li><li class=\"rs-admin-item-panel rs-admin-item-panel-logout\"><a href=\"logout\" class=\"rs-admin-link-panel rs-admin-link-panel-logout\">Logout</a></li></ul>"
@@ -173,8 +173,8 @@
 			"modulesEdit": false,
 			"modulesUninstall": false,
 			"settingsEdit": false,
-			"myId": false,
-			"myGroups": false
+			"myId": null,
+			"myGroups": null
 		},
 		{},
 		"<ul class=\"rs-admin-fn-dropdown rs-admin-list-panel\"><li class=\"rs-admin-item-panel\"><input id=\"Redaxscript\\Admin\\View\\Helper\\Panel\\Access\" class=\"rs-admin-fn-status-panel\" type=\"radio\" name=\"Redaxscript\\Admin\\View\\Helper\\Panel\\Panel\" /><label class=\"rs-admin-fn-toggle-panel rs-admin-label-panel rs-admin-label-panel-access\" for=\"Redaxscript\\Admin\\View\\Helper\\Panel\\Access\">Access</label><ul class=\"rs-admin-fn-content-panel rs-admin-list-panel-children\"><li><span class=\"rs-admin-text-panel-group\"><a class=\"rs-admin-link-panel rs-admin-link-panel-view\" href=\"admin/view/users\">Users</a><a class=\"rs-admin-link-panel rs-admin-link-panel-new\" href=\"admin/new/users\">New</a></span></li></ul></li><li class=\"rs-admin-item-panel rs-admin-item-panel-logout\"><a href=\"logout\" class=\"rs-admin-link-panel rs-admin-link-panel-logout\">Logout</a></li></ul>"
@@ -203,8 +203,8 @@
 			"modulesEdit": true,
 			"modulesUninstall": true,
 			"settingsEdit": true,
-			"myId": false,
-			"myGroups": false
+			"myId": null,
+			"myGroups": null
 		},
 		{},
 		"<ul class=\"rs-admin-fn-dropdown rs-admin-list-panel\"><li class=\"rs-admin-item-panel\"><input id=\"Redaxscript\\Admin\\View\\Helper\\Panel\\System\" class=\"rs-admin-fn-status-panel\" type=\"radio\" name=\"Redaxscript\\Admin\\View\\Helper\\Panel\\Panel\" /><label class=\"rs-admin-fn-toggle-panel rs-admin-label-panel rs-admin-label-panel-system\" for=\"Redaxscript\\Admin\\View\\Helper\\Panel\\System\">System</label><ul class=\"rs-admin-fn-content-panel rs-admin-list-panel-children\"><li><a class=\"rs-admin-link-panel rs-admin-link-panel-system\" href=\"admin/view/modules\">Modules</a></li><li><a class=\"rs-admin-link-panel rs-admin-link-panel-system\" href=\"admin/edit/settings\">Settings</a></li></ul></li><li class=\"rs-admin-item-panel rs-admin-item-panel-logout\"><a href=\"logout\" class=\"rs-admin-link-panel rs-admin-link-panel-logout\">Logout</a></li></ul>"
@@ -233,7 +233,7 @@
 			"modulesEdit": false,
 			"modulesUninstall": false,
 			"settingsEdit": false,
-			"myId": false,
+			"myId": null,
 			"myGroups": "[1]"
 		},
 		{},

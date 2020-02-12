@@ -236,13 +236,24 @@ class SettingForm extends ViewAbstract
 			[
 				'for' => 'notification'
 			])
-			->select($helperOption->getToggleArray(),
-			[
-				$settingModel->get('notification')
-			],
+			->checkbox($settingModel->get('notification') ?
 			[
 				'id' => 'notification',
+				'class' => 'rs-admin-fn-status-switch',
+				'name' => 'notification',
+				'checked' => 'checked'
+			] :
+			[
+				'id' => 'notification',
+				'class' => 'rs-admin-fn-status-switch',
 				'name' => 'notification'
+			])
+			->label(null,
+			[
+				'class' => 'rs-admin-label-switch',
+				'for' => 'notification',
+				'data-on' => $this->_language->get('enable'),
+				'data-off' => $this->_language->get('disable')
 			])
 			->append('</li></ul>')
 
@@ -377,13 +388,24 @@ class SettingForm extends ViewAbstract
 			[
 				'for' => 'pagination'
 			])
-			->select($helperOption->getToggleArray(),
-			[
-				$settingModel->get('pagination')
-			],
+			->checkbox($settingModel->get('pagination') ?
 			[
 				'id' => 'pagination',
+				'class' => 'rs-admin-fn-status-switch',
+				'name' => 'pagination',
+				'checked' => 'checked'
+			] :
+			[
+				'id' => 'pagination',
+				'class' => 'rs-admin-fn-status-switch',
 				'name' => 'pagination'
+			])
+			->label(null,
+			[
+				'class' => 'rs-admin-label-switch',
+				'for' => 'pagination',
+				'data-on' => $this->_language->get('enable'),
+				'data-off' => $this->_language->get('disable')
 			])
 			->append('</li></ul>')
 
@@ -405,39 +427,72 @@ class SettingForm extends ViewAbstract
 			[
 				'for' => 'registration'
 			])
-			->select($helperOption->getToggleArray(),
-			[
-				$settingModel->get('registration')
-			],
+			->checkbox($settingModel->get('registration') ?
 			[
 				'id' => 'registration',
+				'class' => 'rs-admin-fn-status-switch',
+				'name' => 'registration',
+				'checked' => 'checked'
+			] :
+			[
+				'id' => 'registration',
+				'class' => 'rs-admin-fn-status-switch',
 				'name' => 'registration'
+			])
+			->label(null,
+			[
+				'class' => 'rs-admin-label-switch',
+				'for' => 'registration',
+				'data-on' => $this->_language->get('enable'),
+				'data-off' => $this->_language->get('disable')
 			])
 			->append('</li><li>')
 			->label($this->_language->get('verification'),
 			[
 				'for' => 'verification'
 			])
-			->select($helperOption->getToggleArray(),
-			[
-				$settingModel->get('verification')
-			],
+			->checkbox($settingModel->get('verification') ?
 			[
 				'id' => 'verification',
+				'class' => 'rs-admin-fn-status-switch',
+				'name' => 'verification',
+				'checked' => 'checked'
+			] :
+			[
+				'id' => 'verification',
+				'class' => 'rs-admin-fn-status-switch',
 				'name' => 'verification'
+			])
+			->label(null,
+			[
+				'class' => 'rs-admin-label-switch',
+				'for' => 'verification',
+				'data-on' => $this->_language->get('enable'),
+				'data-off' => $this->_language->get('disable')
 			])
 			->append('</li><li>')
 			->label($this->_language->get('recovery'),
 			[
 				'for' => 'recovery'
 			])
-			->select($helperOption->getToggleArray(),
-			[
-				$settingModel->get('recovery')
-			],
+			->checkbox($settingModel->get('recovery') ?
 			[
 				'id' => 'recovery',
+				'class' => 'rs-admin-fn-status-switch',
+				'name' => 'recovery',
+				'checked' => 'checked'
+			] :
+			[
+				'id' => 'recovery',
+				'class' => 'rs-admin-fn-status-switch',
 				'name' => 'recovery'
+			])
+			->label(null,
+			[
+				'class' => 'rs-admin-label-switch',
+				'for' => 'recovery',
+				'data-on' => $this->_language->get('enable'),
+				'data-off' => $this->_language->get('disable')
 			])
 			->append('</li></ul>')
 
@@ -459,13 +514,24 @@ class SettingForm extends ViewAbstract
 			[
 				'for' => 'moderation'
 			])
-			->select($helperOption->getToggleArray(),
-			[
-				$settingModel->get('moderation')
-			],
+			->checkbox($settingModel->get('moderation') ?
 			[
 				'id' => 'moderation',
+				'class' => 'rs-admin-fn-status-switch',
+				'name' => 'moderation',
+				'checked' => 'checked'
+			] :
+			[
+				'id' => 'moderation',
+				'class' => 'rs-admin-fn-status-switch',
 				'name' => 'moderation'
+			])
+			->label(null,
+			[
+				'class' => 'rs-admin-label-switch',
+				'for' => 'moderation',
+				'data-on' => $this->_language->get('enable'),
+				'data-off' => $this->_language->get('disable')
 			])
 			->append('</li><li>')
 			->label($this->_language->get('captcha'),

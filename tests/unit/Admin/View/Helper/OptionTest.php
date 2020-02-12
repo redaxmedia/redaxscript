@@ -88,56 +88,6 @@ class OptionTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testGetToggleArray
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param array $expectArray
-	 *
-	 * @dataProvider providerAutoloader
-	 */
-
-	public function testGetToggleArray(array $expectArray = []) : void
-	{
-		/* setup */
-
-		$helperOption = new Helper\Option($this->_language);
-
-		/* actual */
-
-		$actualArray = $helperOption->getToggleArray();
-
-		/* compare */
-
-		$this->assertEquals($expectArray['toggle'], $actualArray);
-	}
-
-	/**
-	 * testGetVisibleArray
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param array $expectArray
-	 *
-	 * @dataProvider providerAutoloader
-	 */
-
-	public function testGetVisibleArray(array $expectArray = []) : void
-	{
-		/* setup */
-
-		$helperOption = new Helper\Option($this->_language);
-
-		/* actual */
-
-		$actualArray = $helperOption->getVisibleArray();
-
-		/* compare */
-
-		$this->assertEquals($expectArray['visible'], $actualArray);
-	}
-
-	/**
 	 * testGetRobotArray
 	 *
 	 * @since 3.0.0

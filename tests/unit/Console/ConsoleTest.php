@@ -60,14 +60,14 @@ class ConsoleTest extends TestCaseAbstract
 	/**
 	 * testTemplate
 	 *
-	 * @since 3.0.0
+	 * @since 4.2.0
 	 */
 
 	public function testTemplate() : void
 	{
 		/* setup */
 
-		$this->_request->setPost('argv', 'help');
+		$this->_request->setStream('argv', 'help');
 		$console = new Console\Console($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* actual */
@@ -93,7 +93,7 @@ class ConsoleTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $console->init();
+		$actual = $console->init('invalid');
 
 		/* compare */
 

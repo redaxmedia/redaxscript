@@ -40,7 +40,7 @@ module.exports = () =>
 		{
 			src:
 			[
-				'tests/provider/*.json'
+				'tests/**/*.json'
 			]
 		}
 	};

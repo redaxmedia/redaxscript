@@ -16,6 +16,14 @@
 	font: 1.25rem var(--rs-admin-font-primary);
 
 	& caption,
+	& thead th,
+	& tfoot td
+	{
+		font-weight: 500;
+		text-transform: uppercase;
+	}
+
+	& caption,
 	& th,
 	& td
 	{

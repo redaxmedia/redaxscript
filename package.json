@@ -15,9 +15,9 @@
 	},
 	"devDependencies":
 	{
-		"@babel/core": "7.8.3",
-		"@babel/preset-env": "7.8.3",
-		"@mdi/svg": "4.8.95",
+		"@babel/core": "7.8.4",
+		"@babel/preset-env": "7.8.4",
+		"@mdi/svg": "4.9.95",
 		"autoprefixer": "9.7.4",
 		"babel-preset-minify": "0.5.1",
 		"colorguard": "1.2.1",
@@ -42,7 +42,7 @@
 		"grunt-svgmin": "6.0.0",
 		"grunt-tocgen": "1.1.2",
 		"grunt-webfont": "1.7.2",
-		"harmonize.css": "2.2.0",
+		"harmonize.css": "3.0.0",
 		"icomoon-free-npm": "0.0.0",
 		"kill-port": "1.6.0",
 		"load-grunt-tasks": "5.1.0",
@@ -61,12 +61,12 @@
 		"postcss-reporter": "6.0.1",
 		"postcss-rtl": "1.5.0",
 		"stylefmt": "6.0.3",
-		"stylelint": "13.0.0",
-		"stylelint-config-redaxmedia": "2.0.0"
+		"stylelint": "13.1.0",
+		"stylelint-config-redaxmedia": "3.0.0"
 	},
 	"scripts":
 	{
-		"start": "grunt serve --open-browser",
+		"start": "grunt serve --no-cache --open-browser",
 		"lint": "grunt",
 		"build": "grunt build",
 		"test": "grunt test-unit && grunt test-acceptance"

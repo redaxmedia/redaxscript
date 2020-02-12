@@ -216,7 +216,7 @@ class Reader
 
 		foreach ($dataArray as $key => $value)
 		{
-			if(is_numeric($key))
+			if (is_numeric($key))
 			{
 				$key = 'children';
 			}

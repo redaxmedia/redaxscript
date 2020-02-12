@@ -74,7 +74,7 @@ class SearchTest extends TestCaseAbstract
 			->set(
 			[
 				'author' => 'Comment One',
-				'text' => 'comment-one',
+				'text' => 'Comment One',
 				'article' => $articleOne->id
 			])
 			->save();
@@ -83,7 +83,7 @@ class SearchTest extends TestCaseAbstract
 			->set(
 			[
 				'author' => 'Comment Two',
-				'text' => 'comment-two',
+				'text' => 'Comment Two',
 				'article' => $articleOne->id
 			])
 			->save();
@@ -128,7 +128,7 @@ class SearchTest extends TestCaseAbstract
 
 		foreach ($actualObject as $value)
 		{
-			$actualArray[] = $value->alias ? : $value->text;
+			$actualArray[] = $value->title ? : $value->author;
 		}
 
 		/* compare */

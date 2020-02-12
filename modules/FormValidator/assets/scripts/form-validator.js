@@ -6,11 +6,6 @@ rs.modules.FormValidator.process = optionArray =>
 		...optionArray
 	};
 	const formList = document.querySelectorAll(OPTION.selector);
-	const validateArray =
-	[
-		'input',
-		'validate'
-	];
 
 	if (formList)
 	{
@@ -18,19 +13,16 @@ rs.modules.FormValidator.process = optionArray =>
 		{
 			/* handle validate */
 
-			form.querySelectorAll(OPTION.element.required).forEach(field =>
+			form.querySelectorAll(OPTION.element.field).forEach(field =>
 			{
 				field.classList.add(OPTION.className.fieldNote);
-				validateArray.forEach(validateEvent =>
+				field.addEventListener('input', () =>
 				{
-					field.addEventListener(validateEvent, event =>
-					{
-						event.target.validity.valid ? event.target.classList.remove(OPTION.className.isError) : event.target.classList.add(OPTION.className.isError);
-					});
+					field.validity.valid ? field.classList.remove(OPTION.className.isError) : field.classList.add(OPTION.className.isError);
 				});
-				field.addEventListener('invalid', event =>
+				field.addEventListener('invalid', () =>
 				{
-					event.target.classList.add(OPTION.className.isError);
+					field.classList.add(OPTION.className.isError);
 				});
 			});
 
@@ -38,7 +30,7 @@ rs.modules.FormValidator.process = optionArray =>
 
 			form.addEventListener('reset', () =>
 			{
-				form.querySelectorAll(OPTION.element.required).forEach(field => field.classList.remove(OPTION.className.isError));
+				form.querySelectorAll(OPTION.element.field).forEach(field => field.classList.remove(OPTION.className.isError));
 			});
 		});
 	}

@@ -1,0 +1,103 @@
+[
+	[
+		{
+			"categoryId": null,
+			"articleId": null,
+			"fistParameter": null,
+			"loggedIn": null,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"extrasEdit": false,
+			"extrasDelete": false,
+			"myGroups": null
+		},
+		{},
+		null,
+		"<h3 class=\"rs-title-extra\" id=\"extra-extra-one\">Extra One</h3><div class=\"rs-box-extra\"></div><h3 class=\"rs-title-extra\" id=\"extra-extra-two\">Extra Two</h3><div class=\"rs-box-extra\"></div>"
+	],
+	[
+		{
+			"categoryId": null,
+			"articleId": null,
+			"fistParameter": null,
+			"loggedIn": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"extrasEdit": true,
+			"extrasDelete": true,
+			"myGroups": "[1]"
+		},
+		{},
+		null,
+		"<h3 class=\"rs-title-extra\" id=\"extra-extra-one\">Extra One</h3><div class=\"rs-box-extra\"></div><div class=\"rs-admin-wrapper-dock\"><div class=\"rs-admin-js-dock rs-admin-box-dock\"><a href=\"admin/unpublish/extras/1/ffd845f78510f02580d329127bab3dd1aa7f4453\" class=\"rs-admin-link-dock rs-admin-link-unpublish\" data-description=\"Unpublish\">Unpublish</a><a href=\"admin/edit/extras/1\" class=\"rs-admin-link-dock rs-admin-link-edit\" data-description=\"Edit\">Edit</a><a href=\"admin/delete/extras/1/ffd845f78510f02580d329127bab3dd1aa7f4453\" class=\"rs-admin-js-delete rs-admin-link-dock rs-admin-link-delete\" data-description=\"Delete\">Delete</a></div></div><h3 class=\"rs-title-extra\" id=\"extra-extra-two\">Extra Two</h3><div class=\"rs-box-extra\"></div><div class=\"rs-admin-wrapper-dock\"><div class=\"rs-admin-js-dock rs-admin-box-dock\"><a href=\"admin/unpublish/extras/2/ffd845f78510f02580d329127bab3dd1aa7f4453\" class=\"rs-admin-link-dock rs-admin-link-unpublish\" data-description=\"Unpublish\">Unpublish</a><a href=\"admin/edit/extras/2\" class=\"rs-admin-link-dock rs-admin-link-edit\" data-description=\"Edit\">Edit</a><a href=\"admin/delete/extras/2/ffd845f78510f02580d329127bab3dd1aa7f4453\" class=\"rs-admin-js-delete rs-admin-link-dock rs-admin-link-delete\" data-description=\"Delete\">Delete</a></div></div><h3 class=\"rs-title-extra\" id=\"extra-extra-three\">Extra Three</h3><div class=\"rs-box-extra\"></div><div class=\"rs-admin-wrapper-dock\"><div class=\"rs-admin-js-dock rs-admin-box-dock\"><a href=\"admin/unpublish/extras/3/ffd845f78510f02580d329127bab3dd1aa7f4453\" class=\"rs-admin-link-dock rs-admin-link-unpublish\" data-description=\"Unpublish\">Unpublish</a><a href=\"admin/edit/extras/3\" class=\"rs-admin-link-dock rs-admin-link-edit\" data-description=\"Edit\">Edit</a><a href=\"admin/delete/extras/3/ffd845f78510f02580d329127bab3dd1aa7f4453\" class=\"rs-admin-js-delete rs-admin-link-dock rs-admin-link-delete\" data-description=\"Delete\">Delete</a></div></div>"
+	],
+	[
+		{
+			"categoryId": 1,
+			"articleId": null,
+			"fistParameter": null,
+			"loggedIn": null,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"extrasEdit": false,
+			"extrasDelete": false,
+			"myGroups": null
+		},
+		{},
+		null,
+		"<h3 class=\"rs-title-extra\" id=\"extra-extra-one\">Extra One</h3><div class=\"rs-box-extra\"></div><h3 class=\"rs-title-extra\" id=\"extra-extra-two\">Extra Two</h3><div class=\"rs-box-extra\"></div>"
+	],
+	[
+		{
+			"categoryId": null,
+			"articleId": 1,
+			"fistParameter": null,
+			"loggedIn": null,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"extrasEdit": false,
+			"extrasDelete": false,
+			"myGroups": null
+		},
+		{},
+		null,
+		"<h3 class=\"rs-title-extra\" id=\"extra-extra-one\">Extra One</h3><div class=\"rs-box-extra\"></div><h3 class=\"rs-title-extra\" id=\"extra-extra-two\">Extra Two</h3><div class=\"rs-box-extra\"></div>"
+	],
+	[
+		{
+			"categoryId": null,
+			"articleId": null,
+			"fistParameter": null,
+			"loggedIn": null,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"extrasEdit": false,
+			"extrasDelete": false,
+			"myGroups": null
+		},
+		{},
+		1,
+		"<h3 class=\"rs-title-extra\" id=\"extra-extra-one\">Extra One</h3><div class=\"rs-box-extra\"></div>"
+	],
+	[
+		{
+			"categoryId": null,
+			"articleId": null,
+			"fistParameter": null,
+			"loggedIn": null,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"extrasEdit": false,
+			"extrasDelete": false,
+			"myGroups": null
+		},
+		{
+			"tag":
+			{
+				"title": "h4",
+				"box": "p"
+			},
+			"className":
+			{
+				"title": "test-title-extra",
+				"box": "test-box-extra"
+			}
+		},
+		1,
+		"<h4 class=\"test-title-extra\" id=\"extra-extra-one\">Extra One</h4><p class=\"test-box-extra\"></p>"
+	]
+]

@@ -63,7 +63,7 @@ class CommentTest extends TestCaseAbstract
 			->set(
 			[
 				'author' => 'Comment One',
-				'text' => 'comment-one',
+				'text' => 'Comment One',
 				'article' => $articleOne->id
 			])
 			->save();
@@ -72,7 +72,7 @@ class CommentTest extends TestCaseAbstract
 			->set(
 			[
 				'author' => 'Comment Two',
-				'text' => 'comment-two',
+				'text' => 'Comment Two',
 				'article' => $articleTwo->id
 			])
 			->save();
@@ -81,7 +81,7 @@ class CommentTest extends TestCaseAbstract
 			->set(
 			[
 				'author' => 'Comment Three',
-				'text' => 'comment-three',
+				'text' => 'Comment Three',
 				'language' => 'en',
 				'article' => $articleTwo->id
 			])

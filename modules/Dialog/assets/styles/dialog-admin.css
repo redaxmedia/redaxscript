@@ -46,9 +46,10 @@
 	background: gray(10);
 	color: gray(80);
 	font-size: 1em;
-	font-weight: bold;
+	font-weight: 500;
 	line-height: 2.5em;
 	padding: 0 1em;
+	text-transform: uppercase;
 }
 
 /** @section 1.4 box */

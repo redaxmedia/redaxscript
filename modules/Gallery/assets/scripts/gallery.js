@@ -28,7 +28,7 @@ rs.modules.Gallery.process = optionArray =>
 
 				link.addEventListener('click', event =>
 				{
-					OPTION.photoswipe.index = Number(event.currentTarget.dataset.index);
+					OPTION.photoswipe.index = Number(link.dataset.index);
 					const photoSwipe = new window.PhotoSwipe(galleryTemplate, OPTION.ui, imageArray, OPTION.photoswipe);
 
 					photoSwipe.init();

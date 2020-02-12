@@ -31,7 +31,9 @@
 	& .rs-title-dialog
 	{
 		font-size: 1.25em;
+		font-weight: 500;
 		margin-bottom: 0.5em;
+		text-transform: uppercase;
 	}
 
 	& .rs-button-default

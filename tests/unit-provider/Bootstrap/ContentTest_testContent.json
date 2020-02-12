@@ -14,10 +14,10 @@
 		},
 		{
 			"firstTable": "articles",
-			"secondTable": false,
-			"thirdTable": false,
+			"secondTable": null,
+			"thirdTable": null,
 			"lastTable": "articles",
-			"categoryId": false,
+			"categoryId": null,
 			"articleId": 1,
 			"lastId": 1
 		}
@@ -37,11 +37,11 @@
 		},
 		{
 			"firstTable": "categories",
-			"secondTable": false,
-			"thirdTable": false,
+			"secondTable": null,
+			"thirdTable": null,
 			"lastTable": "categories",
 			"categoryId": 2,
-			"articleId": false,
+			"articleId": null,
 			"lastId": 2
 		}
 	],
@@ -60,11 +60,11 @@
 		},
 		{
 			"firstTable": "categories",
-			"secondTable": false,
-			"thirdTable": false,
+			"secondTable": null,
+			"thirdTable": null,
 			"lastTable": "categories",
 			"categoryId": 1,
-			"articleId": false,
+			"articleId": null,
 			"lastId": 1
 		}
 	],
@@ -83,11 +83,11 @@
 		},
 		{
 			"firstTable": "categories",
-			"secondTable": false,
-			"thirdTable": false,
+			"secondTable": null,
+			"thirdTable": null,
 			"lastTable": "categories",
 			"categoryId": 1,
-			"articleId": false,
+			"articleId": null,
 			"lastId": 1
 		}
 	],
@@ -107,9 +107,9 @@
 		{
 			"firstTable": "categories",
 			"secondTable": "articles",
-			"thirdTable": false,
+			"thirdTable": null,
 			"lastTable": "articles",
-			"categoryId": false,
+			"categoryId": null,
 			"articleId": 1,
 			"lastId": 1
 		}
@@ -130,10 +130,10 @@
 		{
 			"firstTable": "categories",
 			"secondTable": "categories",
-			"thirdTable": false,
+			"thirdTable": null,
 			"lastTable": "categories",
 			"categoryId": 2,
-			"articleId": false,
+			"articleId": null,
 			"lastId": 2
 		}
 	],
@@ -155,7 +155,7 @@
 			"secondTable": "categories",
 			"thirdTable": "articles",
 			"lastTable": "articles",
-			"categoryId": false,
+			"categoryId": null,
 			"articleId": 2,
 			"lastId": 2
 		}
@@ -175,12 +175,12 @@
 		},
 		{
 			"firstTable": null,
-			"secondTable": false,
-			"thirdTable": false,
+			"secondTable": null,
+			"thirdTable": null,
 			"lastTable": null,
-			"categoryId": false,
-			"articleId": false,
-			"lastId": false
+			"categoryId": null,
+			"articleId": null,
+			"lastId": null
 		}
 	],
 	[
@@ -198,12 +198,12 @@
 		},
 		{
 			"firstTable": null,
-			"secondTable": false,
-			"thirdTable": false,
+			"secondTable": null,
+			"thirdTable": null,
 			"lastTable": null,
-			"categoryId": false,
-			"articleId": false,
-			"lastId": false
+			"categoryId": null,
+			"articleId": null,
+			"lastId": null
 		}
 	]
 ]

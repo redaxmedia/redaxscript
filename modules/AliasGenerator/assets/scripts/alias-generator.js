@@ -11,7 +11,7 @@ rs.modules.AliasGenerator.generate = optionArray =>
 	{
 		const input = form.querySelector(OPTION.element.input);
 		const output = form.querySelector(OPTION.element.output);
-		const validate = new CustomEvent('validate');
+		const inputEvent = new Event('input');
 
 		/* handel input */
 
@@ -24,13 +24,13 @@ rs.modules.AliasGenerator.generate = optionArray =>
 				if (aliasValue)
 				{
 					output.value = aliasValue;
-					output.dispatchEvent(validate);
+					output.dispatchEvent(inputEvent);
 				}
 			}
 			else
 			{
 				output.value = null;
-				output.dispatchEvent(validate);
+				output.dispatchEvent(inputEvent);
 			}
 		});
 
@@ -45,7 +45,7 @@ rs.modules.AliasGenerator.generate = optionArray =>
 				if (aliasValue)
 				{
 					output.value = aliasValue;
-					output.dispatchEvent(validate);
+					output.dispatchEvent(inputEvent);
 				}
 			}
 		});

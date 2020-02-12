@@ -127,9 +127,10 @@ class Category extends ControllerAbstract
 
 	protected function _sanitizePost() : array
 	{
+		$aliasFilter = new Filter\Alias();
 		$numberFilter = new Filter\Number();
 		$specialFilter = new Filter\Special();
-		$aliasFilter = new Filter\Alias();
+		$toggleFilter = new Filter\Toggle();
 
 		/* sanitize post */
 
@@ -145,7 +146,7 @@ class Category extends ControllerAbstract
 			'template' => $specialFilter->sanitize($this->_request->getPost('template')),
 			'sibling' => $this->_request->getPost('sibling'),
 			'parent' => $this->_request->getPost('parent'),
-			'status' => $numberFilter->sanitize($this->_request->getPost('status')),
+			'status' => $toggleFilter->sanitize($this->_request->getPost('status')),
 			'rank' => $numberFilter->sanitize($this->_request->getPost('rank')),
 			'access' => json_encode($this->_request->getPost('access')),
 			'date' => strtotime($this->_request->getPost('date'))

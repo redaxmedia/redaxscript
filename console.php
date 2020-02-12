@@ -43,7 +43,7 @@ else if ($config->get('env') !== 'production' || $accessValidator->validate('1',
 	if ($request->getServer('HTTP_X_REQUESTED_WITH') === 'XMLHttpRequest')
 	{
 		$console = new Console\Console($registry, $request, $language, $config);
-		$output = $console->init('xhr');
+		$output = $console->init('template');
 		if (strlen($output))
 		{
 			echo htmlentities($output, ENT_QUOTES);

@@ -14,9 +14,8 @@
 .rs-form-search
 {
 	background: gray(100);
-	border-radius: 0.125em;
 	display: flex;
-	font-size: 1.25em;
+	font-size: 1.5em;
 	overflow: hidden;
 }
 
@@ -25,8 +24,7 @@
 .rs-field-search
 {
 	flex-grow: 1;
-	min-width: 0;
-	padding: 0 0.5em;
+	padding: 0.5em;
 }
 
 /** @section 1.3 button */
@@ -36,8 +34,6 @@
 	background: transparent;
 	color: var(--rs-color-tertiary);
 	flex-basis: 2em;
-	flex-shrink: 0;
-	height: 2em;
 	position: relative;
 	text-indent: -999em;
 	transition: color 0.2s;
@@ -50,8 +46,9 @@
 	&:after
 	{
 		@extend %rs-icon-magnify;
-		font-size: 1.25em;
+		font-size: 1.125em;
 		left: 0;
+		margin-top: -0.125em;
 		position: absolute;
 		right: 0;
 		text-indent: 0;

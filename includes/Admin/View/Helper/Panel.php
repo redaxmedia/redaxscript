@@ -572,7 +572,7 @@ class Panel extends Admin\View\ViewAbstract
 			$supElement->addClass($this->_optionArray['className']['note'][$key]);
 			$notificationTotal += count($value);
 		}
-		$labelElement->append($supElement->text($notificationTotal));
+		$labelElement->append($supElement->text($notificationTotal < 10 ? $notificationTotal : '+'));
 
 		/* collect item output */
 

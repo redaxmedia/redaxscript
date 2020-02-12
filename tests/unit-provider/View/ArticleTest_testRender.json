@@ -1,0 +1,88 @@
+[
+	[
+		{
+			"fistParameter": null,
+			"lastTable": null,
+			"loggedIn": null,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"articlesEdit": false,
+			"articlesDelete": false,
+			"myGroups": null
+		},
+		{},
+		null,
+		null,
+		"<h2 class=\"rs-title-content\" id=\"article-article-one\">Article One</h2><div class=\"rs-box-content\">Article One</div><div class=\"rs-box-byline\"></div><h2 class=\"rs-title-content\" id=\"article-article-two\">Article Two</h2><div class=\"rs-box-content\">Article Two</div><div class=\"rs-box-byline\"></div><h2 class=\"rs-title-content\" id=\"article-article-three\">Article Three</h2><div class=\"rs-box-content\">Article Three</div><div class=\"rs-box-byline\"></div>"
+	],
+	[
+		{
+			"fistParameter": null,
+			"lastTable": null,
+			"loggedIn": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"articlesEdit": true,
+			"articlesDelete": true,
+			"myGroups": "[1]"
+		},
+		{},
+		null,
+		null,
+		"<h2 class=\"rs-title-content\" id=\"article-article-one\">Article One</h2><div class=\"rs-box-content\">Article One</div><div class=\"rs-box-byline\"></div><div class=\"rs-admin-wrapper-dock\"><div class=\"rs-admin-js-dock rs-admin-box-dock\"><a href=\"admin/unpublish/articles/1/ffd845f78510f02580d329127bab3dd1aa7f4453\" class=\"rs-admin-link-dock rs-admin-link-unpublish\" data-description=\"Unpublish\">Unpublish</a><a href=\"admin/edit/articles/1\" class=\"rs-admin-link-dock rs-admin-link-edit\" data-description=\"Edit\">Edit</a><a href=\"admin/delete/articles/1/ffd845f78510f02580d329127bab3dd1aa7f4453\" class=\"rs-admin-js-delete rs-admin-link-dock rs-admin-link-delete\" data-description=\"Delete\">Delete</a></div></div><h2 class=\"rs-title-content\" id=\"article-article-two\">Article Two</h2><div class=\"rs-box-content\">Article Two</div><div class=\"rs-box-byline\"></div><div class=\"rs-admin-wrapper-dock\"><div class=\"rs-admin-js-dock rs-admin-box-dock\"><a href=\"admin/unpublish/articles/2/ffd845f78510f02580d329127bab3dd1aa7f4453\" class=\"rs-admin-link-dock rs-admin-link-unpublish\" data-description=\"Unpublish\">Unpublish</a><a href=\"admin/edit/articles/2\" class=\"rs-admin-link-dock rs-admin-link-edit\" data-description=\"Edit\">Edit</a><a href=\"admin/delete/articles/2/ffd845f78510f02580d329127bab3dd1aa7f4453\" class=\"rs-admin-js-delete rs-admin-link-dock rs-admin-link-delete\" data-description=\"Delete\">Delete</a></div></div><h2 class=\"rs-title-content\" id=\"article-article-three\">Article Three</h2><div class=\"rs-box-content\">Article Three</div><div class=\"rs-box-byline\"></div><div class=\"rs-admin-wrapper-dock\"><div class=\"rs-admin-js-dock rs-admin-box-dock\"><a href=\"admin/unpublish/articles/3/ffd845f78510f02580d329127bab3dd1aa7f4453\" class=\"rs-admin-link-dock rs-admin-link-unpublish\" data-description=\"Unpublish\">Unpublish</a><a href=\"admin/edit/articles/3\" class=\"rs-admin-link-dock rs-admin-link-edit\" data-description=\"Edit\">Edit</a><a href=\"admin/delete/articles/3/ffd845f78510f02580d329127bab3dd1aa7f4453\" class=\"rs-admin-js-delete rs-admin-link-dock rs-admin-link-delete\" data-description=\"Delete\">Delete</a></div></div><h2 class=\"rs-title-content\" id=\"article-article-four\">Article Four</h2><div class=\"rs-box-content\">Article Four</div><div class=\"rs-box-byline\"></div><div class=\"rs-admin-wrapper-dock\"><div class=\"rs-admin-js-dock rs-admin-box-dock\"><a href=\"admin/unpublish/articles/4/ffd845f78510f02580d329127bab3dd1aa7f4453\" class=\"rs-admin-link-dock rs-admin-link-unpublish\" data-description=\"Unpublish\">Unpublish</a><a href=\"admin/edit/articles/4\" class=\"rs-admin-link-dock rs-admin-link-edit\" data-description=\"Edit\">Edit</a><a href=\"admin/delete/articles/4/ffd845f78510f02580d329127bab3dd1aa7f4453\" class=\"rs-admin-js-delete rs-admin-link-dock rs-admin-link-delete\" data-description=\"Delete\">Delete</a></div></div>"
+	],
+	[
+		{
+			"fistParameter": null,
+			"lastTable": "categories",
+			"loggedIn": null,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"articlesEdit": false,
+			"articlesDelete": false,
+			"myGroups": null
+		},
+		{},
+		1,
+		null,
+		"<h2 class=\"rs-title-content\" id=\"article-article-one\"><a href=\"category-one/article-one\">Article One</a></h2><div class=\"rs-box-content\">Article One</div><div class=\"rs-box-byline\"></div><h2 class=\"rs-title-content\" id=\"article-article-two\"><a href=\"category-one/article-two\">Article Two</a></h2><div class=\"rs-box-content\">Article Two</div><div class=\"rs-box-byline\"></div>"
+	],
+	[
+		{
+			"fistParameter": null,
+			"lastTable": "articles",
+			"loggedIn": null,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"articlesEdit": false,
+			"articlesDelete": false,
+			"myGroups": null
+		},
+		{},
+		null,
+		1,
+		"<h2 class=\"rs-title-content\" id=\"article-article-one\">Article One</h2><div class=\"rs-box-content\">Article One</div><div class=\"rs-box-byline\"></div>"
+	],
+	[
+		{
+			"fistParameter": null,
+			"lastTable": "articles",
+			"loggedIn": null,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"articlesEdit": false,
+			"articlesDelete": false,
+			"myGroups": null
+		},
+		{
+			"tag":
+			{
+				"title": "h3",
+				"box": "p"
+			},
+			"className":
+			{
+				"title": "test-title-content",
+				"box": "test-box-content"
+			}
+		},
+		null,
+		1,
+		"<h3 class=\"test-title-content\" id=\"article-article-one\">Article One</h3><p class=\"test-box-content\">Article One</p><div class=\"rs-box-byline\"></div>"
+	]
+]

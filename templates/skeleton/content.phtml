@@ -7,7 +7,7 @@
 	<?php $content = Tag::content(); ?>
 	<?php echo $content ? : Tag::partial(
 	[
-		'default/article.phtml',
-		'default/comment.phtml'
+		'skeleton/article.phtml',
+		'skeleton/comment.phtml'
 	]); ?>
 </article>

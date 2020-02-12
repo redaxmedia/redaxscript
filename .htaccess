@@ -5,23 +5,24 @@
 	allow from all
 </filesmatch>
 <ifmodule mod_deflate.c>
-	setenv mod_deflate on
+	setenv MOD_DEFLATE on
 	<filesmatch \.(css|ico|jpg|js|svg|php|png|webp|woff2)$>
 		setoutputfilter deflate
 	</filesmatch>
 </ifmodule>
 <ifmodule mod_brotli.c>
-	setenv mod_brotli on
+	setenv MOD_BROTLI on
 	<filesmatch \.(css|ico|jpg|js|svg|php|png|webp|woff2)$>
 		setoutputfilter brotli
 	</filesmatch>
 </ifmodule>
 <ifmodule mod_security.c>
+	setenv MOD_SECURITY on
 	secfilterengine off
 	secfilterscanpost off
 </ifmodule>
 <ifmodule mod_rewrite.c>
-	setenv mod_rewrite on
+	setenv MOD_REWRITE on
 	rewriteengine on
 	rewritecond %{request_filename} -f
 	rewriterule ^(.*) $1 [l]
@@ -33,7 +34,7 @@
 	rewriterule ^([^.]*).([\w]{3,})$ ?p=$1&t=$2 [l]
 </ifmodule>
 <ifmodule mod_headers.c>
-	setenv mod_headers on
+	setenv MOD_HEADERS on
 	<filesmatch \.(css|ico|jpg|js|svg|png|webp|woff2)$>
 		header set cache-control max-age=604800
 	</filesmatch>

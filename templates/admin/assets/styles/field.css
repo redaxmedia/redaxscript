@@ -18,9 +18,8 @@
 	border-radius: 0.125em;
 	color: gray(40);
 	display: block;
-	font: 0.875em var(--rs-admin-font-secondary);
 	padding: 0.5em;
-	transition: background 0.2s, border-color 0.2s;
+	transition: border-color 0.2s;
 	width: 100%;
 
 	&:hover
@@ -30,8 +29,7 @@
 
 	&:focus
 	{
-		background: gray(100);
-		border-color: gray(70);
+		border-color: var(--rs-admin-color-primary);
 	}
 
 	&[disabled],
@@ -42,7 +40,8 @@
 }
 
 .rs-admin-field-default,
-.rs-admin-field-select:not([multiple])
+.rs-admin-field-select:not([multiple]),
+.rs-admin-label-switch
 {
 	height: 2.5em;
 }
@@ -60,9 +59,65 @@
 	min-height: 5em;
 }
 
-/** @section 3. query */
+/** @section 3. switch */
 
-/** @section 3.1 medium-min */
+.rs-admin-fn-status-switch
+{
+	display: none;
+
+	&:checked + .rs-admin-label-switch:before
+	{
+		@extend %rs-admin-icon-check;
+		background: var(--rs-admin-color-primary);
+		right: 50%;
+	}
+
+	&:not(:checked) + .rs-admin-label-switch:before
+	{
+		@extend %rs-admin-icon-close;
+		background: gray(85);
+		left: 50%;
+	}
+}
+
+.rs-admin-label-switch
+{
+	background: gray(95);
+	border: 0.125rem solid gray(85);
+	border-radius: 0.125em;
+	box-sizing: border-box;
+	cursor: pointer;
+	display: block;
+	position: relative;
+	transition: border-color 0.2s;
+
+	&:hover
+	{
+		border-color: gray(65);
+	}
+
+	&:active
+	{
+		border-color: var(--rs-admin-color-primary);
+	}
+
+	&:before
+	{
+		bottom: 0.25em;
+		color: gray(0 / 0.4);
+		left: 0.25em;
+		line-height: 1.875em;
+		position: absolute;
+		right: 0.25em;
+		text-align: center;
+		top: 0.25em;
+		transition: left 0.2s, right 0.2s;
+	}
+}
+
+/** @section 4. query */
+
+/** @section 4.1 medium-min */
 
 @media (--media-medium-min)
 {
@@ -71,5 +126,10 @@
 	.rs-admin-field-textarea.rs-admin-field-small
 	{
 		width: 50%;
+	}
+
+	.rs-admin-label-switch
+	{
+		width: 4.5em;
 	}
 }

@@ -41,40 +41,6 @@ class Option
 	}
 
 	/**
-	 * get the toggle array
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function getToggleArray() : array
-	{
-		return
-		[
-			$this->_language->get('enable') => 1,
-			$this->_language->get('disable') => 0
-		];
-	}
-
-	/**
-	 * get the visible array
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return array
-	 */
-
-	public function getVisibleArray() : array
-	{
-		return
-		[
-			$this->_language->get('publish') => 1,
-			$this->_language->get('unpublish') => 0
-		];
-	}
-
-	/**
 	 * get the robot array
 	 *
 	 * @since 3.0.0

@@ -179,17 +179,24 @@ class CommentForm extends ViewAbstract
 				'for' => self::class . '\Customize'
 			])
 			->append('<ul class="rs-admin-fn-content-tab rs-admin-box-tab"><li>')
-			->label($this->_language->get('status'),
-			[
-				'for' => 'status'
-			])
-			->select($helperOption->getVisibleArray(),
-			[
-				$comment->id ? $comment->status : 1
-			],
+			->checkbox(!$comment->id || $comment->status ?
 			[
 				'id' => 'status',
+				'class' => 'rs-admin-fn-status-switch',
+				'name' => 'status',
+				'checked' => 'checked'
+			] :
+			[
+				'id' => 'status',
+				'class' => 'rs-admin-fn-status-switch',
 				'name' => 'status'
+			])
+			->label(null,
+			[
+				'class' => 'rs-admin-label-switch',
+				'for' => 'status',
+				'data-on' => $this->_language->get('publish'),
+				'data-off' => $this->_language->get('unpublish')
 			])
 			->append('</li><li>')
 			->label($this->_language->get('rank'),

@@ -14,7 +14,6 @@
 	@extend %rs-admin-button;
 	background: gray(20);
 	color: gray(100);
-	font-size: 0.875em;
 
 	&:hover
 	{
@@ -51,11 +50,6 @@
 		{
 			background: var(--rs-admin-color-secondary-light);
 		}
-	}
-
-	&.rs-admin-is-large
-	{
-		font-size: 1.125em;
 	}
 }
 

@@ -11,16 +11,16 @@
 	},
 	"require-dev":
 	{
-		"brianium/paratest": "3.1.2",
-		"facebook/webdriver": "1.7.1",
 		"fbourigault/composer-mkdir": "2.0.0",
 		"infection/infection": "0.15.0",
+		"liuggio/fastest": "1.6.1",
 		"mikey179/vfsstream": "1.6.8",
 		"php-coveralls/php-coveralls": "2.2.0",
 		"phpmd/phpmd": "2.8.1",
-		"phpunit/phpunit": "8.3.0",
+		"phpunit/phpunit": "8.5.2",
+		"php-webdriver/webdriver": "1.7.1",
 		"redaxmedia/php-coding-standard": "1.4.0",
-		"redaxmedia/phpunit-provider-autoloader": "3.0.2",
+		"redaxmedia/phpunit-provider-autoloader": "4.1.1",
 		"sebastian/phpcpd": "4.1.0",
 		"slowprog/composer-copy-file": "0.3.1",
 		"squizlabs/php_codesniffer": "3.5.3"

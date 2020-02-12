@@ -32,9 +32,9 @@
 {
 	color: gray(80);
 	font-size: 3.25em;
-	font-weight: normal;
+	font-weight: 300;
 	line-height: 1em;
-	margin-bottom: 0.75em;
+	margin-bottom: 0.375em;
 	text-align: center;
 	text-transform: uppercase;
 }
@@ -47,7 +47,7 @@
 {
 	.rs-install-title
 	{
-		margin-bottom: 0.5em;
+		font-size: 4.25em;
 
 		&:before
 		{

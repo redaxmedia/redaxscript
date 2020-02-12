@@ -14,9 +14,10 @@
 	bottom: 0;
 	box-sizing: border-box;
 	color: gray(80);
+	font-weight: 300;
 	height: 5em;
 	left: 0;
-	padding: 1.5em 0;
+	padding: 1.75em 0;
 	position: fixed;
 	right: 0;
 	z-index: -1;
@@ -29,7 +30,7 @@
 	& .rs-text-about,
 	& .rs-link-login
 	{
-		font-size: 1.25em;
+		font-size: 1.5em;
 	}
 
 	& .rs-wrapper
@@ -41,12 +42,20 @@
 
 /** @section 2. query */
 
-/** @section 2.1 small max */
+/** @section 2.1 small-max */
 
 @media (--media-small-max)
 {
-	.rs-text-powered-by
+	.rs-footer
 	{
-		display: none;
+		& .rs-text-about
+		{
+			display: none;
+		}
+
+		& .rs-wrapper
+		{
+			justify-content: center;
+		}
 	}
 }

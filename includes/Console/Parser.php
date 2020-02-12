@@ -74,9 +74,9 @@ class Parser
 			$argumentArray = $this->_request->getServer('argv');
 			unset($argumentArray[0]);
 		}
-		else
+		if ($mode === 'template')
 		{
-			$argumentArray = array_filter(explode(' ', $this->_request->getPost('argv')));
+			$argumentArray = array_filter(explode(' ', $this->_request->getStream('argv')));
 		}
 		$this->_parseArgument($argumentArray);
 	}

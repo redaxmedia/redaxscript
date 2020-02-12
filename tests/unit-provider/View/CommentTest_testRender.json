@@ -1,0 +1,65 @@
+[
+	[
+		{
+			"fistParameter": null,
+			"loggedIn": null,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"commentsEdit": false,
+			"commentsDelete": false,
+			"myGroups": null
+		},
+		{},
+		null,
+		"<h3 class=\"rs-title-comment\" id=\"comment-1\">Comment One</h3><div class=\"rs-box-comment\">Comment One</div><div class=\"rs-box-byline\"></div><h3 class=\"rs-title-comment\" id=\"comment-2\">Comment Two</h3><div class=\"rs-box-comment\">Comment Two</div><div class=\"rs-box-byline\"></div>"
+	],
+	[
+		{
+			"fistParameter": null,
+			"loggedIn": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"commentsEdit": true,
+			"commentsDelete": true,
+			"myGroups": "[1]"
+		},
+		{},
+		null,
+		"<h3 class=\"rs-title-comment\" id=\"comment-1\">Comment One</h3><div class=\"rs-box-comment\">Comment One</div><div class=\"rs-box-byline\"></div><div class=\"rs-admin-wrapper-dock\"><div class=\"rs-admin-js-dock rs-admin-box-dock\"><a href=\"admin/unpublish/comments/1/ffd845f78510f02580d329127bab3dd1aa7f4453\" class=\"rs-admin-link-dock rs-admin-link-unpublish\" data-description=\"Unpublish\">Unpublish</a><a href=\"admin/edit/comments/1\" class=\"rs-admin-link-dock rs-admin-link-edit\" data-description=\"Edit\">Edit</a><a href=\"admin/delete/comments/1/ffd845f78510f02580d329127bab3dd1aa7f4453\" class=\"rs-admin-js-delete rs-admin-link-dock rs-admin-link-delete\" data-description=\"Delete\">Delete</a></div></div><h3 class=\"rs-title-comment\" id=\"comment-2\">Comment Two</h3><div class=\"rs-box-comment\">Comment Two</div><div class=\"rs-box-byline\"></div><div class=\"rs-admin-wrapper-dock\"><div class=\"rs-admin-js-dock rs-admin-box-dock\"><a href=\"admin/unpublish/comments/2/ffd845f78510f02580d329127bab3dd1aa7f4453\" class=\"rs-admin-link-dock rs-admin-link-unpublish\" data-description=\"Unpublish\">Unpublish</a><a href=\"admin/edit/comments/2\" class=\"rs-admin-link-dock rs-admin-link-edit\" data-description=\"Edit\">Edit</a><a href=\"admin/delete/comments/2/ffd845f78510f02580d329127bab3dd1aa7f4453\" class=\"rs-admin-js-delete rs-admin-link-dock rs-admin-link-delete\" data-description=\"Delete\">Delete</a></div></div><h3 class=\"rs-title-comment\" id=\"comment-3\">Comment Two</h3><div class=\"rs-box-comment\">Comment Two</div><div class=\"rs-box-byline\"></div><div class=\"rs-admin-wrapper-dock\"><div class=\"rs-admin-js-dock rs-admin-box-dock\"><a href=\"admin/unpublish/comments/3/ffd845f78510f02580d329127bab3dd1aa7f4453\" class=\"rs-admin-link-dock rs-admin-link-unpublish\" data-description=\"Unpublish\">Unpublish</a><a href=\"admin/edit/comments/3\" class=\"rs-admin-link-dock rs-admin-link-edit\" data-description=\"Edit\">Edit</a><a href=\"admin/delete/comments/3/ffd845f78510f02580d329127bab3dd1aa7f4453\" class=\"rs-admin-js-delete rs-admin-link-dock rs-admin-link-delete\" data-description=\"Delete\">Delete</a></div></div>"
+	],
+	[
+		{
+			"fistParameter": null,
+			"loggedIn": null,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"commentsEdit": false,
+			"commentsDelete": false,
+			"myGroups": null
+		},
+		{},
+		1,
+		"<h3 class=\"rs-title-comment\" id=\"comment-1\">Comment One</h3><div class=\"rs-box-comment\">Comment One</div><div class=\"rs-box-byline\"></div>"
+	],
+	[
+		{
+			"fistParameter": null,
+			"loggedIn": null,
+			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453",
+			"commentsEdit": false,
+			"commentsDelete": false,
+			"myGroups": null
+		},
+		{
+			"tag":
+			{
+				"title": "h4",
+				"box": "p"
+			},
+			"className":
+			{
+				"title": "test-title-comment",
+				"box": "test-box-comment"
+			}
+		},
+		1,
+		"<h4 class=\"test-title-comment\" id=\"comment-1\">Comment One</h4><p class=\"test-box-comment\">Comment One</p><div class=\"rs-box-byline\"></div>"
+	]
+]

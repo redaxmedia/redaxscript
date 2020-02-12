@@ -81,19 +81,6 @@ class Extra extends ViewAbstract
 	}
 
 	/**
-	 * stringify the extra
-	 *
-	 * @since 4.0.0
-	 *
-	 * @return string
-	 */
-
-	public function __toString() : string
-	{
-		return $this->render();
-	}
-
-	/**
 	 * init the class
 	 *
 	 * @since 4.0.0
@@ -159,9 +146,16 @@ class Extra extends ViewAbstract
 
 		foreach ($extras as $value)
 		{
-			$validateCategory = $categoryId === $value->category || !$value->category;
-			$validateArticle = $articleId === $value->article || !$value->article;
-			if ($accessValidator->validate($value->access, $myGroups) && ($validateCategory || $validateArticle))
+			$validateContent = true;
+			if ($value->category)
+			{
+				$validateContent = (string)$value->category === $categoryId;
+			}
+			if ($value->article)
+			{
+				$validateContent = (string)$value->article === $articleId;
+			}
+			if ($accessValidator->validate($value->access, $myGroups) && $validateContent)
 			{
 				$output .= Module\Hook::trigger('extraFragmentStart', (array)$value);
 				if ($value->headline)

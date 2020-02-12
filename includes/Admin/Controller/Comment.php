@@ -117,10 +117,11 @@ class Comment extends ControllerAbstract
 
 	protected function _sanitizePost() : array
 	{
+		$htmlFilter = new Filter\Html();
 		$numberFilter = new Filter\Number();
 		$specialFilter = new Filter\Special();
+		$toggleFilter = new Filter\Toggle();
 		$urlFilter = new Filter\Url();
-		$htmlFilter = new Filter\Html();
 
 		/* sanitize post */
 
@@ -131,7 +132,7 @@ class Comment extends ControllerAbstract
 			'text' => $htmlFilter->sanitize($this->_request->getPost('text'), $this->_registry->get('filter')),
 			'language' => $specialFilter->sanitize($this->_request->getPost('language')),
 			'article' => $this->_request->getPost('article'),
-			'status' => $numberFilter->sanitize($this->_request->getPost('status')),
+			'status' => $toggleFilter->sanitize($this->_request->getPost('status')),
 			'rank' => $numberFilter->sanitize($this->_request->getPost('rank')),
 			'access' => json_encode($this->_request->getPost('access')),
 			'date' => strtotime($this->_request->getPost('date'))

@@ -125,10 +125,11 @@ class Extra extends ControllerAbstract
 
 	protected function _sanitizePost() : array
 	{
-		$numberFilter = new Filter\Number();
-		$specialFilter = new Filter\Special();
 		$aliasFilter = new Filter\Alias();
 		$htmlFilter = new Filter\Html();
+		$numberFilter = new Filter\Number();
+		$specialFilter = new Filter\Special();
+		$toggleFilter = new Filter\Toggle();
 
 		/* sanitize post */
 
@@ -142,8 +143,8 @@ class Extra extends ControllerAbstract
 			'sibling' => $this->_request->getPost('sibling'),
 			'category' => $this->_request->getPost('category'),
 			'article' => $this->_request->getPost('article'),
-			'headline' => $numberFilter->sanitize($this->_request->getPost('headline')),
-			'status' => $numberFilter->sanitize($this->_request->getPost('status')),
+			'headline' => $toggleFilter->sanitize($this->_request->getPost('headline')),
+			'status' => $toggleFilter->sanitize($this->_request->getPost('status')),
 			'rank' => $numberFilter->sanitize($this->_request->getPost('rank')),
 			'access' => json_encode($this->_request->getPost('access')),
 			'date' => strtotime($this->_request->getPost('date'))

@@ -15,6 +15,14 @@
 	font-size: 1.25rem;
 
 	& caption,
+	& thead th,
+	& tfoot td
+	{
+		font-weight: 500;
+		text-transform: uppercase;
+	}
+
+	& caption,
 	& th,
 	& td
 	{
