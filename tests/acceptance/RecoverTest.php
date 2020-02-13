@@ -67,7 +67,7 @@ class RecoverTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->_driver->wait(5)->until(WebDriverExpectedCondition::urlIs('http://localhost:8000/?p=login'));
+		$this->_driver->wait(10)->until(WebDriverExpectedCondition::urlIs('http://localhost:8000/?p=login'));
 		$this->expectNotToPerformAssertions();
 	}
 }
