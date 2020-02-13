@@ -139,7 +139,7 @@ class InstallationTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->_driver->wait(10)->until(WebDriverExpectedCondition::urlIs('http://localhost:8000/index.php'));
+		$this->_driver->wait(5)->until(WebDriverExpectedCondition::urlIs('http://localhost:8000/index.php'));
 		$this->expectNotToPerformAssertions();
 	}
 }
