@@ -122,7 +122,7 @@ class InstallationTest extends TestCaseAbstract
 		$adminUserElement = $formElement->findElement(WebDriverBy::id('admin-user'));
 		$adminPasswordElement = $formElement->findElement(WebDriverBy::id('admin-password'));
 		$adminEmailElement = $formElement->findElement(WebDriverBy::id('admin-email'));
-		$labelAccountElement =  $formElement->findElement(WebDriverBy::cssSelector('[for*="Account"]'));
+		$labelAccountElement =  $formElement->findElement(WebDriverBy::cssSelector('label.rs-fn-toggle-accordion:last-of-type'));
 		$buttonElement = $formElement->findElement(WebDriverBy::tagName('button'));
 
 		/* interact */
@@ -134,7 +134,7 @@ class InstallationTest extends TestCaseAbstract
 		$adminNameElement->sendKeys('Test');
 		$adminUserElement->sendKeys('test');
 		$adminPasswordElement->sendKeys('test');
-		$adminEmailElement->sendKeys('test@test.de');
+		$adminEmailElement->sendKeys('test@test.com');
 		$buttonElement->click();
 
 		/* compare */

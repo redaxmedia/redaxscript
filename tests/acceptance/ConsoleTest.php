@@ -61,15 +61,14 @@ class ConsoleTest extends TestCaseAbstract
 		$promptElement = $formElement->findElement(WebDriverBy::id('prompt'));
 		$boxElement = $this->_driver->findElement(WebDriverBy::id('box'));
 
-		/* compare */
-
-		$this->assertNotTrue($boxElement->getText());
-
-		/* interact and compare */
+		/* interact */
 
 		$promptElement->sendKeys('help');
 		$formElement->submit();
-		$boxElement->isDisplayed();
+
+		/* compare */
+
+		$this->assertTrue($boxElement->isDisplayed());
 		$this->assertStringContainsString($helpCommand->getHelp(), $boxElement->getAttribute('textContent'));
 	}
 }

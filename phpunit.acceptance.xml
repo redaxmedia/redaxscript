@@ -23,6 +23,12 @@
 			<file>tests/acceptance/ContentTest.php</file>
 		</testsuite>
 
+		<!-- comment -->
+
+		<testsuite name="comment">
+			<file>tests/acceptance/CommentTest.php</file>
+		</testsuite>
+
 		<!-- error -->
 
 		<testsuite name="error">
@@ -39,6 +45,24 @@
 
 		<testsuite name="login">
 			<file>tests/acceptance/LoginTest.php</file>
+		</testsuite>
+
+		<!-- recover -->
+
+		<testsuite name="recover">
+			<file>tests/acceptance/RecoverTest.php</file>
+		</testsuite>
+
+		<!-- reset -->
+
+		<testsuite name="reset">
+			<file>tests/acceptance/ResetTest.php</file>
+		</testsuite>
+
+		<!-- register -->
+
+		<testsuite name="register">
+			<file>tests/acceptance/RegisterTest.php</file>
 		</testsuite>
 </testsuites>
 </phpunit>
