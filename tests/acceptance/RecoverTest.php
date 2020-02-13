@@ -69,6 +69,5 @@ class RecoverTest extends TestCaseAbstract
 
 		$this->_driver->wait(5)->until(WebDriverExpectedCondition::urlIs('http://localhost:8000/?p=login'));
 		$this->expectNotToPerformAssertions();
-		$this->markTestSkipped();
 	}
 }

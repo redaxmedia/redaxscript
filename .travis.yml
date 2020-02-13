@@ -84,11 +84,14 @@ jobs:
 
    install:
    - composer install
+   - gem install mailcatcher
    - nvm install 12
    - npm install --global grunt-cli
    - npm install
 
    before_script:
+   - echo sendmail_path=/usr/bin/env catchmail >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+   - mailcatcher
    - mkdir build
    - grunt start-hub &
    - grunt serve &
