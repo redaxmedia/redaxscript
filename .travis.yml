@@ -70,7 +70,7 @@ jobs:
 
    env:
    - TEST=unit
-   - COMPAT_MODE=true
+   - IGNORE_DEPRECATED=true
 
  - &test-acceptance
    addons:
