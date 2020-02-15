@@ -126,9 +126,9 @@ class Purifier
 		}
 		else if (is_string($html))
 		{
-			$dom = $this->_createDocument($html);
-			$this->_process($dom->documentElement);
-			return trim($dom->saveHTML());
+			$doc = $this->_createDocument($html);
+			$this->_process($doc->documentElement);
+			return trim($doc->saveHTML());
 		}
 		return null;
 	}
