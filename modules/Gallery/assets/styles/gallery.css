@@ -2,8 +2,8 @@
  * @tableofcontents
  *
  * 1. gallery
- *    1.1 query
- *      1.1.1 small min
+ * 2. query
+ *      2.1.1 small min
  */
 
 /** @section 1. gallery */
@@ -15,20 +15,20 @@
 
 	& li
 	{
-		border: 0.5em solid gray(0 / 0.1);
+		border: 0.5rem solid gray(0 / 0.1);
 		line-height: 0;
-		margin-bottom: 0.5em;
+		margin-bottom: 0.5rem;
 	}
 }
 
-/** @section 1.1 query */
+/** @section 2. query */
 
-/** @section 1.1.1 small min */
+/** @section 2.1.1 small min */
 
 @media (--media-small-min)
 {
 	.rs-list-gallery li
 	{
-		margin-right: 0.5em;
+		margin-right: 0.5rem;
 	}
 }
