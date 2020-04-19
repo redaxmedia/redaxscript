@@ -5,7 +5,7 @@ use Facebook\WebDriver\WebDriverBy;
 use Facebook\WebDriver\WebDriverExpectedCondition;
 
 /**
- * LoginTest
+ * UserTest
  *
  * @since 4.0.0
  *
@@ -64,7 +64,7 @@ class LoginTest extends TestCaseAbstract
 		/* interact */
 
 		$userElement->sendKeys('test');
-		$passwordElement->sendKeys('test');
+		$passwordElement->sendKeys('aaAA00AAaa');
 		$buttonElement->click();
 
 		/* compare */

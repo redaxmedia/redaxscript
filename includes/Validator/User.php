@@ -5,20 +5,19 @@ use function preg_match;
 use function strlen;
 
 /**
- * children class to validate login
+ * children class to validate user
  *
- * @since 2.2.0
+ * @since 4.3.0
  *
  * @package Redaxscript
  * @category Validator
  * @author Henry Ruhs
- * @author Sven Weingartner
  */
 
-class Login implements ValidatorInterface
+class User implements ValidatorInterface
 {
 	/**
-	 * pattern for login
+	 * pattern for user
 	 *
 	 * @var string
 	 */
@@ -26,7 +25,7 @@ class Login implements ValidatorInterface
 	protected $_pattern = '[a-zA-Z0-9-]';
 
 	/**
-	 * allowed range for login
+	 * allowed range for user
 	 *
 	 * @var array
 	 */
@@ -34,7 +33,7 @@ class Login implements ValidatorInterface
 	protected $_rangeArray =
 	[
 		'min' => 3,
-		'max' => 50
+		'max' => 100
 	];
 
 	/**
@@ -51,18 +50,18 @@ class Login implements ValidatorInterface
 	}
 
 	/**
-	 * validate the login
+	 * validate the user
 	 *
 	 * @since 4.0.0
 	 *
-	 * @param string $login login
+	 * @param string $user user name
 	 *
 	 * @return bool
 	 */
 
-	public function validate(string $login = null) : bool
+	public function validate(string $user = null) : bool
 	{
-		$length = strlen($login);
-		return preg_match('/' . $this->_pattern . '/i', $login) && $length >= $this->_rangeArray['min'] && $length <= $this->_rangeArray['max'];
+		$length = strlen($user);
+		return preg_match('/' . $this->_pattern . '/i', $user) && $length >= $this->_rangeArray['min'] && $length <= $this->_rangeArray['max'];
 	}
 }

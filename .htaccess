@@ -4,16 +4,16 @@
 <filesmatch (console.php|index.php|install.php)>
 	allow from all
 </filesmatch>
-<ifmodule mod_deflate.c>
-	setenv MOD_DEFLATE on
-	<filesmatch \.(css|ico|jpg|js|svg|php|png|webp|woff2)$>
-		setoutputfilter deflate
-	</filesmatch>
-</ifmodule>
 <ifmodule mod_brotli.c>
 	setenv MOD_BROTLI on
 	<filesmatch \.(css|ico|jpg|js|svg|php|png|webp|woff2)$>
 		setoutputfilter brotli
+	</filesmatch>
+</ifmodule>
+<ifmodule mod_deflate.c>
+	setenv MOD_DEFLATE on
+	<filesmatch \.(css|ico|jpg|js|svg|php|png|webp|woff2)$>
+		setoutputfilter deflate
 	</filesmatch>
 </ifmodule>
 <ifmodule mod_security.c>

@@ -30,7 +30,7 @@ class RegisterForm extends ViewAbstract
 	{
 		$output = Module\Hook::trigger('registerFormStart');
 		$settingModel = new Model\Setting();
-		$loginValidator = new Validator\Login();
+		$userValidator = new Validator\User();
 
 		/* html element */
 
@@ -85,7 +85,7 @@ class RegisterForm extends ViewAbstract
 			[
 				'id' => 'user',
 				'name' => 'user',
-				'pattern' => $loginValidator->getFormPattern(),
+				'pattern' => $userValidator->getFormPattern(),
 				'required' => 'required'
 			])
 			->append('</li><li>')

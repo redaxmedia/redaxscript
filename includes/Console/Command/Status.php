@@ -143,8 +143,6 @@ class Status extends CommandAbstract
 	{
 		$phpOs = $this->_registry->get('phpOs');
 		$driverArray = $this->_registry->get('driverArray');
-		$moduleArray = $this->_registry->get('moduleArray');
-		$opcacheArray = $this->_registry->get('opcacheArray');
 		$testOsArray =
 		[
 			'linux',
@@ -156,14 +154,6 @@ class Status extends CommandAbstract
 			'mysql',
 			'pgsql',
 			'sqlite'
-		];
-		$testModuleArray =
-		[
-			'mod_deflate',
-			'mod_brotli',
-			'mod_security',
-			'mod_rewrite',
-			'mod_headers'
 		];
 		$statusArray =
 		[
@@ -179,13 +169,8 @@ class Status extends CommandAbstract
 			],
 			'SESSION' =>
 			[
-				'value' => $this->_registry->get('sessionStatus'),
+				'value' => $this->_registry->get('sessionId'),
 				'status' => $this->_registry->get('sessionStatus') ? 1 : 0
-			],
-			'OPCACHE' =>
-			[
-				'value' => $opcacheArray['opcache_enabled'],
-				'status' => $opcacheArray['opcache_enabled'] ? 1 : 0
 			]
 		];
 
@@ -198,19 +183,6 @@ class Status extends CommandAbstract
 				$statusArray[$value] =
 				[
 					'status' => in_array($value, $driverArray) ? 1 : 0
-				];
-			}
-		}
-
-		/* process modules */
-
-		if (is_array($moduleArray))
-		{
-			foreach ($testModuleArray as $value)
-			{
-				$statusArray[$value] =
-				[
-					'status' => in_array($value, $moduleArray) ? 1 : 0
 				];
 			}
 		}

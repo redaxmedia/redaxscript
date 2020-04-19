@@ -77,7 +77,7 @@
 
 	& .rs-admin-label-panel-system:before
 	{
-		@extend %rs-admin-icon-settings;
+		@extend %rs-admin-icon-cog;
 	}
 
 	& .rs-admin-link-panel-profile:before

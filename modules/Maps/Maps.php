@@ -31,7 +31,7 @@ class Maps extends Module\Module
 		'alias' => 'Maps',
 		'author' => 'Redaxmedia',
 		'description' => 'Integrate Google Maps',
-		'version' => '4.2.0'
+		'version' => '4.3.0'
 	];
 
 	/**

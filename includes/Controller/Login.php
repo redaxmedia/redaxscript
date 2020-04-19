@@ -79,14 +79,14 @@ class Login extends ControllerAbstract
 		$specialFilter = new Filter\Special();
 		$emailFilter = new Filter\Email();
 		$emailValidator = new Validator\Email();
-		$loginValidator = new Validator\Login();
+		$userValidator = new Validator\User();
 
 		/* sanitize post */
 
 		return
 		[
 			'email' => $emailValidator->validate($this->_request->getPost('user')) ? $emailFilter->sanitize($this->_request->getPost('user')) : null,
-			'user' => $loginValidator->validate($this->_request->getPost('user')) ? $specialFilter->sanitize($this->_request->getPost('user')) : null,
+			'user' => $userValidator->validate($this->_request->getPost('user')) ? $specialFilter->sanitize($this->_request->getPost('user')) : null,
 			'password' => $specialFilter->sanitize($this->_request->getPost('password')),
 			'task' => $numberFilter->sanitize($this->_request->getPost('task')),
 			'solution' => $this->_request->getPost('solution')
@@ -125,7 +125,7 @@ class Login extends ControllerAbstract
 		{
 			$validateArray[] = $this->_language->get('password_empty');
 		}
-		else if ($user->password && !$passwordValidator->validate($postArray['password'], $user->password))
+		else if (!$passwordValidator->validate($postArray['password']) || !$passwordValidator->matchHash($postArray['password'], $user->password))
 		{
 			$validateArray[] = $this->_language->get('password_incorrect');
 		}

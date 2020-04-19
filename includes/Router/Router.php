@@ -192,7 +192,7 @@ class Router extends RouterAbstract
 	protected function _aliasValidator() : bool
 	{
 		$aliasValidator = new Validator\Alias();
-		return !$aliasValidator->validate($this->_registry->get('firstParameter'), 'system');
+		return $aliasValidator->matchSystem($this->_registry->get('firstParameter'));
 	}
 
 	/**

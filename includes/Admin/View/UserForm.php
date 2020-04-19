@@ -35,7 +35,8 @@ class UserForm extends ViewAbstract
 		$output = Module\Hook::trigger('adminUserFormStart');
 		$userModel = new Admin\Model\User();
 		$user = $userModel->getById($userId);
-		$loginValidator = new Validator\Login();
+		$userValidator = new Validator\User();
+		$passwordValidator = new Validator\Password();
 		$helperOption = new Helper\Option($this->_language);
 
 		/* html element */
@@ -122,7 +123,7 @@ class UserForm extends ViewAbstract
 				[
 					'id' => 'user',
 					'name' => 'user',
-					'pattern' => $loginValidator->getFormPattern(),
+					'pattern' => $userValidator->getFormPattern(),
 					'required' => 'required',
 					'value' => $user->user
 				])
@@ -150,14 +151,14 @@ class UserForm extends ViewAbstract
 			->password(!$user->id ?
 			[
 				'id' => 'password',
-				'pattern' => $loginValidator->getFormPattern(),
+				'pattern' => $passwordValidator->getFormPattern(),
 				'name' => 'password',
 				'autocomplete' => 'new-password',
 				'required' => 'required'
 			] :
 			[
 				'id' => 'password',
-				'pattern' => $loginValidator->getFormPattern(),
+				'pattern' => $passwordValidator->getFormPattern(),
 				'name' => 'password',
 				'autocomplete' => 'new-password'
 			])
@@ -169,14 +170,14 @@ class UserForm extends ViewAbstract
 			->password(!$user->id ?
 			[
 				'id' => 'password_confirm',
-				'pattern' => $loginValidator->getFormPattern(),
+				'pattern' => $passwordValidator->getFormPattern(),
 				'name' => 'password_confirm',
 				'autocomplete' => 'new-password',
 				'required' => 'required'
 			] :
 			[
 				'id' => 'password_confirm',
-				'pattern' => $loginValidator->getFormPattern(),
+				'pattern' => $passwordValidator->getFormPattern(),
 				'name' => 'password_confirm',
 				'autocomplete' => 'new-password'
 			])

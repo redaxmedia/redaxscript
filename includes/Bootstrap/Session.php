@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Bootstrap;
 
+use function session_id;
 use function session_regenerate_id;
 use function session_start;
 use function session_status;
@@ -34,6 +35,7 @@ class Session extends BootstrapAbstract
 		{
 			$this->_request->setSession('sessionGuard', session_regenerate_id());
 		}
+		$this->_registry->set('sessionId', session_id());
 		$this->_registry->set('sessionStatus', session_status());
 	}
 }

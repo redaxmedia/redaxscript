@@ -3,7 +3,6 @@ namespace Redaxscript\View;
 
 use Redaxscript\View;
 use function in_array;
-use function is_array;
 
 /**
  * children class to create the system status
@@ -72,13 +71,13 @@ class SystemStatus extends ViewAbstract
 		{
 			$messageArray[] = $this->_language->get('php_version_unsupported');
 		}
-		if (!$this->_registry->get('driverArray'))
-		{
-			$messageArray[] = $this->_language->get('pdo_driver_disabled');
-		}
 		if (!$this->_registry->get('sessionStatus'))
 		{
 			$messageArray[] = $this->_language->get('session_disabled');
+		}
+		if (!$this->_registry->get('driverArray'))
+		{
+			$messageArray[] = $this->_language->get('pdo_driver_disabled');
 		}
 		return $messageArray;
 	}
@@ -95,32 +94,14 @@ class SystemStatus extends ViewAbstract
 	{
 		$messageArray = [];
 		$phpOs = $this->_registry->get('phpOs');
-		$moduleArray = $this->_registry->get('moduleArray');
 		$testOsArray =
 		[
 			'linux',
 			'windows'
 		];
-		$testModuleArray =
-		[
-			'mod_brotli',
-			'mod_deflate',
-			'mod_headers',
-			'mod_rewrite'
-		];
 		if (!in_array($phpOs, $testOsArray))
 		{
 			$messageArray[] = $this->_language->get('php_os_unsupported');
-		}
-
-		/* process modules */
-
-		foreach ($testModuleArray as $value)
-		{
-			if (!is_array($moduleArray) || !in_array($value, $moduleArray))
-			{
-				$messageArray[] = $this->_language->get('apache_module_disabled') . $this->_language->get('colon') . ' ' . $value;
-			}
 		}
 		return $messageArray;
 	}

@@ -1,27 +1,15 @@
 [
 	[
 		{
-			"phpOs": "winnt",
-			"moduleArray": null
+			"phpOs": "invalid"
 		},
 		[
-			"Operating system not supported",
-			"Apache module is disabled: mod_brotli",
-			"Apache module is disabled: mod_deflate",
-			"Apache module is disabled: mod_headers",
-			"Apache module is disabled: mod_rewrite"
+			"Operating system not supported"
 		]
 	],
 	[
 		{
-			"phpOs": "linux",
-			"moduleArray":
-			[
-				"mod_brotli",
-				"mod_deflate",
-				"mod_headers",
-				"mod_rewrite"
-			]
+			"phpOs": "linux"
 		},
 		[]
 	]

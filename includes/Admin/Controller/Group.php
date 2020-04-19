@@ -179,7 +179,7 @@ class Group extends ControllerAbstract
 			{
 				$validateArray[] = $this->_language->get('alias_empty');
 			}
-			else if (!$aliasValidator->validate($postArray['alias'], 'general'))
+			else if (!$aliasValidator->validate($postArray['alias']))
 			{
 				$validateArray[] = $this->_language->get('alias_incorrect');
 			}

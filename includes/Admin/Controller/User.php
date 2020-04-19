@@ -165,7 +165,8 @@ class User extends ControllerAbstract
 
 	protected function _validatePost(array $postArray = []) : array
 	{
-		$loginValidator = new Validator\Login();
+		$userValidator = new Validator\User();
+		$passwordValidator = new Validator\Password();
 		$emailValidator = new Validator\Email();
 		$userModel = new Admin\Model\User();
 		$validateArray = [];
@@ -182,7 +183,7 @@ class User extends ControllerAbstract
 			{
 				$validateArray[] = $this->_language->get('user_empty');
 			}
-			else if (!$loginValidator->validate($postArray['user']))
+			else if (!$userValidator->validate($postArray['user']))
 			{
 				$validateArray[] = $this->_language->get('user_incorrect');
 			}
@@ -194,7 +195,7 @@ class User extends ControllerAbstract
 			{
 				$validateArray[] = $this->_language->get('password_empty');
 			}
-			else if (!$loginValidator->validate($postArray['password']))
+			else if (!$passwordValidator->validate($postArray['password']))
 			{
 				$validateArray[] = $this->_language->get('password_incorrect');
 			}
@@ -205,7 +206,7 @@ class User extends ControllerAbstract
 		}
 		else if ($postArray['password'])
 		{
-			if (!$loginValidator->validate($postArray['password']))
+			if (!$passwordValidator->validate($postArray['password']))
 			{
 				$validateArray[] = $this->_language->get('password_incorrect');
 			}

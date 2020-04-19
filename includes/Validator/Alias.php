@@ -72,25 +72,31 @@ class Alias implements ValidatorInterface
 	/**
 	 * validate the alias
 	 *
-	 * @since 4.0.0
+	 * @since 4.3.0
 	 *
 	 * @param string $alias alias for routes and users
-	 * @param string $mode general or default validation
 	 *
 	 * @return bool
 	 */
 
-	public function validate(string $alias = null, string $mode = 'general') : bool
+	public function validate(string $alias = null) : bool
 	{
-		if ($mode === 'general')
-		{
-			$length = strlen($alias);
-			return preg_match('/' . $this->_pattern . '/i', $alias) && $length >= $this->_rangeArray['min'] && $length <= $this->_rangeArray['max'];
-		}
-		if ($mode === 'system')
-		{
-			return !in_array($alias, $this->_systemArray);
-		}
-		return false;
+		$length = strlen($alias);
+		return preg_match('/' . $this->_pattern . '/i', $alias) && $length >= $this->_rangeArray['min'] && $length <= $this->_rangeArray['max'];
+	}
+
+	/**
+	 * match system alias
+	 *
+	 * @since 4.3.0
+	 *
+	 * @param string $alias alias for routes and users
+	 *
+	 * @return bool
+	 */
+
+	public function matchSystem(string $alias = null) : bool
+	{
+		return in_array($alias, $this->_systemArray);
 	}
 }

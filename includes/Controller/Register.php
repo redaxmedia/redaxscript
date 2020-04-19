@@ -136,7 +136,7 @@ class Register extends ControllerAbstract
 
 	protected function _validatePost(array $postArray = []) : array
 	{
-		$loginValidator = new Validator\Login();
+		$userValidator = new Validator\User();
 		$emailValidator = new Validator\Email();
 		$captchaValidator = new Validator\Captcha();
 		$settingModel = new Model\Setting();
@@ -153,7 +153,7 @@ class Register extends ControllerAbstract
 		{
 			$validateArray[] = $this->_language->get('user_empty');
 		}
-		else if (!$loginValidator->validate($postArray['user']))
+		else if (!$userValidator->validate($postArray['user']))
 		{
 			$validateArray[] = $this->_language->get('user_incorrect');
 		}

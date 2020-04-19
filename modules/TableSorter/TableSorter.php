@@ -33,7 +33,7 @@ class TableSorter extends Module\Module
 		'alias' => 'TableSorter',
 		'author' => 'Redaxmedia',
 		'description' => 'JavaScript powered table sorter',
-		'version' => '4.2.0'
+		'version' => '4.3.0'
 	];
 
 	/**

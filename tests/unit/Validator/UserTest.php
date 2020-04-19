@@ -5,31 +5,30 @@ use Redaxscript\Tests\TestCaseAbstract;
 use Redaxscript\Validator;
 
 /**
- * LoginTest
+ * UserTest
  *
- * @since 2.2.0
+ * @since 4.3.0
  *
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
- * @author Sven Weingartner
  *
- * @covers Redaxscript\Validator\Login
+ * @covers Redaxscript\Validator\User
  */
 
-class LoginTest extends TestCaseAbstract
+class UserTest extends TestCaseAbstract
 {
 	/**
 	 * testGetFormPattern
 	 *
-	 * @since 4.1.0
+	 * @since 4.3.0
 	 */
 
 	public function testGetFormPattern() : void
 	{
 		/* setup */
 
-		$validator = new Validator\Login();
+		$validator = new Validator\User();
 
 		/* actual */
 
@@ -37,29 +36,29 @@ class LoginTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals('[a-zA-Z0-9-]{3,50}', $actual);
+		$this->assertEquals('[a-zA-Z0-9-]{3,100}', $actual);
 	}
 
 	/**
 	 * testValidate
 	 *
-	 * @since 2.2.0
+	 * @since 4.3.0
 	 *
-	 * @param string $login
+	 * @param string $user
 	 * @param bool $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testValidate(string $login = null, bool $expect = null) : void
+	public function testValidate(string $user = null, bool $expect = null) : void
 	{
 		/* setup */
 
-		$validator = new Validator\Login();
+		$validator = new Validator\User();
 
 		/* actual */
 
-		$actual = $validator->validate($login);
+		$actual = $validator->validate($user);
 
 		/* compare */
 

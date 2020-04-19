@@ -18,6 +18,7 @@ module.exports = grunt =>
 				'node_modules/@mdi/svg/svg/chevron-right.svg',
 				'node_modules/@mdi/svg/svg/close.svg',
 				'node_modules/@mdi/svg/svg/close-circle-outline.svg',
+				'node_modules/@mdi/svg/svg/cog.svg',
 				'node_modules/@mdi/svg/svg/cube-outline.svg',
 				'node_modules/@mdi/svg/svg/delete.svg',
 				'node_modules/@mdi/svg/svg/eye-off.svg',
@@ -27,7 +28,6 @@ module.exports = grunt =>
 				'node_modules/@mdi/svg/svg/pencil.svg',
 				'node_modules/@mdi/svg/svg/plus.svg',
 				'node_modules/@mdi/svg/svg/power.svg',
-				'node_modules/@mdi/svg/svg/settings.svg',
 				'node_modules/@mdi/svg/svg/subdirectory-arrow-right.svg'
 			],
 			dest: 'templates/admin/dist/fonts',

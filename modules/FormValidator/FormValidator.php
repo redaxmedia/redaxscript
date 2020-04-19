@@ -28,7 +28,7 @@ class FormValidator extends Module\Module
 		'alias' => 'FormValidator',
 		'author' => 'Redaxmedia',
 		'description' => 'JavaScript powered form validation',
-		'version' => '4.2.0'
+		'version' => '4.3.0'
 	];
 
 	/**

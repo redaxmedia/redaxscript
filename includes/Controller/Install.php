@@ -228,7 +228,8 @@ class Install extends ControllerAbstract
 	protected function _validateAccount(array $postArray = []) : array
 	{
 		$emailValidator = new Validator\Email();
-		$loginValidator = new Validator\Login();
+		$userValidator = new Validator\User();
+		$passwordValidator = new Validator\Password();
 		$validateArray = [];
 
 		/* validate post */
@@ -241,7 +242,7 @@ class Install extends ControllerAbstract
 		{
 			$validateArray[] = $this->_language->get('user_empty');
 		}
-		else if (!$loginValidator->validate($postArray['adminUser']))
+		else if (!$userValidator->validate($postArray['adminUser']))
 		{
 			$validateArray[] = $this->_language->get('user_incorrect');
 		}
@@ -249,7 +250,7 @@ class Install extends ControllerAbstract
 		{
 			$validateArray[] = $this->_language->get('password_empty');
 		}
-		else if (!$loginValidator->validate($postArray['adminPassword']))
+		else if (!$passwordValidator->validate($postArray['adminPassword']))
 		{
 			$validateArray[] = $this->_language->get('password_incorrect');
 		}

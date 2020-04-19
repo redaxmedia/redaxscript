@@ -43,16 +43,15 @@ class AliasTest extends TestCaseAbstract
 	/**
 	 * testValidate
 	 *
-	 * @since 2.2.0
+	 * @since 4.3.0
 	 *
 	 * @param string $alias
-	 * @param string $mode
 	 * @param bool $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testValidate(string $alias = null, string $mode = null, bool $expect = null) : void
+	public function testValidate(string $alias = null, bool $expect = null) : void
 	{
 		/* setup */
 
@@ -60,7 +59,7 @@ class AliasTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $validator->validate($alias, $mode);
+		$actual = $validator->validate($alias);
 
 		/* compare */
 

@@ -19,9 +19,56 @@ use Redaxscript\Validator;
 class PasswordTest extends TestCaseAbstract
 {
 	/**
+	 * testGetFormPattern
+	 *
+	 * @since 4.3.0
+	 */
+
+	public function testGetFormPattern() : void
+	{
+		/* setup */
+
+		$validator = new Validator\Password();
+
+		/* actual */
+
+		$actual = $validator->getFormPattern();
+
+		/* compare */
+
+		$this->assertEquals('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]){10,100}', $actual);
+	}
+
+	/**
 	 * testValidate
 	 *
-	 * @since 2.6.0
+	 * @since 4.3.0
+	 *
+	 * @param string $password
+	 * @param bool $expect
+	 *
+	 * @dataProvider providerAutoloader
+	 */
+
+	public function testValidate(string $password = null, bool $expect = null) : void
+	{
+		/* setup */
+
+		$validator = new Validator\Password();
+
+		/* actual */
+
+		$actual = $validator->validate($password);
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testMatchHash
+	 *
+	 * @since 4.3.0
 	 *
 	 * @param string $password
 	 * @param string $hash
@@ -30,7 +77,7 @@ class PasswordTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testValidate(string $password = null, string $hash = null, bool $expect = null) : void
+	public function testMatchHash(string $password = null, string $hash = null, bool $expect = null) : void
 	{
 		/* setup */
 
@@ -38,7 +85,7 @@ class PasswordTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $validator->validate($password, $hash);
+		$actual = $validator->matchHash($password, $hash);
 
 		/* compare */
 

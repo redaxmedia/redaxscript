@@ -4,10 +4,8 @@ namespace Redaxscript\Bootstrap;
 use PDO;
 use Redaxscript\Client;
 use Redaxscript\Server;
-use function function_exists;
 use function getenv;
 use function is_dir;
-use function opcache_get_status;
 use function strpos;
 use function strtolower;
 use function version_compare;
@@ -37,7 +35,6 @@ class Common extends BootstrapAbstract
 		$this->_setDriver();
 		$this->_setModule();
 		$this->_setPhp();
-		$this->_setOpcache();
 	}
 
 	/**
@@ -117,35 +114,20 @@ class Common extends BootstrapAbstract
 
 	protected function _setModule() : void
 	{
-		$moduleArray = function_exists('apache_get_modules') ? apache_get_modules() : [];
-		$fallbackArray =
+		$this->_registry->set('moduleArray',
 		[
-			'mod_deflate' => 'REDIRECT_MOD_DEFLATE',
-			'mod_brotli' => 'REDIRECT_MOD_BROTLI',
-			'mod_security' => 'REDIRECT_MOD_SECURITY',
-			'mod_rewrite' => 'REDIRECT_MOD_REWRITE',
-			'mod_headers' => 'REDIRECT_MOD_HEADERS'
-		];
-
-		/* process fallback */
-
-		if (!$moduleArray)
-		{
-			foreach ($fallbackArray as $key => $value)
-			{
-				if (getenv($value) === 'on')
-				{
-					$moduleArray[$key] = true;
-				}
-			}
-		}
-		$this->_registry->set('moduleArray', $moduleArray);
+			'mod_brotli' => getenv('REDIRECT_MOD_BROTLI') === 'on',
+			'mod_deflate' => getenv('REDIRECT_MOD_DEFLATE') === 'on',
+			'mod_security' => getenv('REDIRECT_MOD_SECURITY') === 'on',
+			'mod_rewrite' => getenv('REDIRECT_MOD_REWRITE') === 'on',
+			'mod_headers' => getenv('REDIRECT_MOD_HEADERS') === 'on'
+		]);
 	}
 
 	/**
 	 * set the php
 	 *
-	 * @since 3.2.3
+	 * @since 4.3.0
 	 */
 
 	protected function _setPhp() : void
@@ -161,18 +143,14 @@ class Common extends BootstrapAbstract
 			$this->_registry->set('phpOs', 'windows');
 		}
 		$this->_registry->set('phpVersion', $phpVersion);
-		$this->_registry->set('phpStatus', version_compare($phpVersion, '7.2', '>='));
-	}
-
-	/**
-	 * set the opcache
-	 *
-	 * @since 4.0.0
-	 */
-
-	protected function _setOpcache() : void
-	{
-		$opcacheArray = function_exists('opcache_get_status') ? opcache_get_status(false) : [];
-		$this->_registry->set('opcacheArray', $opcacheArray);
+		$this->_registry->set('phpStatus', 0);
+		if (version_compare($phpVersion, '7.5', '>='))
+		{
+			$this->_registry->set('phpStatus', 1);
+		}
+		else if (version_compare($phpVersion, '7.2', '>='))
+		{
+			$this->_registry->set('phpStatus', 2);
+		}
 	}
 }

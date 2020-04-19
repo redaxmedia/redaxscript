@@ -127,8 +127,8 @@ class CommonTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		putenv('REDIRECT_MOD_DEFLATE=on');
 		putenv('REDIRECT_MOD_BROTLI=on');
+		putenv('REDIRECT_MOD_DEFLATE=on');
 		putenv('REDIRECT_MOD_SECURITY=on');
 		putenv('REDIRECT_MOD_REWRITE=on');
 		putenv('REDIRECT_MOD_HEADERS=on');
@@ -138,8 +138,8 @@ class CommonTest extends TestCaseAbstract
 
 		$expectArray =
 		[
-			'mod_deflate' => true,
 			'mod_brotli' => true,
+			'mod_deflate' => true,
 			'mod_security' => true,
 			'mod_rewrite' => true,
 			'mod_headers' => true
@@ -176,6 +176,6 @@ class CommonTest extends TestCaseAbstract
 
 		$this->assertIsString($actualArray['phpOs']);
 		$this->assertIsString($actualArray['phpVersion']);
-		$this->assertTrue($actualArray['phpStatus']);
+		$this->assertIsNumeric($actualArray['phpStatus']);
 	}
 }

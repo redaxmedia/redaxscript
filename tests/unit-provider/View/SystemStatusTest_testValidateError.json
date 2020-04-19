@@ -2,21 +2,21 @@
 	[
 		{
 			"dbStatus": 0,
-			"phpStatus": false,
-			"driverArray": null,
-			"sessionStatus": false
+			"phpStatus": 0,
+			"driverArray": [],
+			"sessionStatus": 0
 		},
 		[
 			"Connection to database failed",
 			"PHP version not supported",
-			"PDO driver is disabled",
-			"Session is disabled"
+			"Session is disabled",
+			"PDO driver is disabled"
 		]
 	],
 	[
 		{
 			"dbStatus": 2,
-			"phpStatus": true,
+			"phpStatus": 2,
 			"driverArray":
 			[
 				"mssql",
@@ -24,7 +24,7 @@
 				"pgsql",
 				"sqlite"
 			],
-			"sessionStatus": true
+			"sessionStatus": 2
 		},
 		[]
 	]

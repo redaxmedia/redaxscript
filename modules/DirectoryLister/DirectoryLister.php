@@ -44,7 +44,7 @@ class DirectoryLister extends Module\Metadata
 		'alias' => 'DirectoryLister',
 		'author' => 'Redaxmedia',
 		'description' => 'List files of a directory',
-		'version' => '4.2.0'
+		'version' => '4.3.0'
 	];
 
 	/**

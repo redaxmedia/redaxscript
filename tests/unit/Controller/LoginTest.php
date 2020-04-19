@@ -6,7 +6,7 @@ use Redaxscript\Db;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
- * LoginTest
+ * UserTest
  *
  * @since 3.0.0
  *

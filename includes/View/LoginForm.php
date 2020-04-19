@@ -31,7 +31,8 @@ class LoginForm extends ViewAbstract
 		$output = Module\Hook::trigger('loginFormStart');
 		$outputLegend = null;
 		$settingModel = new Model\Setting();
-		$loginValidator = new Validator\Login();
+		$userValidator = new Validator\User();
+		$passwordValidator = new Validator\Password();
 		$parameterRoute = $this->_registry->get('parameterRoute');
 
 		/* html element */
@@ -87,7 +88,7 @@ class LoginForm extends ViewAbstract
 				'autofocus' => 'autofocus',
 				'id' => 'user',
 				'name' => 'user',
-				'pattern' => $loginValidator->getFormPattern(),
+				'pattern' => $userValidator->getFormPattern(),
 				'required' => 'required'
 			])
 			->append('</li><li>')
@@ -99,7 +100,7 @@ class LoginForm extends ViewAbstract
 			[
 				'id' => 'password',
 				'name' => 'password',
-				'pattern' => $loginValidator->getFormPattern(),
+				'pattern' => $passwordValidator->getFormPattern(),
 				'required' => 'required'
 			])
 			->append('</li>');

@@ -179,7 +179,7 @@ class Category extends ControllerAbstract
 		{
 			$validateArray[] = $this->_language->get('alias_empty');
 		}
-		else if (!$aliasValidator->validate($postArray['alias'], 'general') || !$aliasValidator->validate($postArray['alias'], 'system'))
+		else if (!$aliasValidator->validate($postArray['alias']) || $aliasValidator->matchSystem($postArray['alias']))
 		{
 			$validateArray[] = $this->_language->get('alias_incorrect');
 		}

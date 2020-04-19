@@ -1,0 +1,10 @@
+[
+	[
+		"admin",
+		false
+	],
+	[
+		"invalid",
+		true
+	]
+]

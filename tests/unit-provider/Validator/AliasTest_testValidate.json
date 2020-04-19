@@ -1,52 +1,30 @@
 [
 	[
 		"123",
-		"general",
 		true
 	],
 	[
 		"abc",
-		"general",
 		true
 	],
 	[
 		"a-b-c",
-		"general",
 		true
 	],
 	[
 		null,
-		"general",
 		false
 	],
 	[
 		"***",
-		"general",
 		false
 	],
 	[
 		"12",
-		"general",
 		false
 	],
 	[
 		"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901",
-		"general",
-		false
-	],
-	[
-		"abc",
-		"system",
-		true
-	],
-	[
-		"admin",
-		"system",
-		false
-	],
-	[
-		"invalid",
-		"invalid",
 		false
 	]
 ]

@@ -82,70 +82,70 @@
 	font-weight: 400;
 }
 
-%rs-admin-icon-cube-outline
+%rs-admin-icon-cog
 {
 	content: '\f10b';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: 400;
 }
 
-%rs-admin-icon-delete
+%rs-admin-icon-cube-outline
 {
 	content: '\f10c';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: 400;
 }
 
-%rs-admin-icon-eye-off
+%rs-admin-icon-delete
 {
 	content: '\f10d';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: 400;
 }
 
-%rs-admin-icon-help-circle-outline
+%rs-admin-icon-eye-off
 {
 	content: '\f10e';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: 400;
 }
 
-%rs-admin-icon-lock
+%rs-admin-icon-help-circle-outline
 {
 	content: '\f10f';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: 400;
 }
 
-%rs-admin-icon-minus
+%rs-admin-icon-lock
 {
 	content: '\f110';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: 400;
 }
 
-%rs-admin-icon-pencil
+%rs-admin-icon-minus
 {
 	content: '\f111';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: 400;
 }
 
-%rs-admin-icon-plus
+%rs-admin-icon-pencil
 {
 	content: '\f112';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: 400;
 }
 
-%rs-admin-icon-power
+%rs-admin-icon-plus
 {
 	content: '\f113';
 	font-family: var(--rs-admin-font-icon);
 	font-weight: 400;
 }
 
-%rs-admin-icon-settings
+%rs-admin-icon-power
 {
 	content: '\f114';
 	font-family: var(--rs-admin-font-icon);

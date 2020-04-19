@@ -39,7 +39,7 @@ class Tinymce extends Module\Metadata
 		'alias' => 'Tinymce',
 		'author' => 'Redaxmedia',
 		'description' => 'JavaScript powered WYSIWYG editor',
-		'version' => '4.2.0'
+		'version' => '4.3.0'
 	];
 
 	/**
