@@ -2,7 +2,6 @@
 namespace Redaxscript\Tests;
 
 use Redaxscript\Reader;
-use function is_array;
 
 /**
  * ReaderTest
