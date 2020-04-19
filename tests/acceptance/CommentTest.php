@@ -47,8 +47,8 @@ class CommentTest extends TestCaseAbstract
 		/* interact */
 
 		$authorElement->sendKeys('test');
-		$emailElement->sendKeys('test@test.com');
-		$urlElement->sendKeys('https://test.com');
+		$emailElement->sendKeys('test@redaxscript.com');
+		$urlElement->sendKeys('https://redaxscript.com');
 		$textElement->sendKeys('test');
 		$buttonElement->click();
 

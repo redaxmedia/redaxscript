@@ -10,9 +10,9 @@
 			"name": "User Two",
 			"user": "user-two",
 			"description": null,
-			"password": "test",
-			"password_confirm": "test",
-			"email": "test@test.com",
+			"password": "aaAA00AAaa",
+			"password_confirm": "aaAA00AAaa",
+			"email": "test@redaxscript.com",
 			"language": null,
 			"status": null,
 			"groups": null

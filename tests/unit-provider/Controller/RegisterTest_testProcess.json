@@ -25,7 +25,7 @@
 		{
 			"name": "test",
 			"user": "test",
-			"email": "test@test.com",
+			"email": "test@redaxscript.com",
 			"task": 1,
 			"hash": null
 		},
@@ -36,7 +36,7 @@
 		{
 			"name": "new",
 			"user": "new",
-			"email": "test@test.com",
+			"email": "test@redaxscript.com",
 			"task": 1,
 			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
 		},
@@ -47,7 +47,7 @@
 		{
 			"name": "new",
 			"user": "new",
-			"email": "test@test.com",
+			"email": "test@redaxscript.com",
 			"task": 1,
 			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
 		},

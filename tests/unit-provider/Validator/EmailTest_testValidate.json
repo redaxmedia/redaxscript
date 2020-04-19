@@ -1,10 +1,10 @@
 [
 	[
-		"test@test.com",
+		"test@redaxscript.com",
 		true
 	],
 	[
-		"test@invalid@com",
+		"invalid@localhost",
 		false
 	],
 	[

@@ -157,8 +157,8 @@ abstract class TestCaseAbstract extends PHPUnitProviderAutoloader\TestCaseAbstra
 		[
 			'adminName' => 'Test',
 			'adminUser' => 'test',
-			'adminPassword' => 'test',
-			'adminEmail' => 'test@test.com'
+			'adminPassword' => 'aaAA00AAaa',
+			'adminEmail' => 'test@redaxscript.com'
 		];
 	}
 

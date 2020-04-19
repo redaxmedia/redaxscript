@@ -1,18 +1,34 @@
 [
 	[
-		"http://www.test.com/",
+		"https://www.redaxscript.com",
 		true
 	],
 	[
-		"http://www.test.com/test/",
+		"https://www.redaxscript.com/",
 		true
 	],
 	[
-		"http://www.test.com/test",
+		"https://www.redaxscript.com/test/",
 		true
 	],
 	[
-		"http://www.test.com",
+		"https://www.redaxscript.com/test",
+		true
+	],
+	[
+		"https://redaxscript.com/",
+		true
+	],
+	[
+		"https://redaxscript.com/test/",
+		true
+	],
+	[
+		"https://redaxscript.com/test",
+		true
+	],
+	[
+		"https://redaxscript.com",
 		true
 	],
 	[
@@ -20,28 +36,12 @@
 		false
 	],
 	[
-		"www.test.com",
+		"www.redaxscript.com",
 		false
 	],
 	[
-		"http://test",
-		false
-	],
-	[
-		"http://test.com/",
-		true
-	],
-	[
-		"http://test.com/test/",
-		true
-	],
-	[
-		"http://test.com/test",
-		true
-	],
-	[
-		"http://test.com",
-		true
+		"https://invalid",
+	false
 	],
 	[
 		"invalid",

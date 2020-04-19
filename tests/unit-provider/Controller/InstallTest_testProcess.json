@@ -41,8 +41,8 @@
 			"db-prefix": "%CURRENT%",
 			"admin-name": "Test",
 			"admin-user": "test",
-			"admin-password": "test",
-			"admin-email": "test@test.com"
+			"admin-password": "aaAA00AAaa",
+			"admin-email": "test@redaxscript.com"
 		},
 		"_touch",
 		"<div class=\"rs-box-note rs-is-error\">Grant write permission on directory.</div><a href=\"install.php\" class=\"rs-button-note rs-is-error\">Back</a>"
@@ -57,8 +57,8 @@
 			"db-prefix": "%CURRENT%",
 			"admin-name": "Test",
 			"admin-user": "test",
-			"admin-password": "test",
-			"admin-email": "test@test.com"
+			"admin-password": "aaAA00AAaa",
+			"admin-email": "test@redaxscript.com"
 		},
 		"_write",
 		"<div class=\"rs-box-note rs-is-error\">Grant write permission on file: config.php</div><a href=\"install.php\" class=\"rs-button-note rs-is-error\">Back</a>"
@@ -73,8 +73,8 @@
 			"db-prefix": "%CURRENT%",
 			"admin-name": "Test",
 			"admin-user": "test",
-			"admin-password": "test",
-			"admin-email": "test@test.com"
+			"admin-password": "aaAA00AAaa",
+			"admin-email": "test@redaxscript.com"
 		},
 		"_getStatus",
 		"<div class=\"rs-box-note rs-is-error\">Connection to database failed</div><a href=\"install.php\" class=\"rs-button-note rs-is-error\">Back</a>"
@@ -89,8 +89,8 @@
 			"db-prefix": "%CURRENT%",
 			"admin-name": "Test",
 			"admin-user": "test",
-			"admin-password": "test",
-			"admin-email": "test@test.com"
+			"admin-password": "aaAA00AAaa",
+			"admin-email": "test@redaxscript.com"
 		},
 		"_install",
 		"<div class=\"rs-box-note rs-is-error\">Installation failed</div><a href=\"install.php\" class=\"rs-button-note rs-is-error\">Back</a>"
@@ -105,8 +105,8 @@
 			"db-prefix": "%CURRENT%",
 			"admin-name": "Test",
 			"admin-user": "test",
-			"admin-password": "test",
-			"admin-email": "test@test.com"
+			"admin-password": "aaAA00AAaa",
+			"admin-email": "test@redaxscript.com"
 		},
 		"_mail",
 		"<div class=\"rs-box-note rs-is-warning\">Email sending failed</div><a href=\"index.php\" class=\"rs-button-note rs-is-warning\">Home</a><meta content=\"2;url=index.php\" http-equiv=\"refresh\" />"
@@ -121,8 +121,8 @@
 			"db-prefix": "%CURRENT%",
 			"admin-name": "Test",
 			"admin-user": "test",
-			"admin-password": "test",
-			"admin-email": "test@test.com"
+			"admin-password": "aaAA00AAaa",
+			"admin-email": "test@redaxscript.com"
 		},
 		null,
 		"<div class=\"rs-box-note rs-is-success\">Installation completed successfully</div><a href=\"index.php\" class=\"rs-button-note rs-is-success\">Home</a><meta content=\"2;url=index.php\" http-equiv=\"refresh\" />"

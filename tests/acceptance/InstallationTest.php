@@ -133,8 +133,8 @@ class InstallationTest extends TestCaseAbstract
 		$labelAccountElement->click();
 		$adminNameElement->sendKeys('Test');
 		$adminUserElement->sendKeys('test');
-		$adminPasswordElement->sendKeys('test');
-		$adminEmailElement->sendKeys('test@test.com');
+		$adminPasswordElement->sendKeys('aaAA00AAaa');
+		$adminEmailElement->sendKeys('test@redaxscript.com');
 		$buttonElement->click();
 
 		/* compare */

@@ -75,7 +75,7 @@ class InstallTest extends TestCaseAbstract
 			'--admin-password',
 			'test',
 			'--admin-email',
-			'test@test.com'
+			'test@redaxscript.com'
 		]);
 		$installCommand = new Command\Install($this->_registry, $this->_request, $this->_language, $this->_config);
 

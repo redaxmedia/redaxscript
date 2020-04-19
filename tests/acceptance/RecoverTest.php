@@ -62,7 +62,7 @@ class RecoverTest extends TestCaseAbstract
 
 		/* interact */
 
-		$emailElement->sendKeys('test@test.com');
+		$emailElement->sendKeys('test@redaxscript.com');
 		$buttonElement->click();
 
 		/* compare */

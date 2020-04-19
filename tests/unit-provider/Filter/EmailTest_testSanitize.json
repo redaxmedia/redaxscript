@@ -1,18 +1,18 @@
 [
 	[
-		"test@test.com",
-		"test@test.com"
+		"test@redaxscript.com",
+		"test@redaxscript.com"
 	],
 	[
-		"TEST@TEST.COM",
-		"test@test.com"
+		"test@redaxscript.com",
+		"test@redaxscript.com"
 	],
 	[
-		"test @ test . com",
-		"test@test.com"
+		"test @ redaxscript . com",
+		"test@redaxscript.com"
 	],
 	[
-		"te(st)@te\\st.com",
-		"test@test.com"
+		"te(st)@redax\\script.com",
+		"test@redaxscript.com"
 	]
 ]

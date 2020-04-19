@@ -15,7 +15,7 @@
 	[
 		{
 			"user": "invalid",
-			"password": "invalid",
+			"password": "aaAA00AAaa",
 			"task": 1,
 			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
 		},
@@ -23,12 +23,12 @@
 			"status": 1
 		},
 		null,
-		"<h2 class=\"rs-title-note rs-is-error\">Error</h2><div class=\"rs-box-note rs-is-error\">User is incorrect</div><a href=\"login\" class=\"rs-button-note rs-is-error\">Back</a>"
+		"<h2 class=\"rs-title-note rs-is-error\">Error</h2><div class=\"rs-box-note rs-is-error\"><ul class=\"rs-list-note\"><li>User is incorrect</li><li>Password is incorrect</li></ul></div><a href=\"login\" class=\"rs-button-note rs-is-error\">Back</a>"
 	],
 	[
 		{
 			"user": "test",
-			"password": "invalid",
+			"password": "bbBB00BBbb",
 			"task": 1,
 			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
 		},
@@ -40,21 +40,8 @@
 	],
 	[
 		{
-			"user": "test",
-			"password": "test",
-			"task": 1,
-			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
-		},
-		{
-			"status": 0
-		},
-		null,
-		"<h2 class=\"rs-title-note rs-is-error\">Error</h2><div class=\"rs-box-note rs-is-error\">User is incorrect</div><a href=\"login\" class=\"rs-button-note rs-is-error\">Back</a>"
-	],
-	[
-		{
-			"user": "test@test.com",
-			"password": "test",
+			"user": "test@redaxscript.com",
+			"password": "aaAA00AAaa",
 			"task": 1,
 			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
 		},
@@ -67,7 +54,7 @@
 	[
 		{
 			"user": "test",
-			"password": "test",
+			"password": "aaAA00AAaa",
 			"task": 1,
 			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
 		},
@@ -79,8 +66,8 @@
 	],
 	[
 		{
-			"user": "test@test.com",
-			"password": "test",
+			"user": "test@redaxscript.com",
+			"password": "aaAA00AAaa",
 			"task": 1,
 			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
 		},

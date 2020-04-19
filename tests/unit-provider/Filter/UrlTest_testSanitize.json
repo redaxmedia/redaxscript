@@ -1,14 +1,14 @@
 [
 	[
-		"test.com",
-		"test.com"
+		"redaxscript.com",
+		"redaxscript.com"
 	],
 	[
-		"TEST.COM",
-		"test.com"
+		"REDAXSCRIPT.COM",
+		"redaxscript.com"
 	],
 	[
-		" test . com",
-		"test.com"
+		" redaxscript . com",
+		"redaxscript.com"
 	]
 ]

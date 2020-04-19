@@ -38,7 +38,7 @@ class UserTest extends TestCaseAbstract
 				'name' => 'Test One',
 				'user' => 'testOne',
 				'password' => 'testOne',
-				'email' => 'test-one@test.com'
+				'email' => 'test-one@redaxscript.com'
 			])
 			->save();
 		Db::forTablePrefix('users')
@@ -48,7 +48,7 @@ class UserTest extends TestCaseAbstract
 				'name' => 'Test Two',
 				'user' => 'testTwo',
 				'password' => 'testTwo',
-				'email' => 'test-two@test.com'
+				'email' => 'test-two@redaxscript.com'
 			])
 			->save();
 	}

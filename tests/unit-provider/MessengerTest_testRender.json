@@ -37,10 +37,10 @@
 		},
 		{
 			"text": "Text",
-			"url": "http://test.com",
+			"url": "https://redaxscript.com",
 			"timeout": 2
 		},
-		"<div class=\"rs-box-note rs-is-info\">Message One</div><a href=\"http://test.com\" class=\"rs-button-note rs-is-info\">Text</a><meta content=\"2;url=http://test.com\" http-equiv=\"refresh\" />"
+		"<div class=\"rs-box-note rs-is-info\">Message One</div><a href=\"https://redaxscript.com\" class=\"rs-button-note rs-is-info\">Text</a><meta content=\"2;url=https://redaxscript.com\" http-equiv=\"refresh\" />"
 	],
 	[
 		{
@@ -54,9 +54,9 @@
 		},
 		{
 			"text": "Text",
-			"url": "http://test.com",
+			"url": "https://redaxscript.com",
 			"timeout": 0
 		},
-		"<div class=\"rs-box-note rs-is-info\"><ul class=\"rs-list-note\"><li>Message One</li><li>Message Two</li></ul></div><a href=\"http://test.com\" class=\"rs-button-note rs-is-info\">Text</a><meta class=\"rs-meta-redirect\" content=\"0;url=http://test.com\" http-equiv=\"refresh\" />"
+		"<div class=\"rs-box-note rs-is-info\"><ul class=\"rs-list-note\"><li>Message One</li><li>Message Two</li></ul></div><a href=\"https://redaxscript.com\" class=\"rs-button-note rs-is-info\">Text</a><meta class=\"rs-meta-redirect\" content=\"0;url=https://redaxscript.com\" http-equiv=\"refresh\" />"
 	]
 ]
