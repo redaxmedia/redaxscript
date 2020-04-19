@@ -10,14 +10,15 @@ environment:
  PHP_VERSION_MINOR: 7.2
  PHP_PATH: C:\tools\php72
  COMPOSER_PATH: C:\tools\phpci\composer
+ OPENSSL_PATH: C:\Program Files\OpenSSL
  SQLSRV_FILE: php_pdo_sqlsrv_72_nts.dll
 
 services:
 - mssql2016
 
 init:
-- SET PATH=C:\Program Files\OpenSSL;%PATH%
-- SET PATH=%PHP_PATH%;%COMPOSER_PATH%;%PATH%
+- SET PATH=%PHP_PATH%;%COMPOSER_PATH%;OPENSSL_PATH;%PATH%
+- SET COMPOSER_HOME=%COMPOSER_PATH%\home
 - SET COMPOSER_NO_INTERACTION=1
 
 install:
@@ -26,6 +27,7 @@ install:
 - choco upgrade chocolatey
 - choco install openssl.light
 - choco install php -version %PHP_VERSION_PATCH%
+- choco install composer --ia /PHP=%PHP_PATH% /DEV=%COMPOSER_PATH%
 - echo extension_dir=ext >> %PHP_PATH%\php.ini
 - echo extension=php_curl.dll >> %PHP_PATH%\php.ini
 - echo extension=php_mbstring.dll >> %PHP_PATH%\php.ini
