@@ -37,7 +37,6 @@ install:
 - 7z x PapercutService.%PAPERCUT_VERSION%.zip -oPapercutService
 - PapercutService\Papercut.Service.exe install --sudo
 - appveyor DownloadFile https://getcomposer.org/composer.phar
-- php composer.phar global require hirak/prestissimo
 - php composer.phar install
 
 test_script:

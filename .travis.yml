@@ -2,9 +2,6 @@ language: php
 
 php: 7.2
 
-before_install:
-- composer global require hirak/prestissimo
-
 jobs:
  include:
  - &lint
