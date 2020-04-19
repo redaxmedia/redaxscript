@@ -15,7 +15,7 @@
 
 	& li
 	{
-		border: 0.5rem solid gray(0 / 0.1);
+		border: 0.25rem solid gray(0 / 0.1);
 		line-height: 0;
 		margin-bottom: 0.5rem;
 	}
