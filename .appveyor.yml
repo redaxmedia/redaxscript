@@ -9,6 +9,7 @@ environment:
  PHP_VERSION_PATCH: 7.2.9
  PHP_VERSION_MINOR: 7.2
  PHP_PATH: C:\tools\php72
+ PHPCI_COMPOSER: C:\tools\phpci\composer
  SQLSRV_FILE: php_pdo_sqlsrv_72_nts.dll
 
 services:
@@ -36,8 +37,7 @@ install:
 - appveyor DownloadFile https://github.com/ChangemakerStudios/Papercut/releases/download/%PAPERCUT_VERSION%/PapercutService.%PAPERCUT_VERSION%.zip
 - 7z x PapercutService.%PAPERCUT_VERSION%.zip -oPapercutService
 - PapercutService\Papercut.Service.exe install --sudo
-- appveyor DownloadFile https://getcomposer.org/composer.phar
-- php composer.phar install
+- php composer install
 
 test_script:
 - PapercutService\Papercut.Service.exe start
