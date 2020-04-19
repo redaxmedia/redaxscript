@@ -4,7 +4,6 @@ Redaxscript
 > A modern, ultra lightweight and rocket fast Content Management System for SQLite, MSSQL, MySQL and PostgreSQL.
 
 [![Build Status](https://img.shields.io/travis/redaxscript/redaxscript.svg)](https://travis-ci.org/redaxscript/redaxscript)
-[![Build Status](https://img.shields.io/appveyor/ci/redaxmedia/redaxscript.svg)](https://ci.appveyor.com/project/redaxmedia/redaxscript)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/redaxscript/redaxscript.svg)](https://scrutinizer-ci.com/g/redaxscript/redaxscript)
 [![Mutation Status](https://badge.stryker-mutator.io/github.com/redaxscript/redaxscript/master)](https://github.com/redaxscript/redaxscript)
 [![Coverage Status](https://img.shields.io/coveralls/redaxscript/redaxscript.svg)](https://coveralls.io/r/redaxscript/redaxscript)
