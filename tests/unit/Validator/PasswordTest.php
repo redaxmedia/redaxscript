@@ -36,7 +36,7 @@ class PasswordTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]){10,100}', $actual);
+		$this->assertEquals('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{10,100}', $actual);
 	}
 
 	/**

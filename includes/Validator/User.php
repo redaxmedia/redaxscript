@@ -46,7 +46,7 @@ class User implements ValidatorInterface
 
 	public function getFormPattern() : string
 	{
-		return $this->_pattern . '{' . $this->_rangeArray['min'] . ',' . $this->_rangeArray['max']  . '}';
+		return $this->_pattern . '.{' . $this->_rangeArray['min'] . ',' . $this->_rangeArray['max']  . '}';
 	}
 
 	/**

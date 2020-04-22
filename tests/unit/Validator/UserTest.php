@@ -36,7 +36,7 @@ class UserTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals('[a-zA-Z0-9-]{3,100}', $actual);
+		$this->assertEquals('[a-zA-Z0-9-].{3,100}', $actual);
 	}
 
 	/**

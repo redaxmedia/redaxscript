@@ -10,8 +10,6 @@ rs.templates.install.behavior.process = optionArray =>
 	const fieldToggleList = form.querySelectorAll(OPTION.element.fieldToggle);
 	const changeEvent = new Event('change');
 
-	form.setAttribute('novalidate', 'novalidate');
-
 	/* listen on change */
 
 	fieldType.addEventListener('change', () =>
@@ -22,10 +20,20 @@ rs.templates.install.behavior.process = optionArray =>
 			{
 				field.value = null;
 				field.parentElement.style.display = 'none';
+				if (field.hasAttribute('required'))
+				{
+					field.setAttribute('data-required', 'required');
+					field.removeAttribute('required');
+				}
 			}
 			else
 			{
 				field.parentElement.style.display = null;
+				if (field.hasAttribute('data-required'))
+				{
+					field.setAttribute('required', 'required');
+					field.removeAttribute('data-required');
+				}
 			}
 		});
 	});

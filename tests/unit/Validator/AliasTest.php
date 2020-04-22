@@ -37,7 +37,7 @@ class AliasTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals('[a-z0-9-]{3,100}', $actual);
+		$this->assertEquals('[a-z0-9-].{3,100}', $actual);
 	}
 
 	/**
