@@ -67,7 +67,6 @@ jobs:
 
    env:
    - TEST=unit
-   - IGNORE_DEPRECATED=true
 
  - &test-acceptance
    addons:

@@ -255,9 +255,9 @@ class Db extends ORM
 		$dbType = self::$_config->get('dbType');
 		if ($dbType === 'pgsql')
 		{
-			return $this->_addWhere('(' . implode($columnArray, ' ILIKE ? OR ') . ' ILIKE ?)', $likeArray);
+			return $this->_addWhere('(' . implode(' ILIKE ? OR ', $columnArray) . ' ILIKE ?)', $likeArray);
 		}
-		return $this->_addWhere('(' . implode($columnArray, ' LIKE ? OR ') . ' LIKE ?)', $likeArray);
+		return $this->_addWhere('(' . implode(' LIKE ? OR ', $columnArray) . ' LIKE ?)', $likeArray);
 	}
 
 	/**

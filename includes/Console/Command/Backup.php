@@ -122,7 +122,7 @@ class Backup extends CommandAbstract
 				$command = 'cat ' . $dbHost;
 			}
 			exec($command, $outputArray, $error);
-			$content = implode($outputArray, PHP_EOL);
+			$content = implode(PHP_EOL, $outputArray);
 			return $error === 0 && $backupFilesystem->writeFile($file, $content);
 		}
 		return false;

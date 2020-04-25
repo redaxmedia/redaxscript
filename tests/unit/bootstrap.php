@@ -4,7 +4,7 @@ namespace Redaxscript;
 use function error_reporting;
 use function getenv;
 
-error_reporting(getenv('IGNORE_DEPRECATED') ? E_WARNING | E_ERROR | E_PARSE : E_DEPRECATED | E_WARNING | E_ERROR | E_PARSE);
+error_reporting(E_DEPRECATED | E_WARNING | E_ERROR | E_PARSE);
 
 /* include */
 
