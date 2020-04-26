@@ -65,8 +65,25 @@ jobs:
  - <<: *test-unit
    php: 7.4
 
+ - &test-unit-windows
+   os: windows
+
+   language: sh
+
    env:
    - TEST=unit
+
+   install:
+   - export PATH=/c/PHP:$PATH
+   - export PATH=/c/Composer:$PATH
+   - choco install php --version 7.2.15 --package-parameters='/InstallDir:C:\PHP'
+   - choco install composer --install-arguments='/DEV=C:\Composer /PHP=C:\PHP'
+   - powershell -Command 'Invoke-WebRequest https://raw.githubusercontent.com/redaxscript/redaxscript-powershell/master/php.ini -OutFile C:\PHP\php.ini'
+   - composer install
+
+   script:
+   - export DB_URL=sqlite://test.sqlite
+   - vendor/bin/phpunit
 
  - &test-acceptance
    addons:

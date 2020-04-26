@@ -16,6 +16,8 @@ use Redaxscript\Mailer;
  * @author Henry Ruhs
  *
  * @covers Redaxscript\Mailer
+ *
+ * @requires OS Linux
  */
 
 class MailerTest extends TestCaseAbstract

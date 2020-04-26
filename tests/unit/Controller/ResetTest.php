@@ -17,6 +17,8 @@ use Redaxscript\Tests\TestCaseAbstract;
  *
  * @covers Redaxscript\Controller\ControllerAbstract
  * @covers Redaxscript\Controller\Reset
+ *
+ * @requires OS Linux
  */
 
 class ResetTest extends TestCaseAbstract

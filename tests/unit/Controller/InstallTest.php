@@ -19,6 +19,8 @@ use Redaxscript\Tests\TestCaseAbstract;
  *
  * @covers Redaxscript\Controller\ControllerAbstract
  * @covers Redaxscript\Controller\Install
+ *
+ * @requires OS Linux
  */
 
 class InstallTest extends TestCaseAbstract

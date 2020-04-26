@@ -17,6 +17,8 @@ use Redaxscript\Tests\TestCaseAbstract;
  *
  * @covers Redaxscript\Controller\Comment
  * @covers Redaxscript\Controller\ControllerAbstract
+ *
+ * @requires OS Linux
  */
 
 class CommentTest extends TestCaseAbstract

@@ -16,6 +16,8 @@ use Redaxscript\Tests\TestCaseAbstract;
  *
  * @covers Redaxscript\Controller\ControllerAbstract
  * @covers Redaxscript\Controller\Recover
+ *
+ * @requires OS Linux
  */
 
 class RecoverTest extends TestCaseAbstract

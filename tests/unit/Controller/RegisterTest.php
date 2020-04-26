@@ -16,6 +16,8 @@ use Redaxscript\Tests\TestCaseAbstract;
  *
  * @covers Redaxscript\Controller\ControllerAbstract
  * @covers Redaxscript\Controller\Register
+ *
+ * @requires OS Linux
  */
 
 class RegisterTest extends TestCaseAbstract
