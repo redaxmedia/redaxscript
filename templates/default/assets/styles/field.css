@@ -13,7 +13,7 @@
 .rs-field-select,
 .rs-field-textarea
 {
-	background: gray(100);
+	background: gray(95);
 	border: 0.125rem solid gray(80);
 	border-radius: 0.125em;
 	padding: 0.5em;
@@ -22,11 +22,12 @@
 
 	&:hover
 	{
-		border-color: gray(65);
+		border-color: gray(60);
 	}
 
 	&:focus
 	{
+		background: gray(100);
 		border-color: var(--rs-color-primary);
 	}
 

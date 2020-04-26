@@ -15,21 +15,22 @@
 .rs-admin-field-textarea
 {
 	background: gray(95);
-	border: 0.125rem solid gray(85);
+	border: 0.125rem solid gray(80);
 	border-radius: 0.125em;
 	color: gray(40);
 	display: block;
 	padding: 0.5em;
-	transition: border-color 0.2s;
+	transition: background 0.2s, border-color 0.2s;
 	width: 100%;
 
 	&:hover
 	{
-		border-color: gray(65);
+		border-color: gray(60);
 	}
 
 	&:focus
 	{
+		background: gray(100);
 		border-color: var(--rs-admin-color-primary);
 	}
 
@@ -84,7 +85,7 @@
 .rs-admin-label-switch
 {
 	background: gray(95);
-	border: 0.125rem solid gray(85);
+	border: 0.125rem solid gray(80);
 	border-radius: 0.125em;
 	box-sizing: border-box;
 	cursor: pointer;
@@ -94,11 +95,12 @@
 
 	&:hover
 	{
-		border-color: gray(65);
+		border-color: gray(60);
 	}
 
 	&:active
 	{
+		background: gray(100);
 		border-color: var(--rs-admin-color-primary);
 	}
 

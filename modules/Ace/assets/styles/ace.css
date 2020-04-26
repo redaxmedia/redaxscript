@@ -9,19 +9,20 @@
 :root .ace_editor
 {
 	background: gray(95);
-	border: 0.125rem solid gray(85);
+	border: 0.125rem solid gray(80);
 	border-radius: 0.125em;
 	font: 1rem/1.25em var(--rs-admin-font-code);
 	min-height: 20em;
-	transition: border-color 0.2s;
+	transition: background 0.2s, border-color 0.2s;
 
 	&:hover
 	{
-		border-color: gray(65);
+		border-color: gray(60);
 	}
 
 	&.ace_focus
 	{
+		background: gray(100);
 		border-color: var(--rs-admin-color-primary);
 	}
 

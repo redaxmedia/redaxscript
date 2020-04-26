@@ -43,7 +43,7 @@
 
 	& tbody
 	{
-		background: gray(80);
+		background: gray(90);
 
 		& tr:not(:last-child)
 		{
