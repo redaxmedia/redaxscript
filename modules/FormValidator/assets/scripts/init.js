@@ -13,6 +13,7 @@ rs.modules.FormValidator =
 			className:
 			{
 				fieldNote: 'rs-field-note',
+				isWarning: 'rs-is-warning',
 				isError: 'rs-is-error'
 			}
 		}
@@ -30,6 +31,7 @@ rs.modules.FormValidator =
 			className:
 			{
 				fieldNote: 'rs-admin-field-note',
+				isWarning: 'rs-admin-is-warning',
 				isError: 'rs-admin-is-error'
 			}
 		}

@@ -16,13 +16,25 @@ rs.modules.FormValidator.process = optionArray =>
 			form.querySelectorAll(OPTION.element.field).forEach(field =>
 			{
 				field.classList.add(OPTION.className.fieldNote);
-				field.addEventListener('input', () =>
+				[
+					'input',
+					'invalid'
+				]
+				.forEach(eventType =>
 				{
-					field.validity.valid ? field.classList.remove(OPTION.className.isError) : field.classList.add(OPTION.className.isError);
-				});
-				field.addEventListener('invalid', () =>
-				{
-					field.classList.add(OPTION.className.isError);
+					field.addEventListener(eventType, () =>
+					{
+						field.classList.remove(OPTION.className.isWarning);
+						field.classList.remove(OPTION.className.isError);
+						if (field.validity.valueMissing)
+						{
+							field.classList.add(OPTION.className.isError);
+						}
+						else if (!field.validity.valid)
+						{
+							field.classList.add(OPTION.className.isWarning);
+						}
+					});
 				});
 			});
 
@@ -30,7 +42,11 @@ rs.modules.FormValidator.process = optionArray =>
 
 			form.addEventListener('reset', () =>
 			{
-				form.querySelectorAll(OPTION.element.field).forEach(field => field.classList.remove(OPTION.className.isError));
+				form.querySelectorAll(OPTION.element.field).forEach(field =>
+				{
+					field.classList.remove(OPTION.className.isWarning);
+					field.classList.remove(OPTION.className.isError);
+				});
 			});
 		});
 	}
