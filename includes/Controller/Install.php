@@ -115,8 +115,8 @@ class Install extends ControllerAbstract
 
 		$adminArray =
 		[
-			'adminUser' => $postArray['adminUser'],
 			'adminName' => $postArray['adminName'],
+			'adminUser' => $postArray['adminUser'],
 			'adminEmail' => $postArray['adminEmail'],
 			'adminPassword' => $postArray['adminPassword']
 		];
@@ -133,8 +133,8 @@ class Install extends ControllerAbstract
 
 		$mailArray =
 		[
-			'adminUser' => $postArray['adminUser'],
 			'adminName' => $postArray['adminName'],
+			'adminUser' => $postArray['adminUser'],
 			'adminEmail' => $postArray['adminEmail']
 		];
 		if (!$this->_mail($mailArray))
@@ -411,7 +411,7 @@ class Install extends ControllerAbstract
 		[
 			$this->_language->get('user') . $this->_language->get('colon') . ' ' . $mailArray['adminUser'],
 			'<br />',
-			$this->_language->get('url') . $this->_language->get('colon') . ' ' . $linkElement
+			$this->_language->get('login') . $this->_language->get('colon') . ' ' . $linkElement
 		];
 
 		/* send mail */
