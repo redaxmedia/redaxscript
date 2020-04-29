@@ -38,7 +38,8 @@ rs.modules.TableSorter.process = optionArray =>
 						rankArray: Object.keys(childrenList).map((childrenValue => childrenList[childrenValue].id.replace('row-', '')))
 					})
 				})
-				.then(() => OPTION.reload ? location.reload() : null);
+				.then(() => OPTION.reload ? location.reload() : null)
+				.catch(() => null);
 			});
 		});
 	}

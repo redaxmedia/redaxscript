@@ -14,21 +14,24 @@ rs.modules.Dialog.process = optionArray =>
 			link.addEventListener('click', event =>
 			{
 				fetch(OPTION.confirmRoute,
+				{
+					credentials: 'same-origin',
+					method: 'GET',
+					headers:
 					{
-						credentials: 'same-origin',
-						method: 'GET',
-						headers:
-						{
-							'Content-Type': 'text/html',
-							'X-Requested-With': 'XMLHttpRequest'
-						}
-					})
-					.then(response => response.text())
-					.then(html => rs.modules.Dialog.create(html).then(dialog =>
+						'Content-Type': 'text/html',
+						'X-Requested-With': 'XMLHttpRequest'
+					}
+				})
+				.then(response => response.text())
+				.then(html => rs.modules.Dialog.create(html)
+					.then(dialog =>
 					{
 						dialog.querySelector(OPTION.element.buttonOk).addEventListener('click', () => window.location = link.href);
 						dialog.querySelector(OPTION.element.buttonCancel).addEventListener('click', () => rs.modules.Dialog.destroy(dialog));
-					}));
+					})
+				)
+				.catch(() => null);
 				event.preventDefault();
 			});
 		});
@@ -41,12 +44,11 @@ rs.modules.Dialog.create = html =>
 	{
 		if (html)
 		{
-			let dialog = document.createElement('div');
+			const dialog = document.createElement('div');
 
 			dialog.innerHTML = html;
-			dialog = dialog.firstChild;
-			document.body.appendChild(dialog);
-			resolve(dialog);
+			document.body.appendChild(dialog.firstChild);
+			resolve(dialog.firstChild);
 		}
 		reject();
 	});

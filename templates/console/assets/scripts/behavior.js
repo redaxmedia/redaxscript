@@ -35,7 +35,8 @@ rs.templates.console.behavior.process = optionArray =>
 		{
 			box.innerHTML += response;
 			window.scrollTo(0, document.body.scrollHeight);
-		});
+		})
+		.catch(() => null);
 		form.reset();
 		event.preventDefault();
 	});
