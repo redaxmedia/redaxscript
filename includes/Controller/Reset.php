@@ -70,8 +70,8 @@ class Reset extends ControllerAbstract
 		$mailArray =
 		[
 			'name' => $user->name,
-			'email' => $user->email,
-			'password' => $passwordHash->getRaw()
+			'user' => $user->user,
+			'email' => $user->email
 		];
 		if (!$this->_mail($mailArray))
 		{
@@ -202,7 +202,7 @@ class Reset extends ControllerAbstract
 	protected function _mail(array $mailArray = []) : bool
 	{
 		$settingModel = new Model\Setting();
-		$urlReset = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . 'login';
+		$urlLogin = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . 'login';
 
 		/* html element */
 
@@ -210,9 +210,9 @@ class Reset extends ControllerAbstract
 		$linkElement
 			->init('a',
 			[
-				'href' => $urlReset
+				'href' => $urlLogin
 			])
-			->text($urlReset);
+			->text($urlLogin);
 
 		/* prepare mail */
 
@@ -227,7 +227,7 @@ class Reset extends ControllerAbstract
 		$subject = $this->_language->get('password_new');
 		$bodyArray =
 		[
-			$this->_language->get('password_new') . $this->_language->get('colon') . ' ' . $mailArray['password'],
+			$this->_language->get('user') . $this->_language->get('colon') . ' ' . $mailArray['user'],
 			'<br />',
 			$this->_language->get('login') . $this->_language->get('colon') . ' ' . $linkElement
 		];

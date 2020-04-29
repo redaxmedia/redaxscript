@@ -76,7 +76,6 @@ class Register extends ControllerAbstract
 		[
 			'name' => $postArray['name'],
 			'user' => $postArray['user'],
-			'password' => $passwordHash->getRaw(),
 			'email' => $postArray['email']
 		];
 		if (!$this->_mail($mailArray))
@@ -231,11 +230,7 @@ class Register extends ControllerAbstract
 		$subject = $this->_language->get('registration');
 		$bodyArray =
 		[
-			$this->_language->get('name') . $this->_language->get('colon') . ' ' . $mailArray['name'],
-			'<br />',
 			$this->_language->get('user') . $this->_language->get('colon') . ' ' . $mailArray['user'],
-			'<br />',
-			$this->_language->get('password') . $this->_language->get('colon') . ' ' . $mailArray['password'],
 			'<br />',
 			$this->_language->get('login') . $this->_language->get('colon') . ' ' . $linkElement
 		];

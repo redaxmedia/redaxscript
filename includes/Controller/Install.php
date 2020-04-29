@@ -131,7 +131,13 @@ class Install extends ControllerAbstract
 
 		/* handle mail */
 
-		if (!$this->_mail($adminArray))
+		$mailArray =
+		[
+			'adminUser' => $postArray['adminUser'],
+			'adminName' => $postArray['adminName'],
+			'adminEmail' => $postArray['adminEmail']
+		];
+		if (!$this->_mail($mailArray))
 		{
 			return $this->_warning(
 			[
@@ -378,6 +384,7 @@ class Install extends ControllerAbstract
 	protected function _mail(array $mailArray = []) : bool
 	{
 		$settingModel = new Model\Setting();
+		$urlLogin = $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . 'login';
 
 		/* html element */
 
@@ -385,9 +392,9 @@ class Install extends ControllerAbstract
 		$linkElement
 			->init('a',
 			[
-				'href' => $this->_registry->get('root')
+				'href' => $urlLogin
 			])
-			->text($this->_registry->get('root'));
+			->text($urlLogin);
 
 		/* prepare mail */
 
@@ -403,8 +410,6 @@ class Install extends ControllerAbstract
 		$bodyArray =
 		[
 			$this->_language->get('user') . $this->_language->get('colon') . ' ' . $mailArray['adminUser'],
-			'<br />',
-			$this->_language->get('password') . $this->_language->get('colon') . ' ' . $mailArray['adminPassword'],
 			'<br />',
 			$this->_language->get('url') . $this->_language->get('colon') . ' ' . $linkElement
 		];

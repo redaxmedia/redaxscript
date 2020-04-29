@@ -4,8 +4,6 @@ namespace Redaxscript\View;
 use Redaxscript\Html;
 use Redaxscript\Module;
 use Redaxscript\Validator;
-use function sha1;
-use function uniqid;
 
 /**
  * children class to create the install form
@@ -223,11 +221,6 @@ class InstallForm extends ViewAbstract
 				'value' => $installArray['adminEmail']
 			])
 			->append('</li></ul>')
-			->hidden(
-			[
-				'name' => 'db-salt',
-				'value' => sha1(uniqid())
-			])
 			->hidden(
 			[
 				'name' => 'refresh-connection',
