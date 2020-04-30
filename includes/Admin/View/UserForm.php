@@ -163,25 +163,6 @@ class UserForm extends ViewAbstract
 				'autocomplete' => 'new-password'
 			])
 			->append('</li><li>')
-			->label($this->_language->get('password_confirm'),
-			[
-				'for' => 'password_confirm'
-			])
-			->password(!$user->id ?
-			[
-				'id' => 'password_confirm',
-				'pattern' => $passwordValidator->getFormPattern(),
-				'name' => 'password_confirm',
-				'autocomplete' => 'new-password',
-				'required' => 'required'
-			] :
-			[
-				'id' => 'password_confirm',
-				'pattern' => $passwordValidator->getFormPattern(),
-				'name' => 'password_confirm',
-				'autocomplete' => 'new-password'
-			])
-			->append('</li><li>')
 			->label($this->_language->get('email'),
 			[
 				'for' => 'email'

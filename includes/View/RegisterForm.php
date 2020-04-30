@@ -31,6 +31,7 @@ class RegisterForm extends ViewAbstract
 		$output = Module\Hook::trigger('registerFormStart');
 		$settingModel = new Model\Setting();
 		$userValidator = new Validator\User();
+		$passwordValidator = new Validator\Password();
 
 		/* html element */
 
@@ -86,6 +87,19 @@ class RegisterForm extends ViewAbstract
 				'id' => 'user',
 				'name' => 'user',
 				'pattern' => $userValidator->getFormPattern(),
+				'required' => 'required'
+			])
+			->append('</li><li>')
+			->label('* ' . $this->_language->get('password'),
+			[
+				'for' => 'password'
+			])
+			->password(
+			[
+				'autocomplete' => 'new-password',
+				'id' => 'password',
+				'name' => 'password',
+				'pattern' => $passwordValidator->getFormPattern(),
 				'required' => 'required'
 			])
 			->append('</li><li>')

@@ -3,28 +3,31 @@
 		{
 			"name": null,
 			"user": null,
+			"password": null,
 			"email": null,
 			"task": 1,
 			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
 		},
 		null,
-		"<h2 class=\"rs-title-note rs-is-error\">Error</h2><div class=\"rs-box-note rs-is-error\"><ul class=\"rs-list-note\"><li>Name is empty</li><li>User is empty</li><li>Email is empty</li></ul></div><a href=\"register\" class=\"rs-button-note rs-is-error\">Back</a>"
+		"<h2 class=\"rs-title-note rs-is-error\">Error</h2><div class=\"rs-box-note rs-is-error\"><ul class=\"rs-list-note\"><li>Name is empty</li><li>User is empty</li><li>Password is empty</li><li>Email is empty</li></ul></div><a href=\"register\" class=\"rs-button-note rs-is-error\">Back</a>"
 	],
 	[
 		{
-			"name": "test",
+			"name": "Test",
 			"user": "12",
-			"email": "test@test",
+			"password": "invalid",
+			"email": "invalid@invalid",
 			"task": 1,
 			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
 		},
 		null,
-		"<h2 class=\"rs-title-note rs-is-error\">Error</h2><div class=\"rs-box-note rs-is-error\"><ul class=\"rs-list-note\"><li>User is incorrect</li><li>Email is incorrect</li></ul></div><a href=\"register\" class=\"rs-button-note rs-is-error\">Back</a>"
+		"<h2 class=\"rs-title-note rs-is-error\">Error</h2><div class=\"rs-box-note rs-is-error\"><ul class=\"rs-list-note\"><li>User is incorrect</li><li>Password is incorrect</li><li>Email is incorrect</li></ul></div><a href=\"register\" class=\"rs-button-note rs-is-error\">Back</a>"
 	],
 	[
 		{
-			"name": "test",
+			"name": "Test",
 			"user": "test",
+			"password": "aaAA00AAaa",
 			"email": "test@redaxscript.com",
 			"task": 1,
 			"hash": null
@@ -34,8 +37,9 @@
 	],
 	[
 		{
-			"name": "new",
-			"user": "new",
+			"name": "User Two",
+			"user": "user-two",
+			"password": "aaAA00AAaa",
 			"email": "test@redaxscript.com",
 			"task": 1,
 			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
@@ -45,13 +49,14 @@
 	],
 	[
 		{
-			"name": "new",
-			"user": "new",
+			"name": "User Two",
+			"user": "user-two",
+			"password": "aaAA00AAaa",
 			"email": "test@redaxscript.com",
 			"task": 1,
 			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
 		},
 		null,
-		"<h2 class=\"rs-title-note rs-is-success\">Success</h2><div class=\"rs-box-note rs-is-success\">Your registration information has been successfully sent</div><a href=\"login\" class=\"rs-button-note rs-is-success\">Continue</a><meta content=\"2;url=/login\" http-equiv=\"refresh\" />"
+		"<h2 class=\"rs-title-note rs-is-success\">Success</h2><div class=\"rs-box-note rs-is-success\">Registration completed successfully</div><a href=\"login\" class=\"rs-button-note rs-is-success\">Continue</a><meta content=\"2;url=/login\" http-equiv=\"refresh\" />"
 	]
 ]

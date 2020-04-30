@@ -3,6 +3,7 @@ namespace Redaxscript\View;
 
 use Redaxscript\Html;
 use Redaxscript\Module;
+use Redaxscript\Validator;
 
 /**
  * children class to create the reset form
@@ -27,6 +28,7 @@ class ResetForm extends ViewAbstract
 	public function render() : string
 	{
 		$output = Module\Hook::trigger('resetFormStart');
+		$passwordValidator = new Validator\Password();
 
 		/* html element */
 
@@ -61,13 +63,21 @@ class ResetForm extends ViewAbstract
 		$formElement
 			->legend()
 			->append('<ul><li>')
+			->label($this->_language->get('password_new'),
+			[
+				'for' => 'password'
+			])
+			->password(
+			[
+				'autocomplete' => 'new-password',
+				'id' => 'password',
+				'name' => 'password',
+				'pattern' => $passwordValidator->getFormPattern(),
+				'required' => 'required'
+			])
+			->append('</li><li>')
 			->captcha('task')
 			->append('</li></ul>')
-			->hidden(
-			[
-				'name' => 'password',
-				'value' => $this->_registry->get('thirdParameter')
-			])
 			->hidden(
 			[
 				'name' => 'id',

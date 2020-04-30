@@ -56,11 +56,13 @@ class ResetTest extends TestCaseAbstract
 		/* setup */
 
 		$formElement = $this->_driver->findElement(WebDriverBy::tagName('form'));
+		$passwordElement = $formElement->findElement(WebDriverBy::id('password'));
 		$taskElement = $formElement->findElement(WebDriverBy::id('task'));
 		$buttonElement = $formElement->findElement(WebDriverBy::tagName('button'));
 
 		/* compare */
 
+		$this->assertTrue($passwordElement->isDisplayed());
 		$this->assertTrue($taskElement->isDisplayed());
 		$this->assertTrue($buttonElement->isDisplayed());
 	}

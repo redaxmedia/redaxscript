@@ -8,7 +8,6 @@ use Redaxscript\Mailer;
 use Redaxscript\Model;
 use Redaxscript\Validator;
 use function sha1;
-use function uniqid;
 
 /**
  * children class to process the reset request
@@ -34,7 +33,6 @@ class Reset extends ControllerAbstract
 	public function process() : string
 	{
 		$passwordHash = new Hash();
-		$passwordHash->init(uniqid());
 		$postArray = $this->_normalizePost($this->_sanitizePost());
 		$validateArray = $this->_validatePost($postArray);
 		$user = $this->_getUser($postArray);
@@ -52,6 +50,7 @@ class Reset extends ControllerAbstract
 
 		/* handle reset */
 
+		$passwordHash->init($postArray['password']);
 		$resetArray =
 		[
 			'id' => $user->id,
@@ -88,7 +87,7 @@ class Reset extends ControllerAbstract
 		[
 			'route' => 'login',
 			'timeout' => 2,
-			'message' => $this->_language->get('password_sent')
+			'message' => $this->_language->get('password_changed')
 		]);
 	}
 
@@ -128,6 +127,7 @@ class Reset extends ControllerAbstract
 
 	protected function _validatePost(array $postArray = []) : array
 	{
+		$passwordValidator = new Validator\Password();
 		$captchaValidator = new Validator\Captcha();
 		$user = $this->_getUser($postArray);
 		$validateArray = [];
@@ -146,9 +146,13 @@ class Reset extends ControllerAbstract
 		{
 			$validateArray[] = $this->_language->get('password_empty');
 		}
-		else if (sha1($user->password) !== $postArray['password'])
+		else if (!$passwordValidator->validate($postArray['password']))
 		{
 			$validateArray[] = $this->_language->get('password_incorrect');
+		}
+		else if ($this->_registry->get('thirdParameter') !== sha1($user->password))
+		{
+			$validateArray[] = $this->_language->get('token_incorrect');
 		}
 		if (!$captchaValidator->validate($postArray['task'], $postArray['solution']))
 		{

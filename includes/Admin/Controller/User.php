@@ -145,7 +145,6 @@ class User extends ControllerAbstract
 			'user' => $this->_request->getPost('user'),
 			'description' => $this->_request->getPost('description'),
 			'password' => $this->_request->getPost('password'),
-			'password_confirm' => $this->_request->getPost('password_confirm'),
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
 			'language' => $specialFilter->sanitize($this->_request->getPost('language')),
 			'status' => $toggleFilter->sanitize($this->_request->getPost('status')),
@@ -199,21 +198,10 @@ class User extends ControllerAbstract
 			{
 				$validateArray[] = $this->_language->get('password_incorrect');
 			}
-			else if ($postArray['password'] !== $postArray['password_confirm'])
-			{
-				$validateArray[] = $this->_language->get('password_mismatch');
-			}
 		}
-		else if ($postArray['password'])
+		else if ($postArray['password'] && !$passwordValidator->validate($postArray['password']))
 		{
-			if (!$passwordValidator->validate($postArray['password']))
-			{
-				$validateArray[] = $this->_language->get('password_incorrect');
-			}
-			else if ($postArray['password'] !== $postArray['password_confirm'])
-			{
-				$validateArray[] = $this->_language->get('password_mismatch');
-			}
+			$validateArray[] = $this->_language->get('password_incorrect');
 		}
 		if (!$emailValidator->validate($postArray['email']))
 		{

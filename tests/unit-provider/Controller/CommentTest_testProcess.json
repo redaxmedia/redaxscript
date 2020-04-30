@@ -19,7 +19,7 @@
 	[
 		{
 			"author": "test",
-			"email": "invalid",
+			"email": "invalid@invalid",
 			"url": "invalid",
 			"text": null,
 			"article": 0,

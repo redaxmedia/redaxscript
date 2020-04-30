@@ -7,7 +7,6 @@ use Redaxscript\Html;
 use Redaxscript\Mailer;
 use Redaxscript\Model;
 use Redaxscript\Validator;
-use function uniqid;
 
 /**
  * children class to process the register request
@@ -32,10 +31,9 @@ class Register extends ControllerAbstract
 
 	public function process() : string
 	{
-		$passwordHash = new Hash();
-		$passwordHash->init(uniqid());
 		$groupModel = new Model\Group();
 		$settingModel = new Model\Setting();
+		$passwordHash = new Hash();
 		$postArray = $this->_normalizePost($this->_sanitizePost());
 		$validateArray = $this->_validatePost($postArray);
 
@@ -52,6 +50,7 @@ class Register extends ControllerAbstract
 
 		/* handle create */
 
+		$passwordHash->init($postArray['password']);
 		$createArray =
 		[
 			'name' => $postArray['name'],
@@ -93,7 +92,7 @@ class Register extends ControllerAbstract
 		[
 			'route' => 'login',
 			'timeout' => 2,
-			'message' => $settingModel->get('verification') ? $this->_language->get('registration_verification') : $this->_language->get('registration_sent')
+			'message' => $settingModel->get('verification') ? $this->_language->get('registration_verification') : $this->_language->get('registration_completed')
 		]);
 	}
 
@@ -117,6 +116,7 @@ class Register extends ControllerAbstract
 		[
 			'name' => $specialFilter->sanitize($this->_request->getPost('name')),
 			'user' => $specialFilter->sanitize($this->_request->getPost('user')),
+			'password' => $specialFilter->sanitize($this->_request->getPost('password')),
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
 			'task' => $numberFilter->sanitize($this->_request->getPost('task')),
 			'solution' => $this->_request->getPost('solution')
@@ -136,6 +136,7 @@ class Register extends ControllerAbstract
 	protected function _validatePost(array $postArray = []) : array
 	{
 		$userValidator = new Validator\User();
+		$passwordValidator = new Validator\Password();
 		$emailValidator = new Validator\Email();
 		$captchaValidator = new Validator\Captcha();
 		$settingModel = new Model\Setting();
@@ -159,6 +160,14 @@ class Register extends ControllerAbstract
 		else if ($userModel->query()->where('user', $postArray['user'])->findOne()->id)
 		{
 			$validateArray[] = $this->_language->get('user_exists');
+		}
+		if (!$postArray['password'])
+		{
+			$validateArray[] = $this->_language->get('password_empty');
+		}
+		else if (!$passwordValidator->validate($postArray['password']))
+		{
+			$validateArray[] = $this->_language->get('password_incorrect');
 		}
 		if (!$postArray['email'])
 		{

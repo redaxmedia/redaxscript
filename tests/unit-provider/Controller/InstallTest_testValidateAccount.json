@@ -16,9 +16,9 @@
 	[
 		{
 			"adminName": null,
-			"adminUser": "_",
-			"adminPassword": "_",
-			"adminEmail": "test@test"
+			"adminUser": "12",
+			"adminPassword": "invalid",
+			"adminEmail": "invalid@invalid"
 		},
 		[
 			"Name is empty",

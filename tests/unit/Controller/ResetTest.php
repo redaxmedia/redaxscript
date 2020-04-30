@@ -63,6 +63,7 @@ class ResetTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param array $registryArray
 	 * @param array $postArray
 	 * @param string $method
 	 * @param string $expect
@@ -70,10 +71,11 @@ class ResetTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testProcess(array $postArray = [], string $method = null, string $expect = null) : void
+	public function testProcess(array $registryArray = [], array $postArray = [], string $method = null, string $expect = null) : void
 	{
 		/* setup */
 
+		$this->_registry->init($registryArray);
 		$this->_request->set('post', $postArray);
 		if ($method)
 		{

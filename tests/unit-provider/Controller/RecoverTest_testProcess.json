@@ -10,7 +10,7 @@
 	],
 	[
 		{
-			"email": "test@test",
+			"email": "invalid@invalid",
 			"task": 1,
 			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
 		},
@@ -42,6 +42,6 @@
 			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
 		},
 		null,
-		"<h2 class=\"rs-title-note rs-is-success\">Success</h2><div class=\"rs-box-note rs-is-success\">Test: Your account information has been successfully sent</div><a href=\"login\" class=\"rs-button-note rs-is-success\">Continue</a><meta content=\"2;url=/login\" http-equiv=\"refresh\" />"
+		"<h2 class=\"rs-title-note rs-is-success\">Success</h2><div class=\"rs-box-note rs-is-success\">Test: Link for recovery has been successfully sent</div><a href=\"login\" class=\"rs-button-note rs-is-success\">Continue</a><meta content=\"2;url=/login\" http-equiv=\"refresh\" />"
 	]
 ]
