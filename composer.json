@@ -4,26 +4,9 @@
 	"version": "4.3.0",
 	"homepage": "https://redaxscript.com",
 	"license": "MIT",
-	"repositories":
-	[
-		{
-			"type":"package",
-			"package":
-			{
-				"name": "redaxmedia/idiorm",
-				"version": "v1.5.7",
-				"source":
-				{
-					"url": "https://github.com/redaxmedia/idiorm.git",
-					"type": "git",
-					"reference":"master"
-				}
-			}
-		}
-	],
 	"require":
 	{
-		"redaxmedia/idiorm": "v1.5.7",
+		"j4mie/idiorm": "v1.5.7",
 		"php": "^7.2"
 	},
 	"require-dev":
@@ -58,7 +41,7 @@
 	{
 		"copy-file":
 		{
-			"vendor/redaxmedia/idiorm/idiorm.php": "libraries/ORM.php"
+			"vendor/j4mie/idiorm/idiorm.php": "libraries/ORM.php"
 		},
 		"fbourigault-composer-mkdir":
 		[
