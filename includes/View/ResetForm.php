@@ -83,6 +83,11 @@ class ResetForm extends ViewAbstract
 				'name' => 'id',
 				'value' => $this->_registry->get('thirdSubParameter')
 			])
+			->hidden(
+			[
+				'name' => 'password-hash',
+				'value' => $this->_registry->get('thirdParameter')
+			])
 			->captcha('solution')
 			->token()
 			->submit();

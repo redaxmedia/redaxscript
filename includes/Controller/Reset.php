@@ -110,6 +110,7 @@ class Reset extends ControllerAbstract
 		[
 			'id' => $numberFilter->sanitize($this->_request->getPost('id')),
 			'password' => $specialFilter->sanitize($this->_request->getPost('password')),
+			'passwordHash' => $specialFilter->sanitize($this->_request->getPost('password-hash')),
 			'task' => $numberFilter->sanitize($this->_request->getPost('task')),
 			'solution' => $this->_request->getPost('solution')
 		];
@@ -150,7 +151,7 @@ class Reset extends ControllerAbstract
 		{
 			$validateArray[] = $this->_language->get('password_incorrect');
 		}
-		else if ($this->_registry->get('thirdParameter') !== sha1($user->password))
+		else if ($postArray['passwordHash'] !== sha1($user->password))
 		{
 			$validateArray[] = $this->_language->get('token_incorrect');
 		}
