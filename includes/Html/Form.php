@@ -284,21 +284,21 @@ class Form extends HtmlAbstract
 
 		if (is_array($this->_attributeArray['input']) && array_key_exists($method, $this->_attributeArray['input']))
 		{
-			return $this->_appendInput($method, $argumentArray[0]);
+			return $this->append($this->_createInput($method, $argumentArray[0]));
 		}
 
 		/* button */
 
 		if (is_array($this->_attributeArray['button']) && array_key_exists($method, $this->_attributeArray['button']))
 		{
-			return $this->_appendButton($method, $argumentArray[0], $argumentArray[1]);
+			return $this->append($this->_createButton($method, $argumentArray[0], $argumentArray[1]));
 		}
 
 		/* link */
 
 		if (is_array($this->_attributeArray['link']) && array_key_exists($method, $this->_attributeArray['link']))
 		{
-			return $this->_appendLink($method, $argumentArray[0], $argumentArray[1]);
+			return $this->append($this->_createLink($method, $argumentArray[0], $argumentArray[1]));
 		}
 		return $this;
 	}
@@ -572,23 +572,6 @@ class Form extends HtmlAbstract
 	}
 
 	/**
-	 * append the input
-	 *
-	 * @since 4.3.0
-	 *
-	 * @param string $type type of the input
-	 * @param array|null $attributeArray attributes of the input
-	 *
-	 * @return self
-	 */
-
-	protected function _appendInput(string $type = 'text', ?array $attributeArray = []) : self
-	{
-		$this->append($this->_createInput($type, $attributeArray));
-		return $this;
-	}
-
-	/**
 	 * create the input
 	 *
 	 * @since 4.3.0
@@ -651,23 +634,6 @@ class Form extends HtmlAbstract
 	}
 
 	/**
-	 * append the button
-	 *
-	 * @since 4.3.0
-	 *
-	 * @param string $type type of the button
-	 * @param string $text text of the button
-	 * @param array|null $attributeArray attributes of the button
-	 *
-	 * @return self
-	 */
-
-	protected function _appendButton(string $type = null, string $text = null, ?array $attributeArray = []) : self
-	{
-		return $this->append($this->_createButton($type, $text, $attributeArray));
-	}
-
-	/**
 	 * create the button
 	 *
 	 * @since 4.3.0
@@ -693,23 +659,6 @@ class Form extends HtmlAbstract
 		return $buttonElement
 			->init('button', $attributeArray)
 			->text($text ? : $this->_language->get($this->_languageArray['button'][$type]));
-	}
-
-	/**
-	 * append the link
-	 *
-	 * @since 4.3.0
-	 *
-	 * @param string $type type of the link
-	 * @param string $text text of the link
-	 * @param array|null $attributeArray attributes of the link
-	 *
-	 * @return self
-	 */
-
-	protected function _appendLink(string $type = null, string $text = null, ?array $attributeArray = []) : self
-	{
-		return $this->append($this->_createLink($type, $text, $attributeArray));
 	}
 
 	/**
