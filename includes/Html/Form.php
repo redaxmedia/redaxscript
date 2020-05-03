@@ -284,21 +284,21 @@ class Form extends HtmlAbstract
 
 		if (is_array($this->_attributeArray['input']) && array_key_exists($method, $this->_attributeArray['input']))
 		{
-			return $this->_createInput($method, $argumentArray[0]);
+			return $this->_appendInput($method, $argumentArray[0]);
 		}
 
 		/* button */
 
 		if (is_array($this->_attributeArray['button']) && array_key_exists($method, $this->_attributeArray['button']))
 		{
-			return $this->_createButton($method, $argumentArray[0], $argumentArray[1]);
+			return $this->_appendButton($method, $argumentArray[0], $argumentArray[1]);
 		}
 
 		/* link */
 
 		if (is_array($this->_attributeArray['link']) && array_key_exists($method, $this->_attributeArray['link']))
 		{
-			return $this->_createLink($method, $argumentArray[0], $argumentArray[1]);
+			return $this->_appendLink($method, $argumentArray[0], $argumentArray[1]);
 		}
 		return $this;
 	}
@@ -572,9 +572,9 @@ class Form extends HtmlAbstract
 	}
 
 	/**
-	 * create the input
+	 * append the input
 	 *
-	 * @since 2.6.0
+	 * @since 4.3.0
 	 *
 	 * @param string $type type of the input
 	 * @param array|null $attributeArray attributes of the input
@@ -582,7 +582,24 @@ class Form extends HtmlAbstract
 	 * @return self
 	 */
 
-	protected function _createInput(string $type = 'text', ?array $attributeArray = []) : self
+	protected function _appendInput(string $type = 'text', ?array $attributeArray = []) : self
+	{
+		$this->append($this->_createInput($type, $attributeArray));
+		return $this;
+	}
+
+	/**
+	 * create the input
+	 *
+	 * @since 4.3.0
+	 *
+	 * @param string $type type of the input
+	 * @param array|null $attributeArray attributes of the input
+	 *
+	 * @return Element
+	 */
+
+	protected function _createInput(string $type = 'text', ?array $attributeArray = []) : Element
 	{
 		if (is_array($attributeArray))
 		{
@@ -594,9 +611,7 @@ class Form extends HtmlAbstract
 			$attributeArray = $this->_attributeArray['input'][$type];
 		}
 		$inputElement = new Element();
-		$inputElement->init('input', $attributeArray);
-		$this->append($inputElement);
-		return $this;
+		return $inputElement->init('input', $attributeArray);
 	}
 
 	/**
@@ -636,9 +651,9 @@ class Form extends HtmlAbstract
 	}
 
 	/**
-	 * create the button
+	 * append the button
 	 *
-	 * @since 2.6.0
+	 * @since 4.3.0
 	 *
 	 * @param string $type type of the button
 	 * @param string $text text of the button
@@ -647,7 +662,24 @@ class Form extends HtmlAbstract
 	 * @return self
 	 */
 
-	protected function _createButton(string $type = null, string $text = null, ?array $attributeArray = []) : self
+	protected function _appendButton(string $type = null, string $text = null, ?array $attributeArray = []) : self
+	{
+		return $this->append($this->_createButton($type, $text, $attributeArray));
+	}
+
+	/**
+	 * create the button
+	 *
+	 * @since 4.3.0
+	 *
+	 * @param string $type type of the button
+	 * @param string $text text of the button
+	 * @param array|null $attributeArray attributes of the button
+	 *
+	 * @return Element
+	 */
+
+	protected function _createButton(string $type = null, string $text = null, ?array $attributeArray = []) : Element
 	{
 		if (is_array($attributeArray))
 		{
@@ -658,17 +690,15 @@ class Form extends HtmlAbstract
 			$attributeArray = $this->_attributeArray['button'][$type];
 		}
 		$buttonElement = new Element();
-		$buttonElement
+		return $buttonElement
 			->init('button', $attributeArray)
 			->text($text ? : $this->_language->get($this->_languageArray['button'][$type]));
-		$this->append($buttonElement);
-		return $this;
 	}
 
 	/**
-	 * create the link
+	 * append the link
 	 *
-	 * @since 3.0.0
+	 * @since 4.3.0
 	 *
 	 * @param string $type type of the link
 	 * @param string $text text of the link
@@ -677,7 +707,24 @@ class Form extends HtmlAbstract
 	 * @return self
 	 */
 
-	protected function _createLink(string $type = null, string $text = null, ?array $attributeArray = []) : self
+	protected function _appendLink(string $type = null, string $text = null, ?array $attributeArray = []) : self
+	{
+		return $this->append($this->_createLink($type, $text, $attributeArray));
+	}
+
+	/**
+	 * append the link
+	 *
+	 * @since 4.3.0
+	 *
+	 * @param string $type type of the link
+	 * @param string $text text of the link
+	 * @param array|null $attributeArray attributes of the link
+	 *
+	 * @return Element
+	 */
+
+	protected function _createLink(string $type = null, string $text = null, ?array $attributeArray = []) : Element
 	{
 		if (is_array($attributeArray))
 		{
@@ -688,10 +735,8 @@ class Form extends HtmlAbstract
 			$attributeArray = $this->_attributeArray['link'][$type];
 		}
 		$linkElement = new Element();
-		$linkElement
+		return $linkElement
 			->init('a', $attributeArray)
 			->text($text ? : $this->_language->get($this->_languageArray['link'][$type]));
-		$this->append($linkElement);
-		return $this;
 	}
 }
