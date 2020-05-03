@@ -168,7 +168,7 @@ class Form extends HtmlAbstract
 			],
 			'password' =>
 			[
-				'class' => 'rs-field-default rs-field-password',
+				'class' => 'rs-js-password rs-field-default rs-field-password',
 				'type' => 'password'
 			],
 			'radio' =>

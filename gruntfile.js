@@ -183,7 +183,8 @@ module.exports = grunt =>
 		'babel:moduleSyntaxHighlighter',
 		'babel:moduleTableSorter',
 		'babel:moduleTextareaResizer',
-		'babel:moduleTinymce'
+		'babel:moduleTinymce',
+		'babel:moduleUnmaskPassword'
 	]);
 	grunt.registerTask('serve', grunt.option('L') || grunt.option('live-reload') ?
 	[

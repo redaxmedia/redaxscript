@@ -98,7 +98,7 @@
 	[
 		"password",
 		null,
-		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-field-default rs-field-password\" type=\"password\" /></form>"
+		"<form class=\"rs-js-validate rs-form-default\" method=\"post\"><input class=\"rs-js-password rs-field-default rs-field-password\" type=\"password\" /></form>"
 	],
 	[
 		"password",

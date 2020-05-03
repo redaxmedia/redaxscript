@@ -368,7 +368,8 @@ class Installer
 			'Dialog',
 			'FormValidator',
 			'TextareaResizer',
-			'TableSorter'
+			'TableSorter',
+			'UnmaskPassword'
 		];
 
 		/* process modules */

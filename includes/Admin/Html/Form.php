@@ -120,7 +120,7 @@ class Form extends BaseForm
 			],
 			'password' =>
 			[
-				'class' => 'rs-admin-field-default rs-admin-field-password',
+				'class' => 'rs-admin-js-password rs-admin-field-default rs-admin-field-password',
 				'type' => 'password'
 			],
 			'radio' =>

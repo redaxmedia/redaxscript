@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript;
 
-use Redaxscript\Modules\FormValidator;
 use function set_include_path;
 
 /* bootstrap */
@@ -14,12 +13,17 @@ Header::init();
 
 /* get instance */
 
+$registry = Registry::getInstance();
+$request = Request::getInstance();
+$language = Language::getInstance();
 $config = Config::getInstance();
 
 /* load module */
 
-$formValidator = new FormValidator\FormValidator(Registry::getInstance(), Request::getInstance(), Language::getInstance(), Config::getInstance());
+$formValidator = new Modules\FormValidator\FormValidator($registry, $request, $language, $config);
+$unmaskPassword = new Modules\UnmaskPassword\UnmaskPassword($registry, $request, $language, $config);
 $formValidator->renderStart();
+$unmaskPassword->renderStart();
 
 /* restrict access */
 

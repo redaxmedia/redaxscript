@@ -44,11 +44,12 @@ rs.modules.Dialog.create = html =>
 	{
 		if (html)
 		{
-			const dialog = document.createElement('div');
+			let dialog = document.createElement('div');
 
 			dialog.innerHTML = html;
-			document.body.appendChild(dialog.firstChild);
-			resolve(dialog.firstChild);
+			dialog = dialog.firstChild;
+			document.body.appendChild(dialog);
+			resolve(dialog);
 		}
 		reject();
 	});

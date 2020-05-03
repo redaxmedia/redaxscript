@@ -124,6 +124,14 @@ module.exports = () =>
 			],
 			dest: 'modules/Tinymce/dist/scripts/tinymce.min.js'
 		},
+		moduleUnmaskPassword:
+		{
+			src:
+			[
+				'modules/UnmaskPassword/assets/scripts/unmask-password.js'
+			],
+			dest: 'modules/UnmaskPassword/dist/scripts/unmask-password.min.js'
+		},
 		options:
 		{
 			presets:
