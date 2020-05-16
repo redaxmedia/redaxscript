@@ -71,7 +71,7 @@ class Hash
 		{
 			return constant('PASSWORD_ARGON2I');
 		}
-		return constant('PASSWORD_DEFAULT');
+		return null;
 	}
 
 	/**
