@@ -87,7 +87,7 @@ class HashTest extends TestCaseAbstract
 
 		/* expect and actual */
 
-		$expect = $hashAlgorithm ? $hashArray[$hashAlgorithm][0] : $hashArray['default'][0];
+		$expect = $hashArray[$hashAlgorithm][0];
 		$actual = $hash->getHash();
 
 		/* compare */
@@ -113,11 +113,10 @@ class HashTest extends TestCaseAbstract
 		$hash = new Hash();
 		$hash->init($raw);
 		$hashAlgorithm = $hash->getAlgorithm();
-		$hashValue = $hashAlgorithm ? $hashArray[$hashAlgorithm][1] : $hashArray['default'][1];
 
 		/* actual */
 
-		$actual = $hash->validate($raw, $hashValue);
+		$actual = $hash->validate($raw, $hashArray[$hashAlgorithm][1]);
 
 		/* compare */
 
