@@ -54,6 +54,27 @@ class Hash
 	}
 
 	/**
+	 * get the algorithm
+	 *
+	 * @since 4.3.0
+	 *
+	 * @return string|null
+	 */
+
+	public function getAlgorithm() : ?string
+	{
+		if (defined('PASSWORD_ARGON2ID'))
+		{
+			return constant('PASSWORD_ARGON2ID');
+		}
+		if (defined('PASSWORD_ARGON2I'))
+		{
+			return constant('PASSWORD_ARGON2I');
+		}
+		return constant('PASSWORD_DEFAULT');
+	}
+
+	/**
 	 * get the raw
 	 *
 	 * @since 2.6.0
@@ -103,6 +124,6 @@ class Hash
 
 	protected function _create() : void
 	{
-		$this->_hash = password_hash($this->_raw, defined('PASSWORD_ARGON2I') ? constant('PASSWORD_ARGON2I') : PASSWORD_DEFAULT);
+		$this->_hash = password_hash($this->_raw, $this->getAlgorithm());
 	}
 }

@@ -2,7 +2,6 @@
 namespace Redaxscript\Tests;
 
 use Redaxscript\Hash;
-use function defined;
 
 /**
  * HashTest
@@ -68,9 +67,9 @@ class HashTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testGetHash
+	 * testGetAlgorithmAndGetHash
 	 *
-	 * @since 2.6.0
+	 * @since 4.3.0
 	 *
 	 * @param string $raw
 	 * @param array $hashArray
@@ -78,27 +77,29 @@ class HashTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetHash(string $raw = null, array $hashArray = []) : void
+	public function testGetAlgorithmAndGetHash(string $raw = null, array $hashArray = []) : void
 	{
 		/* setup */
 
 		$hash = new Hash();
 		$hash->init($raw);
+		$hashAlgorithm = $hash->getAlgorithm();
 
 		/* expect and actual */
 
-		$expect = defined('PASSWORD_ARGON2I') ? $hashArray['argon2i'][0] : $hashArray['default'][0];
+		$expect = $hashArray[$hashAlgorithm][0];
 		$actual = $hash->getHash();
 
 		/* compare */
 
+		$this->assertIsString($hashAlgorithm);
 		$this->assertStringStartsWith($expect, $actual);
 	}
 
 	/**
 	 * testValidate
 	 *
-	 * @since 2.6.0
+	 * @since 4.3.0
 	 *
 	 * @param string $raw
 	 * @param array $hashArray
@@ -112,10 +113,11 @@ class HashTest extends TestCaseAbstract
 
 		$hash = new Hash();
 		$hash->init($raw);
+		$hashAlgorithm = $hash->getAlgorithm();
 
 		/* actual */
 
-		$actual = $hash->validate($raw, defined('PASSWORD_ARGON2I') ? $hashArray['argon2i'][1] : $hashArray['default'][1]);
+		$actual = $hash->validate($raw, $hashArray[$hashAlgorithm][1]);
 
 		/* compare */
 
