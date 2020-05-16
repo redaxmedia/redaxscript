@@ -67,7 +67,7 @@ class HashTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testGetAlgorithmAndGetHash
+	 * testGetHash
 	 *
 	 * @since 4.3.0
 	 *
@@ -77,7 +77,7 @@ class HashTest extends TestCaseAbstract
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testGetAlgorithmAndGetHash(string $raw = null, array $hashArray = []) : void
+	public function testGetHash(string $raw = null, array $hashArray = []) : void
 	{
 		/* setup */
 
@@ -92,7 +92,6 @@ class HashTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertIsString($hashAlgorithm);
 		$this->assertStringStartsWith($expect, $actual);
 	}
 
