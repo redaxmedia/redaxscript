@@ -227,10 +227,11 @@ class Router extends RouterAbstract
 		$table = $aliasFilter->sanitize($this->_request->getPost('table'));
 		$search = $aliasFilter->sanitize($this->_request->getPost('search'));
 		$tableString = $table ? '/' . $table : null;
+		$searchString = $search ? '/' . $search : null;
 
 		/* redirect */
 
-		return Header::doRedirect($root . '/' . $parameterRoute . 'search' . $tableString . '/' . $search);
+		return Header::doRedirect($root . '/' . $parameterRoute . 'search' . $tableString . $searchString);
 	}
 
 	/**

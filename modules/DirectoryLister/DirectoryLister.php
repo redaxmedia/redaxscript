@@ -19,6 +19,7 @@ use function is_dir;
 use function is_file;
 use function pathinfo;
 use function str_replace;
+use function urldecode;
 
 /**
  * list files of a directory
@@ -210,10 +211,10 @@ class DirectoryLister extends Module\Metadata
 
 	protected function _renderParent(string $rootDirectory = null, string $parentDirectory = null, array $optionArray = []) : ?string
 	{
-		$queryString = $rootDirectory !== $parentDirectory ? '&' . http_build_query(
+		$queryString = $rootDirectory !== $parentDirectory ? '&' . urldecode(http_build_query(
 		[
 			'directory' => $parentDirectory
-		]) : null;
+		])) : null;
 
 		/* html element */
 
@@ -307,10 +308,10 @@ class DirectoryLister extends Module\Metadata
 							->copy()
 							->attr(
 							[
-								'href' => $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute') . '&' . http_build_query(
+								'href' => $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute') . '&' . urldecode(http_build_query(
 								[
 									'directory' => $path . $optionArray['hash']
-								]),
+								])),
 								'title' => $this->_language->get('_directory_lister')['directory']
 							])
 							->addClass($this->_optionArray['className']['types']['directory'])

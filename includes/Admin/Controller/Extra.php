@@ -127,6 +127,7 @@ class Extra extends ControllerAbstract
 	{
 		$aliasFilter = new Filter\Alias();
 		$htmlFilter = new Filter\Html();
+		$nameFilter= new Filter\Name();
 		$numberFilter = new Filter\Number();
 		$specialFilter = new Filter\Special();
 		$toggleFilter = new Filter\Toggle();
@@ -136,7 +137,7 @@ class Extra extends ControllerAbstract
 		return
 		[
 			'id' => $numberFilter->sanitize($this->_request->getPost('id')),
-			'title' => $this->_request->getPost('title'),
+			'title' => $nameFilter->sanitize($this->_request->getPost('title')),
 			'alias' => $aliasFilter->sanitize($this->_request->getPost('alias')),
 			'text' => $htmlFilter->sanitize($this->_request->getPost('text'), $this->_registry->get('filter')),
 			'language' => $specialFilter->sanitize($this->_request->getPost('language')),
@@ -163,6 +164,7 @@ class Extra extends ControllerAbstract
 
 	protected function _validatePost(array $postArray = []) : array
 	{
+		$nameValidator = new Validator\Name();
 		$aliasValidator = new Validator\Alias();
 		$extraModel = new Admin\Model\Extra();
 		$validateArray = [];
@@ -172,6 +174,10 @@ class Extra extends ControllerAbstract
 		if (!$postArray['title'])
 		{
 			$validateArray[] = $this->_language->get('title_empty');
+		}
+		else if (!$nameValidator->validate($postArray['title']))
+		{
+			$validateArray[] = $this->_language->get('title_incorrect');
 		}
 		if (!$postArray['alias'])
 		{

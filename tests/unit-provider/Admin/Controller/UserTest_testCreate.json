@@ -26,7 +26,7 @@
 		},
 		{
 			"id": null,
-			"name": null,
+			"name": "12",
 			"user": "12",
 			"description": null,
 			"password": null,
@@ -35,7 +35,7 @@
 			"status": null,
 			"groups": null
 		},
-		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Name is empty</li><li>User is incorrect</li><li>Password is empty</li><li>Email is incorrect</li></ul></div><a href=\"admin/new/users\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Name is incorrect</li><li>User is incorrect</li><li>Password is empty</li><li>Email is incorrect</li></ul></div><a href=\"admin/new/users\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
 	],
 	[
 		{

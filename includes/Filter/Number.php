@@ -20,7 +20,7 @@ class Number implements FilterInterface
 	 *
 	 * @since 4.0.0
 	 *
-	 * @param string $number
+	 * @param string $number number to be sanitized
 	 *
 	 * @return int
 	 */

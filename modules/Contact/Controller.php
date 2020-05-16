@@ -7,7 +7,6 @@ use Redaxscript\Html;
 use Redaxscript\Mailer;
 use Redaxscript\Model;
 use Redaxscript\Validator;
-use function nl2br;
 
 /**
  * children class to process the contact request
@@ -81,8 +80,8 @@ class Controller extends ControllerAbstract
 
 	protected function _sanitizePost() : array
 	{
+		$nameFilter = new Filter\Name();
 		$numberFilter = new Filter\Number();
-		$specialFilter = new Filter\Special();
 		$emailFilter = new Filter\Email();
 		$urlFilter = new Filter\Url();
 		$htmlFilter = new Filter\Html();
@@ -91,10 +90,10 @@ class Controller extends ControllerAbstract
 
 		return
 		[
-			'author' => $specialFilter->sanitize($this->_request->getPost('author')),
+			'author' => $nameFilter->sanitize($this->_request->getPost('author')),
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
 			'url' => $urlFilter->sanitize($this->_request->getPost('url')),
-			'text' => nl2br($htmlFilter->sanitize($this->_request->getPost('text'))),
+			'text' => $htmlFilter->sanitize($this->_request->getPost('text')),
 			'task' => $numberFilter->sanitize($this->_request->getPost('task')),
 			'solution' => $this->_request->getPost('solution')
 		];

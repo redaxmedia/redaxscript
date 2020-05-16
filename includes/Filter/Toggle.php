@@ -14,11 +14,11 @@ namespace Redaxscript\Filter;
 class Toggle implements FilterInterface
 {
 	/**
-	 * sanitize the $toggle
+	 * sanitize the toggle
 	 *
 	 * @since 4.2.0
 	 *
-	 * @param string $toggle
+	 * @param string $toggle toogle to be sanitized
 	 *
 	 * @return int
 	 */

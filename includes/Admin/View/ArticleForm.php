@@ -38,6 +38,7 @@ class ArticleForm extends ViewAbstract
 		$helperOption = new Helper\Option($this->_language);
 		$articleModel = new Admin\Model\Article();
 		$article = $articleModel->getById($articleId);
+		$nameValidator = new Validator\Name();
 		$aliasValidator = new Validator\Alias();
 		$dater = new Dater();
 		$dater->init($article->date);
@@ -111,6 +112,7 @@ class ArticleForm extends ViewAbstract
 				'class' => 'rs-admin-js-alias-input rs-admin-field-default rs-admin-field-text',
 				'id' => 'title',
 				'name' => 'title',
+				'pattern' => $nameValidator->getPattern(),
 				'required' => 'required',
 				'value' => $article->title
 			])
@@ -124,7 +126,7 @@ class ArticleForm extends ViewAbstract
 				'class' => 'rs-admin-js-alias-output rs-admin-field-default rs-admin-field-text',
 				'id' => 'alias',
 				'name' => 'alias',
-				'pattern' => $aliasValidator->getFormPattern(),
+				'pattern' => $aliasValidator->getPattern(),
 				'required' => 'required',
 				'value' => $article->alias
 			])

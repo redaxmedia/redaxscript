@@ -13,10 +13,10 @@ use Redaxscript\Validator;
  * @category Tests
  * @author Henry Ruhs
  *
- * @covers Redaxscript\Validator\User
+ * @covers Redaxscript\Validator\Name
  */
 
-class UserTest extends TestCaseAbstract
+class NameTest extends TestCaseAbstract
 {
 	/**
 	 * testGetPattern
@@ -28,7 +28,7 @@ class UserTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$validator = new Validator\User();
+		$validator = new Validator\Name();
 
 		/* actual */
 
@@ -44,21 +44,21 @@ class UserTest extends TestCaseAbstract
 	 *
 	 * @since 4.3.0
 	 *
-	 * @param string $user
+	 * @param string $name
 	 * @param bool $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testValidate(string $user = null, bool $expect = null) : void
+	public function testValidate(string $name = null, bool $expect = null) : void
 	{
 		/* setup */
 
-		$validator = new Validator\User();
+		$validator = new Validator\Name();
 
 		/* actual */
 
-		$actual = $validator->validate($user);
+		$actual = $validator->validate($name);
 
 		/* compare */
 

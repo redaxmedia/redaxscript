@@ -102,6 +102,7 @@ class Reset extends ControllerAbstract
 	protected function _sanitizePost() : array
 	{
 		$numberFilter = new Filter\Number();
+		$passwordFilter = new Filter\Password();
 		$specialFilter = new Filter\Special();
 
 		/* sanitize post */
@@ -109,7 +110,7 @@ class Reset extends ControllerAbstract
 		return
 		[
 			'id' => $numberFilter->sanitize($this->_request->getPost('id')),
-			'password' => $specialFilter->sanitize($this->_request->getPost('password')),
+			'password' => $passwordFilter->sanitize($this->_request->getPost('password')),
 			'passwordHash' => $specialFilter->sanitize($this->_request->getPost('password-hash')),
 			'task' => $numberFilter->sanitize($this->_request->getPost('task')),
 			'solution' => $this->_request->getPost('solution')

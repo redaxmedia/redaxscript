@@ -22,7 +22,7 @@ class Email implements ValidatorInterface
 	 *
 	 * @since 4.0.0
 	 *
-	 * @param string $email email address
+	 * @param string $email email to be validated
 	 * @param bool $dns optional validate dns
 	 *
 	 * @return bool

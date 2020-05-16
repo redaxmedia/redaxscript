@@ -72,7 +72,7 @@ class ResetForm extends ViewAbstract
 				'autocomplete' => 'new-password',
 				'id' => 'password',
 				'name' => 'password',
-				'pattern' => $passwordValidator->getFormPattern(),
+				'pattern' => $passwordValidator->getPattern(),
 				'required' => 'required'
 			])
 			->append('</li><li>')

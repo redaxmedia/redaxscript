@@ -108,8 +108,8 @@ class Comment extends ControllerAbstract
 
 	protected function _sanitizePost() : array
 	{
+		$nameFilter = new Filter\Name();
 		$numberFilter = new Filter\Number();
-		$specialFilter = new Filter\Special();
 		$emailFilter = new Filter\Email();
 		$urlFilter = new Filter\Url();
 		$htmlFilter = new Filter\Html();
@@ -118,7 +118,7 @@ class Comment extends ControllerAbstract
 
 		return
 		[
-			'author' => $specialFilter->sanitize($this->_request->getPost('author')),
+			'author' => $nameFilter->sanitize($this->_request->getPost('author')),
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
 			'url' => $urlFilter->sanitize($this->_request->getPost('url')),
 			'text' => $htmlFilter->sanitize($this->_request->getPost('text')),

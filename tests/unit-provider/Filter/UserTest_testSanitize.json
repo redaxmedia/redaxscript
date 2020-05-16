@@ -1,0 +1,26 @@
+[
+	[
+		"user",
+		"user"
+	],
+	[
+		"USER",
+		"USER"
+	],
+	[
+		" user ",
+		"user"
+	],
+	[
+		"u.s.e.r",
+		"u.s.e.r"
+	],
+	[
+		"u-s-e-r",
+		"u-s-e-r"
+	],
+	[
+		"u_s_e_r",
+		"u_s_e_r"
+	]
+]

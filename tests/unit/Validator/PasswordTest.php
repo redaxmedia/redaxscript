@@ -19,12 +19,12 @@ use Redaxscript\Validator;
 class PasswordTest extends TestCaseAbstract
 {
 	/**
-	 * testGetFormPattern
+	 * testGetPattern
 	 *
 	 * @since 4.3.0
 	 */
 
-	public function testGetFormPattern() : void
+	public function testGetPattern() : void
 	{
 		/* setup */
 
@@ -32,11 +32,11 @@ class PasswordTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $validator->getFormPattern();
+		$actual = $validator->getPattern();
 
 		/* compare */
 
-		$this->assertEquals('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{10,100}', $actual);
+		$this->assertIsString($actual);
 	}
 
 	/**

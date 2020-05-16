@@ -6,13 +6,13 @@
 			"thirdParameter": null,
 			"root": "http://localhost"
 		},
-		"<h2 class=\"rs-title-note rs-is-info\">Something went wrong</h2><div class=\"rs-box-note rs-is-info\">Input is incorrect</div><a href=\"http://localhost\" class=\"rs-button-note rs-is-info\">Back</a>"
+		"<h2 class=\"rs-title-note rs-is-info\">Something went wrong</h2><div class=\"rs-box-note rs-is-info\">Input is empty</div><a href=\"http://localhost\" class=\"rs-button-note rs-is-info\">Back</a>"
 	],
 	[
 		{
 			"firstParameter": "search",
-			"secondParameter": null,
-			"thirdParameter": "one",
+			"secondParameter": "articles",
+			"thirdParameter": "12",
 			"root": "http://localhost"
 		},
 		"<h2 class=\"rs-title-note rs-is-info\">Something went wrong</h2><div class=\"rs-box-note rs-is-info\">Input is incorrect</div><a href=\"http://localhost\" class=\"rs-button-note rs-is-info\">Back</a>"

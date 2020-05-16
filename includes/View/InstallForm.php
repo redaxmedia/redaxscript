@@ -30,6 +30,7 @@ class InstallForm extends ViewAbstract
 	public function render(array $installArray = []) : string
 	{
 		$output = Module\Hook::trigger('installFormStart');
+		$nameValidator = new Validator\Name();
 		$userValidator = new Validator\User();
 		$passwordValidator = new Validator\Password();
 
@@ -179,6 +180,7 @@ class InstallForm extends ViewAbstract
 			[
 				'id' => 'admin-name',
 				'name' => 'admin-name',
+				'pattern' => $nameValidator->getPattern(),
 				'required' => 'required',
 				'value' => $installArray['adminName']
 			])
@@ -191,7 +193,7 @@ class InstallForm extends ViewAbstract
 			[
 				'id' => 'admin-user',
 				'name' => 'admin-user',
-				'pattern' => $userValidator->getFormPattern(),
+				'pattern' => $userValidator->getPattern(),
 				'required' => 'required',
 				'value' => $installArray['adminUser']
 			])
@@ -204,7 +206,7 @@ class InstallForm extends ViewAbstract
 			[
 				'id' => 'admin-password',
 				'name' => 'admin-password',
-				'pattern' => $passwordValidator->getFormPattern(),
+				'pattern' => $passwordValidator->getPattern(),
 				'required' => 'required',
 				'value' => $installArray['adminPassword']
 			])

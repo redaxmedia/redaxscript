@@ -4,6 +4,7 @@ namespace Redaxscript\View;
 use Redaxscript\Html;
 use Redaxscript\Model;
 use Redaxscript\Module;
+use Redaxscript\Validator;
 
 /**
  * children class to create the comment form
@@ -35,6 +36,7 @@ class CommentForm extends ViewAbstract
 		}
 		$output = Module\Hook::trigger('commentStart');
 		$settingModel = new Model\Setting();
+		$nameValidator = new Validator\Name();
 
 		/* html element */
 
@@ -78,6 +80,7 @@ class CommentForm extends ViewAbstract
 				'id' => 'author',
 				'name' => 'author',
 				'readonly' => $this->_registry->get('myName') ? 'readonly' : null,
+				'pattern' => $nameValidator->getPattern(),
 				'required' => 'required',
 				'value' => $this->_registry->get('myName')
 			])

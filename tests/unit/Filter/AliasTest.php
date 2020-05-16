@@ -3,6 +3,7 @@ namespace Redaxscript\Tests\Filter;
 
 use Redaxscript\Filter;
 use Redaxscript\Tests\TestCaseAbstract;
+use function setlocale;
 
 /**
  * AliasTest
@@ -14,6 +15,8 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @author Henry Ruhs
  *
  * @covers Redaxscript\Filter\Alias
+ *
+ * @requires OS Linux
  */
 
 class AliasTest extends TestCaseAbstract
@@ -23,16 +26,18 @@ class AliasTest extends TestCaseAbstract
 	 *
 	 * @since 2.2.0
 	 *
+	 * @param string $locale
 	 * @param string $alias
 	 * @param string $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testSanitize(string $alias = null, string $expect = null) : void
+	public function testSanitize(string $locale = null, string $alias = null, string $expect = null) : void
 	{
 		/* setup */
 
+		setlocale(LC_ALL, $locale);
 		$filter = new Filter\Alias();
 
 		/* actual */

@@ -166,7 +166,9 @@ class Install extends ControllerAbstract
 	protected function _sanitizePost() : array
 	{
 		$emailFilter = new Filter\Email();
-		$specialFilter = new Filter\Special();
+		$nameFilter = new Filter\Name();
+		$passwordFilter = new Filter\Password();
+		$userFilter = new Filter\User();
 
 		/* sanitize post */
 
@@ -178,9 +180,9 @@ class Install extends ControllerAbstract
 			'dbUser' => $this->_request->getPost('db-user'),
 			'dbPassword' => $this->_request->getPost('db-password'),
 			'dbPrefix' => $this->_request->getPost('db-prefix'),
-			'adminName' => $specialFilter->sanitize($this->_request->getPost('admin-name')),
-			'adminUser' => $specialFilter->sanitize($this->_request->getPost('admin-user')),
-			'adminPassword' => $specialFilter->sanitize($this->_request->getPost('admin-password')),
+			'adminName' => $nameFilter->sanitize($this->_request->getPost('admin-name')),
+			'adminUser' => $userFilter->sanitize($this->_request->getPost('admin-user')),
+			'adminPassword' => $passwordFilter->sanitize($this->_request->getPost('admin-password')),
 			'adminEmail' => $emailFilter->sanitize($this->_request->getPost('admin-email')),
 			'refreshConnection' => $this->_request->getPost('refresh-connection')
 		];
@@ -233,6 +235,7 @@ class Install extends ControllerAbstract
 
 	protected function _validateAccount(array $postArray = []) : array
 	{
+		$nameValidator = new Validator\Name();
 		$emailValidator = new Validator\Email();
 		$userValidator = new Validator\User();
 		$passwordValidator = new Validator\Password();
@@ -243,6 +246,10 @@ class Install extends ControllerAbstract
 		if (!$postArray['adminName'])
 		{
 			$validateArray[] = $this->_language->get('name_empty');
+		}
+		else if (!$nameValidator->validate($postArray['adminName']))
+		{
+			$validateArray[] = $this->_language->get('name_incorrect');
 		}
 		if (!$postArray['adminUser'])
 		{

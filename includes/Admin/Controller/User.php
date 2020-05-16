@@ -133,6 +133,7 @@ class User extends ControllerAbstract
 	{
 		$emailFilter = new Filter\Email();
 		$numberFilter = new Filter\Number();
+		$nameFilter = new Filter\Name();
 		$toggleFilter = new Filter\Toggle();
 		$specialFilter = new Filter\Special();
 
@@ -141,7 +142,7 @@ class User extends ControllerAbstract
 		return
 		[
 			'id' => $numberFilter->sanitize($this->_request->getPost('id')),
-			'name' => $this->_request->getPost('name'),
+			'name' => $nameFilter->sanitize($this->_request->getPost('name')),
 			'user' => $this->_request->getPost('user'),
 			'description' => $this->_request->getPost('description'),
 			'password' => $this->_request->getPost('password'),
@@ -164,6 +165,7 @@ class User extends ControllerAbstract
 
 	protected function _validatePost(array $postArray = []) : array
 	{
+		$nameValidator = new Validator\Name();
 		$userValidator = new Validator\User();
 		$passwordValidator = new Validator\Password();
 		$emailValidator = new Validator\Email();
@@ -175,6 +177,10 @@ class User extends ControllerAbstract
 		if (!$postArray['name'])
 		{
 			$validateArray[] = $this->_language->get('name_empty');
+		}
+		else if (!$nameValidator->validate($postArray['name']))
+		{
+			$validateArray[] = $this->_language->get('name_incorrect');
 		}
 		if (!$postArray['id'])
 		{

@@ -30,7 +30,7 @@
 			"recovery": null,
 			"captcha": null
 		},
-		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\">Input is empty</div><a href=\"admin\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Title is empty</li><li>Author is empty</li><li>Input is empty</li></ul></div><a href=\"admin\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
 	],
 	[
 		{
@@ -63,7 +63,7 @@
 			"recovery": null,
 			"captcha": null
 		},
-		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\">Input is empty</div><a href=\"admin/edit/settings\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Title is empty</li><li>Author is empty</li><li>Input is empty</li></ul></div><a href=\"admin/edit/settings\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
 	],
 	[
 		{
@@ -72,8 +72,8 @@
 		{
 			"language": null,
 			"template": null,
-			"title": null,
-			"author": null,
+			"title": "Test",
+			"author": "Test",
 			"copyright": null,
 			"description": null,
 			"keywords": null,

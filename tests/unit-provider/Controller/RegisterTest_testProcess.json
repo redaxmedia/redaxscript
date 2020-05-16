@@ -13,7 +13,7 @@
 	],
 	[
 		{
-			"name": "Test",
+			"name": "12",
 			"user": "12",
 			"password": "invalid",
 			"email": "invalid@invalid",
@@ -21,7 +21,7 @@
 			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
 		},
 		null,
-		"<h2 class=\"rs-title-note rs-is-error\">Error</h2><div class=\"rs-box-note rs-is-error\"><ul class=\"rs-list-note\"><li>User is incorrect</li><li>Password is incorrect</li><li>Email is incorrect</li></ul></div><a href=\"register\" class=\"rs-button-note rs-is-error\">Back</a>"
+		"<h2 class=\"rs-title-note rs-is-error\">Error</h2><div class=\"rs-box-note rs-is-error\"><ul class=\"rs-list-note\"><li>Name is incorrect</li><li>User is incorrect</li><li>Password is incorrect</li><li>Email is incorrect</li></ul></div><a href=\"register\" class=\"rs-button-note rs-is-error\">Back</a>"
 	],
 	[
 		{

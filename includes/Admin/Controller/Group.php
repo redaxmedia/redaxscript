@@ -127,6 +127,7 @@ class Group extends ControllerAbstract
 	protected function _sanitizePost() : array
 	{
 		$aliasFilter = new Filter\Alias();
+		$nameFilter = new Filter\Name();
 		$numberFilter = new Filter\Number();
 		$toggleFilter = new Filter\Toggle();
 
@@ -135,7 +136,7 @@ class Group extends ControllerAbstract
 		return
 		[
 			'id' => $numberFilter->sanitize($this->_request->getPost('id')),
-			'name' => $this->_request->getPost('name'),
+			'name' => $nameFilter->sanitize($this->_request->getPost('name')),
 			'alias' => $aliasFilter->sanitize($this->_request->getPost('alias')),
 			'description' => $this->_request->getPost('description'),
 			'categories' => json_encode($this->_request->getPost('categories')),
@@ -163,6 +164,7 @@ class Group extends ControllerAbstract
 
 	protected function _validatePost(array $postArray = []) : array
 	{
+		$nameValidator = new Validator\Name();
 		$aliasValidator = new Validator\Alias();
 		$groupModel = new Admin\Model\Group();
 		$validateArray = [];
@@ -172,6 +174,10 @@ class Group extends ControllerAbstract
 		if (!$postArray['name'])
 		{
 			$validateArray[] = $this->_language->get('name_empty');
+		}
+		else if (!$nameValidator->validate($postArray['name']))
+		{
+			$validateArray[] = $this->_language->get('name_incorrect');
 		}
 		if (!$postArray['id'])
 		{

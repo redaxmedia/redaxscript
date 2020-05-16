@@ -20,7 +20,7 @@ class Html implements FilterInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $html
+	 * @param string $html html to be sanitized
 	 * @param bool $filter optional filter
 	 *
 	 * @return string

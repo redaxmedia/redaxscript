@@ -36,6 +36,7 @@ class GroupForm extends ViewAbstract
 		$groupModel = new Admin\Model\Group();
 		$group = $groupModel->getById($groupId);
 		$aliasValidator = new Validator\Alias();
+		$nameValidator = new Validator\Name();
 		$helperOption = new Helper\Option($this->_language);
 
 		/* html element */
@@ -107,6 +108,7 @@ class GroupForm extends ViewAbstract
 				'class' => 'rs-admin-js-alias-input rs-admin-field-default rs-admin-field-text',
 				'id' => 'name',
 				'name' => 'name',
+				'pattern' => $nameValidator->getPattern(),
 				'required' => 'required',
 				'value' => $group->name
 			])
@@ -124,7 +126,7 @@ class GroupForm extends ViewAbstract
 					'class' => 'rs-admin-js-alias-output rs-admin-field-default rs-admin-field-text',
 					'id' => 'alias',
 					'name' => 'alias',
-					'pattern' => $aliasValidator->getFormPattern(),
+					'pattern' => $aliasValidator->getPattern(),
 					'required' => 'required',
 					'value' => $group->alias
 				])

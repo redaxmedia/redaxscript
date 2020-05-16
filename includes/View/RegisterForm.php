@@ -30,6 +30,7 @@ class RegisterForm extends ViewAbstract
 	{
 		$output = Module\Hook::trigger('registerFormStart');
 		$settingModel = new Model\Setting();
+		$nameValidator = new Validator\Name();
 		$userValidator = new Validator\User();
 		$passwordValidator = new Validator\Password();
 
@@ -75,6 +76,7 @@ class RegisterForm extends ViewAbstract
 				'autofocus' => 'autofocus',
 				'id' => 'name',
 				'name' => 'name',
+				'pattern' => $nameValidator->getPattern(),
 				'required' => 'required'
 			])
 			->append('</li><li>')
@@ -86,7 +88,7 @@ class RegisterForm extends ViewAbstract
 			[
 				'id' => 'user',
 				'name' => 'user',
-				'pattern' => $userValidator->getFormPattern(),
+				'pattern' => $userValidator->getPattern(),
 				'required' => 'required'
 			])
 			->append('</li><li>')
@@ -99,7 +101,7 @@ class RegisterForm extends ViewAbstract
 				'autocomplete' => 'new-password',
 				'id' => 'password',
 				'name' => 'password',
-				'pattern' => $passwordValidator->getFormPattern(),
+				'pattern' => $passwordValidator->getPattern(),
 				'required' => 'required'
 			])
 			->append('</li><li>')

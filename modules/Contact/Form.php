@@ -28,6 +28,10 @@ class Form extends ViewAbstract
 	public function render() : string
 	{
 		$settingModel = new Model\Setting();
+		$nameValidator = new Validator\Name();
+
+		/* html element */
+
 		$formElement = new Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[
@@ -57,6 +61,7 @@ class Form extends ViewAbstract
 				'id' => 'author',
 				'name' => 'author',
 				'readonly' => $this->_registry->get('myName') ? 'readonly' : null,
+				'pattern' => $nameValidator->getPattern(),
 				'required' => 'required',
 				'value' => $this->_registry->get('myName')
 			])

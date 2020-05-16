@@ -22,7 +22,7 @@ class Url implements ValidatorInterface
 	 *
 	 * @since 4.0.0
 	 *
-	 * @param string $url url address
+	 * @param string $url url to be validated
 	 * @param bool $dns optional validate dns
 	 *
 	 * @return bool

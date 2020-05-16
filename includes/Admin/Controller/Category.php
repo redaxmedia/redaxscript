@@ -128,6 +128,7 @@ class Category extends ControllerAbstract
 	protected function _sanitizePost() : array
 	{
 		$aliasFilter = new Filter\Alias();
+		$nameFilter= new Filter\Name();
 		$numberFilter = new Filter\Number();
 		$specialFilter = new Filter\Special();
 		$toggleFilter = new Filter\Toggle();
@@ -137,7 +138,7 @@ class Category extends ControllerAbstract
 		return
 		[
 			'id' => $numberFilter->sanitize($this->_request->getPost('id')),
-			'title' => $this->_request->getPost('title'),
+			'title' => $nameFilter->sanitize($this->_request->getPost('title')),
 			'alias' => $aliasFilter->sanitize($this->_request->getPost('alias')),
 			'description' => $this->_request->getPost('description'),
 			'keywords' => $this->_request->getPost('keywords'),
@@ -165,6 +166,7 @@ class Category extends ControllerAbstract
 
 	protected function _validatePost(array $postArray = []) : array
 	{
+		$nameValidator = new Validator\Name();
 		$aliasValidator = new Validator\Alias();
 		$categoryModel = new Admin\Model\Category();
 		$validateArray = [];
@@ -174,6 +176,10 @@ class Category extends ControllerAbstract
 		if (!$postArray['title'])
 		{
 			$validateArray[] = $this->_language->get('title_empty');
+		}
+		else if (!$nameValidator->validate($postArray['title']))
+		{
+			$validateArray[] = $this->_language->get('title_incorrect');
 		}
 		if (!$postArray['alias'])
 		{

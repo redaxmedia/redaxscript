@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Filter;
 
+use function iconv;
 use function preg_replace;
 use function trim;
 
@@ -24,32 +25,33 @@ class Alias implements FilterInterface
 
 	protected $_patternArray =
 	[
-		'search' =>
 		[
-			'[^a-zA-Z0-9]',
-			'\s+'
+			'search' => '[^a-zA-Z0-9]',
+			'replace' => ' '
 		],
-		'replace' =>
 		[
-			' ',
-			'-'
+			'search' => '\s+',
+			'replace' => '-'
 		]
 	];
 
 	/**
 	 * sanitize the alias
 	 *
-	 * @since 2.2.0
+	 * @since 4.3.0
 	 *
-	 * @param string $alias content and user alias
+	 * @param string $alias alias to be sanitized
 	 *
 	 * @return string
 	 */
 
 	public function sanitize(string $alias = null) : string
 	{
-		$output = preg_replace('/' . $this->_patternArray['search'][0] . '/i', $this->_patternArray['replace'][0], $alias);
-		$output = preg_replace('/' . $this->_patternArray['search'][1] . '/i', $this->_patternArray['replace'][1], trim($output));
+		$output = iconv('utf-8', 'ascii//translit', $alias);
+		foreach ($this->_patternArray as $pattern)
+		{
+			$output = preg_replace('/' . $pattern['search'] . '/', $pattern['replace'], trim($output));
+		}
 		return $output;
 	}
 }

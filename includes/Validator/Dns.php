@@ -22,7 +22,7 @@ class Dns implements ValidatorInterface
 	 *
 	 * @since 4.0.0
 	 *
-	 * @param string $host host of the domain
+	 * @param string $host host to be validated
 	 * @param string $type optional domain type
 	 *
 	 * @return bool

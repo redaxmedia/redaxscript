@@ -1,10 +1,10 @@
 [
 	[
-		"123",
+		"Test",
 		true
 	],
 	[
-		"abc",
+		"Test Test",
 		true
 	],
 	[
@@ -12,8 +12,20 @@
 		false
 	],
 	[
-		"false",
-		true
+		"   ",
+		false
+	],
+	[
+		" Test ",
+		false
+	],
+	[
+		"--Test--",
+		false
+	],
+	[
+		"++Test++Test++",
+		false
 	],
 	[
 		"12",

@@ -106,17 +106,19 @@ class Register extends ControllerAbstract
 
 	protected function _sanitizePost() : array
 	{
-		$numberFilter = new Filter\Number();
-		$specialFilter = new Filter\Special();
 		$emailFilter = new Filter\Email();
+		$nameFilter = new Filter\Name();
+		$numberFilter = new Filter\Number();
+		$passwordFilter = new Filter\Password();
+		$userFilter = new Filter\User();
 
 		/* sanitize post */
 
 		return
 		[
-			'name' => $specialFilter->sanitize($this->_request->getPost('name')),
-			'user' => $specialFilter->sanitize($this->_request->getPost('user')),
-			'password' => $specialFilter->sanitize($this->_request->getPost('password')),
+			'name' => $nameFilter->sanitize($this->_request->getPost('name')),
+			'user' => $userFilter->sanitize($this->_request->getPost('user')),
+			'password' => $passwordFilter->sanitize($this->_request->getPost('password')),
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
 			'task' => $numberFilter->sanitize($this->_request->getPost('task')),
 			'solution' => $this->_request->getPost('solution')
@@ -135,6 +137,7 @@ class Register extends ControllerAbstract
 
 	protected function _validatePost(array $postArray = []) : array
 	{
+		$nameValidator = new Validator\Name();
 		$userValidator = new Validator\User();
 		$passwordValidator = new Validator\Password();
 		$emailValidator = new Validator\Email();
@@ -148,6 +151,10 @@ class Register extends ControllerAbstract
 		if (!$postArray['name'])
 		{
 			$validateArray[] = $this->_language->get('name_empty');
+		}
+		else if (!$nameValidator->validate($postArray['name']))
+		{
+			$validateArray[] = $this->_language->get('name_incorrect');
 		}
 		if (!$postArray['user'])
 		{

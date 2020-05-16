@@ -90,9 +90,9 @@ class Search extends ControllerAbstract
 
 	protected function _sanitizeQuery() : array
 	{
-		$searchFilter = new Filter\Search();
-		$secondParameter = $searchFilter->sanitize($this->_registry->get('secondParameter'));
-		$thirdParameter = $searchFilter->sanitize($this->_registry->get('thirdParameter'));
+		$aliasFilter = new Filter\Alias();
+		$secondParameter = $aliasFilter->sanitize($this->_registry->get('secondParameter'));
+		$thirdParameter = $aliasFilter->sanitize($this->_registry->get('thirdParameter'));
 
 		/* process query */
 
@@ -130,12 +130,16 @@ class Search extends ControllerAbstract
 
 	protected function _validateQuery(array $queryArray = []) : array
 	{
-		$searchValidator = new Validator\Search();
+		$aliasValidator = new Validator\Alias();
 		$validateArray = [];
 
 		/* validate query */
 
-		if (!$searchValidator->validate($queryArray['search']))
+		if (!$queryArray['search'])
+		{
+			$validateArray[] = $this->_language->get('input_empty');
+		}
+		else if (!$aliasValidator->validate($queryArray['search']))
 		{
 			$validateArray[] = $this->_language->get('input_incorrect');
 		}

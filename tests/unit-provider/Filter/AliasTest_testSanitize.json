@@ -1,22 +1,42 @@
 [
 	[
+		null,
 		"alias",
 		"alias"
 	],
 	[
+		null,
+		"ALIAS",
+		"ALIAS"
+	],
+	[
+		null,
 		" alias ",
 		"alias"
 	],
 	[
+		null,
 		"ali@_s",
 		"ali-s"
 	],
 	[
+		null,
 		"ali-a--s",
 		"ali-a-s"
 	],
 	[
-		"äli#s",
-		"li-s"
+		null,
+		"ali+a++s",
+		"ali-a-s"
+	],
+	[
+		"en_US.UTF-8",
+		"äliäs",
+		"alias"
+	],
+	[
+		"de_DE.UTF-8'",
+		"äliäs",
+		"aeliaes"
 	]
 ]

@@ -6,6 +6,7 @@ use Redaxscript\Html;
 use Redaxscript\Module;
 use function http_build_query;
 use function is_numeric;
+use function urldecode;
 
 /**
  * integrate google maps
@@ -71,10 +72,10 @@ class Maps extends Module\Module
 				->init('foot')
 				->appendFile(
 				[
-					$this->_optionArray['apiUrl'] . '?' . http_build_query(
+					$this->_optionArray['apiUrl'] . '?' . urldecode(http_build_query(
 					[
 						'key' => $this->_optionArray['apiKey']
-					]),
+					])),
 					'modules/Maps/assets/scripts/init.js',
 					'modules/Maps/dist/scripts/maps.min.js'
 				]);

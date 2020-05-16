@@ -29,7 +29,7 @@
 		},
 		{
 			"id": null,
-			"name": null,
+			"name": "12",
 			"alias": "12",
 			"description": null,
 			"categories": null,
@@ -43,7 +43,7 @@
 			"filter": null,
 			"status": null
 		},
-		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Name is empty</li><li>Alias is incorrect</li></ul></div><a href=\"admin/new/groups\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Name is incorrect</li><li>Alias is incorrect</li></ul></div><a href=\"admin/new/groups\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
 	],
 	[
 		{
@@ -52,7 +52,7 @@
 		},
 		{
 			"id": null,
-			"name": null,
+			"name": "Group Two",
 			"alias": "group-one",
 			"description": null,
 			"categories": null,
@@ -66,7 +66,7 @@
 			"filter": null,
 			"status": null
 		},
-		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Name is empty</li><li>Alias already exists</li></ul></div><a href=\"admin/new/groups\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\">Alias already exists</div><a href=\"admin/new/groups\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
 	],
 	[
 		{

@@ -4,6 +4,7 @@ namespace Redaxscript\Admin\View;
 use Redaxscript\Admin;
 use Redaxscript\Html;
 use Redaxscript\Module;
+use Redaxscript\Validator;
 
 /**
  * children class to create the setting form
@@ -30,6 +31,7 @@ class SettingForm extends ViewAbstract
 		$output = Module\Hook::trigger('adminSettingFormStart');
 		$settingModel = new Admin\Model\Setting();
 		$helperOption = new Helper\Option($this->_language);
+		$nameValidator = new Validator\Name();
 
 		/* html element */
 
@@ -142,6 +144,7 @@ class SettingForm extends ViewAbstract
 			[
 				'id' => 'author',
 				'name' => 'author',
+				'pattern' => $nameValidator->getPattern(),
 				'value' => $settingModel->get('author')
 			])
 			->append('</li><li>')

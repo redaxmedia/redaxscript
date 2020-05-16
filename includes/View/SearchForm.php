@@ -3,7 +3,6 @@ namespace Redaxscript\View;
 
 use Redaxscript\Html;
 use Redaxscript\Module;
-use Redaxscript\Validator;
 
 /**
  * children class to create the search form
@@ -30,7 +29,6 @@ class SearchForm extends ViewAbstract
 	public function render(string $table = null) : string
 	{
 		$output = Module\Hook::trigger('searchFormStart');
-		$searchValidator = new Validator\Search();
 
 		/* html element */
 
@@ -39,7 +37,7 @@ class SearchForm extends ViewAbstract
 		[
 			'form' =>
 			[
-				'class' => 'rs-js-validate-search rs-form-search'
+				'class' => 'rs-js-search rs-form-search'
 			],
 			'button' =>
 			[
@@ -58,7 +56,6 @@ class SearchForm extends ViewAbstract
 			[
 				'name' => 'search',
 				'placeholder' => $this->_language->get('search'),
-				'pattern' => $searchValidator->getFormPattern(),
 				'tabindex' => '1'
 			])
 			->hidden(

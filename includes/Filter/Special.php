@@ -28,7 +28,7 @@ class Special implements FilterInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $special special character
+	 * @param string $special special to be sanitized
 	 *
 	 * @return string
 	 */

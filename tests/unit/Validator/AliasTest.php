@@ -20,12 +20,12 @@ use Redaxscript\Validator;
 class AliasTest extends TestCaseAbstract
 {
 	/**
-	 * testGetFormPattern
+	 * testGetPattern
 	 *
-	 * @since 4.1.0
+	 * @since 4.3.0
 	 */
 
-	public function testGetFormPattern() : void
+	public function testGetPattern() : void
 	{
 		/* setup */
 
@@ -33,11 +33,11 @@ class AliasTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $validator->getFormPattern();
+		$actual = $validator->getPattern();
 
 		/* compare */
 
-		$this->assertEquals('[a-z0-9-].{3,100}', $actual);
+		$this->assertIsString($actual);
 	}
 
 	/**
@@ -60,6 +60,32 @@ class AliasTest extends TestCaseAbstract
 		/* actual */
 
 		$actual = $validator->validate($alias);
+
+		/* compare */
+
+		$this->assertEquals($expect, $actual);
+	}
+
+	/**
+	 * testMatchSystem
+	 *
+	 * @since 4.3.0
+	 *
+	 * @param string $alias
+	 * @param bool $expect
+	 *
+	 * @dataProvider providerAutoloader
+	 */
+
+	public function testMatchSystem(string $alias = null, bool $expect = null) : void
+	{
+		/* setup */
+
+		$validator = new Validator\Alias();
+
+		/* actual */
+
+		$actual = $validator->matchSystem($alias);
 
 		/* compare */
 

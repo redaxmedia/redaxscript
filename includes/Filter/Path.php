@@ -1,11 +1,10 @@
 <?php
 namespace Redaxscript\Filter;
 
-use function ltrim;
-use function preg_replace;
-use function str_replace;
-use function trim;
-use function urldecode;
+use function array_filter;
+use function array_map;
+use function explode;
+use function implode;
 
 /**
  * children class to filter the path
@@ -22,9 +21,9 @@ class Path implements FilterInterface
 	/**
 	 * sanitize the path
 	 *
-	 * @since 2.6.0
+	 * @since 4.3.0
 	 *
-	 * @param string $path name of the path
+	 * @param string $path path to be sanitized
 	 * @param string $separator directory separator
 	 *
 	 * @return string
@@ -32,15 +31,14 @@ class Path implements FilterInterface
 
 	public function sanitize(string $path = null, string $separator = DIRECTORY_SEPARATOR) : string
 	{
-		$output = urldecode($path);
-		$output = str_replace(
-		[
-			' ',
-			'..',
-		], null, $output);
-		$output = preg_replace('~' . $separator . '+~', $separator, $output);
-		$output = ltrim($output, '.');
-		$output = trim($output, $separator);
-		return $output;
+		$pathArray = explode($separator, $path);
+		foreach ($pathArray as $key => $value)
+		{
+			if ($value === '.' || $value === '..')
+			{
+				$pathArray[$key] = null;
+			}
+		}
+		return implode($separator, array_map('trim', array_filter($pathArray)));
 	}
 }

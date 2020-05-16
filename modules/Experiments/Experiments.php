@@ -4,6 +4,7 @@ namespace Redaxscript\Modules\Experiments;
 use Redaxscript\Head;
 use Redaxscript\Module;
 use function http_build_query;
+use function urldecode;
 
 /**
  * integrate google experiments
@@ -58,10 +59,10 @@ class Experiments extends Module\Module
 				->init('foot')
 				->appendFile(
 				[
-					'https://google-analytics.com/cx/api.js?' . http_build_query(
+					'https://google-analytics.com/cx/api.js?' . urldecode(http_build_query(
 					[
 						'experiment' => $this->_optionArray['id']
-					]),
+					])),
 					'modules/Experiments/assets/scripts/init.js',
 					'modules/Experiments/dist/scripts/experiments.min.js'
 				]);

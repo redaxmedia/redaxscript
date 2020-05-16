@@ -35,6 +35,7 @@ class UserForm extends ViewAbstract
 		$output = Module\Hook::trigger('adminUserFormStart');
 		$userModel = new Admin\Model\User();
 		$user = $userModel->getById($userId);
+		$nameValidator = new Validator\Name();
 		$userValidator = new Validator\User();
 		$passwordValidator = new Validator\Password();
 		$helperOption = new Helper\Option($this->_language);
@@ -107,6 +108,7 @@ class UserForm extends ViewAbstract
 				'autofocus' => 'autofocus',
 				'id' => 'name',
 				'name' => 'name',
+				'pattern' => $nameValidator->getPattern(),
 				'required' => 'required',
 				'value' => $user->name
 			])
@@ -123,7 +125,7 @@ class UserForm extends ViewAbstract
 				[
 					'id' => 'user',
 					'name' => 'user',
-					'pattern' => $userValidator->getFormPattern(),
+					'pattern' => $userValidator->getPattern(),
 					'required' => 'required',
 					'value' => $user->user
 				])
@@ -151,15 +153,15 @@ class UserForm extends ViewAbstract
 			->password(!$user->id ?
 			[
 				'id' => 'password',
-				'pattern' => $passwordValidator->getFormPattern(),
 				'name' => 'password',
+				'pattern' => $passwordValidator->getPattern(),
 				'autocomplete' => 'new-password',
 				'required' => 'required'
 			] :
 			[
 				'id' => 'password',
-				'pattern' => $passwordValidator->getFormPattern(),
 				'name' => 'password',
+				'pattern' => $passwordValidator->getPattern(),
 				'autocomplete' => 'new-password'
 			])
 			->append('</li><li>')

@@ -88,7 +88,7 @@ class LoginForm extends ViewAbstract
 				'autofocus' => 'autofocus',
 				'id' => 'user',
 				'name' => 'user',
-				'pattern' => $userValidator->getFormPattern(),
+				'pattern' => $userValidator->getPattern(),
 				'required' => 'required'
 			])
 			->append('</li><li>')
@@ -100,7 +100,7 @@ class LoginForm extends ViewAbstract
 			[
 				'id' => 'password',
 				'name' => 'password',
-				'pattern' => $passwordValidator->getFormPattern(),
+				'pattern' => $passwordValidator->getPattern(),
 				'required' => 'required'
 			])
 			->append('</li>');

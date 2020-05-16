@@ -32,10 +32,6 @@
 		"hello/world/world"
 	],
 	[
-		"%2e%2e%2fhello%2fworld",
-		"hello/world"
-	],
-	[
 		"hello/world/hello.php",
 		"hello/world/hello.php"
 	]

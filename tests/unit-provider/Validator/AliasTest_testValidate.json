@@ -8,11 +8,31 @@
 		true
 	],
 	[
+		"ABC",
+		true
+	],
+	[
 		"a-b-c",
 		true
 	],
 	[
 		null,
+		false
+	],
+	[
+		"   ",
+		false
+	],
+	[
+		" abc ",
+		false
+	],
+	[
+		"a+b+c",
+		false
+	],
+	[
+		"a_b_c",
 		false
 	],
 	[

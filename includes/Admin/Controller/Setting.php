@@ -3,6 +3,7 @@ namespace Redaxscript\Admin\Controller;
 
 use Redaxscript\Admin;
 use Redaxscript\Filter;
+use Redaxscript\Validator;
 
 /**
  * children class to process the admin setting request
@@ -103,6 +104,7 @@ class Setting extends ControllerAbstract
 	protected function _sanitizePost() : array
 	{
 		$emailFilter = new Filter\Email();
+		$nameFilter = new Filter\Name();
 		$numberFilter = new Filter\Number();
 		$specialFilter = new Filter\Special();
 		$toggleFilter = new Filter\Toggle();
@@ -113,8 +115,8 @@ class Setting extends ControllerAbstract
 		[
 			'language' => $specialFilter->sanitize($this->_request->getPost('language')),
 			'template' => $specialFilter->sanitize($this->_request->getPost('template')),
-			'title' => $this->_request->getPost('title'),
-			'author' => $this->_request->getPost('author'),
+			'title' => $nameFilter->sanitize($this->_request->getPost('title')),
+			'author' => $nameFilter->sanitize($this->_request->getPost('author')),
 			'copyright' => $this->_request->getPost('copyright'),
 			'description' => $this->_request->getPost('description'),
 			'keywords' => $this->_request->getPost('keywords'),
@@ -151,10 +153,28 @@ class Setting extends ControllerAbstract
 
 	protected function _validatePost(array $postArray = []) : array
 	{
+		$nameValidator = new Validator\Name();
+		$userValidator = new Validator\User();
 		$validateArray = [];
 
 		/* validate post */
 
+		if (!$postArray['title'])
+		{
+			$validateArray[] = $this->_language->get('title_empty');
+		}
+		else if (!$nameValidator->validate($postArray['title']))
+		{
+			$validateArray[] = $this->_language->get('title_incorrect');
+		}
+		if (!$postArray['author'])
+		{
+			$validateArray[] = $this->_language->get('author_empty');
+		}
+		else if (!$userValidator->validate($postArray['author']))
+		{
+			$validateArray[] = $this->_language->get('author_incorrect');
+		}
 		if (!$postArray['charset'] || !$postArray['limit'])
 		{
 			$validateArray[] = $this->_language->get('input_empty');

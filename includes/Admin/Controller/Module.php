@@ -3,6 +3,7 @@ namespace Redaxscript\Admin\Controller;
 
 use Redaxscript\Admin;
 use Redaxscript\Filter;
+use Redaxscript\Validator;
 use function json_encode;
 
 /**
@@ -82,6 +83,7 @@ class Module extends ControllerAbstract
 
 	protected function _sanitizePost() : array
 	{
+		$nameFilter = new Filter\Name();
 		$numberFilter = new Filter\Number();
 		$toggleFilter = new Filter\Toggle();
 
@@ -90,7 +92,7 @@ class Module extends ControllerAbstract
 		return
 		[
 			'id' => $numberFilter->sanitize($this->_request->getPost('id')),
-			'name' => $this->_request->getPost('name'),
+			'name' => $nameFilter->sanitize($this->_request->getPost('name')),
 			'description' => $this->_request->getPost('description'),
 			'status' => $toggleFilter->sanitize($this->_request->getPost('status')),
 			'access' => json_encode($this->_request->getPost('access'))
@@ -109,6 +111,7 @@ class Module extends ControllerAbstract
 
 	protected function _validatePost(array $postArray = []) : array
 	{
+		$nameValidator = new Validator\Name();
 		$validateArray = [];
 
 		/* validate post */
@@ -116,6 +119,10 @@ class Module extends ControllerAbstract
 		if (!$postArray['name'])
 		{
 			$validateArray[] = $this->_language->get('name_empty');
+		}
+		else if (!$nameValidator->validate($postArray['name']))
+		{
+			$validateArray[] = $this->_language->get('name_incorrect');
 		}
 		return $validateArray;
 	}

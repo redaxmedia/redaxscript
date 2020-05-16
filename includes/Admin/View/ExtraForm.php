@@ -38,6 +38,7 @@ class ExtraForm extends ViewAbstract
 		$helperOption = new Helper\Option($this->_language);
 		$extraModel = new Admin\Model\Extra();
 		$extra = $extraModel->getById($extraId);
+		$nameValidator = new Validator\Name();
 		$aliasValidator = new Validator\Alias();
 		$dater = new Dater();
 		$dater->init($extra->date);
@@ -111,6 +112,7 @@ class ExtraForm extends ViewAbstract
 				'class' => 'rs-admin-js-alias-input rs-admin-field-default rs-admin-field-text',
 				'id' => 'title',
 				'name' => 'title',
+				'pattern' => $nameValidator->getPattern(),
 				'required' => 'required',
 				'value' => $extra->title
 			])
@@ -124,7 +126,7 @@ class ExtraForm extends ViewAbstract
 				'class' => 'rs-admin-js-alias-output rs-admin-field-default rs-admin-field-text',
 				'id' => 'alias',
 				'name' => 'alias',
-				'pattern' => $aliasValidator->getFormPattern(),
+				'pattern' => $aliasValidator->getPattern(),
 				'required' => 'required',
 				'value' => $extra->alias
 			])

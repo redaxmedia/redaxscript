@@ -2,14 +2,14 @@
 	[
 		"categories",
 		{
-			"start": "<form class=\"rs-js-validate-search rs-form-search\" method=\"post\">",
+			"start": "<form class=\"rs-js-search rs-form-search\" method=\"post\">",
 			"end": "<button class=\"rs-button-search\" type=\"submit\" value=\"submit\" name=\"Redaxscript\\View\\SearchForm\">Search</button></form>"
 		}
 	],
 	[
 		"articles",
 		{
-			"start": "<form class=\"rs-js-validate-search rs-form-search\" method=\"post\">",
+			"start": "<form class=\"rs-js-search rs-form-search\" method=\"post\">",
 			"end": "<button class=\"rs-button-search\" type=\"submit\" value=\"submit\" name=\"Redaxscript\\View\\SearchForm\">Search</button></form>"
 		}
 	]

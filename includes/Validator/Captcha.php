@@ -20,7 +20,7 @@ class Captcha implements ValidatorInterface
 	 *
 	 * @since 4.0.0
 	 *
-	 * @param int $task plain task
+	 * @param int $task task to be validated
 	 * @param string $hash hashed solution
 	 *
 	 * @return bool

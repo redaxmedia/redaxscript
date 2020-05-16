@@ -93,7 +93,9 @@ class Comment extends ViewAbstract
 			[
 				'class' => $this->_optionArray['className']['title']
 			]);
-		$linkElement = $element->copy()->init('a',
+		$linkElement = $element
+			->copy()
+			->init('a',
 			[
 				'rel' => 'nofollow'
 			]);

@@ -3,7 +3,6 @@ namespace Redaxscript\Validator;
 
 use Redaxscript\Hash;
 use function preg_match;
-use function strlen;
 
 /**
  * children class to validate password
@@ -23,31 +22,19 @@ class Password implements ValidatorInterface
 	 * @var string
 	 */
 
-	protected $_pattern = '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])';
+	protected $_pattern = '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])\S{10,100}$';
 
 	/**
-	 * allowed range for password
-	 *
-	 * @var array
-	 */
-
-	protected $_rangeArray =
-	[
-		'min' => 10,
-		'max' => 100
-	];
-
-	/**
-	 * get the form pattern
+	 * get the pattern
 	 *
 	 * @since 4.3.0
 	 *
 	 * @return string
 	 */
 
-	public function getFormPattern() : string
+	public function getPattern() : string
 	{
-		return $this->_pattern . '.{' . $this->_rangeArray['min'] . ',' . $this->_rangeArray['max'] . '}';
+		return $this->_pattern;
 	}
 
 	/**
@@ -55,15 +42,14 @@ class Password implements ValidatorInterface
 	 *
 	 * @since 4.3.0
 	 *
-	 * @param string $password plain password
+	 * @param string $password password to be validated
 	 *
 	 * @return bool
 	 */
 
 	public function validate(string $password = null) : bool
 	{
-		$length = strlen($password);
-		return preg_match('/' . $this->_pattern . '/i', $password) && $length >= $this->_rangeArray['min'] && $length <= $this->_rangeArray['max'];
+		return preg_match('/' . $this->_pattern . '/', $password);
 	}
 
 	/**
@@ -71,8 +57,8 @@ class Password implements ValidatorInterface
 	 *
 	 * @since 4.3.0
 	 *
-	 * @param string $password plain password
-	 * @param string $hash hashed password
+	 * @param string $password password to be validated
+	 * @param string $hash hash to be validated
 	 *
 	 * @return bool
 	 */

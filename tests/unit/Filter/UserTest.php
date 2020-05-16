@@ -5,39 +5,39 @@ use Redaxscript\Filter;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
- * SearchTest
+ * UserTest
  *
- * @since 3.1.0
+ * @since 4.3.0
  *
  * @package Redaxscript
  * @category Tests
  * @author Henry Ruhs
  *
- * @covers Redaxscript\Filter\Search
+ * @covers Redaxscript\Filter\User
  */
 
-class SearchTest extends TestCaseAbstract
+class UserTest extends TestCaseAbstract
 {
 	/**
 	 * testSanitize
 	 *
-	 * @since 3.1.0
+	 * @since 4.3.0
 	 *
-	 * @param string $search
+	 * @param string $user
 	 * @param string $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testSanitize(string $search = null, string $expect = null) : void
+	public function testSanitize(string $user = null, string $expect = null) : void
 	{
 		/* setup */
 
-		$filter = new Filter\Search();
+		$filter = new Filter\User();
 
 		/* actual */
 
-		$actual = $filter->sanitize($search);
+		$actual = $filter->sanitize($user);
 
 		/* compare */
 

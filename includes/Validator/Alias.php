@@ -3,7 +3,6 @@ namespace Redaxscript\Validator;
 
 use function in_array;
 use function preg_match;
-use function strlen;
 
 /**
  * children class to validate general and default alias
@@ -19,24 +18,12 @@ use function strlen;
 class Alias implements ValidatorInterface
 {
 	/**
-	 * pattern for login
+	 * pattern for alias
 	 *
 	 * @var string
 	 */
 
-	protected $_pattern = '[a-z0-9-]';
-
-	/**
-	 * allowed range for alias
-	 *
-	 * @var array
-	 */
-
-	protected $_rangeArray =
-	[
-		'min' => 3,
-		'max' => 100
-	];
+	protected $_pattern = '^[a-zA-Z0-9-]{3,100}$';
 
 	/**
 	 * array of system alias
@@ -57,16 +44,16 @@ class Alias implements ValidatorInterface
 	];
 
 	/**
-	 * get the form pattern
+	 * get the pattern
 	 *
-	 * @since 4.1.0
+	 * @since 4.3.0
 	 *
 	 * @return string
 	 */
 
-	public function getFormPattern() : string
+	public function getPattern() : string
 	{
-		return $this->_pattern . '.{' . $this->_rangeArray['min'] . ',' . $this->_rangeArray['max']  . '}';
+		return $this->_pattern;
 	}
 
 	/**
@@ -74,15 +61,14 @@ class Alias implements ValidatorInterface
 	 *
 	 * @since 4.3.0
 	 *
-	 * @param string $alias alias for routes and users
+	 * @param string $alias alias to be validated
 	 *
 	 * @return bool
 	 */
 
 	public function validate(string $alias = null) : bool
 	{
-		$length = strlen($alias);
-		return preg_match('/' . $this->_pattern . '/i', $alias) && $length >= $this->_rangeArray['min'] && $length <= $this->_rangeArray['max'];
+		return preg_match('/' . $this->_pattern . '/', $alias);
 	}
 
 	/**
@@ -90,7 +76,7 @@ class Alias implements ValidatorInterface
 	 *
 	 * @since 4.3.0
 	 *
-	 * @param string $alias alias for routes and users
+	 * @param string $alias alias to be matched
 	 *
 	 * @return bool
 	 */

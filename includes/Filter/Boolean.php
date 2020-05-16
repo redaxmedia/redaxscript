@@ -20,7 +20,7 @@ class Boolean implements FilterInterface
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $boolean
+	 * @param string $boolean boolean to be sanitized
 	 *
 	 * @return bool
 	 */

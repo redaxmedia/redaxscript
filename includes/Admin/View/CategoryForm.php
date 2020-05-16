@@ -37,6 +37,7 @@ class CategoryForm extends ViewAbstract
 		$helperOption = new Helper\Option($this->_language);
 		$categoryModel = new Admin\Model\Category();
 		$category = $categoryModel->getById($categoryId);
+		$nameValidator = new Validator\Name();
 		$aliasValidator = new Validator\Alias();
 		$dater = new Dater();
 		$dater->init($category->date);
@@ -110,6 +111,7 @@ class CategoryForm extends ViewAbstract
 				'class' => 'rs-admin-js-alias-input rs-admin-field-default rs-admin-field-text',
 				'id' => 'title',
 				'name' => 'title',
+				'pattern' => $nameValidator->getPattern(),
 				'required' => 'required',
 				'value' => $category->title
 			])
@@ -123,7 +125,7 @@ class CategoryForm extends ViewAbstract
 				'class' => 'rs-admin-js-alias-output rs-admin-field-default rs-admin-field-text',
 				'id' => 'alias',
 				'name' => 'alias',
-				'pattern' => $aliasValidator->getFormPattern(),
+				'pattern' => $aliasValidator->getPattern(),
 				'required' => 'required',
 				'value' => $category->alias
 			])

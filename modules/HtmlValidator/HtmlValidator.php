@@ -5,6 +5,7 @@ use Redaxscript\Module;
 use Redaxscript\Reader;
 use function array_key_exists;
 use function http_build_query;
+use function urldecode;
 
 /**
  * html validator for developers
@@ -59,15 +60,15 @@ class HtmlValidator extends Module\Metadata
 		{
 			/* load result */
 
-			$url = $this->_optionArray['apiUrl'] . '?' . http_build_query(
+			$url = $this->_optionArray['apiUrl'] . '?' . urldecode(http_build_query(
 			[
 				'doc' => $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute'),
 				'checkerrorpages' => 'yes'
-			]);
-			$urlJSON = $url . '&' . http_build_query(
+			]));
+			$urlJSON = $url . '&' . urldecode(http_build_query(
 			[
 				'out' => 'json'
-			]);
+			]));
 			$reader = new Reader();
 			$reader->init(
 			[

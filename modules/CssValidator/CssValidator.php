@@ -5,6 +5,7 @@ use Redaxscript\Module;
 use Redaxscript\Reader;
 use function array_key_exists;
 use function http_build_query;
+use function urldecode;
 
 /**
  * css validator for developers
@@ -60,12 +61,12 @@ class CssValidator extends Module\Metadata
 		{
 			/* load result */
 
-			$url = $this->_optionArray['apiUrl'] . '?' . http_build_query(
+			$url = $this->_optionArray['apiUrl'] . '?' . urldecode(http_build_query(
 			[
 				'uri' => $this->_registry->get('root') . '/' . $this->_registry->get('parameterRoute') . $this->_registry->get('fullRoute'),
 				'profile' => $this->_optionArray['profile'],
 				'output' => 'json'
-			]);
+			]));
 			$reader = new Reader();
 			$reader->init(
 			[

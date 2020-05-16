@@ -5,6 +5,7 @@ use Redaxscript\Admin;
 use Redaxscript\Filesystem;
 use Redaxscript\Html;
 use Redaxscript\Module;
+use Redaxscript\Validator;
 use function count;
 use function is_array;
 use function json_decode;
@@ -38,6 +39,7 @@ class ModuleForm extends ViewAbstract
 		$moduleModel = new Admin\Model\Module();
 		$module = $moduleModel->getById($moduleId);
 		$helperOption = new Helper\Option($this->_language);
+		$nameValidator = new Validator\Name();
 
 		/* html element */
 
@@ -109,6 +111,7 @@ class ModuleForm extends ViewAbstract
 				'autofocus' => 'autofocus',
 				'id' => 'name',
 				'name' => 'name',
+				'pattern' => $nameValidator->getPattern(),
 				'required' => 'required',
 				'value' => $module->name
 			])
