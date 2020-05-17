@@ -2,6 +2,21 @@
 	[
 		null,
 		{
+			"1":
+			[
+				"$2y$10$",
+				"$2y$10$JtR304nhJ7fvuDfoQklsWu3tnU96GohPpl6Qz2sX4yHFD.Isl6OqS"
+			],
+			"2":
+			[
+				"$argon2i$",
+				"$argon2i$v=19$m=1024,t=2,p=2$TmZ5TldlZTIuS1U2UThLQQ$4n0uItp9IHdZ9Z2K+katqx9HTLXyQbStwAHI9MFH2J0"
+			],
+			"3":
+			[
+				"$argon2id$",
+				"$argon2id$v=19$m=65536,t=4,p=1$TWUvRHVqOHVGajhuWk56ag$3xW9MslDDVKxZVl9DQb0ez7cYXhN1y8M+uPVgYM5ZXU"
+			],
 			"2y":
 			[
 				"$2y$10$",
@@ -22,6 +37,22 @@
 	[
 		"test",
 		{
+			"1":
+			[
+
+				"$2y$10$",
+				"$2y$10$msrLk1dEElZhDtN4N26r5O/liBl5WKYoASePAUZm.kGd7.Vm21eJ."
+			],
+			"2":
+			[
+				"$argon2i$",
+				"$argon2i$v=19$m=1024,t=2,p=2$d0pNL09IQUNJNGJ1TnlxSg$2ept65HtVddJJOXL5u/r5h4FPKf86RYp3rxJHzsQ7z8"
+			],
+			"3":
+			[
+				"$argon2id$",
+				"$argon2id$v=19$m=65536,t=4,p=1$YkdNcXpqWjNsZE55UHA4Tg$cuiU2l3TEnhtDRAbZJUJrAFt1rRWpXClsV8b/+nnPqY"
+			],
 			"2y":
 			[
 
