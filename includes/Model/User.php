@@ -37,34 +37,6 @@ class User extends ModelAbstract
 	}
 
 	/**
-	 * get the user by user or email
-	 *
-	 * @since 4.0.0
-	 *
-	 * @param string $user name of the user
-	 * @param string $email email of the user
-	 *
-	 * @return object|null
-	 */
-
-	public function getByUserOrEmail(string $user = null, string $email = null) : ?object
-	{
-		return $this
-			->query()
-			->whereAnyIs(
-			[
-				[
-					'user' => $user
-				],
-				[
-					'email' => $email
-				]
-			])
-			->where('status', 1)
-			->findOne() ? : null;
-	}
-
-	/**
 	 * create the user by array
 	 *
 	 * @since 3.3.0

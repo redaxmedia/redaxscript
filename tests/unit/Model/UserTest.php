@@ -91,33 +91,6 @@ class UserTest extends TestCaseAbstract
 	}
 
 	/**
-	 * testGetByUserOrEmail
-	 *
-	 * @since 4.0.0
-	 *
-	 * @param string $user
-	 * @param string $email
-	 * @param int $expect
-	 *
-	 * @dataProvider providerAutoloader
-	 */
-
-	public function testGetByUserOrEmail(string $user = null, string $email = null, int $expect = null) : void
-	{
-		/* setup */
-
-		$userModel = new Model\User();
-
-		/* actual */
-
-		$actual = $userModel->getByUserOrEmail($user, $email)->id;
-
-		/* compare */
-
-		$this->assertEquals($expect, $actual);
-	}
-
-	/**
 	 * testCreateByArray
 	 *
 	 * @since 4.0.0

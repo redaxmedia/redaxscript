@@ -40,33 +40,7 @@
 	],
 	[
 		{
-			"user": "test@redaxscript.com",
-			"password": "aaAA00AAaa",
-			"task": 1,
-			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
-		},
-		{
-			"status": 1
-		},
-		"_login",
-		"<h2 class=\"rs-title-note rs-is-error\">Error</h2><div class=\"rs-box-note rs-is-error\">Something went wrong</div><a href=\"login\" class=\"rs-button-note rs-is-error\">Back</a>"
-	],
-	[
-		{
 			"user": "test",
-			"password": "aaAA00AAaa",
-			"task": 1,
-			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
-		},
-		{
-			"status": 1
-		},
-		null,
-		"<h2 class=\"rs-title-note rs-is-success\">Welcome</h2><div class=\"rs-box-note rs-is-success\">You were logged into the system</div><a href=\"admin\" class=\"rs-button-note rs-is-success\">Continue</a><meta class=\"rs-meta-redirect\" content=\"0;url=/admin\" http-equiv=\"refresh\" />"
-	],
-	[
-		{
-			"user": "test@redaxscript.com",
 			"password": "aaAA00AAaa",
 			"task": 1,
 			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"

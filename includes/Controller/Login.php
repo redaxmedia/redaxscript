@@ -78,16 +78,12 @@ class Login extends ControllerAbstract
 		$numberFilter = new Filter\Number();
 		$passwordFilter = new Filter\Password();
 		$userFilter = new Filter\User();
-		$emailFilter = new Filter\Email();
-		$emailValidator = new Validator\Email();
-		$userValidator = new Validator\User();
 
 		/* sanitize post */
 
 		return
 		[
-			'email' => $emailValidator->validate($this->_request->getPost('user')) ? $emailFilter->sanitize($this->_request->getPost('user')) : null,
-			'user' => $userValidator->validate($this->_request->getPost('user')) ? $userFilter->sanitize($this->_request->getPost('user')) : null,
+			'user' => $userFilter->sanitize($this->_request->getPost('user')),
 			'password' => $passwordFilter->sanitize($this->_request->getPost('password')),
 			'task' => $numberFilter->sanitize($this->_request->getPost('task')),
 			'solution' => $this->_request->getPost('solution')
@@ -114,7 +110,7 @@ class Login extends ControllerAbstract
 
 		/* validate post */
 
-		if (!$postArray['user'] && !$postArray['email'])
+		if (!$postArray['user'])
 		{
 			$validateArray[] = $this->_language->get('user_empty');
 		}
@@ -150,7 +146,7 @@ class Login extends ControllerAbstract
 	protected function _getUser(array $postArray = []) : ?object
 	{
 		$userModel = new Model\User();
-		return $userModel->getByUserOrEmail($postArray['user'], $postArray['email']);
+		return $userModel->getByUser($postArray['user']);
 	}
 
 	/**
