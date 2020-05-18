@@ -116,22 +116,6 @@ module.exports = () =>
 			],
 			dest: 'modules/TableSorter/dist/styles/table-sorter.min.css'
 		},
-		moduleTinymceContent:
-		{
-			src:
-			[
-				'modules/Tinymce/assets/styles/_content.css'
-			],
-			dest: 'modules/Tinymce/dist/styles/content.min.css'
-		},
-		moduleTinymceSkin:
-		{
-			src:
-			[
-				'modules/Tinymce/assets/styles/_skin.css'
-			],
-			dest: 'modules/Tinymce/dist/styles/skin.min.css'
-		},
 		stylelint:
 		{
 			src:

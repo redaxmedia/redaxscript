@@ -163,9 +163,7 @@ module.exports = grunt =>
 		'postcss:modulePreview',
 		'postcss:moduleMaps',
 		'postcss:moduleSocialSharer',
-		'postcss:moduleTableSorter',
-		'postcss:moduleTinymceContent',
-		'postcss:moduleTinymceSkin'
+		'postcss:moduleTableSorter'
 	]);
 	grunt.registerTask('build-scripts',
 	[
@@ -183,7 +181,6 @@ module.exports = grunt =>
 		'babel:moduleSyntaxHighlighter',
 		'babel:moduleTableSorter',
 		'babel:moduleTextareaResizer',
-		'babel:moduleTinymce',
 		'babel:moduleUnmaskPassword'
 	]);
 	grunt.registerTask('serve', grunt.option('L') || grunt.option('live-reload') ?

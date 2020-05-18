@@ -116,14 +116,6 @@ module.exports = () =>
 			],
 			dest: 'modules/TextareaResizer/dist/scripts/textarea-resizer.min.js'
 		},
-		moduleTinymce:
-		{
-			src:
-			[
-				'modules/Tinymce/assets/scripts/tinymce.js'
-			],
-			dest: 'modules/Tinymce/dist/scripts/tinymce.min.js'
-		},
 		moduleUnmaskPassword:
 		{
 			src:
