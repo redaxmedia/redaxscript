@@ -108,7 +108,7 @@ class ImageUpload extends Module\Metadata
 	{
 		$dater = new Dater();
 		$dater->init();
-		$filesArray = current($this->_request->getFiles());
+		$filesArray = current($this->_request->getArray()['files']);
 		$fileExtension = pathinfo($filesArray['name'], PATHINFO_EXTENSION);
 		$path = $this->_optionArray['uploadDirectory'] . DIRECTORY_SEPARATOR . $dater->getDateTime()->getTimestamp() . '.' . $fileExtension;
 
