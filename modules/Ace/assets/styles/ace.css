@@ -20,14 +20,9 @@
 		border-color: gray(60);
 	}
 
-	&.ace_focus
+	&.ace_selecting
 	{
 		background: gray(100);
 		border-color: var(--rs-admin-color-primary);
-	}
-
-	& .ace_scroller
-	{
-		box-shadow: none;
 	}
 }

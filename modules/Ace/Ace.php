@@ -55,7 +55,7 @@ class Ace extends Module\Module
 				->init('foot')
 				->appendFile(
 				[
-					'https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.7/ace.js',
+					'https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/ace.js',
 					'modules/Ace/assets/scripts/init.js',
 					'modules/Ace/dist/scripts/ace.min.js'
 				]);

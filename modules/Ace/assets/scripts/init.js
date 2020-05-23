@@ -1,12 +1,13 @@
 rs.modules.Ace =
 {
-	init: rs.registry.adminParameter === 'new' || rs.registry.adminParameter === 'edit' && rs.registry.tableParameter === 'articles' || rs.registry.tableParameter === 'extras' || rs.registry.tableParameter === 'comments',
+	init: rs.registry.loggedIn === rs.registry.token,
 	dependency: typeof window.ace === 'object',
 	optionArray:
 	{
 		selector: 'textarea.rs-admin-js-editor',
 		ace:
 		{
+			showInvisibles: true,
 			showGutter: false,
 			useSoftTabs: false,
 			maxLines: Infinity,
