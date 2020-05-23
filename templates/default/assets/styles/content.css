@@ -140,3 +140,9 @@
 {
 	margin-top: 0.5em;
 }
+
+.rs-break-more
+{
+	border: 0.125rem dashed var(--rs-color-quaternary);
+	margin: 2em 0;
+}

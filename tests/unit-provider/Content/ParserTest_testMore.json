@@ -5,7 +5,7 @@
 		},
 		"hello<rs-more> world",
 		null,
-		"hello world"
+		"hello<hr id=\"more-5\" class=\"rs-break-more\" /> world"
 	],
 	[
 		{
@@ -13,6 +13,6 @@
 		},
 		"hello<rs-more> world",
 		"hello/world",
-		"hello<a class=\"rs-link-more\" href=\"hello/world\">Read more</a>"
+		"hello<a class=\"rs-link-more\" href=\"hello/world#more-5\">Read more</a>"
 	]
 ]

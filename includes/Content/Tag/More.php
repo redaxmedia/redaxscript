@@ -26,9 +26,11 @@ class More extends TagAbstract
 
 	protected $_optionArray =
 	[
+		'prefix' => 'more-',
 		'className' =>
 		[
-			'more' => 'rs-link-more'
+			'link' => 'rs-link-more',
+			'break' => 'rs-break-more'
 		],
 		'search' =>
 		[
@@ -51,14 +53,24 @@ class More extends TagAbstract
 	{
 		$output = str_replace($this->_optionArray['search'], null, $content);
 		$position = strpos($content, $this->_optionArray['search'][0]);
+		$id = $this->_optionArray['prefix'] . $position;
 
 		/* html element */
 
-		$linkElement = new Html\Element();
-		$linkElement->init('a',
-		[
-			'class' => $this->_optionArray['className']['more']
-		]);
+		$element = new Html\Element();
+		$linkElement = $element
+			->copy()
+			->init('a',
+			[
+				'class' => $this->_optionArray['className']['link']
+			]);
+		$breakElement = $element
+			->copy()
+			->init('hr',
+			[
+				'id' => $id,
+				'class' => $this->_optionArray['className']['break']
+			]);
 
 		/* collect output */
 
@@ -68,10 +80,13 @@ class More extends TagAbstract
 			if ($route)
 			{
 				$output .= $linkElement
-					->copy()
-					->attr('href', $this->_registry->get('parameterRoute') . $route)
+					->attr('href', $this->_registry->get('parameterRoute') . $route . '#' . $id)
 					->text($this->_language->get('read_more'));
 			}
+		}
+		else if ($position > -1)
+		{
+			$output = substr($output, 0, $position) . $breakElement . substr($output, $position);
 		}
 		return $output;
 	}
