@@ -58,7 +58,7 @@ class CallHome extends Module\Metadata
 	/**
 	 * adminNotification
 	 *
-	 * @since 3.0.1
+	 * @since 4.3.0
 	 *
 	 * @return array
 	 */
@@ -66,7 +66,13 @@ class CallHome extends Module\Metadata
 	public function adminNotification() : array
 	{
 		$reader = new Reader();
-		$reader->init();
+		$reader->init(
+		[
+			'curl' =>
+			[
+				CURLOPT_TIMEOUT_MS => 500
+			]
+		]);
 		$aliasFilter = new Filter\Alias();
 		$version = $aliasFilter->sanitize($this->_language->get('_package')['version']);
 
