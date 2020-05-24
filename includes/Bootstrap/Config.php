@@ -3,8 +3,8 @@ namespace Redaxscript\Bootstrap;
 
 use Redaxscript\Db;
 use Redaxscript\Model;
+use function date_default_timezone_set;
 use function error_reporting;
-use function function_exists;
 use function ini_set;
 
 /**
@@ -29,23 +29,21 @@ class Config extends BootstrapAbstract
 	{
 		$settingModel = new Model\Setting();
 
-		/* function exists */
+		/* set as needed */
 
-		if (function_exists('ini_set'))
+		if (Db::getStatus() === 2)
 		{
-			if (Db::getStatus() === 2)
-			{
-				ini_set('default_charset', $settingModel->get('charset'));
-			}
-			if (error_reporting() === 0)
-			{
-				ini_set('display_startup_errors', 0);
-				ini_set('display_errors', 0);
-			}
-			ini_set('include_path', 'includes');
-			ini_set('mbstring.substitute_character', 0);
-			ini_set('session.use_trans_sid', 0);
-			ini_set('url_rewriter.tags', 0);
+			ini_set('default_charset', $settingModel->get('charset'));
+			date_default_timezone_set($settingModel->get('zone'));
 		}
+		if (error_reporting() === 0)
+		{
+			ini_set('display_startup_errors', 0);
+			ini_set('display_errors', 0);
+		}
+		ini_set('include_path', 'includes');
+		ini_set('mbstring.substitute_character', 0);
+		ini_set('session.use_trans_sid', 0);
+		ini_set('url_rewriter.tags', 0);
 	}
 }
