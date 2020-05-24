@@ -20,7 +20,7 @@
 		border-color: gray(60);
 	}
 
-	&.ace_selecting
+	&.ace_focus
 	{
 		background: gray(100);
 		border-color: var(--rs-admin-color-primary);
