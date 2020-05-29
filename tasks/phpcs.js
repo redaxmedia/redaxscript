@@ -15,26 +15,14 @@ module.exports = grunt =>
 		{
 			src:
 			[
-				'includes/**/**/*.php',
-				'assets/scripts/*.js',
-				'assets/styles/*.css'
+				'includes/**/**/*.php'
 			]
 		},
 		modules:
 		{
 			src:
 			[
-				'modules/*/assets/scripts/*.js',
-				'modules/*/assets/styles/*.css',
 				'modules/**/**/*.php'
-			]
-		},
-		templates:
-		{
-			src:
-			[
-				'templates/*/assets/scripts/*.js',
-				'templates/*/assets/styles/*.css'
 			]
 		},
 		tests:
