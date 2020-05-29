@@ -15,6 +15,10 @@ rs.modules.FormValidator.process = optionArray =>
 
 			form.querySelectorAll(OPTION.element.field).forEach(field =>
 			{
+				field.parentElement.querySelectorAll(OPTION.element.box).forEach(box =>
+				{
+					box.classList.add(OPTION.className.fieldNote);
+				});
 				field.classList.add(OPTION.className.fieldNote);
 				[
 					'input',
@@ -24,10 +28,18 @@ rs.modules.FormValidator.process = optionArray =>
 				{
 					field.addEventListener(eventType, () =>
 					{
+						field.parentElement.querySelectorAll(OPTION.element.box).forEach(box =>
+						{
+							box.classList.remove(OPTION.className.isError);
+						});
 						field.classList.remove(OPTION.className.isWarning);
 						field.classList.remove(OPTION.className.isError);
 						if (field.validity.valueMissing)
 						{
+							field.parentElement.querySelectorAll(OPTION.element.box).forEach(box =>
+							{
+								box.classList.add(OPTION.className.isError);
+							});
 							field.classList.add(OPTION.className.isError);
 						}
 						else if (!field.validity.valid)
@@ -56,9 +68,9 @@ rs.modules.FormValidator.process = optionArray =>
 
 if (rs.modules.FormValidator.frontend.init)
 {
-	rs.modules.FormValidator.process(rs.modules.FormValidator.frontend.optionArray);
+	window.addEventListener('load', () => rs.modules.FormValidator.process(rs.modules.FormValidator.frontend.optionArray));
 }
 if (rs.modules.FormValidator.backend.init)
 {
-	rs.modules.FormValidator.process(rs.modules.FormValidator.backend.optionArray);
+	window.addEventListener('load', () => rs.modules.FormValidator.process(rs.modules.FormValidator.backend.optionArray));
 }

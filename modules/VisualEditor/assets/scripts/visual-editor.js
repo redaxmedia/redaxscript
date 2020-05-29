@@ -59,7 +59,12 @@ rs.modules.VisualEditor.createContent = (textarea, OPTION) =>
 
 	contentElement.addEventListener('input', event =>
 	{
+		if (event.currentTarget.innerHTML === '<br>')
+		{
+			event.currentTarget.innerHTML = '';
+		}
 		event.currentTarget.nextSibling.textContent = event.currentTarget.innerHTML;
+		event.currentTarget.nextSibling.dispatchEvent(new Event('input'));
 	});
 	return contentElement;
 };

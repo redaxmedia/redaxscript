@@ -57,7 +57,7 @@ class CodeEditor extends Module\Module
 				[
 					'https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/ace.js',
 					'modules/CodeEditor/assets/scripts/init.js',
-					'modules/CodeEditor/dist/scripts/ace.min.js'
+					'modules/CodeEditor/dist/scripts/code-editor.min.js'
 				]);
 		}
 	}

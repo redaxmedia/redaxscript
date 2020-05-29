@@ -11,10 +11,7 @@ document.documentElement.classList.add('rs-is-js');
 
 /* document ready */
 
-window.onload = () =>
-{
-	document.documentElement.classList.add('rs-is-ready');
-};
+window.addEventListener('load', () => document.documentElement.classList.add('rs-is-ready'));
 
 /* create namespace */
 
