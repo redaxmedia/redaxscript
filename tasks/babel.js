@@ -20,14 +20,6 @@ module.exports = () =>
 			],
 			dest: 'templates/install/dist/scripts/install.min.js'
 		},
-		moduleAce:
-		{
-			src:
-			[
-				'modules/Ace/assets/scripts/ace.js'
-			],
-			dest: 'modules/Ace/dist/scripts/ace.min.js'
-		},
 		moduleAliasGenerator:
 		{
 			src:
@@ -52,6 +44,14 @@ module.exports = () =>
 			],
 			dest: 'modules/CallHome/dist/scripts/call-home.min.js'
 		},
+		moduleCodeEditor:
+		{
+			src:
+			[
+				'modules/CodeEditor/assets/scripts/code-editor.js'
+			],
+			dest: 'modules/CodeEditor/dist/scripts/code-editor.min.js'
+		},
 		moduleDialog:
 		{
 			src:
@@ -59,14 +59,6 @@ module.exports = () =>
 				'modules/Dialog/assets/scripts/dialog.js'
 			],
 			dest: 'modules/Dialog/dist/scripts/dialog.min.js'
-		},
-		moduleExperiments:
-		{
-			src:
-			[
-				'modules/Experiments/assets/scripts/experiments.js'
-			],
-			dest: 'modules/Experiments/dist/scripts/experiments.min.js'
 		},
 		moduleFormValidator:
 		{
@@ -92,6 +84,14 @@ module.exports = () =>
 			],
 			dest: 'modules/Maps/dist/scripts/maps.min.js'
 		},
+		moduleRankSorter:
+		{
+			src:
+			[
+				'modules/RankSorter/assets/scripts/rank-sorter.js'
+			],
+			dest: 'modules/RankSorter/dist/scripts/rank-sorter.min.js'
+		},
 		moduleSyntaxHighlighter:
 		{
 			src:
@@ -99,14 +99,6 @@ module.exports = () =>
 				'modules/SyntaxHighlighter/assets/scripts/syntax-highlighter.js'
 			],
 			dest: 'modules/SyntaxHighlighter/dist/scripts/syntax-highlighter.min.js'
-		},
-		moduleTableSorter:
-		{
-			src:
-			[
-				'modules/TableSorter/assets/scripts/table-sorter.js'
-			],
-			dest: 'modules/TableSorter/dist/scripts/table-sorter.min.js'
 		},
 		moduleTextareaResizer:
 		{
@@ -123,6 +115,14 @@ module.exports = () =>
 				'modules/UnmaskPassword/assets/scripts/unmask-password.js'
 			],
 			dest: 'modules/UnmaskPassword/dist/scripts/unmask-password.min.js'
+		},
+		moduleVisualEditor:
+		{
+			src:
+			[
+				'modules/VisualEditor/assets/scripts/visual-editor.js'
+			],
+			dest: 'modules/VisualEditor/dist/scripts/visual-editor.min.js'
 		},
 		options:
 		{

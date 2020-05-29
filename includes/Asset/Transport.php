@@ -103,7 +103,7 @@ class Transport
 		[
 			'baseUrl' => $this->_registry->get('root') . '/',
 			'generator' => $this->_language->get('_package')['name'] . ' ' . $this->_language->get('_package')['version'],
-			'language' => $this->_language->get(),
+			'language' => $this->_language->getArray(),
 			'version' => $this->_language->get('_package')['version']
 		];
 

@@ -1,0 +1,34 @@
+{
+	"_editor":
+	{
+		"wysiwyg": "WYSIWYG",
+		"source_code": "Quelltext",
+		"bold": "Fett",
+		"italic": "Kursiv",
+		"underline": "Unterstreichen",
+		"strike_through": "Durchgestrichen",
+		"paragraph": "Paragraph",
+		"headline": "Kopfzeile",
+		"ordered_list": "Geordnete Liste",
+		"unordered_list": "Ungeordnete Liste",
+		"subscript": "Tiefgestellt",
+		"superscript": "Hochgestellt",
+		"indent": "Einrücken",
+		"outdent": "Ausrücken",
+		"align_left": "Links ausrichten",
+		"align_center": "Zentrieren",
+		"align_right": "Rechts ausrichten",
+		"align_justify": "Im Block ausrichten",
+		"remove_format": "Formatierung entfernen",
+		"insert_image": "Bild einfügen",
+		"remove_image": "Bild entfernen",
+		"insert_link": "Verknüpfung einfügen",
+		"remove_link": "Verknüpfung entfernen",
+		"undo": "Rückwärts",
+		"redo": "Vorwärts",
+		"cut": "Ausschneiden",
+		"copy": "Kopieren",
+		"paste": "Einfügen",
+		"delete": "Löschen"
+	}
+}

@@ -1,0 +1,104 @@
+/**
+ * @tableofcontents
+ *
+ * 1. icon
+ */
+
+/** @section 1. icon */
+
+@font-face
+{
+	font-family: var(--rs-font-icon-visual-editor);
+	src: url('../../../../modules/VisualEditor/dist/fonts/icon.woff2');
+}
+
+%rs-icon-format-bold
+{
+	content: '\f101';
+	font-family: var(--rs-font-icon-visual-editor);
+	font-weight: 400;
+}
+
+%rs-icon-format-italic
+{
+	content: '\f102';
+	font-family: var(--rs-font-icon-visual-editor);
+	font-weight: 400;
+}
+
+%rs-icon-format-underline
+{
+	content: '\f103';
+	font-family: var(--rs-font-icon-visual-editor);
+	font-weight: 400;
+}
+
+%rs-icon-format-strikethrough
+{
+	content: '\f104';
+	font-family: var(--rs-font-icon-visual-editor);
+	font-weight: 400;
+}
+
+%rs-icon-format-paragraph
+{
+	content: '\f105';
+	font-family: var(--rs-font-icon-visual-editor);
+	font-weight: 400;
+}
+
+%rs-icon-format-header-1
+{
+	content: '\f106';
+	font-family: var(--rs-font-icon-visual-editor);
+	font-weight: 400;
+}
+
+%rs-icon-format-header-2
+{
+	content: '\f107';
+	font-family: var(--rs-font-icon-visual-editor);
+	font-weight: 400;
+}
+
+%rs-icon-format-header-3
+{
+	content: '\f108';
+	font-family: var(--rs-font-icon-visual-editor);
+	font-weight: 400;
+}
+
+%rs-icon-format-list-numbered
+{
+	content: '\f109';
+	font-family: var(--rs-font-icon-visual-editor);
+	font-weight: 400;
+}
+
+%rs-icon-format-list-bulleted
+{
+	content: '\f10a';
+	font-family: var(--rs-font-icon-visual-editor);
+	font-weight: 400;
+}
+
+%rs-icon-format-clear
+{
+	content: '\f10b';
+	font-family: var(--rs-font-icon-visual-editor);
+	font-weight: 400;
+}
+
+%rs-icon-undo
+{
+	content: '\f10c';
+	font-family: var(--rs-font-icon-visual-editor);
+	font-weight: 400;
+}
+
+%rs-icon-redo
+{
+	content: '\f10d';
+	font-family: var(--rs-font-icon-visual-editor);
+	font-weight: 400;
+}

@@ -13,29 +13,34 @@ rs.modules.Dialog.process = optionArray =>
 		{
 			link.addEventListener('click', event =>
 			{
-				fetch(OPTION.confirmRoute,
-				{
-					credentials: 'same-origin',
-					method: 'GET',
-					headers:
-					{
-						'Content-Type': 'text/html',
-						'X-Requested-With': 'XMLHttpRequest'
-					}
-				})
-				.then(response => response.text())
-				.then(html => rs.modules.Dialog.create(html)
-					.then(dialog =>
-					{
-						dialog.querySelector(OPTION.element.buttonOk).addEventListener('click', () => window.location = link.href);
-						dialog.querySelector(OPTION.element.buttonCancel).addEventListener('click', () => rs.modules.Dialog.destroy(dialog));
-					})
-				)
-				.catch(() => null);
-				event.preventDefault();
+				rs.modules.Dialog.open(OPTION.confirmRoute)
+					.then(html => rs.modules.Dialog.create(html)
+						.then(dialog =>
+						{
+							dialog.querySelector(OPTION.element.buttonOk).addEventListener('click', () => window.location = link.href);
+							dialog.querySelector(OPTION.element.buttonCancel).addEventListener('click', () => rs.modules.Dialog.destroy(dialog));
+						})
+					)
+					.catch(() => null);
+					event.preventDefault();
 			});
 		});
 	}
+};
+
+rs.modules.Dialog.open = route =>
+{
+	return fetch(route,
+	{
+		credentials: 'same-origin',
+		method: 'GET',
+		headers:
+		{
+			'Content-Type': 'text/html',
+			'X-Requested-With': 'XMLHttpRequest'
+		}
+	})
+	.then(response => response.text());
 };
 
 rs.modules.Dialog.create = html =>

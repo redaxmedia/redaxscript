@@ -8,7 +8,7 @@ use function http_build_query;
 use function urldecode;
 
 /**
- * css validator for developers
+ * realtime w3c validator for your css
  *
  * @since 4.0.0
  *
@@ -30,7 +30,7 @@ class CssValidator extends Module\Metadata
 		'name' => 'CSS Validator',
 		'alias' => 'CssValidator',
 		'author' => 'Redaxmedia',
-		'description' => 'CSS validator for developers',
+		'description' => 'Realtime W3C validator for your CSS',
 		'version' => '4.3.0',
 		'access' => '[1]'
 	];

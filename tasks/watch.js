@@ -8,8 +8,8 @@ module.exports = grunt =>
 		{
 			files:
 			[
-				'templates/**/assets/styles/**/*.tpl',
-				'modules/**/assets/styles/**/*.tpl'
+				'templates/**/assets/styles/**/_template.css',
+				'modules/**/assets/styles/**/_template.css'
 			],
 			tasks:
 			[

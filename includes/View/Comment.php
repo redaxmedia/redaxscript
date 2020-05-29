@@ -120,7 +120,7 @@ class Comment extends ViewAbstract
 						->attr('href', $value->url)
 						->text($value->author) : $value->author
 					);
-				$output .= $boxElement->text($value->text) . $byline->render($value->date) . Module\Hook::trigger('commentFragmentEnd', (array)$value);
+				$output .= $boxElement->html($value->text) . $byline->render($value->date) . Module\Hook::trigger('commentFragmentEnd', (array)$value);
 
 				/* admin dock */
 

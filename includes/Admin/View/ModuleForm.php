@@ -2,14 +2,11 @@
 namespace Redaxscript\Admin\View;
 
 use Redaxscript\Admin;
-use Redaxscript\Filesystem;
 use Redaxscript\Html;
 use Redaxscript\Module;
 use Redaxscript\Validator;
 use function count;
-use function is_array;
 use function json_decode;
-use function pathinfo;
 
 /**
  * children class to create the module form
@@ -77,12 +74,6 @@ class ModuleForm extends ViewAbstract
 			]
 		]);
 
-		/* docs filesystem */
-
-		$docsFilesystem = new Filesystem\File();
-		$docsFilesystem->init('modules' . DIRECTORY_SEPARATOR . $module->alias . DIRECTORY_SEPARATOR . 'docs');
-		$docsFilesystemArray = $docsFilesystem->getSortArray();
-
 		/* create the form */
 
 		$formElement
@@ -128,33 +119,7 @@ class ModuleForm extends ViewAbstract
 				'rows' => 1,
 				'value' => $module->description
 			])
-			->append('</li></ul>');
-		if (is_array($docsFilesystemArray))
-		{
-			foreach ($docsFilesystemArray as $file)
-			{
-				$fileName = pathinfo($file, PATHINFO_FILENAME);
-				$formElement
-
-					/* doc */
-
-					->radio(
-					[
-						'id' => self::class . '\Doc\\' . $fileName,
-						'class' => 'rs-admin-fn-status-tab',
-						'name' => self::class . '\Tab'
-					])
-					->label($fileName,
-					[
-						'class' => 'rs-admin-fn-toggle-tab rs-admin-label-tab',
-						'for' => self::class . '\Doc\\' . $fileName,
-					])
-					->append('<div class="rs-admin-fn-content-tab rs-admin-box-tab">')
-					->append($docsFilesystem->renderFile($file))
-					->append('</div>');
-			}
-		}
-		$formElement
+			->append('</li></ul>')
 
 			/* customize */
 

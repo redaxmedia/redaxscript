@@ -10,6 +10,12 @@
 
 	<rule ref="vendor/redaxmedia/php-coding-standard/phpcs.xml" />
 
+	<!-- exclude from generic -->
+
+	<rule ref="Generic.WhiteSpace.ScopeIndent">
+		<exclude-pattern>modules/**/assets/scripts/init.js</exclude-pattern>
+	</rule>
+
 	<!-- exclude from slevomat -->
 
 	<rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingTraversableReturnTypeHintSpecification">

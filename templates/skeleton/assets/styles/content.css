@@ -2,6 +2,8 @@
  * @tableofcontents
  *
  * 1. content
+ * 1. title
+ *    1.2 box
  * 2. comment
  */
 
@@ -12,11 +14,30 @@
 	word-wrap: break-word;
 }
 
+/** @section 1. title */
+
 .rs-title-content,
 .rs-title-content-sub
 {
 	margin-bottom: 0.5em;
 	margin-top: 1em;
+}
+
+/** @section 1.2 box */
+
+.rs-box-content
+{
+	@extend %box-content;
+
+	& p:not([class])
+	{
+		margin-bottom: 1em;
+
+		&:not(:first-child)
+		{
+			margin-top: 1em;
+		}
+	}
 }
 
 .rs-box-byline

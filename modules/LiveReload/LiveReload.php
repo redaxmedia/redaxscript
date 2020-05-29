@@ -6,7 +6,7 @@ use Redaxscript\Module;
 use Redaxscript\Reader;
 
 /**
- * live reload for developers
+ * reload your application on changes
  *
  * @since 3.3.0
  *
@@ -28,7 +28,7 @@ class LiveReload extends Module\Metadata
 		'name' => 'Live Reload',
 		'alias' => 'LiveReload',
 		'author' => 'Redaxmedia',
-		'description' => 'Live reload for developers',
+		'description' => 'Reload your application on changes',
 		'version' => '4.3.0',
 		'access' => '[1]'
 	];

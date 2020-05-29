@@ -8,7 +8,7 @@
 
 .rs-form-default
 {
-	& li + li
+	& > ul > li + li
 	{
 		margin-top: 1em;
 	}

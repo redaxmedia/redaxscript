@@ -114,6 +114,7 @@ class CommentForm extends ViewAbstract
 			])
 			->textarea(
 			[
+				'class' => 'rs-js-editor rs-js-resize rs-field-textarea',
 				'id' => 'text',
 				'name' => 'text',
 				'required' => 'required'

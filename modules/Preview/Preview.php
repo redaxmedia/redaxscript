@@ -8,7 +8,7 @@ use Redaxscript\Module;
 use function str_replace;
 
 /**
- * overview of the elements
+ * preview of template tags
  *
  * @since 3.0.0
  *
@@ -30,7 +30,7 @@ class Preview extends Module\Metadata
 		'name' => 'Preview',
 		'alias' => 'Preview',
 		'author' => 'Redaxmedia',
-		'description' => 'Overview of the elements',
+		'description' => 'Preview of template tags',
 		'version' => '4.3.0'
 	];
 

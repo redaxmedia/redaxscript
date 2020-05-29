@@ -4,7 +4,7 @@ namespace Redaxscript\Modules\TestDummy;
 use Redaxscript\Module;
 
 /**
- * test dummy
+ * dummy for testing purpose
  *
  * @since 2.6.0
  *
@@ -26,7 +26,7 @@ class TestDummy extends Module\Metadata
 		'name' => 'Test Dummy',
 		'alias' => 'TestDummy',
 		'author' => 'Redaxmedia',
-		'description' => 'Test Dummy',
+		'description' => 'Dummy for testing purpose',
 		'version' => '0.0.0'
 	];
 
@@ -40,7 +40,9 @@ class TestDummy extends Module\Metadata
 
 	public function adminDashboard() : array
 	{
+		$this->setDashboard('Test Dummy', 1);
 		$this->setDashboard('Test Dummy', 2);
+		$this->setDashboard('Test Dummy', 1);
 		return $this->getDashboardArray();
 	}
 

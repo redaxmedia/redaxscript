@@ -1,0 +1,34 @@
+{
+	"_editor":
+	{
+		"wysiwyg": "WYSIWYG",
+		"source_code": "Исходный код",
+		"bold": "Жирный",
+		"italic": "Курсивный",
+		"underline": "Подчеркнутый",
+		"strike_through": "Strike through",
+		"paragraph": "Параграф",
+		"headline": "Headline",
+		"ordered_list": "Нумерованный список",
+		"unordered_list": "Ненумерованный список",
+		"subscript": "Нижний индекс",
+		"superscript": "Верхний индекс",
+		"indent": "Отступ",
+		"outdent": "Обратный отступ",
+		"align_left": "Влево",
+		"align_center": "По центру",
+		"align_right": "Вправо",
+		"align_justify": "Равномерно",
+		"remove_format": "Удалить форматирование",
+		"insert_image": "Вставить картинку",
+		"remove_image": "Remove image",
+		"insert_link": "Вставить ссылку",
+		"remove_link": "Удалить ссылку",
+		"undo": "Отмена",
+		"redo": "Повтор",
+		"cut": "Вырезать",
+		"copy": "Копировать",
+		"paste": "Вставить",
+		"delete": "Delete"
+	}
+}

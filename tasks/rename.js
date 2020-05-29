@@ -28,6 +28,14 @@ module.exports = () =>
 			],
 			dest: 'modules/DirectoryLister/assets/styles/_icon.css'
 		},
+		moduleRankSorter:
+		{
+			src:
+			[
+				'modules/RankSorter/assets/styles/icon.css'
+			],
+			dest: 'modules/RankSorter/assets/styles/_icon.css'
+		},
 		moduleSocialSharer:
 		{
 			src:
@@ -36,13 +44,13 @@ module.exports = () =>
 			],
 			dest: 'modules/SocialSharer/assets/styles/_icon.css'
 		},
-		moduleTableSorter:
+		moduleVisualEditor:
 		{
 			src:
 			[
-				'modules/TableSorter/assets/styles/icon.css'
+				'modules/VisualEditor/assets/styles/icon.css'
 			],
-			dest: 'modules/TableSorter/assets/styles/_icon.css'
+			dest: 'modules/VisualEditor/assets/styles/_icon.css'
 		}
 	};
 

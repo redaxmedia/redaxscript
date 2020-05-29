@@ -1,0 +1,4 @@
+@import '../../../../templates/admin/assets/styles/_variable.css';
+@import '_variable.css';
+@import '_icon.css';
+@import 'visual-editor.css';

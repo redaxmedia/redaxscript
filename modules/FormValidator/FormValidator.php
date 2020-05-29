@@ -5,7 +5,7 @@ use Redaxscript\Head;
 use Redaxscript\Module;
 
 /**
- * javascript powered form validation
+ * validate using the constraint validation api
  *
  * @since 4.0.0
  *
@@ -27,7 +27,7 @@ class FormValidator extends Module\Module
 		'name' => 'Form Validator',
 		'alias' => 'FormValidator',
 		'author' => 'Redaxmedia',
-		'description' => 'JavaScript powered form validation',
+		'description' => 'Validate using the constraint validation API',
 		'version' => '4.3.0'
 	];
 

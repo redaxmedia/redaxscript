@@ -6,7 +6,7 @@ use Redaxscript\Html;
 use Redaxscript\Module;
 
 /**
- * integrate social sharer
+ * integrate social network buttons
  *
  * @since 3.0.0
  *
@@ -28,7 +28,7 @@ class SocialSharer extends Module\Module
 		'name' => 'Social Sharer',
 		'alias' => 'SocialSharer',
 		'author' => 'Redaxmedia',
-		'description' => 'Integrate social sharer',
+		'description' => 'Integrate social network buttons',
 		'version' => '4.3.0'
 	];
 

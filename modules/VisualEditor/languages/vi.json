@@ -1,0 +1,34 @@
+{
+	"_editor":
+	{
+		"wysiwyg": "WYSIWYG",
+		"source_code": "Mã nguồn",
+		"bold": "In đậm",
+		"italic": "In nghiêng",
+		"underline": "Gạch dưới",
+		"strike_through": "Strike through",
+		"paragraph": "Đoạn",
+		"headline": "Headline",
+		"ordered_list": "Danh sách có thứ tự",
+		"unordered_list": "Danh sách không thứ tự",
+		"subscript": "Chỉ số dưới",
+		"superscript": "Chỉ số trên",
+		"indent": "Thụt lề vô",
+		"outdent": "Bật lề ra",
+		"align_left": "Canh trái",
+		"align_center": "Canh giữa",
+		"align_right": "Canh phải",
+		"align_justify": "Canh đều",
+		"remove_format": "Loại bỏ định dạng",
+		"insert_image": "Chèn hình ảnh",
+		"remove_image": "Remove image",
+		"insert_link": "Chèn liên kết",
+		"remove_link": "Loại bỏ liên kết",
+		"undo": "Làm ngược",
+		"redo": "Làm tới",
+		"cut": "Cắt",
+		"copy": "Sao chép",
+		"paste": "Dán",
+		"delete": "Delete"
+	}
+}

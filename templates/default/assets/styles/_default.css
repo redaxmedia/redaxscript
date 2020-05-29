@@ -2,6 +2,7 @@
 @import '../../../../node_modules/move.css/move.css';
 @import '../../../../assets/styles/_query.css';
 @import '../../../../assets/styles/_accordion.css';
+@import '../../../../assets/styles/_content.css';
 @import '../../../../assets/styles/_dropdown.css';
 @import '../../../../assets/styles/_menu.css';
 @import '../../../../assets/styles/_redirect.css';
@@ -20,7 +21,6 @@
 @import 'header.css';
 @import 'helper.css';
 @import 'layout.css';
-@import 'list.css';
 @import 'media.css';
 @import 'menu.css';
 @import 'pagination.css';
@@ -30,5 +30,4 @@
 @import 'tab.css';
 @import 'table.css';
 @import 'teaser.css';
-@import 'typo.css';
 @import 'note.css';

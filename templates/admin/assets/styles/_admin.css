@@ -1,6 +1,7 @@
 @import '../../../../node_modules/move.css/move.css';
 @import '../../../../assets/styles/_query.css';
 @import '../../../../assets/styles/_accordion.css';
+@import '../../../../assets/styles/_content.css';
 @import '../../../../assets/styles/_dropdown.css';
 @import '../../../../assets/styles/_panel.css';
 @import '../../../../assets/styles/_redirect.css';
@@ -22,5 +23,4 @@
 @import 'notification.css';
 @import 'tab.css';
 @import 'table.css';
-@import 'typo.css';
 @import 'note.css';

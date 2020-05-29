@@ -216,10 +216,7 @@ class UserTable extends ViewAbstract
 		/* html element */
 
 		$linkElement = new Html\Element();
-		$linkElement->init('a',
-		[
-			'class' => 'rs-admin-link-default'
-		]);
+		$linkElement->init('a');
 
 		/* process groups */
 

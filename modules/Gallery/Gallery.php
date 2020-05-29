@@ -24,7 +24,7 @@ use function round;
 use function strtolower;
 
 /**
- * javascript powered gallery
+ * responsive image gallery
  *
  * @since 3.0.0
  *
@@ -46,7 +46,7 @@ class Gallery extends Module\Metadata
 		'name' => 'Gallery',
 		'alias' => 'Gallery',
 		'author' => 'Redaxmedia',
-		'description' => 'JavaScript powered gallery',
+		'description' => 'Responsive image gallery',
 		'version' => '4.3.0'
 	];
 

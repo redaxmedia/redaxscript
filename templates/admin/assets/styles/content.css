@@ -3,9 +3,7 @@
  *
  * 1. content
  *    1.1 title
- * 2. documentation
- *    2.1 text
- *    2.2 code
+ * 2. code
  */
 
 /** @section 1. content */
@@ -20,20 +18,7 @@
 	margin-top: 1em;
 }
 
-/** @section 2. documentation */
-
-/** @section 2.1 text */
-
-.rs-admin-text-documentation
-{
-	& + .rs-admin-code-default,
-	& + .rs-admin-list-default
-	{
-		margin-top: 1em;
-	}
-}
-
-/** @section 2.2 code */
+/** @section 2. code */
 
 .rs-admin-code-default
 {
@@ -45,8 +30,7 @@
 	padding: 1em;
 	white-space: pre-wrap;
 
-	& + .rs-admin-code-default,
-	& + .rs-admin-text-documentation
+	& + .rs-admin-code-default
 	{
 		margin-top: 1em;
 	}

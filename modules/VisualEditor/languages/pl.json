@@ -1,0 +1,34 @@
+{
+	"_editor":
+	{
+		"wysiwyg": "WYSIWYG",
+		"source_code": "Kod źródłowy",
+		"bold": "Pogrubienie",
+		"italic": "Kursywa",
+		"underline": "Podkreślenie",
+		"strike_through": "Strike through",
+		"paragraph": "Akapit",
+		"headline": "Headline",
+		"ordered_list": "Numerowanie",
+		"unordered_list": "Punktowanie",
+		"subscript": "Indeks górny",
+		"superscript": "Indeks dolny",
+		"indent": "Wcięcie",
+		"outdent": "Wysunięcie",
+		"align_left": "Wyrównanie do lewej",
+		"align_center": "Centrowanie",
+		"align_right": "Wyrównanie do prawej",
+		"align_justify": "Justowanie",
+		"remove_format": "Usuń formatowanie",
+		"insert_image": "Wstaw obraz",
+		"remove_image": "Remove image",
+		"insert_link": "Wstaw łącze",
+		"remove_link": "Usuń łącze",
+		"undo": "Cofnij",
+		"redo": "Ponów",
+		"cut": "Wytnij",
+		"copy": "Kopiuj",
+		"paste": "Wklej",
+		"delete": "Delete"
+	}
+}

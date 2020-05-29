@@ -9,7 +9,7 @@ use Redaxscript\View;
 use function is_dir;
 
 /**
- * enable anonymous login
+ * anonymous login with limited permission
  *
  * @since 2.2.0
  *
@@ -31,7 +31,7 @@ class Demo extends Module\Metadata
 		'name' => 'Demo',
 		'alias' => 'Demo',
 		'author' => 'Redaxmedia',
-		'description' => 'Enable anonymous login',
+		'description' => 'Anonymous login with limited permission',
 		'version' => '4.3.0'
 	];
 

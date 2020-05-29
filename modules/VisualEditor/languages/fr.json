@@ -1,0 +1,34 @@
+{
+	"_editor":
+	{
+		"wysiwyg": "WYSIWYG",
+		"source_code": "Fichier source",
+		"bold": "Gras",
+		"italic": "Italique",
+		"underline": "Souligner",
+		"strike_through": "Strike through",
+		"paragraph": "Paragraphe",
+		"headline": "Headline",
+		"ordered_list": "Liste ordonnée",
+		"unordered_list": "Liste non ordonnée",
+		"subscript": "Indice",
+		"superscript": "Exposant",
+		"indent": "Indent",
+		"outdent": "Outdent",
+		"align_left": "Aligné à gauche",
+		"align_center": "Aligné au centre",
+		"align_right": "Aligné à droite",
+		"align_justify": "Justifier",
+		"remove_format": "Supprimer le formatage",
+		"insert_image": "Insérer une image",
+		"remove_image": "Remove image",
+		"insert_link": "Insérer un lien",
+		"remove_link": "Supprimer un lien",
+		"undo": "Annuler",
+		"redo": "Rétablir",
+		"cut": "Couper",
+		"copy": "Copier",
+		"paste": "Coller",
+		"delete": "Delete"
+	}
+}

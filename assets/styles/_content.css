@@ -1,0 +1,34 @@
+/**
+ * @tableofcontents
+ *
+ * 1. content
+ *    1.1 box
+ */
+
+/** @section 1. content */
+
+/** @section 1.1 box */
+
+%box-content
+{
+	& a:not([class])
+	{
+		text-decoration: underline;
+	}
+
+	& ol:not([class]),
+	& ul:not([class])
+	{
+		list-style-position: inside;
+	}
+
+	& ol:not([class])
+	{
+		list-style-type: decimal;
+	}
+
+	& ul:not([class])
+	{
+		list-style-type: disc;
+	}
+}

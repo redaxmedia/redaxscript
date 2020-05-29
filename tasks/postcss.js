@@ -44,13 +44,13 @@ module.exports = () =>
 			],
 			dest: 'templates/skeleton/dist/styles/skeleton.min.css'
 		},
-		moduleAce:
+		moduleCodeEditor:
 		{
 			src:
 			[
-				'modules/Ace/assets/styles/_ace.css'
+				'modules/CodeEditor/assets/styles/_code-editor.css'
 			],
-			dest: 'modules/Ace/dist/styles/ace.min.css'
+			dest: 'modules/CodeEditor/dist/styles/code-editor.min.css'
 		},
 		moduleDialog:
 		{
@@ -100,6 +100,14 @@ module.exports = () =>
 			],
 			dest: 'modules/Maps/dist/styles/maps.min.css'
 		},
+		moduleRankSorter:
+		{
+			src:
+			[
+				'modules/RankSorter/assets/styles/_rank-sorter.css'
+			],
+			dest: 'modules/RankSorter/dist/styles/rank-sorter.min.css'
+		},
 		moduleSocialSharer:
 		{
 			src:
@@ -108,13 +116,13 @@ module.exports = () =>
 			],
 			dest: 'modules/SocialSharer/dist/styles/social-sharer.min.css'
 		},
-		moduleTableSorter:
+		moduleVisualEditor:
 		{
 			src:
 			[
-				'modules/TableSorter/assets/styles/_table-sorter.css'
+				'modules/VisualEditor/assets/styles/_visual-editor.css'
 			],
-			dest: 'modules/TableSorter/dist/styles/table-sorter.min.css'
+			dest: 'modules/VisualEditor/dist/styles/visual-editor.min.css'
 		},
 		stylelint:
 		{

@@ -7,7 +7,7 @@ use Redaxscript\Module;
 use Redaxscript\Reader;
 
 /**
- * read external rss and atom feeds
+ * Integrate rss and atom feeds
  *
  * @since 3.0.0
  *
@@ -29,7 +29,7 @@ class FeedReader extends Module\Metadata
 		'name' => 'Feed Reader',
 		'alias' => 'FeedReader',
 		'author' => 'Redaxmedia',
-		'description' => 'Read external RSS and Atom feeds',
+		'description' => 'Integrate RSS and Atom feeds',
 		'version' => '4.3.0'
 	];
 

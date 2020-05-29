@@ -9,7 +9,7 @@ use Redaxscript\Module;
 use XMLWriter;
 
 /**
- * submit a sitemap to search engines
+ * submit the sitemap as xml
  *
  * @since 2.2.0
  *
@@ -31,7 +31,7 @@ class SitemapXml extends Module\Module
 		'name' => 'Sitemap XML',
 		'alias' => 'SitemapXml',
 		'author' => 'Redaxmedia',
-		'description' => 'Submit a sitemap to search engines',
+		'description' => 'Submit the sitemap as XML',
 		'version' => '4.3.0'
 	];
 

@@ -155,33 +155,34 @@ module.exports = grunt =>
 		'postcss:templateDefault',
 		'postcss:templateInstall',
 		'postcss:templateSkeleton',
-		'postcss:moduleAce',
+		'postcss:moduleCodeEditor',
 		'postcss:moduleDialog',
 		'postcss:moduleDirectoryLister',
 		'postcss:moduleFeedReader',
 		'postcss:moduleGallery',
 		'postcss:modulePreview',
 		'postcss:moduleMaps',
+		'postcss:moduleRankSorter',
 		'postcss:moduleSocialSharer',
-		'postcss:moduleTableSorter'
+		'postcss:moduleVisualEditor'
 	]);
 	grunt.registerTask('build-scripts',
 	[
 		'babel:templateConsole',
 		'babel:templateInstall',
-		'babel:moduleAce',
 		'babel:moduleAliasGenerator',
 		'babel:moduleAnalytics',
 		'babel:moduleCallHome',
+		'babel:moduleCodeEditor',
 		'babel:moduleDialog',
-		'babel:moduleExperiments',
 		'babel:moduleFormValidator',
 		'babel:moduleGallery',
 		'babel:moduleMaps',
+		'babel:moduleRankSorter',
 		'babel:moduleSyntaxHighlighter',
-		'babel:moduleTableSorter',
 		'babel:moduleTextareaResizer',
-		'babel:moduleUnmaskPassword'
+		'babel:moduleUnmaskPassword',
+		'babel:moduleVisualEditor'
 	]);
 	grunt.registerTask('serve', grunt.option('L') || grunt.option('live-reload') ?
 	[

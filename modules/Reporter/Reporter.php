@@ -7,7 +7,7 @@ use Redaxscript\Model;
 use Redaxscript\Module;
 
 /**
- * Reports on the dashboard
+ * report metrics on the dashboard
  *
  * @since 4.1.0
  *
@@ -29,7 +29,7 @@ class Reporter extends Module\Metadata
 		'name' => 'Reporter',
 		'alias' => 'Reporter',
 		'author' => 'Redaxmedia',
-		'description' => 'Reports on the dashboard',
+		'description' => 'Report metrics on the dashboard',
 		'version' => '4.3.0'
 	];
 

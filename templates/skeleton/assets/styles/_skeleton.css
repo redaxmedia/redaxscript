@@ -1,5 +1,6 @@
 @import '../../../../node_modules/harmonize.css/harmonize.css';
 @import '../../../../assets/styles/_query.css';
+@import '../../../../assets/styles/_content.css';
 @import '../../../../assets/styles/_redirect.css';
 @import '../../../../assets/styles/_table.css';
 @import '_variable.css';
@@ -17,5 +18,4 @@
 @import 'search.css';
 @import 'sidebar.css';
 @import 'table.css';
-@import 'typo.css';
 @import 'note.css';

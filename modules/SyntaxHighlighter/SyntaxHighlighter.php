@@ -5,7 +5,7 @@ use Redaxscript\Head;
 use Redaxscript\Module;
 
 /**
- * javascript powered syntax highlighter
+ * syntax highlighting for code tags
  *
  * @since 2.6.0
  *
@@ -27,7 +27,7 @@ class SyntaxHighlighter extends Module\Module
 		'name' => 'Syntax Highlighter',
 		'alias' => 'SyntaxHighlighter',
 		'author' => 'Redaxmedia',
-		'description' => 'JavaScript powered syntax highlighter',
+		'description' => 'Syntax highlighting for code tags',
 		'version' => '4.3.0'
 	];
 

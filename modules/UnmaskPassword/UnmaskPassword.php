@@ -5,7 +5,7 @@ use Redaxscript\Head;
 use Redaxscript\Module;
 
 /**
- * Unmask the password field
+ * unmask focused password fields
  *
  * @since 4.3.0
  *
@@ -27,7 +27,7 @@ class UnmaskPassword extends Module\Module
 		'name' => 'Unmask Password',
 		'alias' => 'UnmaskPassword',
 		'author' => 'Redaxmedia',
-		'description' => 'Unmask the password field',
+		'description' => 'Unmask focused password fields',
 		'version' => '4.3.0'
 	];
 

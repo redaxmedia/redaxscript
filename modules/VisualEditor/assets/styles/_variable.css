@@ -1,0 +1,15 @@
+/**
+ * @tableofcontents
+ *
+ * 1. variable
+ *    1.1 font
+ */
+
+/** @section 1. variable */
+
+:root
+{
+	/** @section 1.1 font */
+
+	--rs-font-icon-visual-editor: 'icon visual editor';
+}

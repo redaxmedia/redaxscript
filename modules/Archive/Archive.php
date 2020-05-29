@@ -9,7 +9,7 @@ use Redaxscript\Module;
 use function strtotime;
 
 /**
- * generate a archive tree
+ * archive ordered by year and month
  *
  * @since 2.2.0
  *
@@ -31,7 +31,7 @@ class Archive extends Module\Module
 		'name' => 'Archive',
 		'alias' => 'Archive',
 		'author' => 'Redaxmedia',
-		'description' => 'Generate a archive tree',
+		'description' => 'Archive ordered by year and month',
 		'version' => '4.3.0'
 	];
 
@@ -46,7 +46,7 @@ class Archive extends Module\Module
 		'className' =>
 		[
 			'title' => 'rs-title-content-sub rs-title-archive',
-			'list' => 'rs-list-default rs-list-archive'
+			'list' => 'rs-list-archive'
 		]
 	];
 

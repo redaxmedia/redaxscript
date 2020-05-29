@@ -5,7 +5,7 @@ use Redaxscript\Head;
 use Redaxscript\Module;
 
 /**
- * javascript powered alias generator
+ * generate user friendly url fragments
  *
  * @since 4.0.0
  *
@@ -27,7 +27,7 @@ class AliasGenerator extends Module\Module
 		'name' => 'Alias Generator',
 		'alias' => 'AliasGenerator',
 		'author' => 'Redaxmedia',
-		'description' => 'JavaScript powered alias generator',
+		'description' => 'Generate user friendly URL fragments',
 		'version' => '4.3.0'
 	];
 

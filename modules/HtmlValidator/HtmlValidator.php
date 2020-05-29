@@ -8,7 +8,7 @@ use function http_build_query;
 use function urldecode;
 
 /**
- * html validator for developers
+ * realtime w3c validator for your html
  *
  * @since 2.2.0
  *
@@ -30,7 +30,7 @@ class HtmlValidator extends Module\Metadata
 		'name' => 'HTML Validator',
 		'alias' => 'HtmlValidator',
 		'author' => 'Redaxmedia',
-		'description' => 'HTML validator for developers',
+		'description' => 'Realtime W3C validator for your HTML',
 		'version' => '4.3.0',
 		'access' => '[1]'
 	];

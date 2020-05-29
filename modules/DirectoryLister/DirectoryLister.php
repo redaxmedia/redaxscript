@@ -22,7 +22,7 @@ use function str_replace;
 use function urldecode;
 
 /**
- * list files of a directory
+ * browse files of the directory
  *
  * @since 2.6.0
  *
@@ -44,7 +44,7 @@ class DirectoryLister extends Module\Metadata
 		'name' => 'Directory Lister',
 		'alias' => 'DirectoryLister',
 		'author' => 'Redaxmedia',
-		'description' => 'List files of a directory',
+		'description' => 'Browse files of the directory',
 		'version' => '4.3.0'
 	];
 

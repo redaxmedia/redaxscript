@@ -30,9 +30,10 @@
 
 /** @section 1.3 list */
 
-.rs-list-note li
+.rs-list-note
 {
-	list-style: inside decimal;
+	list-style-position: inside;
+	list-style-type: decimal;
 }
 
 /** @section 1.4 button */

@@ -16,6 +16,7 @@
 	color: gray(70);
 	display: flex;
 	font: 500 1rem var(--rs-admin-font-primary);
+	margin-top: 0.5em;
 }
 
 /** @section 1.2 link */

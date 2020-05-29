@@ -57,10 +57,8 @@
 
 .rs-admin-list-note
 {
-	& li
-	{
-		list-style: inside decimal;
-	}
+	list-style-position: inside;
+	list-style-type: decimal;
 }
 
 /** @section 1.4 button */

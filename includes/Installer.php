@@ -367,8 +367,8 @@ class Installer
 			'CallHome',
 			'Dialog',
 			'FormValidator',
+			'RankSorter',
 			'TextareaResizer',
-			'TableSorter',
 			'UnmaskPassword'
 		];
 

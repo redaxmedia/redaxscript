@@ -7,7 +7,7 @@ use Redaxscript\Model;
 use Redaxscript\Module;
 
 /**
- * generate a sitemap tree
+ * Sitemap tree ordered by category
  *
  * @since 2.2.0
  *
@@ -29,7 +29,7 @@ class Sitemap extends Module\Module
 		'name' => 'Sitemap',
 		'alias' => 'Sitemap',
 		'author' => 'Redaxmedia',
-		'description' => 'Generate a sitemap tree',
+		'description' => 'Sitemap tree ordered by category',
 		'version' => '4.3.0'
 	];
 
@@ -44,7 +44,7 @@ class Sitemap extends Module\Module
 		'className' =>
 		[
 			'title' => 'rs-title-content-sub rs-title-sitemap',
-			'list' => 'rs-list-default rs-list-sitemap'
+			'list' => 'rs-list-sitemap'
 		]
 	];
 

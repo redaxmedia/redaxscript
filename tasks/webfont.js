@@ -75,6 +75,19 @@ module.exports = grunt =>
 				template: 'modules/DirectoryLister/assets/styles/_template.css'
 			}
 		},
+		moduleRankSorter:
+		{
+			src:
+			[
+				'node_modules/@mdi/svg/svg/drag-vertical.svg'
+			],
+			dest: 'modules/RankSorter/dist/fonts',
+			options:
+			{
+				destCss: 'modules/RankSorter/assets/styles',
+				template: 'modules/RankSorter/assets/styles/_template.css'
+			}
+		},
 		moduleSocialSharer:
 		{
 			src:
@@ -91,17 +104,29 @@ module.exports = grunt =>
 				template: 'modules/SocialSharer/assets/styles/_template.css'
 			}
 		},
-		moduleTableSorter:
+		moduleVisualEditor:
 		{
 			src:
 			[
-				'node_modules/@mdi/svg/svg/drag-vertical.svg'
+				'node_modules/@mdi/svg/svg/format-bold.svg',
+				'node_modules/@mdi/svg/svg/format-italic.svg',
+				'node_modules/@mdi/svg/svg/format-underline.svg',
+				'node_modules/@mdi/svg/svg/format-strikethrough.svg',
+				'node_modules/@mdi/svg/svg/format-paragraph.svg',
+				'node_modules/@mdi/svg/svg/format-header-1.svg',
+				'node_modules/@mdi/svg/svg/format-header-2.svg',
+				'node_modules/@mdi/svg/svg/format-header-3.svg',
+				'node_modules/@mdi/svg/svg/format-list-numbered.svg',
+				'node_modules/@mdi/svg/svg/format-list-bulleted.svg',
+				'node_modules/@mdi/svg/svg/format-clear.svg',
+				'node_modules/@mdi/svg/svg/undo.svg',
+				'node_modules/@mdi/svg/svg/redo.svg'
 			],
-			dest: 'modules/TableSorter/dist/fonts',
+			dest: 'modules/VisualEditor/dist/fonts',
 			options:
 			{
-				destCss: 'modules/TableSorter/assets/styles',
-				template: 'modules/TableSorter/assets/styles/_template.css'
+				destCss: 'modules/VisualEditor/assets/styles',
+				template: 'modules/VisualEditor/assets/styles/_template.css'
 			}
 		},
 		options:

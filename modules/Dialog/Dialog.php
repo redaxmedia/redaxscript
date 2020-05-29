@@ -6,7 +6,7 @@ use Redaxscript\Html;
 use Redaxscript\Module;
 
 /**
- * javascript powered dialog
+ * replacement for alert, confirm and prompt
  *
  * @since 4.0.0
  *
@@ -28,7 +28,7 @@ class Dialog extends Module\Module
 		'name' => 'Dialog',
 		'alias' => 'Dialog',
 		'author' => 'Redaxmedia',
-		'description' => 'JavaScript powered dialog',
+		'description' => 'Replacement for alert, confirm and prompt',
 		'version' => '4.3.0'
 	];
 

@@ -107,12 +107,7 @@ class CommentTable extends ViewAbstract
 			[
 				'class' => 'rs-admin-js-sort rs-admin-table-default'
 			]);
-		$linkElement = $element
-			->copy()
-			->init('a',
-			[
-				'class' => 'rs-admin-link-default'
-			]);
+		$linkElement = $element->copy()->init('a');
 		$theadElement = $element->copy()->init('thead');
 		$tbodyElement = $element->copy()->init('tbody');
 		$tfootElement = $element->copy()->init('tfoot');

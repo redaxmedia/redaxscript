@@ -4,7 +4,7 @@ namespace Redaxscript\Modules\Contact;
 use Redaxscript\Module;
 
 /**
- * simple contact form
+ * dead simple contact form
  *
  * @since 4.0.0
  *
@@ -26,7 +26,7 @@ class Contact extends Module\Module
 		'name' => 'Contact',
 		'alias' => 'Contact',
 		'author' => 'Redaxmedia',
-		'description' => 'Simple contact form',
+		'description' => 'Dead simple contact form',
 		'version' => '4.3.0'
 	];
 
