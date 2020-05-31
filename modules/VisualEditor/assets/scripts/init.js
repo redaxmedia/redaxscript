@@ -9,9 +9,9 @@ rs.modules.VisualEditor =
 			className:
 			{
 				boxContent: 'rs-box-content',
-				boxVisualEditor: 'rs-admin-box-visual-editor',
-				listVisualEditor: 'rs-admin-list-visual-editor',
-				linkVisualEditor: 'rs-admin-link-visual-editor'
+				boxVisualEditor: 'rs-box-visual-editor',
+				listVisualEditor: 'rs-list-visual-editor',
+				linkVisualEditor: 'rs-link-visual-editor'
 			},
 			controlArray:
 			[

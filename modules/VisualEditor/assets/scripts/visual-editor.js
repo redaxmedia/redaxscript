@@ -43,7 +43,8 @@ rs.modules.VisualEditor.createControl = (control, OPTION) =>
 		document.execCommand(control.command, false, control.value);
 		event.preventDefault();
 	});
-	return itemElement.appendChild(linkElement);
+	itemElement.appendChild(linkElement);
+	return itemElement;
 };
 
 rs.modules.VisualEditor.createContent = (textarea, OPTION) =>

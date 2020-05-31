@@ -139,6 +139,16 @@ $formElement
 		'id' => $id . $i,
 		'required' => 'required'
 	])
+	->append('</li><li>')
+	->label($language->get('_number')[++$i],
+	[
+		'for' => $id . $i
+	])
+	->textarea(
+	[
+		'class' => $admin ? 'rs-admin-js-editor rs-admin-field-textarea rs-admin-field-small' : 'rs-js-editor rs-field-textarea rs-field-small',
+		'id' => $id . $i
+	])
 	->append('</li></ul>')
 	->submit()
 	->reset();
