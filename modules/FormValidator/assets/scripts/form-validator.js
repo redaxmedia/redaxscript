@@ -15,10 +15,10 @@ rs.modules.FormValidator.process = optionArray =>
 
 			form.querySelectorAll(OPTION.element.field).forEach(field =>
 			{
-				field.parentElement.querySelectorAll(OPTION.element.box).forEach(box =>
+				if (field.previousSibling.isContentEditable)
 				{
-					box.classList.add(OPTION.className.fieldNote);
-				});
+					field.previousSibling.classList.add(OPTION.className.fieldNote);
+				}
 				field.classList.add(OPTION.className.fieldNote);
 				[
 					'input',
@@ -28,18 +28,18 @@ rs.modules.FormValidator.process = optionArray =>
 				{
 					field.addEventListener(eventType, () =>
 					{
-						field.parentElement.querySelectorAll(OPTION.element.box).forEach(box =>
+						if (field.previousSibling.isContentEditable)
 						{
-							box.classList.remove(OPTION.className.isError);
-						});
+							field.previousSibling.classList.remove(OPTION.className.isError);
+						}
 						field.classList.remove(OPTION.className.isWarning);
 						field.classList.remove(OPTION.className.isError);
 						if (field.validity.valueMissing)
 						{
-							field.parentElement.querySelectorAll(OPTION.element.box).forEach(box =>
+							if (field.previousSibling.isContentEditable)
 							{
-								box.classList.add(OPTION.className.isError);
-							});
+								field.previousSibling.classList.add(OPTION.className.isError);
+							}
 							field.classList.add(OPTION.className.isError);
 						}
 						else if (!field.validity.valid)
@@ -56,6 +56,10 @@ rs.modules.FormValidator.process = optionArray =>
 			{
 				form.querySelectorAll(OPTION.element.field).forEach(field =>
 				{
+					if (field.previousSibling.isContentEditable)
+					{
+						field.previousSibling.classList.remove(OPTION.className.isError);
+					}
 					field.classList.remove(OPTION.className.isWarning);
 					field.classList.remove(OPTION.className.isError);
 				});
