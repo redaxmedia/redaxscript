@@ -5,39 +5,39 @@ rs.templates.install.behavior.process = optionArray =>
 		...rs.templates.install.behavior.optionArray,
 		...optionArray
 	};
-	const form = document.querySelector(OPTION.selector);
-	const fieldType = form.querySelector(OPTION.element.fieldType);
-	const fieldToggleList = form.querySelectorAll(OPTION.element.fieldToggle);
+	const formElement = document.querySelector(OPTION.selector);
+	const fieldTypeElement = formElement.querySelector(OPTION.element.fieldType);
+	const fieldToggleList = formElement.querySelectorAll(OPTION.element.fieldToggle);
 	const changeEvent = new Event('change');
 
 	/* listen on change */
 
-	fieldType.addEventListener('change', () =>
+	fieldTypeElement.addEventListener('change', () =>
 	{
-		fieldToggleList.forEach(field =>
+		fieldToggleList.forEach(fieldToggleElement =>
 		{
-			if (fieldType.value === 'sqlite')
+			if (fieldTypeElement.value === 'sqlite')
 			{
-				field.value = null;
-				field.parentElement.style.display = 'none';
-				if (field.hasAttribute('required'))
+				fieldToggleElement.value = null;
+				fieldToggleElement.parentElement.style.display = 'none';
+				if (fieldToggleElement.hasAttribute('required'))
 				{
-					field.setAttribute('data-required', 'required');
-					field.removeAttribute('required');
+					fieldToggleElement.setAttribute('data-required', 'required');
+					fieldToggleElement.removeAttribute('required');
 				}
 			}
 			else
 			{
-				field.parentElement.style.display = null;
-				if (field.hasAttribute('data-required'))
+				fieldToggleElement.parentElement.style.display = null;
+				if (fieldToggleElement.hasAttribute('data-required'))
 				{
-					field.setAttribute('required', 'required');
-					field.removeAttribute('data-required');
+					fieldToggleElement.setAttribute('required', 'required');
+					fieldToggleElement.removeAttribute('data-required');
 				}
 			}
 		});
 	});
-	fieldType.dispatchEvent(changeEvent);
+	fieldTypeElement.dispatchEvent(changeEvent);
 };
 
 /* run as needed */

@@ -11,25 +11,31 @@ rs.modules.Gallery.process = optionArray =>
 
 	if (galleryList)
 	{
-		galleryList.forEach(gallery =>
+		galleryList.forEach(galleryElement =>
 		{
-			gallery.querySelectorAll('a').forEach(link =>
+			galleryElement.querySelectorAll('a').forEach(linkElement =>
 			{
 				/* collect images */
 
 				imageArray.push(
 				{
-					src: link.href,
-					h: Number(link.dataset.height),
-					w: Number(link.dataset.width)
+					src: linkElement.href,
+					h: Number(linkElement.dataset.height),
+					w: Number(linkElement.dataset.width)
 				});
 
 				/* listen for click */
 
-				link.addEventListener('click', event =>
+				linkElement.addEventListener('click', event =>
 				{
-					OPTION.photoswipe.index = Number(link.dataset.index);
-					const photoSwipe = new window.PhotoSwipe(galleryTemplate, OPTION.ui, imageArray, OPTION.photoswipe);
+					const photoSwipe = new window.PhotoSwipe(galleryTemplate, OPTION.ui, imageArray,
+					[
+						...OPTION.photoswipe,
+						...
+						{
+							index: Number(linkElement.dataset.index)
+						}
+					]);
 
 					photoSwipe.init();
 					event.preventDefault();

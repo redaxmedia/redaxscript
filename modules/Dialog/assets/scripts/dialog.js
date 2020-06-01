@@ -9,16 +9,16 @@ rs.modules.Dialog.process = optionArray =>
 
 	if (linkList)
 	{
-		linkList.forEach(link =>
+		linkList.forEach(linkElement =>
 		{
-			link.addEventListener('click', event =>
+			linkElement.addEventListener('click', event =>
 			{
 				rs.modules.Dialog.open(OPTION.confirmRoute)
 					.then(html => rs.modules.Dialog.create(html)
-						.then(dialog =>
+						.then(dialogElement =>
 						{
-							dialog.querySelector(OPTION.element.buttonOk).addEventListener('click', () => window.location = link.href);
-							dialog.querySelector(OPTION.element.buttonCancel).addEventListener('click', () => rs.modules.Dialog.destroy(dialog));
+							dialogElement.querySelector(OPTION.element.buttonOk).addEventListener('click', () => window.location = linkElement.href);
+							dialogElement.querySelector(OPTION.element.buttonCancel).addEventListener('click', () => rs.modules.Dialog.destroy(dialogElement));
 						})
 					)
 					.catch(() => null);
@@ -49,24 +49,24 @@ rs.modules.Dialog.create = html =>
 	{
 		if (html)
 		{
-			let dialog = document.createElement('div');
+			let dialogElement = document.createElement('div');
 
-			dialog.innerHTML = html;
-			dialog = dialog.firstChild;
-			document.body.appendChild(dialog);
-			resolve(dialog);
+			dialogElement.innerHTML = html;
+			dialogElement = dialogElement.firstChild;
+			document.body.appendChild(dialogElement);
+			resolve(dialogElement);
 		}
 		reject();
 	});
 };
 
-rs.modules.Dialog.destroy = dialog =>
+rs.modules.Dialog.destroy = dialogElement =>
 {
 	return new Promise((resolve, reject) =>
 	{
-		if (dialog)
+		if (dialogElement)
 		{
-			dialog.parentElement.removeChild(dialog);
+			dialogElement.parentElement.removeChild(dialogElement);
 			resolve();
 		}
 		reject();

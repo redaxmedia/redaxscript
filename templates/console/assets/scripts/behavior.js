@@ -6,16 +6,16 @@ rs.templates.console.behavior.process = optionArray =>
 		...rs.templates.console.behavior.optionArray,
 		...optionArray
 	};
-	const form = document.querySelector(OPTION.selector);
-	const box = document.querySelector(OPTION.element.box);
-	const label = form.querySelector(OPTION.element.label);
-	const field = form.querySelector(OPTION.element.field);
+	const formElement = document.querySelector(OPTION.selector);
+	const boxElement = document.querySelector(OPTION.element.box);
+	const labelElement = formElement.querySelector(OPTION.element.label);
+	const fieldElement = formElement.querySelector(OPTION.element.field);
 
 	/* handel submit */
 
-	form.addEventListener('submit', event =>
+	formElement.addEventListener('submit', event =>
 	{
-		box.innerHTML += label.innerText + ' ' + field.value + OPTION.eol;
+		boxElement.innerHTML += labelElement.innerText + ' ' + fieldElement.value + OPTION.eol;
 		fetch(location.href,
 		{
 			credentials: 'same-origin',
@@ -27,17 +27,17 @@ rs.templates.console.behavior.process = optionArray =>
 			},
 			body: JSON.stringify(
 			{
-				argv: field.value
+				argv: fieldElement.value
 			})
 		})
 		.then(response => response.text())
 		.then(response =>
 		{
-			box.innerHTML += response;
+			boxElement.innerHTML += response;
 			window.scrollTo(0, document.body.scrollHeight);
 		})
 		.catch(() => null);
-		form.reset();
+		formElement.reset();
 		event.preventDefault();
 	});
 
@@ -45,12 +45,12 @@ rs.templates.console.behavior.process = optionArray =>
 
 	window.addEventListener('click', () =>
 	{
-		field.focus();
+		fieldElement.focus();
 	});
 
 	/* handle keydown */
 
-	field.addEventListener('keydown', event =>
+	fieldElement.addEventListener('keydown', event =>
 	{
 		const currentIndex = rs.templates.console.history.findIndex(value => value.selected);
 		const nextIndex = currentIndex + 1;
@@ -63,7 +63,7 @@ rs.templates.console.behavior.process = optionArray =>
 				rs.templates.console.history[currentIndex].selected = false;
 				rs.templates.console.history[nextIndex].selected = true;
 			}
-			requestAnimationFrame(() => field.value = rs.templates.console.history[currentIndex].value);
+			requestAnimationFrame(() => fieldElement.value = rs.templates.console.history[currentIndex].value);
 		}
 		if (event.key === 'ArrowDown' && rs.templates.console.history[currentIndex])
 		{
@@ -72,7 +72,7 @@ rs.templates.console.behavior.process = optionArray =>
 				rs.templates.console.history[currentIndex].selected = false;
 				rs.templates.console.history[previousIndex].selected = true;
 			}
-			requestAnimationFrame(() => field.value = rs.templates.console.history[currentIndex].value);
+			requestAnimationFrame(() => fieldElement.value = rs.templates.console.history[currentIndex].value);
 		}
 		if (event.key === 'Tab')
 		{
@@ -80,13 +80,13 @@ rs.templates.console.behavior.process = optionArray =>
 		}
 		if (event.key === 'Enter')
 		{
-			if (field.value)
+			if (fieldElement.value)
 			{
 				rs.templates.console.history.map(item => item.selected = false);
 				rs.templates.console.history.unshift(
 				{
 					selected: true,
-					value: field.value
+					value: fieldElement.value
 				});
 			}
 		}

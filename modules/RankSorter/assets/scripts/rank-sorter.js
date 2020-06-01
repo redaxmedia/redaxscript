@@ -10,18 +10,18 @@ rs.modules.RankSorter.process = optionArray =>
 
 	if (tbodyList)
 	{
-		tbodyList.forEach(tbody =>
+		tbodyList.forEach(tbodyElement =>
 		{
 			const dragula = window.dragula(
 			[
-				tbody
+				tbodyElement
 			], OPTION.dragula);
 
 			/* handle dragend */
 
 			dragula.on('dragend', () =>
 			{
-				const childrenList = tbody.childNodes;
+				const childrenList = tbodyElement.childNodes;
 
 				fetch(OPTION.sortRoute,
 				{

@@ -9,22 +9,22 @@ rs.modules.CodeEditor.process = optionArray =>
 
 	if (textareaList)
 	{
-		textareaList.forEach(textarea =>
+		textareaList.forEach(textareaElement =>
 		{
-			const box = document.createElement('div');
-			const editor = window.ace.edit(box);
+			const boxElement = document.createElement('div');
+			const editor = window.ace.edit(boxElement);
 			const editorSession = editor.getSession();
 
 			/* handle textarea */
 
-			textarea.style.display = 'none';
-			textarea.parentNode.appendChild(box);
+			textareaElement.before(boxElement);
+			textareaElement.style.display = 'none';
 
 			/* handle editor */
 
 			editor.setOptions(OPTION.ace);
-			editorSession.setValue(textarea.value);
-			editorSession.on('change', () => textarea.value = editorSession.getValue());
+			editorSession.setValue(textareaElement.value);
+			editorSession.on('change', () => textareaElement.value = editorSession.getValue());
 		});
 	}
 };

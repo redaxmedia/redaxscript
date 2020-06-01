@@ -5,47 +5,47 @@ rs.modules.AliasGenerator.generate = optionArray =>
 		...rs.modules.AliasGenerator.optionArray,
 		...optionArray
 	};
-	const form = document.querySelector(OPTION.selector);
+	const formElement = document.querySelector(OPTION.selector);
 
-	if (form)
+	if (formElement)
 	{
-		const input = form.querySelector(OPTION.element.input);
-		const output = form.querySelector(OPTION.element.output);
+		const inputElement = formElement.querySelector(OPTION.element.input);
+		const outputElement = formElement.querySelector(OPTION.element.output);
 		const inputEvent = new Event('input');
 
 		/* handel input */
 
-		input.addEventListener('input', () =>
+		inputElement.addEventListener('input', () =>
 		{
-			if (input.value)
+			if (inputElement.value)
 			{
-				const aliasValue = window.getSlug(input.value);
+				const aliasValue = window.getSlug(inputElement.value);
 
 				if (aliasValue)
 				{
-					output.value = aliasValue;
-					output.dispatchEvent(inputEvent);
+					outputElement.value = aliasValue;
+					outputElement.dispatchEvent(inputEvent);
 				}
 			}
 			else
 			{
-				output.value = null;
-				output.dispatchEvent(inputEvent);
+				outputElement.value = null;
+				outputElement.dispatchEvent(inputEvent);
 			}
 		});
 
 		/* handel input */
 
-		output.addEventListener('input', () =>
+		outputElement.addEventListener('input', () =>
 		{
-			if (output.value)
+			if (outputElement.value)
 			{
-				const aliasValue = window.getSlug(output.value);
+				const aliasValue = window.getSlug(outputElement.value);
 
 				if (aliasValue)
 				{
-					output.value = aliasValue;
-					output.dispatchEvent(inputEvent);
+					outputElement.value = aliasValue;
+					outputElement.dispatchEvent(inputEvent);
 				}
 			}
 		});

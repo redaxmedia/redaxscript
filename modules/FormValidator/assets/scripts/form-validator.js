@@ -9,42 +9,42 @@ rs.modules.FormValidator.process = optionArray =>
 
 	if (formList)
 	{
-		formList.forEach(form =>
+		formList.forEach(formElement =>
 		{
 			/* handle validate */
 
-			form.querySelectorAll(OPTION.element.field).forEach(field =>
+			formElement.querySelectorAll(OPTION.element.field).forEach(fieldElement =>
 			{
-				if (field.previousSibling.isContentEditable)
+				if (fieldElement.previousSibling && fieldElement.previousSibling.isContentEditable)
 				{
-					field.previousSibling.classList.add(OPTION.className.fieldNote);
+					fieldElement.previousSibling.classList.add(OPTION.className.fieldNote);
 				}
-				field.classList.add(OPTION.className.fieldNote);
+				fieldElement.classList.add(OPTION.className.fieldNote);
 				[
 					'input',
 					'invalid'
 				]
 				.forEach(eventType =>
 				{
-					field.addEventListener(eventType, () =>
+					fieldElement.addEventListener(eventType, () =>
 					{
-						if (field.previousSibling.isContentEditable)
+						if (fieldElement.previousSibling && fieldElement.previousSibling.isContentEditable)
 						{
-							field.previousSibling.classList.remove(OPTION.className.isError);
+							fieldElement.previousSibling.classList.remove(OPTION.className.isError);
 						}
-						field.classList.remove(OPTION.className.isWarning);
-						field.classList.remove(OPTION.className.isError);
-						if (field.validity.valueMissing)
+						fieldElement.classList.remove(OPTION.className.isWarning);
+						fieldElement.classList.remove(OPTION.className.isError);
+						if (fieldElement.validity.valueMissing)
 						{
-							if (field.previousSibling.isContentEditable)
+							if (fieldElement.previousSibling && fieldElement.previousSibling.isContentEditable)
 							{
-								field.previousSibling.classList.add(OPTION.className.isError);
+								fieldElement.previousSibling.classList.add(OPTION.className.isError);
 							}
-							field.classList.add(OPTION.className.isError);
+							fieldElement.classList.add(OPTION.className.isError);
 						}
-						else if (!field.validity.valid)
+						else if (!fieldElement.validity.valid)
 						{
-							field.classList.add(OPTION.className.isWarning);
+							fieldElement.classList.add(OPTION.className.isWarning);
 						}
 					});
 				});
@@ -52,16 +52,16 @@ rs.modules.FormValidator.process = optionArray =>
 
 			/* handle reset */
 
-			form.addEventListener('reset', () =>
+			formElement.addEventListener('reset', () =>
 			{
-				form.querySelectorAll(OPTION.element.field).forEach(field =>
+				formElement.querySelectorAll(OPTION.element.field).forEach(fieldElement =>
 				{
-					if (field.previousSibling.isContentEditable)
+					if (fieldElement.previousSibling && fieldElement.previousSibling.isContentEditable)
 					{
-						field.previousSibling.classList.remove(OPTION.className.isError);
+						fieldElement.previousSibling.classList.remove(OPTION.className.isError);
 					}
-					field.classList.remove(OPTION.className.isWarning);
-					field.classList.remove(OPTION.className.isError);
+					fieldElement.classList.remove(OPTION.className.isWarning);
+					fieldElement.classList.remove(OPTION.className.isError);
 				});
 			});
 		});

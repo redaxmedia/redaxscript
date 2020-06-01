@@ -10,7 +10,7 @@ rs.modules.SyntaxHighlighter.process = optionArray =>
 	if (codeList)
 	{
 		window.hljs.configure(OPTION.hljs);
-		codeList.forEach(code => window.hljs.highlightBlock(code));
+		codeList.forEach(codeElement => window.hljs.highlightBlock(codeElement));
 	}
 };
 

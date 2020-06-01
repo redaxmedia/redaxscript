@@ -40,6 +40,12 @@ rs.modules.VisualEditor =
 					value: null
 				},
 				{
+					name: 'remove-format',
+					title: rs.language._editor.remove_format,
+					command: 'removeFormat',
+					value: null
+				},
+				{
 					name: 'undo',
 					title: rs.language._editor.undo,
 					command: 'undo',

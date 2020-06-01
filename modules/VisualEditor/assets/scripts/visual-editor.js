@@ -9,11 +9,11 @@ rs.modules.VisualEditor.process = optionArray =>
 
 	if (textareaList)
 	{
-		textareaList.forEach(textarea =>
+		textareaList.forEach(textareaElement =>
 		{
-			textarea.before(rs.modules.VisualEditor.createToolbar(OPTION));
-			textarea.before(rs.modules.VisualEditor.createContent(textarea, OPTION));
-			textarea.style.display = 'none';
+			textareaElement.before(rs.modules.VisualEditor.createToolbar(OPTION));
+			textareaElement.before(rs.modules.VisualEditor.createContent(textareaElement, OPTION));
+			textareaElement.style.display = 'none';
 		});
 	}
 };
@@ -47,14 +47,14 @@ rs.modules.VisualEditor.createControl = (control, OPTION) =>
 	return itemElement;
 };
 
-rs.modules.VisualEditor.createContent = (textarea, OPTION) =>
+rs.modules.VisualEditor.createContent = (textareaElement, OPTION) =>
 {
 	const contentElement = document.createElement('div');
 
 	contentElement.classList.add(OPTION.className.boxContent);
 	contentElement.classList.add(OPTION.className.boxVisualEditor);
 	contentElement.setAttribute('contenteditable', 'true');
-	contentElement.innerHTML = textarea.textContent;
+	contentElement.innerHTML = textareaElement.value;
 
 	/* listen on input */
 
@@ -64,7 +64,7 @@ rs.modules.VisualEditor.createContent = (textarea, OPTION) =>
 		{
 			event.currentTarget.innerHTML = '';
 		}
-		event.currentTarget.nextSibling.textContent = event.currentTarget.innerHTML;
+		event.currentTarget.nextSibling.value = event.currentTarget.innerHTML;
 		event.currentTarget.nextSibling.dispatchEvent(new Event('input'));
 	});
 	return contentElement;
