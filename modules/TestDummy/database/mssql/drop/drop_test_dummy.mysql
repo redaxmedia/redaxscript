@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS /* {configPrefix} */test_dummy;
+DROP TABLE IF EXISTS /* {configPrefix} */modules_test_dummy;
