@@ -50,9 +50,9 @@
 .rs-admin-title-dashboard
 {
 	flex-basis: 100%;
-	font-size: 2em;
-	line-height: 1em;
+	font-size: 1.5em;
 	text-align: center;
+	text-transform: uppercase;
 }
 
 /** @section 2. query */
