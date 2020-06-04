@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS /* {configPrefix} */modules_test_dummy (
+CREATE TABLE IF NOT EXISTS /* %PREFIX% */modules_test_dummy (
 	id int(10) PRIMARY KEY AUTO_INCREMENT
 )
 ENGINE = MyISAM

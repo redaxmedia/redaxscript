@@ -1,6 +1,6 @@
-IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = '/* {configPrefix} */test_dummy')
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = '/* %PREFIX% */modules_test_dummy')
 BEGIN
-	CREATE TABLE /* {configPrefix} */modules_test_dummy (
+	CREATE TABLE /* %PREFIX% */modules_test_dummy (
 		id int PRIMARY KEY IDENTITY
 	);
 END
