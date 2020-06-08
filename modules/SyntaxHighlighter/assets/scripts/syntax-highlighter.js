@@ -18,5 +18,5 @@ rs.modules.SyntaxHighlighter.process = optionArray =>
 
 if (rs.modules.SyntaxHighlighter.init && rs.modules.SyntaxHighlighter.dependency)
 {
-	rs.modules.SyntaxHighlighter.process(rs.modules.SyntaxHighlighter.optionArray);
+	rs.modules.SyntaxHighlighter.process();
 }

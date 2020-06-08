@@ -2,7 +2,6 @@
 	"_dialog":
 	{
 		"dialog": "Dialógus",
-		"continue_question": "Folytatni szeretnéd",
 		"alert": "Figyelmeztetés",
 		"confirm": "Megerősítés",
 		"prompt": "Figyelmeztetés"

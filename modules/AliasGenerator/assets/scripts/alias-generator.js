@@ -56,5 +56,5 @@ rs.modules.AliasGenerator.generate = optionArray =>
 
 if (rs.modules.AliasGenerator.init && rs.modules.AliasGenerator.dependency)
 {
-	rs.modules.AliasGenerator.generate(rs.modules.AliasGenerator.optionArray);
+	rs.modules.AliasGenerator.generate();
 }

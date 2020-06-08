@@ -2,7 +2,6 @@
 	"_dialog":
 	{
 		"dialog": "Dialog",
-		"continue_question": "Želite li nastaviti",
 		"alert": "Alert",
 		"confirm": "Potvrdi",
 		"prompt": "Potknuti"

@@ -2,7 +2,6 @@
 	"_dialog":
 	{
 		"dialog": "对话框",
-		"continue_question": "继续吗",
 		"alert": "警告",
 		"confirm": "确认",
 		"prompt": "提示"

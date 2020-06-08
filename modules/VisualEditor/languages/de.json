@@ -1,5 +1,5 @@
 {
-	"_editor":
+	"_visual_editor":
 	{
 		"wysiwyg": "WYSIWYG",
 		"source_code": "Quelltext",
@@ -20,10 +20,11 @@
 		"align_right": "Rechts ausrichten",
 		"align_justify": "Im Block ausrichten",
 		"remove_format": "Formatierung entfernen",
-		"insert_image": "Bild einfügen",
-		"remove_image": "Bild entfernen",
 		"insert_link": "Verknüpfung einfügen",
 		"remove_link": "Verknüpfung entfernen",
+		"insert_image": "Bild einfügen",
+		"upload_image": "Bild hochladen",
+		"remove_image": "Bild entfernen",
 		"undo": "Rückwärts",
 		"redo": "Vorwärts",
 		"cut": "Ausschneiden",

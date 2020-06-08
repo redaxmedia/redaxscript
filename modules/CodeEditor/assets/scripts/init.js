@@ -1,6 +1,6 @@
 rs.modules.CodeEditor =
 {
-	init: rs.registry.loggedIn === rs.registry.token,
+	init: rs.registry.loggedIn === rs.registry.token && rs.registry.adminParameter,
 	dependency: typeof window.ace === 'object',
 	optionArray:
 	{

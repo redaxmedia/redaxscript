@@ -49,5 +49,5 @@ rs.modules.Gallery.process = optionArray =>
 
 if (rs.modules.Gallery.init && rs.modules.Gallery.dependency)
 {
-	rs.modules.Gallery.process(rs.modules.Gallery.optionArray);
+	rs.modules.Gallery.process();
 }

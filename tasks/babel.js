@@ -52,6 +52,14 @@ module.exports = () =>
 			],
 			dest: 'modules/CodeEditor/dist/scripts/code-editor.min.js'
 		},
+		moduleConfirmAction:
+		{
+			src:
+			[
+				'modules/ConfirmAction/assets/scripts/confirm-action.js'
+			],
+			dest: 'modules/ConfirmAction/dist/scripts/confirm-action.min.js'
+		},
 		moduleDialog:
 		{
 			src:

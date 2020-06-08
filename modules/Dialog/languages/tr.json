@@ -2,7 +2,6 @@
 	"_dialog":
 	{
 		"dialog": "Dikkat",
-		"continue_question": "Devam etmek istiyor musunuz",
 		"alert": "Uyari",
 		"confirm": "Onayla",
 		"prompt": "Prompt"

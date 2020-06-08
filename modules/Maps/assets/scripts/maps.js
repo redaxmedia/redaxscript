@@ -46,5 +46,5 @@ rs.modules.Maps.process = optionArray =>
 
 if (rs.modules.Maps.init && rs.modules.Maps.dependency)
 {
-	rs.modules.Maps.process(rs.modules.Maps.optionArray);
+	rs.modules.Maps.process();
 }

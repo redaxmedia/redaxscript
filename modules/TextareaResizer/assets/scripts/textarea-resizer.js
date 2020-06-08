@@ -13,13 +13,22 @@ rs.modules.TextareaResizer.process = optionArray =>
 	}
 };
 
+rs.modules.TextareaResizer.getOption = () =>
+{
+	if (rs.modules.TextareaResizer.frontend.init)
+	{
+		return rs.modules.TextareaResizer.frontend.optionArray;
+	}
+	if (rs.modules.TextareaResizer.backend.init)
+	{
+		return rs.modules.TextareaResizer.backend.optionArray;
+	}
+};
+
 /* run as needed */
 
-if (rs.modules.TextareaResizer.frontend.init && rs.modules.TextareaResizer.frontend.dependency)
+if (rs.modules.TextareaResizer.frontend.init && rs.modules.TextareaResizer.frontend.dependency || rs.modules.TextareaResizer.backend.init && rs.modules.TextareaResizer.backend.dependency)
 {
-	rs.modules.TextareaResizer.process(rs.modules.TextareaResizer.frontend.optionArray);
+	rs.modules.TextareaResizer.process();
 }
-if (rs.modules.TextareaResizer.backend.init && rs.modules.TextareaResizer.backend.dependency)
-{
-	rs.modules.TextareaResizer.process(rs.modules.TextareaResizer.backend.optionArray);
-}
+

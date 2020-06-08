@@ -2,7 +2,7 @@ rs.modules.FormValidator =
 {
 	frontend:
 	{
-		init: true,
+		init: !rs.registry.adminParameter,
 		optionArray:
 		{
 			selector: 'form.rs-js-validate',
@@ -20,7 +20,7 @@ rs.modules.FormValidator =
 	},
 	backend:
 	{
-		init: rs.registry.loggedIn === rs.registry.token,
+		init: rs.registry.loggedIn === rs.registry.token && rs.registry.adminParameter,
 		optionArray:
 		{
 			selector: 'form.rs-admin-js-validate',

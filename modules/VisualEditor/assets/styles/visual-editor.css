@@ -123,6 +123,26 @@
 		@extend %rs-icon-format-clear;
 	}
 
+	&[data-name="insert-link"]:before
+	{
+		@extend %rs-icon-link-variant-plus;
+	}
+
+	&[data-name="remove-link"]:before
+	{
+		@extend %rs-icon-link-variant-minus;
+	}
+
+	&[data-name="insert-image"]:before
+	{
+		@extend %rs-icon-image-outline;
+	}
+
+	&[data-name="upload-image"]:before
+	{
+		@extend %rs-icon-upload;
+	}
+
 	&[data-name="undo"]:before
 	{
 		@extend %rs-icon-undo;

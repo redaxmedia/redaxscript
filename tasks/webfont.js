@@ -119,6 +119,10 @@ module.exports = grunt =>
 				'node_modules/@mdi/svg/svg/format-list-numbered.svg',
 				'node_modules/@mdi/svg/svg/format-list-bulleted.svg',
 				'node_modules/@mdi/svg/svg/format-clear.svg',
+				'node_modules/@mdi/svg/svg/link-variant-plus.svg',
+				'node_modules/@mdi/svg/svg/link-variant-minus.svg',
+				'node_modules/@mdi/svg/svg/image-outline.svg',
+				'node_modules/@mdi/svg/svg/upload.svg',
 				'node_modules/@mdi/svg/svg/undo.svg',
 				'node_modules/@mdi/svg/svg/redo.svg'
 			],

@@ -47,5 +47,5 @@ rs.modules.Analytics.process = optionArray =>
 
 if (rs.modules.Analytics.init && rs.modules.Analytics.dependency)
 {
-	rs.modules.Analytics.process(rs.modules.Analytics.optionArray);
+	rs.modules.Analytics.process();
 }

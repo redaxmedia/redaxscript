@@ -33,5 +33,5 @@ rs.modules.CodeEditor.process = optionArray =>
 
 if (rs.modules.CodeEditor.init && rs.modules.CodeEditor.dependency)
 {
-	rs.modules.CodeEditor.process(rs.modules.CodeEditor.optionArray);
+	rs.modules.CodeEditor.process();
 }

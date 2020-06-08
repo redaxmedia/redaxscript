@@ -2,34 +2,40 @@ rs.modules.Dialog =
 {
 	frontend:
 	{
-		init: true,
+		init: !rs.registry.adminParameter,
 		optionArray:
 		{
-			selector: 'a.rs-js-confirm',
 			element:
 			{
-				buttonOk: 'button.js-ok',
-				buttonCancel: 'button.js-cancel'
+				field: 'input.rs-js-input',
+				buttonOk: 'button.rs-js-ok',
+				buttonCancel: 'button.rs-js-cancel'
 			},
-			alertRoute: rs.registry.parameterRoute + 'module/dialog/alert',
-			confirmRoute: rs.registry.parameterRoute + 'module/dialog/confirm',
-			promptRoute: rs.registry.parameterRoute + 'module/dialog/prompt'
+			route:
+			{
+				alert: rs.registry.parameterRoute + 'module/dialog/alert',
+				confirm: rs.registry.parameterRoute + 'module/dialog/confirm',
+				prompt: rs.registry.parameterRoute + 'module/dialog/prompt'
+			}
 		}
 	},
 	backend:
 	{
-		init: rs.registry.loggedIn === rs.registry.token,
+		init: rs.registry.loggedIn === rs.registry.token && rs.registry.adminParameter,
 		optionArray:
 		{
-			selector: 'a.rs-admin-js-cancel, a.rs-admin-js-delete, a.rs-admin-js-uninstall',
 			element:
 			{
-				buttonOk: 'button.js-admin-ok',
-				buttonCancel: 'button.js-admin-cancel'
+				field: 'input.rs-admin-js-input',
+				buttonOk: 'button.rs-admin-js-ok',
+				buttonCancel: 'button.rs-admin-js-cancel'
 			},
-			alertRoute: rs.registry.parameterRoute + 'module/admin-dialog/alert',
-			confirmRoute: rs.registry.parameterRoute + 'module/admin-dialog/confirm',
-			promptRoute: rs.registry.parameterRoute + 'module/admin-dialog/prompt'
+			route:
+			{
+				alert: rs.registry.parameterRoute + 'module/admin-dialog/alert',
+				confirm: rs.registry.parameterRoute + 'module/admin-dialog/confirm',
+				prompt: rs.registry.parameterRoute + 'module/admin-dialog/prompt'
+			}
 		}
 	}
 };

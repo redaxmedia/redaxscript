@@ -3,6 +3,7 @@ namespace Redaxscript\Modules\CodeEditor;
 
 use Redaxscript\Head;
 use Redaxscript\Module;
+use Redaxscript\Modules;
 
 /**
  * publish content with perfect code
@@ -60,5 +61,19 @@ class CodeEditor extends Module\Module
 					'modules/CodeEditor/dist/scripts/code-editor.min.js'
 				]);
 		}
+	}
+
+	/**
+	 * install the module
+	 *
+	 * @since 4.3.0
+	 *
+	 * @return bool
+	 */
+
+	public function install() : bool
+	{
+		$visualEditor = new Modules\VisualEditor\VisualEditor($this->_registry, $this->_request, $this->_language, $this->_config);
+		return $visualEditor->uninstall() && parent::install();
 	}
 }

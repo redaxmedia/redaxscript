@@ -21,21 +21,27 @@
 
 /** @section 1.1 title */
 
+.rs-title-content,
+.rs-title-content-sub
+{
+	font-weight: 500;
+	margin-bottom: 0.5em;
+
+	&:not(:first-child)
+	{
+		margin-top: 1em;
+	}
+}
+
 .rs-title-content
 {
 	color: var(--rs-color-tertiary);
 	font-size: 3em;
-	font-weight: 500;
-	margin-bottom: 0.5em;
-	margin-top: 1em;
 }
 
 .rs-title-content-sub
 {
 	font-size: 1.5em;
-	font-weight: 500;
-	margin-bottom: 0.5em;
-	margin-top: 1em;
 }
 
 /** @section 1.2 box */
@@ -78,7 +84,11 @@
 	font-size: 2em;
 	font-weight: 500;
 	margin-bottom: 0.5em;
-	margin-top: 1em;
+
+	&:not(:first-child)
+	{
+		margin-top: 1em;
+	}
 }
 
 /** @section 2.2 box */

@@ -1,5 +1,5 @@
 {
-	"_editor":
+	"_visual_editor":
 	{
 		"wysiwyg": "WYSIWYG",
 		"source_code": "Kod źródłowy",
@@ -20,10 +20,11 @@
 		"align_right": "Wyrównanie do prawej",
 		"align_justify": "Justowanie",
 		"remove_format": "Usuń formatowanie",
-		"insert_image": "Wstaw obraz",
-		"remove_image": "Remove image",
 		"insert_link": "Wstaw łącze",
 		"remove_link": "Usuń łącze",
+		"insert_image": "Wstaw obraz",
+		"upload_image": "Upload image",
+		"remove_image": "Remove image",
 		"undo": "Cofnij",
 		"redo": "Ponów",
 		"cut": "Wytnij",

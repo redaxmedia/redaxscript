@@ -2,7 +2,6 @@
 	"_dialog":
 	{
 		"dialog": "Dialog",
-		"continue_question": "Vill du fortsätta",
 		"alert": "Uppmärksamma",
 		"confirm": "Bekräfta",
 		"prompt": "Prompt"

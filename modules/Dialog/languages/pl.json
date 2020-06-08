@@ -2,7 +2,6 @@
 	"_dialog":
 	{
 		"dialog": "Dialog",
-		"continue_question": "Czy chcesz kontynuować",
 		"alert": "Alarm",
 		"confirm": "Potwierdź",
 		"prompt": "Polecenia"

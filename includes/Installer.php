@@ -365,11 +365,12 @@ class Installer
 		[
 			'AliasGenerator',
 			'CallHome',
-			'Dialog',
+			'ConfirmAction',
 			'FormValidator',
 			'RankSorter',
 			'TextareaResizer',
-			'UnmaskPassword'
+			'UnmaskPassword',
+			'VisualEditor'
 		];
 
 		/* process modules */

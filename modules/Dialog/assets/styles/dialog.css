@@ -36,9 +36,10 @@
 		text-transform: uppercase;
 	}
 
-	& .rs-button-default
+	& .rs-text-dialog,
+	& .rs-field-default
 	{
-		margin-top: 1em;
+		margin-bottom: 1em;
 	}
 
 	& .rs-field-default

@@ -1,5 +1,5 @@
 {
-	"_editor":
+	"_visual_editor":
 	{
 		"wysiwyg": "WYSIWYG",
 		"source_code": "Исходный код",
@@ -20,10 +20,11 @@
 		"align_right": "Вправо",
 		"align_justify": "Равномерно",
 		"remove_format": "Удалить форматирование",
-		"insert_image": "Вставить картинку",
-		"remove_image": "Remove image",
 		"insert_link": "Вставить ссылку",
 		"remove_link": "Удалить ссылку",
+		"insert_image": "Вставить картинку",
+		"upload_image": "Upload image",
+		"remove_image": "Remove image",
 		"undo": "Отмена",
 		"redo": "Повтор",
 		"cut": "Вырезать",

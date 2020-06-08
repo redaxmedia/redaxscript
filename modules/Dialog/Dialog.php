@@ -6,7 +6,7 @@ use Redaxscript\Html;
 use Redaxscript\Module;
 
 /**
- * replacement for alert, confirm and prompt
+ * shared module to replace alert, confirm and prompt
  *
  * @since 4.0.0
  *
@@ -28,7 +28,7 @@ class Dialog extends Module\Module
 		'name' => 'Dialog',
 		'alias' => 'Dialog',
 		'author' => 'Redaxmedia',
-		'description' => 'Replacement for alert, confirm and prompt',
+		'description' => 'Shared module to replace alert, confirm and prompt',
 		'version' => '4.3.0'
 	];
 
@@ -46,10 +46,11 @@ class Dialog extends Module\Module
 			'component' => 'rs-component-dialog',
 			'title' => 'rs-title-dialog',
 			'box' => 'rs-box-dialog',
-			'field' => 'rs-field-default rs-field-text',
+			'text' => 'rs-text-dialog',
+			'field' => 'rs-js-input rs-field-default rs-field-text',
 			'button' => 'rs-button-default',
-			'buttonOk' => 'js-ok',
-			'buttonCancel' => 'js-cancel'
+			'buttonOk' => 'rs-js-ok',
+			'buttonCancel' => 'rs-js-cancel'
 		]
 	];
 
@@ -89,17 +90,22 @@ class Dialog extends Module\Module
 		{
 			$this->_registry->set('renderBreak', true);
 			$dialog = $secondParameter === 'admin-dialog' ? new Admin\Dialog($this->_registry, $this->_request, $this->_language, $this->_config) : $this;
+			$message = $this->_request->getStream('message');
+			$title = $this->_request->getStream('title');
+
+			/* run as needed */
+
 			if ($thirdParameter === 'alert')
 			{
-				echo $dialog->alert();
+				echo $dialog->alert($message, $title);
 			}
 			if ($thirdParameter === 'confirm')
 			{
-				echo $dialog->confirm($this->_language->get('_dialog')['continue_question'] . $this->_language->get('question_mark'));
+				echo $dialog->confirm($message, $title);
 			}
 			if ($thirdParameter === 'prompt')
 			{
-				echo $dialog->confirm();
+				echo $dialog->prompt($message, $title);
 			}
 		}
 	}
@@ -196,16 +202,18 @@ class Dialog extends Module\Module
 			[
 				'class' => $this->_optionArray['className']['box']
 			]);
-		$textElement = $type === 'alert' || $type === 'confirm' ? $element
+		$textElement = $message ? $element
 			->copy()
-			->init('p')
+			->init('p',
+			[
+				'class' => $this->_optionArray['className']['text']
+			])
 			->text($message) : null;
 		$fieldElement = $type === 'prompt' ? $element
 			->copy()
 			->init('input',
 			[
-				'class' => $this->_optionArray['className']['field'],
-				'placeholder' => $message
+				'class' => $this->_optionArray['className']['field']
 			]) : null;
 		$buttonElement = $element
 			->copy()

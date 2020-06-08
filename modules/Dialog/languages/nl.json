@@ -2,7 +2,6 @@
 	"_dialog":
 	{
 		"dialog": "Dialoog",
-		"continue_question": "Wilt u verder gaan",
 		"alert": "Melding",
 		"confirm": "Bevestig",
 		"prompt": "Vraag"

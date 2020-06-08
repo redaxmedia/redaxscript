@@ -29,10 +29,11 @@ class Dialog extends BaseDialog
 			'component' => 'rs-admin-component-dialog',
 			'title' => 'rs-admin-title-dialog',
 			'box' => 'rs-admin-box-dialog',
-			'field' => 'rs-admin-field-default rs-admin-field-text',
+			'text' => 'rs-admin-text-dialog',
+			'field' => 'rs-admin-js-input rs-admin-field-default rs-admin-field-text',
 			'button' => 'rs-admin-button-default',
-			'buttonOk' => 'js-admin-ok',
-			'buttonCancel' => 'js-admin-cancel'
+			'buttonOk' => 'rs-admin-js-ok',
+			'buttonCancel' => 'rs-admin-js-cancel'
 		]
 	];
 }

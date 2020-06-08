@@ -2,7 +2,7 @@ rs.modules.TextareaResizer =
 {
 	frontend:
 	{
-		init: true,
+		init: !rs.registry.adminParameter,
 		dependency: typeof window.autosize === 'function',
 		optionArray:
 		{
@@ -11,7 +11,7 @@ rs.modules.TextareaResizer =
 	},
 	backend:
 	{
-		init: rs.registry.loggedIn === rs.registry.token,
+		init: rs.registry.loggedIn === rs.registry.token && rs.registry.adminParameter,
 		dependency: typeof window.autosize === 'function',
 		optionArray:
 		{

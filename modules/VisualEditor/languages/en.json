@@ -1,5 +1,5 @@
 {
-	"_editor":
+	"_visual_editor":
 	{
 		"wysiwyg": "WYSIWYG",
 		"source_code": "Source code",
@@ -20,10 +20,11 @@
 		"align_right": "Right align",
 		"align_justify": "Justify",
 		"remove_format": "Remove formatting",
-		"insert_image": "Insert image",
-		"remove_image": "Remove image",
 		"insert_link": "Insert link",
 		"remove_link": "Remove link",
+		"insert_image": "Insert image",
+		"upload_image": "Upload image",
+		"remove_image": "Remove image",
 		"undo": "Undo",
 		"redo": "Redo",
 		"cut": "Cut",

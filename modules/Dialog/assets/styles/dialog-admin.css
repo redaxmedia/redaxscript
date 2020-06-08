@@ -28,9 +28,10 @@
 	border-radius: 0.25rem;
 	font: 1.25rem var(--rs-admin-font-primary);
 
-	& .rs-admin-button-default
+	& .rs-admin-text-dialog,
+	& .rs-admin-field-default
 	{
-		margin-top: 1em;
+		margin-bottom: 1em;
 	}
 
 	& .rs-admin-field-default

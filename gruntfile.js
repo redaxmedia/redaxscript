@@ -174,6 +174,7 @@ module.exports = grunt =>
 		'babel:moduleAnalytics',
 		'babel:moduleCallHome',
 		'babel:moduleCodeEditor',
+		'babel:moduleConfirmAction',
 		'babel:moduleDialog',
 		'babel:moduleFormValidator',
 		'babel:moduleGallery',

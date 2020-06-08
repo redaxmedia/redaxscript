@@ -2,7 +2,6 @@
 	"_dialog":
 	{
 		"dialog": "Dialog",
-		"continue_question": "Prajete si pokračovať",
 		"alert": "Varovanie",
 		"confirm": "Potvrdiť",
 		"prompt": "Výzva"

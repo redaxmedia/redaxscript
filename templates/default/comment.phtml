@@ -4,15 +4,13 @@
 
 <?php $articleId = Helper::getRegistry('articleId'); ?>
 <?php if ($articleId): ?>
-	<section class="rs-section-comment">
-		<?php echo Tag::comment($articleId,
+	<?php echo Tag::comment($articleId,
+	[
+		'className' =>
 		[
-			'className' =>
-			[
-				'box' => 'rs-box-comment rs-quote-default'
-			]
-		]); ?>
-		<?php echo Tag::pagination('comments', $articleId); ?>
-		<?php echo Tag::commentForm($articleId); ?>
-	</section>
+			'box' => 'rs-box-comment rs-quote-default'
+		]
+	]); ?>
+	<?php echo Tag::pagination('comments', $articleId); ?>
+	<?php echo Tag::commentForm($articleId); ?>
 <?php endif; ?>

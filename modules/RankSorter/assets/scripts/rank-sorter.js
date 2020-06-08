@@ -21,25 +21,9 @@ rs.modules.RankSorter.process = optionArray =>
 
 			dragula.on('dragend', () =>
 			{
-				const childrenList = tbodyElement.childNodes;
-
-				fetch(OPTION.sortRoute,
-				{
-					credentials: 'same-origin',
-					method: 'POST',
-					headers:
-					{
-						'Content-Type': 'application/json',
-						'X-Requested-With': 'XMLHttpRequest'
-					},
-					body: JSON.stringify(
-					{
-						table: rs.registry.tableParameter,
-						rankArray: Object.keys(childrenList).map((childrenValue => childrenList[childrenValue].id.replace('row-', '')))
-					})
-				})
-				.then(() => OPTION.reload ? location.reload() : null)
-				.catch(() => null);
+				rs.modules.RankSorter.sort(tbodyElement.childNodes, OPTION)
+					.then(() => OPTION.reload ? location.reload() : null)
+					.catch(() => null);
 			});
 		});
 	}
@@ -52,9 +36,28 @@ rs.modules.RankSorter.process = optionArray =>
 	}
 };
 
+rs.modules.RankSorter.sort = (childrenList, OPTION) =>
+{
+	return fetch(OPTION.sortRoute,
+	{
+		credentials: 'same-origin',
+		method: 'POST',
+		headers:
+		{
+			'Content-Type': 'application/json',
+			'X-Requested-With': 'XMLHttpRequest'
+		},
+		body: JSON.stringify(
+		{
+			table: rs.registry.tableParameter,
+			rankArray: Object.keys(childrenList).map((childrenValue => childrenList[childrenValue].id.replace('row-', '')))
+		})
+	});
+};
+
 /* run as needed */
 
 if (rs.modules.RankSorter.init && rs.modules.RankSorter.dependency)
 {
-	rs.modules.RankSorter.process(rs.modules.RankSorter.optionArray);
+	rs.modules.RankSorter.process();
 }

@@ -166,4 +166,17 @@ class Module
 		}
 		return false;
 	}
+
+	/**
+	 * reinstall the module
+	 *
+	 * @since 4.3.0
+	 *
+	 * @return bool
+	 */
+
+	public function reinstall() : bool
+	{
+		return $this->uninstall() && $this->install();
+	}
 }

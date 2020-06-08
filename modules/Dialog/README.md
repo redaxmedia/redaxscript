@@ -1,4 +1,4 @@
 Dialog
 ======
 
-> Replacement for alert, confirm and prompt.
+> Shared module to replace alert, confirm and prompt.

@@ -2,7 +2,7 @@ rs.modules.FormValidator.process = optionArray =>
 {
 	const OPTION =
 	{
-		...rs.modules.FormValidator.optionArray,
+		...rs.modules.FormValidator.getOption(),
 		...optionArray
 	};
 	const formList = document.querySelectorAll(OPTION.selector);
@@ -68,13 +68,21 @@ rs.modules.FormValidator.process = optionArray =>
 	}
 };
 
+rs.modules.FormValidator.getOption = () =>
+{
+	if (rs.modules.FormValidator.frontend.init)
+	{
+		return rs.modules.FormValidator.frontend.optionArray;
+	}
+	if (rs.modules.FormValidator.backend.init)
+	{
+		return rs.modules.FormValidator.backend.optionArray;
+	}
+};
+
 /* run as needed */
 
-if (rs.modules.FormValidator.frontend.init)
+if (rs.modules.FormValidator.frontend.init || rs.modules.FormValidator.backend.init)
 {
-	window.addEventListener('load', () => rs.modules.FormValidator.process(rs.modules.FormValidator.frontend.optionArray));
-}
-if (rs.modules.FormValidator.backend.init)
-{
-	window.addEventListener('load', () => rs.modules.FormValidator.process(rs.modules.FormValidator.backend.optionArray));
+	window.addEventListener('load', () => rs.modules.FormValidator.process());
 }

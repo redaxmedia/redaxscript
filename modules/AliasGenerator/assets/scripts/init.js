@@ -1,6 +1,6 @@
 rs.modules.AliasGenerator =
 {
-	init: true,
+	init: rs.registry.loggedIn === rs.registry.token && rs.registry.adminParameter,
 	dependency: typeof window.getSlug === 'function',
 	optionArray:
 	{

@@ -2,7 +2,7 @@ rs.modules.VisualEditor.process = optionArray =>
 {
 	const OPTION =
 	{
-		...rs.modules.VisualEditor.optionArray,
+		...rs.modules.VisualEditor.getOption(),
 		...optionArray
 	};
 	const textareaList = document.querySelectorAll(OPTION.selector);
@@ -14,6 +14,13 @@ rs.modules.VisualEditor.process = optionArray =>
 			textareaElement.before(rs.modules.VisualEditor.createToolbar(OPTION));
 			textareaElement.before(rs.modules.VisualEditor.createContent(textareaElement, OPTION));
 			textareaElement.style.display = 'none';
+
+			/* listen on reset */
+
+			textareaElement.closest('form').addEventListener('reset', () =>
+			{
+				textareaElement.previousSibling.innerHTML = '';
+			});
 		});
 	}
 };
@@ -31,16 +38,41 @@ rs.modules.VisualEditor.createControl = (control, OPTION) =>
 {
 	const itemElement = document.createElement('li');
 	const linkElement = document.createElement('a');
+	const inputEvent = new Event('input');
 
 	linkElement.classList.add(OPTION.className.linkVisualEditor);
 	linkElement.setAttribute('data-name', control.name);
 	linkElement.setAttribute('title', control.title);
 
-	/* listen on down */
+	/* listen on pointerdown */
 
 	linkElement.addEventListener('pointerdown', event =>
 	{
-		document.execCommand(control.command, false, control.value);
+		const range = window.getSelection().getRangeAt(0);
+
+		if (control.name === 'insert-link' || control.name === 'insert-image')
+		{
+			rs.modules.Dialog.prompt(null, control.title)
+				.then(response =>
+				{
+					window.getSelection().removeAllRanges();
+					window.getSelection().addRange(range);
+					if (response.action === 'ok')
+					{
+						document.execCommand(control.command, false, response.value);
+						document.querySelector(OPTION.selector).previousSibling.dispatchEvent(inputEvent);
+					}
+				})
+				.catch(() => null);
+		}
+		else if (control.name === 'upload-image')
+		{
+			rs.modules.Dialog.alert();
+		}
+		else
+		{
+			document.execCommand(control.command, false, control.value);
+		}
 		event.preventDefault();
 	});
 	itemElement.appendChild(linkElement);
@@ -50,6 +82,7 @@ rs.modules.VisualEditor.createControl = (control, OPTION) =>
 rs.modules.VisualEditor.createContent = (textareaElement, OPTION) =>
 {
 	const contentElement = document.createElement('div');
+	const inputEvent = new Event('input');
 
 	contentElement.classList.add(OPTION.className.boxContent);
 	contentElement.classList.add(OPTION.className.boxVisualEditor);
@@ -65,18 +98,37 @@ rs.modules.VisualEditor.createContent = (textareaElement, OPTION) =>
 			event.currentTarget.innerHTML = '';
 		}
 		event.currentTarget.nextSibling.value = event.currentTarget.innerHTML;
-		event.currentTarget.nextSibling.dispatchEvent(new Event('input'));
+		event.currentTarget.nextSibling.dispatchEvent(inputEvent);
+	});
+
+	/* listen on keydown */
+
+	contentElement.addEventListener('keydown', event =>
+	{
+		if (event.key === 'Enter')
+		{
+			window.document.execCommand('insertLineBreak', false, null);
+			event.preventDefault();
+		}
 	});
 	return contentElement;
 };
 
+rs.modules.VisualEditor.getOption = () =>
+{
+	if (rs.modules.VisualEditor.frontend.init)
+	{
+		return rs.modules.VisualEditor.frontend.optionArray;
+	}
+	if (rs.modules.VisualEditor.backend.init)
+	{
+		return rs.modules.VisualEditor.backend.optionArray;
+	}
+};
+
 /* run as needed */
 
-if (rs.modules.VisualEditor.frontend.init)
+if (rs.modules.VisualEditor.frontend.init || rs.modules.VisualEditor.backend.init)
 {
-	rs.modules.VisualEditor.process(rs.modules.VisualEditor.frontend.optionArray);
-}
-if (rs.modules.VisualEditor.backend.init)
-{
-	rs.modules.VisualEditor.process(rs.modules.VisualEditor.backend.optionArray);
+	rs.modules.VisualEditor.process();
 }

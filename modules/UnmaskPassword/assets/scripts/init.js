@@ -2,7 +2,7 @@ rs.modules.UnmaskPassword =
 {
 	frontend:
 	{
-		init: true,
+		init: !rs.registry.adminParameter,
 		optionArray:
 		{
 			selector: 'input.rs-js-password'
@@ -10,7 +10,7 @@ rs.modules.UnmaskPassword =
 	},
 	backend:
 	{
-		init: rs.registry.loggedIn === rs.registry.token,
+		init: rs.registry.loggedIn === rs.registry.token && rs.registry.adminParameter,
 		optionArray:
 		{
 			selector: 'input.rs-admin-js-password'

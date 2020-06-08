@@ -2,7 +2,7 @@ rs.modules.VisualEditor =
 {
 	frontend:
 	{
-		init: true,
+		init: !rs.registry.adminParameter,
 		optionArray:
 		{
 			selector: 'textarea.rs-js-editor',
@@ -17,43 +17,43 @@ rs.modules.VisualEditor =
 			[
 				{
 					name: 'bold',
-					title: rs.language._editor.bold,
+					title: rs.language._visual_editor.bold,
 					command: 'bold',
 					value: null
 				},
 				{
 					name: 'italic',
-					title: rs.language._editor.italic,
+					title: rs.language._visual_editor.italic,
 					command: 'italic',
 					value: null
 				},
 				{
 					name: 'underline',
-					title: rs.language._editor.underline,
+					title: rs.language._visual_editor.underline,
 					command: 'underline',
 					value: null
 				},
 				{
 					name: 'strike-through',
-					title: rs.language._editor.strike_through,
+					title: rs.language._visual_editor.strike_through,
 					command: 'strikeThrough',
 					value: null
 				},
 				{
 					name: 'remove-format',
-					title: rs.language._editor.remove_format,
+					title: rs.language._visual_editor.remove_format,
 					command: 'removeFormat',
 					value: null
 				},
 				{
 					name: 'undo',
-					title: rs.language._editor.undo,
+					title: rs.language._visual_editor.undo,
 					command: 'undo',
 					value: null
 				},
 				{
 					name: 'redo',
-					title: rs.language._editor.redo,
+					title: rs.language._visual_editor.redo,
 					command: 'redo',
 					value: null
 				}
@@ -62,7 +62,7 @@ rs.modules.VisualEditor =
 	},
 	backend:
 	{
-		init: rs.registry.loggedIn === rs.registry.token,
+		init: rs.registry.loggedIn === rs.registry.token && rs.registry.adminParameter,
 		optionArray:
 		{
 			selector: 'textarea.rs-admin-js-editor',
@@ -77,79 +77,103 @@ rs.modules.VisualEditor =
 			[
 				{
 					name: 'bold',
-					title: rs.language._editor.bold,
+					title: rs.language._visual_editor.bold,
 					command: 'bold',
 					value: null
 				},
 				{
 					name: 'italic',
-					title: rs.language._editor.italic,
+					title: rs.language._visual_editor.italic,
 					command: 'italic',
 					value: null
 				},
 				{
 					name: 'underline',
-					title: rs.language._editor.underline,
+					title: rs.language._visual_editor.underline,
 					command: 'underline',
 					value: null
 				},
 				{
 					name: 'strike-through',
-					title: rs.language._editor.strike_through,
+					title: rs.language._visual_editor.strike_through,
 					command: 'strikeThrough',
 					value: null
 				},
 				{
 					name: 'paragraph',
-					title: rs.language._editor.paragraph,
+					title: rs.language._visual_editor.paragraph,
 					command: 'formatBlock',
 					value: 'p'
 				},
 				{
 					name: 'headline-1',
-					title: rs.language._editor.headline,
+					title: rs.language._visual_editor.headline,
 					command: 'formatBlock',
 					value: 'h1'
 				},
 				{
 					name: 'headline-2',
-					title: rs.language._editor.headline,
+					title: rs.language._visual_editor.headline,
 					command: 'formatBlock',
 					value: 'h2'
 				},
 				{
 					name: 'headline-3',
-					title: rs.language._editor.headline,
+					title: rs.language._visual_editor.headline,
 					command: 'formatBlock',
 					value: 'h3'
 				},
 				{
 					name: 'ordered-list',
-					title: rs.language._editor.ordered_list,
+					title: rs.language._visual_editor.ordered_list,
 					command: 'insertOrderedList',
 					value: null
 				},
 				{
 					name: 'unordered-list',
-					title: rs.language._editor.unordered_list,
+					title: rs.language._visual_editor.unordered_list,
 					command: 'insertUnorderedList',
 					value: null
 				},
 				{
 					name: 'remove-format',
-					title: rs.language._editor.remove_format,
+					title: rs.language._visual_editor.remove_format,
 					command: 'removeFormat',
 					value: null
 				},
 				{
+					name: 'insert-link',
+					title: rs.language._visual_editor.insert_link,
+					command: 'createLink',
+					value: null
+				},
+				{
+					name: 'remove-link',
+					title: rs.language._visual_editor.remove_link,
+					command: 'unlink',
+					value: null
+				},
+				{
+					name: 'insert-image',
+					title: rs.language._visual_editor.insert_image,
+					command: 'insertImage',
+					value: null
+				},
+				{
+					name: 'upload-image',
+					title: rs.language._visual_editor.upload_image,
+					command: 'insertImage',
+					value: null
+				},
+				{
 					name: 'undo',
-					title: rs.language._editor.undo,
+					title: rs.language._visual_editor.undo,
 					command: 'undo',
 					value: null
 				},
 				{
 					name: 'redo',
-					title: rs.language._editor.redo,
+					title: rs.language._visual_editor.redo,
 					command: 'redo',
 					value: null
 				}
