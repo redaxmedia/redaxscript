@@ -41,7 +41,7 @@ class CommentTest extends TestCaseAbstract
 		$authorElement = $formElement->findElement(WebDriverBy::id('author'));
 		$emailElement = $formElement->findElement(WebDriverBy::id('email'));
 		$urlElement = $formElement->findElement(WebDriverBy::id('url'));
-		$textElement = $formElement->findElement(WebDriverBy::id('text'));
+		$editorElement = $formElement->findElement(WebDriverBy::cssSelector('[contenteditable'));
 		$buttonElement = $formElement->findElement(WebDriverBy::tagName('button'));
 
 		/* interact */
@@ -49,7 +49,7 @@ class CommentTest extends TestCaseAbstract
 		$authorElement->sendKeys('test');
 		$emailElement->sendKeys('test@redaxscript.com');
 		$urlElement->sendKeys('https://redaxscript.com');
-		$textElement->sendKeys('test');
+		$editorElement->sendKeys('test');
 		$buttonElement->click();
 
 		/* compare */
