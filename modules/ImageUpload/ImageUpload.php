@@ -2,13 +2,13 @@
 namespace Redaxscript\Modules\ImageUpload;
 
 use Redaxscript\Dater;
+use Redaxscript\Filesystem;
+use Redaxscript\Head;
 use Redaxscript\Header;
 use Redaxscript\Module;
 use function chmod;
-use function current;
 use function in_array;
 use function is_dir;
-use function is_uploaded_file;
 use function json_encode;
 use function mkdir;
 use function move_uploaded_file;
@@ -51,12 +51,12 @@ class ImageUpload extends Module\Metadata
 	protected $_optionArray =
 	[
 		'uploadDirectory' => 'upload',
-		'extension' =>
+		'mimeTypeArray' =>
 		[
-			'gif',
-			'jpg',
-			'png',
-			'svg'
+			'image/gif',
+			'image/jpeg',
+			'image/png',
+			'image/svg+xml'
 		]
 	];
 
@@ -68,10 +68,31 @@ class ImageUpload extends Module\Metadata
 
 	public function renderStart() : void
 	{
+		/* script */
+
+		$script = Head\Script::getInstance();
+		$script
+			->init('foot')
+			->appendFile(
+			[
+				'modules/ImageUpload/assets/scripts/init.js',
+				'modules/ImageUpload/dist/scripts/image-upload.min.js'
+			]);
+
+		/* list and upload */
+
 		if ($this->_registry->get('firstParameter') === 'module' && $this->_registry->get('secondParameter') === 'image-upload' && $this->_registry->get('tokenParameter'))
 		{
-			$this->_registry->set('renderBreak', true);
-			echo $this->_upload();
+			if ($this->_registry->get('thirdParameter') === 'list')
+			{
+				$this->_registry->set('renderBreak', true);
+				echo $this->_list();
+			}
+			if ($this->_registry->get('thirdParameter') === 'upload')
+			{
+				$this->_registry->set('renderBreak', true);
+				echo $this->_upload();
+			}
 		}
 	}
 
@@ -85,7 +106,7 @@ class ImageUpload extends Module\Metadata
 
 	public function adminNotification() : array
 	{
-		if (!mkdir($uploadDirectory = $this->_optionArray['uploadDirectory']) && !is_dir($uploadDirectory))
+		if (!mkdir($directory = $this->_optionArray['uploadDirectory']) && !is_dir($directory))
 		{
 			$this->setNotification('error', $this->_language->get('directory_not_found') . $this->_language->get('colon') . ' ' . $this->_optionArray['uploadDirectory'] . $this->_language->get('point'));
 		}
@@ -97,32 +118,56 @@ class ImageUpload extends Module\Metadata
 	}
 
 	/**
+	 * list
+	 *
+	 * @since 4.3.0
+	 *
+	 * @return string
+	 */
+
+	protected function _list() : string
+	{
+		$uploadFilesystem = new Filesystem\Filesystem();
+		$uploadFilesystem->init($this->_optionArray['uploadDirectory']);
+		$uploadFilesystemArray = $uploadFilesystem->getSortArray();
+
+		/* handle list */
+
+		Header::contentType('application/json');
+		return json_encode($uploadFilesystemArray);
+	}
+
+	/**
 	 * upload
 	 *
 	 * @since 4.3.0
 	 *
-	 * @return string|null
+	 * @return string
 	 */
 
 	protected function _upload() : ?string
 	{
 		$dater = new Dater();
 		$dater->init();
-		$filesArray = current($this->_request->getArray()['files']);
-		$fileExtension = pathinfo($filesArray['name'], PATHINFO_EXTENSION);
-		$path = $this->_optionArray['uploadDirectory'] . DIRECTORY_SEPARATOR . $dater->getDateTime()->getTimestamp() . '.' . $fileExtension;
+		$filesArray = $this->_request->getArray()['files'];
+		$uploadArray = [];
+
+		/* process files */
+
+		foreach ($filesArray as $key => $file)
+		{
+			$fileExtension = pathinfo($file['name'], PATHINFO_EXTENSION);
+			$fileName = $dater->getDateTime()->getTimestamp() . '.' . $key . '.' . $fileExtension;
+			$filePath = $this->_optionArray['uploadDirectory'] . DIRECTORY_SEPARATOR . $fileName;
+			if (in_array($file['type'], $this->_optionArray['mimeTypeArray']) && move_uploaded_file($file['tmp_name'], $filePath))
+			{
+				$uploadArray[] = $filePath;
+			}
+		}
 
 		/* handle upload */
 
-		if (in_array($fileExtension, $this->_optionArray['extension']) && is_uploaded_file($filesArray['tmp_name']) && move_uploaded_file($filesArray['tmp_name'], $path))
-		{
-			Header::contentType('application/json');
-			return json_encode(
-			[
-				'location' => $path
-			]);
-		}
-		Header::responseCode(404);
-		exit;
+		Header::contentType('application/json');
+		return json_encode($uploadArray);
 	}
 }

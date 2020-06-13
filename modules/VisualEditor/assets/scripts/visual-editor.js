@@ -12,6 +12,7 @@ rs.modules.VisualEditor.process = optionArray =>
 		textareaList.forEach(textareaElement =>
 		{
 			textareaElement.before(rs.modules.VisualEditor.createToolbar(OPTION));
+			textareaElement.before(rs.modules.VisualEditor.createUpload(OPTION));
 			textareaElement.before(rs.modules.VisualEditor.createContent(textareaElement, OPTION));
 			textareaElement.style.display = 'none';
 
@@ -44,9 +45,9 @@ rs.modules.VisualEditor.createControl = (control, OPTION) =>
 	linkElement.setAttribute('data-name', control.name);
 	linkElement.setAttribute('title', control.title);
 
-	/* listen on pointerdown */
+	/* listen on click */
 
-	linkElement.addEventListener('pointerdown', event =>
+	linkElement.addEventListener('click', event =>
 	{
 		const range = window.getSelection().getRangeAt(0);
 
@@ -67,7 +68,7 @@ rs.modules.VisualEditor.createControl = (control, OPTION) =>
 		}
 		else if (control.name === 'upload-image')
 		{
-			rs.modules.Dialog.alert();
+			document.querySelector(OPTION.element.fieldUpload).click();
 		}
 		else
 		{
@@ -77,6 +78,33 @@ rs.modules.VisualEditor.createControl = (control, OPTION) =>
 	});
 	itemElement.appendChild(linkElement);
 	return itemElement;
+};
+
+rs.modules.VisualEditor.createUpload = OPTION =>
+{
+	const formData = new FormData();
+	const fieldElement = document.createElement('input');
+
+	fieldElement.setAttribute('type', 'file');
+	fieldElement.setAttribute('multiple', 'multiple');
+	fieldElement.setAttribute('accept', OPTION.mimeTypeArray.join(', '));
+	fieldElement.classList.add(OPTION.className.fieldUpload);
+	fieldElement.style.display = 'none';
+
+	/* listen on change */
+
+	fieldElement.addEventListener('change', () =>
+	{
+		Object.keys(fieldElement.files).map(fileValue => formData.append(fileValue, fieldElement.files[fileValue]));
+		rs.modules.ImageUpload.upload(formData)
+			.then(fileArray =>
+			{
+				document.querySelector(OPTION.selector).previousSibling.focus();
+				fileArray.map(fileValue => document.execCommand('insertImage', false, fileValue));
+			})
+			.catch(() => null);
+	});
+	return fieldElement;
 };
 
 rs.modules.VisualEditor.createContent = (textareaElement, OPTION) =>

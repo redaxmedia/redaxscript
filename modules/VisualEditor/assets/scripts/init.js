@@ -11,8 +11,14 @@ rs.modules.VisualEditor =
 				boxContent: 'rs-box-content',
 				boxVisualEditor: 'rs-box-visual-editor',
 				listVisualEditor: 'rs-list-visual-editor',
-				linkVisualEditor: 'rs-link-visual-editor'
+				linkVisualEditor: 'rs-link-visual-editor',
+				fieldUpload: 'rs-js-upload'
 			},
+			element:
+			{
+				fieldUpload	: 'input.rs-js-upload'
+			},
+			mimeTypeArray: [],
 			controlArray:
 			[
 				{
@@ -71,8 +77,20 @@ rs.modules.VisualEditor =
 				boxContent: 'rs-box-content',
 				boxVisualEditor: 'rs-admin-box-visual-editor',
 				listVisualEditor: 'rs-admin-list-visual-editor',
-				linkVisualEditor: 'rs-admin-link-visual-editor'
+				linkVisualEditor: 'rs-admin-link-visual-editor',
+				fieldUpload: 'rs-admin-js-upload'
 			},
+			element:
+			{
+				fieldUpload: 'input.rs-admin-js-upload'
+			},
+			mimeTypeArray:
+			[
+				'image/gif',
+				'image/jpeg',
+				'image/png',
+				'image/svg+xml'
+			],
 			controlArray:
 			[
 				{
@@ -162,7 +180,7 @@ rs.modules.VisualEditor =
 				{
 					name: 'upload-image',
 					title: rs.language._visual_editor.upload_image,
-					command: 'insertImage',
+					command: null,
 					value: null
 				},
 				{

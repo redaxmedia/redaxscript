@@ -178,6 +178,7 @@ module.exports = grunt =>
 		'babel:moduleDialog',
 		'babel:moduleFormValidator',
 		'babel:moduleGallery',
+		'babel:moduleImageUpload',
 		'babel:moduleMaps',
 		'babel:moduleRankSorter',
 		'babel:moduleSyntaxHighlighter',

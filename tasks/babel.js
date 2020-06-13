@@ -84,6 +84,14 @@ module.exports = () =>
 			],
 			dest: 'modules/Gallery/dist/scripts/gallery.min.js'
 		},
+		moduleImageUpload:
+		{
+			src:
+			[
+				'modules/ImageUpload/assets/scripts/image-upload.js'
+			],
+			dest: 'modules/ImageUpload/dist/scripts/image-upload.min.js'
+		},
 		moduleMaps:
 		{
 			src:
