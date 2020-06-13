@@ -161,7 +161,11 @@ rs.modules.VisualEditor =
 				},
 				{
 					name: 'handle-link',
-					title: rs.language._visual_editor.insert_link,
+					titleArray:
+					[
+						rs.language._visual_editor.insert_link,
+						rs.language._visual_editor.remove_link
+					],
 					commandArray:
 					[
 						'createLink',
@@ -171,7 +175,11 @@ rs.modules.VisualEditor =
 				},
 				{
 					name: 'handle-image',
-					title: rs.language._visual_editor.insert_image,
+					titleArray:
+					[
+						rs.language._visual_editor.insert_image,
+						rs.language._visual_editor.remove_image
+					],
 					commandArray:
 					[
 						'insertImage',

@@ -43,7 +43,7 @@ rs.modules.VisualEditor.createControl = (control, OPTION) =>
 
 	linkElement.classList.add(OPTION.className.linkVisualEditor);
 	linkElement.setAttribute('data-name', control.name);
-	linkElement.setAttribute('title', control.title);
+	linkElement.setAttribute('title', control.title ? control.title : control.titleArray[0]);
 
 	/* listen on click */
 
@@ -52,13 +52,12 @@ rs.modules.VisualEditor.createControl = (control, OPTION) =>
 		const selection = window.getSelection();
 		const range = selection.getRangeAt(0);
 		const isRange = selection.type === 'Range';
-		const targetElement = selection.focusNode.parentElement;
-		const isLink = targetElement.tagName === 'A';
-		const isImage = targetElement.tagName === 'IMG';
+		const isLink = rs.modules.VisualEditor.selectionHasTag(selection, 'a');
+		const isImage = rs.modules.VisualEditor.selectionHasTag(selection, 'img');
 
 		if (control.name === 'handle-link' && isRange && !isLink || control.name === 'handle-image' && !isRange && !isImage)
 		{
-			rs.modules.Dialog.prompt(null, control.title)
+			rs.modules.Dialog.prompt(null, control.titleArray[0])
 				.then(response =>
 				{
 					selection.removeAllRanges();
@@ -74,8 +73,16 @@ rs.modules.VisualEditor.createControl = (control, OPTION) =>
 		}
 		else if (control.name === 'handle-link' && isRange && isLink || control.name === 'handle-image' && isRange && isImage)
 		{
-			document.execCommand(control.commandArray[1], false, null);
-			selection.removeAllRanges();
+			rs.modules.Dialog.confirm(null, control.titleArray[1])
+				.then(response =>
+				{
+					if (response.action === 'ok')
+					{
+						document.execCommand(control.commandArray[1], false, null);
+						selection.removeAllRanges();
+					}
+				})
+				.catch(() => null);
 		}
 		else if (control.name === 'upload-image')
 		{
@@ -89,6 +96,18 @@ rs.modules.VisualEditor.createControl = (control, OPTION) =>
 	});
 	itemElement.appendChild(linkElement);
 	return itemElement;
+};
+
+rs.modules.VisualEditor.selectionHasTag = (selection, tag) =>
+{
+	const targetElement = selection.anchorNode.parentElement;
+	const tagArray = selection.anchorNode.childNodes ? Array.from(selection.anchorNode.childNodes).map(element => element.tagName) : [];
+
+	if (tagArray.length)
+	{
+		return tagArray.includes(tag.toUpperCase());
+	}
+	return targetElement.tagName === tag.toUpperCase();
 };
 
 rs.modules.VisualEditor.createUpload = OPTION =>
