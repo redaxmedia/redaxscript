@@ -49,22 +49,33 @@ rs.modules.VisualEditor.createControl = (control, OPTION) =>
 
 	linkElement.addEventListener('click', event =>
 	{
-		const range = window.getSelection().getRangeAt(0);
+		const selection = window.getSelection();
+		const range = selection.getRangeAt(0);
+		const isRange = selection.type === 'Range';
+		const targetElement = selection.focusNode.parentElement;
+		const isLink = targetElement.tagName === 'A';
+		const isImage = targetElement.tagName === 'IMG';
 
-		if (control.name === 'insert-link' || control.name === 'insert-image')
+		if (control.name === 'handle-link' && isRange && !isLink || control.name === 'handle-image' && !isRange && !isImage)
 		{
 			rs.modules.Dialog.prompt(null, control.title)
 				.then(response =>
 				{
-					window.getSelection().removeAllRanges();
-					window.getSelection().addRange(range);
+					selection.removeAllRanges();
+					selection.addRange(range);
 					if (response.action === 'ok')
 					{
-						document.execCommand(control.command, false, response.value);
+						document.execCommand(control.commandArray[0], false, response.value);
 						document.querySelector(OPTION.selector).previousSibling.dispatchEvent(inputEvent);
+						selection.removeAllRanges();
 					}
 				})
 				.catch(() => null);
+		}
+		else if (control.name === 'handle-link' && isRange && isLink || control.name === 'handle-image' && isRange && isImage)
+		{
+			document.execCommand(control.commandArray[1], false, null);
+			selection.removeAllRanges();
 		}
 		else if (control.name === 'upload-image')
 		{

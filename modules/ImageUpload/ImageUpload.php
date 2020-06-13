@@ -158,10 +158,10 @@ class ImageUpload extends Module\Metadata
 		{
 			$fileExtension = pathinfo($file['name'], PATHINFO_EXTENSION);
 			$fileName = $dater->getDateTime()->getTimestamp() . '.' . $key . '.' . $fileExtension;
-			$filePath = $this->_optionArray['uploadDirectory'] . DIRECTORY_SEPARATOR . $fileName;
-			if (in_array($file['type'], $this->_optionArray['mimeTypeArray']) && move_uploaded_file($file['tmp_name'], $filePath))
+			$uploadPath = $this->_optionArray['uploadDirectory'] . DIRECTORY_SEPARATOR . $fileName;
+			if (in_array($file['type'], $this->_optionArray['mimeTypeArray']) && move_uploaded_file($file['tmp_name'], $uploadPath))
 			{
-				$uploadArray[] = $filePath;
+				$uploadArray[] = $uploadPath;
 			}
 		}
 

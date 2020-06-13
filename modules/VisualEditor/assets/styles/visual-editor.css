@@ -124,17 +124,12 @@
 		@extend %rs-icon-format-clear;
 	}
 
-	&[data-name="insert-link"]:before
+	&[data-name="handle-link"]:before
 	{
-		@extend %rs-icon-link-variant-plus;
+		@extend %rs-icon-link-variant;
 	}
 
-	&[data-name="remove-link"]:before
-	{
-		@extend %rs-icon-link-variant-minus;
-	}
-
-	&[data-name="insert-image"]:before
+	&[data-name="handle-image"]:before
 	{
 		@extend %rs-icon-image-outline;
 	}

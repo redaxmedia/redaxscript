@@ -160,21 +160,23 @@ rs.modules.VisualEditor =
 					value: null
 				},
 				{
-					name: 'insert-link',
+					name: 'handle-link',
 					title: rs.language._visual_editor.insert_link,
-					command: 'createLink',
+					commandArray:
+					[
+						'createLink',
+						'unlink'
+					],
 					value: null
 				},
 				{
-					name: 'remove-link',
-					title: rs.language._visual_editor.remove_link,
-					command: 'unlink',
-					value: null
-				},
-				{
-					name: 'insert-image',
+					name: 'handle-image',
 					title: rs.language._visual_editor.insert_image,
-					command: 'insertImage',
+					commandArray:
+					[
+						'insertImage',
+						'delete'
+					],
 					value: null
 				},
 				{
