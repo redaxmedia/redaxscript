@@ -4,6 +4,7 @@ namespace Redaxscript\Modules\VisualEditor;
 use Redaxscript\Head;
 use Redaxscript\Module;
 use Redaxscript\Modules;
+use function method_exists;
 
 /**
  * publish content with perfect style
@@ -72,6 +73,10 @@ class VisualEditor extends Module\Module
 		$codeEditor = new Modules\CodeEditor\CodeEditor($this->_registry, $this->_request, $this->_language, $this->_config);
 		$imageUpload = new Modules\ImageUpload\ImageUpload($this->_registry, $this->_request, $this->_language, $this->_config);
 		$dialog = new Modules\Dialog\Dialog($this->_registry, $this->_request, $this->_language, $this->_config);
-		return $codeEditor->uninstall() && $imageUpload->reinstall() && $dialog->reinstall() && parent::install();
+		if (method_exists($codeEditor, 'uninstall'))
+		{
+			$codeEditor->uninstall();
+		}
+		return $imageUpload->reinstall() && $dialog->reinstall() && parent::install();
 	}
 }

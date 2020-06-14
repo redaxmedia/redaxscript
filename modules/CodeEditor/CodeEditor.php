@@ -4,6 +4,7 @@ namespace Redaxscript\Modules\CodeEditor;
 use Redaxscript\Head;
 use Redaxscript\Module;
 use Redaxscript\Modules;
+use function method_exists;
 
 /**
  * publish content with perfect code
@@ -74,6 +75,10 @@ class CodeEditor extends Module\Module
 	public function install() : bool
 	{
 		$visualEditor = new Modules\VisualEditor\VisualEditor($this->_registry, $this->_request, $this->_language, $this->_config);
-		return $visualEditor->uninstall() && parent::install();
+		if (method_exists($visualEditor, 'uninstall'))
+		{
+			$visualEditor->uninstall();
+		}
+		return parent::install();
 	}
 }
