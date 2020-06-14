@@ -6,7 +6,7 @@ use Redaxscript\Db;
 use Redaxscript\Installer;
 use Redaxscript\Module;
 use Redaxscript\View;
-use function is_dir;
+use function method_exists;
 
 /**
  * anonymous login with limited permission
@@ -142,7 +142,7 @@ class Demo extends Module\Metadata
 
 		$auth->setUser('name', 'Demo');
 		$auth->setUser('user', 'demo');
-		$auth->setUser('email', 'demo@localhost');
+		$auth->setUser('email', 'demo@redaxscript.com');
 
 		/* set the permission */
 
@@ -223,7 +223,7 @@ class Demo extends Module\Metadata
 	/**
 	 * reinstall
 	 *
-	 * @since 2.4.0
+	 * @since 4.3.0
 	 */
 
 	protected function _reinstall() : void
@@ -236,7 +236,7 @@ class Demo extends Module\Metadata
 		[
 			'adminName' => 'Admin',
 			'adminUser' => 'admin',
-			'adminPassword' => 'admin',
+			'adminPassword' => 'aaAA00AAaa',
 			'adminEmail' => 'admin@localhost'
 		]);
 
@@ -244,7 +244,7 @@ class Demo extends Module\Metadata
 
 		foreach ($this->_optionArray['modules'] as $key => $moduleClass)
 		{
-			if (is_dir('modules/' . $key))
+			if (method_exists($moduleClass, 'install'))
 			{
 				$module = new $moduleClass($this->_registry, $this->_request, $this->_language, $this->_config);
 				$module->install();
