@@ -23,7 +23,11 @@ module.exports = grunt =>
 		},
 		phpmdRoot:
 		{
-			command: run('vendor/bin/phpmd console.php,index.php,install.php text unusedcode')
+			command: run('vendor/bin/phpmd console.php,index.php,install.php text unusedcode'),
+			options:
+			{
+				failOnError: false
+			}
 		},
 		phpmdBase:
 		{
@@ -35,7 +39,11 @@ module.exports = grunt =>
 		},
 		phpmdModules:
 		{
-			command: run('vendor/bin/phpmd modules text unusedcode')
+			command: run('vendor/bin/phpmd modules text unusedcode'),
+			options:
+			{
+				failOnError: false
+			}
 		},
 		testUnit:
 		{
