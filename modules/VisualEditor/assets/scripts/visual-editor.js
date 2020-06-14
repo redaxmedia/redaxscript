@@ -27,7 +27,7 @@ rs.modules.VisualEditor.process = optionArray =>
 
 			textareaElement.closest('form').addEventListener('reset', () =>
 			{
-				textareaElement.previousSibling.innerHTML = '';
+				textareaElement.previousSibling.innerHTML = null;
 			});
 		});
 	}
@@ -112,20 +112,9 @@ rs.modules.VisualEditor.createControl = (control, OPTION) =>
 rs.modules.VisualEditor.toggle = OPTION =>
 {
 	const textareaElement = document.querySelector(OPTION.selector);
-	const inputEvent = new Event('input');
 
-	if (!textareaElement.style.display)
-	{
-		textareaElement.style.display = 'none';
-		textareaElement.previousSibling.style.display = null;
-		textareaElement.previousSibling.dispatchEvent(inputEvent);
-	}
-	else
-	{
-		textareaElement.style.display = null;
-		textareaElement.previousSibling.style.display = 'none';
-		textareaElement.dispatchEvent(inputEvent);
-	}
+	textareaElement.style.display = textareaElement.style.display ? null : 'none';
+	textareaElement.previousSibling.style.display = textareaElement.previousSibling.style.display ? null : 'none';
 };
 
 rs.modules.VisualEditor.selectionHasTag = (selection, tag) =>
@@ -172,8 +161,7 @@ rs.modules.VisualEditor.createContent = (textareaElement, OPTION) =>
 	const contentElement = document.createElement('div');
 	const validateEvent = new Event('validate');
 
-	contentElement.classList.add(OPTION.className.boxContent);
-	contentElement.classList.add(OPTION.className.boxVisualEditor);
+	contentElement.classList.add(OPTION.className.boxContent, OPTION.className.boxVisualEditor);
 	contentElement.setAttribute('contenteditable', 'true');
 	contentElement.innerHTML = textareaElement.value;
 
@@ -183,7 +171,7 @@ rs.modules.VisualEditor.createContent = (textareaElement, OPTION) =>
 	{
 		if (event.currentTarget.innerHTML === '<br>')
 		{
-			event.currentTarget.innerHTML = '';
+			event.currentTarget.innerHTML = null;
 		}
 		event.currentTarget.nextSibling.value = event.currentTarget.innerHTML;
 		event.currentTarget.nextSibling.dispatchEvent(validateEvent);
