@@ -74,9 +74,9 @@ class CodeEditor extends Module\Module
 
 	public function install() : bool
 	{
-		$visualEditor = new Modules\VisualEditor\VisualEditor($this->_registry, $this->_request, $this->_language, $this->_config);
-		if (method_exists($visualEditor, 'uninstall'))
+		if (method_exists('Redaxscript\Modules\VisualEditor\VisualEditor', 'uninstall'))
 		{
+			$visualEditor = new Modules\VisualEditor\VisualEditor($this->_registry, $this->_request, $this->_language, $this->_config);
 			$visualEditor->uninstall();
 		}
 		return parent::install();

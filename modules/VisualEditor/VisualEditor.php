@@ -70,11 +70,11 @@ class VisualEditor extends Module\Module
 
 	public function install() : bool
 	{
-		$codeEditor = new Modules\CodeEditor\CodeEditor($this->_registry, $this->_request, $this->_language, $this->_config);
 		$imageUpload = new Modules\ImageUpload\ImageUpload($this->_registry, $this->_request, $this->_language, $this->_config);
 		$dialog = new Modules\Dialog\Dialog($this->_registry, $this->_request, $this->_language, $this->_config);
-		if (method_exists($codeEditor, 'uninstall'))
+		if (method_exists('Redaxscript\Modules\CodeEditor\CodeEditor', 'uninstall'))
 		{
+			$codeEditor = new Modules\CodeEditor\CodeEditor($this->_registry, $this->_request, $this->_language, $this->_config);
 			$codeEditor->uninstall();
 		}
 		return $imageUpload->reinstall() && $dialog->reinstall() && parent::install();
