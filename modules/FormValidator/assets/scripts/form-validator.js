@@ -21,6 +21,7 @@ rs.modules.FormValidator.process = optionArray =>
 				}
 				fieldElement.classList.add(OPTION.className.fieldNote);
 				[
+					'validate',
 					'input',
 					'invalid'
 				]

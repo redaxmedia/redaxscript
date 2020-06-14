@@ -94,6 +94,16 @@ rs.modules.VisualEditor =
 			controlArray:
 			[
 				{
+					name: 'toggle',
+					titleArray:
+					[
+						rs.language._visual_editor.wysiwyg,
+						rs.language._visual_editor.source_code
+					],
+					command: null,
+					value: null
+				},
+				{
 					name: 'bold',
 					title: rs.language._visual_editor.bold,
 					command: 'bold',

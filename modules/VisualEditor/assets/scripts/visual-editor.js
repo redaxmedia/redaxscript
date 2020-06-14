@@ -16,6 +16,13 @@ rs.modules.VisualEditor.process = optionArray =>
 			textareaElement.before(rs.modules.VisualEditor.createContent(textareaElement, OPTION));
 			textareaElement.style.display = 'none';
 
+			/* listen on input */
+
+			textareaElement.addEventListener('input', event =>
+			{
+				textareaElement.previousSibling.innerHTML = event.currentTarget.value;
+			});
+
 			/* listen on reset */
 
 			textareaElement.closest('form').addEventListener('reset', () =>
@@ -55,7 +62,11 @@ rs.modules.VisualEditor.createControl = (control, OPTION) =>
 		const isLink = rs.modules.VisualEditor.selectionHasTag(selection, 'a');
 		const isImage = rs.modules.VisualEditor.selectionHasTag(selection, 'img');
 
-		if (control.name === 'handle-link' && isRange && !isLink || control.name === 'handle-image' && !isRange && !isImage)
+		if (control.name === 'toggle')
+		{
+			rs.modules.VisualEditor.toggle(OPTION);
+		}
+		else if (control.name === 'handle-link' && isRange && !isLink || control.name === 'handle-image' && !isRange && !isImage)
 		{
 			rs.modules.Dialog.prompt(null, control.titleArray[0])
 				.then(response =>
@@ -96,6 +107,25 @@ rs.modules.VisualEditor.createControl = (control, OPTION) =>
 	});
 	itemElement.appendChild(linkElement);
 	return itemElement;
+};
+
+rs.modules.VisualEditor.toggle = OPTION =>
+{
+	const textareaElement = document.querySelector(OPTION.selector);
+	const inputEvent = new Event('input');
+
+	if (!textareaElement.style.display)
+	{
+		textareaElement.style.display = 'none';
+		textareaElement.previousSibling.style.display = null;
+		textareaElement.previousSibling.dispatchEvent(inputEvent);
+	}
+	else
+	{
+		textareaElement.style.display = null;
+		textareaElement.previousSibling.style.display = 'none';
+		textareaElement.dispatchEvent(inputEvent);
+	}
 };
 
 rs.modules.VisualEditor.selectionHasTag = (selection, tag) =>
@@ -140,7 +170,7 @@ rs.modules.VisualEditor.createUpload = OPTION =>
 rs.modules.VisualEditor.createContent = (textareaElement, OPTION) =>
 {
 	const contentElement = document.createElement('div');
-	const inputEvent = new Event('input');
+	const validateEvent = new Event('validate');
 
 	contentElement.classList.add(OPTION.className.boxContent);
 	contentElement.classList.add(OPTION.className.boxVisualEditor);
@@ -156,7 +186,7 @@ rs.modules.VisualEditor.createContent = (textareaElement, OPTION) =>
 			event.currentTarget.innerHTML = '';
 		}
 		event.currentTarget.nextSibling.value = event.currentTarget.innerHTML;
-		event.currentTarget.nextSibling.dispatchEvent(inputEvent);
+		event.currentTarget.nextSibling.dispatchEvent(validateEvent);
 	});
 
 	/* listen on keydown */

@@ -108,6 +108,7 @@ module.exports = grunt =>
 		{
 			src:
 			[
+				'node_modules/@mdi/svg/svg/code-tags.svg',
 				'node_modules/@mdi/svg/svg/format-bold.svg',
 				'node_modules/@mdi/svg/svg/format-italic.svg',
 				'node_modules/@mdi/svg/svg/format-underline.svg',
@@ -121,7 +122,7 @@ module.exports = grunt =>
 				'node_modules/@mdi/svg/svg/format-clear.svg',
 				'node_modules/@mdi/svg/svg/format-pilcrow.svg',
 				'node_modules/@mdi/svg/svg/link-variant.svg',
-				'node_modules/@mdi/svg/svg/image-outline.svg',
+				'node_modules/@mdi/svg/svg/image-area.svg',
 				'node_modules/@mdi/svg/svg/upload.svg',
 				'node_modules/@mdi/svg/svg/undo.svg',
 				'node_modules/@mdi/svg/svg/redo.svg'

@@ -2,7 +2,7 @@ rs.modules.TextareaResizer.process = optionArray =>
 {
 	const OPTION =
 	{
-		...rs.modules.TextareaResizer.optionArray,
+		...rs.modules.TextareaResizer.getOption(),
 		...optionArray
 	};
 	const textareaList = document.querySelectorAll(OPTION.selector);

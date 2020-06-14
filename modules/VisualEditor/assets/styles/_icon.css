@@ -12,121 +12,128 @@
 	src: url('../../../../modules/VisualEditor/dist/fonts/icon.woff2');
 }
 
-%rs-icon-format-bold
+%rs-icon-code-tags
 {
 	content: '\f101';
 	font-family: var(--rs-font-icon-visual-editor);
 	font-weight: 400;
 }
 
-%rs-icon-format-italic
+%rs-icon-format-bold
 {
 	content: '\f102';
 	font-family: var(--rs-font-icon-visual-editor);
 	font-weight: 400;
 }
 
-%rs-icon-format-underline
+%rs-icon-format-italic
 {
 	content: '\f103';
 	font-family: var(--rs-font-icon-visual-editor);
 	font-weight: 400;
 }
 
-%rs-icon-format-strikethrough
+%rs-icon-format-underline
 {
 	content: '\f104';
 	font-family: var(--rs-font-icon-visual-editor);
 	font-weight: 400;
 }
 
-%rs-icon-format-paragraph
+%rs-icon-format-strikethrough
 {
 	content: '\f105';
 	font-family: var(--rs-font-icon-visual-editor);
 	font-weight: 400;
 }
 
-%rs-icon-format-header-1
+%rs-icon-format-paragraph
 {
 	content: '\f106';
 	font-family: var(--rs-font-icon-visual-editor);
 	font-weight: 400;
 }
 
-%rs-icon-format-header-2
+%rs-icon-format-header-1
 {
 	content: '\f107';
 	font-family: var(--rs-font-icon-visual-editor);
 	font-weight: 400;
 }
 
-%rs-icon-format-header-3
+%rs-icon-format-header-2
 {
 	content: '\f108';
 	font-family: var(--rs-font-icon-visual-editor);
 	font-weight: 400;
 }
 
-%rs-icon-format-list-numbered
+%rs-icon-format-header-3
 {
 	content: '\f109';
 	font-family: var(--rs-font-icon-visual-editor);
 	font-weight: 400;
 }
 
-%rs-icon-format-list-bulleted
+%rs-icon-format-list-numbered
 {
 	content: '\f10a';
 	font-family: var(--rs-font-icon-visual-editor);
 	font-weight: 400;
 }
 
-%rs-icon-format-clear
+%rs-icon-format-list-bulleted
 {
 	content: '\f10b';
 	font-family: var(--rs-font-icon-visual-editor);
 	font-weight: 400;
 }
 
-%rs-icon-format-pilcrow
+%rs-icon-format-clear
 {
 	content: '\f10c';
 	font-family: var(--rs-font-icon-visual-editor);
 	font-weight: 400;
 }
 
-%rs-icon-link-variant
+%rs-icon-format-pilcrow
 {
 	content: '\f10d';
 	font-family: var(--rs-font-icon-visual-editor);
 	font-weight: 400;
 }
 
-%rs-icon-image-outline
+%rs-icon-link-variant
 {
 	content: '\f10e';
 	font-family: var(--rs-font-icon-visual-editor);
 	font-weight: 400;
 }
 
-%rs-icon-upload
+%rs-icon-image-area
 {
 	content: '\f10f';
 	font-family: var(--rs-font-icon-visual-editor);
 	font-weight: 400;
 }
 
-%rs-icon-undo
+%rs-icon-upload
 {
 	content: '\f110';
 	font-family: var(--rs-font-icon-visual-editor);
 	font-weight: 400;
 }
 
-%rs-icon-redo
+%rs-icon-undo
 {
 	content: '\f111';
+	font-family: var(--rs-font-icon-visual-editor);
+	font-weight: 400;
+}
+
+%rs-icon-redo
+{
+	content: '\f112';
 	font-family: var(--rs-font-icon-visual-editor);
 	font-weight: 400;
 }

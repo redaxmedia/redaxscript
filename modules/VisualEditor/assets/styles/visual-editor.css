@@ -69,6 +69,11 @@
 		font-size: 1.5em;
 	}
 
+	&[data-name="toggle"]:before
+	{
+		@extend %rs-icon-code-tags;
+	}
+
 	&[data-name="bold"]:before
 	{
 		@extend %rs-icon-format-bold;
@@ -131,7 +136,7 @@
 
 	&[data-name="handle-image"]:before
 	{
-		@extend %rs-icon-image-outline;
+		@extend %rs-icon-image-area;
 	}
 
 	&[data-name="upload-image"]:before
