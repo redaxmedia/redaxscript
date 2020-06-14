@@ -167,6 +167,12 @@
 	{
 		border-color: gray(60);
 	}
+
+	& p:after
+	{
+		@extend %rs-icon-format-pilcrow;
+		color: gray(80);
+	}
 }
 
 .rs-box-visual-editor

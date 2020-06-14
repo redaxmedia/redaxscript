@@ -119,6 +119,7 @@ module.exports = grunt =>
 				'node_modules/@mdi/svg/svg/format-list-numbered.svg',
 				'node_modules/@mdi/svg/svg/format-list-bulleted.svg',
 				'node_modules/@mdi/svg/svg/format-clear.svg',
+				'node_modules/@mdi/svg/svg/format-pilcrow.svg',
 				'node_modules/@mdi/svg/svg/link-variant.svg',
 				'node_modules/@mdi/svg/svg/image-outline.svg',
 				'node_modules/@mdi/svg/svg/upload.svg',

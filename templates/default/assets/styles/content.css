@@ -49,7 +49,7 @@
 .rs-box-content
 {
 	@extend %box-content;
-	font-size: 1.5em;
+	font-size: 1.5rem;
 	font-weight: 300;
 	line-height: 1.5em;
 
@@ -95,7 +95,7 @@
 
 .rs-box-comment
 {
-	font: italic 300 1.25em/1.75em var(--rs-font-quote);
+	font: italic 300 1.25rem/1.75em var(--rs-font-quote);
 	margin-bottom: 1em;
 	margin-top: 1em;
 }
