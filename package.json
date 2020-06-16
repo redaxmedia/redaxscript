@@ -15,8 +15,8 @@
 	},
 	"devDependencies":
 	{
-		"@babel/core": "7.9.6",
-		"@babel/preset-env": "7.9.6",
+		"@babel/core": "7.10.2",
+		"@babel/preset-env": "7.10.2",
 		"@mdi/svg": "5.3.45",
 		"autoprefixer": "9.8.0",
 		"babel-preset-minify": "0.5.1",
@@ -25,7 +25,7 @@
 		"cross-port-killer": "1.2.1",
 		"cssnano": "4.1.10",
 		"del-cli": "3.0.1",
-		"eslint": "7.1.0",
+		"eslint": "7.2.0",
 		"eslint-config-redaxmedia": "2.1.0",
 		"grunt": "1.1.0",
 		"grunt-babel": "8.0.0",
@@ -50,7 +50,7 @@
 		"make-dir-cli": "2.0.0",
 		"move.css": "1.0.5",
 		"open-cli": "6.0.1",
-		"postcss": "7.0.31",
+		"postcss": "7.0.32",
 		"postcss-color-function": "4.1.0",
 		"postcss-color-gray": "5.0.0",
 		"postcss-custom-media": "7.0.8",
@@ -62,7 +62,7 @@
 		"postcss-reporter": "6.0.1",
 		"postcss-rtl": "1.7.3",
 		"stylefmt": "6.0.3",
-		"stylelint": "13.5.0",
+		"stylelint": "13.6.0",
 		"stylelint-config-redaxmedia": "3.0.0"
 	},
 	"scripts":
