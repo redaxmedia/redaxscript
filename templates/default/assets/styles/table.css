@@ -35,7 +35,7 @@
 	& th,
 	& tfoot td
 	{
-		background: var(--rs-color-tertiary);
+		background: var(--rs-color-primary);
 		color: gray(100);
 	}
 

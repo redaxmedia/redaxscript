@@ -16,9 +16,7 @@ module.exports = grunt =>
 		babel: require('./tasks/babel')(grunt),
 		postcss: require('./tasks/postcss')(grunt),
 		tocgen: require('./tasks/tocgen')(grunt),
-		webfont: require('./tasks/webfont')(grunt),
 		shell: require('./tasks/shell')(grunt),
-		rename: require('./tasks/rename')(grunt),
 		svgmin: require('./tasks/svgmin')(grunt),
 		parallel: require('./tasks/parallel')(grunt),
 		watch: require('./tasks/watch')(grunt)
@@ -139,14 +137,8 @@ module.exports = grunt =>
 	]);
 	grunt.registerTask('build',
 	[
-		'build-fonts',
 		'build-styles',
 		'build-scripts'
-	]);
-	grunt.registerTask('build-fonts',
-	[
-		'webfont',
-		'rename'
 	]);
 	grunt.registerTask('build-styles',
 	[

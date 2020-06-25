@@ -31,13 +31,13 @@
 
 	& a
 	{
-		background: var(--rs-color-tertiary);
+		background: var(--rs-color-primary);
 		color: gray(100);
 		transition: background 0.2s;
 
 		&:hover
 		{
-			background: var(--rs-color-primary);
+			background: var(--rs-color-secondary);
 		}
 	}
 
@@ -46,8 +46,6 @@
 		background: gray(90);
 		color: gray(30);
 	}
-
-	/* icons */
 
 	& .rs-item-first,
 	& .rs-item-previous,
@@ -59,32 +57,36 @@
 
 		& a:before
 		{
-			font-size: 1.5em;
+			background-position: center;
+			background-repeat: no-repeat;
+			bottom: 0;
+			content: '';
 			left: 0;
 			position: absolute;
 			right: 0;
 			text-indent: 0;
+			top: 0;
 		}
 	}
 
 	& .rs-item-first a:before
 	{
-		@extend %rs-icon-page-first;
+		background-image: svg-load('@mdi/svg/svg/page-first.svg', fill = gray(100));
 	}
 
 	& .rs-item-previous a:before
 	{
-		@extend %rs-icon-chevron-left;
+		background-image: svg-load('@mdi/svg/svg/chevron-left.svg', fill = gray(100));
 	}
 
 	& .rs-item-next a:before
 	{
-		@extend %rs-icon-chevron-right;
+		background-image: svg-load('@mdi/svg/svg/chevron-right.svg', fill = gray(100));
 	}
 
 	& .rs-item-last a:before
 	{
-		@extend %rs-icon-page-last;
+		background-image: svg-load('@mdi/svg/svg/page-last.svg', fill = gray(100));
 	}
 }
 

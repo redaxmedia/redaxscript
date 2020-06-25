@@ -47,8 +47,6 @@
 		background: var(--rs-admin-color-secondary);
 	}
 
-	/* icons */
-
 	& .rs-admin-label-panel-content,
 	& .rs-admin-label-panel-access,
 	& .rs-admin-label-panel-system,
@@ -58,41 +56,94 @@
 	{
 		&:before
 		{
+			background-position: center;
+			background-repeat: no-repeat;
+			content: '';
 			display: inline-block;
-			font-size: 1.375em;
-			margin-right: 0.5em;
-			vertical-align: top;
+			height: 3em;
+			margin-right: 1em;
+			transform: scale(1.125) translateY(-0.125em);
+			vertical-align: middle;
+			width: 1em;
 		}
 	}
 
-	& .rs-admin-label-panel-content:before
+	& .rs-admin-label-panel-content
 	{
-		@extend %rs-admin-icon-book-open-variant;
+		&:before
+		{
+			background-image: svg-load('@mdi/svg/svg/book-open-variant.svg', fill = gray(70));
+		}
+
+		&:hover:before
+		{
+			background-image: svg-load('@mdi/svg/svg/book-open-variant.svg', fill = gray(0));
+		}
 	}
 
-	& .rs-admin-label-panel-access:before
+	& .rs-admin-label-panel-access
 	{
-		@extend %rs-admin-icon-lock;
+		&:before
+		{
+			background-image: svg-load('@mdi/svg/svg/shield-half-full.svg', fill = gray(70));
+		}
+
+		&:hover:before
+		{
+			background-image: svg-load('@mdi/svg/svg/shield-half-full.svg', fill = gray(0));
+		}
 	}
 
-	& .rs-admin-label-panel-system:before
+	& .rs-admin-label-panel-system
 	{
-		@extend %rs-admin-icon-cog;
+		&:before
+		{
+			background-image: svg-load('@mdi/svg/svg/cog.svg', fill = gray(70));
+		}
+
+		&:hover:before
+		{
+			background-image: svg-load('@mdi/svg/svg/cog.svg', fill = gray(0));
+		}
 	}
 
-	& .rs-admin-link-panel-profile:before
+	& .rs-admin-link-panel-profile
 	{
-		@extend %rs-admin-icon-account;
+		&:before
+		{
+			background-image: svg-load('@mdi/svg/svg/account.svg', fill = gray(70));
+		}
+
+		&:hover:before
+		{
+			background-image: svg-load('@mdi/svg/svg/account.svg', fill = gray(0));
+		}
 	}
 
-	& .rs-admin-label-panel-notification:before
+	& .rs-admin-label-panel-notification
 	{
-		@extend %rs-admin-icon-bell;
+		&:before
+		{
+			background-image: svg-load('@mdi/svg/svg/bell.svg', fill = gray(70));
+		}
+
+		&:hover:before
+		{
+			background-image: svg-load('@mdi/svg/svg/bell.svg', fill = gray(0));
+		}
 	}
 
-	& .rs-admin-link-panel-logout:before
+	& .rs-admin-link-panel-logout
 	{
-		@extend %rs-admin-icon-power;
+		&:before
+		{
+			background-image: svg-load('@mdi/svg/svg/power.svg', fill = gray(70));
+		}
+
+		&:hover:before
+		{
+			background-image: svg-load('@mdi/svg/svg/power.svg', fill = gray(0));
+		}
 	}
 
 	/* group */
@@ -100,6 +151,14 @@
 	& .rs-admin-text-panel-group
 	{
 		display: flex;
+
+		&:hover
+		{
+			& .rs-admin-link-panel-new:after
+			{
+				background: svg-load('@mdi/svg/svg/plus.svg', fill = gray(0)) center no-repeat;
+			}
+		}
 
 		& .rs-admin-link-panel-view
 		{
@@ -110,7 +169,7 @@
 		{
 			position: relative;
 			text-indent: -999em;
-			width: 4rem;
+			width: 1.125rem;
 
 			&:hover:after
 			{
@@ -119,13 +178,15 @@
 
 			&:after
 			{
-				@extend %rs-admin-icon-plus;
-				font-size: 1.5rem;
+				background: svg-load('@mdi/svg/svg/plus.svg', fill = gray(70)) center no-repeat;
+				bottom: 0;
+				content: '';
+				left: 0;
 				position: absolute;
 				right: 0;
-				text-align: center;
 				text-indent: 0;
-				width: 3.5rem;
+				top: 0;
+				transform: scale(1);
 			}
 		}
 	}
@@ -204,19 +265,36 @@
 {
 	.rs-admin-item-panel
 	{
-		& .rs-admin-label-panel:after
+		& .rs-admin-label-panel
 		{
-			@extend %rs-admin-icon-chevron-right;
-			font-size: 1.875rem;
-			position: absolute;
-			right: 0;
-			text-align: center;
-			width: 3.5rem;
+			&:after
+			{
+				background: svg-load('@mdi/svg/svg/chevron-right.svg', fill = gray(70)) center no-repeat;
+				content: '';
+				height: 3em;
+				position: absolute;
+				right: 0;
+				transform: scale(1.25);
+				width: 3.5rem;
+			}
+
+			&:hover:after
+			{
+				background: svg-load('@mdi/svg/svg/chevron-right.svg', fill = gray(0)) center no-repeat;
+			}
 		}
 
-		& .rs-admin-fn-status-panel:checked + .rs-admin-label-panel:after
+		& .rs-admin-fn-status-panel:checked + .rs-admin-label-panel
 		{
-			@extend %rs-admin-icon-chevron-down;
+			&:after
+			{
+				background: svg-load('@mdi/svg/svg/chevron-down.svg', fill = gray(70)) center no-repeat;
+			}
+
+			&:hover:after
+			{
+				background: svg-load('@mdi/svg/svg/chevron-down.svg', fill = gray(0)) center no-repeat;
+			}
 		}
 	}
 }

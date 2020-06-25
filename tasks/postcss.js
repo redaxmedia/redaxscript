@@ -207,6 +207,13 @@ module.exports = () =>
 				}),
 				require('postcss-color-function'),
 				require('postcss-rtl'),
+				require('postcss-inline-svg')(
+				{
+					paths:
+					[
+						'node_modules'
+					]
+				}),
 				require('autoprefixer'),
 				require('cssnano')
 			]

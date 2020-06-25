@@ -8,7 +8,7 @@
 
 .rs-sidebar
 {
-	background: var(--rs-color-tertiary);
+	background: var(--rs-color-primary);
 	border-radius: 0.125em;
 	box-sizing: border-box;
 	color: gray(80);

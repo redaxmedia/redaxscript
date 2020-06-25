@@ -17,12 +17,7 @@ Syntax for the content tag:
 		"directory": "directory",
 		"options":
 		{
-			"hash": "directory",
-			"replace":
-			{
-				".": "",
-				"{extension}": ""
-			}
+			"hash": "directory"
 		}
 	}
 }

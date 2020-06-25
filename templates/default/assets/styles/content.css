@@ -35,7 +35,7 @@
 
 .rs-title-content
 {
-	color: var(--rs-color-tertiary);
+	color: var(--rs-color-primary);
 	font-size: 3em;
 }
 
@@ -96,8 +96,6 @@
 .rs-box-comment
 {
 	font: italic 300 1.25rem/1.75em var(--rs-font-quote);
-	margin-bottom: 1em;
-	margin-top: 1em;
 }
 
 /** @section 3. quote */
@@ -125,7 +123,7 @@
 
 .rs-code-default
 {
-	background: var(--rs-color-tertiary);
+	background: var(--rs-color-primary);
 	color: gray(100);
 	display: block;
 	font: 1rem/1.25em var(--rs-font-code);

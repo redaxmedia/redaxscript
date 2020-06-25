@@ -37,8 +37,14 @@
 	&:before
 	{
 		align-self: center;
-		font-size: 1.5em;
-		margin-right: 0.5em;
+		background-position: center;
+		background-repeat: no-repeat;
+		content: '';
+		height: 1em;
+		margin-left: 0.25em;
+		margin-right: 1em;
+		transform: scale(1.5);
+		width: 1em;
 	}
 
 	& a
@@ -88,9 +94,14 @@
 		border-color: var(--rs-admin-color-success-dark);
 	}
 
+	@svg-load rs-admin-icon-success url('@mdi/svg/svg/check-circle-outline.svg')
+	{
+		fill: var(--rs-admin-color-success-dark);
+	}
+
 	&.rs-admin-box-note:before
 	{
-		@extend %rs-admin-icon-check-circle-outline;
+		background-image: svg-inline(rs-admin-icon-success);
 	}
 }
 
@@ -114,9 +125,14 @@
 		border-color: var(--rs-admin-color-info-dark);
 	}
 
+	@svg-load rs-admin-icon-info url('@mdi/svg/svg/help-circle-outline.svg')
+	{
+		fill: var(--rs-admin-color-info-dark);
+	}
+
 	&.rs-admin-box-note:before
 	{
-		@extend %rs-admin-icon-help-circle-outline;
+		background-image: svg-inline(rs-admin-icon-info);
 	}
 }
 
@@ -140,9 +156,14 @@
 		border-color: var(--rs-admin-color-warning-dark);
 	}
 
+	@svg-load rs-admin-icon-warning url('@mdi/svg/svg/alert-circle-outline.svg')
+	{
+		fill: var(--rs-admin-color-warning-dark);
+	}
+
 	&.rs-admin-box-note:before
 	{
-		@extend %rs-admin-icon-alert-circle-outline;
+		background-image: svg-inline(rs-admin-icon-warning);
 	}
 }
 
@@ -166,8 +187,13 @@
 		border-color: var(--rs-admin-color-error-dark);
 	}
 
+	@svg-load rs-admin-icon-error url('@mdi/svg/svg/close-circle-outline.svg')
+	{
+		fill: var(--rs-admin-color-error-dark);
+	}
+
 	&.rs-admin-box-note:before
 	{
-		@extend %rs-admin-icon-close-circle-outline;
+		background-image: svg-inline(rs-admin-icon-error);
 	}
 }

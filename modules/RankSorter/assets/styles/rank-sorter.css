@@ -20,28 +20,34 @@
 
 	&:before
 	{
-		@extend %rs-icon-drag-vertical;
-		color: gray(70);
-		font-size: 1.75em;
+		background: svg-load('@mdi/svg/svg/drag-vertical.svg', fill = gray(70)) center no-repeat;
+		bottom: 0;
+		content: '';
 		position: absolute;
-		right: 0.5em;
+		right: 1.25em;
 		text-indent: 0;
-		top: 50%;
-		transform: translateY(-50%);
+		top: 0;
+		transform: scale(1.5);
+		width: 1em;
 	}
 
 	&.rs-admin-is-active
 	{
 		&:before
 		{
-			color: gray(30);
+			background-image: svg-load('@mdi/svg/svg/drag-vertical.svg', fill = gray(30));
 			cursor: move;
 			pointer-events: all;
 		}
 
+		@svg-load rs-icon-drag-hover url('@mdi/svg/svg/drag-vertical.svg')
+		{
+			fill: var(--rs-admin-color-primary);
+		}
+
 		&:hover:before
 		{
-			color: var(--rs-admin-color-primary);
+			background-image: svg-inline(rs-icon-drag-hover);
 		}
 	}
 }
@@ -50,7 +56,6 @@
 
 .gu-mirror
 {
-	@extend %table-default;
 	background: gray(90);
 	box-shadow: inset 0 0 0 0.25em var(--rs-admin-color-primary);
 	color: gray(30);
@@ -60,7 +65,7 @@
 
 	& td
 	{
-		padding: 0.5em 1em;
+		padding: 1em;
 	}
 }
 

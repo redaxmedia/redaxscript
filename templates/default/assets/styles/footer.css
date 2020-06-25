@@ -10,7 +10,7 @@
 
 .rs-footer
 {
-	background: var(--rs-color-tertiary);
+	background: var(--rs-color-primary);
 	bottom: 0;
 	box-sizing: border-box;
 	color: gray(80);

@@ -38,8 +38,14 @@
 	&:before
 	{
 		align-self: center;
-		font-size: 1.5em;
-		margin-right: 0.5em;
+		background-position: center;
+		background-repeat: no-repeat;
+		content: '';
+		height: 1em;
+		margin-left: 0.25em;
+		margin-right: 1em;
+		transform: scale(1.5);
+		width: 1em;
 	}
 
 	& a
@@ -89,9 +95,14 @@
 		border-color: var(--rs-color-success-dark);
 	}
 
+	@svg-load rs-icon-success url('@mdi/svg/svg/check-circle-outline.svg')
+	{
+		fill: var(--rs-color-success-dark);
+	}
+
 	&.rs-box-note:before
 	{
-		@extend %rs-icon-check-circle-outline;
+		background-image: svg-inline(rs-icon-success);
 	}
 }
 
@@ -114,9 +125,14 @@
 		border-color: var(--rs-color-info-dark);
 	}
 
+	@svg-load rs-icon-info url('@mdi/svg/svg/help-circle-outline.svg')
+	{
+		fill: var(--rs-color-info-dark);
+	}
+
 	&.rs-box-note:before
 	{
-		@extend %rs-icon-help-circle-outline;
+		background-image: svg-inline(rs-icon-info);
 	}
 }
 
@@ -139,9 +155,14 @@
 		border-color: var(--rs-color-warning-dark);
 	}
 
+	@svg-load rs-icon-warning url('@mdi/svg/svg/alert-circle-outline.svg')
+	{
+		fill: var(--rs-color-warning-dark);
+	}
+
 	&.rs-box-note:before
 	{
-		@extend %rs-icon-alert-circle-outline;
+		background-image: svg-inline(rs-icon-warning);
 	}
 }
 
@@ -164,8 +185,13 @@
 		border-color: var(--rs-color-error-dark);
 	}
 
+	@svg-load rs-icon-error url('@mdi/svg/svg/close-circle-outline.svg')
+	{
+		fill: var(--rs-color-error-dark);
+	}
+
 	&.rs-box-note:before
 	{
-		@extend %rs-icon-close-circle-outline;
+		background-image: svg-inline(rs-icon-error);
 	}
 }

@@ -55,7 +55,7 @@
 
 	.rs-fn-status-tab:not(:checked) + .rs-label-tab
 	{
-		background: var(--rs-color-tertiary);
+		background: var(--rs-color-primary);
 		cursor: pointer;
 	}
 }
@@ -66,11 +66,18 @@
 {
 	.rs-label-tab
 	{
+		position: relative;
+
 		&:after
 		{
-			flex: 1;
-			font-size: 1.5rem;
-			text-align: right;
+			background-position: center;
+			background-repeat: no-repeat;
+			bottom: 0;
+			content: '';
+			position: absolute;
+			right: 1em;
+			top: 0;
+			width: 1em;
 		}
 
 		& ~ .rs-label-tab
@@ -81,27 +88,27 @@
 
 	.rs-fn-status-tab:checked + .rs-label-tab
 	{
-		background: var(--rs-color-secondary);
+		background: var(--rs-color-tertiary);
 
 		&:after
 		{
-			@extend %rs-icon-minus;
+			background-image: svg-load('@mdi/svg/svg/minus.svg', fill = gray(100));
 		}
 	}
 
 	.rs-fn-status-tab:not(:checked) + .rs-label-tab
 	{
-		background: var(--rs-color-tertiary);
+		background: var(--rs-color-primary);
 		cursor: pointer;
 
 		&:hover
 		{
-			background: var(--rs-color-primary);
+			background: var(--rs-color-secondary);
 		}
 
 		&:after
 		{
-			@extend %rs-icon-plus;
+			background-image: svg-load('@mdi/svg/svg/plus.svg', fill = gray(100));
 		}
 	}
 }

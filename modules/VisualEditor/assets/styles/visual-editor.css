@@ -26,7 +26,7 @@
 
 .rs-list-visual-editor
 {
-	background: var(--rs-color-tertiary);
+	background: var(--rs-color-primary);
 	color: gray(80);
 }
 
@@ -38,120 +38,195 @@
 
 /** @section 1.2. link */
 
-.rs-link-visual-editor
-{
-	&:hover
-	{
-		color: gray(100);
-	}
-}
-
-.rs-admin-link-visual-editor
-{
-	&:hover
-	{
-		background: var(--rs-admin-color-primary);
-		color: gray(0);
-	}
-}
-
 .rs-link-visual-editor,
 .rs-admin-link-visual-editor
 {
 	cursor: pointer;
 	display: inline-block;
-	height: 3em;
-	line-height: 3em;
-	padding: 0 1em;
 
 	&:before
 	{
-		font-size: 1.5em;
+		background-position: center 0.75em;
+		background-repeat: no-repeat;
+		content: '';
+		display: inline-block;
+		height: 2.75em;
+		width: 3.5em;
 	}
 
 	&[data-name="toggle"]:before
 	{
-		@extend %rs-icon-code-tags;
+		background-image: svg-load('@mdi/svg/svg/code-tags.svg', fill = gray(80));
 	}
 
 	&[data-name="bold"]:before
 	{
-		@extend %rs-icon-format-bold;
+		background-image: svg-load('@mdi/svg/svg/format-bold.svg', fill = gray(80));
 	}
 
 	&[data-name="italic"]:before
 	{
-		@extend %rs-icon-format-italic;
+		background-image: svg-load('@mdi/svg/svg/format-italic.svg', fill = gray(80));
 	}
 
 	&[data-name="underline"]:before
 	{
-		@extend %rs-icon-format-underline;
+		background-image: svg-load('@mdi/svg/svg/format-underline.svg', fill = gray(80));
 	}
 
 	&[data-name="strike-through"]:before
 	{
-		@extend %rs-icon-format-strikethrough;
+		background-image: svg-load('@mdi/svg/svg/format-strikethrough.svg', fill = gray(80));
 	}
 
 	&[data-name="paragraph"]:before
 	{
-		@extend %rs-icon-format-paragraph;
+		background-image: svg-load('@mdi/svg/svg/format-paragraph.svg', fill = gray(80));
 	}
 
 	&[data-name="headline-1"]:before
 	{
-		@extend %rs-icon-format-header-1;
+		background-image: svg-load('@mdi/svg/svg/format-header-1.svg', fill = gray(80));
 	}
 
 	&[data-name="headline-2"]:before
 	{
-		@extend %rs-icon-format-header-2;
+		background-image: svg-load('@mdi/svg/svg/format-header-2.svg', fill = gray(80));
 	}
 
 	&[data-name="headline-3"]:before
 	{
-		@extend %rs-icon-format-header-3;
+		background-image: svg-load('@mdi/svg/svg/format-header-3.svg', fill = gray(80));
 	}
 
 	&[data-name="ordered-list"]:before
 	{
-		@extend %rs-icon-format-list-numbered;
+		background-image: svg-load('@mdi/svg/svg/format-list-numbered.svg', fill = gray(80));
 	}
 
 	&[data-name="unordered-list"]:before
 	{
-		@extend %rs-icon-format-list-bulleted;
+		background-image: svg-load('@mdi/svg/svg/format-list-bulleted.svg', fill = gray(80));
 	}
 
 	&[data-name="remove-format"]:before
 	{
-		@extend %rs-icon-format-clear;
+		background-image: svg-load('@mdi/svg/svg/format-clear.svg', fill = gray(80));
 	}
 
 	&[data-name="handle-link"]:before
 	{
-		@extend %rs-icon-link-variant;
+		background-image: svg-load('@mdi/svg/svg/link-variant.svg', fill = gray(80));
 	}
 
 	&[data-name="handle-image"]:before
 	{
-		@extend %rs-icon-image-area;
+		background-image: svg-load('@mdi/svg/svg/image.svg', fill = gray(80));
 	}
 
 	&[data-name="upload-image"]:before
 	{
-		@extend %rs-icon-upload;
+		background-image: svg-load('@mdi/svg/svg/upload.svg', fill = gray(80));
 	}
 
 	&[data-name="undo"]:before
 	{
-		@extend %rs-icon-undo;
+		background-image: svg-load('@mdi/svg/svg/undo.svg', fill = gray(80));
 	}
 
 	&[data-name="redo"]:before
 	{
-		@extend %rs-icon-redo;
+		background-image: svg-load('@mdi/svg/svg/redo.svg', fill = gray(80));
+	}
+}
+
+.rs-admin-link-visual-editor:hover
+{
+	background: var(--rs-admin-color-primary);
+
+	&[data-name="toggle"]:before
+	{
+		background-image: svg-load('@mdi/svg/svg/code-tags.svg', fill = gray(0));
+	}
+
+	&[data-name="bold"]:before
+	{
+		background-image: svg-load('@mdi/svg/svg/format-bold.svg', fill = gray(0));
+	}
+
+	&[data-name="italic"]:before
+	{
+		background-image: svg-load('@mdi/svg/svg/format-italic.svg', fill = gray(0));
+	}
+
+	&[data-name="underline"]:before
+	{
+		background-image: svg-load('@mdi/svg/svg/format-underline.svg', fill = gray(0));
+	}
+
+	&[data-name="strike-through"]:before
+	{
+		background-image: svg-load('@mdi/svg/svg/format-strikethrough.svg', fill = gray(0));
+	}
+
+	&[data-name="paragraph"]:before
+	{
+		background-image: svg-load('@mdi/svg/svg/format-paragraph.svg', fill = gray(0));
+	}
+
+	&[data-name="headline-1"]:before
+	{
+		background-image: svg-load('@mdi/svg/svg/format-header-1.svg', fill = gray(0));
+	}
+
+	&[data-name="headline-2"]:before
+	{
+		background-image: svg-load('@mdi/svg/svg/format-header-2.svg', fill = gray(0));
+	}
+
+	&[data-name="headline-3"]:before
+	{
+		background-image: svg-load('@mdi/svg/svg/format-header-3.svg', fill = gray(0));
+	}
+
+	&[data-name="ordered-list"]:before
+	{
+		background-image: svg-load('@mdi/svg/svg/format-list-numbered.svg', fill = gray(0));
+	}
+
+	&[data-name="unordered-list"]:before
+	{
+		background-image: svg-load('@mdi/svg/svg/format-list-bulleted.svg', fill = gray(0));
+	}
+
+	&[data-name="remove-format"]:before
+	{
+		background-image: svg-load('@mdi/svg/svg/format-clear.svg', fill = gray(0));
+	}
+
+	&[data-name="handle-link"]:before
+	{
+		background-image: svg-load('@mdi/svg/svg/link-variant.svg', fill = gray(0));
+	}
+
+	&[data-name="handle-image"]:before
+	{
+		background-image: svg-load('@mdi/svg/svg/image.svg', fill = gray(0));
+	}
+
+	&[data-name="upload-image"]:hover:before
+	{
+		background-image: svg-load('@mdi/svg/svg/upload.svg', fill = gray(0));
+	}
+
+	&[data-name="undo"]:hover:before
+	{
+		background-image: svg-load('@mdi/svg/svg/undo.svg', fill = gray(0));
+	}
+
+	&[data-name="redo"]:hover:before
+	{
+		background-image: svg-load('@mdi/svg/svg/redo.svg', fill = gray(0));
 	}
 }
 
@@ -175,8 +250,7 @@
 
 	& p:after
 	{
-		@extend %rs-icon-format-pilcrow;
-		color: gray(80);
+		background-image: svg-load('@mdi/svg/svg/format-pilcrow.svg', fill = gray(80));
 	}
 }
 
@@ -185,7 +259,7 @@
 	&:focus
 	{
 		background: gray(100);
-		border-color: var(--rs-color-primary);
+		border-color: var(--rs-color-secondary);
 	}
 }
 

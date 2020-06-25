@@ -21,13 +21,19 @@
 	font-weight: 500;
 	line-height: 2.5em;
 	padding: 0 1em;
+	position: relative;
 	text-transform: uppercase;
 
 	&:after
 	{
-		flex: 1;
-		font-size: 1.5rem;
-		text-align: right;
+		background-position: center;
+		background-repeat: no-repeat;
+		bottom: 0;
+		content: '';
+		position: absolute;
+		right: 1em;
+		top: 0;
+		width: 1em;
 	}
 
 	& ~ .rs-admin-label-accordion
@@ -43,7 +49,7 @@
 
 	&:after
 	{
-		@extend %rs-admin-icon-minus;
+		background-image: svg-load('@mdi/svg/svg/minus.svg', fill = gray(80));
 	}
 }
 
@@ -60,7 +66,7 @@
 
 	&:after
 	{
-		@extend %rs-admin-icon-plus;
+		background-image: svg-load('@mdi/svg/svg/plus.svg', fill = gray(30));
 	}
 }
 

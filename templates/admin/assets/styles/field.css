@@ -63,25 +63,6 @@
 
 /** @section 3. switch */
 
-.rs-admin-fn-status-switch
-{
-	display: none;
-
-	&:checked + .rs-admin-label-switch:before
-	{
-		@extend %rs-admin-icon-check;
-		background: var(--rs-admin-color-primary);
-		right: 50%;
-	}
-
-	&:not(:checked) + .rs-admin-label-switch:before
-	{
-		@extend %rs-admin-icon-close;
-		background: gray(85);
-		left: 50%;
-	}
-}
-
 .rs-admin-label-switch
 {
 	background: gray(95);
@@ -106,15 +87,34 @@
 
 	&:before
 	{
+		background-position: center;
+		background-repeat: no-repeat;
 		bottom: 0.25em;
-		color: gray(0 / 0.4);
+		content: '';
 		left: 0.25em;
-		line-height: 1.875em;
 		position: absolute;
 		right: 0.25em;
-		text-align: center;
 		top: 0.25em;
 		transition: left 0.2s, right 0.2s;
+	}
+}
+
+.rs-admin-fn-status-switch
+{
+	display: none;
+
+	&:checked + .rs-admin-label-switch:before
+	{
+		background-color: var(--rs-admin-color-primary);
+		background-image: svg-load('@mdi/svg/svg/check.svg', fill = gray(0 / 0.4));
+		right: 50%;
+	}
+
+	&:not(:checked) + .rs-admin-label-switch:before
+	{
+		background-color: gray(85);
+		background-image: svg-load('@mdi/svg/svg/close.svg', fill = gray(0 / 0.4));
+		left: 50%;
 	}
 }
 

@@ -22,7 +22,7 @@
 .rs-component-dialog
 {
 	@extend %component-dialog;
-	background: var(--rs-color-tertiary);
+	background: var(--rs-color-primary);
 	border-radius: 0.25em;
 	color: gray(100);
 	font-size: 1.25rem;

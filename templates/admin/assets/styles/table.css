@@ -51,16 +51,6 @@
 			border-bottom: 0.125rem solid gray(100);
 		}
 
-		& tr.rs-admin-is-children td:first-child
-		{
-			padding-left: 1.5em;
-
-			&:before
-			{
-				@extend %rs-admin-icon-subdirectory-arrow-right;
-			}
-		}
-
 		& tr.rs-admin-is-corrupted
 		{
 			text-decoration: line-through;

@@ -28,7 +28,7 @@
 	&:focus
 	{
 		background: gray(100);
-		border-color: var(--rs-color-primary);
+		border-color: var(--rs-color-secondary);
 	}
 
 	&[disabled],

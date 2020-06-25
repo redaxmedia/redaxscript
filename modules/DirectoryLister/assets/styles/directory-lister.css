@@ -5,8 +5,8 @@
  *    1.1 list
  *    1.2 link
  *    1.3 text
- *    1.4 query
- *      1.4.1 medium min
+ * 2. query
+ *    2.1 medium max
  */
 
 /** @section 1. directory lister */
@@ -31,59 +31,55 @@
 
 .rs-link-directory-lister
 {
-	display: block;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+	flex-grow: 1;
 
 	&:before
 	{
-		font-size: 1.25em;
+		background-position: center;
+		background-repeat: no-repeat;
+		content: '';
+		display: inline-block;
+		height: 1em;
 		margin-right: 0.5em;
 		vertical-align: middle;
+		width: 1em;
 	}
 
-	&.rs-is-directory:before
+	&.rs-is-directory
 	{
-		@extend %rs-icon-folder;
-	}
+		&:before
+		{
+			background-image: svg-load('@mdi/svg/svg/folder.svg', fill = gray(30));
+		}
 
-	&.rs-is-directory.rs-is-parent:before
-	{
-		@extend %rs-icon-folder-open;
+		&.rs-is-parent:before
+		{
+			background-image: svg-load('@mdi/svg/svg/folder-open.svg', fill = gray(30));
+		}
 	}
 
 	&.rs-is-file:before
 	{
-		@extend %rs-icon-file;
+		background-image: svg-load('@mdi/svg/svg/file.svg', fill = gray(30));
 	}
 }
 
 /** @section 1.3 text */
 
-.rs-text-directory-lister
+.rs-text-directory-lister.rs-is-size:after
 {
-	display: none;
-
-	&.rs-is-size:after
-	{
-		content: ' ' attr(data-unit);
-	}
+	content: ' ' attr(data-unit);
+	margin-right: 1em;
 }
 
-/** @section 1.4 query */
+/** @section 2. query */
 
-/** @section 1.4.1 medium min */
+/** @section 2.1 medium max */
 
-@media (--media-medium-min)
+@media (--media-medium-max)
 {
-	.rs-link-directory-lister
-	{
-		flex-basis: 70%;
-	}
-
 	.rs-text-directory-lister
 	{
-		display: block;
+		display: none;
 	}
 }

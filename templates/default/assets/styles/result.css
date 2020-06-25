@@ -13,7 +13,7 @@
 
 .rs-title-result
 {
-	color: var(--rs-color-tertiary);
+	color: var(--rs-color-primary);
 	font-size: 3em;
 	font-weight: 500;
 	margin-bottom: 0.5em;
@@ -58,7 +58,7 @@
 
 .rs-link-result
 {
-	color: var(--rs-color-tertiary);
+	color: var(--rs-color-primary);
 	font-size: 2em;
 }
 

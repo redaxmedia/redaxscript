@@ -67,12 +67,12 @@
 		& a,
 		& span
 		{
-			background: var(--rs-color-primary);
+			background: var(--rs-color-secondary);
 			cursor: pointer;
 
 			&:hover
 			{
-				background: var(--rs-color-primary-light);
+				background: var(--rs-color-secondary-light);
 			}
 		}
 	}
@@ -106,7 +106,7 @@
 {
 	.rs-list-menu
 	{
-		background: var(--rs-color-primary);
+		background: var(--rs-color-secondary);
 		width: 75%;
 
 		& li
@@ -116,12 +116,12 @@
 
 		& > li > span
 		{
-			background: var(--rs-color-primary-dark);
+			background: var(--rs-color-secondary-dark);
 		}
 
 		& a:hover
 		{
-			background: var(--rs-color-primary-light);
+			background: var(--rs-color-secondary-light);
 		}
 	}
 
@@ -146,7 +146,7 @@
 		&:before,
 		&:after
 		{
-			background: var(--rs-color-primary);
+			background: var(--rs-color-secondary);
 			content: '';
 			height: 0.25em;
 			left: 25%;
@@ -158,7 +158,7 @@
 
 	.rs-fn-status-menu:not(:checked) + .rs-has-menu .rs-label-toggle-menu:after
 	{
-		box-shadow: 0 -0.5em 0 var(--rs-color-primary), 0 0.5em 0 var(--rs-color-primary);
+		box-shadow: 0 -0.5em 0 var(--rs-color-secondary), 0 0.5em 0 var(--rs-color-secondary);
 	}
 
 	.rs-fn-status-menu:checked + .rs-has-menu .rs-label-toggle-menu

@@ -11,7 +11,7 @@
 
 .rs-install-body
 {
-	background: var(--rs-color-tertiary);
+	background: var(--rs-color-primary);
 	font: 1em var(--rs-font-primary);
 }
 

@@ -8,7 +8,7 @@
 
 .rs-list-breadcrumb
 {
-	background: var(--rs-color-tertiary);
+	background: var(--rs-color-primary);
 	border-radius: 0.125em;
 	color: gray(80);
 	display: inline-block;
@@ -29,13 +29,14 @@
 
 		&:before
 		{
-			@extend %rs-icon-chevron-right;
+			background: svg-load('@mdi/svg/svg/chevron-right.svg', fill = gray(80)) center no-repeat;
+			bottom: 0.125em;
+			content: '';
 			left: 0;
-			line-height: 0.875em;
 			position: absolute;
 			right: 0;
-			text-align: center;
 			text-indent: 0;
+			top: 0;
 		}
 	}
 }

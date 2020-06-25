@@ -42,7 +42,6 @@ grunt serve [options]
 
 -L, --live-reload
 -O, --open-browser
--W, --webfont-compat
 -N, --no-cache
 -D, --debug-mode
 ```

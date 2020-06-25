@@ -51,28 +51,30 @@
 
 		&:before
 		{
-			font-size: 1.5em;
+			background-position: center;
+			background-repeat: no-repeat;
+			bottom: 0;
+			content: '';
 			left: 0;
 			position: absolute;
 			right: 0;
-			text-align: center;
 			text-indent: 0;
 			top: 0;
 		}
 
 		&.rs-admin-link-unpublish:before
 		{
-			@extend %rs-admin-icon-eye-off;
+			background-image: svg-load('@mdi/svg/svg/eye-off.svg', fill = gray(70));
 		}
 
 		&.rs-admin-link-edit:before
 		{
-			@extend %rs-admin-icon-pencil;
+			background-image: svg-load('@mdi/svg/svg/pencil.svg', fill = gray(70));
 		}
 
 		&.rs-admin-link-delete:before
 		{
-			@extend %rs-admin-icon-delete;
+			background-image: svg-load('@mdi/svg/svg/delete.svg', fill = gray(70));
 		}
 	}
 }

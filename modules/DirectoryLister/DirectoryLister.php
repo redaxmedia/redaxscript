@@ -18,7 +18,6 @@ use function is_array;
 use function is_dir;
 use function is_file;
 use function pathinfo;
-use function str_replace;
 use function urldecode;
 
 /**
@@ -66,12 +65,7 @@ class DirectoryLister extends Module\Metadata
 			[
 				'directory' => 'rs-is-directory',
 				'directoryParent' => 'rs-is-directory rs-is-parent',
-				'file' => 'rs-is-file',
-				'fileText' => 'rs-is-file rs-is-text',
-				'fileImage' => 'rs-is-file rs-is-image',
-				'fileMusic' => 'rs-is-file rs-is-music',
-				'fileVideo' => 'rs-is-file rs-is-video',
-				'fileArchive' => 'rs-is-file rs-is-archive'
+				'file' => 'rs-is-file'
 			]
 		],
 		'size' =>
@@ -79,26 +73,22 @@ class DirectoryLister extends Module\Metadata
 			'unit' => 'kB',
 			'divider' => 1024
 		],
-		'replaceKey' =>
-		[
-			'extension'	=> '{extension}'
-		],
 		'extension' =>
 		[
-			'doc' => 'fileText',
-			'txt' => 'fileText',
-			'gif' => 'fileImage',
-			'jpg' => 'fileImage',
-			'pdf' => 'fileImage',
-			'png' => 'fileImage',
-			'mp3' => 'fileMusic',
-			'wav' => 'fileMusic',
-			'avi' => 'fileVideo',
-			'mov' => 'fileVideo',
-			'mp4' => 'fileVideo',
-			'tar' => 'fileArchive',
-			'rar' => 'fileArchive',
-			'zip' => 'fileArchive'
+			'doc' => 'text',
+			'txt' => 'text',
+			'gif' => 'image',
+			'jpg' => 'image',
+			'pdf' => 'image',
+			'png' => 'image',
+			'mp3' => 'music',
+			'wav' => 'music',
+			'avi' => 'video',
+			'mov' => 'video',
+			'mp4' => 'video',
+			'tar' => 'archive',
+			'rar' => 'archive',
+			'zip' => 'archive'
 		]
 	];
 
@@ -291,8 +281,8 @@ class DirectoryLister extends Module\Metadata
 		foreach ($listerFilesystemArray as $value)
 		{
 			$path = $directory . DIRECTORY_SEPARATOR . $value;
+			$fileName = pathinfo($path, PATHINFO_FILENAME);
 			$fileExtension = pathinfo($path, PATHINFO_EXTENSION);
-			$text = $this->_replace($value, $fileExtension, $optionArray['replace']);
 			$isDir = is_dir($path);
 			$isFile = is_file($path) && is_array($this->_optionArray['extension']) && array_key_exists($fileExtension, $this->_optionArray['extension']);
 			$dater->init(filectime($path));
@@ -315,7 +305,7 @@ class DirectoryLister extends Module\Metadata
 								'title' => $this->_language->get('_directory_lister')['directory']
 							])
 							->addClass($this->_optionArray['className']['types']['directory'])
-							->text($text)
+							->text($value)
 					)
 					->append($textSizeElement);
 			}
@@ -335,10 +325,13 @@ class DirectoryLister extends Module\Metadata
 							[
 								'href' => $this->_registry->get('root') . '/' . $path,
 								'target' => '_blank',
-								'title' => $this->_language->get('_directory_lister')['file']
+								'title' => $this->_language->get('_directory_lister')['file'],
+								'data-file-name' => $fileName,
+								'data-file-extension' => $fileExtension,
+								'data-file-type' => $fileType
 							])
-							->addClass($this->_optionArray['className']['types'][$fileType])
-							->text($text)
+							->addClass($this->_optionArray['className']['types']['file'])
+							->text($value)
 					)
 					->append(
 						$textSizeElement
@@ -357,31 +350,5 @@ class DirectoryLister extends Module\Metadata
 			}
 		}
 		return $outputItem;
-	}
-
-	/**
-	 * replace
-	 *
-	 * @param string $text
-	 * @param string $fileExtension
-	 * @param array|null $replaceArray
-	 *
-	 * @return string
-	 */
-
-	protected function _replace(string $text, string $fileExtension, ?array $replaceArray = []) : string
-	{
-		if (is_array($replaceArray))
-		{
-			foreach ($replaceArray as $replaceKey => $replaceValue)
-			{
-				if ($replaceKey === $this->_optionArray['replaceKey']['extension'])
-				{
-					$replaceKey = $fileExtension;
-				}
-				$text = str_replace($replaceKey, $replaceValue, $text);
-			}
-		}
-		return $text;
 	}
 }

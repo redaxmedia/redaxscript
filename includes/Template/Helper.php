@@ -200,18 +200,18 @@ class Helper
 	 *
 	 * @since 4.0.0
 	 *
-	 * @param string|array $file
+	 * @param string|array $path
 	 *
 	 * @return string|null
 	 */
 
-	public static function getContent($file = null) : ?string
+	public static function getContent($path = null) : ?string
 	{
 		$output = null;
 
 		/* process file */
 
-		foreach ((array)$file as $value)
+		foreach ((array)$path as $value)
 		{
 			$output .= file_get_contents($value);
 		}

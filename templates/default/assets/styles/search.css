@@ -23,6 +23,7 @@
 
 .rs-field-search
 {
+	color: gray(20);
 	flex-grow: 1;
 	padding: 0.5em;
 }
@@ -32,25 +33,26 @@
 .rs-button-search
 {
 	background: transparent;
-	color: var(--rs-color-tertiary);
+	color: var(--rs-color-primary);
 	flex-basis: 2em;
 	position: relative;
 	text-indent: -999em;
-	transition: color 0.2s;
 
-	&:hover
+	@svg-load rs-icon-search url('@mdi/svg/svg/magnify.svg')
 	{
-		color: gray(0);
+		fill: var(--rs-color-primary);
 	}
 
 	&:after
 	{
-		@extend %rs-icon-magnify;
-		font-size: 1.125em;
-		left: 0;
-		margin-top: -0.125em;
+		background: svg-inline(rs-icon-search) center no-repeat;
+		bottom: 0;
+		content: '';
 		position: absolute;
-		right: 0;
+		right: 0.5em;
 		text-indent: 0;
+		top: 0;
+		transform: scale(1.125);
+		width: 1em;
 	}
 }
