@@ -130,9 +130,7 @@ module.exports = () =>
 			[
 				'assets/styles/*.css',
 				'templates/*/assets/styles/*.css',
-				'!templates/*/assets/styles/_template.css',
-				'modules/*/assets/styles/*.css',
-				'!modules/*/assets/styles/_template.css'
+				'modules/*/assets/styles/*.css'
 			],
 			options:
 			{
@@ -153,9 +151,7 @@ module.exports = () =>
 				'assets/styles/*.css',
 				'!assets/styles/_query.css',
 				'templates/*/assets/styles/*.css',
-				'!templates/*/assets/styles/_template.css',
-				'modules/*/assets/styles/*.css',
-				'!modules/*/assets/styles/_template.css'
+				'modules/*/assets/styles/*.css'
 			],
 			options:
 			{

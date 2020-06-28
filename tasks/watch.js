@@ -4,18 +4,6 @@ module.exports = grunt =>
 
 	const config =
 	{
-		fonts:
-		{
-			files:
-			[
-				'templates/**/assets/styles/**/_template.css',
-				'modules/**/assets/styles/**/_template.css'
-			],
-			tasks:
-			[
-				'build-fonts'
-			]
-		},
 		styles:
 		{
 			files:
