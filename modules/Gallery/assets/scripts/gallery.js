@@ -6,7 +6,7 @@ rs.modules.Gallery.process = optionArray =>
 		...optionArray
 	};
 	const galleryList = document.querySelectorAll(OPTION.selector);
-	const galleryTemplate = document.querySelector(optionArray.template);
+	const galleryTemplate = document.querySelector(OPTION.template);
 	const imageArray = [];
 
 	if (galleryList)
@@ -29,13 +29,13 @@ rs.modules.Gallery.process = optionArray =>
 				linkElement.addEventListener('click', event =>
 				{
 					const photoSwipe = new window.PhotoSwipe(galleryTemplate, OPTION.ui, imageArray,
-					[
+					{
 						...OPTION.photoswipe,
 						...
 						{
 							index: Number(linkElement.dataset.index)
 						}
-					]);
+					});
 
 					photoSwipe.init();
 					event.preventDefault();

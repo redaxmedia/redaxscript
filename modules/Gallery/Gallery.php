@@ -115,7 +115,7 @@ class Gallery extends Module\Metadata
 			->init('foot')
 			->appendFile(
 			[
-				'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe.js',
+				'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe.min.js',
 				'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe-ui-default.min.js',
 				'modules/Gallery/assets/scripts/init.js',
 				'modules/Gallery/dist/scripts/gallery.min.js'

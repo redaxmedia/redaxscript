@@ -9,7 +9,6 @@ rs.modules.Gallery =
 		ui: window.PhotoSwipeUI_Default,
 		photoswipe:
 		{
-			index: 0,
 			bgOpacity: 0.8
 		}
 	}

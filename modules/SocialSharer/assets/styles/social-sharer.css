@@ -36,7 +36,7 @@
 
 	&:before
 	{
-		background: gray(30) center no-repeat;
+		background: gray(90) center no-repeat;
 		border-radius: 50%;
 		bottom: 0;
 		content: '';

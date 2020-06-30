@@ -2,11 +2,15 @@
  * @tableofcontents
  *
  * 1. gallery
+ *    1.1 list
+ *    1.2 button
  * 2. query
- *      2.1.1 small min
+ *    2.1 small min
  */
 
 /** @section 1. gallery */
+
+/** @section 1.1 list */
 
 .rs-list-gallery
 {
@@ -21,9 +25,68 @@
 	}
 }
 
+/** @section 1.2 button */
+
+.pswp__button
+{
+	background-position: center;
+	background-repeat: no-repeat;
+
+	&:before,
+	&:after
+	{
+		background: none;
+	}
+}
+.pswp__button--arrow--left,
+.pswp__button--arrow--right
+{
+	transform: scale(2);
+}
+
+.pswp__button--arrow--left
+{
+	background-image: svg-load('@mdi/svg/svg/chevron-left.svg', fill = gray(80));
+}
+
+.pswp__button--arrow--right
+{
+	background-image: svg-load('@mdi/svg/svg/chevron-right.svg', fill = gray(80));
+}
+
+.pswp__button--close
+{
+	background-image: svg-load('@mdi/svg/svg/close.svg', fill = gray(80));
+}
+
+.pswp__button--fs
+{
+	background-image: svg-load('@mdi/svg/svg/fullscreen.svg', fill = gray(80));
+}
+
+.pswp--fs .pswp__button--fs
+{
+	background-image: svg-load('@mdi/svg/svg/fullscreen-exit.svg', fill = gray(80));
+}
+
+.pswp__button--share
+{
+	background-image: svg-load('@mdi/svg/svg/share.svg', fill = gray(80));
+}
+
+.pswp__button--zoom
+{
+	background-image: svg-load('@mdi/svg/svg/magnify-plus-outline.svg', fill = gray(80));
+}
+
+.pswp--zoomed-in .pswp__button--zoom
+{
+	background-image: svg-load('@mdi/svg/svg/magnify-minus-outline.svg', fill = gray(80));
+}
+
 /** @section 2. query */
 
-/** @section 2.1.1 small min */
+/** @section 2.1 small min */
 
 @media (--media-small-min)
 {

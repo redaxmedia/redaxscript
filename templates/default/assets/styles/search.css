@@ -32,7 +32,6 @@
 
 .rs-button-search
 {
-	background: transparent;
 	color: var(--rs-color-primary);
 	flex-basis: 2em;
 	position: relative;

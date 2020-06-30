@@ -19,7 +19,7 @@ Syntax for the content tag:
 		{
 			"quality": 80,
 			"height": 200,
-			"order: "asc"
+			"order": "asc"
 		}
 	}
 }
