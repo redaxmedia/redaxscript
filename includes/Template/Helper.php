@@ -6,7 +6,9 @@ use Redaxscript\Header;
 use Redaxscript\Language;
 use Redaxscript\Model;
 use Redaxscript\Registry;
+use function base64_encode;
 use function file_get_contents;
+use function is_file;
 
 /**
  * helper class to provide template helper
@@ -193,6 +195,26 @@ class Helper
 	public static function getResponseCode() : int
 	{
 		return Header::responseCode();
+	}
+
+	/**
+	 * get the icon
+	 *
+	 * @since 4.3.0
+	 *
+	 * @param string $path
+	 * @param string $type
+	 *
+	 * @return string
+	 */
+
+	public static function getIcon(string $path = null, string $type = 'image/svg+xml') : string
+	{
+		if (is_file($path))
+		{
+			return 'data:' . $type . ';base64,' . base64_encode(file_get_contents($path));
+		}
+		return 'data:,';
 	}
 
 	/**

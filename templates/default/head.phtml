@@ -27,8 +27,8 @@
 <?php echo Tag::link()
 	->init()
 	->append(['href' => Helper::getCanonical(), 'rel' => 'canonical'])
-	->append(['href' => 'templates/default/assets/images/logo.svg', 'rel' => 'shortcut icon'])
-	->append(['href' => 'templates/default/assets/images/logo.svg', 'rel' => 'apple-touch-icon'])
+	->append(['href' => Helper::getIcon('templates/default/assets/images/logo.svg'), 'rel' => 'shortcut icon'])
+	->append(['href' => Helper::getIcon('templates/default/assets/images/logo.svg'), 'rel' => 'apple-touch-icon'])
 	->append(['href' => 'https://images.unsplash.com', 'rel' => 'preconnect'])
 	->append(['href' => 'https://fonts.gstatic.com', 'rel' => 'preconnect'])
 	->appendFile(
