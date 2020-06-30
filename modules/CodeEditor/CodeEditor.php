@@ -48,7 +48,7 @@ class CodeEditor extends Module\Module
 			$link = Head\Link::getInstance();
 			$link
 				->init()
-				->appendFile('modules/CodeEditor/dist/styles/ace.min.css');
+				->appendFile('modules/CodeEditor/dist/styles/code-editor.min.css');
 
 			/* script */
 
