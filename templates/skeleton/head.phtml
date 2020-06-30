@@ -27,7 +27,7 @@
 <?php echo Tag::link()
 	->init()
 	->append(['href' => Helper::getCanonical(), 'rel' => 'canonical'])
-	->append(['href' => 'data:image/png;base64,', 'rel' => 'shortcut icon'])
+	->append(['href' => Helper::getIcon(), 'rel' => 'shortcut icon'])
 	->append(['href' => 'https://fonts.gstatic.com', 'rel' => 'preconnect'])
 	->appendFile(
 	[

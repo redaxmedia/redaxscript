@@ -170,7 +170,12 @@ class Article extends ViewAbstract
 						);
 				}
 				$contentParser->process($value->text, $articleModel->getRouteById($value->id));
-				$outputFragment .= $boxElement->html($contentParser->getOutput()) . $byline->render($value->date, $value->author) . Module\Hook::trigger('articleFragmentEnd', (array)$value);
+				$outputFragment .= $boxElement->html($contentParser->getOutput());
+				if ($value->byline)
+				{
+					$outputFragment .= $byline->render($value->date, $value->author);
+				}
+				$outputFragment .= Module\Hook::trigger('articleFragmentEnd', (array)$value);
 
 				/* admin dock */
 
