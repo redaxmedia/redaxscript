@@ -21,7 +21,7 @@ class Name implements ValidatorInterface
 	 * @var string
 	 */
 
-	protected $_pattern = '^(([a-zA-Z0-9]\s)*([a-zA-Z0-9])){3,100}$';
+	protected $_pattern = '^(?=.{3,100}$)\S.*\S$';
 
 	/**
 	 * get the pattern

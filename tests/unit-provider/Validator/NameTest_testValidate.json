@@ -8,6 +8,18 @@
 		true
 	],
 	[
+		"Test-Test",
+		true
+	],
+	[
+		"Test'Test",
+		true
+	],
+	[
+		"Test,Test",
+		true
+	],
+	[
 		null,
 		false
 	],
@@ -17,14 +29,6 @@
 	],
 	[
 		" Test ",
-		false
-	],
-	[
-		"--Test--",
-		false
-	],
-	[
-		"++Test++Test++",
 		false
 	],
 	[
