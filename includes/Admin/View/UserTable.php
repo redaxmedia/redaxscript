@@ -186,6 +186,10 @@ class UserTable extends ViewAbstract
 
 		/* handle session */
 
+		if (!$last)
+		{
+			return $this->_language->get('session_no');
+		}
 		if ($daterLast->getDateTime() > $daterNow->getDateTime()->modify('-1 minute'))
 		{
 			return $this->_language->get('online');

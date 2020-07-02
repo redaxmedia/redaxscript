@@ -8,7 +8,7 @@ rs.modules.FormValidator =
 			selector: 'form.rs-js-validate',
 			element:
 			{
-				field: 'input, textarea'
+				field: 'input, select, textarea'
 			},
 			className:
 			{
@@ -26,7 +26,7 @@ rs.modules.FormValidator =
 			selector: 'form.rs-admin-js-validate',
 			element:
 			{
-				field: 'input, textarea'
+				field: 'input, select, textarea'
 			},
 			className:
 			{
