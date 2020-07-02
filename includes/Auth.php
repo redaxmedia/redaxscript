@@ -393,7 +393,7 @@ class Auth
 
 		/* set the session */
 
-		if ($userArray && $permissionArray)
+		if ($userArray)
 		{
 			$this->_setAuth(
 			[

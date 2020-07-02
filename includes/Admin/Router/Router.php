@@ -187,6 +187,7 @@ class Router extends RouterAbstract
 		$adminParameter = $this->getAdmin();
 		$tableParameter = $this->getTable();
 		$idParameter = $this->getId();
+		$myId = (int)$this->_registry->get('myId');
 		$editArray =
 		[
 			'edit',
@@ -201,7 +202,7 @@ class Router extends RouterAbstract
 		$permissionDelete = $adminParameter === 'delete' && $this->_registry->get('tableDelete');
 		$permissionInstall = $adminParameter === 'install' && $this->_registry->get('tableInstall');
 		$permissionUninstall = $adminParameter === 'uninstall' && $this->_registry->get('tableUninstall');
-		$permissionProfile = $tableParameter === 'users' && $idParameter === $this->_registry->get('myId');
+		$permissionProfile = $tableParameter === 'users' && $idParameter === $myId;
 		return !$permissionNew && !$permissionEdit && !$permissionDelete && !$permissionInstall && !$permissionUninstall && !$permissionProfile;
 	}
 
