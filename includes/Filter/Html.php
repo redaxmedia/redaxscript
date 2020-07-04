@@ -23,12 +23,12 @@ class Html implements FilterInterface
 	 * @param string $html html to be sanitized
 	 * @param bool $filter optional filter
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public function sanitize(string $html = null, bool $filter = true) : string
+	public function sanitize(string $html = null, bool $filter = true) : ?string
 	{
 		$purifier = new BaseHtml\Purifier();
-		return $purifier->purify($html, $filter);
+		return $purifier->purify($html, $filter) ? : null;
 	}
 }

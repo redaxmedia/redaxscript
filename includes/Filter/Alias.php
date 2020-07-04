@@ -25,14 +25,8 @@ class Alias implements FilterInterface
 
 	protected $_patternArray =
 	[
-		[
-			'search' => '[^a-zA-Z0-9]',
-			'replace' => ' '
-		],
-		[
-			'search' => '\s+',
-			'replace' => '-'
-		]
+		'search' => '[^a-zA-Z0-9]+',
+		'replace' => '-'
 	];
 
 	/**
@@ -45,13 +39,9 @@ class Alias implements FilterInterface
 	 * @return string
 	 */
 
-	public function sanitize(string $alias = null) : string
+	public function sanitize(string $alias = null) : ?string
 	{
-		$output = iconv('utf-8', 'ascii//translit', $alias);
-		foreach ($this->_patternArray as $pattern)
-		{
-			$output = preg_replace('/' . $pattern['search'] . '/', $pattern['replace'], trim($output));
-		}
-		return $output;
+		$output = iconv('utf-8', 'ascii//translit', trim($alias));
+		return preg_replace('/' . $this->_patternArray['search'] . '/', $this->_patternArray['replace'], $output) ? : null;
 	}
 }

@@ -342,6 +342,10 @@ class Router extends RouterAbstract
 
 	protected function _processInstall() : string
 	{
+		$emailFilter = new Filter\Email();
+		$passwordFilter = new Filter\Password();
+		$textFilter = new Filter\Text();
+		$userFilter = new Filter\User();
 		$this->_request->setSession('installArray',
 		[
 			'dbType' => $this->_request->getPost('db-type'),
@@ -350,10 +354,10 @@ class Router extends RouterAbstract
 			'dbUser' => $this->_request->getPost('db-user'),
 			'dbPassword' => $this->_request->getPost('db-password'),
 			'dbPrefix' => $this->_request->getPost('db-prefix'),
-			'adminName' => $this->_request->getPost('admin-name'),
-			'adminUser' => $this->_request->getPost('admin-user'),
-			'adminPassword' => $this->_request->getPost('admin-password'),
-			'adminEmail' => $this->_request->getPost('admin-email')
+			'adminName' => $textFilter->sanitize($this->_request->getPost('admin-name')),
+			'adminUser' => $userFilter->sanitize($this->_request->getPost('admin-user')),
+			'adminPassword' => $passwordFilter->sanitize($this->_request->getPost('admin-password')),
+			'adminEmail' => $emailFilter->sanitize($this->_request->getPost('admin-email')),
 		]);
 		$installController = new Controller\Install($this->_registry, $this->_request, $this->_language, $this->_config);
 		return $installController->process();

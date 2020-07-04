@@ -20,13 +20,13 @@ class Number implements FilterInterface
 	 *
 	 * @since 4.0.0
 	 *
-	 * @param string $number number to be sanitized
+	 * @param int|string $number number to be sanitized
 	 *
-	 * @return int
+	 * @return int|null
 	 */
 
-	public function sanitize(string $number = null) : int
+	public function sanitize($number = null) : ?int
 	{
-		return (int)filter_var($number, FILTER_SANITIZE_NUMBER_INT);
+		return (int)filter_var($number, FILTER_SANITIZE_NUMBER_INT) ? : null;
 	}
 }

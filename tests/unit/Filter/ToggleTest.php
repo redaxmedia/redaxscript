@@ -41,6 +41,6 @@ class ToggleTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect, $actual);
+		$this->assertSame($expect, $actual);
 	}
 }

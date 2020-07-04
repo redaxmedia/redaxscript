@@ -137,9 +137,9 @@ class Article extends ControllerAbstract
 	{
 		$aliasFilter = new Filter\Alias();
 		$htmlFilter = new Filter\Html();
-		$nameFilter= new Filter\Name();
 		$numberFilter = new Filter\Number();
 		$specialFilter = new Filter\Special();
+		$textFilter= new Filter\Text();
 		$toggleFilter = new Filter\Toggle();
 
 		/* sanitize post */
@@ -147,16 +147,16 @@ class Article extends ControllerAbstract
 		return
 		[
 			'id' => $numberFilter->sanitize($this->_request->getPost('id')),
-			'title' => $nameFilter->sanitize($this->_request->getPost('title')),
+			'title' => $textFilter->sanitize($this->_request->getPost('title')),
 			'alias' => $aliasFilter->sanitize($this->_request->getPost('alias')),
-			'description' => $this->_request->getPost('description'),
-			'keywords' => $this->_request->getPost('keywords'),
-			'robots' => $this->_request->getPost('robots'),
+			'description' => $textFilter->sanitize($this->_request->getPost('description')),
+			'keywords' => $textFilter->sanitize($this->_request->getPost('keywords')),
+			'robots' => $numberFilter->sanitize($this->_request->getPost('robots')),
 			'text' => $htmlFilter->sanitize($this->_request->getPost('text'), $this->_registry->get('filter')),
 			'language' => $specialFilter->sanitize($this->_request->getPost('language')),
 			'template' => $specialFilter->sanitize($this->_request->getPost('template')),
-			'sibling' => $this->_request->getPost('sibling'),
-			'category' => $this->_request->getPost('category'),
+			'sibling' => $numberFilter->sanitize($this->_request->getPost('sibling')),
+			'category' => $numberFilter->sanitize($this->_request->getPost('category')),
 			'headline' => $toggleFilter->sanitize($this->_request->getPost('headline')),
 			'byline' => $toggleFilter->sanitize($this->_request->getPost('byline')),
 			'comments' => $toggleFilter->sanitize($this->_request->getPost('comments')),
@@ -179,8 +179,8 @@ class Article extends ControllerAbstract
 
 	protected function _validatePost(array $postArray = []) : array
 	{
-		$nameValidator = new Validator\Name();
 		$aliasValidator = new Validator\Alias();
+		$nameValidator = new Validator\Name();
 		$articleModel = new Admin\Model\Article();
 		$validateArray = [];
 

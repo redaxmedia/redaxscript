@@ -23,13 +23,13 @@ class BooleanTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $boolean
+	 * @param bool|string $boolean
 	 * @param bool $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testSanitize(string $boolean = null, bool $expect = null) : void
+	public function testSanitize($boolean = null, bool $expect = null) : void
 	{
 		/* setup */
 
@@ -41,6 +41,6 @@ class BooleanTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect, $actual);
+		$this->assertSame($expect, $actual);
 	}
 }

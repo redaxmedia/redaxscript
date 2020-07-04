@@ -107,21 +107,21 @@ class Register extends ControllerAbstract
 	protected function _sanitizePost() : array
 	{
 		$emailFilter = new Filter\Email();
-		$nameFilter = new Filter\Name();
 		$numberFilter = new Filter\Number();
 		$passwordFilter = new Filter\Password();
+		$textFilter = new Filter\Text();
 		$userFilter = new Filter\User();
 
 		/* sanitize post */
 
 		return
 		[
-			'name' => $nameFilter->sanitize($this->_request->getPost('name')),
+			'name' => $textFilter->sanitize($this->_request->getPost('name')),
 			'user' => $userFilter->sanitize($this->_request->getPost('user')),
 			'password' => $passwordFilter->sanitize($this->_request->getPost('password')),
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
 			'task' => $numberFilter->sanitize($this->_request->getPost('task')),
-			'solution' => $this->_request->getPost('solution')
+			'solution' => $textFilter->sanitize($this->_request->getPost('solution'))
 		];
 	}
 

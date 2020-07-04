@@ -127,8 +127,8 @@ class Group extends ControllerAbstract
 	protected function _sanitizePost() : array
 	{
 		$aliasFilter = new Filter\Alias();
-		$nameFilter = new Filter\Name();
 		$numberFilter = new Filter\Number();
+		$textFilter = new Filter\Text();
 		$toggleFilter = new Filter\Toggle();
 
 		/* sanitize post */
@@ -136,9 +136,9 @@ class Group extends ControllerAbstract
 		return
 		[
 			'id' => $numberFilter->sanitize($this->_request->getPost('id')),
-			'name' => $nameFilter->sanitize($this->_request->getPost('name')),
+			'name' => $textFilter->sanitize($this->_request->getPost('name')),
 			'alias' => $aliasFilter->sanitize($this->_request->getPost('alias')),
-			'description' => $this->_request->getPost('description'),
+			'description' => $textFilter->sanitize($this->_request->getPost('description')),
 			'categories' => json_encode($this->_request->getPost('categories')),
 			'articles' => json_encode($this->_request->getPost('articles')),
 			'extras' => json_encode($this->_request->getPost('extras')),

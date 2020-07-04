@@ -127,9 +127,9 @@ class Extra extends ControllerAbstract
 	{
 		$aliasFilter = new Filter\Alias();
 		$htmlFilter = new Filter\Html();
-		$nameFilter= new Filter\Name();
 		$numberFilter = new Filter\Number();
 		$specialFilter = new Filter\Special();
+		$textFilter= new Filter\Text();
 		$toggleFilter = new Filter\Toggle();
 
 		/* sanitize post */
@@ -137,13 +137,13 @@ class Extra extends ControllerAbstract
 		return
 		[
 			'id' => $numberFilter->sanitize($this->_request->getPost('id')),
-			'title' => $nameFilter->sanitize($this->_request->getPost('title')),
+			'title' => $textFilter->sanitize($this->_request->getPost('title')),
 			'alias' => $aliasFilter->sanitize($this->_request->getPost('alias')),
 			'text' => $htmlFilter->sanitize($this->_request->getPost('text'), $this->_registry->get('filter')),
 			'language' => $specialFilter->sanitize($this->_request->getPost('language')),
-			'sibling' => $this->_request->getPost('sibling'),
-			'category' => $this->_request->getPost('category'),
-			'article' => $this->_request->getPost('article'),
+			'sibling' => $numberFilter->sanitize($this->_request->getPost('sibling')),
+			'category' => $numberFilter->sanitize($this->_request->getPost('category')),
+			'article' => $numberFilter->sanitize($this->_request->getPost('article')),
 			'headline' => $toggleFilter->sanitize($this->_request->getPost('headline')),
 			'status' => $toggleFilter->sanitize($this->_request->getPost('status')),
 			'rank' => $numberFilter->sanitize($this->_request->getPost('rank')),

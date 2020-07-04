@@ -26,10 +26,10 @@ class Path implements FilterInterface
 	 * @param string $path path to be sanitized
 	 * @param string $separator directory separator
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public function sanitize(string $path = null, string $separator = DIRECTORY_SEPARATOR) : string
+	public function sanitize(string $path = null, string $separator = DIRECTORY_SEPARATOR) : ?string
 	{
 		$pathArray = explode($separator, $path);
 		foreach ($pathArray as $key => $value)
@@ -39,6 +39,6 @@ class Path implements FilterInterface
 				$pathArray[$key] = null;
 			}
 		}
-		return implode($separator, array_map('trim', array_filter($pathArray)));
+		return implode($separator, array_map('trim', array_filter($pathArray))) ? : null;
 	}
 }

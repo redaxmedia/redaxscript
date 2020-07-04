@@ -33,8 +33,8 @@ class Special implements FilterInterface
 	 * @return string
 	 */
 
-	public function sanitize(string $special = null) : string
+	public function sanitize(string $special = null) : ?string
 	{
-		return preg_replace('/' . $this->_pattern . '/i', null, $special);
+		return preg_replace('/' . $this->_pattern . '/i', null, $special) ? : null;
 	}
 }

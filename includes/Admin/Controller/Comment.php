@@ -131,7 +131,7 @@ class Comment extends ControllerAbstract
 			'url' => $urlFilter->sanitize($this->_request->getPost('url')),
 			'text' => $htmlFilter->sanitize($this->_request->getPost('text'), $this->_registry->get('filter')),
 			'language' => $specialFilter->sanitize($this->_request->getPost('language')),
-			'article' => $this->_request->getPost('article'),
+			'article' => $numberFilter->sanitize($this->_request->getPost('article')),
 			'status' => $toggleFilter->sanitize($this->_request->getPost('status')),
 			'rank' => $numberFilter->sanitize($this->_request->getPost('rank')),
 			'access' => json_encode($this->_request->getPost('access')),

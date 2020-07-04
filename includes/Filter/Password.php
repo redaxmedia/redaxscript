@@ -30,11 +30,11 @@ class Password implements FilterInterface
 	 *
 	 * @param string $password plain password
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public function sanitize(string $password = null) : string
+	public function sanitize(string $password = null) : ?string
 	{
-		return preg_replace('/' . $this->_pattern . '/i', null, $password);
+		return preg_replace('/' . $this->_pattern . '/i', null, $password) ? : null;
 	}
 }

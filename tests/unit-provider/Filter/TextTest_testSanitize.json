@@ -1,7 +1,15 @@
 [
 	[
+		null,
+		null
+	],
+	[
 		"Test",
 		"Test"
+	],
+	[
+		1337,
+		"1337"
 	],
 	[
 		"Test Test",
@@ -12,11 +20,11 @@
 		"Test"
 	],
 	[
-		" -- Test -- ",
-		"Test"
+		"-Test-",
+		"-Test-"
 	],
 	[
-		" ++ Test Test ++ ",
-		"Test Test"
+		"<div>",
+		null
 	]
 ]

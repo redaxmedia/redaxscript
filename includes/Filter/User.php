@@ -31,11 +31,11 @@ class User implements FilterInterface
 	 *
 	 * @param string $user user to be sanitized
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public function sanitize(string $user = null) : string
+	public function sanitize(string $user = null) : ?string
 	{
-		return trim(preg_replace('/' . $this->_pattern . '/i', null, $user));
+		return trim(preg_replace('/' . $this->_pattern . '/i', null, $user)) ? : null;
 	}
 }

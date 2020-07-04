@@ -133,10 +133,10 @@ class User extends ControllerAbstract
 	{
 		$emailFilter = new Filter\Email();
 		$numberFilter = new Filter\Number();
-		$nameFilter = new Filter\Name();
 		$passwordFilter = new Filter\Password();
-		$toggleFilter = new Filter\Toggle();
 		$specialFilter = new Filter\Special();
+		$textFilter = new Filter\Text();
+		$toggleFilter = new Filter\Toggle();
 		$userFilter = new Filter\User();
 
 		/* sanitize post */
@@ -144,9 +144,9 @@ class User extends ControllerAbstract
 		return
 		[
 			'id' => $numberFilter->sanitize($this->_request->getPost('id')),
-			'name' => $nameFilter->sanitize($this->_request->getPost('name')),
+			'name' => $textFilter->sanitize($this->_request->getPost('name')),
 			'user' => $userFilter->sanitize($this->_request->getPost('user')),
-			'description' => $this->_request->getPost('description'),
+			'description' => $textFilter->sanitize($this->_request->getPost('description')),
 			'password' => $passwordFilter->sanitize($this->_request->getPost('password')),
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
 			'language' => $specialFilter->sanitize($this->_request->getPost('language')),

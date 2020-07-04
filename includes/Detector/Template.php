@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Detector;
 
+use Redaxscript\Filter;
 use Redaxscript\Model;
 
 /**
@@ -25,13 +26,14 @@ class Template extends DetectorAbstract
 	{
 		$settingModel = new Model\Setting();
 		$contentModel = new Model\Content();
+		$specialFilter = new Filter\Special();
 		$dbStatus = $this->_registry->get('dbStatus');
 		$lastTable = $this->_registry->get('lastTable');
 		$lastId = $this->_registry->get('lastId');
 		$path = 'templates' . DIRECTORY_SEPARATOR . $this->_filePlaceholder . DIRECTORY_SEPARATOR . 'index.phtml';
 		$setupArray =
 		[
-			'query' => $this->_request->getQuery('t'),
+			'query' => $specialFilter->sanitize($this->_request->getQuery('t')),
 			'session' => $this->_request->getSession('template'),
 			'contents' => $contentModel->getByTableAndId($lastTable, $lastId)->template,
 			'settings' => $dbStatus === 2 ? $settingModel->get('template') : null,

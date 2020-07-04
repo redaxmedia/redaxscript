@@ -1,14 +1,18 @@
 [
 	[
-		"test@redaxscript.com",
-		"test@redaxscript.com"
+		null,
+		null
 	],
 	[
 		"test@redaxscript.com",
 		"test@redaxscript.com"
 	],
 	[
-		"test @ redaxscript . com",
+		"test@redaxscript.com",
+		"test@redaxscript.com"
+	],
+	[
+		" test @ redaxscript . com ",
 		"test@redaxscript.com"
 	],
 	[

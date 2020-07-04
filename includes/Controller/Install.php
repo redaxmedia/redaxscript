@@ -166,8 +166,9 @@ class Install extends ControllerAbstract
 	protected function _sanitizePost() : array
 	{
 		$emailFilter = new Filter\Email();
-		$nameFilter = new Filter\Name();
+		$numberFilter = new Filter\Number();
 		$passwordFilter = new Filter\Password();
+		$textFilter = new Filter\Text();
 		$userFilter = new Filter\User();
 
 		/* sanitize post */
@@ -180,11 +181,11 @@ class Install extends ControllerAbstract
 			'dbUser' => $this->_request->getPost('db-user'),
 			'dbPassword' => $this->_request->getPost('db-password'),
 			'dbPrefix' => $this->_request->getPost('db-prefix'),
-			'adminName' => $nameFilter->sanitize($this->_request->getPost('admin-name')),
+			'adminName' => $textFilter->sanitize($this->_request->getPost('admin-name')),
 			'adminUser' => $userFilter->sanitize($this->_request->getPost('admin-user')),
 			'adminPassword' => $passwordFilter->sanitize($this->_request->getPost('admin-password')),
 			'adminEmail' => $emailFilter->sanitize($this->_request->getPost('admin-email')),
-			'refreshConnection' => $this->_request->getPost('refresh-connection')
+			'refreshConnection' => $numberFilter->sanitize($this->_request->getPost('refresh-connection'))
 		];
 	}
 

@@ -23,11 +23,11 @@ class Url implements FilterInterface
 	 *
 	 * @param string $url url to be sanitized
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public function sanitize(string $url = null) : string
+	public function sanitize(string $url = null) : ?string
 	{
-		return filter_var(strtolower($url), FILTER_SANITIZE_URL);
+		return filter_var(strtolower($url), FILTER_SANITIZE_URL) ? : null;
 	}
 }

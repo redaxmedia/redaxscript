@@ -1,5 +1,9 @@
 [
 	[
+		null,
+		null
+	],
+	[
 		"user",
 		"user"
 	],
@@ -9,6 +13,10 @@
 	],
 	[
 		" user ",
+		"user"
+	],
+	[
+		"u+s+e+r",
 		"user"
 	],
 	[

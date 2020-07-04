@@ -1,5 +1,17 @@
 [
 	[
+		null,
+		false
+	],
+	[
+		true,
+		true
+	],
+	[
+		false,
+		false
+	],
+	[
 		"true",
 		true
 	],

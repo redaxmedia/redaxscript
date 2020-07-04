@@ -77,6 +77,7 @@ class Login extends ControllerAbstract
 	{
 		$numberFilter = new Filter\Number();
 		$passwordFilter = new Filter\Password();
+		$textFilter = new Filter\Text();
 		$userFilter = new Filter\User();
 
 		/* sanitize post */
@@ -86,7 +87,7 @@ class Login extends ControllerAbstract
 			'user' => $userFilter->sanitize($this->_request->getPost('user')),
 			'password' => $passwordFilter->sanitize($this->_request->getPost('password')),
 			'task' => $numberFilter->sanitize($this->_request->getPost('task')),
-			'solution' => $this->_request->getPost('solution')
+			'solution' => $textFilter->sanitize($this->_request->getPost('solution'))
 		];
 	}
 

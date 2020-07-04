@@ -5,7 +5,7 @@ use Redaxscript\Filter;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
- * NameTest
+ * TextTest
  *
  * @since 4.3.0
  *
@@ -13,34 +13,34 @@ use Redaxscript\Tests\TestCaseAbstract;
  * @category Tests
  * @author Henry Ruhs
  *
- * @covers Redaxscript\Filter\Name
+ * @covers Redaxscript\Filter\Text
  */
 
-class NameTest extends TestCaseAbstract
+class TextTest extends TestCaseAbstract
 {
 	/**
 	 * testSanitize
 	 *
 	 * @since 4.3.0
 	 *
-	 * @param string $name
+	 * @param int|string $text
 	 * @param string $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testSanitize(string $name = null, string $expect = null) : void
+	public function testSanitize($text = null, string $expect = null) : void
 	{
 		/* setup */
 
-		$filter = new Filter\Name();
+		$filter = new Filter\Text();
 
 		/* actual */
 
-		$actual = $filter->sanitize($name);
+		$actual = $filter->sanitize($text);
 
 		/* compare */
 
-		$this->assertEquals($expect, $actual);
+		$this->assertSame($expect, $actual);
 	}
 }

@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Detector;
 
+use Redaxscript\Filter;
 use Redaxscript\Model;
 use function substr;
 
@@ -26,13 +27,14 @@ class Language extends DetectorAbstract
 	{
 		$settingModel = new Model\Setting();
 		$contentModel = new Model\Content();
+		$specialFilter = new Filter\Special();
 		$dbStatus = $this->_registry->get('dbStatus');
 		$lastTable = $this->_registry->get('lastTable');
 		$lastId = $this->_registry->get('lastId');
 		$path = 'languages' . DIRECTORY_SEPARATOR . $this->_filePlaceholder . '.json';
 		$setupArray =
 		[
-			'query' => $this->_request->getQuery('l'),
+			'query' => $specialFilter->sanitize($this->_request->getQuery('l')),
 			'session' => $this->_request->getSession('language'),
 			'contents' => $contentModel->getByTableAndId($lastTable, $lastId)->language,
 			'settings' => $dbStatus === 2 ? $settingModel->get('language') : null,

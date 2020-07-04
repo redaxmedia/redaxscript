@@ -23,11 +23,11 @@ class Email implements FilterInterface
 	 *
 	 * @param string $email email to be sanitized
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 
-	public function sanitize(string $email = null) : string
+	public function sanitize(string $email = null) : ?string
 	{
-		return filter_var(strtolower($email), FILTER_SANITIZE_EMAIL);
+		return filter_var(strtolower($email), FILTER_SANITIZE_EMAIL) ? : null;
 	}
 }

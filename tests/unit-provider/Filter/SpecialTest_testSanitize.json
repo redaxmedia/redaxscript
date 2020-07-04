@@ -1,15 +1,23 @@
 [
 	[
-		"test",
-		"test"
+		null,
+		null
 	],
 	[
-		" test ",
-		"test"
+		"Test",
+		"Test"
 	],
 	[
-		"_test_",
-		"test"
+		" Test Test ",
+		"TestTest"
+	],
+	[
+		" Test ",
+		"Test"
+	],
+	[
+		"-Test-",
+		"Test"
 	],
 	[
 		"<div>",

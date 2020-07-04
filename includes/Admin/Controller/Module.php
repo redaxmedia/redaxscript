@@ -83,8 +83,8 @@ class Module extends ControllerAbstract
 
 	protected function _sanitizePost() : array
 	{
-		$nameFilter = new Filter\Name();
 		$numberFilter = new Filter\Number();
+		$textFilter = new Filter\Text();
 		$toggleFilter = new Filter\Toggle();
 
 		/* sanitize post */
@@ -92,8 +92,8 @@ class Module extends ControllerAbstract
 		return
 		[
 			'id' => $numberFilter->sanitize($this->_request->getPost('id')),
-			'name' => $nameFilter->sanitize($this->_request->getPost('name')),
-			'description' => $this->_request->getPost('description'),
+			'name' => $textFilter->sanitize($this->_request->getPost('name')),
+			'description' => $textFilter->sanitize($this->_request->getPost('description')),
 			'status' => $toggleFilter->sanitize($this->_request->getPost('status')),
 			'access' => json_encode($this->_request->getPost('access'))
 		];

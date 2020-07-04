@@ -23,13 +23,13 @@ class NumberTest extends TestCaseAbstract
 	 *
 	 * @since 2.2.0
 	 *
-	 * @param string $number
+	 * @param int|string $number
 	 * @param int $expect
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testSanitize(string $number = null, int $expect = null) : void
+	public function testSanitize($number = null, int $expect = null) : void
 	{
 		/* setup */
 
@@ -41,6 +41,6 @@ class NumberTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertEquals($expect, $actual);
+		$this->assertSame($expect, $actual);
 	}
 }

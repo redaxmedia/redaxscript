@@ -104,9 +104,9 @@ class Setting extends ControllerAbstract
 	protected function _sanitizePost() : array
 	{
 		$emailFilter = new Filter\Email();
-		$nameFilter = new Filter\Name();
 		$numberFilter = new Filter\Number();
 		$specialFilter = new Filter\Special();
+		$textFilter = new Filter\Text();
 		$toggleFilter = new Filter\Toggle();
 
 		/* sanitize post */
@@ -115,21 +115,21 @@ class Setting extends ControllerAbstract
 		[
 			'language' => $specialFilter->sanitize($this->_request->getPost('language')),
 			'template' => $specialFilter->sanitize($this->_request->getPost('template')),
-			'title' => $nameFilter->sanitize($this->_request->getPost('title')),
-			'author' => $nameFilter->sanitize($this->_request->getPost('author')),
-			'copyright' => $this->_request->getPost('copyright'),
-			'description' => $this->_request->getPost('description'),
-			'keywords' => $this->_request->getPost('keywords'),
-			'robots' => $this->_request->getPost('robots'),
+			'title' => $textFilter->sanitize($this->_request->getPost('title')),
+			'author' => $textFilter->sanitize($this->_request->getPost('author')),
+			'copyright' => $textFilter->sanitize($this->_request->getPost('copyright')),
+			'description' => $textFilter->sanitize($this->_request->getPost('description')),
+			'keywords' => $textFilter->sanitize($this->_request->getPost('keywords')),
+			'robots' => $numberFilter->sanitize($this->_request->getPost('robots')),
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
-			'subject' => $this->_request->getPost('subject'),
+			'subject' => $textFilter->sanitize($this->_request->getPost('subject')),
 			'notification' => $toggleFilter->sanitize($this->_request->getPost('notification')),
-			'charset' => $this->_request->getPost('charset'),
-			'divider' => $this->_request->getPost('divider'),
-			'zone' => $this->_request->getPost('zone'),
-			'time' => $this->_request->getPost('time'),
-			'date' => $this->_request->getPost('date'),
-			'homepage' => $this->_request->getPost('homepage'),
+			'charset' => $textFilter->sanitize($this->_request->getPost('charset')),
+			'divider' => $textFilter->sanitize($this->_request->getPost('divider')),
+			'zone' => $textFilter->sanitize($this->_request->getPost('zone')),
+			'time' => $textFilter->sanitize($this->_request->getPost('time')),
+			'date' => $textFilter->sanitize($this->_request->getPost('date')),
+			'homepage' => $numberFilter->sanitize($this->_request->getPost('homepage')),
 			'limit' => $numberFilter->sanitize($this->_request->getPost('limit')),
 			'order' => $specialFilter->sanitize($this->_request->getPost('order')),
 			'pagination' => $toggleFilter->sanitize($this->_request->getPost('pagination')),
