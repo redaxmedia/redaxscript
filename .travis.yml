@@ -12,7 +12,7 @@ jobs:
 
    install:
    - composer install
-   - nvm install 12
+   - nvm install 14
    - npm install --global grunt-cli
    - npm install
 
@@ -29,7 +29,7 @@ jobs:
    - BUILD
 
    install:
-   - nvm install 12
+   - nvm install 14
    - npm install --global grunt-cli
    - npm install
 
@@ -100,7 +100,7 @@ jobs:
    install:
    - composer install
    - gem install mailcatcher
-   - nvm install 12
+   - nvm install 14
    - npm install --global grunt-cli
    - npm install
 
@@ -128,7 +128,7 @@ jobs:
    - mailcatcher
 
    script:
-   - vendor/bin/infection --threads=10 --only-covered
+   - vendor/bin/infection --threads=16 --only-covered
 
  - <<: *test-unit
    env:
