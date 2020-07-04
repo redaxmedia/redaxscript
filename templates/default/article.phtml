@@ -5,9 +5,15 @@
 <?php $categoryId = Helper::getRegistry('categoryId'); ?>
 <?php $articleId = Helper::getRegistry('articleId'); ?>
 <?php if ($categoryId || $articleId): ?>
-	<?php echo Tag::article($categoryId, $articleId); ?>
-	<?php if ($categoryId): ?>
-		<?php echo Tag::pagination('articles', $categoryId); ?>
+	<?php $article = Tag::article($categoryId, $articleId); ?>
+	<?php if ($article): ?>
+		<?php echo $article; ?>
+		<?php if ($categoryId): ?>
+			<?php echo Tag::pagination('articles', $categoryId); ?>
+		<?php endif; ?>
+	<?php else: ?>
+		<h2 class="rs-title-content"><?php echo Helper::getLanguage('error'); ?></h2>
+		<div class="rs-box-content"><?php echo Helper::getLanguage('article_no') . Helper::getLanguage('point'); ?></div>
 	<?php endif; ?>
 <?php endif; ?>
 

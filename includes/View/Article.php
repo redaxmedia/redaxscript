@@ -10,7 +10,6 @@ use Redaxscript\Model;
 use Redaxscript\Module;
 use Redaxscript\Registry;
 use Redaxscript\Request;
-use Redaxscript\Template;
 use Redaxscript\Validator;
 use function array_replace_recursive;
 
@@ -60,11 +59,7 @@ class Article extends ViewAbstract
 			'title' => 'rs-title-content',
 			'box' => 'rs-box-content'
 		],
-		'orderColumn' => 'rank',
-		'partial' =>
-		[
-			'error' => 'error.phtml'
-		]
+		'orderColumn' => 'rank'
 	];
 
 	/**
@@ -119,7 +114,7 @@ class Article extends ViewAbstract
 			return Module\Hook::trigger('articleReplace');
 		}
 		$output = Module\Hook::trigger('articleStart');
-		$outputFragment = null;
+		$outputItem = null;
 		$accessValidator = new Validator\Access();
 		$articleModel = new Model\Article();
 		$articles = null;
@@ -159,10 +154,10 @@ class Article extends ViewAbstract
 		{
 			if ($accessValidator->validate($value->access, $myGroups))
 			{
-				$outputFragment .= Module\Hook::trigger('articleFragmentStart', (array)$value);
+				$outputItem .= Module\Hook::trigger('articleFragmentStart', (array)$value);
 				if ($value->headline)
 				{
-					$outputFragment .= $titleElement
+					$outputItem .= $titleElement
 						->attr('id', 'article-' . $value->alias)
 						->html($lastTable === 'categories' ? $linkElement
 							->attr('href', $parameterRoute . $articleModel->getRouteById($value->id))
@@ -170,26 +165,25 @@ class Article extends ViewAbstract
 						);
 				}
 				$contentParser->process($value->text, $articleModel->getRouteById($value->id));
-				$outputFragment .= $boxElement->html($contentParser->getOutput());
+				$outputItem .= $boxElement->html($contentParser->getOutput());
 				if ($value->byline)
 				{
-					$outputFragment .= $byline->render($value->date, $value->author);
+					$outputItem .= $byline->render($value->date, $value->author);
 				}
-				$outputFragment .= Module\Hook::trigger('articleFragmentEnd', (array)$value);
+				$outputItem .= Module\Hook::trigger('articleFragmentEnd', (array)$value);
 
 				/* admin dock */
 
 				if ($loggedIn === $token && $firstParameter !== 'logout')
 				{
-					$outputFragment .= $adminDock->render('articles', $value->id);
+					$outputItem .= $adminDock->render('articles', $value->id);
 				}
 			}
 		}
 
 		/* collect output */
 
-		$output .= $outputFragment ? : Template\Tag::partial($this->_registry->get('template') . '/' . $this->_optionArray['partial']['error']);
-		$output .= Module\Hook::trigger('articleEnd');
+		$output .= $outputItem . Module\Hook::trigger('articleEnd');
 		return $output;
 	}
 
