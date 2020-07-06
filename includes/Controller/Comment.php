@@ -142,6 +142,7 @@ class Comment extends ControllerAbstract
 	{
 		$emailValidator = new Validator\Email();
 		$captchaValidator = new Validator\Captcha();
+		$nameValidator = new Validator\Name();
 		$urlValidator = new Validator\Url();
 		$settingModel = new Model\Setting();
 		$validateArray = [];
@@ -151,6 +152,10 @@ class Comment extends ControllerAbstract
 		if (!$postArray['author'])
 		{
 			$validateArray[] = $this->_language->get('author_empty');
+		}
+		else if (!$nameValidator->validate($postArray['author']))
+		{
+			$validateArray[] = $this->_language->get('author_incorrect');
 		}
 		if (!$postArray['email'])
 		{

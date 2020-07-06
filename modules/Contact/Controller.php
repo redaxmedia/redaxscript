@@ -112,6 +112,7 @@ class Controller extends ControllerAbstract
 	protected function _validatePost(array $postArray = []) : array
 	{
 		$emailValidator = new Validator\Email();
+		$nameValidator = new Validator\Name();
 		$urlValidator = new Validator\Url();
 		$captchaValidator = new Validator\Captcha();
 		$settingModel = new Model\Setting();
@@ -122,6 +123,10 @@ class Controller extends ControllerAbstract
 		if (!$postArray['author'])
 		{
 			$validateArray[] = $this->_language->get('author_empty');
+		}
+		else if (!$nameValidator->validate($postArray['author']))
+		{
+			$validateArray[] = $this->_language->get('author_incorrect');
 		}
 		if (!$postArray['email'])
 		{

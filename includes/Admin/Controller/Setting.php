@@ -171,7 +171,7 @@ class Setting extends ControllerAbstract
 		{
 			$validateArray[] = $this->_language->get('author_empty');
 		}
-		else if (!$userValidator->validate($postArray['author']))
+		else if (!$nameValidator->validate($postArray['author']))
 		{
 			$validateArray[] = $this->_language->get('author_incorrect');
 		}
