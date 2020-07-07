@@ -28,6 +28,6 @@ class Text implements FilterInterface
 
 	public function sanitize($text = null) : ?string
 	{
-		return (string)trim(filter_var($text, FILTER_SANITIZE_STRING)) ? : null;
+		return (string)trim(filter_var($text, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_BACKTICK)) ? : null;
 	}
 }
