@@ -12,9 +12,9 @@
 {
 	/** @section 1.1 base color */
 
-	--rs-console-color-primary: #300a24;
+	--rs-color-primary: #300a24;
 
 	/** @section 1.2 font */
 
-	--rs-console-font-primary: 'ubuntu mono', monospace, arial, sans-serif;
+	--rs-font-primary: 'ubuntu mono', monospace, arial, sans-serif;
 }

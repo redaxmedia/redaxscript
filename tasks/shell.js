@@ -1,7 +1,5 @@
 module.exports = grunt =>
 {
-	'use strict';
-
 	const run = command => process.platform === 'win32' ? 'powershell ' + command : command;
 	const config =
 	{

@@ -5,7 +5,7 @@ rs.templates.install =
 		init: true,
 		optionArray:
 		{
-			selector: 'form.rs-install-js-behavior',
+			selector: 'form.rs-js-behavior',
 			element:
 			{
 				fieldType: '#db-type',

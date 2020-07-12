@@ -6,7 +6,7 @@
 			"usersEdit": false,
 			"usersDelete": false
 		},
-		"<h2 class=\"rs-admin-title-content\">Users</h2><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default\"><thead><tr><th>Name</th><th>User</th><th>Session</th><th>Groups</th></tr></thead><tbody><tr id=\"row-1\"><td>User One</td><td>user-one</td><td>Online</td><td><a href=\"admin/edit/groups/1\">Administrators</a></td></tr></tbody><tfoot><tr><td>Name</td><td>User</td><td>Session</td><td>Groups</td></tr></tfoot></table></div>"
+		"<h2 class=\"rs-admin-title-content\">Users</h2><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default rs-admin-table-user\"><thead><tr><th>Name</th><th>User</th><th>Session</th><th>Groups</th></tr></thead><tbody><tr id=\"row-1\"><td>User One</td><td>user-one</td><td>Online</td><td><a href=\"admin/edit/groups/1\">Administrators</a></td></tr></tbody><tfoot><tr><td>Name</td><td>User</td><td>Session</td><td>Groups</td></tr></tfoot></table></div>"
 	],
 	[
 		{
@@ -15,7 +15,7 @@
 			"usersEdit": false,
 			"usersDelete": false
 		},
-		"<h2 class=\"rs-admin-title-content\">Users</h2><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default\"><thead><tr><th>Name</th><th>User</th><th>Session</th><th>Groups</th></tr></thead><tbody><tr id=\"row-1\"><td>User One</td><td>user-one</td><td>Today at 10:10</td><td><a href=\"admin/edit/groups/1\">Administrators</a></td></tr></tbody><tfoot><tr><td>Name</td><td>User</td><td>Session</td><td>Groups</td></tr></tfoot></table></div>"
+		"<h2 class=\"rs-admin-title-content\">Users</h2><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default rs-admin-table-user\"><thead><tr><th>Name</th><th>User</th><th>Session</th><th>Groups</th></tr></thead><tbody><tr id=\"row-1\"><td>User One</td><td>user-one</td><td>Today at 10:10</td><td><a href=\"admin/edit/groups/1\">Administrators</a></td></tr></tbody><tfoot><tr><td>Name</td><td>User</td><td>Session</td><td>Groups</td></tr></tfoot></table></div>"
 	],
 	[
 		{
@@ -24,7 +24,7 @@
 			"usersEdit": false,
 			"usersDelete": false
 		},
-		"<h2 class=\"rs-admin-title-content\">Users</h2><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default\"><thead><tr><th>Name</th><th>User</th><th>Session</th><th>Groups</th></tr></thead><tbody><tr id=\"row-1\"><td>User One</td><td>user-one</td><td>01.01.2017</td><td><a href=\"admin/edit/groups/1\">Administrators</a></td></tr></tbody><tfoot><tr><td>Name</td><td>User</td><td>Session</td><td>Groups</td></tr></tfoot></table></div>"
+		"<h2 class=\"rs-admin-title-content\">Users</h2><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default rs-admin-table-user\"><thead><tr><th>Name</th><th>User</th><th>Session</th><th>Groups</th></tr></thead><tbody><tr id=\"row-1\"><td>User One</td><td>user-one</td><td>01.01.2017</td><td><a href=\"admin/edit/groups/1\">Administrators</a></td></tr></tbody><tfoot><tr><td>Name</td><td>User</td><td>Session</td><td>Groups</td></tr></tfoot></table></div>"
 	],
 	[
 		{
@@ -33,6 +33,6 @@
 			"usersEdit": false,
 			"usersDelete": false
 		},
-		"<h2 class=\"rs-admin-title-content\">Users</h2><a class=\"rs-admin-button-default rs-admin-button-create\" href=\"admin/new/users\">New user</a><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default\"><thead><tr><th>Name</th><th>User</th><th>Session</th><th>Groups</th></tr></thead><tbody><tr id=\"row-1\"><td>User One</td><td>user-one</td><td>Online</td><td><a href=\"admin/edit/groups/1\">Administrators</a></td></tr></tbody><tfoot><tr><td>Name</td><td>User</td><td>Session</td><td>Groups</td></tr></tfoot></table></div>"
+		"<h2 class=\"rs-admin-title-content\">Users</h2><a class=\"rs-admin-button-default rs-admin-button-create\" href=\"admin/new/users\">New user</a><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default rs-admin-table-user\"><thead><tr><th>Name</th><th>User</th><th>Session</th><th>Groups</th></tr></thead><tbody><tr id=\"row-1\"><td>User One</td><td>user-one</td><td>Online</td><td><a href=\"admin/edit/groups/1\">Administrators</a></td></tr></tbody><tfoot><tr><td>Name</td><td>User</td><td>Session</td><td>Groups</td></tr></tfoot></table></div>"
 	]
 ]

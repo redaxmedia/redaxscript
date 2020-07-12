@@ -1,7 +1,5 @@
 module.exports = () =>
 {
-	'use strict';
-
 	const config =
 	{
 		dependency:

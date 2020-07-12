@@ -161,7 +161,7 @@ rs.modules.VisualEditor.createContent = (textareaElement, OPTION) =>
 	const contentElement = document.createElement('div');
 	const validateEvent = new Event('validate');
 
-	contentElement.classList.add(OPTION.className.boxContent, OPTION.className.boxVisualEditor);
+	contentElement.classList.add(OPTION.className.boxVisualEditor);
 	contentElement.setAttribute('contenteditable', 'true');
 	contentElement.innerHTML = textareaElement.value;
 

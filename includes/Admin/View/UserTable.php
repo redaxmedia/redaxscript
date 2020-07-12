@@ -105,7 +105,7 @@ class UserTable extends ViewAbstract
 			->copy()
 			->init('table',
 			[
-				'class' => 'rs-admin-table-default'
+				'class' => 'rs-admin-table-default rs-admin-table-user'
 			]);
 		$theadElement = $element->copy()->init('thead');
 		$tbodyElement = $element->copy()->init('tbody');

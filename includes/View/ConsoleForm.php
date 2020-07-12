@@ -36,7 +36,7 @@ class ConsoleForm extends ViewAbstract
 		[
 			'form' =>
 			[
-				'class' => 'rs-console-js-behavior rs-console-form-default'
+				'class' => 'rs-js-behavior rs-form-default rs-form-console'
 			]
 		]);
 		$outputLabel = $myUser ? $myUser . '@' : null;
@@ -47,7 +47,7 @@ class ConsoleForm extends ViewAbstract
 		$formElement
 			->label($outputLabel,
 			[
-				'class' => 'rs-console-js-label rs-console-label-default',
+				'class' => 'rs-js-label rs-label-default',
 				'for' => 'prompt'
 			])
 			->text(
@@ -55,7 +55,7 @@ class ConsoleForm extends ViewAbstract
 				'autocapitalize' => 'off',
 				'autofocus' => 'autofocus',
 				'autocomplete' => 'off',
-				'class' => 'rs-console-js-field rs-console-field-text',
+				'class' => 'rs-js-field rs-field-text',
 				'id' => 'prompt',
 				'name' => 'argv',
 				'spellcheck' => 'false'

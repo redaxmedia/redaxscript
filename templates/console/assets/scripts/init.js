@@ -5,12 +5,12 @@ rs.templates.console =
 		init: true,
 		optionArray:
 		{
-			selector: 'form.rs-console-js-behavior',
+			selector: 'form.rs-js-behavior',
 			element:
 			{
-				box: 'div.rs-console-js-box',
-				label: 'label.rs-console-js-label',
-				field: 'input.rs-console-js-field'
+				box: 'div.rs-js-box',
+				label: 'label.rs-js-label',
+				field: 'input.rs-js-field'
 			},
 			eol: '\n'
 		}

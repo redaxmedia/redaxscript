@@ -9,26 +9,26 @@
 
 /** @section 1. install */
 
-.rs-install-body
+.rs-body-install
 {
 	background: var(--rs-color-primary);
 	font: 1em var(--rs-font-primary);
 }
 
-.rs-install-wrapper
+.rs-wrapper-install
 {
 	margin: 2em 5% 5%;
 	width: 90%;
 }
 
-.rs-install-content
+.rs-content-install
 {
 	background: gray(100);
 	border-radius: 0.125em;
 	padding: 1.5em;
 }
 
-.rs-install-title
+.rs-title-install
 {
 	color: gray(80);
 	font-size: 3.25em;
@@ -45,7 +45,7 @@
 
 @media (--media-small-min)
 {
-	.rs-install-title
+	.rs-title-install
 	{
 		font-size: 4.25em;
 
@@ -67,7 +67,7 @@
 
 @media (--media-medium-min)
 {
-	.rs-install-wrapper
+	.rs-wrapper-install
 	{
 		margin-left: auto;
 		margin-right: auto;

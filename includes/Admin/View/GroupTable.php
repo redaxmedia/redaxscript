@@ -102,7 +102,7 @@ class GroupTable extends ViewAbstract
 			->copy()
 			->init('table',
 			[
-				'class' => 'rs-admin-table-default'
+				'class' => 'rs-admin-table-default rs-admin-table-group'
 			]);
 		$theadElement = $element->copy()->init('thead');
 		$tbodyElement = $element->copy()->init('tbody');

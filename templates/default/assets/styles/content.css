@@ -46,7 +46,8 @@
 
 /** @section 1.2 box */
 
-.rs-box-content
+.rs-box-content,
+.rs-admin-form-article .rs-admin-box-visual-editor
 {
 	@extend %box-content;
 	font-size: 1.5em;
@@ -62,6 +63,11 @@
 			margin-top: 1em;
 		}
 	}
+}
+
+.rs-admin-form-article .rs-admin-box-visual-editor
+{
+	font-size: 1.5rem;
 }
 
 .rs-box-byline
@@ -93,9 +99,10 @@
 
 /** @section 2.2 box */
 
-.rs-box-comment
+.rs-box-comment,
+.rs-form-comment .rs-box-visual-editor
 {
-	font: italic 300 1.25rem/1.75em var(--rs-font-quote);
+	font: 300 1.25rem/1.5em var(--rs-font-quote);
 }
 
 /** @section 3. quote */

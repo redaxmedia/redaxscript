@@ -6,33 +6,33 @@
 
 /** @section 1. console */
 
-.rs-console-body
+.rs-body
 {
-	background: var(--rs-console-color-primary);
+	background: var(--rs-color-primary);
 	color: gray(100);
-	font: 1em var(--rs-console-font-primary);
+	font: 1em var(--rs-font-primary);
 	padding: 0.25em;
 }
 
-.rs-console-box-default
+.rs-box-default
 {
-	font-size: 1.25em;
+	font-size: 1.125em;
 	white-space: pre-wrap;
 }
 
-.rs-console-form-default
+.rs-form-default
 {
 	display: flex;
-	font-size: 1.25em;
+	font-size: 1.125em;
 	overflow: hidden;
 }
 
-.rs-console-label-default:after
+.rs-label-default:after
 {
 	content: '\00a0';
 }
 
-.rs-console-field-text
+.rs-field-text
 {
 	background: transparent;
 	color: inherit;

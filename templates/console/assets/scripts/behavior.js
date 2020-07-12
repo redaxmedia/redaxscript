@@ -97,5 +97,5 @@ rs.templates.console.behavior.process = optionArray =>
 
 if (rs.templates.console.behavior.init)
 {
-	rs.templates.console.behavior.process(rs.templates.console.behavior.optionArray);
+	rs.templates.console.behavior.process();
 }

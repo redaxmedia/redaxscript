@@ -53,7 +53,7 @@ class GroupForm extends ViewAbstract
 		[
 			'form' =>
 			[
-				'class' => 'rs-admin-js-validate rs-admin-js-alias rs-admin-fn-tab rs-admin-component-tab rs-admin-form-default'
+				'class' => 'rs-admin-js-validate rs-admin-js-alias rs-admin-fn-tab rs-admin-component-tab rs-admin-form-default rs-admin-form-group'
 			],
 			'button' =>
 			[

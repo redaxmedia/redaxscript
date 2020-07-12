@@ -5,7 +5,7 @@
 		},
 		0,
 		{
-			"start": "<h2 class=\"rs-admin-title-content\">New article</h2><form class=\"rs-admin-js-validate rs-admin-js-alias rs-admin-fn-tab rs-admin-component-tab rs-admin-form-default\" method=\"post\">",
+			"start": "<h2 class=\"rs-admin-title-content\">New article</h2><form class=\"rs-admin-js-validate rs-admin-js-alias rs-admin-fn-tab rs-admin-component-tab rs-admin-form-default rs-admin-form-article\" method=\"post\">",
 			"end": "<div class=\"rs-admin-wrapper-button\"><a class=\"rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel\" href=\"admin\">Cancel</a></div></form>"
 		}
 	],
@@ -15,7 +15,7 @@
 		},
 		0,
 		{
-			"start": "<h2 class=\"rs-admin-title-content\">New article</h2><form class=\"rs-admin-js-validate rs-admin-js-alias rs-admin-fn-tab rs-admin-component-tab rs-admin-form-default\" method=\"post\">",
+			"start": "<h2 class=\"rs-admin-title-content\">New article</h2><form class=\"rs-admin-js-validate rs-admin-js-alias rs-admin-fn-tab rs-admin-component-tab rs-admin-form-default rs-admin-form-article\" method=\"post\">",
 			"end": "<div class=\"rs-admin-wrapper-button\"><a class=\"rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel\" href=\"admin\">Cancel</a><button class=\"rs-admin-js-create rs-admin-button-default rs-admin-button-create\" name=\"Redaxscript\\Admin\\View\\ArticleForm\" type=\"submit\" value=\"create\">Create</button></div></form>"
 		}
 	],
@@ -26,7 +26,7 @@
 		},
 		1,
 		{
-			"start": "<h2 class=\"rs-admin-title-content\">Article One</h2><form class=\"rs-admin-js-validate rs-admin-js-alias rs-admin-fn-tab rs-admin-component-tab rs-admin-form-default\" method=\"post\">",
+			"start": "<h2 class=\"rs-admin-title-content\">Article One</h2><form class=\"rs-admin-js-validate rs-admin-js-alias rs-admin-fn-tab rs-admin-component-tab rs-admin-form-default rs-admin-form-article\" method=\"post\">",
 			"end": "<div class=\"rs-admin-wrapper-button\"><a class=\"rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel\" href=\"admin\">Cancel</a></div></form>"
 		}
 	],
@@ -39,7 +39,7 @@
 		},
 		1,
 		{
-			"start": "<h2 class=\"rs-admin-title-content\">Article One</h2><form class=\"rs-admin-js-validate rs-admin-js-alias rs-admin-fn-tab rs-admin-component-tab rs-admin-form-default\" method=\"post\">",
+			"start": "<h2 class=\"rs-admin-title-content\">Article One</h2><form class=\"rs-admin-js-validate rs-admin-js-alias rs-admin-fn-tab rs-admin-component-tab rs-admin-form-default rs-admin-form-article\" method=\"post\">",
 			"end": "<div class=\"rs-admin-wrapper-button\"><a class=\"rs-admin-js-cancel rs-admin-button-default rs-admin-button-cancel\" href=\"admin/view/articles\">Cancel</a><a class=\"rs-admin-js-delete rs-admin-button-default rs-admin-button-delete\" href=\"admin/delete/articles/1/ffd845f78510f02580d329127bab3dd1aa7f4453\">Delete</a><button class=\"rs-admin-js-save rs-admin-button-default rs-admin-button-save\" name=\"Redaxscript\\Admin\\View\\ArticleForm\" type=\"submit\" value=\"update\">Save</button></div></form>"
 		}
 	]

@@ -1,7 +1,5 @@
 module.exports = grunt =>
 {
-	'use strict';
-
 	const config =
 	{
 		styles:

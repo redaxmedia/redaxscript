@@ -1,7 +1,5 @@
 module.exports = () =>
 {
-	'use strict';
-
 	const config =
 	{
 		database:
@@ -23,8 +21,7 @@ module.exports = () =>
 		{
 			options:
 			{
-				path: 'templates/console/*.phtml',
-				namespace: 'rs-console'
+				path: 'templates/console/*.phtml'
 			}
 		},
 		templateDefault:
@@ -38,8 +35,7 @@ module.exports = () =>
 		{
 			options:
 			{
-				path: 'templates/install/*.phtml',
-				namespace: 'rs-install'
+				path: 'templates/install/*.phtml'
 			}
 		},
 		templateSkeleton:

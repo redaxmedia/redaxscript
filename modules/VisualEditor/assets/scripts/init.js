@@ -8,7 +8,6 @@ rs.modules.VisualEditor =
 			selector: 'textarea.rs-js-editor',
 			className:
 			{
-				boxContent: 'rs-box-comment',
 				boxVisualEditor: 'rs-box-visual-editor',
 				listVisualEditor: 'rs-list-visual-editor',
 				linkVisualEditor: 'rs-link-visual-editor',
@@ -74,7 +73,6 @@ rs.modules.VisualEditor =
 			selector: 'textarea.rs-admin-js-editor',
 			className:
 			{
-				boxContent: 'rs-box-content',
 				boxVisualEditor: 'rs-admin-box-visual-editor',
 				listVisualEditor: 'rs-admin-list-visual-editor',
 				linkVisualEditor: 'rs-admin-link-visual-editor',

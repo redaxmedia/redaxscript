@@ -102,7 +102,7 @@ class ExtraTable extends ViewAbstract
 			->copy()
 			->init('table',
 			[
-				'class' => 'rs-admin-js-sort rs-admin-table-default'
+				'class' => 'rs-admin-js-sort rs-admin-table-default rs-admin-table-extra'
 			]);
 		$theadElement = $element->copy()->init('thead');
 		$tbodyElement = $element->copy()->init('tbody');
