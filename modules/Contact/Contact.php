@@ -27,7 +27,7 @@ class Contact extends Module\Module
 		'alias' => 'Contact',
 		'author' => 'Redaxmedia',
 		'description' => 'Dead simple contact form',
-		'version' => '4.3.0'
+		'version' => '4.3.1'
 	];
 
 	/**

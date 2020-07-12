@@ -32,7 +32,7 @@ class Archive extends Module\Module
 		'alias' => 'Archive',
 		'author' => 'Redaxmedia',
 		'description' => 'Archive ordered by year and month',
-		'version' => '4.3.0'
+		'version' => '4.3.1'
 	];
 
 	/**

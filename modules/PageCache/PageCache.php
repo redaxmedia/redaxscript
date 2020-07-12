@@ -32,7 +32,7 @@ class PageCache extends Module\Metadata
 		'alias' => 'PageCache',
 		'author' => 'Redaxmedia',
 		'description' => 'High performance caching for pages',
-		'version' => '4.3.0'
+		'version' => '4.3.1'
 	];
 
 	/**
