@@ -3,6 +3,7 @@ namespace Redaxscript\Modules\Contact;
 
 use Redaxscript\Html;
 use Redaxscript\Model;
+use Redaxscript\Validator;
 use Redaxscript\View\ViewAbstract;
 
 /**
@@ -35,6 +36,10 @@ class Form extends ViewAbstract
 		$formElement = new Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[
+			'form' =>
+			[
+				'class' => 'rs-js-validate rs-form-default rs-form-contact'
+			],
 			'button' =>
 			[
 				'submit' =>
