@@ -16,18 +16,18 @@
 		text-decoration: underline;
 	}
 
-	& ol:not([class]),
-	& ul:not([class])
+	& > ol:not([class]),
+	& > ul:not([class])
 	{
 		list-style-position: inside;
 	}
 
-	& ol:not([class])
+	& > ol:not([class])
 	{
 		list-style-type: decimal;
 	}
 
-	& ul:not([class])
+	& > ul:not([class])
 	{
 		list-style-type: disc;
 	}
