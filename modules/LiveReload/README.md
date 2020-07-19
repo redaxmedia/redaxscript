@@ -7,4 +7,4 @@ Live Reload
 Usage
 -----
 
-Serve local development server with `-L, --live-reload` to run server.
+Run local development server with `-L, --live-reload` to reload your application on changes.

@@ -28,7 +28,7 @@ class ConfirmAction extends Module\Module
 		'name' => 'Confirm Action',
 		'alias' => 'ConfirmAction',
 		'author' => 'Redaxmedia',
-		'description' => 'Confirm critical action',
+		'description' => 'Implement a confirmation for critical action',
 		'version' => '4.3.1'
 	];
 

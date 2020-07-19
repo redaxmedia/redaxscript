@@ -1,4 +1,4 @@
 Confirm Action
 ==============
 
-> Confirm critical action.
+> Implement a confirmation for critical action.

@@ -35,7 +35,7 @@ npm install
 Usage
 -----
 
-Serve local development server:
+Run local development server:
 
 ```
 grunt serve [options]
