@@ -101,6 +101,12 @@ class ModuleTable extends ViewAbstract
 		$trElement = $element->copy()->init('tr');
 		$thElement = $element->copy()->init('th');
 		$tdElement = $element->copy()->init('td');
+		$linkElement = $element
+			->copy()
+			->init('a',
+			[
+				'target' => '_blank'
+			]);
 
 		/* process table */
 
@@ -122,7 +128,12 @@ class ModuleTable extends ViewAbstract
 					->addClass(!$value->status ? 'rs-admin-is-disabled' : null)
 					->addClass(!in_array($value->alias, $modulesFilesystemArray) ? 'rs-admin-is-corrupted' : null)
 					->html(
-						$tdElement->copy()->html($value->name . $adminControl->render('modules', $value->id, $value->alias, $value->status)) .
+						$tdElement->copy()->html(
+							$linkElement
+								->copy()
+								->attr('href', $this->_language->get('_package')['github'] . '/tree/master/modules/' . $value->alias)
+								->text($value->name) .
+							$adminControl->render('modules', $value->id, $value->alias, $value->status)) .
 						$tdElement->copy()->text($value->description) .
 						$tdElement->copy()->text($value->version)
 				);
