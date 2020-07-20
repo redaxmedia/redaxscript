@@ -1,7 +1,7 @@
 {
 	"name": "redaxscript/redaxscript",
 	"description": "A modern, ultra lightweight and rocket fast Content Management System",
-	"version": "4.3.1",
+	"version": "4.3.2",
 	"homepage": "https://redaxscript.com",
 	"license": "MIT",
 	"require":
