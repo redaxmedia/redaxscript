@@ -29,8 +29,7 @@
 
 .pswp__button
 {
-	background-position: center;
-	background-repeat: no-repeat;
+	background: center no-repeat;
 
 	&:before,
 	&:after
@@ -38,6 +37,7 @@
 		background: none;
 	}
 }
+
 .pswp__button--arrow--left,
 .pswp__button--arrow--right
 {
