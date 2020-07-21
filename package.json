@@ -43,7 +43,6 @@
 		"grunt-shell": "3.0.1",
 		"grunt-svgmin": "6.0.0",
 		"grunt-tocgen": "1.3.0",
-		"grunt-webfont": "1.7.2",
 		"harmonize.css": "4.0.0",
 		"icomoon-free-npm": "0.0.0",
 		"load-grunt-tasks": "5.1.0",
