@@ -31,7 +31,7 @@ class Preview extends Module\Metadata
 		'alias' => 'Preview',
 		'author' => 'Redaxmedia',
 		'description' => 'Preview of template tags',
-		'version' => '4.3.1'
+		'version' => '4.3.2'
 	];
 
 	/**

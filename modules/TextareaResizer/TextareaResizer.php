@@ -28,7 +28,7 @@ class TextareaResizer extends Module\Module
 		'alias' => 'TextareaResizer',
 		'author' => 'Redaxmedia',
 		'description' => 'Resize textarea height to content',
-		'version' => '4.3.1'
+		'version' => '4.3.2'
 	];
 
 	/**

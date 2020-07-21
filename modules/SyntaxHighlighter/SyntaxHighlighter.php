@@ -28,7 +28,7 @@ class SyntaxHighlighter extends Module\Module
 		'alias' => 'SyntaxHighlighter',
 		'author' => 'Redaxmedia',
 		'description' => 'Syntax highlighting for code tags',
-		'version' => '4.3.1'
+		'version' => '4.3.2'
 	];
 
 	/**

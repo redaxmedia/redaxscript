@@ -30,7 +30,7 @@ class Reporter extends Module\Metadata
 		'alias' => 'Reporter',
 		'author' => 'Redaxmedia',
 		'description' => 'Report metrics on the dashboard',
-		'version' => '4.3.1'
+		'version' => '4.3.2'
 	];
 
 	/**
