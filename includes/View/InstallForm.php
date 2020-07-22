@@ -78,27 +78,26 @@ class InstallForm extends ViewAbstract
 				'class' => 'rs-fn-toggle-accordion rs-label-accordion',
 				'for' => self::class . '\Database'
 			])
-			->append('<ul class="rs-fn-content-accordion rs-box-accordion"><li>');
-		if ($this->_registry->get('driverArray'))
-		{
-			$formElement
-				->append('</li><li>')
-				->label($this->_language->get('type'),
-				[
-					'for' => 'db-type'
-				])
-				->select($this->_registry->get('driverArray'),
-				[
-					$installArray['dbType']
-				],
-				[
-					'id' => 'db-type',
-					'name' => 'db-type'
-				])
-				->append('</li><li>');
-		}
-		$formElement
-			->append('<li>')
+			->append('<ul class="rs-fn-content-accordion rs-box-accordion"><li>')
+			->label($this->_language->get('type'),
+			[
+				'for' => 'db-type'
+			])
+			->select($this->_registry->get('driverArray'),
+			[
+				$installArray['dbType']
+			],
+			$this->_registry->get('driverArray') ?
+			[
+				'id' => 'db-type',
+				'name' => 'db-type'
+			] :
+			[
+				'id' => 'db-type',
+				'name' => 'db-type',
+				'disabled' => 'disabled'
+			])
+			->append('</li><li>')
 			->label($this->_language->get('host'),
 			[
 				'for' => 'db-host'
