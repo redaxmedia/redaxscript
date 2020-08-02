@@ -14,11 +14,9 @@ rs.modules.Analytics =
 {
 	optionArray:
 	{
-		...
 		analytics:
 		{
 			trackingId: 'UA-00000000-0'
-			...
 		}
 	}
 };

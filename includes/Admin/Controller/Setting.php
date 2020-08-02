@@ -154,7 +154,6 @@ class Setting extends ControllerAbstract
 	protected function _validatePost(array $postArray = []) : array
 	{
 		$nameValidator = new Validator\Name();
-		$userValidator = new Validator\User();
 		$validateArray = [];
 
 		/* validate post */
