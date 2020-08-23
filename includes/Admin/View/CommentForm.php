@@ -131,7 +131,7 @@ class CommentForm extends ViewAbstract
 				'id' => self::class . '\General',
 				'class' => 'rs-admin-fn-status-tab',
 				'name' => self::class . '\Tab'
-				])
+			])
 			->label($this->_language->get('general'),
 			[
 				'class' => 'rs-admin-fn-toggle-tab rs-admin-label-tab',
@@ -179,6 +179,10 @@ class CommentForm extends ViewAbstract
 				'for' => self::class . '\Customize'
 			])
 			->append('<ul class="rs-admin-fn-content-tab rs-admin-box-tab"><li>')
+			->label($this->_language->get('status'),
+			[
+				'for' => 'status'
+			])
 			->checkbox(!$comment->id || $comment->status ?
 			[
 				'id' => 'status',

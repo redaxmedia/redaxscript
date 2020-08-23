@@ -57,7 +57,7 @@ class Comment extends ControllerAbstract
 			'text' => $postArray['text'],
 			'language' => $articleModel->getById($postArray['article'])->language,
 			'article' => $postArray['article'],
-			'status' => $settingModel->get('verification') ? 0 : 1
+			'status' => $settingModel->get('moderation') ? 0 : 1
 		];
 		if (!$this->_create($createArray))
 		{
