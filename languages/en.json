@@ -5,7 +5,7 @@
 		"description": "Ultra lightweight Content Management System",
 		"version": "4.4.0",
 		"homepage": "https://redaxscript.com",
-		"github": "https://github.com/redaxscript/redaxscript"
+		"service": "https://service.redaxscript.com"
 	},
 	"_language":
 	{

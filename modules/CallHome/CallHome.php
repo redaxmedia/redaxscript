@@ -78,8 +78,8 @@ class CallHome extends Module\Metadata
 
 		/* load result */
 
-		$urlVersion = 'https://service.redaxscript.com/version/' . $version;
-		$urlNews = 'https://service.redaxscript.com/news/' . $version;
+		$urlVersion = $this->_language->get('_package')['service'] . '/version/' . $version;
+		$urlNews = $this->_language->get('_package')['service'] . '/news/' . $version;
 		$versionArray = $reader->loadJSON($urlVersion)->getArray();
 		$newsArray = $reader->loadJSON($urlNews)->getArray();
 

@@ -72,12 +72,12 @@
 	{
 		&:before
 		{
-			background-image: svg-load('@mdi/svg/svg/book-open-variant.svg', fill = gray(70));
+			background-image: svg-load('@mdi/svg/svg/book-open-blank-variant.svg', fill = gray(70));
 		}
 
 		&:hover:before
 		{
-			background-image: svg-load('@mdi/svg/svg/book-open-variant.svg', fill = gray(0));
+			background-image: svg-load('@mdi/svg/svg/book-open-blank-variant.svg', fill = gray(0));
 		}
 	}
 
