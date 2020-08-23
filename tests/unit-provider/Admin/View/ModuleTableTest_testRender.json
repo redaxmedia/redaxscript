@@ -6,7 +6,7 @@
 			"modulesUninstall": false
 		},
 		{
-			"start": "<h2 class=\"rs-admin-title-content\">Modules</h2><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default rs-admin-table-module\"><thead><tr><th>Name</th><th>Description</th><th>Version</th></tr></thead><tbody><tr id=\"row-1\"><td><a target=\"_blank\" href=\"https://github.com/redaxscript/redaxscript/tree/master/modules/TestDummy\">Test Dummy</a></td><td>Dummy for testing purpose</td><td>0.0.0</td></tr>",
+			"start": "<h2 class=\"rs-admin-title-content\">Modules</h2><div class=\"rs-admin-wrapper-table\"><table class=\"rs-admin-table-default rs-admin-table-module\"><thead><tr><th>Name</th><th>Description</th><th>Version</th></tr></thead><tbody><tr id=\"row-1\"><td><a target=\"_blank\" href=\"https://service.redaxscript.com/modules/TestDummy\">Test Dummy</a></td><td>Dummy for testing purpose</td><td>0.0.0</td></tr>",
 			"end": "</tbody><tfoot><tr><td>Name</td><td>Description</td><td>Version</td></tr></tfoot></table></div>"
 		}
 	]
