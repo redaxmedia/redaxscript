@@ -34,6 +34,7 @@ class ExtraTest extends TestCaseAbstract
 		$installer->init();
 		$installer->rawCreate();
 		$installer->insertSettings($optionArray);
+		$installer->rawMigrate();
 		Db::forTablePrefix('extras')
 			->create()
 			->set(

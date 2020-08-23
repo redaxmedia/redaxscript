@@ -33,6 +33,7 @@ class RouterTest extends TestCaseAbstract
 		$installer->rawCreate();
 		$installer->insertSettings($optionArray);
 		$installer->insertUsers($optionArray);
+		$installer->rawMigrate();
 	}
 
 	/**

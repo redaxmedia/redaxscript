@@ -41,7 +41,7 @@ class Alias implements FilterInterface
 
 	public function sanitize(string $alias = null) : ?string
 	{
-		$output = iconv('utf-8', 'ascii//translit', trim($alias));
+		$output = iconv(null, 'ascii//translit', trim($alias));
 		return preg_replace('/' . $this->_patternArray['search'] . '/', $this->_patternArray['replace'], $output) ? : null;
 	}
 }

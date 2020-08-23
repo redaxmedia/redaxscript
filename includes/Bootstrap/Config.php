@@ -6,6 +6,7 @@ use Redaxscript\Model;
 use function date_default_timezone_set;
 use function error_reporting;
 use function ini_set;
+use function setlocale;
 
 /**
  * children class to boot the config
@@ -34,6 +35,8 @@ class Config extends BootstrapAbstract
 		if (Db::getStatus() === 2)
 		{
 			ini_set('default_charset', $settingModel->get('charset'));
+			ini_set('smtp', $settingModel->get('smtp'));
+			setlocale(LC_ALL, $settingModel->get('locale') . '.' . $settingModel->get('charset'));
 			date_default_timezone_set($settingModel->get('zone'));
 		}
 		if (error_reporting() === 0)

@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript;
 
+use PDOException;
 use function file_get_contents;
 use function method_exists;
 use function str_replace;
@@ -102,22 +103,39 @@ class Installer
 	 * create from sql
 	 *
 	 * @since 2.4.0
+	 *
+	 * @return bool
 	 */
 
-	public function rawCreate() : void
+	public function rawCreate() : bool
 	{
-		$this->_rawExecute('create', $this->_config->get('dbType'));
+		return $this->_rawExecute('create', $this->_config->get('dbType'));
 	}
 
 	/**
 	 * drop from sql
 	 *
 	 * @since 2.4.0
+	 *
+	 * @return bool
 	 */
 
-	public function rawDrop() : void
+	public function rawDrop() : bool
 	{
-		$this->_rawExecute('drop', $this->_config->get('dbType'));
+		return $this->_rawExecute('drop', $this->_config->get('dbType'));
+	}
+
+	/**
+	 * migrate from sql
+	 *
+	 * @since 4.4.0
+	 *
+	 * @return bool
+	 */
+
+	public function rawMigrate() : bool
+	{
+		return $this->_rawExecute('migrate', $this->_config->get('dbType'));
 	}
 
 	/**
@@ -412,7 +430,7 @@ class Installer
 			'email' => $optionArray['adminEmail'],
 			'subject' => $this->_language->get('_package')['name'],
 			'notification' => 0,
-			'charset' => 'utf-8',
+			'charset' => 'UTF-8',
 			'divider' => ' - ',
 			'zone' => 'Europe/Berlin',
 			'time' => 'H:i',
@@ -426,7 +444,7 @@ class Installer
 			'recovery' => 1,
 			'moderation' => 0,
 			'captcha' => 0,
-			'version' => $this->_language->get('_package')['version']
+			'version' => null
 		];
 
 		/* process settings */
@@ -451,13 +469,16 @@ class Installer
 	 *
 	 * @param string $action action to process
 	 * @param string $type type of the database
+	 *
+	 * @return bool
 	 */
 
-	protected function _rawExecute(string $action = null, string $type = 'mysql') : void
+	protected function _rawExecute(string $action = null, string $type = null) : bool
 	{
 		$actionFilesystem = new Filesystem\File();
 		$actionFilesystem->init($this->_directory . DIRECTORY_SEPARATOR . $type . DIRECTORY_SEPARATOR . $action);
 		$actionFilesystemArray = $actionFilesystem->getSortArray();
+		$status = true;
 
 		/* process filesystem */
 
@@ -470,8 +491,16 @@ class Installer
 				{
 					$query = str_replace($this->_prefixPlaceholder, $this->_config->get('dbPrefix'), $query);
 				}
-				Db::rawExecute($query);
+				try
+				{
+					Db::rawExecute($query);
+				}
+				catch (PDOException $exception)
+				{
+					$status = false;
+				}
 			}
 		}
+		return $status;
 	}
 }

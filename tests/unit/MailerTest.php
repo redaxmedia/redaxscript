@@ -36,6 +36,7 @@ class MailerTest extends TestCaseAbstract
 		$installer->init();
 		$installer->rawCreate();
 		$installer->insertSettings($optionArray);
+		$installer->rawMigrate();
 		Stream::setup('root');
 		$file = new StreamFile('attachment.zip');
 		StreamWrapper::getRoot()->addChild($file);

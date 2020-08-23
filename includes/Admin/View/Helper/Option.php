@@ -5,6 +5,9 @@ use DateTimeZone;
 use Redaxscript\Db;
 use Redaxscript\Filesystem;
 use Redaxscript\Language;
+use function function_exists;
+use function mb_list_encodings;
+use function resourcebundle_locales;
 use function substr;
 
 /**
@@ -60,6 +63,32 @@ class Option
 			$this->_language->get('follow_no') => 5,
 			$this->_language->get('none') => 6
 		];
+	}
+
+	/**
+	 * get the charset array
+	 *
+	 * @since 4.4.0
+	 *
+	 * @return array
+	 */
+
+	public function getCharsetArray() : array
+	{
+		return mb_list_encodings();
+	}
+
+	/**
+	 * get the locale array
+	 *
+	 * @since 4.4.0
+	 *
+	 * @return array
+	 */
+
+	public function getLocaleArray() : array
+	{
+		return function_exists('resourcebundle_locales') ? resourcebundle_locales(null) : [];
 	}
 
 	/**

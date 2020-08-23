@@ -34,6 +34,7 @@ class CommentTest extends TestCaseAbstract
 		$installer->init();
 		$installer->rawCreate();
 		$installer->insertSettings($optionArray);
+		$installer->rawMigrate();
 		$articleOne = Db::forTablePrefix('articles')->create();
 		$articleOne
 			->set(

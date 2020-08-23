@@ -224,6 +224,17 @@ class SettingForm extends ViewAbstract
 				'value' => $settingModel->get('email')
 			])
 			->append('</li><li>')
+			->label($this->_language->get('smtp'),
+			[
+				'for' => 'smtp'
+			])
+			->text(
+			[
+				'id' => 'smtp',
+				'name' => 'smtp',
+				'value' => $settingModel->get('smtp')
+			])
+			->append('</li><li>')
 			->label($this->_language->get('subject'),
 			[
 				'for' => 'subject'
@@ -278,11 +289,26 @@ class SettingForm extends ViewAbstract
 			[
 				'for' => 'charset'
 			])
-			->text(
+			->select($helperOption->getCharsetArray(),
+			[
+				$settingModel->get('charset')
+			],
 			[
 				'id' => 'charset',
-				'name' => 'charset',
-				'value' => $settingModel->get('charset')
+				'name' => 'charset'
+			])
+			->append('</li><li>')
+			->label($this->_language->get('locale'),
+			[
+				'for' => 'locale'
+			])
+			->select($helperOption->getLocaleArray(),
+			[
+				$settingModel->get('locale')
+			],
+			[
+				'id' => 'locale',
+				'name' => 'locale'
 			])
 			->append('</li><li>')
 			->label($this->_language->get('divider'),

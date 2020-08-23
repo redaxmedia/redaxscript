@@ -38,7 +38,7 @@ class ImageUpload extends Module\Metadata
 		'alias' => 'ImageUpload',
 		'author' => 'Redaxmedia',
 		'description' => 'Shared module to upload images',
-		'version' => '4.3.2',
+		'version' => '4.4.0',
 		'access' => '[1]'
 	];
 

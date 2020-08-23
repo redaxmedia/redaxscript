@@ -11,8 +11,6 @@ module.exports = grunt =>
 		ncsslint: require('./tasks/ncsslint')(grunt),
 		htmlhint: require('./tasks/htmlhint')(grunt),
 		phpcs: require('./tasks/phpcs')(grunt),
-		diffJSON: require('./tasks/diff_json')(grunt),
-		formatJSON: require('./tasks/format_json')(grunt),
 		postcss: require('./tasks/postcss')(grunt),
 		babel: require('./tasks/babel')(grunt),
 		tocgen: require('./tasks/tocgen')(grunt),
@@ -26,10 +24,6 @@ module.exports = grunt =>
 
 	require('load-grunt-tasks')(grunt);
 
-	/* rename tasks */
-
-	grunt.renameTask('json-format', 'formatJSON');
-
 	/* register tasks */
 
 	grunt.registerTask('default',
@@ -42,8 +36,7 @@ module.exports = grunt =>
 		'htmlhint',
 		'phpcpd',
 		'phpmd',
-		'phpcs',
-		'languagelint'
+		'phpcs'
 	]);
 	grunt.registerTask('stylelint',
 	[
@@ -56,12 +49,6 @@ module.exports = grunt =>
 	grunt.registerTask('colorguard',
 	[
 		'postcss:colorguard'
-	]);
-	grunt.registerTask('languagelint',
-	[
-		'formatJSON:languages',
-		'diffJSON:languages',
-		'shell:removeBuild'
 	]);
 	grunt.registerTask('phpcpd',
 	[

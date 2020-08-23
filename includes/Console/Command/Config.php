@@ -79,7 +79,7 @@ class Config extends CommandAbstract
 				],
 				'lock' =>
 				[
-					'description' => 'Lock the production environment'
+					'description' => 'Lock the configuration'
 				]
 			]
 		]
@@ -203,14 +203,14 @@ class Config extends CommandAbstract
 	/**
 	 * lock the config
 	 *
-	 * @since 3.0.0
+	 * @since 4.4.0
 	 *
 	 * @return bool
 	 */
 
 	protected function _lock() : bool
 	{
-		$this->_config->set('env', 'production');
+		$this->_config->set('lock', '1');
 		return $this->_config->write();
 	}
 }

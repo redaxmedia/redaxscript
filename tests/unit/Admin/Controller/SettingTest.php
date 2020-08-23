@@ -33,6 +33,7 @@ class SettingTest extends TestCaseAbstract
 		$installer->init();
 		$installer->rawCreate();
 		$installer->insertSettings($optionArray);
+		$installer->rawMigrate();
 	}
 
 	/**

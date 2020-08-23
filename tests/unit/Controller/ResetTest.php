@@ -38,6 +38,7 @@ class ResetTest extends TestCaseAbstract
 		$installer->rawCreate();
 		$installer->insertSettings($optionArray);
 		$installer->insertUsers($optionArray);
+		$installer->rawMigrate();
 		Db::forTablePrefix('users')
 			->whereIdIs(1)
 			->findOne()

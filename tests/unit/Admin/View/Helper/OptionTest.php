@@ -5,6 +5,7 @@ use Redaxscript\Admin\View\Helper;
 use Redaxscript\Db;
 use Redaxscript\Tests\TestCaseAbstract;
 use function array_diff;
+use function function_exists;
 
 /**
  * OptionTest
@@ -34,6 +35,7 @@ class OptionTest extends TestCaseAbstract
 		$installer->init();
 		$installer->rawCreate();
 		$installer->insertSettings($optionArray);
+		$installer->rawMigrate();
 		Db::forTablePrefix('articles')
 			->create()
 			->set(
@@ -110,6 +112,48 @@ class OptionTest extends TestCaseAbstract
 		/* compare */
 
 		$this->assertEquals($expectArray['robot'], $actualArray);
+	}
+
+	/**
+	 * testGetCharsetArray
+	 *
+	 * @since 4.4.0
+	 */
+
+	public function testGetCharsetArray() : void
+	{
+		/* setup */
+
+		$helperOption = new Helper\Option($this->_language);
+
+		/* actual */
+
+		$actualArray = $helperOption->getCharsetArray();
+
+		/* compare */
+
+		$this->assertContains('UTF-8', $actualArray);
+	}
+
+	/**
+	 * testGetLocaleArray
+	 *
+	 * @since 4.4.0
+	 */
+
+	public function testGetLocaleArray() : void
+	{
+		/* setup */
+
+		$helperOption = new Helper\Option($this->_language);
+
+		/* actual */
+
+		$actualArray = $helperOption->getLocaleArray();
+
+		/* compare */
+
+		function_exists('resourcebundle_locales') ? $this->assertContains('en_US', $actualArray) : $this->assertEmpty($actualArray);
 	}
 
 	/**

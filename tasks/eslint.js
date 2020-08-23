@@ -23,6 +23,26 @@ module.exports = () =>
 				'assets/scripts/*.js'
 			]
 		},
+		languages:
+		{
+			src:
+			[
+				'languages/*.json'
+			],
+			options:
+			{
+				rules:
+				{
+					'i18n-json/identical-keys':
+					[
+						'error',
+						{
+							filePath: require('path').resolve('languages/en.json')
+						}
+					]
+				}
+			}
+		},
 		modules:
 		{
 			src:

@@ -47,7 +47,7 @@ class Gallery extends Module\Metadata
 		'alias' => 'Gallery',
 		'author' => 'Redaxmedia',
 		'description' => 'Responsive image gallery',
-		'version' => '4.3.2'
+		'version' => '4.4.0'
 	];
 
 	/**

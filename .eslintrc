@@ -14,6 +14,18 @@
 	[
 		"eslint-config-redaxmedia"
 	],
+	"plugins":
+	[
+		"i18n-json"
+	],
+	"settings":
+	{
+		"i18n-json/ignore-keys":
+		[
+			"_language",
+			"_package"
+		]
+	},
 	"parserOptions":
 	{
 		"ecmaVersion": 9

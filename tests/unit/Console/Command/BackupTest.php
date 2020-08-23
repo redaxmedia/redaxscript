@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Tests\Console\Command;
 
-use org\bovigo\vfs\vfsStream as Stream;
 use Redaxscript\Console\Command;
 use Redaxscript\Tests\TestCaseAbstract;
 
@@ -36,7 +35,7 @@ class BackupTest extends TestCaseAbstract
 		$installer->init();
 		$installer->rawCreate();
 		$installer->insertSettings($optionArray);
-		Stream::setup('root', 0777, $this->getJSON('tests' . DIRECTORY_SEPARATOR . 'unit-provider' . DIRECTORY_SEPARATOR . 'Console' . DIRECTORY_SEPARATOR . 'ConsoleTest_setUp.json'));
+		$installer->rawMigrate();
 	}
 
 	/**
@@ -89,16 +88,12 @@ class BackupTest extends TestCaseAbstract
 			'backup',
 			'database',
 			'--directory',
-			Stream::url('root' . DIRECTORY_SEPARATOR . 'build')
+			'build'
 		]);
 		$backupCommand = new Command\Backup($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* expect and actual */
 
-		if ($this->_config->get('dbType') === 'sqlite')
-		{
-			$this->markTestSkipped();
-		}
 		$expect = $backupCommand->success();
 		$actual = $backupCommand->run('cli');
 

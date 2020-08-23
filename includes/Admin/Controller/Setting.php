@@ -58,9 +58,11 @@ class Setting extends ControllerAbstract
 				'keywords' => $postArray['keywords'],
 				'robots' => $postArray['robots'],
 				'email' => $postArray['email'],
+				'smtp' => $postArray['smtp'],
 				'subject' => $postArray['subject'],
 				'notification' => $postArray['notification'],
 				'charset' => $postArray['charset'],
+				'locale' => $postArray['locale'],
 				'divider' => $postArray['divider'],
 				'zone' => $postArray['zone'],
 				'time' => $postArray['time'],
@@ -122,9 +124,11 @@ class Setting extends ControllerAbstract
 			'keywords' => $textFilter->sanitize($this->_request->getPost('keywords')),
 			'robots' => $numberFilter->sanitize($this->_request->getPost('robots')),
 			'email' => $emailFilter->sanitize($this->_request->getPost('email')),
+			'smtp' => $emailFilter->sanitize($this->_request->getPost('smtp')),
 			'subject' => $textFilter->sanitize($this->_request->getPost('subject')),
 			'notification' => $toggleFilter->sanitize($this->_request->getPost('notification')),
 			'charset' => $textFilter->sanitize($this->_request->getPost('charset')),
+			'locale' => $textFilter->sanitize($this->_request->getPost('locale')),
 			'divider' => $textFilter->sanitize($this->_request->getPost('divider')),
 			'zone' => $textFilter->sanitize($this->_request->getPost('zone')),
 			'time' => $textFilter->sanitize($this->_request->getPost('time')),
@@ -154,6 +158,7 @@ class Setting extends ControllerAbstract
 	protected function _validatePost(array $postArray = []) : array
 	{
 		$nameValidator = new Validator\Name();
+		$dnsValidator = new Validator\Dns();
 		$validateArray = [];
 
 		/* validate post */
@@ -174,9 +179,9 @@ class Setting extends ControllerAbstract
 		{
 			$validateArray[] = $this->_language->get('author_incorrect');
 		}
-		if (!$postArray['charset'] || !$postArray['limit'])
+		if ($postArray['smtp'] && !$dnsValidator->validate($postArray['smtp'], 'mx'))
 		{
-			$validateArray[] = $this->_language->get('input_empty');
+			$validateArray[] = $this->_language->get('smtp_incorrect');
 		}
 		return $validateArray;
 	}

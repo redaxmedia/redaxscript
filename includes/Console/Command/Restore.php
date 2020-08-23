@@ -2,7 +2,7 @@
 namespace Redaxscript\Console\Command;
 
 use Redaxscript\Console\Parser;
-use Redaxscript\Filesystem;
+use Redaxscript\Installer;
 use function exec;
 use function is_file;
 
@@ -88,6 +88,8 @@ class Restore extends CommandAbstract
 
 	protected function _database(array $optionArray = []) : bool
 	{
+		$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
+		$installer->init();
 		$dbType = $this->_config->get('dbType');
 		$dbHost = $this->_config->get('dbHost');
 		$dbName = $this->_config->get('dbName');
@@ -95,32 +97,30 @@ class Restore extends CommandAbstract
 		$dbPassword = $this->_config->get('dbPassword');
 		$directory = $this->prompt('directory', $optionArray);
 		$file = $this->prompt('file', $optionArray);
-
-		/* restore filesystem */
-
-		$backupFilesystem = new Filesystem\Directory();
-		$backupFilesystem->init($directory);
+		$path = $directory . DIRECTORY_SEPARATOR . $file;
 
 		/* restore */
 
-		if (is_file($directory . DIRECTORY_SEPARATOR . $file))
+		if (is_file($path))
 		{
-			$command = ':';
-			$content = $backupFilesystem->readFile($file);
 			if ($dbType === 'mysql' && $dbHost && $dbName && $dbUser && $dbPassword)
 			{
-				$command = $content . ' | mysql --host=' . $dbHost . ' --user=' . $dbUser . ' --password=' . $dbPassword . ' ' . $dbName;
+				$command = 'mysql --host=' . $dbHost . ' --user=' . $dbUser . ' --password=' . $dbPassword . ' ' . $dbName . ' < ' . $path;
 			}
 			if ($dbType === 'pgsql' && $dbHost && $dbName && $dbUser && $dbPassword)
 			{
-				$command = 'PGPASSWORD=' . $dbPassword . ' ' . $content . ' | psql --host=' . $dbHost . ' --username=' . $dbUser . ' ' . $dbName;
+				$command = 'psql postgres://' . $dbUser . ':' . $dbPassword . '@' . $dbHost . '/' . $dbName . ' < ' . $path;
 			}
-			if ($dbType === 'sqlite' && is_file($dbHost))
+			if ($dbType === 'sqlite' && $dbHost)
 			{
-				$command = 'echo ' . $content . ' > ' . $dbHost;
+				$command = 'sqlite3 ' . $dbHost . ' .dump < ' . $path;
 			}
-			exec($command, $outputArray, $error);
-			return $error === 0;
+			if ($command)
+			{
+				$installer->rawDrop();
+				exec($command, $outputArray, $status);
+			}
+			return $status === 0;
 		}
 		return false;
 	}

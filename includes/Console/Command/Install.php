@@ -111,6 +111,8 @@ class Install extends CommandAbstract
 
 	protected function _database(array $optionArray = []) : bool
 	{
+		$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
+		$installer->init();
 		$adminName = $this->prompt('admin-name', $optionArray);
 		$adminUser = $this->prompt('admin-user', $optionArray);
 		$adminPassword = $this->prompt('admin-password', $optionArray);
@@ -120,8 +122,6 @@ class Install extends CommandAbstract
 
 		if ($adminName && $adminUser && $adminPassword && $adminEmail)
 		{
-			$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
-			$installer->init();
 			$installer->rawCreate();
 			$installer->insertData(
 			[

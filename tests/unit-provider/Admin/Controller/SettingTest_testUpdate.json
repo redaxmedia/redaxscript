@@ -13,9 +13,11 @@
 			"keywords": null,
 			"robots": null,
 			"email": null,
+			"smtp": null,
 			"subject": null,
 			"notification": null,
 			"charset": null,
+			"locale": null,
 			"divider": null,
 			"zone": null,
 			"time": null,
@@ -30,7 +32,7 @@
 			"recovery": null,
 			"captcha": null
 		},
-		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Title is empty</li><li>Author is empty</li><li>Input is empty</li></ul></div><a href=\"admin\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Title is empty</li><li>Author is empty</li></ul></div><a href=\"admin\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
 	],
 	[
 		{
@@ -46,9 +48,11 @@
 			"keywords": null,
 			"robots": null,
 			"email": null,
+			"smtp": null,
 			"subject": null,
 			"notification": null,
 			"charset": null,
+			"locale": null,
 			"divider": null,
 			"zone": null,
 			"time": null,
@@ -63,7 +67,7 @@
 			"recovery": null,
 			"captcha": null
 		},
-		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Title is empty</li><li>Author is empty</li><li>Input is empty</li></ul></div><a href=\"admin/edit/settings\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Title is empty</li><li>Author is empty</li></ul></div><a href=\"admin/edit/settings\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
 	],
 	[
 		{
@@ -79,9 +83,11 @@
 			"keywords": null,
 			"robots": null,
 			"email": null,
+			"smtp": null,
 			"subject": null,
 			"notification": null,
-			"charset": "utf-8",
+			"charset": "UTF-8",
+			"locale": "en_US",
 			"divider": null,
 			"zone": null,
 			"time": null,

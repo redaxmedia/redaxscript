@@ -55,6 +55,7 @@ class InstallerTest extends TestCaseAbstract
 		$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
 		$installer->init();
 		$installer->insertData($optionArray);
+		$installer->rawMigrate();
 
 		/* actual */
 
@@ -75,7 +76,7 @@ class InstallerTest extends TestCaseAbstract
 		$this->assertEquals(1, $actualComments);
 		$this->assertEquals(2, $actualGroups);
 		$this->assertEquals(1, $actualUsers);
-		$this->assertEquals(26, $actualSettings);
+		$this->assertEquals(28, $actualSettings);
 		$this->assertEquals(10, $actualModules);
 	}
 

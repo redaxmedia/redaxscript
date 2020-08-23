@@ -1,8 +1,8 @@
 <?php
 namespace Redaxscript\Tests\Console\Command;
 
-use org\bovigo\vfs\vfsStream as Stream;
 use Redaxscript\Console\Command;
+use Redaxscript\Dater;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -31,7 +31,12 @@ class RestoreTest extends TestCaseAbstract
 	public function setUp() : void
 	{
 		parent::setUp();
-		Stream::setup('root', 0777, $this->getJSON('tests' . DIRECTORY_SEPARATOR . 'unit-provider' . DIRECTORY_SEPARATOR . 'Console' . DIRECTORY_SEPARATOR . 'ConsoleTest_setUp.json'));
+		$optionArray = $this->getOptionArray();
+		$installer = $this->installerFactory();
+		$installer->init();
+		$installer->rawCreate();
+		$installer->insertSettings($optionArray);
+		$installer->rawMigrate();
 	}
 
 	/**
@@ -78,24 +83,25 @@ class RestoreTest extends TestCaseAbstract
 	{
 		/* setup */
 
+		$dater = new Dater();
+		$dater->init();
+		$dbType = $this->_config->get('dbType');
+		$dbName = $this->_config->get('dbName');
+		$file = $dbName ? $dbName . '_' . $dater->formatDate() . '_' . $dater->formatTime() . '.' . $dbType : $dater->formatDate() . '_' . $dater->formatTime() . '.' . $dbType;
 		$this->_request->setServer('argv',
 		[
 			'console.php',
 			'restore',
 			'database',
 			'--directory',
-			Stream::url('root' . DIRECTORY_SEPARATOR . 'build'),
+			'build',
 			'--file',
-			'test.sql'
+			$file
 		]);
 		$restoreCommand = new Command\Restore($this->_registry, $this->_request, $this->_language, $this->_config);
 
 		/* expect and actual */
 
-		if ($this->_config->get('dbType') === 'sqlite')
-		{
-			$this->markTestSkipped();
-		}
 		$expect = $restoreCommand->success();
 		$actual = $restoreCommand->run('cli');
 

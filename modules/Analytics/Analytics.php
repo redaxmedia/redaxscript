@@ -28,7 +28,7 @@ class Analytics extends Module\Module
 		'alias' => 'Analytics',
 		'author' => 'Redaxmedia',
 		'description' => 'Integrate Google Analytics',
-		'version' => '4.3.2'
+		'version' => '4.4.0'
 	];
 
 	/**

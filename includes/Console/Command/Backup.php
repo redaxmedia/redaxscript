@@ -3,11 +3,8 @@ namespace Redaxscript\Console\Command;
 
 use Redaxscript\Console\Parser;
 use Redaxscript\Dater;
-use Redaxscript\Filesystem;
 use function exec;
-use function implode;
 use function is_dir;
-use function is_file;
 use function is_string;
 use function mkdir;
 
@@ -98,32 +95,29 @@ class Backup extends CommandAbstract
 		$dbPassword = $this->_config->get('dbPassword');
 		$directory = $this->prompt('directory', $optionArray);
 		$file = $dbName ? $dbName . '_' . $dater->formatDate() . '_' . $dater->formatTime() . '.' . $dbType : $dater->formatDate() . '_' . $dater->formatTime() . '.' . $dbType;
-
-		/* backup filesystem */
-
-		$backupFilesystem = new Filesystem\Directory();
-		$backupFilesystem->init($directory);
+		$path = $directory . DIRECTORY_SEPARATOR . $file;
 
 		/* backup */
 
 		if (is_dir($directory) || is_string($directory) && mkdir($directory))
 		{
-			$command = ':';
 			if ($dbType === 'mysql' && $dbHost && $dbName && $dbUser && $dbPassword)
 			{
-				$command = 'mysqldump --host=' . $dbHost . ' --user=' . $dbUser . ' --password=' . $dbPassword . ' ' . $dbName;
+				$command = 'mysqldump --host=' . $dbHost . ' --user=' . $dbUser . ' --password=' . $dbPassword . ' ' . $dbName . ' > ' . $path;
 			}
 			if ($dbType === 'pgsql' && $dbHost && $dbName && $dbUser && $dbPassword)
 			{
-				$command = 'PGPASSWORD=' . $dbPassword . ' pg_dump --host=' . $dbHost . ' --username=' . $dbUser . ' ' . $dbName;
+				$command = 'pg_dump postgres://' . $dbUser . ':' . $dbPassword . '@' . $dbHost . '/' . $dbName . ' > ' . $path;
 			}
-			if ($dbType === 'sqlite' && is_file($dbHost))
+			if ($dbType === 'sqlite' && $dbHost)
 			{
-				$command = 'cat ' . $dbHost;
+				$command = 'sqlite3 ' . $dbHost . ' .dump > ' . $path;
 			}
-			exec($command, $outputArray, $error);
-			$content = implode(PHP_EOL, $outputArray);
-			return $error === 0 && $backupFilesystem->writeFile($file, $content);
+			if ($command)
+			{
+				exec($command, $outputArray, $status);
+			}
+			return $status === 0;
 		}
 		return false;
 	}
