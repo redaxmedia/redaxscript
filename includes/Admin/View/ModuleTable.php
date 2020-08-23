@@ -131,7 +131,7 @@ class ModuleTable extends ViewAbstract
 						$tdElement->copy()->html(
 							$linkElement
 								->copy()
-								->attr('href', $this->_language->get('_package')['service'] . '/docs/modules/' . $value->alias)
+								->attr('href', $this->_language->get('_package')['service'] . '/modules/' . $value->alias)
 								->text($value->name) .
 							$adminControl->render('modules', $value->id, $value->alias, $value->status)) .
 						$tdElement->copy()->text($value->description) .
