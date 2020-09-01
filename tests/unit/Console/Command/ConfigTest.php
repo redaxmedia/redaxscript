@@ -59,7 +59,7 @@ class ConfigTest extends TestCaseAbstract
 		$this->_config->set('dbName', $this->_configArray['dbName']);
 		$this->_config->set('dbUser', $this->_configArray['dbUser']);
 		$this->_config->set('dbPassword', $this->_configArray['dbPassword']);
-		$this->_config->set('env', $this->_configArray['env']);
+		$this->_config->set('lock', $this->_configArray['lock']);
 		$this->_request->setServer('argv', null);
 	}
 
