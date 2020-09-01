@@ -181,7 +181,11 @@
 	],
 	[
 		{
-			"file": "install.php"
+			"file": "install.php",
+			"driverArray":
+			[
+				"sqlite"
+			]
 		},
 		{},
 		{},
