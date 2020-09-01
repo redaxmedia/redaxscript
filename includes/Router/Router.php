@@ -124,7 +124,7 @@ class Router extends RouterAbstract
 		{
 			return $this->_processRegister();
 		}
-		if ($this->_installGuard() && $this->_request->getPost('Redaxscript\View\InstallForm'))
+		if (!$this->_installGuard() && $this->_request->getPost('Redaxscript\View\InstallForm'))
 		{
 			return $this->_processInstall();
 		}
@@ -147,7 +147,7 @@ class Router extends RouterAbstract
 		{
 			return $this->_renderRegister();
 		}
-		if ($this->_installGuard())
+		if (!$this->_installGuard())
 		{
 			return $this->_renderInstall();
 		}
@@ -190,7 +190,7 @@ class Router extends RouterAbstract
 
 	protected function _installGuard() : bool
 	{
-		return $this->_registry->get('file') === 'install.php' && !$this->_config->get('lock');
+		return $this->_registry->get('file') !== 'install.php' || $this->_config->get('lock');
 	}
 
 	/**
