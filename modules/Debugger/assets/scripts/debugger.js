@@ -1,9 +1,9 @@
 rs.modules.Debugger.process = () =>
 {
-	Object.keys(rs.modules.Debugger.dataObject).forEach(dataValue =>
+	Object.keys(rs.modules.Debugger.dataArray).forEach(dataValue =>
 	{
 		console.info(dataValue.toUpperCase());
-		console.table(rs.modules.Debugger.dataObject[dataValue]);
+		console.table(rs.modules.Debugger.dataArray[dataValue]);
 	});
 };
 
