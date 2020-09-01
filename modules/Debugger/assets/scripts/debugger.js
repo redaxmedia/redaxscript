@@ -1,12 +1,9 @@
 rs.modules.Debugger.process = () =>
 {
-	Object.keys(rs.modules.Debugger.data).forEach(dataValue =>
+	Object.keys(rs.modules.Debugger.dataObject).forEach(dataValue =>
 	{
-		const data = rs.modules.Debugger.data[dataValue];
-		const total = Object.keys(rs.modules.Debugger.data[dataValue]).length;
-
-		console.log(dataValue.toUpperCase() + ' (' + total + ')');
-		console.table(data);
+		console.info(dataValue.toUpperCase());
+		console.table(rs.modules.Debugger.dataObject[dataValue]);
 	});
 };
 

@@ -1,6 +1,5 @@
 rs.modules.ImageUpload =
 {
-	init: rs.registry.loggedIn === rs.registry.token && rs.registry.adminParameter,
 	optionArray:
 	{
 		route:

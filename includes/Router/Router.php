@@ -83,7 +83,6 @@ class Router extends RouterAbstract
 	{
 		Module\Hook::trigger('routeContent');
 		$firstParameter = $this->getFirst();
-		$fileInstall = $this->_registry->get('file') === 'install.php' && $this->_config->get('env') !== 'production';
 
 		/* handle break */
 
@@ -125,7 +124,7 @@ class Router extends RouterAbstract
 		{
 			return $this->_processRegister();
 		}
-		if ($fileInstall && $this->_request->getPost('Redaxscript\View\InstallForm'))
+		if ($this->_installGuard() && $this->_request->getPost('Redaxscript\View\InstallForm'))
 		{
 			return $this->_processInstall();
 		}
@@ -148,7 +147,7 @@ class Router extends RouterAbstract
 		{
 			return $this->_renderRegister();
 		}
-		if ($fileInstall)
+		if ($this->_installGuard())
 		{
 			return $this->_renderInstall();
 		}
@@ -179,6 +178,19 @@ class Router extends RouterAbstract
 	protected function _authGuard() : bool
 	{
 		return $this->_registry->get('token') !== $this->_registry->get('loggedIn') && $this->_registry->get('firstParameter') === 'admin';
+	}
+
+	/**
+	 * install guard
+	 *
+	 * @since 4.5.0
+	 *
+	 * @return bool
+	 */
+
+	protected function _installGuard() : bool
+	{
+		return $this->_registry->get('file') === 'install.php' && !$this->_config->get('lock');
 	}
 
 	/**

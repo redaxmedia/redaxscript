@@ -27,7 +27,7 @@ $unmaskPassword->renderStart();
 
 /* restrict access */
 
-if ($config->get('env') !== 'production')
+if (!$config->get('lock'))
 {
 	Header::responseCode(200);
 	set_include_path('templates');

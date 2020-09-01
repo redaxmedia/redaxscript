@@ -83,6 +83,10 @@
 	[
 		{
 			"file": "install.php",
+			"driverArray":
+			[
+				"sqlite"
+			],
 			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
 		},
 		{},

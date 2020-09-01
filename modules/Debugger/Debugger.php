@@ -69,7 +69,7 @@ class Debugger extends Module\Module
 		$script = Head\Script::getInstance();
 		echo $script
 			->init()
-			->transportVar('rs.modules.Debugger.data', $debuggerArray)
+			->transportVar('rs.modules.Debugger.dataObject', $debuggerArray)
 			->appendInline($inline);
 	}
 
