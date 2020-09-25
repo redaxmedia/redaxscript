@@ -216,6 +216,7 @@
 	"modules": "モジュール",
 	"module_no": "モジュールは存在しません",
 	"version": "バージョン",
+	"license": "License",
 	"settings": "全般設定",
 	"general": "一般項目",
 	"language": "言語",

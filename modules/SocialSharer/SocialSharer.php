@@ -29,7 +29,8 @@ class SocialSharer extends Module\Module
 		'alias' => 'SocialSharer',
 		'author' => 'Redaxmedia',
 		'description' => 'Integrate social network buttons',
-		'version' => '4.4.0'
+		'version' => '4.5.0',
+		'license' => 'MIT'
 	];
 
 	/**

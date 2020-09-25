@@ -33,7 +33,8 @@ class FeedGenerator extends Module\Module
 		'alias' => 'FeedGenerator',
 		'author' => 'Redaxmedia',
 		'description' => 'Provide feeds to your audience',
-		'version' => '4.4.0'
+		'version' => '4.5.0',
+		'license' => 'MIT'
 	];
 
 	/**

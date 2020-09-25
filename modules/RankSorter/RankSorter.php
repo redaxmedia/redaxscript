@@ -33,7 +33,8 @@ class RankSorter extends Module\Module
 		'alias' => 'RankSorter',
 		'author' => 'Redaxmedia',
 		'description' => 'Adjust the rank with draggable table rows',
-		'version' => '4.4.0'
+		'version' => '4.5.0',
+		'license' => 'MIT'
 	];
 
 	/**

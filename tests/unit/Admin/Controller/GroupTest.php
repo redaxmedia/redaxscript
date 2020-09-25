@@ -34,7 +34,6 @@ class GroupTest extends TestCaseAbstract
 		$installer->init();
 		$installer->rawCreate();
 		$installer->insertSettings($optionArray);
-		$installer->rawMigrate();
 		Db::forTablePrefix('groups')
 			->create()
 			->set(

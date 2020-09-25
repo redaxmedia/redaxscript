@@ -216,6 +216,7 @@
 	"modules": "Modul",
 	"module_no": "Nincsenek modulok",
 	"version": "Verzió",
+	"license": "License",
 	"settings": "Beállítások",
 	"general": "Általános",
 	"language": "Nyelv",

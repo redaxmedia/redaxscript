@@ -216,6 +216,7 @@
 	"modules": "Module",
 	"module_no": "Niciun modul",
 	"version": "Versiune",
+	"license": "License",
 	"settings": "Setări",
 	"general": "General",
 	"language": "Limbă",

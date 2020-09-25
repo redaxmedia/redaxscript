@@ -216,6 +216,7 @@
 	"modules": "Moduler",
 	"module_no": "Inga moduler tillgängliga",
 	"version": "Version",
+	"license": "License",
 	"settings": "Inställningar",
 	"general": "Allmänna",
 	"language": "Språk",

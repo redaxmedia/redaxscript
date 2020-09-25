@@ -34,7 +34,6 @@ class BreadcrumbTest extends TestCaseAbstract
 		$installer->init();
 		$installer->rawCreate();
 		$installer->insertSettings($optionArray);
-		$installer->rawMigrate();
 		$categoryOne = Db::forTablePrefix('categories')->create();
 		$categoryOne
 			->set(

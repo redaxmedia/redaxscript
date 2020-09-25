@@ -216,6 +216,7 @@
 	"modules": "Moduler",
 	"module_no": "Ingen modul funnet",
 	"version": "Versjon",
+	"license": "License",
 	"settings": "Innstillinger",
 	"general": "Generelt",
 	"language": "Språk",

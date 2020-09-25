@@ -35,7 +35,6 @@ class DetectorTest extends TestCaseAbstract
 		$installer->init();
 		$installer->rawCreate();
 		$installer->insertSettings($optionArray);
-		$installer->rawMigrate();
 		Db::forTablePrefix('categories')
 			->create()
 			->set(

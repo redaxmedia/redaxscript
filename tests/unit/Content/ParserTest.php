@@ -41,7 +41,6 @@ class ParserTest extends TestCaseAbstract
 		$installer->init();
 		$installer->rawCreate();
 		$installer->insertSettings($optionArray);
-		$installer->rawMigrate();
 		$this->installTestDummy();
 	}
 

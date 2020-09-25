@@ -32,7 +32,6 @@ class PurifierTest extends TestCaseAbstract
 		$installer->init();
 		$installer->rawCreate();
 		$installer->insertSettings($optionArray);
-		$installer->rawMigrate();
 	}
 
 	/**

@@ -1,0 +1,1 @@
+ALTER TABLE /* %PREFIX% */modules ADD license varchar(255) COLLATE utf8_unicode_ci;

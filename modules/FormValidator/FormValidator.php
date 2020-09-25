@@ -28,7 +28,8 @@ class FormValidator extends Module\Module
 		'alias' => 'FormValidator',
 		'author' => 'Redaxmedia',
 		'description' => 'Validate using the constraint validation API',
-		'version' => '4.4.0'
+		'version' => '4.5.0',
+		'license' => 'MIT'
 	];
 
 	/**

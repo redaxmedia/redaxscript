@@ -3,6 +3,7 @@ namespace Redaxscript\Console\Command;
 
 use Redaxscript\Console\Parser;
 use Redaxscript\Installer;
+use Redaxscript\Model;
 
 /**
  * children class to execute the migrate command
@@ -73,8 +74,9 @@ class Migrate extends CommandAbstract
 
 	protected function _database() : bool
 	{
+		$settingModel = new Model\Setting();
 		$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
 		$installer->init();
-		return $installer->rawMigrate();
+		return $installer->rawMigrate($settingModel->get('version'));
 	}
 }

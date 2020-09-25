@@ -3,6 +3,7 @@ namespace Redaxscript\Admin\View;
 
 use Redaxscript\Admin;
 use Redaxscript\Filesystem;
+use Redaxscript\Filter;
 use Redaxscript\Html;
 use Redaxscript\Module;
 use function array_diff;
@@ -69,8 +70,10 @@ class ModuleTable extends ViewAbstract
 		[
 			'name' => $this->_language->get('name'),
 			'description' => $this->_language->get('description'),
-			'version' => $this->_language->get('version')
+			'version' => $this->_language->get('version'),
+			'license' => $this->_language->get('license')
 		];
+		$aliasFilter = new Filter\Alias();
 		$adminControl = new Helper\Control($this->_registry, $this->_language);
 		$adminControl->init();
 		$moduleModel = new Admin\Model\Module();
@@ -135,7 +138,12 @@ class ModuleTable extends ViewAbstract
 								->text($value->name) .
 							$adminControl->render('modules', $value->id, $value->alias, $value->status)) .
 						$tdElement->copy()->text($value->description) .
-						$tdElement->copy()->text($value->version)
+						$tdElement->copy()->text($value->version) .
+						$tdElement->copy()->html(
+							$linkElement
+								->copy()
+								->attr('href', $this->_language->get('_package')['service'] . '/licenses/' . $aliasFilter->sanitize($value->license))
+								->text($value->license))
 				);
 				$modulesFilesystemArray = array_diff($modulesFilesystemArray,
 				[

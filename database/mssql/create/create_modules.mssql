@@ -7,6 +7,7 @@ BEGIN
 		author nvarchar(255),
 		description nvarchar(255),
 		version nvarchar(255),
+		license varchar(255),
 		status int DEFAULT 1,
 		access nvarchar(255)
 	);

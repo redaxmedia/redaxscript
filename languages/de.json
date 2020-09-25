@@ -216,6 +216,7 @@
 	"modules": "Module",
 	"module_no": "Kein Modul vorhanden",
 	"version": "Version",
+	"license": "Lizenz",
 	"settings": "Einstellungen",
 	"general": "Allgemein",
 	"language": "Sprache",

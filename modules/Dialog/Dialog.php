@@ -29,7 +29,8 @@ class Dialog extends Module\Module
 		'alias' => 'Dialog',
 		'author' => 'Redaxmedia',
 		'description' => 'Shared module to replace alert, confirm and prompt',
-		'version' => '4.4.0'
+		'version' => '4.5.0',
+		'license' => 'MIT'
 	];
 
 	/**

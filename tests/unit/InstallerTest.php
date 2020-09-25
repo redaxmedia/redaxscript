@@ -55,7 +55,6 @@ class InstallerTest extends TestCaseAbstract
 		$installer = new Installer($this->_registry, $this->_request, $this->_language, $this->_config);
 		$installer->init();
 		$installer->insertData($optionArray);
-		$installer->rawMigrate();
 
 		/* actual */
 

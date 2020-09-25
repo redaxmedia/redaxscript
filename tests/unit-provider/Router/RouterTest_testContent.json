@@ -85,6 +85,9 @@
 			"file": "install.php",
 			"driverArray":
 			[
+				"mssql",
+				"mysql",
+				"pgsql",
 				"sqlite"
 			],
 			"token": "ffd845f78510f02580d329127bab3dd1aa7f4453"
@@ -184,6 +187,9 @@
 			"file": "install.php",
 			"driverArray":
 			[
+				"mssql",
+				"mysql",
+				"pgsql",
 				"sqlite"
 			]
 		},

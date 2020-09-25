@@ -374,7 +374,6 @@ class Install extends ControllerAbstract
 				'adminPassword' => $installArray['adminPassword'],
 				'adminEmail' => $installArray['adminEmail']
 			]);
-			$installer->rawMigrate();
 			return $this->_getStatus() === 2;
 		}
 		return false;

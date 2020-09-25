@@ -24,15 +24,17 @@ class InstallFormTest extends TestCaseAbstract
 	 *
 	 * @since 3.0.0
 	 *
+	 * @param array $registryArray
 	 * @param array $expectArray
 	 *
 	 * @dataProvider providerAutoloader
 	 */
 
-	public function testRender(array $expectArray = []) : void
+	public function testRender(array $registryArray = [], array $expectArray = []) : void
 	{
 		/* setup */
 
+		$this->_registry->init($registryArray);
 		$installForm = new View\InstallForm($this->_registry, $this->_language);
 
 		/* actual */

@@ -2,10 +2,12 @@
 namespace Redaxscript;
 
 use PDOException;
+use function explode;
 use function file_get_contents;
 use function method_exists;
 use function str_replace;
 use function ucfirst;
+use function version_compare;
 
 /**
  * parent class to install the database
@@ -109,7 +111,7 @@ class Installer
 
 	public function rawCreate() : bool
 	{
-		return $this->_rawExecute('create', $this->_config->get('dbType'));
+		return $this->_rawExecute($this->_config->get('dbType'), 'create');
 	}
 
 	/**
@@ -122,7 +124,7 @@ class Installer
 
 	public function rawDrop() : bool
 	{
-		return $this->_rawExecute('drop', $this->_config->get('dbType'));
+		return $this->_rawExecute($this->_config->get('dbType'), 'drop');
 	}
 
 	/**
@@ -130,12 +132,14 @@ class Installer
 	 *
 	 * @since 4.4.0
 	 *
+	 * @param string $version version to migrate
+	 *
 	 * @return bool
 	 */
 
-	public function rawMigrate() : bool
+	public function rawMigrate(string $version = null) : bool
 	{
-		return $this->_rawExecute('migrate', $this->_config->get('dbType'));
+		return $this->_rawExecute($this->_config->get('dbType'), 'migrate', $version);
 	}
 
 	/**
@@ -428,9 +432,11 @@ class Installer
 			'keywords' => null,
 			'robots' => 1,
 			'email' => $optionArray['adminEmail'],
+			'smtp' => null,
 			'subject' => $this->_language->get('_package')['name'],
 			'notification' => 0,
 			'charset' => 'UTF-8',
+			'locale' => 'en_US',
 			'divider' => ' - ',
 			'zone' => 'Europe/Berlin',
 			'time' => 'H:i',
@@ -444,7 +450,7 @@ class Installer
 			'recovery' => 1,
 			'moderation' => 0,
 			'captcha' => 0,
-			'version' => null
+			'version' => $this->_language->get('_package')['version']
 		];
 
 		/* process settings */
@@ -465,31 +471,33 @@ class Installer
 	/**
 	 * execute from sql
 	 *
-	 * @since 2.4.0
+	 * @since 4.5.0
 	 *
-	 * @param string $action action to process
 	 * @param string $type type of the database
+	 * @param string $action action to process
+	 * @param string $version version to process
 	 *
 	 * @return bool
 	 */
 
-	protected function _rawExecute(string $action = null, string $type = null) : bool
+	protected function _rawExecute(string $type = null, string $action = null, string $version = null) : bool
 	{
 		$actionFilesystem = new Filesystem\File();
 		$actionFilesystem->init($this->_directory . DIRECTORY_SEPARATOR . $type . DIRECTORY_SEPARATOR . $action);
 		$actionFilesystemArray = $actionFilesystem->getSortArray();
+		$dbPrefix = $this->_config->get('dbPrefix');
 		$status = true;
 
 		/* process filesystem */
 
 		foreach ($actionFilesystemArray as $file)
 		{
-			$query = $actionFilesystem->readFile($file);
+			$query = $this->_validateFileByVersion($file, $version) ? $actionFilesystem->readFile($file) : null;
 			if ($query)
 			{
-				if ($this->_config->get('dbPrefix'))
+				if ($dbPrefix)
 				{
-					$query = str_replace($this->_prefixPlaceholder, $this->_config->get('dbPrefix'), $query);
+					$query = str_replace($this->_prefixPlaceholder, $dbPrefix, $query);
 				}
 				try
 				{
@@ -502,5 +510,22 @@ class Installer
 			}
 		}
 		return $status;
+	}
+
+	/**
+	 * validate file by version
+	 *
+	 * @since 4.5.0
+	 *
+	 * @param string $file name of the file
+	 * @param string $version version to process
+	 *
+	 * @return bool
+	 */
+
+	protected function _validateFileByVersion(string $file = null, string $version = null) : bool
+	{
+		$fileArray = explode('_', $file);
+		return version_compare($version, $fileArray[0], '<');
 	}
 }

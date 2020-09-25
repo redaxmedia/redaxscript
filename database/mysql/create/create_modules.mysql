@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS /* %PREFIX% */modules (
 	author varchar(255) COLLATE utf8_unicode_ci,
 	description varchar(255) COLLATE utf8_unicode_ci,
 	version varchar(255) COLLATE utf8_unicode_ci,
+	license varchar(255) COLLATE utf8_unicode_ci,
 	status int(1) DEFAULT 1,
 	access varchar(255) COLLATE utf8_unicode_ci
 )

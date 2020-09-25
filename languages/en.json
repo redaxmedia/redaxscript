@@ -3,7 +3,7 @@
 	{
 		"name": "Redaxscript",
 		"description": "Ultra lightweight Content Management System",
-		"version": "4.4.0",
+		"version": "4.5.0",
 		"homepage": "https://redaxscript.com",
 		"service": "https://service.redaxscript.com"
 	},
@@ -259,6 +259,7 @@
 	"modules": "Modules",
 	"module_no": "No module present",
 	"version": "Version",
+	"license": "License",
 	"settings": "Settings",
 	"general": "General",
 	"language": "Language",

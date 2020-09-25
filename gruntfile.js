@@ -163,7 +163,8 @@ module.exports = grunt =>
 		'babel:moduleSyntaxHighlighter',
 		'babel:moduleTextareaResizer',
 		'babel:moduleUnmaskPassword',
-		'babel:moduleVisualEditor'
+		'babel:moduleVisualEditor',
+		'babel:moduleWebAuthentication'
 	]);
 	grunt.registerTask('serve', grunt.option('L') || grunt.option('live-reload') ?
 	[

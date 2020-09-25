@@ -216,6 +216,7 @@
 	"modules": "模块",
 	"module_no": "当前没有模块",
 	"version": "版本",
+	"license": "License",
 	"settings": "系统设置",
 	"general": "常用选项",
 	"language": "语言",

@@ -30,7 +30,8 @@ class FeedReader extends Module\Metadata
 		'alias' => 'FeedReader',
 		'author' => 'Redaxmedia',
 		'description' => 'Integrate RSS and Atom feeds',
-		'version' => '4.4.0'
+		'version' => '4.5.0',
+		'license' => 'MIT'
 	];
 
 	/**

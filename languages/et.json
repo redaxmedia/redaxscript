@@ -216,6 +216,7 @@
 	"modules": "Moodulid",
 	"module_no": "Moodulid puuduvad",
 	"version": "Versioon",
+	"license": "License",
 	"settings": "Seaded",
 	"general": "Üldine",
 	"language": "Keel",

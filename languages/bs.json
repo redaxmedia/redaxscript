@@ -216,6 +216,7 @@
 	"modules": "Moduli",
 	"module_no": "Nema modula",
 	"version": "Verzija",
+	"license": "License",
 	"settings": "Opcije",
 	"general": "Generalno",
 	"language": "Jezik",

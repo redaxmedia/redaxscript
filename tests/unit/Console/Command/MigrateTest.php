@@ -2,6 +2,7 @@
 namespace Redaxscript\Tests\Console\Command;
 
 use Redaxscript\Console\Command;
+use Redaxscript\Model;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -73,12 +74,19 @@ class MigrateTest extends TestCaseAbstract
 	 * testDatabase
 	 *
 	 * @since 4.4.0
+	 *
+	 * @param string $version
+	 * @param bool $expect
+	 *
+	 * @dataProvider providerAutoloader
 	 */
 
-	public function testDatabase() : void
+	public function testDatabase(string $version = null, bool $expect = null) : void
 	{
 		/* setup */
 
+		$settingModel = new Model\Setting();
+		$settingModel->set('version', $version);
 		$this->_request->setServer('argv',
 		[
 			'console.php',
@@ -87,13 +95,12 @@ class MigrateTest extends TestCaseAbstract
 		]);
 		$migrateCommand = new Command\Migrate($this->_registry, $this->_request, $this->_language, $this->_config);
 
-		/* expect and actual */
+		/* actual */
 
-		$expect = $migrateCommand->success();
 		$actual = $migrateCommand->run('cli');
 
 		/* compare */
 
-		$this->assertEquals($expect, $actual);
+		$expect ? $this->assertEquals($migrateCommand->success(), $actual) : $this->assertEquals($migrateCommand->error(), $actual);
 	}
 }

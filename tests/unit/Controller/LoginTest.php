@@ -36,7 +36,6 @@ class LoginTest extends TestCaseAbstract
 		$installer->rawCreate();
 		$installer->insertSettings($optionArray);
 		$installer->insertUsers($optionArray);
-		$installer->rawMigrate();
 		$setting = $this->settingFactory();
 		$setting->set('captcha', 1);
 	}
