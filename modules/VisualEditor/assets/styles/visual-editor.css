@@ -214,17 +214,17 @@
 		background-image: svg-load('@mdi/svg/svg/image.svg', fill = gray(0));
 	}
 
-	&[data-name="upload-image"]:hover:before
+	&[data-name="upload-image"]:before
 	{
 		background-image: svg-load('@mdi/svg/svg/upload.svg', fill = gray(0));
 	}
 
-	&[data-name="undo"]:hover:before
+	&[data-name="undo"]:before
 	{
 		background-image: svg-load('@mdi/svg/svg/undo.svg', fill = gray(0));
 	}
 
-	&[data-name="redo"]:hover:before
+	&[data-name="redo"]:before
 	{
 		background-image: svg-load('@mdi/svg/svg/redo.svg', fill = gray(0));
 	}

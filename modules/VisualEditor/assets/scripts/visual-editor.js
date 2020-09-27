@@ -145,13 +145,20 @@ rs.modules.VisualEditor.createUpload = OPTION =>
 	fieldElement.addEventListener('change', () =>
 	{
 		Object.keys(fieldElement.files).map(fileValue => formData.append(fileValue, fieldElement.files[fileValue]));
-		rs.modules.ImageUpload.upload(formData)
-			.then(fileArray =>
-			{
-				document.querySelector(OPTION.selector).previousSibling.focus();
-				fileArray.map(fileValue => document.execCommand('insertImage', false, fileValue));
-			})
-			.catch(() => null);
+		if (typeof rs.modules.ImageUpload === 'object')
+		{
+			rs.modules.ImageUpload.upload(formData)
+				.then(fileArray =>
+				{
+					document.querySelector(OPTION.selector).previousSibling.focus();
+					fileArray.map(fileValue => document.execCommand('insertImage', false, fileValue));
+				})
+				.catch(() => null);
+		}
+		else
+		{
+			rs.modules.Dialog.alert(rs.language.something_wrong + rs.language.point);
+		}
 	});
 	return fieldElement;
 };
@@ -206,5 +213,5 @@ rs.modules.VisualEditor.getOption = () =>
 
 if (rs.modules.VisualEditor.frontend.init || rs.modules.VisualEditor.backend.init)
 {
-	rs.modules.VisualEditor.process();
+	window.addEventListener('load', () => rs.modules.VisualEditor.process());
 }
