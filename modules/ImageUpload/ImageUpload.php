@@ -1,7 +1,6 @@
 <?php
 namespace Redaxscript\Modules\ImageUpload;
 
-use Redaxscript\Dater;
 use Redaxscript\Filesystem;
 use Redaxscript\Head;
 use Redaxscript\Header;
@@ -13,6 +12,7 @@ use function json_encode;
 use function mkdir;
 use function move_uploaded_file;
 use function pathinfo;
+use function sha1_file;
 
 /**
  * shared module to upload images
@@ -148,8 +148,6 @@ class ImageUpload extends Module\Metadata
 
 	protected function _upload() : ?string
 	{
-		$dater = new Dater();
-		$dater->init();
 		$filesArray = $this->_request->getArray()['files'];
 		$uploadArray = [];
 
@@ -158,7 +156,7 @@ class ImageUpload extends Module\Metadata
 		foreach ($filesArray as $key => $file)
 		{
 			$fileExtension = pathinfo($file['name'], PATHINFO_EXTENSION);
-			$fileName = $dater->getDateTime()->getTimestamp() . '.' . $key . '.' . $fileExtension;
+			$fileName = sha1_file($file['tmp_name']) . '.' . $fileExtension;
 			$uploadPath = $this->_optionArray['uploadDirectory'] . DIRECTORY_SEPARATOR . $fileName;
 			if (in_array($file['type'], $this->_optionArray['mimeTypeArray']) && move_uploaded_file($file['tmp_name'], $uploadPath))
 			{
