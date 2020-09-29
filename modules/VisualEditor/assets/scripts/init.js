@@ -11,10 +11,14 @@ rs.modules.VisualEditor =
 				boxVisualEditor: 'rs-box-visual-editor',
 				listVisualEditor: 'rs-list-visual-editor',
 				linkVisualEditor: 'rs-link-visual-editor',
-				fieldUpload: 'rs-js-upload'
+				listToolbar: 'rs-js-toolbar',
+				fieldUpload: 'rs-js-upload',
+				isVisual: 'rs-is-visual',
+				isSource: 'rs-is-source'
 			},
 			element:
 			{
+				listToolbar: 'ul.rs-js-toolbar',
 				fieldUpload	: 'input.rs-js-upload'
 			},
 			mimeTypeArray: [],
@@ -76,11 +80,15 @@ rs.modules.VisualEditor =
 				boxVisualEditor: 'rs-admin-box-visual-editor',
 				listVisualEditor: 'rs-admin-list-visual-editor',
 				linkVisualEditor: 'rs-admin-link-visual-editor',
-				fieldUpload: 'rs-admin-js-upload'
+				listToolbar: 'rs-admin-js-toolbar',
+				fieldUpload: 'rs-admin-js-upload',
+				isVisual: 'rs-admin-is-visual',
+				isSource: 'rs-admin-is-source'
 			},
 			element:
 			{
-				fieldUpload: 'input.rs-admin-js-upload'
+				listToolbar: 'ul.rs-admin-js-toolbar',
+				fieldUpload	: 'input.rs-admin-js-upload'
 			},
 			mimeTypeArray:
 			[

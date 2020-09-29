@@ -230,6 +230,15 @@
 	}
 }
 
+.rs-is-source .rs-link-visual-editor,
+.rs-admin-is-source .rs-admin-link-visual-editor
+{
+	&:not([data-name="toggle"])
+	{
+		display: none;
+	}
+}
+
 /**  @section 1.3. box */
 
 .rs-box-visual-editor,

@@ -37,7 +37,9 @@ rs.modules.VisualEditor.createToolbar = OPTION =>
 {
 	const listElement = document.createElement('ul');
 
+	listElement.classList.add(OPTION.className.listToolbar);
 	listElement.classList.add(OPTION.className.listVisualEditor);
+	listElement.classList.add(OPTION.className.isVisual);
 	OPTION.controlArray.map(control => listElement.appendChild(rs.modules.VisualEditor.createControl(control, OPTION)));
 	return listElement;
 };
@@ -80,7 +82,7 @@ rs.modules.VisualEditor.createControl = (control, OPTION) =>
 						selection.removeAllRanges();
 					}
 				})
-				.catch(() => null);
+				.catch(() => rs.modules.VisualEditor.somethingWrong());
 		}
 		else if (control.name === 'handle-link' && isRange && isLink || control.name === 'handle-image' && isRange && isImage)
 		{
@@ -93,7 +95,7 @@ rs.modules.VisualEditor.createControl = (control, OPTION) =>
 						selection.removeAllRanges();
 					}
 				})
-				.catch(() => null);
+				.catch(() => rs.modules.VisualEditor.somethingWrong());
 		}
 		else if (control.name === 'upload-image')
 		{
@@ -112,7 +114,10 @@ rs.modules.VisualEditor.createControl = (control, OPTION) =>
 rs.modules.VisualEditor.toggle = OPTION =>
 {
 	const textareaElement = document.querySelector(OPTION.selector);
+	const listToolbar = document.querySelector(OPTION.element.listToolbar);
 
+	listToolbar.classList.toggle(OPTION.className.isVisual);
+	listToolbar.classList.toggle(OPTION.className.isSource);
 	textareaElement.style.display = textareaElement.style.display ? null : 'none';
 	textareaElement.previousSibling.style.display = textareaElement.previousSibling.style.display ? null : 'none';
 };
@@ -122,11 +127,7 @@ rs.modules.VisualEditor.selectionHasTag = (selection, tag) =>
 	const targetElement = selection.anchorNode.parentElement;
 	const tagArray = selection.anchorNode.childNodes ? Array.from(selection.anchorNode.childNodes).map(element => element.tagName) : [];
 
-	if (tagArray.length)
-	{
-		return tagArray.includes(tag.toUpperCase());
-	}
-	return targetElement.tagName === tag.toUpperCase();
+	return tagArray.length ? tagArray.includes(tag.toUpperCase()) : targetElement.tagName === tag.toUpperCase();
 };
 
 rs.modules.VisualEditor.createUpload = OPTION =>
@@ -153,11 +154,11 @@ rs.modules.VisualEditor.createUpload = OPTION =>
 					document.querySelector(OPTION.selector).previousSibling.focus();
 					fileArray.map(fileValue => document.execCommand('insertImage', false, fileValue));
 				})
-				.catch(() => null);
+				.catch(() => rs.modules.VisualEditor.somethingWrong());
 		}
 		else
 		{
-			rs.modules.Dialog.alert(rs.language.something_wrong + rs.language.point);
+			rs.modules.VisualEditor.somethingWrong();
 		}
 	});
 	return fieldElement;
@@ -195,6 +196,11 @@ rs.modules.VisualEditor.createContent = (textareaElement, OPTION) =>
 		}
 	});
 	return contentElement;
+};
+
+rs.modules.somethingWrong = () =>
+{
+	rs.modules.Dialog.alert(rs.language.something_wrong + rs.language.point);
 };
 
 rs.modules.VisualEditor.getOption = () =>
