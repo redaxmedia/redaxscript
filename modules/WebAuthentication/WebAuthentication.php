@@ -1,8 +1,8 @@
 <?php
 namespace Redaxscript\Modules\WebAuthentication;
 
-use Redaxscript\Db;
 use Redaxscript\Controller;
+use Redaxscript\Db;
 use Redaxscript\Head;
 
 /**
