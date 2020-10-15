@@ -21,7 +21,9 @@ rs.modules.WebAuthentication =
 		attestation: 'indirect',
 		route:
 		{
-			register: rs.registry.parameterRoute + 'module/web-authentication/register/' + rs.registry.token,
+			create: rs.registry.parameterRoute + 'module/web-authentication/create/' + rs.registry.token,
+			read: rs.registry.parameterRoute + 'module/web-authentication/read/' + rs.registry.token,
+			delete: rs.registry.parameterRoute + 'module/web-authentication/delete/' + rs.registry.token,
 			login: rs.registry.parameterRoute + 'module/web-authentication/login/' + rs.registry.token
 		}
 	}

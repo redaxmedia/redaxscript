@@ -1,10 +1,9 @@
 <?php
 namespace Redaxscript\Modules\WebAuthentication;
 
+use Redaxscript\Db;
 use Redaxscript\Controller;
 use Redaxscript\Head;
-use Redaxscript\Module;
-use function sleep;
 
 /**
  * integrate web authentication
@@ -50,6 +49,23 @@ class WebAuthentication extends Module\Module
 				'modules/WebAuthentication/assets/scripts/init.js',
 				'modules/WebAuthentication/dist/scripts/web-authentication.min.js'
 			]);
+
+		/* route as needed */
+
+		// create for webauth
+		// get for webauth
+		// destroy to remove webauth from database
+		// login to forward to backend
+		// challenge for backend driven challenge
+
+		if ($this->_registry->get('firstParameter') === 'module' && $this->_registry->get('secondParameter') === 'web-authentication' && $this->_registry->get('tokenParameter'))
+		{
+			if ($this->_registry->get('thirdParameter') === 'login')
+			{
+				$this->_registry->set('renderBreak', true);
+				$this->_processLogin();
+			}
+		}
 	}
 
 	/**
@@ -62,14 +78,23 @@ class WebAuthentication extends Module\Module
 	{
 		if ($this->_request->getPost('Redaxscript\View\LoginForm'))
 		{
-			// $this->_registry->set('routerBreak', true);
-
-			// lookup if that user has login bouncer enabled inside modules_web_authentication
-			// remember the post array and pass it to the webauthn/login endpoint via fetch()
-			// do all the auth via key and if promise is fine then do the process login
-
-			sleep(2);
-			return $this->_processLogin();
+			$isEnabled = Db::forTablePrefix('modules_web_authentication')
+				->where(
+				[
+					'user' => $this->_request->getPost('user'),
+					'status' => 1
+				]);
+			if ($isEnabled)
+			{
+				$this->_request->setSession('loginArray',
+				[
+					'user' => $this->_request->getPost('user'),
+					'password' => $this->_request->getPost('password'),
+					'task' => $this->_request->getPost('task'),
+					'solution' => $this->_request->getPost('solution')
+				]);
+				return '<a href="/modules/web-authentication">trigger webauth</a>';
+			}
 		}
 		return null;
 	}
@@ -77,13 +102,14 @@ class WebAuthentication extends Module\Module
 	/**
 	 * process the login
 	 *
-	 * @since 3.3.0
+	 * @since 4.5.0
 	 *
 	 * @return string
 	 */
 
 	protected function _processLogin() : string
 	{
+		$this->_request->set('post', $this->_request->getSession('loginArray'));
 		$loginController = new Controller\Login($this->_registry, $this->_request, $this->_language, $this->_config);
 		return $loginController->process();
 	}
