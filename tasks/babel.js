@@ -138,14 +138,6 @@ module.exports = () =>
 			],
 			dest: 'modules/VisualEditor/dist/scripts/visual-editor.min.js'
 		},
-		moduleWebAuthentication:
-		{
-			src:
-			[
-				'modules/WebAuthentication/assets/scripts/web-authentication.js'
-			],
-			dest: 'modules/WebAuthentication/dist/scripts/web-authentication.min.js'
-		},
 		options:
 		{
 			presets:
