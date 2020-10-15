@@ -66,7 +66,7 @@ class RankSorter extends Module\Module
 					'modules/RankSorter/dist/scripts/rank-sorter.min.js'
 				]);
 
-			/* router */
+			/* route as needed */
 
 			if ($this->_registry->get('firstParameter') === 'module' && $this->_registry->get('secondParameter') === 'rank-sorter' && $this->_registry->get('thirdParameter') === 'sort' && $this->_registry->get('tokenParameter'))
 			{

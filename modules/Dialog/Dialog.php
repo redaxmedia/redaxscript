@@ -85,7 +85,7 @@ class Dialog extends Module\Module
 				'modules/Dialog/dist/scripts/dialog.min.js'
 			]);
 
-		/* router */
+		/* route as needed */
 
 		if ($firstParameter === 'module' && ($secondParameter === 'dialog' || $secondParameter === 'admin-dialog'))
 		{
