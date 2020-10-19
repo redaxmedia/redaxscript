@@ -5,6 +5,9 @@ php: 7.2
 fast_finish: true
 
 jobs:
+ allow_failures:
+ - php: nightly
+
  include:
  - &lint
    env:
@@ -67,6 +70,17 @@ jobs:
  - <<: *test-unit
    php: 7.4
 
+ - <<: *test-unit
+   php: nightly
+
+   before_install:
+   - composer remove sebastian/phpcpd --dev --no-update
+   - composer require phpunit/phpunit 9 --dev --no-update
+
+   install:
+   - composer install --ignore-platform-reqs
+   - gem install mailcatcher
+
  - &test-unit-windows
    os: windows
 
@@ -88,12 +102,6 @@ jobs:
    - vendor/bin/phpunit
 
  - &test-acceptance
-   addons:
-    apt:
-     packages:
-     - fontforge
-     - google-chrome-stable
-
    env:
    - TEST=acceptance
 
