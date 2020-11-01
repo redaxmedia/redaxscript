@@ -169,78 +169,78 @@ class GroupForm extends ViewAbstract
 				[
 					'for' => 'categories'
 				])
-				->select($helperOption->getPermissionArray(),
+				->select($helperOption->getPermissionArray('groups'),
 				(array)json_decode($group->categories),
 				[
 					'id' => 'categories',
 					'name' => 'categories[]',
 					'multiple' => 'multiple',
-					'size' => count($helperOption->getPermissionArray())
+					'size' => count($helperOption->getPermissionArray('groups'))
 				])
 				->append('</li><li>')
 				->label($this->_language->get('articles'),
 				[
 					'for' => 'articles'
 				])
-				->select($helperOption->getPermissionArray(),
+				->select($helperOption->getPermissionArray('groups'),
 				(array)json_decode($group->articles),
 				[
 					'id' => 'articles',
 					'name' => 'articles[]',
 					'multiple' => 'multiple',
-					'size' => count($helperOption->getPermissionArray())
+					'size' => count($helperOption->getPermissionArray('groups'))
 				])
 				->append('</li><li>')
 				->label($this->_language->get('extras'),
 				[
 					'for' => 'extras'
 				])
-				->select($helperOption->getPermissionArray(),
+				->select($helperOption->getPermissionArray('groups'),
 				(array)json_decode($group->extras),
 				[
 					'id' => 'extras',
 					'name' => 'extras[]',
 					'multiple' => 'multiple',
-					'size' => count($helperOption->getPermissionArray())
+					'size' => count($helperOption->getPermissionArray('groups'))
 				])
 				->append('</li><li>')
 				->label($this->_language->get('comments'),
 				[
 					'for' => 'comments'
 				])
-				->select($helperOption->getPermissionArray(),
+				->select($helperOption->getPermissionArray('groups'),
 				(array)json_decode($group->comments),
 				[
 					'id' => 'comments',
 					'name' => 'comments[]',
 					'multiple' => 'multiple',
-					'size' => count($helperOption->getPermissionArray())
+					'size' => count($helperOption->getPermissionArray('groups'))
 				])
 				->append('</li><li>')
 				->label($this->_language->get('groups'),
 				[
 					'for' => 'groups'
 				])
-				->select($helperOption->getPermissionArray(),
+				->select($helperOption->getPermissionArray('groups'),
 				(array)json_decode($group->groups),
 				[
 					'id' => 'groups',
 					'name' => 'groups[]',
 					'multiple' => 'multiple',
-					'size' => count($helperOption->getPermissionArray())
+					'size' => count($helperOption->getPermissionArray('groups'))
 				])
 				->append('</li><li>')
 				->label($this->_language->get('users'),
 				[
 					'for' => 'users'
 				])
-				->select($helperOption->getPermissionArray(),
+				->select($helperOption->getPermissionArray('groups'),
 				(array)json_decode($group->users),
 				[
 					'id' => 'users',
 					'name' => 'users[]',
 					'multiple' => 'multiple',
-					'size' => count($helperOption->getPermissionArray())
+					'size' => count($helperOption->getPermissionArray('groups'))
 				])
 				->append('</li><li>')
 				->label($this->_language->get('modules'),

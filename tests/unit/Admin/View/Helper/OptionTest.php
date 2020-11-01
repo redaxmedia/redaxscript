@@ -296,16 +296,14 @@ class OptionTest extends TestCaseAbstract
 
 		$actualArray =
 		[
-			'content' => $helperOption->getPermissionArray(),
-			'module' => $helperOption->getPermissionArray('modules'),
-			'setting' => $helperOption->getPermissionArray('settings')
+			'articles' => $helperOption->getPermissionArray('articles'),
+			'modules' => $helperOption->getPermissionArray('modules'),
+			'settings' => $helperOption->getPermissionArray('settings')
 		];
 
 		/* compare */
 
-		$this->assertEquals($expectArray['permission']['content'], $actualArray['content']);
-		$this->assertEquals($expectArray['permission']['module'], $actualArray['module']);
-		$this->assertEquals($expectArray['permission']['setting'], $actualArray['setting']);
+		$this->assertEquals($expectArray['permission'], $actualArray);
 	}
 
 	/**

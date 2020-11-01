@@ -2,7 +2,7 @@
 namespace Redaxscript\Admin\View\Helper;
 
 use DateTimeZone;
-use Redaxscript\Db;
+use Redaxscript\Admin;
 use Redaxscript\Filesystem;
 use Redaxscript\Language;
 use function function_exists;
@@ -180,12 +180,12 @@ class Option
 	 *
 	 * @since 3.0.0
 	 *
-	 * @param string $table name of the table
+	 * @param string|null $table name of the table
 	 *
 	 * @return array
 	 */
 
-	public function getPermissionArray(string $table = null) : array
+	public function getPermissionArray(?string $table) : array
 	{
 		if ($table === 'modules')
 		{
@@ -275,138 +275,148 @@ class Option
 	/**
 	 * get the category array
 	 *
-	 * @since 4.0.0
+	 * @since 4.5.0
 	 *
 	 * @return array
 	 */
 
 	public function getCategoryArray() : array
 	{
-		$query = Db::forTablePrefix('categories');
-		return $this->_getContentArray($query);
+		$categoryModel = new Admin\Model\Article();
+		$contents = $categoryModel->query()->orderByAsc('title')->findMany();
+		return $this->_getContentArray($contents);
+	}
+
+	/**
+	 * get the sibling for category array
+	 *
+	 * @since 4.5.0
+	 *
+	 * @param int|null $categoryId identifier of the category
+	 *
+	 * @return array
+	 */
+
+	public function getSiblingForCategoryArray(?int $categoryId) : array
+	{
+		$categoryModel = new Admin\Model\Category();
+		$query = $categoryModel->query();
+		if ($categoryId)
+		{
+			$query->whereNotEqual('id', $categoryId);
+		}
+		$contents = $query->orderByAsc('title')->findMany();
+		return $this->_getContentArray($contents);
+	}
+
+	/**
+	 * get the parent for category array
+	 *
+	 * @since 4.5.0
+	 *
+	 * @param int|null $categoryId identifier of the category
+	 *
+	 * @return array
+	 */
+
+	public function getParentForCategoryArray(?int $categoryId) : array
+	{
+		$categoryModel = new Admin\Model\Category();
+		$query = $categoryModel->query()->whereNull('parent');
+		if ($categoryId)
+		{
+			$query->whereNotEqual('id', $categoryId);
+		}
+		$contents = $query->orderByAsc('title')->findMany();
+		return $this->_getContentArray($contents);
 	}
 
 	/**
 	 * get the article array
 	 *
-	 * @since 4.0.0
+	 * @since 4.5.0
 	 *
 	 * @return array
 	 */
 
 	public function getArticleArray() : array
 	{
-		$query = Db::forTablePrefix('articles');
-		return $this->_getContentArray($query);
+		$articleModel = new Admin\Model\Article();
+		$contents = $articleModel->query()->orderByAsc('title')->findMany();
+		return $this->_getContentArray($contents);
 	}
 
 	/**
 	 * get the sibling for article array
 	 *
-	 * @since 4.0.0
+	 * @since 4.5.0
 	 *
-	 * @param int $articleId identifier of the article
+	 * @param int|null $articleId identifier of the article
 	 *
 	 * @return array
 	 */
 
-	public function getSiblingForArticleArray(int $articleId = null) : array
+	public function getSiblingForArticleArray(?int $articleId) : array
 	{
-		$query = Db::forTablePrefix('articles');
+		$articleModel = new Admin\Model\Article();
+		$query = $articleModel->query();
 		if ($articleId)
 		{
 			$query->whereNotEqual('id', $articleId);
 		}
-		return $this->_getContentArray($query);
-	}
-
-	/**
-	 * get the sibling for category array
-	 *
-	 * @since 4.0.0
-	 *
-	 * @param int $categoryId identifier of the category
-	 *
-	 * @return array
-	 */
-
-	public function getSiblingForCategoryArray(int $categoryId = null) : array
-	{
-		$query = Db::forTablePrefix('categories');
-		if ($categoryId)
-		{
-			$query->whereNotEqual('id', $categoryId);
-		}
-		return $this->_getContentArray($query);
-	}
-
-	/**
-	 * get the parent for category array
-	 *
-	 * @since 4.0.0
-	 *
-	 * @param int $categoryId identifier of the category
-	 *
-	 * @return array
-	 */
-
-	public function getParentForCategoryArray(int $categoryId = null) : array
-	{
-		$query = Db::forTablePrefix('categories')->whereNull('parent');
-		if ($categoryId)
-		{
-			$query->whereNotEqual('id', $categoryId);
-		}
-		return $this->_getContentArray($query);
+		$contents = $query->orderByAsc('title')->findMany();
+		return $this->_getContentArray($contents);
 	}
 
 	/**
 	 * get the sibling for extra array
 	 *
-	 * @since 4.0.0
+	 * @since 4.5.0
 	 *
-	 * @param int $extraId identifier of the extra
+	 * @param int|null $extraId identifier of the extra
 	 *
 	 * @return array
 	 */
 
-	public function getSiblingForExtraArray(int $extraId = null) : array
+	public function getSiblingForExtraArray(?int $extraId) : array
 	{
-		$query = Db::forTablePrefix('extras');
+		$extraModel = new Admin\Model\Extra();
+		$query = $extraModel->query();
 		if ($extraId)
 		{
 			$query->whereNotEqual('id', $extraId);
 		}
-		return $this->_getContentArray($query);
+		$contents = $query->orderByAsc('title')->findMany();
+		return $this->_getContentArray($contents);
 	}
 
 	/**
 	 * get the article for comment array
 	 *
-	 * @since 4.0.0
+	 * @since 4.5.0
 	 *
 	 * @return array
 	 */
 
 	public function getArticleForCommentArray() : array
 	{
-		$query = Db::forTablePrefix('articles')->where('comments', 1);
-		return $this->_getContentArray($query);
+		$articleModel = new Admin\Model\Article();
+		$contents = $articleModel->query()->where('comments', 1)->orderByAsc('title')->findMany();
+		return $this->_getContentArray($contents);
 	}
 
 	/**
 	 * get the content array
 	 *
-	 * @since 4.0.0
+	 * @since 4.5.0
 	 *
-	 * @param object $query
+	 * @param object $contents
 	 *
 	 * @return array
 	 */
 
-	protected function _getContentArray(object $query = null) : array
+	protected function _getContentArray(object $contents) : array
 	{
-		$contents = $query->orderByAsc('title')->findMany();
 		$contentArray =
 		[
 			$this->_language->get('select') => 'null'
@@ -432,12 +442,13 @@ class Option
 
 	public function getGroupArray() : array
 	{
-		$access = Db::forTablePrefix('groups')->orderByAsc('name')->findMany();
+		$groupModel = new Admin\Model\Group();
+		$groups = $groupModel->query()->orderByAsc('name')->findMany();
 		$accessArray = [];
 
-		/* process access */
+		/* process groups */
 
-		foreach ($access as $value)
+		foreach ($groups as $value)
 		{
 			$accessArray[$value->name] = $value->id;
 		}

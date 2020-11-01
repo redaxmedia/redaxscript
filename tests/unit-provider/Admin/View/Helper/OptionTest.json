@@ -46,19 +46,19 @@
 			},
 			"permission":
 			{
-				"content":
+				"articles":
 				{
 					"Create": 1,
 					"Edit": 2,
 					"Delete": 3
 				},
-				"module":
+				"modules":
 				{
 					"Install": 1,
 					"Edit": 2,
 					"Uninstall": 3
 				},
-				"setting":
+				"settings":
 				{
 					"None": 1,
 					"Edit": 2
