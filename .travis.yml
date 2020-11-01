@@ -1,6 +1,6 @@
 language: php
 
-php: 7.2
+php: 7.4
 
 fast_finish: true
 
@@ -63,12 +63,18 @@ jobs:
    - DB_URL=mysql://root:test@127.0.0.1/test vendor/bin/phpunit
    - DB_URL=postgres://postgres:test@127.0.0.1/test vendor/bin/phpunit
    - DB_URL=sqlite://test.sqlite vendor/bin/phpunit
+   -
+ - <<: *test-unit
+   php: 7.2
+
+   before_install:
+   - composer remove infection/infection --dev --no-update
 
  - <<: *test-unit
    php: 7.3
 
- - <<: *test-unit
-   php: 7.4
+   before_install:
+   - composer remove infection/infection --dev --no-update
 
  - <<: *test-unit
    php: nightly
