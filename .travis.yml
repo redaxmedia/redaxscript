@@ -69,19 +69,17 @@ jobs:
 
    before_install:
    - composer remove infection/infection --dev --no-update
+   - composer require phpunit/phpunit 8 --dev --no-update
 
  - <<: *test-unit
    php: 7.3
 
    before_install:
    - composer remove infection/infection --dev --no-update
+   - composer require phpunit/phpunit 8 --dev --no-update
 
  - <<: *test-unit
    php: nightly
-
-   before_install:
-   - composer remove sebastian/phpcpd --dev --no-update
-   - composer require phpunit/phpunit 9 --dev --no-update
 
    install:
    - composer install --ignore-platform-reqs
