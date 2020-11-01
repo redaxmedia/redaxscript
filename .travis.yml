@@ -70,7 +70,7 @@ jobs:
    before_install:
    - composer remove sebastian/phpcpd --dev --no-update
    - composer remove infection/infection --dev --no-update
-   - composer require phpunit/phpunit 8 --dev --no-update
+   - composer require phpunit/phpunit 8.5.8 --dev --no-update
 
  - <<: *test-unit
    php: 7.3
@@ -78,7 +78,7 @@ jobs:
    before_install:
    - composer remove sebastian/phpcpd --dev --no-update
    - composer remove infection/infection --dev --no-update
-   - composer require phpunit/phpunit 8 --dev --no-update
+   - composer require phpunit/phpunit 8.5.8 --dev --no-update
 
  - <<: *test-unit
    php: nightly
