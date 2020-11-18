@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<phpunit forceCoversAnnotation="true" convertErrorsToExceptions="true" convertWarningsToExceptions="true" bootstrap="tests/acceptance/bootstrap.php">
+<phpunit convertErrorsToExceptions="true" convertWarningsToExceptions="true" bootstrap="tests/acceptance/bootstrap.php">
 
 	<!-- testsuites -->
 

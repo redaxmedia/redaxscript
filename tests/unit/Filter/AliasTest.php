@@ -37,7 +37,7 @@ class AliasTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		setlocale(LC_ALL, $locale);
+		$currentLocale = setlocale(LC_ALL, $locale);
 		$filter = new Filter\Alias();
 
 		/* actual */
@@ -46,6 +46,6 @@ class AliasTest extends TestCaseAbstract
 
 		/* compare */
 
-		$this->assertSame($expect, $actual);
+		$currentLocale == $locale ? $this->assertSame($expect, $actual) : $this->markTestSkipped();
 	}
 }

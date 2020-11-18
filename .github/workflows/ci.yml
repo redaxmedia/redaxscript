@@ -1,0 +1,105 @@
+name: ci
+
+on: [ push, pull_request ]
+
+jobs:
+ lint:
+  runs-on: ubuntu-latest
+  steps:
+  - name: Checkout
+    uses: actions/checkout@v2
+  - name: Set up PHP 7.4
+    uses: shivammathur/setup-php@2.7.0
+    with:
+     php-version: 7.4
+  - name: Set up Node 14
+    uses: actions/setup-node@v1
+    with:
+     node-version: 14
+  - run: composer install
+  - run: npm install
+  - run: node_modules/.bin/grunt
+ build:
+  runs-on: ${{ matrix.os }}
+  strategy:
+   matrix:
+    os: [ ubuntu-latest, windows-latest ]
+  steps:
+  - name: Checkout
+    uses: actions/checkout@v2
+  - name: Set up PHP 7.4
+    uses: shivammathur/setup-php@2.7.0
+    with:
+     php-version: 7.4
+  - name: Set up Node 14
+    uses: actions/setup-node@v1
+    with:
+     node-version: 14
+  - run: composer install
+  - run: npm install
+  - run: node_modules/.bin/grunt build
+ test-unit:
+  runs-on: ubuntu-latest
+  continue-on-error: ${{ matrix.php-version > 7.4 }}
+  strategy:
+   matrix:
+    php-version: [ 7.2, 7.3, 7.4, 8.0, 8.1 ]
+  steps:
+  - name: Checkout
+    uses: actions/checkout@v2
+  - name: Set up PHP ${{ matrix.php-version }}
+    uses: shivammathur/setup-php@2.7.0
+    with:
+     php-version: ${{ matrix.php-version }}
+  - run: sudo apt-get install sendmail
+  - run: composer remove sebastian/phpcpd infection/infection --dev --no-update
+    if: matrix.php-version < 7.4
+  - run: composer require phpunit/phpunit 8.5.8 --dev --no-update
+    if: matrix.php-version < 7.4
+  - run: composer install
+    if: matrix.php-version < 8.0
+  - run: composer install --ignore-platform-reqs
+    if: matrix.php-version > 7.4
+  - run: vendor/bin/phpunit
+ test-acceptance:
+  runs-on: ubuntu-latest
+  steps:
+  - name: Checkout
+    uses: actions/checkout@v2
+  - name: Set up PHP 7.4
+    uses: shivammathur/setup-php@2.7.0
+    with:
+     php-version: 7.4
+  - name: Set up Node 14
+    uses: actions/setup-node@v1
+    with:
+     node-version: 14
+  - run: sudo apt-get install sendmail
+  - run: composer install
+  - run: npm install
+  - run: mkdir build  
+  - run: node_modules/.bin/grunt start-hub &
+  - run: node_modules/.bin/grunt serve &
+  - run: sleep 30
+  - run: vendor/bin/phpunit --configuration=phpunit.acceptance.xml
+ report:
+  needs: test-unit
+  runs-on: ubuntu-latest
+  steps:
+  - name: Checkout
+    uses: actions/checkout@v2
+  - name: Set up PHP 7.4
+    uses: shivammathur/setup-php@2.7.0
+    with:
+     php-version: 7.4
+  - run: sudo apt-get install sendmail
+  - run: composer require php-coveralls/php-coveralls --dev --no-update
+  - run: composer install
+  - run: wget https://scrutinizer-ci.com/ocular.phar
+  - run: vendor/bin/phpunit --coverage-clover=build/logs/clover.xml
+  - name: Report to Coveralls
+    run: vendor/bin/php-coveralls --coverage_clover=build/logs/clover.xml
+    env:
+     COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  - name: Report to Scrutinizer
+    run: php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml
