@@ -36,5 +36,5 @@ if (!$config->get('lock'))
 else
 {
 	Header::responseCode(403);
-	exit;
+	exit(1);
 }

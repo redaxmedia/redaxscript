@@ -107,7 +107,7 @@ class RankSorter extends Module\Module
 			}
 		}
 		Header::responseCode(404);
-		exit;
+		exit(1);
 	}
 
 	/**

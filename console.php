@@ -61,5 +61,5 @@ else if (!$config->get('lock') || $accessValidator->validate('1', $registry->get
 else
 {
 	Header::responseCode(403);
-	exit;
+	exit(1);
 }

@@ -21,7 +21,7 @@ $registry = Registry::getInstance();
 if ($registry->get('dbStatus') < 2 && is_file('install.php'))
 {
 	Header::doRedirect('install.php');
-	exit;
+	exit(1);
 }
 
 /* render */
@@ -30,7 +30,7 @@ Module\Hook::trigger('renderStart');
 if ($registry->get('renderBreak'))
 {
 	Header::responseCode(202);
-	exit;
+	exit(1);
 }
 
 /* template */
