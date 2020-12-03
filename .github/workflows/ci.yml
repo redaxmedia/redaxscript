@@ -80,7 +80,7 @@ jobs:
   - run: mkdir build  
   - run: node_modules/.bin/grunt start-hub &
   - run: node_modules/.bin/grunt serve &
-  - run: sleep 30
+  - run: sleep 60
   - run: vendor/bin/phpunit --configuration=phpunit.acceptance.xml
  report:
   needs: test-unit
