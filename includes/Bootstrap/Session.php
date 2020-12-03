@@ -3,6 +3,7 @@ namespace Redaxscript\Bootstrap;
 
 use function session_id;
 use function session_regenerate_id;
+use function session_set_cookie_params;
 use function session_start;
 use function session_status;
 
@@ -26,6 +27,11 @@ class Session extends BootstrapAbstract
 
 	public function autorun() : void
 	{
+		session_set_cookie_params(
+		[
+			'samesite' => 'strict',
+			'secure' => true
+		]);
 		session_start();
 		$this->_request->refreshSession();
 
