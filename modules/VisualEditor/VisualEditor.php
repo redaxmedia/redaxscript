@@ -31,7 +31,7 @@ class VisualEditor extends Module\Module
 		'author' => 'Redaxmedia',
 		'description' => 'Publish content with perfect style',
 		'version' => '4.5.0',
-		'license' => 'Sponsorware'
+		'license' => 'Sponsor'
 	];
 
 	/**

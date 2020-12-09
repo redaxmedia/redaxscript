@@ -9,7 +9,7 @@ use Redaxscript\Module;
 use function strtotime;
 
 /**
- * archive ordered by year and month
+ * archive ordered by years and months
  *
  * @since 2.2.0
  *
@@ -31,7 +31,7 @@ class Archive extends Module\Module
 		'name' => 'Archive',
 		'alias' => 'Archive',
 		'author' => 'Redaxmedia',
-		'description' => 'Archive ordered by year and month',
+		'description' => 'Archive ordered by years and months',
 		'version' => '4.5.0',
 		'license' => 'MIT'
 	];
