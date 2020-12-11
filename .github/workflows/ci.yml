@@ -40,10 +40,9 @@ jobs:
   - run: node_modules/.bin/grunt build
  test-unit:
   runs-on: ubuntu-latest
-  continue-on-error: ${{ matrix.php-version > 7.4 }}
   strategy:
    matrix:
-    php-version: [ 7.2, 7.3, 7.4, 8.0, 8.1 ]
+    php-version: [ 7.2, 7.3, 7.4 ]
   steps:
   - name: Checkout
     uses: actions/checkout@v2
@@ -57,9 +56,6 @@ jobs:
   - run: composer require phpunit/phpunit 8.5.8 --dev --no-update
     if: matrix.php-version < 7.4
   - run: composer install
-    if: matrix.php-version < 8.0
-  - run: composer install --ignore-platform-reqs
-    if: matrix.php-version > 7.4
   - run: vendor/bin/phpunit
  test-acceptance:
   runs-on: ubuntu-latest
@@ -81,7 +77,7 @@ jobs:
   - run: mkdir build  
   - run: node_modules/.bin/grunt start-hub &
   - run: node_modules/.bin/grunt serve &
-  - run: sleep 60
+  - run: sleep 120
   - run: vendor/bin/phpunit --configuration=phpunit.acceptance.xml
  report:
   needs: test-unit
