@@ -51,7 +51,7 @@ jobs:
     with:
      php-version: ${{ matrix.php-version }}
   - run: sudo apt-get install sendmail
-  - run: composer remove sebastian/phpcpd infection/infection --dev --no-update
+  - run: composer remove sebastian/phpcpd brianium/paratest --dev --no-update
     if: matrix.php-version < 7.4
   - run: composer require phpunit/phpunit 8.5.8 --dev --no-update
     if: matrix.php-version < 7.4
