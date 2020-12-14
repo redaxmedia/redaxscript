@@ -70,10 +70,6 @@ module.exports = grunt =>
 	[
 		'shell:testUnitParallel'
 	]);
-	grunt.registerTask('test-unit-mutation',
-	[
-		'shell:testUnitMutation'
-	]);
 	grunt.registerTask('test-acceptance',
 	[
 		'shell:createBuild',

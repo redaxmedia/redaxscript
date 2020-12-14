@@ -49,11 +49,7 @@ module.exports = grunt =>
 		},
 		testUnitParallel:
 		{
-			command: run('vendor/bin/fastest --xml=phpunit.xml')
-		},
-		testUnitMutation:
-		{
-			command: run('vendor/bin/infection --threads=10 --only-covered')
+			command: run('vendor/bin/paratest')
 		},
 		testAcceptance:
 		{
