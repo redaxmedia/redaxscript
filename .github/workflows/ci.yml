@@ -18,7 +18,7 @@ jobs:
      node-version: 14
   - run: composer install
   - run: npm install
-  - run: node_modules/.bin/grunt
+  - run: grunt
  build:
   runs-on: ${{ matrix.os }}
   strategy:
@@ -37,7 +37,7 @@ jobs:
      node-version: 14
   - run: composer install
   - run: npm install
-  - run: node_modules/.bin/grunt build
+  - run: grunt build
  test-unit:
   runs-on: ubuntu-latest
   strategy:
@@ -74,11 +74,11 @@ jobs:
   - run: sudo apt-get install sendmail
   - run: composer install
   - run: npm install
-  - run: mkdir build  
-  - run: node_modules/.bin/grunt start-hub &
-  - run: node_modules/.bin/grunt serve &
-  - run: sleep 120
-  - run: vendor/bin/phpunit --configuration=phpunit.acceptance.xml
+  - run: grunt serve &
+  - run: grunt test-acceptance
+    env:
+     CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
+     CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
  report:
   needs: test-unit
   runs-on: ubuntu-latest

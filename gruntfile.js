@@ -84,14 +84,6 @@ module.exports = grunt =>
 	[
 		'shell:testAcceptanceParallel'
 	]);
-	grunt.registerTask('start-hub',
-	[
-		'shell:startHub'
-	]);
-	grunt.registerTask('stop-hub',
-	[
-		'shell:stopHub'
-	]);
 	grunt.registerTask('start-server',
 	[
 		'shell:startServer'

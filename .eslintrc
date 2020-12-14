@@ -8,6 +8,8 @@
 	},
 	"globals":
 	{
+		"Cypress": true,
+		"cy": true,
 		"rs": true
 	},
 	"extends":

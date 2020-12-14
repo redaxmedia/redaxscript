@@ -6,38 +6,42 @@ rs.templates.install.behavior.process = optionArray =>
 		...optionArray
 	};
 	const formElement = document.querySelector(OPTION.selector);
-	const fieldTypeElement = formElement.querySelector(OPTION.element.fieldType);
-	const fieldToggleList = formElement.querySelectorAll(OPTION.element.fieldToggle);
-	const changeEvent = new Event('change');
 
-	/* listen on change */
-
-	fieldTypeElement.addEventListener('change', () =>
+	if (formElement)
 	{
-		fieldToggleList.forEach(fieldToggleElement =>
+		const fieldTypeElement = formElement.querySelector(OPTION.element.fieldType);
+		const fieldToggleList = formElement.querySelectorAll(OPTION.element.fieldToggle);
+		const changeEvent = new Event('change');
+
+		/* listen on change */
+
+		fieldTypeElement.addEventListener('change', () =>
 		{
-			if (fieldTypeElement.value === 'sqlite')
+			fieldToggleList.forEach(fieldToggleElement =>
 			{
-				fieldToggleElement.value = null;
-				fieldToggleElement.parentElement.style.display = 'none';
-				if (fieldToggleElement.hasAttribute('required'))
+				if (fieldTypeElement.value === 'sqlite')
 				{
-					fieldToggleElement.setAttribute('data-required', 'required');
-					fieldToggleElement.removeAttribute('required');
+					fieldToggleElement.value = null;
+					fieldToggleElement.parentElement.style.display = 'none';
+					if (fieldToggleElement.hasAttribute('required'))
+					{
+						fieldToggleElement.setAttribute('data-required', 'required');
+						fieldToggleElement.removeAttribute('required');
+					}
 				}
-			}
-			else
-			{
-				fieldToggleElement.parentElement.style.display = null;
-				if (fieldToggleElement.hasAttribute('data-required'))
+				else
 				{
-					fieldToggleElement.setAttribute('required', 'required');
-					fieldToggleElement.removeAttribute('data-required');
+					fieldToggleElement.parentElement.style.display = null;
+					if (fieldToggleElement.hasAttribute('data-required'))
+					{
+						fieldToggleElement.setAttribute('required', 'required');
+						fieldToggleElement.removeAttribute('data-required');
+					}
 				}
-			}
+			});
 		});
-	});
-	fieldTypeElement.dispatchEvent(changeEvent);
+		fieldTypeElement.dispatchEvent(changeEvent);
+	}
 };
 
 /* run as needed */

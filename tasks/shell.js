@@ -57,19 +57,21 @@ module.exports = grunt =>
 		},
 		testAcceptance:
 		{
-			command: run('vendor/bin/phpunit --configuration=phpunit.acceptance.xml')
+			command: run(
+			[
+				'wait-on http://localhost:8000',
+				process.env.CYPRESS_PROJECT_ID && process.env.CYPRESS_RECORD_KEY ? 'cypress run --record' : 'cypress run'
+			]
+			.join('&&'))
 		},
 		testAcceptanceParallel:
 		{
-			command: run('vendor/bin/fastest --xml=phpunit.acceptance.xml')
-		},
-		startHub:
-		{
-			command: run('docker run --net=host selenium/standalone-chrome-debug:3.141.59-europium')
-		},
-		stopHub:
-		{
-			command: run('kill-port 4444')
+			command: run(
+			[
+				'wait-on http://localhost:8000',
+				process.env.CYPRESS_PROJECT_ID && process.env.CYPRESS_RECORD_KEY ? 'cypress run --record --parallel' : 'cypress run'
+			]
+			.join('&&'))
 		},
 		startServer:
 		{
