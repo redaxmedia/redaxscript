@@ -23,7 +23,7 @@ jobs:
   runs-on: ${{ matrix.os }}
   strategy:
    matrix:
-    os: [ ubuntu-latest, windows-latest ]
+    os: [ macos-latest, ubuntu-latest, windows-latest ]
   steps:
   - name: Checkout
     uses: actions/checkout@v2
@@ -36,7 +36,7 @@ jobs:
     with:
      node-version: 14
   - run: composer install
-  - run: npm install
+  - run: yarn install
   - run: grunt build
  test-unit:
   runs-on: ubuntu-latest
@@ -59,7 +59,6 @@ jobs:
   - run: vendor/bin/phpunit
  test-acceptance:
   runs-on: ubuntu-latest
-  continue-on-error: true
   steps:
   - name: Checkout
     uses: actions/checkout@v2
