@@ -36,7 +36,7 @@ class Router extends RouterAbstract
 
 		if ($this->_registry->get('adminRouterBreak'))
 		{
-			Header::responseCode(202);
+			Header::responseCode(200);
 		}
 
 		/* handle guard */

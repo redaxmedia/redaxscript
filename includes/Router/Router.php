@@ -37,7 +37,7 @@ class Router extends RouterAbstract
 
 		if ($this->_registry->get('routerBreak'))
 		{
-			Header::responseCode(202);
+			Header::responseCode(200);
 		}
 
 		/* handle guard */
@@ -55,7 +55,7 @@ class Router extends RouterAbstract
 
 		if ($this->_aliasValidator())
 		{
-			Header::responseCode(202);
+			Header::responseCode(200);
 		}
 		else if (!$this->_contentValidator())
 		{

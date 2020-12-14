@@ -14,6 +14,12 @@ describe('installation', () =>
 		cy.visit('http://localhost:8000/install.php?l=en');
 	});
 
+	it('setup', () =>
+	{
+		cy.uninstallDatabase();
+		cy.clearConfig();
+	});
+
 	it('title is present', () =>
 	{
 		cy.get('h2.rs-title-content')
@@ -55,7 +61,7 @@ describe('installation', () =>
 		cy.get('#admin-password').type('aaAA00AAaa');
 		cy.get('#admin-email').type('test@redaxscript.com');
 
-		cy.get('button').click();
+		cy.get('button.rs-button-submit').click();
 
 		cy.get('div.rs-box-note.rs-is-success')
 			.should('be.visible')

@@ -38,7 +38,7 @@ if (php_sapi_name() === 'cli')
 
 else if (!$config->get('lock') || $accessValidator->validate('1', $registry->get('myGroups')))
 {
-	/* ajax request */
+	/* xml request */
 
 	if ($request->getServer('HTTP_X_REQUESTED_WITH') === 'XMLHttpRequest')
 	{
@@ -46,6 +46,7 @@ else if (!$config->get('lock') || $accessValidator->validate('1', $registry->get
 		$output = $console->init('template');
 		if (strlen($output))
 		{
+			Header::responseCode(200);
 			echo htmlentities($output, ENT_QUOTES);
 		}
 	}
@@ -54,6 +55,7 @@ else if (!$config->get('lock') || $accessValidator->validate('1', $registry->get
 
 	else
 	{
+		Header::responseCode(200);
 		set_include_path('templates');
 		include_once('console' . DIRECTORY_SEPARATOR . 'index.phtml');
 	}

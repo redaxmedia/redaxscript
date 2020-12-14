@@ -77,6 +77,10 @@ class Config extends CommandAbstract
 						]
 					]
 				],
+				'clear' =>
+				[
+					'description' => 'Clear the configuration'
+				],
 				'lock' =>
 				[
 					'description' => 'Lock the configuration'
@@ -115,6 +119,10 @@ class Config extends CommandAbstract
 		if ($argumentKey === 'parse')
 		{
 			return $this->_parse($parser->getOptionArray()) ? $this->success() : $this->error($haltOnError);
+		}
+		if ($argumentKey === 'clear')
+		{
+			return $this->_clear() ? $this->success() : $this->error($haltOnError);
 		}
 		if ($argumentKey === 'lock')
 		{
@@ -198,6 +206,20 @@ class Config extends CommandAbstract
 			return $this->_config->write();
 		}
 		return false;
+	}
+
+	/**
+	 * clear the config
+	 *
+	 * @since 4.5.0
+	 *
+	 * @return bool
+	 */
+
+	protected function _clear() : bool
+	{
+		$this->_config->clear();
+		return $this->_config->write();
 	}
 
 	/**

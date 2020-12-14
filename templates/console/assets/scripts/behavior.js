@@ -18,8 +18,8 @@ rs.templates.console.behavior.process = optionArray =>
 		boxElement.innerHTML += labelElement.innerText + ' ' + fieldElement.value + OPTION.eol;
 		fetch(location.href,
 		{
-			credentials: 'same-origin',
 			method: 'POST',
+			credentials: 'same-origin',
 			headers:
 			{
 				'Content-Type': 'application/json',
