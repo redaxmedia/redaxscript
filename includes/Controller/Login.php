@@ -103,6 +103,7 @@ class Login extends ControllerAbstract
 
 	protected function _validatePost(array $postArray = []) : array
 	{
+		$userValidator = new Validator\User();
 		$passwordValidator = new Validator\Password();
 		$captchaValidator = new Validator\Captcha();
 		$settingModel = new Model\Setting();
@@ -115,17 +116,25 @@ class Login extends ControllerAbstract
 		{
 			$validateArray[] = $this->_language->get('user_empty');
 		}
-		else if (!$user->id)
+		else if (!$userValidator->validate($postArray['user']))
 		{
 			$validateArray[] = $this->_language->get('user_incorrect');
+		}
+		else if (!$user->id)
+		{
+			$validateArray[] = $this->_language->get('login_incorrect');
 		}
 		if (!$postArray['password'])
 		{
 			$validateArray[] = $this->_language->get('password_empty');
 		}
-		else if (!$passwordValidator->validate($postArray['password']) || !$passwordValidator->matchHash($postArray['password'], $user->password))
+		else if (!$passwordValidator->validate($postArray['password']))
 		{
 			$validateArray[] = $this->_language->get('password_incorrect');
+		}
+		else if ($user->id && !$passwordValidator->matchHash($postArray['password'], $user->password))
+		{
+			$validateArray[] = $this->_language->get('login_incorrect');
 		}
 		if ($settingModel->get('captcha') > 0 && !$captchaValidator->validate($postArray['task'], $postArray['solution']))
 		{

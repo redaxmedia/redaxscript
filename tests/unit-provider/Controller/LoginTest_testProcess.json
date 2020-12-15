@@ -14,6 +14,19 @@
 	],
 	[
 		{
+			"user": "_",
+			"password": "_",
+			"task": 1,
+			"hash": null
+		},
+		{
+			"status": 1
+		},
+		null,
+		"<h2 class=\"rs-title-note rs-is-error\">Error</h2><div class=\"rs-box-note rs-is-error\"><ul class=\"rs-list-note\"><li>User is incorrect</li><li>Password is incorrect</li><li>Captcha is incorrect</li></ul></div><a href=\"login\" class=\"rs-button-note rs-is-error\">Back</a>"
+	],
+	[
+		{
 			"user": "invalid",
 			"password": "aaAA00AAaa",
 			"task": 1,
@@ -23,7 +36,7 @@
 			"status": 1
 		},
 		null,
-		"<h2 class=\"rs-title-note rs-is-error\">Error</h2><div class=\"rs-box-note rs-is-error\"><ul class=\"rs-list-note\"><li>User is incorrect</li><li>Password is incorrect</li></ul></div><a href=\"login\" class=\"rs-button-note rs-is-error\">Back</a>"
+		"<h2 class=\"rs-title-note rs-is-error\">Error</h2><div class=\"rs-box-note rs-is-error\">Login is incorrect</div><a href=\"login\" class=\"rs-button-note rs-is-error\">Back</a>"
 	],
 	[
 		{
@@ -36,7 +49,7 @@
 			"status": 1
 		},
 		null,
-		"<h2 class=\"rs-title-note rs-is-error\">Error</h2><div class=\"rs-box-note rs-is-error\">Password is incorrect</div><a href=\"login\" class=\"rs-button-note rs-is-error\">Back</a>"
+		"<h2 class=\"rs-title-note rs-is-error\">Error</h2><div class=\"rs-box-note rs-is-error\">Login is incorrect</div><a href=\"login\" class=\"rs-button-note rs-is-error\">Back</a>"
 	],
 	[
 		{

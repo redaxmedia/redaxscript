@@ -1,5 +1,3 @@
-const LANGUAGE = require('../../../languages/en.json');
-
 describe('installation', () =>
 {
 	beforeEach(() =>
@@ -30,7 +28,7 @@ describe('installation', () =>
 	{
 		cy.get('h2.rs-title-content')
 			.should('be.visible')
-			.should('have.text', LANGUAGE.installation);
+			.shouldHaveText('installation');
 	});
 
 	it('test behaviour', () =>
@@ -54,6 +52,56 @@ describe('installation', () =>
 		cy.get('#admin-email').should('be.visible');
 	});
 
+	it('test empty database host', () =>
+	{
+		cy.get('#db-host').clear();
+
+		cy.get('form.rs-form-install button.rs-button-submit').click();
+
+		cy.get('#db-host').should('have.class', 'rs-is-error');
+	});
+
+	[
+		{
+			selector: '#admin-name',
+			description: 'admin name'
+		},
+		{
+			selector: '#admin-user',
+			description: 'admin user'
+		},
+		{
+			selector: '#admin-password',
+			description: 'admin password'
+		},
+		{
+			selector: '#admin-email',
+			description: 'admin email'
+		}
+	]
+	.map(test =>
+	{
+		it('test empty ' + test.description, () =>
+		{
+			cy.get('[for*="Account"]').click();
+
+			cy.get(test.selector)
+				.type('-')
+				.clear()
+				.should('have.class', 'rs-is-error');
+		});
+
+		it('test incorrect ' + test.description, () =>
+		{
+			cy.get('[for*="Account"]').click();
+
+			cy.get(test.selector)
+				.clear()
+				.type('-')
+				.should('have.class', 'rs-is-warning');
+		});
+	});
+
 	it('test install', () =>
 	{
 		cy.get('#db-type').select('sqlite');
@@ -67,14 +115,11 @@ describe('installation', () =>
 		cy.get('#admin-password').clear().type('aaAA00AAaa');
 		cy.get('#admin-email').clear().type('test@redaxscript.com');
 
-		cy.get('button.rs-button-submit').click();
+		cy.get('form.rs-form-install button.rs-button-submit').click();
 
 		cy.get('div.rs-box-note.rs-is-success')
 			.should('be.visible')
-			.should('have.text', LANGUAGE.installation_completed);
-		cy.url(
-		{
-			timeout: 3000
-		}).should('eq', 'http://localhost:8000/index.php');
+			.shouldHaveText('installation_completed');
+		cy.url().should('eq', 'http://localhost:8000/index.php');
 	});
 });

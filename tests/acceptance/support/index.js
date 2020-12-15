@@ -1,1 +1,2 @@
+import './assert';
 import './command';
