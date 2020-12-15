@@ -111,6 +111,22 @@ class Config extends Singleton
 	}
 
 	/**
+	 * reset the config
+	 *
+	 * @since 4.5.0
+	 */
+
+	public function reset() : void
+	{
+		$this->set('dbType', null);
+		$this->set('dbHost', null);
+		$this->set('dbName', null);
+		$this->set('dbUser', null);
+		$this->set('dbPassword', null);
+		$this->set('dbPrefix', null);
+	}
+
+	/**
 	 * parse from database url
 	 *
 	 * @since 3.0.0
@@ -121,6 +137,7 @@ class Config extends Singleton
 	public function parse(string $dbUrl = null) : void
 	{
 		$dbUrl = parse_url($dbUrl);
+		$this->clear();
 		$this->set('dbType', str_replace('postgres', 'pgsql', $dbUrl['scheme']));
 		$this->set('dbHost', $dbUrl['port'] ? $dbUrl['host'] . ':' . $dbUrl['port'] : $dbUrl['host']);
 		$this->set('dbName', trim($dbUrl['path'], '/'));
@@ -160,7 +177,7 @@ class Config extends Singleton
 			}
 			$content .= PHP_EOL;
 		}
-		$content .= '];';
+		$content .= '];' . PHP_EOL;
 
 		/* write content */
 
@@ -175,12 +192,7 @@ class Config extends Singleton
 
 	public function clear() : void
 	{
-		$this->set('dbType', null);
-		$this->set('dbHost', null);
-		$this->set('dbName', null);
-		$this->set('dbUser', null);
-		$this->set('dbPassword', null);
-		$this->set('dbPrefix', null);
+		self::$_configArray = [];
 	}
 
 	/**

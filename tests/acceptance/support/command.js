@@ -4,7 +4,7 @@ Cypress.Commands.add('uninstallDatabase', () => console('uninstall database'));
 
 Cypress.Commands.add('setConfig', () => console('config set --db-type=sqlite --db-host=build/test.sqlite --db-prefix=_test'));
 
-Cypress.Commands.add('clearConfig', () => console('config clear'));
+Cypress.Commands.add('resetConfig', () => console('config reset'));
 
 /**
  * console

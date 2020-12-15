@@ -66,6 +66,10 @@ class Config extends CommandAbstract
 						]
 					]
 				],
+				'reset' =>
+				[
+					'description' => 'Reset the configuration'
+				],
 				'parse' =>
 				[
 					'description' => 'Parse the configuration',
@@ -76,10 +80,6 @@ class Config extends CommandAbstract
 							'description' => 'Required database url'
 						]
 					]
-				],
-				'clear' =>
-				[
-					'description' => 'Clear the configuration'
 				],
 				'lock' =>
 				[
@@ -116,13 +116,13 @@ class Config extends CommandAbstract
 		{
 			return $this->_set($parser->getOptionArray()) ? $this->success() : $this->error($haltOnError);
 		}
+		if ($argumentKey === 'reset')
+		{
+			return $this->_reset() ? $this->success() : $this->error($haltOnError);
+		}
 		if ($argumentKey === 'parse')
 		{
 			return $this->_parse($parser->getOptionArray()) ? $this->success() : $this->error($haltOnError);
-		}
-		if ($argumentKey === 'clear')
-		{
-			return $this->_clear() ? $this->success() : $this->error($haltOnError);
 		}
 		if ($argumentKey === 'lock')
 		{
@@ -188,6 +188,20 @@ class Config extends CommandAbstract
 	}
 
 	/**
+	 * reset the config
+	 *
+	 * @since 4.5.0
+	 *
+	 * @return bool
+	 */
+
+	protected function _reset() : bool
+	{
+		$this->_config->reset();
+		return $this->_config->write();
+	}
+
+	/**
 	 * parse the config
 	 *
 	 * @since 3.0.0
@@ -206,20 +220,6 @@ class Config extends CommandAbstract
 			return $this->_config->write();
 		}
 		return false;
-	}
-
-	/**
-	 * clear the config
-	 *
-	 * @since 4.5.0
-	 *
-	 * @return bool
-	 */
-
-	protected function _clear() : bool
-	{
-		$this->_config->clear();
-		return $this->_config->write();
 	}
 
 	/**

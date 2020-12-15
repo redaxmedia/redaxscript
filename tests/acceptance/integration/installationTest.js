@@ -17,13 +17,13 @@ describe('installation', () =>
 	before(() =>
 	{
 		cy.uninstallDatabase();
-		cy.clearConfig();
+		cy.resetConfig();
 	});
 
 	after(() =>
 	{
 		cy.uninstallDatabase();
-		cy.clearConfig();
+		cy.resetConfig();
 	});
 
 	it('title is present', () =>

@@ -23,7 +23,7 @@ describe('login', () =>
 	after(() =>
 	{
 		cy.uninstallDatabase();
-		cy.clearConfig();
+		cy.resetConfig();
 	});
 
 	it('test login', () =>
