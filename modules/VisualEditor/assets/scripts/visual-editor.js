@@ -37,9 +37,7 @@ rs.modules.VisualEditor.createToolbar = OPTION =>
 {
 	const listElement = document.createElement('ul');
 
-	listElement.classList.add(OPTION.className.listToolbar);
-	listElement.classList.add(OPTION.className.listVisualEditor);
-	listElement.classList.add(OPTION.className.isVisual);
+	listElement.classList.add(OPTION.className.listToolbar, OPTION.className.listVisualEditor, OPTION.className.isVisual);
 	OPTION.controlArray.map(control => listElement.appendChild(rs.modules.VisualEditor.createControl(control, OPTION)));
 	return listElement;
 };

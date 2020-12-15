@@ -33,8 +33,7 @@ rs.modules.FormValidator.process = optionArray =>
 						{
 							fieldElement.previousSibling.classList.remove(OPTION.className.isError);
 						}
-						fieldElement.classList.remove(OPTION.className.isWarning);
-						fieldElement.classList.remove(OPTION.className.isError);
+						fieldElement.classList.remove(OPTION.className.isWarning, OPTION.className.isError);
 						if (fieldElement.validity.valueMissing)
 						{
 							if (fieldElement.previousSibling && fieldElement.previousSibling.isContentEditable)
@@ -61,8 +60,7 @@ rs.modules.FormValidator.process = optionArray =>
 					{
 						fieldElement.previousSibling.classList.remove(OPTION.className.isError);
 					}
-					fieldElement.classList.remove(OPTION.className.isWarning);
-					fieldElement.classList.remove(OPTION.className.isError);
+					fieldElement.classList.remove(OPTION.className.isWarning, OPTION.className.isError);
 				});
 			});
 		});
