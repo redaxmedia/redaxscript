@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Bootstrap;
 
+use Redaxscript\Server;
 use function session_id;
 use function session_regenerate_id;
 use function session_set_cookie_params;
@@ -27,10 +28,11 @@ class Session extends BootstrapAbstract
 
 	public function autorun() : void
 	{
+		$protocol = new Server\Protocol($this->_request);
 		session_set_cookie_params(
 		[
 			'samesite' => 'strict',
-			'secure' => true
+			'secure' => $protocol->getOutput() === 'https'
 		]);
 		session_start();
 		$this->_request->refreshSession();
