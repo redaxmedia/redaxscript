@@ -1,0 +1,81 @@
+[
+	{
+		"url": "http://localhost:8000?p=search/home",
+		"description": "search for home in contents",
+		"elementArray":
+		[
+			{
+				"selector": "h2.rs-title-result",
+				"text": "Categories"
+			}
+		]
+	},
+	{
+		"url": "http://localhost:8000?p=search/welcome",
+		"description": "search for welcome in contents",
+		"elementArray":
+		[
+			{
+				"selector": "h2.rs-title-result",
+				"text": "Articles"
+			},
+			{
+				"selector": "ol.rs-list-result a.rs-link-result",
+				"text": "Welcome"
+			}
+		]
+	},
+	{
+		"url": "http://localhost:8000?p=search/vero",
+		"description": "search for vero in contents",
+		"elementArray":
+		[
+			{
+				"selector": "h2.rs-title-result:nth-of-type(1)",
+				"text": "Articles"
+			},
+			{
+				"selector": "ol.rs-list-result:nth-of-type(1) a.rs-link-result",
+				"text": "Welcome"
+			},
+			{
+				"selector": "h2.rs-title-result:nth-of-type(2)",
+				"text": "Comments"
+			},
+			{
+				"selector": "ol.rs-list-result:nth-of-type(2) a.rs-link-result",
+				"text": "test"
+			}
+		]
+	},
+	{
+		"url": "http://localhost:8000?p=search/articles/vero",
+		"description": "search for vero in articles",
+		"elementArray":
+		[
+			{
+				"selector": "h2.rs-title-result",
+				"text": "Articles"
+			},
+			{
+				"selector": "ol.rs-list-result a.rs-link-result",
+				"text": "Welcome"
+			}
+		]
+	},
+	{
+		"url": "http://localhost:8000?p=search/comments/vero",
+		"description": "search for vero in comments",
+		"elementArray":
+		[
+			{
+				"selector": "h2.rs-title-result",
+				"text": "Comments"
+			},
+			{
+				"selector": "ol.rs-list-result a.rs-link-result",
+				"text": "test"
+			}
+		]
+	}
+]
