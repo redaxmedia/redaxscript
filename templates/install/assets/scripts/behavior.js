@@ -22,7 +22,7 @@ rs.templates.install.behavior.process = optionArray =>
 				if (fieldTypeElement.value === 'sqlite')
 				{
 					fieldToggleElement.value = null;
-					fieldToggleElement.parentElement.style.display = 'none';
+					fieldToggleElement.closest('li').style.display = 'none';
 					if (fieldToggleElement.hasAttribute('required'))
 					{
 						fieldToggleElement.setAttribute('data-required', 'required');
@@ -31,7 +31,7 @@ rs.templates.install.behavior.process = optionArray =>
 				}
 				else
 				{
-					fieldToggleElement.parentElement.style.display = null;
+					fieldToggleElement.closest('li').style.display = null;
 					if (fieldToggleElement.hasAttribute('data-required'))
 					{
 						fieldToggleElement.setAttribute('required', 'required');

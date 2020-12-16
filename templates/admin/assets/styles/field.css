@@ -18,7 +18,6 @@
 	border: 0.125rem solid gray(80);
 	border-radius: 0.125em;
 	color: gray(40);
-	display: block;
 	padding: 0.5em;
 	transition: background 0.2s, border-color 0.2s;
 	width: 100%;

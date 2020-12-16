@@ -11,13 +11,30 @@ rs.modules.UnmaskPassword.process = optionArray =>
 	{
 		fieldList.forEach(field =>
 		{
-			field.addEventListener('focusin', () =>
+			const wrapper = document.createElement('span');
+			const button = document.createElement('button');
+
+			wrapper.classList.add(OPTION.className.wrapper);
+			button.classList.add(OPTION.className.button);
+			field.classList.add(OPTION.className.field);
+			button.setAttribute('type', 'button');
+			field.parentNode.insertBefore(wrapper, field);
+			wrapper.appendChild(field);
+			wrapper.appendChild(button);
+
+			/* listen on click */
+
+			button.addEventListener('click', () =>
 			{
-				field.setAttribute('type', 'text');
-			});
-			field.addEventListener('focusout', () =>
-			{
-				field.setAttribute('type', 'password');
+				button.classList.toggle(OPTION.className.active);
+				if (field.getAttribute('type') === 'password')
+				{
+					field.setAttribute('type', 'text');
+				}
+				else
+				{
+					field.setAttribute('type', 'password');
+				}
 			});
 		});
 	}

@@ -131,6 +131,7 @@ module.exports = grunt =>
 		'postcss:moduleMaps',
 		'postcss:moduleRankSorter',
 		'postcss:moduleSocialSharer',
+		'postcss:moduleUnmaskPassword',
 		'postcss:moduleVisualEditor'
 	]);
 	grunt.registerTask('build-scripts',

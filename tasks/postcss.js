@@ -114,6 +114,14 @@ module.exports = () =>
 			],
 			dest: 'modules/SocialSharer/dist/styles/social-sharer.min.css'
 		},
+		moduleUnmaskPassword:
+		{
+			src:
+			[
+				'modules/UnmaskPassword/assets/styles/_unmask-password.css'
+			],
+			dest: 'modules/UnmaskPassword/dist/styles/unmask-password.min.css'
+		},
 		moduleVisualEditor:
 		{
 			src:

@@ -40,6 +40,15 @@ class UnmaskPassword extends Module\Module
 
 	public function renderStart() : void
 	{
+		/* link */
+
+		$link = Head\Link::getInstance();
+		$link
+			->init()
+			->appendFile('modules/UnmaskPassword/dist/styles/unmask-password.min.css');
+
+		/* script */
+
 		$script = Head\Script::getInstance();
 		$script
 			->init('foot')
