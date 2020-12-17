@@ -1,8 +1,8 @@
 {
 	"fixturesFolder": "tests/acceptance/fixtures",
 	"integrationFolder": "tests/acceptance/integration",
-	"pluginsFile": "tests/acceptance/plugins/index.js",
-	"screenshotsFolder": "tests/cypress/screenshots",
+	"screenshotsFolder": "tests/acceptance/screenshots",
 	"videosFolder": "tests/acceptance/videos",
-	"supportFile": "tests/acceptance/support/index.js"
+	"supportFile": "tests/acceptance/support/index.js",
+	"pluginsFile": false
 }
