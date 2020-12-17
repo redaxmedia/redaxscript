@@ -90,6 +90,8 @@ jobs:
   - run: composer install
   - run: wget https://scrutinizer-ci.com/ocular.phar
   - run: vendor/bin/phpunit --coverage-clover=build/logs/clover.xml
+    env:
+     XDEBUG_MODE: coverage
   - name: Report to Coveralls
     run: vendor/bin/php-coveralls --coverage_clover=build/logs/clover.xml
     env:
