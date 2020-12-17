@@ -9,7 +9,7 @@ jobs:
   - name: Checkout
     uses: actions/checkout@v2
   - name: Set up PHP 7.4
-    uses: shivammathur/setup-php@2.7.0
+    uses: shivammathur/setup-php@2.9.0
     with:
      php-version: 7.4
   - name: Set up Node 14
