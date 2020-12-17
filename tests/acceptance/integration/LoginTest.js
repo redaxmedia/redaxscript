@@ -16,7 +16,6 @@ describe('login', () =>
 	{
 		cy.setConfig();
 		cy.uninstallDatabase();
-		cy.wait(3000);
 		cy.installDatabase();
 	});
 

@@ -11,7 +11,6 @@ describe('search', () =>
 	{
 		cy.setConfig();
 		cy.uninstallDatabase();
-		cy.wait(3000);
 		cy.installDatabase();
 	});
 

@@ -28,6 +28,7 @@ function console(argv)
 			'Content-Type': 'application/json',
 			'X-Requested-With': 'XMLHttpRequest'
 		},
+		retryOnStatusCodeFailure: true,
 		body:
 		{
 			argv
