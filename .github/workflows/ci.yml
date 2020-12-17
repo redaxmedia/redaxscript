@@ -25,7 +25,7 @@ jobs:
   - name: Checkout
     uses: actions/checkout@v2
   - name: Set up PHP 7.4
-    uses: shivammathur/setup-php@2.7.0
+    uses: shivammathur/setup-php@2.9.0
     with:
      php-version: 7.4
   - name: Set up Node 14
@@ -44,7 +44,7 @@ jobs:
   - name: Checkout
     uses: actions/checkout@v2
   - name: Set up PHP ${{ matrix.php-version }}
-    uses: shivammathur/setup-php@2.7.0
+    uses: shivammathur/setup-php@2.9.0
     with:
      php-version: ${{ matrix.php-version }}
   - run: sudo apt-get install sendmail
@@ -60,7 +60,7 @@ jobs:
   - name: Checkout
     uses: actions/checkout@v2
   - name: Set up PHP 7.4
-    uses: shivammathur/setup-php@2.7.0
+    uses: shivammathur/setup-php@2.9.0
     with:
      php-version: 7.4
   - name: Set up Node 14
@@ -82,11 +82,11 @@ jobs:
   - name: Checkout
     uses: actions/checkout@v2
   - name: Set up PHP 7.4
-    uses: shivammathur/setup-php@2.7.0
+    uses: shivammathur/setup-php@2.9.0
     with:
      php-version: 7.4
   - run: sudo apt-get install sendmail
-  - run: composer require php-coveralls/php-coveralls --dev --no-update
+  - run: composer require php-coveralls/php-coveralls 2.4.2 --dev --no-update
   - run: composer install
   - run: wget https://scrutinizer-ci.com/ocular.phar
   - run: vendor/bin/phpunit --coverage-clover=build/logs/clover.xml
