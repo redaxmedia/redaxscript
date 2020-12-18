@@ -1,2 +1,2 @@
-import './assert';
-import './command';
+require('./assert');
+require('./command');

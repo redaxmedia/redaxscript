@@ -58,6 +58,13 @@ module.exports = () =>
 				'templates/*/assets/scripts/*.js'
 			]
 		},
+		tests:
+		{
+			src:
+			[
+				'tests/acceptance/*/*.js'
+			]
+		},
 		options:
 		{
 			config: '.eslintrc'

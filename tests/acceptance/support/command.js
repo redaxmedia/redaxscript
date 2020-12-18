@@ -2,6 +2,8 @@ Cypress.Commands.add('installDatabase', () => console('install database --admin-
 
 Cypress.Commands.add('uninstallDatabase', () => console('uninstall database'));
 
+Cypress.Commands.add('setSetting', (key, value) => console('setting set --key=' + key + ' --value=' + value));
+
 Cypress.Commands.add('setConfig', () => console('config set --db-type=sqlite --db-host=build/test.sqlite --db-prefix=_test'));
 
 Cypress.Commands.add('resetConfig', () => console('config reset'));

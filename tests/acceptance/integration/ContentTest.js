@@ -22,7 +22,7 @@ describe('content', () =>
 
 	PROVIDER.map(test =>
 	{
-		it('test ' + test.description, () =>
+		it('visit ' + test.description + ' page', () =>
 		{
 			cy.visit(test.url,
 			{

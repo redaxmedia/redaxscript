@@ -1,7 +1,7 @@
 [
 	{
 		"url": "http://localhost:8000?p=search/home",
-		"description": "search for home in contents",
+		"description": "home in contents",
 		"elementArray":
 		[
 			{
@@ -12,7 +12,7 @@
 	},
 	{
 		"url": "http://localhost:8000?p=search/welcome",
-		"description": "search for welcome in contents",
+		"description": "welcome in contents",
 		"elementArray":
 		[
 			{
@@ -27,7 +27,7 @@
 	},
 	{
 		"url": "http://localhost:8000?p=search/vero",
-		"description": "search for vero in contents",
+		"description": "vero in contents",
 		"elementArray":
 		[
 			{
@@ -50,7 +50,7 @@
 	},
 	{
 		"url": "http://localhost:8000?p=search/articles/vero",
-		"description": "search for vero in articles",
+		"description": "vero in articles",
 		"elementArray":
 		[
 			{
@@ -65,7 +65,7 @@
 	},
 	{
 		"url": "http://localhost:8000?p=search/comments/vero",
-		"description": "search for vero in comments",
+		"description": "vero in comments",
 		"elementArray":
 		[
 			{

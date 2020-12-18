@@ -1,4 +1,4 @@
-describe('login', () =>
+describe('register', () =>
 {
 	beforeEach(() =>
 	{
@@ -9,7 +9,7 @@ describe('login', () =>
 				'PHPSESSID'
 			]
 		});
-		cy.visit('http://localhost:8000/?l=en&p=login');
+		cy.visit('http://localhost:8000/?l=en&p=register');
 	});
 
 	before(() =>
@@ -17,6 +17,7 @@ describe('login', () =>
 		cy.setConfig();
 		cy.uninstallDatabase();
 		cy.installDatabase();
+		cy.setSetting('registration', 1);
 	});
 
 	after(() =>
@@ -31,20 +32,24 @@ describe('login', () =>
 		{
 			cy.get('ul.rs-list-breadcrumb li')
 				.should('be.visible')
-				.shouldHaveText('login');
+				.shouldHaveText('registration');
 		});
 
 		it('content title should have text', () =>
 		{
 			cy.get('h2.rs-title-content')
 				.should('be.visible')
-				.shouldHaveText('login');
+				.shouldHaveText('account_create');
 		});
 	});
 
-	context('validation', () =>
+	context('interaction', () =>
 	{
 		[
+			{
+				selector: '#name',
+				description: 'name'
+			},
 			{
 				selector: '#user',
 				description: 'user'
@@ -52,6 +57,10 @@ describe('login', () =>
 			{
 				selector: '#password',
 				description: 'password'
+			},
+			{
+				selector: '#email',
+				description: 'email'
 			}
 		]
 		.map(test =>
@@ -76,42 +85,33 @@ describe('login', () =>
 
 	context('interaction', () =>
 	{
-		it('login action has error as user is incorrect', () =>
+		it('register action has error as user already exists', () =>
 		{
-			cy.get('#user').clear().type('invalid');
+			cy.get('#name').clear().type('Test');
+			cy.get('#user').clear().type('test');
 			cy.get('#password').clear().type('aaAA00AAaa');
+			cy.get('#email').clear().type('test@redaxscript.com');
 
-			cy.get('form.rs-form-login button.rs-button-submit').click();
+			cy.get('form.rs-form-register button.rs-button-submit').click();
 
 			cy.get('div.rs-box-note.rs-is-error')
 				.should('be.visible')
-				.shouldHaveText('login_incorrect');
-			cy.url().should('eq', 'http://localhost:8000/?l=en&p=login');
+				.shouldHaveText('user_exists');
 		});
 
-		it('login action has error as password is incorrect', () =>
+		it('register action has success', () =>
 		{
-			cy.get('#user').clear().type('test');
-			cy.get('#password').clear().type('bbBB00BBbb');
-
-			cy.get('form.rs-form-login button.rs-button-submit').click();
-
-			cy.get('div.rs-box-note.rs-is-error')
-				.should('be.visible')
-				.shouldHaveText('login_incorrect');
-			cy.url().should('eq', 'http://localhost:8000/?l=en&p=login');
-		});
-
-		it('login action has success', () =>
-		{
-			cy.get('#user').clear().type('test');
+			cy.get('#name').clear().type('User Two');
+			cy.get('#user').clear().type('user-two');
 			cy.get('#password').clear().type('aaAA00AAaa');
+			cy.get('#email').clear().type('test@redaxscript.com');
 
-			cy.get('form.rs-form-login button.rs-button-submit').click();
+			cy.get('form.rs-form-register button.rs-button-submit').click();
 
-			cy.get('ul.rs-admin-list-panel').should('be.visible');
-			cy.get('div.rs-admin-box-dock').should('be.visible');
-			cy.url().should('eq', 'http://localhost:8000/?p=admin');
+			cy.get('div.rs-box-note.rs-is-success')
+				.should('be.visible')
+				.shouldHaveText('registration_completed');
+			cy.url().should('eq', 'http://localhost:8000/?p=login');
 		});
 	});
 });

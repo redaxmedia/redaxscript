@@ -22,7 +22,7 @@ describe('search', () =>
 
 	PROVIDER.map(test =>
 	{
-		it('test ' + test.description, () =>
+		it('search for ' + test.description, () =>
 		{
 			cy.visit(test.url);
 			test.elementArray.map(element => cy.get(element.selector).should('have.text', element.text));
