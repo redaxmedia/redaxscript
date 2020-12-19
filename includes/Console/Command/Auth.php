@@ -3,7 +3,6 @@ namespace Redaxscript\Console\Command;
 
 use Redaxscript\Auth as BaseAuth;
 use Redaxscript\Console\Parser;
-use Redaxscript\Db;
 use Redaxscript\Model;
 use Redaxscript\Validator;
 

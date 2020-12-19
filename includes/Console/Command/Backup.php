@@ -3,7 +3,6 @@ namespace Redaxscript\Console\Command;
 
 use Redaxscript\Console\Parser;
 use Redaxscript\Dater;
-use Redaxscript\Db;
 use function exec;
 use function is_dir;
 use function is_string;

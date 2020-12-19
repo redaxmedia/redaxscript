@@ -2,7 +2,6 @@
 namespace Redaxscript\Console\Command;
 
 use Redaxscript\Console\Parser;
-use Redaxscript\Db;
 use Redaxscript\Installer;
 use Redaxscript\Model;
 
