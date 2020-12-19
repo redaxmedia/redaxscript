@@ -74,10 +74,6 @@ class Auth extends CommandAbstract
 
 		$argumentKey = $parser->getArgument(1);
 		$haltOnError = (bool)$parser->getOption('halt-on-error');
-		if (Db::getStatus() === 0)
-		{
-			return $this->error($haltOnError);
-		}
 		if ($argumentKey === 'login')
 		{
 			return $this->_login($parser->getOptionArray()) ? $this->success() : $this->error($haltOnError);

@@ -88,10 +88,6 @@ class Install extends CommandAbstract
 
 		$argumentKey = $parser->getArgument(1);
 		$haltOnError = (bool)$parser->getOption('halt-on-error');
-		if (Db::getStatus() === 0)
-		{
-			return $this->error($haltOnError);
-		}
 		if ($argumentKey === 'database')
 		{
 			return $this->_database($parser->getOptionArray()) ? $this->success() : $this->error($haltOnError);
