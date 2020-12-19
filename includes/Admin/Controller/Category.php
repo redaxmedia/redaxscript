@@ -33,7 +33,7 @@ class Category extends ControllerAbstract
 	{
 		$postArray = $this->_normalizePost($this->_sanitizePost());
 		$validateArray = $this->_validatePost($postArray);
-		$myUser = $this->_registry->get('myUser');
+		$myName = $this->_registry->get('myName');
 		$now = $this->_registry->get('now');
 
 		/* validate post */
@@ -55,7 +55,7 @@ class Category extends ControllerAbstract
 			[
 				'title' => $postArray['title'],
 				'alias' => $postArray['alias'],
-				'author' => $myUser,
+				'author' => $myName,
 				'description' => $postArray['description'],
 				'keywords' => $postArray['keywords'],
 				'robots' => $postArray['robots'],
@@ -86,7 +86,7 @@ class Category extends ControllerAbstract
 			[
 				'title' => $postArray['title'],
 				'alias' => $postArray['alias'],
-				'author' => $myUser,
+				'author' => $myName,
 				'description' => $postArray['description'],
 				'keywords' => $postArray['keywords'],
 				'robots' => $postArray['robots'],

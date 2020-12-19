@@ -79,9 +79,9 @@ class CommentTable extends ViewAbstract
 		$outputFoot = null;
 		$tableArray =
 		[
-			'author' => $this->_language->get('author'),
-			'language' => $this->_language->get('language'),
+			'comment' => $this->_language->get('comment'),
 			'article' => $this->_language->get('article'),
+			'language' => $this->_language->get('language'),
 			'rank' => $this->_language->get('rank')
 		];
 		$adminControl = new Helper\Control($this->_registry, $this->_language);
@@ -137,11 +137,11 @@ class CommentTable extends ViewAbstract
 						$tdElement->copy()->html(
 							$linkElement
 								->attr('href', $parameterRoute . $commentModel->getRouteById($value->id))
-								->text($value->author) .
+								->text($value->text) .
 							$adminControl->render('comments', $value->id, $value->alias, $value->status)
 						) .
-						$tdElement->copy()->text($value->language ? $this->_language->get('_language')[$value->language] : $this->_language->get('all')) .
 						$tdElement->copy()->text($value->article ? $articleModel->getById($value->article)->title : $this->_language->get('none')) .
+						$tdElement->copy()->text($value->language ? $this->_language->get('_language')[$value->language] : $this->_language->get('all')) .
 						$tdElement
 							->copy()
 							->addClass('rs-admin-js-move rs-admin-col-move')

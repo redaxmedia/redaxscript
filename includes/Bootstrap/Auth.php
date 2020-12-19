@@ -41,7 +41,7 @@ class Auth extends BootstrapAbstract
 
 		/* set the registry */
 
-		if ($auth->getStatus())
+		if ($auth->getStatus() === 1)
 		{
 			$this->_registry->set('myId', $auth->getUser('id'));
 			$this->_registry->set('myName', $auth->getUser('name'));
@@ -65,7 +65,7 @@ class Auth extends BootstrapAbstract
 
 		/* set the registry */
 
-		if ($auth->getStatus())
+		if ($auth->getStatus() === 1)
 		{
 			$this->_registry->set('categoriesNew', $auth->getPermissionNew('categories'));
 			$this->_registry->set('categoriesEdit', $auth->getPermissionEdit('categories'));

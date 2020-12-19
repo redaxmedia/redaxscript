@@ -2,11 +2,19 @@ Cypress.Commands.add('installDatabase', () => console('install database --admin-
 
 Cypress.Commands.add('uninstallDatabase', () => console('uninstall database'));
 
+Cypress.Commands.add('installTestDummy', () => console('install module --alias=TestDummy'));
+
+Cypress.Commands.add('uninstallTestDummy', () => console('uninstall module --alias=TestDummy'));
+
 Cypress.Commands.add('setSetting', (key, value) => console('setting set --key=' + key + ' --value=' + value));
 
 Cypress.Commands.add('setConfig', () => console('config set --db-type=sqlite --db-host=build/test.sqlite --db-prefix=_test'));
 
 Cypress.Commands.add('resetConfig', () => console('config reset'));
+
+Cypress.Commands.add('login', () => console('auth login --user=test --password=aaAA00AAaa'));
+
+Cypress.Commands.add('logout', () => console('auth logout'));
 
 /**
  * console

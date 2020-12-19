@@ -179,7 +179,7 @@ class Installer
 			[
 				'title' => 'Home',
 				'alias' => 'home',
-				'author' => $optionArray['adminUser'],
+				'author' => $optionArray['adminName'],
 				'rank' => 1,
 				'date' => $now
 			])
@@ -203,7 +203,7 @@ class Installer
 			[
 				'title' => 'Welcome',
 				'alias' => 'welcome',
-				'author' => $optionArray['adminUser'],
+				'author' => $optionArray['adminName'],
 				'text' => file_get_contents('database' . DIRECTORY_SEPARATOR . 'html' . DIRECTORY_SEPARATOR . 'articles' . DIRECTORY_SEPARATOR . 'welcome.phtml'),
 				'category' => 1,
 				'comments' => 1,
@@ -275,7 +275,7 @@ class Installer
 				[
 					'title' => ucfirst($key),
 					'alias' => $key,
-					'author' => $optionArray['adminUser'],
+					'author' => $optionArray['adminName'],
 					'text' => file_get_contents('database' . DIRECTORY_SEPARATOR . 'html' . DIRECTORY_SEPARATOR . 'extras' . DIRECTORY_SEPARATOR . $key . '.phtml'),
 					'category' => $value['category'],
 					'headline' => $value['headline'],
@@ -302,7 +302,7 @@ class Installer
 			->create()
 			->set(
 			[
-				'author' => $optionArray['adminUser'],
+				'author' => $optionArray['adminName'],
 				'email' => $optionArray['adminEmail'],
 				'text' => file_get_contents('database' . DIRECTORY_SEPARATOR . 'html' . DIRECTORY_SEPARATOR . 'comments' . DIRECTORY_SEPARATOR . 'hello.phtml'),
 				'article' => 1,

@@ -1,6 +1,7 @@
 <?php
 namespace Redaxscript\Console\Command;
 
+use Redaxscript\Auth;
 use Redaxscript\Console\Parser;
 use Redaxscript\Db;
 use function array_key_exists;
@@ -33,6 +34,15 @@ class Status extends CommandAbstract
 			'description' => 'Status command',
 			'argumentArray' =>
 			[
+				'auth' =>
+				[
+					'description' => 'Show auth status',
+					'wordingArray' =>
+					[
+						'Not logged in',
+						'Logged in'
+					]
+				],
 				'database' =>
 				[
 					'description' => 'Show database status',
@@ -74,6 +84,10 @@ class Status extends CommandAbstract
 		/* run command */
 
 		$argumentKey = $parser->getArgument(1);
+		if ($argumentKey === 'auth')
+		{
+			return $this->_auth();
+		}
 		if ($argumentKey === 'database')
 		{
 			return $this->_database();
@@ -83,6 +97,27 @@ class Status extends CommandAbstract
 			return $this->_system();
 		}
 		return $this->getHelp();
+	}
+
+	/**
+	 * auth status
+	 *
+	 * @since 4.5.0
+	 *
+	 * @return string|null
+	 */
+
+	protected function _auth() : ?string
+	{
+		$output = null;
+		$auth = new Auth($this->_request);
+		$status = $auth->getStatus();
+		$wordingArray = $this->_commandArray['status']['argumentArray']['auth']['wordingArray'];
+		if (is_array($wordingArray) && array_key_exists($status, $wordingArray))
+		{
+			$output = $wordingArray[$status] . PHP_EOL;
+		}
+		return $output;
 	}
 
 	/**

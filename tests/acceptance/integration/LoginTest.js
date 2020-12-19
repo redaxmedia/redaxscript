@@ -1,14 +1,8 @@
-describe('login', () =>
+describe('LoginTest', () =>
 {
 	beforeEach(() =>
 	{
-		Cypress.Cookies.defaults(
-		{
-			preserve:
-			[
-				'PHPSESSID'
-			]
-		});
+		Cypress.Cookies.preserveOnce('PHPSESSID');
 		cy.visit('http://localhost:8000/?l=en&p=login');
 	});
 
@@ -112,6 +106,15 @@ describe('login', () =>
 			cy.get('ul.rs-admin-list-panel').should('be.visible');
 			cy.get('div.rs-admin-box-dock').should('be.visible');
 			cy.url().should('eq', 'http://localhost:8000/?p=admin');
+		});
+
+		it('logout action has success', () =>
+		{
+			cy.get('ul.rs-admin-list-panel a.rs-admin-link-panel-logout').click();
+
+			cy.get('ul.rs-admin-list-panel').should('not.exist');
+			cy.get('div.rs-admin-box-dock').should('not.exist');
+			cy.url().should('eq', 'http://localhost:8000/?p=login');
 		});
 	});
 });

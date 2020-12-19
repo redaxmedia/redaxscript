@@ -28,7 +28,7 @@ class Status extends BootstrapAbstract
 
 		/* set the registry */
 
-		if ($auth->getStatus())
+		if ($auth->getStatus() === 1)
 		{
 			$this->_registry->set('loggedIn', $this->_registry->get('token'));
 			$this->_registry->set('authStatus', $auth->getStatus());

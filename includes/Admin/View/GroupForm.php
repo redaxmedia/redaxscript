@@ -47,7 +47,7 @@ class GroupForm extends ViewAbstract
 			[
 				'class' => 'rs-admin-title-content',
 			])
-			->text($group->name ? : $this->_language->get('group_new'));
+			->text($group->id ? $group->name : $this->_language->get('group_new'));
 		$formElement = new Admin\Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[
@@ -112,28 +112,21 @@ class GroupForm extends ViewAbstract
 				'required' => 'required',
 				'value' => $group->name
 			])
-			->append('</li>');
-		if (!$group->id)
-		{
-			$formElement
-				->append('<li>')
-				->label($this->_language->get('alias'),
-				[
-					'for' => 'alias'
-				])
-				->text(
-				[
-					'class' => 'rs-admin-js-alias-output rs-admin-field-default rs-admin-field-text',
-					'id' => 'alias',
-					'name' => 'alias',
-					'pattern' => $aliasValidator->getPattern(),
-					'required' => 'required',
-					'value' => $group->alias
-				])
-				->append('</li>');
-		}
-		$formElement
-			->append('<li>')
+			->append('</li><li>')
+			->label($this->_language->get('alias'),
+			[
+				'for' => 'alias'
+			])
+			->text(
+			[
+				'class' => 'rs-admin-js-alias-output rs-admin-field-default rs-admin-field-text',
+				'id' => 'alias',
+				'name' => 'alias',
+				'pattern' => $aliasValidator->getPattern(),
+				'required' => 'required',
+				'value' => $group->alias
+			])
+			->append('</li><li>')
 			->label($this->_language->get('description'),
 			[
 				'for' => 'description'

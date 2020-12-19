@@ -54,7 +54,7 @@
 			"status": null,
 			"groups": null
 		},
-		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Name is empty</li><li>Email is incorrect</li></ul></div><a href=\"admin/edit/users/1\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Name is empty</li><li>User is empty</li><li>Email is incorrect</li></ul></div><a href=\"admin/edit/users/1\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
 	],
 	[
 		{
@@ -73,7 +73,7 @@
 			"status": null,
 			"groups": null
 		},
-		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Name is empty</li><li>Password is incorrect</li><li>Email is incorrect</li></ul></div><a href=\"admin\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Name is empty</li><li>User is empty</li><li>Password is incorrect</li><li>Email is incorrect</li></ul></div><a href=\"admin\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
 	],
 	[
 		{
@@ -92,7 +92,7 @@
 			"status": null,
 			"groups": null
 		},
-		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Name is empty</li><li>Email is incorrect</li></ul></div><a href=\"admin\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
+		"<h2 class=\"rs-admin-title-note rs-admin-is-error\">Error</h2><div class=\"rs-admin-box-note rs-admin-is-error\"><ul class=\"rs-admin-list-note\"><li>Name is empty</li><li>User is empty</li><li>Email is incorrect</li></ul></div><a href=\"admin\" class=\"rs-admin-button-note rs-admin-is-error\">Back</a>"
 	],
 	[
 		{

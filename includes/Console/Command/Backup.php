@@ -3,6 +3,7 @@ namespace Redaxscript\Console\Command;
 
 use Redaxscript\Console\Parser;
 use Redaxscript\Dater;
+use Redaxscript\Db;
 use function exec;
 use function is_dir;
 use function is_string;
@@ -67,6 +68,10 @@ class Backup extends CommandAbstract
 
 		$argumentKey = $parser->getArgument(1);
 		$haltOnError = (bool)$parser->getOption('halt-on-error');
+		if (Db::getStatus() === 0)
+		{
+			return $this->error($haltOnError);
+		}
 		if ($argumentKey === 'database')
 		{
 			return $this->_database($parser->getOptionArray()) ? $this->success() : $this->error($haltOnError);

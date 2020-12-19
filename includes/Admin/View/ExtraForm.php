@@ -51,7 +51,7 @@ class ExtraForm extends ViewAbstract
 			[
 				'class' => 'rs-admin-title-content',
 			])
-			->text($extra->title ? : $this->_language->get('extra_new'));
+			->text($extra->id ? $extra->title : $this->_language->get('extra_new'));
 		$formElement = new Admin\Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[

@@ -411,7 +411,7 @@ class Router extends RouterAbstract
 			$moduleTable = new Admin\View\ModuleTable($this->_registry, $this->_language);
 			return $moduleTable->render();
 		}
-		return null;
+		return $this->_errorAccess();
 	}
 
 	/**
@@ -458,7 +458,7 @@ class Router extends RouterAbstract
 			$groupForm = new Admin\View\GroupForm($this->_registry, $this->_language);
 			return $groupForm->render();
 		}
-		return null;
+		return $this->_errorAccess();
 	}
 
 	/**
@@ -466,47 +466,54 @@ class Router extends RouterAbstract
 	 *
 	 * @since 3.3.0
 	 *
-	 * @return string|null
+	 * @return string
 	 */
 
-	protected function _renderEdit() : ?string
+	protected function _renderEdit() : string
 	{
+		$categoryModel = new Admin\Model\Category();
+		$articleModel = new Admin\Model\Article();
+		$extraModel = new Admin\Model\Extra();
+		$commentModel = new Admin\Model\Comment();
+		$userModel = new Admin\Model\User();
+		$groupModel = new Admin\Model\Group();
+		$moduleModel = new Admin\Model\Module();
 		$tableParameter = $this->getTable();
 		$idParameter = $this->getId();
 
 		/* handle table */
 
-		if ($tableParameter === 'categories' && $idParameter)
+		if ($tableParameter === 'categories' && $categoryModel->getRouteById($idParameter))
 		{
 			$categoryForm = new Admin\View\CategoryForm($this->_registry, $this->_language);
 			return $categoryForm->render($idParameter);
 		}
-		if ($tableParameter === 'articles' && $idParameter)
+		if ($tableParameter === 'articles' && $articleModel->getById($idParameter))
 		{
 			$articleForm = new Admin\View\ArticleForm($this->_registry, $this->_language);
 			return $articleForm->render($idParameter);
 		}
-		if ($tableParameter === 'extras' && $idParameter)
+		if ($tableParameter === 'extras' && $extraModel->getById($idParameter))
 		{
 			$extraForm = new Admin\View\ExtraForm($this->_registry, $this->_language);
 			return $extraForm->render($idParameter);
 		}
-		if ($tableParameter === 'comments' && $idParameter)
+		if ($tableParameter === 'comments' && $commentModel->getById($idParameter))
 		{
 			$commentForm = new Admin\View\CommentForm($this->_registry, $this->_language);
 			return $commentForm->render($idParameter);
 		}
-		if ($tableParameter === 'users' && $idParameter)
+		if ($tableParameter === 'users' && $userModel->getById($idParameter))
 		{
 			$userForm = new Admin\View\UserForm($this->_registry, $this->_language);
 			return $userForm->render($idParameter);
 		}
-		if ($tableParameter === 'groups' && $idParameter)
+		if ($tableParameter === 'groups' && $groupModel->getById($idParameter))
 		{
 			$groupForm = new Admin\View\GroupForm($this->_registry, $this->_language);
 			return $groupForm->render($idParameter);
 		}
-		if ($tableParameter === 'modules' && $idParameter)
+		if ($tableParameter === 'modules' && $moduleModel->getById($idParameter))
 		{
 			$moduleForm = new Admin\View\ModuleForm($this->_registry, $this->_language);
 			return $moduleForm->render($idParameter);
@@ -516,7 +523,7 @@ class Router extends RouterAbstract
 			$settingForm = new Admin\View\SettingForm($this->_registry, $this->_language);
 			return $settingForm->render();
 		}
-		return null;
+		return $this->_errorAccess();
 	}
 
 	/**

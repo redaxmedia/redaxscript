@@ -32,7 +32,7 @@ class Comment extends ControllerAbstract
 	{
 		$postArray = $this->_normalizePost($this->_sanitizePost());
 		$validateArray = $this->_validatePost($postArray);
-		$myUser = $this->_registry->get('myUser');
+		$myName = $this->_registry->get('myName');
 		$myEmail = $this->_registry->get('myEmail');
 		$now = $this->_registry->get('now');
 
@@ -53,7 +53,7 @@ class Comment extends ControllerAbstract
 		{
 			$createArray =
 			[
-				'author' => $myUser,
+				'author' => $myName,
 				'email' => $myEmail,
 				'url' => $postArray['url'],
 				'text' => $postArray['text'],

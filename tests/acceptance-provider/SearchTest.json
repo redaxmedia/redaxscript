@@ -44,7 +44,7 @@
 			},
 			{
 				"selector": "ol.rs-list-result:nth-of-type(2) a.rs-link-result",
-				"text": "test"
+				"text": "At vero eos et accusam et justo duo."
 			}
 		]
 	},
@@ -74,7 +74,7 @@
 			},
 			{
 				"selector": "ol.rs-list-result a.rs-link-result",
-				"text": "test"
+				"text": "At vero eos et accusam et justo duo."
 			}
 		]
 	}

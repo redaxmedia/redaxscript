@@ -1,0 +1,40 @@
+[
+	{
+		"url": "http://localhost:8000?p=admin/edit/settings",
+		"description": "admin/edit/settings",
+		"elementArray":
+		[
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(1)",
+				"text": "Administration"
+			},
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(3)",
+				"text": "Edit"
+			},
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(5)",
+				"text": "Settings"
+			},
+			{
+				"selector": "h2.rs-admin-title-content",
+				"text": "Settings"
+			}
+		]
+	},
+	{
+		"url": "http://localhost:8000?p=admin/invalid/settings",
+		"description": "admin/invalid/settings",
+		"elementArray":
+		[
+			{
+				"selector": "ul.rs-list-breadcrumb li",
+				"text": "Administration"
+			},
+			{
+				"selector": "h2.rs-admin-title-note.rs-admin-is-error",
+				"text": "An error occurred"
+			}
+		]
+	}
+]

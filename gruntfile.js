@@ -34,8 +34,6 @@ module.exports = grunt =>
 		'colorguard',
 		'ncsslint',
 		'htmlhint',
-		'phpcpd',
-		'phpmd',
 		'phpcs'
 	]);
 	grunt.registerTask('stylelint',
@@ -49,18 +47,6 @@ module.exports = grunt =>
 	grunt.registerTask('colorguard',
 	[
 		'postcss:colorguard'
-	]);
-	grunt.registerTask('phpcpd',
-	[
-		'shell:phpcpdRoot',
-		'shell:phpcpdBase',
-		'shell:phpcpdModules'
-	]);
-	grunt.registerTask('phpmd',
-	[
-		'shell:phpmdRoot',
-		'shell:phpmdBase',
-		'shell:phpmdModules'
 	]);
 	grunt.registerTask('test-unit',
 	[

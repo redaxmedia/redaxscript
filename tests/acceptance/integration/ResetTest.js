@@ -1,14 +1,8 @@
-describe('reset', () =>
+describe('ResetTest', () =>
 {
 	beforeEach(() =>
 	{
-		Cypress.Cookies.defaults(
-		{
-			preserve:
-			[
-				'PHPSESSID'
-			]
-		});
+		Cypress.Cookies.preserveOnce('PHPSESSID');
 		cy.visit('http://localhost:8000/?l=en&p=login/reset/abc/1');
 	});
 

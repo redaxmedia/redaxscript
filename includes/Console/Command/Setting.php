@@ -2,6 +2,7 @@
 namespace Redaxscript\Console\Command;
 
 use Redaxscript\Console\Parser;
+use Redaxscript\Db;
 use Redaxscript\Model;
 use function str_pad;
 
@@ -72,6 +73,10 @@ class Setting extends CommandAbstract
 
 		$argumentKey = $parser->getArgument(1);
 		$haltOnError = (bool)$parser->getOption('halt-on-error');
+		if (Db::getStatus() === 0)
+		{
+			return $this->error($haltOnError);
+		}
 		if ($argumentKey === 'list')
 		{
 			return $this->_list();

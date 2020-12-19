@@ -195,10 +195,10 @@ class Auth
 	 *
 	 * @param int $userId identifier of the user
 	 *
-	 * @return int
+	 * @return bool
 	 */
 
-	public function login(int $userId = null) : int
+	public function login(int $userId = null) : bool
 	{
 		$userModel = new Model\User();
 		$user = $userModel->getById($userId);
@@ -248,7 +248,7 @@ class Auth
 
 			$this->save();
 		}
-		return $this->getStatus();
+		return $this->getStatus() === 1;
 	}
 
 	/**
@@ -261,11 +261,11 @@ class Auth
 
 	public function logout() : bool
 	{
-		if ($this->getStatus())
+		if ($this->getStatus() === 1)
 		{
 			$this->_setAuth();
 			$this->_request->setSession('language', null);
-			return !$this->getStatus();
+			return $this->getStatus() === 0;
 		}
 		return false;
 	}

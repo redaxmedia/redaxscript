@@ -166,10 +166,10 @@ class Login extends ControllerAbstract
 	 *
 	 * @param int $userId identifier of the user
 	 *
-	 * @return int
+	 * @return bool
 	 */
 
-	protected function _login(int $userId = null) : int
+	protected function _login(int $userId = null) : bool
 	{
 		$auth = new Auth($this->_request);
 		return $auth->login($userId);

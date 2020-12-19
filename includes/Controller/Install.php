@@ -102,7 +102,7 @@ class Install extends ControllerAbstract
 
 		/* handle database */
 
-		if (!$this->_getStatus())
+		if ($this->_getStatus() === 0)
 		{
 			return $this->_error(
 			[

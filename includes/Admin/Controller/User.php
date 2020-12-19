@@ -81,6 +81,7 @@ class User extends ControllerAbstract
 			$updateFullArray =
 			[
 				'name' => $postArray['name'],
+				'user' => $postArray['user'],
 				'description' => $postArray['description'],
 				'email' => $postArray['email'],
 				'language' => $postArray['language'],
@@ -90,6 +91,7 @@ class User extends ControllerAbstract
 			$updateLiteArray =
 			[
 				'name' => $postArray['name'],
+				'user' => $postArray['user'],
 				'description' => $postArray['description'],
 				'email' => $postArray['email'],
 				'language' => $postArray['language']
@@ -184,20 +186,20 @@ class User extends ControllerAbstract
 		{
 			$validateArray[] = $this->_language->get('name_incorrect');
 		}
+		if (!$postArray['user'])
+		{
+			$validateArray[] = $this->_language->get('user_empty');
+		}
+		else if (!$userValidator->validate($postArray['user']))
+		{
+			$validateArray[] = $this->_language->get('user_incorrect');
+		}
+		else if (!$userModel->isUniqueByIdAndUser($postArray['id'], $postArray['user']))
+		{
+			$validateArray[] = $this->_language->get('user_exists');
+		}
 		if (!$postArray['id'])
 		{
-			if (!$postArray['user'])
-			{
-				$validateArray[] = $this->_language->get('user_empty');
-			}
-			else if (!$userValidator->validate($postArray['user']))
-			{
-				$validateArray[] = $this->_language->get('user_incorrect');
-			}
-			else if ($userModel->getByUser($postArray['user']))
-			{
-				$validateArray[] = $this->_language->get('user_exists');
-			}
 			if (!$postArray['password'])
 			{
 				$validateArray[] = $this->_language->get('password_empty');

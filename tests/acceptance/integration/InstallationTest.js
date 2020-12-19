@@ -1,14 +1,8 @@
-describe('installation', () =>
+describe('InstallationTest', () =>
 {
 	beforeEach(() =>
 	{
-		Cypress.Cookies.defaults(
-		{
-			preserve:
-			[
-				'PHPSESSID'
-			]
-		});
+		Cypress.Cookies.preserveOnce('PHPSESSID');
 		cy.visit('http://localhost:8000/install.php?l=en');
 	});
 
@@ -128,10 +122,7 @@ describe('installation', () =>
 			cy.get('div.rs-box-note.rs-is-success')
 				.should('be.visible')
 				.shouldHaveText('installation_completed');
-			cy.url(
-			{
-				timeout: 6000
-			}).should('eq', 'http://localhost:8000/index.php');
+			cy.url().should('eq', 'http://localhost:8000/index.php');
 		});
 	});
 });

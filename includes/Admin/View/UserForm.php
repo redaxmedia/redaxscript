@@ -48,7 +48,7 @@ class UserForm extends ViewAbstract
 			[
 				'class' => 'rs-admin-title-content',
 			])
-			->text($user->name ? : $this->_language->get('user_new'));
+			->text($user->id ? $user->name : $this->_language->get('user_new'));
 		$formElement = new Admin\Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[
@@ -112,27 +112,20 @@ class UserForm extends ViewAbstract
 				'required' => 'required',
 				'value' => $user->name
 			])
-			->append('</li>');
-		if (!$user->id)
-		{
-			$formElement
-				->append('<li>')
-				->label($this->_language->get('user'),
-				[
-					'for' => 'user'
-				])
-				->text(
-				[
-					'id' => 'user',
-					'name' => 'user',
-					'pattern' => $userValidator->getPattern(),
-					'required' => 'required',
-					'value' => $user->user
-				])
-				->append('</li>');
-		}
-		$formElement
-			->append('<li>')
+			->append('</li><li>')
+			->label($this->_language->get('user'),
+			[
+				'for' => 'user'
+			])
+			->text(
+			[
+				'id' => 'user',
+				'name' => 'user',
+				'pattern' => $userValidator->getPattern(),
+				'required' => 'required',
+				'value' => $user->user
+			])
+			->append('</li><li>')
 			->label($this->_language->get('description'),
 			[
 				'for' => 'description'

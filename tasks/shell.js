@@ -3,46 +3,6 @@ module.exports = grunt =>
 	const run = command => process.platform === 'win32' ? 'powershell ' + command : command;
 	const config =
 	{
-		phpcpdRoot:
-		{
-			command: run('vendor/bin/phpcpd console.php index.php install.php')
-		},
-		phpcpdBase:
-		{
-			command: run('vendor/bin/phpcpd includes'),
-			options:
-			{
-				failOnError: false
-			}
-		},
-		phpcpdModules:
-		{
-			command: run('vendor/bin/phpcpd modules')
-		},
-		phpmdRoot:
-		{
-			command: run('vendor/bin/phpmd console.php,index.php,install.php text unusedcode'),
-			options:
-			{
-				failOnError: false
-			}
-		},
-		phpmdBase:
-		{
-			command: run('vendor/bin/phpmd includes text unusedcode'),
-			options:
-			{
-				failOnError: false
-			}
-		},
-		phpmdModules:
-		{
-			command: run('vendor/bin/phpmd modules text unusedcode'),
-			options:
-			{
-				failOnError: false
-			}
-		},
 		testUnit:
 		{
 			command: run('vendor/bin/phpunit')

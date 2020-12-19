@@ -89,7 +89,7 @@
 {
 	font-size: 2em;
 	font-weight: 500;
-	margin-bottom: 0.5em;
+	margin-bottom: 1em;
 
 	&:not(:first-child)
 	{

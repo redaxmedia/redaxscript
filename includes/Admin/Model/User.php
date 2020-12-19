@@ -16,6 +16,22 @@ use Redaxscript\Model as BaseModel;
 class User extends BaseModel\User
 {
 	/**
+	 * is unique by id and user
+	 *
+	 * @since 4.5.0
+	 *
+	 * @param int $userId identifier of the user
+	 * @param string $userUser user of the user
+	 *
+	 * @return bool
+	 */
+
+	public function isUniqueByIdAndUser(int $userId = null, string $userUser = null) : bool
+	{
+		return !$this->getByUser($userUser)->id || $this->getByUser($userUser)->id === $this->getById($userId)->id;
+	}
+
+	/**
 	 * update the user by id and array
 	 *
 	 * @since 4.0.0

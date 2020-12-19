@@ -1,0 +1,132 @@
+[
+	{
+		"url": "http://localhost:8000?p=admin/view/groups",
+		"description": "admin/view/groups",
+		"elementArray":
+		[
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(1)",
+				"text": "Administration"
+			},
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(3)",
+				"text": "View"
+			},
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(5)",
+				"text": "Groups"
+			},
+			{
+				"selector": "h2.rs-admin-title-content",
+				"text": "Groups"
+			}
+		]
+	},
+	{
+		"url": "http://localhost:8000?p=admin/new/groups",
+		"description": "admin/new/groups",
+		"elementArray":
+		[
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(1)",
+				"text": "Administration"
+			},
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(3)",
+				"text": "New"
+			},
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(5)",
+				"text": "Groups"
+			},
+			{
+				"selector": "h2.rs-admin-title-content",
+				"text": "New group"
+			}
+		]
+	},
+	{
+		"url": "http://localhost:8000?p=admin/edit/groups/1",
+		"description": "admin/edit/groups/1",
+		"elementArray":
+		[
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(1)",
+				"text": "Administration"
+			},
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(3)",
+				"text": "Edit"
+			},
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(5)",
+				"text": "Groups"
+			},
+			{
+				"selector": "h2.rs-admin-title-content",
+				"text": "Administrators"
+			}
+		]
+	},
+	{
+		"url": "http://localhost:8000?p=admin/invalid/groups",
+		"description": "admin/invalid/groups",
+		"elementArray":
+		[
+			{
+				"selector": "ul.rs-list-breadcrumb li",
+				"text": "Administration"
+			},
+			{
+				"selector": "h2.rs-admin-title-note.rs-admin-is-error",
+				"text": "An error occurred"
+			}
+		]
+	},
+	{
+		"url": "http://localhost:8000?p=admin/edit/groups/invalid",
+		"description": "admin/edit/groups/invalid",
+		"elementArray":
+		[
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(1)",
+				"text": "Administration"
+			},
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(3)",
+				"text": "Edit"
+			},
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(5)",
+				"text": "Groups"
+			},
+			{
+				"selector": "h2.rs-admin-title-note.rs-admin-is-error",
+				"text": "An error occurred"
+			}
+		]
+	},
+	{
+		"url": "http://localhost:8000?p=admin/edit/groups/1337",
+		"description": "admin/edit/groups/1337",
+		"elementArray":
+		[
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(1)",
+				"text": "Administration"
+			},
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(3)",
+				"text": "Edit"
+			},
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(5)",
+				"text": "Groups"
+			},
+			{
+				"selector": "h2.rs-admin-title-note.rs-admin-is-error",
+				"text": "An error occurred"
+			}
+		]
+	}
+]

@@ -85,7 +85,7 @@ class Comment extends NavigationAbstract
 						[
 							'href' => $this->_registry->get('parameterRoute') . $commentModel->getRouteById($value->id)
 						])
-						->text($value->author . $this->_language->get('colon') . ' ' . $value->text)
+						->text($value->text)
 					);
 			}
 		}

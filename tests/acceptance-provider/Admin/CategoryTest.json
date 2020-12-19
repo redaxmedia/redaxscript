@@ -1,0 +1,132 @@
+[
+	{
+		"url": "http://localhost:8000?p=admin/view/categories",
+		"description": "admin/view/categories",
+		"elementArray":
+		[
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(1)",
+				"text": "Administration"
+			},
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(3)",
+				"text": "View"
+			},
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(5)",
+				"text": "Categories"
+			},
+			{
+				"selector": "h2.rs-admin-title-content",
+				"text": "Categories"
+			}
+		]
+	},
+	{
+		"url": "http://localhost:8000?p=admin/new/categories",
+		"description": "admin/new/categories",
+		"elementArray":
+		[
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(1)",
+				"text": "Administration"
+			},
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(3)",
+				"text": "New"
+			},
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(5)",
+				"text": "Categories"
+			},
+			{
+				"selector": "h2.rs-admin-title-content",
+				"text": "New category"
+			}
+		]
+	},
+	{
+		"url": "http://localhost:8000?p=admin/edit/categories/1",
+		"description": "admin/edit/categories/1",
+		"elementArray":
+		[
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(1)",
+				"text": "Administration"
+			},
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(3)",
+				"text": "Edit"
+			},
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(5)",
+				"text": "Categories"
+			},
+			{
+				"selector": "h2.rs-admin-title-content",
+				"text": "Home"
+			}
+		]
+	},
+	{
+		"url": "http://localhost:8000?p=admin/invalid/categories",
+		"description": "admin/invalid/categories",
+		"elementArray":
+		[
+			{
+				"selector": "ul.rs-list-breadcrumb li",
+				"text": "Administration"
+			},
+			{
+				"selector": "h2.rs-admin-title-note.rs-admin-is-error",
+				"text": "An error occurred"
+			}
+		]
+	},
+	{
+		"url": "http://localhost:8000?p=admin/edit/categories/invalid",
+		"description": "admin/edit/categories/invalid",
+		"elementArray":
+		[
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(1)",
+				"text": "Administration"
+			},
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(3)",
+				"text": "Edit"
+			},
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(5)",
+				"text": "Categories"
+			},
+			{
+				"selector": "h2.rs-admin-title-note.rs-admin-is-error",
+				"text": "An error occurred"
+			}
+		]
+	},
+	{
+		"url": "http://localhost:8000?p=admin/edit/categories/1337",
+		"description": "admin/edit/categories/1337",
+		"elementArray":
+		[
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(1)",
+				"text": "Administration"
+			},
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(3)",
+				"text": "Edit"
+			},
+			{
+				"selector": "ul.rs-list-breadcrumb li:nth-of-type(5)",
+				"text": "Categories"
+			},
+			{
+				"selector": "h2.rs-admin-title-note.rs-admin-is-error",
+				"text": "An error occurred"
+			}
+		]
+	}
+]

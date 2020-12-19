@@ -33,7 +33,7 @@ class Extra extends ControllerAbstract
 	{
 		$postArray = $this->_normalizePost($this->_sanitizePost());
 		$validateArray = $this->_validatePost($postArray);
-		$myUser = $this->_registry->get('myUser');
+		$myName = $this->_registry->get('myName');
 		$now = $this->_registry->get('now');
 
 		/* validate post */
@@ -55,7 +55,7 @@ class Extra extends ControllerAbstract
 			[
 				'title' => $postArray['title'],
 				'alias' => $postArray['alias'],
-				'author' => $myUser,
+				'author' => $myName,
 				'text' => $postArray['text'],
 				'language' => $postArray['language'],
 				'sibling' => $postArray['sibling'],
@@ -85,7 +85,7 @@ class Extra extends ControllerAbstract
 			[
 				'title' => $postArray['title'],
 				'alias' => $postArray['alias'],
-				'author' => $myUser,
+				'author' => $myName,
 				'text' => $postArray['text'],
 				'language' => $postArray['language'],
 				'sibling' => $postArray['sibling'],

@@ -1,17 +1,17 @@
-const providerArray = require('../../acceptance-provider/ContentTest.json');
+const providerArray = require('../../../acceptance-provider/Admin/UserTest.json');
 
-describe('ContentTest', () =>
+describe('Admin/UserTest', () =>
 {
-	beforeEach(() =>
-	{
-		cy.visit('http://localhost:8000/?l=en');
-	});
-
 	before(() =>
 	{
 		cy.setConfig();
 		cy.uninstallDatabase();
 		cy.installDatabase();
+	});
+
+	beforeEach(() =>
+	{
+		cy.login();
 	});
 
 	after(() =>
@@ -20,14 +20,16 @@ describe('ContentTest', () =>
 		cy.resetConfig();
 	});
 
+	afterEach(() =>
+	{
+		cy.logout();
+	});
+
 	providerArray.map(test =>
 	{
 		it('visit ' + test.description + ' page', () =>
 		{
-			cy.visit(test.url,
-			{
-				failOnStatusCode: false
-			});
+			cy.visit(test.url);
 			test.elementArray.map(element => cy.get(element.selector).should('have.text', element.text));
 		});
 	});

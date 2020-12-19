@@ -4,5 +4,6 @@
 	"screenshotsFolder": "tests/acceptance/screenshots",
 	"videosFolder": "tests/acceptance/videos",
 	"supportFile": "tests/acceptance/support/index.js",
-	"pluginsFile": false
+	"pluginsFile": false,
+	"retries": 2
 }

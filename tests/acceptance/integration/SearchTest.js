@@ -1,6 +1,6 @@
-const PROVIDER = require('../../acceptance-provider/SearchTest.json');
+const providerArray = require('../../acceptance-provider/SearchTest.json');
 
-describe('search', () =>
+describe('SearchTest', () =>
 {
 	beforeEach(() =>
 	{
@@ -20,7 +20,7 @@ describe('search', () =>
 		cy.resetConfig();
 	});
 
-	PROVIDER.map(test =>
+	providerArray.map(test =>
 	{
 		it('search for ' + test.description, () =>
 		{
