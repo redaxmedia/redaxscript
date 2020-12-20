@@ -236,33 +236,4 @@ class ConfigTest extends TestCaseAbstract
 
 		$this->assertEquals($expect, $actual);
 	}
-
-	/**
-	 * testLock
-	 *
-	 * @since 3.0.0
-	 */
-
-	public function testLock() : void
-	{
-		/* setup */
-
-		$this->_config->init(Stream::url('root' . DIRECTORY_SEPARATOR . 'config.php'));
-		$this->_request->setServer('argv',
-		[
-			'console.php',
-			'config',
-			'lock'
-		]);
-		$configCommand = new Command\Config($this->_registry, $this->_request, $this->_language, $this->_config);
-
-		/* expect and actual */
-
-		$expect = $configCommand->success();
-		$actual = $configCommand->run('cli');
-
-		/* compare */
-
-		$this->assertEquals($expect, $actual);
-	}
 }
