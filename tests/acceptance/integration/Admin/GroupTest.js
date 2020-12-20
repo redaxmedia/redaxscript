@@ -25,12 +25,15 @@ describe('Admin/GroupTest', () =>
 		cy.logout();
 	});
 
-	providerArray.map(test =>
+	context('general', () =>
 	{
-		it('visit ' + test.description + ' page', () =>
+		providerArray.map(test =>
 		{
-			cy.visit(test.url);
-			test.elementArray.map(element => cy.get(element.selector).should('have.text', element.text));
+			it('visit ' + test.description + ' page', () =>
+			{
+				cy.visit(test.url);
+				test.elementArray.map(element => cy.get(element.selector).should('have.text', element.text));
+			});
 		});
 	});
 });

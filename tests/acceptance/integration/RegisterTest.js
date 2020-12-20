@@ -37,7 +37,7 @@ describe('RegisterTest', () =>
 		});
 	});
 
-	context('interaction', () =>
+	context('validation', () =>
 	{
 		[
 			{
@@ -77,7 +77,7 @@ describe('RegisterTest', () =>
 		});
 	});
 
-	context('interaction', () =>
+	context('behaviour', () =>
 	{
 		it('register action has error as user already exists', () =>
 		{

@@ -68,7 +68,7 @@ describe('LoginTest', () =>
 		});
 	});
 
-	context('interaction', () =>
+	context('behaviour', () =>
 	{
 		it('login action has error as user is incorrect', () =>
 		{

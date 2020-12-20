@@ -2,11 +2,6 @@ const providerArray = require('../../acceptance-provider/SearchTest.json');
 
 describe('SearchTest', () =>
 {
-	beforeEach(() =>
-	{
-		cy.visit('http://localhost:8000/?l=en');
-	});
-
 	before(() =>
 	{
 		cy.setConfig();
@@ -20,12 +15,15 @@ describe('SearchTest', () =>
 		cy.resetConfig();
 	});
 
-	providerArray.map(test =>
+	context('general', () =>
 	{
-		it('search for ' + test.description, () =>
+		providerArray.map(test =>
 		{
-			cy.visit(test.url);
-			test.elementArray.map(element => cy.get(element.selector).should('have.text', element.text));
+			it('search for ' + test.description, () =>
+			{
+				cy.visit(test.url);
+				test.elementArray.map(element => cy.get(element.selector).should('have.text', element.text));
+			});
 		});
 	});
 });

@@ -15,13 +15,16 @@ describe('ConsoleTest', () =>
 		cy.resetConfig();
 	});
 
-	providerArray.map(test =>
+	context('general', () =>
 	{
-		it('run ' + test.description + ' command', () =>
+		providerArray.map(test =>
 		{
-			cy.visit(test.url);
-			cy.get('input.rs-field-text').clear().type(test.command).type('{ENTER}');
-			test.elementArray.map(element => cy.get(element.selector).should('contain.text', element.text));
+			it('run ' + test.description + ' command', () =>
+			{
+				cy.visit(test.url);
+				cy.get('input.rs-field-text').clear().type(test.command).type('{ENTER}');
+				test.elementArray.map(element => cy.get(element.selector).should('contain.text', element.text));
+			});
 		});
 	});
 });

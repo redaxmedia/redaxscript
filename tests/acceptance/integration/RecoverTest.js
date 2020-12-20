@@ -65,7 +65,7 @@ describe('RecoverTest', () =>
 		});
 	});
 
-	context('interaction', () =>
+	context('behaviour', () =>
 	{
 		it('recover action has error as email is unknown', () =>
 		{

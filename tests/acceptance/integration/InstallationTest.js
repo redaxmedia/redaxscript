@@ -26,27 +26,6 @@ describe('InstallationTest', () =>
 				.should('be.visible')
 				.shouldHaveText('installation');
 		});
-
-		it('toggle content of accordion', () =>
-		{
-			cy.get('#db-type').should('be.visible');
-			cy.get('#db-host').should('be.visible');
-			cy.get('#db-prefix').should('be.visible');
-			cy.get('#admin-name').should('be.not.visible');
-			cy.get('#admin-user').should('be.not.visible');
-			cy.get('#admin-password').should('be.not.visible');
-			cy.get('#admin-email').should('be.not.visible');
-
-			cy.get('[for*="Account"]').click();
-
-			cy.get('#db-type').should('be.not.visible');
-			cy.get('#db-host').should('be.not.visible');
-			cy.get('#db-prefix').should('be.not.visible');
-			cy.get('#admin-name').should('be.visible');
-			cy.get('#admin-user').should('be.visible');
-			cy.get('#admin-password').should('be.visible');
-			cy.get('#admin-email').should('be.visible');
-		});
 	});
 
 	context('validation', () =>
@@ -102,8 +81,39 @@ describe('InstallationTest', () =>
 		});
 	});
 
-	context('interaction', () =>
+	context('behaviour', () =>
 	{
+		it('toggle content of accordion', () =>
+		{
+			cy.get('#db-type').should('be.visible');
+			cy.get('#db-host').should('be.visible');
+			cy.get('#db-prefix').should('be.visible');
+			cy.get('#admin-name').should('be.not.visible');
+			cy.get('#admin-user').should('be.not.visible');
+			cy.get('#admin-password').should('be.not.visible');
+			cy.get('#admin-email').should('be.not.visible');
+
+			cy.get('[for*="Account"]').click();
+
+			cy.get('#db-type').should('be.not.visible');
+			cy.get('#db-host').should('be.not.visible');
+			cy.get('#db-prefix').should('be.not.visible');
+			cy.get('#admin-name').should('be.visible');
+			cy.get('#admin-user').should('be.visible');
+			cy.get('#admin-password').should('be.visible');
+			cy.get('#admin-email').should('be.visible');
+
+			cy.get('[for*="Database"]').click();
+
+			cy.get('#db-type').should('be.visible');
+			cy.get('#db-host').should('be.visible');
+			cy.get('#db-prefix').should('be.visible');
+			cy.get('#admin-name').should('be.not.visible');
+			cy.get('#admin-user').should('be.not.visible');
+			cy.get('#admin-password').should('be.not.visible');
+			cy.get('#admin-email').should('be.not.visible');
+		});
+
 		it('install action has success', () =>
 		{
 			cy.get('#db-type').select('sqlite');
