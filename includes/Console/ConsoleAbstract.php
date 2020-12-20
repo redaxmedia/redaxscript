@@ -5,6 +5,8 @@ use Redaxscript\Config;
 use Redaxscript\Language;
 use Redaxscript\Registry;
 use Redaxscript\Request;
+use Redaxscript\Validator;
+use function php_sapi_name;
 
 /**
  * abstract class to handle the command line interface
@@ -56,25 +58,12 @@ abstract class ConsoleAbstract
 	 * @var string
 	 */
 
-	protected $_namespaceArray =
-	[
-		'auth' => 'Redaxscript\Console\Command\Auth',
-		'backup' => 'Redaxscript\Console\Command\Backup',
-		'cache' => 'Redaxscript\Console\Command\Cache',
-		'config' => 'Redaxscript\Console\Command\Config',
-		'help' => 'Redaxscript\Console\Command\Help',
-		'install' => 'Redaxscript\Console\Command\Install',
-		'migrate' => 'Redaxscript\Console\Command\Migrate',
-		'restore' => 'Redaxscript\Console\Command\Restore',
-		'setting' => 'Redaxscript\Console\Command\Setting',
-		'status' => 'Redaxscript\Console\Command\Status',
-		'uninstall' => 'Redaxscript\Console\Command\Uninstall'
-	];
+	protected $_namespaceArray;
 
 	/**
 	 * constructor of the class
 	 *
-	 * @since 3.0.0
+	 * @since 4.5.0
 	 *
 	 * @param Registry $registry instance of the registry class
 	 * @param Request $request instance of the request class
@@ -88,5 +77,49 @@ abstract class ConsoleAbstract
 		$this->_request = $request;
 		$this->_language = $language;
 		$this->_config = $config;
+		$accessValidator = new Validator\Access();
+
+		if (php_sapi_name() === 'cli')
+		{
+			$this->_namespaceArray =
+			[
+				'backup' => 'Redaxscript\Console\Command\Backup',
+				'cache' => 'Redaxscript\Console\Command\Cache',
+				'config' => 'Redaxscript\Console\Command\Config',
+				'help' => 'Redaxscript\Console\Command\Help',
+				'install' => 'Redaxscript\Console\Command\Install',
+				'migrate' => 'Redaxscript\Console\Command\Migrate',
+				'restore' => 'Redaxscript\Console\Command\Restore',
+				'setting' => 'Redaxscript\Console\Command\Setting',
+				'status' => 'Redaxscript\Console\Command\Status',
+				'uninstall' => 'Redaxscript\Console\Command\Uninstall'
+			];
+		}
+		else if($this->_request->getServer('REMOTE_ADDR') === '127.0.0.1' || $accessValidator->validate('1', $registry->get('myGroups')))
+		{
+			$this->_namespaceArray =
+			[
+				'auth' => 'Redaxscript\Console\Command\Auth',
+				'backup' => 'Redaxscript\Console\Command\Backup',
+				'cache' => 'Redaxscript\Console\Command\Cache',
+				'config' => 'Redaxscript\Console\Command\Config',
+				'help' => 'Redaxscript\Console\Command\Help',
+				'install' => 'Redaxscript\Console\Command\Install',
+				'migrate' => 'Redaxscript\Console\Command\Migrate',
+				'restore' => 'Redaxscript\Console\Command\Restore',
+				'setting' => 'Redaxscript\Console\Command\Setting',
+				'status' => 'Redaxscript\Console\Command\Status',
+				'uninstall' => 'Redaxscript\Console\Command\Uninstall'
+			];
+		}
+		else
+		{
+			$this->_namespaceArray =
+			[
+				'auth' => 'Redaxscript\Console\Command\Auth',
+				'help' => 'Redaxscript\Console\Command\Help',
+				'status' => 'Redaxscript\Console\Command\Status'
+			];
+		}
 	}
 }

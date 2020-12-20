@@ -80,10 +80,6 @@ class Config extends CommandAbstract
 							'description' => 'Required database url'
 						]
 					]
-				],
-				'lock' =>
-				[
-					'description' => 'Lock the configuration'
 				]
 			]
 		]
@@ -123,10 +119,6 @@ class Config extends CommandAbstract
 		if ($argumentKey === 'parse')
 		{
 			return $this->_parse($parser->getOptionArray()) ? $this->success() : $this->error($haltOnError);
-		}
-		if ($argumentKey === 'lock')
-		{
-			return $this->_lock() ? $this->success() : $this->error($haltOnError);
 		}
 		return $this->getHelp();
 	}
@@ -220,19 +212,5 @@ class Config extends CommandAbstract
 			return $this->_config->write();
 		}
 		return false;
-	}
-
-	/**
-	 * lock the config
-	 *
-	 * @since 4.4.0
-	 *
-	 * @return bool
-	 */
-
-	protected function _lock() : bool
-	{
-		$this->_config->set('lock', '1');
-		return $this->_config->write();
 	}
 }

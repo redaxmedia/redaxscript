@@ -1,0 +1,179 @@
+[
+	{
+		"url": "http://localhost:8000/console.php?l=en",
+		"description": "auth",
+		"commandArray":
+		{
+			"run": "auth",
+			"isPublic": true
+		},
+		"elementArray":
+		[
+			{
+				"selector": "#box",
+				"text": "Auth command"
+			}
+		]
+	},
+	{
+		"url": "http://localhost:8000/console.php?l=en",
+		"description": "backup",
+		"commandArray":
+		{
+			"run": "backup",
+			"isPublic": false
+		},
+		"elementArray":
+		[
+			{
+				"selector": "#box",
+				"text": "Backup command"
+			}
+		]
+	},
+	{
+		"url": "http://localhost:8000/console.php?l=en",
+		"description": "cache",
+		"command": "cache",
+		"commandArray":
+		{
+			"run": "cache",
+			"isPublic": false
+		},
+		"elementArray":
+		[
+			{
+				"selector": "#box",
+				"text": "Cache command"
+			}
+		]
+	},
+	{
+		"url": "http://localhost:8000/console.php?l=en",
+		"description": "config",
+		"commandArray":
+		{
+			"run": "config",
+			"isPublic": false
+		},
+		"elementArray":
+		[
+			{
+				"selector": "#box",
+				"text": "Config command"
+			}
+		]
+	},
+	{
+		"url": "http://localhost:8000/console.php?l=en",
+		"description": "help",
+		"commandArray":
+		{
+			"run": "help",
+			"isPublic": true
+		},
+		"elementArray":
+		[
+			{
+				"selector": "#box",
+				"text": "Help command"
+			}
+		]
+	},
+	{
+		"url": "http://localhost:8000/console.php?l=en",
+		"description": "install",
+		"commandArray":
+		{
+			"run": "install",
+			"isPublic": true
+		},
+		"elementArray":
+		[
+			{
+				"selector": "#box",
+				"text": "Install command"
+			}
+		]
+	},
+	{
+		"url": "http://localhost:8000/console.php?l=en",
+		"description": "migrate",
+		"commandArray":
+		{
+			"run": "migrate",
+			"isPublic": false
+		},
+		"elementArray":
+		[
+			{
+				"selector": "#box",
+				"text": "Migrate command"
+			}
+		]
+	},
+	{
+		"url": "http://localhost:8000/console.php?l=en",
+		"description": "restore",
+		"commandArray":
+		{
+			"run": "restore",
+			"isPublic": false
+		},
+		"elementArray":
+		[
+			{
+				"selector": "#box",
+				"text": "Restore command"
+			}
+		]
+	},
+	{
+		"url": "http://localhost:8000/console.php?l=en",
+		"description": "setting",
+		"commandArray":
+		{
+			"run": "setting",
+			"isPublic": false
+		},
+		"elementArray":
+		[
+			{
+				"selector": "#box",
+				"text": "Setting command"
+			}
+		]
+	},
+	{
+		"url": "http://localhost:8000/console.php?l=en",
+		"description": "status",
+		"commandArray":
+		{
+			"run": "status",
+			"isPublic": true
+		},
+		"elementArray":
+		[
+			{
+				"selector": "#box",
+				"text": "Status command"
+			}
+		]
+	},
+	{
+		"url": "http://localhost:8000/console.php?l=en",
+		"description": "uninstall",
+		"commandArray":
+		{
+			"run": "uninstall",
+			"isPublic": false
+		},
+		"elementArray":
+		[
+			{
+				"selector": "#box",
+				"text": "Uninstall command"
+			}
+		]
+	}
+]

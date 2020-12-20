@@ -118,6 +118,7 @@ class Config extends Singleton
 
 	public function reset() : void
 	{
+		$this->clear();
 		$this->set('dbType', null);
 		$this->set('dbHost', null);
 		$this->set('dbName', null);

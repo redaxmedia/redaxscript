@@ -190,7 +190,7 @@ class Router extends RouterAbstract
 
 	protected function _installGuard() : bool
 	{
-		return $this->_registry->get('file') !== 'install.php' || $this->_config->get('lock');
+		return $this->_registry->get('file') !== 'install.php';
 	}
 
 	/**

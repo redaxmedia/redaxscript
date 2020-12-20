@@ -29,7 +29,7 @@ if ($registry->get('dbStatus') < 2 && is_file('install.php'))
 Module\Hook::trigger('renderStart');
 if ($registry->get('renderBreak'))
 {
-	Header::responseCode(202);
+	Header::responseCode(200);
 	exit(1);
 }
 
