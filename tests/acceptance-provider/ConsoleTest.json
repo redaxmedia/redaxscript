@@ -1,12 +1,8 @@
 [
 	{
 		"url": "http://localhost:8000/console.php?l=en",
-		"description": "auth",
-		"commandArray":
-		{
-			"run": "auth",
-			"isPublic": true
-		},
+		"description": "auth help",
+		"command": "auth help",
 		"elementArray":
 		[
 			{
@@ -17,12 +13,8 @@
 	},
 	{
 		"url": "http://localhost:8000/console.php?l=en",
-		"description": "backup",
-		"commandArray":
-		{
-			"run": "backup",
-			"isPublic": false
-		},
+		"description": "backup help",
+		"command": "backup help",
 		"elementArray":
 		[
 			{
@@ -33,13 +25,8 @@
 	},
 	{
 		"url": "http://localhost:8000/console.php?l=en",
-		"description": "cache",
-		"command": "cache",
-		"commandArray":
-		{
-			"run": "cache",
-			"isPublic": false
-		},
+		"description": "cache help",
+		"command": "cache help",
 		"elementArray":
 		[
 			{
@@ -50,12 +37,8 @@
 	},
 	{
 		"url": "http://localhost:8000/console.php?l=en",
-		"description": "config",
-		"commandArray":
-		{
-			"run": "config",
-			"isPublic": false
-		},
+		"description": "config help",
+		"command": "config help",
 		"elementArray":
 		[
 			{
@@ -66,12 +49,8 @@
 	},
 	{
 		"url": "http://localhost:8000/console.php?l=en",
-		"description": "help",
-		"commandArray":
-		{
-			"run": "help",
-			"isPublic": true
-		},
+		"description": "help help",
+		"command": "help help",
 		"elementArray":
 		[
 			{
@@ -82,12 +61,8 @@
 	},
 	{
 		"url": "http://localhost:8000/console.php?l=en",
-		"description": "install",
-		"commandArray":
-		{
-			"run": "install",
-			"isPublic": true
-		},
+		"description": "install help",
+		"command": "install help",
 		"elementArray":
 		[
 			{
@@ -98,12 +73,8 @@
 	},
 	{
 		"url": "http://localhost:8000/console.php?l=en",
-		"description": "migrate",
-		"commandArray":
-		{
-			"run": "migrate",
-			"isPublic": false
-		},
+		"description": "migrate help",
+		"command": "migrate help",
 		"elementArray":
 		[
 			{
@@ -114,12 +85,8 @@
 	},
 	{
 		"url": "http://localhost:8000/console.php?l=en",
-		"description": "restore",
-		"commandArray":
-		{
-			"run": "restore",
-			"isPublic": false
-		},
+		"description": "restore help",
+		"command": "restore help",
 		"elementArray":
 		[
 			{
@@ -130,12 +97,8 @@
 	},
 	{
 		"url": "http://localhost:8000/console.php?l=en",
-		"description": "setting",
-		"commandArray":
-		{
-			"run": "setting",
-			"isPublic": false
-		},
+		"description": "setting help",
+		"command": "setting help",
 		"elementArray":
 		[
 			{
@@ -146,12 +109,8 @@
 	},
 	{
 		"url": "http://localhost:8000/console.php?l=en",
-		"description": "status",
-		"commandArray":
-		{
-			"run": "status",
-			"isPublic": true
-		},
+		"description": "status help",
+		"command": "status help",
 		"elementArray":
 		[
 			{
@@ -162,12 +121,8 @@
 	},
 	{
 		"url": "http://localhost:8000/console.php?l=en",
-		"description": "uninstall",
-		"commandArray":
-		{
-			"run": "uninstall",
-			"isPublic": false
-		},
+		"description": "uninstall help",
+		"command": "uninstall help",
 		"elementArray":
 		[
 			{

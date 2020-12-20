@@ -20,7 +20,7 @@ describe('ConsoleTest', () =>
 		it('run ' + test.description + ' command', () =>
 		{
 			cy.visit(test.url);
-			cy.get('input.rs-field-text').clear().type(test.commandArray.run).type('{ENTER}');
+			cy.get('input.rs-field-text').clear().type(test.command).type('{ENTER}');
 			test.elementArray.map(element => cy.get(element.selector).should('contain.text', element.text));
 		});
 	});
