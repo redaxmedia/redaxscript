@@ -26,4 +26,19 @@ describe('SearchTest', () =>
 			});
 		});
 	});
+
+	context('behaviour', () =>
+	{
+		it('search for welcome via form', () =>
+		{
+			cy.visit('http://localhost:8000/?l=en');
+			cy.get('input.rs-field-search').clear().type('welcome');
+
+			cy.get('button.rs-button-search').click();
+
+			cy.url().should('eq', 'http://localhost:8000/?p=search/welcome');
+			cy.get('h2.rs-title-result').shouldHaveText('articles');
+			cy.get('ol.rs-list-result a.rs-link-result').should('have.text', 'Welcome');
+		});
+	});
 });

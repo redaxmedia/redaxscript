@@ -7,6 +7,10 @@
 			{
 				"selector": "h2.rs-title-result",
 				"text": "Categories"
+			},
+			{
+				"selector": "ol.rs-list-result a.rs-link-result",
+				"text": "Home"
 			}
 		]
 	},
