@@ -132,7 +132,10 @@ describe('InstallationTest', () =>
 			cy.get('div.rs-box-note.rs-is-success')
 				.should('be.visible')
 				.shouldHaveText('installation_completed');
-			cy.url().should('eq', 'http://localhost:8000/index.php');
+			cy.url(
+			{
+				timeout: 8000
+			}).should('eq', 'http://localhost:8000/index.php');
 		});
 	});
 });
