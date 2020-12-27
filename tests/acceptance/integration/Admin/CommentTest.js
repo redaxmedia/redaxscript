@@ -36,4 +36,25 @@ describe('Admin/CommentTest', () =>
 			});
 		});
 	});
+
+	context('validation', () =>
+	{
+		[
+			{
+				selector: 'div.rs-admin-box-visual-editor',
+				description: 'visual editor'
+			}
+		]
+		.map(test =>
+		{
+			it('empty box ' + test.description + ' has error', () =>
+			{
+				cy.visit('http://localhost:8000?p=admin/new/comments');
+				cy.get(test.selector)
+					.type('-')
+					.clear()
+					.should('have.class', 'rs-admin-field-note', 'rs-admin-is-error');
+			});
+		});
+	});
 });

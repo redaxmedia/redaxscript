@@ -36,4 +36,38 @@ describe('Admin/ExtraTest', () =>
 			});
 		});
 	});
+
+	context('validation', () =>
+	{
+		[
+			{
+				selector: '#title',
+				description: 'title'
+			},
+			{
+				selector: '#alias',
+				description: 'alias'
+			}
+		]
+		.map(test =>
+		{
+			it('empty field ' + test.description + ' has error', () =>
+			{
+				cy.visit('http://localhost:8000?p=admin/new/extras');
+				cy.get(test.selector)
+					.type('-')
+					.clear()
+					.should('have.class', 'rs-admin-field-note', 'rs-admin-is-error');
+			});
+
+			it('incorrect field ' + test.description + ' has warning', () =>
+			{
+				cy.visit('http://localhost:8000?p=admin/new/extras');
+				cy.get(test.selector)
+					.clear()
+					.type('-')
+					.should('have.class', 'rs-admin-field-note', 'rs-admin-is-warning');
+			});
+		});
+	});
 });
