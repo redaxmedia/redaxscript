@@ -217,5 +217,5 @@ rs.modules.VisualEditor.getOption = () =>
 
 if (rs.modules.VisualEditor.frontend.init || rs.modules.VisualEditor.backend.init)
 {
-	window.addEventListener('load', () => rs.modules.VisualEditor.process());
+	rs.modules.VisualEditor.process();
 }

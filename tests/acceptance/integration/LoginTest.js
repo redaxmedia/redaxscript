@@ -55,7 +55,7 @@ describe('LoginTest', () =>
 				cy.get(test.selector)
 					.type('-')
 					.clear()
-					.should('have.class', 'rs-is-error');
+					.should('have.class', 'rs-field-note', 'rs-is-error');
 			});
 
 			it('incorrect field ' + test.description + ' has warning', () =>
@@ -63,7 +63,7 @@ describe('LoginTest', () =>
 				cy.get(test.selector)
 					.clear()
 					.type('-')
-					.should('have.class', 'rs-is-warning');
+					.should('have.class', 'rs-field-note', 'rs-is-warning');
 			});
 		});
 	});

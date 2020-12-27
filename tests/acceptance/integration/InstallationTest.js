@@ -36,7 +36,7 @@ describe('InstallationTest', () =>
 
 			cy.get('form.rs-form-install button.rs-button-submit').click();
 
-			cy.get('#db-host').should('have.class', 'rs-is-error');
+			cy.get('#db-host').should('have.class', 'rs-field-note', 'rs-is-error');
 		});
 
 		[
@@ -66,7 +66,7 @@ describe('InstallationTest', () =>
 				cy.get(test.selector)
 					.type('-')
 					.clear()
-					.should('have.class', 'rs-is-error');
+					.should('have.class', 'rs-field-note', 'rs-is-error');
 			});
 
 			it('incorrect field ' + test.description + ' has warning', () =>
@@ -76,7 +76,7 @@ describe('InstallationTest', () =>
 				cy.get(test.selector)
 					.clear()
 					.type('-')
-					.should('have.class', 'rs-is-warning');
+					.should('have.class', 'rs-field-note', 'rs-is-warning');
 			});
 		});
 	});

@@ -64,6 +64,23 @@
 			"notification": 0,
 			"moderation": 1
 		},
+		null,
+		"<h2 class=\"rs-title-note rs-is-success\">Success</h2><div class=\"rs-box-note rs-is-success\">Your comment will be approved by a moderator</div><a href=\"article-one\" class=\"rs-button-note rs-is-success\">Continue</a><meta class=\"rs-meta-redirect\" content=\"0;url=/article-one\" http-equiv=\"refresh\" />"
+	],
+	[
+		{
+			"author": "test",
+			"email": "test@redaxscript.com",
+			"url": "https://redaxscript.com",
+			"text": "test",
+			"article": 1,
+			"task": 1,
+			"solution": "$2y$10$C8P/zoScct616rlsT6DKo.ftLNHWEJYfETYTA.UXW9lpO9GS97t7u"
+		},
+		{
+			"notification": 0,
+			"moderation": 1
+		},
 		"_create",
 		"<h2 class=\"rs-title-note rs-is-error\">Error</h2><div class=\"rs-box-note rs-is-error\">Something went wrong</div><a href=\"article-one\" class=\"rs-button-note rs-is-error\">Back</a>"
 	],
@@ -99,7 +116,7 @@
 			"moderation": 0
 		},
 		null,
-		"<h2 class=\"rs-title-note rs-is-success\">Success</h2><div class=\"rs-box-note rs-is-success\">Your comment has been successfully sent</div><a href=\"article-one\" class=\"rs-button-note rs-is-success\">Continue</a><meta class=\"rs-meta-redirect\" content=\"0;url=/article-one\" http-equiv=\"refresh\" />"
+		"<h2 class=\"rs-title-note rs-is-success\">Success</h2><div class=\"rs-box-note rs-is-success\">Your comment has been successfully sent</div><a href=\"article-one#comment-1\" class=\"rs-button-note rs-is-success\">Continue</a><meta class=\"rs-meta-redirect\" content=\"0;url=/article-one#comment-1\" http-equiv=\"refresh\" />"
 	],
 	[
 		{

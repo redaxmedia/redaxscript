@@ -51,7 +51,31 @@ class Comment extends ContentAbstract
 	}
 
 	/**
-	 * get the articles by category and language and order and step
+	 * max id by article and language
+	 *
+	 * @since 4.5.0
+	 *
+	 * @param int $articleId identifier of the article
+	 * @param string $language
+	 *
+	 * @return int|null
+	 */
+
+	public function maxIdByArticleAndLanguage(int $articleId = null, string $language = null) : ?int
+	{
+		return $this
+			->query()
+			->where(
+			[
+				'article' => $articleId,
+				'status' => 1
+			])
+			->whereLanguageIs($language)
+			->max('id') ? : null;
+	}
+
+	/**
+	 * get the comments by article and language and order and step
 	 *
 	 * @since 4.0.0
 	 *

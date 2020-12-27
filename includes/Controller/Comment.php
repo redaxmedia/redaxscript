@@ -34,7 +34,6 @@ class Comment extends ControllerAbstract
 		$settingModel = new Model\Setting();
 		$postArray = $this->_normalizePost($this->_sanitizePost());
 		$validateArray = $this->_validatePost($postArray);
-		$route = $postArray['article'] ? $articleModel->getRouteById($postArray['article']) : null;
 
 		/* handle validate */
 
@@ -42,7 +41,7 @@ class Comment extends ControllerAbstract
 		{
 			return $this->_error(
 			[
-				'route' => $route,
+				'route' => $this->_getErrorRoute($postArray),
 				'message' => $validateArray
 			]);
 		}
@@ -63,7 +62,7 @@ class Comment extends ControllerAbstract
 		{
 			return $this->_error(
 			[
-				'route' => $route
+				'route' => $this->_getErrorRoute($postArray)
 			]);
 		}
 
@@ -76,13 +75,13 @@ class Comment extends ControllerAbstract
 			'url' => $postArray['url'],
 			'text' => $postArray['text'],
 			'article' => $articleModel->getById($postArray['article'])->title,
-			'route' => $route
+			'route' => $this->_getSuccessRoute($postArray)
 		];
 		if (!$this->_mail($mailArray))
 		{
 			return $this->_warning(
 			[
-				'route' => $route,
+				'route' => $this->_getSuccessRoute($postArray),
 				'timeout' => $settingModel->get('notification') ? 2 : 0,
 				'message' => $this->_language->get('email_failed')
 			]);
@@ -92,7 +91,7 @@ class Comment extends ControllerAbstract
 
 		return $this->_success(
 		[
-			'route' => $route,
+			'route' => $settingModel->get('moderation') ? $this->_getErrorRoute($postArray) : $this->_getSuccessRoute($postArray),
 			'timeout' => $settingModel->get('notification') ? 2 : 0,
 			'message' => $settingModel->get('moderation') ? $this->_language->get('comment_moderation') : $this->_language->get('comment_sent')
 		]);
@@ -269,5 +268,43 @@ class Comment extends ControllerAbstract
 		$mailer = new Mailer();
 		$mailer->init($toArray, $fromArray, $subject, $bodyArray);
 		return $mailer->send();
+	}
+
+	/**
+	 * get success route
+	 *
+	 * @since 4.5.0
+	 *
+	 * @param array $postArray array of the post
+	 *
+	 * @return string|null
+	 */
+
+	protected function _getSuccessRoute(array $postArray = []) : ?string
+	{
+		$articleModel = new Model\Article();
+		$commentModel = new Model\Comment();
+		$commentId = $commentModel->maxIdByArticleAndLanguage($postArray['article'], $articleModel->getById($postArray['article'])->language);
+		if ($commentId)
+		{
+			return $commentModel->getRouteById($commentId);
+		}
+		return $articleModel->getRouteById($postArray['article']);
+	}
+
+	/**
+	 * get error route
+	 *
+	 * @since 4.5.0
+	 *
+	 * @param array $postArray array of the post
+	 *
+	 * @return string|null
+	 */
+
+	protected function _getErrorRoute(array $postArray = []) : ?string
+	{
+		$articleModel = new Model\Article();
+		return $articleModel->getRouteById($postArray['article']);
 	}
 }
