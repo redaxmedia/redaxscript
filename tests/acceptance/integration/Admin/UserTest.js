@@ -47,6 +47,14 @@ describe('Admin/UserTest', () =>
 			{
 				selector: '#user',
 				description: 'user'
+			},
+			{
+				selector: '#password',
+				description: 'password'
+			},
+			{
+				selector: '#email',
+				description: 'email'
 			}
 		]
 		.map(test =>
@@ -68,6 +76,44 @@ describe('Admin/UserTest', () =>
 					.type('-')
 					.should('have.class', 'rs-admin-field-note', 'rs-admin-is-warning');
 			});
+		});
+	});
+
+	context('behaviour', () =>
+	{
+		it('toggle content of tab', () =>
+		{
+			cy.visit('http://localhost:8000?p=admin/new/users');
+			cy.get('#name').should('be.visible');
+			cy.get('#user').should('be.visible');
+			cy.get('#description').should('be.visible');
+			cy.get('#password').should('be.visible');
+			cy.get('#email').should('be.visible');
+			cy.get('#language').should('be.not.visible');
+			cy.get('label.rs-admin-label-switch[for="status"]').should('be.not.visible');
+			cy.get('#groups').should('be.not.visible');
+
+			cy.get('label.rs-admin-label-tab[for*="General"]').click();
+
+			cy.get('#name').should('be.not.visible');
+			cy.get('#user').should('be.not.visible');
+			cy.get('#description').should('be.not.visible');
+			cy.get('#password').should('be.not.visible');
+			cy.get('#email').should('be.not.visible');
+			cy.get('#language').should('be.visible');
+			cy.get('label.rs-admin-label-switch[for="status"]').should('be.not.visible');
+			cy.get('#groups').should('be.not.visible');
+
+			cy.get('label.rs-admin-label-tab[for*="Customize"]').click();
+
+			cy.get('#name').should('be.not.visible');
+			cy.get('#user').should('be.not.visible');
+			cy.get('#description').should('be.not.visible');
+			cy.get('#password').should('be.not.visible');
+			cy.get('#email').should('be.not.visible');
+			cy.get('#language').should('be.not.visible');
+			cy.get('label.rs-admin-label-switch[for="status"]').should('be.visible');
+			cy.get('#groups').should('be.visible');
 		});
 	});
 });

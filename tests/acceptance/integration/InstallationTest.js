@@ -61,7 +61,7 @@ describe('InstallationTest', () =>
 		{
 			it('empty field ' + test.description + ' has error', () =>
 			{
-				cy.get('[for*="Account"]').click();
+				cy.get('label.rs-label-accordion[for*="Account"]').click();
 
 				cy.get(test.selector)
 					.type('-')
@@ -71,7 +71,7 @@ describe('InstallationTest', () =>
 
 			it('incorrect field ' + test.description + ' has warning', () =>
 			{
-				cy.get('[for*="Account"]').click();
+				cy.get('label.rs-label-accordion[for*="Account"]').click();
 
 				cy.get(test.selector)
 					.clear()
@@ -93,7 +93,7 @@ describe('InstallationTest', () =>
 			cy.get('#admin-password').should('be.not.visible');
 			cy.get('#admin-email').should('be.not.visible');
 
-			cy.get('[for*="Account"]').click();
+			cy.get('label.rs-label-accordion[for*="Account"]').click();
 
 			cy.get('#db-type').should('be.not.visible');
 			cy.get('#db-host').should('be.not.visible');
@@ -103,7 +103,7 @@ describe('InstallationTest', () =>
 			cy.get('#admin-password').should('be.visible');
 			cy.get('#admin-email').should('be.visible');
 
-			cy.get('[for*="Database"]').click();
+			cy.get('label.rs-label-accordion[for*="Database"]').click();
 
 			cy.get('#db-type').should('be.visible');
 			cy.get('#db-host').should('be.visible');
@@ -120,7 +120,7 @@ describe('InstallationTest', () =>
 			cy.get('#db-host').clear().type('build/test.sqlite');
 			cy.get('#db-prefix').clear().type('_test');
 
-			cy.get('[for*="Account"]').click();
+			cy.get('label.rs-label-accordion[for*="Account"]').click();
 
 			cy.get('#admin-name').clear().type('Test');
 			cy.get('#admin-user').clear().type('test');

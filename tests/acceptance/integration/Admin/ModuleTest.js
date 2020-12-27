@@ -68,4 +68,23 @@ describe('Admin/ModuleTest', () =>
 			});
 		});
 	});
+
+	context('behaviour', () =>
+	{
+		it('toggle content of tab', () =>
+		{
+			cy.visit('http://localhost:8000?p=admin/edit/modules/1');
+			cy.get('#name').should('be.visible');
+			cy.get('#description').should('be.visible');
+			cy.get('label.rs-admin-label-switch[for="status"]').should('be.not.visible');
+			cy.get('#access').should('be.not.visible');
+
+			cy.get('label.rs-admin-label-tab[for*="Customize"]').click();
+
+			cy.get('#name').should('be.not.visible');
+			cy.get('#description').should('be.not.visible');
+			cy.get('label.rs-admin-label-switch[for="status"]').should('be.visible');
+			cy.get('#access').should('be.visible');
+		});
+	});
 });
