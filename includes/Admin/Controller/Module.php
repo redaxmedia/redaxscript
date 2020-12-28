@@ -156,9 +156,13 @@ class Module extends ControllerAbstract
 
 	protected function _getSuccessRoute(array $postArray = []) : string
 	{
-		if ($this->_registry->get('modulesEdit') && $postArray['id'])
+		if ($this->_registry->get('modulesEdit'))
 		{
-			return 'admin/view/modules#row-' . $postArray['id'];
+			if ($postArray['id'])
+			{
+				return 'admin/view/modules#row-' . $postArray['id'];
+			}
+			return 'admin/view/modules';
 		}
 		return 'admin';
 	}

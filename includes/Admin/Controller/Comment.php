@@ -223,6 +223,7 @@ class Comment extends ControllerAbstract
 			{
 				return 'admin/view/comments#row-' . $commentId;
 			}
+			return 'admin/view/comments';
 		}
 		return 'admin';
 	}

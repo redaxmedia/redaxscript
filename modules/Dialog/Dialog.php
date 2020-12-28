@@ -50,8 +50,8 @@ class Dialog extends Module\Module
 			'text' => 'rs-text-dialog',
 			'field' => 'rs-js-input rs-field-default rs-field-text',
 			'button' => 'rs-button-default',
-			'buttonOk' => 'rs-js-ok',
-			'buttonCancel' => 'rs-js-cancel'
+			'buttonOk' => 'rs-js-ok rs-button-ok',
+			'buttonCancel' => 'rs-js-cancel rs-button-cancel'
 		]
 	];
 

@@ -253,6 +253,7 @@ class Group extends ControllerAbstract
 			{
 				return 'admin/view/groups#row-' . $groupId;
 			}
+			return 'admin/view/groups';
 		}
 		return 'admin';
 	}

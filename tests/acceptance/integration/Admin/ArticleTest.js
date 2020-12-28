@@ -172,5 +172,37 @@ describe('Admin/ArticleTest', () =>
 				.should('be.visible')
 				.should('contain.text', 'Article Two');
 		});
+
+		it('edit action has success', () =>
+		{
+			cy.visit('http://localhost:8000/?l=en&p=admin/edit/articles/2');
+			cy.get('#title').clear().type('Article Two Mutation');
+			cy.get('#alias').should('have.value', 'article-two-mutation');
+			cy.get('div.rs-admin-box-visual-editor').clear().type('Article Two Mutation');
+
+			cy.get('form.rs-admin-form-article button.rs-admin-button-save').click();
+
+			cy.get('div.rs-admin-box-note.rs-admin-is-success')
+				.should('be.visible')
+				.shouldHaveText('operation_completed');
+			cy.url().should('eq', 'http://localhost:8000/?p=admin/view/articles#row-2');
+			cy.get('#row-2')
+				.should('be.visible')
+				.should('contain.text', 'Article Two Mutation');
+		});
+
+		it('delete action has success', () =>
+		{
+			cy.visit('http://localhost:8000/?l=en&p=admin/edit/articles/2');
+
+			cy.get('form.rs-admin-form-article a.rs-admin-button-delete').click();
+			cy.get('div.rs-admin-component-dialog button.rs-admin-button-ok').click();
+
+			cy.get('div.rs-admin-box-note.rs-admin-is-success')
+				.should('be.visible')
+				.shouldHaveText('operation_completed');
+			cy.url().should('eq', 'http://localhost:8000/?p=admin/view/articles');
+			cy.get('#row-2').should('not.exist');
+		});
 	});
 });

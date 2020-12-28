@@ -136,5 +136,36 @@ describe('Admin/UserTest', () =>
 				.should('be.visible')
 				.should('contain.text', 'User Two');
 		});
+
+		it('edit action has success', () =>
+		{
+			cy.visit('http://localhost:8000/?l=en&p=admin/edit/users/2');
+			cy.get('#name').clear().type('User Two Mutation');
+			cy.get('#user').clear().type('user-two-mutation');
+
+			cy.get('form.rs-admin-form-user button.rs-admin-button-save').click();
+
+			cy.get('div.rs-admin-box-note.rs-admin-is-success')
+				.should('be.visible')
+				.shouldHaveText('operation_completed');
+			cy.url().should('eq', 'http://localhost:8000/?p=admin/view/users#row-2');
+			cy.get('#row-2')
+				.should('be.visible')
+				.should('contain.text', 'User Two Mutation');
+		});
+
+		it('delete action has success', () =>
+		{
+			cy.visit('http://localhost:8000/?l=en&p=admin/edit/users/2');
+
+			cy.get('form.rs-admin-form-user a.rs-admin-button-delete').click();
+			cy.get('div.rs-admin-component-dialog button.rs-admin-button-ok').click();
+
+			cy.get('div.rs-admin-box-note.rs-admin-is-success')
+				.should('be.visible')
+				.shouldHaveText('operation_completed');
+			cy.url().should('eq', 'http://localhost:8000/?p=admin/view/users');
+			cy.get('#row-3').should('not.exist');
+		});
 	});
 });

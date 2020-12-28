@@ -270,6 +270,7 @@ class Article extends ControllerAbstract
 			{
 				return 'admin/view/articles#row-' . $articleId;
 			}
+			return 'admin/view/articles';
 		}
 		return 'admin';
 	}

@@ -116,5 +116,35 @@ describe('Admin/CommentTest', () =>
 				.should('be.visible')
 				.should('contain.text', 'Comment Two');
 		});
+
+		it('edit action has success', () =>
+		{
+			cy.visit('http://localhost:8000/?l=en&p=admin/edit/comments/2');
+			cy.get('div.rs-admin-box-visual-editor').clear().type('Comment Two Mutation');
+
+			cy.get('form.rs-admin-form-comment button.rs-admin-button-save').click();
+
+			cy.get('div.rs-admin-box-note.rs-admin-is-success')
+				.should('be.visible')
+				.shouldHaveText('operation_completed');
+			cy.url().should('eq', 'http://localhost:8000/?p=admin/view/comments#row-2');
+			cy.get('#row-2')
+				.should('be.visible')
+				.should('contain.text', 'Comment Two Mutation');
+		});
+
+		it('delete action has success', () =>
+		{
+			cy.visit('http://localhost:8000/?l=en&p=admin/edit/comments/2');
+
+			cy.get('form.rs-admin-form-comment a.rs-admin-button-delete').click();
+			cy.get('div.rs-admin-component-dialog button.rs-admin-button-ok').click();
+
+			cy.get('div.rs-admin-box-note.rs-admin-is-success')
+				.should('be.visible')
+				.shouldHaveText('operation_completed');
+			cy.url().should('eq', 'http://localhost:8000/?p=admin/view/comments');
+			cy.get('#row-2').should('not.exist');
+		});
 	});
 });

@@ -295,6 +295,7 @@ class User extends ControllerAbstract
 			{
 				return 'admin/view/users#row-' . $userId;
 			}
+			return 'admin/view/users';
 		}
 		return 'admin';
 	}

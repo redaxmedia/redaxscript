@@ -139,5 +139,37 @@ describe('Admin/ExtraTest', () =>
 				.should('be.visible')
 				.should('contain.text', 'Extra Seven');
 		});
+
+		it('edit action has success', () =>
+		{
+			cy.visit('http://localhost:8000/?l=en&p=admin/edit/extras/7');
+			cy.get('#title').clear().type('Extra Seven Mutation');
+			cy.get('#alias').should('have.value', 'extra-seven-mutation');
+			cy.get('div.rs-admin-box-visual-editor').clear().type('Extra Seven Mutation');
+
+			cy.get('form.rs-admin-form-extra button.rs-admin-button-save').click();
+
+			cy.get('div.rs-admin-box-note.rs-admin-is-success')
+				.should('be.visible')
+				.shouldHaveText('operation_completed');
+			cy.url().should('eq', 'http://localhost:8000/?p=admin/view/extras#row-7');
+			cy.get('#row-7')
+				.should('be.visible')
+				.should('contain.text', 'Extra Seven Mutation');
+		});
+
+		it('delete action has success', () =>
+		{
+			cy.visit('http://localhost:8000/?l=en&p=admin/edit/extras/2');
+
+			cy.get('form.rs-admin-form-extra a.rs-admin-button-delete').click();
+			cy.get('div.rs-admin-component-dialog button.rs-admin-button-ok').click();
+
+			cy.get('div.rs-admin-box-note.rs-admin-is-success')
+				.should('be.visible')
+				.shouldHaveText('operation_completed');
+			cy.url().should('eq', 'http://localhost:8000/?p=admin/view/extras');
+			cy.get('#row-2').should('not.exist');
+		});
 	});
 });

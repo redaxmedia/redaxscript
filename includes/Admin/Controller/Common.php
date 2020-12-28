@@ -124,7 +124,7 @@ class Common extends ControllerAbstract
 			{
 				return $this->_success(
 				[
-					'route' => $this->_getRoute($table, $id),
+					'route' => $this->_getRoute($table),
 					'timeout' => 0
 				]);
 			}

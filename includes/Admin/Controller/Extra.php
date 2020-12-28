@@ -255,6 +255,7 @@ class Extra extends ControllerAbstract
 			{
 				return 'admin/view/extras#row-' . $extraId;
 			}
+			return 'admin/view/extras';
 		}
 		return 'admin';
 	}

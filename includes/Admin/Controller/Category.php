@@ -253,6 +253,7 @@ class Category extends ControllerAbstract
 			{
 				return 'admin/view/categories#row-' . $categoryId;
 			}
+			return 'admin/view/categories';
 		}
 		return 'admin';
 	}

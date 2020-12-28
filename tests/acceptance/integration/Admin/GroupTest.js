@@ -141,5 +141,36 @@ describe('Admin/GroupTest', () =>
 				.should('be.visible')
 				.should('contain.text', 'Group Three');
 		});
+
+		it('edit action has success', () =>
+		{
+			cy.visit('http://localhost:8000/?l=en&p=admin/edit/groups/3');
+			cy.get('#name').clear().type('Group Three Mutation');
+			cy.get('#alias').should('have.value', 'group-three-mutation');
+
+			cy.get('form.rs-admin-form-group button.rs-admin-button-save').click();
+
+			cy.get('div.rs-admin-box-note.rs-admin-is-success')
+				.should('be.visible')
+				.shouldHaveText('operation_completed');
+			cy.url().should('eq', 'http://localhost:8000/?p=admin/view/groups#row-3');
+			cy.get('#row-3')
+				.should('be.visible')
+				.should('contain.text', 'Group Three Mutation');
+		});
+
+		it('delete action has success', () =>
+		{
+			cy.visit('http://localhost:8000/?l=en&p=admin/edit/groups/3');
+
+			cy.get('form.rs-admin-form-group a.rs-admin-button-delete').click();
+			cy.get('div.rs-admin-component-dialog button.rs-admin-button-ok').click();
+
+			cy.get('div.rs-admin-box-note.rs-admin-is-success')
+				.should('be.visible')
+				.shouldHaveText('operation_completed');
+			cy.url().should('eq', 'http://localhost:8000/?p=admin/view/groups');
+			cy.get('#row-3').should('not.exist');
+		});
 	});
 });

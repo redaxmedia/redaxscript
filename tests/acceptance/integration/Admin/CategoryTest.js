@@ -141,5 +141,36 @@ describe('Admin/CategoryTest', () =>
 				.should('be.visible')
 				.should('contain.text', 'Category Two');
 		});
+
+		it('edit action has success', () =>
+		{
+			cy.visit('http://localhost:8000/?l=en&p=admin/edit/categories/2');
+			cy.get('#title').clear().type('Category Two Mutation');
+			cy.get('#alias').should('have.value', 'category-two-mutation');
+
+			cy.get('form.rs-admin-form-category button.rs-admin-button-save').click();
+
+			cy.get('div.rs-admin-box-note.rs-admin-is-success')
+				.should('be.visible')
+				.shouldHaveText('operation_completed');
+			cy.url().should('eq', 'http://localhost:8000/?p=admin/view/categories#row-2');
+			cy.get('#row-2')
+				.should('be.visible')
+				.should('contain.text', 'Category Two Mutation');
+		});
+
+		it('delete action has success', () =>
+		{
+			cy.visit('http://localhost:8000/?l=en&p=admin/edit/categories/2');
+
+			cy.get('form.rs-admin-form-category a.rs-admin-button-delete').click();
+			cy.get('div.rs-admin-component-dialog button.rs-admin-button-ok').click();
+
+			cy.get('div.rs-admin-box-note.rs-admin-is-success')
+				.should('be.visible')
+				.shouldHaveText('operation_completed');
+			cy.url().should('eq', 'http://localhost:8000/?p=admin/view/categories');
+			cy.get('#row-2').should('not.exist');
+		});
 	});
 });
