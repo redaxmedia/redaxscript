@@ -32,7 +32,9 @@ describe('Admin/GroupTest', () =>
 			it('visit ' + test.description + ' page', () =>
 			{
 				cy.visit(test.url);
-				test.elementArray.map(element => cy.get(element.selector).should('have.text', element.text));
+				test.elementArray.map(element => cy.get(element.selector)
+					.should('be.visible')
+					.should('have.text', element.text));
 			});
 		});
 	});
@@ -53,7 +55,7 @@ describe('Admin/GroupTest', () =>
 		{
 			it('empty field ' + test.description + ' has error', () =>
 			{
-				cy.visit('http://localhost:8000?p=admin/new/groups');
+				cy.visit('http://localhost:8000/?p=admin/new/groups');
 				cy.get(test.selector)
 					.type('-')
 					.clear()
@@ -62,7 +64,7 @@ describe('Admin/GroupTest', () =>
 
 			it('incorrect field ' + test.description + ' has warning', () =>
 			{
-				cy.visit('http://localhost:8000?p=admin/new/groups');
+				cy.visit('http://localhost:8000/?p=admin/new/groups');
 				cy.get(test.selector)
 					.clear()
 					.type('-')
@@ -75,7 +77,7 @@ describe('Admin/GroupTest', () =>
 	{
 		it('toggle content of tab', () =>
 		{
-			cy.visit('http://localhost:8000?p=admin/new/groups');
+			cy.visit('http://localhost:8000/?p=admin/new/groups');
 			cy.get('#name').should('be.visible');
 			cy.get('#alias').should('be.visible');
 			cy.get('#description').should('be.visible');

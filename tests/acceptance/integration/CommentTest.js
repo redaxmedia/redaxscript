@@ -102,9 +102,11 @@ describe('CommentTest', () =>
 			cy.url().should('eq', 'http://localhost:8000/?p=home/welcome#comment-2');
 			cy.get('h3.rs-title-comment')
 				.eq(0)
+				.should('be.visible')
 				.should('have.text', 'Test');
 			cy.get('div.rs-box-comment')
 				.eq(0)
+				.should('be.visible')
 				.should('have.text', 'Justo duo dolores et ea rebum.');
 		});
 	});

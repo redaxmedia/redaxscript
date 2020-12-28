@@ -22,7 +22,9 @@ describe('SearchTest', () =>
 			it('search for ' + test.description, () =>
 			{
 				cy.visit(test.url);
-				test.elementArray.map(element => cy.get(element.selector).should('have.text', element.text));
+				test.elementArray.map(element => cy.get(element.selector)
+					.should('be.visible')
+					.should('have.text', element.text));
 			});
 		});
 	});
@@ -37,8 +39,12 @@ describe('SearchTest', () =>
 			cy.get('button.rs-button-search').click();
 
 			cy.url().should('eq', 'http://localhost:8000/?p=search/welcome');
-			cy.get('h2.rs-title-result').shouldHaveText('articles');
-			cy.get('ol.rs-list-result a.rs-link-result').should('have.text', 'Welcome');
+			cy.get('h2.rs-title-result')
+				.should('be.visible')
+				.shouldHaveText('articles');
+			cy.get('ol.rs-list-result a.rs-link-result')
+				.should('be.visible')
+				.should('have.text', 'Welcome');
 		});
 	});
 });

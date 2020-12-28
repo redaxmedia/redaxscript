@@ -45,7 +45,6 @@ rs.modules.AliasGenerator.generate = optionArray =>
 				if (aliasValue)
 				{
 					outputElement.value = aliasValue;
-					outputElement.dispatchEvent(inputEvent);
 				}
 			}
 		});

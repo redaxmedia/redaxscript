@@ -32,7 +32,9 @@ describe('Admin/UserTest', () =>
 			it('visit ' + test.description + ' page', () =>
 			{
 				cy.visit(test.url);
-				test.elementArray.map(element => cy.get(element.selector).should('have.text', element.text));
+				test.elementArray.map(element => cy.get(element.selector)
+					.should('be.visible')
+					.should('have.text', element.text));
 			});
 		});
 	});
@@ -61,7 +63,7 @@ describe('Admin/UserTest', () =>
 		{
 			it('empty field ' + test.description + ' has error', () =>
 			{
-				cy.visit('http://localhost:8000?p=admin/new/users');
+				cy.visit('http://localhost:8000/?p=admin/new/users');
 				cy.get(test.selector)
 					.type('-')
 					.clear()
@@ -70,7 +72,7 @@ describe('Admin/UserTest', () =>
 
 			it('incorrect field ' + test.description + ' has warning', () =>
 			{
-				cy.visit('http://localhost:8000?p=admin/new/users');
+				cy.visit('http://localhost:8000/?p=admin/new/users');
 				cy.get(test.selector)
 					.clear()
 					.type('-')
@@ -83,7 +85,7 @@ describe('Admin/UserTest', () =>
 	{
 		it('toggle content of tab', () =>
 		{
-			cy.visit('http://localhost:8000?p=admin/new/users');
+			cy.visit('http://localhost:8000/?p=admin/new/users');
 			cy.get('#name').should('be.visible');
 			cy.get('#user').should('be.visible');
 			cy.get('#description').should('be.visible');

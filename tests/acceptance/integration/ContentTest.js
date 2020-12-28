@@ -25,7 +25,9 @@ describe('ContentTest', () =>
 				{
 					failOnStatusCode: false
 				});
-				test.elementArray.map(element => cy.get(element.selector).should('have.text', element.text));
+				test.elementArray.map(element => cy.get(element.selector)
+					.should('be.visible')
+					.should('have.text', element.text));
 			});
 		});
 	});
@@ -34,7 +36,7 @@ describe('ContentTest', () =>
 	{
 		it('toggle more button', () =>
 		{
-			cy.visit('http://localhost:8000?p=home');
+			cy.visit('http://localhost:8000/?p=home');
 			cy.get('hr.rs-break-more').should('not.exist');
 			cy.get('h3.rs-title-comment').should('not.exist');
 			cy.get('div.rs-box-comment').should('not.exist');

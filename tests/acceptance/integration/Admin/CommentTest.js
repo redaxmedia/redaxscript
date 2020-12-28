@@ -32,7 +32,9 @@ describe('Admin/CommentTest', () =>
 			it('visit ' + test.description + ' page', () =>
 			{
 				cy.visit(test.url);
-				test.elementArray.map(element => cy.get(element.selector).should('have.text', element.text));
+				test.elementArray.map(element => cy.get(element.selector)
+					.should('be.visible')
+					.should('have.text', element.text));
 			});
 		});
 	});
@@ -49,7 +51,7 @@ describe('Admin/CommentTest', () =>
 		{
 			it('empty box ' + test.description + ' has error', () =>
 			{
-				cy.visit('http://localhost:8000?p=admin/new/comments');
+				cy.visit('http://localhost:8000/?p=admin/new/comments');
 				cy.get(test.selector)
 					.type('-')
 					.clear()
@@ -62,7 +64,7 @@ describe('Admin/CommentTest', () =>
 	{
 		it('toggle content of tab', () =>
 		{
-			cy.visit('http://localhost:8000?p=admin/new/comments');
+			cy.visit('http://localhost:8000/?p=admin/new/comments');
 			cy.get('#url').should('be.visible');
 			cy.get('div.rs-admin-box-visual-editor').should('be.visible');
 			cy.get('#language').should('be.not.visible');

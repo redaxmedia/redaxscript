@@ -23,7 +23,9 @@ describe('ConsoleTest', () =>
 			{
 				cy.visit(test.url);
 				cy.get('input.rs-field-text').clear().type(test.command).type('{ENTER}');
-				test.elementArray.map(element => cy.get(element.selector).should('contain.text', element.text));
+				test.elementArray.map(element => cy.get(element.selector)
+					.should('be.visible')
+					.should('contain.text', element.text));
 			});
 		});
 	});

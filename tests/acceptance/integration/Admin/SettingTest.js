@@ -32,7 +32,9 @@ describe('Admin/SettingTest', () =>
 			it('visit ' + test.description + ' page', () =>
 			{
 				cy.visit(test.url);
-				test.elementArray.map(element => cy.get(element.selector).should('have.text', element.text));
+				test.elementArray.map(element => cy.get(element.selector)
+					.should('be.visible')
+					.should('have.text', element.text));
 			});
 		});
 	});
@@ -41,7 +43,7 @@ describe('Admin/SettingTest', () =>
 	{
 		it('toggle content of accordion', () =>
 		{
-			cy.visit('http://localhost:8000?p=admin/edit/settings');
+			cy.visit('http://localhost:8000/?p=admin/edit/settings');
 			cy.get('#language').should('be.visible');
 			cy.get('#template').should('be.visible');
 			cy.get('#title').should('be.not.visible');

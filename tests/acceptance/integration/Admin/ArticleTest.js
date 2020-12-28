@@ -32,7 +32,9 @@ describe('Admin/ArticleTest', () =>
 			it('visit ' + test.description + ' page', () =>
 			{
 				cy.visit(test.url);
-				test.elementArray.map(element => cy.get(element.selector).should('have.text', element.text));
+				test.elementArray.map(element => cy.get(element.selector)
+					.should('be.visible')
+					.should('have.text', element.text));
 			});
 		});
 	});
@@ -53,7 +55,7 @@ describe('Admin/ArticleTest', () =>
 		{
 			it('empty field ' + test.description + ' has error', () =>
 			{
-				cy.visit('http://localhost:8000?p=admin/new/articles');
+				cy.visit('http://localhost:8000/?p=admin/new/articles');
 				cy.get(test.selector)
 					.type('-')
 					.clear()
@@ -62,7 +64,7 @@ describe('Admin/ArticleTest', () =>
 
 			it('incorrect field ' + test.description + ' has warning', () =>
 			{
-				cy.visit('http://localhost:8000?p=admin/new/articles');
+				cy.visit('http://localhost:8000/?p=admin/new/articles');
 				cy.get(test.selector)
 					.clear()
 					.type('-')
@@ -80,7 +82,7 @@ describe('Admin/ArticleTest', () =>
 		{
 			it('empty box ' + test.description + ' has error', () =>
 			{
-				cy.visit('http://localhost:8000?p=admin/new/articles');
+				cy.visit('http://localhost:8000/?p=admin/new/articles');
 				cy.get(test.selector)
 					.type('-')
 					.clear()
@@ -93,7 +95,7 @@ describe('Admin/ArticleTest', () =>
 	{
 		it('toggle content of tab', () =>
 		{
-			cy.visit('http://localhost:8000?p=admin/new/articles');
+			cy.visit('http://localhost:8000/?p=admin/new/articles');
 			cy.get('#title').should('be.visible');
 			cy.get('#alias').should('be.visible');
 			cy.get('#description').should('be.visible');
