@@ -248,7 +248,11 @@ class Category extends ControllerAbstract
 		if ($this->_registry->get('categoriesEdit') && $postArray['alias'])
 		{
 			$categoryModel = new Admin\Model\Category();
-			return 'admin/view/categories#row-' . $categoryModel->getByAlias($postArray['alias'])->id;
+			$categoryId = $categoryModel->getByAlias($postArray['alias'])->id;
+			if ($categoryId)
+			{
+				return 'admin/view/categories#row-' . $categoryId;
+			}
 		}
 		return 'admin';
 	}

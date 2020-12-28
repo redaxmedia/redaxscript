@@ -217,7 +217,12 @@ class Comment extends ControllerAbstract
 			{
 				return 'admin/view/comments#row-' . $postArray['id'];
 			}
-			return 'admin/view/comments';
+			$commentModel = new Admin\Model\Comment();
+			$commentId = $commentModel->query()->max('id');
+			if ($commentId)
+			{
+				return 'admin/view/comments#row-' . $commentId;
+			}
 		}
 		return 'admin';
 	}

@@ -66,8 +66,8 @@ abstract class ContentAbstract extends ModelAbstract
 		return $this
 			->query()
 			->whereIn('id', $this->getSiblingArrayById($contentId))
-			->whereLanguageIs($language)
 			->where('status', 1)
+			->whereLanguageIs($language)
 			->orderBySetting($orderColumn)
 			->findMany() ? : null;
 	}

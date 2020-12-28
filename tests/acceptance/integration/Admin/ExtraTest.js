@@ -121,5 +121,23 @@ describe('Admin/ExtraTest', () =>
 			cy.get('#access').should('be.visible');
 			cy.get('#date').should('be.visible');
 		});
+
+		it('create action has success', () =>
+		{
+			cy.visit('http://localhost:8000/?l=en&p=admin/new/extras');
+			cy.get('#title').clear().type('Extra Seven');
+			cy.get('#alias').should('have.value', 'extra-seven');
+			cy.get('div.rs-admin-box-visual-editor').clear().type('Extra Seven');
+
+			cy.get('form.rs-admin-form-extra button.rs-admin-button-create').click();
+
+			cy.get('div.rs-admin-box-note.rs-admin-is-success')
+				.should('be.visible')
+				.shouldHaveText('operation_completed');
+			cy.url().should('eq', 'http://localhost:8000/?p=admin/view/extras#row-7');
+			cy.get('#row-7')
+				.should('be.visible')
+				.should('contain.text', 'Extra Seven');
+		});
 	});
 });

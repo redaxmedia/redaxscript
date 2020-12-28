@@ -32,8 +32,8 @@ class Search
 	{
 		return Db::forTablePrefix($table)
 			->whereLikeMany($this->_createColumnArray($table), $this->_createLikeArray($table, $search))
-			->whereLanguageIs($language)
 			->where('status', 1)
+			->whereLanguageIs($language)
 			->orderByDesc('date')
 			->findMany() ? : null;
 	}

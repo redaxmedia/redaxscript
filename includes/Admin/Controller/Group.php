@@ -248,7 +248,11 @@ class Group extends ControllerAbstract
 		if ($this->_registry->get('groupsEdit') && $postArray['alias'])
 		{
 			$groupModel = new Admin\Model\Group();
-			return 'admin/view/groups#row-' . $groupModel->getByAlias($postArray['alias'])->id;
+			$groupId = $groupModel->getByAlias($postArray['alias'])->id;
+			if ($groupId)
+			{
+				return 'admin/view/groups#row-' . $groupId;
+			}
 		}
 		return 'admin';
 	}

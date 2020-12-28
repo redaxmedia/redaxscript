@@ -137,10 +137,9 @@ describe('Admin/CategoryTest', () =>
 				.should('be.visible')
 				.shouldHaveText('operation_completed');
 			cy.url().should('eq', 'http://localhost:8000/?p=admin/view/categories#row-2');
-			cy.get('#row-2 a')
-				.eq(0)
+			cy.get('#row-2')
 				.should('be.visible')
-				.should('have.text', 'Category Two');
+				.should('contain.text', 'Category Two');
 		});
 	});
 });

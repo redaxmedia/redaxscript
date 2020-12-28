@@ -90,9 +90,9 @@ describe('CommentTest', () =>
 	{
 		it('comment action has success', () =>
 		{
-			cy.get('#author').clear().type('Test');
+			cy.get('#author').clear().type('Comment Two');
 			cy.get('#email').clear().type('test@redaxmedia.com');
-			cy.get('div.rs-box-visual-editor').clear().type('Justo duo dolores et ea rebum.');
+			cy.get('div.rs-box-visual-editor').clear().type('Comment Two');
 
 			cy.get('form.rs-form-comment button.rs-button-submit').click();
 
@@ -103,11 +103,11 @@ describe('CommentTest', () =>
 			cy.get('h3.rs-title-comment')
 				.eq(0)
 				.should('be.visible')
-				.should('have.text', 'Test');
+				.should('have.text', 'Comment Two');
 			cy.get('div.rs-box-comment')
 				.eq(0)
 				.should('be.visible')
-				.should('have.text', 'Justo duo dolores et ea rebum.');
+				.should('have.text', 'Comment Two');
 		});
 	});
 });

@@ -154,5 +154,23 @@ describe('Admin/ArticleTest', () =>
 			cy.get('#access').should('be.visible');
 			cy.get('#date').should('be.visible');
 		});
+
+		it('create action has success', () =>
+		{
+			cy.visit('http://localhost:8000/?l=en&p=admin/new/articles');
+			cy.get('#title').clear().type('Article Two');
+			cy.get('#alias').should('have.value', 'article-two');
+			cy.get('div.rs-admin-box-visual-editor').clear().type('Article Two');
+
+			cy.get('form.rs-admin-form-article button.rs-admin-button-create').click();
+
+			cy.get('div.rs-admin-box-note.rs-admin-is-success')
+				.should('be.visible')
+				.shouldHaveText('operation_completed');
+			cy.url().should('eq', 'http://localhost:8000/?p=admin/view/articles#row-2');
+			cy.get('#row-2')
+				.should('be.visible')
+				.should('contain.text', 'Article Two');
+		});
 	});
 });

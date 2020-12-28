@@ -96,5 +96,25 @@ describe('Admin/CommentTest', () =>
 			cy.get('#access').should('be.visible');
 			cy.get('#date').should('be.visible');
 		});
+
+		it('create action has success', () =>
+		{
+			cy.visit('http://localhost:8000/?l=en&p=admin/new/comments');
+			cy.get('div.rs-admin-box-visual-editor').clear().type('Comment Two');
+
+			cy.get('label.rs-admin-label-tab[for*="General"]').click();
+
+			cy.get('#article').select('1');
+
+			cy.get('form.rs-admin-form-comment button.rs-admin-button-create').click();
+
+			cy.get('div.rs-admin-box-note.rs-admin-is-success')
+				.should('be.visible')
+				.shouldHaveText('operation_completed');
+			cy.url().should('eq', 'http://localhost:8000/?p=admin/view/comments#row-2');
+			cy.get('#row-2')
+				.should('be.visible')
+				.should('contain.text', 'Comment Two');
+		});
 	});
 });

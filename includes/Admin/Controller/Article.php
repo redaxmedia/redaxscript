@@ -265,7 +265,11 @@ class Article extends ControllerAbstract
 		if ($this->_registry->get('articlesEdit') && $postArray['alias'])
 		{
 			$articleModel = new Admin\Model\Article();
-			return 'admin/view/articles#row-' . $articleModel->getByAlias($postArray['alias'])->id;
+			$articleId = $articleModel->getByAlias($postArray['alias'])->id;
+			if ($articleId)
+			{
+				return 'admin/view/articles#row-' . $articleId;
+			}
 		}
 		return 'admin';
 	}

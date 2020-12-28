@@ -34,6 +34,14 @@ class CommentTest extends TestCaseAbstract
 		$installer->init();
 		$installer->rawCreate();
 		$installer->insertSettings($optionArray);
+		Db::forTablePrefix('articles')
+			->create()
+			->set(
+			[
+				'title' => 'Article One',
+				'alias' => 'article-one'
+			])
+			->save();
 		Db::forTablePrefix('comments')
 			->create()
 			->set(

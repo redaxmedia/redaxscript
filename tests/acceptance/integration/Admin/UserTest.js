@@ -117,5 +117,24 @@ describe('Admin/UserTest', () =>
 			cy.get('label.rs-admin-label-switch[for="status"]').should('be.visible');
 			cy.get('#groups').should('be.visible');
 		});
+
+		it('create action has success', () =>
+		{
+			cy.visit('http://localhost:8000/?l=en&p=admin/new/users');
+			cy.get('#name').clear().type('User Two');
+			cy.get('#user').clear().type('user-two');
+			cy.get('#password').clear().type('aaAA00AAaa');
+			cy.get('#email').clear().type('test@redaxscript.com');
+
+			cy.get('form.rs-admin-form-user button.rs-admin-button-create').click();
+
+			cy.get('div.rs-admin-box-note.rs-admin-is-success')
+				.should('be.visible')
+				.shouldHaveText('operation_completed');
+			cy.url().should('eq', 'http://localhost:8000/?p=admin/view/users#row-2');
+			cy.get('#row-2')
+				.should('be.visible')
+				.should('contain.text', 'User Two');
+		});
 	});
 });

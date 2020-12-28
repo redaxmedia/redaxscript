@@ -124,5 +124,22 @@ describe('Admin/GroupTest', () =>
 			cy.get('label.rs-admin-label-switch[for="filter"]').should('be.visible');
 			cy.get('label.rs-admin-label-switch[for="status"]').should('be.visible');
 		});
+
+		it('create action has success', () =>
+		{
+			cy.visit('http://localhost:8000/?l=en&p=admin/new/groups');
+			cy.get('#name').clear().type('Group Three');
+			cy.get('#alias').should('have.value', 'group-three');
+
+			cy.get('form.rs-admin-form-group button.rs-admin-button-create').click();
+
+			cy.get('div.rs-admin-box-note.rs-admin-is-success')
+				.should('be.visible')
+				.shouldHaveText('operation_completed');
+			cy.url().should('eq', 'http://localhost:8000/?p=admin/view/groups#row-3');
+			cy.get('#row-3')
+				.should('be.visible')
+				.should('contain.text', 'Group Three');
+		});
 	});
 });
