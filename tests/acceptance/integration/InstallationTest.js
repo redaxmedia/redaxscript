@@ -1,15 +1,15 @@
 describe('InstallationTest', () =>
 {
-	beforeEach(() =>
-	{
-		Cypress.Cookies.preserveOnce('PHPSESSID');
-		cy.visit('http://localhost:8000/install.php?l=en');
-	});
-
 	before(() =>
 	{
 		cy.uninstallDatabase();
 		cy.resetConfig();
+	});
+
+	beforeEach(() =>
+	{
+		Cypress.Cookies.preserveOnce('PHPSESSID');
+		cy.visit('http://localhost:8000/install.php?l=en');
 	});
 
 	after(() =>

@@ -11,7 +11,7 @@ rs.templates.console.behavior.process = optionArray =>
 	const labelElement = formElement.querySelector(OPTION.element.label);
 	const fieldElement = formElement.querySelector(OPTION.element.field);
 
-	/* handel submit */
+	/* handle submit */
 
 	formElement.addEventListener('submit', event =>
 	{

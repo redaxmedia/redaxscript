@@ -1,17 +1,17 @@
 describe('RecoverTest', () =>
 {
-	beforeEach(() =>
-	{
-		Cypress.Cookies.preserveOnce('PHPSESSID');
-		cy.visit('http://localhost:8000/?l=en&p=login/recover');
-	});
-
 	before(() =>
 	{
 		cy.setConfig();
 		cy.uninstallDatabase();
 		cy.installDatabase();
 		cy.setSetting('registration', 1);
+	});
+
+	beforeEach(() =>
+	{
+		Cypress.Cookies.preserveOnce('PHPSESSID');
+		cy.visit('http://localhost:8000/?l=en&p=login/recover');
 	});
 
 	after(() =>

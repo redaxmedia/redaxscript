@@ -13,7 +13,7 @@ rs.modules.AliasGenerator.generate = optionArray =>
 		const outputElement = formElement.querySelector(OPTION.element.output);
 		const inputEvent = new Event('input');
 
-		/* handel input */
+		/* handle input */
 
 		inputElement.addEventListener('input', () =>
 		{
@@ -34,7 +34,7 @@ rs.modules.AliasGenerator.generate = optionArray =>
 			}
 		});
 
-		/* handel input */
+		/* handle input */
 
 		outputElement.addEventListener('input', () =>
 		{

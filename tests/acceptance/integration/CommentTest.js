@@ -1,16 +1,16 @@
 describe('CommentTest', () =>
 {
-	beforeEach(() =>
-	{
-		Cypress.Cookies.preserveOnce('PHPSESSID');
-		cy.visit('http://localhost:8000/?l=en&p=home/welcome');
-	});
-
 	before(() =>
 	{
 		cy.setConfig();
 		cy.uninstallDatabase();
 		cy.installDatabase();
+	});
+
+	beforeEach(() =>
+	{
+		Cypress.Cookies.preserveOnce('PHPSESSID');
+		cy.visit('http://localhost:8000/?l=en&p=home/welcome');
 	});
 
 	after(() =>
