@@ -36,7 +36,7 @@ module.exports = grunt =>
 				'cross-env',
 				grunt.option('N') || grunt.option('no-cache') ? 'NO_CACHE=true' : '',
 				grunt.option('D') || grunt.option('debug-mode') ? 'DEBUG_MODE=true' : '',
-				'php -S localhost:8000'
+				'php -S 0.0.0.0:8000'
 			]
 			.join(' '))
 		},
