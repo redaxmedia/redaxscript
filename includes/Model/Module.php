@@ -22,6 +22,21 @@ class Module extends ModelAbstract
 	protected $_table = 'modules';
 
 	/**
+	 * get the module by alias
+	 *
+	 * @since 4.5.0
+	 *
+	 * @param string $moduleAlias alias of the module
+	 *
+	 * @return object|null
+	 */
+
+	public function getByAlias(string $moduleAlias = null) : ?object
+	{
+		return $this->query()->where('alias', $moduleAlias)->findOne() ? : null;
+	}
+
+	/**
 	 * create the module by array
 	 *
 	 * @since 3.3.0

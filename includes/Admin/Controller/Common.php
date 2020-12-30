@@ -94,9 +94,11 @@ class Common extends ControllerAbstract
 		{
 			if ($this->_install($table, $alias))
 			{
+				$moduleModel = new Admin\Model\Module();
+				$moduleId = $moduleModel->getByAlias($alias)->id;
 				return $this->_success(
 				[
-					'route' => $this->_getRoute($table),
+					'route' => $this->_getRoute($table, $moduleId),
 					'timeout' => 0
 				]);
 			}
@@ -134,7 +136,7 @@ class Common extends ControllerAbstract
 
 		return $this->_error(
 		[
-			'route' => $this->_getRoute($table, $id)
+			'route' => $this->_getRoute($table)
 		]);
 	}
 
@@ -390,16 +392,13 @@ class Common extends ControllerAbstract
 
 	protected function _getRoute(string $table = null, int $id = null) : string
 	{
-		if ($this->_registry->get($table . 'Edit'))
+		if ($this->_registry->get($table . 'Edit') && $table)
 		{
 			if ($id)
 			{
 				return 'admin/view/' . $table . '#row-' . $id;
 			}
-			if ($table)
-			{
-				return 'admin/view/' . $table;
-			}
+			return 'admin/view/' . $table;
 		}
 		return 'admin';
 	}

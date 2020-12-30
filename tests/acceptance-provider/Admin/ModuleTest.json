@@ -23,8 +23,8 @@
 		]
 	},
 	{
-		"url": "http://localhost:8000?p=admin/edit/modules/12",
-		"description": "admin/edit/modules/12",
+		"url": "http://localhost:8000?p=admin/edit/modules/1",
+		"description": "admin/edit/modules/1",
 		"elementArray":
 		[
 			{
@@ -41,7 +41,7 @@
 			},
 			{
 				"selector": "h2.rs-admin-title-content",
-				"text": "Test Dummy"
+				"text": "Alias Generator"
 			}
 		]
 	},

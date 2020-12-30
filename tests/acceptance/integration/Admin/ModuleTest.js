@@ -7,7 +7,6 @@ describe('Admin/ModuleTest', () =>
 		cy.setConfig();
 		cy.uninstallDatabase();
 		cy.installDatabase();
-		cy.installTestDummy();
 	});
 
 	beforeEach(() =>
@@ -17,7 +16,6 @@ describe('Admin/ModuleTest', () =>
 
 	after(() =>
 	{
-		cy.uninstallTestDummy();
 		cy.uninstallDatabase();
 		cy.resetConfig();
 	});
@@ -87,6 +85,29 @@ describe('Admin/ModuleTest', () =>
 			cy.get('#description').should('be.not.visible');
 			cy.get('label.rs-admin-label-switch[for="status"]').should('be.visible');
 			cy.get('#access').should('be.visible');
+		});
+
+		it('install action has success', () =>
+		{
+			cy.visit('http://localhost:8000/?l=en&p=admin/view/modules');
+
+			cy.get('ul.rs-admin-list-control a[href*="install/modules/TestDummy"').click();
+
+			cy.url().should('eq', 'http://localhost:8000/?p=admin/view/modules#row-12');
+			cy.get('#row-12')
+				.should('be.visible')
+				.should('contain.text', 'Test Dummy');
+		});
+
+		it('uninstall action has success', () =>
+		{
+			cy.visit('http://localhost:8000/?l=en&p=admin/view/modules');
+
+			cy.get('ul.rs-admin-list-control a[href*="uninstall/modules/TestDummy"').click();
+			cy.get('div.rs-admin-component-dialog button.rs-admin-button-ok').click();
+
+			cy.url().should('eq', 'http://localhost:8000/?p=admin/view/modules');
+			cy.get('#row-12').should('not.exist');
 		});
 	});
 });
