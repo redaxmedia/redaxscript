@@ -93,6 +93,9 @@ describe('Admin/ModuleTest', () =>
 
 			cy.get('ul.rs-admin-list-control a[href*="install/modules/TestDummy"').click();
 
+			cy.get('div.rs-admin-box-note.rs-admin-is-success')
+				.should('be.visible')
+				.shouldHaveText('operation_completed');
 			cy.url().should('eq', 'http://localhost:8000/?p=admin/view/modules#row-12');
 			cy.get('#row-12')
 				.should('be.visible')
@@ -106,6 +109,9 @@ describe('Admin/ModuleTest', () =>
 			cy.get('ul.rs-admin-list-control a[href*="uninstall/modules/TestDummy"').click();
 			cy.get('div.rs-admin-component-dialog button.rs-admin-button-ok').click();
 
+			cy.get('div.rs-admin-box-note.rs-admin-is-success')
+				.should('be.visible')
+				.shouldHaveText('operation_completed');
 			cy.url().should('eq', 'http://localhost:8000/?p=admin/view/modules');
 			cy.get('#row-12').should('not.exist');
 		});

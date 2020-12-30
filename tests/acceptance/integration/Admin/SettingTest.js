@@ -252,5 +252,24 @@ describe('Admin/SettingTest', () =>
 			cy.get('label.rs-admin-label-switch[for="moderation"]').should('be.visible');
 			cy.get('#captcha').should('be.visible');
 		});
+
+		it('edit action has success', () =>
+		{
+			cy.visit('http://localhost:8000/?l=en&p=admin/edit/settings');
+
+			cy.get('label.rs-admin-label-accordion[for*="Metadata"]').click();
+
+			cy.get('#title').clear().type('Test');
+			cy.get('#description').clear().type('Test');
+
+			cy.get('form.rs-admin-form-setting button.rs-admin-button-save').click();
+
+			cy.get('div.rs-admin-box-note.rs-admin-is-success')
+				.should('be.visible')
+				.shouldHaveText('operation_completed');
+			cy.url().should('eq', 'http://localhost:8000/?p=admin');
+			cy.get('h1.rs-title-header').should('contain.text', 'Test');
+			cy.get('span.rs-text-header').should('contain.text', 'Test');
+		});
 	});
 });
