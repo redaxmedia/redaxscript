@@ -83,7 +83,7 @@ class Comment extends ControllerAbstract
 			return $this->_warning(
 			[
 				'route' => $this->_getSuccessRoute($postArray),
-				'timeout' => $settingModel->get('notification') ? 2 : 0,
+				'timeout' => 2,
 				'message' => $this->_language->get('email_failed')
 			]);
 		}
@@ -93,7 +93,7 @@ class Comment extends ControllerAbstract
 		return $this->_success(
 		[
 			'route' => $settingModel->get('moderation') ? $this->_getErrorRoute($postArray) : $this->_getSuccessRoute($postArray),
-			'timeout' => $settingModel->get('notification') ? 2 : 0,
+			'timeout' => 2,
 			'message' => $settingModel->get('moderation') ? $this->_language->get('comment_moderation') : $this->_language->get('comment_sent')
 		]);
 	}
