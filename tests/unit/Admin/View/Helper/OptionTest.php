@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Tests\Admin\View\Helper;
 
-use Redaxscript\Admin\View\Helper;
+use Redaxscript\Admin;
 use Redaxscript\Db;
 use Redaxscript\Tests\TestCaseAbstract;
 use function array_diff;
@@ -102,7 +102,7 @@ class OptionTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$helperOption = new Helper\Option($this->_language);
+		$helperOption = new Admin\View\Helper\Option($this->_language);
 
 		/* actual */
 
@@ -123,7 +123,7 @@ class OptionTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$helperOption = new Helper\Option($this->_language);
+		$helperOption = new Admin\View\Helper\Option($this->_language);
 
 		/* actual */
 
@@ -144,7 +144,7 @@ class OptionTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$helperOption = new Helper\Option($this->_language);
+		$helperOption = new Admin\View\Helper\Option($this->_language);
 
 		/* actual */
 
@@ -165,7 +165,7 @@ class OptionTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$helperOption = new Helper\Option($this->_language);
+		$helperOption = new Admin\View\Helper\Option($this->_language);
 
 		/* actual */
 
@@ -190,7 +190,7 @@ class OptionTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$helperOption = new Helper\Option($this->_language);
+		$helperOption = new Admin\View\Helper\Option($this->_language);
 
 		/* actual */
 
@@ -215,7 +215,7 @@ class OptionTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$helperOption = new Helper\Option($this->_language);
+		$helperOption = new Admin\View\Helper\Option($this->_language);
 
 		/* actual */
 
@@ -240,7 +240,7 @@ class OptionTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$helperOption = new Helper\Option($this->_language);
+		$helperOption = new Admin\View\Helper\Option($this->_language);
 
 		/* actual */
 
@@ -265,7 +265,7 @@ class OptionTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$helperOption = new Helper\Option($this->_language);
+		$helperOption = new Admin\View\Helper\Option($this->_language);
 
 		/* actual */
 
@@ -290,7 +290,7 @@ class OptionTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$helperOption = new Helper\Option($this->_language);
+		$helperOption = new Admin\View\Helper\Option($this->_language);
 
 		/* actual */
 
@@ -320,7 +320,7 @@ class OptionTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$helperOption = new Helper\Option($this->_language);
+		$helperOption = new Admin\View\Helper\Option($this->_language);
 
 		/* actual */
 
@@ -345,7 +345,7 @@ class OptionTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$helperOption = new Helper\Option($this->_language);
+		$helperOption = new Admin\View\Helper\Option($this->_language);
 
 		/* actual */
 
@@ -370,7 +370,7 @@ class OptionTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$helperOption = new Helper\Option($this->_language);
+		$helperOption = new Admin\View\Helper\Option($this->_language);
 
 		/* actual */
 

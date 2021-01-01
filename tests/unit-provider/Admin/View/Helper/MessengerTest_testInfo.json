@@ -1,0 +1,43 @@
+[
+	[
+		{
+			"message": "Message One",
+			"title": "Title"
+		},
+		{
+			"text": null,
+			"route": null
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-info\">Title</h2><div class=\"rs-admin-box-note rs-admin-is-info\">Message One</div>"
+	],
+	[
+		{
+			"message":
+			[
+				"Message One",
+				"Message Two"
+			],
+			"title": null
+		},
+		{
+			"text": null,
+			"route": null
+		},
+		"<div class=\"rs-admin-box-note rs-admin-is-info\"><ul class=\"rs-admin-list-note\"><li>Message One</li><li>Message Two</li></ul></div>"
+	],
+	[
+		{
+			"message":
+			[
+				"Message One",
+				"Message Two"
+			],
+			"title": null
+		},
+		{
+			"text": "Text",
+			"route": "hello/world"
+		},
+		"<div class=\"rs-admin-box-note rs-admin-is-info\"><ul class=\"rs-admin-list-note\"><li>Message One</li><li>Message Two</li></ul></div><a href=\"hello/world\" class=\"rs-admin-button-note rs-admin-is-info\">Text</a>"
+	]
+]

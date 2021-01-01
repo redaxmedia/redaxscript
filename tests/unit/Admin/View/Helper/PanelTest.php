@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Tests\Admin\View\Helper;
 
-use Redaxscript\Admin\View\Helper;
+use Redaxscript\Admin;
 use Redaxscript\Module;
 use Redaxscript\Tests\TestCaseAbstract;
 
@@ -63,7 +63,7 @@ class PanelTest extends TestCaseAbstract
 		Module\Hook::construct($this->_registry, $this->_request, $this->_language, $this->_config);
 		Module\Hook::init();
 		$this->_registry->init($registryArray);
-		$adminPanel = new Helper\Panel($this->_registry, $this->_language);
+		$adminPanel = new Admin\View\Helper\Panel($this->_registry, $this->_language);
 		$adminPanel->init($optionArray);
 
 		/* actual */

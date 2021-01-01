@@ -1,6 +1,7 @@
 <?php
-namespace Redaxscript\Tests;
+namespace Redaxscript\Tests\View\Helper;
 
+use Redaxscript\Tests\TestCaseAbstract;
 use Redaxscript\View\Helper\Messenger;
 
 /**

@@ -1,0 +1,62 @@
+[
+	[
+		{
+			"message": "Message One",
+			"title": "Title",
+			"type": "success"
+		},
+		{
+			"text": null,
+			"url": null,
+			"timeout": 2
+		},
+		"<h2 class=\"rs-admin-title-note rs-admin-is-success\">Title</h2><div class=\"rs-admin-box-note rs-admin-is-success\">Message One</div>"
+	],
+	[
+		{
+			"message":
+			[
+				"Message One",
+				"Message Two"
+			],
+			"title": null,
+			"type": "warning"
+		},
+		{
+			"text": null,
+			"url": null,
+			"timeout": 2
+		},
+		"<div class=\"rs-admin-box-note rs-admin-is-warning\"><ul class=\"rs-admin-list-note\"><li>Message One</li><li>Message Two</li></ul></div>"
+	],
+	[
+		{
+			"message": "Message One",
+			"title": null,
+			"type": "info"
+		},
+		{
+			"text": "Text",
+			"url": "https://redaxscript.com",
+			"timeout": 2
+		},
+		"<div class=\"rs-admin-box-note rs-admin-is-info\">Message One</div><a href=\"https://redaxscript.com\" class=\"rs-admin-button-note rs-admin-is-info\">Text</a><meta content=\"2;url=https://redaxscript.com\" http-equiv=\"refresh\" />"
+	],
+	[
+		{
+			"message":
+			[
+				"Message One",
+				"Message Two"
+			],
+			"title": null,
+			"type": "info"
+		},
+		{
+			"text": "Text",
+			"url": "https://redaxscript.com",
+			"timeout": 0
+		},
+		"<div class=\"rs-admin-box-note rs-admin-is-info\"><ul class=\"rs-admin-list-note\"><li>Message One</li><li>Message Two</li></ul></div><a href=\"https://redaxscript.com\" class=\"rs-admin-button-note rs-admin-is-info\">Text</a><meta class=\"rs-admin-meta-redirect\" content=\"0;url=https://redaxscript.com\" http-equiv=\"refresh\" />"
+	]
+]

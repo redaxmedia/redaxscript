@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Tests\Admin\View\Helper;
 
-use Redaxscript\Admin\View\Helper;
+use Redaxscript\Admin;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -36,7 +36,7 @@ class DockTest extends TestCaseAbstract
 		/* setup */
 
 		$this->_registry->init($registryArray);
-		$adminDock = new Helper\Dock($this->_registry, $this->_language);
+		$adminDock = new Admin\View\Helper\Dock($this->_registry, $this->_language);
 		$adminDock->init($optionArray);
 
 		/* actual */

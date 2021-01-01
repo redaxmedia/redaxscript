@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Tests\Admin\View\Helper;
 
-use Redaxscript\Admin\View\Helper;
+use Redaxscript\Admin;
 use Redaxscript\Module;
 use Redaxscript\Tests\TestCaseAbstract;
 
@@ -61,7 +61,7 @@ class NotificationTest extends TestCaseAbstract
 
 		Module\Hook::construct($this->_registry, $this->_request, $this->_language, $this->_config);
 		Module\Hook::init();
-		$adminNotification = new Helper\Notification($this->_language);
+		$adminNotification = new Admin\View\Helper\Notification($this->_language);
 		$adminNotification->init($optionArray);
 
 		/* actual */

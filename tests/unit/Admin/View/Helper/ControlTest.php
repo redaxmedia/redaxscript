@@ -1,7 +1,7 @@
 <?php
 namespace Redaxscript\Tests\Admin\View\Helper;
 
-use Redaxscript\Admin\View\Helper;
+use Redaxscript\Admin;
 use Redaxscript\Tests\TestCaseAbstract;
 
 /**
@@ -35,7 +35,7 @@ class ControlTest extends TestCaseAbstract
 		/* setup */
 
 		$this->_registry->init($registryArray);
-		$adminControl = new Helper\Control($this->_registry, $this->_language);
+		$adminControl = new Admin\View\Helper\Control($this->_registry, $this->_language);
 
 		/* actual */
 
