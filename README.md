@@ -17,7 +17,7 @@ Installation
 Clone the repository:
 
 ```
-git clone https://github.com/redaxscript/redaxscript.git --branch=4.4.0
+git clone https://github.com/redaxscript/redaxscript.git --branch=4.5.0
 ```
 
 Install the dependencies:
