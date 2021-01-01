@@ -101,11 +101,11 @@ describe('CommentTest', () =>
 				.shouldHaveText('comment_sent');
 			cy.url().should('eq', 'http://localhost:8000/?p=home/welcome#comment-2');
 			cy.get('h3.rs-title-comment')
-				.eq(0)
+				.eq(1)
 				.should('be.visible')
 				.should('have.text', 'Comment Two');
 			cy.get('div.rs-box-comment')
-				.eq(0)
+				.eq(1)
 				.should('be.visible')
 				.should('have.text', 'Comment Two');
 		});
