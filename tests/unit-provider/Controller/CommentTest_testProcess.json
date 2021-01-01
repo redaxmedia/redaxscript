@@ -65,7 +65,7 @@
 			"moderation": 1
 		},
 		null,
-		"<h2 class=\"rs-title-note rs-is-success\">Success</h2><div class=\"rs-box-note rs-is-success\">Your comment will be approved by a moderator</div><a href=\"article-one\" class=\"rs-button-note rs-is-success\">Continue</a><meta class=\"rs-meta-redirect\" content=\"0;url=/article-one\" http-equiv=\"refresh\" />"
+		"<h2 class=\"rs-title-note rs-is-success\">Success</h2><div class=\"rs-box-note rs-is-success\">Your comment will be approved by a moderator</div><a href=\"article-one\" class=\"rs-button-note rs-is-success\">Continue</a><meta content=\"2;url=/article-one\" http-equiv=\"refresh\" />"
 	],
 	[
 		{
@@ -99,7 +99,7 @@
 			"moderation": 1
 		},
 		"_mail",
-		"<h2 class=\"rs-title-note rs-is-warning\">Warning</h2><div class=\"rs-box-note rs-is-warning\">Email sending failed</div><a href=\"article-one\" class=\"rs-button-note rs-is-warning\">Continue</a><meta class=\"rs-meta-redirect\" content=\"0;url=/article-one\" http-equiv=\"refresh\" />"
+		"<h2 class=\"rs-title-note rs-is-warning\">Warning</h2><div class=\"rs-box-note rs-is-warning\">Email sending failed</div><a href=\"article-one\" class=\"rs-button-note rs-is-warning\">Continue</a><meta content=\"2;url=/article-one\" http-equiv=\"refresh\" />"
 	],
 	[
 		{
@@ -116,7 +116,7 @@
 			"moderation": 0
 		},
 		null,
-		"<h2 class=\"rs-title-note rs-is-success\">Success</h2><div class=\"rs-box-note rs-is-success\">Your comment has been successfully sent</div><a href=\"article-one#comment-1\" class=\"rs-button-note rs-is-success\">Continue</a><meta class=\"rs-meta-redirect\" content=\"0;url=/article-one#comment-1\" http-equiv=\"refresh\" />"
+		"<h2 class=\"rs-title-note rs-is-success\">Success</h2><div class=\"rs-box-note rs-is-success\">Your comment has been successfully sent</div><a href=\"article-one#comment-1\" class=\"rs-button-note rs-is-success\">Continue</a><meta content=\"2;url=/article-one#comment-1\" http-equiv=\"refresh\" />"
 	],
 	[
 		{
@@ -133,6 +133,6 @@
 			"moderation": 1
 		},
 		null,
-		"<h2 class=\"rs-title-note rs-is-success\">Success</h2><div class=\"rs-box-note rs-is-success\">Your comment will be approved by a moderator</div><a href=\"article-one\" class=\"rs-button-note rs-is-success\">Continue</a><meta class=\"rs-meta-redirect\" content=\"0;url=/article-one\" http-equiv=\"refresh\" />"
+		"<h2 class=\"rs-title-note rs-is-success\">Success</h2><div class=\"rs-box-note rs-is-success\">Your comment will be approved by a moderator</div><a href=\"article-one\" class=\"rs-button-note rs-is-success\">Continue</a><meta content=\"2;url=/article-one\" http-equiv=\"refresh\" />"
 	]
 ]
