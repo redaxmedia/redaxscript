@@ -282,7 +282,7 @@ class Option
 
 	public function getCategoryArray() : array
 	{
-		$categoryModel = new Admin\Model\Article();
+		$categoryModel = new Admin\Model\Category();
 		$contents = $categoryModel->query()->orderByAsc('title')->findMany();
 		return $this->_getContentArray($contents);
 	}
