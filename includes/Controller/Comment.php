@@ -31,6 +31,7 @@ class Comment extends ControllerAbstract
 	public function process() : string
 	{
 		$articleModel = new Model\Article();
+		$commentModel = new Model\Comment();
 		$settingModel = new Model\Setting();
 		$postArray = $this->_normalizePost($this->_sanitizePost());
 		$validateArray = $this->_validatePost($postArray);
@@ -57,6 +58,7 @@ class Comment extends ControllerAbstract
 			'language' => $articleModel->getById($postArray['article'])->language,
 			'article' => $postArray['article'],
 			'status' => $settingModel->get('moderation') ? 0 : 1,
+			'rank' => $commentModel->query()->max('rank') + 1,
 			'date' => $this->_registry->get('now')
 		];
 		if (!$this->_create($createArray))
