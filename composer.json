@@ -11,11 +11,11 @@
 	},
 	"require-dev":
 	{
-		"brianium/paratest": "6.1.1",
+		"brianium/paratest": "6.2.0",
 		"fbourigault/composer-mkdir": "2.0.0",
 		"mikey179/vfsstream": "1.6.8",
-		"php-coveralls/php-coveralls": "2.4.2",
-		"phpunit/phpunit": "9.5.0",
+		"php-coveralls/php-coveralls": "2.4.3",
+		"phpunit/phpunit": "9.5.2",
 		"redaxmedia/php-coding-standard": "1.4.0",
 		"redaxmedia/phpunit-provider-autoloader": "4.2.3",
 		"slowprog/composer-copy-file": "0.3.3",
