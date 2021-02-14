@@ -6,7 +6,7 @@ use function getenv;
 use function ini_set;
 use function parse_url;
 
-error_reporting(E_DEPRECATED | E_WARNING | E_ERROR | E_PARSE);
+error_reporting(E_WARNING | E_ERROR | E_PARSE);
 
 /* include */
 

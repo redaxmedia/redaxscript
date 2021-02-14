@@ -22,7 +22,7 @@
 		<!-- admin controller -->
 
 		<testsuite name="admin-controller">
-			<directory>tests/unit/Admin/Controller</directory>
+			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/Admin/Controller</directory>
 		</testsuite>
 
 		<!-- admin html -->
@@ -40,7 +40,7 @@
 		<!-- admin router -->
 
 		<testsuite name="admin-router">
-			<directory>tests/unit/Admin/Router</directory>
+			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/Admin/Router</directory>
 		</testsuite>
 
 		<!-- admin template -->
@@ -52,7 +52,7 @@
 		<!-- admin view -->
 
 		<testsuite name="admin-view">
-			<directory>tests/unit/Admin/View</directory>
+			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/Admin/View</directory>
 		</testsuite>
 
 		<!-- asset -->
@@ -64,19 +64,19 @@
 		<!-- bootstrap -->
 
 		<testsuite name="_bootstrap">
-			<directory>tests/unit/Bootstrap</directory>
+			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/Bootstrap</directory>
 		</testsuite>
 
 		<!-- client -->
 
 		<testsuite name="client">
-			<directory>tests/unit/Client</directory>
+			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/Client</directory>
 		</testsuite>
 
 		<!-- console -->
 
 		<testsuite name="console">
-			<directory>tests/unit/Console</directory>
+			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/Console</directory>
 		</testsuite>
 
 		<!-- content -->
@@ -88,13 +88,13 @@
 		<!-- controller -->
 
 		<testsuite name="controller">
-			<directory>tests/unit/Controller</directory>
+			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/Controller</directory>
 		</testsuite>
 
 		<!-- detector -->
 
 		<testsuite name="detector">
-			<directory>tests/unit/Detector</directory>
+			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/Detector</directory>
 		</testsuite>
 
 		<!-- filesystem -->
@@ -112,25 +112,25 @@
 		<!-- head -->
 
 		<testsuite name="head">
-			<directory>tests/unit/Head</directory>
+			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/Head</directory>
 		</testsuite>
 
 		<!-- html -->
 
 		<testsuite name="html">
-			<directory>tests/unit/Html</directory>
+			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/Html</directory>
 		</testsuite>
 
 		<!-- navigation -->
 
 		<testsuite name="navigation">
-			<directory>tests/unit/Navigation</directory>
+			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/Navigation</directory>
 		</testsuite>
 
 		<!-- model -->
 
 		<testsuite name="model">
-			<directory>tests/unit/Model</directory>
+			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/Model</directory>
 		</testsuite>
 
 		<!-- module -->
@@ -142,19 +142,19 @@
 		<!-- router -->
 
 		<testsuite name="router">
-			<directory>tests/unit/Router</directory>
+			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/Router</directory>
 		</testsuite>
 
 		<!-- server -->
 
 		<testsuite name="server">
-			<directory>tests/unit/Server</directory>
+			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/Server</directory>
 		</testsuite>
 
 		<!-- template -->
 
 		<testsuite name="template">
-			<directory>tests/unit/Template</directory>
+			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/Template</directory>
 		</testsuite>
 
 		<!-- validator -->
@@ -166,13 +166,13 @@
 		<!-- view -->
 
 		<testsuite name="view">
-			<directory>tests/unit/View</directory>
+			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/View</directory>
 		</testsuite>
 
 		<!-- auth -->
 
 		<testsuite name="auth">
-			<file>tests/unit/AuthTest.php</file>
+			<file phpVersion="8" phpVersionOperator="lt">tests/unit/AuthTest.php</file>
 		</testsuite>
 
 		<!-- autoloader -->
@@ -190,7 +190,7 @@
 		<!-- config -->
 
 		<testsuite name="config">
-			<file>tests/unit/ConfigTest.php</file>
+			<file phpVersion="8" phpVersionOperator="lt">tests/unit/ConfigTest.php</file>
 		</testsuite>
 
 		<!-- dater -->
@@ -202,7 +202,7 @@
 		<!-- db -->
 
 		<testsuite name="db">
-			<file>tests/unit/DbTest.php</file>
+			<file phpVersion="8" phpVersionOperator="lt">tests/unit/DbTest.php</file>
 		</testsuite>
 
 		<!-- hash -->

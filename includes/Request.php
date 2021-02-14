@@ -36,13 +36,13 @@ class Request extends Singleton
 	{
 		self::$_requestArray =
 		[
-			'server' => $_SERVER ? : [],
-			'get' => $_GET ? : [],
-			'post' => $_POST ? : [],
-			'files' => $_FILES ? : [],
+			'server' => $_SERVER ?? [],
+			'get' => $_GET ?? [],
+			'post' => $_POST ?? [],
+			'files' => $_FILES ?? [],
 			'stream' => self::_loadStream(),
-			'session' => $_SESSION ? : [],
-			'cookie' => $_COOKIE ? : []
+			'session' => $_SESSION ?? [],
+			'cookie' => $_COOKIE ?? []
 		];
 	}
 
