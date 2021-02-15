@@ -2,6 +2,7 @@
 namespace Redaxscript\Head;
 
 use Redaxscript\Singleton;
+use function array_key_exists;
 use function array_map;
 use function array_unshift;
 use function is_array;
@@ -185,8 +186,7 @@ abstract class HeadAbstract extends Singleton implements HeadInterface
 
 	protected function _getCollectionArray() : array
 	{
-		$collectionArray = self::$_collectionArray[self::$_namespace];
-		return is_array($collectionArray) ? $collectionArray : [];
+		return array_key_exists(self::$_namespace, self::$_collectionArray) ? self::$_collectionArray[self::$_namespace] : [];
 	}
 
 	/**

@@ -112,7 +112,7 @@
 		<!-- head -->
 
 		<testsuite name="head">
-			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/Head</directory>
+			<directory>tests/unit/Head</directory>
 		</testsuite>
 
 		<!-- html -->

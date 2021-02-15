@@ -2,6 +2,7 @@
 namespace Redaxscript\Head;
 
 use Redaxscript\Html;
+use function array_key_exists;
 
 /**
  * children class to create the meta tag
@@ -41,7 +42,7 @@ class Meta extends HeadAbstract
 
 		foreach ($collectionArray as $attribute)
 		{
-			if ($attribute['content'] && $attribute['name'] || !$attribute['name'])
+			if (array_key_exists('content', $attribute) && array_key_exists('name', $attribute) || !array_key_exists('name', $attribute))
 			{
 				$output .= $metaElement
 					->copy()

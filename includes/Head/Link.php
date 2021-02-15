@@ -4,8 +4,8 @@ namespace Redaxscript\Head;
 use Redaxscript\Asset;
 use Redaxscript\Html;
 use Redaxscript\Registry;
+use function array_key_exists;
 use function array_merge;
-use function is_array;
 
 /**
  * children class to create the link tag
@@ -175,7 +175,7 @@ class Link extends HeadAbstract
 
 		foreach ($collectionArray as $attribute)
 		{
-			if ($attribute['href'])
+			if (array_key_exists('href', $attribute))
 			{
 				$output .= $linkElement
 					->copy()
@@ -196,8 +196,7 @@ class Link extends HeadAbstract
 
 	protected function _getRewriteArray() : array
 	{
-		$rewriteArray = self::$_rewriteArray[self::$_namespace];
-		return is_array($rewriteArray) ? $rewriteArray : [];
+		return array_key_exists(self::$_namespace, self::$_rewriteArray) ? self::$_rewriteArray[self::$_namespace] : [];
 	}
 
 	/**
