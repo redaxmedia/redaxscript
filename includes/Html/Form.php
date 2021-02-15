@@ -423,7 +423,7 @@ class Form extends HtmlAbstract
 		$textareaElement = new Element();
 		$textareaElement
 			->init('textarea', $attributeArray)
-			->text($attributeArray['value'])
+			->text($attributeArray['value'] ?? null)
 			->val(null);
 		$this->append($textareaElement);
 		return $this;
@@ -473,7 +473,8 @@ class Form extends HtmlAbstract
 
 	public function selectRange(array $rangeArray = [], array $selectArray = [], ?array $attributeArray = []) : self
 	{
-		$this->select(range($rangeArray['min'], $rangeArray['max']), $selectArray, $attributeArray);
+		$range = range($rangeArray['min'] ?? 0, $rangeArray['max'] ?? 0);
+		$this->select($range, $selectArray, $attributeArray);
 		return $this;
 	}
 

@@ -92,10 +92,10 @@ class ReaderTest extends TestCaseAbstract
 		[
 			'curl' =>
 			[
-				CURLOPT_TIMEOUT_MS => 8000
+				CURLOPT_TIMEOUT_MS => 10000
 			]
 		]);
-		$reader->loadXML('https://service.redaxscript.com/xml/pad.xml');
+		$reader->loadXML('https://service.redaxscript.com/pad.xml');
 
 		/* actual */
 

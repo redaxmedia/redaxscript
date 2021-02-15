@@ -118,7 +118,7 @@
 		<!-- html -->
 
 		<testsuite name="html">
-			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/Html</directory>
+			<directory>tests/unit/Html</directory>
 		</testsuite>
 
 		<!-- navigation -->
