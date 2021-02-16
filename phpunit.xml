@@ -94,7 +94,7 @@
 		<!-- detector -->
 
 		<testsuite name="detector">
-			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/Detector</directory>
+			<directory>tests/unit/Detector</directory>
 		</testsuite>
 
 		<!-- filesystem -->

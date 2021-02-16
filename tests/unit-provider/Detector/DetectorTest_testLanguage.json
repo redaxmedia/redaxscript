@@ -8,7 +8,9 @@
 		{},
 		{},
 		{},
-		{},
+		{
+			"language": null
+		},
 		"en"
 	],
 	[
@@ -22,7 +24,9 @@
 		},
 		{},
 		{},
-		{},
+		{
+			"language": null
+		},
 		"en"
 	],
 	[
@@ -38,7 +42,9 @@
 			"language": "en"
 		},
 		{},
-		{},
+		{
+			"language": null
+		},
 		"de"
 	],
 	[
@@ -52,7 +58,9 @@
 			"language": "de"
 		},
 		{},
-		{},
+		{
+			"language": null
+		},
 		"de"
 	],
 	[
@@ -66,7 +74,9 @@
 		{
 			"HTTP_ACCEPT_LANGUAGE": "de"
 		},
-		{},
+		{
+			"language": null
+		},
 		"de"
 	],
 	[
@@ -106,7 +116,9 @@
 		{},
 		{},
 		{},
-		{},
+		{
+			"language": null
+		},
 		"de"
 	]
 ]

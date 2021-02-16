@@ -7,7 +7,9 @@
 		},
 		{},
 		{},
-		{},
+		{
+			"template": null
+		},
 		"default"
 	],
 	[
@@ -20,7 +22,9 @@
 			"t": "invalid"
 		},
 		{},
-		{},
+		{
+			"template": null
+		},
 		"default"
 	],
 	[
@@ -35,7 +39,9 @@
 		{
 			"template": "default"
 		},
-		{},
+		{
+			"template": null
+		},
 		"wide"
 	],
 	[
@@ -48,7 +54,9 @@
 		{
 			"template": "wide"
 		},
-		{},
+		{
+			"template": null
+		},
 		"wide"
 	],
 	[
@@ -85,7 +93,9 @@
 		},
 		{},
 		{},
-		{},
+		{
+			"template": null
+		},
 		"wide"
 	]
 ]
