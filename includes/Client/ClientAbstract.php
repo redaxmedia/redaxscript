@@ -3,6 +3,7 @@ namespace Redaxscript\Client;
 
 use Redaxscript\Request;
 use function floor;
+use function intval;
 use function stristr;
 use function strlen;
 use function strpos;
@@ -56,7 +57,7 @@ abstract class ClientAbstract implements ClientInterface
 	/**
 	 * get the output
 	 *
-	 * @since 2.4.0
+	 * @since 4.6.0
 	 *
 	 * @return string|null
 	 */
@@ -93,7 +94,7 @@ abstract class ClientAbstract implements ClientInterface
 
 				if ($type === 'version')
 				{
-					$this->_output = floor(substr($userAgent, strpos($userAgent, $value) + strlen($value) + 1, 3));
+					$this->_output = floor(intval(substr($userAgent, strpos($userAgent, $value) + strlen($value) + 1, 3)));
 				}
 			}
 		}

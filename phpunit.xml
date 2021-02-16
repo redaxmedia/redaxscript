@@ -70,7 +70,7 @@
 		<!-- client -->
 
 		<testsuite name="client">
-			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/Client</directory>
+			<directory>tests/unit/Client</directory>
 		</testsuite>
 
 		<!-- console -->
