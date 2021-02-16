@@ -32,7 +32,8 @@ class Category extends NavigationAbstract
 			'children' => 'rs-list-children',
 			'active' => 'rs-item-active'
 		],
-		'orderColumn' => 'rank'
+		'orderColumn' => 'rank',
+		'limit' => null
 	];
 
 	/**

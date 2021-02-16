@@ -124,7 +124,7 @@
 		<!-- navigation -->
 
 		<testsuite name="navigation">
-			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/Navigation</directory>
+			<directory>tests/unit/Navigation</directory>
 		</testsuite>
 
 		<!-- model -->

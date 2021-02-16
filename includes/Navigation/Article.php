@@ -31,7 +31,8 @@ class Article extends NavigationAbstract
 			'list' => 'rs-list-articles',
 			'active' => 'rs-item-active'
 		],
-		'orderColumn' => 'rank'
+		'orderColumn' => 'rank',
+		'limit' => null
 	];
 
 	/**

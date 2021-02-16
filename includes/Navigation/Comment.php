@@ -30,7 +30,8 @@ class Comment extends NavigationAbstract
 		[
 			'list' => 'rs-list-comments'
 		],
-		'orderColumn' => 'rank'
+		'orderColumn' => 'rank',
+		'limit' => null
 	];
 
 	/**
