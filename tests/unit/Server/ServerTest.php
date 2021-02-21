@@ -33,6 +33,7 @@ class ServerTest extends TestCaseAbstract
 	public function setUp() : void
 	{
 		parent::setUp();
+		$this->_request->init();
 		$this->_request->set('server',
 		[
 			'HTTP_HOST' => 'localhost',

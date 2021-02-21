@@ -148,7 +148,7 @@
 		<!-- server -->
 
 		<testsuite name="server">
-			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/Server</directory>
+			<directory>tests/unit/Server</directory>
 		</testsuite>
 
 		<!-- template -->
@@ -190,7 +190,7 @@
 		<!-- config -->
 
 		<testsuite name="config">
-			<file phpVersion="8" phpVersionOperator="lt">tests/unit/ConfigTest.php</file>
+			<file>tests/unit/ConfigTest.php</file>
 		</testsuite>
 
 		<!-- dater -->

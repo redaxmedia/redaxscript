@@ -60,7 +60,7 @@ class Config extends Singleton
 		$configArray = include(self::$_configPath);
 		if (is_array($configArray))
 		{
-			self::$_configArray = $configArray;
+			$this->setArray($configArray);
 		}
 	}
 
@@ -111,6 +111,19 @@ class Config extends Singleton
 	}
 
 	/**
+	 * set the array to config
+	 *
+	 * @since 5.0.0
+	 *
+	 * @param array $configArray array of the config
+	 */
+
+	public function setArray(array $configArray = []) : void
+	{
+		self::$_configArray = $configArray;
+	}
+
+	/**
 	 * reset the config
 	 *
 	 * @since 4.5.0
@@ -130,20 +143,20 @@ class Config extends Singleton
 	/**
 	 * parse from database url
 	 *
-	 * @since 3.0.0
-	 *
 	 * @param string $dbUrl database url to be parsed
+	 *
+	 * @since 3.0.0
 	 */
 
 	public function parse(string $dbUrl = null) : void
 	{
-		$dbUrl = parse_url($dbUrl);
+		$dbArray = parse_url($dbUrl);
 		$this->clear();
-		$this->set('dbType', str_replace('postgres', 'pgsql', $dbUrl['scheme']));
-		$this->set('dbHost', $dbUrl['port'] ? $dbUrl['host'] . ':' . $dbUrl['port'] : $dbUrl['host']);
-		$this->set('dbName', trim($dbUrl['path'], '/'));
-		$this->set('dbUser', $dbUrl['user']);
-		$this->set('dbPassword', $dbUrl['pass']);
+		$this->set('dbType', str_replace('postgres', 'pgsql', $dbArray['scheme']));
+		$this->set('dbHost', array_key_exists('port', $dbArray) ? $dbArray['host'] . ':' . $dbArray['port'] : $dbArray['host']);
+		$this->set('dbName', array_key_exists('path', $dbArray) ? trim($dbArray['path'], '/') : null);
+		$this->set('dbUser', $dbArray['user'] ?? null);
+		$this->set('dbPassword', $dbArray['pass'] ?? null);
 	}
 
 	/**
@@ -193,7 +206,7 @@ class Config extends Singleton
 
 	public function clear() : void
 	{
-		self::$_configArray = [];
+		$this->setArray([]);
 	}
 
 	/**

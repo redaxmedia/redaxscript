@@ -50,12 +50,7 @@ class ConfigTest extends TestCaseAbstract
 
 	public function tearDown() : void
 	{
-		$this->_config->set('dbType', $this->_configArray['dbType']);
-		$this->_config->set('dbHost', $this->_configArray['dbHost']);
-		$this->_config->set('dbPrefix', $this->_configArray['dbPrefix']);
-		$this->_config->set('dbName', $this->_configArray['dbName']);
-		$this->_config->set('dbUser', $this->_configArray['dbUser']);
-		$this->_config->set('dbPassword', $this->_configArray['dbPassword']);
+		$this->_config->setArray($this->_configArray);
 	}
 
 	/**
