@@ -2,7 +2,6 @@
 namespace Redaxscript;
 
 use function array_key_exists;
-use function is_array;
 
 /**
  * abstract class to create a singleton class
@@ -13,19 +12,16 @@ use function is_array;
  * @category Singleton
  * @author Henry Ruhs
  *
- *
  * @codeCoverageIgnore
  */
 
 abstract class Singleton
 {
 	/**
-	 * instance of the class
-	 *
-	 * @var Singleton
+	 * array of static instances
 	 */
 
-	protected static $_instance;
+	protected static array $_instanceArray = [];
 
 	/**
 	 * constructor of the class
@@ -38,9 +34,19 @@ abstract class Singleton
 	}
 
 	/**
+	 * clone of the class
+	 *
+	 * @since 5.0.0
+	 */
+
+	private function __clone()
+	{
+	}
+
+	/**
 	 * get the instance
 	 *
-	 * @since 2.2.0
+	 * @since 5.0.0
 	 *
 	 * @return static
 	 */
@@ -51,11 +57,11 @@ abstract class Singleton
 
 		/* create instance */
 
-		if (!is_array(static::$_instance) || !array_key_exists($className, static::$_instance))
+		if (!array_key_exists($className, static::$_instanceArray))
 		{
-			static::$_instance[$className] = new static();
+			static::$_instanceArray[$className] = new static();
 		}
-		return static::$_instance[$className];
+		return static::$_instanceArray[$className];
 	}
 
 	/**
@@ -67,6 +73,6 @@ abstract class Singleton
 	public static function clearInstance() : void
 	{
 		$className = static::class;
-		self::$_instance[$className] = null;
+		self::$_instanceArray[$className] = null;
 	}
 }
