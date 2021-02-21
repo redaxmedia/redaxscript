@@ -172,7 +172,7 @@
 		<!-- auth -->
 
 		<testsuite name="auth">
-			<file phpVersion="8" phpVersionOperator="lt">tests/unit/AuthTest.php</file>
+			<file>tests/unit/AuthTest.php</file>
 		</testsuite>
 
 		<!-- autoloader -->

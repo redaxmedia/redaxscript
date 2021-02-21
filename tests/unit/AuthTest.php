@@ -28,6 +28,7 @@ class AuthTest extends TestCaseAbstract
 	public function setUp() : void
 	{
 		parent::setUp();
+		$this->_request->init();
 		$optionArray = $this->getOptionArray();
 		$installer = $this->installerFactory();
 		$installer->init();

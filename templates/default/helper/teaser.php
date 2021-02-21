@@ -1,11 +1,11 @@
 <?php
 namespace Redaxscript;
 
-return Db::forTablePrefix('extras')
+$teaser = Db::forTablePrefix('extras')
 	->where(
-	[
-		'alias' => 'teaser',
-		'category' => Template\Helper::getRegistry('categoryId')
-	])
-	->findOne()
-	->text;
+		[
+			'alias' => 'teaser',
+			'category' => Template\Helper::getRegistry('categoryId')
+		])
+	->findOne();
+return $teaser->text ?? null;

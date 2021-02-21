@@ -155,8 +155,8 @@ class Auth
 
 	public function __call(string $method = null, array $argumentArray = []) : bool
 	{
-		$type = $argumentArray[0];
-		if (is_array($this->_callArray[$type]) && array_key_exists($method, $this->_callArray[$type]))
+		$type = array_key_exists(0, $argumentArray) ? $argumentArray[0] : null;
+		if (array_key_exists($type, $this->_callArray) && is_array($this->_callArray[$type]) && array_key_exists($method, $this->_callArray[$type]))
 		{
 			$permissionArray = $this->getPermission($type);
 			return is_array($permissionArray) && in_array($this->_callArray[$type][$method], $permissionArray);
@@ -205,7 +205,7 @@ class Auth
 
 		/* handle user */
 
-		if ($user->user && $user->password && $user->status)
+		if ($user && $user->user && $user->password && $user->status)
 		{
 			$groupArray = (array)json_decode($user->groups);
 			if ($groupArray)
@@ -359,7 +359,7 @@ class Auth
 
 	public function setPermission(string $key = null, array $permissionArray = []) : void
 	{
-		if (is_array($this->_permissionArray[$key]))
+		if (array_key_exists($key, $this->_permissionArray) && is_array($this->_permissionArray[$key]))
 		{
 			$permissionArray = array_merge($this->_permissionArray[$key], $permissionArray);
 		}

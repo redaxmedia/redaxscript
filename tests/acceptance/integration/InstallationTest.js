@@ -81,7 +81,14 @@ describe('InstallationTest', () =>
 		});
 	});
 
-	context('behaviour', () =>
+	context('behaviour',
+	{
+		retries:
+		{
+			runMode: 3,
+			openMode: 0
+		}
+	}, () =>
 	{
 		it('toggle content of accordion', () =>
 		{
@@ -134,7 +141,7 @@ describe('InstallationTest', () =>
 				.shouldHaveText('installation_completed');
 			cy.url(
 			{
-				timeout: 8000
+				timeout: 10000
 			}).should('eq', 'http://localhost:8000/index.php');
 		});
 	});

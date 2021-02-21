@@ -30,12 +30,13 @@ class Template extends DetectorAbstract
 		$dbStatus = $this->_registry->get('dbStatus');
 		$lastTable = $this->_registry->get('lastTable');
 		$lastId = $this->_registry->get('lastId');
+		$content = $contentModel->getByTableAndId($lastTable, $lastId);
 		$path = 'templates' . DIRECTORY_SEPARATOR . $this->_filePlaceholder . DIRECTORY_SEPARATOR . 'index.phtml';
 		$setupArray =
 		[
 			'query' => $specialFilter->sanitize($this->_request->getQuery('t')),
 			'session' => $this->_request->getSession('template'),
-			'contents' => $contentModel->getByTableAndId($lastTable, $lastId)->template,
+			'contents' => $content->template ?? null,
 			'settings' => $dbStatus === 2 ? $settingModel->get('template') : null,
 			'fallback' => 'default'
 		];
