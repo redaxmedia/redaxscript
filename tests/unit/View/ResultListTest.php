@@ -43,6 +43,7 @@ class ResultListTest extends TestCaseAbstract
 				'title' => 'Category One',
 				'alias' => 'category-one',
 				'keywords' => 'category, one',
+				'language' => 'en',
 				'date' => 1483225200
 			])
 			->save();
@@ -53,6 +54,7 @@ class ResultListTest extends TestCaseAbstract
 				'title' => 'Article One',
 				'alias' => 'article-one',
 				'keywords' => 'article, one',
+				'language' => 'en',
 				'category' => $categoryOne->id,
 				'date' => 1483225200
 			])
@@ -63,6 +65,7 @@ class ResultListTest extends TestCaseAbstract
 			[
 				'author' => 'Comment One',
 				'text' => 'Comment One',
+				'language' => 'en',
 				'article' => $articleOne->id,
 				'date' => 1451602800
 			])

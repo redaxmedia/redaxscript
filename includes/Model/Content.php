@@ -28,12 +28,14 @@ class Content
 		if ($contentAlias)
 		{
 			$categoryModel = new Category();
-			if ($categoryModel->getByAlias($contentAlias)->id)
+			$category = $categoryModel->getByAlias($contentAlias);
+			if ($category && $category->id)
 			{
 				return 'categories';
 			}
 			$articleModel = new Article();
-			if ($articleModel->getByAlias($contentAlias)->id)
+			$article = $articleModel->getByAlias($contentAlias);
+			if ($article && $article->id)
 			{
 				return 'articles';
 			}

@@ -85,7 +85,7 @@ class InstallForm extends ViewAbstract
 			])
 			->select($this->_registry->get('driverArray'),
 			[
-				$installArray['dbType']
+				$installArray['dbType'] ?? null
 			],
 			$this->_registry->get('driverArray') ?
 			[
@@ -107,7 +107,7 @@ class InstallForm extends ViewAbstract
 				'id' => 'db-host',
 				'name' => 'db-host',
 				'required' => 'required',
-				'value' => $installArray['dbHost']
+				'value' => $installArray['dbHost'] ?? null
 			])
 			->append('</li><li>')
 			->label($this->_language->get('name'),
@@ -119,7 +119,7 @@ class InstallForm extends ViewAbstract
 				'id' => 'db-name',
 				'name' => 'db-name',
 				'required' => 'required',
-				'value' => $installArray['dbName']
+				'value' => $installArray['dbName'] ?? null
 			])
 			->append('</li><li>')
 			->label($this->_language->get('user'),
@@ -131,7 +131,7 @@ class InstallForm extends ViewAbstract
 				'id' => 'db-user',
 				'name' => 'db-user',
 				'required' => 'required',
-				'value' => $installArray['dbUser']
+				'value' => $installArray['dbUser'] ?? null
 			])
 			->append('</li><li>')
 			->label($this->_language->get('password'),
@@ -142,7 +142,7 @@ class InstallForm extends ViewAbstract
 			[
 				'id' => 'db-password',
 				'name' => 'db-password',
-				'value' => $installArray['dbPassword']
+				'value' => $installArray['dbPassword'] ?? null
 			])
 			->append('</li><li>')
 			->label($this->_language->get('prefix'),
@@ -153,7 +153,7 @@ class InstallForm extends ViewAbstract
 			[
 				'id' => 'db-prefix',
 				'name' => 'db-prefix',
-				'value' => $installArray['dbPrefix']
+				'value' => $installArray['dbPrefix'] ?? null
 			])
 			->append('</li></ul>')
 
@@ -181,7 +181,7 @@ class InstallForm extends ViewAbstract
 				'name' => 'admin-name',
 				'pattern' => $nameValidator->getPattern(),
 				'required' => 'required',
-				'value' => $installArray['adminName']
+				'value' => $installArray['adminName'] ?? null
 			])
 			->append('</li><li>')
 			->label($this->_language->get('user'),
@@ -194,7 +194,7 @@ class InstallForm extends ViewAbstract
 				'name' => 'admin-user',
 				'pattern' => $userValidator->getPattern(),
 				'required' => 'required',
-				'value' => $installArray['adminUser']
+				'value' => $installArray['adminUser'] ?? null
 			])
 			->append('</li><li>')
 			->label($this->_language->get('password'),
@@ -207,7 +207,7 @@ class InstallForm extends ViewAbstract
 				'name' => 'admin-password',
 				'pattern' => $passwordValidator->getPattern(),
 				'required' => 'required',
-				'value' => $installArray['adminPassword']
+				'value' => $installArray['adminPassword'] ?? null
 			])
 			->append('</li><li>')
 			->label($this->_language->get('email'),
@@ -219,7 +219,7 @@ class InstallForm extends ViewAbstract
 				'id' => 'admin-email',
 				'name' => 'admin-email',
 				'required' => 'required',
-				'value' => $installArray['adminEmail']
+				'value' => $installArray['adminEmail'] ?? null
 			])
 			->append('</li></ul>')
 			->hidden(

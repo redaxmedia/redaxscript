@@ -280,25 +280,28 @@ class Form extends HtmlAbstract
 
 	public function __call(string $method = null, ?array $argumentArray = []) : self
 	{
+		$text = array_key_exists(0, $argumentArray) ? $argumentArray[0] : null;
+		$attributeArray = array_key_exists(1, $argumentArray) ? $argumentArray[1] : [];
+
 		/* input */
 
 		if (is_array($this->_attributeArray['input']) && array_key_exists($method, $this->_attributeArray['input']))
 		{
-			return $this->append($this->_createInput($method, $argumentArray[0]));
+			return $this->append($this->_createInput($method, $text));
 		}
 
 		/* button */
 
 		if (is_array($this->_attributeArray['button']) && array_key_exists($method, $this->_attributeArray['button']))
 		{
-			return $this->append($this->_createButton($method, $argumentArray[0], $argumentArray[1]));
+			return $this->append($this->_createButton($method, $text, $attributeArray));
 		}
 
 		/* link */
 
 		if (is_array($this->_attributeArray['link']) && array_key_exists($method, $this->_attributeArray['link']))
 		{
-			return $this->append($this->_createLink($method, $argumentArray[0], $argumentArray[1]));
+			return $this->append($this->_createLink($method, $text, $attributeArray));
 		}
 		return $this;
 	}
@@ -587,7 +590,6 @@ class Form extends HtmlAbstract
 	{
 		if (is_array($attributeArray))
 		{
-
 			$attributeArray = array_merge($this->_attributeArray['input'][$type], $attributeArray);
 		}
 		else

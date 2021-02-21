@@ -8,7 +8,6 @@ use function array_key_exists;
 use function array_replace_recursive;
 use function count;
 use function is_array;
-use function is_numeric;
 use function strlen;
 
 /**
@@ -323,7 +322,7 @@ class Messenger
 
 			/* meta redirect */
 
-			if (is_numeric($this->_actionArray['redirect']))
+			if (array_key_exists('redirect', $this->_actionArray))
 			{
 				$output .= $element
 					->copy()

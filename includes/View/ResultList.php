@@ -78,7 +78,7 @@ class ResultList extends ViewAbstract
 
 				foreach ($result as $value)
 				{
-					if ($accessValidator->validate($result->access, $this->_registry->get('myGroups')))
+					if ($accessValidator->validate($value->access, $this->_registry->get('myGroups')))
 					{
 						$dater->init($value->date);
 						$linkElement

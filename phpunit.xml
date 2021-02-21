@@ -166,7 +166,7 @@
 		<!-- view -->
 
 		<testsuite name="view">
-			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/View</directory>
+			<directory>tests/unit/View</directory>
 		</testsuite>
 
 		<!-- auth -->

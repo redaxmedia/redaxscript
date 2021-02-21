@@ -5,6 +5,7 @@ use Redaxscript\Filter;
 use Redaxscript\Model;
 use Redaxscript\Validator;
 use Redaxscript\View;
+use function array_key_exists;
 use function in_array;
 use function is_array;
 use function str_replace;
@@ -163,7 +164,7 @@ class Search extends ControllerAbstract
 
 		/* process table */
 
-		if (is_array($searchArray['table']))
+		if (array_key_exists('table', $searchArray) && is_array($searchArray['table']) && array_key_exists('search', $searchArray) && array_key_exists('language', $searchArray))
 		{
 			foreach ($searchArray['table'] as $table)
 			{
