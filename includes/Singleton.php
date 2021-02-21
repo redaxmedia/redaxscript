@@ -19,9 +19,11 @@ abstract class Singleton
 {
 	/**
 	 * array of static instances
+	 *
+	 * @var array
 	 */
 
-	protected static array $_instanceArray = [];
+	protected static $_instanceArray = [];
 
 	/**
 	 * constructor of the class
