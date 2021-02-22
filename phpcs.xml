@@ -12,16 +12,13 @@
 
 	<!-- exclude from slevomat -->
 
-	<rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingTraversableReturnTypeHintSpecification">
+	<rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHint">
 		<exclude-pattern>*</exclude-pattern>
 	</rule>
-	<rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingTraversableParameterTypeHintSpecification">
+	<rule ref="SlevomatCodingStandard.TypeHints.PropertyTypeHint">
 		<exclude-pattern>*</exclude-pattern>
 	</rule>
-	<rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingTraversablePropertyTypeHintSpecification">
+	<rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHint">
 		<exclude-pattern>*</exclude-pattern>
-	</rule>
-	<rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration">
-		<exclude-pattern>*Interface.php</exclude-pattern>
 	</rule>
 </ruleset>
