@@ -5,6 +5,7 @@
 	"homepage": "https://redaxscript.com",
 	"license": "MIT",
 	"minimum-stability": "dev",
+	"prefer-stable": true,
 	"require":
 	{
 		"j4mie/idiorm": "v1.5.7",
