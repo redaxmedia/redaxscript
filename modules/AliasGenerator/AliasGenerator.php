@@ -28,7 +28,7 @@ class AliasGenerator extends Module\Module
 		'alias' => 'AliasGenerator',
 		'author' => 'Redaxmedia',
 		'description' => 'Generate user friendly URL fragments',
-		'version' => '4.5.0',
+		'version' => '4.6.0',
 		'license' => 'MIT'
 	];
 

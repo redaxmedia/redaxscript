@@ -31,7 +31,7 @@ class HtmlValidator extends Module\Metadata
 		'alias' => 'HtmlValidator',
 		'author' => 'Redaxmedia',
 		'description' => 'Realtime W3C validator for your HTML',
-		'version' => '4.5.0',
+		'version' => '4.6.0',
 		'license' => 'MIT',
 		'access' => '[1]'
 	];
