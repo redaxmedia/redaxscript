@@ -129,7 +129,6 @@ class ModuleTable extends ViewAbstract
 					->copy()
 					->attr('id', 'row-' . $value->id)
 					->addClass(!$value->status ? 'rs-admin-is-disabled' : null)
-					->addClass(!in_array($value->alias, $modulesFilesystemArray) ? 'rs-admin-is-corrupted' : null)
 					->html(
 						$tdElement->copy()->html(
 							$linkElement
