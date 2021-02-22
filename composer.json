@@ -7,7 +7,7 @@
 	"require":
 	{
 		"j4mie/idiorm": "v1.5.7",
-		"php": "8"
+		"php": "^8"
 	},
 	"require-dev":
 	{
