@@ -8,10 +8,10 @@ jobs:
   steps:
   - name: Checkout
     uses: actions/checkout@v2
-  - name: Set up PHP 7.4
+  - name: Set up PHP 8.0
     uses: shivammathur/setup-php@2.9.0
     with:
-     php-version: 7.4
+     php-version: 8.0
   - name: Set up Node 14
     uses: actions/setup-node@v1
     with:
@@ -24,10 +24,10 @@ jobs:
   steps:
   - name: Checkout
     uses: actions/checkout@v2
-  - name: Set up PHP 7.4
+  - name: Set up PHP 8.0
     uses: shivammathur/setup-php@2.9.0
     with:
-     php-version: 7.4
+     php-version: 8.0
   - name: Set up Node 14
     uses: actions/setup-node@v1
     with:
@@ -39,7 +39,7 @@ jobs:
   runs-on: ubuntu-latest
   strategy:
    matrix:
-    php-version: [ 7.2, 7.3, 7.4, 8.0, 8.1 ]
+    php-version: [ 8.0, 8.1 ]
   steps:
   - name: Checkout
     uses: actions/checkout@v2
@@ -48,10 +48,6 @@ jobs:
     with:
      php-version: ${{ matrix.php-version }}
   - run: sudo apt-get install sendmail
-  - run: composer remove sebastian/phpcpd brianium/paratest --dev --no-update
-    if: matrix.php-version < 7.4
-  - run: composer require phpunit/phpunit 8.5.8 --dev --no-update
-    if: matrix.php-version < 7.4
   - run: composer install --ignore-platform-reqs
   - run: vendor/bin/phpunit
  test-acceptance:
@@ -59,10 +55,10 @@ jobs:
   steps:
   - name: Checkout
     uses: actions/checkout@v2
-  - name: Set up PHP 7.4
+  - name: Set up PHP 8.0
     uses: shivammathur/setup-php@2.9.0
     with:
-     php-version: 7.4
+     php-version: 8.0
   - name: Set up Node 14
     uses: actions/setup-node@v1
     with:
@@ -81,10 +77,10 @@ jobs:
   steps:
   - name: Checkout
     uses: actions/checkout@v2
-  - name: Set up PHP 7.4
+  - name: Set up PHP 8.0
     uses: shivammathur/setup-php@2.9.0
     with:
-     php-version: 7.4
+     php-version: 8.0
   - run: sudo apt-get install sendmail
   - run: composer require php-coveralls/php-coveralls 2.4.2 --dev --no-update
   - run: composer install
