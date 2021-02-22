@@ -28,7 +28,7 @@ class UnmaskPassword extends Module\Module
 		'alias' => 'UnmaskPassword',
 		'author' => 'Redaxmedia',
 		'description' => 'Unmask focused password fields',
-		'version' => '4.6.0',
+		'version' => '5.0.0',
 		'license' => 'MIT'
 	];
 

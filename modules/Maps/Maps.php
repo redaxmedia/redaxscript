@@ -32,7 +32,7 @@ class Maps extends Module\Module
 		'alias' => 'Maps',
 		'author' => 'Redaxmedia',
 		'description' => 'Integrate Google Maps',
-		'version' => '4.6.0',
+		'version' => '5.0.0',
 		'license' => 'MIT'
 	];
 

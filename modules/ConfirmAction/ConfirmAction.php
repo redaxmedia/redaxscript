@@ -29,7 +29,7 @@ class ConfirmAction extends Module\Module
 		'alias' => 'ConfirmAction',
 		'author' => 'Redaxmedia',
 		'description' => 'Implement a confirmation for critical action',
-		'version' => '4.6.0',
+		'version' => '5.0.0',
 		'license' => 'MIT'
 	];
 

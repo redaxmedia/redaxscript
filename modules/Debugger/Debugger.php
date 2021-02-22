@@ -33,7 +33,7 @@ class Debugger extends Module\Module
 		'alias' => 'Debugger',
 		'author' => 'Redaxmedia',
 		'description' => 'Debug like a boss',
-		'version' => '4.6.0',
+		'version' => '5.0.0',
 		'license' => 'MIT',
 		'access' => '[1]'
 	];

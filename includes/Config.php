@@ -113,7 +113,7 @@ class Config extends Singleton
 	/**
 	 * set the array to config
 	 *
-	 * @since 4.6.0
+	 * @since 5.0.0
 	 *
 	 * @param array $configArray array of the config
 	 */

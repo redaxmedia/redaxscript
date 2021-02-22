@@ -38,7 +38,7 @@ abstract class Singleton
 	/**
 	 * clone of the class
 	 *
-	 * @since 4.6.0
+	 * @since 5.0.0
 	 */
 
 	private function __clone()
@@ -48,7 +48,7 @@ abstract class Singleton
 	/**
 	 * get the instance
 	 *
-	 * @since 4.6.0
+	 * @since 5.0.0
 	 *
 	 * @return static
 	 */

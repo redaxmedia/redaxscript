@@ -30,7 +30,7 @@ class CodeEditor extends Module\Module
 		'alias' => 'CodeEditor',
 		'author' => 'Redaxmedia',
 		'description' => 'Publish content with perfect code',
-		'version' => '4.6.0',
+		'version' => '5.0.0',
 		'license' => 'MIT'
 	];
 

@@ -31,7 +31,7 @@ class CssValidator extends Module\Metadata
 		'alias' => 'CssValidator',
 		'author' => 'Redaxmedia',
 		'description' => 'Realtime W3C validator for your CSS',
-		'version' => '4.6.0',
+		'version' => '5.0.0',
 		'license' => 'MIT',
 		'access' => '[1]'
 	];

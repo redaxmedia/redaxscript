@@ -6,7 +6,6 @@ use function array_key_exists;
 use function array_keys;
 use function end;
 use function is_array;
-use function is_string;
 use function method_exists;
 
 /**

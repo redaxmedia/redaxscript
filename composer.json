@@ -1,13 +1,13 @@
 {
 	"name": "redaxscript/redaxscript",
 	"description": "A modern, ultra lightweight and rocket fast Content Management System",
-	"version": "4.6.0",
+	"version": "5.0.0",
 	"homepage": "https://redaxscript.com",
 	"license": "MIT",
 	"require":
 	{
 		"j4mie/idiorm": "v1.5.7",
-		"php": "^7.2 || ^8"
+		"php": "8"
 	},
 	"require-dev":
 	{

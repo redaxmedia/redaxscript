@@ -57,7 +57,7 @@ abstract class ClientAbstract implements ClientInterface
 	/**
 	 * get the output
 	 *
-	 * @since 4.6.0
+	 * @since 5.0.0
 	 *
 	 * @return string|null
 	 */
