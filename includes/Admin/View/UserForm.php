@@ -260,7 +260,7 @@ class UserForm extends ViewAbstract
 			}
 			$formElement->append('</ul>');
 		}
-		if (!$user?->id)
+		if ($user?->id)
 		{
 			$formElement
 				->hidden(
