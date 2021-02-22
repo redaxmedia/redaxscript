@@ -82,9 +82,8 @@ jobs:
     with:
      php-version: 8.0
   - run: sudo apt-get install sendmail
-  - run: composer require php-coveralls/php-coveralls 2.4.2 --dev --no-update
+  - run: composer require php-coveralls/php-coveralls 2.4.3 --dev --no-update
   - run: composer install
-  - run: wget https://scrutinizer-ci.com/ocular.phar
   - run: vendor/bin/phpunit --coverage-clover=build/logs/clover.xml
     env:
      XDEBUG_MODE: coverage
@@ -92,5 +91,3 @@ jobs:
     run: vendor/bin/php-coveralls --coverage_clover=build/logs/clover.xml
     env:
      COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  - name: Report to Scrutinizer
-    run: php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml
