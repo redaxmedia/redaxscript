@@ -71,7 +71,7 @@ class ExtraTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $extraModel->getByAlias($extraAlias)->id;
+		$actual = $extraModel->getByAlias($extraAlias)->id ?? null;
 
 		/* compare */
 

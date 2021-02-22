@@ -80,7 +80,7 @@ class CategoryTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $categoryModel->getByAlias($categoryAlias)->id;
+		$actual = $categoryModel->getByAlias($categoryAlias)->id ?? null;
 
 		/* compare */
 

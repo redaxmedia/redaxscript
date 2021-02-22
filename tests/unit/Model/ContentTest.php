@@ -116,7 +116,7 @@ class ContentTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $contentModel->getByTableAndId($table, $contentId)->alias;
+		$actual = $contentModel->getByTableAndId($table, $contentId)->alias ?? null;
 
 		/* compare */
 

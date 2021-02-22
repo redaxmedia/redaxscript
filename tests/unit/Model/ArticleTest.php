@@ -140,7 +140,7 @@ class ArticleTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $articleModel->getByAlias($articleAlias)->id;
+		$actual = $articleModel->getByAlias($articleAlias)->id ?? null;
 
 		/* compare */
 
@@ -206,7 +206,7 @@ class ArticleTest extends TestCaseAbstract
 
 		foreach ($actualObject as $value)
 		{
-			$actualArray[] = $value->alias;
+			$actualArray[] = $value->alias ?? null;
 		}
 
 		/* compare */

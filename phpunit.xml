@@ -130,7 +130,7 @@
 		<!-- model -->
 
 		<testsuite name="model">
-			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/Model</directory>
+			<directory>tests/unit/Model</directory>
 		</testsuite>
 
 		<!-- module -->

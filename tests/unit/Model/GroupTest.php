@@ -71,7 +71,7 @@ class GroupTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $groupModel->getByAlias($groupAlias)->id;
+		$actual = $groupModel->getByAlias($groupAlias)->id ?? null;
 
 		/* compare */
 

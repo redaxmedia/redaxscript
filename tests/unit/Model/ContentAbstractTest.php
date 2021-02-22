@@ -137,7 +137,7 @@ class ContentAbstractTest extends TestCaseAbstract
 
 		foreach ($actualObject as $value)
 		{
-			$actualArray[] = $value->alias;
+			$actualArray[] = $value->alias ?? null;
 		}
 
 		/* compare */
@@ -172,7 +172,7 @@ class ContentAbstractTest extends TestCaseAbstract
 
 		foreach ($actualObject as $value)
 		{
-			$actualArray[] = $value->alias;
+			$actualArray[] = $value->alias ?? null;
 		}
 
 		/* compare */
@@ -208,7 +208,7 @@ class ContentAbstractTest extends TestCaseAbstract
 
 		foreach ($actualObject as $value)
 		{
-			$actualArray[] = $value->alias;
+			$actualArray[] = $value->alias ?? null;
 		}
 
 		/* compare */

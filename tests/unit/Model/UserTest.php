@@ -83,7 +83,7 @@ class UserTest extends TestCaseAbstract
 
 		/* actual */
 
-		$actual = $userModel->getByUser($user)->id;
+		$actual = $userModel->getByUser($user)->id ?? null;
 
 		/* compare */
 
