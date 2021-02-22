@@ -8,7 +8,6 @@ use Redaxscript\Html;
 use Redaxscript\Module;
 use function array_diff;
 use function count;
-use function in_array;
 
 /**
  * children class to create the admin module table
