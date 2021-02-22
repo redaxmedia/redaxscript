@@ -23,6 +23,18 @@ use function putenv;
 class CommonTest extends TestCaseAbstract
 {
 	/**
+	 * setUp
+	 *
+	 * @since 5.0.0
+	 */
+
+	public function setUp() : void
+	{
+		parent::setUp();
+		$this->_request->init();
+	}
+
+	/**
 	 * testServer
 	 *
 	 * @since 3.2.3

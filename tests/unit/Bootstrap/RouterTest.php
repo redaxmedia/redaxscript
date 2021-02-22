@@ -22,6 +22,18 @@ use Redaxscript\Tests\TestCaseAbstract;
 class RouterTest extends TestCaseAbstract
 {
 	/**
+	 * setUp
+	 *
+	 * @since 5.0.0
+	 */
+
+	public function setUp() : void
+	{
+		parent::setUp();
+		$this->_request->init();
+	}
+
+	/**
 	 * testRouter
 	 *
 	 * @since 3.1.0

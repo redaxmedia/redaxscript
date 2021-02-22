@@ -19,6 +19,7 @@
 	<!-- testsuites -->
 
 	<testsuites>
+
 		<!-- admin controller -->
 
 		<testsuite name="admin-controller">
@@ -64,7 +65,7 @@
 		<!-- bootstrap -->
 
 		<testsuite name="_bootstrap">
-			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/Bootstrap</directory>
+			<directory>tests/unit/Bootstrap</directory>
 		</testsuite>
 
 		<!-- client -->

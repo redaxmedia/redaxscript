@@ -22,6 +22,18 @@ use Redaxscript\Tests\TestCaseAbstract;
 class DetectorTest extends TestCaseAbstract
 {
 	/**
+	 * setUp
+	 *
+	 * @since 5.0.0
+	 */
+
+	public function setUp() : void
+	{
+		parent::setUp();
+		$this->_request->init();
+	}
+
+	/**
 	 * testDetector
 	 *
 	 * @since 3.1.0
