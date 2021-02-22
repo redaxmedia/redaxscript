@@ -144,11 +144,11 @@ class Common extends BootstrapAbstract
 		}
 		$this->_registry->set('phpVersion', $phpVersion);
 		$this->_registry->set('phpStatus', 0);
-		if (version_compare($phpVersion, '7.5', '>='))
+		if (version_compare($phpVersion, '8.2', '>='))
 		{
 			$this->_registry->set('phpStatus', 1);
 		}
-		else if (version_compare($phpVersion, '7.2', '>='))
+		else if (version_compare($phpVersion, '8.0', '>='))
 		{
 			$this->_registry->set('phpStatus', 2);
 		}
