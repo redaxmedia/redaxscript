@@ -48,7 +48,7 @@ class UserForm extends ViewAbstract
 			[
 				'class' => 'rs-admin-title-content',
 			])
-			->text($user->id ? $user->name : $this->_language->get('user_new'));
+			->text($user?->id ? $user?->name : $this->_language->get('user_new'));
 		$formElement = new Admin\Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[
@@ -75,7 +75,7 @@ class UserForm extends ViewAbstract
 				],
 				'delete' =>
 				[
-					'href' => $user->id ? $this->_registry->get('parameterRoute') . 'admin/delete/users/' . $user->id . '/' . $this->_registry->get('token') : null
+					'href' => $user?->id ? $this->_registry->get('parameterRoute') . 'admin/delete/users/' . $user?->id . '/' . $this->_registry->get('token') : null
 				]
 			]
 		]);
@@ -110,7 +110,7 @@ class UserForm extends ViewAbstract
 				'name' => 'name',
 				'pattern' => $nameValidator->getPattern(),
 				'required' => 'required',
-				'value' => $user->name
+				'value' => $user?->name
 			])
 			->append('</li><li>')
 			->label($this->_language->get('user'),
@@ -123,7 +123,7 @@ class UserForm extends ViewAbstract
 				'name' => 'user',
 				'pattern' => $userValidator->getPattern(),
 				'required' => 'required',
-				'value' => $user->user
+				'value' => $user?->user
 			])
 			->append('</li><li>')
 			->label($this->_language->get('description'),
@@ -136,14 +136,14 @@ class UserForm extends ViewAbstract
 				'id' => 'description',
 				'name' => 'description',
 				'rows' => 1,
-				'value' => $user->description
+				'value' => $user?->description
 			])
 			->append('</li><li>')
 			->label($this->_language->get('password'),
 			[
 				'for' => 'password'
 			])
-			->password(!$user->id ?
+			->password(!$user?->id ?
 			[
 				'id' => 'password',
 				'name' => 'password',
@@ -167,7 +167,7 @@ class UserForm extends ViewAbstract
 				'id' => 'email',
 				'name' => 'email',
 				'required' => 'required',
-				'value' => $user->email
+				'value' => $user?->email
 			])
 			->append('</li></ul>')
 
@@ -191,14 +191,14 @@ class UserForm extends ViewAbstract
 			])
 			->select($helperOption->getLanguageArray(),
 			[
-				$user->language
+				$user?->language
 			],
 			[
 				'id' => 'language',
 				'name' => 'language'
 			])
 			->append('</li></ul>');
-		if (!$user->id || $user->id > 1)
+		if (!$user?->id || $user?->id > 1)
 		{
 			$formElement
 
@@ -220,7 +220,7 @@ class UserForm extends ViewAbstract
 				[
 					'for' => 'status'
 				])
-				->checkbox(!$user->id || $user->status ?
+				->checkbox(!$user?->id || $user?->status ?
 				[
 					'id' => 'status',
 					'class' => 'rs-admin-fn-status-switch',
@@ -249,7 +249,7 @@ class UserForm extends ViewAbstract
 						'for' => 'groups'
 					])
 					->select($helperOption->getGroupArray(),
-					(array)json_decode($user->groups),
+					(array)json_decode($user?->groups),
 					[
 						'id' => 'groups',
 						'name' => 'groups[]',
@@ -260,22 +260,26 @@ class UserForm extends ViewAbstract
 			}
 			$formElement->append('</ul>');
 		}
+		if (!$user?->id)
+		{
+			$formElement
+				->hidden(
+				[
+					'name' => 'id',
+					'value' => $user?->id
+				]);
+		}
 		$formElement
-			->hidden(
-			[
-				'name' => 'id',
-				'value' => $user->id
-			])
 			->token()
 			->append('<div class="rs-admin-wrapper-button">')
 			->cancel();
-		if ($user->id)
+		if ($user?->id)
 		{
-			if (($this->_registry->get('usersDelete') || $this->_registry->get('myId') === $user->id) && $user->id > 1)
+			if (($this->_registry->get('usersDelete') || $this->_registry->get('myId') === $user?->id) && $user?->id > 1)
 			{
 				$formElement->delete();
 			}
-			if ($this->_registry->get('usersEdit') || $this->_registry->get('myId') === $user->id)
+			if ($this->_registry->get('usersEdit') || $this->_registry->get('myId') === $user?->id)
 			{
 				$formElement->save();
 			}

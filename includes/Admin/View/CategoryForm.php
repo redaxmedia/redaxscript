@@ -40,7 +40,7 @@ class CategoryForm extends ViewAbstract
 		$nameValidator = new Validator\Name();
 		$aliasValidator = new Validator\Alias();
 		$dater = new Dater();
-		$dater->init($category->date);
+		$dater->init($category?->date);
 
 		/* html element */
 
@@ -50,7 +50,7 @@ class CategoryForm extends ViewAbstract
 			[
 				'class' => 'rs-admin-title-content',
 			])
-			->text($category->id ? $category->title : $this->_language->get('category_new'));
+			->text($category?->id ? $category?->title : $this->_language->get('category_new'));
 		$formElement = new Admin\Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[
@@ -77,7 +77,7 @@ class CategoryForm extends ViewAbstract
 				],
 				'delete' =>
 				[
-					'href' => $category->id ? $this->_registry->get('parameterRoute') . 'admin/delete/categories/' . $category->id . '/' . $this->_registry->get('token') : null
+					'href' => $category?->id ? $this->_registry->get('parameterRoute') . 'admin/delete/categories/' . $category?->id . '/' . $this->_registry->get('token') : null
 				]
 			]
 		]);
@@ -113,7 +113,7 @@ class CategoryForm extends ViewAbstract
 				'name' => 'title',
 				'pattern' => $nameValidator->getPattern(),
 				'required' => 'required',
-				'value' => $category->title
+				'value' => $category?->title
 			])
 			->append('</li><li>')
 			->label($this->_language->get('alias'),
@@ -127,7 +127,7 @@ class CategoryForm extends ViewAbstract
 				'name' => 'alias',
 				'pattern' => $aliasValidator->getPattern(),
 				'required' => 'required',
-				'value' => $category->alias
+				'value' => $category?->alias
 			])
 			->append('</li><li>')
 			->label($this->_language->get('description'),
@@ -140,7 +140,7 @@ class CategoryForm extends ViewAbstract
 				'id' => 'description',
 				'name' => 'description',
 				'rows' => 1,
-				'value' => $category->description
+				'value' => $category?->description
 			])
 			->append('</li><li>')
 			->label($this->_language->get('keywords'),
@@ -153,7 +153,7 @@ class CategoryForm extends ViewAbstract
 				'id' => 'keywords',
 				'name' => 'keywords',
 				'rows' => 1,
-				'value' => $category->keywords
+				'value' => $category?->keywords
 			])
 			->append('</li><li>')
 			->label($this->_language->get('robots'),
@@ -162,7 +162,7 @@ class CategoryForm extends ViewAbstract
 			])
 			->select($helperOption->getRobotArray(),
 			[
-				$category->robots
+				$category?->robots
 			],
 			[
 				'id' => 'robots',
@@ -190,7 +190,7 @@ class CategoryForm extends ViewAbstract
 			])
 			->select($helperOption->getLanguageArray(),
 			[
-				$category->language
+				$category?->language
 			],
 			[
 				'id' => 'language',
@@ -203,7 +203,7 @@ class CategoryForm extends ViewAbstract
 			])
 			->select($helperOption->getTemplateArray(),
 			[
-				$category->template
+				$category?->template
 			],
 			[
 				'id' => 'template',
@@ -214,9 +214,9 @@ class CategoryForm extends ViewAbstract
 			[
 				'for' => 'sibling'
 			])
-			->select($helperOption->getSiblingForCategoryArray($category->id),
+			->select($helperOption->getSiblingForCategoryArray($category?->id),
 			[
-				$category->sibling
+				$category?->sibling
 			],
 			[
 				'id' => 'sibling',
@@ -227,9 +227,9 @@ class CategoryForm extends ViewAbstract
 			[
 				'for' => 'parent'
 			])
-			->select($helperOption->getParentForCategoryArray($category->id),
+			->select($helperOption->getParentForCategoryArray($category?->id),
 			[
-				$category->parent
+				$category?->parent
 			],
 			[
 				'id' => 'parent',
@@ -255,7 +255,7 @@ class CategoryForm extends ViewAbstract
 			[
 				'for' => 'status'
 			])
-			->checkbox(!$category->id || $category->status ?
+			->checkbox(!$category?->id || $category?->status ?
 			[
 				'id' => 'status',
 				'class' => 'rs-admin-fn-status-switch',
@@ -283,7 +283,7 @@ class CategoryForm extends ViewAbstract
 			[
 				'id' => 'rank',
 				'name' => 'rank',
-				'value' => $category->id ? $category->rank : $categoryModel->query()->max('rank') + 1
+				'value' => $category?->id ? $category?->rank : $categoryModel->query()->max('rank') + 1
 			])
 			->append('</li>');
 		if ($this->_registry->get('groupsEdit'))
@@ -295,7 +295,7 @@ class CategoryForm extends ViewAbstract
 					'for' => 'access'
 				])
 				->select($helperOption->getGroupArray(),
-				(array)json_decode($category->access),
+				(array)json_decode($category?->access),
 				[
 					'id' => 'access',
 					'name' => 'access[]',
@@ -316,16 +316,21 @@ class CategoryForm extends ViewAbstract
 				'name' => 'date',
 				'value' => $dater->formatField()
 			])
-			->append('</li></ul>')
-			->hidden(
-			[
-				'name' => 'id',
-				'value' => $category->id
-			])
+			->append('</li></ul>');
+		if ($category?->id)
+		{
+			$formElement
+				->hidden(
+				[
+					'name' => 'id',
+					'value' => $category?->id
+				]);
+		}
+		$formElement
 			->token()
 			->append('<div class="rs-admin-wrapper-button">')
 			->cancel();
-		if ($category->id)
+		if ($category?->id)
 		{
 			if ($this->_registry->get('categoriesDelete'))
 			{

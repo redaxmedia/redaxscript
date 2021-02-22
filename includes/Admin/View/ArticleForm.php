@@ -41,7 +41,7 @@ class ArticleForm extends ViewAbstract
 		$nameValidator = new Validator\Name();
 		$aliasValidator = new Validator\Alias();
 		$dater = new Dater();
-		$dater->init($article->date);
+		$dater->init($article?->date);
 
 		/* html element */
 
@@ -51,7 +51,7 @@ class ArticleForm extends ViewAbstract
 			[
 				'class' => 'rs-admin-title-content',
 			])
-			->text($article->id ? $article->title : $this->_language->get('article_new'));
+			->text($article?->id ? $article?->title : $this->_language->get('article_new'));
 		$formElement = new Admin\Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[
@@ -78,7 +78,7 @@ class ArticleForm extends ViewAbstract
 				],
 				'delete' =>
 				[
-					'href' => $article->id ? $this->_registry->get('parameterRoute') . 'admin/delete/articles/' . $article->id . '/' . $this->_registry->get('token') : null
+					'href' => $article?->id ? $this->_registry->get('parameterRoute') . 'admin/delete/articles/' . $article?->id . '/' . $this->_registry->get('token') : null
 				]
 			]
 		]);
@@ -114,7 +114,7 @@ class ArticleForm extends ViewAbstract
 				'name' => 'title',
 				'pattern' => $nameValidator->getPattern(),
 				'required' => 'required',
-				'value' => $article->title
+				'value' => $article?->title
 			])
 			->append('</li><li>')
 			->label($this->_language->get('alias'),
@@ -128,7 +128,7 @@ class ArticleForm extends ViewAbstract
 				'name' => 'alias',
 				'pattern' => $aliasValidator->getPattern(),
 				'required' => 'required',
-				'value' => $article->alias
+				'value' => $article?->alias
 			])
 			->append('</li><li>')
 			->label($this->_language->get('description'),
@@ -141,7 +141,7 @@ class ArticleForm extends ViewAbstract
 				'id' => 'description',
 				'name' => 'description',
 				'rows' => 1,
-				'value' => $article->description
+				'value' => $article?->description
 			])
 			->append('</li><li>')
 			->label($this->_language->get('keywords'),
@@ -154,7 +154,7 @@ class ArticleForm extends ViewAbstract
 				'id' => 'keywords',
 				'name' => 'keywords',
 				'rows' => 1,
-				'value' => $article->keywords
+				'value' => $article?->keywords
 			])
 			->append('</li><li>')
 			->label($this->_language->get('robots'),
@@ -163,7 +163,7 @@ class ArticleForm extends ViewAbstract
 			])
 			->select($helperOption->getRobotArray(),
 			[
-				$article->robots
+				$article?->robots
 			],
 			[
 				'id' => 'robots',
@@ -180,7 +180,7 @@ class ArticleForm extends ViewAbstract
 				'id' => 'text',
 				'name' => 'text',
 				'required' => 'required',
-				'value' => htmlspecialchars($article->text, ENT_QUOTES)
+				'value' => htmlspecialchars($article?->text, ENT_QUOTES)
 			])
 			->append('</li></ul>')
 
@@ -204,7 +204,7 @@ class ArticleForm extends ViewAbstract
 			])
 			->select($helperOption->getLanguageArray(),
 			[
-				$article->language
+				$article?->language
 			],
 			[
 				'id' => 'language',
@@ -217,7 +217,7 @@ class ArticleForm extends ViewAbstract
 			])
 			->select($helperOption->getTemplateArray(),
 			[
-				$article->template
+				$article?->template
 			],
 			[
 				'id' => 'template',
@@ -228,9 +228,9 @@ class ArticleForm extends ViewAbstract
 			[
 				'for' => 'sibling'
 			])
-			->select($helperOption->getSiblingForArticleArray($article->id),
+			->select($helperOption->getSiblingForArticleArray($article?->id),
 			[
-				$article->sibling
+				$article?->sibling
 			],
 			[
 				'id' => 'sibling',
@@ -243,7 +243,7 @@ class ArticleForm extends ViewAbstract
 			])
 			->select($helperOption->getCategoryArray(),
 			[
-				$article->category
+				$article?->category
 			],
 			[
 				'id' => 'category',
@@ -269,7 +269,7 @@ class ArticleForm extends ViewAbstract
 			[
 				'for' => 'headline'
 			])
-			->checkbox(!$article->id || $article->headline ?
+			->checkbox(!$article?->id || $article?->headline ?
 			[
 				'id' => 'headline',
 				'class' => 'rs-admin-fn-status-switch',
@@ -293,7 +293,7 @@ class ArticleForm extends ViewAbstract
 			[
 				'for' => 'byline'
 			])
-			->checkbox(!$article->id || $article->byline ?
+			->checkbox(!$article?->id || $article?->byline ?
 			[
 				'id' => 'byline',
 				'class' => 'rs-admin-fn-status-switch',
@@ -317,7 +317,7 @@ class ArticleForm extends ViewAbstract
 			[
 				'for' => 'comments'
 			])
-			->checkbox($article->comments ?
+			->checkbox($article?->comments ?
 			[
 				'id' => 'comments',
 				'class' => 'rs-admin-fn-status-switch',
@@ -341,7 +341,7 @@ class ArticleForm extends ViewAbstract
 			[
 				'for' => 'status'
 			])
-			->checkbox(!$article->id || $article->status ?
+			->checkbox(!$article?->id || $article?->status ?
 			[
 				'id' => 'status',
 				'class' => 'rs-admin-fn-status-switch',
@@ -369,7 +369,7 @@ class ArticleForm extends ViewAbstract
 			[
 				'id' => 'rank',
 				'name' => 'rank',
-				'value' => $article->id ? $article->rank : $articleModel->query()->max('rank') + 1
+				'value' => $article?->title ? $article?->rank : $articleModel->query()->max('rank') + 1
 			])
 			->append('</li>');
 		if ($this->_registry->get('groupsEdit'))
@@ -381,7 +381,7 @@ class ArticleForm extends ViewAbstract
 					'for' => 'access'
 				])
 				->select($helperOption->getGroupArray(),
-				(array)json_decode($article->access),
+				(array)json_decode($article?->access),
 				[
 					'id' => 'access',
 					'name' => 'access[]',
@@ -402,16 +402,21 @@ class ArticleForm extends ViewAbstract
 				'name' => 'date',
 				'value' => $dater->formatField()
 			])
-			->append('</li></ul>')
-			->hidden(
-			[
-				'name' => 'id',
-				'value' => $article->id
-			])
+			->append('</li></ul>');
+		if ($article?->id)
+		{
+			$formElement
+				->hidden(
+				[
+					'name' => 'id',
+					'value' => $article?->id
+				]);
+		}
+		$formElement
 			->token()
 			->append('<div class="rs-admin-wrapper-button">')
 			->cancel();
-		if ($article->id)
+		if ($article?->id)
 		{
 			if ($this->_registry->get('articlesDelete'))
 			{

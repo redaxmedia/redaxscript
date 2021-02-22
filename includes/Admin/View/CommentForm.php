@@ -38,7 +38,7 @@ class CommentForm extends ViewAbstract
 		$commentModel = new Admin\Model\Comment();
 		$comment = $commentModel->getById($commentId);
 		$dater = new Dater();
-		$dater->init($comment->date);
+		$dater->init($comment?->date);
 
 		/* html element */
 
@@ -48,7 +48,7 @@ class CommentForm extends ViewAbstract
 			[
 				'class' => 'rs-admin-title-content',
 			])
-			->text($comment->id ? $comment->text : $this->_language->get('comment_new'));
+			->text($comment?->id ? $comment?->text : $this->_language->get('comment_new'));
 		$formElement = new Admin\Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[
@@ -75,7 +75,7 @@ class CommentForm extends ViewAbstract
 				],
 				'delete' =>
 				[
-					'href' => $comment->id ? $this->_registry->get('parameterRoute') . 'admin/delete/comments/' . $comment->id . '/' . $this->_registry->get('token') : null
+					'href' => $comment?->id ? $this->_registry->get('parameterRoute') . 'admin/delete/comments/' . $comment?->id . '/' . $this->_registry->get('token') : null
 				]
 			]
 		]);
@@ -107,7 +107,7 @@ class CommentForm extends ViewAbstract
 			[
 				'id' => 'url',
 				'name' => 'url',
-				'value' => $comment->url
+				'value' => $comment?->url
 			])
 			->append('</li><li>')
 			->label('* ' . $this->_language->get('text'),
@@ -120,7 +120,7 @@ class CommentForm extends ViewAbstract
 				'id' => 'text',
 				'name' => 'text',
 				'required' => 'required',
-				'value' => htmlspecialchars($comment->text, ENT_QUOTES)
+				'value' => htmlspecialchars($comment?->text, ENT_QUOTES)
 			])
 			->append('</li></ul>')
 
@@ -144,7 +144,7 @@ class CommentForm extends ViewAbstract
 			])
 			->select($helperOption->getLanguageArray(),
 			[
-				'value' => $comment->language
+				'value' => $comment?->language
 			],
 			[
 				'id' => 'language',
@@ -157,7 +157,7 @@ class CommentForm extends ViewAbstract
 			])
 			->select($helperOption->getArticleForCommentArray(),
 			[
-				$comment->article
+				$comment?->article
 			],
 			[
 				'id' => 'article',
@@ -183,7 +183,7 @@ class CommentForm extends ViewAbstract
 			[
 				'for' => 'status'
 			])
-			->checkbox(!$comment->id || $comment->status ?
+			->checkbox(!$comment?->id || $comment?->status ?
 			[
 				'id' => 'status',
 				'class' => 'rs-admin-fn-status-switch',
@@ -211,7 +211,7 @@ class CommentForm extends ViewAbstract
 			[
 				'id' => 'rank',
 				'name' => 'rank',
-				'value' => $comment->id ? $comment->rank : $commentModel->query()->max('rank') + 1
+				'value' => $comment?->id ? $comment?->rank : $commentModel->query()->max('rank') + 1
 			])
 			->append('</li>');
 		if ($this->_registry->get('groupsEdit'))
@@ -223,7 +223,7 @@ class CommentForm extends ViewAbstract
 					'for' => 'access'
 				])
 				->select($helperOption->getGroupArray(),
-				(array)json_decode($comment->access),
+				(array)json_decode($comment?->access),
 				[
 					'id' => 'access',
 					'name' => 'access[]',
@@ -244,16 +244,21 @@ class CommentForm extends ViewAbstract
 				'name' => 'date',
 				'value' => $dater->formatField()
 			])
-			->append('</li></ul>')
-			->hidden(
-			[
-				'name' => 'id',
-				'value' => $comment->id
-			])
+			->append('</li></ul>');
+		if ($comment?->id)
+		{
+			$formElement
+				->hidden(
+				[
+					'name' => 'id',
+					'value' => $comment?->id
+				]);
+		}
+		$formElement
 			->token()
 			->append('<div class="rs-admin-wrapper-button">')
 			->cancel();
-		if ($comment->id)
+		if ($comment?->id)
 		{
 			if ($this->_registry->get('commentsDelete'))
 			{

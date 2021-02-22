@@ -47,7 +47,7 @@ class GroupForm extends ViewAbstract
 			[
 				'class' => 'rs-admin-title-content',
 			])
-			->text($group->id ? $group->name : $this->_language->get('group_new'));
+			->text($group?->id ? $group?->name : $this->_language->get('group_new'));
 		$formElement = new Admin\Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[
@@ -74,7 +74,7 @@ class GroupForm extends ViewAbstract
 				],
 				'delete' =>
 				[
-					'href' => $group->id ? $this->_registry->get('parameterRoute') . 'admin/delete/groups/' . $group->id . '/' . $this->_registry->get('token') : null
+					'href' => $group?->id ? $this->_registry->get('parameterRoute') . 'admin/delete/groups/' . $group?->id . '/' . $this->_registry->get('token') : null
 				]
 			]
 		]);
@@ -110,7 +110,7 @@ class GroupForm extends ViewAbstract
 				'name' => 'name',
 				'pattern' => $nameValidator->getPattern(),
 				'required' => 'required',
-				'value' => $group->name
+				'value' => $group?->name
 			])
 			->append('</li><li>')
 			->label($this->_language->get('alias'),
@@ -124,7 +124,7 @@ class GroupForm extends ViewAbstract
 				'name' => 'alias',
 				'pattern' => $aliasValidator->getPattern(),
 				'required' => 'required',
-				'value' => $group->alias
+				'value' => $group?->alias
 			])
 			->append('</li><li>')
 			->label($this->_language->get('description'),
@@ -137,10 +137,10 @@ class GroupForm extends ViewAbstract
 				'id' => 'description',
 				'name' => 'description',
 				'rows' => 1,
-				'value' => $group->description
+				'value' => $group?->description
 			])
 			->append('</li></ul>');
-		if (!$group->id || $group->id > 1)
+		if (!$group?->id || $group?->id > 1)
 		{
 			$formElement
 
@@ -163,7 +163,7 @@ class GroupForm extends ViewAbstract
 					'for' => 'categories'
 				])
 				->select($helperOption->getPermissionArray('groups'),
-				(array)json_decode($group->categories),
+				(array)json_decode($group?->categories),
 				[
 					'id' => 'categories',
 					'name' => 'categories[]',
@@ -176,7 +176,7 @@ class GroupForm extends ViewAbstract
 					'for' => 'articles'
 				])
 				->select($helperOption->getPermissionArray('groups'),
-				(array)json_decode($group->articles),
+				(array)json_decode($group?->articles),
 				[
 					'id' => 'articles',
 					'name' => 'articles[]',
@@ -189,7 +189,7 @@ class GroupForm extends ViewAbstract
 					'for' => 'extras'
 				])
 				->select($helperOption->getPermissionArray('groups'),
-				(array)json_decode($group->extras),
+				(array)json_decode($group?->extras),
 				[
 					'id' => 'extras',
 					'name' => 'extras[]',
@@ -202,7 +202,7 @@ class GroupForm extends ViewAbstract
 					'for' => 'comments'
 				])
 				->select($helperOption->getPermissionArray('groups'),
-				(array)json_decode($group->comments),
+				(array)json_decode($group?->comments),
 				[
 					'id' => 'comments',
 					'name' => 'comments[]',
@@ -215,7 +215,7 @@ class GroupForm extends ViewAbstract
 					'for' => 'groups'
 				])
 				->select($helperOption->getPermissionArray('groups'),
-				(array)json_decode($group->groups),
+				(array)json_decode($group?->groups),
 				[
 					'id' => 'groups',
 					'name' => 'groups[]',
@@ -228,7 +228,7 @@ class GroupForm extends ViewAbstract
 					'for' => 'users'
 				])
 				->select($helperOption->getPermissionArray('groups'),
-				(array)json_decode($group->users),
+				(array)json_decode($group?->users),
 				[
 					'id' => 'users',
 					'name' => 'users[]',
@@ -241,7 +241,7 @@ class GroupForm extends ViewAbstract
 					'for' => 'modules'
 				])
 				->select($helperOption->getPermissionArray('modules'),
-				(array)json_decode($group->modules),
+				(array)json_decode($group?->modules),
 				[
 					'id' => 'modules',
 					'name' => 'modules[]',
@@ -255,7 +255,7 @@ class GroupForm extends ViewAbstract
 				])
 				->select($helperOption->getPermissionArray('settings'),
 				[
-					$group->settings
+					$group?->settings
 				],
 				[
 					'id' => 'settings',
@@ -281,7 +281,7 @@ class GroupForm extends ViewAbstract
 				[
 					'for' => 'filter'
 				])
-				->checkbox(!$group->id || $group->filter ?
+				->checkbox(!$group?->id || $group?->filter ?
 				[
 					'id' => 'filter',
 					'class' => 'rs-admin-fn-status-switch',
@@ -305,7 +305,7 @@ class GroupForm extends ViewAbstract
 				[
 					'for' => 'status'
 				])
-				->checkbox(!$group->id || $group->status ?
+				->checkbox(!$group?->id || $group?->status ?
 				[
 					'id' => 'status',
 					'class' => 'rs-admin-fn-status-switch',
@@ -326,18 +326,22 @@ class GroupForm extends ViewAbstract
 				])
 				->append('</li></ul>');
 		}
+		if ($group?->id)
+		{
+			$formElement
+				->hidden(
+				[
+					'name' => 'id',
+					'value' => $group?->id
+				]);
+		}
 		$formElement
-			->hidden(
-			[
-				'name' => 'id',
-				'value' => $group->id
-			])
 			->token()
 			->append('<div class="rs-admin-wrapper-button">')
 			->cancel();
-		if ($group->id)
+		if ($group?->id)
 		{
-			if ($this->_registry->get('groupsDelete') && $group->id > 1)
+			if ($this->_registry->get('groupsDelete') && $group?->id > 1)
 			{
 				$formElement->delete();
 			}

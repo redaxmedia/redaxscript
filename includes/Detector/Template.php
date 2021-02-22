@@ -35,7 +35,7 @@ class Template extends DetectorAbstract
 		[
 			'query' => $specialFilter->sanitize($this->_request->getQuery('t')),
 			'session' => $this->_request->getSession('template'),
-			'contents' => $contentModel->getByTableAndId($lastTable, $lastId)->template ?? null,
+			'contents' => $contentModel->getByTableAndId($lastTable, $lastId)?->template,
 			'settings' => $dbStatus === 2 ? $settingModel->get('template') : null,
 			'fallback' => 'default'
 		];

@@ -41,7 +41,7 @@ class ExtraForm extends ViewAbstract
 		$nameValidator = new Validator\Name();
 		$aliasValidator = new Validator\Alias();
 		$dater = new Dater();
-		$dater->init($extra->date);
+		$dater->init($extra?->date);
 
 		/* html element */
 
@@ -51,7 +51,7 @@ class ExtraForm extends ViewAbstract
 			[
 				'class' => 'rs-admin-title-content',
 			])
-			->text($extra->id ? $extra->title : $this->_language->get('extra_new'));
+			->text($extra?->id ? $extra?->title : $this->_language->get('extra_new'));
 		$formElement = new Admin\Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[
@@ -78,7 +78,7 @@ class ExtraForm extends ViewAbstract
 				],
 				'delete' =>
 				[
-					'href' => $extra->id ? $this->_registry->get('parameterRoute') . 'admin/delete/extras/' . $extra->id . '/' . $this->_registry->get('token') : null
+					'href' => $extra?->id ? $this->_registry->get('parameterRoute') . 'admin/delete/extras/' . $extra?->id . '/' . $this->_registry->get('token') : null
 				]
 			]
 		]);
@@ -114,7 +114,7 @@ class ExtraForm extends ViewAbstract
 				'name' => 'title',
 				'pattern' => $nameValidator->getPattern(),
 				'required' => 'required',
-				'value' => $extra->title
+				'value' => $extra?->title
 			])
 			->append('</li><li>')
 			->label($this->_language->get('alias'),
@@ -128,7 +128,7 @@ class ExtraForm extends ViewAbstract
 				'name' => 'alias',
 				'pattern' => $aliasValidator->getPattern(),
 				'required' => 'required',
-				'value' => $extra->alias
+				'value' => $extra?->alias
 			])
 			->append('</li><li>')
 			->label($this->_language->get('text'),
@@ -141,7 +141,7 @@ class ExtraForm extends ViewAbstract
 				'id' => 'text',
 				'name' => 'text',
 				'required' => 'required',
-				'value' => htmlspecialchars($extra->text, ENT_QUOTES)
+				'value' => htmlspecialchars($extra?->text, ENT_QUOTES)
 			])
 			->append('</li></ul>')
 
@@ -165,7 +165,7 @@ class ExtraForm extends ViewAbstract
 			])
 			->select($helperOption->getLanguageArray(),
 			[
-				$extra->language
+				$extra?->language
 			],
 			[
 				'id' => 'language',
@@ -176,9 +176,9 @@ class ExtraForm extends ViewAbstract
 			[
 				'for' => 'sibling'
 			])
-			->select($helperOption->getSiblingForExtraArray($extra->id),
+			->select($helperOption->getSiblingForExtraArray($extra?->id),
 			[
-				$extra->sibling
+				$extra?->sibling
 			],
 			[
 				'id' => 'sibling',
@@ -191,7 +191,7 @@ class ExtraForm extends ViewAbstract
 			])
 			->select($helperOption->getCategoryArray(),
 			[
-				$extra->category
+				$extra?->category
 			],
 			[
 				'id' => 'category',
@@ -204,7 +204,7 @@ class ExtraForm extends ViewAbstract
 			])
 			->select($helperOption->getArticleArray(),
 			[
-				$extra->article
+				$extra?->article
 			],
 			[
 				'id' => 'article',
@@ -230,7 +230,7 @@ class ExtraForm extends ViewAbstract
 			[
 				'for' => 'headline'
 			])
-			->checkbox(!$extra->id || $extra->headline ?
+			->checkbox(!$extra?->id || $extra?->headline ?
 			[
 				'id' => 'headline',
 				'class' => 'rs-admin-fn-status-switch',
@@ -254,7 +254,7 @@ class ExtraForm extends ViewAbstract
 			[
 				'for' => 'status'
 			])
-			->checkbox(!$extra->id || $extra->status ?
+			->checkbox(!$extra?->id || $extra?->status ?
 			[
 				'id' => 'status',
 				'class' => 'rs-admin-fn-status-switch',
@@ -282,7 +282,7 @@ class ExtraForm extends ViewAbstract
 			[
 				'id' => 'rank',
 				'name' => 'rank',
-				'value' => $extra->id ? $extra->rank : $extraModel->query()->max('rank') + 1
+				'value' => $extra?->id ? $extra?->rank : $extraModel->query()->max('rank') + 1
 			])
 			->append('</li>');
 		if ($this->_registry->get('groupsEdit'))
@@ -294,7 +294,7 @@ class ExtraForm extends ViewAbstract
 					'for' => 'access'
 				])
 				->select($helperOption->getGroupArray(),
-				(array)json_decode($extra->access),
+				(array)json_decode($extra?->access),
 				[
 					'id' => 'access',
 					'name' => 'access[]',
@@ -315,16 +315,21 @@ class ExtraForm extends ViewAbstract
 				'name' => 'date',
 				'value' => $dater->formatField()
 			])
-			->append('</li></ul>')
-			->hidden(
-			[
-				'name' => 'id',
-				'value' => $extra->id
-			])
+			->append('</li></ul>');
+		if ($extra?->id)
+		{
+			$formElement
+				->hidden(
+				[
+					'name' => 'id',
+					'value' => $extra?->id
+				]);
+		}
+		$formElement
 			->token()
 			->append('<div class="rs-admin-wrapper-button">')
 			->cancel();
-		if ($extra->id)
+		if ($extra?->id)
 		{
 			if ($this->_registry->get('extrasDelete'))
 			{

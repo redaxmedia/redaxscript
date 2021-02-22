@@ -46,7 +46,7 @@ class ModuleForm extends ViewAbstract
 			[
 				'class' => 'rs-admin-title-content',
 			])
-			->text($module->name);
+			->text($module?->name);
 		$formElement = new Admin\Html\Form($this->_registry, $this->_language);
 		$formElement->init(
 		[
@@ -69,7 +69,7 @@ class ModuleForm extends ViewAbstract
 				],
 				'uninstall' =>
 				[
-					'href' => $module->alias ? $this->_registry->get('parameterRoute') . 'admin/uninstall/modules/' . $module->alias . '/' . $this->_registry->get('token') : null
+					'href' => $module?->alias ? $this->_registry->get('parameterRoute') . 'admin/uninstall/modules/' . $module?->alias . '/' . $this->_registry->get('token') : null
 				]
 			]
 		]);
@@ -104,7 +104,7 @@ class ModuleForm extends ViewAbstract
 				'name' => 'name',
 				'pattern' => $nameValidator->getPattern(),
 				'required' => 'required',
-				'value' => $module->name
+				'value' => $module?->name
 			])
 			->append('</li><li>')
 			->label($this->_language->get('description'),
@@ -117,7 +117,7 @@ class ModuleForm extends ViewAbstract
 				'id' => 'description',
 				'name' => 'description',
 				'rows' => 1,
-				'value' => $module->description
+				'value' => $module?->description
 			])
 			->append('</li></ul>')
 
@@ -139,7 +139,7 @@ class ModuleForm extends ViewAbstract
 			[
 				'for' => 'status'
 			])
-			->checkbox($module->status ?
+			->checkbox($module?->status ?
 			[
 				'id' => 'status',
 				'class' => 'rs-admin-fn-status-switch',
@@ -168,7 +168,7 @@ class ModuleForm extends ViewAbstract
 					'for' => 'access'
 				])
 				->select($helperOption->getGroupArray(),
-				(array)json_decode($module->access),
+				(array)json_decode($module?->access),
 				[
 					'id' => 'access',
 					'name' => 'access[]',
@@ -182,7 +182,7 @@ class ModuleForm extends ViewAbstract
 			->hidden(
 			[
 				'name' => 'id',
-				'value' => $module->id
+				'value' => $module?->id
 			])
 			->token()
 			->append('<div class="rs-admin-wrapper-button">')

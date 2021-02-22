@@ -52,7 +52,7 @@
 		<!-- admin view -->
 
 		<testsuite name="admin-view">
-			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/Admin/View</directory>
+			<directory>tests/unit/Admin/View</directory>
 		</testsuite>
 
 		<!-- asset -->
