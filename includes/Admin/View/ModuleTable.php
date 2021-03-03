@@ -127,6 +127,7 @@ class ModuleTable extends ViewAbstract
 				$outputBody .= $trElement
 					->copy()
 					->attr('id', 'row-' . $value->id)
+					->addClass($value->license === 'Sponsor' ? 'rs-admin-is-sponsored' : null)
 					->addClass(!$value->status ? 'rs-admin-is-disabled' : null)
 					->html(
 						$tdElement->copy()->html(

@@ -33,7 +33,7 @@
 .rs-admin-list-visual-editor
 {
 	background: gray(10);
-	color: gray(70);
+	color: gray(80);
 }
 
 /** @section 1.2. link */
@@ -287,7 +287,7 @@
 	& rs-module
 	{
 		border: 0.125rem dashed gray(80);
-		color: gray(70);
+		color: gray(80);
 		display: block;
 		font: 1rem/1.25em var(--rs-admin-font-code);
 		padding: 1em;

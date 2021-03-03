@@ -20,7 +20,7 @@
 
 	&:before
 	{
-		background: svg-load('@mdi/svg/svg/drag-vertical.svg', fill = gray(70)) center no-repeat;
+		background: svg-load('@mdi/svg/svg/drag-vertical.svg', fill = gray(80)) center no-repeat;
 		bottom: 0;
 		content: '';
 		position: absolute;

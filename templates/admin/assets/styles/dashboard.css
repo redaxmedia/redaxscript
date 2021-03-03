@@ -29,7 +29,7 @@
 {
 	align-items: center;
 	background: gray(10);
-	color: gray(70);
+	color: gray(80);
 	display: flex;
 	flex-wrap: wrap;
 	font-weight: 600;
@@ -40,7 +40,7 @@
 
 	&:empty:after
 	{
-		background: svg-load('@mdi/svg/svg/cube-outline.svg', fill = gray(70)) center no-repeat;
+		background: svg-load('@mdi/svg/svg/cube-outline.svg', fill = gray(80)) center no-repeat;
 		bottom: 0;
 		content: '';
 		left: 0;

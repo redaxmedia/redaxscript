@@ -13,7 +13,7 @@
 .rs-admin-box-dock
 {
 	background: gray(10);
-	color: gray(70);
+	color: gray(80);
 	display: flex;
 	font: 500 1rem var(--rs-admin-font-primary);
 	margin-top: 0.5em;
@@ -64,17 +64,17 @@
 
 		&.rs-admin-link-unpublish:before
 		{
-			background-image: svg-load('@mdi/svg/svg/eye-off.svg', fill = gray(70));
+			background-image: svg-load('@mdi/svg/svg/eye-off.svg', fill = gray(80));
 		}
 
 		&.rs-admin-link-edit:before
 		{
-			background-image: svg-load('@mdi/svg/svg/pencil.svg', fill = gray(70));
+			background-image: svg-load('@mdi/svg/svg/pencil.svg', fill = gray(80));
 		}
 
 		&.rs-admin-link-delete:before
 		{
-			background-image: svg-load('@mdi/svg/svg/delete.svg', fill = gray(70));
+			background-image: svg-load('@mdi/svg/svg/delete.svg', fill = gray(80));
 		}
 	}
 }

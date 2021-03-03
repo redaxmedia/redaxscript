@@ -15,7 +15,7 @@
 
 .rs-admin-list-panel
 {
-	color: gray(70);
+	color: gray(80);
 	font: 500 1.25rem var(--rs-admin-font-primary);
 	position: relative;
 	z-index: 1000;
@@ -72,7 +72,7 @@
 	{
 		&:before
 		{
-			background-image: svg-load('@mdi/svg/svg/book-open-blank-variant.svg', fill = gray(70));
+			background-image: svg-load('@mdi/svg/svg/book-open-blank-variant.svg', fill = gray(80));
 		}
 
 		&:hover:before
@@ -85,7 +85,7 @@
 	{
 		&:before
 		{
-			background-image: svg-load('@mdi/svg/svg/shield-half-full.svg', fill = gray(70));
+			background-image: svg-load('@mdi/svg/svg/shield-half-full.svg', fill = gray(80));
 		}
 
 		&:hover:before
@@ -98,7 +98,7 @@
 	{
 		&:before
 		{
-			background-image: svg-load('@mdi/svg/svg/cog.svg', fill = gray(70));
+			background-image: svg-load('@mdi/svg/svg/cog.svg', fill = gray(80));
 		}
 
 		&:hover:before
@@ -111,7 +111,7 @@
 	{
 		&:before
 		{
-			background-image: svg-load('@mdi/svg/svg/account.svg', fill = gray(70));
+			background-image: svg-load('@mdi/svg/svg/account.svg', fill = gray(80));
 		}
 
 		&:hover:before
@@ -124,7 +124,7 @@
 	{
 		&:before
 		{
-			background-image: svg-load('@mdi/svg/svg/bell.svg', fill = gray(70));
+			background-image: svg-load('@mdi/svg/svg/bell.svg', fill = gray(80));
 		}
 
 		&:hover:before
@@ -137,7 +137,7 @@
 	{
 		&:before
 		{
-			background-image: svg-load('@mdi/svg/svg/power.svg', fill = gray(70));
+			background-image: svg-load('@mdi/svg/svg/power.svg', fill = gray(80));
 		}
 
 		&:hover:before
@@ -178,7 +178,7 @@
 
 			&:after
 			{
-				background: svg-load('@mdi/svg/svg/plus.svg', fill = gray(70)) center no-repeat;
+				background: svg-load('@mdi/svg/svg/plus.svg', fill = gray(80)) center no-repeat;
 				bottom: 0;
 				content: '';
 				left: 0;
@@ -199,7 +199,7 @@
 
 	& .rs-admin-sup-panel-notification
 	{
-		background: gray(70);
+		background: gray(80);
 		border-radius: 50%;
 		box-shadow: 0 0 0 0.25em gray(10);
 		color: gray(10);
@@ -268,7 +268,7 @@
 		{
 			&:after
 			{
-				background: svg-load('@mdi/svg/svg/chevron-right.svg', fill = gray(70)) center no-repeat;
+				background: svg-load('@mdi/svg/svg/chevron-right.svg', fill = gray(80)) center no-repeat;
 				content: '';
 				height: 3em;
 				position: absolute;
@@ -287,7 +287,7 @@
 		{
 			&:after
 			{
-				background: svg-load('@mdi/svg/svg/chevron-down.svg', fill = gray(70)) center no-repeat;
+				background: svg-load('@mdi/svg/svg/chevron-down.svg', fill = gray(80)) center no-repeat;
 			}
 
 			&:hover:after
