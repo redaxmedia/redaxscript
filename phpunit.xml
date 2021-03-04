@@ -155,7 +155,7 @@
 		<!-- template -->
 
 		<testsuite name="template">
-			<directory phpVersion="8" phpVersionOperator="lt">tests/unit/Template</directory>
+			<directory>tests/unit/Template</directory>
 		</testsuite>
 
 		<!-- validator -->
@@ -203,7 +203,7 @@
 		<!-- db -->
 
 		<testsuite name="db">
-			<file phpVersion="8" phpVersionOperator="lt">tests/unit/DbTest.php</file>
+			<file>tests/unit/DbTest.php</file>
 		</testsuite>
 
 		<!-- hash -->

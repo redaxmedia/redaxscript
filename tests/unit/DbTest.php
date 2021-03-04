@@ -79,8 +79,8 @@ class DbTest extends TestCaseAbstract
 	public function tearDown() : void
 	{
 		$this->dropDatabase();
-		$this->_config->set('dbType', $this->_configArray['dbType']);
-		$this->_config->set('dbPassword', $this->_configArray['dbPassword']);
+		$this->_config->set('dbType', $this->_configArray['dbType'] ?? null);
+		$this->_config->set('dbPassword', $this->_configArray['dbPassword'] ?? null);
 	}
 
 	/**
@@ -97,8 +97,8 @@ class DbTest extends TestCaseAbstract
 	{
 		/* setup */
 
-		$this->_config->set('dbType', $configArray['dbType']);
-		$this->_config->set('dbPassword', $configArray['dbPassword']);
+		$this->_config->set('dbType', $configArray['dbType'] ?? null);
+		$this->_config->set('dbPassword', $configArray['dbPassword'] ?? null);
 		Db::construct($this->_config);
 		Db::init();
 
@@ -172,7 +172,7 @@ class DbTest extends TestCaseAbstract
 	{
 		/* actual */
 
-		$actual = Db::forTablePrefix('categories')->where('alias', 'category-one')->findOne()->alias;
+		$actual = Db::forTablePrefix('categories')->where('alias', 'category-one')->findOne()->alias ?? null;
 
 		/* compare */
 
@@ -224,7 +224,7 @@ class DbTest extends TestCaseAbstract
 		[
 			'%article-one%'
 		])
-		->findOne()->alias;
+		->findOne()->alias ?? null;
 
 		/* compare */
 
@@ -246,7 +246,7 @@ class DbTest extends TestCaseAbstract
 	{
 		/* actual */
 
-		$actual = Db::forTablePrefix('articles')->whereLanguageIs($language)->findOne()->alias;
+		$actual = Db::forTablePrefix('articles')->whereLanguageIs($language)->findOne()?->alias ?? null;
 
 		/* compare */
 
@@ -263,7 +263,7 @@ class DbTest extends TestCaseAbstract
 	{
 		/* actual */
 
-		$actual = Db::forTablePrefix('categories')->orderBySetting('rank')->findOne()->alias;
+		$actual = Db::forTablePrefix('categories')->orderBySetting('rank')->findOne()->alias ?? null;
 
 		/* compare */
 
@@ -280,7 +280,7 @@ class DbTest extends TestCaseAbstract
 	{
 		/* actual */
 
-		$actual = Db::forTablePrefix('categories')->limitBySetting()->findOne()->alias;
+		$actual = Db::forTablePrefix('categories')->limitBySetting()->findOne()->alias ?? null;
 
 		/* compare */
 
